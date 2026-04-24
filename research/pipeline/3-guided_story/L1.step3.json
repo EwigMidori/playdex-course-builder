@@ -1,0 +1,288 @@
+{
+  "lesson_id": "L1",
+  "sequence_id": "step3",
+  "mode": "guided_story",
+  "source": {
+    "plain_text": "pipeline/1-plain/L1/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ]
+  },
+  "screens": [
+    {
+      "id": "s001",
+      "type": "narration",
+      "lines": [
+        "如果这只是个小众玩具，",
+        "那其实没必要认真学。"
+      ]
+    },
+    {
+      "id": "s002",
+      "type": "narration",
+      "lines": [
+        "但现实里的信号刚好相反。",
+        "它说这个领域还在继续长。"
+      ]
+    },
+    {
+      "id": "s003",
+      "type": "narration",
+      "lines": [
+        "这里第一次出现一个术语：",
+        "**<term id=\"cagr\">年复合增长率</term>**。"
+      ],
+      "focus_terms": [
+        "cagr"
+      ],
+      "introduced_terms": [
+        "cagr"
+      ]
+    },
+    {
+      "id": "s004",
+      "type": "narration",
+      "lines": [
+        "你暂时把它理解成：",
+        "“平均每年大概增长多快”。"
+      ]
+    },
+    {
+      "id": "s005",
+      "type": "narration",
+      "lines": [
+        "这里给出的数字是 **12.7%**。",
+        "它不是一年的爆发，而是持续增长的信号。"
+      ]
+    },
+    {
+      "id": "s006",
+      "type": "narration",
+      "lines": [
+        "更直观的是后面的市场占比。",
+        "美国股票里，大约 **60%** 的成交量和算法策略有关。"
+      ]
+    },
+    {
+      "id": "s007",
+      "type": "narration",
+      "lines": [
+        "欧洲股票大约 **40%**。",
+        "外汇大约 **25%**。"
+      ]
+    },
+    {
+      "id": "s008",
+      "type": "narration",
+      "lines": [
+        "美股期权大约 **20%**。",
+        "这说明它已经不是边角角色。"
+      ]
+    },
+    {
+      "id": "s009",
+      "type": "exercise",
+      "lines": [
+        "看到这些比例，",
+        "你最该得出的感觉是什么？"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "选一个最贴近这里想表达的判断。",
+        "options": [
+          "算法交易只是实验室概念",
+          "算法交易已经深度参与真实市场",
+          "算法交易只存在于加密货币"
+        ],
+        "answer": 1,
+        "explanation": "这些占比说明它已经进入主流市场结构。"
+      }
+    },
+    {
+      "id": "s010",
+      "type": "narration",
+      "lines": [
+        "但这里还要分清一件事。",
+        "<term id=\"robo_trading\">自动交易</term> 和 <term id=\"robo_advisory\">智能投顾</term> 不是一回事。"
+      ],
+      "focus_terms": [
+        "robo_trading",
+        "robo_advisory"
+      ],
+      "introduced_terms": [
+        "robo_trading",
+        "robo_advisory"
+      ]
+    },
+    {
+      "id": "s011",
+      "type": "narration",
+      "lines": [
+        "它们都能参与决策。",
+        "真正拉开差别的是“执不执行”。"
+      ]
+    },
+    {
+      "id": "s012",
+      "type": "narration",
+      "lines": [
+        "<term id=\"robo_trading\">自动交易</term>：",
+        "判断完，还会自己执行。"
+      ],
+      "focus_terms": [
+        "robo_trading"
+      ]
+    },
+    {
+      "id": "s013",
+      "type": "narration",
+      "lines": [
+        "<term id=\"robo_advisory\">智能投顾</term>：",
+        "给建议、给摘要、给提醒，但不替你下单。"
+      ],
+      "focus_terms": [
+        "robo_advisory"
+      ]
+    },
+    {
+      "id": "s014",
+      "type": "exercise",
+      "lines": [
+        "现在来做个一秒判断。",
+        "哪个更接近“会真的下单”？"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "选一个。",
+        "options": [
+          "Robo-Advisory",
+          "Robo-Trading",
+          "两者都不涉及执行"
+        ],
+        "answer": 1,
+        "explanation": "这里的关键差别就在执行：前者会下单，后者主要给建议。"
+      }
+    },
+    {
+      "id": "s015",
+      "type": "narration",
+      "lines": [
+        "再把视角拉大一点。",
+        "这里还可以比较三种交易方式。"
+      ]
+    },
+    {
+      "id": "s016",
+      "type": "narration",
+      "lines": [
+        "<term id=\"human_trading\">人工交易</term> 靠人。",
+        "工作时间有限，速度也慢。"
+      ],
+      "focus_terms": [
+        "human_trading"
+      ],
+      "introduced_terms": [
+        "human_trading"
+      ]
+    },
+    {
+      "id": "s017",
+      "type": "narration",
+      "lines": [
+        "<term id=\"robo_advisory\">智能投顾</term> 介于中间。",
+        "它更像辅助系统。"
+      ],
+      "focus_terms": [
+        "robo_advisory"
+      ]
+    },
+    {
+      "id": "s018",
+      "type": "narration",
+      "lines": [
+        "<term id=\"robo_trading\">自动交易</term> 最自动化。",
+        "速度快，规模也更能放大。"
+      ],
+      "focus_terms": [
+        "robo_trading"
+      ]
+    },
+    {
+      "id": "s019",
+      "type": "narration",
+      "lines": [
+        "但代价也存在。",
+        "用户控制感会更低，自定义空间也可能更小。"
+      ]
+    },
+    {
+      "id": "s020",
+      "type": "exercise",
+      "lines": [
+        "所以不是谁绝对更好。",
+        "而是谁适合什么任务。"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "如果你最看重“立即执行”和“24x7 运作”，哪一种更贴近材料描述？",
+        "options": [
+          "Human Trading",
+          "Robo-Advisory",
+          "Robo-Trading"
+        ],
+        "answer": 2,
+        "explanation": "这里最关键的线索是 24x7 和立即执行。"
+      }
+    },
+    {
+      "id": "s021",
+      "type": "narration",
+      "lines": [
+        "真正想留下的只有一句。",
+        "<term id=\"algorithmic_trading\">算法交易</term> 不是未来式，它已经是现在式。"
+      ],
+      "focus_terms": [
+        "algorithmic_trading"
+      ]
+    }
+  ],
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "algorithmic_trading": {
+      "display": "算法交易",
+      "aliases": [
+        "Algorithmic Trading"
+      ],
+      "gloss": "用规则和程序把交易判断与执行连起来的交易方式。"
+    },
+    "cagr": {
+      "display": "年复合增长率",
+      "aliases": [
+        "CAGR",
+        "Compound Annual Growth Rate"
+      ],
+      "gloss": "衡量一段时期内平均每年增长多快的指标。"
+    },
+    "robo_trading": {
+      "display": "自动交易",
+      "aliases": [
+        "Robo-Trading"
+      ],
+      "gloss": "系统不仅给出判断，还会直接执行交易。"
+    },
+    "robo_advisory": {
+      "display": "智能投顾",
+      "aliases": [
+        "Robo-Advisory"
+      ],
+      "gloss": "系统给建议和提醒，但通常不直接替你下单。"
+    },
+    "human_trading": {
+      "display": "人工交易",
+      "aliases": [
+        "Human Trading"
+      ],
+      "gloss": "由人来观察、判断并手动执行交易。"
+    }
+  }
+}

@@ -1,0 +1,399 @@
+{
+  "lesson_id": "L1",
+  "sequence_id": "step4",
+  "mode": "guided_story",
+  "source": {
+    "plain_text": "pipeline/1-plain/L1/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ]
+  },
+  "screens": [
+    {
+      "id": "s001",
+      "type": "narration",
+      "lines": [
+        "好。",
+        "现在假设你真的想做一个交易系统。"
+      ]
+    },
+    {
+      "id": "s002",
+      "type": "narration",
+      "lines": [
+        "你最先缺的，",
+        "往往不是策略灵感。"
+      ]
+    },
+    {
+      "id": "s003",
+      "type": "narration",
+      "lines": [
+        "而是 **<term id=\"data\">数据</term>**。",
+        "有个比喻很贴切：算法像车，数据像燃料。"
+      ],
+      "focus_terms": [
+        "data"
+      ],
+      "introduced_terms": [
+        "data"
+      ]
+    },
+    {
+      "id": "s004",
+      "type": "narration",
+      "lines": [
+        "车再好，没油也跑不起来。",
+        "算法也是一样。"
+      ]
+    },
+    {
+      "id": "s005",
+      "type": "narration",
+      "lines": [
+        "而且数据不是“拿来就用”。",
+        "它先要被收集。"
+      ]
+    },
+    {
+      "id": "s006",
+      "type": "narration",
+      "lines": [
+        "**<term id=\"data_collection\">数据收集</term>** 很花时间。",
+        "找源头、拿权限、清洗格式，都会卡人。"
+      ],
+      "focus_terms": [
+        "data_collection"
+      ],
+      "introduced_terms": [
+        "data_collection"
+      ]
+    },
+    {
+      "id": "s007",
+      "type": "narration",
+      "lines": [
+        "接着是 **<term id=\"data_storage\">数据存储</term>**。",
+        "因为数据量会很大，而且类型不只数字。"
+      ],
+      "focus_terms": [
+        "data_storage"
+      ],
+      "introduced_terms": [
+        "data_storage"
+      ]
+    },
+    {
+      "id": "s008",
+      "type": "narration",
+      "lines": [
+        "文本、图片、音频、视频，",
+        "都可能变成交易系统的输入。"
+      ]
+    },
+    {
+      "id": "s009",
+      "type": "narration",
+      "lines": [
+        "然后是 **<term id=\"data_management\">数据管理</term>**。",
+        "格式不一致时，传统数据库也会开始吃力。"
+      ],
+      "focus_terms": [
+        "data_management"
+      ],
+      "introduced_terms": [
+        "data_management"
+      ]
+    },
+    {
+      "id": "s010",
+      "type": "exercise",
+      "lines": [
+        "先别急着想模型。",
+        "你觉得哪个环节最像“把油搬进油箱”？"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "选一个最贴近数据基础工作的答案。",
+        "options": [
+          "数据收集与清洗",
+          "凭感觉调参数",
+          "盯盘等灵感"
+        ],
+        "answer": 0,
+        "explanation": "材料把数据看成燃料，前面这些基础活就是在让系统有油可用。"
+      }
+    },
+    {
+      "id": "s011",
+      "type": "narration",
+      "lines": [
+        "还有 **<term id=\"data_processing\">数据处理</term>**。",
+        "重点不是能不能处理，而是处理得够不够快、够不够稳。"
+      ],
+      "focus_terms": [
+        "data_processing"
+      ],
+      "introduced_terms": [
+        "data_processing"
+      ]
+    },
+    {
+      "id": "s012",
+      "type": "narration",
+      "lines": [
+        "再往下，问题就不再只是数据了。",
+        "而是整套基础设施。"
+      ]
+    },
+    {
+      "id": "s013",
+      "type": "narration",
+      "lines": [
+        "现实里会冒出很多部件：",
+        "实时行情、历史数据、硬件、券商连接、网络延迟。"
+      ]
+    },
+    {
+      "id": "s014",
+      "type": "narration",
+      "lines": [
+        "还有 **<term id=\"oms\">订单管理系统</term>**、",
+        "算法维护和网络安全。"
+      ],
+      "focus_terms": [
+        "oms"
+      ],
+      "introduced_terms": [
+        "oms"
+      ]
+    },
+    {
+      "id": "s015",
+      "type": "exercise",
+      "lines": [
+        "看到这里，",
+        "你应该已经感觉到一件事。"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "做交易系统更像下面哪一个？",
+        "options": [
+          "只写一段买卖逻辑",
+          "搭一整套数据与执行流水线",
+          "只要会看 K 线就够了"
+        ],
+        "answer": 1,
+        "explanation": "材料反复强调真实世界里需要数据、连接、系统与维护。"
+      }
+    },
+    {
+      "id": "s016",
+      "type": "narration",
+      "lines": [
+        "顺着这个视角，",
+        "常见的交易方法还能继续往下分。"
+      ]
+    },
+    {
+      "id": "s017",
+      "type": "narration",
+      "lines": [
+        "**<term id=\"fundamental_analysis\">基本面分析</term>** 看基本面。",
+        "比如公司、行业、财务和管理层。"
+      ],
+      "focus_terms": [
+        "fundamental_analysis"
+      ],
+      "introduced_terms": [
+        "fundamental_analysis"
+      ]
+    },
+    {
+      "id": "s018",
+      "type": "narration",
+      "lines": [
+        "**<term id=\"technical_analysis\">技术分析</term>** 看图形与趋势。",
+        "它盯的是价格行为。"
+      ],
+      "focus_terms": [
+        "technical_analysis"
+      ],
+      "introduced_terms": [
+        "technical_analysis"
+      ]
+    },
+    {
+      "id": "s019",
+      "type": "narration",
+      "lines": [
+        "**<term id=\"quantitative_analysis\">量化分析</term>** 更强调规则、统计和模型。",
+        "包括 <term id=\"rule_based\">规则策略</term>、套利、<term id=\"nlp\">自然语言处理</term> 和 <term id=\"machine_learning\">机器学习</term>。"
+      ],
+      "focus_terms": [
+        "quantitative_analysis",
+        "rule_based",
+        "nlp",
+        "machine_learning"
+      ],
+      "introduced_terms": [
+        "quantitative_analysis",
+        "rule_based",
+        "nlp",
+        "machine_learning"
+      ]
+    },
+    {
+      "id": "s020",
+      "type": "narration",
+      "lines": [
+        "还有按时间来分。",
+        "<term id=\"long_term\">长期</term>、<term id=\"short_term\">中短期</term>、<term id=\"intraday\">日内</term>、<term id=\"high_frequency\">高频</term>。"
+      ],
+      "focus_terms": [
+        "long_term",
+        "short_term",
+        "intraday",
+        "high_frequency"
+      ],
+      "introduced_terms": [
+        "long_term",
+        "short_term",
+        "intraday",
+        "high_frequency"
+      ]
+    },
+    {
+      "id": "s021",
+      "type": "narration",
+      "lines": [
+        "时间越短，",
+        "对速度、连接和执行细节通常越敏感。"
+      ]
+    },
+    {
+      "id": "s022",
+      "type": "narration",
+      "lines": [
+        "把这句 punchline 带走就够了：",
+        "做交易系统，先别只盯策略，先看你有没有系统。"
+      ]
+    }
+  ],
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "data": {
+      "display": "数据",
+      "aliases": [
+        "Data"
+      ],
+      "gloss": "驱动交易系统判断与执行的核心输入。"
+    },
+    "data_collection": {
+      "display": "数据收集",
+      "aliases": [
+        "Data Collection"
+      ],
+      "gloss": "把可用数据从外部源头拿进系统。"
+    },
+    "data_storage": {
+      "display": "数据存储",
+      "aliases": [
+        "Data Storage"
+      ],
+      "gloss": "把采集来的数据稳定保存下来。"
+    },
+    "data_management": {
+      "display": "数据管理",
+      "aliases": [
+        "Data Management"
+      ],
+      "gloss": "处理格式、权限和组织方式，让数据可用。"
+    },
+    "data_processing": {
+      "display": "数据处理",
+      "aliases": [
+        "Data Processing"
+      ],
+      "gloss": "把原始数据转成模型和策略能直接使用的形式。"
+    },
+    "oms": {
+      "display": "订单管理系统",
+      "aliases": [
+        "OMS",
+        "Order Management System"
+      ],
+      "gloss": "管理订单生命周期的系统。"
+    },
+    "fundamental_analysis": {
+      "display": "基本面分析",
+      "aliases": [
+        "Fundamental"
+      ],
+      "gloss": "从公司、行业和财务信息出发做判断的方法。"
+    },
+    "technical_analysis": {
+      "display": "技术分析",
+      "aliases": [
+        "Technical"
+      ],
+      "gloss": "从价格走势和图形形态出发做判断的方法。"
+    },
+    "quantitative_analysis": {
+      "display": "量化分析",
+      "aliases": [
+        "Quantitative"
+      ],
+      "gloss": "强调规则、统计和模型的分析方法。"
+    },
+    "rule_based": {
+      "display": "规则策略",
+      "aliases": [
+        "rule-based"
+      ],
+      "gloss": "按预先设定的规则触发交易行为。"
+    },
+    "nlp": {
+      "display": "自然语言处理",
+      "aliases": [
+        "NLP"
+      ],
+      "gloss": "让系统处理文本并提取可用信息。"
+    },
+    "machine_learning": {
+      "display": "机器学习",
+      "aliases": [
+        "machine learning"
+      ],
+      "gloss": "让模型从数据中学习模式并辅助决策。"
+    },
+    "long_term": {
+      "display": "长期",
+      "aliases": [
+        "Long Term"
+      ],
+      "gloss": "持有周期以月到年计。"
+    },
+    "short_term": {
+      "display": "中短期",
+      "aliases": [
+        "Short Term"
+      ],
+      "gloss": "持有周期以天、周或月计。"
+    },
+    "intraday": {
+      "display": "日内",
+      "aliases": [
+        "Intraday"
+      ],
+      "gloss": "在同一个交易日内完成交易。"
+    },
+    "high_frequency": {
+      "display": "高频",
+      "aliases": [
+        "High Frequency"
+      ],
+      "gloss": "在极短时间尺度上高速交易。"
+    }
+  }
+}

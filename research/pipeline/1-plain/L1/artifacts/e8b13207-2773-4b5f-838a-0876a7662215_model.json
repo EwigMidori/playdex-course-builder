@@ -1,0 +1,6038 @@
+[
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.134,
+                0.268,
+                0.868,
+                0.483
+            ],
+            "angle": 0,
+            "content": "L1: Algorithmic trading basics and financial markets"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.37,
+                0.532,
+                0.629,
+                0.573
+            ],
+            "angle": 0,
+            "content": "Course Code: COMP7415"
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.029,
+                0.922,
+                0.177,
+                0.958
+            ],
+            "angle": 0,
+            "content": "Lecturer: Tony Lam"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.112,
+                0.213,
+                0.192
+            ],
+            "angle": 0,
+            "content": "Agenda"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.272,
+                0.487,
+                0.329
+            ],
+            "angle": 0,
+            "content": "- The basic concept of algo-trading"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.349,
+                0.482,
+                0.402
+            ],
+            "angle": 0,
+            "content": "- The market trend of algo-trading"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.423,
+                0.613,
+                0.477
+            ],
+            "angle": 0,
+            "content": "- Comparison of different trading approaches"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.498,
+                0.741,
+                0.552
+            ],
+            "angle": 0,
+            "content": "• Infrastructure needed to deploy algo-trading programs"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.573,
+                0.565,
+                0.625
+            ],
+            "angle": 0,
+            "content": "- Trading mechanism and order matching"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.647,
+                0.464,
+                0.702
+            ],
+            "angle": 0,
+            "content": "Market jargon and terminology"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.272,
+                0.741,
+                0.702
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.47,
+                0.194
+            ],
+            "angle": 0,
+            "content": "What is algo-trading?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.269,
+                0.881,
+                0.386
+            ],
+            "angle": 0,
+            "content": "- Algorithmic trading, also called Algo Trading, Quant Trading, Robo-Trading, Program Trading"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.402,
+                0.898,
+                0.462
+            ],
+            "angle": 0,
+            "content": "- Use of mathematical models and computer algorithms/programs to"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.269,
+                0.898,
+                0.462
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.111,
+                0.468,
+                0.604,
+                0.518
+            ],
+            "angle": 0,
+            "content": "- generate trading signals (i.e. Decision making)"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.112,
+                0.523,
+                0.553,
+                0.575
+            ],
+            "angle": 0,
+            "content": "- automate trading process (i.e. Execution)"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.111,
+                0.468,
+                0.604,
+                0.575
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.594,
+                0.228,
+                0.648
+            ],
+            "angle": 0,
+            "content": "- Objectives:"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.111,
+                0.658,
+                0.301,
+                0.703
+            ],
+            "angle": 0,
+            "content": "- maximize profits"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.111,
+                0.716,
+                0.367,
+                0.758
+            ],
+            "angle": 0,
+            "content": "- control execution costs"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.771,
+                0.515,
+                0.819
+            ],
+            "angle": 0,
+            "content": "- hedging and manage investment risks"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.11,
+                0.658,
+                0.515,
+                0.819
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.631,
+                0.194
+            ],
+            "angle": 0,
+            "content": "Market Trend for Algo-Trading"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.272,
+                0.631,
+                0.32
+            ],
+            "angle": 0,
+            "content": "Expected to grow at CAGR \\(12.7\\%\\) to US\\(\\$ 32\\)b by 2028"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.34,
+                0.43,
+                0.386
+            ],
+            "angle": 0,
+            "content": "- Largest market in North America"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.407,
+                0.401,
+                0.453
+            ],
+            "angle": 0,
+            "content": "- Fastest growing in Asia Pacific"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.072,
+                0.272,
+                0.631,
+                0.453
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.059,
+                0.49,
+                0.497,
+                0.902
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.503,
+                0.49,
+                0.956,
+                0.903
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.035,
+                0.927,
+                0.079,
+                0.946
+            ],
+            "angle": 0,
+            "content": "Reference:"
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.035,
+                0.948,
+                0.354,
+                0.967
+            ],
+            "angle": 0,
+            "content": "https://www.mordorintelligence.com/industry-reports/algorithmic-trading-market"
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.035,
+                0.968,
+                0.672,
+                0.988
+            ],
+            "angle": 0,
+            "content": "https://www.prnewswire.com/in/news-releases/algorithms-trading-market-to-reach-usd-31-494-million-by-2028-at-a-cagr-of-12-7-valuates-reports-897347529.html"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.631,
+                0.194
+            ],
+            "angle": 0,
+            "content": "Market Trend for Algo-Trading"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.654,
+                0.323
+            ],
+            "angle": 0,
+            "content": "Algorithmic trading strategies account for approximately:"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.339,
+                0.381,
+                0.387
+            ],
+            "angle": 0,
+            "content": "60% of all US equity volume"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.406,
+                0.449,
+                0.453
+            ],
+            "angle": 0,
+            "content": "40% of all European equity volume"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.473,
+                0.386,
+                0.515
+            ],
+            "angle": 0,
+            "content": "25% of all Forex transactions"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.54,
+                0.37,
+                0.587
+            ],
+            "angle": 0,
+            "content": "20% of all US option trades"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.339,
+                0.449,
+                0.587
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.034,
+                0.954,
+                0.156,
+                0.974
+            ],
+            "angle": 0,
+            "content": "Source: interactive brokers"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.651,
+                0.193
+            ],
+            "angle": 0,
+            "content": "Robo-Trading vs Robo-Advisory"
+        },
+        {
+            "type": "table",
+            "bbox": [
+                0.047,
+                0.304,
+                0.695,
+                0.796
+            ],
+            "angle": 0,
+            "content": "<table><tr><td></td><td>Robo-Trading</td><td>Robo-Advisory</td></tr><tr><td>Decision making</td><td>✓</td><td>✓</td></tr><tr><td>Execution</td><td>✓</td><td>×</td></tr><tr><td>Automation</td><td>Fully automated</td><td>Semi-automated</td></tr><tr><td>Outputs</td><td>Execution of trading signals</td><td>• Stock advices\n• Market summary\n• Risk alerts</td></tr></table>"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.729,
+                0.093,
+                0.954,
+                0.94
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "text",
+            "bbox": [
+                0.397,
+                0.127,
+                0.584,
+                0.183
+            ],
+            "angle": 0,
+            "content": "ALGOGENE"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.444,
+                0.184,
+                0.538,
+                0.205
+            ],
+            "angle": 0,
+            "content": "FinTech Co. Ltd."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.364,
+                0.242,
+                0.62,
+                0.283
+            ],
+            "angle": 0,
+            "content": "JOIN US ON TELEGRAM"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.313,
+                0.304,
+                0.677,
+                0.364
+            ],
+            "angle": 0,
+            "content": "ALGOGENESIGNAL"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.352,
+                0.383,
+                0.639,
+                0.41
+            ],
+            "angle": 0,
+            "content": "FREE DAILY REAL-TIME TRADING SIGNALS"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.316,
+                0.469,
+                0.459,
+                0.722
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.324,
+                0.738,
+                0.453,
+                0.768
+            ],
+            "angle": 0,
+            "content": "@algogene_signal"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.51,
+                0.46,
+                0.675,
+                0.758
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.333,
+                0.823,
+                0.657,
+                0.876
+            ],
+            "angle": 0,
+            "content": "Warning: Beware of scam Telegram groups. Please note that the only official group is @algogene_signal"
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.036,
+                0.953,
+                0.283,
+                0.979
+            ],
+            "angle": 0,
+            "content": "Telegram Group: https://t.me/algogene_signal"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.724,
+                0.193
+            ],
+            "angle": 0,
+            "content": "Comparison of Trading Approaches"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.289,
+                0.216,
+                0.35,
+                0.251
+            ],
+            "angle": 0,
+            "content": "manual"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.816,
+                0.216,
+                0.898,
+                0.249
+            ],
+            "angle": 0,
+            "content": "automatic"
+        },
+        {
+            "type": "table",
+            "bbox": [
+                0.067,
+                0.311,
+                0.929,
+                0.933
+            ],
+            "angle": 0,
+            "content": "<table><tr><td></td><td>Human Trading</td><td>Robo-Advisory</td><td>Robo-Trading</td></tr><tr><td>Working Hours</td><td>~9*5</td><td>~9*5</td><td>24*7</td></tr><tr><td>Execution Speed</td><td>Slow</td><td>Moderate</td><td>Immediately</td></tr><tr><td>Data Inputs</td><td>Limited</td><td>Almost unlimited</td><td>Almost unlimited</td></tr><tr><td>Trading Frequency</td><td>Low</td><td>Low - mid</td><td>Low – High</td></tr><tr><td>Scalability</td><td>Limited investment size due to stress</td><td>Moderate</td><td>High</td></tr><tr><td>Accuracy/ Discipline</td><td>Variable especially when you lose</td><td>Consistent</td><td>High</td></tr><tr><td>Customization</td><td>High</td><td>Medium</td><td>Low</td></tr><tr><td>User Control</td><td>Full</td><td>Partial</td><td>Minimal</td></tr><tr><td>Risk Management</td><td>Subjective</td><td>Algorithmsic</td><td>Algorithmsic</td></tr></table>"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.138,
+                0.268,
+                0.862,
+                0.513
+            ],
+            "angle": 0,
+            "content": "What should you consider to implement a trading algo?"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.728,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Algo is the vehicle; Data is the Fuel!"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.872,
+                0.386
+            ],
+            "angle": 0,
+            "content": "- Data collection - time and effort demanding in data sourcing and data cleaning"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.404,
+                0.862,
+                0.516
+            ],
+            "angle": 0,
+            "content": "- Data storage - high volume of unstructured data (Numeric, Text, Image, Audio, Video)"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.535,
+                0.834,
+                0.639
+            ],
+            "angle": 0,
+            "content": "- Data management - difficult to protect and manage through traditional databases due to inconsistent file and data formats"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.665,
+                0.604,
+                0.719
+            ],
+            "angle": 0,
+            "content": "- Data processing - feasibility and efficiency"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.872,
+                0.719
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.759,
+                0.194
+            ],
+            "angle": 0,
+            "content": "Other factors for infrastructure setup"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.262,
+                0.312,
+                0.317
+            ],
+            "angle": 0,
+            "content": "Real-time datafeed"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.323,
+                0.258,
+                0.375
+            ],
+            "angle": 0,
+            "content": "Historical data"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.074,
+                0.383,
+                0.333,
+                0.438
+            ],
+            "angle": 0,
+            "content": "- Computing hardware"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.443,
+                0.427,
+                0.495
+            ],
+            "angle": 0,
+            "content": "- Exchange/broker connectivity"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.501,
+                0.348,
+                0.551
+            ],
+            "angle": 0,
+            "content": "Network and latencies"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.561,
+                0.333,
+                0.613
+            ],
+            "angle": 0,
+            "content": "- Order routing system"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.621,
+                0.398,
+                0.671
+            ],
+            "angle": 0,
+            "content": "- Order management system"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.679,
+                0.298,
+                0.729
+            ],
+            "angle": 0,
+            "content": "- Algo maintenance"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.738,
+                0.252,
+                0.79
+            ],
+            "angle": 0,
+            "content": "- Cybersecurity"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.806,
+                0.12,
+                0.84
+            ],
+            "angle": 0,
+            "content": "•"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.074,
+                0.262,
+                0.427,
+                0.84
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.172,
+                0.392,
+                0.825,
+                0.501
+            ],
+            "angle": 0,
+            "content": "General Trading Overview"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.378,
+                0.193
+            ],
+            "angle": 0,
+            "content": "Types of Trading"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.068,
+                0.29,
+                0.212,
+                0.333
+            ],
+            "angle": 0,
+            "content": "Fundamental:"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.068,
+                0.344,
+                0.247,
+                0.386
+            ],
+            "angle": 0,
+            "content": "Stock Selection"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.069,
+                0.399,
+                0.234,
+                0.443
+            ],
+            "angle": 0,
+            "content": "Ratio Analysis"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.069,
+                0.453,
+                0.247,
+                0.497
+            ],
+            "angle": 0,
+            "content": "Sector Analysis"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.069,
+                0.506,
+                0.342,
+                0.602
+            ],
+            "angle": 0,
+            "content": "- Corporate and Executive Management"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.068,
+                0.344,
+                0.342,
+                0.602
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.416,
+                0.29,
+                0.518,
+                0.333
+            ],
+            "angle": 0,
+            "content": "Technical:"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.417,
+                0.344,
+                0.578,
+                0.389
+            ],
+            "angle": 0,
+            "content": "Chart pattern"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.417,
+                0.398,
+                0.588,
+                0.443
+            ],
+            "angle": 0,
+            "content": "Trend Analysis"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.417,
+                0.344,
+                0.588,
+                0.443
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.682,
+                0.286,
+                0.817,
+                0.328
+            ],
+            "angle": 0,
+            "content": "Quantitative:"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.682,
+                0.338,
+                0.818,
+                0.38
+            ],
+            "angle": 0,
+            "content": "- Rule based"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.682,
+                0.393,
+                0.957,
+                0.437
+            ],
+            "angle": 0,
+            "content": "Econometric Forecasting"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.682,
+                0.446,
+                0.906,
+                0.49
+            ],
+            "angle": 0,
+            "content": "- Statistical Arbitrage"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.682,
+                0.5,
+                0.944,
+                0.544
+            ],
+            "angle": 0,
+            "content": "- NLP, sentiment analysis"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.682,
+                0.553,
+                0.885,
+                0.598
+            ],
+            "angle": 0,
+            "content": "Machine learning"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.682,
+                0.338,
+                0.957,
+                0.598
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.113,
+                0.375,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Types of Trading"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.075,
+                0.274,
+                0.213,
+                0.317
+            ],
+            "angle": 0,
+            "content": "Time Frames:"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.342,
+                0.382,
+                0.386
+            ],
+            "angle": 0,
+            "content": "- Long Term: Months to Years"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.409,
+                0.442,
+                0.452
+            ],
+            "angle": 0,
+            "content": "- Short Term: Days, Weeks, Months"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.475,
+                0.372,
+                0.517
+            ],
+            "angle": 0,
+            "content": "- Intraday: Seconds to Hours"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.541,
+                0.474,
+                0.585
+            ],
+            "angle": 0,
+            "content": "High frequency: Fractions of Seconds"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.342,
+                0.474,
+                0.585
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.251,
+                0.392,
+                0.75,
+                0.501
+            ],
+            "angle": 0,
+            "content": "How trading works?"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.112,
+                0.201,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Supply"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.394,
+                0.3,
+                0.584,
+                0.335
+            ],
+            "angle": 0,
+            "content": "Current Stock holders"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.388,
+                0.346,
+                0.598,
+                0.38
+            ],
+            "angle": 0,
+            "content": "(each person holds 1 share)"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.123,
+                0.462,
+                0.162,
+                0.617
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.128,
+                0.638,
+                0.157,
+                0.672
+            ],
+            "angle": 0,
+            "content": "\\$10"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.201,
+                0.462,
+                0.24,
+                0.618
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.207,
+                0.638,
+                0.237,
+                0.671
+            ],
+            "angle": 0,
+            "content": "\\$12"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.285,
+                0.462,
+                0.324,
+                0.618
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.29,
+                0.638,
+                0.32,
+                0.671
+            ],
+            "angle": 0,
+            "content": "\\$13"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.37,
+                0.462,
+                0.409,
+                0.618
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.374,
+                0.638,
+                0.404,
+                0.671
+            ],
+            "angle": 0,
+            "content": "\\$15"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.448,
+                0.462,
+                0.487,
+                0.618
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.453,
+                0.638,
+                0.482,
+                0.671
+            ],
+            "angle": 0,
+            "content": "\\$15"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.523,
+                0.462,
+                0.562,
+                0.618
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.528,
+                0.638,
+                0.558,
+                0.671
+            ],
+            "angle": 0,
+            "content": " §18"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.603,
+                0.462,
+                0.64,
+                0.618
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.607,
+                0.638,
+                0.637,
+                0.671
+            ],
+            "angle": 0,
+            "content": "\\$21"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.672,
+                0.462,
+                0.711,
+                0.618
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.677,
+                0.638,
+                0.707,
+                0.671
+            ],
+            "angle": 0,
+            "content": "\\$24"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.751,
+                0.462,
+                0.789,
+                0.618
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.755,
+                0.638,
+                0.784,
+                0.671
+            ],
+            "angle": 0,
+            "content": "\\$25"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.821,
+                0.462,
+                0.859,
+                0.618
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.825,
+                0.638,
+                0.855,
+                0.671
+            ],
+            "angle": 0,
+            "content": "\\$30"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.29,
+                0.808,
+                0.714,
+                0.842
+            ],
+            "angle": 0,
+            "content": "Price they would be willing to take (sell) for their shares"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.391,
+                0.042,
+                0.582,
+                0.076
+            ],
+            "angle": 0,
+            "content": "Current Stock holders"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.385,
+                0.088,
+                0.595,
+                0.123
+            ],
+            "angle": 0,
+            "content": "(each person holds 1 share)"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.072,
+                0.162,
+                0.11,
+                0.317
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.076,
+                0.338,
+                0.106,
+                0.37
+            ],
+            "angle": 0,
+            "content": "\\$10"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.15,
+                0.162,
+                0.189,
+                0.316
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.155,
+                0.338,
+                0.184,
+                0.369
+            ],
+            "angle": 0,
+            "content": "\\$12"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.234,
+                0.162,
+                0.272,
+                0.316
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.238,
+                0.338,
+                0.267,
+                0.369
+            ],
+            "angle": 0,
+            "content": "\\$13"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.32,
+                0.162,
+                0.356,
+                0.316
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.323,
+                0.338,
+                0.351,
+                0.369
+            ],
+            "angle": 0,
+            "content": " §15"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.397,
+                0.162,
+                0.434,
+                0.316
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.402,
+                0.338,
+                0.43,
+                0.369
+            ],
+            "angle": 0,
+            "content": "\\$15"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.472,
+                0.162,
+                0.51,
+                0.316
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.477,
+                0.338,
+                0.505,
+                0.369
+            ],
+            "angle": 0,
+            "content": "\\$18"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.551,
+                0.162,
+                0.589,
+                0.316
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.556,
+                0.338,
+                0.585,
+                0.369
+            ],
+            "angle": 0,
+            "content": " §21"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.621,
+                0.162,
+                0.659,
+                0.316
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.626,
+                0.338,
+                0.655,
+                0.369
+            ],
+            "angle": 0,
+            "content": "\\$24"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.699,
+                0.162,
+                0.737,
+                0.316
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.703,
+                0.338,
+                0.732,
+                0.369
+            ],
+            "angle": 0,
+            "content": "\\$25"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.769,
+                0.162,
+                0.807,
+                0.316
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.775,
+                0.338,
+                0.803,
+                0.369
+            ],
+            "angle": 0,
+            "content": "\\$30"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.431,
+                0.432,
+                0.473,
+                0.46
+            ],
+            "angle": 0,
+            "content": "Supply"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.131,
+                0.472,
+                0.78,
+                0.928
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "table",
+            "bbox": [
+                0.861,
+                0.012,
+                0.986,
+                0.981
+            ],
+            "angle": 0,
+            "content": "<table><tr><td>Price</td><td>Supply</td></tr><tr><td>1</td><td>0</td></tr><tr><td>2</td><td>0</td></tr><tr><td>3</td><td>0</td></tr><tr><td>4</td><td>0</td></tr><tr><td>5</td><td>0</td></tr><tr><td>6</td><td>0</td></tr><tr><td>7</td><td>0</td></tr><tr><td>8</td><td>0</td></tr><tr><td>9</td><td>0</td></tr><tr><td>10</td><td>1</td></tr><tr><td>11</td><td>1</td></tr><tr><td>12</td><td>2</td></tr><tr><td>13</td><td>3</td></tr><tr><td>14</td><td>3</td></tr><tr><td>15</td><td>5</td></tr><tr><td>16</td><td>5</td></tr><tr><td>17</td><td>5</td></tr><tr><td>18</td><td>6</td></tr><tr><td>19</td><td>6</td></tr><tr><td>20</td><td>6</td></tr><tr><td>21</td><td>7</td></tr><tr><td>22</td><td>7</td></tr><tr><td>23</td><td>7</td></tr><tr><td>24</td><td>8</td></tr><tr><td>25</td><td>9</td></tr><tr><td>26</td><td>9</td></tr><tr><td>27</td><td>9</td></tr><tr><td>28</td><td>9</td></tr><tr><td>29</td><td>9</td></tr><tr><td>30</td><td>10</td></tr></table>"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.077,
+                0.112,
+                0.233,
+                0.182
+            ],
+            "angle": 0,
+            "content": "Demand"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.403,
+                0.284,
+                0.548,
+                0.322
+            ],
+            "angle": 0,
+            "content": "Potential Buyers"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.34,
+                0.333,
+                0.608,
+                0.37
+            ],
+            "angle": 0,
+            "content": "(each person wants to buy 1 share)"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.207,
+                0.466,
+                0.247,
+                0.624
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.214,
+                0.632,
+                0.236,
+                0.664
+            ],
+            "angle": 0,
+            "content": "\\$5"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.292,
+                0.468,
+                0.331,
+                0.704
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.297,
+                0.632,
+                0.317,
+                0.664
+            ],
+            "angle": 0,
+            "content": "\\$6"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.369,
+                0.468,
+                0.409,
+                0.626
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.374,
+                0.632,
+                0.395,
+                0.664
+            ],
+            "angle": 0,
+            "content": "\\$8"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.445,
+                0.468,
+                0.485,
+                0.626
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.451,
+                0.632,
+                0.48,
+                0.664
+            ],
+            "angle": 0,
+            "content": "\\$10"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.523,
+                0.468,
+                0.564,
+                0.626
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.528,
+                0.634,
+                0.558,
+                0.668
+            ],
+            "angle": 0,
+            "content": "\\$11"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.593,
+                0.468,
+                0.634,
+                0.626
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.598,
+                0.636,
+                0.629,
+                0.668
+            ],
+            "angle": 0,
+            "content": "\\$12"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.671,
+                0.468,
+                0.712,
+                0.626
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.677,
+                0.636,
+                0.708,
+                0.668
+            ],
+            "angle": 0,
+            "content": "\\$14"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.742,
+                0.468,
+                0.782,
+                0.626
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.747,
+                0.636,
+                0.777,
+                0.668
+            ],
+            "angle": 0,
+            "content": "\\$15"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.315,
+                0.82,
+                0.66,
+                0.857
+            ],
+            "angle": 0,
+            "content": "Price they would be willing to pay for a share"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.417,
+                0.033,
+                0.564,
+                0.072
+            ],
+            "angle": 0,
+            "content": "Potential Buyers"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.354,
+                0.082,
+                0.624,
+                0.123
+            ],
+            "angle": 0,
+            "content": "(each person wants to buy 1 share)"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.125,
+                0.156,
+                0.165,
+                0.315
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.132,
+                0.321,
+                0.153,
+                0.356
+            ],
+            "angle": 0,
+            "content": "\\$5"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.207,
+                0.157,
+                0.25,
+                0.315
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.213,
+                0.321,
+                0.236,
+                0.356
+            ],
+            "angle": 0,
+            "content": "\\$6"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.286,
+                0.157,
+                0.328,
+                0.315
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.292,
+                0.321,
+                0.314,
+                0.356
+            ],
+            "angle": 0,
+            "content": "\\$8"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.362,
+                0.157,
+                0.403,
+                0.315
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.367,
+                0.321,
+                0.399,
+                0.356
+            ],
+            "angle": 0,
+            "content": "\\$10"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.44,
+                0.157,
+                0.482,
+                0.315
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.445,
+                0.323,
+                0.476,
+                0.358
+            ],
+            "angle": 0,
+            "content": "\\$11"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.511,
+                0.157,
+                0.551,
+                0.315
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.516,
+                0.324,
+                0.547,
+                0.358
+            ],
+            "angle": 0,
+            "content": "\\$12"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.589,
+                0.157,
+                0.63,
+                0.315
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.594,
+                0.324,
+                0.625,
+                0.358
+            ],
+            "angle": 0,
+            "content": "\\$14"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.659,
+                0.157,
+                0.7,
+                0.315
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.664,
+                0.324,
+                0.695,
+                0.358
+            ],
+            "angle": 0,
+            "content": "\\$15"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.398,
+                0.452,
+                0.451,
+                0.478
+            ],
+            "angle": 0,
+            "content": "Demand"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.093,
+                0.486,
+                0.764,
+                0.931
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "table",
+            "bbox": [
+                0.84,
+                0.003,
+                0.954,
+                0.993
+            ],
+            "angle": 0,
+            "content": "<table><tr><td>Price</td><td>Demand</td></tr><tr><td>1</td><td>8</td></tr><tr><td>2</td><td>8</td></tr><tr><td>3</td><td>8</td></tr><tr><td>4</td><td>8</td></tr><tr><td>5</td><td>8</td></tr><tr><td>6</td><td>7</td></tr><tr><td>7</td><td>6</td></tr><tr><td>8</td><td>6</td></tr><tr><td>9</td><td>5</td></tr><tr><td>10</td><td>5</td></tr><tr><td>11</td><td>4</td></tr><tr><td>12</td><td>3</td></tr><tr><td>13</td><td>2</td></tr><tr><td>14</td><td>2</td></tr><tr><td>15</td><td>1</td></tr><tr><td>16</td><td>0</td></tr><tr><td>17</td><td>0</td></tr><tr><td>18</td><td>0</td></tr><tr><td>19</td><td>0</td></tr><tr><td>20</td><td>0</td></tr><tr><td>21</td><td>0</td></tr><tr><td>22</td><td>0</td></tr><tr><td>23</td><td>0</td></tr><tr><td>24</td><td>0</td></tr><tr><td>25</td><td>0</td></tr><tr><td>26</td><td>0</td></tr><tr><td>27</td><td>0</td></tr><tr><td>28</td><td>0</td></tr><tr><td>29</td><td>0</td></tr><tr><td>30</td><td>0</td></tr></table>"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.43,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Market Equilibrium"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.072,
+                0.269,
+                0.559,
+                0.323
+            ],
+            "angle": 0,
+            "content": "- The market is balanced at \\(12 and quantity 2"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.064,
+                0.367,
+                0.801,
+                0.944
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "table",
+            "bbox": [
+                0.832,
+                0.009,
+                1.0,
+                0.985
+            ],
+            "angle": 0,
+            "content": "<table><tr><td>Price</td><td>Supply</td><td>Demand</td></tr><tr><td>1</td><td>0</td><td>8</td></tr><tr><td>2</td><td>0</td><td>8</td></tr><tr><td>3</td><td>0</td><td>8</td></tr><tr><td>4</td><td>0</td><td>8</td></tr><tr><td>5</td><td>0</td><td>8</td></tr><tr><td>6</td><td>0</td><td>7</td></tr><tr><td>7</td><td>0</td><td>6</td></tr><tr><td>8</td><td>0</td><td>6</td></tr><tr><td>9</td><td>0</td><td>5</td></tr><tr><td>10</td><td>1</td><td>5</td></tr><tr><td>11</td><td>1</td><td>4</td></tr><tr><td>12</td><td>2</td><td>3</td></tr><tr><td>13</td><td>3</td><td>2</td></tr><tr><td>14</td><td>3</td><td>2</td></tr><tr><td>15</td><td>5</td><td>1</td></tr><tr><td>16</td><td>5</td><td>0</td></tr><tr><td>17</td><td>5</td><td>0</td></tr><tr><td>18</td><td>6</td><td>0</td></tr><tr><td>19</td><td>6</td><td>0</td></tr><tr><td>20</td><td>6</td><td>0</td></tr><tr><td>21</td><td>7</td><td>0</td></tr><tr><td>22</td><td>7</td><td>0</td></tr><tr><td>23</td><td>7</td><td>0</td></tr><tr><td>24</td><td>8</td><td>0</td></tr><tr><td>25</td><td>9</td><td>0</td></tr><tr><td>26</td><td>9</td><td>0</td></tr><tr><td>27</td><td>9</td><td>0</td></tr><tr><td>28</td><td>9</td><td>0</td></tr><tr><td>29</td><td>9</td><td>0</td></tr><tr><td>30</td><td>10</td><td>0</td></tr></table>"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.111,
+                0.369,
+                0.191
+            ],
+            "angle": 0,
+            "content": "Order Matching"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.406,
+                0.18,
+                0.597,
+                0.216
+            ],
+            "angle": 0,
+            "content": "Current Stock holders"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.399,
+                0.226,
+                0.612,
+                0.263
+            ],
+            "angle": 0,
+            "content": "(each person holds 1 share)"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.128,
+                0.292,
+                0.169,
+                0.452
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.132,
+                0.47,
+                0.163,
+                0.504
+            ],
+            "angle": 0,
+            "content": "\\$10"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.206,
+                0.294,
+                0.247,
+                0.452
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.21,
+                0.47,
+                0.242,
+                0.504
+            ],
+            "angle": 0,
+            "content": "\\$12"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.29,
+                0.294,
+                0.331,
+                0.452
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.295,
+                0.47,
+                0.325,
+                0.504
+            ],
+            "angle": 0,
+            "content": " §13"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.374,
+                0.294,
+                0.415,
+                0.452
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.379,
+                0.47,
+                0.41,
+                0.504
+            ],
+            "angle": 0,
+            "content": " §15"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.453,
+                0.294,
+                0.494,
+                0.452
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.458,
+                0.47,
+                0.488,
+                0.504
+            ],
+            "angle": 0,
+            "content": " §15"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.527,
+                0.294,
+                0.569,
+                0.452
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.532,
+                0.47,
+                0.564,
+                0.504
+            ],
+            "angle": 0,
+            "content": "\\$18"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.607,
+                0.294,
+                0.647,
+                0.452
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.612,
+                0.47,
+                0.643,
+                0.504
+            ],
+            "angle": 0,
+            "content": "\\$21"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.676,
+                0.294,
+                0.717,
+                0.452
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.681,
+                0.47,
+                0.712,
+                0.504
+            ],
+            "angle": 0,
+            "content": "\\$24"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.755,
+                0.294,
+                0.795,
+                0.452
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.76,
+                0.47,
+                0.791,
+                0.504
+            ],
+            "angle": 0,
+            "content": "\\$25"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.825,
+                0.294,
+                0.865,
+                0.452
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.83,
+                0.47,
+                0.861,
+                0.504
+            ],
+            "angle": 0,
+            "content": "\\$30"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.207,
+                0.686,
+                0.247,
+                0.844
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.213,
+                0.85,
+                0.235,
+                0.884
+            ],
+            "angle": 0,
+            "content": "\\$5"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.29,
+                0.686,
+                0.331,
+                0.843
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.296,
+                0.85,
+                0.317,
+                0.884
+            ],
+            "angle": 0,
+            "content": "\\$6"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.369,
+                0.686,
+                0.409,
+                0.843
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.373,
+                0.85,
+                0.395,
+                0.882
+            ],
+            "angle": 0,
+            "content": "\\$8"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.445,
+                0.686,
+                0.485,
+                0.843
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.449,
+                0.85,
+                0.48,
+                0.884
+            ],
+            "angle": 0,
+            "content": "\\$10"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.523,
+                0.686,
+                0.564,
+                0.843
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.526,
+                0.851,
+                0.558,
+                0.886
+            ],
+            "angle": 0,
+            "content": "\\$11"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.593,
+                0.686,
+                0.633,
+                0.843
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.598,
+                0.853,
+                0.629,
+                0.886
+            ],
+            "angle": 0,
+            "content": "\\$12"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.671,
+                0.686,
+                0.712,
+                0.843
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.675,
+                0.853,
+                0.707,
+                0.887
+            ],
+            "angle": 0,
+            "content": "\\$14"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.741,
+                0.686,
+                0.781,
+                0.843
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.746,
+                0.853,
+                0.776,
+                0.887
+            ],
+            "angle": 0,
+            "content": "\\$15"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.438,
+                0.89,
+                0.582,
+                0.927
+            ],
+            "angle": 0,
+            "content": "Potential Buyers"
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.374,
+                0.938,
+                0.643,
+                0.974
+            ],
+            "angle": 0,
+            "content": "(each person wants to buy 1 share)"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.472,
+                0.191
+            ],
+            "angle": 0,
+            "content": "After Order Matching"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.071,
+                0.257,
+                0.923,
+                0.961
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.248,
+                0.392,
+                0.755,
+                0.505
+            ],
+            "angle": 0,
+            "content": "Market Terminology"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.624,
+                0.194
+            ],
+            "angle": 0,
+            "content": "Common market terminology"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.262,
+                0.382,
+                0.317
+            ],
+            "angle": 0,
+            "content": "1. Long and short position"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.074,
+                0.323,
+                0.258,
+                0.375
+            ],
+            "angle": 0,
+            "content": "2. Short-selling"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.074,
+                0.383,
+                0.246,
+                0.432
+            ],
+            "angle": 0,
+            "content": "3. Order book"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.443,
+                0.325,
+                0.492
+            ],
+            "angle": 0,
+            "content": "4. Bid price, ask price"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.501,
+                0.28,
+                0.551
+            ],
+            "angle": 0,
+            "content": "5. Market spread"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.561,
+                0.25,
+                0.61
+            ],
+            "angle": 0,
+            "content": "6. Order types"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.621,
+                0.212,
+                0.67
+            ],
+            "angle": 0,
+            "content": "7. Slippage"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.679,
+                0.296,
+                0.723
+            ],
+            "angle": 0,
+            "content": "8. Mark-to-market"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.739,
+                0.282,
+                0.788
+            ],
+            "angle": 0,
+            "content": "9. Trading system"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.796,
+                0.321,
+                0.848
+            ],
+            "angle": 0,
+            "content": "10. Margin & leverage"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.074,
+                0.262,
+                0.382,
+                0.848
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.811,
+                0.194
+            ],
+            "angle": 0,
+            "content": "Understanding Long and Short Positions"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.275,
+                0.253,
+                0.329
+            ],
+            "angle": 0,
+            "content": "- Long Position"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.108,
+                0.338,
+                0.842,
+                0.386
+            ],
+            "angle": 0,
+            "content": "• Definition: Buying an asset with the expectation that its price will rise."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.396,
+                0.584,
+                0.443
+            ],
+            "angle": 0,
+            "content": "- Goal: Sell at a higher price to realize a profit."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.109,
+                0.451,
+                0.88,
+                0.501
+            ],
+            "angle": 0,
+            "content": "• Example: Buying 100 shares of a stock at \\(50, selling when it reaches \\)70."
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.108,
+                0.338,
+                0.88,
+                0.501
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.463,
+                0.612,
+                0.526,
+                0.664
+            ],
+            "angle": 0,
+            "content": "Long"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.368,
+                0.675,
+                0.638,
+                0.979
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.811,
+                0.194
+            ],
+            "angle": 0,
+            "content": "Understanding Long and Short Positions"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.274,
+                0.262,
+                0.322
+            ],
+            "angle": 0,
+            "content": "- Short Position"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.108,
+                0.338,
+                0.914,
+                0.436
+            ],
+            "angle": 0,
+            "content": "- Definition: Selling an asset that you do not own, with the intention of buying it back later at a lower price."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.109,
+                0.445,
+                0.6,
+                0.492
+            ],
+            "angle": 0,
+            "content": "- Goal: Profit from a decline in the asset's price."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.109,
+                0.5,
+                0.793,
+                0.551
+            ],
+            "angle": 0,
+            "content": "• Example: Selling 100 shares of a stock at \\(70, buying back at\\)50."
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.108,
+                0.338,
+                0.914,
+                0.551
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.348,
+                0.591,
+                0.631,
+                1.0
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.531,
+                0.19
+            ],
+            "angle": 0,
+            "content": "How Short-Selling Works"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.272,
+                0.667,
+                0.32
+            ],
+            "angle": 0,
+            "content": "1. Borrowing Shares: Obtain shares from a broker to sell."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.338,
+                0.847,
+                0.388
+            ],
+            "angle": 0,
+            "content": "2. Selling the Borrowed Shares: Sell the shares at the current market price."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.406,
+                0.877,
+                0.453
+            ],
+            "angle": 0,
+            "content": "3. Buying Back Shares: Later, buy the same number of shares at a lower price."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.472,
+                0.73,
+                0.519
+            ],
+            "angle": 0,
+            "content": "4. Returning Shares: Return the borrowed shares to the broker."
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.877,
+                0.519
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.169,
+                0.593,
+                0.847,
+                0.973
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.461,
+                0.194
+            ],
+            "angle": 0,
+            "content": "Risks of Short-Selling"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.272,
+                0.53,
+                0.371
+            ],
+            "angle": 0,
+            "content": "- Unlimited Loss Potential: If the asset price rises significantly."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.388,
+                0.548,
+                0.485
+            ],
+            "angle": 0,
+            "content": "- Margin Calls: Brokers may require additional funds if the trade goes against you."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.502,
+                0.559,
+                0.594
+            ],
+            "angle": 0,
+            "content": "- Regulatory Risks: Short-selling can be subject to restrictions."
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.072,
+                0.272,
+                0.559,
+                0.594
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.571,
+                0.275,
+                1.0,
+                0.859
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.112,
+                0.29,
+                0.182
+            ],
+            "angle": 0,
+            "content": "Order Book"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.272,
+                0.919,
+                0.388
+            ],
+            "angle": 0,
+            "content": "- The Order Book is a real-time, continually updating list of buy and sell orders for a specific financial instrument, sorted by price level."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.406,
+                0.294,
+                0.458
+            ],
+            "angle": 0,
+            "content": "Key components"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.072,
+                0.272,
+                0.919,
+                0.458
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.469,
+                0.487,
+                0.516
+            ],
+            "angle": 0,
+            "content": "- Ask Book: the list/queue for sellers"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.526,
+                0.486,
+                0.572
+            ],
+            "angle": 0,
+            "content": "- Bid Book: the list/queue for buyers"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.583,
+                0.744,
+                0.631
+            ],
+            "angle": 0,
+            "content": "- Price: The price points at which investors are willing to trade"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.64,
+                0.906,
+                0.687
+            ],
+            "angle": 0,
+            "content": "Size: The number of shares, contracts, or lots that traders want to buy or sell"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.11,
+                0.469,
+                0.906,
+                0.687
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.654,
+                0.19
+            ],
+            "angle": 0,
+            "content": "How does Order Book present?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.272,
+                0.277,
+                0.329
+            ],
+            "angle": 0,
+            "content": "1. Order Ledger"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.349,
+                0.306,
+                0.4
+            ],
+            "angle": 0,
+            "content": "2. Top of the Book"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.426,
+                0.32,
+                0.47
+            ],
+            "angle": 0,
+            "content": "3. Cumulative Book"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.272,
+                0.32,
+                0.47
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.111,
+                0.323,
+                0.193
+            ],
+            "angle": 0,
+            "content": "Order Ledger"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.274,
+                0.451,
+                0.444
+            ],
+            "angle": 0,
+            "content": "- The order book is listed in a sorted price ledger, which can be ascending or descending."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.461,
+                0.447,
+                0.684
+            ],
+            "angle": 0,
+            "content": "- The longer the price ledger is, the more liquidity an instrument provides. It is also called \"market depth\"."
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.072,
+                0.274,
+                0.451,
+                0.684
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.471,
+                0.022,
+                1.0,
+                1.0
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.368,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Top of the Book"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.272,
+                0.427,
+                0.38
+            ],
+            "angle": 0,
+            "content": "- The order book is separated into bid-book and ask-book"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.406,
+                0.373,
+                0.516
+            ],
+            "angle": 0,
+            "content": "- Bid orders are sorted in descending price"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.537,
+                0.376,
+                0.645
+            ],
+            "angle": 0,
+            "content": "- Ask orders are sorted in ascending price"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.665,
+                0.46,
+                0.826
+            ],
+            "angle": 0,
+            "content": "- The highest bid and the lowest ask are referred to \"the top of the book\""
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.272,
+                0.46,
+                0.826
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image_caption",
+            "bbox": [
+                0.619,
+                0.116,
+                0.686,
+                0.14
+            ],
+            "angle": 0,
+            "content": "Order Book"
+        },
+        {
+            "type": "table",
+            "bbox": [
+                0.608,
+                0.167,
+                0.913,
+                0.932
+            ],
+            "angle": 0,
+            "content": "<table><tr><td></td><td>Bid</td><td>Ask</td><td></td></tr><tr><td>3,151</td><td>9139.60</td><td>9152.80</td><td>167</td></tr><tr><td>1,574</td><td>9138.40</td><td>9153.21</td><td>1,600</td></tr><tr><td>338</td><td>9138.20</td><td>9153.60</td><td>736</td></tr><tr><td>789</td><td>9138.10</td><td>9153.71</td><td>1,602</td></tr><tr><td>800</td><td>9138.00</td><td>9154.10</td><td>1,649</td></tr><tr><td>309</td><td>9137.79</td><td>9154.21</td><td>1,965</td></tr><tr><td>2,140</td><td>9137.60</td><td>9154.50</td><td>3,984</td></tr><tr><td>48</td><td>9137.40</td><td>9154.60</td><td>763</td></tr><tr><td>144</td><td>9137.29</td><td>9154.71</td><td>157</td></tr><tr><td>136</td><td>9137.20</td><td>9154.80</td><td>56</td></tr><tr><td>528</td><td>9137.00</td><td>9155.50</td><td>320</td></tr><tr><td>1,654</td><td>9136.90</td><td>9155.71</td><td>200</td></tr><tr><td>40</td><td>9136.79</td><td>9156.10</td><td>16</td></tr><tr><td>46</td><td>9136.70</td><td>9156.21</td><td>219</td></tr><tr><td>608</td><td>9136.60</td><td>9156.30</td><td>40</td></tr><tr><td>48</td><td>9136.50</td><td>9156.40</td><td>80</td></tr></table>"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.507,
+                0.18
+            ],
+            "angle": 0,
+            "content": "Cumulative Order Book"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.074,
+                0.272,
+                0.441,
+                0.436
+            ],
+            "angle": 0,
+            "content": "• For each of the bid and ask book, order size accumulates from the top of the book."
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.121,
+                0.484,
+                0.516,
+                0.958
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "table",
+            "bbox": [
+                0.666,
+                0.051,
+                0.947,
+                0.953
+            ],
+            "angle": 0,
+            "content": "<table><tr><td colspan=\"3\">Order Book Market Trades</td></tr><tr><td>= = =</td><td rowspan=\"2\">Qty(BTC)</td><td>0.1▼</td></tr><tr><td>Price(USDT)</td><td>Total(BTC)</td></tr><tr><td>61,284.8</td><td>11.972</td><td>54.521</td></tr><tr><td>61,284.7</td><td>7.282</td><td>42.549</td></tr><tr><td>61,284.0</td><td>2.529</td><td>35.267</td></tr><tr><td>61,283.9</td><td>1.305</td><td>32.738</td></tr><tr><td>61,283.8</td><td>1.795</td><td>31.433</td></tr><tr><td>61,283.7</td><td>4.569</td><td>29.638</td></tr><tr><td>61,283.5</td><td>5.773</td><td>25.069</td></tr><tr><td>61,283.4</td><td>1.795</td><td>19.296</td></tr><tr><td>61,283.3</td><td>3.590</td><td>17.501</td></tr><tr><td>61,283.2</td><td>13.911</td><td>13.911</td></tr><tr><td colspan=\"3\">61,284.4 ↑ 61,291.9</td></tr><tr><td>61,282.3</td><td>12.075</td><td>12.075</td></tr><tr><td>61,282.2</td><td>0.816</td><td>12.891</td></tr><tr><td>61,282.1</td><td>2.693</td><td>15.584</td></tr><tr><td>61,282.0</td><td>4.712</td><td>20.296</td></tr><tr><td>61,281.9</td><td>9.444</td><td>29.740</td></tr><tr><td>61,281.8</td><td>1.795</td><td>31.535</td></tr><tr><td>61,281.7</td><td>3.672</td><td>35.207</td></tr><tr><td>61,281.6</td><td>5.181</td><td>40.388</td></tr><tr><td>61,278.4</td><td>15.301</td><td>55.689</td></tr><tr><td>61,267.2</td><td>15.306</td><td>70.995</td></tr></table>"
+        }
+    ],
+    [
+        {
+            "type": "header",
+            "bbox": [
+                0.074,
+                0.101,
+                0.175,
+                0.13
+            ],
+            "angle": 0,
+            "content": "yahoo'finance"
+        },
+        {
+            "type": "header",
+            "bbox": [
+                0.201,
+                0.105,
+                0.402,
+                0.13
+            ],
+            "angle": 0,
+            "content": "Search for news, symbols or companies"
+        },
+        {
+            "type": "header",
+            "bbox": [
+                0.56,
+                0.104,
+                0.574,
+                0.128
+            ],
+            "angle": 0,
+            "content": "Q"
+        },
+        {
+            "type": "header",
+            "bbox": [
+                0.634,
+                0.106,
+                0.661,
+                0.125
+            ],
+            "angle": 0,
+            "content": "News"
+        },
+        {
+            "type": "header",
+            "bbox": [
+                0.694,
+                0.105,
+                0.734,
+                0.125
+            ],
+            "angle": 0,
+            "content": "Finance"
+        },
+        {
+            "type": "header",
+            "bbox": [
+                0.766,
+                0.105,
+                0.799,
+                0.126
+            ],
+            "angle": 0,
+            "content": "Sports"
+        },
+        {
+            "type": "header",
+            "bbox": [
+                0.831,
+                0.105,
+                0.865,
+                0.126
+            ],
+            "angle": 0,
+            "content": "More"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.081,
+                0.175,
+                0.139,
+                0.197
+            ],
+            "angle": 0,
+            "content": "My Portfolio"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.158,
+                0.175,
+                0.185,
+                0.195
+            ],
+            "angle": 0,
+            "content": "News"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.204,
+                0.175,
+                0.244,
+                0.195
+            ],
+            "angle": 0,
+            "content": "Markets"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.262,
+                0.175,
+                0.3,
+                0.195
+            ],
+            "angle": 0,
+            "content": "Sectors"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.319,
+                0.175,
+                0.367,
+                0.195
+            ],
+            "angle": 0,
+            "content": "Screeners"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.385,
+                0.175,
+                0.466,
+                0.195
+            ],
+            "angle": 0,
+            "content": "Personal Finance"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.485,
+                0.175,
+                0.519,
+                0.195
+            ],
+            "angle": 0,
+            "content": "Videos"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.085,
+                0.244,
+                0.127,
+                0.263
+            ],
+            "angle": 0,
+            "content": "Summary"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.085,
+                0.278,
+                0.11,
+                0.295
+            ],
+            "angle": 0,
+            "content": "News"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.085,
+                0.312,
+                0.11,
+                0.329
+            ],
+            "angle": 0,
+            "content": "Chart"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.085,
+                0.346,
+                0.144,
+                0.364
+            ],
+            "angle": 0,
+            "content": "Conversations"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.085,
+                0.381,
+                0.125,
+                0.398
+            ],
+            "angle": 0,
+            "content": "Statistics"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.085,
+                0.414,
+                0.146,
+                0.432
+            ],
+            "angle": 0,
+            "content": "Historical Data"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.085,
+                0.449,
+                0.114,
+                0.466
+            ],
+            "angle": 0,
+            "content": "Profile"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.085,
+                0.483,
+                0.128,
+                0.501
+            ],
+            "angle": 0,
+            "content": "Financials"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.085,
+                0.518,
+                0.12,
+                0.536
+            ],
+            "angle": 0,
+            "content": "Analysis"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.085,
+                0.552,
+                0.119,
+                0.57
+            ],
+            "angle": 0,
+            "content": "Options"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.085,
+                0.586,
+                0.118,
+                0.604
+            ],
+            "angle": 0,
+            "content": "Holders"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.085,
+                0.62,
+                0.141,
+                0.64
+            ],
+            "angle": 0,
+            "content": "Sustainability"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.189,
+                0.23,
+                0.354,
+                0.249
+            ],
+            "angle": 0,
+            "content": "NasdaqGS - Nasdaq Real Time Price • USD"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.19,
+                0.255,
+                0.335,
+                0.288
+            ],
+            "angle": 0,
+            "content": "Apple Inc. (AAPL)"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.357,
+                0.26,
+                0.397,
+                0.278
+            ],
+            "angle": 0,
+            "content": "Follow"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.431,
+                0.26,
+                0.483,
+                0.278
+            ],
+            "angle": 0,
+            "content": "\\(\\rightarrow^{\\dagger}\\) Compare"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.189,
+                0.314,
+                0.362,
+                0.35
+            ],
+            "angle": 0,
+            "content": "207.49 -2.19 (-1.04%)"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.37,
+                0.318,
+                0.533,
+                0.346
+            ],
+            "angle": 0,
+            "content": "207.86 +0.37 (+0.18%)"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.189,
+                0.359,
+                0.315,
+                0.376
+            ],
+            "angle": 0,
+            "content": "At close: June 21 at 4:00 PM EDT"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.371,
+                0.359,
+                0.479,
+                0.376
+            ],
+            "angle": 0,
+            "content": "Pre-Market: 7:41 AM EDT"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.747,
+                0.313,
+                0.839,
+                0.34
+            ],
+            "angle": 0,
+            "content": "Start Trading >>"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.713,
+                0.35,
+                0.864,
+                0.369
+            ],
+            "angle": 0,
+            "content": "Plus500 CFD Service. Your capital is at risk."
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.197,
+                0.405,
+                0.889,
+                0.765
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "table",
+            "bbox": [
+                0.19,
+                0.803,
+                0.892,
+                0.948
+            ],
+            "angle": 0,
+            "content": "<table><tr><td>Previous Close</td><td>209.68</td><td>Day&#x27;s Range</td><td>207.11 - 211.89</td><td>Market Cap (intraday)</td><td>3.182T</td><td colspan=\"2\">Earnings Date Aug 1, 2024 - Aug 5, 2024</td></tr><tr><td>Open</td><td>210.39</td><td>52 Week Range</td><td>164.08 - 220.20</td><td>Beta (5Y Monthly)</td><td>1.25</td><td>Forward Dividend &amp; Yield</td><td>1.00 (0.48%)</td></tr><tr><td>Bid</td><td>207.01 x 3000</td><td>Volume</td><td>246,421,353</td><td>PE Ratio (TTM)</td><td>32.22</td><td>Ex-Dividend Date</td><td>May 10, 2024</td></tr><tr><td>Ask</td><td>209.94 x 200</td><td>Avg. Volume</td><td>67,794,775</td><td>EPS (TTM)</td><td>6.44</td><td>1y Target Est</td><td>207.58</td></tr></table>"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.429,
+                0.182
+            ],
+            "angle": 0,
+            "content": "Bid Price & Bid Size"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.914,
+                0.388
+            ],
+            "angle": 0,
+            "content": "- Bid price is the highest price that a buyer (bidder) is willing to pay for a particular security."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.404,
+                0.896,
+                0.514
+            ],
+            "angle": 0,
+            "content": "- Bid size represents the quantity a buyer is willing to purchase at the bid price."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.535,
+                0.592,
+                0.587
+            ],
+            "angle": 0,
+            "content": "- The top price and size in a bid order book."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.608,
+                0.918,
+                0.717
+            ],
+            "angle": 0,
+            "content": "• For example, if a buyer bids \\(207.01 x 3000 for a stock, it means they are willing to buy 3000 shares for not more than \\)207.01"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.918,
+                0.717
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.367,
+                0.819,
+                0.386,
+                0.84
+            ],
+            "angle": 0,
+            "content": "Bid"
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.498,
+                0.819,
+                0.578,
+                0.84
+            ],
+            "angle": 0,
+            "content": "207.01 x 3000"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.111,
+                0.44,
+                0.182
+            ],
+            "angle": 0,
+            "content": "Ask Price & Ask Size"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.907,
+                0.329
+            ],
+            "angle": 0,
+            "content": "- Ask price is the lowest price a seller is willing to accept for a security."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.348,
+                0.874,
+                0.458
+            ],
+            "angle": 0,
+            "content": "- Ask size represents the quantity a seller is willing to sell at the ask price."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.475,
+                0.611,
+                0.533
+            ],
+            "angle": 0,
+            "content": "- The top price and size in an ask order book."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.551,
+                0.903,
+                0.663
+            ],
+            "angle": 0,
+            "content": "• For example, if a seller asks \\(209.94 \\times 200 for a stock, it implies they are willing to sell 200 shares for not less than\\)209.94"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.907,
+                0.663
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.364,
+                0.827,
+                0.39,
+                0.852
+            ],
+            "angle": 0,
+            "content": "Ask"
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.53,
+                0.826,
+                0.616,
+                0.852
+            ],
+            "angle": 0,
+            "content": "209.94 x 200"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.075,
+                0.112,
+                0.548,
+                0.19
+            ],
+            "angle": 0,
+            "content": "HKEX Market Data Pricing"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.274,
+                0.246,
+                0.322
+            ],
+            "angle": 0,
+            "content": "- Level 1 data:"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.111,
+                0.337,
+                0.438,
+                0.386
+            ],
+            "angle": 0,
+            "content": "• bid/ask price: HK$500 /month"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.406,
+                0.246,
+                0.456
+            ],
+            "angle": 0,
+            "content": "- Level 2 data:"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.111,
+                0.469,
+                0.477,
+                0.517
+            ],
+            "angle": 0,
+            "content": "- full order book: HK$5,000 /month"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.274,
+                0.477,
+                0.517
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.533,
+                0.244,
+                0.581,
+                0.269
+            ],
+            "angle": 0,
+            "content": "HKEX"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.534,
+                0.271,
+                0.58,
+                0.286
+            ],
+            "angle": 0,
+            "content": "香港交易所"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.547,
+                0.317,
+                0.783,
+                0.399
+            ],
+            "angle": 0,
+            "content": "Historical Full Book - Securities Market (Binary Format) provides information on every order and trade of Main Board and GEM stocks in binary format. File is available on a daily basis, normally at around 8:30pm."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.547,
+                0.409,
+                0.783,
+                0.49
+            ],
+            "angle": 0,
+            "content": "Historical Full Book - Securities Market (CSV Format) provides information on every order and trade of Main Board and GEM stocks in CSV format. File is available on a daily basis, normally at around 10:00pm."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.547,
+                0.499,
+                0.779,
+                0.598
+            ],
+            "angle": 0,
+            "content": "Historical Order Book and Statistics Update - Securities Market provides intra-day order book and statistics information recorded on the HKEX's Main Board and GEM stocks in CSV format. File is available on a daily basis, normally at around 10:00pm."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.547,
+                0.608,
+                0.769,
+                0.667
+            ],
+            "angle": 0,
+            "content": "Bid and Ask Record - Main Board & GEM (Daily File) provides intra-day bid and ask information on Main Board and GEM stocks"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.547,
+                0.679,
+                0.774,
+                0.738
+            ],
+            "angle": 0,
+            "content": "Bid and Ask Record - Main Board & GEM (Monthly File) provides intra-day bid and ask information on Main Board and GEM stocks"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.547,
+                0.751,
+                0.782,
+                0.85
+            ],
+            "angle": 0,
+            "content": "Trade File - Securities Market (Binary Format) provides trade details, including trade time, price and quantity, of each transaction recorded on the Main Board and GEM in binary format. File is available on a daily basis, normally at around 8:30pm."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.547,
+                0.861,
+                0.786,
+                0.961
+            ],
+            "angle": 0,
+            "content": "Trade File - Securities Market (CSV) provides trade details, including trade time, price and quantity, of each transaction recorded on the Main Board and GEM in CSV format. File is available on a daily basis, normally at around 10:00pm."
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.547,
+                0.317,
+                0.786,
+                0.961
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.918,
+                0.247,
+                0.94,
+                0.288
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.886,
+                0.316,
+                0.898,
+                0.343
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.915,
+                0.316,
+                0.95,
+                0.356
+            ],
+            "angle": 0,
+            "content": "$5,000/ Month"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.886,
+                0.406,
+                0.898,
+                0.433
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.915,
+                0.406,
+                0.95,
+                0.448
+            ],
+            "angle": 0,
+            "content": "$5,000/ Month"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.886,
+                0.496,
+                0.898,
+                0.524
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.915,
+                0.496,
+                0.95,
+                0.538
+            ],
+            "angle": 0,
+            "content": "$2,500/ Month"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.886,
+                0.606,
+                0.898,
+                0.633
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.906,
+                0.606,
+                0.961,
+                0.628
+            ],
+            "angle": 0,
+            "content": "$500/ Month"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.886,
+                0.676,
+                0.898,
+                0.704
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.906,
+                0.676,
+                0.961,
+                0.7
+            ],
+            "angle": 0,
+            "content": "$500/ Month"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.886,
+                0.748,
+                0.898,
+                0.774
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.915,
+                0.748,
+                0.95,
+                0.789
+            ],
+            "angle": 0,
+            "content": "$2,500/ Month"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.886,
+                0.858,
+                0.898,
+                0.885
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.915,
+                0.858,
+                0.95,
+                0.899
+            ],
+            "angle": 0,
+            "content": "$2,500/ Month"
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.022,
+                0.947,
+                0.419,
+                0.974
+            ],
+            "angle": 0,
+            "content": "Reference: https://www.hkex.com.hk/eng/ods/historicalData.aspx"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.348,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Market Spread"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.888,
+                0.388
+            ],
+            "angle": 0,
+            "content": "- The difference between the bid price and the ask price is known as the bid-ask spread."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.404,
+                0.872,
+                0.518
+            ],
+            "angle": 0,
+            "content": "- The bid-ask spread is a key measure of the liquidity of an asset or security."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.535,
+                0.923,
+                0.648
+            ],
+            "angle": 0,
+            "content": "- A smaller spread indicates a more liquid market, while a larger spread indicates a less liquid market."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.664,
+                0.927,
+                0.778
+            ],
+            "angle": 0,
+            "content": " • For example, if the bid price for a stock is $24 and the ask price is $25, the bid-ask spread will be $1."
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.927,
+                0.778
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.113,
+                0.421,
+                0.192
+            ],
+            "angle": 0,
+            "content": "Percentage Spread"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.272,
+                0.894,
+                0.388
+            ],
+            "angle": 0,
+            "content": "- Percentage spread is often used for comparing the spread between different instruments"
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.13,
+                0.452,
+                0.866,
+                0.54
+            ],
+            "angle": 0,
+            "content": "\\[\n\\text{Percentage Spread} = \\frac {\\text {AskPrice} - \\text {BidPrice}}{\\text {MidPrice}} \\times 100 \\% = \\frac {2 \\times (\\text {AskPrice} - \\text {BidPrice})}{\\text {AskPrice} + \\text {BidPrice}} \\times 100 \\%\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.62,
+                0.927,
+                0.68
+            ],
+            "angle": 0,
+            "content": "• For example, if the bid price for a stock is $24 and the ask price is $25,"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.686,
+                0.521,
+                0.735
+            ],
+            "angle": 0,
+            "content": "• the bid-ask spread will be (25-24) = $1"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.743,
+                0.713,
+                0.792
+            ],
+            "angle": 0,
+            "content": "- the percentage spread will be \\(2^{*}(25 - 20) / (25 + 20) = 4.08\\%\\)"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.11,
+                0.686,
+                0.713,
+                0.792
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.112,
+                0.301,
+                0.193
+            ],
+            "angle": 0,
+            "content": "Order Types"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.274,
+                0.282,
+                0.322
+            ],
+            "angle": 0,
+            "content": "1. Market Order"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.349,
+                0.254,
+                0.397
+            ],
+            "angle": 0,
+            "content": "2. Limit Order"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.425,
+                0.249,
+                0.477
+            ],
+            "angle": 0,
+            "content": "3. Stop Order"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.274,
+                0.282,
+                0.477
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.52,
+                0.12,
+                0.971,
+                0.945
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.111,
+                0.331,
+                0.182
+            ],
+            "angle": 0,
+            "content": "Market Order"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.272,
+                0.903,
+                0.32
+            ],
+            "angle": 0,
+            "content": "- A market order is to buy or sell at the best available price in the current market."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.339,
+                0.848,
+                0.436
+            ],
+            "angle": 0,
+            "content": "- That is, when opening a buy (sell) position using market order, it will try to execute at the best ask (bid) price."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.455,
+                0.848,
+                0.594
+            ],
+            "angle": 0,
+            "content": "- A market order typically ensures an execution, but it does not guarantee a specified price. It is appropriate to use market orders when you want an immediate execution."
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.903,
+                0.594
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.269,
+                0.631,
+                0.791,
+                1.0
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.112,
+                0.287,
+                0.182
+            ],
+            "angle": 0,
+            "content": "Limit Order"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.92,
+                0.369
+            ],
+            "angle": 0,
+            "content": "- A limit order is to buy or sell with a condition on the maximum price to pay or the minimum price to receive (the \"limit price\")."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.387,
+                0.905,
+                0.48
+            ],
+            "angle": 0,
+            "content": "- If the order is filled, it will only be at the specified limit price or better. However, there is no guarantee of execution."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.502,
+                0.881,
+                0.595
+            ],
+            "angle": 0,
+            "content": "- A limit order may be appropriate when you think you can buy at a price lower than (or sell at a price higher than) the current market quote."
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.92,
+                0.595
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.11,
+                0.451,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Limit Order Example"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.0,
+                0.306,
+                1.0,
+                0.799
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.451,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Limit Order Example"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.272,
+                0.511,
+                0.328
+            ],
+            "angle": 0,
+            "content": "- The last trade price is roughly $138"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.108,
+                0.337,
+                0.923,
+                0.419
+            ],
+            "angle": 0,
+            "content": "investor who wants to buy (or sell) immediately would place a market order, which would be executed at or near the current price of \\(138 (white line) provided that the market was open."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.109,
+                0.427,
+                0.918,
+                0.588
+            ],
+            "angle": 0,
+            "content": "investor who wants to buy the stock when it dropped to \\(131.78 would place a buy limit order with a limit price of\\)131.78 (green line). If the price falls to \\(131.78 or lower, the limit order would be triggered and executed at \\)131.78 or below. If the stock doesn't drop to \\(131.78 or below, no execution would occur."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.109,
+                0.596,
+                0.913,
+                0.758
+            ],
+            "angle": 0,
+            "content": "investor who wants to sell the stock when it reached \\(143.82 would place a sell limit order with a limit price of\\)143.82 (red line). If the price rises to \\(143.82 or higher, the limit order would be triggered and executed at \\)143.82 or above. If the stock doesn't rise to \\(143.82 or above, no execution would occur."
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.108,
+                0.337,
+                0.923,
+                0.758
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.112,
+                0.281,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Stop Order"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.92,
+                0.386
+            ],
+            "angle": 0,
+            "content": "- A stop order is to buy or sell at the market price when it has traded at or through a specified price (the \"stop price\")."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.404,
+                0.918,
+                0.569
+            ],
+            "angle": 0,
+            "content": "- If the stock reaches the stop price, the order becomes a market order and is filled at the next available market price. If it doesn't reach the stop price, the order will not be executed."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.592,
+                0.711,
+                0.645
+            ],
+            "angle": 0,
+            "content": "- A stop order may be appropriate in these scenarios:"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.92,
+                0.645
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.108,
+                0.655,
+                0.894,
+                0.749
+            ],
+            "angle": 0,
+            "content": "- you want to buy when a stock breaks out above a certain level, and believe that it will continue the trend"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.109,
+                0.76,
+                0.888,
+                0.858
+            ],
+            "angle": 0,
+            "content": "- your holding stock has risen a lot and you want to protect the gain when it begins to fall"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.108,
+                0.655,
+                0.894,
+                0.858
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.112,
+                0.445,
+                0.193
+            ],
+            "angle": 0,
+            "content": "Stop Order Example"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.0,
+                0.299,
+                1.0,
+                0.81
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.445,
+                0.194
+            ],
+            "angle": 0,
+            "content": "Stop Order Example"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.862,
+                0.388
+            ],
+            "angle": 0,
+            "content": "- The stop buy order will trigger when the price reaches 143.82 or above, and will execute as a market order at that current price."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.404,
+                0.923,
+                0.519
+            ],
+            "angle": 0,
+            "content": "- Thus, if the price rise further after hitting the stop price, it is possible that the order could be executed at a price higher than the stop price."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.535,
+                0.862,
+                0.648
+            ],
+            "angle": 0,
+            "content": "- Similarly for the stop sell order, once the stop price of $131.78 is reached, the order could be executed at a lower price"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.923,
+                0.648
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.112,
+                0.231,
+                0.192
+            ],
+            "angle": 0,
+            "content": "Slippage"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.272,
+                0.866,
+                0.38
+            ],
+            "angle": 0,
+            "content": "- Slippage refers to the difference between the expected execution price and the price it actually traded"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.406,
+                0.266,
+                0.452
+            ],
+            "angle": 0,
+            "content": "- It often occurs"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.072,
+                0.272,
+                0.866,
+                0.452
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.469,
+                0.772,
+                0.516
+            ],
+            "angle": 0,
+            "content": "- during periods of higher volatility when market orders are used"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.526,
+                0.845,
+                0.621
+            ],
+            "angle": 0,
+            "content": "- when large orders are executed when market depth is not sufficient to maintain the expected price of trade"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.11,
+                0.469,
+                0.845,
+                0.621
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.399,
+                0.194
+            ],
+            "angle": 0,
+            "content": "Slippage Example"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.919,
+                0.436
+            ],
+            "angle": 0,
+            "content": "- Let's assume you have an algorithm set to buy a stock when the price drops to $50. The algorithm detects the price drop and places a buy order."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.456,
+                0.82,
+                0.573
+            ],
+            "angle": 0,
+            "content": "However, due to high demand or low liquidity, the order gets executed at \\(51. This \\)1 difference is the slippage."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.586,
+                0.891,
+                0.76
+            ],
+            "angle": 0,
+            "content": "• This means that even if you were expecting to spend $5000 on 100 shares, you would end up spending $5100. The $100 is the cost of slippage"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.919,
+                0.76
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.488,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Profit/Loss Calculation"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.923,
+                0.417
+            ],
+            "angle": 0,
+            "content": "- Entry: Based on a trade signal, generate order to go short or long a certain financial instrument in a certain quantity. Trade results in a certain position in this security"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.435,
+                0.891,
+                0.528
+            ],
+            "angle": 0,
+            "content": "- Mark-to-Market: As the price of the security changes, so does your unrealized PnL"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.923,
+                0.528
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.294,
+                0.587,
+                0.703,
+                0.638
+            ],
+            "angle": 0,
+            "content": "\\[\nF o r l o n g o r d e r, P n L = Q u a n t i t y * (P _ {b i d} - P _ {e n t r y})\n\\]"
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.285,
+                0.662,
+                0.733,
+                0.714
+            ],
+            "angle": 0,
+            "content": "\\[\nF o r s h o r t o r d e r, P n L = - 1 * Q u a n t i t y * (P _ {a s k} - P _ {e n t r y})\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.749,
+                0.76,
+                0.798
+            ],
+            "angle": 0,
+            "content": "- Exit: Generate order to exit the position and create a realized PnL"
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.314,
+                0.839,
+                0.652,
+                0.89
+            ],
+            "angle": 0,
+            "content": "\\[\n\\mathrm {P n L} = \\mathrm {S i d e} * \\mathrm {Q u a n t i t y} * \\left(P _ {\\mathrm {e x i t}} - P _ {\\mathrm {e n t r y}}\\right)\n\\]"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.111,
+                0.378,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Mark-to-Market"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.882,
+                0.388
+            ],
+            "angle": 0,
+            "content": "- It is an accounting method to calculate the asset or portfolio value according to its current market value, rather than its book value"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.404,
+                0.909,
+                0.517
+            ],
+            "angle": 0,
+            "content": "- It involves determining the price at which you could immediately sell an asset or close a position"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.535,
+                0.205,
+                0.588
+            ],
+            "angle": 0,
+            "content": "• Example:"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.909,
+                0.588
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.599,
+                0.611,
+                0.648
+            ],
+            "angle": 0,
+            "content": "- Suppose you purchase 100 shares of ABC stock"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.654,
+                0.698,
+                0.704
+            ],
+            "angle": 0,
+            "content": "- The current bid and ask price of ABC are \\(9.5 and \\)10.5"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.11,
+                0.714,
+                0.752,
+                0.763
+            ],
+            "angle": 0,
+            "content": "• Mark-to-market value of your stock will be \\(100 * \\)9.5 = $9500"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.11,
+                0.599,
+                0.752,
+                0.763
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.711,
+                0.194
+            ],
+            "angle": 0,
+            "content": "Order Management System (OMS)"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.269,
+                0.356,
+                0.322
+            ],
+            "angle": 0,
+            "content": "1. Order based system"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.111,
+                0.328,
+                0.654,
+                0.375
+            ],
+            "angle": 0,
+            "content": "- Transactions are managed in a round order manner"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.112,
+                0.381,
+                0.429,
+                0.428
+            ],
+            "angle": 0,
+            "content": "- Partial close is not supported"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.111,
+                0.433,
+                0.312,
+                0.478
+            ],
+            "angle": 0,
+            "content": "- Trading platforms"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.111,
+                0.328,
+                0.654,
+                0.478
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.148,
+                0.484,
+                0.518,
+                0.524
+            ],
+            "angle": 0,
+            "content": "MetaTrader, TradingView, MetaStock, etc"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.538,
+                0.382,
+                0.592
+            ],
+            "angle": 0,
+            "content": "2. Position based system"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.111,
+                0.598,
+                0.755,
+                0.643
+            ],
+            "angle": 0,
+            "content": "- Transactions are independent and no linkage with each other"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.112,
+                0.65,
+                0.363,
+                0.691
+            ],
+            "angle": 0,
+            "content": "- Partial close is allowed"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.111,
+                0.702,
+                0.312,
+                0.746
+            ],
+            "angle": 0,
+            "content": "- Trading Platforms"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.111,
+                0.598,
+                0.755,
+                0.746
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.148,
+                0.752,
+                0.54,
+                0.793
+            ],
+            "angle": 0,
+            "content": "- Most of the banks (eg. HSBC, SBC, BOC, etc)"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.148,
+                0.799,
+                0.444,
+                0.837
+            ],
+            "angle": 0,
+            "content": "- Interactive Brokers, Binance, etc"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.148,
+                0.752,
+                0.54,
+                0.837
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.777,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Position Based vs Order Based System"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.264,
+                0.513,
+                0.317
+            ],
+            "angle": 0,
+            "content": "Suppose you open 3 offsetting trades:"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.324,
+                0.397,
+                0.372
+            ],
+            "angle": 0,
+            "content": "#1: buy 2 shares of ABC at $123"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.38,
+                0.383,
+                0.428
+            ],
+            "angle": 0,
+            "content": "#2: sell 1 share of ABC at $124"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.436,
+                0.383,
+                0.482
+            ],
+            "angle": 0,
+            "content": "#3: sell 1 share of ABC at $125"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.324,
+                0.397,
+                0.482
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.547,
+                0.899,
+                0.665
+            ],
+            "angle": 0,
+            "content": "For order based system, the unrealized PnL will be \\(2^{*}(\\mathrm{bid} - 123) + 1^{*}(124 - \\mathrm{ask}) +\\) \\(1^{*}(125 - \\mathrm{ask}) = \\\\(3 + 2^{*}(\\mathrm{bid} - \\mathrm{ask})\\). You need to close all the 3 trades to realize the PnL."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.07,
+                0.734,
+                0.896,
+                0.856
+            ],
+            "angle": 0,
+            "content": "For position based system, the orders will be offsetted based on FIFO, and PL will become realized so long as the position is net to zero. Thus, your PnL will be realized at $3."
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.262,
+                0.396,
+                0.737,
+                0.503
+            ],
+            "angle": 0,
+            "content": "Leverage & Margin"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.113,
+                0.425,
+                0.192
+            ],
+            "angle": 0,
+            "content": "Leverage & Margin"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.272,
+                0.898,
+                0.367
+            ],
+            "angle": 0,
+            "content": "- Leverage refers to using borrowed capital as a funding source for investment to increase the potential return"
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.262,
+                0.414,
+                0.675,
+                0.456
+            ],
+            "angle": 0,
+            "content": "\\[\n\\text {L e v e r a g e R a t i o} = \\text {A s s e t / E q u i t y} = 1 + \\text {D e b t / E q u i t y}\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.522,
+                0.442,
+                0.569
+            ],
+            "angle": 0,
+            "content": "- Margin is a way to create leverage"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.167,
+                0.637,
+                0.817,
+                0.674
+            ],
+            "angle": 0,
+            "content": "Margin Amount = (Account Asset Value) - (Borrowed Amount) = Equity held at broker"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.113,
+                0.461,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Margin Requirement"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.04,
+                0.274,
+                0.6,
+                0.32
+            ],
+            "angle": 0,
+            "content": "There are 2 market quotations for margin requirement"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.041,
+                0.34,
+                0.525,
+                0.38
+            ],
+            "angle": 0,
+            "content": "1. Fixed Margin Amount: Mostly used by stock exchanges"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.04,
+                0.399,
+                0.575,
+                0.438
+            ],
+            "angle": 0,
+            "content": "2. Margin as a percentage: Mostly used by FX/Crypto exchanges"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.04,
+                0.34,
+                0.575,
+                0.438
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.126,
+                0.47,
+                0.248,
+                0.495
+            ],
+            "angle": 0,
+            "content": "Update Date: 20251006"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.126,
+                0.518,
+                0.628,
+                0.542
+            ],
+            "angle": 0,
+            "content": "Please be reminded that the minimum margin rates below are for your firm's financially strongest client."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.126,
+                0.542,
+                0.694,
+                0.567
+            ],
+            "angle": 0,
+            "content": "Exchange Participants should set their margin requirements according to each client's individual circumstances."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.126,
+                0.59,
+                0.198,
+                0.612
+            ],
+            "angle": 0,
+            "content": "Index Futures"
+        },
+        {
+            "type": "table",
+            "bbox": [
+                0.124,
+                0.637,
+                0.896,
+                0.932
+            ],
+            "angle": 0,
+            "content": "<table><tr><td rowspan=\"2\">Effective Date</td><td rowspan=\"2\">Product</td><td rowspan=\"2\" colspan=\"2\">HKATS\nCode</td><td colspan=\"2\">Client Margin</td><td>Clearing House\nMargin</td></tr><tr><td>Initial\n(HK$)</td><td>Maintenance\n(HK$)</td><td>(HK$)</td></tr><tr><td rowspan=\"2\">20251002</td><td rowspan=\"2\">Hang Seng Index</td><td rowspan=\"2\">HSI</td><td>Full Rate\n/lot</td><td>116,774</td><td>93,419</td><td>87,800</td></tr><tr><td>Spread Rate\n/spread</td><td>25,735</td><td>20,588</td><td>19,350</td></tr><tr><td rowspan=\"2\">20251002</td><td rowspan=\"2\">Mini-Hang Seng Index</td><td rowspan=\"2\">MHI</td><td>Full Rate\n/lot</td><td>23,354</td><td>18,683</td><td>17,560</td></tr><tr><td>Spread Rate\n/spread</td><td>5,147</td><td>4,117</td><td>3,870</td></tr></table>"
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.024,
+                0.957,
+                0.681,
+                0.984
+            ],
+            "angle": 0,
+            "content": "Reference: https://www.hkex.com.hk/Services/Clearing/Listed-Derivatives/Risk-Management/Margin/Margin-Tables?sc-lang=en"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.728,
+                0.19
+            ],
+            "angle": 0,
+            "content": "How Margin is related to Leverage?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.903,
+                0.429
+            ],
+            "angle": 0,
+            "content": "• As HSI Index Future has a price magnifier of 50, meaning that 1 index point change will lead to ±HK$50. Suppose current HSI Index Future price is 25000, and buying 1 lot of HSI Index Future require HK$116,774 as margin. Then, leverage ratio is calculated to be ($25000*50)/$116,774 = 10.7044"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.45,
+                0.923,
+                0.532
+            ],
+            "angle": 0,
+            "content": "• Suppose you pay $600,000 to get stocks worth $1,000,000. Thus, leverage ratio is calculated to be $1,000,000/$600,000 = 1.6667"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.608,
+                0.872,
+                0.689
+            ],
+            "angle": 0,
+            "content": "- As you can imagine, the lower is the margin requirement, the higher is the leverage ratio. In general,"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.923,
+                0.689
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.312,
+                0.728,
+                0.639,
+                0.818
+            ],
+            "angle": 0,
+            "content": "\\[\nL e v e r a g e \\mathrm {R a t i o} = \\frac {1}{\\text {M a r g i n R e q u i r e m e n t}}\n\\]"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.113,
+                0.331,
+                0.192
+            ],
+            "angle": 0,
+            "content": "Buying Power"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.925,
+                0.396
+            ],
+            "angle": 0,
+            "content": "- For leveraged trading where traders can take out a loan based on the amount of cash held in their broker account, buying power refers to the amount of money available for investors to purchase securities. Mathematically,"
+        },
+        {
+            "type": "equation",
+            "bbox": [
+                0.254,
+                0.463,
+                0.651,
+                0.505
+            ],
+            "angle": 0,
+            "content": "\\[\nB u y i n g P o w e r = (L e v e r a g e R a t i o) \\times (I n v e s t o r ^ {\\prime} s e q u i t y)\n\\]"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.585,
+                0.913,
+                0.707
+            ],
+            "angle": 0,
+            "content": "- For example, suppose an investor made an initial deposit US\\(100,000 to a 20:1 leveraged broker account. Then, the investor would be able to purchase, at maximum, US\\)2,000,000 worth of securities. Hence, a buying power of US$2,000,000"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.112,
+                0.348,
+                0.192
+            ],
+            "angle": 0,
+            "content": "Key Takeaways"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.806,
+                0.329
+            ],
+            "angle": 0,
+            "content": "- Learn the basic concept of algo-trading and its market trend"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.345,
+                0.829,
+                0.407
+            ],
+            "angle": 0,
+            "content": "- Understand the pros and cons of different trading approaches"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.423,
+                0.862,
+                0.538
+            ],
+            "angle": 0,
+            "content": "- Know about the infrastructure/resources needed to develop and deploy algo-trading programs in real market"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.552,
+                0.892,
+                0.66
+            ],
+            "angle": 0,
+            "content": "- Understand the trading mechanism and order matching in financial market"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.683,
+                0.898,
+                0.856
+            ],
+            "angle": 0,
+            "content": "- Equip the knowledge about different market terminology (eg. Order book, order types, market spread, slippage, order/position based trading system, margin, etc)"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.898,
+                0.856
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ]
+]

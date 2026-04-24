@@ -1,0 +1,271 @@
+{
+  "lesson_id": "L1",
+  "sequence_id": "step5",
+  "mode": "guided_story",
+  "source": {
+    "plain_text": "pipeline/1-plain/L1/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ]
+  },
+  "screens": [
+    {
+      "id": "s001",
+      "type": "narration",
+      "lines": [
+        "市场价格不是凭空跳出来的。",
+        "它背后总有人想卖，也有人想买。"
+      ]
+    },
+    {
+      "id": "s002",
+      "type": "narration",
+      "lines": [
+        "先看愿意卖的人。",
+        "这就是 <term id=\"supply\">供给</term>。"
+      ],
+      "introduced_terms": [
+        "supply"
+      ],
+      "focus_terms": [
+        "supply"
+      ]
+    },
+    {
+      "id": "s003",
+      "type": "narration",
+      "lines": [
+        "价格越高，通常越多人愿意卖。",
+        "所以供给曲线会慢慢往上抬。"
+      ],
+      "focus_terms": [
+        "supply"
+      ]
+    },
+    {
+      "id": "s004",
+      "type": "narration",
+      "lines": [
+        "再看愿意买的人。",
+        "这就是 <term id=\"demand\">需求</term>。"
+      ],
+      "introduced_terms": [
+        "demand"
+      ],
+      "focus_terms": [
+        "demand"
+      ]
+    },
+    {
+      "id": "s005",
+      "type": "narration",
+      "lines": [
+        "价格越高，通常越少人愿意买。",
+        "所以需求会往另一个方向走。"
+      ],
+      "focus_terms": [
+        "demand"
+      ]
+    },
+    {
+      "id": "s006",
+      "type": "exercise",
+      "lines": [
+        "先抓住直觉。",
+        "哪边和价格同方向变化？"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "价格升高时，哪一个更可能增加？",
+        "options": [
+          "供给",
+          "需求",
+          "两者都下降"
+        ],
+        "answer": 0,
+        "explanation": "价格越高，卖方通常越愿意出现，所以供给更可能增加。"
+      }
+    },
+    {
+      "id": "s007",
+      "type": "narration",
+      "lines": [
+        "当 <term id=\"supply\">供给</term> 和 <term id=\"demand\">需求</term> 撞到一起，",
+        "市场会逼近一个平衡点。"
+      ],
+      "focus_terms": [
+        "supply",
+        "demand"
+      ]
+    },
+    {
+      "id": "s008",
+      "type": "narration",
+      "lines": [
+        "这就是 <term id=\"market_equilibrium\">市场均衡</term>。",
+        "你可以把它理解成“买卖双方最不别扭的位置”。"
+      ],
+      "introduced_terms": [
+        "market_equilibrium"
+      ],
+      "focus_terms": [
+        "market_equilibrium"
+      ]
+    },
+    {
+      "id": "s009",
+      "type": "narration",
+      "lines": [
+        "在这组例子里，",
+        "平衡大致落在价格 12、数量 2 附近。"
+      ],
+      "introduced_terms": [
+        "equilibrium_price",
+        "equilibrium_quantity"
+      ],
+      "focus_terms": [
+        "equilibrium_price",
+        "equilibrium_quantity"
+      ]
+    },
+    {
+      "id": "s010",
+      "type": "exercise",
+      "lines": [
+        "这里别背图。",
+        "只记关系就够了。"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "如果当前价格高于均衡位置，哪种情况更可能出现？",
+        "options": [
+          "想卖的人偏多",
+          "想买的人偏多",
+          "没有人交易"
+        ],
+        "answer": 0,
+        "explanation": "价格偏高时，卖方更积极，买方会缩手。"
+      }
+    },
+    {
+      "id": "s011",
+      "type": "narration",
+      "lines": [
+        "但“平衡”还不是成交本身。",
+        "真正让交易发生的是 <term id=\"order_matching\">撮合</term>。"
+      ],
+      "introduced_terms": [
+        "order_matching"
+      ],
+      "focus_terms": [
+        "order_matching"
+      ]
+    },
+    {
+      "id": "s012",
+      "type": "narration",
+      "lines": [
+        "你可以把撮合想成排队配对。",
+        "买方报出愿意买的价，卖方报出愿意卖的价。"
+      ],
+      "focus_terms": [
+        "order_matching"
+      ]
+    },
+    {
+      "id": "s013",
+      "type": "narration",
+      "lines": [
+        "只要双方的价格能接上，",
+        "成交就发生了。"
+      ],
+      "focus_terms": [
+        "order_matching"
+      ]
+    },
+    {
+      "id": "s014",
+      "type": "narration",
+      "lines": [
+        "所以价格不是老师宣布的。",
+        "而是被一笔一笔撮合“做出来”的。"
+      ],
+      "focus_terms": [
+        "order_matching"
+      ]
+    },
+    {
+      "id": "s015",
+      "type": "exercise",
+      "lines": [
+        "把整段压成一句。",
+        "市场价格更像什么？"
+      ],
+      "exercise": {
+        "kind": "fill_in_blank",
+        "prompt": "市场价格不是凭空决定的，而是在买卖双方不断 ____ 的过程中形成的。",
+        "answers": [
+          "撮合",
+          "配对成交"
+        ],
+        "explanation": "核心不是背术语，而是知道价格是交易过程的结果。"
+      }
+    },
+    {
+      "id": "s016",
+      "type": "narration",
+      "lines": [
+        "你最后要带走的 punchline 是：",
+        "价格，是供需关系通过 <term id=\"order_matching\">撮合</term> 说出来的话。"
+      ],
+      "focus_terms": [
+        "order_matching"
+      ]
+    }
+  ],
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "supply": {
+      "display": "供给",
+      "aliases": [
+        "Supply"
+      ],
+      "gloss": "在某个价格下，愿意卖出的人数或数量。"
+    },
+    "demand": {
+      "display": "需求",
+      "aliases": [
+        "Demand"
+      ],
+      "gloss": "在某个价格下，愿意买入的人数或数量。"
+    },
+    "market_equilibrium": {
+      "display": "市场均衡",
+      "aliases": [
+        "Market Equilibrium"
+      ],
+      "gloss": "供给与需求达到平衡的位置。"
+    },
+    "order_matching": {
+      "display": "撮合",
+      "aliases": [
+        "Order Matching"
+      ],
+      "gloss": "让买卖双方按照价格规则成交的过程。"
+    },
+    "equilibrium_price": {
+      "display": "均衡价格",
+      "aliases": [
+        "Equilibrium Price"
+      ],
+      "gloss": "供给和需求最接近平衡时对应的价格。"
+    },
+    "equilibrium_quantity": {
+      "display": "均衡数量",
+      "aliases": [
+        "Equilibrium Quantity"
+      ],
+      "gloss": "在均衡价格附近能够成交的数量。"
+    }
+  }
+}

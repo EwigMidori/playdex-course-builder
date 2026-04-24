@@ -1,0 +1,400 @@
+{
+  "lesson_id": "L1",
+  "sequence_id": "step8",
+  "mode": "guided_story",
+  "source": {
+    "plain_text": "pipeline/1-plain/L1/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ]
+  },
+  "screens": [
+    {
+      "id": "s001",
+      "type": "narration",
+      "lines": [
+        "交易做出去以后，",
+        "接下来最扎心的问题只剩一个。"
+      ]
+    },
+    {
+      "id": "s002",
+      "type": "narration",
+      "lines": [
+        "你到底赚了，还是亏了？",
+        "这就是 **<term id=\"pnl\">盈亏</term>**。"
+      ],
+      "introduced_terms": [
+        "pnl"
+      ],
+      "focus_terms": [
+        "pnl"
+      ]
+    },
+    {
+      "id": "s003",
+      "type": "narration",
+      "lines": [
+        "如果你是多头，",
+        "价格往上通常更有利。"
+      ],
+      "focus_terms": [
+        "pnl"
+      ]
+    },
+    {
+      "id": "s004",
+      "type": "formula",
+      "lines": [
+        "多头未实现盈亏可以先这样看。"
+      ],
+      "focus_terms": [
+        "pnl"
+      ],
+      "formula": {
+        "latex": "\\text{PnL}_{\\text{long}}=\\text{Quantity}\\times(P_{\\text{bid}}-P_{\\text{entry}})",
+        "spoken": "数量乘以当前买价减去入场价。"
+      }
+    },
+    {
+      "id": "s005",
+      "type": "narration",
+      "lines": [
+        "如果你是空头，",
+        "方向就反过来了。"
+      ],
+      "focus_terms": [
+        "pnl"
+      ]
+    },
+    {
+      "id": "s006",
+      "type": "formula",
+      "lines": [
+        "空头未实现盈亏常写成这样。"
+      ],
+      "focus_terms": [
+        "pnl"
+      ],
+      "formula": {
+        "latex": "\\text{PnL}_{\\text{short}}=-\\text{Quantity}\\times(P_{\\text{ask}}-P_{\\text{entry}})",
+        "spoken": "先算当前卖空回补成本和入场价的差，再乘数量并带上反号。"
+      }
+    },
+    {
+      "id": "s007",
+      "type": "exercise",
+      "lines": [
+        "先别怕公式。",
+        "只看方向就行。"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "如果你做多之后价格上涨，多头未实现盈亏通常怎样变化？",
+        "options": [
+          "更可能增加",
+          "更可能减少",
+          "一定不变"
+        ],
+        "answer": 0,
+        "explanation": "多头的核心是低买高卖，价格上涨通常会抬高未实现盈亏。"
+      }
+    },
+    {
+      "id": "s008",
+      "type": "narration",
+      "lines": [
+        "但仓位没平掉之前，",
+        "很多盈亏都还只是账面上的。"
+      ]
+    },
+    {
+      "id": "s009",
+      "type": "narration",
+      "lines": [
+        "这就引出 **<term id=\"mark_to_market\">盯市计价</term>**。",
+        "也就是按当前市场价格重新估值。"
+      ],
+      "introduced_terms": [
+        "mark_to_market"
+      ],
+      "focus_terms": [
+        "mark_to_market"
+      ]
+    },
+    {
+      "id": "s010",
+      "type": "narration",
+      "lines": [
+        "它不是看你最初花了多少钱。",
+        "而是看你现在如果立刻平仓，大概值多少。"
+      ],
+      "focus_terms": [
+        "mark_to_market"
+      ]
+    },
+    {
+      "id": "s011",
+      "type": "narration",
+      "lines": [
+        "接着还要看系统怎么记账。",
+        "有的系统按订单记，有的按净持仓记。"
+      ]
+    },
+    {
+      "id": "s012",
+      "type": "narration",
+      "lines": [
+        "**<term id=\"order_based_system\">订单制系统</term>** 把每笔单子分开看。",
+        "它们不急着彼此抵消。"
+      ],
+      "introduced_terms": [
+        "order_based_system"
+      ],
+      "focus_terms": [
+        "order_based_system"
+      ]
+    },
+    {
+      "id": "s013",
+      "type": "narration",
+      "lines": [
+        "**<term id=\"position_based_system\">持仓制系统</term>** 更关心净头寸。",
+        "订单之间可以互相对冲。"
+      ],
+      "introduced_terms": [
+        "position_based_system"
+      ],
+      "focus_terms": [
+        "position_based_system"
+      ]
+    },
+    {
+      "id": "s014",
+      "type": "narration",
+      "lines": [
+        "很多持仓制系统还会按 **<term id=\"fifo\">先进先出</term>** 处理。",
+        "先开的仓位先配对平掉。"
+      ],
+      "introduced_terms": [
+        "fifo"
+      ],
+      "focus_terms": [
+        "fifo"
+      ]
+    },
+    {
+      "id": "s015",
+      "type": "exercise",
+      "lines": [
+        "这里先抓住一个区别。",
+        "哪一种更关心“净持仓”而不是“每张单” ？"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "选一个。",
+        "options": [
+          "订单制系统",
+          "持仓制系统",
+          "两者完全一样"
+        ],
+        "answer": 1,
+        "explanation": "持仓制系统更关心对冲后的净结果。"
+      }
+    },
+    {
+      "id": "s016",
+      "type": "narration",
+      "lines": [
+        "最后是最容易让收益和风险一起放大的东西。",
+        "**<term id=\"leverage\">杠杆</term>**。"
+      ],
+      "introduced_terms": [
+        "leverage"
+      ],
+      "focus_terms": [
+        "leverage"
+      ]
+    },
+    {
+      "id": "s017",
+      "type": "narration",
+      "lines": [
+        "杠杆不是凭空送钱。",
+        "它是用更少自有资金，撬动更大头寸。"
+      ],
+      "focus_terms": [
+        "leverage"
+      ]
+    },
+    {
+      "id": "s018",
+      "type": "narration",
+      "lines": [
+        "支撑它的缓冲垫，",
+        "就是 **<term id=\"margin\">保证金</term>**。"
+      ],
+      "introduced_terms": [
+        "margin"
+      ],
+      "focus_terms": [
+        "margin"
+      ]
+    },
+    {
+      "id": "s019",
+      "type": "narration",
+      "lines": [
+        "当市场规定你至少要押多少，",
+        "那就是 **<term id=\"margin_requirement\">保证金要求</term>**。"
+      ],
+      "introduced_terms": [
+        "margin_requirement"
+      ],
+      "focus_terms": [
+        "margin_requirement"
+      ]
+    },
+    {
+      "id": "s020",
+      "type": "formula",
+      "lines": [
+        "杠杆和保证金的关系，可以先记住这一条。"
+      ],
+      "focus_terms": [
+        "leverage",
+        "margin_requirement"
+      ],
+      "formula": {
+        "latex": "\\text{Leverage Ratio}=\\frac{1}{\\text{Margin Requirement}}",
+        "spoken": "保证金要求越低，能开的杠杆通常越高。"
+      }
+    },
+    {
+      "id": "s021",
+      "type": "narration",
+      "lines": [
+        "进一步，账户还能买多少，",
+        "就是 **<term id=\"buying_power\">购买力</term>**。"
+      ],
+      "introduced_terms": [
+        "buying_power"
+      ],
+      "focus_terms": [
+        "buying_power"
+      ]
+    },
+    {
+      "id": "s022",
+      "type": "formula",
+      "lines": [
+        "它常写成下面这样。"
+      ],
+      "focus_terms": [
+        "buying_power",
+        "leverage"
+      ],
+      "formula": {
+        "latex": "\\text{Buying Power}=\\text{Leverage Ratio}\\times \\text{Investor Equity}",
+        "spoken": "购买力等于杠杆倍数乘上账户权益。"
+      }
+    },
+    {
+      "id": "s023",
+      "type": "narration",
+      "lines": [
+        "所以这一段真正想让你记住的是：",
+        "杠杆会放大机会，也会放大错误。"
+      ],
+      "focus_terms": [
+        "leverage"
+      ]
+    },
+    {
+      "id": "s024",
+      "type": "exercise",
+      "lines": [
+        "最后做个判断。",
+        "保证金要求越低，通常意味着什么？"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "选一个最贴近公式含义的答案。",
+        "options": [
+          "杠杆通常更高",
+          "杠杆通常更低",
+          "购买力一定变成零"
+        ],
+        "answer": 0,
+        "explanation": "在其他条件不变时，保证金要求越低，可使用的杠杆通常越高。"
+      }
+    }
+  ],
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "pnl": {
+      "display": "盈亏",
+      "aliases": [
+        "PnL",
+        "Profit and Loss"
+      ],
+      "gloss": "一笔交易或一个仓位赚了还是亏了多少。"
+    },
+    "mark_to_market": {
+      "display": "盯市计价",
+      "aliases": [
+        "Mark-to-Market"
+      ],
+      "gloss": "按当前市场价格重新估算仓位价值。"
+    },
+    "order_based_system": {
+      "display": "订单制系统",
+      "aliases": [
+        "Order Based System"
+      ],
+      "gloss": "按单独订单来跟踪交易，不自动互相抵消。"
+    },
+    "position_based_system": {
+      "display": "持仓制系统",
+      "aliases": [
+        "Position Based System"
+      ],
+      "gloss": "按净持仓来管理，订单之间可以互相对冲。"
+    },
+    "fifo": {
+      "display": "先进先出",
+      "aliases": [
+        "FIFO"
+      ],
+      "gloss": "先开的仓位先被配对或平掉。"
+    },
+    "leverage": {
+      "display": "杠杆",
+      "aliases": [
+        "Leverage"
+      ],
+      "gloss": "用更少自有资金控制更大资产头寸。"
+    },
+    "margin": {
+      "display": "保证金",
+      "aliases": [
+        "Margin"
+      ],
+      "gloss": "为杠杆交易准备的权益缓冲。"
+    },
+    "margin_requirement": {
+      "display": "保证金要求",
+      "aliases": [
+        "Margin Requirement"
+      ],
+      "gloss": "交易一笔头寸至少需要占用多少保证金。"
+    },
+    "buying_power": {
+      "display": "购买力",
+      "aliases": [
+        "Buying Power"
+      ],
+      "gloss": "账户在杠杆下最多还能买多少资产。"
+    }
+  }
+}

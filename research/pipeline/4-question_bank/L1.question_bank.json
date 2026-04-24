@@ -1,0 +1,2219 @@
+{
+  "lesson_id": "L1",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L1/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "generation_inputs": ".tmp/l1_generation_inputs.md",
+    "coverage_checklist": "See .tmp/l1_generation_inputs.md#coverage-checklist",
+    "source_outline": "See .tmp/l1_generation_inputs.md#source-outline",
+    "lesson_map": "See .tmp/l1_generation_inputs.md#lesson-map"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "algo_system_motivation",
+      "description": "为什么算法交易重要：机会会在判断与执行之间流失，程序价值在于速度、稳定性和可重复性。",
+      "covered_by": [
+        "qf_flash_execution_gap",
+        "qf_long_system_pipeline"
+      ]
+    },
+    {
+      "coverage_tag": "algo_definition_and_objectives",
+      "description": "算法交易同时包含决策与执行，目标是收益、执行成本和风险管理。",
+      "covered_by": [
+        "qf_flash_decision_execution",
+        "qf_flash_objectives",
+        "qf_long_system_pipeline"
+      ]
+    },
+    {
+      "coverage_tag": "market_presence_and_trading_modes",
+      "description": "行业增长与市场参与度，以及人工交易、智能投顾、自动交易之间的差别。",
+      "covered_by": [
+        "qf_flash_market_presence",
+        "qf_flash_trading_modes"
+      ]
+    },
+    {
+      "coverage_tag": "data_and_infrastructure_stack",
+      "description": "数据是燃料，系统需要数据管线、实时行情、历史数据、连接、延迟、路由、OMS、维护和安全。",
+      "covered_by": [
+        "qf_flash_data_infrastructure",
+        "qf_long_system_pipeline"
+      ]
+    },
+    {
+      "coverage_tag": "trading_styles_and_timeframes",
+      "description": "基本面、技术、量化三类交易视角，以及长期、中短期、日内、高频四类时间尺度。",
+      "covered_by": [
+        "qf_flash_trading_styles",
+        "qf_flash_timeframes",
+        "qf_long_trading_styles",
+        "qf_long_timeframes"
+      ]
+    },
+    {
+      "coverage_tag": "supply_demand_equilibrium_matching",
+      "description": "供给、需求、均衡及撮合如何共同解释价格形成。",
+      "covered_by": [
+        "qf_flash_equilibrium_matching",
+        "qf_long_equilibrium_walkthrough"
+      ]
+    },
+    {
+      "coverage_tag": "position_direction_and_order_book",
+      "description": "多头、空头、卖空风险，以及订单簿、盘口顶端、市场深度和累计订单簿。",
+      "covered_by": [
+        "qf_flash_positions",
+        "qf_flash_order_book_structure",
+        "qf_long_order_book_execution"
+      ]
+    },
+    {
+      "coverage_tag": "execution_quotes_orders_slippage",
+      "description": "买价卖价、买卖量、中间价、百分比价差、订单类型和滑点。",
+      "covered_by": [
+        "qf_flash_quote_sizes",
+        "qf_flash_mid_price",
+        "qf_flash_percentage_spread",
+        "qf_flash_order_types",
+        "qf_flash_slippage",
+        "qf_long_quote_math",
+        "qf_long_order_type_logic"
+      ]
+    },
+    {
+      "coverage_tag": "pnl_accounting_and_leverage",
+      "description": "未实现盈亏、盯市计价、订单制与持仓制、FIFO、杠杆、保证金与购买力。",
+      "covered_by": [
+        "qf_flash_pnl_direction",
+        "qf_flash_mark_to_market",
+        "qf_flash_accounting_models",
+        "qf_flash_fifo",
+        "qf_flash_leverage_margin",
+        "qf_flash_buying_power",
+        "qf_long_mark_to_market_pnl",
+        "qf_long_accounting_models",
+        "qf_long_fifo_accounting",
+        "qf_long_leverage_mechanics"
+      ]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_execution_gap",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step1"
+      ],
+      "concept_key": "execution_gap",
+      "coverage_tags": [
+        "algo_system_motivation"
+      ],
+      "term_refs": [
+        {
+          "display": "算法交易",
+          "en": "Algorithmic Trading"
+        },
+        {
+          "display": "执行",
+          "en": "Execution"
+        }
+      ],
+      "learning_goal": "学生能识别算法交易首先解决的是判断落地时的执行延迟和不稳定。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_execution_gap_v1",
+          "stem": "看到机会却没有赶上下单，最可能说明问题卡在哪一步？",
+          "options": [
+            "判断和执行之间的延迟",
+            "课程术语不够多",
+            "屏幕不够大"
+          ],
+          "answer": 0,
+          "explanation": "本课先强调的不是判断本身，而是机会会在判断落地前流失。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_execution_gap_v2",
+          "stem": "两个人判断相同，但一个手动下单、一个程序执行，更可能拉开结果的是哪一点？",
+          "options": [
+            "执行速度和稳定性",
+            "谁更会背定义",
+            "谁的界面颜色更醒目"
+          ],
+          "answer": 0,
+          "explanation": "这里比较的是同一判断能不能更快、更稳定地变成订单。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_execution_gap_v3",
+          "stem": "本课里，算法交易首先想解决的更接近哪件事？",
+          "options": [
+            "把判断稳定地做出来",
+            "保证每次都看对行情",
+            "让图表更复杂"
+          ],
+          "answer": 0,
+          "explanation": "算法交易的第一价值是让规则可重复执行，而不是承诺每次预测都更准。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_decision_execution",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step2"
+      ],
+      "concept_key": "decision_execution_split",
+      "coverage_tags": [
+        "algo_definition_and_objectives"
+      ],
+      "term_refs": [
+        {
+          "display": "决策",
+          "en": "Decision Making"
+        },
+        {
+          "display": "执行",
+          "en": "Execution"
+        }
+      ],
+      "learning_goal": "学生能准确区分决策和执行的职能。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_decision_execution_v1",
+          "stem": "“现在该买还是该卖”更属于哪一环？",
+          "options": [
+            "决策",
+            "执行",
+            "记账"
+          ],
+          "answer": 0,
+          "explanation": "这是在形成交易判断，所以属于决策。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_decision_execution_v2",
+          "stem": "“把信号真正送进市场”更属于哪一环？",
+          "options": [
+            "决策",
+            "执行",
+            "回测"
+          ],
+          "answer": 1,
+          "explanation": "执行关注的是订单怎样落地，而不是判断怎样产生。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_decision_execution_v3",
+          "stem": "算法交易至少要同时碰到哪两个环节？",
+          "options": [
+            "决策和执行",
+            "宣传和销售",
+            "回测和清算"
+          ],
+          "answer": 0,
+          "explanation": "本课把算法交易最小化为判断形成和判断落地这两块。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_objectives",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step2"
+      ],
+      "concept_key": "algo_objectives",
+      "coverage_tags": [
+        "algo_definition_and_objectives"
+      ],
+      "term_refs": [
+        {
+          "display": "提高收益",
+          "en": "Maximize Profits"
+        },
+        {
+          "display": "控制执行成本",
+          "en": "Control Execution Costs"
+        },
+        {
+          "display": "对冲与风险管理",
+          "en": "Hedging and Risk Management"
+        }
+      ],
+      "learning_goal": "学生能说出本课明确给出的算法交易目标，并避免无根据扩写。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_objectives_v1",
+          "stem": "下面哪一项不属于本课给出的算法交易目标？",
+          "options": [
+            "保证每次都赚钱",
+            "控制执行成本",
+            "对冲与风险管理"
+          ],
+          "answer": 0,
+          "explanation": "本课没有给出稳赚承诺，只讲收益、成本和风险管理。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_objectives_v2",
+          "stem": "“别在下单和成交时白白多付成本”最接近哪个目标？",
+          "options": [
+            "控制执行成本",
+            "提高收益",
+            "扩大用户控制感"
+          ],
+          "answer": 0,
+          "explanation": "这句话直接对应执行成本控制。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_market_presence",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step3"
+      ],
+      "concept_key": "market_presence",
+      "coverage_tags": [
+        "market_presence_and_trading_modes"
+      ],
+      "term_refs": [
+        {
+          "display": "年复合增长率",
+          "en": "CAGR"
+        }
+      ],
+      "learning_goal": "学生能从增长率和市场占比读出算法交易在现实市场中的地位。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_market_presence_v1",
+          "stem": "看到 60% 美股、40% 欧洲股票、25% 外汇、20% 美股期权这些数字后，最合理的判断是什么？",
+          "options": [
+            "算法交易已经深度参与真实市场",
+            "算法交易只在实验环境里出现",
+            "算法交易只存在于单一资产类别"
+          ],
+          "answer": 0,
+          "explanation": "这些占比说明它已经进入市场结构，而不是边角概念。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_market_presence_v2",
+          "stem": "本课给出的 12.7% CAGR 更想表达什么？",
+          "options": [
+            "这是持续增长的信号",
+            "这保证每年收益都是 12.7%",
+            "这只表示某一天的暴涨"
+          ],
+          "answer": 0,
+          "explanation": "CAGR 在这里表达的是持续增长趋势，而不是稳赚或单日跳涨。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_trading_modes",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step3"
+      ],
+      "concept_key": "trading_modes",
+      "coverage_tags": [
+        "market_presence_and_trading_modes"
+      ],
+      "term_refs": [
+        {
+          "display": "人工交易",
+          "en": "Human Trading"
+        },
+        {
+          "display": "智能投顾",
+          "en": "Robo-Advisory"
+        },
+        {
+          "display": "自动交易",
+          "en": "Robo-Trading"
+        }
+      ],
+      "learning_goal": "学生能用“是否接管执行”区分三种交易模式。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_trading_modes_v1",
+          "stem": "哪一种模式最贴近“判断后会自己下单”？",
+          "options": [
+            "人工交易",
+            "智能投顾",
+            "自动交易"
+          ],
+          "answer": 2,
+          "explanation": "自动交易不仅给判断，还会接着执行。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_trading_modes_v2",
+          "stem": "哪一种模式更接近“给建议，但通常不直接替你下单”？",
+          "options": [
+            "人工交易",
+            "智能投顾",
+            "自动交易"
+          ],
+          "answer": 1,
+          "explanation": "智能投顾更偏向建议、提醒和摘要。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_trading_modes_v3",
+          "stem": "如果你最在意“24x7 运作”和“立即执行”，哪一种更贴近本课描述？",
+          "options": [
+            "人工交易",
+            "智能投顾",
+            "自动交易"
+          ],
+          "answer": 2,
+          "explanation": "这两个关键词对应的是自动化程度更高的模式。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_data_infrastructure",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step4"
+      ],
+      "concept_key": "data_and_infrastructure",
+      "coverage_tags": [
+        "data_and_infrastructure_stack"
+      ],
+      "term_refs": [
+        {
+          "display": "数据收集",
+          "en": "Data Collection"
+        },
+        {
+          "display": "实时行情",
+          "en": "Real-Time Datafeed"
+        },
+        {
+          "display": "订单管理系统",
+          "en": "Order Management System"
+        },
+        {
+          "display": "订单路由系统",
+          "en": "Order Routing System"
+        },
+        {
+          "display": "网络安全",
+          "en": "Cybersecurity"
+        }
+      ],
+      "learning_goal": "学生能把数据和基础设施看成真实交易系统的组成部分。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_data_infrastructure_v1",
+          "stem": "“算法像车，数据像燃料”最想强调什么？",
+          "options": [
+            "没有数据，系统很难真正运转",
+            "只要换电脑就会提高收益",
+            "数据只在课程作业里有用"
+          ],
+          "answer": 0,
+          "explanation": "这句比喻强调的是数据是系统运行的基础输入。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_data_infrastructure_v2",
+          "stem": "下面哪一项更像交易系统里的基础设施部件？",
+          "options": [
+            "订单路由系统",
+            "临场感觉",
+            "临时猜测"
+          ],
+          "answer": 0,
+          "explanation": "订单路由系统属于真实执行链路中的系统部件。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_data_infrastructure_v3",
+          "stem": "下面哪一组都属于本课提到的基础设施或运维问题？",
+          "options": [
+            "实时行情、延迟、网络安全",
+            "灵感、运气、情绪",
+            "配色、广告、口号"
+          ],
+          "answer": 0,
+          "explanation": "本课明确把实时行情、延迟和网络安全都放进系统搭建视角。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_trading_styles",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step4"
+      ],
+      "concept_key": "trading_styles",
+      "coverage_tags": [
+        "trading_styles_and_timeframes"
+      ],
+      "term_refs": [
+        {
+          "display": "基本面分析",
+          "en": "Fundamental Analysis"
+        },
+        {
+          "display": "技术分析",
+          "en": "Technical Analysis"
+        },
+        {
+          "display": "量化分析",
+          "en": "Quantitative Analysis"
+        }
+      ],
+      "learning_goal": "学生能区分基本面、技术和量化三类交易视角。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_trading_styles_v1",
+          "stem": "如果重点在公司、行业、财务和管理层，这更接近哪一类分析？",
+          "options": [
+            "基本面分析",
+            "技术分析",
+            "量化分析"
+          ],
+          "answer": 0,
+          "explanation": "这些线索都属于基本面分析的观察对象。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_trading_styles_v2",
+          "stem": "如果重点在图形和趋势，这更接近哪一类分析？",
+          "options": [
+            "基本面分析",
+            "技术分析",
+            "量化分析"
+          ],
+          "answer": 1,
+          "explanation": "图形和趋势是技术分析的典型切入点。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_trading_styles_v3",
+          "stem": "如果重点在规则、统计套利、NLP 和机器学习，这更接近哪一类分析？",
+          "options": [
+            "基本面分析",
+            "技术分析",
+            "量化分析"
+          ],
+          "answer": 2,
+          "explanation": "这些方法都属于量化分析的范围。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_timeframes",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step4"
+      ],
+      "concept_key": "trading_timeframes",
+      "coverage_tags": [
+        "trading_styles_and_timeframes"
+      ],
+      "term_refs": [
+        {
+          "display": "长期",
+          "en": "Long Term"
+        },
+        {
+          "display": "中短期",
+          "en": "Short Term"
+        },
+        {
+          "display": "日内",
+          "en": "Intraday"
+        },
+        {
+          "display": "高频",
+          "en": "High Frequency"
+        }
+      ],
+      "learning_goal": "学生能按持有时间尺度区分长期、中短期、日内和高频。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_timeframes_v1",
+          "stem": "下面哪一项更接近“月到年”的时间尺度？",
+          "options": [
+            "长期",
+            "日内",
+            "高频"
+          ],
+          "answer": 0,
+          "explanation": "本课把长期描述为以月到年计。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_timeframes_v2",
+          "stem": "下面哪一项更接近“秒到小时”的时间尺度？",
+          "options": [
+            "长期",
+            "中短期",
+            "日内"
+          ],
+          "answer": 2,
+          "explanation": "本课把日内描述为秒到小时。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_timeframes_v3",
+          "stem": "如果时间尺度进入“更短、接近分秒级甚至更快”的方向，更接近哪一类？",
+          "options": [
+            "长期",
+            "高频",
+            "季度持有"
+          ],
+          "answer": 1,
+          "explanation": "高频交易就是继续往更短时间尺度推进。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_equilibrium_matching",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step5"
+      ],
+      "concept_key": "equilibrium_and_matching",
+      "coverage_tags": [
+        "supply_demand_equilibrium_matching"
+      ],
+      "term_refs": [
+        {
+          "display": "供给",
+          "en": "Supply"
+        },
+        {
+          "display": "需求",
+          "en": "Demand"
+        },
+        {
+          "display": "市场均衡",
+          "en": "Market Equilibrium"
+        },
+        {
+          "display": "撮合",
+          "en": "Order Matching"
+        }
+      ],
+      "learning_goal": "学生能区分供需关系和撮合机制各自解释什么。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_equilibrium_matching_v1",
+          "stem": "价格升高时，哪一边通常更可能增加？",
+          "options": [
+            "供给",
+            "需求",
+            "两边同时下降"
+          ],
+          "answer": 0,
+          "explanation": "价格更高时，卖方通常更愿意出现，所以供给更可能增加。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_equilibrium_matching_v2",
+          "stem": "如果当前价格高于均衡位置，更可能先看到什么？",
+          "options": [
+            "想卖的人偏多",
+            "想买的人偏多",
+            "完全没有挂单"
+          ],
+          "answer": 0,
+          "explanation": "价格偏高时，卖方通常更积极，买方更容易退后。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_equilibrium_matching_v3",
+          "stem": "真正让交易发生的直接机制是什么？",
+          "options": [
+            "撮合",
+            "市场口号",
+            "课表安排"
+          ],
+          "answer": 0,
+          "explanation": "供需解释压力，撮合解释成交如何真的发生。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_positions",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step6"
+      ],
+      "concept_key": "position_direction",
+      "coverage_tags": [
+        "position_direction_and_order_book"
+      ],
+      "term_refs": [
+        {
+          "display": "多头仓位",
+          "en": "Long Position"
+        },
+        {
+          "display": "空头仓位",
+          "en": "Short Position"
+        },
+        {
+          "display": "卖空",
+          "en": "Short Selling"
+        }
+      ],
+      "learning_goal": "学生能判断多空的方向逻辑和卖空的主要风险。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_positions_v1",
+          "stem": "如果价格继续上涨，通常更难受的是哪一边？",
+          "options": [
+            "多头",
+            "空头",
+            "两边一样"
+          ],
+          "answer": 1,
+          "explanation": "空头是先卖后买，价格上涨会让回补更贵。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_positions_v2",
+          "stem": "卖空最直观的核心风险是什么？",
+          "options": [
+            "价格持续上涨",
+            "价格完全不动",
+            "挂单层级太多"
+          ],
+          "answer": 0,
+          "explanation": "价格越涨，回补成本越高，所以卖空风险会变大。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_positions_v3",
+          "stem": "“先买后卖”最接近哪一种仓位逻辑？",
+          "options": [
+            "多头仓位",
+            "空头仓位",
+            "卖空回补"
+          ],
+          "answer": 0,
+          "explanation": "多头的朴素逻辑就是先买，再希望未来更高价卖出。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_order_book_structure",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step6"
+      ],
+      "concept_key": "order_book_structure",
+      "coverage_tags": [
+        "position_direction_and_order_book"
+      ],
+      "term_refs": [
+        {
+          "display": "订单簿",
+          "en": "Order Book"
+        },
+        {
+          "display": "盘口顶端",
+          "en": "Top of the Book"
+        },
+        {
+          "display": "市场深度",
+          "en": "Market Depth"
+        },
+        {
+          "display": "累计订单簿",
+          "en": "Cumulative Book"
+        }
+      ],
+      "learning_goal": "学生能读懂订单簿结构中的前沿位置、厚度和累计数量。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_order_book_structure_v1",
+          "stem": "下面哪个概念最直接指向“离成交最近的位置”？",
+          "options": [
+            "盘口顶端",
+            "市场深度",
+            "累计订单簿"
+          ],
+          "answer": 0,
+          "explanation": "盘口顶端就是最高买价和最低卖价所在的最前沿位置。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_order_book_structure_v2",
+          "stem": "如果挂单层级更长、数量更厚，通常说明什么更高？",
+          "options": [
+            "市场深度",
+            "滑点保证",
+            "用户控制感"
+          ],
+          "answer": 0,
+          "explanation": "挂单越厚，通常说明市场深度越高。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_order_book_structure_v3",
+          "stem": "把数量从盘口顶端逐层累加后，你得到的更接近什么？",
+          "options": [
+            "累计订单簿",
+            "历史收益表",
+            "公司财报"
+          ],
+          "answer": 0,
+          "explanation": "累计订单簿就是把不同层级的数量一路加总后的视图。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_quote_sizes",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step7"
+      ],
+      "concept_key": "quote_sizes",
+      "coverage_tags": [
+        "execution_quotes_orders_slippage"
+      ],
+      "term_refs": [
+        {
+          "display": "买量",
+          "en": "Bid Size"
+        },
+        {
+          "display": "卖量",
+          "en": "Ask Size"
+        }
+      ],
+      "learning_goal": "学生能区分 bid size 和 ask size，知道它们是挂在买价和卖价上的数量。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_quote_sizes_v1",
+          "stem": "在买价这个位置上愿意买多少，更接近哪个术语？",
+          "options": [
+            "买量",
+            "卖量",
+            "中间价"
+          ],
+          "answer": 0,
+          "explanation": "买量就是在当前买价上愿意买入的数量。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_quote_sizes_v2",
+          "stem": "在卖价这个位置上愿意卖多少，更接近哪个术语？",
+          "options": [
+            "买量",
+            "卖量",
+            "价差"
+          ],
+          "answer": 1,
+          "explanation": "卖量就是在当前卖价上愿意卖出的数量。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_quote_sizes_v3",
+          "stem": "如果盘口写成 bid 24 x 200、ask 25 x 150，哪两个数字代表 size？",
+          "options": [
+            "200 和 150",
+            "24 和 25",
+            "24.5 和 1"
+          ],
+          "answer": 0,
+          "explanation": "price 是 24 和 25，size 是挂在这两个价格上的数量 200 和 150。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_mid_price",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step7"
+      ],
+      "concept_key": "mid_price",
+      "coverage_tags": [
+        "execution_quotes_orders_slippage"
+      ],
+      "term_refs": [
+        {
+          "display": "买价",
+          "en": "Bid Price"
+        },
+        {
+          "display": "卖价",
+          "en": "Ask Price"
+        },
+        {
+          "display": "中间价",
+          "en": "Mid Price"
+        }
+      ],
+      "learning_goal": "学生能定义和计算 mid price。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_mid_price_v1",
+          "stem": "中间价最接近下面哪种计算方式？",
+          "options": [
+            "买价和卖价的平均",
+            "买量和卖量的乘积",
+            "卖价减买价"
+          ],
+          "answer": 0,
+          "explanation": "中间价是买价与卖价的平均值。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_mid_price_v2",
+          "stem": "如果买价是 24、卖价是 25，中间价是多少？",
+          "options": [
+            "1",
+            "24.5",
+            "49"
+          ],
+          "answer": 1,
+          "explanation": "中间价等于 (24 + 25) / 2 = 24.5。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_mid_price_v3",
+          "stem": "中间价最直接夹在哪两类数字之间？",
+          "options": [
+            "买价和卖价",
+            "买量和卖量",
+            "收益和风险"
+          ],
+          "answer": 0,
+          "explanation": "mid price 是两个最前沿报价的平均，因此夹在 bid 和 ask 之间。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_percentage_spread",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step7"
+      ],
+      "concept_key": "percentage_spread",
+      "coverage_tags": [
+        "execution_quotes_orders_slippage"
+      ],
+      "term_refs": [
+        {
+          "display": "买卖价差",
+          "en": "Bid-Ask Spread"
+        },
+        {
+          "display": "百分比价差",
+          "en": "Percentage Spread"
+        },
+        {
+          "display": "中间价",
+          "en": "Mid Price"
+        }
+      ],
+      "learning_goal": "学生能写出 percentage spread 的公式，并完成基础计算与解释。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_percentage_spread_v1",
+          "stem": "百分比价差最接近下面哪条式子？",
+          "options": [
+            "(卖价 - 买价) / 中间价 x 100%",
+            "(卖价 + 买价) / 2",
+            "买量 / 卖量 x 100%"
+          ],
+          "answer": 0,
+          "explanation": "本课公式是先算绝对价差，再除以中间价并乘 100%。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_percentage_spread_v2",
+          "stem": "如果买价是 24、卖价是 25，百分比价差最接近哪一个？",
+          "options": [
+            "2.00%",
+            "4.08%",
+            "24.50%"
+          ],
+          "answer": 1,
+          "explanation": "中间价是 24.5，所以百分比价差 = 1 / 24.5 x 100% ≈ 4.08%。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_percentage_spread_v3",
+          "stem": "为什么除了绝对价差，还要看百分比价差？",
+          "options": [
+            "因为它把价差放到相对价格尺度里，便于比较不同价格水平",
+            "因为它一定和绝对价差相等",
+            "因为它只和买量有关"
+          ],
+          "answer": 0,
+          "explanation": "百分比价差把价差放回价格水平里看，更适合跨标的比较。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_order_types",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step7"
+      ],
+      "concept_key": "order_types_tradeoff",
+      "coverage_tags": [
+        "execution_quotes_orders_slippage"
+      ],
+      "term_refs": [
+        {
+          "display": "市价单",
+          "en": "Market Order"
+        },
+        {
+          "display": "限价单",
+          "en": "Limit Order"
+        },
+        {
+          "display": "止损单",
+          "en": "Stop Order"
+        }
+      ],
+      "learning_goal": "学生能比较市价单、限价单、止损单在成交优先级和价格边界上的差异。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_order_types_v1",
+          "stem": "如果你最在意“先成交再说”，通常会优先想到哪一种订单？",
+          "options": [
+            "市价单",
+            "限价单",
+            "止损单"
+          ],
+          "answer": 0,
+          "explanation": "市价单优先追求尽快成交。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_order_types_v2",
+          "stem": "如果你最在意“不要超过某个价格边界”，通常会优先想到哪一种订单？",
+          "options": [
+            "市价单",
+            "限价单",
+            "止损单"
+          ],
+          "answer": 1,
+          "explanation": "限价单优先守住价格边界，但不保证立刻成交。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_order_types_v3",
+          "stem": "哪一种订单会先等价格碰到 stop price，再开始执行？",
+          "options": [
+            "市价单",
+            "限价单",
+            "止损单"
+          ],
+          "answer": 2,
+          "explanation": "止损单的关键就是先等待触发条件。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_slippage",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step7"
+      ],
+      "concept_key": "slippage",
+      "coverage_tags": [
+        "execution_quotes_orders_slippage"
+      ],
+      "term_refs": [
+        {
+          "display": "滑点",
+          "en": "Slippage"
+        }
+      ],
+      "learning_goal": "学生能把滑点理解成执行结果偏离预期价格的问题。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_slippage_v1",
+          "stem": "“下单成功”为什么不等于“执行成功”？",
+          "options": [
+            "实际成交价可能偏离预期成交价",
+            "因为每一笔单都会自动撤销",
+            "因为订单一定会回到入场价"
+          ],
+          "answer": 0,
+          "explanation": "滑点就是预期价格和实际成交价格之间的偏差。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_slippage_v2",
+          "stem": "下面哪种情况更容易让滑点变大？",
+          "options": [
+            "盘口很薄、价格变化快",
+            "挂单很厚、价格很稳",
+            "只看课程标题"
+          ],
+          "answer": 0,
+          "explanation": "盘口薄和波动快都会让实际成交更容易偏离预期。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_pnl_direction",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step8"
+      ],
+      "concept_key": "pnl_direction",
+      "coverage_tags": [
+        "pnl_accounting_and_leverage"
+      ],
+      "term_refs": [
+        {
+          "display": "盈亏",
+          "en": "PnL"
+        },
+        {
+          "display": "多头仓位",
+          "en": "Long Position"
+        },
+        {
+          "display": "空头仓位",
+          "en": "Short Position"
+        }
+      ],
+      "learning_goal": "学生能抓住多头和空头未实现盈亏的方向变化。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_pnl_direction_v1",
+          "stem": "如果你做多之后价格上涨，多头未实现盈亏通常会怎样变化？",
+          "options": [
+            "更可能增加",
+            "更可能减少",
+            "一定不变"
+          ],
+          "answer": 0,
+          "explanation": "多头的核心是低买高卖，价格上涨通常会抬高未实现盈亏。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_pnl_direction_v2",
+          "stem": "如果你做空之后回补参考价格下降，空头未实现盈亏通常更接近哪种变化？",
+          "options": [
+            "更可能增加",
+            "更可能减少",
+            "一定归零"
+          ],
+          "answer": 0,
+          "explanation": "空头是先卖后买，回补价格下降通常更有利。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_mark_to_market",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step8"
+      ],
+      "concept_key": "mark_to_market",
+      "coverage_tags": [
+        "pnl_accounting_and_leverage"
+      ],
+      "term_refs": [
+        {
+          "display": "盯市计价",
+          "en": "Mark-to-Market"
+        }
+      ],
+      "learning_goal": "学生能把盯市计价理解成按当前市场价格重估仓位。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_mark_to_market_v1",
+          "stem": "盯市计价最接近下面哪种理解？",
+          "options": [
+            "按当前市场价格重新估值",
+            "只看最初入场价",
+            "只看昨天收盘价"
+          ],
+          "answer": 0,
+          "explanation": "盯市计价关心的是现在如果平仓，仓位大概值多少。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_mark_to_market_v2",
+          "stem": "盯市计价更像在回答哪个问题？",
+          "options": [
+            "如果现在立刻平仓，大概值多少？",
+            "最开始下单时花了多少？",
+            "未来一定会赚多少？"
+          ],
+          "answer": 0,
+          "explanation": "它强调的是按当前市场价格重估，而不是回头看入场成本。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_accounting_models",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step8"
+      ],
+      "concept_key": "accounting_systems",
+      "coverage_tags": [
+        "pnl_accounting_and_leverage"
+      ],
+      "term_refs": [
+        {
+          "display": "订单制系统",
+          "en": "Order Based System"
+        },
+        {
+          "display": "持仓制系统",
+          "en": "Position Based System"
+        }
+      ],
+      "learning_goal": "学生能区分订单制系统和持仓制系统的记账视角。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_accounting_models_v1",
+          "stem": "哪一种系统更关心“净持仓”，而不是“每张单分别看”？",
+          "options": [
+            "订单制系统",
+            "持仓制系统",
+            "两者完全一样"
+          ],
+          "answer": 1,
+          "explanation": "持仓制系统强调的是对冲后的净头寸。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_accounting_models_v2",
+          "stem": "哪一种系统更接近“把每张单分开记录，不急着互相抵消”？",
+          "options": [
+            "订单制系统",
+            "持仓制系统",
+            "两者都不记单"
+          ],
+          "answer": 0,
+          "explanation": "订单制系统就是按每笔订单分别看。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_accounting_models_v3",
+          "stem": "同一组互相对冲的交易里，哪一种系统更先把视角收敛到“净暴露是多少”？",
+          "options": [
+            "持仓制系统",
+            "订单制系统",
+            "两者完全一样"
+          ],
+          "answer": 0,
+          "explanation": "持仓制系统更强调净头寸，因此更快把多笔交易汇总成净暴露视角。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_fifo",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step8"
+      ],
+      "concept_key": "fifo_pairing",
+      "coverage_tags": [
+        "pnl_accounting_and_leverage"
+      ],
+      "term_refs": [
+        {
+          "display": "先进先出",
+          "en": "FIFO"
+        },
+        {
+          "display": "持仓制系统",
+          "en": "Position Based System"
+        }
+      ],
+      "learning_goal": "学生能理解 FIFO 会把最早开的仓位先拿去配对。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_fifo_v1",
+          "stem": "FIFO 最接近下面哪种配对规则？",
+          "options": [
+            "先开的仓位先配对平掉",
+            "最后开的仓位先配对平掉",
+            "随机挑一张单配对"
+          ],
+          "answer": 0,
+          "explanation": "FIFO 就是先进先出，最早开的仓位先被配对。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_fifo_v2",
+          "stem": "如果先开一张旧仓位，再开一张新仓位，随后只平掉一部分，FIFO 先吃掉哪一张？",
+          "options": [
+            "旧仓位",
+            "新仓位",
+            "哪张都行"
+          ],
+          "answer": 0,
+          "explanation": "FIFO 的关键就是先处理最早进入账本的那张仓位。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_fifo_v3",
+          "stem": "在持仓制系统里，FIFO 最直接回答的是哪一个问题？",
+          "options": [
+            "先和哪张旧仓位配对",
+            "未来行情一定往哪边走",
+            "当前买价一定是多少"
+          ],
+          "answer": 0,
+          "explanation": "FIFO 是配对规则，回答的是平仓时先消掉哪张旧仓位。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_leverage_margin",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step8"
+      ],
+      "concept_key": "leverage_margin_relation",
+      "coverage_tags": [
+        "pnl_accounting_and_leverage"
+      ],
+      "term_refs": [
+        {
+          "display": "杠杆",
+          "en": "Leverage"
+        },
+        {
+          "display": "保证金要求",
+          "en": "Margin Requirement"
+        }
+      ],
+      "learning_goal": "学生能理解杠杆定义，以及杠杆倍数和保证金要求之间的反向关系。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_leverage_margin_v1",
+          "stem": "杠杆最贴近下面哪种理解？",
+          "options": [
+            "用较少自有资金控制更大头寸",
+            "保证每笔交易都赚钱",
+            "让价格停止波动"
+          ],
+          "answer": 0,
+          "explanation": "杠杆会放大购买力，也会同步放大风险。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_leverage_margin_v2",
+          "stem": "如果保证金要求下降，杠杆倍数通常会怎样变化？",
+          "options": [
+            "更高",
+            "更低",
+            "一定不变"
+          ],
+          "answer": 0,
+          "explanation": "杠杆倍数等于 1 / 保证金要求，所以保证金要求越低，杠杆越高。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_leverage_margin_v3",
+          "stem": "如果保证金要求是 10%，按本课公式，杠杆倍数最接近多少？",
+          "options": [
+            "10",
+            "0.1",
+            "100"
+          ],
+          "answer": 0,
+          "explanation": "Leverage Ratio = 1 / Margin Requirement，所以 1 / 10% = 10。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_buying_power",
+      "question_type": "single_choice",
+      "linked_steps": [
+        "step8"
+      ],
+      "concept_key": "buying_power",
+      "coverage_tags": [
+        "pnl_accounting_and_leverage"
+      ],
+      "term_refs": [
+        {
+          "display": "购买力",
+          "en": "Buying Power"
+        },
+        {
+          "display": "杠杆",
+          "en": "Leverage"
+        },
+        {
+          "display": "账户权益",
+          "en": "Investor Equity"
+        }
+      ],
+      "learning_goal": "学生能理解 buying power 的定义、公式和 source 例子。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_buying_power_v1",
+          "stem": "购买力最接近下面哪个意思？",
+          "options": [
+            "在当前杠杆条件下最多能控制多大头寸",
+            "已经实现的总收益",
+            "市场深度的别名"
+          ],
+          "answer": 0,
+          "explanation": "购买力把杠杆倍数和账户权益连起来，说明可控制的头寸规模。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_buying_power_v2",
+          "stem": "本课里 buying power 最接近下面哪条公式？",
+          "options": [
+            "Leverage Ratio x Investor Equity",
+            "Margin Requirement / Investor Equity",
+            "Bid Price x Ask Size"
+          ],
+          "answer": 0,
+          "explanation": "Buying Power = Leverage Ratio x Investor Equity。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_buying_power_v3",
+          "stem": "如果账户初始入金是 100,000，杠杆是 20:1，购买力最接近多少？",
+          "options": [
+            "2,000,000",
+            "200,000",
+            "20,000"
+          ],
+          "answer": 0,
+          "explanation": "购买力 = 20 x 100,000 = 2,000,000。",
+          "estimated_seconds": 8
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_system_pipeline",
+      "question_type": "mechanism_trace",
+      "linked_steps": [
+        "step1",
+        "step2",
+        "step4"
+      ],
+      "concept_key": "algorithmic_system_pipeline",
+      "coverage_tags": [
+        "algo_system_motivation",
+        "algo_definition_and_objectives",
+        "data_and_infrastructure_stack"
+      ],
+      "term_refs": [
+        {
+          "display": "算法交易",
+          "en": "Algorithmic Trading"
+        },
+        {
+          "display": "决策",
+          "en": "Decision Making"
+        },
+        {
+          "display": "执行",
+          "en": "Execution"
+        },
+        {
+          "display": "订单路由系统",
+          "en": "Order Routing System"
+        },
+        {
+          "display": "订单管理系统",
+          "en": "Order Management System"
+        }
+      ],
+      "learning_goal": "学生能从动机、定义到系统支撑完整解释算法交易为什么是系统工程。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_system_pipeline_v1",
+          "stem": "为什么本课把算法交易看成“从判断到执行再到系统支撑”的完整链路，而不是单纯的下单工具？",
+          "prompt_blocks": [
+            "先说明人工交易为什么会在判断和执行之间丢失机会。",
+            "再说明算法交易至少包含哪两个核心环节。",
+            "最后补上让系统真正跑起来所需的数据与基础设施。"
+          ],
+          "rubric_points": [
+            "指出速度、稳定性或可重复性是算法交易动机的一部分。",
+            "准确区分决策与执行。",
+            "提到数据、实时行情、历史数据、订单路由系统、OMS、延迟或网络安全中的至少三个部件。"
+          ],
+          "reference_answer": [
+            "算法交易的动机先来自执行现实：人即使看懂机会，也可能因为下单慢、犹豫或标准不一致而错过机会。",
+            "它至少包含决策和执行两个环节。决策负责形成买卖判断，执行负责把判断送进市场形成真实订单。",
+            "要让这条链路稳定运行，还需要数据收集、存储、管理、处理，以及实时行情、历史数据、订单路由系统、OMS、连接、延迟控制和网络安全等基础设施。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_system_pipeline_v2",
+          "stem": "围绕“数据是燃料”这句话，解释它为什么不是一句装饰性的比喻。",
+          "prompt_blocks": [
+            "说明没有数据时会卡住哪类环节。",
+            "说明数据工作为什么不仅仅是拿到一张表。",
+            "把数据链路和执行链路联系起来。"
+          ],
+          "rubric_points": [
+            "指出没有数据就难以稳定支持决策或执行。",
+            "说明数据至少涉及收集、清洗、存储、管理或处理。",
+            "把数据基础和后续执行系统联系起来。"
+          ],
+          "reference_answer": [
+            "这句比喻的意思是：即使策略逻辑存在，没有数据输入，系统也很难形成判断、更新信号或稳定执行。",
+            "数据工作不是拿到一张数字表就结束，还包括找源、拿权限、清洗格式、处理不同类型的数据，并保证处理速度和可靠性。",
+            "只有当数据链路稳定时，后面的连接、订单路由和 OMS 才有机会把判断真正送进市场。"
+          ],
+          "estimated_seconds": 110
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_trading_styles",
+      "question_type": "compare_and_contrast",
+      "linked_steps": [
+        "step4"
+      ],
+      "concept_key": "trading_styles_compare",
+      "coverage_tags": [
+        "trading_styles_and_timeframes"
+      ],
+      "term_refs": [
+        {
+          "display": "基本面分析",
+          "en": "Fundamental Analysis"
+        },
+        {
+          "display": "技术分析",
+          "en": "Technical Analysis"
+        },
+        {
+          "display": "量化分析",
+          "en": "Quantitative Analysis"
+        }
+      ],
+      "learning_goal": "学生能真正区分基本面、技术和量化三类交易视角。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_trading_styles_v1",
+          "stem": "请比较基本面分析、技术分析和量化分析的主要观察对象或方法。",
+          "prompt_blocks": [
+            "分别说明三者主要看什么。",
+            "指出哪一类更强调规则、统计和模型。",
+            "用一句话说明三者不是同一种输入。"
+          ],
+          "rubric_points": [
+            "基本面分析对应公司、行业、财务或管理层。",
+            "技术分析对应图形和趋势。",
+            "量化分析对应规则、统计套利、NLP 或机器学习。"
+          ],
+          "reference_answer": [
+            "基本面分析关注公司、行业、财务和管理层等基本面信息。",
+            "技术分析关注图形与趋势，重点是价格行为。",
+            "量化分析更强调规则、统计和模型，包括规则策略、套利、NLP 和机器学习，因此三者的观察对象和方法并不相同。"
+          ],
+          "estimated_seconds": 100
+        },
+        {
+          "question_id": "q_long_trading_styles_v2",
+          "stem": "如果一个人分别看财务报表、K 线趋势、规则模型和统计套利，请把这些线索归到对应的交易视角，并说明为什么量化分析和前两者不同。",
+          "prompt_blocks": [
+            "把财务报表这类线索归类。",
+            "把图形和趋势这类线索归类。",
+            "把规则模型、统计套利这类线索归类。",
+            "最后说明量化分析为什么更强调规则和模型。"
+          ],
+          "rubric_points": [
+            "财务报表、公司与行业归到基本面分析。",
+            "图形和趋势归到技术分析。",
+            "规则模型和统计套利归到量化分析。",
+            "说明量化分析更强调规则、统计和模型。"
+          ],
+          "reference_answer": [
+            "看财务报表、公司和行业，更接近基本面分析；看 K 线、图形和趋势，更接近技术分析；看规则模型和统计套利，更接近量化分析。",
+            "量化分析和前两者不同的地方在于，它不只是换一种观察对象，而是更强调把规则、统计和模型写成可重复运行的框架。"
+          ],
+          "estimated_seconds": 110
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_timeframes",
+      "question_type": "compare_and_contrast",
+      "linked_steps": [
+        "step4"
+      ],
+      "concept_key": "timeframes_compare",
+      "coverage_tags": [
+        "trading_styles_and_timeframes"
+      ],
+      "term_refs": [
+        {
+          "display": "长期",
+          "en": "Long Term"
+        },
+        {
+          "display": "中短期",
+          "en": "Short Term"
+        },
+        {
+          "display": "日内",
+          "en": "Intraday"
+        },
+        {
+          "display": "高频",
+          "en": "High Frequency"
+        }
+      ],
+      "learning_goal": "学生能把长期、中短期、日内、高频四类时间尺度真正区分开。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_timeframes_v1",
+          "stem": "请把长期、中短期、日内和高频按时间尺度从慢到快排开，并解释它们各自的持有范围。",
+          "prompt_blocks": [
+            "先给出从慢到快的排序。",
+            "再分别说明它们的时间范围。",
+            "最后指出哪两类最容易被混淆。"
+          ],
+          "rubric_points": [
+            "排序为长期、中短期、日内、高频。",
+            "长期对应月到年，中短期对应天到月，日内对应秒到小时。",
+            "说明高频是在日内基础上继续压缩时间尺度。"
+          ],
+          "reference_answer": [
+            "从慢到快可以排成：长期、中短期、日内、高频。",
+            "长期通常以月到年计，中短期以天到月计，日内以秒到小时计，而高频则把时间尺度进一步压缩到更短的层级。",
+            "最容易混淆的是日内和高频，因为两者都很短，但高频更强调更极端的速度。"
+          ],
+          "estimated_seconds": 100
+        },
+        {
+          "question_id": "q_long_timeframes_v2",
+          "stem": "请用一句话区分长期、中短期、日内和高频，并解释为什么“日内”和“高频”不是同一个概念。",
+          "prompt_blocks": [
+            "分别给出四类时间尺度的范围。",
+            "说明为什么日内和高频最容易混淆。",
+            "最后指出高频相对日内又多推进了什么。"
+          ],
+          "rubric_points": [
+            "给出四类时间尺度的大致范围。",
+            "指出日内和高频都很短，但不完全相同。",
+            "说明高频是把速度继续压缩到更短层级。"
+          ],
+          "reference_answer": [
+            "长期看的是月到年，中短期看的是天到月，日内看的是秒到小时，高频则把时间尺度继续压缩到更短。",
+            "日内和高频容易混淆，是因为两者都发生在很短周期里，但高频更强调速度进一步压缩，而不是只要当天平仓就算高频。"
+          ],
+          "estimated_seconds": 100
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_equilibrium_walkthrough",
+      "question_type": "worked_example",
+      "linked_steps": [
+        "step5"
+      ],
+      "concept_key": "equilibrium_matching_walkthrough",
+      "coverage_tags": [
+        "supply_demand_equilibrium_matching"
+      ],
+      "term_refs": [
+        {
+          "display": "市场均衡",
+          "en": "Market Equilibrium"
+        },
+        {
+          "display": "撮合",
+          "en": "Order Matching"
+        }
+      ],
+      "learning_goal": "学生能用本课图和语言解释价格形成。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_equilibrium_walkthrough_v1",
+          "stem": "用 lesson 中的均衡图做一个完整讲解：为什么价格不是被宣布出来的，而是在供需关系和撮合过程中形成的？",
+          "prompt_blocks": [
+            "先说明供给和需求随价格变化的大方向。",
+            "解释均衡点在图上表示什么，本课示例大致落在哪里。",
+            "最后说明为什么有了均衡概念之后，还必须引入撮合。"
+          ],
+          "rubric_points": [
+            "说明供给通常随价格上升而增加，需求通常相反。",
+            "指出本课图示中的均衡大致在价格 12、数量 2 附近。",
+            "说清楚撮合负责让报价真正配对成交。"
+          ],
+          "reference_answer": [
+            "当价格变高时，通常会有更多卖方愿意出现，所以供给往上走；而买方通常会更谨慎，所以需求往下走。",
+            "两条力量在图上的交点就是均衡位置，本课示例大致在价格 12、数量 2 附近，表示买卖双方在这里最接近平衡。",
+            "但均衡只是解释压力关系，真正让交易发生的是撮合。买方和卖方的报价只有在规则下接上，才会形成真实成交，价格也是在这个过程中被做出来的。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_equilibrium_walkthrough_v2",
+          "stem": "假设当前价格明显高于 lesson 图中的均衡位置，请做一个“市场接下来会怎样调整”的口头推演。",
+          "prompt_blocks": [
+            "说明买卖双方谁更积极。",
+            "说明这种失衡为什么会给价格带来调整压力。",
+            "补上撮合在这个过程中扮演的角色。"
+          ],
+          "rubric_points": [
+            "指出高于均衡时更可能是卖方偏多。",
+            "说明买方会退后，价格因此面临回到均衡附近的压力。",
+            "说明调整是通过具体撮合体现出来的。"
+          ],
+          "reference_answer": [
+            "如果价格高于均衡位置，通常会先看到卖方更积极，而买方相对退后。",
+            "这种失衡会让价格承受向均衡附近回落的压力，因为当前价格下愿意买的人变少、愿意卖的人变多。",
+            "但价格调整不是一句话决定的，而是在买卖报价不断被撮合的过程中逐步显现出来。"
+          ],
+          "estimated_seconds": 100
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_order_book_execution",
+      "question_type": "worked_example",
+      "linked_steps": [
+        "step6"
+      ],
+      "concept_key": "order_book_structure_walkthrough",
+      "coverage_tags": [
+        "position_direction_and_order_book"
+      ],
+      "term_refs": [
+        {
+          "display": "订单簿",
+          "en": "Order Book"
+        },
+        {
+          "display": "盘口顶端",
+          "en": "Top of the Book"
+        },
+        {
+          "display": "市场深度",
+          "en": "Market Depth"
+        },
+        {
+          "display": "累计订单簿",
+          "en": "Cumulative Book"
+        }
+      ],
+      "learning_goal": "学生能把方向风险和订单簿结构放在同一个执行视角下解释。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_order_book_execution_v1",
+          "stem": "请从“挂单地图”的角度解释：为什么订单簿不是历史成交表，而是执行判断的重要输入？",
+          "prompt_blocks": [
+            "先说明买盘簿、卖盘簿和盘口顶端分别告诉你什么。",
+            "再解释市场深度和累计订单簿为什么重要。",
+            "最后用一句话说明这和执行判断有什么关系。"
+          ],
+          "rubric_points": [
+            "准确区分买盘簿和卖盘簿。",
+            "说明盘口顶端是离成交最近的位置。",
+            "说明深度和累计数量有助于判断市场厚薄。"
+          ],
+          "reference_answer": [
+            "订单簿不是把已经成交过的价格列给你看，而是展示此刻市场参与者愿意怎样交易。买盘簿显示买方愿意出的价格和数量，卖盘簿显示卖方愿意接受的价格和数量，盘口顶端就是离成交最近的位置。",
+            "市场深度和累计订单簿能告诉你挂单是否够厚。如果很多层级都有数量，市场更厚；如果很薄，大单更容易把价格推走。",
+            "因此订单簿是执行判断的重要输入，因为它告诉你此刻市场有没有足够的对手盘和厚度。"
+          ],
+          "estimated_seconds": 110
+        },
+        {
+          "question_id": "q_long_order_book_execution_v2",
+          "stem": "请把多头、空头和卖空风险，放进订单簿视角里做一个解释。",
+          "prompt_blocks": [
+            "先区分多头和空头的方向逻辑。",
+            "说明为什么卖空在价格持续上涨时风险会变大。",
+            "再说明盘口顶端和市场深度为什么会影响回补压力。"
+          ],
+          "rubric_points": [
+            "明确多头是先买后卖，空头是先卖后买。",
+            "指出卖空面对价格上涨时回补更贵。",
+            "说明盘口顶端和深度会影响回补是否容易。"
+          ],
+          "reference_answer": [
+            "多头的方向是先买后卖，空头的方向是先卖后买。卖空则是在未必先持有资产的情况下，先借来卖出，再买回归还。",
+            "如果价格持续上涨，空头回补成本会越来越高，所以卖空风险会迅速放大。",
+            "而回补是否容易，又会受到盘口顶端和市场深度影响：如果离成交最近的位置数量很薄，回补时更容易被价格推着走。"
+          ],
+          "estimated_seconds": 110
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_quote_math",
+      "question_type": "formula_apply",
+      "linked_steps": [
+        "step7"
+      ],
+      "concept_key": "quote_math",
+      "coverage_tags": [
+        "execution_quotes_orders_slippage"
+      ],
+      "term_refs": [
+        {
+          "display": "买量",
+          "en": "Bid Size"
+        },
+        {
+          "display": "卖量",
+          "en": "Ask Size"
+        },
+        {
+          "display": "中间价",
+          "en": "Mid Price"
+        },
+        {
+          "display": "百分比价差",
+          "en": "Percentage Spread"
+        }
+      ],
+      "learning_goal": "学生能读懂盘口报价与数量，并完成 mid price 和 percentage spread 的解释与计算。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_quote_math_v1",
+          "stem": "已知盘口顶端买价为 24、买量为 200，卖价为 25、卖量为 150。请解释这些数字各代表什么，并计算中间价和百分比价差。",
+          "prompt_blocks": [
+            "先说明买价、买量、卖价、卖量分别表示什么。",
+            "再计算中间价。",
+            "最后使用百分比价差公式完成计算，并解释它为什么比绝对价差更便于比较。"
+          ],
+          "rubric_points": [
+            "准确解释 bid size 和 ask size 的含义。",
+            "中间价正确算出为 24.5。",
+            "百分比价差正确算出约 4.08%，并说明它是相对尺度。"
+          ],
+          "reference_answer": [
+            "买价 24 表示买方愿意出的最高价，买量 200 表示在该买价上愿意买的数量；卖价 25 表示卖方愿意接受的最低价，卖量 150 表示在该卖价上愿意卖的数量。",
+            "中间价 = (24 + 25) / 2 = 24.5。",
+            "百分比价差 = (25 - 24) / 24.5 x 100% ≈ 4.08%。它比绝对价差更便于比较不同价格水平的标的。"
+          ],
+          "estimated_seconds": 130
+        },
+        {
+          "question_id": "q_long_quote_math_v2",
+          "stem": "请写出百分比价差公式，并解释为什么它要用中间价作分母，而不只停留在绝对价差。",
+          "prompt_blocks": [
+            "先写出 Percentage Spread 的公式。",
+            "再解释中间价在公式里扮演什么角色。",
+            "最后说明为什么这样更便于比较不同价格水平。"
+          ],
+          "rubric_points": [
+            "公式写成 (Ask Price - Bid Price) / Mid Price x 100% 或等价形式。",
+            "说明中间价是买价和卖价的平均，提供相对尺度。",
+            "说明 percentage spread 比绝对价差更适合跨价格水平比较。"
+          ],
+          "reference_answer": [
+            "百分比价差可写成 (Ask Price - Bid Price) / Mid Price x 100%，也可以写成 2(Ask Price - Bid Price) / (Ask Price + Bid Price) x 100%。",
+            "这里用中间价作分母，是把绝对价差放回当前价格水平里衡量，因此得到的是相对尺度，而不只是一个孤立的价格差。",
+            "这样做的好处是，不同价格水平的标的也能更公平地比较交易成本。"
+          ],
+          "estimated_seconds": 120
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_order_type_logic",
+      "question_type": "compare_and_contrast",
+      "linked_steps": [
+        "step7"
+      ],
+      "concept_key": "order_type_logic",
+      "coverage_tags": [
+        "execution_quotes_orders_slippage"
+      ],
+      "term_refs": [
+        {
+          "display": "市价单",
+          "en": "Market Order"
+        },
+        {
+          "display": "限价单",
+          "en": "Limit Order"
+        },
+        {
+          "display": "止损单",
+          "en": "Stop Order"
+        }
+      ],
+      "learning_goal": "学生能比较 market、limit、stop order 在成交优先级、价格边界和触发条件上的差别。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_order_type_logic_v1",
+          "stem": "请比较市价单、限价单和止损单在成交优先级、价格边界和触发条件上的差别。",
+          "prompt_blocks": [
+            "说明哪一种最优先追求立刻成交。",
+            "说明哪一种最强调价格边界。",
+            "说明哪一种要先等 stop price 被触发。"
+          ],
+          "rubric_points": [
+            "指出市价单优先追求立即成交。",
+            "指出限价单优先守住价格边界，但可能不立刻成交。",
+            "指出止损单先等待触发，再开始执行。"
+          ],
+          "reference_answer": [
+            "市价单最优先追求尽快成交，所以它的成交优先级最高，但不强调先守住某个价格边界。",
+            "限价单最强调价格边界，因此它更适合“不愿意超过某个价格”的情形，但可能因为价格没有回到该边界而暂时不成交。",
+            "止损单则先等待 stop price 被触发，一旦触发才开始执行，因此它既不像市价单那样立刻吃单，也不像限价单那样从一开始就固定价格边界。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_order_type_logic_v2",
+          "stem": "如果你的目标分别是：1) 先成交；2) 不接受超过某个价格边界；3) 先等 stop price 被碰到。请分别匹配合适的订单类型，并说明理由。",
+          "prompt_blocks": [
+            "把“先成交”匹配到一种订单类型。",
+            "把“守住价格边界”匹配到一种订单类型。",
+            "把“等待 stop price”匹配到一种订单类型。"
+          ],
+          "rubric_points": [
+            "把先成交匹配到市价单。",
+            "把价格边界匹配到限价单。",
+            "把等待 stop price 匹配到止损单。"
+          ],
+          "reference_answer": [
+            "如果目标是先成交，对应的是市价单，因为它优先吃到当前最优对手盘。",
+            "如果目标是不接受超过某个价格边界，对应的是限价单，因为它优先守住价格条件。",
+            "如果目标是先等 stop price 被碰到，再让订单开始执行，对应的是止损单。"
+          ],
+          "estimated_seconds": 110
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_mark_to_market_pnl",
+      "question_type": "worked_example",
+      "linked_steps": [
+        "step8"
+      ],
+      "concept_key": "mark_to_market_and_pnl",
+      "coverage_tags": [
+        "pnl_accounting_and_leverage"
+      ],
+      "term_refs": [
+        {
+          "display": "盈亏",
+          "en": "PnL"
+        },
+        {
+          "display": "盯市计价",
+          "en": "Mark-to-Market"
+        }
+      ],
+      "learning_goal": "学生能把 long/short 的 PnL 方向和盯市计价读法讲清楚。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_mark_to_market_pnl_v1",
+          "stem": "沿用本课的 ABC 例子：你持有 100 股 ABC，当前 bid 是 9.5、ask 是 10.5。请计算 Mark-to-Market value，并说明为什么多头估值会先看 bid。",
+          "prompt_blocks": [
+            "先按当前市场价格计算这 100 股的盯市价值。",
+            "再说明为什么多头仓位的即时估值先看当前 bid，而不是 ask。",
+            "最后用一句话说明这和 mark-to-market 的定义有什么关系。"
+          ],
+          "rubric_points": [
+            "正确算出 100 x 9.5 = 950。",
+            "说明多头若现在卖出，最先能对到的是市场当前 bid。",
+            "说明 mark-to-market 是按当前市场价格重估，而不是按历史入场价。"
+          ],
+          "reference_answer": [
+            "这 100 股 ABC 的盯市价值 = 100 x 9.5 = 950。",
+            "原因是对多头来说，如果你现在要立刻卖出，最先能对上的通常是市场当前的 bid，所以 mark-to-market 会先看 bid 而不是 ask。",
+            "这正是盯市计价的定义：仓位按当前市场可以立即成交的价格重估，而不是继续停留在历史入场成本上。"
+          ],
+          "estimated_seconds": 110
+        },
+        {
+          "question_id": "q_long_mark_to_market_pnl_v2",
+          "stem": "请结合本课的 long / short PnL 公式，解释多头和空头各自在什么价格方向下更容易出现正的未实现盈亏。",
+          "prompt_blocks": [
+            "先写出多头和空头的未实现 PnL 公式结构。",
+            "再解释多头什么时候更容易为正。",
+            "最后解释空头什么时候更容易为正，并把它和先卖后买联系起来。"
+          ],
+          "rubric_points": [
+            "正确引用两条 PnL 公式结构。",
+            "指出多头在 P_bid 高于 P_entry 时更可能为正。",
+            "指出空头在 P_ask 低于 P_entry 时更可能为正，并联系先卖后买。"
+          ],
+          "reference_answer": [
+            "多头未实现盈亏写成 Quantity x (P_bid - P_entry)，空头未实现盈亏写成 -Quantity x (P_ask - P_entry)。",
+            "所以多头在当前 bid 高于入场价时更容易出现正的未实现盈亏。",
+            "空头则在当前 ask 低于入场价时更容易出现正的未实现盈亏，因为空头是先卖后买，回补价格越低通常越有利。"
+          ],
+          "estimated_seconds": 110
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_accounting_models",
+      "question_type": "short_explain",
+      "linked_steps": [
+        "step8"
+      ],
+      "concept_key": "order_based_vs_position_based",
+      "coverage_tags": [
+        "pnl_accounting_and_leverage"
+      ],
+      "term_refs": [
+        {
+          "display": "订单制系统",
+          "en": "Order Based System"
+        },
+        {
+          "display": "持仓制系统",
+          "en": "Position Based System"
+        }
+      ],
+      "learning_goal": "学生能专门解释订单制系统和持仓制系统的区别。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_accounting_models_v1",
+          "stem": "请专门解释：订单制系统和持仓制系统在看待交易记录时，视角有什么不同？",
+          "prompt_blocks": [
+            "先说明订单制系统关注什么。",
+            "再说明持仓制系统关注什么。",
+            "最后解释为什么同一组交易记录在两种系统下的阅读方式不同。"
+          ],
+          "rubric_points": [
+            "指出订单制系统更强调每张单分别存在。",
+            "指出持仓制系统更强调净头寸。",
+            "说明两种系统的差异来自记录视角不同。"
+          ],
+          "reference_answer": [
+            "订单制系统更强调每一笔订单分别记录和查看，它们不会急着彼此抵消。",
+            "持仓制系统更强调净持仓，重点是对冲后的净头寸而不是每张单本身。",
+            "因此同一组交易记录在订单制里更像一串独立单子，在持仓制里更像一个不断变化的净暴露。"
+          ],
+          "estimated_seconds": 100
+        },
+        {
+          "question_id": "q_long_accounting_models_v2",
+          "stem": "沿用本课例子 `#1 buy 2 at 123 / #2 sell 1 at 124 / #3 sell 1 at 125`，请解释订单制系统和持仓制系统为什么会读出不同的 PnL 状态。",
+          "prompt_blocks": [
+            "先说明订单制系统会怎样看这三笔交易。",
+            "再说明持仓制系统为什么会引出 FIFO 配对。",
+            "最后指出本课给出的 order-based unrealized PnL 和 position-based realized PnL 分别是什么。"
+          ],
+          "rubric_points": [
+            "说明订单制把三笔交易继续当成独立记录。",
+            "说明持仓制更关注净头寸，并会引出 FIFO 配对。",
+            "指出 order-based unrealized PnL 为 3 + 2 x (bid - ask)，position-based with FIFO 在净头寸归零时 realized PnL 为 3。"
+          ],
+          "reference_answer": [
+            "在订单制系统里，这三笔交易会继续被当成独立记录，因此本课把它的未实现 PnL 写成 2 x (bid - 123) + (124 - ask) + (125 - ask) = 3 + 2 x (bid - ask)。这里的重点不是净仓位，而是每张单都还在账上。",
+            "在持仓制系统里，系统更关心净头寸，所以会自然引出 FIFO：后面的两笔卖出先去匹配最早开的那 2 股买单。",
+            "因此当净头寸回到 0 时，position-based with FIFO 会把 PnL realized 成 3。这说明两种系统不只是叫法不同，而是会改变你怎样阅读同一组交易记录。"
+          ],
+          "estimated_seconds": 110
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_fifo_accounting",
+      "question_type": "worked_example",
+      "linked_steps": [
+        "step8"
+      ],
+      "concept_key": "fifo_pairing_and_realized_pnl",
+      "coverage_tags": [
+        "pnl_accounting_and_leverage"
+      ],
+      "term_refs": [
+        {
+          "display": "先进先出",
+          "en": "FIFO"
+        },
+        {
+          "display": "持仓制系统",
+          "en": "Position Based System"
+        }
+      ],
+      "learning_goal": "学生能根据 FIFO 规则完成配对，并说明 realized PnL 会先落在哪张仓位上。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_fifo_accounting_v1",
+          "stem": "沿用本课例子 `#1 buy 2 at 123 / #2 sell 1 at 124 / #3 sell 1 at 125`。在持仓制系统且按 FIFO 时，后面两笔卖出会先配对哪部分仓位？净头寸归零时 realized PnL 是多少？",
+          "prompt_blocks": [
+            "先说明 FIFO 会把哪一部分旧仓位先拿来配对。",
+            "再分别算出两次卖出对应的 realized PnL。",
+            "最后给出净头寸归零时的 realized PnL 合计。"
+          ],
+          "rubric_points": [
+            "指出两次卖出都先去匹配最早开的那 2 股、价格 123 的买入仓位。",
+            "分别算出 124 - 123 = 1 和 125 - 123 = 2。",
+            "合计 realized PnL 为 3。"
+          ],
+          "reference_answer": [
+            "FIFO 表示先开的仓位先被配对，因此 `#2 sell 1 at 124` 会先匹配 `#1 buy 2 at 123` 里的第一股，`#3 sell 1 at 125` 会继续匹配 `#1` 里的第二股。",
+            "两次 realized PnL 分别是 124 - 123 = 1 和 125 - 123 = 2。",
+            "所以当净头寸归零时，realized PnL 合计为 3。"
+          ],
+          "estimated_seconds": 130
+        },
+        {
+          "question_id": "q_long_fifo_accounting_v2",
+          "stem": "还是同一组交易。为什么本课会说 position-based with FIFO 在净头寸为 0 时把 PnL realized 成 3，而不是继续留成 unrealized？",
+          "prompt_blocks": [
+            "先说明 FIFO 的配对顺序。",
+            "再解释持仓制为什么在净头寸归零时会把结果视为 realized。",
+            "最后给出这组交易的 realized PnL。"
+          ],
+          "rubric_points": [
+            "说明两笔卖出都按 FIFO 匹配到最早开的 123 买单。",
+            "说明持仓制看的是净头寸，因此净头寸归零时结果被实现。",
+            "指出 realized PnL 为 3。"
+          ],
+          "reference_answer": [
+            "在 FIFO 下，`#2` 和 `#3` 这两笔卖出都会先去匹配最早开的 `#1 buy 2 at 123`。",
+            "持仓制系统关心的是净头寸，所以当这两股都被卖掉后，净头寸回到 0，系统会把这部分结果记成 realized，而不是继续放在未实现里。",
+            "对应的 realized PnL 是 (124 - 123) + (125 - 123) = 3。"
+          ],
+          "estimated_seconds": 120
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_leverage_mechanics",
+      "question_type": "formula_apply",
+      "linked_steps": [
+        "step8"
+      ],
+      "concept_key": "leverage_mechanics",
+      "coverage_tags": [
+        "pnl_accounting_and_leverage"
+      ],
+      "term_refs": [
+        {
+          "display": "杠杆",
+          "en": "Leverage"
+        },
+        {
+          "display": "保证金要求",
+          "en": "Margin Requirement"
+        },
+        {
+          "display": "购买力",
+          "en": "Buying Power"
+        }
+      ],
+      "learning_goal": "学生能按本课公式计算杠杆倍数和购买力，并解释数字含义。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_leverage_mechanics_v1",
+          "stem": "沿用本课例子：如果投资者初始入金是 100,000，账户杠杆是 20:1，请计算 buying power，并解释这个数字代表什么。",
+          "prompt_blocks": [
+            "先写出 buying power 的计算。",
+            "再计算购买力。",
+            "最后说明为什么机会和风险会一起放大。"
+          ],
+          "rubric_points": [
+            "购买力正确算出为 2,000,000。",
+            "说明杠杆会同时放大可控制头寸和风险。"
+          ],
+          "reference_answer": [
+            "Buying Power = Leverage Ratio x Investor Equity，所以这里是 20 x 100,000 = 2,000,000。",
+            "这表示 100,000 的自有权益，在 20:1 杠杆下最多能控制价值 2,000,000 的头寸。",
+            "因此市场朝有利方向动时收益会被放大，朝不利方向动时风险也会一起被放大。"
+          ],
+          "estimated_seconds": 110
+        },
+        {
+          "question_id": "q_long_leverage_mechanics_v2",
+          "stem": "如果某账户等价于 20:1 杠杆，请反推出 margin requirement，并在账户权益仍是 100,000 时再算一次 buying power。",
+          "prompt_blocks": [
+            "先计算杠杆倍数。",
+            "再反推保证金要求。",
+            "再计算购买力。",
+            "最后说明为什么这和 source 里的 buying-power 例子是一致的。"
+          ],
+          "rubric_points": [
+            "正确使用 20:1 作为杠杆倍数 20。",
+            "反推出保证金要求为 5%。",
+            "购买力正确算出为 2,000,000。"
+          ],
+          "reference_answer": [
+            "20:1 表示杠杆倍数就是 20。",
+            "由 Leverage Ratio = 1 / Margin Requirement 可反推 Margin Requirement = 1 / 20 = 5%。",
+            "在账户权益仍是 100,000 时，Buying Power = 20 x 100,000 = 2,000,000，所以这和 source 里的 buying-power 例子完全一致。"
+          ],
+          "estimated_seconds": 110
+        }
+      ]
+    }
+  ]
+}

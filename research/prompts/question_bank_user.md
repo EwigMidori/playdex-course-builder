@@ -1,0 +1,56 @@
+请基于以下 lesson 材料，生成一个结构化题库 JSON。
+
+目标语言：
+{{target_language}}
+
+lesson_id：
+{{lesson_id}}
+
+要求：
+- 同时生成 `flashcard_families` 和 `longform_families`
+- 题目必须能关联到 `linked_steps`
+- 同一个 family 必须至少给出 2 个 variants
+- 题目应覆盖整节课，而不是只盯一个 step
+- `flashcard` 要快
+- `longform` 要能真正检查理解与表达
+- 如果涉及公式，务必保证数值自洽
+- 不要生成和输入材料脱节的题
+- 输出里必须包含 `coverage_map`
+- 每个 family 必须带 `coverage_tags`
+- 每个 family 最好带 `term_refs`，注明关键术语的英文
+- `coverage_map` 必须由输入中的 `coverage checklist`、`source outline`、`lesson map` 驱动
+- `coverage_tags`、`concept_key` 应尽量复用或可追踪地归并这些输入中的关键项
+- 不要写死任何学科、固定主题列表或固定 slide bucket
+- 请把关键覆盖落实到 `coverage_map` 里，不要只在题目里隐含覆盖
+
+源材料：
+
+<COVERAGE_CHECKLIST>
+{{coverage_checklist}}
+</COVERAGE_CHECKLIST>
+
+<SOURCE_OUTLINE>
+{{source_outline}}
+</SOURCE_OUTLINE>
+
+<LESSON_MAP>
+{{lesson_map}}
+</LESSON_MAP>
+
+<GUIDED_STORY_MANIFEST>
+{{guided_story_manifest}}
+</GUIDED_STORY_MANIFEST>
+
+<GUIDED_STORY_STEPS>
+{{guided_story_steps}}
+</GUIDED_STORY_STEPS>
+
+<PLAIN_TEXT>
+{{plain_text}}
+</PLAIN_TEXT>
+
+<RELATED_IMPORTANT>
+{{related_important}}
+</RELATED_IMPORTANT>
+
+请直接输出 JSON，不要加解释。

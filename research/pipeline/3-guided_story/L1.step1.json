@@ -1,0 +1,351 @@
+{
+  "lesson_id": "L1",
+  "sequence_id": "step1",
+  "mode": "guided_story",
+  "source": {
+    "plain_text": "pipeline/1-plain/L1/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ]
+  },
+  "screens": [
+    {
+      "id": "s001",
+      "type": "narration",
+      "lines": [
+        "你盯着屏幕。",
+        "一只股票，突然开始往上冲。"
+      ]
+    },
+    {
+      "id": "s002",
+      "type": "narration",
+      "lines": [
+        "你心里立刻冒出一句话：",
+        "“这能买。”"
+      ]
+    },
+    {
+      "id": "s003",
+      "type": "narration",
+      "lines": [
+        "你已经做出判断了。",
+        "问题是，判断之后会发生什么？"
+      ]
+    },
+    {
+      "id": "s004",
+      "type": "narration",
+      "lines": [
+        "你打开交易软件。",
+        "输入价格，输入数量，点确认。"
+      ]
+    },
+    {
+      "id": "s005",
+      "type": "narration",
+      "lines": [
+        "等订单真正送进市场的时候，",
+        "价格已经不是刚才那个价格了。"
+      ]
+    },
+    {
+      "id": "s006",
+      "type": "narration",
+      "lines": [
+        "这时候你会很自然地想：",
+        "“是不是我判断错了？”"
+      ]
+    },
+    {
+      "id": "s007",
+      "type": "narration",
+      "lines": [
+        "但很多时候，",
+        "你不是错在判断。"
+      ]
+    },
+    {
+      "id": "s008",
+      "type": "narration",
+      "lines": [
+        "你是错在来不及。",
+        "市场不会停下来等你。"
+      ]
+    },
+    {
+      "id": "s009",
+      "type": "exercise",
+      "lines": [
+        "先想一下。",
+        "刚才那次失败，最可能卡在哪一步？"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "选一个最贴近刚才情景的答案。",
+        "options": [
+          "信息太少",
+          "判断和执行之间有延迟",
+          "交易软件颜色不好看"
+        ],
+        "answer": 1,
+        "explanation": "这段要强调的不是信息不足，而是看懂机会后，动作不够快。"
+      }
+    },
+    {
+      "id": "s010",
+      "type": "narration",
+      "lines": [
+        "交易里有一件很残酷的事：",
+        "你看懂了，不等于你做到了。"
+      ]
+    },
+    {
+      "id": "s011",
+      "type": "narration",
+      "lines": [
+        "再往前一步。",
+        "假设现在有两个人。"
+      ]
+    },
+    {
+      "id": "s012",
+      "type": "narration",
+      "lines": [
+        "他们看到同样的行情，",
+        "也做出同样的判断。"
+      ]
+    },
+    {
+      "id": "s013",
+      "type": "narration",
+      "lines": [
+        "第一个人手动下单。",
+        "第二个人让程序自动执行。"
+      ]
+    },
+    {
+      "id": "s014",
+      "type": "narration",
+      "lines": [
+        "谁更容易抓住刚才那个机会？",
+        "通常不是更聪明的那个。"
+      ]
+    },
+    {
+      "id": "s015",
+      "type": "narration",
+      "lines": [
+        "而是更快、",
+        "也更稳定的那个。"
+      ]
+    },
+    {
+      "id": "s016",
+      "type": "exercise",
+      "lines": [
+        "现在你已经能感觉到差别了。",
+        "那差别到底是什么？"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "两个人判断一样时，结果更可能被什么拉开？",
+        "options": [
+          "执行速度和稳定性",
+          "谁更会背术语",
+          "谁看的屏幕更大"
+        ],
+        "answer": 0,
+        "explanation": "这里不是在比较知识炫耀，而是在比较能不能把同一个判断稳定落地。"
+      }
+    },
+    {
+      "id": "s018",
+      "type": "narration",
+      "lines": [
+        "它先解决的是另一个更现实的问题：",
+        "如果我已经有判断，我能不能稳定地把它做出来？"
+      ]
+    },
+    {
+      "id": "s019",
+      "type": "narration",
+      "lines": [
+        "这件事听上去没那么浪漫。",
+        "但它非常重要。"
+      ]
+    },
+    {
+      "id": "s020",
+      "type": "narration",
+      "lines": [
+        "因为人会慢。",
+        "人会犹豫。"
+      ]
+    },
+    {
+      "id": "s021",
+      "type": "narration",
+      "lines": [
+        "人会被情绪影响。",
+        "也很难每次都按同一套标准行动。"
+      ]
+    },
+    {
+      "id": "s022",
+      "type": "narration",
+      "lines": [
+        "程序刚好相反。",
+        "它不会紧张，也不会临时改主意。"
+      ]
+    },
+    {
+      "id": "s023",
+      "type": "exercise",
+      "lines": [
+        "这里先别背定义。",
+        "只抓住最直观的一点。"
+      ],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "程序相对人工，最核心的优势更接近哪一个？",
+        "options": [
+          "更稳定地重复规则",
+          "更会理解市场情绪",
+          "更容易凭感觉临场发挥"
+        ],
+        "answer": 0,
+        "explanation": "这一小段要建立的第一直觉是：程序的强项是稳定和重复，不是灵光一现。"
+      }
+    },
+    {
+      "id": "s025",
+      "type": "narration",
+      "lines": [
+        "更准确地说，",
+        "它是在把原本靠人临场完成的事，变成一个可重复执行的过程。"
+      ]
+    },
+    {
+      "id": "s027",
+      "type": "narration",
+      "lines": [
+        "而且不是执行一次。",
+        "是一次又一次，尽量按同一套规则执行。"
+      ]
+    },
+    {
+      "id": "s028",
+      "type": "narration",
+      "lines": [
+        "到了这里，交易才开始从“个人感觉”，",
+        "变成“一个系统”。"
+      ]
+    },
+    {
+      "id": "s029",
+      "type": "exercise",
+      "lines": [
+        "现在把刚才的内容压成一句话。",
+        "看看你是不是真的抓住了重点。"
+      ],
+      "exercise": {
+        "kind": "fill_in_blank",
+        "prompt": "算法交易首先想解决的，不只是“怎么判断”，还有“怎么把判断稳定地变成 ____ ”。",
+        "answers": [
+          "行动",
+          "执行"
+        ],
+        "explanation": "这里的关键词不是利润，而是把想法可靠落地。"
+      }
+    },
+    {
+      "id": "s030",
+      "type": "narration",
+      "lines": [
+        "如果你只记住一个意思，",
+        "那就是这句。"
+      ]
+    },
+    {
+      "id": "s031",
+      "type": "narration",
+      "lines": [
+        "在市场里，真正难的，",
+        "往往不是看懂。"
+      ]
+    },
+    {
+      "id": "s032",
+      "type": "narration",
+      "lines": [
+        "而是稳定地做出来。",
+        ""
+      ]
+    },
+    {
+      "id": "s017",
+      "type": "narration",
+      "lines": [
+        "这就是 <term id=\"algorithmic_trading\">算法交易</term> 真正切进来的地方。",
+        "它先解决的，不是神奇预测。"
+      ],
+      "focus_terms": [
+        "algorithmic_trading"
+      ]
+    },
+    {
+      "id": "s024",
+      "type": "narration",
+      "lines": [
+        "所以 <term id=\"algorithmic_trading\">算法交易</term>，",
+        "不只是“让电脑替你交易”。"
+      ],
+      "focus_terms": [
+        "algorithmic_trading"
+      ]
+    },
+    {
+      "id": "s026",
+      "type": "narration",
+      "lines": [
+        "先 <term id=\"decision_making\">判断</term>。",
+        "再 <term id=\"execution\">执行</term>。"
+      ],
+      "introduced_terms": [
+        "decision_making",
+        "execution"
+      ],
+      "focus_terms": [
+        "decision_making",
+        "execution"
+      ]
+    }
+  ],
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "algorithmic_trading": {
+      "display": "算法交易",
+      "aliases": [
+        "Algorithmic Trading",
+        "Algo Trading",
+        "Quant Trading"
+      ],
+      "gloss": "用规则和程序把交易判断与执行连接起来的方式。"
+    },
+    "decision_making": {
+      "display": "判断",
+      "aliases": [
+        "Decision Making"
+      ],
+      "gloss": "决定什么时候买卖，以及依据什么信号行动。"
+    },
+    "execution": {
+      "display": "执行",
+      "aliases": [
+        "Execution"
+      ],
+      "gloss": "把交易判断真正变成市场里的订单。"
+    }
+  }
+}

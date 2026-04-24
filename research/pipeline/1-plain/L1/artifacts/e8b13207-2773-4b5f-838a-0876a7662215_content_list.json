@@ -1,0 +1,4138 @@
+[
+    {
+        "type": "text",
+        "text": "L1: Algorithmic trading basics and financial markets ",
+        "text_level": 1,
+        "bbox": [
+            133,
+            266,
+            867,
+            481
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Course Code: COMP7415 ",
+        "bbox": [
+            369,
+            531,
+            628,
+            572
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Lecturer: Tony Lam ",
+        "bbox": [
+            28,
+            920,
+            176,
+            957
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Agenda ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            212,
+            190
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The basic concept of algo-trading ",
+            "- The market trend of algo-trading ",
+            "- Comparison of different trading approaches ",
+            "• Infrastructure needed to deploy algo-trading programs ",
+            "- Trading mechanism and order matching ",
+            "Market jargon and terminology "
+        ],
+        "bbox": [
+            75,
+            270,
+            740,
+            701
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "What is algo-trading? ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            469,
+            192
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Algorithmic trading, also called Algo Trading, Quant Trading, Robo-Trading, Program Trading ",
+            "- Use of mathematical models and computer algorithms/programs to "
+        ],
+        "bbox": [
+            70,
+            268,
+            897,
+            461
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- generate trading signals (i.e. Decision making) ",
+            "- automate trading process (i.e. Execution) "
+        ],
+        "bbox": [
+            110,
+            466,
+            603,
+            574
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "- Objectives: ",
+        "bbox": [
+            72,
+            592,
+            227,
+            646
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- maximize profits ",
+            "- control execution costs ",
+            "- hedging and manage investment risks "
+        ],
+        "bbox": [
+            109,
+            657,
+            514,
+            818
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Market Trend for Algo-Trading ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            630,
+            192
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Expected to grow at CAGR $12.7\\%$ to US $\\$ 32$ b by 2028 ",
+            "- Largest market in North America ",
+            "- Fastest growing in Asia Pacific "
+        ],
+        "bbox": [
+            71,
+            270,
+            630,
+            451
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/23944073ff63d8284dc99146e03872d7534460656b988edca49867c2a1823382.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            58,
+            488,
+            496,
+            901
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/553c1850eb62275b06eb4b2fa2de02aa49eb0882c33893ea01dbf6746a04d526.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            502,
+            488,
+            955,
+            901
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Reference: ",
+        "bbox": [
+            34,
+            925,
+            78,
+            944
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "https://www.mordorintelligence.com/industry-reports/algorithmic-trading-market ",
+        "bbox": [
+            34,
+            946,
+            353,
+            966
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "https://www.prnewswire.com/in/news-releases/algorithms-trading-market-to-reach-usd-31-494-million-by-2028-at-a-cagr-of-12-7-valuates-reports-897347529.html ",
+        "bbox": [
+            34,
+            966,
+            671,
+            987
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Market Trend for Algo-Trading ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            630,
+            192
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Algorithmic trading strategies account for approximately: ",
+        "bbox": [
+            70,
+            270,
+            653,
+            322
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "60% of all US equity volume ",
+            "40% of all European equity volume ",
+            "25% of all Forex transactions ",
+            "20% of all US option trades "
+        ],
+        "bbox": [
+            75,
+            338,
+            448,
+            585
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "Source: interactive brokers ",
+        "bbox": [
+            33,
+            953,
+            155,
+            972
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Robo-Trading vs Robo-Advisory ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            650,
+            192
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "table",
+        "img_path": "images/1fc230c29dd35e32c6529817a8f0ad9d201db4422687d4ec8f600f0246f887a9.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td></td><td>Robo-Trading</td><td>Robo-Advisory</td></tr><tr><td>Decision making</td><td>✓</td><td>✓</td></tr><tr><td>Execution</td><td>✓</td><td>×</td></tr><tr><td>Automation</td><td>Fully automated</td><td>Semi-automated</td></tr><tr><td>Outputs</td><td>Execution of trading signals</td><td>• Stock advices\n• Market summary\n• Risk alerts</td></tr></table>",
+        "bbox": [
+            46,
+            303,
+            694,
+            794
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "image",
+        "img_path": "images/2853c1739330c29f9f1c777cb0195998cf6f596c913e4ccd557e9da5aa1bb6d5.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            728,
+            92,
+            953,
+            938
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "ALGOGENE ",
+        "bbox": [
+            396,
+            125,
+            583,
+            181
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "FinTech Co. Ltd. ",
+        "bbox": [
+            443,
+            183,
+            537,
+            203
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "JOIN US ON TELEGRAM ",
+        "bbox": [
+            363,
+            240,
+            619,
+            281
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "ALGOGENESIGNAL ",
+        "bbox": [
+            312,
+            303,
+            676,
+            362
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "FREE DAILY REAL-TIME TRADING SIGNALS ",
+        "bbox": [
+            351,
+            381,
+            638,
+            409
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "image",
+        "img_path": "images/de6188289d2654bafc1a1dc3b641da604e09b47ea7d604dbc7620e6c670f49e3.jpg",
+        "image_caption": [
+            "@algogene_signal "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            315,
+            468,
+            458,
+            720
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "image",
+        "img_path": "images/fd8bf798e299893a5e056c49cb7b184a1a3217af05382e16f6f2651b4fb021eb.jpg",
+        "image_caption": [
+            "Warning: Beware of scam Telegram groups. Please note that the only official group is @algogene_signal "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            509,
+            459,
+            675,
+            757
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Telegram Group: https://t.me/algogene_signal ",
+        "bbox": [
+            35,
+            951,
+            282,
+            977
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Comparison of Trading Approaches ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            723,
+            192
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "manual ",
+        "bbox": [
+            288,
+            214,
+            350,
+            250
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "automatic ",
+        "bbox": [
+            815,
+            214,
+            897,
+            248
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "table",
+        "img_path": "images/3d345e26f54a9a68918cfa2f0fa261d4c9de32af44bd887087b795221a6d6a05.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td></td><td>Human Trading</td><td>Robo-Advisory</td><td>Robo-Trading</td></tr><tr><td>Working Hours</td><td>~9*5</td><td>~9*5</td><td>24*7</td></tr><tr><td>Execution Speed</td><td>Slow</td><td>Moderate</td><td>Immediately</td></tr><tr><td>Data Inputs</td><td>Limited</td><td>Almost unlimited</td><td>Almost unlimited</td></tr><tr><td>Trading Frequency</td><td>Low</td><td>Low - mid</td><td>Low – High</td></tr><tr><td>Scalability</td><td>Limited investment size due to stress</td><td>Moderate</td><td>High</td></tr><tr><td>Accuracy/ Discipline</td><td>Variable especially when you lose</td><td>Consistent</td><td>High</td></tr><tr><td>Customization</td><td>High</td><td>Medium</td><td>Low</td></tr><tr><td>User Control</td><td>Full</td><td>Partial</td><td>Minimal</td></tr><tr><td>Risk Management</td><td>Subjective</td><td>Algorithmsic</td><td>Algorithmsic</td></tr></table>",
+        "bbox": [
+            66,
+            309,
+            928,
+            931
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "What should you consider to implement a trading algo? ",
+        "text_level": 1,
+        "bbox": [
+            137,
+            266,
+            861,
+            512
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Algo is the vehicle; Data is the Fuel! ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            727,
+            188
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Data collection - time and effort demanding in data sourcing and data cleaning ",
+            "- Data storage - high volume of unstructured data (Numeric, Text, Image, Audio, Video) ",
+            "- Data management - difficult to protect and manage through traditional databases due to inconsistent file and data formats ",
+            "- Data processing - feasibility and efficiency "
+        ],
+        "bbox": [
+            70,
+            270,
+            871,
+            718
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Other factors for infrastructure setup ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            758,
+            192
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Real-time datafeed ",
+            "Historical data ",
+            "- Computing hardware ",
+            "- Exchange/broker connectivity ",
+            "Network and latencies ",
+            "- Order routing system ",
+            "- Order management system ",
+            "- Algo maintenance ",
+            "- Cybersecurity ",
+            "• "
+        ],
+        "bbox": [
+            73,
+            261,
+            426,
+            838
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "General Trading Overview ",
+        "text_level": 1,
+        "bbox": [
+            171,
+            390,
+            825,
+            500
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Types of Trading ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            377,
+            192
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Fundamental: ",
+        "text_level": 1,
+        "bbox": [
+            67,
+            288,
+            211,
+            331
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Stock Selection ",
+            "Ratio Analysis ",
+            "Sector Analysis ",
+            "- Corporate and Executive Management "
+        ],
+        "bbox": [
+            67,
+            342,
+            341,
+            601
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Technical: ",
+        "text_level": 1,
+        "bbox": [
+            415,
+            288,
+            517,
+            331
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Chart pattern ",
+            "Trend Analysis "
+        ],
+        "bbox": [
+            416,
+            342,
+            587,
+            442
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Quantitative: ",
+        "text_level": 1,
+        "bbox": [
+            681,
+            285,
+            816,
+            327
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Rule based ",
+            "Econometric Forecasting ",
+            "- Statistical Arbitrage ",
+            "- NLP, sentiment analysis ",
+            "Machine learning "
+        ],
+        "bbox": [
+            681,
+            337,
+            956,
+            596
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Types of Trading ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            375,
+            188
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Time Frames: ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            272,
+            212,
+            316
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Long Term: Months to Years ",
+            "- Short Term: Days, Weeks, Months ",
+            "- Intraday: Seconds to Hours ",
+            "High frequency: Fractions of Seconds "
+        ],
+        "bbox": [
+            75,
+            340,
+            473,
+            583
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "How trading works? ",
+        "text_level": 1,
+        "bbox": [
+            250,
+            390,
+            750,
+            500
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Supply ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            200,
+            188
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Current Stock holders ",
+        "text_level": 1,
+        "bbox": [
+            393,
+            300,
+            583,
+            333
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "(each person holds 1 share) ",
+        "bbox": [
+            387,
+            344,
+            597,
+            379
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/e1e057b7d7fc7bd49d1922c8618de93b1532198a870066b4b588c4a6e747b863.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            122,
+            461,
+            161,
+            616
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "\\$10 ",
+        "bbox": [
+            127,
+            637,
+            156,
+            670
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/66e3829fdc2f9a0f1edca0c5ace158988518b86d015f6fc75ee5cefefccb670e.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            200,
+            461,
+            239,
+            616
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "\\$12 ",
+        "bbox": [
+            206,
+            637,
+            236,
+            670
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/d921225e2a9e350d3724bb19428a5369a223a20629e8267e8315f29e57225ff8.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            284,
+            461,
+            323,
+            616
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "\\$13 ",
+        "bbox": [
+            289,
+            637,
+            319,
+            670
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/a7cd152fad3ea773dfc34758a660b3b44bde991f91098ff56886415994b2c5b0.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            369,
+            461,
+            408,
+            616
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "\\$15 ",
+        "bbox": [
+            373,
+            637,
+            403,
+            670
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/2c15a222210bda5e996f2d424cdd93045f1743e4fc8d2e373a46b1d91ec36d2f.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            447,
+            461,
+            486,
+            616
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "\\$15 ",
+        "bbox": [
+            452,
+            637,
+            481,
+            670
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/07b0516b07de265bd3af8149f935a07966e05b6833e24644b9ba5380bb31193d.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            522,
+            461,
+            561,
+            616
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "§18 ",
+        "bbox": [
+            527,
+            637,
+            557,
+            670
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/ea229043a908c9e6318d587100f327366a95cbfd88d28e42875c259efb8e7488.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            602,
+            461,
+            639,
+            616
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "\\$21 ",
+        "bbox": [
+            606,
+            637,
+            636,
+            670
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/b7433937afe87c2c5138a2b99115896ca2d0be9178a7865367cd1018684896b5.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            671,
+            461,
+            710,
+            616
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "\\$24 ",
+        "bbox": [
+            676,
+            637,
+            706,
+            670
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/c662c065d1d2f712b08d36d87935a02918fcc93834c64e0e658d884bb5a52cea.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            750,
+            461,
+            788,
+            616
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "\\$25 ",
+        "bbox": [
+            754,
+            637,
+            783,
+            670
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/675692737d29622eb03acbdd2b2a9b309f08b211b547e8d38cd23dc6a6c7c1df.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            820,
+            461,
+            858,
+            616
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "\\$30 ",
+        "bbox": [
+            825,
+            637,
+            854,
+            670
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Price they would be willing to take (sell) for their shares ",
+        "bbox": [
+            289,
+            807,
+            713,
+            840
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Current Stock holders ",
+        "text_level": 1,
+        "bbox": [
+            390,
+            40,
+            581,
+            75
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "(each person holds 1 share) ",
+        "bbox": [
+            384,
+            87,
+            594,
+            122
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/52ec0b281f70a1907f11cd9bcdbe75ca3025f7a016e47f91919ca77cb9916500.jpg",
+        "image_caption": [
+            "\\$10 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            71,
+            161,
+            109,
+            316
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/ec193921ae31a6a1b9329a744b1f29dd670608eb6067868e0a39832cf90f7fb5.jpg",
+        "image_caption": [
+            "\\$12 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            150,
+            161,
+            188,
+            314
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/8e3bef9a43fbaa662ef8c08f251003ed266561e796f09187c02db0e9c203e841.jpg",
+        "image_caption": [
+            "\\$13 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            233,
+            161,
+            271,
+            314
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/06f7364de3af917c64e52c55f661a3cfadb3e337c7d459b97f3adfd4561d292a.jpg",
+        "image_caption": [
+            "§15 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            319,
+            161,
+            355,
+            314
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/c4e433c1285445be0abd10d4c5d990e18a91d14a48e16132abde1da0b7995355.jpg",
+        "image_caption": [
+            "\\$15 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            396,
+            161,
+            433,
+            314
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/b159aa9cfb0666b2024460c1f36e18619269c8906996bb51020078ad49d3f411.jpg",
+        "image_caption": [
+            "\\$18 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            471,
+            161,
+            509,
+            314
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/7d9ab41481da4def300804b68f53a9667de9caa3a135f6b4e76d99ae94b44919.jpg",
+        "image_caption": [
+            "§21 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            550,
+            161,
+            588,
+            314
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/50b5782f452ccf7179c6361e3c335625a79aef32126ff58efd75da45c7863c35.jpg",
+        "image_caption": [
+            "\\$24 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            620,
+            161,
+            658,
+            314
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/17d0f1edeb826aea3aba36a5da72f534551146c03935ce571aaecb1f7338bf1d.jpg",
+        "image_caption": [
+            "\\$25 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            698,
+            161,
+            736,
+            314
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/7260e8fa9b83862c1abdc122adc83b69727c390d3221246163add8669ed38725.jpg",
+        "image_caption": [
+            "\\$30 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            768,
+            161,
+            806,
+            314
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/bf1c4e7961e05025587eeee299249a966b057686a903f3cf5b4099aaa6044ca1.jpg",
+        "image_caption": [
+            "Supply "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            130,
+            470,
+            779,
+            927
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "table",
+        "img_path": "images/82fc1c3ecb2873b852afbcbdb9a57b15b80122fdbe549a2c1584ace2d86b248e.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Price</td><td>Supply</td></tr><tr><td>1</td><td>0</td></tr><tr><td>2</td><td>0</td></tr><tr><td>3</td><td>0</td></tr><tr><td>4</td><td>0</td></tr><tr><td>5</td><td>0</td></tr><tr><td>6</td><td>0</td></tr><tr><td>7</td><td>0</td></tr><tr><td>8</td><td>0</td></tr><tr><td>9</td><td>0</td></tr><tr><td>10</td><td>1</td></tr><tr><td>11</td><td>1</td></tr><tr><td>12</td><td>2</td></tr><tr><td>13</td><td>3</td></tr><tr><td>14</td><td>3</td></tr><tr><td>15</td><td>5</td></tr><tr><td>16</td><td>5</td></tr><tr><td>17</td><td>5</td></tr><tr><td>18</td><td>6</td></tr><tr><td>19</td><td>6</td></tr><tr><td>20</td><td>6</td></tr><tr><td>21</td><td>7</td></tr><tr><td>22</td><td>7</td></tr><tr><td>23</td><td>7</td></tr><tr><td>24</td><td>8</td></tr><tr><td>25</td><td>9</td></tr><tr><td>26</td><td>9</td></tr><tr><td>27</td><td>9</td></tr><tr><td>28</td><td>9</td></tr><tr><td>29</td><td>9</td></tr><tr><td>30</td><td>10</td></tr></table>",
+        "bbox": [
+            860,
+            11,
+            985,
+            979
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Demand ",
+        "text_level": 1,
+        "bbox": [
+            76,
+            111,
+            232,
+            181
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Potential Buyers ",
+        "text_level": 1,
+        "bbox": [
+            402,
+            283,
+            547,
+            320
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "(each person wants to buy 1 share) ",
+        "bbox": [
+            339,
+            331,
+            607,
+            368
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "image",
+        "img_path": "images/86360fdbfc0686ed5bb93811e5120194b63bed941a41f8ac4a700fd590f386d1.jpg",
+        "image_caption": [
+            "\\$5"
+        ],
+        "image_footnote": [],
+        "bbox": [
+            206,
+            464,
+            246,
+            622
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "image",
+        "img_path": "images/ff7d024e6fdbd516099aac633e061ba672cdb00e0cd864ed2a471baed275ac24.jpg",
+        "image_caption": [
+            "\\$6 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            291,
+            466,
+            330,
+            703
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "image",
+        "img_path": "images/8f6548cbaa3e1b713e127969356e4339b881c4ee8275b8ebd5df0f79b84d7d54.jpg",
+        "image_caption": [
+            "\\$8 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            368,
+            466,
+            408,
+            625
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "image",
+        "img_path": "images/580ed35fd6987c7196b168c9cd67feef87601c8798035b2fff33f45015c54af9.jpg",
+        "image_caption": [
+            "\\$10 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            444,
+            466,
+            484,
+            625
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "image",
+        "img_path": "images/19c846959eada8c2a10d9b73544e81da601822ef1beaf3f4e93cfa8c3442ba1b.jpg",
+        "image_caption": [
+            "\\$11 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            522,
+            466,
+            563,
+            625
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "image",
+        "img_path": "images/d4b978d4f62c3ceea2332c78ae9860aa33aba5e20368417b05810fb4adb5151c.jpg",
+        "image_caption": [
+            "\\$12 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            592,
+            466,
+            633,
+            625
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "image",
+        "img_path": "images/d71b1972d6855ba25b49c3b78bb4e1e22d291978b507f04ffa2aa07400e63ef3.jpg",
+        "image_caption": [
+            "\\$14 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            670,
+            466,
+            711,
+            625
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "image",
+        "img_path": "images/9af52572b328901eb34ae9e7dae44f14ea5f3adf7dc096877753435b7beea51a.jpg",
+        "image_caption": [
+            "\\$15 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            741,
+            466,
+            781,
+            625
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Price they would be willing to pay for a share ",
+        "bbox": [
+            314,
+            818,
+            659,
+            855
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Potential Buyers ",
+        "text_level": 1,
+        "bbox": [
+            416,
+            31,
+            563,
+            70
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "(each person wants to buy 1 share) ",
+        "bbox": [
+            353,
+            81,
+            623,
+            122
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "image",
+        "img_path": "images/f9845d43e9a67e8bec11c308e4298e306417b8a1b810c67728463ac833f964c2.jpg",
+        "image_caption": [
+            "\\$5"
+        ],
+        "image_footnote": [],
+        "bbox": [
+            125,
+            155,
+            164,
+            314
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "image",
+        "img_path": "images/ea06648c52b2b8248ac449299981beabbdc442eaaf32e3f3c8b35f518283f3b3.jpg",
+        "image_caption": [
+            "\\$6 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            206,
+            155,
+            250,
+            314
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "image",
+        "img_path": "images/1d3da68bc93fbd3118d914887ba9d65239dafab534b282ec9a303731544ba453.jpg",
+        "image_caption": [
+            "\\$8 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            285,
+            155,
+            327,
+            314
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "image",
+        "img_path": "images/a34cb16fa73a9c47eee81913a1885913af2c50f5ad68f9d31880b4a5007bb092.jpg",
+        "image_caption": [
+            "\\$10 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            361,
+            155,
+            402,
+            314
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "image",
+        "img_path": "images/53e2929550688514b55498c072399e99ea74d36063d4f814f662f5d7acc989e9.jpg",
+        "image_caption": [
+            "\\$11 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            439,
+            155,
+            481,
+            314
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "image",
+        "img_path": "images/53367305a6e49e7db8201b8a03c85905647a0a1a65296357168ba45f6a1c20d0.jpg",
+        "image_caption": [
+            "\\$12 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            510,
+            155,
+            550,
+            314
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "image",
+        "img_path": "images/97430e1e313c1f795221b38b9e4afcf8ecba246b88da7c62fe2966284a65f550.jpg",
+        "image_caption": [
+            "\\$14 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            588,
+            155,
+            629,
+            314
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "image",
+        "img_path": "images/0fd2f01994766eed041dfda9e2cf6227c79bcf109d7c5885a8fd005b39f9fa4a.jpg",
+        "image_caption": [
+            "\\$15 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            658,
+            155,
+            700,
+            314
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "image",
+        "img_path": "images/798449f0918ee7b311b24223b49c1897c83f94b9c422e3a97ca3de9563e95aec.jpg",
+        "image_caption": [
+            "Demand "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            92,
+            485,
+            763,
+            929
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "table",
+        "img_path": "images/8f740c73d9a6751ead28676429687f1803fe73de458a8bb12a0b0ef31df351e0.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Price</td><td>Demand</td></tr><tr><td>1</td><td>8</td></tr><tr><td>2</td><td>8</td></tr><tr><td>3</td><td>8</td></tr><tr><td>4</td><td>8</td></tr><tr><td>5</td><td>8</td></tr><tr><td>6</td><td>7</td></tr><tr><td>7</td><td>6</td></tr><tr><td>8</td><td>6</td></tr><tr><td>9</td><td>5</td></tr><tr><td>10</td><td>5</td></tr><tr><td>11</td><td>4</td></tr><tr><td>12</td><td>3</td></tr><tr><td>13</td><td>2</td></tr><tr><td>14</td><td>2</td></tr><tr><td>15</td><td>1</td></tr><tr><td>16</td><td>0</td></tr><tr><td>17</td><td>0</td></tr><tr><td>18</td><td>0</td></tr><tr><td>19</td><td>0</td></tr><tr><td>20</td><td>0</td></tr><tr><td>21</td><td>0</td></tr><tr><td>22</td><td>0</td></tr><tr><td>23</td><td>0</td></tr><tr><td>24</td><td>0</td></tr><tr><td>25</td><td>0</td></tr><tr><td>26</td><td>0</td></tr><tr><td>27</td><td>0</td></tr><tr><td>28</td><td>0</td></tr><tr><td>29</td><td>0</td></tr><tr><td>30</td><td>0</td></tr></table>",
+        "bbox": [
+            839,
+            1,
+            953,
+            992
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Market Equilibrium ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            429,
+            188
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "image",
+        "img_path": "images/3627bc4390ce1dee9b9bd69fe4614da45984046abf62f9f1d460331c494cda71.jpg",
+        "image_caption": [
+            "- The market is balanced at \\(12 and quantity 2 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            63,
+            366,
+            800,
+            942
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "table",
+        "img_path": "images/a803f19edf1f2102e60ba0bee6d04069eb5042fd0ab89bab948a2b47c19bb141.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Price</td><td>Supply</td><td>Demand</td></tr><tr><td>1</td><td>0</td><td>8</td></tr><tr><td>2</td><td>0</td><td>8</td></tr><tr><td>3</td><td>0</td><td>8</td></tr><tr><td>4</td><td>0</td><td>8</td></tr><tr><td>5</td><td>0</td><td>8</td></tr><tr><td>6</td><td>0</td><td>7</td></tr><tr><td>7</td><td>0</td><td>6</td></tr><tr><td>8</td><td>0</td><td>6</td></tr><tr><td>9</td><td>0</td><td>5</td></tr><tr><td>10</td><td>1</td><td>5</td></tr><tr><td>11</td><td>1</td><td>4</td></tr><tr><td>12</td><td>2</td><td>3</td></tr><tr><td>13</td><td>3</td><td>2</td></tr><tr><td>14</td><td>3</td><td>2</td></tr><tr><td>15</td><td>5</td><td>1</td></tr><tr><td>16</td><td>5</td><td>0</td></tr><tr><td>17</td><td>5</td><td>0</td></tr><tr><td>18</td><td>6</td><td>0</td></tr><tr><td>19</td><td>6</td><td>0</td></tr><tr><td>20</td><td>6</td><td>0</td></tr><tr><td>21</td><td>7</td><td>0</td></tr><tr><td>22</td><td>7</td><td>0</td></tr><tr><td>23</td><td>7</td><td>0</td></tr><tr><td>24</td><td>8</td><td>0</td></tr><tr><td>25</td><td>9</td><td>0</td></tr><tr><td>26</td><td>9</td><td>0</td></tr><tr><td>27</td><td>9</td><td>0</td></tr><tr><td>28</td><td>9</td><td>0</td></tr><tr><td>29</td><td>9</td><td>0</td></tr><tr><td>30</td><td>10</td><td>0</td></tr></table>",
+        "bbox": [
+            831,
+            7,
+            1000,
+            983
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Order Matching ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            368,
+            190
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Current Stock holders ",
+        "bbox": [
+            405,
+            179,
+            596,
+            214
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "(each person holds 1 share) ",
+        "bbox": [
+            398,
+            225,
+            611,
+            262
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/76aa0950e4bed1acbae25a888f81f80f26e02ad4816ac50a4e5f2cda985a5a5c.jpg",
+        "image_caption": [
+            "\\$10 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            127,
+            290,
+            168,
+            451
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/1f357fd8c08721af06955e9d33adc38fd16d170af4534feb93ce922e9a425408.jpg",
+        "image_caption": [
+            "\\$12 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            205,
+            292,
+            246,
+            451
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/aea51de4de548ab864441c2f29f0929981552e505b19d8ca6f4387c9f610acc1.jpg",
+        "image_caption": [
+            "§13 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            289,
+            292,
+            330,
+            451
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/49348a9f5482cff7509c96a4fae1a772326c9ab3afb5cb7a34308253ac4cc658.jpg",
+        "image_caption": [
+            "§15 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            373,
+            292,
+            414,
+            451
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/851355a500a0f68a90ef3b5fad5900aca59944d9ea7b0951a7792cf1b569dda7.jpg",
+        "image_caption": [
+            "§15 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            452,
+            292,
+            493,
+            451
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/3445f9a5d095f145645fe50b2af3810421817e28764d4c9f7e7a54fe02081038.jpg",
+        "image_caption": [
+            "\\$18 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            526,
+            292,
+            568,
+            451
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/edcd72bb496047cbb6319d697cbba23add728497dbe45be16de454c989d1b0a4.jpg",
+        "image_caption": [
+            "\\$21 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            606,
+            292,
+            646,
+            451
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/9c68fd8438dd884e2c4ab5d05ac10dd293f58d9b48c4eb96653921cf7114779b.jpg",
+        "image_caption": [
+            "\\$24 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            675,
+            292,
+            716,
+            451
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/c7b40ea70ccfd7c190613148a573cf062a3deae264c2d94bad90f3cd4c9a5344.jpg",
+        "image_caption": [
+            "\\$25 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            754,
+            292,
+            794,
+            451
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/6b6e4930be7a80fb5a92ec4019c83a4c51fe0310ef43f1074b8d16f04cbdff16.jpg",
+        "image_caption": [
+            "\\$30 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            825,
+            292,
+            864,
+            451
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/cbe70f1303278c4c79c22ed1f4ac31d586403e249a224b69dc39cf5770967f5f.jpg",
+        "image_caption": [
+            "\\$5"
+        ],
+        "image_footnote": [],
+        "bbox": [
+            206,
+            685,
+            246,
+            842
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/8fd2a487e6a8152df82085f0e3bdae08bc244fdcee14e5d2a5f550a64b6580e4.jpg",
+        "image_caption": [
+            "\\$6 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            289,
+            685,
+            330,
+            842
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/164a700d165ac8c5b3f94eaea21ab59192e6f33d7ea0fa8f7392d76677e0f7b2.jpg",
+        "image_caption": [
+            "\\$8 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            368,
+            685,
+            408,
+            842
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/b07aaf00beb0d6cfc09d252c8f5a194755afe07e36f4939a5978924f6ea79fcc.jpg",
+        "image_caption": [
+            "\\$10 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            444,
+            685,
+            484,
+            842
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/025b679b5a14eadbc8880a50ca03f9ec5fe7460893eb7117942104fd9f7a8bba.jpg",
+        "image_caption": [
+            "\\$11 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            522,
+            685,
+            563,
+            842
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/2e019b398a59c07427da55d6ecd1cb7ea0de78f944c07bb2ea88de882b9cb3a0.jpg",
+        "image_caption": [
+            "\\$12 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            592,
+            685,
+            632,
+            842
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/e9ab0a6e59e18c44ec1f59ebfae68ba97e95c620319bd66523ea6b5bbad78f3f.jpg",
+        "image_caption": [
+            "\\$14 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            670,
+            685,
+            711,
+            842
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/8eb4771a0565203e595ebee6ff63810e8632a21620fcbdf627b1737938c749c7.jpg",
+        "image_caption": [
+            "\\$15 ",
+            "Potential Buyers ",
+            "(each person wants to buy 1 share) "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            740,
+            685,
+            780,
+            842
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "After Order Matching ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            471,
+            190
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "image",
+        "img_path": "images/2340feec59164504691d63240722a35cea786eabff0e8034687ee80be2a41dd4.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            70,
+            255,
+            922,
+            959
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Market Terminology ",
+        "text_level": 1,
+        "bbox": [
+            247,
+            390,
+            754,
+            503
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": "Common market terminology ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            623,
+            192
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Long and short position ",
+            "2. Short-selling ",
+            "3. Order book ",
+            "4. Bid price, ask price ",
+            "5. Market spread ",
+            "6. Order types ",
+            "7. Slippage ",
+            "8. Mark-to-market ",
+            "9. Trading system ",
+            "10. Margin & leverage "
+        ],
+        "bbox": [
+            73,
+            261,
+            381,
+            846
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "text",
+        "text": "Understanding Long and Short Positions ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            810,
+            192
+        ],
+        "page_idx": 24
+    },
+    {
+        "type": "text",
+        "text": "- Long Position ",
+        "bbox": [
+            71,
+            274,
+            252,
+            327
+        ],
+        "page_idx": 24
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Definition: Buying an asset with the expectation that its price will rise. ",
+            "- Goal: Sell at a higher price to realize a profit. ",
+            "• Example: Buying 100 shares of a stock at $50, selling when it reaches$ 70. "
+        ],
+        "bbox": [
+            107,
+            337,
+            879,
+            500
+        ],
+        "page_idx": 24
+    },
+    {
+        "type": "image",
+        "img_path": "images/e4a7b63262ab10be6402b5b91c04159ccb3f664d558c127eadc3d9b8df361959.jpg",
+        "image_caption": [
+            "Long "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            367,
+            674,
+            637,
+            977
+        ],
+        "page_idx": 24
+    },
+    {
+        "type": "text",
+        "text": "Understanding Long and Short Positions ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            810,
+            192
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "text",
+        "text": "- Short Position ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            272,
+            261,
+            320
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Definition: Selling an asset that you do not own, with the intention of buying it back later at a lower price. ",
+            "- Goal: Profit from a decline in the asset's price. ",
+            "• Example: Selling 100 shares of a stock at $70, buying back at$ 50. "
+        ],
+        "bbox": [
+            107,
+            337,
+            913,
+            550
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "image",
+        "img_path": "images/46c2fd97f0af2633c54158e3594122c54c05f9f8c58c405f4d569dce6c33c804.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            347,
+            590,
+            630,
+            1000
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "text",
+        "text": "How Short-Selling Works ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            530,
+            188
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Borrowing Shares: Obtain shares from a broker to sell. ",
+            "2. Selling the Borrowed Shares: Sell the shares at the current market price. ",
+            "3. Buying Back Shares: Later, buy the same number of shares at a lower price. ",
+            "4. Returning Shares: Return the borrowed shares to the broker. "
+        ],
+        "bbox": [
+            70,
+            270,
+            876,
+            518
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "image",
+        "img_path": "images/f91be6e8633dfd9caaf37fd019f26e0d75c126588d6adc96dc5b9c3e030fc177.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            168,
+            592,
+            846,
+            972
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "text",
+        "text": "Risks of Short-Selling ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            460,
+            192
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Unlimited Loss Potential: If the asset price rises significantly. ",
+            "- Margin Calls: Brokers may require additional funds if the trade goes against you. ",
+            "- Regulatory Risks: Short-selling can be subject to restrictions. "
+        ],
+        "bbox": [
+            71,
+            270,
+            558,
+            592
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "image",
+        "img_path": "images/f0e8373ee69422c3e7de92d9b404515e2bbc07233ecf3a9f25b69838993184ec.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            570,
+            274,
+            1000,
+            857
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "text",
+        "text": "Order Book ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            289,
+            181
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The Order Book is a real-time, continually updating list of buy and sell orders for a specific financial instrument, sorted by price level. ",
+            "Key components "
+        ],
+        "bbox": [
+            71,
+            270,
+            918,
+            457
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Ask Book: the list/queue for sellers ",
+            "- Bid Book: the list/queue for buyers ",
+            "- Price: The price points at which investors are willing to trade ",
+            "Size: The number of shares, contracts, or lots that traders want to buy or sell "
+        ],
+        "bbox": [
+            109,
+            468,
+            905,
+            685
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "text",
+        "text": "How does Order Book present? ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            653,
+            188
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Order Ledger ",
+            "2. Top of the Book ",
+            "3. Cumulative Book "
+        ],
+        "bbox": [
+            75,
+            270,
+            319,
+            468
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "text",
+        "text": "Order Ledger ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            322,
+            192
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The order book is listed in a sorted price ledger, which can be ascending or descending. ",
+            "- The longer the price ledger is, the more liquidity an instrument provides. It is also called \"market depth\". "
+        ],
+        "bbox": [
+            71,
+            272,
+            450,
+            683
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "image",
+        "img_path": "images/1c4327d010822d6548850f694f7c27fde9fc3a6d0c9c3008732a3d8ee04a4aad.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            470,
+            20,
+            1000,
+            1000
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "text",
+        "text": "Top of the Book ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            367,
+            188
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The order book is separated into bid-book and ask-book ",
+            "- Bid orders are sorted in descending price ",
+            "- Ask orders are sorted in ascending price ",
+            "- The highest bid and the lowest ask are referred to \"the top of the book\" "
+        ],
+        "bbox": [
+            75,
+            270,
+            459,
+            825
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "text",
+        "text": "Order Book ",
+        "bbox": [
+            618,
+            114,
+            685,
+            138
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "table",
+        "img_path": "images/3361304e4c8b7cde9fb289d94097185dab16ea89b21c116913f495d6467caeb0.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td></td><td>Bid</td><td>Ask</td><td></td></tr><tr><td>3,151</td><td>9139.60</td><td>9152.80</td><td>167</td></tr><tr><td>1,574</td><td>9138.40</td><td>9153.21</td><td>1,600</td></tr><tr><td>338</td><td>9138.20</td><td>9153.60</td><td>736</td></tr><tr><td>789</td><td>9138.10</td><td>9153.71</td><td>1,602</td></tr><tr><td>800</td><td>9138.00</td><td>9154.10</td><td>1,649</td></tr><tr><td>309</td><td>9137.79</td><td>9154.21</td><td>1,965</td></tr><tr><td>2,140</td><td>9137.60</td><td>9154.50</td><td>3,984</td></tr><tr><td>48</td><td>9137.40</td><td>9154.60</td><td>763</td></tr><tr><td>144</td><td>9137.29</td><td>9154.71</td><td>157</td></tr><tr><td>136</td><td>9137.20</td><td>9154.80</td><td>56</td></tr><tr><td>528</td><td>9137.00</td><td>9155.50</td><td>320</td></tr><tr><td>1,654</td><td>9136.90</td><td>9155.71</td><td>200</td></tr><tr><td>40</td><td>9136.79</td><td>9156.10</td><td>16</td></tr><tr><td>46</td><td>9136.70</td><td>9156.21</td><td>219</td></tr><tr><td>608</td><td>9136.60</td><td>9156.30</td><td>40</td></tr><tr><td>48</td><td>9136.50</td><td>9156.40</td><td>80</td></tr></table>",
+        "bbox": [
+            607,
+            166,
+            912,
+            931
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "text",
+        "text": "Cumulative Order Book ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            506,
+            179
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "text",
+        "text": "• For each of the bid and ask book, order size accumulates from the top of the book. ",
+        "bbox": [
+            73,
+            270,
+            440,
+            435
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "image",
+        "img_path": "images/141e8b6f16ee4724150911c20de32c9481e617b6a0ffd9f405342bd4c77f037d.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            120,
+            483,
+            515,
+            957
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "table",
+        "img_path": "images/fe87514618aa4ae17295f739ac48ebaa60364c911b990cf914d46e4aaf1a533b.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td colspan=\"3\">Order Book Market Trades</td></tr><tr><td>= = =</td><td rowspan=\"2\">Qty(BTC)</td><td>0.1▼</td></tr><tr><td>Price(USDT)</td><td>Total(BTC)</td></tr><tr><td>61,284.8</td><td>11.972</td><td>54.521</td></tr><tr><td>61,284.7</td><td>7.282</td><td>42.549</td></tr><tr><td>61,284.0</td><td>2.529</td><td>35.267</td></tr><tr><td>61,283.9</td><td>1.305</td><td>32.738</td></tr><tr><td>61,283.8</td><td>1.795</td><td>31.433</td></tr><tr><td>61,283.7</td><td>4.569</td><td>29.638</td></tr><tr><td>61,283.5</td><td>5.773</td><td>25.069</td></tr><tr><td>61,283.4</td><td>1.795</td><td>19.296</td></tr><tr><td>61,283.3</td><td>3.590</td><td>17.501</td></tr><tr><td>61,283.2</td><td>13.911</td><td>13.911</td></tr><tr><td colspan=\"3\">61,284.4 ↑ 61,291.9</td></tr><tr><td>61,282.3</td><td>12.075</td><td>12.075</td></tr><tr><td>61,282.2</td><td>0.816</td><td>12.891</td></tr><tr><td>61,282.1</td><td>2.693</td><td>15.584</td></tr><tr><td>61,282.0</td><td>4.712</td><td>20.296</td></tr><tr><td>61,281.9</td><td>9.444</td><td>29.740</td></tr><tr><td>61,281.8</td><td>1.795</td><td>31.535</td></tr><tr><td>61,281.7</td><td>3.672</td><td>35.207</td></tr><tr><td>61,281.6</td><td>5.181</td><td>40.388</td></tr><tr><td>61,278.4</td><td>15.301</td><td>55.689</td></tr><tr><td>61,267.2</td><td>15.306</td><td>70.995</td></tr></table>",
+        "bbox": [
+            665,
+            50,
+            946,
+            951
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "text",
+        "text": "My Portfolio ",
+        "bbox": [
+            80,
+            174,
+            138,
+            196
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "News ",
+        "bbox": [
+            157,
+            174,
+            184,
+            194
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Markets ",
+        "bbox": [
+            203,
+            174,
+            243,
+            194
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Sectors ",
+        "bbox": [
+            261,
+            174,
+            300,
+            194
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Screeners ",
+        "bbox": [
+            318,
+            174,
+            366,
+            194
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Personal Finance ",
+        "bbox": [
+            384,
+            174,
+            465,
+            194
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Videos ",
+        "bbox": [
+            484,
+            174,
+            518,
+            194
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Summary ",
+        "text_level": 1,
+        "bbox": [
+            84,
+            242,
+            126,
+            262
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "News ",
+        "bbox": [
+            84,
+            277,
+            109,
+            294
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Chart ",
+        "bbox": [
+            84,
+            311,
+            109,
+            327
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Conversations ",
+        "bbox": [
+            84,
+            344,
+            143,
+            362
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Statistics ",
+        "bbox": [
+            84,
+            379,
+            125,
+            396
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Historical Data ",
+        "bbox": [
+            84,
+            412,
+            145,
+            431
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Profile ",
+        "bbox": [
+            84,
+            448,
+            113,
+            464
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Financials ",
+        "bbox": [
+            84,
+            481,
+            127,
+            500
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Analysis ",
+        "bbox": [
+            84,
+            516,
+            119,
+            535
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Options ",
+        "bbox": [
+            84,
+            551,
+            118,
+            568
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Holders ",
+        "bbox": [
+            84,
+            585,
+            117,
+            603
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Sustainability ",
+        "bbox": [
+            84,
+            618,
+            140,
+            638
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "NasdaqGS - Nasdaq Real Time Price • USD ",
+        "bbox": [
+            188,
+            229,
+            353,
+            248
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Apple Inc. (AAPL) ",
+        "text_level": 1,
+        "bbox": [
+            189,
+            253,
+            334,
+            287
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Follow ",
+        "bbox": [
+            356,
+            259,
+            396,
+            277
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "$\\rightarrow^{\\dagger}$ Compare ",
+        "bbox": [
+            430,
+            259,
+            482,
+            277
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "207.49 -2.19 (-1.04%) ",
+        "text_level": 1,
+        "bbox": [
+            188,
+            312,
+            361,
+            350
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "207.86 +0.37 (+0.18%) ",
+        "text_level": 1,
+        "bbox": [
+            369,
+            316,
+            532,
+            344
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "At close: June 21 at 4:00 PM EDT ",
+        "bbox": [
+            188,
+            357,
+            314,
+            375
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Pre-Market: 7:41 AM EDT ",
+        "bbox": [
+            370,
+            357,
+            478,
+            375
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Start Trading >> ",
+        "text_level": 1,
+        "bbox": [
+            746,
+            312,
+            838,
+            338
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Plus500 CFD Service. Your capital is at risk. ",
+        "bbox": [
+            712,
+            350,
+            863,
+            368
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "image",
+        "img_path": "images/a92594ce88f7057bc67eae0caa630c03cf3bef9d391f01b0f85c9cfac59212dc.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            196,
+            403,
+            888,
+            764
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "table",
+        "img_path": "images/61f7a98afa1b2635d326a65e42b7739aad90233462704eb39f8d5559aeae15eb.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Previous Close</td><td>209.68</td><td>Day&#x27;s Range</td><td>207.11 - 211.89</td><td>Market Cap (intraday)</td><td>3.182T</td><td colspan=\"2\">Earnings Date Aug 1, 2024 - Aug 5, 2024</td></tr><tr><td>Open</td><td>210.39</td><td>52 Week Range</td><td>164.08 - 220.20</td><td>Beta (5Y Monthly)</td><td>1.25</td><td>Forward Dividend &amp; Yield</td><td>1.00 (0.48%)</td></tr><tr><td>Bid</td><td>207.01 x 3000</td><td>Volume</td><td>246,421,353</td><td>PE Ratio (TTM)</td><td>32.22</td><td>Ex-Dividend Date</td><td>May 10, 2024</td></tr><tr><td>Ask</td><td>209.94 x 200</td><td>Avg. Volume</td><td>67,794,775</td><td>EPS (TTM)</td><td>6.44</td><td>1y Target Est</td><td>207.58</td></tr></table>",
+        "bbox": [
+            189,
+            801,
+            891,
+            946
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "header",
+        "text": "yahoo'finance ",
+        "bbox": [
+            73,
+            100,
+            175,
+            129
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "header",
+        "text": "Search for news, symbols or companies ",
+        "bbox": [
+            200,
+            103,
+            401,
+            129
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "header",
+        "text": "Q ",
+        "bbox": [
+            559,
+            103,
+            573,
+            127
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "header",
+        "text": "News ",
+        "bbox": [
+            633,
+            105,
+            660,
+            124
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "header",
+        "text": "Finance ",
+        "bbox": [
+            693,
+            103,
+            733,
+            124
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "header",
+        "text": "Sports ",
+        "bbox": [
+            765,
+            103,
+            798,
+            125
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "header",
+        "text": "More ",
+        "bbox": [
+            830,
+            103,
+            864,
+            125
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Bid Price & Bid Size ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            428,
+            181
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Bid price is the highest price that a buyer (bidder) is willing to pay for a particular security. ",
+            "- Bid size represents the quantity a buyer is willing to purchase at the bid price. ",
+            "- The top price and size in a bid order book. ",
+            "• For example, if a buyer bids $207.01 x 3000 for a stock, it means they are willing to buy 3000 shares for not more than$ 207.01 "
+        ],
+        "bbox": [
+            70,
+            270,
+            917,
+            716
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "footer",
+        "text": "Bid ",
+        "bbox": [
+            366,
+            818,
+            385,
+            838
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "footer",
+        "text": "207.01 x 3000 ",
+        "bbox": [
+            497,
+            818,
+            577,
+            838
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "text",
+        "text": "Ask Price & Ask Size ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            439,
+            181
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Ask price is the lowest price a seller is willing to accept for a security. ",
+            "- Ask size represents the quantity a seller is willing to sell at the ask price. ",
+            "- The top price and size in an ask order book. ",
+            "• For example, if a seller asks $209.94 \\times 200 for a stock, it implies they are willing to sell 200 shares for not less than$ 209.94 "
+        ],
+        "bbox": [
+            70,
+            270,
+            906,
+            662
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "footer",
+        "text": "Ask ",
+        "bbox": [
+            363,
+            825,
+            389,
+            851
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "footer",
+        "text": "209.94 x 200 ",
+        "bbox": [
+            529,
+            825,
+            615,
+            851
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "HKEX Market Data Pricing ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            111,
+            547,
+            188
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Level 1 data: ",
+            "• bid/ask price: HK$500 /month ",
+            "- Level 2 data: ",
+            "- full order book: HK$5,000 /month "
+        ],
+        "bbox": [
+            75,
+            272,
+            476,
+            516
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "HKEX ",
+        "text_level": 1,
+        "bbox": [
+            532,
+            242,
+            580,
+            268
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "香港交易所",
+        "bbox": [
+            533,
+            270,
+            579,
+            285
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Historical Full Book - Securities Market (Binary Format) provides information on every order and trade of Main Board and GEM stocks in binary format. File is available on a daily basis, normally at around 8:30pm. ",
+            "Historical Full Book - Securities Market (CSV Format) provides information on every order and trade of Main Board and GEM stocks in CSV format. File is available on a daily basis, normally at around 10:00pm. ",
+            "Historical Order Book and Statistics Update - Securities Market provides intra-day order book and statistics information recorded on the HKEX's Main Board and GEM stocks in CSV format. File is available on a daily basis, normally at around 10:00pm. ",
+            "Bid and Ask Record - Main Board & GEM (Daily File) provides intra-day bid and ask information on Main Board and GEM stocks ",
+            "Bid and Ask Record - Main Board & GEM (Monthly File) provides intra-day bid and ask information on Main Board and GEM stocks ",
+            "Trade File - Securities Market (Binary Format) provides trade details, including trade time, price and quantity, of each transaction recorded on the Main Board and GEM in binary format. File is available on a daily basis, normally at around 8:30pm. ",
+            "Trade File - Securities Market (CSV) provides trade details, including trade time, price and quantity, of each transaction recorded on the Main Board and GEM in CSV format. File is available on a daily basis, normally at around 10:00pm. "
+        ],
+        "bbox": [
+            546,
+            316,
+            785,
+            959
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "image",
+        "img_path": "images/a7956b2d8383c6a5aabd5022a273670e5bfa747de9a83241a184467998961936.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            917,
+            246,
+            939,
+            287
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "image",
+        "img_path": "images/98ea7b18fef22b54f82498e9bb784fd403ed28bf2148ee0d1032cb3dcb7a6685.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            885,
+            314,
+            897,
+            342
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "$5,000/ Month ",
+        "bbox": [
+            914,
+            314,
+            950,
+            355
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "image",
+        "img_path": "images/2ff2039e4730d63ff93056983d7837af278741d2cfba027fdfefaa102473b376.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            885,
+            405,
+            897,
+            431
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "$5,000/ Month ",
+        "bbox": [
+            914,
+            405,
+            950,
+            446
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "image",
+        "img_path": "images/d74d447c92966acb21a5e9e319faf13eaa3bc6f054024cccea30129052bacebe.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            885,
+            494,
+            897,
+            522
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "$2,500/ Month ",
+        "bbox": [
+            914,
+            494,
+            950,
+            537
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "image",
+        "img_path": "images/50018306927a07d1ff6b560ed36879285b09d927b0420483db02b9cff0bd5e2e.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            885,
+            605,
+            897,
+            631
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "$500/ Month ",
+        "bbox": [
+            905,
+            605,
+            960,
+            627
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "image",
+        "img_path": "images/d240eec30502a7601eaf85da93182f883248a16e41530d00b09804f4265aa9d4.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            885,
+            675,
+            897,
+            703
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "$500/ Month ",
+        "bbox": [
+            905,
+            675,
+            960,
+            700
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "image",
+        "img_path": "images/6878284176ca321419f78a4d6a00d0b54c72f835dc419e7490bb2b2d3915d6cc.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            885,
+            746,
+            897,
+            772
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "$2,500/ Month ",
+        "bbox": [
+            914,
+            746,
+            950,
+            788
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "image",
+        "img_path": "images/07461bb1cf3e35252e64819e2ee160d6cd1b2f8ec310b750067381e98efc347d.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            885,
+            857,
+            897,
+            883
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "$2,500/ Month ",
+        "bbox": [
+            914,
+            857,
+            950,
+            898
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "footer",
+        "text": "Reference: https://www.hkex.com.hk/eng/ods/historicalData.aspx ",
+        "bbox": [
+            21,
+            946,
+            418,
+            972
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "Market Spread ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            347,
+            188
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The difference between the bid price and the ask price is known as the bid-ask spread. ",
+            "- The bid-ask spread is a key measure of the liquidity of an asset or security. ",
+            "- A smaller spread indicates a more liquid market, while a larger spread indicates a less liquid market. ",
+            "• For example, if the bid price for a stock is $24 and the ask price is $25, the bid-ask spread will be $1. "
+        ],
+        "bbox": [
+            70,
+            270,
+            926,
+            777
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "text",
+        "text": "Percentage Spread ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            420,
+            190
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "- Percentage spread is often used for comparing the spread between different instruments ",
+        "bbox": [
+            71,
+            270,
+            893,
+            387
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text{Percentage Spread} = \\frac {\\text {AskPrice} - \\text {BidPrice}}{\\text {MidPrice}} \\times 100 \\% = \\frac {2 \\times (\\text {AskPrice} - \\text {BidPrice})}{\\text {AskPrice} + \\text {BidPrice}} \\times 100 \\%\n$$",
+        "text_format": "latex",
+        "bbox": [
+            129,
+            451,
+            865,
+            538
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "• For example, if the bid price for a stock is $24 and the ask price is $25, ",
+        "bbox": [
+            71,
+            618,
+            926,
+            679
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• the bid-ask spread will be (25-24) = $1 ",
+            "- the percentage spread will be $2^{*}(25 - 20) / (25 + 20) = 4.08\\%$ "
+        ],
+        "bbox": [
+            109,
+            685,
+            712,
+            790
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "Order Types ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            300,
+            192
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Market Order ",
+            "2. Limit Order ",
+            "3. Stop Order "
+        ],
+        "bbox": [
+            75,
+            272,
+            281,
+            475
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "image",
+        "img_path": "images/1251d110ed9aaf8c1d6abc145dad130065bd8502f6bfe2e42e0b37e9673560fe.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            519,
+            118,
+            970,
+            944
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "text",
+        "text": "Market Order ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            330,
+            181
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- A market order is to buy or sell at the best available price in the current market. ",
+            "- That is, when opening a buy (sell) position using market order, it will try to execute at the best ask (bid) price. ",
+            "- A market order typically ensures an execution, but it does not guarantee a specified price. It is appropriate to use market orders when you want an immediate execution. "
+        ],
+        "bbox": [
+            70,
+            270,
+            902,
+            592
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "image",
+        "img_path": "images/8c694ecb9c3bbd40d28b4c509ad59d0300e050c68909faaa8e81981cacd4710d.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            268,
+            629,
+            790,
+            1000
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "text",
+        "text": "Limit Order ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            286,
+            181
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- A limit order is to buy or sell with a condition on the maximum price to pay or the minimum price to receive (the \"limit price\"). ",
+            "- If the order is filled, it will only be at the specified limit price or better. However, there is no guarantee of execution. ",
+            "- A limit order may be appropriate when you think you can buy at a price lower than (or sell at a price higher than) the current market quote. "
+        ],
+        "bbox": [
+            70,
+            270,
+            919,
+            594
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "text",
+        "text": "Limit Order Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            450,
+            188
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "image",
+        "img_path": "images/b8adfb1eb68635e77d4d516ecfe0712fe1c40c9ae25ad17a09f5a1a6aa25f67c.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            0,
+            305,
+            1000,
+            798
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "text",
+        "text": "Limit Order Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            450,
+            188
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "text",
+        "text": "- The last trade price is roughly $138 ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            270,
+            510,
+            327
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "investor who wants to buy (or sell) immediately would place a market order, which would be executed at or near the current price of \\(138 (white line) provided that the market was open. ",
+            "investor who wants to buy the stock when it dropped to \\(131.78 would place a buy limit order with a limit price of\\)131.78 (green line). If the price falls to \\(131.78 or lower, the limit order would be triggered and executed at \\)131.78 or below. If the stock doesn't drop to \\(131.78 or below, no execution would occur. ",
+            "investor who wants to sell the stock when it reached \\(143.82 would place a sell limit order with a limit price of\\)143.82 (red line). If the price rises to \\(143.82 or higher, the limit order would be triggered and executed at \\)143.82 or above. If the stock doesn't rise to \\(143.82 or above, no execution would occur. "
+        ],
+        "bbox": [
+            107,
+            335,
+            922,
+            757
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "text",
+        "text": "Stop Order ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            280,
+            188
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- A stop order is to buy or sell at the market price when it has traded at or through a specified price (the \"stop price\"). ",
+            "- If the stock reaches the stop price, the order becomes a market order and is filled at the next available market price. If it doesn't reach the stop price, the order will not be executed. ",
+            "- A stop order may be appropriate in these scenarios: "
+        ],
+        "bbox": [
+            70,
+            270,
+            919,
+            644
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- you want to buy when a stock breaks out above a certain level, and believe that it will continue the trend ",
+            "- your holding stock has risen a lot and you want to protect the gain when it begins to fall "
+        ],
+        "bbox": [
+            107,
+            653,
+            893,
+            857
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "text",
+        "text": "Stop Order Example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            111,
+            444,
+            192
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "image",
+        "img_path": "images/e61f773bf848a8135ad8fef549b38f64214548d74db1fb87fb3099726cd18372.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            0,
+            298,
+            1000,
+            809
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "text",
+        "text": "Stop Order Example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            444,
+            192
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The stop buy order will trigger when the price reaches 143.82 or above, and will execute as a market order at that current price. ",
+            "- Thus, if the price rise further after hitting the stop price, it is possible that the order could be executed at a price higher than the stop price. ",
+            "- Similarly for the stop sell order, once the stop price of $131.78 is reached, the order could be executed at a lower price "
+        ],
+        "bbox": [
+            70,
+            270,
+            922,
+            646
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "text",
+        "text": "Slippage ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            230,
+            190
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Slippage refers to the difference between the expected execution price and the price it actually traded ",
+            "- It often occurs "
+        ],
+        "bbox": [
+            71,
+            270,
+            865,
+            451
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- during periods of higher volatility when market orders are used ",
+            "- when large orders are executed when market depth is not sufficient to maintain the expected price of trade "
+        ],
+        "bbox": [
+            109,
+            468,
+            844,
+            620
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Slippage Example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            398,
+            192
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Let's assume you have an algorithm set to buy a stock when the price drops to $50. The algorithm detects the price drop and places a buy order. ",
+            "However, due to high demand or low liquidity, the order gets executed at $51. This$ 1 difference is the slippage. ",
+            "• This means that even if you were expecting to spend $5000 on 100 shares, you would end up spending $5100. The $100 is the cost of slippage "
+        ],
+        "bbox": [
+            70,
+            270,
+            918,
+            759
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "text",
+        "text": "Profit/Loss Calculation ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            487,
+            188
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Entry: Based on a trade signal, generate order to go short or long a certain financial instrument in a certain quantity. Trade results in a certain position in this security ",
+            "- Mark-to-Market: As the price of the security changes, so does your unrealized PnL "
+        ],
+        "bbox": [
+            70,
+            270,
+            922,
+            527
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "equation",
+        "text": "$$\nF o r l o n g o r d e r, P n L = Q u a n t i t y * (P _ {b i d} - P _ {e n t r y})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            293,
+            585,
+            702,
+            637
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "equation",
+        "text": "$$\nF o r s h o r t o r d e r, P n L = - 1 * Q u a n t i t y * (P _ {a s k} - P _ {e n t r y})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            284,
+            661,
+            732,
+            712
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "text",
+        "text": "- Exit: Generate order to exit the position and create a realized PnL ",
+        "bbox": [
+            70,
+            748,
+            759,
+            796
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm {P n L} = \\mathrm {S i d e} * \\mathrm {Q u a n t i t y} * \\left(P _ {\\mathrm {e x i t}} - P _ {\\mathrm {e n t r y}}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            313,
+            838,
+            651,
+            888
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "text",
+        "text": "Mark-to-Market ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            377,
+            188
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- It is an accounting method to calculate the asset or portfolio value according to its current market value, rather than its book value ",
+            "- It involves determining the price at which you could immediately sell an asset or close a position ",
+            "• Example: "
+        ],
+        "bbox": [
+            70,
+            270,
+            908,
+            587
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Suppose you purchase 100 shares of ABC stock ",
+            "- The current bid and ask price of ABC are $9.5 and$ 10.5 ",
+            "• Mark-to-market value of your stock will be $100 *$ 9.5 = $9500 "
+        ],
+        "bbox": [
+            109,
+            598,
+            751,
+            762
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "text",
+        "text": "Order Management System (OMS) ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            710,
+            192
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "text",
+        "text": "1. Order based system ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            268,
+            355,
+            320
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Transactions are managed in a round order manner ",
+            "- Partial close is not supported ",
+            "- Trading platforms "
+        ],
+        "bbox": [
+            110,
+            327,
+            653,
+            477
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "text",
+        "text": "MetaTrader, TradingView, MetaStock, etc ",
+        "bbox": [
+            147,
+            483,
+            517,
+            522
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "text",
+        "text": "2. Position based system ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            537,
+            381,
+            590
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Transactions are independent and no linkage with each other ",
+            "- Partial close is allowed ",
+            "- Trading Platforms "
+        ],
+        "bbox": [
+            110,
+            596,
+            754,
+            744
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Most of the banks (eg. HSBC, SBC, BOC, etc) ",
+            "- Interactive Brokers, Binance, etc "
+        ],
+        "bbox": [
+            147,
+            751,
+            539,
+            835
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "text",
+        "text": "Position Based vs Order Based System ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            776,
+            188
+        ],
+        "page_idx": 52
+    },
+    {
+        "type": "text",
+        "text": "Suppose you open 3 offsetting trades: ",
+        "bbox": [
+            70,
+            262,
+            512,
+            316
+        ],
+        "page_idx": 52
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "#1: buy 2 shares of ABC at $123 ",
+            "#2: sell 1 share of ABC at $124 ",
+            "#3: sell 1 share of ABC at $125 "
+        ],
+        "bbox": [
+            70,
+            322,
+            396,
+            481
+        ],
+        "page_idx": 52
+    },
+    {
+        "type": "text",
+        "text": "For order based system, the unrealized PnL will be \\(2^{*}(\\mathrm{bid} - 123) + 1^{*}(124 - \\mathrm{ask}) +\\) \\(1^{*}(125 - \\mathrm{ask}) = \\\\(3 + 2^{*}(\\mathrm{bid} - \\mathrm{ask})\\). You need to close all the 3 trades to realize the PnL. ",
+        "bbox": [
+            70,
+            546,
+            898,
+            664
+        ],
+        "page_idx": 52
+    },
+    {
+        "type": "text",
+        "text": "For position based system, the orders will be offsetted based on FIFO, and PL will become realized so long as the position is net to zero. Thus, your PnL will be realized at $3. ",
+        "bbox": [
+            69,
+            733,
+            895,
+            855
+        ],
+        "page_idx": 52
+    },
+    {
+        "type": "text",
+        "text": "Leverage & Margin ",
+        "text_level": 1,
+        "bbox": [
+            261,
+            394,
+            736,
+            501
+        ],
+        "page_idx": 53
+    },
+    {
+        "type": "text",
+        "text": "Leverage & Margin ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            425,
+            190
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "text",
+        "text": "- Leverage refers to using borrowed capital as a funding source for investment to increase the potential return ",
+        "bbox": [
+            71,
+            270,
+            897,
+            366
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {L e v e r a g e R a t i o} = \\text {A s s e t / E q u i t y} = 1 + \\text {D e b t / E q u i t y}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            261,
+            412,
+            675,
+            455
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "text",
+        "text": "- Margin is a way to create leverage ",
+        "bbox": [
+            72,
+            520,
+            441,
+            568
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "text",
+        "text": "Margin Amount = (Account Asset Value) - (Borrowed Amount) = Equity held at broker ",
+        "bbox": [
+            166,
+            635,
+            816,
+            672
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "text",
+        "text": "Margin Requirement ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            460,
+            188
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "There are 2 market quotations for margin requirement ",
+        "text_level": 1,
+        "bbox": [
+            39,
+            272,
+            600,
+            318
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Fixed Margin Amount: Mostly used by stock exchanges ",
+            "2. Margin as a percentage: Mostly used by FX/Crypto exchanges "
+        ],
+        "bbox": [
+            39,
+            338,
+            575,
+            437
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "Update Date: 20251006 ",
+        "bbox": [
+            125,
+            468,
+            247,
+            494
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "Please be reminded that the minimum margin rates below are for your firm's financially strongest client. ",
+        "bbox": [
+            125,
+            516,
+            627,
+            540
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "Exchange Participants should set their margin requirements according to each client's individual circumstances. ",
+        "bbox": [
+            125,
+            540,
+            693,
+            566
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "Index Futures ",
+        "bbox": [
+            125,
+            588,
+            197,
+            611
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "table",
+        "img_path": "images/c2c3c3ebfa94150ff0f20ddcd108b391d4464d62885864673f1d46736c4a606d.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td rowspan=\"2\">Effective Date</td><td rowspan=\"2\">Product</td><td rowspan=\"2\" colspan=\"2\">HKATS\nCode</td><td colspan=\"2\">Client Margin</td><td>Clearing House\nMargin</td></tr><tr><td>Initial\n(HK$)</td><td>Maintenance\n(HK$)</td><td>(HK$)</td></tr><tr><td rowspan=\"2\">20251002</td><td rowspan=\"2\">Hang Seng Index</td><td rowspan=\"2\">HSI</td><td>Full Rate\n/lot</td><td>116,774</td><td>93,419</td><td>87,800</td></tr><tr><td>Spread Rate\n/spread</td><td>25,735</td><td>20,588</td><td>19,350</td></tr><tr><td rowspan=\"2\">20251002</td><td rowspan=\"2\">Mini-Hang Seng Index</td><td rowspan=\"2\">MHI</td><td>Full Rate\n/lot</td><td>23,354</td><td>18,683</td><td>17,560</td></tr><tr><td>Spread Rate\n/spread</td><td>5,147</td><td>4,117</td><td>3,870</td></tr></table>",
+        "bbox": [
+            123,
+            635,
+            895,
+            931
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "footer",
+        "text": "Reference: https://www.hkex.com.hk/Services/Clearing/Listed-Derivatives/Risk-Management/Margin/Margin-Tables?sc-lang=en ",
+        "bbox": [
+            23,
+            955,
+            680,
+            983
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "How Margin is related to Leverage? ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            727,
+            188
+        ],
+        "page_idx": 56
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• As HSI Index Future has a price magnifier of 50, meaning that 1 index point change will lead to ±HK$50. Suppose current HSI Index Future price is 25000, and buying 1 lot of HSI Index Future require HK$116,774 as margin. Then, leverage ratio is calculated to be ($25000*50)/$116,774 = 10.7044 ",
+            "• Suppose you pay $600,000 to get stocks worth $1,000,000. Thus, leverage ratio is calculated to be $1,000,000/$600,000 = 1.6667 ",
+            "- As you can imagine, the lower is the margin requirement, the higher is the leverage ratio. In general, "
+        ],
+        "bbox": [
+            70,
+            270,
+            922,
+            688
+        ],
+        "page_idx": 56
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL e v e r a g e \\mathrm {R a t i o} = \\frac {1}{\\text {M a r g i n R e q u i r e m e n t}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            311,
+            727,
+            638,
+            816
+        ],
+        "page_idx": 56
+    },
+    {
+        "type": "text",
+        "text": "Buying Power ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            330,
+            190
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "text",
+        "text": "- For leveraged trading where traders can take out a loan based on the amount of cash held in their broker account, buying power refers to the amount of money available for investors to purchase securities. Mathematically, ",
+        "bbox": [
+            70,
+            270,
+            925,
+            394
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "equation",
+        "text": "$$\nB u y i n g P o w e r = (L e v e r a g e R a t i o) \\times (I n v e s t o r ^ {\\prime} s e q u i t y)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            253,
+            462,
+            650,
+            503
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "text",
+        "text": "- For example, suppose an investor made an initial deposit US $100,000 to a 20:1 leveraged broker account. Then, the investor would be able to purchase, at maximum, US$ 2,000,000 worth of securities. Hence, a buying power of US$2,000,000 ",
+        "bbox": [
+            70,
+            583,
+            912,
+            705
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "text",
+        "text": "Key Takeaways ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            347,
+            190
+        ],
+        "page_idx": 58
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Learn the basic concept of algo-trading and its market trend ",
+            "- Understand the pros and cons of different trading approaches ",
+            "- Know about the infrastructure/resources needed to develop and deploy algo-trading programs in real market ",
+            "- Understand the trading mechanism and order matching in financial market ",
+            "- Equip the knowledge about different market terminology (eg. Order book, order types, market spread, slippage, order/position based trading system, margin, etc) "
+        ],
+        "bbox": [
+            70,
+            270,
+            897,
+            855
+        ],
+        "page_idx": 58
+    }
+]

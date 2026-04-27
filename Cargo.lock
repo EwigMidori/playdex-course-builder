@@ -666,6 +666,7 @@ name = "pipeline-io"
 version = "0.1.0"
 dependencies = [
  "pipeline-core",
+ "serde",
  "serde_json",
 ]
 

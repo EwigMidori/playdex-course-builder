@@ -1,6 +1,6 @@
 use std::path::PathBuf;
 
-use pipeline_core::{LessonPathError, RepoPaths};
+use pipeline_core::{LessonPathError, RepoPaths, StageName};
 
 fn repo_root() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR"))
@@ -41,6 +41,29 @@ fn resolves_valid_lessons_to_deterministic_paths() {
     assert_eq!(
         lesson.plain_text_path(),
         root.join("research/pipeline/1-plain/L2/plain.txt")
+    );
+    assert_eq!(StageName::Convert.as_str(), "convert");
+    assert_eq!(
+        lesson.meta_root_dir(),
+        root.join("research/pipeline/meta/L2")
+    );
+    assert_eq!(
+        lesson.run_root_dir(),
+        root.join("research/pipeline/meta/L2/runs")
+    );
+
+    let run_id = "1714399999999-12345";
+    assert_eq!(
+        lesson.run_dir(run_id),
+        root.join("research/pipeline/meta/L2/runs/1714399999999-12345")
+    );
+    assert_eq!(
+        lesson.run_metadata_path(run_id),
+        root.join("research/pipeline/meta/L2/runs/1714399999999-12345/run.json")
+    );
+    assert_eq!(
+        lesson.stage_state_path(run_id, StageName::Convert),
+        root.join("research/pipeline/meta/L2/runs/1714399999999-12345/stages/convert.json")
     );
 }
 

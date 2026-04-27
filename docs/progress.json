@@ -177,7 +177,7 @@
       "id": "P1",
       "name": "启动 Rust 主线",
       "description": "建立 Rust 工作区、CLI、配置层与 convert 主路径，让系统先能围绕 L2 运行起来并记录状态。",
-      "status": "in_progress",
+      "status": "done",
       "objective": "先把 Rust CLI、配置、run 状态和 L2 转换 stage 跑通，建立可执行主线。",
       "entry_criteria": [
         "现有 Python 脚本和 prompts 可作为参考实现",
@@ -290,7 +290,7 @@
             "P1-T1",
             "P1-T3"
           ],
-          "status": "todo",
+          "status": "done",
           "done_when": [
             "每次 run 都有唯一 meta 目录",
             "stage 状态可标记 pending、running、passed、failed",

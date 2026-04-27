@@ -66,6 +66,10 @@ pub struct LessonPaths {
 }
 
 impl LessonPaths {
+    pub(crate) fn repo_root(&self) -> &Path {
+        self.repo.root()
+    }
+
     pub fn lesson_id(&self) -> &str {
         &self.lesson_id
     }

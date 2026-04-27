@@ -9,11 +9,26 @@ pub struct Cli {
 
 #[derive(Debug, Subcommand)]
 pub enum Command {
-    Run { lesson_id: String },
-    Convert { lesson_id: String },
-    Generate { stage: Stage, lesson_id: String },
-    Review { stage: Stage, lesson_id: String },
-    Validate { stage: Stage, lesson_id: String },
+    Run {
+        lesson_id: String,
+    },
+    Convert {
+        lesson_id: String,
+        #[arg(long)]
+        resume: bool,
+    },
+    Generate {
+        stage: Stage,
+        lesson_id: String,
+    },
+    Review {
+        stage: Stage,
+        lesson_id: String,
+    },
+    Validate {
+        stage: Stage,
+        lesson_id: String,
+    },
 }
 
 impl Command {
@@ -30,7 +45,7 @@ impl Command {
     pub fn lesson_id(&self) -> &str {
         match self {
             Self::Run { lesson_id }
-            | Self::Convert { lesson_id }
+            | Self::Convert { lesson_id, .. }
             | Self::Generate { lesson_id, .. }
             | Self::Review { lesson_id, .. }
             | Self::Validate { lesson_id, .. } => lesson_id,

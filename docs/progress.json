@@ -241,7 +241,7 @@
           "depends_on": [
             "P1-T1"
           ],
-          "status": "todo",
+          "status": "done",
           "done_when": [
             "环境变量和 `.env` 都可用",
             "token 文件路径与超时参数可配置",

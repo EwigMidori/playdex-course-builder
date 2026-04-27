@@ -1,0 +1,8 @@
+[package]
+name = "pipeline-io"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+pipeline-core = { path = "../pipeline-core" }
+serde_json = "1"

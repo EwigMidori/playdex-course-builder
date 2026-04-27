@@ -30,6 +30,20 @@ impl RepoPaths {
         &self.root
     }
 
+    pub fn dotenv_path(&self) -> PathBuf {
+        self.root.join(".env")
+    }
+
+    pub fn default_mineru_token_file_path(&self) -> PathBuf {
+        self.root.join("mineru_token.txt")
+    }
+
+    pub fn relative_path_string(&self, path: &Path) -> Option<String> {
+        path.strip_prefix(&self.root)
+            .ok()
+            .map(path_to_forward_slashes)
+    }
+
     pub fn resolve_lesson(&self, lesson_id: &str) -> Result<LessonPaths, LessonPathError> {
         validate_lesson_id(lesson_id)?;
 
@@ -171,8 +185,5 @@ fn looks_like_repo_root(root: &Path) -> bool {
 }
 
 fn path_to_forward_slashes(path: &Path) -> String {
-    path.components()
-        .map(|component| component.as_os_str().to_string_lossy().into_owned())
-        .collect::<Vec<_>>()
-        .join("/")
+    path.to_string_lossy().replace('\\', "/")
 }

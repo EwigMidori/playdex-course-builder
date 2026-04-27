@@ -70,7 +70,7 @@
 - 以 `L2.pdf` 作为持续集成样本推进端到端开发
 
 详细开发计划见：
-- [docs/progress.json](/home/midori/playdex-course-builder/research/docs/progress.json:1)
+- [docs/progress.json](/Users/zijingzhang/ewig/playdex-course-builder/docs/progress.json:1)
 
 ## 设计取向
 

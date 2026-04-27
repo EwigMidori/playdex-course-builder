@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "project": "replace-with-project-name",
+  "planning_mode": "phase_gated_parallel",
+  "last_updated": "2026-04-26",
+  "status_model": {
+    "phase_status": [
+      "todo",
+      "in_progress",
+      "blocked",
+      "done"
+    ],
+    "task_status": [
+      "todo",
+      "in_progress",
+      "blocked",
+      "ready_for_review",
+      "done"
+    ]
+  },
+  "execution_rules": {
+    "summary": "Mutable project roadmap lives in docs/progress.json. This file is only a vendorable starter template kept inside .ci/agent.",
+    "rules": [
+      "Copy or adapt this starter into docs/progress.json when bootstrapping a repository.",
+      "Do not treat .ci/agent/progress.json as the live roadmap after bootstrap."
+    ]
+  },
+  "workstreams": [],
+  "milestones": [],
+  "phases": []
+}

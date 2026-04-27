@@ -5,15 +5,16 @@
   "last_updated": "2026-04-24",
   "status_model": {
     "phase_status": [
-      "planned",
-      "active",
+      "todo",
+      "in_progress",
       "blocked",
       "done"
     ],
     "task_status": [
       "todo",
-      "doing",
+      "in_progress",
       "blocked",
+      "ready_for_review",
       "done"
     ]
   },
@@ -176,7 +177,7 @@
       "id": "P1",
       "name": "启动 Rust 主线",
       "description": "建立 Rust 工作区、CLI、配置层与 convert 主路径，让系统先能围绕 L2 运行起来并记录状态。",
-      "status": "planned",
+      "status": "todo",
       "objective": "先把 Rust CLI、配置、run 状态和 L2 转换 stage 跑通，建立可执行主线。",
       "entry_criteria": [
         "现有 Python 脚本和 prompts 可作为参考实现",
@@ -211,7 +212,7 @@
           "title": "建立 Rust workspace 与 CLI 骨架",
           "description": "创建最小可编译的 Rust workspace，先把命令入口和 lesson 路径解析框架搭起来，后续 stage 都挂在这套 CLI 上。",
           "workstream": "ws_cli",
-          "crate_scope": [
+          "scope": [
             "crates/app-cli",
             "crates/pipeline-core"
           ],
@@ -233,7 +234,7 @@
           "title": "实现分层配置与 dotenv 加载",
           "description": "把环境变量、`.env` 与默认值合并成一套统一配置源，避免后面每个 stage 各自读取配置而行为漂移。",
           "workstream": "ws_devx",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-core",
             "crates/pipeline-io"
           ],
@@ -257,7 +258,7 @@
           "title": "把 MinerU raw convert stage 迁到 Rust",
           "description": "用 Rust 复现现有 Python 转换脚本的关键行为，包括上传、轮询、下载、解压与标准化输出，确保 L2 可进入 stage-1 plain。",
           "workstream": "ws_convert",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-mineru",
             "crates/pipeline-io"
           ],
@@ -281,7 +282,7 @@
           "title": "加入 run 目录、stage 状态与 resume 标记",
           "description": "给每次运行建立元数据目录和 stage 状态文件，为后续失败恢复、增量重跑和调试报告打基础。",
           "workstream": "ws_cli",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-core",
             "crates/pipeline-io"
           ],
@@ -307,7 +308,7 @@
       "id": "P2",
       "name": "让 Guided Story 在 L2 上跑起来",
       "description": "在 convert 之后接上第一个真实的 LLM stage，产出 guided story 的 manifest 与 steps，并让 reviewer 回路开始工作。",
-      "status": "planned",
+      "status": "todo",
       "objective": "让 Rust 系统首次完成一个真正的 LLM 生成 stage，并在 L2 上产出 guided story 成品与 reviewer 回路。",
       "entry_criteria": [
         "convert stage 已能在 L2 上运行",
@@ -341,7 +342,7 @@
           "title": "实现 prompt 加载与输入包渲染",
           "description": "把磁盘上的 prompt 模板与 L2 lesson 输入拼成可审计的渲染结果，后续所有生成 stage 都复用这套机制。",
           "workstream": "ws_prompt",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-prompts",
             "crates/pipeline-io"
           ],
@@ -365,7 +366,7 @@
           "title": "实现 provider-agnostic 的 LLM 调用层",
           "description": "抽象模型调用接口并保存请求、响应与解析结果，避免后续 stage 把某个 provider 直接写死在业务逻辑里。",
           "workstream": "ws_prompt",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-llm"
           ],
           "depends_on": [
@@ -388,7 +389,7 @@
           "title": "在 L2 上生成 guided story manifest 与 steps",
           "description": "真正把 L2 lesson 输入送进模型，生成 `pipeline/3-guided_story/` 所需的 manifest 和 step JSON 文件。",
           "workstream": "ws_story",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-story",
             "crates/pipeline-models"
           ],
@@ -412,7 +413,7 @@
           "title": "加入 guided story 校验与 reviewer gate",
           "description": "在 guided story 输出后立即执行结构校验和 reviewer 审查，防止坏产物流入题库阶段。",
           "workstream": "ws_review",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-review",
             "crates/pipeline-models"
           ],
@@ -437,7 +438,7 @@
       "id": "P3",
       "name": "让题库在 L2 上跑起来",
       "description": "基于 guided story 与 plain text 生成结构化题库，并把 coverage、linked steps 与 family 引用纳入程序门禁。",
-      "status": "planned",
+      "status": "todo",
       "objective": "在 guided story 基础上生成题库，并把 coverage、linked steps、family 引用等高风险结构正式纳入程序校验。",
       "entry_criteria": [
         "guided story stage 已能在 L2 上运行",
@@ -470,7 +471,7 @@
           "title": "从 L2 源材料组装 question-bank 输入包",
           "description": "把 coverage checklist、source outline、lesson map 与上游产物组合成题库生成所需的统一上下文。",
           "workstream": "ws_prompt",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-prompts",
             "crates/pipeline-story"
           ],
@@ -494,7 +495,7 @@
           "title": "实现题库生成 stage",
           "description": "生成 flashcard 和 longform 两层题库结构，并把结果落成稳定 JSON 供后续 textbook 与校验逻辑使用。",
           "workstream": "ws_qbank",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-qbank",
             "crates/pipeline-models",
             "crates/pipeline-llm"
@@ -519,7 +520,7 @@
           "title": "为题库加入 reference 与 coverage validators",
           "description": "把 family id、question id、coverage_map、linked_steps 这些结构约束变成程序级检查，而不是只依赖 reviewer 自然语言判断。",
           "workstream": "ws_review",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-review",
             "crates/pipeline-models"
           ],
@@ -543,7 +544,7 @@
           "title": "跑通题库 reviewer 与 repair loop",
           "description": "当 reviewer 发现 coverage 缺口、引用错误或题型设计问题时，系统能带修复提示重跑，而不是人工手搓补丁。",
           "workstream": "ws_review",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-review",
             "crates/pipeline-qbank"
           ],
@@ -568,7 +569,7 @@
       "id": "P4",
       "name": "让课本在 L2 上跑起来",
       "description": "在题库基础上生成 lesson 级 MDX 课本，并把图片资产、引用和 coverageTrace 都收进程序控制。",
-      "status": "planned",
+      "status": "todo",
       "objective": "在题库稳定后生成 lesson 级 textbook，并把 MDX 引用、资产复制和 coverageTrace 纳入程序控制。",
       "entry_criteria": [
         "question bank stage 已能在 L2 上通过",
@@ -603,7 +604,7 @@
           "title": "实现 textbook generation 输入包",
           "description": "把题库、guided story、plain text 与 related materials 组织成 textbook 生成所需的 lesson 级上下文。",
           "workstream": "ws_prompt",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-prompts",
             "crates/pipeline-qbank"
           ],
@@ -627,7 +628,7 @@
           "title": "实现确定性的图片选择与复制流程",
           "description": "由程序负责枚举候选图片、选择被引用的资产并复制到课本目录，禁止模型直接发明本地文件路径。",
           "workstream": "ws_textbook",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-textbook",
             "crates/pipeline-io"
           ],
@@ -651,7 +652,7 @@
           "title": "在 L2 上生成 textbook MDX",
           "description": "生成可保存的 lesson 级 MDX 成品，包含 sectionMap、coverageTrace、组件引用和本地 assets 路径。",
           "workstream": "ws_textbook",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-textbook",
             "crates/pipeline-llm",
             "crates/pipeline-models"
@@ -676,7 +677,7 @@
           "title": "加入 textbook validation 与 reviewer gate",
           "description": "在课本输出后检查 QuestionRef、QuestionFamily、sectionMap、coverageTrace 和禁止项，确保成品可进入端到端主链。",
           "workstream": "ws_review",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-review",
             "crates/pipeline-textbook"
           ],
@@ -701,7 +702,7 @@
       "id": "P5",
       "name": "把 L2 全链路串起来",
       "description": "把 convert、guided story、question bank、textbook、validation 与 reviewer 回路编排成一个可恢复的 run 命令。",
-      "status": "planned",
+      "status": "todo",
       "objective": "把 convert、guided story、question bank、textbook、validation、review 串成一个真正可恢复的 `run L2` 命令。",
       "entry_criteria": [
         "convert、guided story、question bank、textbook stage 都已存在",
@@ -735,7 +736,7 @@
           "title": "实现 stage graph 与 run orchestration",
           "description": "把各 stage 的先后关系和输入输出依赖编码成统一的执行图，避免后续每个命令各写一套流程。",
           "workstream": "ws_cli",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-core",
             "crates/app-cli"
           ],
@@ -759,7 +760,7 @@
           "title": "加入 resume、retry 与 backoff 策略",
           "description": "为模型调用和 API 调用增加恢复能力，使 TPS 波动或临时失败不会导致整条链路从头再来。",
           "workstream": "ws_cli",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-core",
             "crates/pipeline-llm"
           ],
@@ -783,7 +784,7 @@
           "title": "产出端到端 run reports",
           "description": "为一次完整运行输出可读的汇总报告和可追踪的调试索引，方便定位失败 stage 与 prompt/output 痕迹。",
           "workstream": "ws_devx",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-core",
             "crates/pipeline-review"
           ],
@@ -808,7 +809,7 @@
       "id": "P6",
       "name": "进入持续迭代模式",
       "description": "在主链稳定后继续扩展题型、MDX 组件、reviewer 与回归体系，让系统支持真实需求驱动的长期演化。",
-      "status": "planned",
+      "status": "todo",
       "objective": "在主链可用后，针对真实需求持续迭代题型、MDX 组件、资产策略和 reviewer，而不是预先冻结产品边界。",
       "entry_criteria": [
         "`coursegen run L2` 至少成功跑完一次",
@@ -842,7 +843,7 @@
           "title": "设计可插拔的题型注册机制",
           "description": "把题型扩展变成局部增量开发问题，而不是每新增一种题型都要改动整个 question bank stage。",
           "workstream": "ws_qbank",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-qbank",
             "crates/pipeline-models"
           ],
@@ -866,7 +867,7 @@
           "title": "设计可扩展的 MDX 组件协议",
           "description": "让不同学科、不同交互方式的课本组件可以逐步接入，并被统一的 validator 和 renderer 理解。",
           "workstream": "ws_textbook",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-textbook",
             "crates/pipeline-models"
           ],
@@ -890,7 +891,7 @@
           "title": "把 L2 升级为 regression fixture 并加入 golden checks",
           "description": "把 L2 固化为持续回归样本，用结构检查和 golden 结果保护主链不被后续迭代悄悄破坏。",
           "workstream": "ws_devx",
-          "crate_scope": [
+          "scope": [
             "crates/pipeline-review",
             "crates/pipeline-io"
           ],

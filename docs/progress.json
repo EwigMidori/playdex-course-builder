@@ -265,7 +265,7 @@
           "depends_on": [
             "P1-T2"
           ],
-          "status": "todo",
+          "status": "done",
           "done_when": [
             "上传、轮询、下载流程能跑通 MinerU raw API",
             "`pipeline/1-plain/L2/` 能原子写入",

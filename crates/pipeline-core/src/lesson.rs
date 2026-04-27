@@ -6,6 +6,7 @@ use std::{
 };
 
 const RAW_PIPELINE_ROOT: &str = "research/pipeline/0-raw";
+const PLAIN_PIPELINE_ROOT: &str = "research/pipeline/1-plain";
 
 #[derive(Clone, Debug)]
 pub struct RepoPaths {
@@ -92,6 +93,17 @@ impl LessonPaths {
                 raw_pdf_relative: self.raw_pdf_relative.clone(),
             })
         }
+    }
+
+    pub fn plain_output_dir(&self) -> PathBuf {
+        self.repo
+            .root()
+            .join(PLAIN_PIPELINE_ROOT)
+            .join(&self.lesson_id)
+    }
+
+    pub fn plain_text_path(&self) -> PathBuf {
+        self.plain_output_dir().join("plain.txt")
     }
 }
 

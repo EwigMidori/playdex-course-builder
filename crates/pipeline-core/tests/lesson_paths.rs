@@ -34,6 +34,14 @@ fn resolves_valid_lessons_to_deterministic_paths() {
             .expect("sample PDF should exist"),
         root.join("research/pipeline/0-raw/L2.pdf")
     );
+    assert_eq!(
+        lesson.plain_output_dir(),
+        root.join("research/pipeline/1-plain/L2")
+    );
+    assert_eq!(
+        lesson.plain_text_path(),
+        root.join("research/pipeline/1-plain/L2/plain.txt")
+    );
 }
 
 #[test]

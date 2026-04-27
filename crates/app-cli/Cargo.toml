@@ -6,3 +6,5 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.5.4", features = ["derive"] }
 pipeline-core = { path = "../pipeline-core" }
+pipeline-io = { path = "../pipeline-io" }
+pipeline-mineru = { path = "../pipeline-mineru" }

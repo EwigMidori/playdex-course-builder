@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "Playdex 课程全链路 Rust 生成系统",
   "planning_mode": "敏捷迭代",
-  "last_updated": "2026-04-24",
+  "last_updated": "2026-04-27",
   "status_model": {
     "phase_status": [
       "todo",
@@ -177,7 +177,7 @@
       "id": "P1",
       "name": "启动 Rust 主线",
       "description": "建立 Rust 工作区、CLI、配置层与 convert 主路径，让系统先能围绕 L2 运行起来并记录状态。",
-      "status": "todo",
+      "status": "in_progress",
       "objective": "先把 Rust CLI、配置、run 状态和 L2 转换 stage 跑通，建立可执行主线。",
       "entry_criteria": [
         "现有 Python 脚本和 prompts 可作为参考实现",
@@ -217,7 +217,7 @@
             "crates/pipeline-core"
           ],
           "depends_on": [],
-          "status": "todo",
+          "status": "done",
           "done_when": [
             "workspace 能构建出一个 no-op CLI",
             "run、convert、generate、review、validate 命令都已声明",

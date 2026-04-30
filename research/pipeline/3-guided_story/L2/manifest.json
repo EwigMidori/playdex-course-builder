@@ -3,9 +3,9 @@
   "mode": "guided_story",
   "steps": [
     {
-      "sequence_id": "step1",
+      "concept": "MVP lesson slice",
       "file": "research/pipeline/3-guided_story/L2/step1/step.json",
-      "concept": "MVP lesson slice"
+      "sequence_id": "step1"
     }
   ]
 }

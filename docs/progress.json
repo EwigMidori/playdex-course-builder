@@ -276,7 +276,7 @@
           "depends_on": [
             "P1-T01"
           ],
-          "status": "ready_for_review",
+          "status": "done",
           "done_when": [
             "`coursegen score-relevance <lesson_id> --target-language zh-CN` reads `research/pipeline/3-guided_story/<lesson_id>/manifest.json` and every step-local `stepN/step.json` plus `stepN/question_bank.json`.",
             "The scorer reads `research/pipeline/1-plain/<lesson_id>/plain.txt`, `research/pipeline/2-related_important/course_desc.md` when present, and `research/pipeline/5-textbook/<lesson_id>.mdx`.",

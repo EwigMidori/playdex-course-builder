@@ -3,6 +3,7 @@ mod config;
 mod mineru;
 mod mvp;
 mod paths;
+mod relevance;
 mod validation;
 
 use clap::Parser;
@@ -50,6 +51,18 @@ fn run() -> Result<(), AppError> {
             validation::validate_outputs(&lesson)?;
             println!("validation passed: lesson={lesson_id}");
         }
+        Command::ScoreRelevance {
+            lesson_id,
+            target_language,
+        } => {
+            let lesson = repo.resolve_lesson(&lesson_id)?;
+            relevance::score_relevance(&repo, &lesson, &target_language)?;
+            println!(
+                "relevance scoring complete: lesson={} report={}",
+                lesson_id,
+                lesson.relative_display(&lesson.relevance_report_path())
+            );
+        }
     }
 
     Ok(())
@@ -61,6 +74,7 @@ enum AppError {
     Config(config::ConfigError),
     Convert(mineru::ConvertError),
     Mvp(mvp::MvpError),
+    Relevance(relevance::RelevanceError),
     Validation(validation::ValidationError),
 }
 
@@ -71,6 +85,7 @@ impl fmt::Display for AppError {
             Self::Config(error) => error.fmt(f),
             Self::Convert(error) => error.fmt(f),
             Self::Mvp(error) => error.fmt(f),
+            Self::Relevance(error) => error.fmt(f),
             Self::Validation(error) => error.fmt(f),
         }
     }
@@ -83,6 +98,7 @@ impl Error for AppError {
             Self::Config(error) => Some(error),
             Self::Convert(error) => Some(error),
             Self::Mvp(error) => Some(error),
+            Self::Relevance(error) => Some(error),
             Self::Validation(error) => Some(error),
         }
     }
@@ -109,6 +125,12 @@ impl From<mineru::ConvertError> for AppError {
 impl From<mvp::MvpError> for AppError {
     fn from(error: mvp::MvpError) -> Self {
         Self::Mvp(error)
+    }
+}
+
+impl From<relevance::RelevanceError> for AppError {
+    fn from(error: relevance::RelevanceError) -> Self {
+        Self::Relevance(error)
     }
 }
 

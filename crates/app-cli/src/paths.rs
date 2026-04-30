@@ -51,6 +51,10 @@ impl RepoPaths {
             .join("research/pipeline/2-related_important/course_desc.md")
     }
 
+    pub fn exam_raw_dir(&self) -> PathBuf {
+        self.root.join(RAW_PIPELINE_ROOT).join("exam")
+    }
+
     pub fn resolve_lesson(&self, lesson_id: &str) -> Result<LessonPaths, LessonPathError> {
         validate_lesson_id(lesson_id)?;
 
@@ -122,7 +126,10 @@ impl LessonPaths {
     }
 
     pub fn guided_story_dir(&self) -> PathBuf {
-        self.repo.root().join(GUIDED_STORY_ROOT).join(&self.lesson_id)
+        self.repo
+            .root()
+            .join(GUIDED_STORY_ROOT)
+            .join(&self.lesson_id)
     }
 
     pub fn guided_story_manifest_path(&self) -> PathBuf {
@@ -155,6 +162,18 @@ impl LessonPaths {
             .join(&self.lesson_id)
             .join("mvp")
             .join(stage)
+    }
+
+    pub fn relevance_dir(&self) -> PathBuf {
+        self.repo
+            .root()
+            .join(META_PIPELINE_ROOT)
+            .join(&self.lesson_id)
+            .join("relevance")
+    }
+
+    pub fn relevance_report_path(&self) -> PathBuf {
+        self.relevance_dir().join("report.json")
     }
 
     pub fn relative_display(&self, path: &Path) -> String {

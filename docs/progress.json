@@ -27,6 +27,7 @@
       "The pipeline must produce plain text, guided story JSON, question bank JSON, and textbook MDX in the existing research/pipeline layout.",
       "Every model call must save the rendered prompt and raw response so failures can be debugged without rerunning previous steps blindly.",
       "Minimum validation is required: generated JSON must parse, guided story manifest must reference existing step files, and textbook question references must point at generated question IDs or families.",
+      "Asset-level relevance scoring must write sidecar reports under research/pipeline/meta and must not mutate generated learning assets.",
       "Implement execution control before broad module decomposition: stage selection, skip existing outputs, force rerun, and clear run summaries come before new crates.",
       "Defer provider abstraction, typed model crates, and reviewer gates until the repeatable single-crate runner is stable."
     ]
@@ -263,6 +264,37 @@
         "Existing generated outputs are never overwritten unless the user passes an explicit force flag."
       ],
       "tasks": [
+        {
+          "id": "P2-T00",
+          "title": "Add asset-level relevance scoring sidecar",
+          "description": "Add a single-crate CLI command that scores step, question-family, textbook-section, and coverage relevance from step-local assets plus weak exam signals, writing a sidecar report without changing generated course assets.",
+          "workstream": "WS-MVP",
+          "crate_scope": [
+            "crates/app-cli",
+            "research/pipeline/meta"
+          ],
+          "depends_on": [
+            "P1-T01"
+          ],
+          "status": "ready_for_review",
+          "done_when": [
+            "`coursegen score-relevance <lesson_id> --target-language zh-CN` reads `research/pipeline/3-guided_story/<lesson_id>/manifest.json` and every step-local `stepN/step.json` plus `stepN/question_bank.json`.",
+            "The scorer reads `research/pipeline/1-plain/<lesson_id>/plain.txt`, `research/pipeline/2-related_important/course_desc.md` when present, and `research/pipeline/5-textbook/<lesson_id>.mdx`.",
+            "Exam files under `research/pipeline/0-raw/exam` are used only as weak scoring signal; `.txt` and `.md` files are included, while PDFs are represented by filename and `exam_pdf_text_unavailable`.",
+            "Rendered prompts, request JSON, raw response, extracted content, and final report are written under `research/pipeline/meta/<lesson_id>/relevance/`.",
+            "`research/pipeline/meta/<lesson_id>/relevance/report.json` contains step_scores, question_family_scores, textbook_section_scores, and coverage_scores arrays.",
+            "Scorer output validation rejects invalid JSON, unknown step sequence ids, and unknown step-local question family ids.",
+            "CLI smoke tests cover local LLM stub success and clear missing key/model failures without real network calls."
+          ],
+          "artifacts": [
+            "crates/app-cli/src/cli.rs",
+            "crates/app-cli/src/main.rs",
+            "crates/app-cli/src/paths.rs",
+            "crates/app-cli/src/relevance.rs",
+            "crates/app-cli/tests/cli_smoke.rs",
+            "research/pipeline/meta/<lesson_id>/relevance/report.json"
+          ]
+        },
         {
           "id": "P2-T01",
           "title": "Add stage reuse and targeted rerun controls",

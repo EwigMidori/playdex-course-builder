@@ -132,11 +132,7 @@ impl Config {
                     .unwrap_or_else(|| "https://api.openai.com/v1".to_owned()),
                 model: resolve_optional_string(&merged, "COURSEGEN_LLM_MODEL")
                     .or_else(|| resolve_optional_string(&merged, "OPENAI_MODEL")),
-                max_tokens: resolve_u64_with_default(
-                    &merged,
-                    COURSEGEN_LLM_MAX_TOKENS,
-                    393_216,
-                )?,
+                max_tokens: resolve_u64_with_default(&merged, COURSEGEN_LLM_MAX_TOKENS, 393_216)?,
                 timeout_seconds: resolve_u64_with_default(
                     &merged,
                     COURSEGEN_LLM_TIMEOUT_SECONDS,

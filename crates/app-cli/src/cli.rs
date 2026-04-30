@@ -22,4 +22,9 @@ pub enum Command {
     Validate {
         lesson_id: String,
     },
+    ScoreRelevance {
+        lesson_id: String,
+        #[arg(long, default_value = "zh-CN")]
+        target_language: String,
+    },
 }

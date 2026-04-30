@@ -16,6 +16,8 @@ const ENV_KEYS: &[&str] = &[
     "COURSEGEN_LLM_API_KEY",
     "COURSEGEN_LLM_BASE_URL",
     "COURSEGEN_LLM_MODEL",
+    "COURSEGEN_LLM_MAX_TOKENS",
+    "COURSEGEN_LLM_TIMEOUT_SECONDS",
     "OPENAI_API_KEY",
     "OPENAI_BASE_URL",
     "OPENAI_MODEL",
@@ -95,6 +97,38 @@ impl TempRepo {
             "research/prompts/textbook_user.md",
             "textbook {{target_language}} {{lesson_id}} {{question_bank}} {{plain_text}}\n",
         );
+    }
+
+    fn seed_relevance_inputs(&self) {
+        self.write(
+            "research/pipeline/1-plain/L2/plain.txt",
+            "A lesson about execution, questions, and review.\n",
+        );
+        self.write(
+            "research/pipeline/2-related_important/course_desc.md",
+            "Course description with assessment outcomes.\n",
+        );
+        self.write(
+            "research/pipeline/3-guided_story/L2/manifest.json",
+            r#"{"lesson_id":"L2","mode":"guided_story","steps":[{"sequence_id":"step1","file":"research/pipeline/3-guided_story/L2/step1/step.json","concept":"Execution"}]}"#,
+        );
+        self.write(
+            "research/pipeline/3-guided_story/L2/step1/step.json",
+            r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[{"id":"s1","body":"Execution matters."}],"term_catalog":{}}"#,
+        );
+        self.write(
+            "research/pipeline/3-guided_story/L2/step1/question_bank.json",
+            r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_a","linked_steps":["step1"],"variants":[{"question_id":"question_a","linked_steps":["step1"],"stem":"A?","answer":0}]}],"longform_families":[]}"#,
+        );
+        self.write(
+            "research/pipeline/5-textbook/L2.mdx",
+            "# Execution\n\nExecution textbook content.\n\n## Review\n\n<QuestionFamily familyId=\"family_a\" />\n",
+        );
+        self.write(
+            "research/pipeline/0-raw/exam/sample.txt",
+            "exam sample text\n",
+        );
+        self.write("research/pipeline/0-raw/exam/sample.pdf", "%PDF test\n");
     }
 }
 
@@ -287,6 +321,181 @@ fn run_reports_missing_llm_model_before_prompts_or_network() {
     assert!(
         stderr.contains("missing LLM model: set COURSEGEN_LLM_MODEL or OPENAI_MODEL"),
         "stderr: {stderr}"
+    );
+}
+
+#[test]
+fn score_relevance_reports_missing_llm_api_key_before_network() {
+    let repo = TempRepo::new();
+    repo.seed_relevance_inputs();
+
+    let output = coursegen_command()
+        .current_dir(repo.root())
+        .env("COURSEGEN_LLM_MODEL", "test-model")
+        .args(["score-relevance", "L2"])
+        .output()
+        .expect("coursegen should run");
+
+    assert!(
+        !output.status.success(),
+        "stdout: {}",
+        String::from_utf8_lossy(&output.stdout)
+    );
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    assert!(
+        stderr.contains("missing LLM API key: set COURSEGEN_LLM_API_KEY or OPENAI_API_KEY"),
+        "stderr: {stderr}"
+    );
+}
+
+#[test]
+fn score_relevance_reports_missing_llm_model_before_network() {
+    let repo = TempRepo::new();
+    repo.seed_relevance_inputs();
+
+    let output = coursegen_command()
+        .current_dir(repo.root())
+        .env("COURSEGEN_LLM_API_KEY", "test-token")
+        .args(["score-relevance", "L2"])
+        .output()
+        .expect("coursegen should run");
+
+    assert!(
+        !output.status.success(),
+        "stdout: {}",
+        String::from_utf8_lossy(&output.stdout)
+    );
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    assert!(
+        stderr.contains("missing LLM model: set COURSEGEN_LLM_MODEL or OPENAI_MODEL"),
+        "stderr: {stderr}"
+    );
+}
+
+#[test]
+fn score_relevance_writes_report_and_audit_outputs_with_local_llm_stub() {
+    let repo = TempRepo::new();
+    repo.seed_relevance_inputs();
+    let report = serde_json::json!({
+        "lesson_id": "L2",
+        "target_language": "zh-CN",
+        "exam_signal": {
+            "summary": "sample exam signal",
+            "notes": ["exam_pdf_text_unavailable"]
+        },
+        "step_scores": [{
+            "sequence_id": "step1",
+            "importance": 0.9,
+            "course_relevance": 0.9,
+            "exam_relevance": 0.5,
+            "recommended_treatment": "keep",
+            "reason": "Core lesson step."
+        }],
+        "question_family_scores": [{
+            "sequence_id": "step1",
+            "family_id": "family_a",
+            "importance": 0.8,
+            "course_relevance": 0.9,
+            "exam_relevance": 0.4,
+            "recommended_treatment": "keep",
+            "reason": "Checks the step objective."
+        }],
+        "textbook_section_scores": [{
+            "section_id": "section_1",
+            "title": "Execution",
+            "importance": 0.8,
+            "course_relevance": 0.9,
+            "exam_relevance": 0.4,
+            "recommended_treatment": "keep",
+            "reason": "Relevant section."
+        }],
+        "coverage_scores": [{
+            "coverage_id": "coverage_1",
+            "title": "Execution",
+            "importance": 0.8,
+            "course_relevance": 0.9,
+            "exam_relevance": 0.4,
+            "recommended_treatment": "keep",
+            "reason": "Likely assessable."
+        }]
+    })
+    .to_string();
+    let server = StubLlmServer::start(vec![report]);
+
+    let output = coursegen_command()
+        .current_dir(repo.root())
+        .env("COURSEGEN_LLM_API_KEY", "test-token")
+        .env("COURSEGEN_LLM_MODEL", "test-model")
+        .env("COURSEGEN_LLM_BASE_URL", server.base_url())
+        .args(["score-relevance", "L2", "--target-language", "zh-CN"])
+        .output()
+        .expect("coursegen should run");
+
+    server.finish();
+
+    assert!(
+        output.status.success(),
+        "stderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(
+        String::from_utf8_lossy(&output.stdout).contains("relevance scoring complete: lesson=L2"),
+        "stdout: {}",
+        String::from_utf8_lossy(&output.stdout)
+    );
+
+    let audit_root = repo.root().join("research/pipeline/meta/L2/relevance");
+    let report_path = audit_root.join("report.json");
+    assert!(report_path.is_file(), "relevance report should be written");
+    for file_name in [
+        "system.md",
+        "user.md",
+        "request.json",
+        "raw_response.txt",
+        "raw_response.json",
+        "content.txt",
+    ] {
+        assert!(
+            audit_root.join(file_name).is_file(),
+            "{file_name} should be audited"
+        );
+    }
+
+    let report: serde_json::Value =
+        serde_json::from_str(&read_text(report_path)).expect("report should parse");
+    assert!(
+        report["step_scores"]
+            .as_array()
+            .is_some_and(|scores| !scores.is_empty()),
+        "step scores should be present"
+    );
+    assert!(
+        report["question_family_scores"]
+            .as_array()
+            .is_some_and(|scores| !scores.is_empty()),
+        "question family scores should be present"
+    );
+    assert!(
+        report["textbook_section_scores"]
+            .as_array()
+            .is_some_and(|scores| !scores.is_empty()),
+        "textbook section scores should be present"
+    );
+    assert!(
+        report["coverage_scores"]
+            .as_array()
+            .is_some_and(|scores| !scores.is_empty()),
+        "coverage scores should be present"
+    );
+
+    let user_prompt = read_text(audit_root.join("user.md"));
+    assert!(
+        user_prompt.contains("exam_pdf_text_unavailable"),
+        "PDF exam files should be included as unavailable text signal"
+    );
+    assert!(
+        user_prompt.contains("sample.txt"),
+        "exam text files should be included in scorer input"
     );
 }
 

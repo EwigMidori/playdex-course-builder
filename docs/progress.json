@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "Playdex Course Builder",
   "planning_mode": "mvp_vertical_slice",
-  "last_updated": "2026-04-30",
+  "last_updated": "2026-05-01",
   "status_model": {
     "phase_status": [
       "todo",
@@ -39,6 +39,14 @@
       "scope": [
         "crates/app-cli",
         "research/prompts",
+        "research/pipeline"
+      ]
+    },
+    {
+      "id": "WS-VIEWER",
+      "name": "Course Artifact Viewers",
+      "scope": [
+        "apps/viewer",
         "research/pipeline"
       ]
     }
@@ -82,6 +90,16 @@
         "Generated guided story, question bank, and textbook outputs pass structural and cross-reference quality gates.",
         "Coverage trace, linked steps, question ids, family ids, term ids, and MDX component references are checked without relying on reviewer prose.",
         "Validation reports explain exactly what failed and which file/path caused it."
+      ]
+    },
+    {
+      "id": "M5",
+      "name": "Local Course Artifact Viewers",
+      "phase": "P4",
+      "done_when": [
+        "A local Vite React app can preview generated textbook MDX.",
+        "A local Vite React app can preview guided story steps and their step-local question banks.",
+        "The viewer reads existing research/pipeline artifacts without creating a second course source of truth."
       ]
     }
   ],
@@ -388,6 +406,72 @@
             "crates/app-cli/src/main.rs",
             "crates/app-cli/tests/cli_smoke.rs",
             "research/pipeline/meta/<lesson_id>/validation/report.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "name": "Build Local Artifact Viewers",
+      "description": "Add a React + Tailwind + Vite + Jotai viewer app for inspecting generated MDX textbooks and guided story step artifacts from the existing pipeline layout.",
+      "status": "done",
+      "objective": "Make generated lessons inspectable in a browser without adding a backend or creating a duplicate data model.",
+      "entry_criteria": [
+        "L2 generated outputs exist under research/pipeline/3-guided_story/L2 and research/pipeline/5-textbook/L2.mdx.",
+        "Step-local question banks exist beside their owning step files.",
+        "Relevance sidecar output exists under research/pipeline/meta/L2/relevance/report.json."
+      ],
+      "exit_criteria": [
+        "`npm install` and `npm run dev -- --host 127.0.0.1` work from apps/viewer.",
+        "The MDX viewer renders the selected lesson textbook with custom placeholders for generated course components.",
+        "The storybook viewer renders the selected lesson manifest, step screens, step-local question families, and relevance treatments.",
+        "The app uses Jotai for selected lesson/view/step state.",
+        "The app uses Tailwind for layout and styling.",
+        "The viewer reads pipeline artifacts through Vite-served static files or dev-only fetches and does not rewrite generated artifacts."
+      ],
+      "deliverables": [
+        "Vite React viewer app",
+        "MDX textbook viewer",
+        "Guided story step viewer",
+        "Question family preview",
+        "Relevance score badges"
+      ],
+      "parallel_tracks": [
+        "Worker implements the viewer app while the architect reviews task boundaries and validates the finished app."
+      ],
+      "gate_checks": [
+        "Do not add a backend service in this pass.",
+        "Do not move or duplicate research/pipeline artifacts as a new source of truth.",
+        "Keep the UI focused on inspection and debugging, not learner-facing polish.",
+        "Do not change Rust CLI behavior for this task."
+      ],
+      "tasks": [
+        {
+          "id": "P4-T01",
+          "title": "Add React artifact viewer app",
+          "description": "Create apps/viewer with React, Tailwind, Vite, and Jotai to inspect generated MDX textbooks and guided story step-local assets.",
+          "workstream": "WS-VIEWER",
+          "crate_scope": [
+            "apps/viewer",
+            "research/pipeline"
+          ],
+          "depends_on": [
+            "P2-T00"
+          ],
+          "status": "done",
+          "done_when": [
+            "The app lists available lessons from a small manifest and defaults to L2 when available.",
+            "MDX viewer renders research/pipeline/5-textbook/<lesson_id>.mdx with readable typography and safe placeholder components for QuestionFamily, QuestionRef, Term, Formula, and Figure.",
+            "Storybook viewer renders research/pipeline/3-guided_story/<lesson_id>/manifest.json and stepN/step.json files with screen navigation.",
+            "Each step view shows its colocated stepN/question_bank.json families and variants.",
+            "When present, research/pipeline/meta/<lesson_id>/relevance/report.json is shown as step/question/textbook relevance badges.",
+            "Jotai owns selected lesson, selected viewer tab, and selected step state.",
+            "`npm run build` succeeds."
+          ],
+          "artifacts": [
+            "apps/viewer/package.json",
+            "apps/viewer/vite.config.ts",
+            "apps/viewer/src"
           ]
         }
       ]

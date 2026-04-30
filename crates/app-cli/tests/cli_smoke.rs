@@ -304,7 +304,7 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
     );
 
     let guided_story = r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[],"term_catalog":{}}"#.to_owned();
-    let question_bank = r#"{"lesson_id":"L2","flashcard_families":[{"family_id":"family_a","variants":[{"question_id":"question_a","stem":"A?","answer":0}]}],"longform_families":[]}"#.to_owned();
+    let question_bank = r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_a","linked_steps":["step1"],"variants":[{"question_id":"question_a","linked_steps":["step1"],"stem":"A?","answer":0}]}],"longform_families":[]}"#.to_owned();
     let textbook =
         r#"---\nlessonId: L2\n---\n# L2\n<QuestionFamily familyId="family_a" />\n<QuestionRef id="question_a" />\n"#.to_owned();
     let server = StubLlmServer::start(vec![guided_story, question_bank, textbook]);
@@ -333,13 +333,13 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
 
     let manifest_path = repo
         .root()
-        .join("research/pipeline/3-guided_story/manifest.json");
+        .join("research/pipeline/3-guided_story/L2/manifest.json");
     let step_path = repo
         .root()
-        .join("research/pipeline/3-guided_story/L2.step1.json");
+        .join("research/pipeline/3-guided_story/L2/step1/step.json");
     let question_path = repo
         .root()
-        .join("research/pipeline/4-question_bank/L2.question_bank.json");
+        .join("research/pipeline/3-guided_story/L2/step1/question_bank.json");
     let textbook_path = repo.root().join("research/pipeline/5-textbook/L2.mdx");
     assert!(manifest_path.is_file(), "manifest should be written");
     assert!(step_path.is_file(), "guided step should be written");

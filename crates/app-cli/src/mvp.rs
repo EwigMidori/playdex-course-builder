@@ -94,7 +94,10 @@ fn generate_guided_story(
         "mode": "guided_story",
         "steps": [{
             "sequence_id": "step1",
-            "file": format!("research/pipeline/3-guided_story/{}.step1.json", lesson.lesson_id()),
+            "file": format!(
+                "research/pipeline/3-guided_story/{}/step1/step.json",
+                lesson.lesson_id()
+            ),
             "concept": "MVP lesson slice"
         }]
     });
@@ -136,13 +139,13 @@ fn generate_question_bank(
             source,
         })?;
 
-    if let Some(parent) = lesson.question_bank_path().parent() {
+    if let Some(parent) = lesson.step_question_bank_path(1).parent() {
         fs::create_dir_all(parent).map_err(|source| MvpError::Write {
             path: parent.to_path_buf(),
             source,
         })?;
     }
-    write_pretty_json(&lesson.question_bank_path(), &question_bank)?;
+    write_pretty_json(&lesson.step_question_bank_path(1), &question_bank)?;
     Ok(())
 }
 
@@ -157,7 +160,7 @@ fn generate_textbook(
     let system = read_prompt(repo, "textbook_system.md")?;
     let manifest = read_required_text(&lesson.guided_story_manifest_path())?;
     let steps = read_required_text(&lesson.guided_story_step_path(1))?;
-    let question_bank = read_required_text(&lesson.question_bank_path())?;
+    let question_bank = read_step_question_banks(lesson)?;
     let source_outline = source_outline_from_plain_text(plain_text);
     let user = render_prompt(
         &read_prompt(repo, "textbook_user.md")?,
@@ -323,6 +326,44 @@ struct ChatMessage<'a> {
 
 fn read_prompt(repo: &crate::paths::RepoPaths, file_name: &str) -> Result<String, MvpError> {
     read_required_text(&repo.prompts_dir().join(file_name))
+}
+
+fn read_step_question_banks(lesson: &LessonPaths) -> Result<String, MvpError> {
+    let mut banks = Vec::new();
+    let step_dirs = match fs::read_dir(lesson.guided_story_dir()) {
+        Ok(step_dirs) => step_dirs,
+        Err(source) => {
+            return Err(MvpError::Read {
+                path: lesson.guided_story_dir(),
+                source,
+            })
+        }
+    };
+
+    for entry in step_dirs {
+        let entry = entry.map_err(|source| MvpError::Read {
+            path: lesson.guided_story_dir(),
+            source,
+        })?;
+        let path = entry.path();
+        if !path.is_dir() {
+            continue;
+        }
+        let Some(name) = path.file_name().and_then(|name| name.to_str()) else {
+            continue;
+        };
+        if !name.starts_with("step") {
+            continue;
+        }
+
+        let question_bank_path = path.join("question_bank.json");
+        if question_bank_path.is_file() {
+            banks.push(read_required_text(&question_bank_path)?);
+        }
+    }
+
+    banks.sort();
+    Ok(format!("[\n{}\n]", banks.join(",\n")))
 }
 
 fn read_required_text(path: &Path) -> Result<String, MvpError> {

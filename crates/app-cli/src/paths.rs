@@ -8,7 +8,6 @@ use std::{
 const RAW_PIPELINE_ROOT: &str = "research/pipeline/0-raw";
 const PLAIN_PIPELINE_ROOT: &str = "research/pipeline/1-plain";
 const GUIDED_STORY_ROOT: &str = "research/pipeline/3-guided_story";
-const QUESTION_BANK_ROOT: &str = "research/pipeline/4-question_bank";
 const TEXTBOOK_ROOT: &str = "research/pipeline/5-textbook";
 const META_PIPELINE_ROOT: &str = "research/pipeline/meta";
 
@@ -123,23 +122,23 @@ impl LessonPaths {
     }
 
     pub fn guided_story_dir(&self) -> PathBuf {
-        self.repo.root().join(GUIDED_STORY_ROOT)
+        self.repo.root().join(GUIDED_STORY_ROOT).join(&self.lesson_id)
     }
 
     pub fn guided_story_manifest_path(&self) -> PathBuf {
         self.guided_story_dir().join("manifest.json")
     }
 
-    pub fn guided_story_step_path(&self, step: usize) -> PathBuf {
-        self.guided_story_dir()
-            .join(format!("{}.step{step}.json", self.lesson_id))
+    pub fn guided_story_step_dir(&self, step: usize) -> PathBuf {
+        self.guided_story_dir().join(format!("step{step}"))
     }
 
-    pub fn question_bank_path(&self) -> PathBuf {
-        self.repo
-            .root()
-            .join(QUESTION_BANK_ROOT)
-            .join(format!("{}.question_bank.json", self.lesson_id))
+    pub fn guided_story_step_path(&self, step: usize) -> PathBuf {
+        self.guided_story_step_dir(step).join("step.json")
+    }
+
+    pub fn step_question_bank_path(&self, step: usize) -> PathBuf {
+        self.guided_story_step_dir(step).join("question_bank.json")
     }
 
     pub fn textbook_path(&self) -> PathBuf {

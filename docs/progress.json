@@ -49,14 +49,24 @@
       "phase": "P0",
       "done_when": [
         "One command or documented command sequence runs a lesson from raw PDF/plain text to guided story, question bank, and textbook outputs.",
-        "The resulting files exist in research/pipeline/1-plain, research/pipeline/3-guided_story, research/pipeline/4-question_bank, and research/pipeline/5-textbook.",
+        "The resulting files exist in research/pipeline/1-plain, research/pipeline/3-guided_story/<lesson_id>/stepN, and research/pipeline/5-textbook.",
         "The generated JSON files parse and the generated MDX is saved for inspection."
       ]
     },
     {
       "id": "M2",
-      "name": "Repeatable Single-Crate Runner",
+      "name": "Step-Local Asset Layout",
       "phase": "P1",
+      "done_when": [
+        "Guided story output is lesson-local under research/pipeline/3-guided_story/<lesson_id>.",
+        "Each step owns its own step.json and question_bank.json.",
+        "No lesson-level question bank file is treated as the source of truth."
+      ]
+    },
+    {
+      "id": "M3",
+      "name": "Repeatable Single-Crate Runner",
+      "phase": "P2",
       "done_when": [
         "`coursegen run L2` can skip existing successful outputs by default.",
         "A developer can force selected stages to rerun without deleting files by hand.",
@@ -64,9 +74,9 @@
       ]
     },
     {
-      "id": "M3",
+      "id": "M4",
       "name": "Programmatic Quality Gates",
-      "phase": "P2",
+      "phase": "P3",
       "done_when": [
         "Generated guided story, question bank, and textbook outputs pass structural and cross-reference quality gates.",
         "Coverage trace, linked steps, question ids, family ids, term ids, and MDX component references are checked without relying on reviewer prose.",
@@ -124,8 +134,8 @@
           "done_when": [
             "`coursegen run <lesson_id>` accepts a lesson id and target language option.",
             "If research/pipeline/1-plain/<lesson_id>/plain.txt is missing, `coursegen run` can create it through the existing Rust convert path or fail with a clear credential/setup error.",
-            "Guided story output is written to research/pipeline/3-guided_story with a manifest and step files.",
-            "Question bank output is written to research/pipeline/4-question_bank/<lesson_id>.question_bank.json.",
+            "Guided story output is written to research/pipeline/3-guided_story/<lesson_id> with a manifest and step-local step files.",
+            "Question bank output is written beside its owning step at research/pipeline/3-guided_story/<lesson_id>/stepN/question_bank.json.",
             "Textbook output is written to research/pipeline/5-textbook/<lesson_id>.mdx.",
             "Rendered prompts and raw model responses are saved under research/pipeline/meta/<lesson_id>/mvp.",
             "A minimal validator confirms JSON parseability and basic cross-file references."
@@ -140,9 +150,9 @@
             "crates/app-cli/src/validation.rs",
             "crates/app-cli/tests/cli_smoke.rs",
             "research/pipeline/1-plain/<lesson_id>/plain.txt",
-            "research/pipeline/3-guided_story/manifest.json",
-            "research/pipeline/3-guided_story/<lesson_id>.step*.json",
-            "research/pipeline/4-question_bank/<lesson_id>.question_bank.json",
+            "research/pipeline/3-guided_story/<lesson_id>/manifest.json",
+            "research/pipeline/3-guided_story/<lesson_id>/stepN/step.json",
+            "research/pipeline/3-guided_story/<lesson_id>/stepN/question_bank.json",
             "research/pipeline/5-textbook/<lesson_id>.mdx",
             "research/pipeline/meta/<lesson_id>/mvp"
           ]
@@ -151,13 +161,83 @@
     },
     {
       "id": "P1",
+      "name": "Move Assets to Step-Local Layout",
+      "description": "Keep the single-crate Rust CLI, but move guided story and question bank outputs into a lesson/step-local directory layout with one source of truth.",
+      "status": "todo",
+      "objective": "Make each step self-contained by storing `step.json` and its only question bank beside each other under `research/pipeline/3-guided_story/<lesson_id>/stepN/`.",
+      "entry_criteria": [
+        "P0-T01 completed with real L2 outputs.",
+        "L2 plain text, guided story, question bank, textbook, and audit files exist in the old MVP layout.",
+        "The app still uses one Rust crate: crates/app-cli."
+      ],
+      "exit_criteria": [
+        "Manifest lives at `research/pipeline/3-guided_story/<lesson_id>/manifest.json`.",
+        "Each guided story step lives at `research/pipeline/3-guided_story/<lesson_id>/stepN/step.json`.",
+        "Each step question bank lives at `research/pipeline/3-guided_story/<lesson_id>/stepN/question_bank.json`.",
+        "Questions are owned by exactly one step; cross-step linked questions are rejected.",
+        "Textbook generation and validation collect question banks by scanning step directories.",
+        "`research/pipeline/4-question_bank` is not used as the source of truth."
+      ],
+      "deliverables": [
+        "Lesson-local guided story manifest",
+        "Step-local guided story JSON",
+        "Step-local question bank JSON",
+        "Validator support for step-local question banks"
+      ],
+      "parallel_tracks": [
+        "No parallel tracks; this is a narrow execution-control pass."
+      ],
+      "gate_checks": [
+        "No new crate is introduced.",
+        "No new crate is introduced.",
+        "Do not create a lesson-level question bank index as a second source of truth.",
+        "Do not allow question families or variants to link to multiple steps.",
+        "Keep this as a path/layout change; do not introduce multi-step planning in the same task."
+      ],
+      "tasks": [
+        {
+          "id": "P1-T01",
+          "title": "Restructure guided story and question bank into step-local assets",
+          "description": "Move guided story and question bank outputs into `research/pipeline/3-guided_story/<lesson_id>/stepN/`, keeping each question bank owned by exactly one step.",
+          "workstream": "WS-MVP",
+          "crate_scope": [
+            "crates/app-cli",
+            "research/pipeline/meta"
+          ],
+          "depends_on": [
+            "P0-T01"
+          ],
+          "status": "todo",
+          "done_when": [
+            "`coursegen run <lesson_id>` writes `research/pipeline/3-guided_story/<lesson_id>/manifest.json`.",
+            "`coursegen run <lesson_id>` writes `research/pipeline/3-guided_story/<lesson_id>/step1/step.json` for the current MVP step.",
+            "`coursegen run <lesson_id>` writes `research/pipeline/3-guided_story/<lesson_id>/step1/question_bank.json`.",
+            "`coursegen validate <lesson_id>` scans step directories for question banks and rejects any question family or variant with linked_steps outside its owning step.",
+            "Textbook generation reads all step-local question banks instead of `research/pipeline/4-question_bank/<lesson_id>.question_bank.json`.",
+            "CLI tests assert the new paths and step-local question bank validation."
+          ],
+          "artifacts": [
+            "crates/app-cli/src/paths.rs",
+            "crates/app-cli/src/cli.rs",
+            "crates/app-cli/src/mvp.rs",
+            "crates/app-cli/src/validation.rs",
+            "crates/app-cli/tests/cli_smoke.rs",
+            "research/pipeline/3-guided_story/<lesson_id>/manifest.json",
+            "research/pipeline/3-guided_story/<lesson_id>/stepN/step.json",
+            "research/pipeline/3-guided_story/<lesson_id>/stepN/question_bank.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P2",
       "name": "Make the MVP Runner Repeatable",
       "description": "Keep the single-crate Rust CLI, but add enough execution control that development does not waste API quota or require manual file cleanup.",
       "status": "todo",
       "objective": "Make `coursegen run` practical for day-to-day development by reusing existing artifacts, allowing targeted reruns, and writing clear run summaries.",
       "entry_criteria": [
-        "P0-T01 completed with real L2 outputs.",
-        "L2 plain text, guided story, question bank, textbook, and audit files exist.",
+        "P1-T01 completed with step-local guided story and question bank outputs.",
+        "L2 plain text, guided story, step-local question bank, textbook, and audit files exist.",
         "The app still uses one Rust crate: crates/app-cli."
       ],
       "exit_criteria": [
@@ -184,7 +264,7 @@
       ],
       "tasks": [
         {
-          "id": "P1-T01",
+          "id": "P2-T01",
           "title": "Add stage reuse and targeted rerun controls",
           "description": "Teach the single-crate CLI to treat the MVP stages as reusable artifacts, so developers can rerun only the stage they need without wasting MinerU or LLM quota.",
           "workstream": "WS-MVP",
@@ -193,11 +273,11 @@
             "research/pipeline/meta"
           ],
           "depends_on": [
-            "P0-T01"
+            "P1-T01"
           ],
           "status": "todo",
           "done_when": [
-            "`coursegen run <lesson_id>` skips valid existing plain text, guided story, question bank, and textbook outputs.",
+            "`coursegen run <lesson_id>` skips valid existing plain text, guided story, step-local question bank, and textbook outputs.",
             "`--force-stage convert|guided-story|question-bank|textbook|all` reruns the selected stage and any downstream stages that depend on it.",
             "`--from-stage convert|guided-story|question-bank|textbook` starts from the selected stage after validating required upstream artifacts.",
             "Each run writes `research/pipeline/meta/<lesson_id>/runs/<run_id>/summary.json`.",
@@ -215,13 +295,13 @@
       ]
     },
     {
-      "id": "P2",
+      "id": "P3",
       "name": "Add Programmatic Quality Gates",
       "description": "Keep the single-crate runner, but raise validation from basic parseability to practical content safety checks before adding reviewer loops or crate boundaries.",
       "status": "todo",
       "objective": "Catch broken generated course assets through deterministic validation: coverage, references, term catalogs, MDX component references, and audit completeness.",
       "entry_criteria": [
-        "P1-T01 completed with repeatable stage reuse and run summaries.",
+        "P2-T01 completed with repeatable stage reuse and run summaries.",
         "L2 generated outputs and audit files are available as real validation samples.",
         "The app still uses one Rust crate: crates/app-cli."
       ],
@@ -251,7 +331,7 @@
       ],
       "tasks": [
         {
-          "id": "P2-T01",
+          "id": "P3-T01",
           "title": "Add deterministic quality gates for generated assets",
           "description": "Expand the single-crate validator so generated guided story, question bank, and textbook assets fail fast on broken references, missing coverage, malformed catalogs, or unusable MDX component links.",
           "workstream": "WS-MVP",
@@ -260,7 +340,7 @@
             "research/pipeline/meta"
           ],
           "depends_on": [
-            "P1-T01"
+            "P2-T01"
           ],
           "status": "todo",
           "done_when": [

@@ -15,13 +15,26 @@ pub fn validate_outputs(lesson: &LessonPaths) -> Result<(), ValidationError> {
         "guided story manifest",
     )?;
     let step_files = manifest_step_files(lesson, &manifest)?;
+    let mut question_banks = Vec::new();
     for step_file in &step_files {
         read_json(step_file, "guided story step")?;
+        let question_bank_path = step_file
+            .parent()
+            .map(|parent| parent.join("question_bank.json"))
+            .ok_or_else(|| ValidationError::MissingStepQuestionBank {
+                path: step_file.with_file_name("question_bank.json"),
+            })?;
+        if !question_bank_path.is_file() {
+            return Err(ValidationError::MissingStepQuestionBank {
+                path: question_bank_path,
+            });
+        }
+        question_banks.push(read_json(&question_bank_path, "step question bank")?);
     }
 
-    let question_bank = read_json(&lesson.question_bank_path(), "question bank")?;
-    let question_ids = collect_string_fields(&question_bank, &["question_id", "id"]);
-    let family_ids = collect_string_fields(&question_bank, &["family_id", "familyId"]);
+    let question_ids = collect_many_string_fields(&question_banks, &["question_id", "id"]);
+    let family_ids = collect_many_string_fields(&question_banks, &["family_id", "familyId"]);
+    validate_step_local_question_banks(&step_files, &question_banks)?;
     let textbook =
         fs::read_to_string(lesson.textbook_path()).map_err(|source| ValidationError::Read {
             path: lesson.textbook_path(),
@@ -37,6 +50,31 @@ pub fn validate_outputs(lesson: &LessonPaths) -> Result<(), ValidationError> {
     for family_id in component_refs(&textbook, "QuestionFamily", "familyId") {
         if !family_ids.contains(&family_id) {
             return Err(ValidationError::BrokenQuestionFamilyRef { family_id });
+        }
+    }
+
+    Ok(())
+}
+
+fn validate_step_local_question_banks(
+    step_files: &[PathBuf],
+    question_banks: &[Value],
+) -> Result<(), ValidationError> {
+    for (step_file, question_bank) in step_files.iter().zip(question_banks.iter()) {
+        let Some(step_dir) = step_file.parent() else {
+            continue;
+        };
+        let Some(sequence_id) = step_dir.file_name().and_then(|name| name.to_str()) else {
+            continue;
+        };
+
+        for linked_steps in collect_linked_steps(question_bank) {
+            if linked_steps.as_slice() != [sequence_id] {
+                return Err(ValidationError::CrossStepQuestion {
+                    sequence_id: sequence_id.to_owned(),
+                    linked_steps,
+                });
+            }
         }
     }
 
@@ -100,10 +138,45 @@ fn resolve_manifest_file(lesson: &LessonPaths, file: &str) -> PathBuf {
     lesson.guided_story_dir().join(path)
 }
 
-fn collect_string_fields(value: &Value, field_names: &[&str]) -> BTreeSet<String> {
+fn collect_many_string_fields(values: &[Value], field_names: &[&str]) -> BTreeSet<String> {
     let mut fields = BTreeSet::new();
-    collect_string_fields_into(value, field_names, &mut fields);
+    for value in values {
+        collect_string_fields_into(value, field_names, &mut fields);
+    }
     fields
+}
+
+fn collect_linked_steps(value: &Value) -> Vec<Vec<String>> {
+    let mut linked_steps = Vec::new();
+    collect_linked_steps_into(value, &mut linked_steps);
+    linked_steps
+}
+
+fn collect_linked_steps_into(value: &Value, linked_steps: &mut Vec<Vec<String>>) {
+    match value {
+        Value::Object(object) => {
+            for (key, value) in object {
+                if key == "linked_steps" {
+                    if let Some(values) = value.as_array() {
+                        linked_steps.push(
+                            values
+                                .iter()
+                                .filter_map(Value::as_str)
+                                .map(ToOwned::to_owned)
+                                .collect(),
+                        );
+                    }
+                }
+                collect_linked_steps_into(value, linked_steps);
+            }
+        }
+        Value::Array(values) => {
+            for value in values {
+                collect_linked_steps_into(value, linked_steps);
+            }
+        }
+        Value::Null | Value::Bool(_) | Value::Number(_) | Value::String(_) => {}
+    }
 }
 
 fn collect_string_fields_into(value: &Value, field_names: &[&str], fields: &mut BTreeSet<String>) {
@@ -175,6 +248,13 @@ pub enum ValidationError {
     MissingManifestStep {
         path: PathBuf,
     },
+    MissingStepQuestionBank {
+        path: PathBuf,
+    },
+    CrossStepQuestion {
+        sequence_id: String,
+        linked_steps: Vec<String>,
+    },
     BrokenQuestionRef {
         question_id: String,
     },
@@ -209,6 +289,16 @@ impl fmt::Display for ValidationError {
                     path.display()
                 )
             }
+            Self::MissingStepQuestionBank { path } => {
+                write!(f, "missing step-local question bank {}", path.display())
+            }
+            Self::CrossStepQuestion {
+                sequence_id,
+                linked_steps,
+            } => write!(
+                f,
+                "question bank for {sequence_id} must only link to itself, got linked_steps={linked_steps:?}"
+            ),
             Self::BrokenQuestionRef { question_id } => {
                 write!(f, "textbook references unknown question id '{question_id}'")
             }
@@ -227,6 +317,8 @@ impl Error for ValidationError {
             Self::JsonParse { source, .. } => Some(source),
             Self::ManifestShape
             | Self::MissingManifestStep { .. }
+            | Self::MissingStepQuestionBank { .. }
+            | Self::CrossStepQuestion { .. }
             | Self::BrokenQuestionRef { .. }
             | Self::BrokenQuestionFamilyRef { .. } => None,
         }

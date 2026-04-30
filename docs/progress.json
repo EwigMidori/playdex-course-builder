@@ -308,7 +308,7 @@
       "id": "P2",
       "name": "让 Guided Story 在 L2 上跑起来",
       "description": "在 convert 之后接上第一个真实的 LLM stage，产出 guided story 的 manifest 与 steps，并让 reviewer 回路开始工作。",
-      "status": "todo",
+      "status": "blocked",
       "objective": "让 Rust 系统首次完成一个真正的 LLM 生成 stage，并在 L2 上产出 guided story 成品与 reviewer 回路。",
       "entry_criteria": [
         "convert stage 已能在 L2 上运行",
@@ -349,7 +349,7 @@
           "depends_on": [
             "P1-T4"
           ],
-          "status": "todo",
+          "status": "blocked",
           "done_when": [
             "system 与 user prompt 模板可从磁盘加载",
             "L2 的 generation input bundle 可渲染并落盘",

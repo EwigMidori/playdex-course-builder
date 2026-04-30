@@ -62,6 +62,16 @@
         "A developer can force selected stages to rerun without deleting files by hand.",
         "Each run writes a concise summary explaining which stages were reused, generated, failed, or validated."
       ]
+    },
+    {
+      "id": "M3",
+      "name": "Programmatic Quality Gates",
+      "phase": "P2",
+      "done_when": [
+        "Generated guided story, question bank, and textbook outputs pass structural and cross-reference quality gates.",
+        "Coverage trace, linked steps, question ids, family ids, term ids, and MDX component references are checked without relying on reviewer prose.",
+        "Validation reports explain exactly what failed and which file/path caused it."
+      ]
     }
   ],
   "phases": [
@@ -200,6 +210,72 @@
             "crates/app-cli/src/validation.rs",
             "crates/app-cli/tests/cli_smoke.rs",
             "research/pipeline/meta/<lesson_id>/runs/<run_id>/summary.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "name": "Add Programmatic Quality Gates",
+      "description": "Keep the single-crate runner, but raise validation from basic parseability to practical content safety checks before adding reviewer loops or crate boundaries.",
+      "status": "todo",
+      "objective": "Catch broken generated course assets through deterministic validation: coverage, references, term catalogs, MDX component references, and audit completeness.",
+      "entry_criteria": [
+        "P1-T01 completed with repeatable stage reuse and run summaries.",
+        "L2 generated outputs and audit files are available as real validation samples.",
+        "The app still uses one Rust crate: crates/app-cli."
+      ],
+      "exit_criteria": [
+        "`coursegen validate L2` emits a structured validation report.",
+        "Guided story manifest and step files are cross-checked for sequence ids, files, term ids, screen ids, and required fields.",
+        "Question bank validation checks family ids, question ids, variants, linked_steps, coverage_map, and duplicate ids.",
+        "Textbook validation checks sectionMap, coverageTrace, QuestionRef, QuestionFamily, Term, Formula, and Figure references.",
+        "Validation failures identify the artifact path and logical field path.",
+        "Tests cover at least one failure case per generated asset family."
+      ],
+      "deliverables": [
+        "Structured validation report",
+        "Guided story quality gates",
+        "Question bank quality gates",
+        "Textbook quality gates",
+        "Focused failure fixtures"
+      ],
+      "parallel_tracks": [
+        "No parallel tracks; keep this as a narrow validator pass."
+      ],
+      "gate_checks": [
+        "No new crate is introduced.",
+        "No LLM reviewer is introduced in this phase.",
+        "Validation must be deterministic and runnable offline.",
+        "Validation errors must be actionable enough for a worker agent to fix the generated artifact or prompt."
+      ],
+      "tasks": [
+        {
+          "id": "P2-T01",
+          "title": "Add deterministic quality gates for generated assets",
+          "description": "Expand the single-crate validator so generated guided story, question bank, and textbook assets fail fast on broken references, missing coverage, malformed catalogs, or unusable MDX component links.",
+          "workstream": "WS-MVP",
+          "crate_scope": [
+            "crates/app-cli",
+            "research/pipeline/meta"
+          ],
+          "depends_on": [
+            "P1-T01"
+          ],
+          "status": "todo",
+          "done_when": [
+            "`coursegen validate <lesson_id>` writes `research/pipeline/meta/<lesson_id>/validation/report.json`.",
+            "Guided story validation checks manifest step files, sequence ids, screen ids, term_catalog entries, introduced_terms, focus_terms, exercises, and media paths.",
+            "Question bank validation checks coverage_map references, family ids, question ids, linked_steps, variant counts, answer fields, and duplicate ids.",
+            "Textbook validation checks frontmatter sectionMap, coverageTrace, section ids, QuestionRef ids, QuestionFamily ids, Term ids, Formula tags, and Figure paths.",
+            "Validation output contains severity, artifact path, logical path, and message for each finding.",
+            "Tests include broken guided story manifest, missing question family, bad coverage map, and broken textbook reference fixtures."
+          ],
+          "artifacts": [
+            "crates/app-cli/src/validation.rs",
+            "crates/app-cli/src/main.rs",
+            "crates/app-cli/tests/cli_smoke.rs",
+            "research/pipeline/meta/<lesson_id>/validation/report.json"
           ]
         }
       ]

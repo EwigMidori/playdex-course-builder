@@ -1,46 +1,11 @@
 {
-  "lesson_id": "L1",
+  "lesson_id": "L2",
   "mode": "guided_story",
   "steps": [
     {
-      "sequence_id": "step1",
-      "file": "pipeline/3-guided_story/L1.step1.json",
-      "concept": "为什么会需要算法交易"
-    },
-    {
-      "sequence_id": "step2",
-      "file": "pipeline/3-guided_story/L1.step2.json",
-      "concept": "什么是算法交易，决策与执行"
-    },
-    {
-      "sequence_id": "step3",
-      "file": "pipeline/3-guided_story/L1.step3.json",
-      "concept": "市场趋势与不同交易方式"
-    },
-    {
-      "sequence_id": "step4",
-      "file": "pipeline/3-guided_story/L1.step4.json",
-      "concept": "数据、基础设施、交易类型与时间尺度"
-    },
-    {
-      "sequence_id": "step5",
-      "file": "pipeline/3-guided_story/L1.step5.json",
-      "concept": "供需、均衡与撮合"
-    },
-    {
-      "sequence_id": "step6",
-      "file": "pipeline/3-guided_story/L1.step6.json",
-      "concept": "多头、空头、卖空与订单簿"
-    },
-    {
-      "sequence_id": "step7",
-      "file": "pipeline/3-guided_story/L1.step7.json",
-      "concept": "买价卖价、点差、订单类型与滑点"
-    },
-    {
-      "sequence_id": "step8",
-      "file": "pipeline/3-guided_story/L1.step8.json",
-      "concept": "盈亏、盯市、OMS、杠杆与保证金"
+      "concept": "MVP lesson slice",
+      "file": "research/pipeline/3-guided_story/L2.step1.json",
+      "sequence_id": "step1"
     }
   ]
 }

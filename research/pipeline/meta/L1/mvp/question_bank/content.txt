@@ -1,0 +1,663 @@
+```json
+{
+  "lesson_id": "L1",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L1/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "input coverage checklist",
+    "source_outline": "input source outline",
+    "lesson_map": "input lesson map"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "algo_trading_basics",
+      "description": "算法交易的基本概念、别名、核心机制（信号生成与执行）和目标",
+      "covered_by": ["qf_flash_algo_def", "qf_long_algo_compare"]
+    },
+    {
+      "coverage_tag": "market_trend",
+      "description": "算法交易的市场趋势：增长率、区域分布、各市场占比",
+      "covered_by": ["qf_flash_market_trend"]
+    },
+    {
+      "coverage_tag": "trading_approaches_comparison",
+      "description": "人类交易、机器人投顾、机器人交易三种方式的对比",
+      "covered_by": ["qf_long_algo_compare"]
+    },
+    {
+      "coverage_tag": "infrastructure_needed",
+      "description": "部署算法交易所需的基础设施：数据采集、存储、管理、处理、硬件、网络等",
+      "covered_by": ["qf_flash_infra"]
+    },
+    {
+      "coverage_tag": "trading_mechanism_order_matching",
+      "description": "交易机制与订单匹配：供需、市场均衡、订单簿",
+      "covered_by": ["qf_flash_order_book", "qf_long_order_matching"]
+    },
+    {
+      "coverage_tag": "market_jargon_terminology",
+      "description": "市场术语：多头/空头、买入价/卖出价、价差、订单类型、滑点、杠杆与保证金",
+      "covered_by": ["qf_flash_long_short", "qf_flash_bid_ask_spread", "qf_flash_order_types", "qf_flash_slippage", "qf_flash_leverage_margin", "qf_long_leverage_calc"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_algo_def",
+      "question_type": "single_choice",
+      "linked_steps": ["step1"],
+      "concept_key": "algorithmic_trading",
+      "coverage_tags": ["algo_trading_basics"],
+      "term_refs": [
+        {
+          "display": "算法交易",
+          "en": "Algorithmic Trading"
+        }
+      ],
+      "learning_goal": "学生能识别算法交易的核心定义、别名与目标。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_algo_def_v1",
+          "stem": "以下哪一项最准确地描述了算法交易？",
+          "options": [
+            "完全由人类手动下单的交易方式",
+            "使用数学模型和计算机程序生成交易信号并自动执行",
+            "只用于长期投资的交易策略",
+            "一种保证盈利的交易方法"
+          ],
+          "answer": 1,
+          "explanation": "算法交易的核心是用数学模型和程序来自动化交易决策与执行，追求速度和纪律性。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_algo_def_v2",
+          "stem": "算法交易的主要目标不包括以下哪一项？",
+          "options": [
+            "最大化利润",
+            "控制执行成本",
+            "保证每次交易都盈利",
+            "对冲和管理投资风险"
+          ],
+          "answer": 2,
+          "explanation": "算法交易的目标是最大化利润、控制成本和管理风险，但无法保证每次交易都盈利。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_algo_def_v3",
+          "stem": "以下哪个不是算法交易的常见别名？",
+          "options": [
+            "量化交易 (Quant Trading)",
+            "程序化交易 (Program Trading)",
+            "高频交易 (High-Frequency Trading)",
+            "机器人交易 (Robo-Trading)"
+          ],
+          "answer": 2,
+          "explanation": "高频交易是算法交易的一种子类型，而非其别名。常见的别名包括量化交易、程序化交易和机器人交易。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_market_trend",
+      "question_type": "single_choice",
+      "linked_steps": ["step1"],
+      "concept_key": "market_trend",
+      "coverage_tags": ["market_trend"],
+      "term_refs": [
+        {
+          "display": "算法交易市场趋势",
+          "en": "Market Trend for Algo-Trading"
+        }
+      ],
+      "learning_goal": "学生能记住算法交易市场增长的关键数据和区域分布。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_market_trend_v1",
+          "stem": "预计到2028年，全球算法交易市场的规模将达到多少？",
+          "options": [
+            "US$ 12 billion",
+            "US$ 32 billion",
+            "US$ 50 billion",
+            "US$ 100 billion"
+          ],
+          "answer": 1,
+          "explanation": "根据材料，算法交易市场预计以12.7%的年复合增长率增长，到2028年达到320亿美元。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_market_trend_v2",
+          "stem": "算法交易策略在美国股票交易量中大约占多少比例？",
+          "options": [
+            "20%",
+            "40%",
+            "60%",
+            "80%"
+          ],
+          "answer": 2,
+          "explanation": "算法交易策略约占美国股票交易量的60%。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_market_trend_v3",
+          "stem": "以下哪个地区是算法交易增长最快的市场？",
+          "options": [
+            "北美",
+            "欧洲",
+            "亚太地区",
+            "非洲"
+          ],
+          "answer": 2,
+          "explanation": "北美是最大的市场，但亚太地区是增长最快的市场。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_infra",
+      "question_type": "single_choice",
+      "linked_steps": ["step1"],
+      "concept_key": "infrastructure",
+      "coverage_tags": ["infrastructure_needed"],
+      "term_refs": [
+        {
+          "display": "基础设施",
+          "en": "Infrastructure"
+        }
+      ],
+      "learning_goal": "学生能识别部署算法交易所需的关键基础设施组件。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_infra_v1",
+          "stem": "在算法交易中，常被比喻为“燃料”的是什么？",
+          "options": [
+            "算法模型",
+            "计算硬件",
+            "数据",
+            "网络连接"
+          ],
+          "answer": 2,
+          "explanation": "材料中强调“数据是燃料，算法是引擎”，说明数据是驱动算法交易的核心资源。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_infra_v2",
+          "stem": "以下哪一项不是部署算法交易程序时需要考虑的基础设施因素？",
+          "options": [
+            "实时数据源",
+            "历史数据",
+            "交易员的直觉判断",
+            "网络延迟"
+          ],
+          "answer": 2,
+          "explanation": "基础设施包括数据、硬件、网络连接等，而交易员的直觉判断属于人类交易范畴，不是算法交易的基础设施。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_long_short",
+      "question_type": "single_choice",
+      "linked_steps": ["step1"],
+      "concept_key": "long_short_position",
+      "coverage_tags": ["market_jargon_terminology"],
+      "term_refs": [
+        {
+          "display": "多头头寸",
+          "en": "Long Position"
+        },
+        {
+          "display": "空头头寸",
+          "en": "Short Position"
+        }
+      ],
+      "learning_goal": "学生能区分多头头寸和空头头寸的基本概念和适用场景。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_long_short_v1",
+          "stem": "如果你预期某只股票价格会上涨，你应该建立什么头寸？",
+          "options": [
+            "多头头寸",
+            "空头头寸",
+            "不建立任何头寸",
+            "同时建立多头和空头头寸"
+          ],
+          "answer": 0,
+          "explanation": "预期价格上涨时，建立多头头寸（做多）才能从价格上涨中获利。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_long_short_v2",
+          "stem": "做空（Short Selling）的第一步是什么？",
+          "options": [
+            "卖出自己持有的股票",
+            "从券商借入股票",
+            "等待股价下跌",
+            "买入看跌期权"
+          ],
+          "answer": 1,
+          "explanation": "做空需要先借入股票，然后卖出，等价格下跌后再买回归还。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_long_short_v3",
+          "stem": "做空交易的主要风险是什么？",
+          "options": [
+            "亏损有限",
+            "亏损可能是无限的",
+            "无法获得股息",
+            "交易成本过高"
+          ],
+          "answer": 1,
+          "explanation": "如果股价持续上涨，做空者的亏损理论上没有上限，这是做空的主要风险。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_bid_ask_spread",
+      "question_type": "fill_in_blank",
+      "linked_steps": ["step1"],
+      "concept_key": "market_spread",
+      "coverage_tags": ["market_jargon_terminology"],
+      "term_refs": [
+        {
+          "display": "买入价",
+          "en": "Bid Price"
+        },
+        {
+          "display": "卖出价",
+          "en": "Ask Price"
+        },
+        {
+          "display": "买卖价差",
+          "en": "Bid-Ask Spread"
+        }
+      ],
+      "learning_goal": "学生能计算简单的买卖价差，并理解其与流动性的关系。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_bid_ask_spread_v1",
+          "stem": "某股票的买入价为 $24，卖出价为 $25，则买卖价差为 $____。",
+          "options": [],
+          "answer": "1",
+          "explanation": "买卖价差 = 卖出价 - 买入价 = 25 - 24 = 1美元。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_bid_ask_spread_v2",
+          "stem": "某股票的买入价为 $98.50，卖出价为 $99.00，则买卖价差为 $____。",
+          "options": [],
+          "answer": "0.50",
+          "explanation": "买卖价差 = 卖出价 - 买入价 = 99.00 - 98.50 = 0.50美元。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_order_types",
+      "question_type": "single_choice",
+      "linked_steps": ["step1"],
+      "concept_key": "order_types",
+      "coverage_tags": ["market_jargon_terminology"],
+      "term_refs": [
+        {
+          "display": "市价单",
+          "en": "Market Order"
+        },
+        {
+          "display": "限价单",
+          "en": "Limit Order"
+        },
+        {
+          "display": "止损单",
+          "en": "Stop Order"
+        }
+      ],
+      "learning_goal": "学生能区分市价单、限价单和止损单的核心特征。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_order_types_v1",
+          "stem": "哪种订单类型保证成交，但不保证成交价格？",
+          "options": [
+            "市价单",
+            "限价单",
+            "止损单",
+            "以上都不对"
+          ],
+          "answer": 0,
+          "explanation": "市价单以当前最优价立即成交，保证成交，但价格不确定。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_order_types_v2",
+          "stem": "你想以不高于50元的价格买入某只股票，应该使用哪种订单？",
+          "options": [
+            "市价单",
+            "限价单",
+            "止损单",
+            "以上都可以"
+          ],
+          "answer": 1,
+          "explanation": "限价单允许你指定一个最高买入价（50元），确保不会以高于此价格成交。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_order_types_v3",
+          "stem": "止损单在价格触及止损价后会变成什么？",
+          "options": [
+            "限价单",
+            "市价单",
+            "取消",
+            "保持不变"
+          ],
+          "answer": 1,
+          "explanation": "止损单在触发后会自动变为市价单，以当前市场价成交。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_slippage",
+      "question_type": "single_choice",
+      "linked_steps": ["step1"],
+      "concept_key": "slippage",
+      "coverage_tags": ["market_jargon_terminology"],
+      "term_refs": [
+        {
+          "display": "滑点",
+          "en": "Slippage"
+        }
+      ],
+      "learning_goal": "学生能识别滑点的定义和常见发生场景。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_slippage_v1",
+          "stem": "滑点（Slippage）指的是什么？",
+          "options": [
+            "交易佣金",
+            "预期成交价与实际成交价之间的差异",
+            "买卖价差",
+            "市场波动率"
+          ],
+          "answer": 1,
+          "explanation": "滑点是预期成交价格与实际成交价格之间的差异。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_slippage_v2",
+          "stem": "以下哪种情况最可能导致滑点？",
+          "options": [
+            "市场流动性充足时",
+            "市场波动剧烈时",
+            "使用限价单时",
+            "交易量很小时"
+          ],
+          "answer": 1,
+          "explanation": "滑点通常发生在市场波动剧烈或订单量太大、市场深度不足的时候。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_leverage_margin",
+      "question_type": "single_choice",
+      "linked_steps": ["step1"],
+      "concept_key": "leverage_margin",
+      "coverage_tags": ["market_jargon_terminology"],
+      "term_refs": [
+        {
+          "display": "杠杆",
+          "en": "Leverage"
+        },
+        {
+          "display": "保证金",
+          "en": "Margin"
+        }
+      ],
+      "learning_goal": "学生能理解杠杆和保证金的基本概念及其关系。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_leverage_margin_v1",
+          "stem": "如果保证金要求是20%，那么杠杆比率是多少？",
+          "options": [
+            "2倍",
+            "5倍",
+            "10倍",
+            "20倍"
+          ],
+          "answer": 1,
+          "explanation": "杠杆比率 = 1 / 保证金要求 = 1 / 0.2 = 5倍。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_leverage_margin_v2",
+          "stem": "杠杆交易的主要风险是什么？",
+          "options": [
+            "只能做多不能做空",
+            "亏损和收益都会被放大",
+            "交易速度变慢",
+            "无法使用止损单"
+          ],
+          "answer": 1,
+          "explanation": "杠杆是双刃剑，在放大收益的同时也会等比例放大亏损。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_order_book",
+      "question_type": "single_choice",
+      "linked_steps": ["step1"],
+      "concept_key": "order_book",
+      "coverage_tags": ["trading_mechanism_order_matching"],
+      "term_refs": [
+        {
+          "display": "订单簿",
+          "en": "Order Book"
+        }
+      ],
+      "learning_goal": "学生能识别订单簿的基本构成和功能。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_flash_order_book_v1",
+          "stem": "订单簿（Order Book）的主要功能是什么？",
+          "options": [
+            "记录历史交易价格",
+            "实时列出所有买入和卖出挂单",
+            "计算投资组合的收益",
+            "自动执行交易策略"
+          ],
+          "answer": 1,
+          "explanation": "订单簿是实时列出所有买入和卖出挂单的电子列表，按价格排序。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_order_book_v2",
+          "stem": "在订单簿中，Bid Book记录的是什么？",
+          "options": [
+            "所有卖单",
+            "所有买单",
+            "已成交的订单",
+            "市场新闻"
+          ],
+          "answer": 1,
+          "explanation": "订单簿中，Bid Book（买单簿）记录所有买入订单。",
+          "estimated_seconds": 8
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_algo_compare",
+      "question_type": "compare_and_contrast",
+      "linked_steps": ["step1"],
+      "concept_key": "trading_approaches",
+      "coverage_tags": ["algo_trading_basics", "trading_approaches_comparison"],
+      "term_refs": [
+        {
+          "display": "人类交易",
+          "en": "Human Trading"
+        },
+        {
+          "display": "机器人投顾",
+          "en": "Robo-Advisory"
+        },
+        {
+          "display": "机器人交易",
+          "en": "Robo-Trading"
+        }
+      ],
+      "learning_goal": "学生能对比人类交易、机器人投顾和机器人交易三种方式在关键维度上的差异。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_algo_compare_v1",
+          "stem": "请从执行速度、可扩展性和纪律性三个维度，比较人类交易、机器人投顾和机器人交易这三种交易方式。",
+          "prompt_blocks": ["执行速度", "可扩展性", "纪律性"],
+          "rubric_points": [
+            "正确指出人类交易执行速度慢、可扩展性有限、纪律性不稳定",
+            "正确指出机器人投顾执行速度中等、可扩展性中等、纪律性一致",
+            "正确指出机器人交易执行速度快、可扩展性高、纪律性高"
+          ],
+          "reference_answer": [
+            "执行速度：人类交易慢，机器人投顾中等，机器人交易立即执行。",
+            "可扩展性：人类交易因压力限制投资规模，可扩展性有限；机器人投顾中等；机器人交易可扩展性高。",
+            "纪律性：人类交易不稳定，尤其亏损时；机器人投顾一致；机器人交易高。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_algo_compare_v2",
+          "stem": "请从工作时间和用户控制两个维度，比较人类交易、机器人投顾和机器人交易这三种交易方式。",
+          "prompt_blocks": ["工作时间", "用户控制"],
+          "rubric_points": [
+            "正确指出人类交易工作时间约为9*5，用户控制为完全控制",
+            "正确指出机器人投顾工作时间约为9*5，用户控制为部分控制",
+            "正确指出机器人交易工作时间是24*7，用户控制为最小控制"
+          ],
+          "reference_answer": [
+            "工作时间：人类交易和机器人投顾都约为9*5，机器人交易是24*7全天候运行。",
+            "用户控制：人类交易拥有完全控制权，机器人投顾提供部分控制，机器人交易的用户控制最小。"
+          ],
+          "estimated_seconds": 90
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_order_matching",
+      "question_type": "mechanism_trace",
+      "linked_steps": ["step1"],
+      "concept_key": "order_matching_equilibrium",
+      "coverage_tags": ["trading_mechanism_order_matching"],
+      "term_refs": [
+        {
+          "display": "市场均衡",
+          "en": "Market Equilibrium"
+        },
+        {
+          "display": "订单匹配",
+          "en": "Order Matching"
+        }
+      ],
+      "learning_goal": "学生能解释订单匹配的基本机制和市场均衡价格的形成过程。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_order_matching_v1",
+          "stem": "请描述在订单簿中，一笔交易是如何发生的？市场均衡价格是如何形成的？",
+          "prompt_blocks": ["订单簿的构成", "交易发生的条件", "市场均衡价格的形成"],
+          "rubric_points": [
+            "正确描述订单簿由买单（Bid）和卖单（Ask）组成",
+            "正确指出当买方的最高出价与卖方的最低要价相遇时交易发生",
+            "正确指出这个相遇点就是市场均衡价格"
+          ],
+          "reference_answer": [
+            "订单簿实时列出所有买单和卖单，买单按价格从高到低排列，卖单按价格从低到高排列。",
+            "当买单中的最高出价（Bid Price）等于或高于卖单中的最低要价（Ask Price）时，交易就会发生。",
+            "这个买卖双方都能接受的价格点就是市场均衡价格，此时供给和需求达到平衡。"
+          ],
+          "estimated_seconds": 90
+        },
+        {
+          "question_id": "q_long_order_matching_v2",
+          "stem": "假设某股票订单簿中，最高买入价为$9.95，最低卖出价为$10.05。请解释为什么此时没有交易发生？如果一位新买家以$10.05的价格下了一个市价买单，会发生什么？",
+          "prompt_blocks": ["当前无交易的原因", "市价买单的执行过程"],
+          "rubric_points": [
+            "正确指出因为最高买入价低于最低卖出价，价格不匹配",
+            "正确指出市价买单会以当前最优价即$10.05成交"
+          ],
+          "reference_answer": [
+            "当前没有交易发生，因为买方愿意支付的最高价（$9.95）低于卖方愿意接受的最低价（$10.05），价格没有交集。",
+            "如果一位新买家下了一个市价买单，该订单会立即以当前最优的卖出价$10.05成交，因为市价单追求的是立即成交。"
+          ],
+          "estimated_seconds": 90
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_leverage_calc",
+      "question_type": "formula_apply",
+      "linked_steps": ["step1"],
+      "concept_key": "leverage_margin_calculation",
+      "coverage_tags": ["market_jargon_terminology"],
+      "term_refs": [
+        {
+          "display": "杠杆比率",
+          "en": "Leverage Ratio"
+        },
+        {
+          "display": "保证金要求",
+          "en": "Margin Requirement"
+        }
+      ],
+      "learning_goal": "学生能应用杠杆比率公式进行计算，并解释杠杆对收益和风险的影响。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_leverage_calc_v1",
+          "stem": "假设某交易平台的保证金要求为25%。\n(a) 请计算杠杆比率。\n(b) 如果你投入了$10,000本金，使用最大杠杆可以操作多少价值的资产？\n(c) 如果资产价格上涨了10%，你的收益率是多少？如果价格下跌了10%，你的亏损率是多少？",
+          "prompt_blocks": ["杠杆比率计算", "购买力计算", "盈亏计算"],
+          "rubric_points": [
+            "正确应用公式 Leverage Ratio = 1 / Margin Requirement 计算出4倍杠杆",
+            "正确计算购买力为$40,000",
+            "正确计算收益率为40%，亏损率也为40%"
+          ],
+          "reference_answer": [
+            "(a) 杠杆比率 = 1 / 0.25 = 4倍。",
+            "(b) 购买力 = 杠杆比率 × 本金 = 4 × $10,000 = $40,000。",
+            "(c) 资产价格上涨10%：收益 = $40,000 × 10% = $4,000，收益率 = $4,000 / $10,000 = 40%。价格下跌10%：亏损 = $40,000 × 10% = $4,000，亏损率 = 40%。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_leverage_calc_v2",
+          "stem": "某投资者使用10倍杠杆买入价值$50,000的股票。\n(a) 该投资者投入的本金（保证金）是多少？\n(b) 如果股票价格下跌5%，该投资者的亏损金额和亏损率分别是多少？\n(c) 解释为什么杠杆交易的风险更高。",
+          "prompt_blocks": ["保证金计算", "亏损计算", "风险解释"],
+          "rubric_points": [
+            "正确计算保证金为$5,000",
+            "正确计算亏损金额为$2,500，亏损率为50%",
+            "正确解释杠杆放大了亏损比例"
+          ],
+          "reference_answer": [
+            "(a) 保证金 = 资产价值 / 杠杆比率 = $50,000 / 10 = $5,000。",
+            "(b) 亏损金额 = $50,000 × 5% = $2,500。亏损率 = $2,500 / $5,000 = 50%。",
+            "(c) 杠杆交易放大了亏损，因为投资者只投入了少量本金（$5,000）却承担了全部资产价值（$50,000）的波动风险。资产价格的小幅下跌就会导致本金的巨大亏损。"
+          ],
+          "estimated_seconds": 120
+        }
+      ]
+    }
+  ]
+}
+```

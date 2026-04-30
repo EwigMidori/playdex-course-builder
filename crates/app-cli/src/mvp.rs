@@ -2,6 +2,7 @@ use std::{
     error::Error,
     fmt, fs, io,
     path::{Path, PathBuf},
+    time::Duration,
 };
 
 use reqwest::blocking::Client;
@@ -223,10 +224,13 @@ fn call_chat_completion(
             },
         ],
         temperature: 0.2,
+        max_tokens: llm.max_tokens,
     };
     write_pretty_json(&audit_dir.join("request.json"), &request)?;
 
     let client = Client::builder()
+        .http1_only()
+        .timeout(Duration::from_secs(llm.timeout_seconds))
         .build()
         .map_err(|source| MvpError::LlmRequest {
             stage: stage.as_str(),
@@ -235,15 +239,32 @@ fn call_chat_completion(
     let url = format!("{}/chat/completions", llm.base_url.trim_end_matches('/'));
     let response = client
         .post(url)
+        .header("Accept-Encoding", "identity")
         .bearer_auth(&llm.api_key)
         .json(&request)
         .send()
-        .and_then(|response| response.error_for_status())
         .map_err(|source| MvpError::LlmRequest {
             stage: stage.as_str(),
             source,
         })?;
-    let raw: Value = response.json().map_err(|source| MvpError::LlmRequest {
+    let status = response.status();
+    let raw_bytes = response.bytes().map_err(|source| MvpError::LlmRequest {
+        stage: stage.as_str(),
+        source,
+    })?;
+    let raw_text = String::from_utf8_lossy(&raw_bytes).into_owned();
+    fs::write(audit_dir.join("raw_response.txt"), &raw_text).map_err(|source| MvpError::Write {
+        path: audit_dir.join("raw_response.txt"),
+        source,
+    })?;
+    if !status.is_success() {
+        return Err(MvpError::LlmStatus {
+            stage: stage.as_str(),
+            status: status.as_u16(),
+            body: raw_text,
+        });
+    }
+    let raw: Value = serde_json::from_str(&raw_text).map_err(|source| MvpError::JsonParse {
         stage: stage.as_str(),
         source,
     })?;
@@ -291,6 +312,7 @@ struct ChatRequest<'a> {
     model: &'a str,
     messages: Vec<ChatMessage<'a>>,
     temperature: f32,
+    max_tokens: u64,
 }
 
 #[derive(Serialize)]
@@ -406,6 +428,11 @@ pub enum MvpError {
         stage: &'static str,
         source: reqwest::Error,
     },
+    LlmStatus {
+        stage: &'static str,
+        status: u16,
+        body: String,
+    },
     LlmMissingContent {
         stage: &'static str,
     },
@@ -434,8 +461,13 @@ impl fmt::Display for MvpError {
                 write!(f, "{stage} model output was not valid JSON: {source}")
             }
             Self::LlmRequest { stage, source } => {
-                write!(f, "{stage} LLM request failed: {source}")
+                write!(f, "{stage} LLM request failed: {source:?}")
             }
+            Self::LlmStatus {
+                stage,
+                status,
+                body,
+            } => write!(f, "{stage} LLM request returned HTTP {status}: {body}"),
             Self::LlmMissingContent { stage } => {
                 write!(
                     f,
@@ -455,7 +487,7 @@ impl Error for MvpError {
             Self::Read { source, .. } | Self::Write { source, .. } => Some(source),
             Self::JsonWrite { source, .. } | Self::JsonParse { source, .. } => Some(source),
             Self::LlmRequest { source, .. } => Some(source),
-            Self::LlmMissingContent { .. } => None,
+            Self::LlmStatus { .. } | Self::LlmMissingContent { .. } => None,
         }
     }
 }

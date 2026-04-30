@@ -1,0 +1,517 @@
+```json
+{
+  "lesson_id": "L1",
+  "sequence_id": "step1",
+  "target_language": "zh-CN",
+  "mode": "guided_story",
+  "term_catalog": {
+    "algorithmic_trading": {
+      "display": "算法交易",
+      "aliases": ["Algo Trading", "Quant Trading", "Robo-Trading", "Program Trading"],
+      "gloss": "用数学模型和计算机程序来生成交易信号并自动执行交易的方式。"
+    },
+    "long_position": {
+      "display": "多头头寸",
+      "aliases": ["Long Position", "做多"],
+      "gloss": "买入资产，预期价格上涨后卖出获利。"
+    },
+    "short_position": {
+      "display": "空头头寸",
+      "aliases": ["Short Position", "做空"],
+      "gloss": "卖出借来的资产，预期价格下跌后低价买回获利。"
+    },
+    "order_book": {
+      "display": "订单簿",
+      "aliases": ["Order Book", "深度图"],
+      "gloss": "实时列出所有买入和卖出挂单的电子列表，按价格排序。"
+    },
+    "bid_price": {
+      "display": "买入价",
+      "aliases": ["Bid Price", "买一价"],
+      "gloss": "买方愿意支付的最高价格。"
+    },
+    "ask_price": {
+      "display": "卖出价",
+      "aliases": ["Ask Price", "卖一价"],
+      "gloss": "卖方愿意接受的最低价格。"
+    },
+    "market_spread": {
+      "display": "买卖价差",
+      "aliases": ["Bid-Ask Spread", "Spread"],
+      "gloss": "卖出价与买入价之间的差额，衡量市场流动性的关键指标。"
+    },
+    "market_order": {
+      "display": "市价单",
+      "aliases": ["Market Order"],
+      "gloss": "以当前市场上可获得的最佳价格立即买入或卖出的订单。"
+    },
+    "limit_order": {
+      "display": "限价单",
+      "aliases": ["Limit Order"],
+      "gloss": "指定一个价格（限价），只在该价格或更优价格成交的订单。"
+    },
+    "stop_order": {
+      "display": "止损单",
+      "aliases": ["Stop Order", "Stop-Loss Order"],
+      "gloss": "当价格触及指定价格（止损价）时，自动变为市价单执行的订单。"
+    },
+    "slippage": {
+      "display": "滑点",
+      "aliases": ["Slippage"],
+      "gloss": "预期成交价格与实际成交价格之间的差异。"
+    },
+    "leverage": {
+      "display": "杠杆",
+      "aliases": ["Leverage"],
+      "gloss": "使用借入资金放大投资回报（也放大风险）的方式。"
+    },
+    "margin": {
+      "display": "保证金",
+      "aliases": ["Margin"],
+      "gloss": "投资者为获得杠杆交易而必须存入的自有资金。"
+    }
+  },
+  "source": {
+    "plain_text": "Algorithmic trading basics and financial markets. What is algo-trading? Market Trend for Algo-Trading. Comparison of Trading Approaches. Infrastructure needed. Trading mechanism and order matching. Market jargon and terminology.",
+    "related": ["L1: Algorithmic trading basics and financial markets"]
+  },
+  "screens": [
+    {
+      "id": "s001",
+      "type": "narration",
+      "lines": [
+        "想象一下，你坐在电脑前，",
+        "屏幕上跳出一个信号：“买入”。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s002",
+      "type": "narration",
+      "lines": [
+        "不到一秒钟，订单已经发出，",
+        "交易自动完成。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s003",
+      "type": "narration",
+      "lines": [
+        "这不是科幻电影，",
+        "这就是**<term id=\"algorithmic_trading\">算法交易</term>**。"
+      ],
+      "introduced_terms": ["algorithmic_trading"],
+      "focus_terms": ["algorithmic_trading"]
+    },
+    {
+      "id": "s004",
+      "type": "narration",
+      "lines": [
+        "它用数学模型和计算机程序，",
+        "代替人类做判断和执行。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": ["algorithmic_trading"]
+    },
+    {
+      "id": "s005",
+      "type": "narration",
+      "lines": [
+        "目标很明确：",
+        "最大化利润，控制成本，管理风险。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s006",
+      "type": "narration",
+      "lines": [
+        "如今，算法交易已经占据了",
+        "美国股市约60%的交易量。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s007",
+      "type": "narration",
+      "lines": [
+        "在欧洲，这个数字是40%；",
+        "在外汇市场，是25%。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s008",
+      "type": "exercise",
+      "lines": [
+        "猜猜看：算法交易的核心优势是什么？"
+      ],
+      "introduced_terms": [],
+      "focus_terms": [],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "以下哪一项最准确地描述了算法交易的主要优势？",
+        "options": [
+          "完全避免所有投资风险",
+          "用规则和程序实现快速、自动化的交易决策与执行",
+          "保证每次交易都能盈利",
+          "只需要一台电脑，不需要任何金融知识"
+        ],
+        "answer": 1,
+        "explanation": "算法交易的核心是用规则和程序来处理交易判断与执行，追求速度和纪律性，但并不能消除风险或保证盈利。"
+      }
+    },
+    {
+      "id": "s009",
+      "type": "narration",
+      "lines": [
+        "但算法交易不是凭空运行的。",
+        "它需要一套完整的基础设施。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s010",
+      "type": "narration",
+      "lines": [
+        "数据是燃料，算法是引擎。",
+        "没有干净、实时的数据，再好的策略也无用。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s011",
+      "type": "narration",
+      "lines": [
+        "你需要处理数据的采集、存储、管理，",
+        "还要考虑计算硬件、网络延迟和系统安全。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s012",
+      "type": "narration",
+      "lines": [
+        "在这一切背后，",
+        "是市场最基础的运作机制：订单如何匹配。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s013",
+      "type": "narration",
+      "lines": [
+        "每个卖家都有一个心理价位，",
+        "每个买家也有一个。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s014",
+      "type": "narration",
+      "lines": [
+        "当买家的最高出价和卖家的最低要价相遇，",
+        "交易就发生了。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s015",
+      "type": "narration",
+      "lines": [
+        "这个相遇点，就是市场均衡价格。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s016",
+      "type": "narration",
+      "lines": [
+        "但市场远不止这么简单。",
+        "让我们认识几个关键术语。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s017",
+      "type": "narration",
+      "lines": [
+        "**<term id=\"long_position\">多头头寸</term>**：买入资产，赌它涨。",
+        "**<term id=\"short_position\">空头头寸</term>**：卖出借来的资产，赌它跌。"
+      ],
+      "introduced_terms": ["long_position", "short_position"],
+      "focus_terms": ["long_position", "short_position"]
+    },
+    {
+      "id": "s018",
+      "type": "narration",
+      "lines": [
+        "做空需要先借入股票，然后卖出，",
+        "等价格下跌后再买回归还。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": ["short_position"]
+    },
+    {
+      "id": "s019",
+      "type": "narration",
+      "lines": [
+        "但做空的风险是无限的——",
+        "如果股价一直涨，你的亏损可能没有上限。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": ["short_position"]
+    },
+    {
+      "id": "s020",
+      "type": "exercise",
+      "lines": [
+        "来个小测试。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": [],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "如果你预期某只股票价格会下跌，你应该建立什么头寸？",
+        "options": [
+          "多头头寸",
+          "空头头寸",
+          "不建立任何头寸",
+          "同时建立多头和空头头寸"
+        ],
+        "answer": 1,
+        "explanation": "预期价格下跌时，建立空头头寸（做空）才能从价格下跌中获利。"
+      }
+    },
+    {
+      "id": "s021",
+      "type": "narration",
+      "lines": [
+        "接下来，看看订单簿。",
+        "它是市场的实时“记账本”。"
+      ],
+      "introduced_terms": ["order_book"],
+      "focus_terms": ["order_book"]
+    },
+    {
+      "id": "s022",
+      "type": "narration",
+      "lines": [
+        "**<term id=\"order_book\">订单簿</term>**里，",
+        "一边是买单（Bid），一边是卖单（Ask）。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": ["order_book", "bid_price", "ask_price"]
+    },
+    {
+      "id": "s023",
+      "type": "narration",
+      "lines": [
+        "**<term id=\"bid_price\">买入价</term>**是买方愿意支付的最高价。",
+        "**<term id=\"ask_price\">卖出价</term>**是卖方愿意接受的最低价。"
+      ],
+      "introduced_terms": ["bid_price", "ask_price"],
+      "focus_terms": ["bid_price", "ask_price"]
+    },
+    {
+      "id": "s024",
+      "type": "narration",
+      "lines": [
+        "卖出价减去买入价，就是**<term id=\"market_spread\">买卖价差</term>**。",
+        "价差越小，市场流动性越好。"
+      ],
+      "introduced_terms": ["market_spread"],
+      "focus_terms": ["market_spread"]
+    },
+    {
+      "id": "s025",
+      "type": "formula",
+      "lines": [
+        "价差也可以用百分比来衡量，方便不同资产之间比较。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": ["market_spread"],
+      "formula": {
+        "latex": "\\text{Percentage Spread} = \\frac{\\text{AskPrice} - \\text{BidPrice}}{\\text{MidPrice}} \\times 100\\%",
+        "spoken": "百分比价差等于卖出价减去买入价，再除以中间价，乘以百分之百。"
+      }
+    },
+    {
+      "id": "s026",
+      "type": "narration",
+      "lines": [
+        "有了订单簿，你还需要知道怎么下单。",
+        "主要有三种订单类型。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": ["market_order", "limit_order", "stop_order"]
+    },
+    {
+      "id": "s027",
+      "type": "narration",
+      "lines": [
+        "**<term id=\"market_order\">市价单</term>**：立即以当前最优价成交。",
+        "保证成交，但不保证价格。"
+      ],
+      "introduced_terms": ["market_order"],
+      "focus_terms": ["market_order"]
+    },
+    {
+      "id": "s028",
+      "type": "narration",
+      "lines": [
+        "**<term id=\"limit_order\">限价单</term>**：指定一个价格，只在该价格或更优价格成交。",
+        "保证价格，但不保证成交。"
+      ],
+      "introduced_terms": ["limit_order"],
+      "focus_terms": ["limit_order"]
+    },
+    {
+      "id": "s029",
+      "type": "narration",
+      "lines": [
+        "**<term id=\"stop_order\">止损单</term>**：设定一个触发价，一旦触及，就变成市价单。",
+        "常用于控制亏损或捕捉突破行情。"
+      ],
+      "introduced_terms": ["stop_order"],
+      "focus_terms": ["stop_order"]
+    },
+    {
+      "id": "s030",
+      "type": "exercise",
+      "lines": [
+        "现在，考考你。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": [],
+      "exercise": {
+        "kind": "single_choice",
+        "prompt": "你想以不高于50元的价格买入某只股票，应该使用哪种订单？",
+        "options": [
+          "市价单",
+          "限价单",
+          "止损单",
+          "以上都可以"
+        ],
+        "answer": 1,
+        "explanation": "限价单允许你指定一个最高买入价（50元），确保不会以高于此价格成交。"
+      }
+    },
+    {
+      "id": "s031",
+      "type": "narration",
+      "lines": [
+        "即使下了单，实际成交价也可能和预期不同。",
+        "这个差异叫**<term id=\"slippage\">滑点</term>**。"
+      ],
+      "introduced_terms": ["slippage"],
+      "focus_terms": ["slippage"]
+    },
+    {
+      "id": "s032",
+      "type": "narration",
+      "lines": [
+        "滑点通常发生在市场波动剧烈，",
+        "或者订单量太大、市场深度不足的时候。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": ["slippage"]
+    },
+    {
+      "id": "s033",
+      "type": "narration",
+      "lines": [
+        "最后，聊聊**<term id=\"leverage\">杠杆</term>**和**<term id=\"margin\">保证金</term>**。"
+      ],
+      "introduced_terms": ["leverage", "margin"],
+      "focus_terms": ["leverage", "margin"]
+    },
+    {
+      "id": "s034",
+      "type": "narration",
+      "lines": [
+        "杠杆就是用借来的钱放大收益（也放大亏损）。",
+        "保证金就是你自己出的那部分本金。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": ["leverage", "margin"]
+    },
+    {
+      "id": "s035",
+      "type": "formula",
+      "lines": [
+        "杠杆比率和保证金要求之间的关系很简单。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": ["leverage", "margin"],
+      "formula": {
+        "latex": "\\text{Leverage Ratio} = \\frac{1}{\\text{Margin Requirement}}",
+        "spoken": "杠杆比率等于一除以保证金要求。"
+      }
+    },
+    {
+      "id": "s036",
+      "type": "narration",
+      "lines": [
+        "比如，如果保证金要求是10%，",
+        "那么杠杆就是10倍。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": ["leverage", "margin"]
+    },
+    {
+      "id": "s037",
+      "type": "narration",
+      "lines": [
+        "这意味着，用1万元本金，",
+        "你可以操作价值10万元的资产。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s038",
+      "type": "narration",
+      "lines": [
+        "但别忘了，杠杆是双刃剑。",
+        "收益放大多少倍，亏损也放大多少倍。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": ["leverage"]
+    },
+    {
+      "id": "s039",
+      "type": "narration",
+      "lines": [
+        "从算法交易到订单簿，从做多到做空，",
+        "这些就是金融市场的“通用语言”。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    },
+    {
+      "id": "s040",
+      "type": "narration",
+      "lines": [
+        "掌握它们，你就能看懂市场在说什么。"
+      ],
+      "introduced_terms": [],
+      "focus_terms": []
+    }
+  ]
+}
+```

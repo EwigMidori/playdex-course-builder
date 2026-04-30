@@ -1,0 +1,472 @@
+{
+  "lesson_id": "L2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "想象一下，你正在监控几百只股票的价格变化。",
+        "手动刷新网页？那会累死人。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "web_scraping"
+      ],
+      "id": "s002",
+      "introduced_terms": [
+        "web_scraping"
+      ],
+      "lines": [
+        "你需要一个自动化的方式，让程序帮你从网站上把数据拿下来。",
+        "这就是 <term id=\"web_scraping\">网页抓取</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "在动手抓取之前，先看看网页到底是由什么组成的。",
+        "一个典型的网站，通常由三部分构成。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "html"
+      ],
+      "id": "s004",
+      "introduced_terms": [
+        "html"
+      ],
+      "lines": [
+        "第一层：<term id=\"html\">HTML</term>，定义网页的结构和内容。",
+        "它用标签来组织标题、段落、表格等元素。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "css"
+      ],
+      "id": "s005",
+      "introduced_terms": [
+        "css"
+      ],
+      "lines": [
+        "第二层：<term id=\"css\">CSS</term>，控制网页的视觉样式。",
+        "颜色、字体、间距，都靠它来美化。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "javascript"
+      ],
+      "id": "s006",
+      "introduced_terms": [
+        "javascript"
+      ],
+      "lines": [
+        "第三层：<term id=\"javascript\">JavaScript</term>，让网页动起来。",
+        "点击按钮、弹出窗口、动态加载内容，都是它的功劳。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "HTML 用标签定义网页的结构和内容，比如标题、段落和表格。",
+        "kind": "single_choice",
+        "options": [
+          "CSS",
+          "JavaScript",
+          "HTML",
+          "Python"
+        ],
+        "prompt": "以下哪个技术主要负责网页的“结构”和“内容”？"
+      },
+      "focus_terms": [],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "现在来个小测试。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "beautifulsoup"
+      ],
+      "id": "s008",
+      "introduced_terms": [
+        "beautifulsoup"
+      ],
+      "lines": [
+        "知道了网页的结构，下一步就是写代码去抓取它。",
+        "Python 里最常用的库之一是 <term id=\"beautifulsoup\">BeautifulSoup</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "先用 `requests` 库下载网页的原始内容。",
+        "然后交给 BeautifulSoup 去解析。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "比如，你想提取网页里的第一个段落。",
+        "用 `soup.find('p')` 就能找到它。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "如果想提取所有段落，就用 `soup.find_all('p')`。",
+        "它会返回一个列表，里面是所有匹配的标签。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "find_all"
+        ],
+        "explanation": "`find_all` 方法会返回所有匹配指定标签的元素列表。",
+        "kind": "fill_in_blank",
+        "prompt": "在 BeautifulSoup 中，要提取网页里所有的超链接 `<a>` 标签，应该使用的方法是：`soup.______('a')`"
+      },
+      "focus_terms": [],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "来试试看。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "xpath"
+      ],
+      "id": "s013",
+      "introduced_terms": [
+        "xpath"
+      ],
+      "lines": [
+        "除了 BeautifulSoup，还有另一种强大的方式：<term id=\"xpath\">XPath</term>。",
+        "它是一种在文档中导航和选择节点的查询语言。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "lxml",
+        "xpath"
+      ],
+      "id": "s014",
+      "introduced_terms": [
+        "lxml"
+      ],
+      "lines": [
+        "配合 <term id=\"lxml\">lxml</term> 库，你可以用 XPath 表达式精确定位元素。",
+        "比如 `//table[@id='constituents']` 就能找到 id 为 constituents 的表格。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "selenium"
+      ],
+      "id": "s015",
+      "introduced_terms": [
+        "selenium"
+      ],
+      "lines": [
+        "有时候，目标网站的数据不是静态的，而是通过 JavaScript 动态加载的。",
+        "这时候，<term id=\"selenium\">Selenium</term> 就派上用场了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "Selenium 可以模拟真实用户的操作：打开浏览器、点击按钮、滚动页面。",
+        "等页面加载完成后，再提取数据。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "yfinance"
+      ],
+      "id": "s017",
+      "introduced_terms": [
+        "yfinance"
+      ],
+      "lines": [
+        "不过，对于金融数据，还有一个更省力的选择。",
+        "<term id=\"yfinance\">yfinance</term> 是一个专门从 Yahoo Finance 获取数据的库。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "用 yfinance 获取股票历史数据，只需要几行代码。",
+        "比如 `yf.Ticker(\"0700.HK\").history(period=\"1mo\")` 就能拿到一个月的日线数据。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "Selenium 可以模拟浏览器操作，等待动态内容加载完成后再提取数据。",
+        "kind": "single_choice",
+        "options": [
+          "BeautifulSoup",
+          "lxml",
+          "Selenium",
+          "yfinance"
+        ],
+        "prompt": "以下哪个库最适合抓取由 JavaScript 动态加载内容的网页？"
+      },
+      "focus_terms": [],
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "考考你。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "抓取数据只是第一步。",
+        "你还需要一个地方来存储和管理这些数据。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "sqlite"
+      ],
+      "id": "s021",
+      "introduced_terms": [
+        "sqlite"
+      ],
+      "lines": [
+        "Python 内置了对 <term id=\"sqlite\">SQLite</term> 的支持。",
+        "它是一个轻量级的数据库，非常适合本地存储。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "你可以创建一个表来存储股票数据。",
+        "比如 `CREATE TABLE market_candles (symbol text, timestamp text, close_price float)`。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "adjusted_close"
+      ],
+      "id": "s023",
+      "introduced_terms": [
+        "adjusted_close"
+      ],
+      "lines": [
+        "存储数据时，有一个重要的概念：<term id=\"adjusted_close\">调整收盘价</term>。",
+        "原始收盘价会因为分红、拆股等事件出现不自然的跳变。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "比如，一只股票在拆股后，价格会突然变成原来的一半。",
+        "但这不代表公司价值缩水了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "调整收盘价就是把这些事件的影响“抹平”。",
+        "它向后修正历史价格，让你看到更真实的长期走势。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "调整收盘价通过修正历史价格，消除了公司事件造成的价格突变，使回测结果更能反映策略的真实表现。",
+        "kind": "single_choice",
+        "options": [
+          "调整收盘价更接近实时市场价格",
+          "调整收盘价消除了分红和拆股等事件带来的价格跳变",
+          "调整收盘价永远不会变化",
+          "调整收盘价包含更多交易信息"
+        ],
+        "prompt": "为什么在回测策略时，通常推荐使用调整收盘价而不是原始收盘价？"
+      },
+      "focus_terms": [],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "来确认一下你的理解。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "最后，设计数据库时，没有完美的方案。",
+        "你需要根据使用场景来权衡。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "如果主要做回测，按股票代码分区存储可能更方便。",
+        "如果主要做跨资产分析，按时间分区可能更合适。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "关键是在存储空间、查询速度和内存之间找到平衡。",
+        "没有银弹，只有权衡。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "一句话总结：",
+        "网页抓取让你获得数据，数据库让你管理数据，而调整收盘价让你看清数据。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "L2: Data scraping and database management with Python. Agenda: Understand the basic website structure, Web scraping using different python libraries, The limitations of web scraping, Create a simple database using python, Understand the concept of adjusted price, Database design for financial market data storage.",
+    "related": [
+      "COMP7415A - Mastering the markets: Financial analytics and algorithmic trading"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "adjusted_close": {
+      "aliases": [
+        "Adjusted Close",
+        "Adj Close"
+      ],
+      "display": "调整收盘价",
+      "gloss": "经过分红、拆股等公司事件修正后的收盘价，用于更准确地反映股票的历史价值。"
+    },
+    "beautifulsoup": {
+      "aliases": [
+        "bs4"
+      ],
+      "display": "BeautifulSoup",
+      "gloss": "一个流行的 Python 库，用于解析和搜索 HTML 与 XML 数据。"
+    },
+    "css": {
+      "aliases": [
+        "Cascading Style Sheets"
+      ],
+      "display": "CSS",
+      "gloss": "层叠样式表，用来控制网页的视觉样式和布局。"
+    },
+    "html": {
+      "aliases": [
+        "HyperText Markup Language"
+      ],
+      "display": "HTML",
+      "gloss": "超文本标记语言，用来定义网页的结构和内容。"
+    },
+    "javascript": {
+      "aliases": [
+        "JS"
+      ],
+      "display": "JavaScript",
+      "gloss": "一种脚本语言，用来为网页添加交互和动态行为。"
+    },
+    "lxml": {
+      "aliases": [],
+      "display": "lxml",
+      "gloss": "一个用于解析 XML 和 HTML 的 Python 库，支持 XPath。"
+    },
+    "selenium": {
+      "aliases": [],
+      "display": "Selenium",
+      "gloss": "一个网页自动化工具，可以模拟用户操作、执行网页抓取和自动化测试。"
+    },
+    "sqlite": {
+      "aliases": [],
+      "display": "SQLite",
+      "gloss": "一个轻量级的、基于磁盘的数据库引擎，Python 内置支持。"
+    },
+    "web_scraping": {
+      "aliases": [
+        "Web Scraping",
+        "Data Scraping"
+      ],
+      "display": "网页抓取",
+      "gloss": "用程序自动从网页中提取数据的过程。"
+    },
+    "xpath": {
+      "aliases": [
+        "XML Path Language"
+      ],
+      "display": "XPath",
+      "gloss": "一种在 XML 文档中导航和选择节点的查询语言。"
+    },
+    "yfinance": {
+      "aliases": [],
+      "display": "yfinance",
+      "gloss": "一个非官方的 Python 库，用于从 Yahoo Finance 获取金融数据。"
+    }
+  }
+}

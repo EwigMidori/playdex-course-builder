@@ -23,6 +23,8 @@ const MINERU_UPLOAD_TIMEOUT_SECONDS: &str = "MINERU_UPLOAD_TIMEOUT_SECONDS";
 const MINERU_RESULT_TIMEOUT_SECONDS: &str = "MINERU_RESULT_TIMEOUT_SECONDS";
 const MINERU_POLL_INTERVAL_SECONDS: &str = "MINERU_POLL_INTERVAL_SECONDS";
 const MINERU_DOWNLOAD_TIMEOUT_SECONDS: &str = "MINERU_DOWNLOAD_TIMEOUT_SECONDS";
+const COURSEGEN_LLM_MAX_TOKENS: &str = "COURSEGEN_LLM_MAX_TOKENS";
+const COURSEGEN_LLM_TIMEOUT_SECONDS: &str = "COURSEGEN_LLM_TIMEOUT_SECONDS";
 
 #[derive(Clone, Debug)]
 pub struct Config {
@@ -53,6 +55,8 @@ pub struct LlmConfig {
     pub api_key: Option<String>,
     pub base_url: String,
     pub model: Option<String>,
+    pub max_tokens: u64,
+    pub timeout_seconds: u64,
 }
 
 impl Config {
@@ -128,6 +132,16 @@ impl Config {
                     .unwrap_or_else(|| "https://api.openai.com/v1".to_owned()),
                 model: resolve_optional_string(&merged, "COURSEGEN_LLM_MODEL")
                     .or_else(|| resolve_optional_string(&merged, "OPENAI_MODEL")),
+                max_tokens: resolve_u64_with_default(
+                    &merged,
+                    COURSEGEN_LLM_MAX_TOKENS,
+                    393_216,
+                )?,
+                timeout_seconds: resolve_u64_with_default(
+                    &merged,
+                    COURSEGEN_LLM_TIMEOUT_SECONDS,
+                    3600,
+                )?,
             },
         })
     }
@@ -152,6 +166,8 @@ impl LlmConfig {
             api_key,
             base_url: self.base_url.clone(),
             model,
+            max_tokens: self.max_tokens,
+            timeout_seconds: self.timeout_seconds,
         })
     }
 }
@@ -161,6 +177,8 @@ pub struct LlmReadyConfig {
     pub api_key: String,
     pub base_url: String,
     pub model: String,
+    pub max_tokens: u64,
+    pub timeout_seconds: u64,
 }
 
 #[derive(Debug)]

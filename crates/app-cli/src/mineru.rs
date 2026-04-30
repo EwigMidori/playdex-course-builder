@@ -245,15 +245,28 @@ fn poll_until_done(
     let deadline = Instant::now() + Duration::from_secs(config.mineru.result_timeout_seconds);
 
     loop {
-        let response = client
+        let response_result = client
             .get(&url)
             .bearer_auth(token)
             .send()
-            .and_then(|response| response.error_for_status())
-            .map_err(|source| ConvertError::PollRequest {
-                batch_id: batch_id_string.clone(),
-                source,
-            })?;
+            .and_then(|response| response.error_for_status());
+        let response = match response_result {
+            Ok(response) => response,
+            Err(source) if Instant::now() < deadline => {
+                eprintln!(
+                    "[mineru] transient poll error for batch {}: {}; retrying",
+                    batch_id_string, source
+                );
+                thread::sleep(Duration::from_secs(config.mineru.poll_interval_seconds));
+                continue;
+            }
+            Err(source) => {
+                return Err(ConvertError::PollRequest {
+                    batch_id: batch_id_string.clone(),
+                    source,
+                })
+            }
+        };
         let body: Value = response
             .json()
             .map_err(|source| ConvertError::PollRequest {

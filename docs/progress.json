@@ -22,7 +22,7 @@
     "summary": "Stop splitting infrastructure before the product works. The only active objective is to run one lesson through the full course-generation flow end to end.",
     "rules": [
       "Do not add new architectural phases until the full MVP flow runs on a real lesson.",
-      "The MVP may use a thin script, direct prompt rendering, and pragmatic file conventions if that gets the flow working faster.",
+      "The MVP must run through the single-crate Rust CLI so worker agents share one command surface and cannot fork ad hoc script behavior.",
       "The active lesson target is L2 unless a missing external dependency makes L1 the only runnable local fallback.",
       "The MVP must produce plain text, guided story JSON, question bank JSON, and textbook MDX in the existing research/pipeline layout.",
       "Every model call must save the rendered prompt and raw response so failures can be debugged without rerunning previous steps blindly.",
@@ -35,10 +35,9 @@
       "id": "WS-MVP",
       "name": "End-to-End MVP",
       "scope": [
-        "research/scripts",
+        "crates/app-cli",
         "research/prompts",
-        "research/pipeline",
-        "coursegen convert"
+        "research/pipeline"
       ]
     }
   ],
@@ -75,7 +74,7 @@
         "A minimal validation command reports pass/fail for parseability and core references."
       ],
       "deliverables": [
-        "Thin end-to-end runner or command sequence",
+        "Rust coursegen run vertical slice",
         "Rendered prompt and raw response audit files",
         "Generated lesson artifacts in research/pipeline",
         "Minimal validation output"
@@ -84,36 +83,41 @@
         "No parallel roadmap tracks are active before MVP completion."
       ],
       "gate_checks": [
-        "No new crate or abstraction is added unless it directly reduces the time to a runnable MVP.",
+        "No new crate or abstraction is added unless it directly reduces the time to a runnable Rust MVP.",
         "No task is split out for resume, retry, reviewer gates, or module decomposition before the MVP output exists.",
         "The MVP is judged by generated files and validation results, not by framework completeness."
       ],
       "tasks": [
         {
           "id": "P0-T01",
-          "title": "Run one lesson through the full MVP pipeline",
-          "description": "Implement the shortest end-to-end path that creates all MVP course artifacts for one lesson before investing in resume, retry, review gates, or module decomposition.",
+          "title": "Run one lesson through the full Rust MVP pipeline",
+          "description": "Implement the shortest Rust CLI path that creates all MVP course artifacts for one lesson before investing in resume, retry, review gates, or module decomposition.",
           "workstream": "WS-MVP",
           "crate_scope": [
-            "research/scripts",
-            "research/prompts",
-            "research/pipeline",
             "crates/app-cli",
-            "crates/pipeline-mineru"
+            "research/prompts",
+            "research/pipeline"
           ],
           "depends_on": [],
           "status": "in_progress",
           "done_when": [
-            "The runner accepts a lesson id and target language.",
-            "If research/pipeline/1-plain/<lesson_id>/plain.txt is missing, the runner can create it through the existing convert path or fail with a clear credential/setup error.",
+            "`coursegen run <lesson_id>` accepts a lesson id and target language option.",
+            "If research/pipeline/1-plain/<lesson_id>/plain.txt is missing, `coursegen run` can create it through the existing Rust convert path or fail with a clear credential/setup error.",
             "Guided story output is written to research/pipeline/3-guided_story with a manifest and step files.",
             "Question bank output is written to research/pipeline/4-question_bank/<lesson_id>.question_bank.json.",
             "Textbook output is written to research/pipeline/5-textbook/<lesson_id>.mdx.",
-            "Rendered prompts and raw model responses are saved under a local audit directory.",
+            "Rendered prompts and raw model responses are saved under research/pipeline/meta/<lesson_id>/mvp.",
             "A minimal validator confirms JSON parseability and basic cross-file references."
           ],
           "artifacts": [
-            "research/scripts/run_mvp.py",
+            "crates/app-cli/src/main.rs",
+            "crates/app-cli/src/cli.rs",
+            "crates/app-cli/src/paths.rs",
+            "crates/app-cli/src/config.rs",
+            "crates/app-cli/src/mineru.rs",
+            "crates/app-cli/src/mvp.rs",
+            "crates/app-cli/src/validation.rs",
+            "crates/app-cli/tests/cli_smoke.rs",
             "research/pipeline/1-plain/<lesson_id>/plain.txt",
             "research/pipeline/3-guided_story/manifest.json",
             "research/pipeline/3-guided_story/<lesson_id>.step*.json",

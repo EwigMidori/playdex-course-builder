@@ -1,8 +1,5 @@
 [workspace]
 members = [
     "crates/app-cli",
-    "crates/pipeline-core",
-    "crates/pipeline-io",
-    "crates/pipeline-mineru",
 ]
 resolver = "2"

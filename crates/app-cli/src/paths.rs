@@ -7,6 +7,10 @@ use std::{
 
 const RAW_PIPELINE_ROOT: &str = "research/pipeline/0-raw";
 const PLAIN_PIPELINE_ROOT: &str = "research/pipeline/1-plain";
+const GUIDED_STORY_ROOT: &str = "research/pipeline/3-guided_story";
+const QUESTION_BANK_ROOT: &str = "research/pipeline/4-question_bank";
+const TEXTBOOK_ROOT: &str = "research/pipeline/5-textbook";
+const META_PIPELINE_ROOT: &str = "research/pipeline/meta";
 
 #[derive(Clone, Debug)]
 pub struct RepoPaths {
@@ -39,22 +43,30 @@ impl RepoPaths {
         self.root.join("mineru_token.txt")
     }
 
-    pub fn relative_path_string(&self, path: &Path) -> Option<String> {
-        path.strip_prefix(&self.root)
-            .ok()
-            .map(path_to_forward_slashes)
+    pub fn prompts_dir(&self) -> PathBuf {
+        self.root.join("research/prompts")
+    }
+
+    pub fn related_important_path(&self) -> PathBuf {
+        self.root
+            .join("research/pipeline/2-related_important/course_desc.md")
     }
 
     pub fn resolve_lesson(&self, lesson_id: &str) -> Result<LessonPaths, LessonPathError> {
         validate_lesson_id(lesson_id)?;
 
-        let raw_pdf_relative = PathBuf::from(RAW_PIPELINE_ROOT).join(format!("{lesson_id}.pdf"));
-
         Ok(LessonPaths {
             repo: self.clone(),
             lesson_id: lesson_id.to_owned(),
-            raw_pdf_relative,
+            raw_pdf_relative: PathBuf::from(RAW_PIPELINE_ROOT).join(format!("{lesson_id}.pdf")),
         })
+    }
+
+    pub fn relative_display(&self, path: &Path) -> String {
+        path.strip_prefix(&self.root)
+            .ok()
+            .map(path_to_forward_slashes)
+            .unwrap_or_else(|| path_to_forward_slashes(path))
     }
 }
 
@@ -66,7 +78,11 @@ pub struct LessonPaths {
 }
 
 impl LessonPaths {
-    pub(crate) fn repo_root(&self) -> &Path {
+    pub fn repo(&self) -> &RepoPaths {
+        &self.repo
+    }
+
+    pub fn repo_root(&self) -> &Path {
         self.repo.root()
     }
 
@@ -76,10 +92,6 @@ impl LessonPaths {
 
     pub fn raw_pdf_relative(&self) -> &Path {
         &self.raw_pdf_relative
-    }
-
-    pub fn raw_pdf_relative_string(&self) -> String {
-        path_to_forward_slashes(self.raw_pdf_relative())
     }
 
     pub fn raw_pdf_path(&self) -> PathBuf {
@@ -109,10 +121,46 @@ impl LessonPaths {
     pub fn plain_text_path(&self) -> PathBuf {
         self.plain_output_dir().join("plain.txt")
     }
-}
 
-pub fn resolve_lesson(lesson_id: &str) -> Result<LessonPaths, LessonPathError> {
-    RepoPaths::from_current_dir()?.resolve_lesson(lesson_id)
+    pub fn guided_story_dir(&self) -> PathBuf {
+        self.repo.root().join(GUIDED_STORY_ROOT)
+    }
+
+    pub fn guided_story_manifest_path(&self) -> PathBuf {
+        self.guided_story_dir().join("manifest.json")
+    }
+
+    pub fn guided_story_step_path(&self, step: usize) -> PathBuf {
+        self.guided_story_dir()
+            .join(format!("{}.step{step}.json", self.lesson_id))
+    }
+
+    pub fn question_bank_path(&self) -> PathBuf {
+        self.repo
+            .root()
+            .join(QUESTION_BANK_ROOT)
+            .join(format!("{}.question_bank.json", self.lesson_id))
+    }
+
+    pub fn textbook_path(&self) -> PathBuf {
+        self.repo
+            .root()
+            .join(TEXTBOOK_ROOT)
+            .join(format!("{}.mdx", self.lesson_id))
+    }
+
+    pub fn audit_stage_dir(&self, stage: &str) -> PathBuf {
+        self.repo
+            .root()
+            .join(META_PIPELINE_ROOT)
+            .join(&self.lesson_id)
+            .join("mvp")
+            .join(stage)
+    }
+
+    pub fn relative_display(&self, path: &Path) -> String {
+        self.repo.relative_display(path)
+    }
 }
 
 #[derive(Debug)]
@@ -150,7 +198,7 @@ impl fmt::Display for LessonPathError {
                 raw_pdf_relative,
             } => write!(
                 f,
-                "missing raw PDF for lesson '{lesson_id}': {}",
+                "missing raw PDF for lesson '{lesson_id}': {}; provide this file or run with a configured MinerU setup",
                 path_to_forward_slashes(raw_pdf_relative)
             ),
         }
@@ -166,6 +214,10 @@ impl Error for LessonPathError {
             | Self::MissingRawPdf { .. } => None,
         }
     }
+}
+
+pub fn path_to_forward_slashes(path: &Path) -> String {
+    path.to_string_lossy().replace('\\', "/")
 }
 
 fn validate_lesson_id(lesson_id: &str) -> Result<(), LessonPathError> {
@@ -198,8 +250,4 @@ fn looks_like_repo_root(root: &Path) -> bool {
         && root.join(".ci/agent/AGENTS.md").is_file()
         && root.join("docs/progress.json").is_file()
         && root.join("research/README.md").is_file()
-}
-
-fn path_to_forward_slashes(path: &Path) -> String {
-    path.to_string_lossy().replace('\\', "/")
 }

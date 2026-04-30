@@ -163,7 +163,7 @@
       "id": "P1",
       "name": "Move Assets to Step-Local Layout",
       "description": "Keep the single-crate Rust CLI, but move guided story and question bank outputs into a lesson/step-local directory layout with one source of truth.",
-      "status": "todo",
+      "status": "done",
       "objective": "Make each step self-contained by storing `step.json` and its only question bank beside each other under `research/pipeline/3-guided_story/<lesson_id>/stepN/`.",
       "entry_criteria": [
         "P0-T01 completed with real L2 outputs.",
@@ -207,7 +207,7 @@
           "depends_on": [
             "P0-T01"
           ],
-          "status": "todo",
+          "status": "done",
           "done_when": [
             "`coursegen run <lesson_id>` writes `research/pipeline/3-guided_story/<lesson_id>/manifest.json`.",
             "`coursegen run <lesson_id>` writes `research/pipeline/3-guided_story/<lesson_id>/step1/step.json` for the current MVP step.",

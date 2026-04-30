@@ -19,15 +19,16 @@
     ]
   },
   "execution_rules": {
-    "summary": "Stop splitting infrastructure before the product works. The only active objective is to run one lesson through the full course-generation flow end to end.",
+    "summary": "The full MVP now runs. The next objective is to make the single-crate Rust CLI repeatable and controllable before any broad module split.",
     "rules": [
-      "Do not add new architectural phases until the full MVP flow runs on a real lesson.",
+      "Keep the implementation in the single app-cli crate until the execution contract is stable.",
       "The MVP must run through the single-crate Rust CLI so worker agents share one command surface and cannot fork ad hoc script behavior.",
       "The active lesson target is L2 unless a missing external dependency makes L1 the only runnable local fallback.",
-      "The MVP must produce plain text, guided story JSON, question bank JSON, and textbook MDX in the existing research/pipeline layout.",
+      "The pipeline must produce plain text, guided story JSON, question bank JSON, and textbook MDX in the existing research/pipeline layout.",
       "Every model call must save the rendered prompt and raw response so failures can be debugged without rerunning previous steps blindly.",
       "Minimum validation is required: generated JSON must parse, guided story manifest must reference existing step files, and textbook question references must point at generated question IDs or families.",
-      "Defer resume, retry orchestration, provider abstraction, typed model crates, reviewer gates, and broad module decomposition until after the MVP has run once."
+      "Implement execution control before broad module decomposition: stage selection, skip existing outputs, force rerun, and clear run summaries come before new crates.",
+      "Defer provider abstraction, typed model crates, and reviewer gates until the repeatable single-crate runner is stable."
     ]
   },
   "workstreams": [
@@ -51,6 +52,16 @@
         "The resulting files exist in research/pipeline/1-plain, research/pipeline/3-guided_story, research/pipeline/4-question_bank, and research/pipeline/5-textbook.",
         "The generated JSON files parse and the generated MDX is saved for inspection."
       ]
+    },
+    {
+      "id": "M2",
+      "name": "Repeatable Single-Crate Runner",
+      "phase": "P1",
+      "done_when": [
+        "`coursegen run L2` can skip existing successful outputs by default.",
+        "A developer can force selected stages to rerun without deleting files by hand.",
+        "Each run writes a concise summary explaining which stages were reused, generated, failed, or validated."
+      ]
     }
   ],
   "phases": [
@@ -58,7 +69,7 @@
       "id": "P0",
       "name": "Run the Full MVP",
       "description": "Build the shortest reliable path that turns one real lesson into all downstream course assets before resuming architecture work.",
-      "status": "in_progress",
+      "status": "done",
       "objective": "Make the full course-generation workflow run end to end once, with inspectable artifacts and minimal validation.",
       "entry_criteria": [
         "The repository contains at least one raw PDF under research/pipeline/0-raw.",
@@ -99,7 +110,7 @@
             "research/pipeline"
           ],
           "depends_on": [],
-          "status": "in_progress",
+          "status": "done",
           "done_when": [
             "`coursegen run <lesson_id>` accepts a lesson id and target language option.",
             "If research/pipeline/1-plain/<lesson_id>/plain.txt is missing, `coursegen run` can create it through the existing Rust convert path or fail with a clear credential/setup error.",
@@ -124,6 +135,71 @@
             "research/pipeline/4-question_bank/<lesson_id>.question_bank.json",
             "research/pipeline/5-textbook/<lesson_id>.mdx",
             "research/pipeline/meta/<lesson_id>/mvp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P1",
+      "name": "Make the MVP Runner Repeatable",
+      "description": "Keep the single-crate Rust CLI, but add enough execution control that development does not waste API quota or require manual file cleanup.",
+      "status": "todo",
+      "objective": "Make `coursegen run` practical for day-to-day development by reusing existing artifacts, allowing targeted reruns, and writing clear run summaries.",
+      "entry_criteria": [
+        "P0-T01 completed with real L2 outputs.",
+        "L2 plain text, guided story, question bank, textbook, and audit files exist.",
+        "The app still uses one Rust crate: crates/app-cli."
+      ],
+      "exit_criteria": [
+        "`coursegen run L2` reuses existing valid stage outputs by default.",
+        "`coursegen run L2 --force-stage <stage>` can rerun a selected stage and downstream dependent stages.",
+        "`coursegen run L2 --from-stage <stage>` can start at a selected stage when upstream artifacts already validate.",
+        "The CLI prints and writes a run summary with stage status, output paths, and audit paths.",
+        "Tests cover skip, force, from-stage, and validation failure behavior without real network calls."
+      ],
+      "deliverables": [
+        "Stage selection flags",
+        "Artifact reuse policy",
+        "Run summary JSON",
+        "Focused CLI tests"
+      ],
+      "parallel_tracks": [
+        "No parallel tracks; this is a narrow execution-control pass."
+      ],
+      "gate_checks": [
+        "No new crate is introduced.",
+        "No provider abstraction or reviewer framework is introduced.",
+        "A failed downstream stage must not force MinerU or earlier LLM stages to rerun unless explicitly requested.",
+        "Existing generated outputs are never overwritten unless the user passes an explicit force flag."
+      ],
+      "tasks": [
+        {
+          "id": "P1-T01",
+          "title": "Add stage reuse and targeted rerun controls",
+          "description": "Teach the single-crate CLI to treat the MVP stages as reusable artifacts, so developers can rerun only the stage they need without wasting MinerU or LLM quota.",
+          "workstream": "WS-MVP",
+          "crate_scope": [
+            "crates/app-cli",
+            "research/pipeline/meta"
+          ],
+          "depends_on": [
+            "P0-T01"
+          ],
+          "status": "todo",
+          "done_when": [
+            "`coursegen run <lesson_id>` skips valid existing plain text, guided story, question bank, and textbook outputs.",
+            "`--force-stage convert|guided-story|question-bank|textbook|all` reruns the selected stage and any downstream stages that depend on it.",
+            "`--from-stage convert|guided-story|question-bank|textbook` starts from the selected stage after validating required upstream artifacts.",
+            "Each run writes `research/pipeline/meta/<lesson_id>/runs/<run_id>/summary.json`.",
+            "The summary records stage status as reused, generated, skipped, failed, or validated.",
+            "CLI tests cover reuse, force-stage, from-stage, and a broken-reference validation failure."
+          ],
+          "artifacts": [
+            "crates/app-cli/src/cli.rs",
+            "crates/app-cli/src/mvp.rs",
+            "crates/app-cli/src/validation.rs",
+            "crates/app-cli/tests/cli_smoke.rs",
+            "research/pipeline/meta/<lesson_id>/runs/<run_id>/summary.json"
           ]
         }
       ]

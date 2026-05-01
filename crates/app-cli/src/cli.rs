@@ -21,6 +21,10 @@ pub enum Command {
         #[arg(long)]
         resume: bool,
     },
+    ConvertExams {
+        #[arg(long)]
+        force: bool,
+    },
     Validate {
         lesson_id: String,
     },

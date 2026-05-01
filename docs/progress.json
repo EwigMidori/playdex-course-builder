@@ -101,16 +101,6 @@
         "A local Vite React app can preview guided story steps and their step-local question banks.",
         "The viewer reads existing research/pipeline artifacts without creating a second course source of truth."
       ]
-    },
-    {
-      "id": "M6",
-      "name": "Reusable Exam Signal Cache",
-      "phase": "P5",
-      "done_when": [
-        "Exam PDFs under research/pipeline/0-raw/exam can be converted through the Rust CLI.",
-        "Converted exam text is cached under research/pipeline/1-plain/exam/<pdf_stem>/plain.txt.",
-        "Relevance scoring reads cached exam PDF text instead of treating PDF exams as unavailable."
-      ]
     }
   ],
   "phases": [
@@ -583,70 +573,6 @@
             "research/prompts/textbook_user.md",
             "crates/app-cli/src/relevance.rs",
             "apps/viewer/src"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "P5",
-      "name": "Cache Exam PDF Signals",
-      "description": "Convert public exam PDFs into reusable plain-text signals and feed them into asset-level relevance scoring without creating another source of truth.",
-      "status": "done",
-      "objective": "Make exam PDF parsing reusable across relevance scoring runs so scarce exam evidence can guide filtering without repeated MinerU calls.",
-      "entry_criteria": [
-        "Exam PDFs exist under research/pipeline/0-raw/exam.",
-        "MinerU credentials can be supplied through local environment variables or token files.",
-        "Relevance scoring already consumes exam_signal."
-      ],
-      "exit_criteria": [
-        "`coursegen convert-exams` converts all raw exam PDFs by default while skipping already cached plain text.",
-        "`coursegen convert-exams --force` can intentionally regenerate exam PDF caches.",
-        "Exam cache output lives under research/pipeline/1-plain/exam/<pdf_stem>/ with plain.txt, job.json, result.zip, and artifacts.",
-        "Relevance scorer input includes cached PDF plain text and cache paths.",
-        "CLI smoke tests cover cached exam PDF text flowing into the relevance prompt."
-      ],
-      "deliverables": [
-        "Exam PDF conversion command",
-        "Exam plain-text cache",
-        "Relevance scorer cache integration"
-      ],
-      "parallel_tracks": [
-        "No parallel tracks; this is a narrow pipeline reuse pass."
-      ],
-      "gate_checks": [
-        "Do not create a second exam source of truth outside research/pipeline/1-plain/exam.",
-        "Do not rerun MinerU when plain.txt already exists unless forced.",
-        "Keep the implementation in crates/app-cli."
-      ],
-      "tasks": [
-        {
-          "id": "P5-T01",
-          "title": "Convert and reuse exam PDF text",
-          "description": "Add a Rust CLI command that parses exam PDFs into a reusable plain-text cache, then teach relevance scoring to include cached exam PDF content.",
-          "workstream": "WS-MVP",
-          "crate_scope": [
-            "crates/app-cli",
-            "research/pipeline"
-          ],
-          "depends_on": [
-            "P2-T03"
-          ],
-          "status": "done",
-          "done_when": [
-            "`coursegen convert-exams` scans research/pipeline/0-raw/exam for PDFs.",
-            "The command writes each PDF cache to research/pipeline/1-plain/exam/<pdf_stem>/plain.txt.",
-            "The command skips existing plain.txt caches by default and reports converted=0 on a fully cached rerun.",
-            "Relevance scoring includes cached PDF content with note exam_pdf_text_cached.",
-            "Both current raw exam PDFs have been parsed into the cache layout."
-          ],
-          "artifacts": [
-            "crates/app-cli/src/cli.rs",
-            "crates/app-cli/src/main.rs",
-            "crates/app-cli/src/mineru.rs",
-            "crates/app-cli/src/paths.rs",
-            "crates/app-cli/src/relevance.rs",
-            "crates/app-cli/tests/cli_smoke.rs",
-            "research/pipeline/1-plain/exam"
           ]
         }
       ]

@@ -55,18 +55,6 @@ impl RepoPaths {
         self.root.join(RAW_PIPELINE_ROOT).join("exam")
     }
 
-    pub fn exam_plain_root(&self) -> PathBuf {
-        self.root.join(PLAIN_PIPELINE_ROOT).join("exam")
-    }
-
-    pub fn exam_plain_output_dir(&self, pdf_stem: &str) -> PathBuf {
-        self.exam_plain_root().join(pdf_stem)
-    }
-
-    pub fn exam_plain_text_path(&self, pdf_stem: &str) -> PathBuf {
-        self.exam_plain_output_dir(pdf_stem).join("plain.txt")
-    }
-
     pub fn resolve_lesson(&self, lesson_id: &str) -> Result<LessonPaths, LessonPathError> {
         validate_lesson_id(lesson_id)?;
 

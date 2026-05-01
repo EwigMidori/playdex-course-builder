@@ -47,15 +47,6 @@ fn run() -> Result<(), AppError> {
                 lesson.relative_display(&lesson.plain_text_path())
             );
         }
-        Command::ConvertExams { force } => {
-            let converted = mineru::convert_exam_pdfs(&repo, !force)?;
-            println!(
-                "convert exams complete: converted={} raw={} plain={}",
-                converted,
-                repo.relative_display(&repo.exam_raw_dir()),
-                repo.relative_display(&repo.exam_plain_root())
-            );
-        }
         Command::Validate { lesson_id } => {
             let lesson = repo.resolve_lesson(&lesson_id)?;
             validation::validate_outputs(&lesson)?;

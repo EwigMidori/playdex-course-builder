@@ -176,33 +176,11 @@ fn read_exam_signal(repo: &RepoPaths) -> Result<Value, RelevanceError> {
                 }));
             }
             Some(ext) if ext.eq_ignore_ascii_case("pdf") => {
-                let cache_path = exam_pdf_plain_text_path(repo, &path);
-                match cache_path {
-                    Some(cache_path) if cache_path.is_file() => {
-                        pdf_files.push(json!({
-                            "file": file_name,
-                            "path": repo.relative_display(&path),
-                            "plain_text_path": repo.relative_display(&cache_path),
-                            "content": read_required_text(&cache_path)?,
-                            "note": "exam_pdf_text_cached"
-                        }));
-                    }
-                    Some(cache_path) => {
-                        pdf_files.push(json!({
-                            "file": file_name,
-                            "path": repo.relative_display(&path),
-                            "plain_text_path": repo.relative_display(&cache_path),
-                            "note": "exam_pdf_text_missing"
-                        }));
-                    }
-                    None => {
-                        pdf_files.push(json!({
-                            "file": file_name,
-                            "path": repo.relative_display(&path),
-                            "note": "exam_pdf_text_unavailable"
-                        }));
-                    }
-                }
+                pdf_files.push(json!({
+                    "file": file_name,
+                    "path": repo.relative_display(&path),
+                    "note": "exam_pdf_text_unavailable"
+                }));
             }
             _ => {
                 other_files.push(json!({
@@ -217,13 +195,11 @@ fn read_exam_signal(repo: &RepoPaths) -> Result<Value, RelevanceError> {
     pdf_files.sort_by_key(|value| json_string_field(value, "file"));
     other_files.sort_by_key(|value| json_string_field(value, "file"));
 
-    let mut notes = BTreeSet::new();
-    for pdf_file in &pdf_files {
-        if let Some(note) = pdf_file.get("note").and_then(Value::as_str) {
-            notes.insert(note);
-        }
-    }
-    let notes = notes.into_iter().collect::<Vec<_>>();
+    let notes = if pdf_files.is_empty() {
+        Vec::<&str>::new()
+    } else {
+        vec!["exam_pdf_text_unavailable"]
+    };
 
     Ok(json!({
         "path": repo.relative_display(&exam_dir),
@@ -232,11 +208,6 @@ fn read_exam_signal(repo: &RepoPaths) -> Result<Value, RelevanceError> {
         "other_files": other_files,
         "notes": notes
     }))
-}
-
-fn exam_pdf_plain_text_path(repo: &RepoPaths, path: &Path) -> Option<PathBuf> {
-    let stem = path.file_stem()?.to_str()?;
-    Some(repo.exam_plain_text_path(stem))
 }
 
 fn extract_textbook_sections(textbook: &str) -> Vec<Value> {

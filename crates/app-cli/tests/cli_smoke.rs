@@ -129,10 +129,6 @@ impl TempRepo {
             "exam sample text\n",
         );
         self.write("research/pipeline/0-raw/exam/sample.pdf", "%PDF test\n");
-        self.write(
-            "research/pipeline/1-plain/exam/sample/plain.txt",
-            "cached exam PDF text about assessed execution tradeoffs\n",
-        );
     }
 }
 
@@ -385,7 +381,7 @@ fn score_relevance_writes_report_and_audit_outputs_with_local_llm_stub() {
         "target_language": "zh-CN",
         "exam_signal": {
             "summary": "sample exam signal",
-            "notes": ["exam_pdf_text_cached"]
+            "notes": ["exam_pdf_text_unavailable"]
         },
         "step_scores": [{
             "sequence_id": "step1",
@@ -494,12 +490,8 @@ fn score_relevance_writes_report_and_audit_outputs_with_local_llm_stub() {
 
     let user_prompt = read_text(audit_root.join("user.md"));
     assert!(
-        user_prompt.contains("cached exam PDF text about assessed execution tradeoffs"),
-        "cached PDF exam text should be included in scorer input"
-    );
-    assert!(
-        user_prompt.contains("research/pipeline/1-plain/exam/sample/plain.txt"),
-        "cached PDF exam text path should be included in scorer input"
+        user_prompt.contains("exam_pdf_text_unavailable"),
+        "PDF exam files should be included as unavailable text signal"
     );
     assert!(
         user_prompt.contains("sample.txt"),

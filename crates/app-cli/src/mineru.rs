@@ -32,53 +32,23 @@ pub fn convert_lesson(
     let raw_pdf_path = lesson.checked_raw_pdf_path()?;
     let config = Config::load(repo)?;
     let token = config.mineru.read_token()?;
-    let stage = PreparedOutput::prepare(lesson.plain_output_dir(), lesson.lesson_id())?;
+    let stage = PreparedOutput::prepare(lesson)?;
 
-    let result = run_convert(&config, &token, &raw_pdf_path, &stage, lesson.lesson_id());
+    let result = run_convert(lesson, &config, &token, &raw_pdf_path, &stage);
     match result {
         Ok(()) => Ok(()),
         Err(error) => Err(stage.cleanup(error)),
     }
 }
 
-pub fn convert_exam_pdfs(repo: &RepoPaths, resume: bool) -> Result<usize, ConvertError> {
-    let raw_pdf_paths = list_exam_pdfs(repo)?;
-    if raw_pdf_paths.is_empty() {
-        return Ok(0);
-    }
-
-    let config = Config::load(repo)?;
-    let token = config.mineru.read_token()?;
-    let mut converted = 0;
-
-    for raw_pdf_path in raw_pdf_paths {
-        let stem = pdf_stem(&raw_pdf_path)?;
-        let plain_text_path = repo.exam_plain_text_path(&stem);
-        if resume && plain_text_path.is_file() {
-            continue;
-        }
-
-        let output_dir = repo.exam_plain_output_dir(&stem);
-        let data_id = format!("exam-{stem}");
-        let stage = PreparedOutput::prepare(output_dir, &data_id)?;
-        let result = run_convert(&config, &token, &raw_pdf_path, &stage, &data_id);
-        match result {
-            Ok(()) => converted += 1,
-            Err(error) => return Err(stage.cleanup(error)),
-        }
-    }
-
-    Ok(converted)
-}
-
 fn run_convert(
+    lesson: &LessonPaths,
     config: &Config,
     token: &str,
     raw_pdf_path: &Path,
     stage: &PreparedOutput,
-    data_id: &str,
 ) -> Result<(), ConvertError> {
-    let upload = request_upload(config, token, raw_pdf_path, data_id)?;
+    let upload = request_upload(config, token, lesson, raw_pdf_path)?;
     upload_file(config, &upload.upload_url, raw_pdf_path)?;
     let completed = poll_until_done(config, token, &upload.batch_id)?;
     download_archive(
@@ -122,7 +92,8 @@ struct PreparedOutput {
 }
 
 impl PreparedOutput {
-    fn prepare(final_output_dir: PathBuf, staging_prefix: &str) -> Result<Self, ConvertError> {
+    fn prepare(lesson: &LessonPaths) -> Result<Self, ConvertError> {
+        let final_output_dir = lesson.plain_output_dir();
         match final_output_dir.try_exists() {
             Ok(true) => {
                 return Err(ConvertError::OutputAlreadyExists {
@@ -147,7 +118,7 @@ impl PreparedOutput {
             source,
         })?;
 
-        let staging_dir = create_staging_dir(&parent, staging_prefix)?;
+        let staging_dir = create_staging_dir(&parent, lesson.lesson_id())?;
         Ok(Self {
             final_output_dir,
             archive_path: staging_dir.join("result.zip"),
@@ -185,8 +156,8 @@ struct CompletedBatch {
 fn request_upload(
     config: &Config,
     token: &str,
+    lesson: &LessonPaths,
     raw_pdf_path: &Path,
-    data_id: &str,
 ) -> Result<CreateUploadResponse, ConvertError> {
     let client = Client::builder()
         .timeout(Duration::from_secs(config.mineru.request_timeout_seconds))
@@ -207,7 +178,7 @@ fn request_upload(
                 .and_then(|value| value.to_str())
                 .unwrap_or("input.pdf"),
             is_ocr: config.mineru.is_ocr,
-            data_id,
+            data_id: lesson.lesson_id(),
         }],
     };
     let response = client
@@ -625,61 +596,6 @@ fn first_string_at(value: Option<&Value>) -> Option<String> {
     }
 }
 
-fn list_exam_pdfs(repo: &RepoPaths) -> Result<Vec<PathBuf>, ConvertError> {
-    let exam_dir = repo.exam_raw_dir();
-    let entries = match fs::read_dir(&exam_dir) {
-        Ok(entries) => entries,
-        Err(source) if source.kind() == io::ErrorKind::NotFound => return Ok(Vec::new()),
-        Err(source) => {
-            return Err(ConvertError::ExamDirectoryRead {
-                path: exam_dir,
-                source,
-            })
-        }
-    };
-
-    let mut pdfs = Vec::new();
-    for entry in entries {
-        let entry = entry.map_err(|source| ConvertError::ExamDirectoryRead {
-            path: exam_dir.clone(),
-            source,
-        })?;
-        let path = entry.path();
-        if path.is_file()
-            && path
-                .extension()
-                .and_then(|value| value.to_str())
-                .is_some_and(|extension| extension.eq_ignore_ascii_case("pdf"))
-        {
-            pdfs.push(path);
-        }
-    }
-
-    pdfs.sort();
-    Ok(pdfs)
-}
-
-fn pdf_stem(path: &Path) -> Result<String, ConvertError> {
-    let stem = path
-        .file_stem()
-        .and_then(|value| value.to_str())
-        .filter(|value| !value.is_empty())
-        .ok_or_else(|| ConvertError::InvalidExamPdfName {
-            path: path.to_path_buf(),
-        })?;
-
-    if stem
-        .chars()
-        .all(|value| value.is_ascii_alphanumeric() || matches!(value, '-' | '_'))
-    {
-        Ok(stem.to_owned())
-    } else {
-        Err(ConvertError::InvalidExamPdfName {
-            path: path.to_path_buf(),
-        })
-    }
-}
-
 fn create_staging_dir(parent: &Path, lesson_id: &str) -> Result<PathBuf, ConvertError> {
     let pid = std::process::id();
     let seed = unique_seed();
@@ -871,13 +787,6 @@ fn collect_markdown_files(
 pub enum ConvertError {
     LessonPath(LessonPathError),
     Config(ConfigError),
-    ExamDirectoryRead {
-        path: PathBuf,
-        source: io::Error,
-    },
-    InvalidExamPdfName {
-        path: PathBuf,
-    },
     OutputDirectoryCheck {
         path: PathBuf,
         source: io::Error,
@@ -986,18 +895,6 @@ impl fmt::Display for ConvertError {
         match self {
             Self::LessonPath(source) => source.fmt(f),
             Self::Config(source) => source.fmt(f),
-            Self::ExamDirectoryRead { path, source } => {
-                write!(
-                    f,
-                    "failed to read exam PDF directory {}: {source}",
-                    path.display()
-                )
-            }
-            Self::InvalidExamPdfName { path } => write!(
-                f,
-                "invalid exam PDF file name {}; use ASCII letters, digits, '-' or '_' before .pdf",
-                path.display()
-            ),
             Self::OutputDirectoryCheck { path, source } => {
                 write!(
                     f,
@@ -1162,8 +1059,7 @@ impl Error for ConvertError {
         match self {
             Self::LessonPath(source) => Some(source),
             Self::Config(source) => Some(source),
-            Self::ExamDirectoryRead { source, .. }
-            | Self::OutputDirectoryCheck { source, .. }
+            Self::OutputDirectoryCheck { source, .. }
             | Self::StagingCreate { source, .. }
             | Self::UploadWrite { source, .. }
             | Self::DownloadWrite { source, .. }
@@ -1180,7 +1076,6 @@ impl Error for ConvertError {
             Self::JobSerialize { source, .. } => Some(source),
             Self::CleanupDuringFailure { error, .. } => Some(error),
             Self::OutputAlreadyExists { .. }
-            | Self::InvalidExamPdfName { .. }
             | Self::StagingDirectoryExhausted { .. }
             | Self::CreateUploadApi { .. }
             | Self::CreateUploadField { .. }

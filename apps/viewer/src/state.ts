@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import type { AssetView, DataMode, LessonId, LessonOption } from "./types";
+import type { AssetView, LessonId, LessonOption } from "./types";
 
 export const lessons: LessonOption[] = [
   {
@@ -22,4 +22,3 @@ export const lessons: LessonOption[] = [
 export const selectedLessonAtom = atom<LessonId>("L2");
 export const selectedAssetViewAtom = atom<AssetView>("overview");
 export const selectedStepAtom = atom<string>("step1");
-export const selectedDataModeAtom = atom<DataMode>("real");

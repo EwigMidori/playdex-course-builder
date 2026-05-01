@@ -1,5 +1,4 @@
-import { buildStressManifest, buildStressQuestionBank, buildStressRelevance, buildStressStep, buildStressTextbook } from "./demoData";
-import type { DataMode, LessonId, QuestionBank, RelevanceReport, StoryManifest, StoryStep } from "./types";
+import type { LessonId, QuestionBank, RelevanceReport, StoryManifest, StoryStep } from "./types";
 
 export type Loadable<T> = {
   data: T | null;
@@ -46,17 +45,7 @@ export const legacyQuestionBankPath = (lessonId: LessonId) =>
   `research/pipeline/4-question_bank/${lessonId}.question_bank.json`;
 export const relevancePath = (lessonId: LessonId) => `research/pipeline/meta/${lessonId}/relevance/report.json`;
 
-export async function loadTextbook(lessonId: LessonId, mode: DataMode) {
-  if (mode === "stress") {
-    return { data: buildStressTextbook(lessonId), error: null, path: `demo/stress/${lessonId}.mdx` };
-  }
-  return fetchText(textbookPath(lessonId));
-}
-
-export async function loadManifest(lessonId: LessonId, legacySteps: string[] = [], mode: DataMode) {
-  if (mode === "stress") {
-    return { data: buildStressManifest(lessonId), error: null, path: `demo/stress/${lessonId}/manifest.json` };
-  }
+export async function loadManifest(lessonId: LessonId, legacySteps: string[] = []) {
   const manifest = await fetchJson<StoryManifest>(manifestPath(lessonId));
   if (manifest.data) {
     return manifest;
@@ -77,10 +66,7 @@ export async function loadManifest(lessonId: LessonId, legacySteps: string[] = [
   };
 }
 
-export async function loadStep(lessonId: LessonId, stepId: string, mode: DataMode): Promise<Loadable<StoryStep>> {
-  if (mode === "stress") {
-    return { data: buildStressStep(lessonId, stepId), error: null, path: `demo/stress/${lessonId}/${stepId}/step.json` };
-  }
+export async function loadStep(lessonId: LessonId, stepId: string): Promise<Loadable<StoryStep>> {
   const current = await fetchJson<StoryStep>(newStepPath(lessonId, stepId));
   if (current.data) {
     return current;
@@ -96,18 +82,7 @@ export async function loadStep(lessonId: LessonId, stepId: string, mode: DataMod
   };
 }
 
-export async function loadQuestionBank(
-  lessonId: LessonId,
-  stepId: string,
-  mode: DataMode
-): Promise<Loadable<QuestionBank>> {
-  if (mode === "stress") {
-    return {
-      data: buildStressQuestionBank(lessonId, stepId),
-      error: null,
-      path: `demo/stress/${lessonId}/${stepId}/question_bank.json`
-    };
-  }
+export async function loadQuestionBank(lessonId: LessonId, stepId: string): Promise<Loadable<QuestionBank>> {
   const current = await fetchJson<QuestionBank>(newQuestionBankPath(lessonId, stepId));
   if (current.data) {
     return current;
@@ -123,9 +98,4 @@ export async function loadQuestionBank(
   };
 }
 
-export async function loadRelevance(lessonId: LessonId, mode: DataMode): Promise<Loadable<RelevanceReport>> {
-  if (mode === "stress") {
-    return { data: buildStressRelevance(lessonId), error: null, path: `demo/stress/${lessonId}/relevance/report.json` };
-  }
-  return fetchJson<RelevanceReport>(relevancePath(lessonId));
-}
+export const loadRelevance = (lessonId: LessonId) => fetchJson<RelevanceReport>(relevancePath(lessonId));

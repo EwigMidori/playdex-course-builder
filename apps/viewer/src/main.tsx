@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import ReactMarkdown from "react-markdown";
 import { useAtom } from "jotai";
 import remarkGfm from "remark-gfm";
-import { mdxToMarkdownPreview } from "./mdxPreview";
+import { mdxToMarkdownPreview, type MdxPreviewIndex } from "./mdxPreview";
 import {
   fetchText,
   loadManifest,
@@ -104,6 +104,57 @@ function useRelevance(lessonId: LessonId) {
       alive = false;
     };
   }, [lessonId]);
+  return state;
+}
+
+function useQuestionIndex(lessonId: LessonId) {
+  const lesson = lessons.find((item) => item.id === lessonId);
+  const [state, setState] = React.useState<AsyncState<MdxPreviewIndex>>(emptyState);
+
+  React.useEffect(() => {
+    let alive = true;
+    setState(emptyState());
+
+    loadManifest(lessonId, lesson?.legacySteps).then(async (manifest) => {
+      const steps = manifest.data?.steps ?? [{ sequence_id: lesson?.defaultStep ?? "step1" }];
+      const banks = await Promise.all(
+        steps.map((step) => loadQuestionBank(lessonId, step.sequence_id ?? lesson?.defaultStep ?? "step1"))
+      );
+      const families = new Map<string, QuestionFamily>();
+      const questions = new Map<string, { family: QuestionFamily; variant: NonNullable<QuestionFamily["variants"]>[number] }>();
+
+      for (const bank of banks) {
+        for (const family of [
+          ...(bank.data?.flashcard_families ?? []),
+          ...(bank.data?.quiz_families ?? []),
+          ...(bank.data?.longform_families ?? [])
+        ]) {
+          if (family.family_id) {
+            families.set(family.family_id, family);
+          }
+          for (const variant of family.variants ?? []) {
+            if (variant.question_id) {
+              questions.set(variant.question_id, { family, variant });
+            }
+          }
+        }
+      }
+
+      if (alive) {
+        setState({
+          loading: false,
+          data: { families, questions },
+          error: manifest.error,
+          path: manifest.path
+        });
+      }
+    });
+
+    return () => {
+      alive = false;
+    };
+  }, [lesson?.defaultStep, lesson?.legacySteps, lessonId]);
+
   return state;
 }
 
@@ -303,13 +354,18 @@ function FileLine({ path }: { path: string }) {
 
 function TextbookView({ lessonId, relevance }: { lessonId: LessonId; relevance: RelevanceReport | null }) {
   const textbook = useTextbook(lessonId);
-  const preview = React.useMemo(() => (textbook.data ? mdxToMarkdownPreview(textbook.data) : ""), [textbook.data]);
+  const questionIndex = useQuestionIndex(lessonId);
+  const preview = React.useMemo(
+    () => (textbook.data ? mdxToMarkdownPreview(textbook.data, questionIndex.data ?? undefined) : ""),
+    [questionIndex.data, textbook.data]
+  );
 
   return (
     <section className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
       <Panel title="MDX preview" subtitle={textbook.path}>
         {textbook.loading ? <Muted>Loading textbook...</Muted> : null}
         {textbook.error ? <Notice title="Textbook unavailable" detail={textbook.error} /> : null}
+        {questionIndex.error ? <Notice title="Practice lookup degraded" detail={questionIndex.error} /> : null}
         {textbook.data ? (
           <article className="prose prose-stone max-w-none prose-headings:scroll-mt-4 prose-pre:bg-stone-950 prose-pre:text-stone-50">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{preview}</ReactMarkdown>

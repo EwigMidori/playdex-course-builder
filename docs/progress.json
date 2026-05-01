@@ -379,6 +379,35 @@
             "research/pipeline/3-guided_story/<lesson_id>/stepN/step.json",
             "research/pipeline/3-guided_story/<lesson_id>/stepN/question_bank.json"
           ]
+        },
+        {
+          "id": "P2-T03",
+          "title": "Make default runs resumable",
+          "description": "Teach `coursegen run` to reuse already-valid generated artifacts by default so an interrupted multi-step run can continue from missing step-local outputs instead of regenerating successful work.",
+          "workstream": "WS-MVP",
+          "crate_scope": [
+            "crates/app-cli",
+            "research/pipeline"
+          ],
+          "depends_on": [
+            "P2-T02"
+          ],
+          "status": "done",
+          "done_when": [
+            "`coursegen run <lesson_id>` reuses existing plain text when present.",
+            "`coursegen run <lesson_id>` reuses an existing guided story manifest and step files when they parse.",
+            "`coursegen run <lesson_id>` skips each existing parseable `stepN/question_bank.json` independently and only generates missing or forced step question banks.",
+            "If any question bank is generated during a resumed run, textbook generation reruns so references stay consistent.",
+            "A fully generated lesson can run without LLM credentials because no model calls are needed.",
+            "`--force-stage convert|guided-story|question-bank|textbook|all` can explicitly invalidate reuse for the selected stage and downstream stages.",
+            "CLI smoke tests cover resuming from a missing step question bank without regenerating guided story or existing step question banks."
+          ],
+          "artifacts": [
+            "crates/app-cli/src/cli.rs",
+            "crates/app-cli/src/main.rs",
+            "crates/app-cli/src/mvp.rs",
+            "crates/app-cli/tests/cli_smoke.rs"
+          ]
         }
       ]
     },

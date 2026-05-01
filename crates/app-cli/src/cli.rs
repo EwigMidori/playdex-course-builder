@@ -1,4 +1,4 @@
-use clap::{Parser, Subcommand};
+use clap::{Parser, Subcommand, ValueEnum};
 
 #[derive(Debug, Parser)]
 #[command(name = "coursegen")]
@@ -13,6 +13,8 @@ pub enum Command {
         lesson_id: String,
         #[arg(long, default_value = "zh-CN")]
         target_language: String,
+        #[arg(long, value_enum, default_value = "none")]
+        force_stage: ForceStage,
     },
     Convert {
         lesson_id: String,
@@ -27,4 +29,14 @@ pub enum Command {
         #[arg(long, default_value = "zh-CN")]
         target_language: String,
     },
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq, ValueEnum)]
+pub enum ForceStage {
+    None,
+    Convert,
+    GuidedStory,
+    QuestionBank,
+    Textbook,
+    All,
 }

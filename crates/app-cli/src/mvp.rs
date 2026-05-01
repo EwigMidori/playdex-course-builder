@@ -11,6 +11,7 @@ use serde::Serialize;
 use serde_json::{json, Value};
 
 use crate::{
+    cli::ForceStage,
     config::{Config, ConfigError, LlmReadyConfig},
     mineru::{self, ConvertError},
     paths::LessonPaths,
@@ -21,40 +22,107 @@ pub fn run_mvp(
     repo: &crate::paths::RepoPaths,
     lesson: &LessonPaths,
     target_language: &str,
+    force_stage: ForceStage,
 ) -> Result<(), MvpError> {
-    if !lesson.plain_text_path().is_file() {
+    let force_convert = matches!(force_stage, ForceStage::Convert | ForceStage::All);
+    let force_guided_story = matches!(force_stage, ForceStage::GuidedStory | ForceStage::All);
+    let force_question_bank = matches!(
+        force_stage,
+        ForceStage::GuidedStory | ForceStage::QuestionBank | ForceStage::All
+    );
+    let force_textbook = matches!(
+        force_stage,
+        ForceStage::GuidedStory | ForceStage::QuestionBank | ForceStage::Textbook | ForceStage::All
+    );
+
+    if force_convert || !lesson.plain_text_path().is_file() {
         mineru::convert_lesson(repo, lesson, false)?;
+    } else {
+        eprintln!(
+            "reusing plain text: {}",
+            lesson.relative_display(&lesson.plain_text_path())
+        );
     }
 
-    let config = Config::load(repo)?;
-    let llm = config.llm.require_ready()?;
     let plain_text = read_required_text(&lesson.plain_text_path())?;
     let related_important = read_optional_text(&repo.related_important_path())?;
+    let mut llm = None;
 
-    generate_guided_story(
+    if force_guided_story || !guided_story_ready(lesson) {
+        let llm = ready_llm(repo, &mut llm)?;
+        generate_guided_story(
+            lesson,
+            llm,
+            target_language,
+            &plain_text,
+            &related_important,
+        )?;
+    } else {
+        eprintln!(
+            "reusing guided story: {}",
+            lesson.relative_display(&lesson.guided_story_manifest_path())
+        );
+    }
+
+    let generated_question_banks = generate_question_bank(
         lesson,
-        &llm,
+        &mut llm,
+        force_question_bank,
         target_language,
         &plain_text,
         &related_important,
     )?;
-    generate_question_bank(
-        lesson,
-        &llm,
-        target_language,
-        &plain_text,
-        &related_important,
-    )?;
-    generate_textbook(
-        lesson,
-        &llm,
-        target_language,
-        &plain_text,
-        &related_important,
-    )?;
+
+    if force_textbook || generated_question_banks || !textbook_ready(lesson) {
+        let llm = ready_llm(repo, &mut llm)?;
+        generate_textbook(
+            lesson,
+            llm,
+            target_language,
+            &plain_text,
+            &related_important,
+        )?;
+    } else {
+        eprintln!(
+            "reusing textbook: {}",
+            lesson.relative_display(&lesson.textbook_path())
+        );
+    }
+
     validation::validate_outputs(lesson)?;
 
     Ok(())
+}
+
+fn ready_llm<'a>(
+    repo: &crate::paths::RepoPaths,
+    llm: &'a mut Option<LlmReadyConfig>,
+) -> Result<&'a LlmReadyConfig, MvpError> {
+    if llm.is_none() {
+        let config = Config::load(repo)?;
+        *llm = Some(config.llm.require_ready()?);
+    }
+    Ok(llm.as_ref().expect("llm config should be initialized"))
+}
+
+fn guided_story_ready(lesson: &LessonPaths) -> bool {
+    let Ok(step_refs) = read_manifest_step_refs(lesson) else {
+        return false;
+    };
+    if step_refs.is_empty() {
+        return false;
+    }
+    step_refs
+        .iter()
+        .all(|step_ref| read_json(&step_ref.path, Stage::GuidedStory).is_ok())
+}
+
+fn question_bank_ready(path: &Path) -> bool {
+    read_json(path, Stage::QuestionBank).is_ok()
+}
+
+fn textbook_ready(lesson: &LessonPaths) -> bool {
+    lesson.textbook_path().is_file() && validation::validate_outputs(lesson).is_ok()
 }
 
 fn generate_guided_story(
@@ -105,11 +173,12 @@ fn generate_guided_story(
 
 fn generate_question_bank(
     lesson: &LessonPaths,
-    llm: &LlmReadyConfig,
+    llm: &mut Option<LlmReadyConfig>,
+    force: bool,
     target_language: &str,
     plain_text: &str,
     related_important: &str,
-) -> Result<(), MvpError> {
+) -> Result<bool, MvpError> {
     let repo = lesson.repo();
     let system = read_prompt(repo, "question_bank_system.md")?;
     let manifest = read_required_text(&lesson.guided_story_manifest_path())?;
@@ -118,8 +187,17 @@ fn generate_question_bank(
     let steps = read_guided_story_steps(lesson, &step_refs)?;
     let source_outline = source_outline_from_plain_text(plain_text);
     let prompt = read_prompt(repo, "question_bank_user.md")?;
+    let mut generated_any = false;
 
     for step_ref in step_refs {
+        if !force && question_bank_ready(&step_ref.question_bank_path) {
+            eprintln!(
+                "reusing question bank: {}",
+                lesson.relative_display(&step_ref.question_bank_path)
+            );
+            continue;
+        }
+
         let current_step = read_required_text(&step_ref.path)?;
         let user = render_prompt(
             &prompt,
@@ -142,6 +220,7 @@ fn generate_question_bank(
         } else {
             format!("question_bank/{}", step_ref.sequence_id)
         };
+        let llm = ready_llm(repo, llm)?;
         let response = call_chat_completion_with_audit(
             lesson,
             llm,
@@ -164,9 +243,10 @@ fn generate_question_bank(
             })?;
         }
         write_pretty_json(&step_ref.question_bank_path, &question_bank)?;
+        generated_any = true;
     }
 
-    Ok(())
+    Ok(generated_any)
 }
 
 fn generate_textbook(

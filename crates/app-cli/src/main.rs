@@ -32,9 +32,10 @@ fn run() -> Result<(), AppError> {
         Command::Run {
             lesson_id,
             target_language,
+            force_stage,
         } => {
             let lesson = repo.resolve_lesson(&lesson_id)?;
-            mvp::run_mvp(&repo, &lesson, &target_language)?;
+            mvp::run_mvp(&repo, &lesson, &target_language, force_stage)?;
             println!("mvp complete: lesson={lesson_id} target_language={target_language}");
         }
         Command::Convert { lesson_id, resume } => {

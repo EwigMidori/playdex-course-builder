@@ -689,3 +689,90 @@ lessonId: L2
         );
     }
 }
+
+#[test]
+fn run_resumes_from_missing_step_question_bank_without_regenerating_prior_steps() {
+    let repo = TempRepo::new();
+    repo.seed_prompts();
+    repo.write(
+        "research/pipeline/1-plain/L2/plain.txt",
+        "A lesson with resumable generated chunks.\n",
+    );
+    repo.write(
+        "research/pipeline/3-guided_story/L2/manifest.json",
+        r#"{"lesson_id":"L2","mode":"guided_story","steps":[{"sequence_id":"step1","file":"research/pipeline/3-guided_story/L2/step1/step.json","concept":"First"},{"sequence_id":"step2","file":"research/pipeline/3-guided_story/L2/step2/step.json","concept":"Second"}]}"#,
+    );
+    repo.write(
+        "research/pipeline/3-guided_story/L2/step1/step.json",
+        r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[{"id":"s1","lines":["First"]}],"term_catalog":{}}"#,
+    );
+    repo.write(
+        "research/pipeline/3-guided_story/L2/step2/step.json",
+        r#"{"lesson_id":"L2","sequence_id":"step2","mode":"guided_story","screens":[{"id":"s1","lines":["Second"]}],"term_catalog":{}}"#,
+    );
+    repo.write(
+        "research/pipeline/3-guided_story/L2/step1/question_bank.json",
+        r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_step1","linked_steps":["step1"],"variants":[{"question_id":"question_step1","linked_steps":["step1"],"front":"A?","back":"A"}]}],"quiz_families":[],"longform_families":[]}"#,
+    );
+
+    let question_bank_2 = r#"{"lesson_id":"L2","sequence_id":"step2","flashcard_families":[{"family_id":"family_step2","linked_steps":["step2"],"variants":[{"question_id":"question_step2","linked_steps":["step2"],"front":"B?","back":"B"}]}],"quiz_families":[],"longform_families":[]}"#.to_owned();
+    let textbook = r#"---
+lessonId: L2
+---
+# L2
+<QuestionFamily familyId="family_step1" />
+<QuestionRef id="question_step1" />
+<QuestionFamily familyId="family_step2" />
+<QuestionRef id="question_step2" />
+"#
+    .to_owned();
+    let server = StubLlmServer::start(vec![question_bank_2, textbook]);
+
+    let output = coursegen_command()
+        .current_dir(repo.root())
+        .env("COURSEGEN_LLM_API_KEY", "test-token")
+        .env("COURSEGEN_LLM_MODEL", "test-model")
+        .env("COURSEGEN_LLM_BASE_URL", server.base_url())
+        .args(["run", "L2", "--target-language", "zh-CN"])
+        .output()
+        .expect("coursegen should run");
+
+    server.finish();
+
+    assert!(
+        output.status.success(),
+        "stderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    assert!(
+        stderr.contains("reusing guided story"),
+        "stderr should show guided story reuse: {stderr}"
+    );
+    assert!(
+        stderr.contains(
+            "reusing question bank: research/pipeline/3-guided_story/L2/step1/question_bank.json"
+        ),
+        "stderr should show step1 question bank reuse: {stderr}"
+    );
+    assert!(
+        !repo
+            .root()
+            .join("research/pipeline/meta/L2/mvp/guided_story/request.json")
+            .exists(),
+        "guided story should not be requested during resume"
+    );
+    assert!(
+        !repo
+            .root()
+            .join("research/pipeline/meta/L2/mvp/question_bank/step1/request.json")
+            .exists(),
+        "existing step1 question bank should not be requested again"
+    );
+    assert!(
+        repo.root()
+            .join("research/pipeline/meta/L2/mvp/question_bank/step2/request.json")
+            .is_file(),
+        "missing step2 question bank should be requested"
+    );
+}

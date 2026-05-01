@@ -39,6 +39,9 @@
    - 不要只靠自然语言标题做隐式对应
 9. 允许并鼓励内嵌交互组件，但组件名要稳定、简单、语义清楚。
 10. 与题库的关联必须通过 question ids 或 family ids 明确表达。
+    - `flashcard_families` 是主动检索/间隔重复材料，不应被当成考试选择题。
+    - `quiz_families` 是测验材料，适合嵌入章节自测或复习检查。
+    - `longform_families` 是解释、推导、比较或应用材料。
 11. 不要在 textbook 中依赖 `StepLink` 作为主要结构手段。
    - textbook 是 lesson 级材料，不应频繁把学生踢回 learn step
    - 允许在 metadata 中保留 step coverage 信息，但正文不依赖 `StepLink`
@@ -49,6 +52,8 @@
 14. 嵌题建议使用：
    - `<QuestionRef id="..." />`
    - `<QuestionFamily familyId="..." />`
+   - 当引用 flashcard family 时，应放在“主动回忆/复习”语境。
+   - 当引用 quiz family 时，应放在“章节测验/自测”语境。
 15. 建议使用更多可复用排版组件：
    - `<Definition title="...">...</Definition>`
    - `<Example title="...">...</Example>`

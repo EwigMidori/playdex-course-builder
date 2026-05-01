@@ -1,0 +1,504 @@
+```json
+{
+  "lesson_id": "L2",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L2/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "L2: Data scraping and database management with Python - Understand the basic website structure",
+    "source_outline": "L2: Data scraping and database management with Python - Basic Web structure - A website is usually made of 1. HTML 2. CSS 3. JavaScript",
+    "lesson_map": "L2 - step2: Understanding the basic structure of a website: HTML, CSS, and JavaScript"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "basic_web_structure_three_components",
+      "description": "理解网页由 HTML、CSS 和 JavaScript 三部分组成",
+      "covered_by": ["qf_flash_web_components", "qf_quiz_web_components_role"]
+    },
+    {
+      "coverage_tag": "html_purpose_and_nature",
+      "description": "HTML 定义网页的结构和内容，是一种标记语言而非编程语言",
+      "covered_by": ["qf_flash_html_purpose", "qf_quiz_html_nature"]
+    },
+    {
+      "coverage_tag": "css_purpose",
+      "description": "CSS 控制网页的视觉呈现和布局",
+      "covered_by": ["qf_flash_css_purpose", "qf_quiz_css_function"]
+    },
+    {
+      "coverage_tag": "javascript_purpose",
+      "description": "JavaScript 为网页添加交互和动态行为",
+      "covered_by": ["qf_flash_javascript_purpose", "qf_quiz_javascript_function"]
+    },
+    {
+      "coverage_tag": "scraping_focus_html",
+      "description": "爬取数据时最关心 HTML，因为数据通常藏在 HTML 标签中",
+      "covered_by": ["qf_flash_scraping_focus_html", "qf_quiz_why_html_for_scraping"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_web_components",
+      "question_type": "short_answer",
+      "linked_steps": ["step2"],
+      "concept_key": "basic_web_structure_three_components",
+      "coverage_tags": ["basic_web_structure_three_components"],
+      "term_refs": [
+        {
+          "display": "HTML",
+          "en": "HyperText Markup Language"
+        },
+        {
+          "display": "CSS",
+          "en": "Cascading Style Sheets"
+        },
+        {
+          "display": "JavaScript",
+          "en": "JavaScript"
+        }
+      ],
+      "learning_goal": "学生能准确说出构成网页的三个核心技术及其核心职责。",
+      "difficulty": "easy",
+      "retrieval_focus": "网页三要素的名称和各自的核心功能。",
+      "variants": [
+        {
+          "question_id": "q_flash_web_components_v1",
+          "front": "一个网页通常由哪三种技术共同构成？",
+          "back": "HTML、CSS 和 JavaScript。",
+          "explanation": "HTML 负责结构，CSS 负责样式，JavaScript 负责交互。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_web_components_v2",
+          "front": "在网页三要素中，哪一种技术负责定义网页的结构和内容？",
+          "back": "HTML（超文本标记语言）。",
+          "explanation": "HTML 使用标签来创建标题、段落、表格等元素。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_web_components_v3",
+          "front": "在网页三要素中，哪一种技术负责控制网页的视觉呈现和布局？",
+          "back": "CSS（层叠样式表）。",
+          "explanation": "CSS 定义颜色、字体、间距和定位等样式。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_html_purpose",
+      "question_type": "short_answer",
+      "linked_steps": ["step2"],
+      "concept_key": "html_purpose_and_nature",
+      "coverage_tags": ["html_purpose_and_nature"],
+      "term_refs": [
+        {
+          "display": "HTML",
+          "en": "HyperText Markup Language"
+        }
+      ],
+      "learning_goal": "学生能准确描述 HTML 的用途和本质。",
+      "difficulty": "easy",
+      "retrieval_focus": "HTML 的核心定义和分类。",
+      "variants": [
+        {
+          "question_id": "q_flash_html_purpose_v1",
+          "front": "HTML 的全称是什么？",
+          "back": "HyperText Markup Language（超文本标记语言）。",
+          "explanation": "HTML 是一种标记语言，用于结构化网页内容。",
+          "estimated_seconds": 5
+        },
+        {
+          "question_id": "q_flash_html_purpose_v2",
+          "front": "HTML 是一种编程语言吗？如果不是，它是什么？",
+          "back": "不是。它是一种标记语言（Markup Language）。",
+          "explanation": "HTML 使用标签来定义内容结构，而不是编写逻辑。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_css_purpose",
+      "question_type": "short_answer",
+      "linked_steps": ["step2"],
+      "concept_key": "css_purpose",
+      "coverage_tags": ["css_purpose"],
+      "term_refs": [
+        {
+          "display": "CSS",
+          "en": "Cascading Style Sheets"
+        }
+      ],
+      "learning_goal": "学生能准确说出 CSS 的核心用途。",
+      "difficulty": "easy",
+      "retrieval_focus": "CSS 的功能定义。",
+      "variants": [
+        {
+          "question_id": "q_flash_css_purpose_v1",
+          "front": "CSS 在网页中的主要作用是什么？",
+          "back": "控制网页的视觉呈现和布局（如颜色、字体、间距）。",
+          "explanation": "CSS 负责美化网页，让内容以特定样式展示。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_css_purpose_v2",
+          "front": "CSS 的全称是什么？",
+          "back": "Cascading Style Sheets（层叠样式表）。",
+          "explanation": "层叠规则决定了多个样式冲突时的优先级。",
+          "estimated_seconds": 5
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_javascript_purpose",
+      "question_type": "short_answer",
+      "linked_steps": ["step2"],
+      "concept_key": "javascript_purpose",
+      "coverage_tags": ["javascript_purpose"],
+      "term_refs": [
+        {
+          "display": "JavaScript",
+          "en": "JavaScript"
+        }
+      ],
+      "learning_goal": "学生能准确说出 JavaScript 的核心用途。",
+      "difficulty": "easy",
+      "retrieval_focus": "JavaScript 的功能定义。",
+      "variants": [
+        {
+          "question_id": "q_flash_javascript_purpose_v1",
+          "front": "JavaScript 在网页中的主要作用是什么？",
+          "back": "为网页添加交互和动态行为（如点击按钮弹出信息）。",
+          "explanation": "JavaScript 是一种脚本语言，可以操作 HTML 和 CSS。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_javascript_purpose_v2",
+          "front": "网页三要素中，哪一种技术让网页变得“动态”和“可交互”？",
+          "back": "JavaScript。",
+          "explanation": "JavaScript 可以响应用户操作，如点击、输入等。",
+          "estimated_seconds": 5
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_scraping_focus_html",
+      "question_type": "short_answer",
+      "linked_steps": ["step2"],
+      "concept_key": "scraping_focus_html",
+      "coverage_tags": ["scraping_focus_html"],
+      "term_refs": [
+        {
+          "display": "HTML",
+          "en": "HyperText Markup Language"
+        }
+      ],
+      "learning_goal": "学生能理解为什么爬取数据时最关注 HTML。",
+      "difficulty": "easy",
+      "retrieval_focus": "爬虫关注 HTML 的原因。",
+      "variants": [
+        {
+          "question_id": "q_flash_scraping_focus_html_v1",
+          "front": "爬取网页数据时，我们最关心网页三要素中的哪一个？为什么？",
+          "back": "HTML。因为数据通常就藏在 HTML 的标签里。",
+          "explanation": "CSS 和 JavaScript 主要控制样式和交互，而实际内容在 HTML 中。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_scraping_focus_html_v2",
+          "front": "为什么网络爬虫主要解析 HTML 而不是 CSS 或 JavaScript？",
+          "back": "因为网页的结构化数据（如文本、表格、链接）都定义在 HTML 标签中。",
+          "explanation": "CSS 和 JavaScript 不直接包含目标数据。",
+          "estimated_seconds": 8
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_web_components_role",
+      "question_type": "single_choice",
+      "linked_steps": ["step2"],
+      "concept_key": "basic_web_structure_three_components",
+      "coverage_tags": ["basic_web_structure_three_components"],
+      "term_refs": [
+        {
+          "display": "HTML",
+          "en": "HyperText Markup Language"
+        },
+        {
+          "display": "CSS",
+          "en": "Cascading Style Sheets"
+        },
+        {
+          "display": "JavaScript",
+          "en": "JavaScript"
+        }
+      ],
+      "learning_goal": "学生能在测验中辨析三种网页技术的核心职责。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_web_components_role_v1",
+          "stem": "网页的“骨架”和“内容”是由哪种技术定义的？",
+          "options": ["CSS", "JavaScript", "HTML", "Python"],
+          "answer": 2,
+          "explanation": "HTML 负责定义网页的结构和内容，如标题、段落、表格。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_web_components_role_v2",
+          "stem": "以下哪种技术主要负责控制网页中元素的颜色、字体和布局？",
+          "options": ["HTML", "JavaScript", "CSS", "SQL"],
+          "answer": 2,
+          "explanation": "CSS（层叠样式表）专门用于控制网页的视觉呈现和布局。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_web_components_role_v3",
+          "stem": "当你在网页上点击一个按钮后，弹出一个信息框，这最可能是哪种技术的作用？",
+          "options": ["HTML", "CSS", "JavaScript", "HTTP"],
+          "answer": 2,
+          "explanation": "JavaScript 负责处理用户交互事件，如点击、输入等。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_html_nature",
+      "question_type": "true_false",
+      "linked_steps": ["step2"],
+      "concept_key": "html_purpose_and_nature",
+      "coverage_tags": ["html_purpose_and_nature"],
+      "term_refs": [
+        {
+          "display": "HTML",
+          "en": "HyperText Markup Language"
+        }
+      ],
+      "learning_goal": "学生能正确判断 HTML 的本质属性。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_html_nature_v1",
+          "stem": "HTML 是一种编程语言，因为它可以编写逻辑和算法。",
+          "options": ["正确", "错误"],
+          "answer": 1,
+          "explanation": "HTML 是一种标记语言，用于结构化内容，不是编程语言。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_quiz_html_nature_v2",
+          "stem": "HTML 的主要用途是定义网页的结构和内容。",
+          "options": ["正确", "错误"],
+          "answer": 0,
+          "explanation": "HTML 使用标签来创建标题、段落、链接等元素，定义网页骨架。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_css_function",
+      "question_type": "single_choice",
+      "linked_steps": ["step2"],
+      "concept_key": "css_purpose",
+      "coverage_tags": ["css_purpose"],
+      "term_refs": [
+        {
+          "display": "CSS",
+          "en": "Cascading Style Sheets"
+        }
+      ],
+      "learning_goal": "学生能识别 CSS 的具体功能。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_css_function_v1",
+          "stem": "以下哪个是 CSS 的典型功能？",
+          "options": [
+            "定义网页中的超链接",
+            "设置段落的字体大小和颜色",
+            "处理用户点击事件",
+            "创建数据库表"
+          ],
+          "answer": 1,
+          "explanation": "CSS 负责样式控制，如字体、颜色、间距等。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_css_function_v2",
+          "stem": "CSS 中的“Cascading”指的是什么？",
+          "options": [
+            "样式可以像瀑布一样流动",
+            "多个样式规则可以应用于同一元素，有优先级规则",
+            "CSS 只能用于网页的顶部区域",
+            "CSS 文件必须按顺序加载"
+          ],
+          "answer": 1,
+          "explanation": "层叠规则决定了当多个样式冲突时哪个样式生效。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_javascript_function",
+      "question_type": "single_choice",
+      "linked_steps": ["step2"],
+      "concept_key": "javascript_purpose",
+      "coverage_tags": ["javascript_purpose"],
+      "term_refs": [
+        {
+          "display": "JavaScript",
+          "en": "JavaScript"
+        }
+      ],
+      "learning_goal": "学生能识别 JavaScript 的具体功能。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_javascript_function_v1",
+          "stem": "以下哪个场景最可能使用了 JavaScript？",
+          "options": [
+            "网页标题显示为蓝色",
+            "用户提交表单后，页面显示“提交成功”的提示",
+            "网页中包含一个表格",
+            "网页背景颜色为白色"
+          ],
+          "answer": 1,
+          "explanation": "JavaScript 可以处理表单提交事件并动态更新页面内容。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_javascript_function_v2",
+          "stem": "JavaScript 可以在哪里运行？",
+          "options": [
+            "仅在服务器端",
+            "仅在浏览器端（客户端）",
+            "既可以在浏览器端也可以在服务器端（如 Node.js）",
+            "仅在数据库中"
+          ],
+          "answer": 2,
+          "explanation": "JavaScript 最初是客户端脚本，但现在也可通过 Node.js 在服务器端运行。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_why_html_for_scraping",
+      "question_type": "single_choice",
+      "linked_steps": ["step2"],
+      "concept_key": "scraping_focus_html",
+      "coverage_tags": ["scraping_focus_html"],
+      "term_refs": [
+        {
+          "display": "HTML",
+          "en": "HyperText Markup Language"
+        }
+      ],
+      "learning_goal": "学生能理解爬虫优先解析 HTML 的原因。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_why_html_for_scraping_v1",
+          "stem": "进行网络爬取时，为什么我们主要关注 HTML 而不是 CSS 或 JavaScript？",
+          "options": [
+            "因为 HTML 文件体积最小，下载最快",
+            "因为目标数据（如股票价格、新闻标题）通常直接包含在 HTML 标签中",
+            "因为 CSS 和 JavaScript 无法被 Python 解析",
+            "因为 HTML 是唯一可以包含文本的技术"
+          ],
+          "answer": 1,
+          "explanation": "网页的结构化数据通常以文本形式嵌入 HTML 标签内，CSS 和 JavaScript 不直接承载这些数据。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_why_html_for_scraping_v2",
+          "stem": "如果一个网页的数据是通过 JavaScript 动态加载的，直接解析 HTML 可能无法获取数据。这说明了什么？",
+          "options": [
+            "HTML 对于爬虫来说完全不重要",
+            "爬虫需要额外处理 JavaScript 渲染的内容，但数据最终仍会出现在 HTML DOM 中",
+            "应该放弃爬取该网页",
+            "CSS 比 HTML 更适合爬取数据"
+          ],
+          "answer": 1,
+          "explanation": "动态加载的数据最终会更新到 HTML DOM 中，但可能需要使用 Selenium 等工具先执行 JavaScript。",
+          "estimated_seconds": 25
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_web_architecture_explain",
+      "question_type": "short_explain",
+      "linked_steps": ["step2"],
+      "concept_key": "basic_web_structure_three_components",
+      "coverage_tags": ["basic_web_structure_three_components", "html_purpose_and_nature", "css_purpose", "javascript_purpose", "scraping_focus_html"],
+      "term_refs": [
+        {
+          "display": "HTML",
+          "en": "HyperText Markup Language"
+        },
+        {
+          "display": "CSS",
+          "en": "Cascading Style Sheets"
+        },
+        {
+          "display": "JavaScript",
+          "en": "JavaScript"
+        }
+      ],
+      "learning_goal": "学生能用自己的语言解释网页三要素的各自角色以及它们与网络爬取的关系。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_web_architecture_explain_v1",
+          "stem": "请简要解释一个网页通常由哪三种核心技术构成，并分别说明它们的主要作用。最后，解释为什么在进行网络爬取时，我们最关心其中的哪一种技术。",
+          "prompt_blocks": [
+            "列出三种技术",
+            "分别描述每种技术的作用",
+            "解释爬虫关注特定技术的原因"
+          ],
+          "rubric_points": [
+            "正确列出 HTML、CSS、JavaScript（1分）",
+            "准确描述 HTML 定义结构和内容（1分）",
+            "准确描述 CSS 控制样式和布局（1分）",
+            "准确描述 JavaScript 提供交互和动态行为（1分）",
+            "解释爬虫关注 HTML 是因为数据通常包含在 HTML 标签中（1分）"
+          ],
+          "reference_answer": [
+            "一个网页通常由 HTML、CSS 和 JavaScript 三种技术构成。",
+            "HTML（超文本标记语言）负责定义网页的结构和内容，比如标题、段落、表格等。",
+            "CSS（层叠样式表）负责控制网页的视觉呈现和布局，比如颜色、字体、间距。",
+            "JavaScript 负责为网页添加交互和动态行为，比如点击按钮后弹出信息。",
+            "进行网络爬取时，我们最关心 HTML，因为网页中的目标数据（如股票价格、新闻文本）通常直接包含在 HTML 的标签里。CSS 和 JavaScript 主要控制样式和交互，不直接承载数据。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_web_architecture_explain_v2",
+          "stem": "假设你是一个刚入门的爬虫工程师，需要向团队新人解释网页的基本结构。请用你自己的话，说明 HTML、CSS 和 JavaScript 分别扮演什么角色，并解释为什么在编写爬虫时，解析 HTML 是核心任务。",
+          "prompt_blocks": [
+            "用比喻或通俗语言解释三种技术的角色",
+            "说明爬虫为何聚焦于 HTML"
+          ],
+          "rubric_points": [
+            "正确识别三种技术（1分）",
+            "对 HTML 的解释准确（1分）",
+            "对 CSS 的解释准确（1分）",
+            "对 JavaScript 的解释准确（1分）",
+            "清晰阐述爬虫关注 HTML 的原因（1分）"
+          ],
+          "reference_answer": [
+            "可以把网页想象成一栋房子：HTML 是房子的结构和骨架（墙壁、房间），CSS 是房子的装修和风格（墙纸颜色、家具摆放），JavaScript 是房子里的智能设备（感应灯、自动门）。",
+            "爬虫的核心任务是提取数据，而数据就像是房子里的物品，这些物品都放在由 HTML 定义的“房间”（标签）里。",
+            "CSS 和 JavaScript 虽然重要，但它们不直接“存放”数据，而是决定数据如何展示或如何交互。",
+            "因此，解析 HTML 是爬虫的核心任务，因为我们需要从 HTML 标签中提取出我们想要的信息。"
+          ],
+          "estimated_seconds": 120
+        }
+      ]
+    }
+  ]
+}
+```

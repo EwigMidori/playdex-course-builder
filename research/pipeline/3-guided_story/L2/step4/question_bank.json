@@ -1,0 +1,365 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "real_world_scraping_sp500",
+      "covered_by": [
+        "qf_flash_sp500_goal",
+        "qf_flash_user_agent",
+        "qf_quiz_user_agent_fail",
+        "qf_quiz_table_id",
+        "qf_long_sp500_process"
+      ],
+      "description": "Real-world scraping: S&P 500 list from Wikipedia"
+    },
+    {
+      "coverage_tag": "handling_anti_bot_measures",
+      "covered_by": [
+        "qf_flash_user_agent",
+        "qf_quiz_user_agent_fail"
+      ],
+      "description": "Handling anti-bot measures: User-Agent"
+    },
+    {
+      "coverage_tag": "beautifulsoup_table_extraction",
+      "covered_by": [
+        "qf_flash_sp500_goal",
+        "qf_quiz_table_id",
+        "qf_long_sp500_process"
+      ],
+      "description": "Using BeautifulSoup to find and extract table data by id"
+    },
+    {
+      "coverage_tag": "dataframe_creation_from_scraped_data",
+      "covered_by": [
+        "qf_flash_sp500_goal",
+        "qf_long_sp500_process"
+      ],
+      "description": "Creating a pandas DataFrame from scraped table rows"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "anti_bot_user_agent",
+      "coverage_tags": [
+        "handling_anti_bot_measures"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_user_agent",
+      "learning_goal": "学生能准确回忆 User-Agent 的作用和设置方法，理解反爬机制的基本原理。",
+      "linked_steps": [
+        "step4"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "User-Agent 是什么、为什么需要设置、如何设置。",
+      "term_refs": [
+        {
+          "display": "User-Agent",
+          "en": "User-Agent"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为缺少正确的 User-Agent，网站会认为请求来自非浏览器客户端而拒绝访问。",
+          "estimated_seconds": 10,
+          "explanation": "许多网站通过检查 HTTP 请求头中的 User-Agent 字段来识别客户端类型。",
+          "front": "为什么直接用 `requests.get(url)` 请求维基百科会失败？",
+          "question_id": "q_flash_user_agent_v1"
+        },
+        {
+          "back": "在 `headers` 字典中设置 `\"user-agent\": \"Mozilla/5.0 ...\"`，然后传给 `requests.get(url, headers=headers)`。",
+          "estimated_seconds": 12,
+          "explanation": "常见的 User-Agent 字符串模仿主流浏览器，例如 Chrome 或 Firefox。",
+          "front": "在 Python 中，如何为 Requests 请求设置 User-Agent 来伪装成浏览器？",
+          "question_id": "q_flash_user_agent_v2"
+        },
+        {
+          "back": "字段名是 `user-agent`，用于标识客户端类型（如浏览器、爬虫）。",
+          "estimated_seconds": 8,
+          "explanation": "服务器可以根据 User-Agent 决定是否提供服务或返回不同内容。",
+          "front": "User-Agent 是 HTTP 请求头中的哪个字段？它的作用是什么？",
+          "question_id": "q_flash_user_agent_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "sp500_scraping_process",
+      "coverage_tags": [
+        "real_world_scraping_sp500",
+        "beautifulsoup_table_extraction",
+        "dataframe_creation_from_scraped_data"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_sp500_goal",
+      "learning_goal": "学生能回忆爬取 S&P 500 成分股列表的核心步骤和关键代码。",
+      "linked_steps": [
+        "step4"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "爬取 S&P 500 的完整流程：请求、解析、定位表格、提取数据、创建 DataFrame。",
+      "term_refs": [
+        {
+          "display": "BeautifulSoup",
+          "en": "BeautifulSoup"
+        },
+        {
+          "display": "DataFrame",
+          "en": "DataFrame"
+        }
+      ],
+      "variants": [
+        {
+          "back": "使用 `soup.find('table', id='constituents')`，通过表格的 id 属性精确定位。",
+          "estimated_seconds": 10,
+          "explanation": "维基百科页面上有多个表格，`id='constituents'` 唯一标识了成分股表格。",
+          "front": "爬取维基百科 S&P 500 成分股列表时，如何用 BeautifulSoup 定位到目标表格？",
+          "question_id": "q_flash_sp500_goal_v1"
+        },
+        {
+          "back": "pandas DataFrame。",
+          "estimated_seconds": 6,
+          "explanation": "DataFrame 可以方便地处理表格数据，支持列名、索引和多种数据分析操作。",
+          "front": "成功提取 S&P 500 表格后，通常用什么 Python 数据结构来存储和操作这些数据？",
+          "question_id": "q_flash_sp500_goal_v2"
+        },
+        {
+          "back": "`df = pd.DataFrame(rows, columns=headers)`",
+          "estimated_seconds": 8,
+          "explanation": "`rows` 是数据行列表，`headers` 是表头列表。",
+          "front": "爬取 S&P 500 列表时，提取表头和数据行后，创建 DataFrame 的典型代码是什么？",
+          "question_id": "q_flash_sp500_goal_v3"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L2",
+  "longform_families": [
+    {
+      "concept_key": "sp500_scraping_process",
+      "coverage_tags": [
+        "real_world_scraping_sp500",
+        "beautifulsoup_table_extraction",
+        "dataframe_creation_from_scraped_data"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_sp500_process",
+      "learning_goal": "学生能完整描述爬取 S&P 500 成分股列表的步骤，包括处理反爬、解析 HTML、定位表格和创建 DataFrame。",
+      "linked_steps": [
+        "step4"
+      ],
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "User-Agent",
+          "en": "User-Agent"
+        },
+        {
+          "display": "BeautifulSoup",
+          "en": "BeautifulSoup"
+        },
+        {
+          "display": "DataFrame",
+          "en": "DataFrame"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "处理反爬机制",
+            "获取页面内容",
+            "解析 HTML",
+            "定位目标表格",
+            "提取数据并创建 DataFrame"
+          ],
+          "question_id": "q_long_sp500_process_v1",
+          "reference_answer": [
+            "1. 设置 User-Agent：在 headers 字典中添加 'user-agent': 'Mozilla/5.0 ...'，避免被维基百科的反爬机制拦截。",
+            "2. 发送请求：使用 requests.get(url, headers=headers) 获取页面 HTML 内容。",
+            "3. 解析 HTML：用 BeautifulSoup(text, 'html.parser') 创建 soup 对象，将原始 HTML 转换为可操作的树结构。",
+            "4. 定位表格：使用 soup.find('table', id='constituents') 找到 id 为 'constituents' 的目标表格。",
+            "5. 提取数据：遍历表头 <th> 获取列名，遍历数据行 <tr> 获取每行数据。",
+            "6. 创建 DataFrame：用 pd.DataFrame(rows, columns=headers) 将数据组织成表格形式，便于后续分析。"
+          ],
+          "rubric_points": [
+            "指出需要设置 User-Agent 来伪装成浏览器",
+            "使用 requests.get(url, headers=headers) 获取页面",
+            "用 BeautifulSoup 解析 HTML 文本",
+            "通过 soup.find('table', id='constituents') 定位表格",
+            "提取表头和数据行，用 pd.DataFrame(rows, columns=headers) 创建 DataFrame"
+          ],
+          "stem": "请描述使用 Python 从维基百科爬取 S&P 500 成分股列表的完整步骤，并解释每一步的目的。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "导入必要的库",
+            "设置请求头",
+            "发送请求并获取响应",
+            "解析 HTML",
+            "定位并提取表格",
+            "创建 DataFrame"
+          ],
+          "question_id": "q_long_sp500_process_v2",
+          "reference_answer": [
+            "```python",
+            "import requests",
+            "from bs4 import BeautifulSoup",
+            "import pandas as pd",
+            "",
+            "# 1. 设置请求头，伪装成浏览器",
+            "headers = {",
+            "    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'",
+            "}",
+            "",
+            "# 2. 发送 GET 请求",
+            "url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'",
+            "response = requests.get(url, headers=headers)",
+            "",
+            "# 3. 解析 HTML",
+            "soup = BeautifulSoup(response.text, 'html.parser')",
+            "",
+            "# 4. 定位目标表格",
+            "table = soup.find('table', id='constituents')",
+            "",
+            "# 5. 提取表头",
+            "headers_list = [th.text.strip() for th in table.find_all('th')]",
+            "",
+            "# 6. 提取数据行",
+            "rows = []",
+            "for tr in table.find_all('tr')[1:]:  # 跳过表头行",
+            "    cells = tr.find_all('td')",
+            "    row = [cell.text.strip() for cell in cells]",
+            "    rows.append(row)",
+            "",
+            "# 7. 创建 DataFrame",
+            "df = pd.DataFrame(rows, columns=headers_list)",
+            "print(df)",
+            "```",
+            "",
+            "关键部分解释：",
+            "- headers 字典中的 User-Agent 用于绕过反爬虫检测。",
+            "- find('table', id='constituents') 通过 id 精确定位表格，避免提取到其他无关表格。",
+            "- 使用列表推导式提取表头和数据行，代码简洁高效。",
+            "- pd.DataFrame 将数据组织成结构化表格，便于后续分析。"
+          ],
+          "rubric_points": [
+            "导入 requests, BeautifulSoup, pandas",
+            "定义 headers 字典包含 User-Agent",
+            "使用 requests.get 并传入 headers",
+            "用 BeautifulSoup 解析 response.text",
+            "使用 find 方法按 id 定位表格",
+            "提取表头和数据行，创建 DataFrame"
+          ],
+          "stem": "假设你需要爬取一个类似维基百科 S&P 500 页面的表格数据，但该网站有反爬虫机制。请写出完整的 Python 代码框架，并解释关键部分的作用。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "anti_bot_user_agent",
+      "coverage_tags": [
+        "handling_anti_bot_measures"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_user_agent_fail",
+      "learning_goal": "学生能辨析直接请求维基百科失败的根本原因。",
+      "linked_steps": [
+        "step4"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "User-Agent",
+          "en": "User-Agent"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "许多网站通过检查 User-Agent 来识别并阻止非浏览器请求。设置一个常见的浏览器 User-Agent 即可解决。",
+          "options": [
+            "维基百科服务器暂时宕机",
+            "请求缺少正确的 User-Agent 头",
+            "Python 的 requests 库版本过低",
+            "网络连接速度太慢导致超时"
+          ],
+          "question_id": "q_quiz_user_agent_fail_v1",
+          "stem": "在爬取维基百科 S&P 500 页面时，直接使用 `requests.get(url)` 返回了错误信息。最可能的原因是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "User-Agent 字段告诉服务器请求来自什么客户端（如浏览器、爬虫）。",
+          "options": [
+            "Accept-Language",
+            "User-Agent",
+            "Content-Type",
+            "Cookie"
+          ],
+          "question_id": "q_quiz_user_agent_fail_v2",
+          "stem": "以下哪个 HTTP 请求头字段用于标识客户端类型，常被网站用于反爬虫检测？"
+        }
+      ]
+    },
+    {
+      "concept_key": "beautifulsoup_table_extraction",
+      "coverage_tags": [
+        "beautifulsoup_table_extraction"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_table_id",
+      "learning_goal": "学生能选择正确的 BeautifulSoup 方法来定位具有特定 id 的表格。",
+      "linked_steps": [
+        "step4"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "BeautifulSoup",
+          "en": "BeautifulSoup"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "`find('table', id='constituents')` 通过标签名和 id 属性精确定位到目标表格。",
+          "options": [
+            "soup.find_all('table')",
+            "soup.find('table', id='constituents')",
+            "soup.select('table.constituents')",
+            "soup.find('table', class_='constituents')"
+          ],
+          "question_id": "q_quiz_table_id_v1",
+          "stem": "维基百科 S&P 500 页面有多个表格，要提取 id 为 'constituents' 的表格，应该使用哪个 BeautifulSoup 方法？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "`find` 返回第一个匹配的元素，`id` 是唯一的，所以 `find('table', id='data-table')` 是正确且高效的方式。",
+          "options": [
+            "soup.find_all('table', id='data-table')",
+            "soup.find('table', id='data-table')",
+            "soup.find('table', class_='data-table')",
+            "soup.select('table#data-table')[0]"
+          ],
+          "question_id": "q_quiz_table_id_v2",
+          "stem": "假设一个网页中有多个 `<table>`，但只有一个表格的 id 是 'data-table'。以下哪段代码能正确提取该表格？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "L2: Data scraping and database management with Python - Agenda: Understand the basic website structure, Web scraping using different python libraries, The limitations of web scraping, Create a simple database using python, Understand the concept of adjusted price, Database design for financial market data storage",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "L2 guided_story steps: step1: What is web scraping and why it matters for algorithmic trading, step2: Understanding the basic structure of a website: HTML, CSS, and JavaScript, step3: Using BeautifulSoup to parse HTML and extract data, step4: Real-world scraping: S&P 500 list and handling anti-bot measures, step5: Using yfinance for reliable financial data access, step6: Storing scraped data in a SQLite database, step7: Database design considerations for financial data, step8: Limitations of web scraping and alternative tools",
+    "plain_text": "pipeline/1-plain/L2/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "L2: Data scraping and database management with Python - Agenda: Understand the basic website structure, Web scraping using different python libraries, The limitations of web scraping, Create a simple database using python, Understand the concept of adjusted price, Database design for financial market data storage"
+  },
+  "target_language": "zh-CN"
+}

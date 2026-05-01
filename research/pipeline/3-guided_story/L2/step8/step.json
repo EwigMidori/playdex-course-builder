@@ -1,0 +1,115 @@
+{
+  "lesson_id": "L2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "网络爬取并非万能，它有很多局限性。",
+        "首先，数据质量可能不完整或过时。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "其次，爬取大量数据会消耗大量带宽和存储。",
+        "加载整个网页也很耗时。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s050",
+      "introduced_terms": [],
+      "lines": [
+        "最大的挑战是技术层面的：网站结构经常变化，",
+        "而且很多网站有反爬机制，比如 IP 封锁和频率限制。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "selenium"
+      ],
+      "id": "s051",
+      "introduced_terms": [
+        "selenium"
+      ],
+      "lines": [
+        "对于动态加载的网页，BeautifulSoup 可能无能为力。",
+        "这时需要 <term id=\"selenium\">Selenium</term>，它可以模拟真实的浏览器操作。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "xpath"
+      ],
+      "id": "s052",
+      "introduced_terms": [
+        "xpath"
+      ],
+      "lines": [
+        "另一个强大的工具是 lxml，它支持 <term id=\"xpath\">XPath</term> 查询。",
+        "XPath 可以用路径表达式精确定位到任何元素。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "比如，`//table[@id='constituents']//tr` 就能选中目标表格的所有行。",
+        "比 BeautifulSoup 的查找方式更灵活。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "Selenium 可以模拟用户点击等交互操作。",
+        "kind": "single_choice",
+        "options": [
+          "BeautifulSoup",
+          "Requests",
+          "Selenium",
+          "yfinance"
+        ],
+        "prompt": "对于需要点击按钮才能加载更多内容的网页，应该使用哪个工具？"
+      },
+      "focus_terms": [],
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "对于需要点击按钮才能加载更多内容的网页，应该使用哪个工具？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "plain_text": "Limitation of Data Scraping: 1. Data Quality 2. Resource Intensive 3. Technical Challenges. Selenium is a web automation tool. LXML: Popular python library for parsing XPath and XML schema. What is XPath? Common XPath Syntax. Extract stock list using lxml and XPath.",
+    "related": [
+      "L2: Data scraping and database management with Python"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "selenium": {
+      "aliases": [],
+      "display": "Selenium",
+      "gloss": "一个用于模拟用户交互和自动化浏览器的工具。"
+    },
+    "xpath": {
+      "aliases": [],
+      "display": "XPath",
+      "gloss": "一种在 XML 文档中导航和选择节点的查询语言。"
+    }
+  }
+}

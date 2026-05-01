@@ -8,9 +8,10 @@ lesson_id：
 
 要求：
 - 同时生成 `flashcard_families`、`quiz_families` 和 `longform_families`
-- 题目必须能关联到 `linked_steps`
+- 题目必须只关联到当前 step：`{{current_step_id}}`
+- 所有 family 和 variant 的 `linked_steps` 都必须等于 `["{{current_step_id}}"]`
 - 同一个 family 必须至少给出 2 个 variants
-- 题目应覆盖整节课，而不是只盯一个 step
+- 题目应覆盖当前 step 的关键内容；不要把其它 step 的内容塞进这个 step 的题库
 - `flashcard` 是间隔重复用的主动检索载体，不是选择题；每张卡必须有精准 front 与短 back
 - `quiz` 才承载选择题、判断题、配对题等更像考试的小题
 - `longform` 要能真正检查理解与表达
@@ -48,6 +49,14 @@ lesson_id：
 <GUIDED_STORY_STEPS>
 {{guided_story_steps}}
 </GUIDED_STORY_STEPS>
+
+<CURRENT_STEP_ID>
+{{current_step_id}}
+</CURRENT_STEP_ID>
+
+<CURRENT_STEP>
+{{current_step}}
+</CURRENT_STEP>
 
 <PLAIN_TEXT>
 {{plain_text}}

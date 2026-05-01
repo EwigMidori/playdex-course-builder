@@ -1,0 +1,204 @@
+{
+  "lesson_id": "L1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s013",
+      "introduced_terms": [
+        "order_book"
+      ],
+      "lines": [
+        "市场是怎么撮合交易的？",
+        "核心就是 <term id=\"order_book\">订单簿</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s014",
+      "lines": [
+        "订单簿里有两边：",
+        "买方出价和卖方要价。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s015",
+      "introduced_terms": [
+        "bid_price",
+        "ask_price"
+      ],
+      "lines": [
+        "买方出的最高价叫 <term id=\"bid_price\">买入价</term>。",
+        "卖方接受的最低价叫 <term id=\"ask_price\">卖出价</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s016",
+      "introduced_terms": [
+        "bid_ask_spread"
+      ],
+      "lines": [
+        "卖出价减去买入价，就是 <term id=\"bid_ask_spread\">买卖价差</term>。",
+        "价差越小，说明市场流动性越好。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s017",
+      "lines": [
+        "比如，买入价是24元，卖出价是25元。",
+        "价差就是1元。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s018",
+      "lines": [
+        "下单方式也有讲究。",
+        "最常用的是三种：市价单、限价单和止损单。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s019",
+      "introduced_terms": [
+        "market_order"
+      ],
+      "lines": [
+        "<term id=\"market_order\">市价单</term>：按当前最优价格立即成交。",
+        "保证成交，但不保证价格。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s020",
+      "introduced_terms": [
+        "limit_order"
+      ],
+      "lines": [
+        "<term id=\"limit_order\">限价单</term>：指定一个价格，只有达到或更好才成交。",
+        "保证价格，但不保证成交。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s021",
+      "introduced_terms": [
+        "stop_order"
+      ],
+      "lines": [
+        "<term id=\"stop_order\">止损单</term>：价格触及设定水平后，自动变成市价单。",
+        "常用于止损或突破买入。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s022",
+      "introduced_terms": [
+        "slippage"
+      ],
+      "lines": [
+        "还有一个概念叫 <term id=\"slippage\">滑点</term>。",
+        "就是预期成交价和实际成交价之间的差距。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s023",
+      "lines": [
+        "比如你预期50元买入，但实际成交在51元。",
+        "这1元的差价就是滑点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "市价单以当前最优价格立即成交，保证成交但不保证价格。",
+        "kind": "single_choice",
+        "options": [
+          "市价单",
+          "限价单",
+          "止损单",
+          "以上都不是"
+        ],
+        "prompt": "哪种订单能保证立即成交，但不保证价格？"
+      },
+      "id": "s024",
+      "lines": [
+        "哪种订单能保证立即成交，但不保证价格？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Order Book is a real-time, continually updating list of buy and sell orders. Bid price is the highest price a buyer is willing to pay. Ask price is the lowest price a seller is willing to accept. Bid-ask spread is the difference. Market order: buy/sell at best available price. Limit order: buy/sell at a specified price or better. Stop order: becomes market order when stop price is reached. Slippage: difference between expected and actual execution price.",
+    "related": [
+      "trading mechanism",
+      "order matching"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "ask_price": {
+      "aliases": [
+        "Ask Price",
+        "Offer Price"
+      ],
+      "display": "卖出价",
+      "gloss": "卖方愿意接受的最低价格。"
+    },
+    "bid_ask_spread": {
+      "aliases": [
+        "Bid-Ask Spread",
+        "Market Spread"
+      ],
+      "display": "买卖价差",
+      "gloss": "卖出价与买入价之间的差额，衡量市场流动性。"
+    },
+    "bid_price": {
+      "aliases": [
+        "Bid Price"
+      ],
+      "display": "买入价",
+      "gloss": "买方愿意支付的最高价格。"
+    },
+    "limit_order": {
+      "aliases": [
+        "Limit Order"
+      ],
+      "display": "限价单",
+      "gloss": "指定一个价格，只有达到或更优时才成交的订单。"
+    },
+    "market_order": {
+      "aliases": [
+        "Market Order"
+      ],
+      "display": "市价单",
+      "gloss": "以当前市场最优价格立即成交的订单。"
+    },
+    "order_book": {
+      "aliases": [
+        "Order Book"
+      ],
+      "display": "订单簿",
+      "gloss": "实时更新的买卖订单列表，按价格排序。"
+    },
+    "slippage": {
+      "aliases": [
+        "Slippage"
+      ],
+      "display": "滑点",
+      "gloss": "预期成交价与实际成交价之间的差异。"
+    },
+    "stop_order": {
+      "aliases": [
+        "Stop Order"
+      ],
+      "display": "止损单",
+      "gloss": "当价格触及指定水平时，自动变成市价单的订单。"
+    }
+  }
+}

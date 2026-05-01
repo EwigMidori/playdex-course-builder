@@ -2,6 +2,7 @@ use std::{
     error::Error,
     fmt, fs, io,
     path::{Path, PathBuf},
+    thread,
     time::Duration,
 };
 
@@ -69,7 +70,10 @@ fn generate_guided_story(
         &read_prompt(repo, "guided_story_user.md")?,
         &[
             ("target_language", target_language),
-            ("step_scope", "full lesson MVP slice"),
+            (
+                "step_scope",
+                "full lecture; split into 4-8 natural learning steps unless the source is very short",
+            ),
             ("related_important", related_important),
             ("plain_text", plain_text),
             ("image_hints", ""),
@@ -77,30 +81,24 @@ fn generate_guided_story(
     );
     let response = call_chat_completion(lesson, llm, Stage::GuidedStory, &system, &user)?;
     let content = strip_code_fence(&response.content, Some("json"));
-    let step_json: Value =
+    let story_json: Value =
         serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
             stage: Stage::GuidedStory.as_str(),
             source,
         })?;
 
+    if lesson.guided_story_dir().is_dir() {
+        fs::remove_dir_all(lesson.guided_story_dir()).map_err(|source| MvpError::Write {
+            path: lesson.guided_story_dir(),
+            source,
+        })?;
+    }
     fs::create_dir_all(lesson.guided_story_dir()).map_err(|source| MvpError::Write {
         path: lesson.guided_story_dir(),
         source,
     })?;
-    write_pretty_json(&lesson.guided_story_step_path(1), &step_json)?;
 
-    let manifest = json!({
-        "lesson_id": lesson.lesson_id(),
-        "mode": "guided_story",
-        "steps": [{
-            "sequence_id": "step1",
-            "file": format!(
-                "research/pipeline/3-guided_story/{}/step1/step.json",
-                lesson.lesson_id()
-            ),
-            "concept": "MVP lesson slice"
-        }]
-    });
+    let manifest = write_guided_story_steps(lesson, &story_json)?;
     write_pretty_json(&lesson.guided_story_manifest_path(), &manifest)?;
     Ok(())
 }
@@ -115,37 +113,59 @@ fn generate_question_bank(
     let repo = lesson.repo();
     let system = read_prompt(repo, "question_bank_system.md")?;
     let manifest = read_required_text(&lesson.guided_story_manifest_path())?;
-    let steps = read_required_text(&lesson.guided_story_step_path(1))?;
+    let step_refs = read_manifest_step_refs(lesson)?;
+    let step_count = step_refs.len();
+    let steps = read_guided_story_steps(lesson, &step_refs)?;
     let source_outline = source_outline_from_plain_text(plain_text);
-    let user = render_prompt(
-        &read_prompt(repo, "question_bank_user.md")?,
-        &[
-            ("target_language", target_language),
-            ("lesson_id", lesson.lesson_id()),
-            ("coverage_checklist", &source_outline),
-            ("source_outline", &source_outline),
-            ("lesson_map", &manifest),
-            ("guided_story_manifest", &manifest),
-            ("guided_story_steps", &steps),
-            ("plain_text", plain_text),
-            ("related_important", related_important),
-        ],
-    );
-    let response = call_chat_completion(lesson, llm, Stage::QuestionBank, &system, &user)?;
-    let content = strip_code_fence(&response.content, Some("json"));
-    let question_bank: Value =
-        serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
-            stage: Stage::QuestionBank.as_str(),
-            source,
-        })?;
+    let prompt = read_prompt(repo, "question_bank_user.md")?;
 
-    if let Some(parent) = lesson.step_question_bank_path(1).parent() {
-        fs::create_dir_all(parent).map_err(|source| MvpError::Write {
-            path: parent.to_path_buf(),
-            source,
-        })?;
+    for step_ref in step_refs {
+        let current_step = read_required_text(&step_ref.path)?;
+        let user = render_prompt(
+            &prompt,
+            &[
+                ("target_language", target_language),
+                ("lesson_id", lesson.lesson_id()),
+                ("coverage_checklist", &source_outline),
+                ("source_outline", &source_outline),
+                ("lesson_map", &manifest),
+                ("guided_story_manifest", &manifest),
+                ("guided_story_steps", &steps),
+                ("current_step_id", &step_ref.sequence_id),
+                ("current_step", &current_step),
+                ("plain_text", plain_text),
+                ("related_important", related_important),
+            ],
+        );
+        let audit_stage = if step_count == 1 {
+            "question_bank".to_owned()
+        } else {
+            format!("question_bank/{}", step_ref.sequence_id)
+        };
+        let response = call_chat_completion_with_audit(
+            lesson,
+            llm,
+            Stage::QuestionBank,
+            &audit_stage,
+            &system,
+            &user,
+        )?;
+        let content = strip_code_fence(&response.content, Some("json"));
+        let question_bank: Value =
+            serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
+                stage: Stage::QuestionBank.as_str(),
+                source,
+            })?;
+
+        if let Some(parent) = step_ref.question_bank_path.parent() {
+            fs::create_dir_all(parent).map_err(|source| MvpError::Write {
+                path: parent.to_path_buf(),
+                source,
+            })?;
+        }
+        write_pretty_json(&step_ref.question_bank_path, &question_bank)?;
     }
-    write_pretty_json(&lesson.step_question_bank_path(1), &question_bank)?;
+
     Ok(())
 }
 
@@ -159,7 +179,8 @@ fn generate_textbook(
     let repo = lesson.repo();
     let system = read_prompt(repo, "textbook_system.md")?;
     let manifest = read_required_text(&lesson.guided_story_manifest_path())?;
-    let steps = read_required_text(&lesson.guided_story_step_path(1))?;
+    let step_refs = read_manifest_step_refs(lesson)?;
+    let steps = read_guided_story_steps(lesson, &step_refs)?;
     let question_bank = read_step_question_banks(lesson)?;
     let source_outline = source_outline_from_plain_text(plain_text);
     let user = render_prompt(
@@ -200,7 +221,43 @@ fn call_chat_completion(
     system: &str,
     user: &str,
 ) -> Result<LlmResponse, MvpError> {
-    let audit_dir = lesson.audit_stage_dir(stage.as_str());
+    call_chat_completion_with_audit(lesson, llm, stage, stage.as_str(), system, user)
+}
+
+fn call_chat_completion_with_audit(
+    lesson: &LessonPaths,
+    llm: &LlmReadyConfig,
+    stage: Stage,
+    audit_stage: &str,
+    system: &str,
+    user: &str,
+) -> Result<LlmResponse, MvpError> {
+    for attempt in 1..=3 {
+        match call_chat_completion_once(lesson, llm, stage, audit_stage, system, user) {
+            Ok(response) => return Ok(response),
+            Err(error @ MvpError::LlmRequest { .. }) if attempt < 3 => {
+                eprintln!(
+                    "{} LLM request failed on attempt {attempt}/3; retrying: {error}",
+                    stage.as_str()
+                );
+                thread::sleep(Duration::from_secs(2 * attempt));
+            }
+            Err(error) => return Err(error),
+        }
+    }
+
+    unreachable!("retry loop returns on success or final failure")
+}
+
+fn call_chat_completion_once(
+    lesson: &LessonPaths,
+    llm: &LlmReadyConfig,
+    stage: Stage,
+    audit_stage: &str,
+    system: &str,
+    user: &str,
+) -> Result<LlmResponse, MvpError> {
+    let audit_dir = lesson.audit_stage_dir(audit_stage);
     fs::create_dir_all(&audit_dir).map_err(|source| MvpError::Write {
         path: audit_dir.clone(),
         source,
@@ -324,8 +381,165 @@ struct ChatMessage<'a> {
     content: &'a str,
 }
 
+#[derive(Clone, Debug)]
+struct StepRef {
+    sequence_id: String,
+    path: PathBuf,
+    question_bank_path: PathBuf,
+}
+
 fn read_prompt(repo: &crate::paths::RepoPaths, file_name: &str) -> Result<String, MvpError> {
     read_required_text(&repo.prompts_dir().join(file_name))
+}
+
+fn write_guided_story_steps(lesson: &LessonPaths, story_json: &Value) -> Result<Value, MvpError> {
+    let mut manifest_steps = Vec::new();
+
+    if let Some(steps) = story_json.get("steps").and_then(Value::as_array) {
+        for (index, item) in steps.iter().enumerate() {
+            let sequence_id = item
+                .get("sequence_id")
+                .and_then(Value::as_str)
+                .map(ToOwned::to_owned)
+                .unwrap_or_else(|| format!("step{}", index + 1));
+            let concept = item
+                .get("concept")
+                .and_then(Value::as_str)
+                .unwrap_or("Guided story step")
+                .to_owned();
+            let mut step_json = item.get("step").cloned().unwrap_or_else(|| item.clone());
+            normalize_step_json(lesson, &sequence_id, &mut step_json);
+
+            let step_path = lesson
+                .guided_story_dir()
+                .join(&sequence_id)
+                .join("step.json");
+            write_pretty_json(&step_path, &step_json)?;
+            manifest_steps.push(json!({
+                "sequence_id": sequence_id,
+                "file": lesson.relative_display(&step_path),
+                "concept": concept
+            }));
+        }
+    }
+
+    if manifest_steps.is_empty() {
+        let mut step_json = story_json.clone();
+        normalize_step_json(lesson, "step1", &mut step_json);
+        write_pretty_json(&lesson.guided_story_step_path(1), &step_json)?;
+        manifest_steps.push(json!({
+            "sequence_id": "step1",
+            "file": lesson.relative_display(&lesson.guided_story_step_path(1)),
+            "concept": "Guided story step"
+        }));
+    }
+
+    Ok(json!({
+        "lesson_id": lesson.lesson_id(),
+        "mode": "guided_story",
+        "steps": manifest_steps
+    }))
+}
+
+fn normalize_step_json(lesson: &LessonPaths, sequence_id: &str, step_json: &mut Value) {
+    let Some(object) = step_json.as_object_mut() else {
+        return;
+    };
+    object
+        .entry("lesson_id")
+        .or_insert_with(|| json!(lesson.lesson_id()));
+    object
+        .entry("sequence_id")
+        .or_insert_with(|| json!(sequence_id));
+    object
+        .entry("mode")
+        .or_insert_with(|| json!("guided_story"));
+    object.entry("term_catalog").or_insert_with(|| json!({}));
+}
+
+fn read_manifest_step_refs(lesson: &LessonPaths) -> Result<Vec<StepRef>, MvpError> {
+    let manifest = read_json(&lesson.guided_story_manifest_path(), Stage::GuidedStory)?;
+    let steps = manifest
+        .get("steps")
+        .and_then(Value::as_array)
+        .ok_or(MvpError::ManifestShape)?;
+    let mut refs = Vec::new();
+
+    for step in steps {
+        let sequence_id = step
+            .get("sequence_id")
+            .and_then(Value::as_str)
+            .ok_or(MvpError::ManifestShape)?
+            .to_owned();
+        let file = step
+            .get("file")
+            .and_then(Value::as_str)
+            .ok_or(MvpError::ManifestShape)?;
+        let path = resolve_manifest_file(lesson, file);
+        let question_bank_path = path
+            .parent()
+            .map(|parent| parent.join("question_bank.json"))
+            .ok_or_else(|| MvpError::Read {
+                path: path.with_file_name("question_bank.json"),
+                source: io::Error::new(io::ErrorKind::InvalidInput, "step path has no parent"),
+            })?;
+        refs.push(StepRef {
+            sequence_id,
+            path,
+            question_bank_path,
+        });
+    }
+
+    Ok(refs)
+}
+
+fn read_guided_story_steps(
+    lesson: &LessonPaths,
+    step_refs: &[StepRef],
+) -> Result<String, MvpError> {
+    let mut steps = Vec::new();
+    for step_ref in step_refs {
+        let content = read_required_text(&step_ref.path)?;
+        let value: Value =
+            serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
+                stage: Stage::GuidedStory.as_str(),
+                source,
+            })?;
+        steps.push(value);
+    }
+
+    let mut payload =
+        serde_json::to_string_pretty(&steps).map_err(|source| MvpError::JsonWrite {
+            path: lesson.guided_story_dir(),
+            source,
+        })?;
+    payload.push('\n');
+    Ok(payload)
+}
+
+fn read_json(path: &Path, stage: Stage) -> Result<Value, MvpError> {
+    let content = read_required_text(path)?;
+    serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
+        stage: stage.as_str(),
+        source,
+    })
+}
+
+fn resolve_manifest_file(lesson: &LessonPaths, file: &str) -> PathBuf {
+    let path = PathBuf::from(file);
+    if path.is_absolute() {
+        return path;
+    }
+
+    if file.starts_with("research/") {
+        return lesson.repo_root().join(path);
+    }
+
+    if file.starts_with("pipeline/") {
+        return lesson.repo_root().join("research").join(path);
+    }
+
+    lesson.guided_story_dir().join(path)
 }
 
 fn read_step_question_banks(lesson: &LessonPaths) -> Result<String, MvpError> {
@@ -465,6 +679,7 @@ pub enum MvpError {
         stage: &'static str,
         source: serde_json::Error,
     },
+    ManifestShape,
     LlmRequest {
         stage: &'static str,
         source: reqwest::Error,
@@ -501,6 +716,7 @@ impl fmt::Display for MvpError {
             Self::JsonParse { stage, source } => {
                 write!(f, "{stage} model output was not valid JSON: {source}")
             }
+            Self::ManifestShape => write!(f, "guided story manifest has invalid step shape"),
             Self::LlmRequest { stage, source } => {
                 write!(f, "{stage} LLM request failed: {source:?}")
             }
@@ -528,7 +744,7 @@ impl Error for MvpError {
             Self::Read { source, .. } | Self::Write { source, .. } => Some(source),
             Self::JsonWrite { source, .. } | Self::JsonParse { source, .. } => Some(source),
             Self::LlmRequest { source, .. } => Some(source),
-            Self::LlmStatus { .. } | Self::LlmMissingContent { .. } => None,
+            Self::ManifestShape | Self::LlmStatus { .. } | Self::LlmMissingContent { .. } => None,
         }
     }
 }

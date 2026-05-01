@@ -6,360 +6,643 @@ mode: textbook
 sectionMap:
   - sectionId: why-this-lesson-matters
     title: 为什么这一课重要
-    coverageTags: ["core_theme"]
+    coverageTags: ["core_theme", "algo_trading_definition", "algo_trading_objectives"]
     linkedSteps: ["step1"]
   - sectionId: concept-map
     title: 课程全景与关键问题
-    coverageTags: ["core_theme", "algo_trading_basics", "market_trend", "trading_approaches_comparison", "infrastructure_needed"]
+    coverageTags: ["core_theme", "algo_trading_definition", "algo_trading_aliases", "algo_trading_components", "algo_trading_objectives"]
     linkedSteps: ["step1"]
-  - sectionId: core-concepts
-    title: 核心概念与机制
-    coverageTags: ["algo_trading_basics", "trading_mechanism_order_matching", "market_jargon_terminology"]
-    linkedSteps: ["step1"]
-  - sectionId: formal-representation
-    title: 公式、图表与关键表征
-    coverageTags: ["market_jargon_terminology", "trading_mechanism_order_matching"]
-    linkedSteps: ["step1"]
+  - sectionId: market-trends
+    title: 算法交易的市场趋势
+    coverageTags: ["market_trend_algo_trading", "robo_trading_vs_robo_advisory"]
+    linkedSteps: ["step2"]
+  - sectionId: trading-mechanism
+    title: 交易机制与订单簿
+    coverageTags: ["order_book_concept", "bid_ask_price", "bid_ask_spread", "market_order", "limit_order", "stop_order", "slippage"]
+    linkedSteps: ["step3"]
+  - sectionId: positions-pnl
+    title: 做多、做空与盈亏计算
+    coverageTags: ["long_short_position", "short_selling_process", "short_selling_risk", "mark_to_market", "pnl_formula_long", "pnl_formula_short"]
+    linkedSteps: ["step4"]
+  - sectionId: leverage-margin
+    title: 杠杆、保证金与交易系统
+    coverageTags: ["leverage_and_margin", "buying_power", "order_based_vs_position_based"]
+    linkedSteps: ["step5"]
+  - sectionId: infrastructure
+    title: 实施算法交易的基础设施
+    coverageTags: ["infrastructure_data_management", "infrastructure_other_factors", "data_as_fuel_metaphor"]
+    linkedSteps: ["step6"]
   - sectionId: pitfalls
     title: 易错点
-    coverageTags: ["market_jargon_terminology"]
-    linkedSteps: ["step1"]
+    coverageTags: ["short_selling_risk", "slippage", "leverage_and_margin", "order_based_vs_position_based"]
+    linkedSteps: ["step3", "step4", "step5"]
   - sectionId: review-path
     title: 复习与自测
-    coverageTags: ["algo_trading_basics", "market_trend", "trading_approaches_comparison", "infrastructure_needed", "trading_mechanism_order_matching", "market_jargon_terminology"]
-    linkedSteps: ["step1"]
+    coverageTags: ["algo_trading_definition", "algo_trading_components", "algo_trading_objectives", "market_trend_algo_trading", "robo_trading_vs_robo_advisory", "order_book_concept", "bid_ask_price", "bid_ask_spread", "market_order", "limit_order", "stop_order", "slippage", "long_short_position", "short_selling_process", "short_selling_risk", "mark_to_market", "pnl_formula_long", "pnl_formula_short", "leverage_and_margin", "buying_power", "order_based_vs_position_based", "infrastructure_data_management", "infrastructure_other_factors", "data_as_fuel_metaphor"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6"]
+
 coverageTrace:
   - coverageTag: core_theme
-    description: 算法交易的基本概念、市场趋势、交易方式对比、基础设施、交易机制与术语
+    description: 算法交易的基本概念与课程定位
     sectionIds: ["why-this-lesson-matters", "concept-map"]
     linkedSteps: ["step1"]
-  - coverageTag: algo_trading_basics
-    description: 算法交易的定义、别名、核心机制（信号生成与执行）和目标
-    sectionIds: ["concept-map", "core-concepts"]
+  - coverageTag: algo_trading_definition
+    description: 算法交易的核心定义：使用数学模型和计算机程序生成交易信号并自动执行
+    sectionIds: ["why-this-lesson-matters", "concept-map", "review-path"]
     linkedSteps: ["step1"]
-  - coverageTag: market_trend
-    description: 算法交易的市场趋势：增长率、区域分布、各市场占比
+  - coverageTag: algo_trading_aliases
+    description: 算法交易的别名：Algo Trading, Quant Trading, Robo-Trading, Program Trading
     sectionIds: ["concept-map"]
     linkedSteps: ["step1"]
-  - coverageTag: trading_approaches_comparison
-    description: 人类交易、机器人投顾、机器人交易三种方式的对比
-    sectionIds: ["concept-map"]
+  - coverageTag: algo_trading_components
+    description: 算法交易的两大核心组件：生成交易信号（决策）和自动执行（下单）
+    sectionIds: ["concept-map", "review-path"]
     linkedSteps: ["step1"]
-  - coverageTag: infrastructure_needed
-    description: 部署算法交易所需的基础设施：数据采集、存储、管理、处理、硬件、网络等
-    sectionIds: ["concept-map"]
+  - coverageTag: algo_trading_objectives
+    description: 算法交易的目标：最大化利润、控制交易成本、对冲和管理投资风险
+    sectionIds: ["why-this-lesson-matters", "concept-map", "review-path"]
     linkedSteps: ["step1"]
-  - coverageTag: trading_mechanism_order_matching
-    description: 交易机制与订单匹配：供需、市场均衡、订单簿
-    sectionIds: ["core-concepts", "formal-representation"]
-    linkedSteps: ["step1"]
-  - coverageTag: market_jargon_terminology
-    description: 市场术语：多头/空头、买入价/卖出价、价差、订单类型、滑点、杠杆与保证金
-    sectionIds: ["core-concepts", "formal-representation", "pitfalls"]
-    linkedSteps: ["step1"]
+  - coverageTag: market_trend_algo_trading
+    description: 算法交易的市场趋势：美国股市60%交易量由算法完成，欧洲40%，外汇25%，期权20%；市场CAGR 12.7%至2028年320亿美元；北美最大，亚太增长最快
+    sectionIds: ["market-trends", "review-path"]
+    linkedSteps: ["step2"]
+  - coverageTag: robo_trading_vs_robo_advisory
+    description: 机器人交易与机器人投顾的对比：机器人交易全自动（决策+执行），机器人投顾半自动（仅建议，不执行）
+    sectionIds: ["market-trends", "review-path"]
+    linkedSteps: ["step2"]
+  - coverageTag: order_book_concept
+    description: 订单簿的定义与基本结构（实时更新的买卖订单列表）
+    sectionIds: ["trading-mechanism", "review-path"]
+    linkedSteps: ["step3"]
+  - coverageTag: bid_ask_price
+    description: 买入价（买方最高出价）与卖出价（卖方最低要价）的定义
+    sectionIds: ["trading-mechanism", "review-path"]
+    linkedSteps: ["step3"]
+  - coverageTag: bid_ask_spread
+    description: 买卖价差（卖出价-买入价）及其与流动性的关系
+    sectionIds: ["trading-mechanism", "review-path"]
+    linkedSteps: ["step3"]
+  - coverageTag: market_order
+    description: 市价单：按当前最优价格立即成交，保证成交但不保证价格
+    sectionIds: ["trading-mechanism", "review-path"]
+    linkedSteps: ["step3"]
+  - coverageTag: limit_order
+    description: 限价单：指定价格，保证价格但不保证成交
+    sectionIds: ["trading-mechanism", "review-path"]
+    linkedSteps: ["step3"]
+  - coverageTag: stop_order
+    description: 止损单：价格触及设定水平后自动变成市价单
+    sectionIds: ["trading-mechanism", "review-path"]
+    linkedSteps: ["step3"]
+  - coverageTag: slippage
+    description: 滑点：预期成交价与实际成交价之间的差距
+    sectionIds: ["trading-mechanism", "pitfalls", "review-path"]
+    linkedSteps: ["step3"]
+  - coverageTag: long_short_position
+    description: 多头头寸与空头头寸的定义、方向与获利逻辑
+    sectionIds: ["positions-pnl", "review-path"]
+    linkedSteps: ["step4"]
+  - coverageTag: short_selling_process
+    description: 卖空的四个步骤：借入、卖出、买回、归还
+    sectionIds: ["positions-pnl", "review-path"]
+    linkedSteps: ["step4"]
+  - coverageTag: short_selling_risk
+    description: 做空的理论亏损无上限风险
+    sectionIds: ["positions-pnl", "pitfalls", "review-path"]
+    linkedSteps: ["step4"]
+  - coverageTag: mark_to_market
+    description: 逐日盯市的概念：按当前市价计算头寸价值
+    sectionIds: ["positions-pnl", "review-path"]
+    linkedSteps: ["step4"]
+  - coverageTag: pnl_formula_long
+    description: 做多盈亏公式：PnL = Quantity × (P_current - P_entry)
+    sectionIds: ["positions-pnl", "review-path"]
+    linkedSteps: ["step4"]
+  - coverageTag: pnl_formula_short
+    description: 做空盈亏公式：PnL = -1 × Quantity × (P_current - P_entry)
+    sectionIds: ["positions-pnl", "review-path"]
+    linkedSteps: ["step4"]
+  - coverageTag: leverage_and_margin
+    description: 杠杆与保证金的概念、杠杆比率公式、保证金与杠杆的关系
+    sectionIds: ["leverage-margin", "pitfalls", "review-path"]
+    linkedSteps: ["step5"]
+  - coverageTag: buying_power
+    description: 购买力的定义与计算
+    sectionIds: ["leverage-margin", "review-path"]
+    linkedSteps: ["step5"]
+  - coverageTag: order_based_vs_position_based
+    description: 基于订单的系统与基于头寸的系统的区别、特点与示例
+    sectionIds: ["leverage-margin", "pitfalls", "review-path"]
+    linkedSteps: ["step5"]
+  - coverageTag: infrastructure_data_management
+    description: 实施算法交易所需的数据基础设施：数据采集、存储、管理和处理
+    sectionIds: ["infrastructure", "review-path"]
+    linkedSteps: ["step6"]
+  - coverageTag: infrastructure_other_factors
+    description: 实施算法交易的其他基础设施因素：实时数据源、历史数据、计算硬件、交易所连接、网络延迟、订单管理系统、网络安全等
+    sectionIds: ["infrastructure", "review-path"]
+    linkedSteps: ["step6"]
+  - coverageTag: data_as_fuel_metaphor
+    description: 理解“算法是车，数据是燃料”的核心比喻
+    sectionIds: ["infrastructure", "review-path"]
+    linkedSteps: ["step6"]
+
 ---
 
 # 算法交易基础与金融市场
 
 ## 为什么这一课重要 {#why-this-lesson-matters}
 
-想象一下，你坐在电脑前，屏幕上跳出一个信号：“买入”。不到一秒钟，订单已经发出，交易自动完成。这不是科幻电影，这就是**算法交易**。
+想象一下，你不需要一直盯着屏幕，电脑就能帮你做交易决策并自动下单。这就是算法交易的核心魅力。
 
-如今，算法交易已经占据了美国股市约60%的交易量，在欧洲是40%，在外汇市场是25%。预计到2028年，全球算法交易市场将以12.7%的年复合增长率增长至320亿美元。掌握算法交易的基础知识，是理解现代金融市场运作的关键一步。
+在当今金融市场，算法交易已经不再是边缘玩法。在美国股市，超过60%的交易量由算法完成；在欧洲，这个比例是40%；在外汇市场，也有25%的交易是算法驱动的。整个市场预计以每年12.7%的速度增长，到2028年将达到320亿美元。
 
-本课将为你建立算法交易的知识框架，从基本概念到市场机制，从交易方式对比到基础设施需求，为你后续深入学习策略设计、回测、风险管理等内容打下坚实基础。
+这门课将带你系统性地理解算法交易的基础知识、市场机制和关键技术。无论你未来是从事量化投资、金融科技还是传统金融，这些知识都是不可或缺的基石。
+
+<KeyPoint>
+算法交易就是用数学模型和计算机程序来生成交易信号并自动执行交易。它的目标是最大化利润、控制交易成本、对冲和管理投资风险。
+</KeyPoint>
+
+<QuestionRef id="q_quiz_algo_core_v1" />
 
 ## 课程全景与关键问题 {#concept-map}
 
 ### 什么是算法交易？
 
 <Definition title="算法交易 (Algorithmic Trading)">
-算法交易，也称为量化交易、机器人交易或程序化交易，是指使用数学模型和计算机程序来生成交易信号（决策）并自动执行交易（执行）的方式。
+使用数学模型和计算机程序来生成交易信号（决策）并自动执行交易（下单）的方式。它也被称为 Algo Trading、Quant Trading、Robo-Trading 或 Program Trading。
 </Definition>
 
-算法交易的核心目标包括：
-- **最大化利润**
-- **控制执行成本**
-- **对冲和管理投资风险**
+算法交易主要做两件事：
+1. **生成交易信号**：根据数学模型做出买入或卖出的决策
+2. **自动执行**：将交易指令自动发送到市场并完成买卖
 
-<KeyPoint>
-算法交易 = 数学模型 + 计算机程序 → 交易决策 + 自动执行
-</KeyPoint>
+它的目标有三个：
+- **最大化利润**：抓住更多交易机会
+- **控制执行成本**：减少滑点、佣金等交易成本
+- **对冲和管理投资风险**：通过算法自动控制风险敞口
 
-<Example title="算法交易的实际场景">
-假设你开发了一个策略：当某只股票的5日均线上穿20日均线时买入。在算法交易中，计算机会实时监控数据，一旦条件满足，自动生成买入信号并立即下单，整个过程无需人工干预。
+<Example title="算法交易的日常工作">
+假设你编写了一个算法，当某股票价格跌破其20日均线时自动买入，当价格涨回均线以上时自动卖出。这个算法会：
+1. 持续监控市场价格和均线数据（数据输入）
+2. 当条件满足时生成买入或卖出信号（决策）
+3. 自动向交易所发送订单（执行）
+整个过程无需人工干预。
 </Example>
 
-<QuestionRef id="q_flash_algo_def_v1" />
+<QuestionFamily familyId="qf_flash_algo_def" />
+<QuestionFamily familyId="qf_flash_algo_aliases" />
+<QuestionFamily familyId="qf_flash_algo_components" />
+<QuestionFamily familyId="qf_flash_algo_objectives" />
 
-### 市场趋势
+## 算法交易的市场趋势 {#market-trends}
 
-算法交易市场正在快速增长：
-- **全球市场规模**：预计到2028年达到320亿美元（CAGR 12.7%）
-- **区域分布**：北美是最大市场，亚太地区增长最快
-- **市场渗透率**：
-  - 美国股票交易量：约60%
-  - 欧洲股票交易量：约40%
-  - 外汇交易：约25%
-  - 美国期权交易：约20%
+### 市场渗透率
 
-<QuestionRef id="q_flash_market_trend_v1" />
-<QuestionRef id="q_flash_market_trend_v2" />
+算法交易策略在不同市场的渗透率差异显著：
 
-### 三种交易方式对比
+| 市场 | 算法交易占比 |
+|------|------------|
+| 美国股市 | 约60% |
+| 欧洲股市 | 约40% |
+| 外汇市场 | 约25% |
+| 美国期权市场 | 约20% |
 
-| 维度 | 人类交易 | 机器人投顾 | 机器人交易 |
-|------|---------|-----------|-----------|
-| 工作时间 | ~9×5 | ~9×5 | 24×7 |
-| 执行速度 | 慢 | 中等 | 立即 |
-| 数据输入 | 有限 | 几乎无限 | 几乎无限 |
-| 交易频率 | 低 | 低-中 | 低-高 |
-| 可扩展性 | 有限（受压力限制） | 中等 | 高 |
-| 纪律性 | 不稳定（尤其亏损时） | 一致 | 高 |
-| 定制化 | 高 | 中等 | 低 |
-| 用户控制 | 完全 | 部分 | 最小 |
-| 风险管理 | 主观 | 算法化 | 算法化 |
+### 增长趋势
+
+- 预计年复合增长率（CAGR）为12.7%
+- 到2028年市场规模将达到320亿美元
+- 北美是最大市场，亚太地区增长最快
+
+### 机器人交易 vs 机器人投顾
+
+<Definition title="机器人交易 (Robo-Trading)">
+完全自动化的算法交易，包括决策和执行。系统自己判断买卖时机并自动下单。
+</Definition>
+
+<Definition title="机器人投顾 (Robo-Advisory)">
+半自动化的投资建议服务，提供股票建议、市场总结和风险提醒，但不自动执行交易。
+</Definition>
+
+| 特征 | 机器人交易 | 机器人投顾 |
+|------|-----------|-----------|
+| 决策能力 | ✓ | ✓ |
+| 执行能力 | ✓ | × |
+| 自动化程度 | 全自动 | 半自动 |
+| 输出 | 执行交易信号 | 股票建议、市场总结、风险提醒 |
 
 <KeyPoint>
-机器人投顾（Robo-Advisory）提供建议但不执行交易，而机器人交易（Robo-Trading）则完全自动化执行。
+机器人交易是全自动的，自己做决策并执行交易；机器人投顾是半自动的，提供建议但不下单。
 </KeyPoint>
 
-<QuestionFamily familyId="qf_long_algo_compare" />
+<QuestionFamily familyId="qf_flash_market_trend" />
+<QuestionFamily familyId="qf_flash_robo_compare" />
+<QuestionRef id="q_quiz_market_trend_v1" />
+<QuestionRef id="q_quiz_robo_compare_v1" />
 
-### 基础设施：数据是燃料，算法是引擎
-
-部署算法交易程序需要考虑以下基础设施：
-
-1. **数据采集**：数据来源和数据清洗耗时费力
-2. **数据存储**：大量非结构化数据（数值、文本、图像、音频、视频）
-3. **数据管理**：文件和数据格式不一致，传统数据库难以保护和管理
-4. **数据处理**：可行性和效率
-5. **其他因素**：
-   - 实时数据源和历史数据
-   - 计算硬件
-   - 交易所/券商连接
-   - 网络和延迟
-   - 订单路由系统
-   - 订单管理系统
-   - 算法维护
-   - 网络安全
-
-<QuestionRef id="q_flash_infra_v1" />
-<QuestionRef id="q_flash_infra_v2" />
-
-## 核心概念与机制 {#core-concepts}
-
-### 多头与空头
-
-<Definition title="多头头寸 (Long Position)">
-买入资产，预期价格上涨后卖出获利。例如：以$50买入100股，当价格上涨到$70时卖出获利。
-</Definition>
-
-<Definition title="空头头寸 (Short Position)">
-卖出借来的资产，预期价格下跌后低价买回获利。做空的第一步是从券商借入股票。
-</Definition>
-
-<Example title="做空操作流程">
-1. **借入股票**：从券商借入100股
-2. **卖出**：以当前价格$70卖出
-3. **买回**：当价格下跌到$50时买回100股
-4. **归还**：将股票归还券商
-</Example>
-
-<QuestionRef id="q_flash_long_short_v1" />
-<QuestionRef id="q_flash_long_short_v2" />
+## 交易机制与订单簿 {#trading-mechanism}
 
 ### 订单簿
 
 <Definition title="订单簿 (Order Book)">
-实时列出所有买入和卖出挂单的电子列表，按价格排序。它是市场的“记账本”。
+实时更新的买卖订单列表，按价格排序。它是市场撮合交易的核心工具。
 </Definition>
 
-订单簿的关键组成部分：
-- **买单簿 (Bid Book)**：记录所有买入订单
-- **卖单簿 (Ask Book)**：记录所有卖出订单
-- **价格**：投资者愿意交易的价格点
-- **数量**：投资者想买入或卖出的数量
+订单簿包含两方：
+- **买方队列（Bid Book）**：列出所有愿意买入的订单
+- **卖方队列（Ask Book）**：列出所有愿意卖出的订单
 
-<Figure src="images/1c4327d010822d6548850f694f7c27fde9fc3a6d0c9c3008732a3d8ee04a4aad.jpg" alt="订单簿示例：显示买单和卖单按价格排序的电子列表">
-订单簿示例：买单按价格从高到低排列，卖单按价格从低到高排列
-</Figure>
-
-<QuestionRef id="q_flash_order_book_v1" />
-
-### 买入价、卖出价与价差
+### 买入价与卖出价
 
 <Definition title="买入价 (Bid Price)">
-买方愿意支付的最高价格。例如，如果买方出价$207.01 × 3000，表示愿意以不超过$207.01的价格买入3000股。
+买方愿意支付的最高价格。
 </Definition>
 
 <Definition title="卖出价 (Ask Price)">
-卖方愿意接受的最低价格。例如，如果卖方要价$209.94 × 200，表示愿意以不低于$209.94的价格卖出200股。
+卖方愿意接受的最低价格。
 </Definition>
+
+### 买卖价差
 
 <Definition title="买卖价差 (Bid-Ask Spread)">
-卖出价与买入价之间的差额，是衡量市场流动性的关键指标。价差越小，流动性越好。
+卖出价减去买入价的差额。价差越小，说明市场流动性越好，交易成本越低。
 </Definition>
 
-<Example title="价差计算">
-某股票的买入价为$24，卖出价为$25，则买卖价差 = $25 - $24 = $1。
+<Example title="买卖价差计算">
+某股票的买入价为24元，卖出价为25元。
+- 买卖价差 = 25 - 24 = 1元
+- 百分比价差 = 2 × (25 - 24) / (25 + 24) × 100% ≈ 4.08%
 </Example>
-
-<QuestionRef id="q_flash_bid_ask_spread_v1" />
 
 ### 订单类型
 
+#### 市价单
+
 <Definition title="市价单 (Market Order)">
-以当前市场上可获得的最佳价格立即买入或卖出的订单。保证成交，但不保证价格。
+按当前最优价格立即成交的订单。保证成交，但不保证价格。
 </Definition>
+
+**适用场景**：当你需要立即执行交易，对价格不太敏感时。
+
+#### 限价单
 
 <Definition title="限价单 (Limit Order)">
-指定一个价格（限价），只在该价格或更优价格成交的订单。保证价格，但不保证成交。
+指定一个价格，只有达到或更优时才成交的订单。保证价格，但不保证成交。
 </Definition>
+
+**适用场景**：当你希望以特定价格或更好价格买入/卖出时。
+
+#### 止损单
 
 <Definition title="止损单 (Stop Order)">
-当价格触及指定价格（止损价）时，自动变为市价单执行的订单。常用于控制亏损或捕捉突破行情。
+当价格触及设定水平后，自动变成市价单的订单。常用于止损或突破买入。
 </Definition>
 
-<Example title="限价单的实际应用">
-当前股价约为$138。如果你想在股价跌到$131.78时买入，可以设置一个买入限价单，限价为$131.78。当股价触及该价格时，订单会被执行。
-</Example>
+**适用场景**：限制亏损或捕捉突破行情。
 
-<QuestionRef id="q_flash_order_types_v1" />
-<QuestionRef id="q_flash_order_types_v2" />
+<Example title="三种订单对比">
+假设当前股票价格为100元：
+- **市价单买入**：立即以当前最优价格（如100.10元）成交
+- **限价单买入**：设定限价98元，只有价格跌到98元或以下才成交
+- **止损单买入**：设定止损价105元，当价格涨到105元时自动变成市价单买入
+</Example>
 
 ### 滑点
 
 <Definition title="滑点 (Slippage)">
-预期成交价格与实际成交价格之间的差异。
+预期成交价与实际成交价之间的差距。
 </Definition>
-
-滑点通常发生在：
-- 市场波动剧烈时
-- 订单量太大，市场深度不足时
 
 <Example title="滑点示例">
-你的算法检测到股价跌到$50时触发买入信号，但由于市场波动，实际成交价为$51。这个$1的差异就是滑点。如果你计划买入100股，原本预期花费$5,000，实际花费$5,100，多出的$100就是滑点成本。
+你设置算法在股价跌至50元时买入100股，但由于市场波动，实际成交价为51元。
+- 滑点 = 51 - 50 = 1元/股
+- 总滑点成本 = 100股 × 1元 = 100元
 </Example>
-
-<QuestionRef id="q_flash_slippage_v1" />
-
-### 杠杆与保证金
-
-<Definition title="杠杆 (Leverage)">
-使用借入资金放大投资回报（也放大风险）的方式。
-</Definition>
-
-<Definition title="保证金 (Margin)">
-投资者为获得杠杆交易而必须存入的自有资金。
-</Definition>
 
 <KeyPoint>
-杠杆是双刃剑：收益放大多少倍，亏损也放大多少倍。
+滑点通常发生在市场波动剧烈或流动性不足时。使用市价单时更容易产生滑点。
 </KeyPoint>
 
-<Example title="杠杆的实际影响">
-如果保证金要求是10%，那么杠杆就是10倍。用1万元本金，可以操作价值10万元的资产。如果资产价格上涨10%，你的收益率是100%；但如果价格下跌10%，你的亏损率也是100%。
-</Example>
+<QuestionFamily familyId="qf_flash_order_book" />
+<QuestionFamily familyId="qf_flash_bid_ask" />
+<QuestionFamily familyId="qf_flash_spread" />
+<QuestionFamily familyId="qf_flash_market_order" />
+<QuestionFamily familyId="qf_flash_limit_order" />
+<QuestionFamily familyId="qf_flash_stop_order" />
+<QuestionFamily familyId="qf_flash_slippage" />
+<QuestionRef id="q_quiz_order_types_v1" />
+<QuestionRef id="q_quiz_slippage_v1" />
 
-<QuestionRef id="q_flash_leverage_margin_v1" />
+## 做多、做空与盈亏计算 {#positions-pnl}
 
-## 公式、图表与关键表征 {#formal-representation}
+### 多头头寸
 
-### 百分比价差公式
+<Definition title="多头头寸 (Long Position)">
+先买入资产，预期价格上涨后卖出获利。
+</Definition>
 
-<Formula latex="\text{Percentage Spread} = \frac{\text{AskPrice} - \text{BidPrice}}{\text{MidPrice}} \times 100\% = \frac{2 \times (\text{AskPrice} - \text{BidPrice})}{\text{AskPrice} + \text{BidPrice}} \times 100\%">
-百分比价差用于比较不同资产的流动性
+**操作步骤**：买入 → 等待价格上涨 → 卖出
+
+**最大风险**：损失全部本金（股价跌至0）
+
+### 空头头寸
+
+<Definition title="空头头寸 (Short Position)">
+先借入资产卖出，预期价格下跌后买回获利。
+</Definition>
+
+**操作步骤**：借入股票 → 卖出 → 等待价格下跌 → 买回 → 归还股票
+
+**最大风险**：理论亏损无上限（股价可以无限上涨）
+
+<KeyPoint>
+做空的风险比做多大得多，因为做多最大亏损有限（本金），而做空的理论亏损没有上限。
+</KeyPoint>
+
+### 盈亏公式
+
+#### 做多盈亏公式
+
+<Formula latex="PnL = Quantity \times (P_{current} - P_{entry})">
+做多盈亏 = 数量 × (当前价 - 买入价)
 </Formula>
 
-<Example title="百分比价差计算">
-某股票买入价为$24，卖出价为$25：
-- 买卖价差 = $25 - $24 = $1
-- 百分比价差 = 2 × (25 - 24) / (25 + 24) × 100% ≈ 4.08%
-</Example>
+#### 做空盈亏公式
 
-### 杠杆比率公式
-
-<Formula latex="\text{Leverage Ratio} = \frac{1}{\text{Margin Requirement}}">
-杠杆比率等于1除以保证金要求
+<Formula latex="PnL = -1 \times Quantity \times (P_{current} - P_{entry})">
+做空盈亏 = -1 × 数量 × (当前价 - 卖出价)
 </Formula>
 
-<Example title="杠杆比率计算">
-如果保证金要求为25%：
-- 杠杆比率 = 1 / 0.25 = 4倍
-- 投入$10,000本金，可操作$40,000的资产
-- 资产上涨10%：收益 = $40,000 × 10% = $4,000，收益率 = 40%
-- 资产下跌10%：亏损 = $40,000 × 10% = $4,000，亏损率 = 40%
+### 逐日盯市
+
+<Definition title="逐日盯市 (Mark-to-Market)">
+按当前市场价格计算资产或头寸价值的会计方法。它反映的是未实现盈亏（浮动盈亏）。
+</Definition>
+
+<Example title="盈亏计算示例">
+**场景1：做多**
+以每股20元买入300股股票A，当前股价25元。
+- 盈亏 = 300 × (25 - 20) = 1500元（盈利）
+
+**场景2：做空**
+以每股50元卖空200股股票B，当前股价45元。
+- 盈亏 = -1 × 200 × (45 - 50) = 1000元（盈利）
+
+**场景3：做空亏损**
+以每股40元卖空150股股票C，当前股价45元。
+- 盈亏 = -1 × 150 × (45 - 40) = -750元（亏损）
 </Example>
 
-<QuestionFamily familyId="qf_long_leverage_calc" />
+<QuestionFamily familyId="qf_flash_long_short_def" />
+<QuestionFamily familyId="qf_flash_short_selling_steps" />
+<QuestionFamily familyId="qf_flash_short_risk" />
+<QuestionFamily familyId="qf_flash_mtm_definition" />
+<QuestionFamily familyId="qf_flash_pnl_long_formula" />
+<QuestionFamily familyId="qf_flash_pnl_short_formula" />
+<QuestionRef id="q_quiz_pnl_long_calc_v1" />
+<QuestionRef id="q_quiz_pnl_short_calc_v1" />
 
-### 市场均衡的形成
+## 杠杆、保证金与交易系统 {#leverage-margin}
 
-<Figure src="images/3627bc4390ce1dee9b9bd69fe4614da45984046abf62f9f1d460331c494cda71.jpg" alt="市场均衡图表：显示供给曲线和需求曲线在价格$12、数量2处相交">
-市场均衡：当买方的最高出价与卖方的最低要价相遇时，交易发生，形成市场均衡价格
-</Figure>
+### 杠杆
 
-<QuestionFamily familyId="qf_long_order_matching" />
+<Definition title="杠杆 (Leverage)">
+使用借入资金来放大投资回报的方式。
+</Definition>
+
+<Formula latex="Leverage\ Ratio = \frac{Asset}{Equity}">
+杠杆比率 = 资产总值 / 自有资金
+</Formula>
+
+### 保证金
+
+<Definition title="保证金 (Margin)">
+投资者在经纪商处持有的自有资金，用于担保借款。它是创造杠杆的基础。
+</Definition>
+
+<Example title="杠杆计算示例">
+你支付60万元购买价值100万元的股票：
+- 杠杆比率 = 100万 / 60万 ≈ 1.67倍
+- 如果股票上涨10%，你的自有资金回报率 = 1.67 × 10% = 16.7%
+- 如果股票下跌10%，你的自有资金亏损率 = 1.67 × 10% = 16.7%
+</Example>
+
+### 购买力
+
+<Definition title="购买力 (Buying Power)">
+投资者可用于购买证券的最大资金量。
+</Definition>
+
+<Formula latex="Buying\ Power = Leverage\ Ratio \times Investor's\ Equity">
+购买力 = 杠杆比率 × 自有资金
+</Formula>
+
+<Example title="购买力计算">
+你有10万元本金，使用20倍杠杆：
+- 购买力 = 20 × 10万 = 200万元
+- 这意味着你最多可以购买200万元的证券
+</Example>
+
+### 交易系统类型
+
+#### 基于订单的系统
+
+<Definition title="基于订单的系统 (Order Based System)">
+每笔交易独立管理，不支持部分平仓。
+</Definition>
+
+**典型平台**：MetaTrader、TradingView、MetaStock
+
+#### 基于头寸的系统
+
+<Definition title="基于头寸的系统 (Position Based System)">
+交易按净头寸管理，支持部分平仓。
+</Definition>
+
+**典型平台**：Interactive Brokers、Binance、大部分银行系统
+
+<Example title="两种系统的区别">
+假设你开了3笔交易：
+1. 买入2股ABC，价格123元
+2. 卖出1股ABC，价格124元
+3. 卖出1股ABC，价格125元
+
+**基于订单的系统**：
+- 每笔交易独立计算盈亏
+- 不能只平掉其中一笔交易
+- 必须同时关闭所有3笔交易才能实现盈亏
+
+**基于头寸的系统**：
+- 交易按净头寸管理（净多头0股）
+- 支持部分平仓
+- 盈亏可以立即实现
+</Example>
+
+<QuestionFamily familyId="qf_flash_leverage_margin" />
+<QuestionFamily familyId="qf_flash_buying_power" />
+<QuestionFamily familyId="qf_flash_trading_systems" />
+<QuestionRef id="q_quiz_leverage_margin_v1" />
+<QuestionRef id="q_quiz_buying_power_v1" />
+<QuestionRef id="q_quiz_trading_systems_v1" />
+
+## 实施算法交易的基础设施 {#infrastructure}
+
+### 算法是车，数据是燃料
+
+<KeyPoint>
+没有数据，算法寸步难行。数据是算法交易的输入和决策依据。
+</KeyPoint>
+
+### 数据工作的四个环节
+
+| 环节 | 主要挑战 |
+|------|---------|
+| **采集** | 数据来源和清洗非常耗时费力 |
+| **存储** | 海量非结构化数据（数值、文本、图像、音频、视频） |
+| **管理** | 数据格式不一致，难以通过传统数据库保护和管理 |
+| **处理** | 可行性和效率是关键问题 |
+
+### 其他基础设施因素
+
+除了数据工作，实施算法交易还需要考虑：
+
+- **实时数据源**：获取实时市场行情
+- **历史数据**：用于回测和策略开发
+- **计算硬件**：运行算法和处理数据
+- **交易所/经纪商连接**：与市场对接
+- **网络和延迟**：低延迟对高频交易至关重要
+- **订单路由系统**：将订单发送到最优交易场所
+- **订单管理系统（OMS）**：管理、发送和跟踪订单
+- **算法维护**：持续监控和优化算法
+- **网络安全**：保护系统和数据安全
+
+<Example title="基础设施的重要性">
+假设你开发了一个优秀的交易算法，但如果：
+- 数据源延迟5秒，你可能会错过最佳交易时机
+- 网络延迟高，你的订单可能以更差的价格成交
+- 没有订单管理系统，你可能无法有效跟踪订单状态
+- 网络安全薄弱，你的算法可能被黑客攻击
+
+因此，搭建完整的算法交易系统远不止写代码那么简单。
+</Example>
+
+<QuestionFamily familyId="qf_flash_data_fuel" />
+<QuestionFamily familyId="qf_flash_data_work" />
+<QuestionFamily familyId="qf_flash_other_factors" />
+<QuestionRef id="q_quiz_other_factors_v1" />
 
 ## 易错点 {#pitfalls}
 
-<Pitfall>
-**做空的风险是无限的**：如果股价持续上涨，做空者的亏损理论上没有上限。这与做多不同，做多的最大亏损仅限于投入的本金。
-</Pitfall>
+### 1. 混淆做空与做多的风险
 
 <Pitfall>
-**市价单 vs 限价单的混淆**：市价单保证成交但不保证价格，限价单保证价格但不保证成交。在波动剧烈的市场中，使用市价单可能产生较大的滑点。
+**错误理解**：做空和做多的风险是一样的。
+**正确理解**：做多最大亏损有限（本金），做空理论亏损无上限。股价可以涨到远高于做空价格，导致无限亏损。
 </Pitfall>
 
-<Pitfall>
-**杠杆的放大效应**：杠杆不仅放大收益，也等比例放大亏损。许多新手只看到杠杆带来的高收益潜力，而忽视了同等比例的高风险。
-</Pitfall>
+### 2. 忽视滑点的影响
 
 <Pitfall>
-**滑点不是交易成本**：滑点不是佣金或手续费，而是由于市场条件导致的预期价格与实际成交价之间的差异。在大额交易或波动市场中，滑点可能成为主要的隐性成本。
+**错误理解**：滑点只是小问题，不会对交易结果产生重大影响。
+**正确理解**：在高频交易或大额交易中，滑点可能成为最大的交易成本之一。尤其是在市场波动剧烈或流动性不足时，滑点可能远超预期。
+</Pitfall>
+
+### 3. 误用杠杆
+
+<Pitfall>
+**错误理解**：杠杆只放大收益，不放大风险。
+**正确理解**：杠杆同时放大收益和风险。使用高杠杆时，小幅价格波动就可能导致本金全部亏完（爆仓）。
+</Pitfall>
+
+### 4. 混淆基于订单和基于头寸的系统
+
+<Pitfall>
+**错误理解**：所有交易平台都支持部分平仓。
+**正确理解**：基于订单的系统（如MetaTrader）不支持部分平仓，必须关闭整个订单。基于头寸的系统（如Interactive Brokers）才支持部分平仓。
+</Pitfall>
+
+### 5. 低估基础设施的重要性
+
+<Pitfall>
+**错误理解**：只要算法好，基础设施不重要。
+**正确理解**：算法是车，数据是燃料。没有可靠的数据源、低延迟的网络、稳定的订单管理系统，再好的算法也无法在真实市场中有效运行。
 </Pitfall>
 
 ## 复习与自测 {#review-path}
 
-### 关键概念回顾
+### 核心概念回顾
 
-1. **算法交易**：使用数学模型和计算机程序自动生成交易信号并执行交易
-2. **市场趋势**：全球市场快速增长，北美最大，亚太最快
-3. **交易方式对比**：人类交易（慢、主观）、机器人投顾（中等、建议）、机器人交易（快、自动）
-4. **基础设施**：数据是燃料，算法是引擎
-5. **订单簿**：市场的实时记账本
-6. **多头/空头**：做多赌涨，做空赌跌
-7. **买卖价差**：衡量流动性的关键指标
-8. **订单类型**：市价单（保证成交）、限价单（保证价格）、止损单（触发变市价）
-9. **滑点**：预期价与实际价的差异
-10. **杠杆与保证金**：双刃剑，放大收益也放大风险
+1. **算法交易**：用数学模型和程序生成交易信号并自动执行
+2. **市场趋势**：美国股市60%交易量由算法完成，市场CAGR 12.7%
+3. **订单簿**：实时更新的买卖订单列表
+4. **订单类型**：市价单（保证成交）、限价单（保证价格）、止损单（触发后变市价单）
+5. **做多与做空**：做多先买后卖，做空先借后卖
+6. **盈亏公式**：做多 PnL = Q × (P_current - P_entry)；做空 PnL = -1 × Q × (P_current - P_entry)
+7. **杠杆与保证金**：杠杆放大收益和风险，保证金是自有资金
+8. **交易系统**：基于订单（不支持部分平仓）vs 基于头寸（支持部分平仓）
+9. **基础设施**：数据是燃料，需要采集、存储、管理、处理
 
-### 自测题
+### 主动回忆练习
 
-<Checkpoint title="基础概念">
-<QuestionRef id="q_flash_algo_def_v2" />
-<QuestionRef id="q_flash_algo_def_v3" />
-</Checkpoint>
+<QuestionFamily familyId="qf_flash_algo_def" />
+<QuestionFamily familyId="qf_flash_algo_aliases" />
+<QuestionFamily familyId="qf_flash_algo_components" />
+<QuestionFamily familyId="qf_flash_algo_objectives" />
+<QuestionFamily familyId="qf_flash_market_trend" />
+<QuestionFamily familyId="qf_flash_robo_compare" />
+<QuestionFamily familyId="qf_flash_order_book" />
+<QuestionFamily familyId="qf_flash_bid_ask" />
+<QuestionFamily familyId="qf_flash_spread" />
+<QuestionFamily familyId="qf_flash_market_order" />
+<QuestionFamily familyId="qf_flash_limit_order" />
+<QuestionFamily familyId="qf_flash_stop_order" />
+<QuestionFamily familyId="qf_flash_slippage" />
+<QuestionFamily familyId="qf_flash_long_short_def" />
+<QuestionFamily familyId="qf_flash_short_selling_steps" />
+<QuestionFamily familyId="qf_flash_short_risk" />
+<QuestionFamily familyId="qf_flash_mtm_definition" />
+<QuestionFamily familyId="qf_flash_pnl_long_formula" />
+<QuestionFamily familyId="qf_flash_pnl_short_formula" />
+<QuestionFamily familyId="qf_flash_leverage_margin" />
+<QuestionFamily familyId="qf_flash_buying_power" />
+<QuestionFamily familyId="qf_flash_trading_systems" />
+<QuestionFamily familyId="qf_flash_data_fuel" />
+<QuestionFamily familyId="qf_flash_data_work" />
+<QuestionFamily familyId="qf_flash_other_factors" />
 
-<Checkpoint title="市场术语">
-<QuestionRef id="q_flash_long_short_v3" />
-<QuestionRef id="q_flash_bid_ask_spread_v2" />
-<QuestionRef id="q_flash_order_types_v3" />
-<QuestionRef id="q_flash_slippage_v2" />
-<QuestionRef id="q_flash_leverage_margin_v2" />
-</Checkpoint>
+### 章节自测
 
-<Checkpoint title="综合应用">
-<QuestionFamily familyId="qf_long_algo_compare" />
-<QuestionFamily familyId="qf_long_order_matching" />
-<QuestionFamily familyId="qf_long_leverage_calc" />
-</Checkpoint>
+<QuestionRef id="q_quiz_algo_core_v1" />
+<QuestionRef id="q_quiz_algo_components_v1" />
+<QuestionRef id="q_quiz_algo_objectives_v1" />
+<QuestionRef id="q_quiz_market_trend_v1" />
+<QuestionRef id="q_quiz_robo_compare_v1" />
+<QuestionRef id="q_quiz_order_book_v1" />
+<QuestionRef id="q_quiz_bid_ask_v1" />
+<QuestionRef id="q_quiz_spread_v1" />
+<QuestionRef id="q_quiz_order_types_v1" />
+<QuestionRef id="q_quiz_slippage_v1" />
+<QuestionRef id="q_quiz_long_short_identify_v1" />
+<QuestionRef id="q_quiz_short_selling_order_v1" />
+<QuestionRef id="q_quiz_short_risk_choice_v1" />
+<QuestionRef id="q_quiz_mtm_apply_v1" />
+<QuestionRef id="q_quiz_pnl_long_calc_v1" />
+<QuestionRef id="q_quiz_pnl_short_calc_v1" />
+<QuestionRef id="q_quiz_leverage_margin_v1" />
+<QuestionRef id="q_quiz_buying_power_v1" />
+<QuestionRef id="q_quiz_trading_systems_v1" />
+<QuestionRef id="q_quiz_data_fuel_v1" />
+<QuestionRef id="q_quiz_data_work_v1" />
+<QuestionRef id="q_quiz_other_factors_v1" />
 
-### 学习路线建议
+### 综合应用练习
 
-1. **预习阶段**：通读本课本，重点关注核心概念与机制部分
-2. **学习阶段**：结合课程材料，逐一理解每个术语和公式
-3. **练习阶段**：完成所有自测题，特别是长问题（longform questions）
-4. **复习阶段**：回顾易错点，确保理解杠杆、滑点等容易混淆的概念
-5. **进阶准备**：掌握这些基础知识后，你将准备好学习数据采集、回测框架和策略开发等后续内容
+<QuestionFamily familyId="qf_long_algo_explain" />
+<QuestionFamily familyId="qf_long_robo_compare" />
+<QuestionFamily familyId="qf_long_spread" />
+<QuestionFamily familyId="qf_long_slippage" />
+<QuestionFamily familyId="qf_long_long_short_compare" />
+<QuestionFamily familyId="qf_long_pnl_calc_apply" />
+<QuestionFamily familyId="qf_long_leverage_margin" />
+<QuestionFamily familyId="qf_long_trading_systems" />
+<QuestionFamily familyId="qf_long_infrastructure" />

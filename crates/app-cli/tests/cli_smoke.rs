@@ -593,3 +593,99 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
         String::from_utf8_lossy(&validate.stderr)
     );
 }
+
+#[test]
+fn run_writes_question_banks_for_each_generated_step() {
+    let repo = TempRepo::new();
+    repo.seed_prompts();
+    repo.write(
+        "research/pipeline/1-plain/L2/plain.txt",
+        "A lesson with two natural learning chunks.\n",
+    );
+
+    let guided_story = r#"{
+      "lesson_id": "L2",
+      "mode": "guided_story",
+      "steps": [
+        {
+          "sequence_id": "step1",
+          "concept": "First chunk",
+          "step": {"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[{"id":"s1","lines":["First"]}],"term_catalog":{}}
+        },
+        {
+          "sequence_id": "step2",
+          "concept": "Second chunk",
+          "step": {"lesson_id":"L2","sequence_id":"step2","mode":"guided_story","screens":[{"id":"s1","lines":["Second"]}],"term_catalog":{}}
+        }
+      ]
+    }"#.to_owned();
+    let question_bank_1 = r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_step1","linked_steps":["step1"],"variants":[{"question_id":"question_step1","linked_steps":["step1"],"front":"A?","back":"A"}]}],"quiz_families":[],"longform_families":[]}"#.to_owned();
+    let question_bank_2 = r#"{"lesson_id":"L2","sequence_id":"step2","flashcard_families":[{"family_id":"family_step2","linked_steps":["step2"],"variants":[{"question_id":"question_step2","linked_steps":["step2"],"front":"B?","back":"B"}]}],"quiz_families":[],"longform_families":[]}"#.to_owned();
+    let textbook = r#"---
+lessonId: L2
+---
+# L2
+<QuestionFamily familyId="family_step1" />
+<QuestionRef id="question_step1" />
+<QuestionFamily familyId="family_step2" />
+<QuestionRef id="question_step2" />
+"#
+    .to_owned();
+    let server = StubLlmServer::start(vec![
+        guided_story,
+        question_bank_1,
+        question_bank_2,
+        textbook,
+    ]);
+
+    let output = coursegen_command()
+        .current_dir(repo.root())
+        .env("COURSEGEN_LLM_API_KEY", "test-token")
+        .env("COURSEGEN_LLM_MODEL", "test-model")
+        .env("COURSEGEN_LLM_BASE_URL", server.base_url())
+        .args(["run", "L2", "--target-language", "zh-CN"])
+        .output()
+        .expect("coursegen should run");
+
+    server.finish();
+
+    assert!(
+        output.status.success(),
+        "stderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+
+    let manifest: serde_json::Value = serde_json::from_str(&read_text(
+        repo.root()
+            .join("research/pipeline/3-guided_story/L2/manifest.json"),
+    ))
+    .expect("manifest should parse");
+    assert_eq!(manifest["steps"].as_array().map(Vec::len), Some(2));
+
+    for step in ["step1", "step2"] {
+        assert!(
+            repo.root()
+                .join(format!(
+                    "research/pipeline/3-guided_story/L2/{step}/step.json"
+                ))
+                .is_file(),
+            "{step} step should be written"
+        );
+        assert!(
+            repo.root()
+                .join(format!(
+                    "research/pipeline/3-guided_story/L2/{step}/question_bank.json"
+                ))
+                .is_file(),
+            "{step} question bank should be written"
+        );
+        assert!(
+            repo.root()
+                .join(format!(
+                    "research/pipeline/meta/L2/mvp/question_bank/{step}/user.md"
+                ))
+                .is_file(),
+            "{step} question bank prompt should be audited"
+        );
+    }
+}

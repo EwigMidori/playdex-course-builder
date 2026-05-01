@@ -1,0 +1,306 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "market_trend_algo_trading",
+      "covered_by": [
+        "qf_flash_market_trend",
+        "qf_quiz_market_trend"
+      ],
+      "description": "算法交易的市场趋势：美国股市60%交易量由算法完成，欧洲40%，外汇25%，期权20%；市场CAGR 12.7%至2028年320亿美元；北美最大，亚太增长最快。"
+    },
+    {
+      "coverage_tag": "robo_trading_vs_robo_advisory",
+      "covered_by": [
+        "qf_flash_robo_compare",
+        "qf_quiz_robo_compare",
+        "qf_long_robo_compare"
+      ],
+      "description": "机器人交易与机器人投顾的对比：机器人交易全自动（决策+执行），机器人投顾半自动（仅建议，不执行）。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "market_trend_algo_trading",
+      "coverage_tags": [
+        "market_trend_algo_trading"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_market_trend",
+      "learning_goal": "学生能准确回忆算法交易在不同市场的渗透率及市场增长趋势的关键数据。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "要求学生主动提取算法交易在美国、欧洲、外汇、期权市场的交易量占比，以及市场年复合增长率和区域分布。",
+      "term_refs": [
+        {
+          "display": "算法交易",
+          "en": "Algorithmic Trading"
+        }
+      ],
+      "variants": [
+        {
+          "back": "超过60%",
+          "estimated_seconds": 5,
+          "explanation": "材料明确指出算法交易策略占美国股市交易量的约60%。",
+          "front": "算法交易在美国股市的交易量占比大约是多少？",
+          "question_id": "q_flash_market_trend_v1"
+        },
+        {
+          "back": "40%",
+          "estimated_seconds": 5,
+          "explanation": "材料指出算法交易占欧洲股市交易量的约40%。",
+          "front": "算法交易在欧洲股市的交易量占比大约是多少？",
+          "question_id": "q_flash_market_trend_v2"
+        },
+        {
+          "back": "25%",
+          "estimated_seconds": 5,
+          "explanation": "材料指出算法交易占外汇市场交易量的约25%。",
+          "front": "算法交易在外汇市场的交易量占比大约是多少？",
+          "question_id": "q_flash_market_trend_v3"
+        },
+        {
+          "back": "12.7%",
+          "estimated_seconds": 5,
+          "explanation": "材料指出市场预计以CAGR 12.7%增长至2028年的320亿美元。",
+          "front": "算法交易市场预计到2028年的年复合增长率（CAGR）是多少？",
+          "question_id": "q_flash_market_trend_v4"
+        }
+      ]
+    },
+    {
+      "concept_key": "robo_trading_vs_robo_advisory",
+      "coverage_tags": [
+        "robo_trading_vs_robo_advisory"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_robo_compare",
+      "learning_goal": "学生能准确区分机器人交易和机器人投顾在自动化程度和执行能力上的核心差异。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "core_difference",
+      "retrieval_focus": "要求学生主动提取机器人交易和机器人投顾在决策、执行、自动化程度和输出上的关键区别。",
+      "term_refs": [
+        {
+          "display": "机器人交易",
+          "en": "Robo-Trading"
+        },
+        {
+          "display": "机器人投顾",
+          "en": "Robo-Advisory"
+        }
+      ],
+      "variants": [
+        {
+          "back": "机器人交易自动执行，机器人投顾不执行。",
+          "estimated_seconds": 8,
+          "explanation": "材料中表格显示机器人交易有执行功能（✓），机器人投顾没有（×）。",
+          "front": "机器人交易和机器人投顾在执行交易方面的关键区别是什么？",
+          "question_id": "q_flash_robo_compare_v1"
+        },
+        {
+          "back": "机器人交易是全自动的，机器人投顾是半自动的。",
+          "estimated_seconds": 8,
+          "explanation": "材料明确指出机器人交易是全自动的，机器人投顾是半自动的。",
+          "front": "机器人交易和机器人投顾在自动化程度上的区别是什么？",
+          "question_id": "q_flash_robo_compare_v2"
+        },
+        {
+          "back": "股票建议、市场总结、风险提醒。",
+          "estimated_seconds": 8,
+          "explanation": "材料中表格显示机器人投顾的输出包括股票建议、市场总结和风险提醒。",
+          "front": "机器人投顾的主要输出是什么？",
+          "question_id": "q_flash_robo_compare_v3"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L1",
+  "longform_families": [
+    {
+      "concept_key": "robo_trading_vs_robo_advisory",
+      "coverage_tags": [
+        "robo_trading_vs_robo_advisory"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_robo_compare",
+      "learning_goal": "学生能系统性地比较和对比机器人交易和机器人投顾，涵盖决策、执行、自动化程度和输出。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "机器人交易",
+          "en": "Robo-Trading"
+        },
+        {
+          "display": "机器人投顾",
+          "en": "Robo-Advisory"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "决策能力",
+            "执行能力",
+            "自动化程度",
+            "输出内容"
+          ],
+          "question_id": "q_long_robo_compare_v1",
+          "reference_answer": [
+            "决策：两者都能进行决策。",
+            "执行：机器人交易自动执行交易，机器人投顾不执行。",
+            "自动化程度：机器人交易是全自动的，机器人投顾是半自动的。",
+            "输出：机器人交易的输出是执行交易信号，机器人投顾的输出是股票建议、市场总结和风险提醒。"
+          ],
+          "rubric_points": [
+            "指出两者都能做决策",
+            "指出机器人交易能自动执行，机器人投顾不能",
+            "指出机器人交易是全自动，机器人投顾是半自动",
+            "指出机器人交易的输出是执行交易信号，机器人投顾的输出是建议、总结和提醒"
+          ],
+          "stem": "请比较机器人交易和机器人投顾，从决策、执行、自动化程度和输出四个方面进行说明。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "适合的投资者类型",
+            "核心差异：决策与执行",
+            "核心差异：自动化程度",
+            "核心差异：输出形式"
+          ],
+          "question_id": "q_long_robo_compare_v2",
+          "reference_answer": [
+            "机器人交易适合希望完全自动化、无需人工干预的投资者，因为它全自动地决策和执行。",
+            "机器人投顾适合需要专业建议但希望保留最终决策权的投资者，因为它提供建议但不自动执行。",
+            "核心差异在于执行：机器人交易自动执行，机器人投顾不执行。",
+            "自动化程度：机器人交易全自动，机器人投顾半自动。",
+            "输出形式：机器人交易输出执行信号，机器人投顾输出股票建议、市场总结和风险提醒。"
+          ],
+          "rubric_points": [
+            "指出机器人交易适合希望完全自动化交易的投资者，机器人投顾适合需要建议但希望自己决策的投资者",
+            "指出机器人交易自动执行，机器人投顾不执行",
+            "指出机器人交易全自动，机器人投顾半自动",
+            "指出机器人交易输出执行信号，机器人投顾输出建议和提醒"
+          ],
+          "stem": "假设你是一位投资者，请解释为什么机器人交易和机器人投顾适合不同类型的投资者，并分别说明它们的核心差异。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "market_trend_algo_trading",
+      "coverage_tags": [
+        "market_trend_algo_trading"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_market_trend",
+      "learning_goal": "学生能在测验情境下辨析算法交易的市场渗透率和增长趋势。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "算法交易",
+          "en": "Algorithmic Trading"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "算法交易占美国股市交易量的60%，高于欧洲（40%）、外汇（25%）和期权（20%）。",
+          "options": [
+            "美国股市",
+            "欧洲股市",
+            "外汇市场",
+            "美国期权市场"
+          ],
+          "question_id": "q_quiz_market_trend_v1",
+          "stem": "根据市场数据，算法交易在以下哪个市场的交易量占比最高？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "材料指出北美是最大市场，亚太地区增长最快。",
+          "options": [
+            "北美市场最大，亚太地区增长最快",
+            "欧洲市场最大，北美增长最快",
+            "亚太市场最大，欧洲增长最快",
+            "北美市场最大，欧洲增长最快"
+          ],
+          "question_id": "q_quiz_market_trend_v2",
+          "stem": "关于算法交易市场的增长趋势，以下哪项描述是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "robo_trading_vs_robo_advisory",
+      "coverage_tags": [
+        "robo_trading_vs_robo_advisory"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_robo_compare",
+      "learning_goal": "学生能在测验情境下准确辨析机器人交易和机器人投顾的关键区别。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "机器人交易",
+          "en": "Robo-Trading"
+        },
+        {
+          "display": "机器人投顾",
+          "en": "Robo-Advisory"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "机器人交易是全自动的，包括执行；机器人投顾只提供建议，不自动执行。",
+          "options": [
+            "机器人交易自动执行，机器人投顾不执行",
+            "机器人投顾更赚钱",
+            "机器人交易只用于股票",
+            "机器人投顾是全自动的"
+          ],
+          "question_id": "q_quiz_robo_compare_v1",
+          "stem": "以下哪项是机器人交易和机器人投顾的关键区别？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "机器人投顾是半自动的，提供建议、市场总结和风险提醒，但不执行交易。",
+          "options": [
+            "它是全自动的，包括决策和执行",
+            "它提供建议，但不自动执行交易",
+            "它只用于外汇市场",
+            "它的输出是执行交易信号"
+          ],
+          "question_id": "q_quiz_robo_compare_v2",
+          "stem": "关于机器人投顾，以下哪项描述是正确的？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/L1/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

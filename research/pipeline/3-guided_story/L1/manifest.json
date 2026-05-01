@@ -1,0 +1,36 @@
+{
+  "lesson_id": "L1",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "什么是算法交易",
+      "file": "research/pipeline/3-guided_story/L1/step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "算法交易的市场趋势与对比",
+      "file": "research/pipeline/3-guided_story/L1/step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "交易机制与订单簿",
+      "file": "research/pipeline/3-guided_story/L1/step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "做多、做空与盈亏计算",
+      "file": "research/pipeline/3-guided_story/L1/step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "杠杆、保证金与交易系统",
+      "file": "research/pipeline/3-guided_story/L1/step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "实施算法交易的基础设施",
+      "file": "research/pipeline/3-guided_story/L1/step6/step.json",
+      "sequence_id": "step6"
+    }
+  ]
+}

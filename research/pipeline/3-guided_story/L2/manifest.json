@@ -3,9 +3,44 @@
   "mode": "guided_story",
   "steps": [
     {
-      "concept": "MVP lesson slice",
+      "concept": "What is web scraping and why it matters for algorithmic trading",
       "file": "research/pipeline/3-guided_story/L2/step1/step.json",
       "sequence_id": "step1"
+    },
+    {
+      "concept": "Understanding the basic structure of a website: HTML, CSS, and JavaScript",
+      "file": "research/pipeline/3-guided_story/L2/step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "Using BeautifulSoup to parse HTML and extract data",
+      "file": "research/pipeline/3-guided_story/L2/step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "Real-world scraping: S&P 500 list and handling anti-bot measures",
+      "file": "research/pipeline/3-guided_story/L2/step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "Using yfinance for reliable financial data access",
+      "file": "research/pipeline/3-guided_story/L2/step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "Storing scraped data in a SQLite database",
+      "file": "research/pipeline/3-guided_story/L2/step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "Database design considerations for financial data",
+      "file": "research/pipeline/3-guided_story/L2/step7/step.json",
+      "sequence_id": "step7"
+    },
+    {
+      "concept": "Limitations of web scraping and alternative tools",
+      "file": "research/pipeline/3-guided_story/L2/step8/step.json",
+      "sequence_id": "step8"
     }
   ]
 }

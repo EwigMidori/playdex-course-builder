@@ -229,8 +229,8 @@
           "status": "done",
           "done_when": [
             "`coursegen run <lesson_id>` writes `research/pipeline/3-guided_story/<lesson_id>/manifest.json`.",
-            "`coursegen run <lesson_id>` writes `research/pipeline/3-guided_story/<lesson_id>/step1/step.json` for the current MVP step.",
-            "`coursegen run <lesson_id>` writes `research/pipeline/3-guided_story/<lesson_id>/step1/question_bank.json`.",
+            "`coursegen run <lesson_id>` writes `research/pipeline/3-guided_story/<lesson_id>/stepN/step.json` for every generated guided story step.",
+            "`coursegen run <lesson_id>` writes `research/pipeline/3-guided_story/<lesson_id>/stepN/question_bank.json` for every generated guided story step.",
             "`coursegen validate <lesson_id>` scans step directories for question banks and rejects any question family or variant with linked_steps outside its owning step.",
             "Textbook generation reads all step-local question banks instead of `research/pipeline/4-question_bank/<lesson_id>.question_bank.json`.",
             "CLI tests assert the new paths and step-local question bank validation."
@@ -340,6 +340,44 @@
             "crates/app-cli/src/validation.rs",
             "crates/app-cli/tests/cli_smoke.rs",
             "research/pipeline/meta/<lesson_id>/runs/<run_id>/summary.json"
+          ]
+        },
+        {
+          "id": "P2-T02",
+          "title": "Generate manifest-driven multi-step lessons",
+          "description": "Remove the single-step MVP bottleneck by having guided story generation produce multiple natural lesson steps, then generate a step-local question bank for each manifest step.",
+          "workstream": "WS-MVP",
+          "crate_scope": [
+            "crates/app-cli",
+            "research/prompts",
+            "research/pipeline"
+          ],
+          "depends_on": [
+            "P1-T01",
+            "P4-T02"
+          ],
+          "status": "done",
+          "done_when": [
+            "Guided story prompts ask for a lesson-level object with multiple natural steps instead of one full-lesson MVP slice.",
+            "`coursegen run <lesson_id>` writes manifest-driven `stepN/step.json` files for every generated step.",
+            "`coursegen run <lesson_id>` loops over manifest steps and writes one `stepN/question_bank.json` per step.",
+            "Question-bank prompts require all generated linked_steps to point only to the owning step.",
+            "Question-bank model calls are audited under `research/pipeline/meta/<lesson_id>/mvp/question_bank/<step_id>/` for multi-step runs.",
+            "Transient LLM request failures are retried before failing the full run.",
+            "CLI smoke tests cover a multi-step guided story response and verify every step receives a question bank.",
+            "L1 and L2 have been regenerated into multi-step, step-local course assets and both validate."
+          ],
+          "artifacts": [
+            "crates/app-cli/src/mvp.rs",
+            "crates/app-cli/src/paths.rs",
+            "crates/app-cli/tests/cli_smoke.rs",
+            "research/prompts/guided_story_system.md",
+            "research/prompts/guided_story_user.md",
+            "research/prompts/question_bank_system.md",
+            "research/prompts/question_bank_user.md",
+            "research/pipeline/3-guided_story/<lesson_id>/manifest.json",
+            "research/pipeline/3-guided_story/<lesson_id>/stepN/step.json",
+            "research/pipeline/3-guided_story/<lesson_id>/stepN/question_bank.json"
           ]
         }
       ]

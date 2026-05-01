@@ -1,0 +1,100 @@
+{
+  "lesson_id": "L1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "想象一下，你不需要一直盯着屏幕。",
+        "电脑就能帮你做交易决策并自动下单。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "algorithmic_trading"
+      ],
+      "lines": [
+        "这就是 <term id=\"algorithmic_trading\">算法交易</term>。",
+        "它用数学模型和程序来替代人的判断和操作。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "trading_signal",
+        "execution"
+      ],
+      "lines": [
+        "算法交易主要做两件事：",
+        "生成 <term id=\"trading_signal\">交易信号</term>，也就是决策；",
+        "以及自动 <term id=\"execution\">执行</term>，也就是下单。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "lines": [
+        "它的目标很明确：",
+        "最大化利润、控制交易成本、对冲风险。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "算法交易就是用数学模型和计算机程序来生成交易信号并自动执行。",
+        "kind": "single_choice",
+        "options": [
+          "用数学模型和程序进行决策与执行",
+          "手动分析图表并下单",
+          "只用于加密货币市场",
+          "完全避免任何风险"
+        ],
+        "prompt": "算法交易的核心是什么？"
+      },
+      "id": "s005",
+      "lines": [
+        "算法交易的核心是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Algorithmic trading, also called Algo Trading, Quant Trading, Robo-Trading, Program Trading. Use of mathematical models and computer algorithms/programs to generate trading signals (i.e. Decision making) and automate trading process (i.e. Execution). Objectives: maximize profits, control execution costs, hedging and manage investment risks.",
+    "related": [
+      "algorithmic trading basics"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "algorithmic_trading": {
+      "aliases": [
+        "Algo Trading",
+        "Quant Trading",
+        "Robo-Trading",
+        "Program Trading"
+      ],
+      "display": "算法交易",
+      "gloss": "用数学模型和计算机程序来生成交易信号并自动执行交易的方式。"
+    },
+    "execution": {
+      "aliases": [
+        "execution"
+      ],
+      "display": "执行",
+      "gloss": "将交易指令实际发送到市场并完成买卖的过程。"
+    },
+    "trading_signal": {
+      "aliases": [
+        "trading signal"
+      ],
+      "display": "交易信号",
+      "gloss": "根据规则或模型产生的买入或卖出指示。"
+    }
+  }
+}

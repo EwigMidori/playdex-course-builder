@@ -144,10 +144,6 @@ impl LessonPaths {
         self.guided_story_step_dir(step).join("step.json")
     }
 
-    pub fn step_question_bank_path(&self, step: usize) -> PathBuf {
-        self.guided_story_step_dir(step).join("question_bank.json")
-    }
-
     pub fn textbook_path(&self) -> PathBuf {
         self.repo
             .root()

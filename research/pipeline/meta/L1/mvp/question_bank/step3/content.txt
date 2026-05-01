@@ -1,0 +1,639 @@
+```json
+{
+  "lesson_id": "L1",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L1/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "L1: Algorithmic trading basics and financial markets - Trading mechanism and order matching",
+    "source_outline": "L1: Algorithmic trading basics and financial markets - Trading mechanism and order matching",
+    "lesson_map": "L1 step3: 交易机制与订单簿"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "order_book_concept",
+      "description": "订单簿的定义与基本结构（实时更新的买卖订单列表）",
+      "covered_by": ["qf_flash_order_book", "qf_quiz_order_book"]
+    },
+    {
+      "coverage_tag": "bid_ask_price",
+      "description": "买入价（买方最高出价）与卖出价（卖方最低要价）的定义",
+      "covered_by": ["qf_flash_bid_ask", "qf_quiz_bid_ask"]
+    },
+    {
+      "coverage_tag": "bid_ask_spread",
+      "description": "买卖价差（卖出价-买入价）及其与流动性的关系",
+      "covered_by": ["qf_flash_spread", "qf_quiz_spread", "qf_long_spread"]
+    },
+    {
+      "coverage_tag": "market_order",
+      "description": "市价单：按当前最优价格立即成交，保证成交但不保证价格",
+      "covered_by": ["qf_flash_market_order", "qf_quiz_order_types"]
+    },
+    {
+      "coverage_tag": "limit_order",
+      "description": "限价单：指定价格，保证价格但不保证成交",
+      "covered_by": ["qf_flash_limit_order", "qf_quiz_order_types"]
+    },
+    {
+      "coverage_tag": "stop_order",
+      "description": "止损单：价格触及设定水平后自动变成市价单",
+      "covered_by": ["qf_flash_stop_order", "qf_quiz_order_types"]
+    },
+    {
+      "coverage_tag": "slippage",
+      "description": "滑点：预期成交价与实际成交价之间的差距",
+      "covered_by": ["qf_flash_slippage", "qf_quiz_slippage", "qf_long_slippage"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_order_book",
+      "question_type": "short_answer",
+      "linked_steps": ["step3"],
+      "concept_key": "order_book_concept",
+      "coverage_tags": ["order_book_concept"],
+      "term_refs": [
+        {
+          "display": "订单簿",
+          "en": "Order Book"
+        }
+      ],
+      "learning_goal": "学生能准确说出订单簿的定义及其核心组成部分。",
+      "difficulty": "easy",
+      "retrieval_focus": "订单簿的定义与基本结构",
+      "variants": [
+        {
+          "question_id": "q_flash_order_book_v1",
+          "front": "订单簿（Order Book）是什么？",
+          "back": "实时更新的买卖订单列表，按价格排序。",
+          "explanation": "订单簿是市场撮合交易的核心工具，实时列出所有买方和卖方的订单。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_order_book_v2",
+          "front": "订单簿中主要包含哪两方？",
+          "back": "买方（出价）和卖方（要价）。",
+          "explanation": "订单簿分为买方队列（Bid Book）和卖方队列（Ask Book）。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_bid_ask",
+      "question_type": "short_answer",
+      "linked_steps": ["step3"],
+      "concept_key": "bid_ask_price",
+      "coverage_tags": ["bid_ask_price"],
+      "term_refs": [
+        {
+          "display": "买入价",
+          "en": "Bid Price"
+        },
+        {
+          "display": "卖出价",
+          "en": "Ask Price"
+        }
+      ],
+      "learning_goal": "学生能区分买入价和卖出价的定义。",
+      "difficulty": "easy",
+      "retrieval_focus": "买入价与卖出价的定义",
+      "variants": [
+        {
+          "question_id": "q_flash_bid_ask_v1",
+          "front": "买入价（Bid Price）指的是什么？",
+          "back": "买方愿意支付的最高价格。",
+          "explanation": "买入价是买方队列中的最高出价。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_bid_ask_v2",
+          "front": "卖出价（Ask Price）指的是什么？",
+          "back": "卖方愿意接受的最低价格。",
+          "explanation": "卖出价是卖方队列中的最低要价。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_spread",
+      "question_type": "short_answer",
+      "linked_steps": ["step3"],
+      "concept_key": "bid_ask_spread",
+      "coverage_tags": ["bid_ask_spread"],
+      "term_refs": [
+        {
+          "display": "买卖价差",
+          "en": "Bid-Ask Spread"
+        }
+      ],
+      "learning_goal": "学生能说出买卖价差的定义及其与流动性的关系。",
+      "difficulty": "easy",
+      "retrieval_focus": "买卖价差的定义与流动性关系",
+      "variants": [
+        {
+          "question_id": "q_flash_spread_v1",
+          "front": "买卖价差（Bid-Ask Spread）如何计算？",
+          "back": "卖出价减去买入价。",
+          "explanation": "价差 = Ask Price - Bid Price。",
+          "estimated_seconds": 5
+        },
+        {
+          "question_id": "q_flash_spread_v2",
+          "front": "价差越小，说明市场流动性如何？",
+          "back": "流动性越好。",
+          "explanation": "较小的价差通常意味着市场深度好，交易成本低。",
+          "estimated_seconds": 5
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_market_order",
+      "question_type": "short_answer",
+      "linked_steps": ["step3"],
+      "concept_key": "market_order",
+      "coverage_tags": ["market_order"],
+      "term_refs": [
+        {
+          "display": "市价单",
+          "en": "Market Order"
+        }
+      ],
+      "learning_goal": "学生能说出市价单的核心特征：保证成交，不保证价格。",
+      "difficulty": "easy",
+      "retrieval_focus": "市价单的保证与风险",
+      "variants": [
+        {
+          "question_id": "q_flash_market_order_v1",
+          "front": "市价单（Market Order）保证什么？",
+          "back": "保证立即成交。",
+          "explanation": "市价单以当前最优价格执行，确保订单被立即匹配。",
+          "estimated_seconds": 5
+        },
+        {
+          "question_id": "q_flash_market_order_v2",
+          "front": "市价单（Market Order）不保证什么？",
+          "back": "不保证成交价格。",
+          "explanation": "由于市场波动，实际成交价可能与预期不同。",
+          "estimated_seconds": 5
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_limit_order",
+      "question_type": "short_answer",
+      "linked_steps": ["step3"],
+      "concept_key": "limit_order",
+      "coverage_tags": ["limit_order"],
+      "term_refs": [
+        {
+          "display": "限价单",
+          "en": "Limit Order"
+        }
+      ],
+      "learning_goal": "学生能说出限价单的核心特征：保证价格，不保证成交。",
+      "difficulty": "easy",
+      "retrieval_focus": "限价单的保证与风险",
+      "variants": [
+        {
+          "question_id": "q_flash_limit_order_v1",
+          "front": "限价单（Limit Order）保证什么？",
+          "back": "保证成交价格（或更优）。",
+          "explanation": "限价单只在指定价格或更优价格时成交。",
+          "estimated_seconds": 5
+        },
+        {
+          "question_id": "q_flash_limit_order_v2",
+          "front": "限价单（Limit Order）不保证什么？",
+          "back": "不保证一定成交。",
+          "explanation": "如果市场价格未达到指定价格，订单可能不会被执行。",
+          "estimated_seconds": 5
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_stop_order",
+      "question_type": "short_answer",
+      "linked_steps": ["step3"],
+      "concept_key": "stop_order",
+      "coverage_tags": ["stop_order"],
+      "term_refs": [
+        {
+          "display": "止损单",
+          "en": "Stop Order"
+        }
+      ],
+      "learning_goal": "学生能说出止损单的触发机制。",
+      "difficulty": "easy",
+      "retrieval_focus": "止损单的触发与转换",
+      "variants": [
+        {
+          "question_id": "q_flash_stop_order_v1",
+          "front": "止损单（Stop Order）在价格触及设定水平后会变成什么？",
+          "back": "变成市价单。",
+          "explanation": "一旦触发，止损单自动转换为市价单以确保执行。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_stop_order_v2",
+          "front": "止损单（Stop Order）常用于什么场景？",
+          "back": "止损或突破买入。",
+          "explanation": "用于限制亏损或捕捉突破行情。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_slippage",
+      "question_type": "short_answer",
+      "linked_steps": ["step3"],
+      "concept_key": "slippage",
+      "coverage_tags": ["slippage"],
+      "term_refs": [
+        {
+          "display": "滑点",
+          "en": "Slippage"
+        }
+      ],
+      "learning_goal": "学生能说出滑点的定义。",
+      "difficulty": "easy",
+      "retrieval_focus": "滑点的定义",
+      "variants": [
+        {
+          "question_id": "q_flash_slippage_v1",
+          "front": "滑点（Slippage）指的是什么？",
+          "back": "预期成交价与实际成交价之间的差距。",
+          "explanation": "滑点通常发生在市场波动大或流动性不足时。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_slippage_v2",
+          "front": "如果预期50元买入，实际成交在51元，滑点是多少？",
+          "back": "1元。",
+          "explanation": "滑点 = 实际成交价 - 预期成交价 = 51 - 50 = 1元。",
+          "estimated_seconds": 5
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_order_book",
+      "question_type": "single_choice",
+      "linked_steps": ["step3"],
+      "concept_key": "order_book_concept",
+      "coverage_tags": ["order_book_concept"],
+      "term_refs": [
+        {
+          "display": "订单簿",
+          "en": "Order Book"
+        }
+      ],
+      "learning_goal": "学生能在选择题中识别订单簿的核心功能。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_order_book_v1",
+          "stem": "订单簿（Order Book）的主要作用是什么？",
+          "options": [
+            "记录历史成交价格",
+            "实时列出买卖订单并撮合交易",
+            "计算投资者的盈亏",
+            "提供公司财务报表"
+          ],
+          "answer": 1,
+          "explanation": "订单簿是实时更新的买卖订单列表，用于撮合交易。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_order_book_v2",
+          "stem": "以下哪项最能描述订单簿的结构？",
+          "options": [
+            "只有卖方订单",
+            "按时间顺序排列的所有订单",
+            "按价格排序的买方和卖方订单列表",
+            "随机排列的订单列表"
+          ],
+          "answer": 2,
+          "explanation": "订单簿按价格排序，分为买方队列和卖方队列。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_bid_ask",
+      "question_type": "single_choice",
+      "linked_steps": ["step3"],
+      "concept_key": "bid_ask_price",
+      "coverage_tags": ["bid_ask_price"],
+      "term_refs": [
+        {
+          "display": "买入价",
+          "en": "Bid Price"
+        },
+        {
+          "display": "卖出价",
+          "en": "Ask Price"
+        }
+      ],
+      "learning_goal": "学生能在具体情境中区分买入价和卖出价。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_bid_ask_v1",
+          "stem": "在订单簿中，买入价（Bid Price）是指：",
+          "options": [
+            "卖方愿意接受的最低价格",
+            "买方愿意支付的最高价格",
+            "最近一笔成交的价格",
+            "市场平均价格"
+          ],
+          "answer": 1,
+          "explanation": "买入价是买方愿意支付的最高价格。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_bid_ask_v2",
+          "stem": "在订单簿中，卖出价（Ask Price）是指：",
+          "options": [
+            "买方愿意支付的最高价格",
+            "卖方愿意接受的最低价格",
+            "最近一笔成交的价格",
+            "市场平均价格"
+          ],
+          "answer": 1,
+          "explanation": "卖出价是卖方愿意接受的最低价格。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_spread",
+      "question_type": "single_choice",
+      "linked_steps": ["step3"],
+      "concept_key": "bid_ask_spread",
+      "coverage_tags": ["bid_ask_spread"],
+      "term_refs": [
+        {
+          "display": "买卖价差",
+          "en": "Bid-Ask Spread"
+        }
+      ],
+      "learning_goal": "学生能计算买卖价差并理解其与流动性的关系。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_spread_v1",
+          "stem": "某股票的买入价为24元，卖出价为25元，买卖价差是多少？",
+          "options": [
+            "0.5元",
+            "1元",
+            "24元",
+            "25元"
+          ],
+          "answer": 1,
+          "explanation": "买卖价差 = 卖出价 - 买入价 = 25 - 24 = 1元。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_spread_v2",
+          "stem": "以下关于买卖价差的说法，哪项是正确的？",
+          "options": [
+            "价差越大，流动性越好",
+            "价差越小，流动性越好",
+            "价差与流动性无关",
+            "价差等于成交量"
+          ],
+          "answer": 1,
+          "explanation": "较小的价差通常意味着市场流动性更好，交易成本更低。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_order_types",
+      "question_type": "single_choice",
+      "linked_steps": ["step3"],
+      "concept_key": "order_types",
+      "coverage_tags": ["market_order", "limit_order", "stop_order"],
+      "term_refs": [
+        {
+          "display": "市价单",
+          "en": "Market Order"
+        },
+        {
+          "display": "限价单",
+          "en": "Limit Order"
+        },
+        {
+          "display": "止损单",
+          "en": "Stop Order"
+        }
+      ],
+      "learning_goal": "学生能根据交易需求选择合适的订单类型。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_order_types_v1",
+          "stem": "如果你希望立即买入股票，且对价格不敏感，应该使用哪种订单？",
+          "options": [
+            "市价单",
+            "限价单",
+            "止损单",
+            "以上都不是"
+          ],
+          "answer": 0,
+          "explanation": "市价单保证立即成交，但不保证价格。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_order_types_v2",
+          "stem": "如果你希望以不高于50元的价格买入股票，应该使用哪种订单？",
+          "options": [
+            "市价单",
+            "限价单",
+            "止损单",
+            "以上都不是"
+          ],
+          "answer": 1,
+          "explanation": "限价单允许你指定一个最高买入价格，只有达到或低于该价格时才成交。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_order_types_v3",
+          "stem": "哪种订单在价格触及设定水平后会自动变成市价单？",
+          "options": [
+            "市价单",
+            "限价单",
+            "止损单",
+            "以上都不是"
+          ],
+          "answer": 2,
+          "explanation": "止损单在触发后转换为市价单以确保执行。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_slippage",
+      "question_type": "single_choice",
+      "linked_steps": ["step3"],
+      "concept_key": "slippage",
+      "coverage_tags": ["slippage"],
+      "term_refs": [
+        {
+          "display": "滑点",
+          "en": "Slippage"
+        }
+      ],
+      "learning_goal": "学生能识别滑点产生的原因和影响。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_slippage_v1",
+          "stem": "以下哪种情况最可能导致滑点？",
+          "options": [
+            "市场流动性充足",
+            "使用限价单",
+            "市场波动剧烈时使用市价单",
+            "交易量很小"
+          ],
+          "answer": 2,
+          "explanation": "高波动时使用市价单，实际成交价可能与预期有较大差距，导致滑点。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_slippage_v2",
+          "stem": "滑点对交易者的影响是什么？",
+          "options": [
+            "总是增加利润",
+            "可能导致实际交易成本高于预期",
+            "只影响限价单",
+            "不影响交易结果"
+          ],
+          "answer": 1,
+          "explanation": "滑点意味着实际成交价不如预期，增加了交易成本。",
+          "estimated_seconds": 15
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_spread",
+      "question_type": "short_explain",
+      "linked_steps": ["step3"],
+      "concept_key": "bid_ask_spread",
+      "coverage_tags": ["bid_ask_spread"],
+      "term_refs": [
+        {
+          "display": "买卖价差",
+          "en": "Bid-Ask Spread"
+        }
+      ],
+      "learning_goal": "学生能解释买卖价差的计算、含义及其与市场流动性的关系。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_spread_v1",
+          "stem": "请解释什么是买卖价差（Bid-Ask Spread），并说明它如何反映市场流动性。",
+          "prompt_blocks": [
+            "定义买卖价差",
+            "给出一个计算示例",
+            "解释价差大小与流动性的关系"
+          ],
+          "rubric_points": [
+            "正确说出买卖价差 = 卖出价 - 买入价",
+            "能给出一个自洽的数值例子",
+            "能说明价差越小流动性越好，价差越大流动性越差"
+          ],
+          "reference_answer": [
+            "买卖价差是卖出价（Ask Price）与买入价（Bid Price）之间的差额。",
+            "例如，买入价为24元，卖出价为25元，则价差为1元。",
+            "价差越小，说明市场流动性越好，交易成本越低；价差越大，说明市场流动性越差，交易成本越高。"
+          ],
+          "estimated_seconds": 90
+        },
+        {
+          "question_id": "q_long_spread_v2",
+          "stem": "假设某股票的买入价为50元，卖出价为52元。请计算买卖价差，并分析该股票的流动性状况。",
+          "prompt_blocks": [
+            "计算价差",
+            "判断流动性",
+            "解释判断依据"
+          ],
+          "rubric_points": [
+            "正确计算价差为2元",
+            "能判断流动性相对较差",
+            "能解释较大的价差意味着较高的交易成本和较低的流动性"
+          ],
+          "reference_answer": [
+            "买卖价差 = 52元 - 50元 = 2元。",
+            "2元的价差相对较大，表明该股票的流动性较差。",
+            "较大的价差意味着买卖双方的价格分歧较大，交易成本较高，可能难以快速以理想价格成交。"
+          ],
+          "estimated_seconds": 90
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_slippage",
+      "question_type": "short_explain",
+      "linked_steps": ["step3"],
+      "concept_key": "slippage",
+      "coverage_tags": ["slippage"],
+      "term_refs": [
+        {
+          "display": "滑点",
+          "en": "Slippage"
+        }
+      ],
+      "learning_goal": "学生能解释滑点的定义、产生原因及其对交易成本的影响。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_slippage_v1",
+          "stem": "请解释什么是滑点（Slippage），并说明在什么情况下容易发生滑点。",
+          "prompt_blocks": [
+            "定义滑点",
+            "列举至少两种容易发生滑点的情况",
+            "解释滑点对交易成本的影响"
+          ],
+          "rubric_points": [
+            "正确说出滑点是预期成交价与实际成交价之间的差距",
+            "能提到高波动时期或使用市价单时容易发生",
+            "能说明滑点会增加实际交易成本"
+          ],
+          "reference_answer": [
+            "滑点是指预期成交价与实际成交价之间的差异。",
+            "滑点容易发生在市场波动剧烈时，或者当使用市价单且市场深度不足时。",
+            "滑点会导致实际交易成本高于预期，例如预期50元买入，实际51元成交，多付的1元就是滑点成本。"
+          ],
+          "estimated_seconds": 90
+        },
+        {
+          "question_id": "q_long_slippage_v2",
+          "stem": "假设你设置算法在股价跌至100元时买入100股，但由于市场波动，实际成交价为101元。请分析这一现象，并说明其对交易成本的影响。",
+          "prompt_blocks": [
+            "识别这一现象为滑点",
+            "计算滑点金额",
+            "分析对总交易成本的影响"
+          ],
+          "rubric_points": [
+            "正确识别为滑点",
+            "正确计算滑点金额为1元/股，总计100元",
+            "能说明滑点导致总成本增加100元"
+          ],
+          "reference_answer": [
+            "这一现象是滑点：预期成交价100元，实际成交价101元。",
+            "滑点金额为1元/股，总滑点成本为100股 × 1元 = 100元。",
+            "原本预期花费10000元，实际花费10100元，交易成本因滑点增加了100元。"
+          ],
+          "estimated_seconds": 90
+        }
+      ]
+    }
+  ]
+}
+```

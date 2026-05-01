@@ -1,7 +1,8 @@
-请把下面的材料重写成一个 `guided_story` JSON step。
+请把下面的材料重写成一个 lesson 级 `guided_story` JSON。
 
 目标：
 - 面向手机端逐屏点击学习
+- 先把 lecture 拆成多个自然 step，再为每个 step 写逐屏内容
 - 不要像课件提纲
 - 不要像老师讲稿
 - 要像一段有推进感的字幕流
@@ -10,10 +11,16 @@
 zh-CN
 
 本次 step 的主题边界：
-full lesson MVP slice
+full lecture; split into 4-8 natural learning steps unless the source is very short
 
 输出风格：
 - 每个 screen 默认 1 到 2 行
+- 一节复杂 lecture 通常生成 4 到 8 个 steps
+- 每个 step 通常 6 到 14 个 screens，避免 25+ screens 的巨型 step
+- 每个 step 只覆盖一个自然学习单元
+- 顶层必须优先输出 `{ "lesson_id": ..., "mode": "guided_story", "steps": [...] }`
+- 每个 `steps[]` item 必须包含 `sequence_id`、`concept`、`step`
+- `steps[].step` 必须符合 guided_story step schema，并包含自己的 `screens` 与 `term_catalog`
 - 每行尽量短
 - 每 3 到 6 个 screen 插入一次小练习或认知拐点
 - 新概念首次出现必须加粗
@@ -33,6 +40,7 @@ full lesson MVP slice
 - 填空题答案不要混放多种语言版本
 - 不要生成“纯英文术语 + 下一句松散意译”这种不完整教学表达
 - 输出时请生成顶层 `term_catalog`
+- 如果输出 lesson 级对象，`term_catalog` 放在每个 `steps[].step` 内
 - 每个首次出现的术语都要：
   - 在 `lines` 中用 `<term>` 标记
   - 在 `term_catalog` 中登记 `display`、`aliases`、`gloss`

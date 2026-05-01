@@ -1,0 +1,540 @@
+```json
+{
+  "lesson_id": "L2",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L2/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "L2: Data scraping and database management with Python - The limitations of web scraping",
+    "source_outline": "L2: Data scraping and database management with Python - The limitations of web scraping",
+    "lesson_map": "L2 step8: Limitations of web scraping and alternative tools"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "limitations_data_quality",
+      "description": "网络爬取的数据质量局限性：数据可能不完整或过时。",
+      "covered_by": ["qf_flash_limitations_data_quality", "qf_quiz_limitations_data_quality"]
+    },
+    {
+      "coverage_tag": "limitations_resource_intensive",
+      "description": "网络爬取的资源消耗局限性：消耗大量带宽、存储和时间。",
+      "covered_by": ["qf_flash_limitations_resource_intensive", "qf_quiz_limitations_resource_intensive"]
+    },
+    {
+      "coverage_tag": "limitations_technical_challenges",
+      "description": "网络爬取的技术挑战：网站结构变化、反爬机制（IP封锁、频率限制）。",
+      "covered_by": ["qf_flash_limitations_technical_challenges", "qf_quiz_limitations_technical_challenges"]
+    },
+    {
+      "coverage_tag": "selenium_tool",
+      "description": "Selenium：用于模拟用户交互和自动化浏览器的工具，适用于动态加载网页。",
+      "covered_by": ["qf_flash_selenium_tool", "qf_quiz_selenium_tool", "qf_long_selenium_use_case"]
+    },
+    {
+      "coverage_tag": "xpath_lxml_tool",
+      "description": "XPath 和 lxml：XPath 是一种在 XML/HTML 文档中导航和选择节点的查询语言，lxml 是支持 XPath 的 Python 库。",
+      "covered_by": ["qf_flash_xpath_lxml_tool", "qf_quiz_xpath_lxml_tool", "qf_long_xpath_example"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_limitations_data_quality",
+      "question_type": "short_answer",
+      "linked_steps": ["step8"],
+      "concept_key": "limitations_data_quality",
+      "coverage_tags": ["limitations_data_quality"],
+      "term_refs": [
+        {
+          "display": "数据质量",
+          "en": "Data Quality"
+        }
+      ],
+      "learning_goal": "学生能准确说出网络爬取在数据质量方面的主要局限性。",
+      "difficulty": "easy",
+      "retrieval_focus": "网络爬取在数据质量方面的具体问题。",
+      "variants": [
+        {
+          "question_id": "q_flash_limitations_data_quality_v1",
+          "front": "网络爬取在数据质量方面的一个主要局限性是什么？",
+          "back": "数据可能不完整或过时。",
+          "explanation": "爬取到的数据可能缺失部分内容，或者不是最新版本，影响分析准确性。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_limitations_data_quality_v2",
+          "front": "从网站爬取的数据，在质量上可能面临哪两个具体问题？",
+          "back": "不完整和过时。",
+          "explanation": "网站可能只展示了部分数据，或者数据更新不及时，导致爬取结果有缺陷。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_limitations_resource_intensive",
+      "question_type": "short_answer",
+      "linked_steps": ["step8"],
+      "concept_key": "limitations_resource_intensive",
+      "coverage_tags": ["limitations_resource_intensive"],
+      "term_refs": [
+        {
+          "display": "资源密集型",
+          "en": "Resource Intensive"
+        }
+      ],
+      "learning_goal": "学生能说出网络爬取在资源消耗方面的两个主要问题。",
+      "difficulty": "easy",
+      "retrieval_focus": "网络爬取消耗的具体资源。",
+      "variants": [
+        {
+          "question_id": "q_flash_limitations_resource_intensive_v1",
+          "front": "爬取大量数据时，会消耗哪两种主要资源？",
+          "back": "带宽和存储。",
+          "explanation": "下载大量网页会占用网络带宽，存储爬取的数据也需要大量磁盘空间。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_limitations_resource_intensive_v2",
+          "front": "除了带宽和存储，爬取大量数据时还有什么时间上的消耗？",
+          "back": "加载整个网页很耗时。",
+          "explanation": "为了提取数据，需要完整加载网页内容，这个过程可能非常缓慢。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_limitations_technical_challenges",
+      "question_type": "short_answer",
+      "linked_steps": ["step8"],
+      "concept_key": "limitations_technical_challenges",
+      "coverage_tags": ["limitations_technical_challenges"],
+      "term_refs": [
+        {
+          "display": "技术挑战",
+          "en": "Technical Challenges"
+        }
+      ],
+      "learning_goal": "学生能列举网络爬取面临的两个主要技术挑战。",
+      "difficulty": "easy",
+      "retrieval_focus": "网络爬取的技术挑战的具体例子。",
+      "variants": [
+        {
+          "question_id": "q_flash_limitations_technical_challenges_v1",
+          "front": "网络爬取面临的一个常见技术挑战是什么？",
+          "back": "网站结构经常变化。",
+          "explanation": "如果网站改版，之前写的爬虫代码可能失效，需要重新适配。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_limitations_technical_challenges_v2",
+          "front": "网站常用的两种反爬机制是什么？",
+          "back": "IP 封锁和频率限制。",
+          "explanation": "IP封锁会禁止某个IP地址访问，频率限制则限制单位时间内的请求次数。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_selenium_tool",
+      "question_type": "short_answer",
+      "linked_steps": ["step8"],
+      "concept_key": "selenium_tool",
+      "coverage_tags": ["selenium_tool"],
+      "term_refs": [
+        {
+          "display": "Selenium",
+          "en": "Selenium"
+        }
+      ],
+      "learning_goal": "学生能说出Selenium的核心功能和适用场景。",
+      "difficulty": "easy",
+      "retrieval_focus": "Selenium 是什么以及它能解决什么问题。",
+      "variants": [
+        {
+          "question_id": "q_flash_selenium_tool_v1",
+          "front": "Selenium 是一个什么工具？",
+          "back": "一个用于模拟用户交互和自动化浏览器的工具。",
+          "explanation": "它可以模拟点击、输入等操作，适用于处理动态加载的网页。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_selenium_tool_v2",
+          "front": "当 BeautifulSoup 无法处理动态加载的网页时，应该使用哪个工具？",
+          "back": "Selenium。",
+          "explanation": "Selenium 可以模拟真实的浏览器行为，从而获取由 JavaScript 动态生成的内容。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_xpath_lxml_tool",
+      "question_type": "short_answer",
+      "linked_steps": ["step8"],
+      "concept_key": "xpath_lxml_tool",
+      "coverage_tags": ["xpath_lxml_tool"],
+      "term_refs": [
+        {
+          "display": "XPath",
+          "en": "XPath"
+        },
+        {
+          "display": "lxml",
+          "en": "lxml"
+        }
+      ],
+      "learning_goal": "学生能说出XPath是什么以及lxml库的作用。",
+      "difficulty": "easy",
+      "retrieval_focus": "XPath 和 lxml 的基本定义。",
+      "variants": [
+        {
+          "question_id": "q_flash_xpath_lxml_tool_v1",
+          "front": "XPath 是一种什么语言？",
+          "back": "一种在 XML/HTML 文档中导航和选择节点的查询语言。",
+          "explanation": "它使用路径表达式来精确定位文档中的元素。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_xpath_lxml_tool_v2",
+          "front": "lxml 是一个什么库？",
+          "back": "一个用于解析 XPath 和 XML 模式的 Python 库。",
+          "explanation": "它支持使用 XPath 语法高效地提取 HTML 或 XML 数据。",
+          "estimated_seconds": 8
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_limitations_data_quality",
+      "question_type": "single_choice",
+      "linked_steps": ["step8"],
+      "concept_key": "limitations_data_quality",
+      "coverage_tags": ["limitations_data_quality"],
+      "term_refs": [
+        {
+          "display": "数据质量",
+          "en": "Data Quality"
+        }
+      ],
+      "learning_goal": "学生能在具体场景中识别出数据质量问题。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_limitations_data_quality_v1",
+          "stem": "你爬取了一个财经网站的历史股价数据，发现某只股票在2023年6月的数据完全缺失。这体现了网络爬取的哪个局限性？",
+          "options": [
+            "资源消耗大",
+            "数据质量不完整",
+            "网站结构变化",
+            "反爬机制"
+          ],
+          "answer": 1,
+          "explanation": "数据缺失是数据质量不完整的具体表现。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_limitations_data_quality_v2",
+          "stem": "你爬取了一个新闻网站的文章列表，但发现列表中的文章发布日期比实际晚了三天。这体现了网络爬取的哪个局限性？",
+          "options": [
+            "技术挑战",
+            "资源消耗大",
+            "数据过时",
+            "反爬机制"
+          ],
+          "answer": 2,
+          "explanation": "数据不是最新版本，属于数据过时的问题。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_limitations_resource_intensive",
+      "question_type": "single_choice",
+      "linked_steps": ["step8"],
+      "concept_key": "limitations_resource_intensive",
+      "coverage_tags": ["limitations_resource_intensive"],
+      "term_refs": [
+        {
+          "display": "资源密集型",
+          "en": "Resource Intensive"
+        }
+      ],
+      "learning_goal": "学生能判断哪些情况属于资源消耗问题。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_limitations_resource_intensive_v1",
+          "stem": "你计划爬取全球所有交易所的股票历史数据，但发现本地磁盘空间不足。这体现了网络爬取的哪个局限性？",
+          "options": [
+            "数据质量差",
+            "技术挑战",
+            "资源消耗大（存储）",
+            "网站结构变化"
+          ],
+          "answer": 2,
+          "explanation": "存储大量数据会消耗大量磁盘空间，属于资源消耗问题。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_limitations_resource_intensive_v2",
+          "stem": "为了爬取一个包含大量高清图片的网页，你的程序运行了很长时间才完成。这主要体现了网络爬取的哪个局限性？",
+          "options": [
+            "反爬机制",
+            "数据质量",
+            "资源消耗大（时间）",
+            "网站结构变化"
+          ],
+          "answer": 2,
+          "explanation": "加载包含大量资源的网页非常耗时，属于时间上的资源消耗。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_limitations_technical_challenges",
+      "question_type": "single_choice",
+      "linked_steps": ["step8"],
+      "concept_key": "limitations_technical_challenges",
+      "coverage_tags": ["limitations_technical_challenges"],
+      "term_refs": [
+        {
+          "display": "技术挑战",
+          "en": "Technical Challenges"
+        }
+      ],
+      "learning_goal": "学生能区分不同的技术挑战。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_limitations_technical_challenges_v1",
+          "stem": "你的爬虫程序昨天还能正常工作，但今天却报错了，原因是目标网站改版了。这属于哪种技术挑战？",
+          "options": [
+            "IP 封锁",
+            "频率限制",
+            "网站结构变化",
+            "数据过时"
+          ],
+          "answer": 2,
+          "explanation": "网站结构变化会导致基于旧结构编写的爬虫失效。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_limitations_technical_challenges_v2",
+          "stem": "你的爬虫在短时间内发送了大量请求，随后你的IP地址被目标网站禁止访问。这属于哪种反爬机制？",
+          "options": [
+            "频率限制",
+            "IP 封锁",
+            "验证码",
+            "数据加密"
+          ],
+          "answer": 1,
+          "explanation": "IP封锁是常见的反爬机制，用于阻止来自特定IP的请求。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_selenium_tool",
+      "question_type": "single_choice",
+      "linked_steps": ["step8"],
+      "concept_key": "selenium_tool",
+      "coverage_tags": ["selenium_tool"],
+      "term_refs": [
+        {
+          "display": "Selenium",
+          "en": "Selenium"
+        }
+      ],
+      "learning_goal": "学生能判断在何种场景下应该使用Selenium。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_selenium_tool_v1",
+          "stem": "你需要从一个需要点击“加载更多”按钮才能显示全部内容的网页中提取数据。以下哪个工具最适合？",
+          "options": [
+            "BeautifulSoup",
+            "Requests",
+            "Selenium",
+            "yfinance"
+          ],
+          "answer": 2,
+          "explanation": "Selenium 可以模拟用户点击操作，从而触发动态内容加载。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_selenium_tool_v2",
+          "stem": "以下哪个关于 Selenium 的描述是正确的？",
+          "options": [
+            "它是一个用于发送 HTTP 请求的库。",
+            "它只能用于静态网页的爬取。",
+            "它可以模拟真实的浏览器操作。",
+            "它专门用于解析 HTML 文档。"
+          ],
+          "answer": 2,
+          "explanation": "Selenium 的核心功能是模拟用户与浏览器的交互。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_xpath_lxml_tool",
+      "question_type": "single_choice",
+      "linked_steps": ["step8"],
+      "concept_key": "xpath_lxml_tool",
+      "coverage_tags": ["xpath_lxml_tool"],
+      "term_refs": [
+        {
+          "display": "XPath",
+          "en": "XPath"
+        }
+      ],
+      "learning_goal": "学生能理解XPath的基本语法和用途。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_xpath_lxml_tool_v1",
+          "stem": "XPath 表达式 `//table[@id='constituents']//tr` 的作用是什么？",
+          "options": [
+            "选择所有 id 为 'constituents' 的表格。",
+            "选择所有 id 为 'constituents' 的表格中的所有行。",
+            "选择所有表格中的第一个行。",
+            "选择所有行中的第一个表格。"
+          ],
+          "answer": 1,
+          "explanation": "`//table[@id='constituents']` 选择目标表格，`//tr` 选择该表格下的所有行。",
+          "estimated_seconds": 25
+        },
+        {
+          "question_id": "q_quiz_xpath_lxml_tool_v2",
+          "stem": "与 BeautifulSoup 相比，使用 lxml 和 XPath 进行数据提取的一个主要优势是什么？",
+          "options": [
+            "不需要安装额外的库。",
+            "只能用于 XML 文档。",
+            "定位元素的方式更灵活。",
+            "运行速度更慢。"
+          ],
+          "answer": 2,
+          "explanation": "XPath 提供了强大的路径表达式，可以更精确和灵活地定位任何元素。",
+          "estimated_seconds": 20
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_selenium_use_case",
+      "question_type": "short_explain",
+      "linked_steps": ["step8"],
+      "concept_key": "selenium_tool",
+      "coverage_tags": ["selenium_tool"],
+      "term_refs": [
+        {
+          "display": "Selenium",
+          "en": "Selenium"
+        }
+      ],
+      "learning_goal": "学生能解释在什么情况下需要使用Selenium，并说明其工作原理。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_selenium_use_case_v1",
+          "stem": "请解释为什么对于动态加载的网页，BeautifulSoup 可能无能为力，而 Selenium 可以解决这个问题。",
+          "prompt_blocks": [
+            "解释动态加载网页的特点。",
+            "说明 BeautifulSoup 的工作原理及其局限性。",
+            "说明 Selenium 的工作原理及其如何克服这个局限性。"
+          ],
+          "rubric_points": [
+            "正确指出动态加载的内容由 JavaScript 生成。",
+            "正确指出 BeautifulSoup 只能解析静态 HTML 源代码。",
+            "正确指出 Selenium 可以模拟浏览器执行 JavaScript，从而获取动态内容。"
+          ],
+          "reference_answer": [
+            "动态加载的网页内容（如点击按钮后出现的数据）是由 JavaScript 在浏览器中执行后生成的，这些内容并不在初始的 HTML 源代码中。",
+            "BeautifulSoup 只能解析服务器返回的静态 HTML 源代码，因此无法获取这些动态生成的内容。",
+            "Selenium 通过控制一个真实的浏览器（如 Chrome）来加载网页，它会像真实用户一样执行 JavaScript，从而获取到完整的、动态渲染后的页面内容。"
+          ],
+          "estimated_seconds": 90
+        },
+        {
+          "question_id": "q_long_selenium_use_case_v2",
+          "stem": "假设你需要从一个需要登录后才能查看数据的网站爬取信息。请解释为什么使用 Requests + BeautifulSoup 的组合会比较困难，而 Selenium 可以更简单地实现。",
+          "prompt_blocks": [
+            "分析使用 Requests 处理登录的复杂性。",
+            "分析使用 Selenium 处理登录的简便性。",
+            "总结 Selenium 在此场景下的优势。"
+          ],
+          "rubric_points": [
+            "指出使用 Requests 需要手动管理 Cookie、Session 和表单提交。",
+            "指出 Selenium 可以自动处理登录表单的填写和提交，并自动管理 Cookie。",
+            "指出 Selenium 更适合处理包含复杂交互（如验证码、两步验证）的登录流程。"
+          ],
+          "reference_answer": [
+            "使用 Requests 模拟登录需要分析登录表单的结构，手动构造 POST 请求，并处理服务器返回的 Cookie 和 Session，过程繁琐且容易出错。",
+            "使用 Selenium，你可以编写代码自动在输入框中填写用户名和密码，然后点击登录按钮，就像真实用户一样。Selenium 会自动处理 Cookie 和 Session。",
+            "对于包含验证码或两步验证的复杂登录流程，Selenium 的优势更加明显，因为它可以模拟更复杂的用户交互。"
+          ],
+          "estimated_seconds": 90
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_xpath_example",
+      "question_type": "short_explain",
+      "linked_steps": ["step8"],
+      "concept_key": "xpath_lxml_tool",
+      "coverage_tags": ["xpath_lxml_tool"],
+      "term_refs": [
+        {
+          "display": "XPath",
+          "en": "XPath"
+        }
+      ],
+      "learning_goal": "学生能解释一个具体XPath表达式的含义，并说明其相对于其他方法的优势。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_xpath_example_v1",
+          "stem": "请解释 XPath 表达式 `//table[@id='constituents']//tr` 的含义，并说明为什么使用 XPath 比使用 BeautifulSoup 的 `find('table', id='constituents')` 然后遍历 `find_all('tr')` 在某些情况下更灵活。",
+          "prompt_blocks": [
+            "分解并解释 XPath 表达式的每个部分。",
+            "对比 XPath 和 BeautifulSoup 在定位元素时的不同方式。",
+            "说明 XPath 在哪些方面更灵活。"
+          ],
+          "rubric_points": [
+            "正确解释 `//` 表示相对路径，`table[@id='constituents']` 表示选择 id 属性为 'constituents' 的 table 元素，`//tr` 表示选择所有 tr 元素。",
+            "指出 BeautifulSoup 的方法链式调用，而 XPath 使用单一的路径表达式。",
+            "指出 XPath 可以基于位置、属性值、文本内容等多种条件进行组合查询，表达能力更强。"
+          ],
+          "reference_answer": [
+            "`//table[@id='constituents']//tr` 的含义是：在整个文档中，找到 id 属性等于 'constituents' 的 `<table>` 元素，然后在该元素下找到所有 `<tr>` 元素。",
+            "BeautifulSoup 通常需要先找到父元素，再通过循环或另一个查找方法找到子元素，是一种链式调用。而 XPath 用一个表达式就能完成从根节点到目标节点的路径描述。",
+            "XPath 的灵活性体现在它支持丰富的函数和轴（如 `position()`、`following-sibling`），可以基于元素的位置、文本内容、属性值等进行非常精确的定位，这在处理结构复杂或相似的 HTML 时优势明显。"
+          ],
+          "estimated_seconds": 90
+        },
+        {
+          "question_id": "q_long_xpath_example_v2",
+          "stem": "请解释 XPath 表达式 `//li[2]` 和 `//li[@class='item']` 的区别，并说明它们分别适用于什么场景。",
+          "prompt_blocks": [
+            "解释第一个表达式的含义和适用场景。",
+            "解释第二个表达式的含义和适用场景。",
+            "总结基于位置和基于属性选择元素的区别。"
+          ],
+          "rubric_points": [
+            "正确指出 `//li[2]` 选择文档中所有 `<li>` 元素中的第二个。",
+            "正确指出 `//li[@class='item']` 选择所有 class 属性为 'item' 的 `<li>` 元素。",
+            "指出基于位置的选择适用于结构固定的列表，基于属性的选择更通用，不依赖顺序。"
+          ],
+          "reference_answer": [
+            "`//li[2]` 会选择文档中所有 `<li>` 元素中，按文档顺序排列的第二个 `<li>` 元素。它适用于列表结构固定，需要提取特定位置元素的场景。",
+            "`//li[@class='item']` 会选择所有 class 属性值为 'item' 的 `<li>` 元素，无论它们在文档中的位置如何。它适用于根据元素的属性值进行筛选的场景，更加灵活和通用。",
+            "基于位置的选择依赖于元素的顺序，如果 HTML 结构发生变化，表达式可能失效。基于属性的选择不依赖顺序，只要元素的属性值不变，就能正确选中，因此鲁棒性更强。"
+          ],
+          "estimated_seconds": 90
+        }
+      ]
+    }
+  ]
+}
+```

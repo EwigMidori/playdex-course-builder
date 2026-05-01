@@ -1,0 +1,103 @@
+{
+  "lesson_id": "L1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s006",
+      "lines": [
+        "算法交易已经不是小众玩法了。",
+        "在美国股市，超过60%的交易量都由算法完成。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s007",
+      "lines": [
+        "在欧洲，这个比例是40%。",
+        "在外汇市场，也有25%的交易是算法驱动的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s008",
+      "lines": [
+        "整个市场预计以每年12.7%的速度增长。",
+        "北美最大，亚太地区增长最快。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s009",
+      "introduced_terms": [
+        "robo_trading",
+        "robo_advisory"
+      ],
+      "lines": [
+        "不过，别把 <term id=\"robo_trading\">机器人交易</term> 和 <term id=\"robo_advisory\">机器人投顾</term> 搞混了。",
+        "它们有本质区别。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s010",
+      "lines": [
+        "机器人交易是全自动的：",
+        "它自己做决策，自己执行交易。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s011",
+      "lines": [
+        "机器人投顾是半自动的：",
+        "它给你建议、市场总结和风险提醒，",
+        "但下单还得你自己来。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "机器人交易是全自动的，包括执行；机器人投顾只提供建议，不自动执行。",
+        "kind": "single_choice",
+        "options": [
+          "机器人交易自动执行，机器人投顾不执行",
+          "机器人投顾更赚钱",
+          "机器人交易只用于股票",
+          "机器人投顾是全自动的"
+        ],
+        "prompt": "以下哪个是机器人交易和机器人投顾的关键区别？"
+      },
+      "id": "s012",
+      "lines": [
+        "以下哪个是机器人交易和机器人投顾的关键区别？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Algorithmic trading strategies account for approximately 60% of all US equity volume, 40% of all European equity volume, 25% of all Forex transactions, 20% of all US option trades. Robo-Trading vs Robo-Advisory: Robo-Trading is fully automated including decision making and execution; Robo-Advisory is semi-automated, providing advice and alerts but not execution.",
+    "related": [
+      "market trends",
+      "trading approaches comparison"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "robo_advisory": {
+      "aliases": [
+        "Robo-Advisory"
+      ],
+      "display": "机器人投顾",
+      "gloss": "半自动化的投资建议服务，提供建议但不自动执行交易。"
+    },
+    "robo_trading": {
+      "aliases": [
+        "Robo-Trading"
+      ],
+      "display": "机器人交易",
+      "gloss": "完全自动化的算法交易，包括决策和执行。"
+    }
+  }
+}

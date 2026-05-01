@@ -1,0 +1,139 @@
+{
+  "lesson_id": "L1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s034",
+      "introduced_terms": [
+        "leverage",
+        "margin"
+      ],
+      "lines": [
+        "想用小资金撬动大交易？",
+        "这就涉及 <term id=\"leverage\">杠杆</term> 和 <term id=\"margin\">保证金</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s035",
+      "lines": [
+        "杠杆就是用借来的钱放大收益。",
+        "保证金就是你放在经纪商那里的自有资金。"
+      ],
+      "type": "narration"
+    },
+    {
+      "formula": {
+        "latex": "Leverage\\ Ratio = \\frac{Asset}{Equity}",
+        "spoken": "杠杆比率等于资产总值除以自有资金"
+      },
+      "id": "s036",
+      "lines": [
+        "杠杆比率 = 资产总值 / 自有资金",
+        "比如你付60万买100万的股票，杠杆就是1.67倍。"
+      ],
+      "type": "formula"
+    },
+    {
+      "id": "s037",
+      "introduced_terms": [
+        "buying_power"
+      ],
+      "lines": [
+        "你的 <term id=\"buying_power\">购买力</term> 就是杠杆比率乘以你的自有资金。",
+        "比如10万本金，20倍杠杆，最多可以买200万的证券。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s038",
+      "introduced_terms": [
+        "order_based_system",
+        "position_based_system"
+      ],
+      "lines": [
+        "交易系统也有两种类型：",
+        "<term id=\"order_based_system\">基于订单的系统</term> 和 <term id=\"position_based_system\">基于头寸的系统</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s039",
+      "lines": [
+        "基于订单的系统：每笔交易独立管理，不支持部分平仓。",
+        "比如MetaTrader、TradingView。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s040",
+      "lines": [
+        "基于头寸的系统：交易按净头寸管理，支持部分平仓。",
+        "比如Interactive Brokers、Binance。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "50万",
+          "500000"
+        ],
+        "explanation": "购买力 = 杠杆比率 × 本金 = 10 × 5万 = 50万元。",
+        "kind": "fill_in_blank",
+        "prompt": "如果你有5万元本金，使用10倍杠杆，你的最大购买力是多少？"
+      },
+      "id": "s041",
+      "lines": [
+        "如果你有5万元本金，使用10倍杠杆，你的最大购买力是多少？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Leverage refers to using borrowed capital to increase potential return. Margin is a way to create leverage. Buying Power = Leverage Ratio × Investor's equity. Order based system: transactions managed in a round order manner, partial close not supported. Position based system: transactions independent, partial close allowed.",
+    "related": [
+      "leverage and margin",
+      "trading systems"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "buying_power": {
+      "aliases": [
+        "Buying Power"
+      ],
+      "display": "购买力",
+      "gloss": "投资者可用于购买证券的最大资金量。"
+    },
+    "leverage": {
+      "aliases": [
+        "Leverage"
+      ],
+      "display": "杠杆",
+      "gloss": "使用借入资金来放大投资回报的方式。"
+    },
+    "margin": {
+      "aliases": [
+        "Margin"
+      ],
+      "display": "保证金",
+      "gloss": "投资者在经纪商处持有的自有资金，用于担保借款。"
+    },
+    "order_based_system": {
+      "aliases": [
+        "Order Based System"
+      ],
+      "display": "基于订单的系统",
+      "gloss": "每笔交易独立管理，不支持部分平仓。"
+    },
+    "position_based_system": {
+      "aliases": [
+        "Position Based System"
+      ],
+      "display": "基于头寸的系统",
+      "gloss": "交易按净头寸管理，支持部分平仓。"
+    }
+  }
+}

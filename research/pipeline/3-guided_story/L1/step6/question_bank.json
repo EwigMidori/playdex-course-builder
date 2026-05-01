@@ -1,0 +1,419 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "infrastructure_data_management",
+      "covered_by": [
+        "qf_flash_data_work",
+        "qf_quiz_data_work",
+        "qf_long_infrastructure"
+      ],
+      "description": "实施算法交易所需的数据基础设施：数据采集、存储、管理和处理"
+    },
+    {
+      "coverage_tag": "infrastructure_other_factors",
+      "covered_by": [
+        "qf_flash_other_factors",
+        "qf_quiz_other_factors",
+        "qf_long_infrastructure"
+      ],
+      "description": "实施算法交易的其他基础设施因素：实时数据源、历史数据、计算硬件、交易所连接、网络延迟、订单管理系统、网络安全等"
+    },
+    {
+      "coverage_tag": "data_as_fuel_metaphor",
+      "covered_by": [
+        "qf_flash_data_fuel",
+        "qf_quiz_data_fuel"
+      ],
+      "description": "理解“算法是车，数据是燃料”的核心比喻"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "data_as_fuel_metaphor",
+      "coverage_tags": [
+        "data_as_fuel_metaphor"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_data_fuel",
+      "learning_goal": "学生能准确回忆并解释“算法是车，数据是燃料”这一核心比喻的含义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "要求学生主动提取该比喻及其对算法交易的意义。",
+      "term_refs": [
+        {
+          "display": "数据是燃料",
+          "en": "Data is the Fuel"
+        }
+      ],
+      "variants": [
+        {
+          "back": "算法依赖数据才能运行和决策；没有数据，算法无法工作。",
+          "estimated_seconds": 8,
+          "explanation": "这个比喻强调数据是算法交易的基础和驱动力。",
+          "front": "在算法交易中，常说的“算法是车，数据是燃料”是什么意思？",
+          "question_id": "q_flash_data_fuel_v1"
+        },
+        {
+          "back": "因为算法需要数据来生成交易信号、执行交易、进行回测和优化。",
+          "estimated_seconds": 10,
+          "explanation": "数据是算法交易的输入和决策依据。",
+          "front": "在算法交易中，为什么说“没有数据，算法寸步难行”？",
+          "question_id": "q_flash_data_fuel_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "infrastructure_data_management",
+      "coverage_tags": [
+        "infrastructure_data_management"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_data_work",
+      "learning_goal": "学生能准确回忆算法交易中数据工作的四个主要环节。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "要求学生主动提取数据工作的四个环节。",
+      "term_refs": [
+        {
+          "display": "数据工作",
+          "en": "Data Work"
+        }
+      ],
+      "variants": [
+        {
+          "back": "采集、存储、管理、处理。",
+          "estimated_seconds": 8,
+          "explanation": "这四个环节覆盖了从数据获取到使用的完整流程。",
+          "front": "实施算法交易时，数据工作包括哪四个主要环节？",
+          "question_id": "q_flash_data_work_v1"
+        },
+        {
+          "back": "数据来源和清洗非常耗时费力。",
+          "estimated_seconds": 8,
+          "explanation": "数据采集是基础，但也是耗时耗力的环节。",
+          "front": "在算法交易的数据工作中，“采集”环节面临的主要挑战是什么？",
+          "question_id": "q_flash_data_work_v2"
+        },
+        {
+          "back": "需要处理海量的非结构化数据（数值、文本、图像、音频、视频）。",
+          "estimated_seconds": 10,
+          "explanation": "数据量大且格式多样，对存储系统要求高。",
+          "front": "在算法交易的数据工作中，“存储”环节面临的主要挑战是什么？",
+          "question_id": "q_flash_data_work_v3"
+        },
+        {
+          "back": "由于文件和数据格式不一致，难以通过传统数据库进行保护和管理。",
+          "estimated_seconds": 10,
+          "explanation": "数据格式不统一是管理的主要难点。",
+          "front": "在算法交易的数据工作中，“管理”环节面临的主要挑战是什么？",
+          "question_id": "q_flash_data_work_v4"
+        }
+      ]
+    },
+    {
+      "concept_key": "infrastructure_other_factors",
+      "coverage_tags": [
+        "infrastructure_other_factors"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_other_factors",
+      "learning_goal": "学生能准确回忆除数据工作外，实施算法交易所需的其他基础设施因素。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "要求学生主动提取其他基础设施因素。",
+      "term_refs": [
+        {
+          "display": "数据源",
+          "en": "Data Feed"
+        },
+        {
+          "display": "订单管理系统",
+          "en": "Order Management System"
+        }
+      ],
+      "variants": [
+        {
+          "back": "实时数据源、历史数据、计算硬件、交易所/经纪商连接、网络和延迟、订单路由系统、订单管理系统、算法维护、网络安全。",
+          "estimated_seconds": 15,
+          "explanation": "这些因素共同构成了算法交易的运行环境。",
+          "front": "除了数据工作，实施算法交易还需要考虑哪些基础设施因素？请列出至少三个。",
+          "question_id": "q_flash_other_factors_v1"
+        },
+        {
+          "back": "OMS代表订单管理系统（Order Management System），用于管理、发送和跟踪订单。",
+          "estimated_seconds": 10,
+          "explanation": "OMS是连接算法和交易所的关键软件。",
+          "front": "在算法交易基础设施中，OMS代表什么？它的主要功能是什么？",
+          "question_id": "q_flash_other_factors_v2"
+        },
+        {
+          "back": "因为低延迟可以更快地执行交易，获得更好的价格，减少滑点。",
+          "estimated_seconds": 10,
+          "explanation": "在高速交易中，延迟直接影响交易结果。",
+          "front": "在算法交易基础设施中，“网络和延迟”为什么是一个重要考虑因素？",
+          "question_id": "q_flash_other_factors_v3"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L1",
+  "longform_families": [
+    {
+      "concept_key": "infrastructure_data_management",
+      "coverage_tags": [
+        "infrastructure_data_management",
+        "infrastructure_other_factors"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_infrastructure",
+      "learning_goal": "学生能综合解释实施算法交易所需的基础设施，并说明各组成部分的重要性。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "数据源",
+          "en": "Data Feed"
+        },
+        {
+          "display": "订单管理系统",
+          "en": "Order Management System"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "数据工作包括哪些环节？每个环节有什么挑战？",
+            "除了数据，还需要考虑哪些基础设施？",
+            "这些因素如何共同影响算法交易系统的运行？"
+          ],
+          "question_id": "q_long_infrastructure_v1",
+          "reference_answer": [
+            "搭建算法交易系统远不止写代码，因为需要处理大量复杂的基础设施问题。",
+            "首先，数据是燃料，数据工作包括采集（耗时费力）、存储（海量非结构化数据）、管理（格式不一致）和处理（可行性和效率）。",
+            "其次，还需要实时数据源、历史数据、计算硬件、交易所连接、低延迟网络、订单管理系统、网络安全等。",
+            "这些因素共同决定了算法能否稳定、高效地运行。"
+          ],
+          "rubric_points": [
+            "正确指出数据工作的四个环节（采集、存储、管理、处理）并简要说明每个环节的挑战",
+            "正确列出至少三个其他基础设施因素（如实时数据源、计算硬件、OMS、网络延迟等）",
+            "解释这些因素如何共同构成算法交易系统的运行环境"
+          ],
+          "stem": "请解释为什么说“搭建一套完整的算法交易系统，远不止写代码那么简单”。在回答中，请至少涵盖数据工作和其它基础设施因素两个方面。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "数据方面需要考虑什么？",
+            "硬件和网络方面需要考虑什么？",
+            "系统和软件方面需要考虑什么？"
+          ],
+          "question_id": "q_long_infrastructure_v2",
+          "reference_answer": [
+            "数据方面：需要可靠的数据源（实时和历史），建立数据采集、存储、管理和处理的流程，应对数据量大、格式多样、清洗耗时等挑战。",
+            "硬件和网络方面：需要足够的计算硬件来处理数据和运行算法，低延迟的网络连接对于快速执行交易至关重要。",
+            "系统和软件方面：需要订单管理系统（OMS）来管理订单，确保与交易所/经纪商的稳定连接，并重视网络安全以保护系统和数据。"
+          ],
+          "rubric_points": [
+            "涵盖数据采集、存储、管理、处理及其挑战",
+            "涵盖实时数据源、历史数据、计算硬件、网络延迟",
+            "涵盖交易所连接、订单管理系统、网络安全等"
+          ],
+          "stem": "假设你要为一个新的算法交易策略搭建基础设施，请列出你需要考虑的关键要素，并简要说明每个要素的重要性。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "data_as_fuel_metaphor",
+      "coverage_tags": [
+        "data_as_fuel_metaphor"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_data_fuel",
+      "learning_goal": "学生能在测验情境下正确理解并应用“数据是燃料”这一概念。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "数据是燃料",
+          "en": "Data is the Fuel"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "这个比喻强调数据是算法交易的基础，算法依赖数据才能运行。",
+          "options": [
+            "算法比数据更重要",
+            "数据是算法交易的基础和驱动力",
+            "数据只需要在初始阶段使用",
+            "算法可以完全独立于数据运行"
+          ],
+          "question_id": "q_quiz_data_fuel_v1",
+          "stem": "在算法交易中，“算法是车，数据是燃料”这个比喻最准确地说明了什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "数据是算法的输入，没有数据，算法无法进行任何决策或执行。",
+          "options": [
+            "没有好的算法，再多的数据也没用",
+            "没有数据，算法无法生成交易信号或执行交易",
+            "数据只用于回测，不用于实盘交易",
+            "算法可以自己生成所需的数据"
+          ],
+          "question_id": "q_quiz_data_fuel_v2",
+          "stem": "根据“算法是车，数据是燃料”的比喻，以下哪种说法是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "infrastructure_data_management",
+      "coverage_tags": [
+        "infrastructure_data_management"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_data_work",
+      "learning_goal": "学生能在测验情境下辨析数据工作的不同环节及其挑战。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "数据工作",
+          "en": "Data Work"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "材料明确指出，由于文件和数据格式不一致，数据管理难以通过传统数据库进行。",
+          "options": [
+            "数据量太大，存储空间不足",
+            "数据格式不一致，难以通过传统数据库保护和管理",
+            "数据处理速度太慢",
+            "数据来源太少"
+          ],
+          "question_id": "q_quiz_data_work_v1",
+          "stem": "在算法交易的数据工作中，“数据管理”环节面临的主要挑战是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "材料中明确列出数据工作包括：采集、存储、管理和处理。",
+          "options": [
+            "采集、清洗、分析、可视化",
+            "采集、存储、管理、处理",
+            "收集、整理、建模、回测",
+            "获取、压缩、加密、传输"
+          ],
+          "question_id": "q_quiz_data_work_v2",
+          "stem": "以下哪项最准确地描述了算法交易中数据工作的四个主要环节？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "材料中明确指出数据处理的关注点是可行性和效率。",
+          "options": [
+            "数据的来源是否可靠",
+            "数据处理的可行性和效率",
+            "数据的存储成本",
+            "数据的可视化效果"
+          ],
+          "question_id": "q_quiz_data_work_v3",
+          "stem": "在算法交易中，数据“处理”环节关注的核心问题是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "infrastructure_other_factors",
+      "coverage_tags": [
+        "infrastructure_other_factors"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_other_factors",
+      "learning_goal": "学生能在测验情境下识别并区分实施算法交易所需的各种基础设施因素。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "数据源",
+          "en": "Data Feed"
+        },
+        {
+          "display": "订单管理系统",
+          "en": "Order Management System"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "社交媒体账号不是算法交易必需的基础设施，而数据源、订单管理系统和计算硬件都是。",
+          "options": [
+            "实时数据源",
+            "社交媒体账号",
+            "订单管理系统",
+            "计算硬件"
+          ],
+          "question_id": "q_quiz_other_factors_v1",
+          "stem": "以下哪项不是实施算法交易必需的基础设施？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "OMS是用于管理、发送和跟踪订单的软件系统。",
+          "options": [
+            "生成交易信号",
+            "管理、发送和跟踪订单",
+            "分析市场数据",
+            "管理投资组合风险"
+          ],
+          "question_id": "q_quiz_other_factors_v2",
+          "stem": "在算法交易基础设施中，订单管理系统（OMS）的主要功能是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "搭建完整的算法交易系统需要综合考虑数据、硬件、网络、订单管理系统、网络安全等多个方面。",
+          "options": [
+            "只需要编写好算法代码即可，不需要考虑其他因素",
+            "网络延迟对交易结果没有影响",
+            "需要综合考虑数据、硬件、网络、系统等多个方面",
+            "历史数据对算法交易没有用处"
+          ],
+          "question_id": "q_quiz_other_factors_v3",
+          "stem": "以下哪项关于算法交易基础设施的说法是正确的？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/L1/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

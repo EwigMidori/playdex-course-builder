@@ -1,0 +1,462 @@
+```json
+{
+  "lesson_id": "L2",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L2/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "L2: Data scraping and database management with Python; Understand the concept of adjusted price",
+    "source_outline": "L2: Data scraping and database management with Python; Understand the concept of adjusted price",
+    "lesson_map": "L2 step5: Using yfinance for reliable financial data access"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "yfinance_intro",
+      "description": "yfinance 库的基本介绍：它是 Yahoo Finance 的非官方 Python 库，用于获取股票数据，封装了复杂的请求。",
+      "covered_by": ["qf_flash_yfinance_purpose", "qf_quiz_yfinance_advantage"]
+    },
+    {
+      "coverage_tag": "yfinance_basic_usage",
+      "description": "yfinance 的基本用法：.info() 获取基本信息，.history(period) 获取历史数据，yf.download() 获取多只股票数据。",
+      "covered_by": ["qf_flash_yfinance_history", "qf_flash_yfinance_download", "qf_quiz_yfinance_history_period"]
+    },
+    {
+      "coverage_tag": "adjusted_close_concept",
+      "description": "调整收盘价的概念：消除分红、拆股等公司事件对历史价格的干扰，使价格具有可比性。",
+      "covered_by": ["qf_flash_adjusted_close_purpose", "qf_flash_adjusted_close_example", "qf_quiz_adjusted_close_usage", "qf_long_adjusted_close_mechanism"]
+    },
+    {
+      "coverage_tag": "close_vs_adjusted_close",
+      "description": "收盘价与调整收盘价的区别：调整收盘价向后修正历史数据以反映公司事件的影响。",
+      "covered_by": ["qf_flash_close_vs_adjusted", "qf_quiz_adjusted_close_usage"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_yfinance_purpose",
+      "question_type": "short_answer",
+      "linked_steps": ["step5"],
+      "concept_key": "yfinance_intro",
+      "coverage_tags": ["yfinance_intro"],
+      "term_refs": [
+        {
+          "display": "yfinance",
+          "en": "yfinance"
+        }
+      ],
+      "learning_goal": "学生能说出 yfinance 是什么以及为什么用它代替直接爬取 Yahoo Finance。",
+      "difficulty": "easy",
+      "retrieval_focus": "yfinance 库的核心定位和优势。",
+      "variants": [
+        {
+          "question_id": "q_flash_yfinance_purpose_v1",
+          "front": "yfinance 是什么？它主要用来解决什么问题？",
+          "back": "yfinance 是一个非官方的 Yahoo Finance Python 库，用于获取股票数据。它封装了复杂的请求，避免了直接爬取 Yahoo Finance 时遇到的反爬措施。",
+          "explanation": "直接爬取 Yahoo Finance 会遇到很多反爬措施，yfinance 封装了这些复杂性。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_yfinance_purpose_v2",
+          "front": "为什么在算法交易中推荐使用 yfinance 而不是直接用 Requests 爬取 Yahoo Finance？",
+          "back": "因为 Yahoo Finance 有严格的反爬措施，yfinance 封装了所有复杂请求，几行代码就能获取数据。",
+          "explanation": "yfinance 是专门为 Yahoo Finance 设计的非官方库。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_yfinance_history",
+      "question_type": "short_answer",
+      "linked_steps": ["step5"],
+      "concept_key": "yfinance_basic_usage",
+      "coverage_tags": ["yfinance_basic_usage"],
+      "term_refs": [
+        {
+          "display": "yfinance",
+          "en": "yfinance"
+        },
+        {
+          "display": ".history()",
+          "en": ".history()"
+        }
+      ],
+      "learning_goal": "学生能回忆 yfinance 获取历史数据的方法和可用周期参数。",
+      "difficulty": "easy",
+      "retrieval_focus": ".history(period) 方法的用途和常用 period 参数。",
+      "variants": [
+        {
+          "question_id": "q_flash_yfinance_history_v1",
+          "front": "用 yfinance 获取腾讯控股 (0700.HK) 最近一个月的历史数据，应该调用哪个方法？",
+          "back": "ticker.history(period='1mo')",
+          "explanation": ".history(period) 方法用于获取历史数据，'1mo' 表示最近一个月。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_yfinance_history_v2",
+          "front": "yfinance 的 .history() 方法中，period 参数可以设置为哪些值？请列举至少 4 个。",
+          "back": "'1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', '10y', 'ytd', 'max'",
+          "explanation": "period 参数支持从 1 天到最大历史范围的各种选项。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_yfinance_download",
+      "question_type": "short_answer",
+      "linked_steps": ["step5"],
+      "concept_key": "yfinance_basic_usage",
+      "coverage_tags": ["yfinance_basic_usage"],
+      "term_refs": [
+        {
+          "display": "yfinance",
+          "en": "yfinance"
+        },
+        {
+          "display": "yf.download()",
+          "en": "yf.download()"
+        }
+      ],
+      "learning_goal": "学生能回忆用 yfinance 同时获取多只股票数据的方法。",
+      "difficulty": "easy",
+      "retrieval_focus": "yf.download() 函数的用途和参数。",
+      "variants": [
+        {
+          "question_id": "q_flash_yfinance_download_v1",
+          "front": "用 yfinance 同时下载腾讯 (0700.HK) 和苹果 (AAPL) 从 2025-01-01 到 2025-06-30 的数据，应该使用哪个函数？",
+          "back": "yf.download(\"0700.HK AAPL\", start=\"2025-01-01\", end=\"2025-06-30\")",
+          "explanation": "yf.download() 可以同时下载多只股票，tickers 用空格分隔。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_yfinance_download_v2",
+          "front": "yf.download() 函数中，多个股票代码应该如何分隔？",
+          "back": "用空格分隔，例如 \"0700.HK 0005.HK AAPL\"",
+          "explanation": "yf.download() 接受一个字符串，多个 ticker 之间用空格隔开。",
+          "estimated_seconds": 5
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_adjusted_close_purpose",
+      "question_type": "short_answer",
+      "linked_steps": ["step5"],
+      "concept_key": "adjusted_close_concept",
+      "coverage_tags": ["adjusted_close_concept"],
+      "term_refs": [
+        {
+          "display": "调整收盘价",
+          "en": "Adjusted Close"
+        }
+      ],
+      "learning_goal": "学生能说出调整收盘价的目的和核心作用。",
+      "difficulty": "easy",
+      "retrieval_focus": "调整收盘价存在的根本原因。",
+      "variants": [
+        {
+          "question_id": "q_flash_adjusted_close_purpose_v1",
+          "front": "调整收盘价的主要目的是什么？",
+          "back": "消除分红、拆股等公司事件对历史价格的非市场因素干扰，使历史价格具有可比性。",
+          "explanation": "公司事件会导致股价出现非市场因素的跳变，调整收盘价就是为了消除这些噪音。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_adjusted_close_purpose_v2",
+          "front": "为什么进行长期回测时应该使用调整收盘价而不是普通收盘价？",
+          "back": "因为调整收盘价消除了分红和拆股的影响，能更准确地反映股票的真实长期表现。",
+          "explanation": "普通收盘价会因公司事件出现非市场跳变，不适合长期分析。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_adjusted_close_example",
+      "question_type": "micro_calc",
+      "linked_steps": ["step5"],
+      "concept_key": "adjusted_close_concept",
+      "coverage_tags": ["adjusted_close_concept"],
+      "term_refs": [
+        {
+          "display": "调整收盘价",
+          "en": "Adjusted Close"
+        },
+        {
+          "display": "拆股",
+          "en": "Stock Split"
+        }
+      ],
+      "learning_goal": "学生能通过具体例子理解拆股对调整收盘价的影响。",
+      "difficulty": "medium",
+      "retrieval_focus": "拆股场景下调整收盘价的计算逻辑。",
+      "variants": [
+        {
+          "question_id": "q_flash_adjusted_close_example_v1",
+          "front": "一只股票在拆股前一天的收盘价是 100 元，第二天进行 2:1 拆股。拆股后，调整收盘价会把拆股前的价格调整为多少？",
+          "back": "50 元（100 / 2 = 50）",
+          "explanation": "2:1 拆股意味着每 1 股变成 2 股，价格减半。调整收盘价会把拆股前的价格也除以 2，保持连续性。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_adjusted_close_example_v2",
+          "front": "一只股票在拆股前一天的收盘价是 200 元，第二天进行 4:1 拆股。调整收盘价会把拆股前的价格调整为多少？",
+          "back": "50 元（200 / 4 = 50）",
+          "explanation": "4:1 拆股，价格变为原来的 1/4。调整收盘价会把拆股前的价格也除以 4。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_close_vs_adjusted",
+      "question_type": "core_difference",
+      "linked_steps": ["step5"],
+      "concept_key": "close_vs_adjusted_close",
+      "coverage_tags": ["close_vs_adjusted_close"],
+      "term_refs": [
+        {
+          "display": "收盘价",
+          "en": "Close"
+        },
+        {
+          "display": "调整收盘价",
+          "en": "Adjusted Close"
+        }
+      ],
+      "learning_goal": "学生能清晰区分收盘价和调整收盘价的核心差异。",
+      "difficulty": "easy",
+      "retrieval_focus": "两者在是否受公司事件影响上的区别。",
+      "variants": [
+        {
+          "question_id": "q_flash_close_vs_adjusted_v1",
+          "front": "收盘价和调整收盘价的核心区别是什么？",
+          "back": "收盘价是当日实际交易的最后价格；调整收盘价是对历史收盘价进行向后修正，以消除分红、拆股等公司事件的影响。",
+          "explanation": "调整收盘价让历史价格序列具有连续性，适合长期分析。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_close_vs_adjusted_v2",
+          "front": "当一只股票发放现金分红后，其收盘价通常会如何变化？调整收盘价如何处理这种变化？",
+          "back": "收盘价通常会下跌（除息）。调整收盘价会向后修正分红前的价格，乘以 (1 - 分红/价格) 的因子。",
+          "explanation": "分红后股价下跌是正常的除息现象，调整收盘价通过乘数修正来保持历史可比性。",
+          "estimated_seconds": 12
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_yfinance_advantage",
+      "question_type": "single_choice",
+      "linked_steps": ["step5"],
+      "concept_key": "yfinance_intro",
+      "coverage_tags": ["yfinance_intro"],
+      "term_refs": [
+        {
+          "display": "yfinance",
+          "en": "yfinance"
+        }
+      ],
+      "learning_goal": "学生能理解 yfinance 相对于直接爬取的优势。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_yfinance_advantage_v1",
+          "stem": "以下哪个是使用 yfinance 而不是直接爬取 Yahoo Finance 的主要原因？",
+          "options": [
+            "yfinance 可以免费获取实时数据",
+            "yfinance 封装了复杂的请求，避免了反爬措施",
+            "yfinance 是 Yahoo 官方提供的库",
+            "yfinance 不需要安装任何依赖"
+          ],
+          "answer": 1,
+          "explanation": "直接爬取 Yahoo Finance 会遇到很多反爬措施，yfinance 封装了所有复杂请求，让用户几行代码就能获取数据。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_yfinance_advantage_v2",
+          "stem": "关于 yfinance，以下哪个说法是正确的？",
+          "options": [
+            "yfinance 是 Yahoo 官方维护的 Python 库",
+            "yfinance 只能获取美股数据",
+            "yfinance 是一个非官方的 Yahoo Finance Python 库",
+            "yfinance 需要付费才能使用"
+          ],
+          "answer": 2,
+          "explanation": "yfinance 是一个非官方的 Yahoo Finance Python 库，用于获取股票数据。",
+          "estimated_seconds": 12
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_yfinance_history_period",
+      "question_type": "single_choice",
+      "linked_steps": ["step5"],
+      "concept_key": "yfinance_basic_usage",
+      "coverage_tags": ["yfinance_basic_usage"],
+      "term_refs": [
+        {
+          "display": "yfinance",
+          "en": "yfinance"
+        },
+        {
+          "display": ".history()",
+          "en": ".history()"
+        }
+      ],
+      "learning_goal": "学生能正确选择 yfinance 获取历史数据的方法和参数。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_yfinance_history_period_v1",
+          "stem": "使用 yfinance 获取某只股票最近 5 天的历史数据，应该使用哪个代码？",
+          "options": [
+            "ticker.history(period='5d')",
+            "ticker.history(period='5')",
+            "ticker.info(period='5d')",
+            "yf.download(ticker, period='5d')"
+          ],
+          "answer": 0,
+          "explanation": ".history(period='5d') 用于获取最近 5 天的历史数据。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_yfinance_history_period_v2",
+          "stem": "yfinance 的 .history() 方法返回的数据包含以下哪些字段？",
+          "options": [
+            "仅包含收盘价",
+            "开盘价、最高价、最低价、收盘价和成交量",
+            "仅包含调整收盘价",
+            "开盘价、收盘价和市盈率"
+          ],
+          "answer": 1,
+          "explanation": ".history() 返回的数据包含 Open, High, Low, Close, Volume 等字段。",
+          "estimated_seconds": 12
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_adjusted_close_usage",
+      "question_type": "single_choice",
+      "linked_steps": ["step5"],
+      "concept_key": "close_vs_adjusted_close",
+      "coverage_tags": ["close_vs_adjusted_close", "adjusted_close_concept"],
+      "term_refs": [
+        {
+          "display": "调整收盘价",
+          "en": "Adjusted Close"
+        },
+        {
+          "display": "收盘价",
+          "en": "Close"
+        }
+      ],
+      "learning_goal": "学生能判断在什么场景下使用调整收盘价。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_adjusted_close_usage_v1",
+          "stem": "进行长期回测时，应该使用哪个价格？",
+          "options": [
+            "开盘价",
+            "收盘价",
+            "调整收盘价",
+            "最高价"
+          ],
+          "answer": 2,
+          "explanation": "调整收盘价消除了分红和拆股的影响，更适合长期分析和回测。",
+          "estimated_seconds": 12
+        },
+        {
+          "question_id": "q_quiz_adjusted_close_usage_v2",
+          "stem": "以下哪个场景最适合使用调整收盘价？",
+          "options": [
+            "计算当日的日内波动率",
+            "比较一只股票过去 5 年的总回报率",
+            "判断今日的收盘价是否高于开盘价",
+            "计算当日的成交量"
+          ],
+          "answer": 1,
+          "explanation": "调整收盘价消除了公司事件的影响，适合用于长期回报率的计算和比较。",
+          "estimated_seconds": 15
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_adjusted_close_mechanism",
+      "question_type": "mechanism_trace",
+      "linked_steps": ["step5"],
+      "concept_key": "adjusted_close_concept",
+      "coverage_tags": ["adjusted_close_concept", "close_vs_adjusted_close"],
+      "term_refs": [
+        {
+          "display": "调整收盘价",
+          "en": "Adjusted Close"
+        },
+        {
+          "display": "拆股",
+          "en": "Stock Split"
+        },
+        {
+          "display": "分红",
+          "en": "Dividend"
+        }
+      ],
+      "learning_goal": "学生能解释调整收盘价的计算机制，并能通过具体数值例子说明拆股和分红如何影响调整。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_adjusted_close_mechanism_v1",
+          "stem": "请解释调整收盘价（Adjusted Close）的概念，并说明它为什么对长期回测很重要。",
+          "prompt_blocks": [
+            "定义调整收盘价",
+            "说明它解决了什么问题",
+            "举例说明拆股场景下的调整逻辑",
+            "说明分红场景下的调整逻辑"
+          ],
+          "rubric_points": [
+            "正确解释调整收盘价是经过公司事件修正后的收盘价",
+            "指出它消除了分红、拆股等非市场因素对价格序列的干扰",
+            "能正确说明 2:1 拆股时，拆股前的价格会除以 2",
+            "能正确说明分红时，分红前的价格会乘以 (1 - 分红/价格) 的因子"
+          ],
+          "reference_answer": [
+            "调整收盘价是对历史收盘价进行向后修正，以消除分红、拆股等公司事件对价格序列的影响。",
+            "当公司发生分红或拆股时，股价会出现非市场因素的跳变，导致历史价格失去可比性。调整收盘价就是为了消除这些噪音。",
+            "例如，一只股票 2:1 拆股，拆股前收盘价 100 元，拆股后价格变为 50 元。调整收盘价会把拆股前的价格也调整为 50 元，保持连续性。",
+            "对于分红，例如分红 0.08 元，除息前收盘价 24.96 元，调整因子为 (1 - 0.08/24.96) = 0.9968，分红前的价格会乘以这个因子。",
+            "在长期回测中，使用调整收盘价能更准确地反映股票的真实长期表现，避免公司事件造成的虚假收益或损失。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_adjusted_close_mechanism_v2",
+          "stem": "假设某股票在 2/16 的收盘价为 46.99 元，2/17 收盘价为 48.30 元。2/18 发生 2:1 拆股，当日收盘价为 24.96 元。2/21 为除息日，分红 0.08 元，当日收盘价为 24.53 元。请计算 2/16、2/17、2/18 和 2/21 的调整收盘价，并解释每一步的计算逻辑。",
+          "prompt_blocks": [
+            "确定需要应用的调整因子",
+            "计算拆股因子",
+            "计算分红因子",
+            "对每个日期应用正确的因子组合",
+            "解释为什么不同日期的调整因子不同"
+          ],
+          "rubric_points": [
+            "正确计算拆股因子为 0.5",
+            "正确计算分红因子为 (1 - 0.08/24.96) = 0.9968",
+            "2/16 和 2/17 的调整收盘价需要同时应用拆股和分红因子：0.5 * 0.9968 * 原价",
+            "2/18 的调整收盘价只需要应用分红因子：0.9968 * 24.96",
+            "2/21 的调整收盘价等于当日收盘价 24.53，因为它是除息日之后，不需要调整"
+          ],
+          "reference_answer": [
+            "首先确定调整因子：拆股因子 = 0.5（2:1 拆股），分红因子 = 1 - 0.08/24.96 = 0.9968。",
+            "2/16 的调整收盘价：0.5 * 0.9968 * 46.99 = 23.42。因为 2/16 在拆股和除息之前，需要同时调整。",
+            "2/17 的调整收盘价：0.5 * 0.9968 * 48.30 = 24.07。同样在拆股和除息之前。",
+            "2/18 的调整收盘价：0.9968 * 24.96 = 24.88。2/18 是拆股日，拆股发生在收盘前，所以不需要拆股调整，但需要为未来的除息做准备。",
+            "2/21 的调整收盘价：24.53。2/21 是除息日，之后的价格已经是调整后的价格，不需要再调整。"
+          ],
+          "estimated_seconds": 150
+        }
+      ]
+    }
+  ]
+}
+```

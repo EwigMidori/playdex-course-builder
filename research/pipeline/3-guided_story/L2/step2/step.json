@@ -1,0 +1,120 @@
+{
+  "lesson_id": "L2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "要爬取数据，首先得理解网页的骨架。",
+        "一个网页通常由三部分组成。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "html"
+      ],
+      "id": "s007",
+      "introduced_terms": [
+        "html"
+      ],
+      "lines": [
+        "第一部分：<term id=\"html\">HTML</term>。",
+        "它定义了网页的结构和内容，比如标题、段落、表格。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "css"
+      ],
+      "id": "s008",
+      "introduced_terms": [
+        "css"
+      ],
+      "lines": [
+        "第二部分：<term id=\"css\">CSS</term>。",
+        "它负责控制网页的样式，比如颜色、字体、布局。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "javascript"
+      ],
+      "id": "s009",
+      "introduced_terms": [
+        "javascript"
+      ],
+      "lines": [
+        "第三部分：<term id=\"javascript\">JavaScript</term>。",
+        "它让网页变得动态和可交互，比如点击按钮后弹出信息。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "爬取数据时，我们最关心的是 HTML。",
+        "因为数据通常就藏在 HTML 的标签里。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "HTML 负责定义网页的结构和内容。",
+        "kind": "single_choice",
+        "options": [
+          "CSS",
+          "JavaScript",
+          "HTML",
+          "Python"
+        ],
+        "prompt": "网页的“骨架”和“内容”是由哪种技术定义的？"
+      },
+      "focus_terms": [],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "网页的“骨架”和“内容”是由哪种技术定义的？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "A website is usually made of 1. HTML 2. CSS 3. JavaScript. HTML: Defines the structure and content of a webpage. CSS: Controls the visual presentation and layout. JavaScript: Adds interactivity and dynamic behavior.",
+    "related": [
+      "L2: Data scraping and database management with Python"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "css": {
+      "aliases": [
+        "Cascading Style Sheets"
+      ],
+      "display": "CSS",
+      "gloss": "控制网页视觉呈现和布局的样式语言。"
+    },
+    "html": {
+      "aliases": [
+        "HyperText Markup Language"
+      ],
+      "display": "HTML",
+      "gloss": "定义网页结构和内容的标记语言。"
+    },
+    "javascript": {
+      "aliases": [
+        "JS"
+      ],
+      "display": "JavaScript",
+      "gloss": "为网页添加交互和动态行为的脚本语言。"
+    }
+  }
+}

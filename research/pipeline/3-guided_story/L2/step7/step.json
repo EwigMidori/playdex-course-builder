@@ -1,0 +1,106 @@
+{
+  "lesson_id": "L2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s040",
+      "introduced_terms": [],
+      "lines": [
+        "设计数据库时，一个常见的陷阱：把所有数据塞进一张大表。",
+        "比如，把所有股票的所有历史数据都放在一个表里。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "这样做的后果是：表会变得非常巨大，查询和备份都会很慢。",
+        "这就是“大表”问题。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "一种改进方案是按时间分区，比如每个月一个表。",
+        "但这会让跨月的数据分析变得很麻烦。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "另一种方案是按股票分区，比如每只股票一个表。",
+        "但这又不利于跨资产的对比分析。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s044",
+      "introduced_terms": [],
+      "lines": [
+        "所以，没有完美的设计。",
+        "关键在于根据你的主要用途来权衡。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "如果主要用于回测，按股票分区可能更好。",
+        "如果主要用于数据分析，按时间分区可能更合适。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s046",
+      "introduced_terms": [],
+      "lines": [
+        "始终要在存储空间、运行速度和内存消耗之间找到平衡。",
+        "这是数据库设计的核心艺术。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "代码行数不是数据库设计的核心权衡因素。",
+        "kind": "single_choice",
+        "options": [
+          "存储空间",
+          "运行速度",
+          "代码行数",
+          "内存消耗"
+        ],
+        "prompt": "设计金融数据库时，以下哪个不是需要考虑的权衡因素？"
+      },
+      "focus_terms": [],
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [
+        "设计金融数据库时，以下哪个不是需要考虑的权衡因素？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "Database Design. Suppose you are going to build a database to store all market data history from global stocks exchanges. How would you structure the database? Potential issues for design 1: The table size will be very large. Potential issues for design 2: Difficult to conduct cross month analysis. Potential issues for design 3: Difficult for cross assets analysis. There is no single design that is perfect for all situations! It depends on our common use cases. Always need to strike a balance between Storage Space, Runtime Speed, Memory.",
+    "related": [
+      "L2: Data scraping and database management with Python"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

@@ -1,0 +1,97 @@
+{
+  "lesson_id": "L1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s042",
+      "lines": [
+        "算法是车，数据是燃料。",
+        "没有数据，算法寸步难行。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s043",
+      "lines": [
+        "数据工作包括：采集、存储、管理和处理。",
+        "而且数据量巨大，格式多样。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s044",
+      "introduced_terms": [
+        "data_feed"
+      ],
+      "lines": [
+        "除了数据，还需要：",
+        "实时 <term id=\"data_feed\">数据源</term>、历史数据、计算硬件。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s045",
+      "introduced_terms": [
+        "order_management_system"
+      ],
+      "lines": [
+        "还要考虑网络延迟、交易所连接、",
+        "<term id=\"order_management_system\">订单管理系统</term>、网络安全等。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s046",
+      "lines": [
+        "搭建一套完整的算法交易系统，",
+        "远不止写代码那么简单。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "社交媒体账号不是算法交易必需的基础设施，而数据源、订单管理系统和计算硬件都是。",
+        "kind": "single_choice",
+        "options": [
+          "社交媒体账号",
+          "实时数据源",
+          "订单管理系统",
+          "计算硬件"
+        ],
+        "prompt": "以下哪项不是实施算法交易必需的基础设施？"
+      },
+      "id": "s047",
+      "lines": [
+        "以下哪项不是实施算法交易必需的基础设施？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Algo is the vehicle; Data is the Fuel! Data collection, storage, management, processing. Other factors: real-time datafeed, historical data, computing hardware, exchange/broker connectivity, network and latencies, order routing system, order management system, algo maintenance, cybersecurity.",
+    "related": [
+      "infrastructure",
+      "data management"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "data_feed": {
+      "aliases": [
+        "Data Feed"
+      ],
+      "display": "数据源",
+      "gloss": "实时或历史的市场数据流。"
+    },
+    "order_management_system": {
+      "aliases": [
+        "OMS",
+        "Order Management System"
+      ],
+      "display": "订单管理系统",
+      "gloss": "用于管理、发送和跟踪订单的软件系统。"
+    }
+  }
+}

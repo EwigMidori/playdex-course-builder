@@ -1,0 +1,117 @@
+{
+  "lesson_id": "L2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "爬取到的数据不能每次都重新爬，需要存起来。",
+        "数据库就是最好的选择。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "sqlite"
+      ],
+      "id": "s034",
+      "introduced_terms": [
+        "sqlite"
+      ],
+      "lines": [
+        "Python 内置了对 <term id=\"sqlite\">SQLite</term> 的支持。",
+        "它是一个轻量级的数据库，不需要安装服务器，一个文件就是一个数据库。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "sql"
+      ],
+      "id": "s035",
+      "introduced_terms": [
+        "sql"
+      ],
+      "lines": [
+        "使用 <term id=\"sql\">SQL</term> 语言来操作数据库。",
+        "最基本的四个操作：SELECT（查询）、INSERT（插入）、UPDATE（更新）、DELETE（删除）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "首先，创建一个表来定义数据的结构。",
+        "比如，创建一个 `market_candles` 表，包含股票代码、时间戳、价格等字段。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "然后，用 INSERT 语句把爬取到的数据逐行写入数据库。",
+        "这样，数据就持久化到本地磁盘了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "之后，就可以用 SELECT 语句随时查询历史数据，",
+        "而不用每次都去爬取网站。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "INSERT 命令用于向表中添加新数据。",
+        "kind": "single_choice",
+        "options": [
+          "SELECT",
+          "INSERT",
+          "UPDATE",
+          "DELETE"
+        ],
+        "prompt": "要将爬取的数据保存到数据库，应该使用哪个 SQL 命令？"
+      },
+      "focus_terms": [],
+      "id": "s039",
+      "introduced_terms": [],
+      "lines": [
+        "要将爬取的数据保存到数据库，应该使用哪个 SQL 命令？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Why use a database for algo-trading? Efficient storage and retrieval of large amounts of historical data. SQL Syntax Overview: SELECT, INSERT, UPDATE, DELETE. Using SQLite in Python. Basic Usage: import sqlite3; conn = sqlite3.connect('example.db'); cursor = conn.cursor(). Create a Table, Inserting Data, Querying Data, Updating Data, Deleting Data. Scrape Market Data into database.",
+    "related": [
+      "L2: Data scraping and database management with Python"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "sql": {
+      "aliases": [
+        "Structured Query Language"
+      ],
+      "display": "SQL",
+      "gloss": "用于管理关系数据库的标准语言。"
+    },
+    "sqlite": {
+      "aliases": [],
+      "display": "SQLite",
+      "gloss": "一个轻量级的、基于文件的数据库引擎。"
+    }
+  }
+}

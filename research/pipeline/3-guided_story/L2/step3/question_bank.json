@@ -1,0 +1,554 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "beautifulsoup_intro_and_setup",
+      "covered_by": [
+        "qf_flash_bs4_purpose",
+        "qf_flash_bs4_workflow",
+        "qf_quiz_bs4_workflow"
+      ],
+      "description": "BeautifulSoup 库的用途、安装方式以及与 Requests 配合使用的基本流程"
+    },
+    {
+      "coverage_tag": "requests_download_raw_content",
+      "covered_by": [
+        "qf_flash_bs4_workflow",
+        "qf_quiz_bs4_workflow"
+      ],
+      "description": "使用 Requests 库下载网页原始 HTML 内容"
+    },
+    {
+      "coverage_tag": "beautifulsoup_parse_and_pretty_print",
+      "covered_by": [
+        "qf_flash_bs4_pretty",
+        "qf_quiz_bs4_methods"
+      ],
+      "description": "BeautifulSoup 解析 HTML 为树状结构，prettify() 格式化输出"
+    },
+    {
+      "coverage_tag": "beautifulsoup_extract_text",
+      "covered_by": [
+        "qf_flash_bs4_get_text",
+        "qf_quiz_bs4_methods"
+      ],
+      "description": "使用 get_text() 提取网页中所有纯文本"
+    },
+    {
+      "coverage_tag": "beautifulsoup_find_and_find_all",
+      "covered_by": [
+        "qf_flash_bs4_find",
+        "qf_flash_bs4_find_all",
+        "qf_quiz_bs4_find_vs_findall",
+        "qf_long_bs4_extract_table"
+      ],
+      "description": "使用 find() 和 find_all() 定位特定 HTML 标签"
+    },
+    {
+      "coverage_tag": "beautifulsoup_table_to_dataframe",
+      "covered_by": [
+        "qf_flash_bs4_table_pandas",
+        "qf_long_bs4_extract_table"
+      ],
+      "description": "使用 BeautifulSoup 找到 <table> 标签后配合 pandas 转换为 DataFrame"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "beautifulsoup_intro_and_setup",
+      "coverage_tags": [
+        "beautifulsoup_intro_and_setup"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bs4_purpose",
+      "learning_goal": "学生能准确说出 BeautifulSoup 库的核心用途。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "BeautifulSoup 库的核心功能是什么？",
+      "term_refs": [
+        {
+          "display": "BeautifulSoup",
+          "en": "BeautifulSoup"
+        }
+      ],
+      "variants": [
+        {
+          "back": "解析 HTML 和 XML 数据，将其整理成可操作的树状结构。",
+          "estimated_seconds": 8,
+          "explanation": "BeautifulSoup 就像一个 HTML 的“瑞士军刀”，专门用于搜索和解析网页标记语言。",
+          "front": "BeautifulSoup 库在 Python 爬虫中的主要作用是什么？",
+          "question_id": "q_flash_bs4_purpose_v1"
+        },
+        {
+          "back": "Requests 库。",
+          "estimated_seconds": 6,
+          "explanation": "先用 Requests 下载网页原始内容，再交给 BeautifulSoup 解析。",
+          "front": "在 Python 爬虫中，BeautifulSoup 通常与哪个库配合使用来下载网页内容？",
+          "question_id": "q_flash_bs4_purpose_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "beautifulsoup_parse_and_pretty_print",
+      "coverage_tags": [
+        "beautifulsoup_parse_and_pretty_print"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bs4_pretty",
+      "learning_goal": "学生能记住 prettify() 方法的功能。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "prettify() 方法的作用",
+      "term_refs": [
+        {
+          "display": "prettify()",
+          "en": "prettify()"
+        }
+      ],
+      "variants": [
+        {
+          "back": "prettify()",
+          "estimated_seconds": 5,
+          "explanation": "prettify() 方法将解析后的 HTML 树以更易读的格式输出。",
+          "front": "BeautifulSoup 对象的哪个方法可以打印出格式清晰、缩进良好的 HTML 代码？",
+          "question_id": "q_flash_bs4_pretty_v1"
+        },
+        {
+          "back": "格式化的 HTML 字符串。",
+          "estimated_seconds": 6,
+          "explanation": "它把杂乱的 HTML 源代码整理成带有缩进的、结构清晰的文本。",
+          "front": "使用 BeautifulSoup 解析 HTML 后，调用 `soup.prettify()` 会返回什么？",
+          "question_id": "q_flash_bs4_pretty_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "beautifulsoup_extract_text",
+      "coverage_tags": [
+        "beautifulsoup_extract_text"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bs4_get_text",
+      "learning_goal": "学生能记住 get_text() 方法的功能。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "get_text() 方法的作用",
+      "term_refs": [
+        {
+          "display": "get_text()",
+          "en": "get_text()"
+        }
+      ],
+      "variants": [
+        {
+          "back": "get_text()",
+          "estimated_seconds": 5,
+          "explanation": "get_text() 会提取网页中所有可见的文本，忽略 HTML 标签。",
+          "front": "要从一个 BeautifulSoup 对象中提取网页里所有的纯文本内容（去掉所有 HTML 标签），应该调用哪个方法？",
+          "question_id": "q_flash_bs4_get_text_v1"
+        },
+        {
+          "back": "一个字符串，包含网页中所有文本内容。",
+          "estimated_seconds": 5,
+          "explanation": "它把所有标签内的文本拼接成一个字符串返回。",
+          "front": "`soup.get_text()` 返回的是什么类型的数据？",
+          "question_id": "q_flash_bs4_get_text_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "beautifulsoup_find_and_find_all",
+      "coverage_tags": [
+        "beautifulsoup_find_and_find_all"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bs4_find",
+      "learning_goal": "学生能准确说出 find() 方法的用途和返回值。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "find() 方法的功能",
+      "term_refs": [
+        {
+          "display": "find()",
+          "en": "find()"
+        }
+      ],
+      "variants": [
+        {
+          "back": "find('p')",
+          "estimated_seconds": 5,
+          "explanation": "find() 方法返回匹配的第一个标签对象。",
+          "front": "要提取网页中第一个 `<p>` 标签的内容，应该使用 BeautifulSoup 对象的哪个方法？",
+          "question_id": "q_flash_bs4_find_v1"
+        },
+        {
+          "back": "网页中第一个 `<a>` 标签对象。",
+          "estimated_seconds": 5,
+          "explanation": "find() 只返回第一个匹配的元素。",
+          "front": "`soup.find('a')` 返回的是什么？",
+          "question_id": "q_flash_bs4_find_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "beautifulsoup_find_and_find_all",
+      "coverage_tags": [
+        "beautifulsoup_find_and_find_all"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bs4_find_all",
+      "learning_goal": "学生能准确说出 find_all() 方法的用途和返回值。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "find_all() 方法的功能",
+      "term_refs": [
+        {
+          "display": "find_all()",
+          "en": "find_all()"
+        }
+      ],
+      "variants": [
+        {
+          "back": "find_all('a')",
+          "estimated_seconds": 5,
+          "explanation": "find_all() 返回一个包含所有匹配标签的列表。",
+          "front": "要提取网页中所有超链接（`<a>` 标签），应该使用 BeautifulSoup 对象的哪个方法？",
+          "question_id": "q_flash_bs4_find_all_v1"
+        },
+        {
+          "back": "一个列表，包含网页中所有 `<p>` 标签对象。",
+          "estimated_seconds": 5,
+          "explanation": "find_all() 返回所有匹配元素的列表，即使只有一个元素。",
+          "front": "`soup.find_all('p')` 返回的是什么？",
+          "question_id": "q_flash_bs4_find_all_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "beautifulsoup_table_to_dataframe",
+      "coverage_tags": [
+        "beautifulsoup_table_to_dataframe"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_bs4_table_pandas",
+      "learning_goal": "学生能记住将 HTML 表格转换为 DataFrame 的基本思路。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "将 HTML 表格转换为 DataFrame 的步骤",
+      "term_refs": [
+        {
+          "display": "pandas DataFrame",
+          "en": "pandas DataFrame"
+        }
+      ],
+      "variants": [
+        {
+          "back": "pandas",
+          "estimated_seconds": 5,
+          "explanation": "找到表格后，提取表头和数据行，然后创建 pandas DataFrame。",
+          "front": "用 BeautifulSoup 找到 `<table>` 标签后，通常配合哪个 Python 库将其转换为 DataFrame？",
+          "question_id": "q_flash_bs4_table_pandas_v1"
+        },
+        {
+          "back": "表格的表头（列名）。",
+          "estimated_seconds": 6,
+          "explanation": "<th> 标签定义了表格的标题单元格。",
+          "front": "在提取表格数据时，`find_all('th')` 通常用于提取什么？",
+          "question_id": "q_flash_bs4_table_pandas_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "beautifulsoup_intro_and_setup",
+      "coverage_tags": [
+        "beautifulsoup_intro_and_setup",
+        "requests_download_raw_content"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bs4_workflow",
+      "learning_goal": "学生能记住使用 BeautifulSoup 爬取网页的标准两步流程。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "BeautifulSoup 爬虫的标准工作流程",
+      "term_refs": [
+        {
+          "display": "Requests",
+          "en": "Requests"
+        },
+        {
+          "display": "BeautifulSoup",
+          "en": "BeautifulSoup"
+        }
+      ],
+      "variants": [
+        {
+          "back": "用 Requests 库下载网页的原始 HTML 内容。",
+          "estimated_seconds": 6,
+          "explanation": "例如：`r = requests.get(url)`，然后获取 `r.text`。",
+          "front": "使用 BeautifulSoup 爬取网页时，第一步应该做什么？",
+          "question_id": "q_flash_bs4_workflow_v1"
+        },
+        {
+          "back": "将下载的原始 HTML 内容交给 BeautifulSoup 解析。",
+          "estimated_seconds": 6,
+          "explanation": "例如：`soup = BeautifulSoup(text, 'html.parser')`。",
+          "front": "使用 BeautifulSoup 爬取网页时，第二步应该做什么？",
+          "question_id": "q_flash_bs4_workflow_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L2",
+  "longform_families": [
+    {
+      "concept_key": "beautifulsoup_table_to_dataframe",
+      "coverage_tags": [
+        "beautifulsoup_find_and_find_all",
+        "beautifulsoup_table_to_dataframe"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_bs4_extract_table",
+      "learning_goal": "学生能描述使用 BeautifulSoup 提取 HTML 表格并转换为 pandas DataFrame 的完整步骤。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "BeautifulSoup",
+          "en": "BeautifulSoup"
+        },
+        {
+          "display": "pandas DataFrame",
+          "en": "pandas DataFrame"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "1. 如何找到这个表格？",
+            "2. 如何提取表头？",
+            "3. 如何提取数据行？",
+            "4. 如何创建 DataFrame？"
+          ],
+          "question_id": "q_long_bs4_extract_table_v1",
+          "reference_answer": [
+            "1. 使用 `table = soup.find('table')` 找到第一个表格，或通过 id/class 精确定位。",
+            "2. 使用 `headers = [th.text for th in table.find_all('th')]` 提取所有表头文本。",
+            "3. 使用 `for tr in table.find_all('tr')[1:]:` 跳过表头行，然后对每一行使用 `cells = tr.find_all('td')` 提取单元格，再用列表推导式获取文本。",
+            "4. 使用 `df = pd.DataFrame(data, columns=headers)` 创建 DataFrame，其中 data 是行数据的列表。"
+          ],
+          "rubric_points": [
+            "使用 find('table') 或 find_all('table') 定位到目标表格",
+            "使用 find_all('th') 提取表头文本并存入列表",
+            "遍历除表头外的所有行 (find_all('tr')[1:])，对每行使用 find_all('td') 提取单元格文本",
+            "使用 pandas 的 DataFrame 构造函数，传入数据行列表和列名列表"
+          ],
+          "stem": "假设你有一个包含股票数据的 HTML 页面，其中有一个 `<table>` 标签，表头包含“Symbol”、“Price”、“Volume”。请描述使用 BeautifulSoup 和 pandas 将这个表格提取为 DataFrame 的步骤。"
+        },
+        {
+          "estimated_seconds": 100,
+          "prompt_blocks": [
+            "1. 如何定位到 id 为 constituents 的表格？",
+            "2. 如何提取表头和数据？",
+            "3. 如何处理提取到的数据？"
+          ],
+          "question_id": "q_long_bs4_extract_table_v2",
+          "reference_answer": [
+            "1. 使用 `table = soup.find('table', id='constituents')` 直接定位到目标表格。",
+            "2. 使用 `table.find_all('th')` 提取表头，使用 `table.find_all('tr')[1:]` 遍历数据行，每行用 `find_all('td')` 提取单元格。",
+            "3. 将每行数据存入列表，最后用 `pd.DataFrame(data, columns=headers)` 创建 DataFrame。"
+          ],
+          "rubric_points": [
+            "使用 soup.find('table', id='constituents') 精确定位",
+            "使用 find_all('th') 和 find_all('tr') 提取表头和数据行",
+            "将提取的数据整理成列表，最后转换为 DataFrame 或进行其他处理"
+          ],
+          "stem": "假设一个网页中有多个表格，你只想提取 id 为 \"constituents\" 的那个表格。请描述如何使用 BeautifulSoup 定位并提取该表格的数据。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "beautifulsoup_intro_and_setup",
+      "coverage_tags": [
+        "beautifulsoup_intro_and_setup",
+        "requests_download_raw_content"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_bs4_workflow",
+      "learning_goal": "学生能在测验中正确识别使用 BeautifulSoup 的标准工作流程。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Requests",
+          "en": "Requests"
+        },
+        {
+          "display": "BeautifulSoup",
+          "en": "BeautifulSoup"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "标准流程是先用 Requests 下载网页原始内容，然后交给 BeautifulSoup 解析。",
+          "options": [
+            "先用 BeautifulSoup 解析，再用 Requests 下载",
+            "先用 Requests 下载，再用 BeautifulSoup 解析",
+            "只用 BeautifulSoup 即可完成下载和解析",
+            "先用 pandas 读取，再用 BeautifulSoup 格式化"
+          ],
+          "question_id": "q_quiz_bs4_workflow_v1",
+          "stem": "以下哪个选项正确描述了使用 BeautifulSoup 爬取网页的标准步骤？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "先通过 requests.get(url).text 获取原始 HTML 字符串，再创建 BeautifulSoup 对象。",
+          "options": [
+            "soup = BeautifulSoup(url); text = soup.get_text()",
+            "text = requests.get(url).text; soup = BeautifulSoup(text, 'html.parser')",
+            "soup = requests.get(url); text = soup.prettify()",
+            "text = pandas.read_html(url); soup = BeautifulSoup(text)"
+          ],
+          "question_id": "q_quiz_bs4_workflow_v2",
+          "stem": "要从网页 `https://example.com` 获取内容并用 BeautifulSoup 解析，正确的代码顺序是？"
+        }
+      ]
+    },
+    {
+      "concept_key": "beautifulsoup_parse_and_pretty_print",
+      "coverage_tags": [
+        "beautifulsoup_parse_and_pretty_print",
+        "beautifulsoup_extract_text"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_bs4_methods",
+      "learning_goal": "学生能区分 prettify() 和 get_text() 的不同用途。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "prettify()",
+          "en": "prettify()"
+        },
+        {
+          "display": "get_text()",
+          "en": "get_text()"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "prettify() 会以带缩进的格式打印 HTML，方便检查结构。",
+          "options": [
+            "get_text()",
+            "find('p')",
+            "prettify()",
+            "find_all('a')"
+          ],
+          "question_id": "q_quiz_bs4_methods_v1",
+          "stem": "你想查看网页的 HTML 结构是否完整，标签是否正确嵌套，应该使用 BeautifulSoup 的哪个方法？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "get_text() 会提取所有标签内的文本，并移除所有 HTML 标记。",
+          "options": [
+            "prettify()",
+            "get_text()",
+            "find('html')",
+            "find_all('body')"
+          ],
+          "question_id": "q_quiz_bs4_methods_v2",
+          "stem": "你只关心网页中的文字内容，不需要任何 HTML 标签，应该使用哪个方法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "beautifulsoup_find_and_find_all",
+      "coverage_tags": [
+        "beautifulsoup_find_and_find_all"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_bs4_find_vs_findall",
+      "learning_goal": "学生能辨析 find() 和 find_all() 的区别并正确选择。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "find()",
+          "en": "find()"
+        },
+        {
+          "display": "find_all()",
+          "en": "find_all()"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "find('div') 只返回第一个匹配的 <div> 标签。",
+          "options": [
+            "soup.find_all('div')",
+            "soup.find('div')",
+            "soup.get_text('div')",
+            "soup.prettify('div')"
+          ],
+          "question_id": "q_quiz_bs4_find_vs_findall_v1",
+          "stem": "一个网页中有多个 `<div>` 标签，你只想获取第一个 `<div>` 的内容，应该使用哪个方法？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "find_all('a') 返回一个包含所有 <a> 标签的列表，可以遍历。",
+          "options": [
+            "soup.find('a')",
+            "soup.find_all('a')",
+            "soup.get_text('a')",
+            "soup.select_one('a')"
+          ],
+          "question_id": "q_quiz_bs4_find_vs_findall_v2",
+          "stem": "你需要遍历网页中所有的超链接（`<a>` 标签）来提取每个链接的 URL，应该使用哪个方法？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "L2: Data scraping and database management with Python - Agenda: Web scraping using different python libraries",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "L2 step3: Using BeautifulSoup to parse HTML and extract data",
+    "plain_text": "pipeline/1-plain/L2/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "L2: Data scraping and database management with Python - BeautifulSoup: Popular python library for searching and parsing HTML and XML data"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,106 @@
+{
+  "lesson_id": "L2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "让我们实战一下：爬取维基百科上的 S&P 500 成分股列表。",
+        "这是一个非常经典的金融数据爬取任务。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "直接用 Requests 请求，结果却返回了错误信息。",
+        "为什么？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "user_agent"
+      ],
+      "id": "s021",
+      "introduced_terms": [
+        "user_agent"
+      ],
+      "lines": [
+        "很多网站会检查请求的 <term id=\"user_agent\">User-Agent</term>。",
+        "如果它看起来不像一个真实的浏览器，网站就会拒绝访问。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "解决方法很简单：在请求头中伪装成浏览器。",
+        "设置一个常见的 User-Agent 字符串即可。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "成功获取页面后，用 BeautifulSoup 找到目标表格。",
+        "可以通过表格的 id 属性来精确定位。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "提取表头和数据行，就能得到一个包含所有成分股信息的 DataFrame。",
+        "包含股票代码、公司名、行业、成立年份等。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "许多网站会通过 User-Agent 来识别并阻止非浏览器的请求。",
+        "kind": "single_choice",
+        "options": [
+          "网站服务器宕机",
+          "请求缺少正确的 User-Agent",
+          "Python 版本太低",
+          "网络连接速度太慢"
+        ],
+        "prompt": "为什么直接请求维基百科可能会失败？"
+      },
+      "focus_terms": [],
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "为什么直接请求维基百科可能会失败？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Scrape S&P 500 stock composites from Wikipedia. Get HTML content of the website. Why we can't get the result? Please set a user-agent and respect our robot policy. headers = { \"user-agent\": \"Mozilla/5.0 ...\" }. Extract all <table>. Find the table by id: soup.find('table', id=\"constituents\").",
+    "related": [
+      "L2: Data scraping and database management with Python"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "user_agent": {
+      "aliases": [],
+      "display": "User-Agent",
+      "gloss": "HTTP 请求头中的一个字段，用于标识客户端类型。"
+    }
+  }
+}

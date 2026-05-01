@@ -7,8 +7,8 @@
       "id": "s001",
       "introduced_terms": [],
       "lines": [
-        "想象一下，你需要每天手动收集几百只股票的价格。",
-        "那会花掉你多少时间？"
+        "想象一下，你每天需要手动查看几百只股票的价格、新闻和财报。",
+        "这几乎不可能，而且很容易出错。"
       ],
       "type": "narration"
     },
@@ -21,409 +21,73 @@
         "web_scraping"
       ],
       "lines": [
-        "其实，有一种方法可以让电脑替你完成这些重复劳动。",
-        "它叫 <term id=\"web_scraping\">网络爬取</term>。"
+        "现在，让程序替你完成这些重复的工作。",
+        "这就是 <term id=\"web_scraping\">网络爬取</term> 的核心思想。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "web_scraping"
+        "algorithmic_trading"
       ],
       "id": "s003",
-      "introduced_terms": [],
+      "introduced_terms": [
+        "algorithmic_trading"
+      ],
       "lines": [
-        "简单来说，就是写一段程序，自动访问网页，",
-        "然后把你需要的数据提取出来。"
+        "在 <term id=\"algorithmic_trading\">算法交易</term> 中，数据就是燃料。",
+        "没有数据，策略就是空谈。"
       ],
       "type": "narration"
     },
     {
-      "focus_terms": [
-        "web_scraping"
-      ],
+      "focus_terms": [],
       "id": "s004",
       "introduced_terms": [],
       "lines": [
-        "在算法交易中，爬取的数据可以是实时股价、新闻标题、",
-        "甚至社交媒体上的情绪。"
+        "爬取的数据可以用于：",
+        "实时获取股价、经济指标，分析市场情绪，甚至监控天气数据。"
       ],
       "type": "narration"
     },
     {
+      "exercise": {
+        "answer": 1,
+        "explanation": "网络爬取正是为了自动从网站提取数据而设计的。",
+        "kind": "single_choice",
+        "options": [
+          "手动计算股票平均价格",
+          "自动从财经网站收集每日收盘价",
+          "用 Excel 绘制图表",
+          "编写交易策略的代码逻辑"
+        ],
+        "prompt": "下面哪种情况最适合使用网络爬取？"
+      },
       "focus_terms": [],
       "id": "s005",
       "introduced_terms": [],
       "lines": [
-        "但网页不是一堆纯文本。",
-        "它有自己的骨架。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "html"
-      ],
-      "id": "s006",
-      "introduced_terms": [
-        "html"
-      ],
-      "lines": [
-        "这个骨架就是 <term id=\"html\">HTML</term>。",
-        "它用标签来定义标题、段落、表格……"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "html"
-      ],
-      "id": "s007",
-      "introduced_terms": [],
-      "lines": [
-        "比如 `<h1>` 表示一级标题，`<p>` 表示段落。",
-        "爬虫的工作，就是找到这些标签，取出里面的内容。"
-      ],
-      "type": "narration"
-    },
-    {
-      "exercise": {
-        "answer": 1,
-        "explanation": "`<table>` 标签用于在 HTML 中创建表格。",
-        "kind": "single_choice",
-        "options": [
-          "<p>",
-          "<table>",
-          "<h1>",
-          "<a>"
-        ],
-        "prompt": "下面哪个标签用于定义网页中的表格？"
-      },
-      "focus_terms": [
-        "html"
-      ],
-      "id": "s008",
-      "introduced_terms": [],
-      "lines": [
-        "下面哪个标签用于定义网页中的表格？"
+        "下面哪种情况最适合使用网络爬取？"
       ],
       "type": "exercise"
-    },
-    {
-      "focus_terms": [
-        "beautifulsoup"
-      ],
-      "id": "s009",
-      "introduced_terms": [
-        "beautifulsoup"
-      ],
-      "lines": [
-        "Python 里最常用的爬虫库之一，叫 <term id=\"beautifulsoup\">BeautifulSoup</term>。",
-        "它能帮你轻松解析 HTML 文档。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "beautifulsoup"
-      ],
-      "id": "s010",
-      "introduced_terms": [],
-      "lines": [
-        "先用 `requests` 下载网页内容，",
-        "再用 BeautifulSoup 解析，就能像操作对象一样提取数据。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "beautifulsoup"
-      ],
-      "id": "s011",
-      "introduced_terms": [],
-      "lines": [
-        "比如，用 `find('p')` 可以找到第一个段落，",
-        "用 `find_all('a')` 可以找到所有超链接。"
-      ],
-      "type": "narration"
-    },
-    {
-      "exercise": {
-        "answer": 1,
-        "explanation": "`find_all('table')` 会返回页面中所有 `<table>` 标签的列表。",
-        "kind": "single_choice",
-        "options": [
-          "find('table')",
-          "find_all('table')",
-          "get_text()",
-          "prettify()"
-        ],
-        "prompt": "假设你想提取网页中所有表格的数据。应该使用哪个方法？"
-      },
-      "focus_terms": [
-        "beautifulsoup"
-      ],
-      "id": "s012",
-      "introduced_terms": [],
-      "lines": [
-        "假设你想提取网页中所有表格的数据。",
-        "应该使用哪个方法？"
-      ],
-      "type": "exercise"
-    },
-    {
-      "focus_terms": [
-        "xpath"
-      ],
-      "id": "s013",
-      "introduced_terms": [
-        "xpath"
-      ],
-      "lines": [
-        "除了 BeautifulSoup，还有另一种定位方式：<term id=\"xpath\">XPath</term>。",
-        "它像一条路径，直接指向你想要的元素。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "xpath"
-      ],
-      "id": "s014",
-      "introduced_terms": [],
-      "lines": [
-        "比如 `//table[@id='constituents']` 就能选中 id 为 constituents 的表格。",
-        "配合 `lxml` 库，解析速度更快。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [],
-      "id": "s015",
-      "introduced_terms": [],
-      "lines": [
-        "但有些网站的内容是动态加载的，",
-        "直接下载 HTML 可能拿不到数据。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "selenium"
-      ],
-      "id": "s016",
-      "introduced_terms": [
-        "selenium"
-      ],
-      "lines": [
-        "这时候就需要 <term id=\"selenium\">Selenium</term> 了。",
-        "它能模拟真实用户打开浏览器、点击按钮、滚动页面。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "selenium"
-      ],
-      "id": "s017",
-      "introduced_terms": [],
-      "lines": [
-        "Selenium 就像一个机器人，替你操作网页，",
-        "等数据加载完成后，再交给 BeautifulSoup 去提取。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "yfinance"
-      ],
-      "id": "s018",
-      "introduced_terms": [
-        "yfinance"
-      ],
-      "lines": [
-        "不过，对于金融数据，还有一个更省事的办法。",
-        "直接用 <term id=\"yfinance\">yfinance</term> 库。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "yfinance"
-      ],
-      "id": "s019",
-      "introduced_terms": [],
-      "lines": [
-        "它是 Yahoo Finance 的非官方 Python 接口。",
-        "一行代码就能下载股票的历史数据。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "yfinance"
-      ],
-      "id": "s020",
-      "introduced_terms": [],
-      "lines": [
-        "比如 `yf.download('AAPL', start='2023-01-01')`",
-        "就能拿到苹果公司从 2023 年开始的所有日线数据。"
-      ],
-      "type": "narration"
-    },
-    {
-      "exercise": {
-        "answer": 1,
-        "explanation": "调整收盘价通过回溯调整历史价格，消除了公司事件造成的价格跳跃，使长期分析更准确。",
-        "kind": "single_choice",
-        "options": [
-          "反映股票的真实市场交易价格",
-          "消除分红、拆股等事件对价格序列的影响",
-          "让股价看起来更高",
-          "用于计算当日的成交量"
-        ],
-        "prompt": "调整收盘价的主要目的是什么？"
-      },
-      "focus_terms": [
-        "adjusted_close"
-      ],
-      "id": "s021",
-      "introduced_terms": [
-        "adjusted_close"
-      ],
-      "lines": [
-        "yfinance 下载的数据中，有一列叫 'Adj Close'。",
-        "你知道它和 'Close' 有什么区别吗？"
-      ],
-      "type": "exercise"
-    },
-    {
-      "focus_terms": [],
-      "id": "s022",
-      "introduced_terms": [],
-      "lines": [
-        "爬取到的数据不能每次都重新抓。",
-        "你需要一个地方把它们存起来。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "sqlite"
-      ],
-      "id": "s023",
-      "introduced_terms": [
-        "sqlite"
-      ],
-      "lines": [
-        "Python 内置的 <term id=\"sqlite\">SQLite</term> 就是轻量级数据库的好选择。",
-        "不需要安装额外软件，一个文件就是一个数据库。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "sqlite"
-      ],
-      "id": "s024",
-      "introduced_terms": [],
-      "lines": [
-        "你可以用 SQL 语句创建表、插入数据、查询历史。",
-        "比如 `SELECT * FROM prices WHERE symbol='AAPL'`。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [],
-      "id": "s025",
-      "introduced_terms": [],
-      "lines": [
-        "设计数据库时，要考虑一个问题：",
-        "是把所有股票的数据放在一张大表里，还是按股票或日期拆分？"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [],
-      "id": "s026",
-      "introduced_terms": [],
-      "lines": [
-        "没有完美的方案。",
-        "按股票拆分，回测时查询快；按日期拆分，跨资产分析方便。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [],
-      "id": "s027",
-      "introduced_terms": [],
-      "lines": [
-        "关键在于平衡存储空间、查询速度和内存占用。",
-        "根据你的使用场景，选择最合适的方案。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [],
-      "id": "s028",
-      "introduced_terms": [],
-      "lines": [
-        "现在你知道了：",
-        "用爬虫获取数据，用数据库管理数据。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [],
-      "id": "s029",
-      "introduced_terms": [],
-      "lines": [
-        "下一步，就是把这些数据变成交易策略。",
-        "但那是另一个故事了。"
-      ],
-      "type": "narration"
     }
   ],
   "sequence_id": "step1",
   "source": {
-    "plain_text": "L2: Data scraping and database management with Python. 包含 Web scraping 基础、BeautifulSoup、lxml、Selenium、yfinance、SQLite 数据库管理、调整收盘价概念、数据库设计等。",
+    "plain_text": "What's Data/Web Scraping? Automated process to extract data from websites. Common use cases in algo-trading: Real-time data collection, Market sentiment analysis, Corporate analysis, Alternative data.",
     "related": [
-      "COMP7415A"
+      "L2: Data scraping and database management with Python"
     ]
   },
   "target_language": "zh-CN",
   "term_catalog": {
-    "adjusted_close": {
+    "algorithmic_trading": {
       "aliases": [
-        "Adjusted Close",
-        "Adj Close"
+        "Algorithmic Trading",
+        "Algo Trading"
       ],
-      "display": "调整收盘价",
-      "gloss": "经过分红、拆股等公司事件调整后的收盘价，用于反映股票的真实历史表现。"
-    },
-    "beautifulsoup": {
-      "aliases": [
-        "Beautiful Soup"
-      ],
-      "display": "BeautifulSoup",
-      "gloss": "一个用于解析 HTML 和 XML 文档的 Python 库。"
-    },
-    "html": {
-      "aliases": [
-        "HyperText Markup Language"
-      ],
-      "display": "HTML",
-      "gloss": "超文本标记语言，用于定义网页的结构和内容。"
-    },
-    "selenium": {
-      "aliases": [],
-      "display": "Selenium",
-      "gloss": "一个用于模拟用户交互、执行自动化测试和网络爬取的 Web 自动化工具。"
-    },
-    "sqlite": {
-      "aliases": [],
-      "display": "SQLite",
-      "gloss": "一个轻量级的、基于磁盘的关系型数据库引擎，Python 内置支持。"
+      "display": "算法交易",
+      "gloss": "用规则和程序处理交易判断与执行的方式。"
     },
     "web_scraping": {
       "aliases": [
@@ -432,18 +96,6 @@
       ],
       "display": "网络爬取",
       "gloss": "从网站自动提取数据的过程。"
-    },
-    "xpath": {
-      "aliases": [
-        "XML Path Language"
-      ],
-      "display": "XPath",
-      "gloss": "一种在 XML 文档中导航和选择节点的查询语言。"
-    },
-    "yfinance": {
-      "aliases": [],
-      "display": "yfinance",
-      "gloss": "一个非官方的 Python 库，用于从 Yahoo Finance 下载金融数据。"
     }
   }
 }

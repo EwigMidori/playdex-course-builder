@@ -1,0 +1,146 @@
+{
+  "lesson_id": "L1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s025",
+      "lines": [
+        "交易中最基本的两个方向：",
+        "做多和做空。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s026",
+      "introduced_terms": [
+        "long_position"
+      ],
+      "lines": [
+        "<term id=\"long_position\">多头头寸</term>：先买入，等涨了再卖出。",
+        "这是最熟悉的操作。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s027",
+      "introduced_terms": [
+        "short_position"
+      ],
+      "lines": [
+        "<term id=\"short_position\">空头头寸</term>：先借入股票卖出，等跌了再买回。",
+        "这是从下跌中获利的方式。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s028",
+      "introduced_terms": [
+        "short_selling"
+      ],
+      "lines": [
+        "做空的具体流程叫 <term id=\"short_selling\">卖空</term>：",
+        "借入股票 → 卖出 → 等跌了买回 → 归还股票。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s029",
+      "lines": [
+        "做空的风险很大，因为理论上亏损没有上限。",
+        "如果股价一直涨，你就得一直亏。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s030",
+      "introduced_terms": [
+        "mark_to_market"
+      ],
+      "lines": [
+        "无论做多还是做空，你的盈亏都会随着市场价格变化。",
+        "这个过程叫 <term id=\"mark_to_market\">逐日盯市</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "formula": {
+        "latex": "PnL = Quantity \\times (P_{current} - P_{entry})",
+        "spoken": "盈亏等于数量乘以当前价减去买入价"
+      },
+      "id": "s031",
+      "lines": [
+        "做多的盈亏公式：",
+        "PnL = 数量 × (当前价 - 买入价)"
+      ],
+      "type": "formula"
+    },
+    {
+      "formula": {
+        "latex": "PnL = -1 \\times Quantity \\times (P_{current} - P_{entry})",
+        "spoken": "盈亏等于负一乘以数量再乘以当前价减去卖出价"
+      },
+      "id": "s032",
+      "lines": [
+        "做空的盈亏公式：",
+        "PnL = -1 × 数量 × (当前价 - 卖出价)"
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "1000"
+        ],
+        "explanation": "做空盈亏 = -1 × 100 × (40 - 50) = 1000元，即盈利1000元。",
+        "kind": "fill_in_blank",
+        "prompt": "如果你以50元卖空100股，现在股价跌到40元，你的盈亏是多少？"
+      },
+      "id": "s033",
+      "lines": [
+        "如果你以50元卖空100股，现在股价跌到40元，你的盈亏是多少？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Long Position: Buying an asset with the expectation that its price will rise. Short Position: Selling an asset that you do not own, with the intention of buying it back later at a lower price. Short-Selling: Borrowing shares, selling them, buying back later, returning shares. Mark-to-Market: calculating asset value according to current market value. PnL formulas for long and short positions.",
+    "related": [
+      "trading positions",
+      "profit and loss"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "long_position": {
+      "aliases": [
+        "Long Position",
+        "做多"
+      ],
+      "display": "多头头寸",
+      "gloss": "买入资产，预期价格上涨后卖出获利。"
+    },
+    "mark_to_market": {
+      "aliases": [
+        "Mark-to-Market"
+      ],
+      "display": "逐日盯市",
+      "gloss": "按当前市场价值计算资产或头寸的价值。"
+    },
+    "short_position": {
+      "aliases": [
+        "Short Position",
+        "做空"
+      ],
+      "display": "空头头寸",
+      "gloss": "先借入资产卖出，预期价格下跌后买回获利。"
+    },
+    "short_selling": {
+      "aliases": [
+        "Short-Selling"
+      ],
+      "display": "卖空",
+      "gloss": "借入股票卖出，希望未来以更低价格买回。"
+    }
+  }
+}

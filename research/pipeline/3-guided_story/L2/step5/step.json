@@ -1,0 +1,118 @@
+{
+  "lesson_id": "L2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "yfinance"
+      ],
+      "id": "s026",
+      "introduced_terms": [
+        "yfinance"
+      ],
+      "lines": [
+        "直接爬取 Yahoo Finance 会遇到很多反爬措施。",
+        "好在有一个专门的库：<term id=\"yfinance\">yfinance</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "它封装了所有复杂的请求，让你几行代码就能获取数据。",
+        "比如获取腾讯控股 (0700.HK) 的基本信息。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "用 `.history(period='1mo')` 可以获取最近一个月的股价历史。",
+        "包含开盘价、最高价、最低价、收盘价和成交量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "adjusted_close"
+      ],
+      "id": "s029",
+      "introduced_terms": [
+        "adjusted_close"
+      ],
+      "lines": [
+        "你还会看到一个叫 <term id=\"adjusted_close\">调整收盘价</term> 的字段。",
+        "它和普通收盘价有什么区别？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "当公司分红或拆股时，股价会出现非市场因素的跳变。",
+        "调整收盘价就是为了消除这些“噪音”，让历史价格具有可比性。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "比如，一只股票 2:1 拆股，价格会瞬间减半。",
+        "调整收盘价会把拆股前的价格也除以 2，保持连续性。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "调整收盘价消除了分红和拆股的影响，更适合长期分析。",
+        "kind": "single_choice",
+        "options": [
+          "开盘价",
+          "收盘价",
+          "调整收盘价",
+          "最高价"
+        ],
+        "prompt": "进行长期回测时，应该使用哪个价格？"
+      },
+      "focus_terms": [],
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "进行长期回测时，应该使用哪个价格？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "yfinance: It is an unofficial library for Yahoo Finance. pip install yfinance. Extract stock info: .info(). Extract stock history: .history(period). Extract multiple stocks: yf.download(tickers, start, end). Close vs Adjusted Close. Adjusted close prices are backward updated to account for these corporate events.",
+    "related": [
+      "L2: Data scraping and database management with Python"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "adjusted_close": {
+      "aliases": [
+        "Adjusted Close",
+        "Adj Close"
+      ],
+      "display": "调整收盘价",
+      "gloss": "经过分红、拆股等公司事件调整后的收盘价。"
+    },
+    "yfinance": {
+      "aliases": [],
+      "display": "yfinance",
+      "gloss": "一个非官方的 Yahoo Finance Python 库，用于获取股票数据。"
+    }
+  }
+}

@@ -1,0 +1,636 @@
+```json
+{
+  "lesson_id": "L1",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L1/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "input coverage checklist",
+    "source_outline": "input source outline",
+    "lesson_map": "input lesson map"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "long_short_position",
+      "description": "多头头寸与空头头寸的定义、方向与获利逻辑",
+      "covered_by": ["qf_flash_long_short_def", "qf_quiz_long_short_identify", "qf_long_long_short_compare"]
+    },
+    {
+      "coverage_tag": "short_selling_process",
+      "description": "卖空的四个步骤：借入、卖出、买回、归还",
+      "covered_by": ["qf_flash_short_selling_steps", "qf_quiz_short_selling_order"]
+    },
+    {
+      "coverage_tag": "short_selling_risk",
+      "description": "做空的理论亏损无上限风险",
+      "covered_by": ["qf_flash_short_risk", "qf_quiz_short_risk_choice"]
+    },
+    {
+      "coverage_tag": "mark_to_market",
+      "description": "逐日盯市的概念：按当前市价计算头寸价值",
+      "covered_by": ["qf_flash_mtm_definition", "qf_quiz_mtm_apply"]
+    },
+    {
+      "coverage_tag": "pnl_formula_long",
+      "description": "做多盈亏公式：PnL = Quantity × (P_current - P_entry)",
+      "covered_by": ["qf_flash_pnl_long_formula", "qf_quiz_pnl_long_calc", "qf_long_pnl_calc_apply"]
+    },
+    {
+      "coverage_tag": "pnl_formula_short",
+      "description": "做空盈亏公式：PnL = -1 × Quantity × (P_current - P_entry)",
+      "covered_by": ["qf_flash_pnl_short_formula", "qf_quiz_pnl_short_calc", "qf_long_pnl_calc_apply"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_long_short_def",
+      "question_type": "short_answer",
+      "linked_steps": ["step4"],
+      "concept_key": "long_short_position",
+      "coverage_tags": ["long_short_position"],
+      "term_refs": [
+        {
+          "display": "多头头寸",
+          "en": "Long Position"
+        },
+        {
+          "display": "空头头寸",
+          "en": "Short Position"
+        }
+      ],
+      "learning_goal": "学生能准确回忆多头和空头的基本定义与获利方向。",
+      "difficulty": "easy",
+      "retrieval_focus": "区分多头与空头的核心操作方向",
+      "variants": [
+        {
+          "question_id": "q_flash_long_short_def_v1",
+          "front": "多头头寸（Long Position）的操作方向是什么？预期价格如何变化才能获利？",
+          "back": "先买入，预期价格上涨后卖出获利。",
+          "explanation": "多头是买入资产，希望价格上升后卖出赚取差价。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_long_short_def_v2",
+          "front": "空头头寸（Short Position）的操作方向是什么？预期价格如何变化才能获利？",
+          "back": "先借入卖出，预期价格下跌后买回获利。",
+          "explanation": "空头是借入资产卖出，希望价格下跌后低价买回归还。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_short_selling_steps",
+      "question_type": "short_answer",
+      "linked_steps": ["step4"],
+      "concept_key": "short_selling_process",
+      "coverage_tags": ["short_selling_process"],
+      "term_refs": [
+        {
+          "display": "卖空",
+          "en": "Short-Selling"
+        }
+      ],
+      "learning_goal": "学生能回忆出卖空的四个关键步骤。",
+      "difficulty": "easy",
+      "retrieval_focus": "卖空流程的每一步",
+      "variants": [
+        {
+          "question_id": "q_flash_short_selling_steps_v1",
+          "front": "卖空（Short-Selling）的第一步是什么？",
+          "back": "从券商借入股票。",
+          "explanation": "卖空的第一步是借入股票，然后才能卖出。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_short_selling_steps_v2",
+          "front": "卖空（Short-Selling）的最后一步是什么？",
+          "back": "将买回的股票归还给券商。",
+          "explanation": "卖空完成后，必须归还借入的股票以平仓。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_short_risk",
+      "question_type": "short_answer",
+      "linked_steps": ["step4"],
+      "concept_key": "short_selling_risk",
+      "coverage_tags": ["short_selling_risk"],
+      "term_refs": [
+        {
+          "display": "卖空",
+          "en": "Short-Selling"
+        }
+      ],
+      "learning_goal": "学生能识别出卖空的核心风险特征。",
+      "difficulty": "easy",
+      "retrieval_focus": "做空与做多风险的不对称性",
+      "variants": [
+        {
+          "question_id": "q_flash_short_risk_v1",
+          "front": "做空（Short-Selling）在理论上有什么特殊的风险？",
+          "back": "亏损没有上限（因为股价理论上可以无限上涨）。",
+          "explanation": "做多最大亏损是本金，但做空如果股价持续上涨，亏损可以无限大。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_short_risk_v2",
+          "front": "为什么做空的风险比做多更大？",
+          "back": "因为做多最大亏损有限（本金），做空亏损理论上无上限。",
+          "explanation": "股价可以涨到远高于做空价格，导致无限亏损。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_mtm_definition",
+      "question_type": "short_answer",
+      "linked_steps": ["step4"],
+      "concept_key": "mark_to_market",
+      "coverage_tags": ["mark_to_market"],
+      "term_refs": [
+        {
+          "display": "逐日盯市",
+          "en": "Mark-to-Market"
+        }
+      ],
+      "learning_goal": "学生能回忆逐日盯市的基本含义。",
+      "difficulty": "easy",
+      "retrieval_focus": "逐日盯市的核心操作",
+      "variants": [
+        {
+          "question_id": "q_flash_mtm_definition_v1",
+          "front": "逐日盯市（Mark-to-Market）是什么意思？",
+          "back": "按当前市场价格计算资产或头寸的价值。",
+          "explanation": "逐日盯市确保盈亏随市价实时反映。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_mtm_definition_v2",
+          "front": "逐日盯市（Mark-to-Market）影响的是已实现盈亏还是未实现盈亏？",
+          "back": "未实现盈亏（Unrealized PnL）。",
+          "explanation": "逐日盯市计算的是当前持仓的浮动盈亏，平仓后才变成已实现盈亏。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_pnl_long_formula",
+      "question_type": "short_answer",
+      "linked_steps": ["step4"],
+      "concept_key": "pnl_formula_long",
+      "coverage_tags": ["pnl_formula_long"],
+      "term_refs": [
+        {
+          "display": "做多盈亏公式",
+          "en": "Long PnL Formula"
+        }
+      ],
+      "learning_goal": "学生能准确回忆做多盈亏公式。",
+      "difficulty": "easy",
+      "retrieval_focus": "做多盈亏公式的变量与符号",
+      "variants": [
+        {
+          "question_id": "q_flash_pnl_long_formula_v1",
+          "front": "做多（Long）的盈亏公式是什么？",
+          "back": "PnL = Quantity × (P_current - P_entry)",
+          "explanation": "做多盈亏 = 数量 × (当前价 - 买入价)。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_pnl_long_formula_v2",
+          "front": "在做多盈亏公式 PnL = Quantity × (P_current - P_entry) 中，如果 P_current > P_entry，结果是盈利还是亏损？",
+          "back": "盈利（正数）。",
+          "explanation": "当前价高于买入价时，公式结果为正值，表示盈利。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_pnl_short_formula",
+      "question_type": "short_answer",
+      "linked_steps": ["step4"],
+      "concept_key": "pnl_formula_short",
+      "coverage_tags": ["pnl_formula_short"],
+      "term_refs": [
+        {
+          "display": "做空盈亏公式",
+          "en": "Short PnL Formula"
+        }
+      ],
+      "learning_goal": "学生能准确回忆做空盈亏公式。",
+      "difficulty": "easy",
+      "retrieval_focus": "做空盈亏公式的变量与符号",
+      "variants": [
+        {
+          "question_id": "q_flash_pnl_short_formula_v1",
+          "front": "做空（Short）的盈亏公式是什么？",
+          "back": "PnL = -1 × Quantity × (P_current - P_entry)",
+          "explanation": "做空盈亏 = -1 × 数量 × (当前价 - 卖出价)。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_pnl_short_formula_v2",
+          "front": "在做空盈亏公式 PnL = -1 × Quantity × (P_current - P_entry) 中，如果 P_current < P_entry，结果是盈利还是亏损？",
+          "back": "盈利（正数）。",
+          "explanation": "当前价低于卖出价时，负号乘以负差得到正值，表示盈利。",
+          "estimated_seconds": 6
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_long_short_identify",
+      "question_type": "single_choice",
+      "linked_steps": ["step4"],
+      "concept_key": "long_short_position",
+      "coverage_tags": ["long_short_position"],
+      "term_refs": [
+        {
+          "display": "多头头寸",
+          "en": "Long Position"
+        },
+        {
+          "display": "空头头寸",
+          "en": "Short Position"
+        }
+      ],
+      "learning_goal": "学生能在具体情境中判断交易方向属于多头还是空头。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_long_short_identify_v1",
+          "stem": "小王预期某股票价格将上涨，于是买入100股。这属于什么类型的头寸？",
+          "options": [
+            "多头头寸",
+            "空头头寸",
+            "套利头寸",
+            "对冲头寸"
+          ],
+          "answer": 0,
+          "explanation": "买入资产预期价格上涨，属于多头头寸。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_long_short_identify_v2",
+          "stem": "小李认为某股票价格会下跌，于是先借入股票卖出。这属于什么类型的头寸？",
+          "options": [
+            "多头头寸",
+            "空头头寸",
+            "套利头寸",
+            "对冲头寸"
+          ],
+          "answer": 1,
+          "explanation": "借入卖出，预期价格下跌后买回，属于空头头寸。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_short_selling_order",
+      "question_type": "ordering",
+      "linked_steps": ["step4"],
+      "concept_key": "short_selling_process",
+      "coverage_tags": ["short_selling_process"],
+      "term_refs": [
+        {
+          "display": "卖空",
+          "en": "Short-Selling"
+        }
+      ],
+      "learning_goal": "学生能正确排列卖空的四个步骤。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_short_selling_order_v1",
+          "stem": "请将以下卖空（Short-Selling）的步骤按正确顺序排列：",
+          "options": [
+            "A. 借入股票",
+            "B. 卖出股票",
+            "C. 买回股票",
+            "D. 归还股票"
+          ],
+          "answer": [0, 1, 2, 3],
+          "explanation": "正确的顺序是：借入股票 → 卖出股票 → 买回股票 → 归还股票。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_short_selling_order_v2",
+          "stem": "请将以下卖空（Short-Selling）的步骤按正确顺序排列：",
+          "options": [
+            "A. 归还股票给券商",
+            "B. 从券商借入股票",
+            "C. 以当前市价卖出股票",
+            "D. 以更低价格买回股票"
+          ],
+          "answer": [1, 2, 3, 0],
+          "explanation": "正确的顺序是：借入股票 → 卖出股票 → 买回股票 → 归还股票。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_short_risk_choice",
+      "question_type": "single_choice",
+      "linked_steps": ["step4"],
+      "concept_key": "short_selling_risk",
+      "coverage_tags": ["short_selling_risk"],
+      "term_refs": [
+        {
+          "display": "卖空",
+          "en": "Short-Selling"
+        }
+      ],
+      "learning_goal": "学生能识别做空的核心风险特征。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_short_risk_choice_v1",
+          "stem": "以下关于做空（Short-Selling）风险的描述，哪一项是正确的？",
+          "options": [
+            "做空的最大亏损等于本金",
+            "做空的理论亏损没有上限",
+            "做空的风险比做多小",
+            "做空不会触发追加保证金"
+          ],
+          "answer": 1,
+          "explanation": "做空时，如果股价持续上涨，亏损可以无限大，因此理论亏损没有上限。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_short_risk_choice_v2",
+          "stem": "为什么做空（Short-Selling）被认为比做多风险更大？",
+          "options": [
+            "因为做空需要更多本金",
+            "因为做空只能在大盘下跌时操作",
+            "因为做空的理论亏损无上限，而做多最大亏损有限",
+            "因为做空的手续费更高"
+          ],
+          "answer": 2,
+          "explanation": "做多最大亏损是全部本金，但做空如果股价上涨，亏损可以无限大。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_mtm_apply",
+      "question_type": "single_choice",
+      "linked_steps": ["step4"],
+      "concept_key": "mark_to_market",
+      "coverage_tags": ["mark_to_market"],
+      "term_refs": [
+        {
+          "display": "逐日盯市",
+          "en": "Mark-to-Market"
+        }
+      ],
+      "learning_goal": "学生能理解逐日盯市对盈亏计算的影响。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_mtm_apply_v1",
+          "stem": "你以每股50元买入100股股票，当前市价为55元。根据逐日盯市（Mark-to-Market），你的未实现盈亏是多少？",
+          "options": [
+            "盈利500元",
+            "亏损500元",
+            "盈利5500元",
+            "亏损5500元"
+          ],
+          "answer": 0,
+          "explanation": "未实现盈亏 = 100 × (55 - 50) = 500元，为盈利。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_mtm_apply_v2",
+          "stem": "你以每股80元卖空200股股票，当前市价为70元。根据逐日盯市（Mark-to-Market），你的未实现盈亏是多少？",
+          "options": [
+            "盈利2000元",
+            "亏损2000元",
+            "盈利14000元",
+            "亏损14000元"
+          ],
+          "answer": 0,
+          "explanation": "未实现盈亏 = -1 × 200 × (70 - 80) = 2000元，为盈利。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_pnl_long_calc",
+      "question_type": "single_choice",
+      "linked_steps": ["step4"],
+      "concept_key": "pnl_formula_long",
+      "coverage_tags": ["pnl_formula_long"],
+      "term_refs": [
+        {
+          "display": "做多盈亏公式",
+          "en": "Long PnL Formula"
+        }
+      ],
+      "learning_goal": "学生能用做多盈亏公式进行简单计算。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_pnl_long_calc_v1",
+          "stem": "你以每股30元买入500股股票，现在股价涨到35元。你的盈亏是多少？",
+          "options": [
+            "盈利2500元",
+            "亏损2500元",
+            "盈利17500元",
+            "亏损17500元"
+          ],
+          "answer": 0,
+          "explanation": "PnL = 500 × (35 - 30) = 2500元，盈利。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_pnl_long_calc_v2",
+          "stem": "你以每股120元买入300股股票，现在股价跌到110元。你的盈亏是多少？",
+          "options": [
+            "盈利3000元",
+            "亏损3000元",
+            "盈利36000元",
+            "亏损36000元"
+          ],
+          "answer": 1,
+          "explanation": "PnL = 300 × (110 - 120) = -3000元，亏损3000元。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_pnl_short_calc",
+      "question_type": "single_choice",
+      "linked_steps": ["step4"],
+      "concept_key": "pnl_formula_short",
+      "coverage_tags": ["pnl_formula_short"],
+      "term_refs": [
+        {
+          "display": "做空盈亏公式",
+          "en": "Short PnL Formula"
+        }
+      ],
+      "learning_goal": "学生能用做空盈亏公式进行简单计算。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_pnl_short_calc_v1",
+          "stem": "你以每股60元卖空200股股票，现在股价跌到50元。你的盈亏是多少？",
+          "options": [
+            "盈利2000元",
+            "亏损2000元",
+            "盈利10000元",
+            "亏损10000元"
+          ],
+          "answer": 0,
+          "explanation": "PnL = -1 × 200 × (50 - 60) = 2000元，盈利。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_pnl_short_calc_v2",
+          "stem": "你以每股40元卖空150股股票，现在股价涨到45元。你的盈亏是多少？",
+          "options": [
+            "盈利750元",
+            "亏损750元",
+            "盈利6000元",
+            "亏损6000元"
+          ],
+          "answer": 1,
+          "explanation": "PnL = -1 × 150 × (45 - 40) = -750元，亏损750元。",
+          "estimated_seconds": 20
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_long_short_compare",
+      "question_type": "compare_and_contrast",
+      "linked_steps": ["step4"],
+      "concept_key": "long_short_position",
+      "coverage_tags": ["long_short_position"],
+      "term_refs": [
+        {
+          "display": "多头头寸",
+          "en": "Long Position"
+        },
+        {
+          "display": "空头头寸",
+          "en": "Short Position"
+        }
+      ],
+      "learning_goal": "学生能系统比较多头与空头在操作方向、获利逻辑和风险特征上的异同。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_long_short_compare_v1",
+          "stem": "请比较多头头寸（Long Position）和空头头寸（Short Position）在以下三个方面的区别：操作方向、获利逻辑、风险特征。",
+          "prompt_blocks": [
+            "操作方向",
+            "获利逻辑",
+            "风险特征"
+          ],
+          "rubric_points": [
+            "操作方向：多头先买入后卖出；空头先借入卖出后买回。",
+            "获利逻辑：多头预期价格上涨获利；空头预期价格下跌获利。",
+            "风险特征：多头最大亏损有限（本金）；空头理论亏损无上限。"
+          ],
+          "reference_answer": [
+            "多头头寸：先买入资产，预期价格上涨后卖出获利。最大亏损为全部本金。",
+            "空头头寸：先借入资产卖出，预期价格下跌后买回获利。理论亏损无上限，因为股价可以无限上涨。"
+          ],
+          "estimated_seconds": 90
+        },
+        {
+          "question_id": "q_long_long_short_compare_v2",
+          "stem": "假设你预期某股票价格将大幅波动，但不确定方向。请分别说明如果你选择做多和做空，你的操作步骤、获利条件以及各自面临的最大风险是什么。",
+          "prompt_blocks": [
+            "做多的操作步骤与获利条件",
+            "做空的操作步骤与获利条件",
+            "做多的最大风险",
+            "做空的最大风险"
+          ],
+          "rubric_points": [
+            "做多：买入股票，价格上涨后卖出获利。最大风险是损失全部本金。",
+            "做空：借入股票卖出，价格下跌后买回获利。最大风险是理论亏损无上限。"
+          ],
+          "reference_answer": [
+            "做多：以当前价格买入股票，等待价格上涨后卖出。获利条件是卖出价高于买入价。最大风险是股价跌至0，损失全部本金。",
+            "做空：从券商借入股票并卖出，等待价格下跌后买回归还。获利条件是买回价低于卖出价。最大风险是股价持续上涨，亏损无上限。"
+          ],
+          "estimated_seconds": 90
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_pnl_calc_apply",
+      "question_type": "worked_example",
+      "linked_steps": ["step4"],
+      "concept_key": "pnl_formula_long",
+      "coverage_tags": ["pnl_formula_long", "pnl_formula_short"],
+      "term_refs": [
+        {
+          "display": "做多盈亏公式",
+          "en": "Long PnL Formula"
+        },
+        {
+          "display": "做空盈亏公式",
+          "en": "Short PnL Formula"
+        }
+      ],
+      "learning_goal": "学生能综合运用做多和做空盈亏公式进行多步计算和解释。",
+      "difficulty": "hard",
+      "variants": [
+        {
+          "question_id": "q_long_pnl_calc_apply_v1",
+          "stem": "你同时进行了两笔交易：\n1. 以每股20元买入300股股票A。\n2. 以每股50元卖空200股股票B。\n现在股票A的价格为25元，股票B的价格为45元。\n请计算：\n(1) 股票A的盈亏是多少？\n(2) 股票B的盈亏是多少？\n(3) 总盈亏是多少？\n(4) 如果股票B的价格涨到55元，你的做空头寸会面临什么风险？",
+          "prompt_blocks": [
+            "股票A的盈亏计算",
+            "股票B的盈亏计算",
+            "总盈亏",
+            "做空头寸的风险分析"
+          ],
+          "rubric_points": [
+            "股票A盈亏 = 300 × (25 - 20) = 1500元（盈利）",
+            "股票B盈亏 = -1 × 200 × (45 - 50) = 1000元（盈利）",
+            "总盈亏 = 1500 + 1000 = 2500元（盈利）",
+            "如果股票B涨到55元，做空头寸亏损 = -1 × 200 × (55 - 50) = -1000元。若继续上涨，亏损无上限。"
+          ],
+          "reference_answer": [
+            "股票A盈亏 = 300 × (25 - 20) = 1500元，盈利。",
+            "股票B盈亏 = -1 × 200 × (45 - 50) = 1000元，盈利。",
+            "总盈亏 = 1500 + 1000 = 2500元，盈利。",
+            "如果股票B涨到55元，做空头寸亏损 = -1 × 200 × (55 - 50) = -1000元。做空的理论亏损无上限，股价越高亏损越大。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_pnl_calc_apply_v2",
+          "stem": "你进行了以下交易：\n1. 以每股100元买入100股股票X。\n2. 以每股80元卖空150股股票Y。\n现在股票X的价格为90元，股票Y的价格为70元。\n请计算：\n(1) 股票X的盈亏是多少？\n(2) 股票Y的盈亏是多少？\n(3) 总盈亏是多少？\n(4) 如果股票X的价格跌到50元，你的多头头寸会面临什么风险？",
+          "prompt_blocks": [
+            "股票X的盈亏计算",
+            "股票Y的盈亏计算",
+            "总盈亏",
+            "多头头寸的风险分析"
+          ],
+          "rubric_points": [
+            "股票X盈亏 = 100 × (90 - 100) = -1000元（亏损）",
+            "股票Y盈亏 = -1 × 150 × (70 - 80) = 1500元（盈利）",
+            "总盈亏 = -1000 + 1500 = 500元（盈利）",
+            "如果股票X跌到50元，多头头寸亏损 = 100 × (50 - 100) = -5000元。最大亏损为全部本金10000元。"
+          ],
+          "reference_answer": [
+            "股票X盈亏 = 100 × (90 - 100) = -1000元，亏损。",
+            "股票Y盈亏 = -1 × 150 × (70 - 80) = 1500元，盈利。",
+            "总盈亏 = -1000 + 1500 = 500元，盈利。",
+            "如果股票X跌到50元，多头头寸亏损 = 100 × (50 - 100) = -5000元。多头最大亏损为全部本金10000元（股价跌至0）。"
+          ],
+          "estimated_seconds": 120
+        }
+      ]
+    }
+  ]
+}
+```

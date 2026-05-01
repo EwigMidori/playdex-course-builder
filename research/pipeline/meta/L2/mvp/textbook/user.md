@@ -10,6 +10,8 @@ L2
 - 面向整节课，而不是单个 step
 - 系统化组织内容，适合预习与复习
 - 要能嵌入题目与题族
+- 必须区分 `flashcard_families`、`quiz_families`、`longform_families` 的用途：闪卡用于主动检索，quiz 用于测验，longform 用于解释与应用
+- 不要把选择题称为 flashcard，也不要把 flashcard 放在考试题语境中
 - 术语与公式要可交互引用
 - 术语必须带英文备注，便于考试和交流
 - 不要依赖 `StepLink`
@@ -205,8 +207,8 @@ Alternative data (eg. weather, web traffic, etc)
       "id": "s001",
       "introduced_terms": [],
       "lines": [
-        "想象一下，你正在监控 500 家公司的股价。",
-        "手动刷新网页？太慢了。"
+        "想象一下，你需要每天手动收集几百只股票的价格。",
+        "那会花掉你多少时间？"
       ],
       "type": "narration"
     },
@@ -219,175 +221,215 @@ Alternative data (eg. weather, web traffic, etc)
         "web_scraping"
       ],
       "lines": [
-        "你需要一个自动化的方式，从网站上提取数据。",
-        "这就是 <term id=\"web_scraping\">网页抓取</term>。"
+        "其实，有一种方法可以让电脑替你完成这些重复劳动。",
+        "它叫 <term id=\"web_scraping\">网络爬取</term>。"
       ],
       "type": "narration"
     },
     {
-      "focus_terms": [],
+      "focus_terms": [
+        "web_scraping"
+      ],
       "id": "s003",
       "introduced_terms": [],
       "lines": [
-        "但网页不是一张白纸。",
-        "它由三种语言搭建而成。"
+        "简单来说，就是写一段程序，自动访问网页，",
+        "然后把你需要的数据提取出来。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "html",
-        "css"
+        "web_scraping"
       ],
       "id": "s004",
-      "introduced_terms": [
-        "html",
-        "css"
-      ],
+      "introduced_terms": [],
       "lines": [
-        "**<term id=\"html\">HTML</term>** 定义结构——标题、段落、表格。",
-        "**<term id=\"css\">CSS</term>** 控制样式——颜色、字体、布局。"
+        "在算法交易中，爬取的数据可以是实时股价、新闻标题、",
+        "甚至社交媒体上的情绪。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "但网页不是一堆纯文本。",
+        "它有自己的骨架。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "javascript"
+        "html"
       ],
-      "id": "s005",
+      "id": "s006",
       "introduced_terms": [
-        "javascript"
+        "html"
       ],
       "lines": [
-        "**<term id=\"javascript\">JavaScript</term>** 添加交互——点击、弹窗、动态加载。",
-        "抓取的核心，就是读懂 HTML 的结构。"
+        "这个骨架就是 <term id=\"html\">HTML</term>。",
+        "它用标签来定义标题、段落、表格……"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "html"
+      ],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "比如 `<h1>` 表示一级标题，`<p>` 表示段落。",
+        "爬虫的工作，就是找到这些标签，取出里面的内容。"
       ],
       "type": "narration"
     },
     {
       "exercise": {
         "answer": 1,
-        "explanation": "<title> 标签位于 <head> 中，定义网页的标题。",
+        "explanation": "`<table>` 标签用于在 HTML 中创建表格。",
         "kind": "single_choice",
         "options": [
-          "<body>",
-          "<head> 里的 <title>",
+          "<p>",
+          "<table>",
           "<h1>",
-          "<p>"
+          "<a>"
         ],
-        "prompt": "标题信息通常放在哪个 HTML 标签中？"
+        "prompt": "下面哪个标签用于定义网页中的表格？"
       },
-      "focus_terms": [],
-      "id": "s006",
-      "introduced_terms": [],
-      "lines": [
-        "一个网页的标题显示在浏览器标签栏上，它最可能放在哪个标签里？"
-      ],
-      "type": "exercise"
-    },
-    {
       "focus_terms": [
-        "beautifulsoup"
+        "html"
       ],
-      "id": "s007",
-      "introduced_terms": [
-        "beautifulsoup"
-      ],
-      "lines": [
-        "Python 里最常用的抓取工具是 **<term id=\"beautifulsoup\">BeautifulSoup</term>**。",
-        "它能把杂乱的 HTML 变成可搜索的树。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [],
       "id": "s008",
       "introduced_terms": [],
       "lines": [
-        "先用 `requests` 下载网页源码，",
-        "再用 BeautifulSoup 解析。"
+        "下面哪个标签用于定义网页中的表格？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "beautifulsoup"
+      ],
+      "id": "s009",
+      "introduced_terms": [
+        "beautifulsoup"
+      ],
+      "lines": [
+        "Python 里最常用的爬虫库之一，叫 <term id=\"beautifulsoup\">BeautifulSoup</term>。",
+        "它能帮你轻松解析 HTML 文档。"
       ],
       "type": "narration"
     },
     {
-      "focus_terms": [],
-      "id": "s009",
+      "focus_terms": [
+        "beautifulsoup"
+      ],
+      "id": "s010",
       "introduced_terms": [],
       "lines": [
-        "想找第一个段落？用 `find('p')`。",
-        "想找所有链接？用 `find_all('a')`。"
+        "先用 `requests` 下载网页内容，",
+        "再用 BeautifulSoup 解析，就能像操作对象一样提取数据。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "beautifulsoup"
+      ],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "比如，用 `find('p')` 可以找到第一个段落，",
+        "用 `find_all('a')` 可以找到所有超链接。"
       ],
       "type": "narration"
     },
     {
       "exercise": {
         "answer": 1,
-        "explanation": "find_all 返回所有匹配的标签列表。",
+        "explanation": "`find_all('table')` 会返回页面中所有 `<table>` 标签的列表。",
         "kind": "single_choice",
         "options": [
-          "soup.find('table')",
-          "soup.find_all('table')",
-          "soup.select('table')",
-          "soup.get_text()"
+          "find('table')",
+          "find_all('table')",
+          "get_text()",
+          "prettify()"
         ],
-        "prompt": "BeautifulSoup 中，提取页面上所有 <table> 标签的方法是？"
+        "prompt": "假设你想提取网页中所有表格的数据。应该使用哪个方法？"
       },
-      "focus_terms": [],
-      "id": "s010",
+      "focus_terms": [
+        "beautifulsoup"
+      ],
+      "id": "s012",
       "introduced_terms": [],
       "lines": [
-        "假设你抓到一个表格，想提取所有行。",
-        "应该用哪个方法？"
+        "假设你想提取网页中所有表格的数据。",
+        "应该使用哪个方法？"
       ],
       "type": "exercise"
     },
     {
-      "focus_terms": [],
-      "id": "s011",
-      "introduced_terms": [],
-      "lines": [
-        "有些网站用 JavaScript 动态加载数据。",
-        "BeautifulSoup 看不到这些内容。"
-      ],
-      "type": "narration"
-    },
-    {
       "focus_terms": [
-        "selenium"
-      ],
-      "id": "s012",
-      "introduced_terms": [
-        "selenium"
-      ],
-      "lines": [
-        "这时需要 **<term id=\"selenium\">Selenium</term>**——它模拟真实浏览器。",
-        "能执行 JavaScript，等待页面加载完成。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "lxml",
         "xpath"
       ],
       "id": "s013",
       "introduced_terms": [
-        "lxml",
         "xpath"
       ],
       "lines": [
-        "另一种方式是使用 **<term id=\"lxml\">lxml</term>** 和 **<term id=\"xpath\">XPath</term>**。",
-        "XPath 像一条路径，直接定位到深层元素。"
+        "除了 BeautifulSoup，还有另一种定位方式：<term id=\"xpath\">XPath</term>。",
+        "它像一条路径，直接指向你想要的元素。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "xpath"
+      ],
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "比如 `//table[@id='constituents']` 就能选中 id 为 constituents 的表格。",
+        "配合 `lxml` 库，解析速度更快。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [],
-      "id": "s014",
+      "id": "s015",
       "introduced_terms": [],
       "lines": [
-        "比如 `//table[@id='constituents']`",
-        "就能直接选中 id 为 constituents 的表格。"
+        "但有些网站的内容是动态加载的，",
+        "直接下载 HTML 可能拿不到数据。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "selenium"
+      ],
+      "id": "s016",
+      "introduced_terms": [
+        "selenium"
+      ],
+      "lines": [
+        "这时候就需要 <term id=\"selenium\">Selenium</term> 了。",
+        "它能模拟真实用户打开浏览器、点击按钮、滚动页面。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "selenium"
+      ],
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "Selenium 就像一个机器人，替你操作网页，",
+        "等数据加载完成后，再交给 BeautifulSoup 去提取。"
       ],
       "type": "narration"
     },
@@ -395,123 +437,99 @@ Alternative data (eg. weather, web traffic, etc)
       "focus_terms": [
         "yfinance"
       ],
-      "id": "s015",
+      "id": "s018",
       "introduced_terms": [
         "yfinance"
       ],
       "lines": [
-        "对于金融数据，还有更省力的办法。",
-        "**<term id=\"yfinance\">yfinance</term>** 专门从 Yahoo Finance 拉数据。"
+        "不过，对于金融数据，还有一个更省事的办法。",
+        "直接用 <term id=\"yfinance\">yfinance</term> 库。"
       ],
       "type": "narration"
     },
     {
-      "focus_terms": [],
-      "id": "s016",
+      "focus_terms": [
+        "yfinance"
+      ],
+      "id": "s019",
       "introduced_terms": [],
       "lines": [
-        "三行代码就能拿到腾讯的历史股价。",
-        "`yf.Ticker(\"0700.HK\").history(period=\"1mo\")`"
+        "它是 Yahoo Finance 的非官方 Python 接口。",
+        "一行代码就能下载股票的历史数据。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "yfinance"
+      ],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "比如 `yf.download('AAPL', start='2023-01-01')`",
+        "就能拿到苹果公司从 2023 年开始的所有日线数据。"
       ],
       "type": "narration"
     },
     {
       "exercise": {
         "answer": 1,
-        "explanation": "调整收盘价向后修正了历史价格，使长期回测更准确。",
+        "explanation": "调整收盘价通过回溯调整历史价格，消除了公司事件造成的价格跳跃，使长期分析更准确。",
         "kind": "single_choice",
         "options": [
-          "反映当天最后一笔交易价格",
-          "消除分红、拆股等事件对历史价格的影响",
-          "显示最高价和最低价的平均值",
-          "用于计算交易量"
+          "反映股票的真实市场交易价格",
+          "消除分红、拆股等事件对价格序列的影响",
+          "让股价看起来更高",
+          "用于计算当日的成交量"
         ],
-        "prompt": "调整收盘价（Adj Close）的主要作用是？"
+        "prompt": "调整收盘价的主要目的是什么？"
       },
-      "focus_terms": [],
-      "id": "s017",
-      "introduced_terms": [],
+      "focus_terms": [
+        "adjusted_close"
+      ],
+      "id": "s021",
+      "introduced_terms": [
+        "adjusted_close"
+      ],
       "lines": [
-        "yfinance 返回的数据里，有一列叫“Adj Close”。",
-        "它和“Close”有什么区别？"
+        "yfinance 下载的数据中，有一列叫 'Adj Close'。",
+        "你知道它和 'Close' 有什么区别吗？"
       ],
       "type": "exercise"
-    },
-    {
-      "focus_terms": [
-        "adjusted_close"
-      ],
-      "id": "s018",
-      "introduced_terms": [
-        "adjusted_close"
-      ],
-      "lines": [
-        "没错，**<term id=\"adjusted_close\">调整收盘价</term>** 修正了分红和拆股。",
-        "比如 2:1 拆股后，之前的股价会乘以 0.5。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [],
-      "id": "s019",
-      "introduced_terms": [],
-      "lines": [
-        "抓下来的数据不能每次都重新爬。",
-        "你需要一个本地数据库。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "sqlite"
-      ],
-      "id": "s020",
-      "introduced_terms": [
-        "sqlite"
-      ],
-      "lines": [
-        "Python 内置了 **<term id=\"sqlite\">SQLite</term>**。",
-        "一个文件就是一个数据库，零配置。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [],
-      "id": "s021",
-      "introduced_terms": [],
-      "lines": [
-        "建表、插入、查询，和标准 SQL 一样。",
-        "`CREATE TABLE market_candles (...)`"
-      ],
-      "type": "narration"
     },
     {
       "focus_terms": [],
       "id": "s022",
       "introduced_terms": [],
       "lines": [
-        "但设计数据库时有个问题：",
-        "所有股票放同一张表，查询会越来越慢。"
+        "爬取到的数据不能每次都重新抓。",
+        "你需要一个地方把它们存起来。"
       ],
       "type": "narration"
     },
     {
-      "focus_terms": [],
+      "focus_terms": [
+        "sqlite"
+      ],
       "id": "s023",
-      "introduced_terms": [],
+      "introduced_terms": [
+        "sqlite"
+      ],
       "lines": [
-        "按股票分表？跨股票分析就麻烦了。",
-        "按月份分表？跨月查询又得拼 SQL。"
+        "Python 内置的 <term id=\"sqlite\">SQLite</term> 就是轻量级数据库的好选择。",
+        "不需要安装额外软件，一个文件就是一个数据库。"
       ],
       "type": "narration"
     },
     {
-      "focus_terms": [],
+      "focus_terms": [
+        "sqlite"
+      ],
       "id": "s024",
       "introduced_terms": [],
       "lines": [
-        "没有完美的设计。",
-        "关键看你的主要用途：回测还是分析？"
+        "你可以用 SQL 语句创建表、插入数据、查询历史。",
+        "比如 `SELECT * FROM prices WHERE symbol='AAPL'`。"
       ],
       "type": "narration"
     },
@@ -520,47 +538,55 @@ Alternative data (eg. weather, web traffic, etc)
       "id": "s025",
       "introduced_terms": [],
       "lines": [
-        "回测场景下，按股票分区更高效。",
-        "分析场景下，按时间分区更灵活。"
+        "设计数据库时，要考虑一个问题：",
+        "是把所有股票的数据放在一张大表里，还是按股票或日期拆分？"
       ],
       "type": "narration"
     },
     {
-      "exercise": {
-        "answer": 1,
-        "explanation": "按股票分表可以快速读取单只股票的完整历史，适合回测。",
-        "kind": "single_choice",
-        "options": [
-          "所有股票放在同一张大表",
-          "按股票代码分表",
-          "按日期（如每月）分表",
-          "不分区，每次全量扫描"
-        ],
-        "prompt": "对于策略回测，推荐的数据分区方式是？"
-      },
       "focus_terms": [],
       "id": "s026",
       "introduced_terms": [],
       "lines": [
-        "假设你要回测过去 5 年 500 只股票的策略。",
-        "哪种数据库设计最合适？"
+        "没有完美的方案。",
+        "按股票拆分，回测时查询快；按日期拆分，跨资产分析方便。"
       ],
-      "type": "exercise"
+      "type": "narration"
     },
     {
       "focus_terms": [],
       "id": "s027",
       "introduced_terms": [],
       "lines": [
-        "抓取是手段，存储是基础。",
-        "而这一切，都是为了让你能专注在策略上。"
+        "关键在于平衡存储空间、查询速度和内存占用。",
+        "根据你的使用场景，选择最合适的方案。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "现在你知道了：",
+        "用爬虫获取数据，用数据库管理数据。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "下一步，就是把这些数据变成交易策略。",
+        "但那是另一个故事了。"
       ],
       "type": "narration"
     }
   ],
   "sequence_id": "step1",
   "source": {
-    "plain_text": "L2: Data scraping and database management with Python. Covers web scraping using BeautifulSoup, lxml, Selenium, yfinance; limitations of scraping; SQLite database management; adjusted close price concept; database design for financial data.",
+    "plain_text": "L2: Data scraping and database management with Python. 包含 Web scraping 基础、BeautifulSoup、lxml、Selenium、yfinance、SQLite 数据库管理、调整收盘价概念、数据库设计等。",
     "related": [
       "COMP7415A"
     ]
@@ -573,21 +599,14 @@ Alternative data (eg. weather, web traffic, etc)
         "Adj Close"
       ],
       "display": "调整收盘价",
-      "gloss": "经过分红、拆股等公司事件调整后的收盘价，用于反映股票的真实历史价值。"
+      "gloss": "经过分红、拆股等公司事件调整后的收盘价，用于反映股票的真实历史表现。"
     },
     "beautifulsoup": {
       "aliases": [
-        "bs4"
+        "Beautiful Soup"
       ],
       "display": "BeautifulSoup",
-      "gloss": "一个流行的 Python 库，用于解析和搜索 HTML 及 XML 数据。"
-    },
-    "css": {
-      "aliases": [
-        "Cascading Style Sheets"
-      ],
-      "display": "CSS",
-      "gloss": "层叠样式表，用于控制网页的视觉呈现和布局。"
+      "gloss": "一个用于解析 HTML 和 XML 文档的 Python 库。"
     },
     "html": {
       "aliases": [
@@ -596,45 +615,35 @@ Alternative data (eg. weather, web traffic, etc)
       "display": "HTML",
       "gloss": "超文本标记语言，用于定义网页的结构和内容。"
     },
-    "javascript": {
-      "aliases": [
-        "JS"
-      ],
-      "display": "JavaScript",
-      "gloss": "一种脚本语言，用于为网页添加交互和动态行为。"
-    },
-    "lxml": {
-      "aliases": [],
-      "display": "lxml",
-      "gloss": "一个 Python 库，用于解析 XPath 和 XML 文档。"
-    },
     "selenium": {
       "aliases": [],
       "display": "Selenium",
-      "gloss": "一个网页自动化工具，可以模拟用户操作，用于抓取动态内容。"
+      "gloss": "一个用于模拟用户交互、执行自动化测试和网络爬取的 Web 自动化工具。"
     },
     "sqlite": {
       "aliases": [],
       "display": "SQLite",
-      "gloss": "一个轻量级的、基于磁盘的数据库引擎，Python 内置支持。"
+      "gloss": "一个轻量级的、基于磁盘的关系型数据库引擎，Python 内置支持。"
     },
     "web_scraping": {
       "aliases": [
         "Web Scraping",
         "Data Scraping"
       ],
-      "display": "网页抓取",
-      "gloss": "从网站上自动提取数据的过程。"
+      "display": "网络爬取",
+      "gloss": "从网站自动提取数据的过程。"
     },
     "xpath": {
-      "aliases": [],
+      "aliases": [
+        "XML Path Language"
+      ],
       "display": "XPath",
-      "gloss": "一种查询语言，用于在 XML 文档中导航和选择元素。"
+      "gloss": "一种在 XML 文档中导航和选择节点的查询语言。"
     },
     "yfinance": {
       "aliases": [],
       "display": "yfinance",
-      "gloss": "一个非官方的 Python 库，用于从 Yahoo Finance 获取金融数据。"
+      "gloss": "一个非官方的 Python 库，用于从 Yahoo Finance 下载金融数据。"
     }
   }
 }
@@ -646,305 +655,263 @@ Alternative data (eg. weather, web traffic, etc)
 {
   "coverage_map": [
     {
-      "coverage_tag": "basic_website_structure",
+      "coverage_tag": "web_scraping_definition",
+      "covered_by": [
+        "qf_flash_web_scraping",
+        "qf_quiz_web_scraping_use"
+      ],
+      "description": "网络爬取的定义与算法交易中的应用场景"
+    },
+    {
+      "coverage_tag": "html_structure",
       "covered_by": [
         "qf_flash_html_tags",
-        "qf_flash_web_tech_roles",
-        "qf_long_web_structure_explain"
+        "qf_quiz_html_tags"
       ],
-      "description": "理解网页基本结构：HTML、CSS、JavaScript 的角色"
+      "description": "HTML基本结构与常见标签"
     },
     {
-      "coverage_tag": "web_scraping_libraries",
+      "coverage_tag": "beautifulsoup_usage",
       "covered_by": [
-        "qf_flash_bs4_methods",
-        "qf_flash_xpath_syntax",
-        "qf_flash_selenium_purpose",
-        "qf_flash_yfinance_usage",
-        "qf_long_scraping_tool_choice",
-        "qf_long_scrape_sp500"
+        "qf_flash_beautifulsoup",
+        "qf_quiz_beautifulsoup",
+        "qf_long_beautifulsoup"
       ],
-      "description": "使用不同 Python 库进行网页抓取：BeautifulSoup, lxml/XPath, Selenium, yfinance"
+      "description": "BeautifulSoup库的安装与基本用法（find, find_all, get_text, prettify）"
     },
     {
-      "coverage_tag": "web_scraping_limitations",
+      "coverage_tag": "xpath_lxml",
       "covered_by": [
-        "qf_flash_scraping_limits",
-        "qf_long_scraping_limitations_explain"
+        "qf_flash_xpath",
+        "qf_quiz_xpath"
       ],
-      "description": "理解网页抓取的局限性：数据质量、资源消耗、技术挑战"
+      "description": "XPath语法与lxml库解析"
     },
     {
-      "coverage_tag": "sqlite_database",
+      "coverage_tag": "selenium_dynamic",
       "covered_by": [
-        "qf_flash_sqlite_crud",
-        "qf_long_sqlite_crud_example"
+        "qf_flash_selenium",
+        "qf_quiz_selenium"
       ],
-      "description": "使用 Python 创建和管理 SQLite 数据库：CRUD 操作"
+      "description": "Selenium处理动态加载页面"
     },
     {
-      "coverage_tag": "adjusted_close_price",
+      "coverage_tag": "yfinance_usage",
       "covered_by": [
-        "qf_flash_adjusted_close_concept",
-        "qf_long_adjusted_close_calculation"
+        "qf_flash_yfinance",
+        "qf_quiz_yfinance",
+        "qf_long_yfinance"
       ],
-      "description": "理解调整收盘价的概念：分红、拆股对价格的影响及调整方法"
+      "description": "yfinance库下载金融数据"
     },
     {
-      "coverage_tag": "database_design_financial_data",
+      "coverage_tag": "adjusted_close_concept",
       "covered_by": [
-        "qf_flash_db_design_tradeoffs",
-        "qf_long_db_design_analysis"
+        "qf_flash_adjusted_close",
+        "qf_quiz_adjusted_close",
+        "qf_long_adjusted_close"
       ],
-      "description": "金融数据存储的数据库设计考量：分区策略、权衡"
+      "description": "调整收盘价的概念与计算逻辑"
+    },
+    {
+      "coverage_tag": "sqlite_basics",
+      "covered_by": [
+        "qf_flash_sqlite",
+        "qf_quiz_sqlite",
+        "qf_long_sqlite"
+      ],
+      "description": "SQLite数据库的创建、表操作与CRUD"
+    },
+    {
+      "coverage_tag": "database_design_tradeoffs",
+      "covered_by": [
+        "qf_flash_db_design",
+        "qf_quiz_db_design",
+        "qf_long_db_design"
+      ],
+      "description": "金融数据库设计中的权衡（按股票/按日期分区）"
+    },
+    {
+      "coverage_tag": "scraping_limitations",
+      "covered_by": [
+        "qf_flash_limitations",
+        "qf_quiz_limitations"
+      ],
+      "description": "网络爬取的局限性（数据质量、资源消耗、反爬）"
     }
   ],
   "flashcard_families": [
     {
-      "concept_key": "html_structure",
+      "concept_key": "web_scraping_definition",
       "coverage_tags": [
-        "basic_website_structure"
+        "web_scraping_definition"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_html_tags",
-      "learning_goal": "学生能识别常见 HTML 标签的基本用途。",
+      "family_id": "qf_flash_web_scraping",
+      "learning_goal": "学生能用自己的话定义网络爬取，并列举至少一个算法交易中的应用场景。",
       "linked_steps": [
         "step1"
       ],
-      "question_type": "term_match",
+      "question_type": "short_answer",
+      "retrieval_focus": "网络爬取的定义与用途",
       "term_refs": [
         {
-          "display": "HTML",
-          "en": "HyperText Markup Language"
-        },
-        {
-          "display": "标题标签",
-          "en": "<title>"
-        },
-        {
-          "display": "段落标签",
-          "en": "<p>"
-        },
-        {
-          "display": "超链接标签",
-          "en": "<a>"
+          "display": "网络爬取",
+          "en": "web scraping"
         }
       ],
       "variants": [
         {
-          "answer": 1,
+          "back": "从网站自动提取数据的过程。",
           "estimated_seconds": 8,
-          "explanation": "<title> 标签位于 <head> 中，定义网页标题，显示在浏览器标签栏。",
-          "options": [
-            "<body>",
-            "<title>",
-            "<h1>",
-            "<p>"
-          ],
-          "question_id": "q_flash_html_tags_v1",
-          "stem": "以下哪个 HTML 标签用于定义网页的标题，并显示在浏览器标签栏上？"
+          "explanation": "网络爬取是用程序自动访问网页并提取所需数据的技术。",
+          "front": "什么是网络爬取？",
+          "question_id": "q_flash_web_scraping_v1"
         },
         {
-          "answer": 2,
-          "estimated_seconds": 8,
-          "explanation": "<a> 标签用于创建超链接，href 属性指定链接目标。",
-          "options": [
-            "<img>",
-            "<div>",
-            "<a>",
-            "<span>"
-          ],
-          "question_id": "q_flash_html_tags_v2",
-          "stem": "以下哪个 HTML 标签用于创建一个超链接？"
-        },
-        {
-          "answer": 2,
-          "estimated_seconds": 6,
-          "explanation": "<p> 标签用于定义段落文本。",
-          "options": [
-            "<h1>",
-            "<li>",
-            "<p>",
-            "<td>"
-          ],
-          "question_id": "q_flash_html_tags_v3",
-          "stem": "以下哪个 HTML 标签用于定义一个段落？"
+          "back": "实时数据收集（如经济指标、股价）、市场情绪分析、公司分析、另类数据。",
+          "estimated_seconds": 10,
+          "explanation": "爬取的数据可用于实时行情、新闻情绪、财报、天气等。",
+          "front": "在算法交易中，网络爬取可以用于哪一类数据收集？",
+          "question_id": "q_flash_web_scraping_v2"
         }
       ]
     },
     {
-      "concept_key": "web_technologies",
+      "concept_key": "html_structure",
       "coverage_tags": [
-        "basic_website_structure"
+        "html_structure"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_web_tech_roles",
-      "learning_goal": "学生能区分 HTML、CSS、JavaScript 在网页中的不同作用。",
+      "family_id": "qf_flash_html_tags",
+      "learning_goal": "学生能识别常见HTML标签及其用途。",
       "linked_steps": [
         "step1"
       ],
-      "question_type": "single_choice",
+      "question_type": "short_answer",
+      "retrieval_focus": "HTML标签功能",
       "term_refs": [
         {
           "display": "HTML",
           "en": "HyperText Markup Language"
-        },
-        {
-          "display": "CSS",
-          "en": "Cascading Style Sheets"
-        },
-        {
-          "display": "JavaScript",
-          "en": "JavaScript"
         }
       ],
       "variants": [
         {
-          "answer": 1,
-          "estimated_seconds": 10,
-          "explanation": "CSS（层叠样式表）用于控制网页的视觉呈现和布局，如颜色、字体等。",
-          "options": [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "Python"
-          ],
-          "question_id": "q_flash_web_tech_roles_v1",
-          "stem": "在网页的三大基础技术中，负责控制颜色、字体和布局的是哪一种？"
+          "back": "<h1>",
+          "estimated_seconds": 5,
+          "explanation": "<h1> 是最大的一级标题标签。",
+          "front": "HTML中哪个标签用于定义一级标题？",
+          "question_id": "q_flash_html_tags_v1"
         },
         {
-          "answer": 0,
-          "estimated_seconds": 10,
-          "explanation": "HTML（超文本标记语言）用于定义网页的结构和内容。",
-          "options": [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "SQL"
-          ],
-          "question_id": "q_flash_web_tech_roles_v2",
-          "stem": "在网页的三大基础技术中，负责定义网页结构和内容（如标题、段落、表格）的是哪一种？"
+          "back": "<a>",
+          "estimated_seconds": 5,
+          "explanation": "<a> 标签的 href 属性指定链接目标。",
+          "front": "HTML中哪个标签用于创建超链接？",
+          "question_id": "q_flash_html_tags_v2"
+        },
+        {
+          "back": "<table>",
+          "estimated_seconds": 5,
+          "explanation": "<table> 标签包含行 <tr> 和单元格 <td>。",
+          "front": "HTML中哪个标签用于定义表格？",
+          "question_id": "q_flash_html_tags_v3"
         }
       ]
     },
     {
       "concept_key": "beautifulsoup_usage",
       "coverage_tags": [
-        "web_scraping_libraries"
+        "beautifulsoup_usage"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_bs4_methods",
-      "learning_goal": "学生能正确选择 BeautifulSoup 的方法来提取特定元素。",
+      "family_id": "qf_flash_beautifulsoup",
+      "learning_goal": "学生能说出BeautifulSoup的常用方法及其作用。",
       "linked_steps": [
         "step1"
       ],
-      "question_type": "single_choice",
+      "question_type": "short_answer",
+      "retrieval_focus": "BeautifulSoup方法",
       "term_refs": [
         {
           "display": "BeautifulSoup",
           "en": "BeautifulSoup"
-        },
-        {
-          "display": "find",
-          "en": "find()"
-        },
-        {
-          "display": "find_all",
-          "en": "find_all()"
         }
       ],
       "variants": [
         {
-          "answer": 0,
-          "estimated_seconds": 10,
-          "explanation": "find('p') 返回第一个匹配的 <p> 标签。",
-          "options": [
-            "soup.find('p')",
-            "soup.find_all('p')",
-            "soup.select('p')",
-            "soup.get_text()"
-          ],
-          "question_id": "q_flash_bs4_methods_v1",
-          "stem": "使用 BeautifulSoup 解析 HTML 后，要提取页面上第一个 <p> 标签，应该使用哪个方法？"
+          "back": "find()",
+          "estimated_seconds": 5,
+          "explanation": "find('p') 返回第一个 <p> 标签。",
+          "front": "BeautifulSoup中哪个方法用于提取第一个匹配的标签？",
+          "question_id": "q_flash_beautifulsoup_v1"
         },
         {
-          "answer": 1,
-          "estimated_seconds": 10,
-          "explanation": "find_all('a') 返回所有匹配的 <a> 标签列表。",
-          "options": [
-            "soup.find('a')",
-            "soup.find_all('a')",
-            "soup.get_text()",
-            "soup.prettify()"
-          ],
-          "question_id": "q_flash_bs4_methods_v2",
-          "stem": "使用 BeautifulSoup 解析 HTML 后，要提取页面上所有 <a> 标签，应该使用哪个方法？"
+          "back": "find_all()",
+          "estimated_seconds": 5,
+          "explanation": "find_all('a') 返回所有 <a> 标签的列表。",
+          "front": "BeautifulSoup中哪个方法用于提取所有匹配的标签？",
+          "question_id": "q_flash_beautifulsoup_v2"
+        },
+        {
+          "back": "get_text()",
+          "estimated_seconds": 5,
+          "explanation": "get_text() 返回去掉HTML标签后的文本内容。",
+          "front": "BeautifulSoup中哪个方法用于提取网页中的所有纯文本？",
+          "question_id": "q_flash_beautifulsoup_v3"
         }
       ]
     },
     {
-      "concept_key": "xpath_usage",
+      "concept_key": "xpath_lxml",
       "coverage_tags": [
-        "web_scraping_libraries"
+        "xpath_lxml"
       ],
-      "difficulty": "medium",
-      "family_id": "qf_flash_xpath_syntax",
-      "learning_goal": "学生能理解 XPath 的基本语法和用途。",
+      "difficulty": "easy",
+      "family_id": "qf_flash_xpath",
+      "learning_goal": "学生能理解XPath的基本语法与用途。",
       "linked_steps": [
         "step1"
       ],
-      "question_type": "single_choice",
+      "question_type": "short_answer",
+      "retrieval_focus": "XPath语法",
       "term_refs": [
         {
           "display": "XPath",
-          "en": "XPath"
-        },
-        {
-          "display": "lxml",
-          "en": "lxml"
+          "en": "XML Path Language"
         }
       ],
       "variants": [
         {
-          "answer": 1,
-          "estimated_seconds": 12,
-          "explanation": "`//li[@class='item']` 选择文档中所有 class 属性值为 'item' 的 <li> 元素。",
-          "options": [
-            "选择所有 <li> 元素",
-            "选择 class 属性为 'item' 的所有 <li> 元素",
-            "选择第一个 <li> 元素",
-            "选择所有 <li> 元素的父元素"
-          ],
-          "question_id": "q_flash_xpath_syntax_v1",
-          "stem": "XPath 表达式 `//li[@class='item']` 的作用是什么？"
+          "back": "从文档任意位置选择节点。",
+          "estimated_seconds": 6,
+          "explanation": "// 是相对路径，会搜索整个文档。",
+          "front": "XPath中 '//' 表示什么？",
+          "question_id": "q_flash_xpath_v1"
         },
         {
-          "answer": 1,
-          "estimated_seconds": 12,
-          "explanation": "`//table[@id='constituents']` 选择文档中 id 属性值为 'constituents' 的 <table> 元素。",
-          "options": [
-            "选择所有 <table> 元素",
-            "选择 id 为 'constituents' 的 <table> 元素",
-            "选择第一个 <table> 元素",
-            "选择所有 <table> 元素的子元素"
-          ],
-          "question_id": "q_flash_xpath_syntax_v2",
-          "stem": "XPath 表达式 `//table[@id='constituents']` 的作用是什么？"
+          "back": "//div[@attribute='value']",
+          "estimated_seconds": 8,
+          "explanation": "@ 用于筛选属性。",
+          "front": "XPath中如何选择属性为 'value' 的 <div> 元素？",
+          "question_id": "q_flash_xpath_v2"
         }
       ]
     },
     {
-      "concept_key": "selenium_usage",
+      "concept_key": "selenium_dynamic",
       "coverage_tags": [
-        "web_scraping_libraries"
+        "selenium_dynamic"
       ],
-      "difficulty": "medium",
-      "family_id": "qf_flash_selenium_purpose",
-      "learning_goal": "学生能理解 Selenium 在网页抓取中的适用场景。",
+      "difficulty": "easy",
+      "family_id": "qf_flash_selenium",
+      "learning_goal": "学生能说出Selenium的主要用途。",
       "linked_steps": [
         "step1"
       ],
-      "question_type": "single_choice",
+      "question_type": "short_answer",
+      "retrieval_focus": "Selenium用途",
       "term_refs": [
         {
           "display": "Selenium",
@@ -953,281 +920,205 @@ Alternative data (eg. weather, web traffic, etc)
       ],
       "variants": [
         {
-          "answer": 2,
-          "estimated_seconds": 10,
-          "explanation": "Selenium 模拟真实浏览器，能执行 JavaScript，适合抓取动态加载的内容。",
-          "options": [
-            "BeautifulSoup",
-            "lxml",
-            "Selenium",
-            "requests"
-          ],
-          "question_id": "q_flash_selenium_purpose_v1",
-          "stem": "当目标网页的数据是通过 JavaScript 动态加载时，以下哪个工具最适合抓取？"
+          "back": "动态加载内容的网页。",
+          "estimated_seconds": 8,
+          "explanation": "Selenium可以模拟浏览器操作，等待JavaScript渲染后再提取数据。",
+          "front": "Selenium主要用于解决什么类型的网页爬取问题？",
+          "question_id": "q_flash_selenium_v1"
         },
         {
-          "answer": 1,
-          "estimated_seconds": 8,
-          "explanation": "Selenium 是一个网页自动化工具，可以模拟用户操作，如点击、滚动等。",
-          "options": [
-            "解析 HTML 和 XML 文档",
-            "模拟用户操作，自动化网页交互",
-            "发送 HTTP 请求",
-            "计算调整收盘价"
-          ],
-          "question_id": "q_flash_selenium_purpose_v2",
-          "stem": "Selenium 的主要功能是什么？"
+          "back": "在后台运行浏览器，不显示界面。",
+          "estimated_seconds": 6,
+          "explanation": "headless 模式节省资源，适合服务器环境。",
+          "front": "Selenium的 'headless' 模式有什么作用？",
+          "question_id": "q_flash_selenium_v2"
         }
       ]
     },
     {
       "concept_key": "yfinance_usage",
       "coverage_tags": [
-        "web_scraping_libraries"
+        "yfinance_usage"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_yfinance_usage",
-      "learning_goal": "学生能理解 yfinance 库的基本用法和适用场景。",
+      "family_id": "qf_flash_yfinance",
+      "learning_goal": "学生能说出yfinance的基本用法。",
       "linked_steps": [
         "step1"
       ],
-      "question_type": "single_choice",
+      "question_type": "short_answer",
+      "retrieval_focus": "yfinance用法",
       "term_refs": [
         {
           "display": "yfinance",
           "en": "yfinance"
-        },
-        {
-          "display": "Ticker",
-          "en": "Ticker"
         }
       ],
       "variants": [
         {
-          "answer": 0,
-          "estimated_seconds": 10,
-          "explanation": "先创建 Ticker 对象，再调用 history(period=\"1mo\") 获取最近一个月的历史数据。",
-          "options": [
-            "yf.Ticker(\"0700.HK\").history(period=\"1mo\")",
-            "yf.download(\"0700.HK\", period=\"1mo\")",
-            "yf.Ticker(\"0700.HK\").info()",
-            "yf.history(\"0700.HK\", period=\"1mo\")"
-          ],
-          "question_id": "q_flash_yfinance_usage_v1",
-          "stem": "使用 yfinance 获取腾讯控股（0700.HK）最近一个月的股价历史数据，正确的代码是？"
+          "back": "history(period) 或 yf.download()",
+          "estimated_seconds": 8,
+          "explanation": "例如 ticker.history(period='1mo') 或 yf.download('AAPL', start='2023-01-01')。",
+          "front": "yfinance中哪个方法用于下载股票的历史数据？",
+          "question_id": "q_flash_yfinance_v1"
         },
         {
-          "answer": 1,
-          "estimated_seconds": 8,
-          "explanation": "yfinance 是一个非官方的 Python 库，用于从 Yahoo Finance 获取金融数据。",
-          "options": [
-            "Google Finance",
-            "Yahoo Finance",
-            "Bloomberg",
-            "Reuters"
-          ],
-          "question_id": "q_flash_yfinance_usage_v2",
-          "stem": "yfinance 库主要用于从哪个数据源获取金融数据？"
+          "back": "ticker.info",
+          "estimated_seconds": 6,
+          "explanation": "info 返回包含公司概况、财务数据等的字典。",
+          "front": "yfinance中哪个方法用于获取股票的基本信息？",
+          "question_id": "q_flash_yfinance_v2"
         }
       ]
     },
     {
-      "concept_key": "scraping_limitations",
+      "concept_key": "adjusted_close_concept",
       "coverage_tags": [
-        "web_scraping_limitations"
-      ],
-      "difficulty": "easy",
-      "family_id": "qf_flash_scraping_limits",
-      "learning_goal": "学生能识别网页抓取的主要局限性。",
-      "linked_steps": [
-        "step1"
-      ],
-      "question_type": "true_false",
-      "term_refs": [
-        {
-          "display": "网页抓取",
-          "en": "Web Scraping"
-        }
-      ],
-      "variants": [
-        {
-          "answer": 0,
-          "estimated_seconds": 8,
-          "explanation": "网站结构变化是网页抓取的技术挑战之一，需要维护抓取代码。",
-          "options": [
-            "正确",
-            "错误"
-          ],
-          "question_id": "q_flash_scraping_limits_v1",
-          "stem": "网页抓取的一个局限性是：网站结构可能频繁变化，导致抓取代码失效。"
-        },
-        {
-          "answer": 1,
-          "estimated_seconds": 8,
-          "explanation": "抓取大量数据会消耗大量带宽和存储空间，这是资源密集型操作。",
-          "options": [
-            "正确",
-            "错误"
-          ],
-          "question_id": "q_flash_scraping_limits_v2",
-          "stem": "网页抓取不会消耗带宽和存储资源。"
-        }
-      ]
-    },
-    {
-      "concept_key": "adjusted_close",
-      "coverage_tags": [
-        "adjusted_close_price"
+        "adjusted_close_concept"
       ],
       "difficulty": "medium",
-      "family_id": "qf_flash_adjusted_close_concept",
-      "learning_goal": "学生能理解调整收盘价的核心作用。",
+      "family_id": "qf_flash_adjusted_close",
+      "learning_goal": "学生能解释调整收盘价的目的与基本调整因素。",
       "linked_steps": [
         "step1"
       ],
-      "question_type": "single_choice",
+      "question_type": "short_answer",
+      "retrieval_focus": "调整收盘价的目的",
       "term_refs": [
         {
           "display": "调整收盘价",
           "en": "Adjusted Close"
-        },
-        {
-          "display": "收盘价",
-          "en": "Close"
         }
       ],
       "variants": [
         {
-          "answer": 1,
-          "estimated_seconds": 10,
-          "explanation": "调整收盘价向后修正了历史价格，消除分红、拆股等公司事件的影响，使长期回测更准确。",
-          "options": [
-            "反映当天最后一笔交易价格",
-            "消除分红、拆股等事件对历史价格的影响",
-            "显示最高价和最低价的平均值",
-            "用于计算交易量"
-          ],
-          "question_id": "q_flash_adjusted_close_concept_v1",
-          "stem": "调整收盘价（Adj Close）的主要作用是什么？"
+          "back": "分红和拆股。",
+          "estimated_seconds": 8,
+          "explanation": "分红后股价通常下跌，拆股后股价按比例降低，调整收盘价回溯修正这些变化。",
+          "front": "调整收盘价主要消除了哪些公司事件对价格序列的影响？",
+          "question_id": "q_flash_adjusted_close_v1"
         },
         {
-          "answer": 1,
-          "estimated_seconds": 10,
-          "explanation": "2:1 拆股后，拆股前的价格会乘以 0.5 进行调整，以保持价格连续性。",
-          "options": [
-            "保持不变",
-            "乘以 0.5",
-            "乘以 2",
-            "加上拆股差价"
-          ],
-          "question_id": "q_flash_adjusted_close_concept_v2",
-          "stem": "一只股票在 2:1 拆股后，调整收盘价会如何调整拆股前的历史价格？"
+          "back": "0.5",
+          "estimated_seconds": 6,
+          "explanation": "2:1拆股意味着每股变成两股，价格减半，所以调整系数为0.5。",
+          "front": "在2:1拆股后，调整收盘价对拆股前的价格乘以什么系数？",
+          "question_id": "q_flash_adjusted_close_v2"
         }
       ]
     },
     {
-      "concept_key": "sqlite_crud",
+      "concept_key": "sqlite_basics",
       "coverage_tags": [
-        "sqlite_database"
+        "sqlite_basics"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_sqlite_crud",
-      "learning_goal": "学生能识别 SQLite 的基本 CRUD 操作语法。",
+      "family_id": "qf_flash_sqlite",
+      "learning_goal": "学生能说出SQLite的基本操作。",
       "linked_steps": [
         "step1"
       ],
-      "question_type": "single_choice",
+      "question_type": "short_answer",
+      "retrieval_focus": "SQLite基本操作",
       "term_refs": [
         {
           "display": "SQLite",
           "en": "SQLite"
-        },
-        {
-          "display": "INSERT",
-          "en": "INSERT"
-        },
-        {
-          "display": "SELECT",
-          "en": "SELECT"
         }
       ],
       "variants": [
         {
-          "answer": 1,
-          "estimated_seconds": 8,
-          "explanation": "INSERT INTO 语句用于向表中添加新数据。",
-          "options": [
-            "SELECT * FROM users",
-            "INSERT INTO users (name, age) VALUES ('Amy', 18)",
-            "UPDATE users SET age=28 WHERE name='Amy'",
-            "DELETE FROM users WHERE name='Amy'"
-          ],
-          "question_id": "q_flash_sqlite_crud_v1",
-          "stem": "在 SQLite 中，向 users 表插入一条新记录的 SQL 语句是？"
+          "back": "sqlite3",
+          "estimated_seconds": 5,
+          "explanation": "sqlite3 是Python内置的轻量级数据库模块。",
+          "front": "Python中连接SQLite数据库使用哪个模块？",
+          "question_id": "q_flash_sqlite_v1"
         },
         {
-          "answer": 0,
-          "estimated_seconds": 8,
-          "explanation": "SELECT ... WHERE 用于条件查询数据。",
-          "options": [
-            "SELECT * FROM users WHERE age > 25",
-            "SELECT * FROM users",
-            "INSERT INTO users VALUES (age > 25)",
-            "DELETE FROM users WHERE age > 25"
-          ],
-          "question_id": "q_flash_sqlite_crud_v2",
-          "stem": "在 SQLite 中，从 users 表中查询所有年龄大于 25 的用户的 SQL 语句是？"
+          "back": "INSERT INTO table_name (columns) VALUES (values);",
+          "estimated_seconds": 6,
+          "explanation": "例如 INSERT INTO users (name, age) VALUES ('Alice', 30);",
+          "front": "SQLite中用于插入数据的SQL语句是什么？",
+          "question_id": "q_flash_sqlite_v2"
+        },
+        {
+          "back": "SELECT columns FROM table_name WHERE condition;",
+          "estimated_seconds": 6,
+          "explanation": "例如 SELECT * FROM users WHERE age > 25;",
+          "front": "SQLite中用于查询数据的SQL语句是什么？",
+          "question_id": "q_flash_sqlite_v3"
         }
       ]
     },
     {
       "concept_key": "database_design_tradeoffs",
       "coverage_tags": [
-        "database_design_financial_data"
+        "database_design_tradeoffs"
       ],
       "difficulty": "medium",
-      "family_id": "qf_flash_db_design_tradeoffs",
-      "learning_goal": "学生能理解金融数据库设计中的不同分区策略及其适用场景。",
+      "family_id": "qf_flash_db_design",
+      "learning_goal": "学生能说出金融数据库设计的两种常见分区策略及其权衡。",
       "linked_steps": [
         "step1"
       ],
-      "question_type": "single_choice",
+      "question_type": "short_answer",
+      "retrieval_focus": "数据库分区策略",
       "term_refs": [
         {
           "display": "数据库设计",
           "en": "Database Design"
-        },
-        {
-          "display": "分区",
-          "en": "Partitioning"
         }
       ],
       "variants": [
         {
-          "answer": 1,
-          "estimated_seconds": 10,
-          "explanation": "按股票分表可以快速读取单只股票的完整历史，适合回测。",
-          "options": [
-            "所有股票放在同一张大表",
-            "按股票代码分表",
-            "按日期（如每月）分表",
-            "不分区，每次全量扫描"
-          ],
-          "question_id": "q_flash_db_design_tradeoffs_v1",
-          "stem": "对于策略回测场景，推荐的数据分区方式是？"
+          "back": "回测时查询单只股票速度快。",
+          "estimated_seconds": 8,
+          "explanation": "按股票分区适合回测场景，因为回测通常只涉及少数股票。",
+          "front": "按股票分区存储市场数据的主要优点是什么？",
+          "question_id": "q_flash_db_design_v1"
         },
         {
-          "answer": 2,
-          "estimated_seconds": 10,
-          "explanation": "所有股票放在同一张大表便于进行跨股票的数据聚合和分析。",
-          "options": [
-            "按股票代码分表",
-            "按日期（如每月）分表",
-            "所有股票放在同一张大表",
-            "每只股票一个独立数据库"
-          ],
-          "question_id": "q_flash_db_design_tradeoffs_v2",
-          "stem": "对于跨股票的数据分析场景，哪种数据库设计更灵活？"
+          "back": "跨资产分析方便。",
+          "estimated_seconds": 8,
+          "explanation": "按日期分区适合需要同时分析多只股票同一时间段数据的场景。",
+          "front": "按日期分区存储市场数据的主要优点是什么？",
+          "question_id": "q_flash_db_design_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "scraping_limitations",
+      "coverage_tags": [
+        "scraping_limitations"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_limitations",
+      "learning_goal": "学生能列举网络爬取的主要局限性。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "爬取局限性",
+      "term_refs": [
+        {
+          "display": "网络爬取局限性",
+          "en": "Web Scraping Limitations"
+        }
+      ],
+      "variants": [
+        {
+          "back": "网站结构频繁变化或实施反爬措施（如IP封锁、速率限制）。",
+          "estimated_seconds": 8,
+          "explanation": "反爬措施会阻止爬虫正常访问。",
+          "front": "网络爬取的一个技术挑战是什么？",
+          "question_id": "q_flash_limitations_v1"
+        },
+        {
+          "back": "数据可能不完整或不是最新的。",
+          "estimated_seconds": 6,
+          "explanation": "网站数据更新不及时或页面结构变化可能导致数据缺失。",
+          "front": "网络爬取在数据质量方面可能遇到什么问题？",
+          "question_id": "q_flash_limitations_v2"
         }
       ]
     }
@@ -1235,310 +1126,150 @@ Alternative data (eg. weather, web traffic, etc)
   "lesson_id": "L2",
   "longform_families": [
     {
-      "concept_key": "web_structure_explanation",
+      "concept_key": "beautifulsoup_usage",
       "coverage_tags": [
-        "basic_website_structure"
+        "beautifulsoup_usage"
       ],
       "difficulty": "medium",
-      "family_id": "qf_long_web_structure_explain",
-      "learning_goal": "学生能用自己的语言解释 HTML、CSS、JavaScript 在网页中的角色，并说明为什么理解 HTML 结构对网页抓取至关重要。",
+      "family_id": "qf_long_beautifulsoup",
+      "learning_goal": "学生能描述使用BeautifulSoup从网页提取表格数据的基本步骤。",
       "linked_steps": [
         "step1"
       ],
       "question_type": "short_explain",
       "term_refs": [
         {
-          "display": "HTML",
-          "en": "HyperText Markup Language"
-        },
-        {
-          "display": "CSS",
-          "en": "Cascading Style Sheets"
-        },
-        {
-          "display": "JavaScript",
-          "en": "JavaScript"
+          "display": "BeautifulSoup",
+          "en": "BeautifulSoup"
         }
       ],
       "variants": [
         {
           "estimated_seconds": 90,
           "prompt_blocks": [
-            "HTML 的角色",
-            "CSS 的角色",
-            "JavaScript 的角色",
-            "与抓取的关系"
+            "导入库",
+            "获取页面内容",
+            "解析HTML",
+            "定位表格",
+            "提取数据"
           ],
-          "question_id": "q_long_web_structure_explain_v1",
+          "question_id": "q_long_beautifulsoup_v1",
           "reference_answer": [
-            "HTML 定义网页的结构和内容，如标题、段落、表格。",
-            "CSS 控制网页的视觉呈现，如颜色、字体、布局。",
-            "JavaScript 为网页添加交互和动态行为。",
-            "网页抓取的核心是从 HTML 中提取数据，因为数据通常嵌入在 HTML 标签中。CSS 和 JavaScript 主要影响呈现和交互，不直接包含数据。理解 HTML 结构（如标签、属性、层级）是定位和提取目标数据的基础。"
+            "1. 导入 requests 和 bs4 库。",
+            "2. 使用 requests.get(url) 获取网页内容。",
+            "3. 用 BeautifulSoup(text, 'html.parser') 创建解析对象。",
+            "4. 使用 soup.find_all('table') 找到所有表格。",
+            "5. 遍历每个表格的行 (<tr>) 和单元格 (<td>)，提取文本。"
           ],
           "rubric_points": [
-            "正确指出 HTML 定义结构和内容",
-            "正确指出 CSS 控制样式和布局",
-            "正确指出 JavaScript 添加交互和动态行为",
-            "解释抓取的核心是解析 HTML 结构以提取数据，CSS 和 JS 影响不大或需要特殊处理"
+            "导入 requests 和 BeautifulSoup",
+            "使用 requests.get() 下载页面内容",
+            "用 BeautifulSoup(text, 'html.parser') 解析",
+            "使用 find_all('table') 或 find('table') 定位表格",
+            "遍历行和列提取数据"
           ],
-          "stem": "请简要解释 HTML、CSS 和 JavaScript 在网页中各扮演什么角色。为什么在网页抓取中，理解 HTML 结构是核心？"
+          "stem": "请描述使用BeautifulSoup从HTML页面中提取所有表格数据的基本步骤。"
         },
         {
-          "estimated_seconds": 90,
+          "estimated_seconds": 60,
           "prompt_blocks": [
-            "定位表格的方法",
-            "利用 HTML 结构",
-            "CSS/JS 的非必要性"
+            "方法区别",
+            "find() 场景",
+            "find_all() 场景"
           ],
-          "question_id": "q_long_web_structure_explain_v2",
+          "question_id": "q_long_beautifulsoup_v2",
           "reference_answer": [
-            "我会先找到包含数据的 <table> 标签。如果表格有唯一的 id 属性（如 id='constituents'），可以直接用 soup.find('table', id='constituents') 或 XPath //table[@id='constituents'] 定位。",
-            "然后遍历 <tr> 和 <td> 标签提取每一行的数据。",
-            "CSS 只负责表格的样式（如边框、颜色），不影响表格内的数据内容，所以不需要理解 CSS。",
-            "如果表格是静态 HTML 的一部分（不是通过 JavaScript 动态加载的），那么 JavaScript 知识也不是必需的。"
+            "find() 只返回第一个匹配的标签，适合提取页面中唯一的元素，比如标题。",
+            "find_all() 返回所有匹配标签的列表，适合提取多个同类元素，比如所有超链接。"
           ],
           "rubric_points": [
-            "提到使用 <table> 标签定位",
-            "提到利用 id、class 等属性精确定位",
-            "提到使用 find('table') 或 XPath 等方法",
-            "解释 CSS 只控制样式，不影响数据内容",
-            "解释如果数据不是 JS 动态加载的，则无需 JS 知识"
+            "find() 返回第一个匹配元素",
+            "find_all() 返回所有匹配元素的列表",
+            "find() 适合提取唯一元素（如页面标题）",
+            "find_all() 适合提取多个同类元素（如所有链接）"
           ],
-          "stem": "假设你要抓取一个包含股票代码和公司名称的 HTML 表格。请说明你会如何利用 HTML 的结构知识（如标签、属性）来定位这个表格，并解释为什么 CSS 和 JavaScript 的知识在这种情况下不是必需的。"
+          "stem": "请解释 BeautifulSoup 中 find() 和 find_all() 的区别，并各举一个使用场景。"
         }
       ]
     },
     {
-      "concept_key": "scraping_tool_comparison",
+      "concept_key": "yfinance_usage",
       "coverage_tags": [
-        "web_scraping_libraries"
+        "yfinance_usage"
       ],
       "difficulty": "medium",
-      "family_id": "qf_long_scraping_tool_choice",
-      "learning_goal": "学生能比较不同抓取工具的适用场景，并根据需求选择合适的工具。",
+      "family_id": "qf_long_yfinance",
+      "learning_goal": "学生能描述使用yfinance下载股票数据并存入SQLite数据库的流程。",
       "linked_steps": [
         "step1"
       ],
-      "question_type": "compare_and_contrast",
+      "question_type": "short_explain",
       "term_refs": [
-        {
-          "display": "BeautifulSoup",
-          "en": "BeautifulSoup"
-        },
-        {
-          "display": "Selenium",
-          "en": "Selenium"
-        },
         {
           "display": "yfinance",
           "en": "yfinance"
-        },
-        {
-          "display": "lxml",
-          "en": "lxml"
         }
       ],
       "variants": [
         {
           "estimated_seconds": 120,
           "prompt_blocks": [
-            "BeautifulSoup 适用场景",
-            "Selenium 适用场景",
-            "yfinance 的优势"
+            "安装与导入",
+            "下载数据",
+            "连接数据库",
+            "创建表",
+            "插入数据"
           ],
-          "question_id": "q_long_scraping_tool_choice_v1",
+          "question_id": "q_long_yfinance_v1",
           "reference_answer": [
-            "BeautifulSoup 适用于网页内容在 HTML 源码中直接可获取的静态页面，解析速度快，使用简单。",
-            "Selenium 适用于网页内容通过 JavaScript 动态加载的场景，它模拟真实浏览器，能执行 JS 并等待内容加载完成，但速度较慢，资源消耗大。",
-            "yfinance 是专门为 Yahoo Finance 设计的库，封装了数据请求和解析过程。当需要获取股票历史价格、公司信息等金融数据时，使用 yfinance 比自己用 BeautifulSoup 或 Selenium 抓取 Yahoo Finance 更简单、稳定，因为它自动处理了数据格式和反爬机制。"
+            "1. 安装 yfinance 库，导入 yfinance 和 sqlite3。",
+            "2. 使用 yf.download('AAPL', start='2023-01-01') 下载数据。",
+            "3. 使用 sqlite3.connect('market.db') 连接数据库。",
+            "4. 执行 CREATE TABLE 语句创建表，包含 symbol, date, open, high, low, close, volume 等字段。",
+            "5. 遍历下载的数据，用 INSERT 语句逐行插入。",
+            "6. 提交事务并关闭连接。"
           ],
           "rubric_points": [
-            "指出 BeautifulSoup 适合解析静态 HTML",
-            "指出 Selenium 适合处理 JavaScript 动态加载的内容",
-            "指出 yfinance 专门为 Yahoo Finance 设计，简化了金融数据获取",
-            "提到 yfinance 无需处理反爬、登录等问题"
+            "安装 yfinance 和 sqlite3",
+            "使用 yf.download() 或 Ticker.history() 下载数据",
+            "使用 sqlite3.connect() 连接数据库",
+            "使用 CREATE TABLE 创建表结构",
+            "遍历数据行，使用 INSERT 语句插入"
           ],
-          "stem": "比较 BeautifulSoup 和 Selenium 在网页抓取中的不同适用场景。什么情况下你会选择使用 yfinance 而不是自己编写抓取代码？"
+          "stem": "请描述使用 yfinance 下载某只股票的历史数据，并将其存入 SQLite 数据库的基本步骤。"
         },
         {
-          "estimated_seconds": 120,
+          "estimated_seconds": 90,
           "prompt_blocks": [
-            "抓取 Wikipedia 列表",
-            "获取 Yahoo Finance 历史价格",
-            "工具选择理由"
+            "易用性",
+            "速度",
+            "可靠性",
+            "适用场景"
           ],
-          "question_id": "q_long_scraping_tool_choice_v2",
+          "question_id": "q_long_yfinance_v2",
           "reference_answer": [
-            "抓取 Wikipedia 的 S&P 500 列表：我会使用 BeautifulSoup（配合 requests）。因为 Wikipedia 页面是静态 HTML，表格结构清晰，使用 find('table', id='constituents') 即可定位并提取数据。",
-            "获取历史价格：我会使用 yfinance。因为 Yahoo Finance 的页面数据通过 JavaScript 动态加载，且有反爬机制。yfinance 封装了这些复杂性，可以直接通过 Ticker.history() 获取干净的数据。"
+            "yfinance 优点：代码简洁、速度快、无需处理反爬。缺点：非官方库，可能因Yahoo接口变化而失效。",
+            "Selenium 优点：可以处理动态加载，通用性强。缺点：速度慢、资源消耗大、需要维护WebDriver。",
+            "对于标准金融数据，优先使用 yfinance；对于需要模拟用户操作的场景，使用 Selenium。"
           ],
           "rubric_points": [
-            "Wikipedia 使用 BeautifulSoup 或 lxml 即可",
-            "Yahoo Finance 使用 yfinance",
-            "解释 Wikipedia 是静态页面，适合 BeautifulSoup",
-            "解释 Yahoo Finance 有反爬机制，yfinance 是更稳定的选择"
+            "yfinance 更简单，一行代码即可",
+            "yfinance 速度更快，无需渲染页面",
+            "yfinance 依赖非官方API，可能失效",
+            "Selenium 更通用，但速度慢且资源消耗大"
           ],
-          "stem": "假设你需要从 Wikipedia 抓取一个静态的 S&P 500 成分股列表，并从 Yahoo Finance 获取每只股票的历史价格。请分别说明你会使用什么工具，并解释原因。"
+          "stem": "比较使用 yfinance 直接下载数据与使用 Selenium 爬取 Yahoo Finance 页面的优缺点。"
         }
       ]
     },
     {
-      "concept_key": "practical_scraping",
+      "concept_key": "adjusted_close_concept",
       "coverage_tags": [
-        "web_scraping_libraries"
+        "adjusted_close_concept"
       ],
       "difficulty": "hard",
-      "family_id": "qf_long_scrape_sp500",
-      "learning_goal": "学生能描述使用 BeautifulSoup 和 pandas 从 Wikipedia 抓取 S&P 500 成分股列表并存入 DataFrame 的完整步骤。",
-      "linked_steps": [
-        "step1"
-      ],
-      "question_type": "worked_example",
-      "term_refs": [
-        {
-          "display": "BeautifulSoup",
-          "en": "BeautifulSoup"
-        },
-        {
-          "display": "pandas",
-          "en": "pandas"
-        },
-        {
-          "display": "DataFrame",
-          "en": "DataFrame"
-        }
-      ],
-      "variants": [
-        {
-          "estimated_seconds": 120,
-          "prompt_blocks": [
-            "发送请求并设置 User-Agent",
-            "解析 HTML 并定位表格",
-            "提取表头和数据行",
-            "创建 DataFrame"
-          ],
-          "question_id": "q_long_scrape_sp500_v1",
-          "reference_answer": [
-            "1. 导入 requests, BeautifulSoup, pandas。",
-            "2. 设置 headers 包含 User-Agent，模拟浏览器访问。",
-            "3. 使用 requests.get(url, headers=headers) 获取页面内容。",
-            "4. 使用 BeautifulSoup(text, 'html.parser') 解析 HTML。",
-            "5. 使用 soup.find('table', id='constituents') 定位目标表格。",
-            "6. 遍历 table.find_all('th') 提取表头文本，存入列表。",
-            "7. 遍历 table.find_all('tr')[1:]（跳过表头行），对每一行遍历 find_all('td') 提取单元格文本，存入列表。",
-            "8. 使用 pd.DataFrame(data, columns=headers) 创建 DataFrame。"
-          ],
-          "rubric_points": [
-            "提到使用 requests.get() 并设置合适的 User-Agent 头",
-            "提到使用 BeautifulSoup 解析 HTML",
-            "提到使用 find('table', id='constituents') 定位目标表格",
-            "提到遍历 <th> 提取表头",
-            "提到遍历 <tr> 和 <td> 提取数据行",
-            "提到使用 pandas DataFrame 存储数据"
-          ],
-          "stem": "请描述使用 Python 的 requests、BeautifulSoup 和 pandas 从 Wikipedia 的 S&P 500 页面抓取成分股列表并存入 DataFrame 的完整步骤。重点说明如何定位正确的表格以及如何处理表头和行数据。"
-        },
-        {
-          "estimated_seconds": 90,
-          "prompt_blocks": [
-            "User-Agent 的作用",
-            "定位正确表格的方法",
-            "代码示例"
-          ],
-          "question_id": "q_long_scrape_sp500_v2",
-          "reference_answer": [
-            "设置 User-Agent 是为了让服务器认为请求来自真实的浏览器，而不是爬虫程序。许多网站（包括 Wikipedia）会检查 User-Agent，没有设置可能会被拒绝访问。",
-            "Wikipedia 的 S&P 500 页面包含多个表格，但成分股列表的表格有唯一的 id 属性 'constituents'。通过 id 定位可以确保抓取到正确的表格。",
-            "定位代码：table = soup.find('table', id='constituents')"
-          ],
-          "rubric_points": [
-            "解释 User-Agent 用于模拟浏览器，避免被服务器拒绝",
-            "提到使用表格的唯一 id 属性进行定位",
-            "写出正确的定位代码：soup.find('table', id='constituents')"
-          ],
-          "stem": "在使用 BeautifulSoup 抓取 Wikipedia 的 S&P 500 页面时，为什么需要设置 User-Agent？如果页面中有多个表格，如何确保抓取到正确的那个？请写出定位该表格的代码。"
-        }
-      ]
-    },
-    {
-      "concept_key": "scraping_limitations_detail",
-      "coverage_tags": [
-        "web_scraping_limitations"
-      ],
-      "difficulty": "medium",
-      "family_id": "qf_long_scraping_limitations_explain",
-      "learning_goal": "学生能解释网页抓取的主要局限性及其对实际项目的影响。",
-      "linked_steps": [
-        "step1"
-      ],
-      "question_type": "short_explain",
-      "term_refs": [
-        {
-          "display": "网页抓取",
-          "en": "Web Scraping"
-        },
-        {
-          "display": "反爬措施",
-          "en": "Anti-bot measures"
-        }
-      ],
-      "variants": [
-        {
-          "estimated_seconds": 90,
-          "prompt_blocks": [
-            "数据质量",
-            "资源消耗",
-            "技术挑战",
-            "对长期项目的影响"
-          ],
-          "question_id": "q_long_scraping_limitations_explain_v1",
-          "reference_answer": [
-            "1. 数据质量：网站数据可能不完整、不及时，影响分析准确性。",
-            "2. 资源密集型：抓取大量数据消耗大量带宽和存储空间，且加载页面耗时。",
-            "3. 技术挑战：网站结构可能频繁变化，导致抓取代码失效；许多网站实施反爬措施（如 IP 封锁、速率限制）。",
-            "对长期项目的影响：需要持续监控和维护抓取代码，应对网站变化；反爬措施可能导致数据获取中断；存储和带宽成本会随着数据量增长而增加。"
-          ],
-          "rubric_points": [
-            "指出数据可能不完整或过时",
-            "指出抓取大量数据消耗带宽和存储",
-            "指出网站结构变化和反爬措施",
-            "说明这些因素导致需要持续维护、增加成本、可能数据中断"
-          ],
-          "stem": "请列举并简要解释网页抓取的三个主要局限性。这些局限性如何影响一个需要长期运行的金融数据抓取项目？"
-        },
-        {
-          "estimated_seconds": 90,
-          "prompt_blocks": [
-            "技术挑战 1",
-            "技术挑战 2",
-            "缓解策略"
-          ],
-          "question_id": "q_long_scraping_limitations_explain_v2",
-          "reference_answer": [
-            "技术挑战 1：网站结构可能频繁变化，导致基于特定标签或 class 的定位代码失效。",
-            "缓解策略：使用更通用的定位方式，如 XPath 基于文本内容或元素层级定位；定期检查并更新抓取代码。",
-            "技术挑战 2：网站可能实施反爬措施，如 IP 封锁或请求频率限制。",
-            "缓解策略：使用代理 IP 轮换；在请求之间设置随机延迟，模拟人类浏览行为；设置合适的 User-Agent 和请求头。"
-          ],
-          "rubric_points": [
-            "提到网站结构变化",
-            "提到反爬措施（如 IP 封锁、速率限制）",
-            "提出使用更健壮的定位方式（如 XPath）",
-            "提出使用代理 IP、设置请求间隔、模拟浏览器行为"
-          ],
-          "stem": "假设你正在抓取一个财经新闻网站用于市场情绪分析。请说明你可能遇到的两个技术挑战，并提出相应的缓解策略。"
-        }
-      ]
-    },
-    {
-      "concept_key": "adjusted_close_mechanism",
-      "coverage_tags": [
-        "adjusted_close_price"
-      ],
-      "difficulty": "hard",
-      "family_id": "qf_long_adjusted_close_calculation",
-      "learning_goal": "学生能解释调整收盘价的计算机制，并手动计算简单的调整案例。",
+      "family_id": "qf_long_adjusted_close",
+      "learning_goal": "学生能解释调整收盘价的计算逻辑及其在回测中的重要性。",
       "linked_steps": [
         "step1"
       ],
@@ -1547,159 +1278,133 @@ Alternative data (eg. weather, web traffic, etc)
         {
           "display": "调整收盘价",
           "en": "Adjusted Close"
-        },
-        {
-          "display": "拆股",
-          "en": "Stock Split"
-        },
-        {
-          "display": "分红",
-          "en": "Dividend"
         }
       ],
       "variants": [
         {
           "estimated_seconds": 120,
           "prompt_blocks": [
-            "拆股调整因子",
-            "分红调整因子",
-            "计算 2/17 调整收盘价",
-            "调整的意义"
+            "计算2月16日调整收盘价",
+            "计算2月18日调整收盘价",
+            "解释重要性"
           ],
-          "question_id": "q_long_adjusted_close_calculation_v1",
+          "question_id": "q_long_adjusted_close_v1",
           "reference_answer": [
-            "拆股调整因子：2:1 拆股，因子 = 1/2 = 0.5",
-            "分红调整因子：1 - (0.08 / 24.96) = 1 - 0.0032 = 0.9968",
-            "2/17 调整收盘价 = 0.5 * 0.9968 * 48.30 = 24.07",
-            "调整的意义：拆股和分红会导致股价出现非市场因素的跳变。调整后的价格消除了这些事件的影响，使历史价格序列连续，能够真实反映股票的价值变化，对于长期回测和趋势分析至关重要。"
+            "2月16日调整收盘价 = 0.5 * 0.9968 * 46.99 = 23.42",
+            "2月18日调整收盘价 = 0.9968 * 24.96 = 24.88",
+            "调整收盘价通过回溯调整历史价格，消除了拆股和分红造成的价格跳跃，使价格序列连续，适合长期回测和绩效分析。"
           ],
           "rubric_points": [
-            "正确计算拆股调整因子为 0.5",
-            "正确计算分红调整因子为 (1 - 0.08/24.96) = 0.9968",
-            "正确计算调整收盘价 = 0.5 * 0.9968 * 48.30 = 24.07",
-            "解释调整是为了消除公司事件对历史价格的影响，使价格序列连续，便于回测和分析"
+            "2月16日调整收盘价 = 0.5 * (1 - 0.08/24.96) * 46.99 = 23.42",
+            "2月18日调整收盘价 = (1 - 0.08/24.96) * 24.96 = 24.88",
+            "调整收盘价消除了拆股和分红造成的价格跳跃",
+            "使历史价格序列连续，适合长期回测"
           ],
-          "stem": "一只股票在 2/18 进行 2:1 拆股，2/21 除息（分红 $0.08），2/18 的收盘价为 $24.96。请计算 2/17 的调整收盘价（2/17 收盘价为 $48.30）。并解释为什么需要调整历史价格。"
+          "stem": "某股票在2月18日发生2:1拆股，2月21日除息（每股分红$0.08）。已知2月16日收盘价为$46.99，2月17日收盘价为$48.30，2月18日拆股后收盘价为$24.96，2月19日收盘价为$24.91，2月20日收盘价为$24.95，2月21日除息后收盘价为$24.53，2月22日收盘价为$24.54。请计算2月16日和2月18日的调整收盘价，并解释调整收盘价在回测中的重要性。"
         },
         {
-          "estimated_seconds": 120,
+          "estimated_seconds": 90,
           "prompt_blocks": [
-            "分红调整因子计算",
-            "计算调整收盘价",
-            "调整收盘价 vs 原始收盘价"
+            "回测中使用调整收盘价的原因",
+            "潜在缺点"
           ],
-          "question_id": "q_long_adjusted_close_calculation_v2",
+          "question_id": "q_long_adjusted_close_v2",
           "reference_answer": [
-            "分红调整因子：1 - (2.40 / 16.51) = 1 - 0.1454 = 0.8546",
-            "5/11 调整收盘价 = 0.8546 * 16.51 = 14.11",
-            "原始收盘价在除息日会因分红派发而下跌，这个下跌不代表市场价值损失，而是公司价值的转移。如果使用原始收盘价进行回测，会错误地认为股价下跌，导致策略表现被低估。",
-            "调整收盘价通过向后调整历史价格，消除了分红事件造成的价格缺口，使价格序列反映的是股票的真实市场表现，因此更适合用于长期回测和绩效分析。"
+            "使用调整收盘价可以消除分红、拆股等事件造成的价格跳跃，使回测结果更准确地反映策略的真实表现。",
+            "潜在缺点包括：调整收盘价不是实际市场交易价格，建模于调整价格可能与实际交易有偏差；需要定期更新调整序列，增加维护成本。"
           ],
           "rubric_points": [
-            "正确计算分红调整因子为 (1 - 2.40/16.51) = 0.8546",
-            "正确计算调整收盘价 = 0.8546 * 16.51 = 14.11",
-            "解释原始收盘价在除息日会突然下跌，造成价格缺口",
-            "解释调整收盘价消除了这种缺口，使价格序列平滑，回测结果更准确"
+            "调整收盘价消除了公司事件造成的价格跳跃",
+            "使回测结果更准确地反映策略的真实表现",
+            "缺点：调整收盘价不是实际市场交易价格",
+            "缺点：需要定期更新调整序列",
+            "缺点：建模于调整价格可能与实际交易有偏差"
           ],
-          "stem": "一只股票在 5/12 除息（分红 $2.40），5/11 的收盘价为 $16.51。请计算 5/11 的调整收盘价。并解释为什么调整收盘价更适合用于长期回测，而原始收盘价可能误导分析。"
+          "stem": "请解释为什么在回测中应该使用调整收盘价而不是原始收盘价？使用调整收盘价有哪些潜在缺点？"
         }
       ]
     },
     {
-      "concept_key": "sqlite_crud_python",
+      "concept_key": "sqlite_basics",
       "coverage_tags": [
-        "sqlite_database"
+        "sqlite_basics"
       ],
-      "difficulty": "hard",
-      "family_id": "qf_long_sqlite_crud_example",
-      "learning_goal": "学生能写出使用 Python 的 sqlite3 模块进行数据库 CRUD 操作的代码。",
+      "difficulty": "medium",
+      "family_id": "qf_long_sqlite",
+      "learning_goal": "学生能描述使用SQLite进行数据CRUD操作的基本流程。",
       "linked_steps": [
         "step1"
       ],
-      "question_type": "worked_example",
+      "question_type": "short_explain",
       "term_refs": [
         {
           "display": "SQLite",
           "en": "SQLite"
-        },
-        {
-          "display": "cursor",
-          "en": "cursor"
-        },
-        {
-          "display": "execute",
-          "en": "execute()"
         }
       ],
       "variants": [
         {
           "estimated_seconds": 120,
           "prompt_blocks": [
-            "连接数据库",
             "创建表",
             "插入数据",
-            "查询数据"
+            "查询数据",
+            "更新数据",
+            "删除数据"
           ],
-          "question_id": "q_long_sqlite_crud_example_v1",
+          "question_id": "q_long_sqlite_v1",
           "reference_answer": [
-            "import sqlite3",
-            "conn = sqlite3.connect('market.db')",
-            "cursor = conn.cursor()",
-            "cursor.execute('''CREATE TABLE IF NOT EXISTS stocks (symbol TEXT, date TEXT, close_price REAL)''')",
-            "cursor.execute(\"INSERT INTO stocks (symbol, date, close_price) VALUES (?, ?, ?)\", ('0700.HK', '2025-01-02', 412.4))",
-            "conn.commit()",
-            "cursor.execute(\"SELECT * FROM stocks WHERE symbol = ?\", ('0700.HK',))",
-            "for row in cursor.fetchall(): print(row)",
-            "conn.close()"
+            "1. 使用 sqlite3.connect('example.db') 连接数据库。",
+            "2. 创建游标 cursor = conn.cursor()。",
+            "3. 执行 CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)。",
+            "4. 使用 INSERT INTO users (name, age) VALUES ('Alice', 30) 插入数据。",
+            "5. 使用 SELECT * FROM users WHERE age > 25 查询数据。",
+            "6. 使用 UPDATE users SET age=31 WHERE name='Alice' 更新数据。",
+            "7. 使用 DELETE FROM users WHERE name='Alice' 删除数据。",
+            "8. 使用 conn.commit() 提交更改，最后关闭连接。"
           ],
           "rubric_points": [
-            "正确使用 sqlite3.connect('market.db')",
-            "正确使用 cursor.execute() 执行 CREATE TABLE 语句",
-            "正确使用参数化查询插入数据",
-            "正确使用 SELECT 语句查询并遍历结果"
+            "使用 sqlite3.connect() 连接数据库",
+            "使用 cursor.execute() 执行 CREATE TABLE",
+            "使用 INSERT 插入数据",
+            "使用 SELECT 查询数据",
+            "使用 UPDATE 更新数据",
+            "使用 DELETE 删除数据",
+            "使用 conn.commit() 提交事务"
           ],
-          "stem": "请写出使用 Python 的 sqlite3 模块完成以下操作的代码：1) 连接（或创建）一个名为 'market.db' 的数据库；2) 创建一个名为 'stocks' 的表，包含 symbol (TEXT), date (TEXT), close_price (REAL) 三个字段；3) 插入一条记录 ('0700.HK', '2025-01-02', 412.4)；4) 查询并打印所有 symbol 为 '0700.HK' 的记录。"
+          "stem": "请描述使用Python的sqlite3模块创建一个用户表，并插入、查询、更新、删除数据的基本步骤。"
         },
         {
-          "estimated_seconds": 120,
+          "estimated_seconds": 90,
           "prompt_blocks": [
-            "更新数据",
-            "删除数据",
-            "查询并排序"
+            "效率",
+            "数据一致性",
+            "查询能力"
           ],
-          "question_id": "q_long_sqlite_crud_example_v2",
+          "question_id": "q_long_sqlite_v2",
           "reference_answer": [
-            "import sqlite3",
-            "conn = sqlite3.connect('market.db')",
-            "cursor = conn.cursor()",
-            "# 更新数据",
-            "cursor.execute(\"UPDATE market_candles SET close_price = ? WHERE symbol = ? AND timestamp = ?\", (195.5, 'AAPL', '2025-06-01'))",
-            "# 删除数据",
-            "cursor.execute(\"DELETE FROM market_candles WHERE timestamp < ?\", ('2024-01-01',))",
-            "# 查询并排序",
-            "cursor.execute(\"SELECT * FROM market_candles WHERE symbol = ? ORDER BY timestamp ASC\", ('AAPL',))",
-            "for row in cursor.fetchall(): print(row)",
-            "conn.commit()",
-            "conn.close()"
+            "使用数据库存储市场数据可以避免每次回测都重新爬取，节省时间和网络资源。",
+            "数据库保证数据的一致性和完整性，避免因网站变化导致数据缺失。",
+            "数据库支持复杂的SQL查询，可以灵活筛选时间范围、多股票联合分析，便于回测和策略开发。"
           ],
           "rubric_points": [
-            "正确使用 UPDATE 语句和参数化查询",
-            "正确使用 DELETE 语句",
-            "正确使用 SELECT 语句和 ORDER BY 子句",
-            "正确提交事务和关闭连接"
+            "避免重复爬取，节省时间和带宽",
+            "数据库保证数据完整性和一致性",
+            "支持复杂查询（如时间范围、多股票联合查询）",
+            "便于历史回测和数据分析"
           ],
-          "stem": "假设你有一个名为 'market_candles' 的表，包含 symbol, timestamp, close_price 等字段。请写出 Python 代码：1) 更新 symbol 为 'AAPL' 且 timestamp 为 '2025-06-01' 的记录，将 close_price 改为 195.5；2) 删除所有 timestamp 早于 '2024-01-01' 的记录；3) 查询并打印所有 symbol 为 'AAPL' 的记录，按 timestamp 升序排列。"
+          "stem": "请解释为什么在算法交易中应该使用数据库来存储市场数据，而不是每次都重新爬取？"
         }
       ]
     },
     {
-      "concept_key": "database_design_strategies",
+      "concept_key": "database_design_tradeoffs",
       "coverage_tags": [
-        "database_design_financial_data"
+        "database_design_tradeoffs"
       ],
       "difficulty": "hard",
-      "family_id": "qf_long_db_design_analysis",
-      "learning_goal": "学生能分析不同数据库设计策略的优缺点，并根据使用场景提出合理的设计方案。",
+      "family_id": "qf_long_db_design",
+      "learning_goal": "学生能比较按股票分区和按日期分区的优缺点，并根据场景选择合适的设计。",
       "linked_steps": [
         "step1"
       ],
@@ -1708,74 +1413,537 @@ Alternative data (eg. weather, web traffic, etc)
         {
           "display": "数据库设计",
           "en": "Database Design"
-        },
-        {
-          "display": "分区",
-          "en": "Partitioning"
-        },
-        {
-          "display": "回测",
-          "en": "Backtesting"
         }
       ],
       "variants": [
         {
           "estimated_seconds": 120,
           "prompt_blocks": [
-            "设计 1 优缺点",
-            "设计 2 优缺点",
-            "设计 3 优缺点",
-            "推荐方案及理由"
+            "按股票分区优缺点",
+            "按日期分区优缺点",
+            "场景选择"
           ],
-          "question_id": "q_long_db_design_analysis_v1",
+          "question_id": "q_long_db_design_v1",
           "reference_answer": [
-            "设计 1（同一张大表）：优点是结构简单，易于跨股票查询；缺点是表会非常大，查询和备份速度慢。",
-            "设计 2（按月分表）：优点是按时间范围查询快，便于月度数据管理；缺点是跨月查询需要动态拼接 SQL，跨股票分析复杂。",
-            "设计 3（按股票分表）：优点是单只股票的回测查询非常快；缺点是跨股票分析需要查询多张表，代码复杂。",
-            "推荐方案：对于既需要回测又需要跨股票分析的团队，可以考虑使用设计 1（同一张大表），但建立合适的索引（如 symbol + date 复合索引）来加速查询。或者使用按股票分表（设计 3），但创建一个视图或汇总表来支持跨股票分析。没有完美设计，需要根据实际使用频率权衡。"
+            "按股票分区：优点——回测单只股票时查询速度快，数据备份方便。缺点——跨资产分析需要跨多个表，实现复杂。",
+            "按日期分区：优点——跨资产分析方便，可以快速获取所有股票在某一时间段的数据。缺点——回测单只股票需要扫描多个分区，速度慢。",
+            "如果主要任务是回测少数股票，选择按股票分区；如果主要任务是全市场数据分析，选择按日期分区。"
           ],
           "rubric_points": [
-            "指出设计 1 简单但查询大表速度慢",
-            "指出设计 2 便于按时间查询但跨月分析复杂",
-            "指出设计 3 便于单股票回测但跨股票分析复杂",
-            "提出折中方案，如按股票分区但保留索引，或使用混合策略"
+            "按股票分区：回测单只股票快，但跨资产分析困难",
+            "按日期分区：跨资产分析方便，但回测单只股票慢",
+            "回测场景优先选择按股票分区",
+            "数据分析场景优先选择按日期分区",
+            "需要平衡存储、速度和内存"
           ],
-          "stem": "比较以下三种金融数据库设计策略的优缺点：1) 所有股票数据放在同一张大表；2) 按月份分表；3) 按股票代码分表。对于一个既需要进行单只股票回测，又需要进行跨股票分析的量化研究团队，你会推荐哪种设计？请说明理由。"
+          "stem": "假设你要设计一个存储全球股票市场历史数据的数据库。请比较按股票分区和按日期分区两种设计方案的优缺点，并说明在什么场景下你会选择哪种方案。"
         },
         {
-          "estimated_seconds": 120,
+          "estimated_seconds": 90,
           "prompt_blocks": [
-            "按股票分表分析",
-            "按日期分表分析",
-            "权衡与决策"
+            "存储空间",
+            "查询速度",
+            "内存占用",
+            "使用场景"
           ],
-          "question_id": "q_long_db_design_analysis_v2",
+          "question_id": "q_long_db_design_v2",
           "reference_answer": [
-            "按股票分表：优点是单只股票的历史数据查询极快，适合回测；缺点是表数量庞大（50,000 张），管理复杂，跨股票查询需要遍历多张表。",
-            "按日期分表：优点是按时间范围（如某个月）查询所有股票的数据很快，适合时间序列分析；缺点是跨年查询需要合并多张表，单只股票的完整历史查询较慢。",
-            "权衡：存储空间上两者差异不大。如果团队主要进行单股票回测，按股票分表更优；如果主要进行跨股票的截面分析，按日期分表更优。",
-            "折中方案：可以按股票分区（如使用数据库的分区表功能），在逻辑上是一张表，物理上按股票存储，兼顾查询灵活性和性能。"
+            "没有完美的设计方案，因为不同的使用场景对存储空间、查询速度和内存占用有不同的要求。",
+            "例如，按股票分区节省了回测时的查询时间，但增加了跨资产分析的复杂度；按日期分区方便全市场分析，但回测单只股票时速度慢。",
+            "设计时需要在存储空间、查询速度和内存占用之间找到平衡，根据实际使用场景选择最合适的方案。"
           ],
           "rubric_points": [
-            "分析按股票分表：单股票查询快，但表数量多，跨股票查询复杂",
-            "分析按日期分表：按时间查询快，但跨时间查询复杂",
-            "提到存储空间两者相近",
-            "提出根据主要使用场景选择，或使用混合分区策略"
+            "存储空间与查询速度的权衡",
+            "内存占用与数据完整性的权衡",
+            "不同使用场景需要不同的设计",
+            "需要根据实际需求选择最优方案"
           ],
-          "stem": "假设你需要设计一个数据库来存储全球 50,000 只股票的历史日线数据（从 2000 年至今）。请分析按股票分表和按日期分表两种策略的优缺点，并说明你会如何权衡存储空间、查询速度和维护成本。"
+          "stem": "请解释为什么没有一种数据库设计方案是完美的，并说明在设计金融数据库时需要在哪些方面做出权衡。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "web_scraping_definition",
+      "coverage_tags": [
+        "web_scraping_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_web_scraping_use",
+      "learning_goal": "学生能识别网络爬取在算法交易中的典型应用。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "网络爬取",
+          "en": "web scraping"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "执行交易订单通常通过交易API完成，而不是通过网页爬取。",
+          "options": [
+            "实时数据收集（如经济指标）",
+            "市场情绪分析（如新闻、社交媒体）",
+            "执行交易订单",
+            "另类数据收集（如天气、网页流量）"
+          ],
+          "question_id": "q_quiz_web_scraping_use_v1",
+          "stem": "以下哪项不是网络爬取在算法交易中的常见用途？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "网络爬取擅长从静态HTML页面提取结构化数据。高频数据通常通过API获取。",
+          "options": [
+            "从Yahoo Finance下载历史股价",
+            "从静态HTML页面提取公司财报数据",
+            "实时监控高频交易订单簿",
+            "执行复杂的统计套利策略"
+          ],
+          "question_id": "q_quiz_web_scraping_use_v2",
+          "stem": "网络爬取最适合以下哪个场景？"
+        }
+      ]
+    },
+    {
+      "concept_key": "html_structure",
+      "coverage_tags": [
+        "html_structure"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_html_tags",
+      "learning_goal": "学生能区分常见HTML标签的用途。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "HTML",
+          "en": "HyperText Markup Language"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "<p> 标签用于定义段落。",
+          "options": [
+            "<h1>",
+            "<p>",
+            "<a>",
+            "<div>"
+          ],
+          "question_id": "q_quiz_html_tags_v1",
+          "stem": "HTML中哪个标签用于定义段落？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "<img> 标签通过 src 属性指定图片路径。",
+          "options": [
+            "<img>",
+            "<a>",
+            "<div>",
+            "<span>"
+          ],
+          "question_id": "q_quiz_html_tags_v2",
+          "stem": "HTML中哪个标签用于嵌入图片？"
+        }
+      ]
+    },
+    {
+      "concept_key": "beautifulsoup_usage",
+      "coverage_tags": [
+        "beautifulsoup_usage"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_beautifulsoup",
+      "learning_goal": "学生能选择正确的BeautifulSoup方法完成特定提取任务。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "BeautifulSoup",
+          "en": "BeautifulSoup"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "find_all('table') 会返回页面中所有 <table> 标签的列表。",
+          "options": [
+            "find('table')",
+            "find_all('table')",
+            "get_text()",
+            "prettify()"
+          ],
+          "question_id": "q_quiz_beautifulsoup_v1",
+          "stem": "假设你想提取网页中所有表格的数据，应该使用哪个方法？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 12,
+          "explanation": "prettify() 会添加缩进和换行，使HTML结构更易读。",
+          "options": [
+            "get_text()",
+            "find()",
+            "prettify()",
+            "find_all()"
+          ],
+          "question_id": "q_quiz_beautifulsoup_v2",
+          "stem": "使用BeautifulSoup解析HTML后，哪个方法可以打印格式化的HTML结构？"
+        }
+      ]
+    },
+    {
+      "concept_key": "xpath_lxml",
+      "coverage_tags": [
+        "xpath_lxml"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_xpath",
+      "learning_goal": "学生能选择正确的XPath表达式定位元素。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "XPath",
+          "en": "XML Path Language"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "// 表示任意位置，[@id='constituents'] 筛选id属性。",
+          "options": [
+            "选择所有 <table> 元素",
+            "选择id属性为 'constituents' 的 <table> 元素",
+            "选择所有包含 'constituents' 文本的元素",
+            "选择第一个 <table> 元素"
+          ],
+          "question_id": "q_quiz_xpath_v1",
+          "stem": "XPath表达式 '//table[@id=\"constituents\"]' 的作用是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "[2] 表示位置索引，从1开始。",
+          "options": [
+            "所有 <li> 元素",
+            "第二个 <li> 元素",
+            "所有包含文本 '2' 的 <li> 元素",
+            "前两个 <li> 元素"
+          ],
+          "question_id": "q_quiz_xpath_v2",
+          "stem": "XPath中 '//li[2]' 会选择什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "selenium_dynamic",
+      "coverage_tags": [
+        "selenium_dynamic"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_selenium",
+      "learning_goal": "学生能判断何时需要使用Selenium。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Selenium",
+          "en": "Selenium"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Selenium可以模拟浏览器执行JavaScript，获取动态加载的内容。",
+          "options": [
+            "目标网页是纯静态HTML",
+            "目标网页内容通过JavaScript动态加载",
+            "目标网页提供REST API",
+            "目标网页只有一张图片"
+          ],
+          "question_id": "q_quiz_selenium_v1",
+          "stem": "以下哪种情况最适合使用Selenium进行爬取？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "headless 模式不显示浏览器界面，节省系统资源。",
+          "options": [
+            "提高爬取速度",
+            "减少内存和CPU占用",
+            "绕过反爬机制",
+            "自动处理Cookie"
+          ],
+          "question_id": "q_quiz_selenium_v2",
+          "stem": "Selenium的 'headless' 模式的主要优势是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "yfinance_usage",
+      "coverage_tags": [
+        "yfinance_usage"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_yfinance",
+      "learning_goal": "学生能正确使用yfinance下载多只股票数据。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "yfinance",
+          "en": "yfinance"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "yf.download 的 tickers 参数用空格分隔多个股票代码。",
+          "options": [
+            "yf.download('0700.HK', 'AAPL', start='2023-01-01')",
+            "yf.download('0700.HK AAPL', start='2023-01-01')",
+            "yf.download(['0700.HK', 'AAPL'], start='2023-01-01')",
+            "yf.download('0700.HK+AAPL', start='2023-01-01')"
+          ],
+          "question_id": "q_quiz_yfinance_v1",
+          "stem": "使用yfinance同时下载腾讯(0700.HK)和苹果(AAPL)的历史数据，正确的调用方式是？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 12,
+          "explanation": "ticker.actions 返回包含分红、拆股等公司行为的数据。",
+          "options": [
+            "ticker.info",
+            "ticker.history()",
+            "ticker.actions",
+            "ticker.dividends"
+          ],
+          "question_id": "q_quiz_yfinance_v2",
+          "stem": "yfinance中哪个方法可以获取股票的分红和拆股信息？"
+        }
+      ]
+    },
+    {
+      "concept_key": "adjusted_close_concept",
+      "coverage_tags": [
+        "adjusted_close_concept"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_adjusted_close",
+      "learning_goal": "学生能理解调整收盘价的目的与计算逻辑。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "调整收盘价",
+          "en": "Adjusted Close"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "调整收盘价通过回溯调整历史价格，消除了公司事件造成的价格跳跃，使长期分析更准确。",
+          "options": [
+            "反映股票的真实市场交易价格",
+            "消除分红、拆股等事件对价格序列的影响",
+            "让股价看起来更高",
+            "用于计算当日的成交量"
+          ],
+          "question_id": "q_quiz_adjusted_close_v1",
+          "stem": "调整收盘价的主要目的是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "2:1拆股意味着每股变成两股，价格减半，所以调整系数为0.5。",
+          "options": [
+            "1.0",
+            "0.5",
+            "2.0",
+            "0.25"
+          ],
+          "question_id": "q_quiz_adjusted_close_v2",
+          "stem": "某股票在2月18日发生2:1拆股，拆股前收盘价为$100，拆股后收盘价为$50。调整收盘价对2月17日的价格应乘以什么系数？"
+        }
+      ]
+    },
+    {
+      "concept_key": "sqlite_basics",
+      "coverage_tags": [
+        "sqlite_basics"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_sqlite",
+      "learning_goal": "学生能选择正确的SQL语句完成数据库操作。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "SQLite",
+          "en": "SQLite"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 12,
+          "explanation": "CREATE TABLE 是创建表的正确语法。",
+          "options": [
+            "CREATE TABLE users (id INTEGER, name TEXT);",
+            "INSERT TABLE users (id INTEGER, name TEXT);",
+            "NEW TABLE users (id INTEGER, name TEXT);",
+            "ADD TABLE users (id INTEGER, name TEXT);"
+          ],
+          "question_id": "q_quiz_sqlite_v1",
+          "stem": "在SQLite中，以下哪个SQL语句用于创建新表？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 12,
+          "explanation": "UPDATE 语句用于修改表中已有记录。",
+          "options": [
+            "UPDATE users SET age=31 WHERE name='Alice';",
+            "MODIFY users SET age=31 WHERE name='Alice';",
+            "ALTER users SET age=31 WHERE name='Alice';",
+            "CHANGE users SET age=31 WHERE name='Alice';"
+          ],
+          "question_id": "q_quiz_sqlite_v2",
+          "stem": "在SQLite中，以下哪个SQL语句用于更新已有数据？"
+        }
+      ]
+    },
+    {
+      "concept_key": "database_design_tradeoffs",
+      "coverage_tags": [
+        "database_design_tradeoffs"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_db_design",
+      "learning_goal": "学生能根据使用场景选择合适的分区策略。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "数据库设计",
+          "en": "Database Design"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "按股票分区可以快速查询单只股票的全部历史数据，适合回测。",
+          "options": [
+            "按日期分区",
+            "按股票分区",
+            "将所有数据放在一张大表中",
+            "按交易所分区"
+          ],
+          "question_id": "q_quiz_db_design_v1",
+          "stem": "如果你的主要任务是回测单只股票的策略，哪种数据库分区设计更合适？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "按日期分区后，查询单只股票需要跨多个分区，速度较慢。",
+          "options": [
+            "跨资产分析困难",
+            "回测单只股票时查询慢",
+            "数据备份困难",
+            "无法进行SQL查询"
+          ],
+          "question_id": "q_quiz_db_design_v2",
+          "stem": "按日期分区存储市场数据的主要缺点是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "scraping_limitations",
+      "coverage_tags": [
+        "scraping_limitations"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_limitations",
+      "learning_goal": "学生能识别网络爬取的主要局限性。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "网络爬取局限性",
+          "en": "Web Scraping Limitations"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 3,
+          "estimated_seconds": 12,
+          "explanation": "网络爬取受限于网站的反爬措施和动态加载，并非所有数据都能实时获取。",
+          "options": [
+            "数据可能不完整或过时",
+            "消耗大量带宽和存储",
+            "网站结构可能频繁变化",
+            "可以实时获取任何网站的数据"
+          ],
+          "question_id": "q_quiz_limitations_v1",
+          "stem": "以下哪项不是网络爬取的局限性？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "IP封锁和速率限制是常见的反爬措施，用于限制爬虫访问频率。",
+          "options": [
+            "提供免费API",
+            "IP封锁和速率限制",
+            "使用纯文本格式",
+            "开放所有数据"
+          ],
+          "question_id": "q_quiz_limitations_v2",
+          "stem": "以下哪种反爬措施是网站常用的？"
         }
       ]
     }
   ],
   "source": {
-    "coverage_checklist": "L2: Data scraping and database management with Python - Agenda items: basic website structure, web scraping libraries, limitations, SQLite, adjusted price, database design",
+    "coverage_checklist": "Understand the basic website structure; Web scraping using different python libraries; The limitations of web scraping; Create a simple database using python; Understand the concept of adjusted price; Database design for financial market data storage",
     "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
-    "lesson_map": "{\"lesson_id\":\"L2\",\"steps\":[{\"concept\":\"MVP lesson slice\",\"sequence_id\":\"step1\"}]}",
+    "lesson_map": "{\"lesson_id\":\"L2\",\"mode\":\"guided_story\",\"steps\":[{\"concept\":\"MVP lesson slice\",\"file\":\"research/pipeline/3-guided_story/L2/step1/step.json\",\"sequence_id\":\"step1\"}]}",
     "plain_text": "pipeline/1-plain/L2/plain.txt",
     "related": [
       "pipeline/2-related_important/course_desc.md"
     ],
-    "source_outline": "L2: Data scraping and database management with Python - Agenda items: basic website structure, web scraping libraries, limitations, SQLite, adjusted price, database design"
+    "source_outline": "L2: Data scraping and database management with Python"
   },
   "target_language": "zh-CN"
 }

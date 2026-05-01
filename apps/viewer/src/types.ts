@@ -1,9 +1,11 @@
 export type LessonId = "L1" | "L2";
-export type ViewerTab = "textbook" | "story" | "relevance";
+export type AssetView = "overview" | "textbook" | "story" | "questions" | "relevance";
 
 export type LessonOption = {
   id: LessonId;
   label: string;
+  courseLabel: string;
+  lectureLabel: string;
   defaultStep: string;
   legacySteps?: string[];
 };
@@ -49,6 +51,8 @@ export type StoryStep = {
 
 export type QuestionVariant = {
   question_id?: string;
+  front?: string;
+  back?: string;
   stem?: string;
   options?: string[];
   answer?: number | string;
@@ -68,6 +72,7 @@ export type QuestionFamily = {
   linked_steps?: string[];
   coverage_tags?: string[];
   question_type?: string;
+  retrieval_focus?: string;
   term_refs?: Array<{ display?: string; en?: string }>;
   variants?: QuestionVariant[];
   [key: string]: unknown;
@@ -82,6 +87,7 @@ export type QuestionBank = {
     covered_by?: string[];
   }>;
   flashcard_families?: QuestionFamily[];
+  quiz_families?: QuestionFamily[];
   longform_families?: QuestionFamily[];
   [key: string]: unknown;
 };

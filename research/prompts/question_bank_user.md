@@ -7,11 +7,12 @@ lesson_id：
 {{lesson_id}}
 
 要求：
-- 同时生成 `flashcard_families` 和 `longform_families`
+- 同时生成 `flashcard_families`、`quiz_families` 和 `longform_families`
 - 题目必须能关联到 `linked_steps`
 - 同一个 family 必须至少给出 2 个 variants
 - 题目应覆盖整节课，而不是只盯一个 step
-- `flashcard` 要快
+- `flashcard` 是间隔重复用的主动检索载体，不是选择题；每张卡必须有精准 front 与短 back
+- `quiz` 才承载选择题、判断题、配对题等更像考试的小题
 - `longform` 要能真正检查理解与表达
 - 如果涉及公式，务必保证数值自洽
 - 不要生成和输入材料脱节的题
@@ -22,6 +23,9 @@ lesson_id：
 - `coverage_tags`、`concept_key` 应尽量复用或可追踪地归并这些输入中的关键项
 - 不要写死任何学科、固定主题列表或固定 slide bucket
 - 请把关键覆盖落实到 `coverage_map` 里，不要只在题目里隐含覆盖
+- 不要把“名词正面 + 长定义背面”的被动阅读卡当成好 flashcard
+- 不要把 `single_choice` 或 `true_false` 放进 `flashcard_families`
+- 如果某个知识点适合选择题，请放入 `quiz_families`
 
 源材料：
 

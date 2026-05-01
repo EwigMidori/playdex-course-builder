@@ -1,6 +1,6 @@
 ---
 lessonId: L2
-title: 数据抓取与数据库管理
+title: 数据爬取与数据库管理
 targetLanguage: zh-CN
 mode: textbook
 sectionMap:
@@ -10,262 +10,225 @@ sectionMap:
     linkedSteps: ["step1"]
   - sectionId: concept-map
     title: 课程全景与关键问题
-    coverageTags: ["core_theme", "basic_website_structure", "web_scraping_libraries", "web_scraping_limitations", "sqlite_database", "adjusted_close_price", "database_design_financial_data"]
+    coverageTags: ["web_scraping_definition", "html_structure", "scraping_limitations"]
     linkedSteps: ["step1"]
-  - sectionId: web-structure
-    title: 网页的三大基石：HTML、CSS、JavaScript
-    coverageTags: ["basic_website_structure"]
-    linkedSteps: ["step1"]
-  - sectionId: scraping-tools
-    title: 网页抓取工具与方法
-    coverageTags: ["web_scraping_libraries"]
-    linkedSteps: ["step1"]
-  - sectionId: scraping-limitations
-    title: 网页抓取的局限性
-    coverageTags: ["web_scraping_limitations"]
+  - sectionId: web-scraping-tools
+    title: 核心工具：BeautifulSoup、XPath、Selenium 与 yfinance
+    coverageTags: ["beautifulsoup_usage", "xpath_lxml", "selenium_dynamic", "yfinance_usage"]
     linkedSteps: ["step1"]
   - sectionId: adjusted-close
-    title: 调整收盘价：理解价格背后的故事
-    coverageTags: ["adjusted_close_price"]
+    title: 调整收盘价：概念与计算
+    coverageTags: ["adjusted_close_concept"]
     linkedSteps: ["step1"]
-  - sectionId: sqlite-database
-    title: 使用 Python 管理 SQLite 数据库
-    coverageTags: ["sqlite_database"]
-    linkedSteps: ["step1"]
-  - sectionId: database-design
-    title: 金融数据存储的数据库设计
-    coverageTags: ["database_design_financial_data"]
+  - sectionId: database-management
+    title: 数据库管理：SQLite 与金融数据存储
+    coverageTags: ["sqlite_basics", "database_design_tradeoffs"]
     linkedSteps: ["step1"]
   - sectionId: pitfalls
     title: 易错点
-    coverageTags: ["web_scraping_limitations", "adjusted_close_price", "database_design_financial_data"]
+    coverageTags: ["scraping_limitations", "adjusted_close_concept", "database_design_tradeoffs"]
     linkedSteps: ["step1"]
   - sectionId: review-path
     title: 复习与自测
-    coverageTags: ["basic_website_structure", "web_scraping_libraries", "web_scraping_limitations", "sqlite_database", "adjusted_close_price", "database_design_financial_data"]
+    coverageTags: ["web_scraping_definition", "html_structure", "beautifulsoup_usage", "xpath_lxml", "selenium_dynamic", "yfinance_usage", "adjusted_close_concept", "sqlite_basics", "database_design_tradeoffs", "scraping_limitations"]
     linkedSteps: ["step1"]
 coverageTrace:
   - coverageTag: core_theme
-    description: 本课核心主题：数据抓取与数据库管理在量化交易中的角色
-    sectionIds: ["why-this-lesson-matters", "concept-map"]
+    description: 本课的核心主题：数据爬取与数据库管理在算法交易中的应用
+    sectionIds: ["why-this-lesson-matters"]
     linkedSteps: ["step1"]
-  - coverageTag: basic_website_structure
-    description: 理解网页基本结构：HTML、CSS、JavaScript 的角色
-    sectionIds: ["concept-map", "web-structure"]
+  - coverageTag: web_scraping_definition
+    description: 网络爬取的定义与算法交易中的应用场景
+    sectionIds: ["concept-map", "review-path"]
     linkedSteps: ["step1"]
-  - coverageTag: web_scraping_libraries
-    description: 使用不同 Python 库进行网页抓取：BeautifulSoup, lxml/XPath, Selenium, yfinance
-    sectionIds: ["concept-map", "scraping-tools"]
+  - coverageTag: html_structure
+    description: HTML基本结构与常见标签
+    sectionIds: ["concept-map", "review-path"]
     linkedSteps: ["step1"]
-  - coverageTag: web_scraping_limitations
-    description: 理解网页抓取的局限性：数据质量、资源消耗、技术挑战
-    sectionIds: ["concept-map", "scraping-limitations", "pitfalls"]
+  - coverageTag: beautifulsoup_usage
+    description: BeautifulSoup库的安装与基本用法（find, find_all, get_text, prettify）
+    sectionIds: ["web-scraping-tools", "review-path"]
     linkedSteps: ["step1"]
-  - coverageTag: sqlite_database
-    description: 使用 Python 创建和管理 SQLite 数据库：CRUD 操作
-    sectionIds: ["concept-map", "sqlite-database"]
+  - coverageTag: xpath_lxml
+    description: XPath语法与lxml库解析
+    sectionIds: ["web-scraping-tools", "review-path"]
     linkedSteps: ["step1"]
-  - coverageTag: adjusted_close_price
-    description: 理解调整收盘价的概念：分红、拆股对价格的影响及调整方法
-    sectionIds: ["concept-map", "adjusted-close", "pitfalls"]
+  - coverageTag: selenium_dynamic
+    description: Selenium处理动态加载页面
+    sectionIds: ["web-scraping-tools", "review-path"]
     linkedSteps: ["step1"]
-  - coverageTag: database_design_financial_data
-    description: 金融数据存储的数据库设计考量：分区策略、权衡
-    sectionIds: ["concept-map", "database-design", "pitfalls"]
+  - coverageTag: yfinance_usage
+    description: yfinance库下载金融数据
+    sectionIds: ["web-scraping-tools", "review-path"]
+    linkedSteps: ["step1"]
+  - coverageTag: adjusted_close_concept
+    description: 调整收盘价的概念与计算逻辑
+    sectionIds: ["adjusted-close", "pitfalls", "review-path"]
+    linkedSteps: ["step1"]
+  - coverageTag: sqlite_basics
+    description: SQLite数据库的创建、表操作与CRUD
+    sectionIds: ["database-management", "review-path"]
+    linkedSteps: ["step1"]
+  - coverageTag: database_design_tradeoffs
+    description: 金融数据库设计中的权衡（按股票/按日期分区）
+    sectionIds: ["database-management", "pitfalls", "review-path"]
+    linkedSteps: ["step1"]
+  - coverageTag: scraping_limitations
+    description: 网络爬取的局限性（数据质量、资源消耗、反爬）
+    sectionIds: ["concept-map", "pitfalls", "review-path"]
     linkedSteps: ["step1"]
 ---
 
-# 数据抓取与数据库管理
+# 数据爬取与数据库管理
 
 ## 为什么这一课重要 {#why-this-lesson-matters}
 
-想象一下，你正在监控 500 家公司的股价，手动刷新网页？太慢了。你需要一个自动化的方式，从网站上提取数据，这就是 <Term id="web_scraping" en="Web Scraping">网页抓取</Term>。
+想象一下，你需要每天手动收集几百只股票的价格、新闻标题、社交媒体情绪……那会花掉你多少时间？
 
-在量化交易中，数据是策略的基石。无论是获取实时行情、分析市场情绪，还是回测历史策略，都离不开高效的数据获取与管理。本课将带你掌握从网页抓取数据到存储管理的完整流程，为后续的策略开发打下坚实基础。
+在算法交易中，数据是一切策略的基础。没有数据，就无法回测、无法分析、无法决策。本课将教你如何用 Python 自动完成这些重复劳动——从网页中提取数据，并将它们存入本地数据库，为后续的策略开发打下坚实基础。
 
 <KeyPoint>
-本课的核心目标是让你能够：1) 理解网页结构；2) 使用 Python 工具抓取数据；3) 理解调整收盘价；4) 将数据存入数据库并设计合理的存储方案。
+本课的核心目标：掌握从网络获取金融数据并系统化存储的完整流程。
 </KeyPoint>
+
+<QuestionRef id="q_flash_web_scraping_v1" />
 
 ## 课程全景与关键问题 {#concept-map}
 
-本课围绕一个核心问题展开：**如何从互联网获取金融数据，并将其高效、准确地存储起来，用于后续的策略分析与回测？**
+### 什么是网络爬取？
 
-整个流程可以概括为：
+<Term id="web_scraping" en="web scraping">网络爬取</Term> 是从网站自动提取数据的过程。在算法交易中，它的应用非常广泛：
 
-1.  **理解数据来源**：网页由 <Term id="html" en="HyperText Markup Language">HTML</Term>、<Term id="css" en="Cascading Style Sheets">CSS</Term> 和 <Term id="javascript" en="JavaScript">JavaScript</Term> 构成。抓取的核心是解析 HTML 结构。
-2.  **选择抓取工具**：根据网页的静态或动态特性，选择合适的 Python 库，如 <Term id="beautifulsoup" en="BeautifulSoup">BeautifulSoup</Term>、<Term id="lxml" en="lxml">lxml</Term>、<Term id="selenium" en="Selenium">Selenium</Term> 或专门的 <Term id="yfinance" en="yfinance">yfinance</Term>。
-3.  **理解数据含义**：金融数据中的 <Term id="adjusted_close" en="Adjusted Close">调整收盘价</Term> 消除了公司事件的影响，是进行长期分析和回测的关键。
-4.  **设计存储方案**：使用 <Term id="sqlite" en="SQLite">SQLite</Term> 等数据库持久化数据，并根据查询需求（如回测 vs 分析）设计合理的表结构。
+- **实时数据收集**：经济指标、股票价格等
+- **市场情绪分析**：新闻、论坛、博客、社交媒体
+- **公司分析**：产品公告、年报、董事变更
+- **另类数据**：天气、网页流量等
 
-<Checkpoint title="全局理解">
-在深入学习之前，请思考：为什么不能直接使用从网页上看到的原始价格进行回测？为什么不能把所有数据都放在一个 Excel 文件里？
-</Checkpoint>
+<QuestionRef id="q_flash_web_scraping_v2" />
 
-## 网页的三大基石：HTML、CSS、JavaScript {#web-structure}
+### 网页的基本结构
 
-一个网页通常由三种技术共同构建：
+一个网页通常由三部分组成：
 
-- **<Term id="html" en="HyperText Markup Language">HTML</Term>**：定义网页的**结构**和**内容**，如标题、段落、表格、链接等。它是一种标记语言，不是编程语言。
-- **<Term id="css" en="Cascading Style Sheets">CSS</Term>**：控制网页的**视觉呈现**和**布局**，如颜色、字体、间距、位置等。
-- **<Term id="javascript" en="JavaScript">JavaScript</Term>**：为网页添加**交互**和**动态行为**，如点击弹窗、动态加载数据、表单验证等。
+1. **HTML** (HyperText Markup Language)：定义网页的结构和内容
+2. **CSS** (Cascading Style Sheets)：控制网页的视觉呈现和布局
+3. **JavaScript**：为网页添加交互和动态行为
 
-<KeyPoint>
-网页抓取的核心是**解析 HTML 结构**来提取数据。CSS 和 JavaScript 主要影响呈现和交互，数据通常嵌入在 HTML 标签中。
-</KeyPoint>
+<Term id="html" en="HyperText Markup Language">HTML</Term> 不是编程语言，而是一种标记语言。它使用标签（tags）来创建各种元素，如标题、段落、链接、图片、表格等。
 
-### 常见 HTML 标签
-
-以下是抓取时最常遇到的 HTML 标签：
-
+<Definition title="常见 HTML 标签">
 | 标签 | 描述 |
-| :--- | :--- |
-| `<html>` | HTML 文档的根元素 |
-| `<head>` | 包含文档的元信息（如标题、样式） |
-| `<title>` | 定义网页标题，显示在浏览器标签栏 |
-| `<body>` | 包含文档的可见内容 |
-| `<h1>` 到 `<h6>` | 定义不同级别的标题 |
-| `<p>` | 定义一个段落 |
-| `<a>` | 创建一个超链接 |
-| `<img>` | 插入一张图片 |
-| `<div>` | 定义一个块级容器，用于分组和样式化 |
-| `<span>` | 定义一个行内容器，用于样式化部分文本 |
-| `<ul>`, `<ol>`, `<li>` | 创建无序或有序列表 |
-| `<table>`, `<tr>`, `<td>`, `<th>` | 创建表格 |
-| `<form>`, `<input>`, `<button>` | 创建表单和输入控件 |
+|------|------|
+| `<h1>` - `<h6>` | 定义标题，`<h1>` 最大，`<h6>` 最小 |
+| `<p>` | 定义段落 |
+| `<a>` | 创建超链接 |
+| `<img>` | 插入图片 |
+| `<table>` | 创建表格 |
+| `<div>` | 定义区块容器 |
+| `<ul>` / `<ol>` | 无序/有序列表 |
+| `<li>` | 列表项 |
+</Definition>
 
-<Example title="一个简单的 HTML 页面">
+<Example title="HTML 基本结构示例">
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>我的第一个网页</title>
+  <meta charset="utf-8">
+  <title>页面标题</title>
 </head>
 <body>
-    <h1>欢迎来到我的网站</h1>
-    <p>这是一个段落。</p>
-    <a href="https://www.example.com">访问示例网站</a>
+  <h1>一级标题</h1>
+  <p>这是一个段落。</p>
 </body>
 </html>
 ```
 </Example>
 
+<Figure src="images/9a0356d3c69aa54d62765a0ef2abff6400803e8e1063976ac685e8e80ce3ccd6.jpg" alt="HTML 页面渲染效果图">
+HTML 页面在浏览器中的渲染效果。
+</Figure>
+
 <QuestionRef id="q_flash_html_tags_v1" />
-<QuestionRef id="q_flash_web_tech_roles_v1" />
+<QuestionRef id="q_flash_html_tags_v2" />
+<QuestionRef id="q_flash_html_tags_v3" />
 
-## 网页抓取工具与方法 {#scraping-tools}
+### 网络爬取的局限性
 
-Python 提供了多种库来应对不同的抓取场景。
+<Definition title="网络爬取的局限性">
+- **数据质量**：网站数据可能不完整或不是最新的
+- **资源消耗**：爬取大量数据会消耗大量带宽和存储
+- **技术挑战**：网站结构可能频繁变化，许多网站会实施反爬措施（如 IP 封锁、速率限制）
+</Definition>
 
-### 1. BeautifulSoup：静态页面的利器
+<QuestionRef id="q_flash_limitations_v1" />
+<QuestionRef id="q_flash_limitations_v2" />
 
-<Term id="beautifulsoup" en="BeautifulSoup">BeautifulSoup</Term> 是最流行的 Python 库之一，用于解析 HTML 和 XML 数据。它能将杂乱的 HTML 文档转换成一个可搜索的树形结构。
+<Checkpoint title="概念理解检查">
+<QuestionRef id="q_quiz_web_scraping_use_v1" />
+<QuestionRef id="q_quiz_web_scraping_use_v2" />
+<QuestionRef id="q_quiz_limitations_v1" />
+<QuestionRef id="q_quiz_limitations_v2" />
+</Checkpoint>
 
-**基本流程：**
-1.  使用 `requests` 库下载网页源码。
-2.  使用 `BeautifulSoup` 解析源码。
-3.  使用 `find()`、`find_all()` 等方法定位并提取数据。
+## 核心工具：BeautifulSoup、XPath、Selenium 与 yfinance {#web-scraping-tools}
+
+### BeautifulSoup
+
+<Term id="beautifulsoup" en="BeautifulSoup">BeautifulSoup</Term> 是 Python 中最流行的 HTML/XML 解析库之一。
+
+<Definition title="BeautifulSoup 常用方法">
+- `find(tag)`：返回第一个匹配的标签
+- `find_all(tag)`：返回所有匹配标签的列表
+- `get_text()`：提取网页中的所有纯文本
+- `prettify()`：格式化打印 HTML 结构
+</Definition>
 
 <Example title="使用 BeautifulSoup 提取数据">
 ```python
 import requests
 from bs4 import BeautifulSoup
 
-# 1. 下载网页
-url = 'https://example.com'
-response = requests.get(url)
-text = response.text
+# 下载网页内容
+text = requests.get('https://example.com').text
 
-# 2. 解析 HTML
+# 解析 HTML
 soup = BeautifulSoup(text, 'html.parser')
 
-# 3. 提取数据
-# 提取第一个 <p> 标签
-first_paragraph = soup.find('p')
-print(first_paragraph.text)
+# 提取第一个段落
+first_p = soup.find('p')
+print(first_p.text)
 
-# 提取所有 <a> 标签
+# 提取所有超链接
 all_links = soup.find_all('a')
 for link in all_links:
     print(link.text, link.get('href'))
+
+# 提取所有纯文本
+print(soup.get_text())
 ```
 </Example>
 
-<QuestionRef id="q_flash_bs4_methods_v1" />
+<QuestionRef id="q_flash_beautifulsoup_v1" />
+<QuestionRef id="q_flash_beautifulsoup_v2" />
+<QuestionRef id="q_flash_beautifulsoup_v3" />
 
-### 2. lxml 与 XPath：精准定位
-
-<Term id="lxml" en="lxml">lxml</Term> 是一个高效的 XML 和 HTML 解析库。它常与 <Term id="xpath" en="XPath">XPath</Term> 配合使用。XPath 是一种在 XML 文档中导航和选择节点的查询语言，可以像路径一样直接定位到深层元素。
-
-**常见 XPath 语法：**
-- `//element`：选择文档中所有名为 `element` 的元素。
-- `//element[@attribute='value']`：选择属性 `attribute` 值为 `value` 的所有 `element` 元素。
-- `//element[position()=1]`：选择第一个 `element` 元素。
-
-<Example title="使用 XPath 定位表格">
-```python
-from lxml import html
-import requests
-
-url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
-headers = {'user-agent': 'Mozilla/5.0'}
-response = requests.get(url, headers=headers)
-tree = html.fromstring(response.content)
-
-# 使用 XPath 定位 id 为 'constituents' 的表格的所有行
-table_rows = tree.xpath('//*[@id="constituents"]/tbody/tr')
-print(f"找到 {len(table_rows)} 行数据")
-```
-</Example>
-
-<QuestionRef id="q_flash_xpath_syntax_v1" />
-
-### 3. Selenium：处理动态内容
-
-当网页数据是通过 JavaScript 动态加载时，BeautifulSoup 无法直接获取。这时需要 <Term id="selenium" en="Selenium">Selenium</Term>。它模拟真实浏览器，能执行 JavaScript，等待页面加载完成，并模拟用户操作（如点击、滚动）。
-
-<KeyPoint>
-**何时使用 Selenium？** 当你在网页源码中看不到目标数据，但浏览器渲染后能看到时，就需要 Selenium。
-</KeyPoint>
-
-<QuestionRef id="q_flash_selenium_purpose_v1" />
-
-### 4. yfinance：金融数据的快捷方式
-
-对于金融数据，有更省力的办法。<Term id="yfinance" en="yfinance">yfinance</Term> 是一个非官方的 Python 库，专门用于从 Yahoo Finance 获取金融数据。它封装了复杂的请求和解析过程，几行代码就能拿到数据。
-
-<Example title="使用 yfinance 获取股票历史数据">
-```python
-import yfinance as yf
-
-# 获取腾讯控股 (0700.HK) 最近一个月的历史数据
-ticker = yf.Ticker("0700.HK")
-data = ticker.history(period="1mo")
-print(data.head())
-```
-</Example>
-
-<QuestionRef id="q_flash_yfinance_usage_v1" />
-
-### 实战案例：抓取 S&P 500 成分股
-
-这是一个综合案例，展示如何从 Wikipedia 抓取 S&P 500 成分股列表。
-
-<Example title="抓取 S&P 500 成分股">
+<Example title="提取网页中的表格数据">
 ```python
 import requests
-from bs4 import BeautifulSoup
 import pandas as pd
+from bs4 import BeautifulSoup
 
+# 设置 User-Agent 以绕过反爬
 headers = {
-    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 }
+
 url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
 text = requests.get(url, headers=headers).text
 soup = BeautifulSoup(text, 'html.parser')
 
-# 通过 id 定位正确的表格
+# 找到 id 为 'constituents' 的表格
 table = soup.find('table', id="constituents")
 
 # 提取表头
@@ -280,173 +243,402 @@ for tr in table.find_all('tr')[1:]:  # 跳过表头行
 
 # 创建 DataFrame
 df = pd.DataFrame(rows, columns=headers_list)
-print(df.head())
+print(df)
 ```
 </Example>
 
-<QuestionFamily familyId="qf_long_scrape_sp500" />
+<QuestionRef id="q_quiz_beautifulsoup_v1" />
+<QuestionRef id="q_quiz_beautifulsoup_v2" />
 
-## 网页抓取的局限性 {#scraping-limitations}
+<QuestionFamily familyId="qf_long_beautifulsoup" />
 
-网页抓取虽然强大，但并非万能，存在以下主要局限性：
+### XPath 与 lxml
 
-1.  **数据质量**：网站数据可能不完整、不及时，影响分析准确性。
-2.  **资源密集型**：抓取大量数据会消耗大量带宽和存储空间，且加载页面耗时。
-3.  **技术挑战**：
-    - **网站结构变化**：网站改版可能导致基于特定标签或 class 的定位代码失效。
-    - **反爬措施**：许多网站会实施 IP 封锁、请求频率限制、验证码等反爬措施。
+<Term id="xpath" en="XML Path Language">XPath</Term> 是一种在 XML 文档中导航和选择节点的查询语言。
 
-<QuestionRef id="q_flash_scraping_limits_v1" />
-<QuestionFamily familyId="qf_long_scraping_limitations_explain" />
-
-## 调整收盘价：理解价格背后的故事 {#adjusted-close}
-
-在金融数据中，你经常会看到两列价格：`Close`（收盘价）和 `Adj Close`（调整收盘价）。它们有什么区别？
-
-- **收盘价 (Close)**：当天最后一笔交易的价格。
-- **调整收盘价 (Adjusted Close)**：经过分红、拆股等公司事件调整后的收盘价。
-
-<KeyPoint>
-**为什么需要调整？** 公司事件（如分红、拆股）会导致股价出现非市场因素的跳变。例如，2:1 拆股后，股价会瞬间减半。如果使用原始收盘价进行长期回测，会错误地认为股价暴跌，导致策略表现被严重低估。调整收盘价消除了这些事件的影响，使历史价格序列连续，真实反映股票的价值变化。
-</KeyPoint>
-
-### 调整机制
-
-Yahoo Finance 使用乘数法向后调整历史价格。
-
-- **拆股调整**：对于 2:1 拆股，拆股前的所有价格乘以 `0.5`。
-- **分红调整**：对于每股 $0.08 的分红，除息日前的所有价格乘以 `(1 - 0.08 / 除息日前一日收盘价)`。
-
-<Example title="计算调整收盘价">
-假设一只股票在 2/18 进行 2:1 拆股，2/21 除息（分红 $0.08）。2/17 收盘价为 $48.30，2/18 收盘价为 $24.96。
-
-1.  **计算调整因子**：
-    - 拆股因子 = 0.5
-    - 分红因子 = 1 - (0.08 / 24.96) = 0.9968
-2.  **计算 2/17 的调整收盘价**：
-    - 调整收盘价 = 0.5 * 0.9968 * 48.30 = **24.07**
-</Example>
-
-<QuestionRef id="q_flash_adjusted_close_concept_v1" />
-<QuestionFamily familyId="qf_long_adjusted_close_calculation" />
-
-## 使用 Python 管理 SQLite 数据库 {#sqlite-database}
-
-抓取下来的数据不能每次都重新爬，你需要一个本地数据库。Python 内置了 <Term id="sqlite" en="SQLite">SQLite</Term>，一个文件就是一个数据库，零配置，非常适合学习和中小型项目。
-
-### 核心操作 (CRUD)
-
-<Definition title="CRUD">
-指数据库的四种基本操作：**C**reate (创建/插入), **R**ead (查询), **U**pdate (更新), **D**elete (删除)。
+<Definition title="常见 XPath 语法">
+- `//child`：选择文档中所有 child 元素
+- `//element[@attribute='value']`：选择属性为特定值的元素
+- `//element[position()=1]`：选择第一个元素
+- `//li[2]`：选择第二个 `<li>` 元素
 </Definition>
 
-<Example title="SQLite 基本操作">
+<Example title="使用 lxml 和 XPath 提取数据">
+```python
+from lxml import html
+import requests
+import pandas as pd
+
+headers = {
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+}
+
+url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
+response = requests.get(url, headers=headers)
+tree = html.fromstring(response.content)
+
+# 使用 XPath 提取表格行
+table_rows = tree.xpath('//*[@id="constituents"]/tbody/tr')
+
+data = []
+for row in table_rows[1:]:  # 跳过表头行
+    cells = row.xpath('td')
+    if len(cells) > 0:
+        symbol = cells[0].text_content().strip()
+        security = cells[1].text_content().strip()
+        data.append([symbol, security])
+
+df = pd.DataFrame(data, columns=['Symbol', 'Security'])
+print(df)
+```
+</Example>
+
+<QuestionRef id="q_flash_xpath_v1" />
+<QuestionRef id="q_flash_xpath_v2" />
+<QuestionRef id="q_quiz_xpath_v1" />
+<QuestionRef id="q_quiz_xpath_v2" />
+
+### Selenium：处理动态加载页面
+
+<Term id="selenium" en="Selenium">Selenium</Term> 是一个 Web 自动化工具，可以模拟真实用户操作浏览器。
+
+<Definition title="Selenium 的核心用途">
+- 处理 JavaScript 动态加载的内容
+- 模拟点击、滚动、输入等用户操作
+- headless 模式：在后台运行浏览器，不显示界面，节省资源
+</Definition>
+
+<Example title="使用 Selenium 提取动态数据">
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from bs4 import BeautifulSoup
+import pandas as pd
+
+# 设置 WebDriver
+service = Service('path/to/chromedriver')
+driver = webdriver.Chrome(service=service)
+
+# 访问页面
+url = 'https://finance.yahoo.com/quote/0700.HK/history/'
+driver.get(url)
+
+# 等待表格加载
+WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.CSS_SELECTOR, 'table'))
+)
+
+# 获取页面源码并解析
+page_source = driver.page_source
+soup = BeautifulSoup(page_source, 'html.parser')
+
+# 提取数据
+table = soup.find('table')
+# ... 后续提取逻辑
+
+driver.quit()
+```
+</Figure>
+
+<QuestionRef id="q_flash_selenium_v1" />
+<QuestionRef id="q_flash_selenium_v2" />
+<QuestionRef id="q_quiz_selenium_v1" />
+<QuestionRef id="q_quiz_selenium_v2" />
+
+### yfinance：专为金融数据而生
+
+<Term id="yfinance" en="yfinance">yfinance</Term> 是 Yahoo Finance 的非官方 Python 接口，可以轻松下载金融数据。
+
+<Definition title="yfinance 常用方法">
+- `yf.Ticker("AAPL")`：创建股票对象
+- `ticker.history(period='1mo')`：下载历史数据
+- `ticker.info`：获取股票基本信息
+- `yf.download("AAPL MSFT", start="2023-01-01")`：下载多只股票数据
+- `ticker.actions`：获取分红和拆股信息
+</Definition>
+
+<Example title="使用 yfinance 下载股票数据">
+```python
+import yfinance as yf
+
+# 下载单只股票
+ticker = yf.Ticker("0700.HK")
+data = ticker.history(period='1mo')
+print(data)
+
+# 下载多只股票
+data_multi = yf.download("0700.HK 0005.HK AAPL", 
+                         start="2025-01-01", 
+                         end="2025-06-30")
+print(data_multi)
+
+# 获取股票基本信息
+print(ticker.info)
+```
+</Example>
+
+<QuestionRef id="q_flash_yfinance_v1" />
+<QuestionRef id="q_flash_yfinance_v2" />
+<QuestionRef id="q_quiz_yfinance_v1" />
+<QuestionRef id="q_quiz_yfinance_v2" />
+
+<QuestionFamily familyId="qf_long_yfinance" />
+
+<Checkpoint title="工具使用检查">
+<QuestionRef id="q_quiz_beautifulsoup_v1" />
+<QuestionRef id="q_quiz_xpath_v1" />
+<QuestionRef id="q_quiz_selenium_v1" />
+<QuestionRef id="q_quiz_yfinance_v1" />
+</Checkpoint>
+
+## 调整收盘价：概念与计算 {#adjusted-close}
+
+### 为什么需要调整收盘价？
+
+<Term id="adjusted_close" en="Adjusted Close">调整收盘价</Term> 是经过分红、拆股等公司事件调整后的收盘价，用于反映股票的真实历史表现。
+
+<KeyPoint>
+原始价格序列可能因公司事件而出现突然的跳跃或下跌。调整收盘价通过回溯调整历史价格，消除了这些事件的影响，使价格序列连续，适合长期回测和绩效分析。
+</KeyPoint>
+
+### 调整因素
+
+1. **拆股（Stock Split）**：例如 2:1 拆股，拆股前的价格乘以 0.5
+2. **分红（Dividend）**：例如每股分红 $0.08，拆股前价格乘以 (1 - 0.08/24.96) = 0.9968
+
+<Example title="调整收盘价计算示例">
+假设某股票在 2 月 18 日发生 2:1 拆股，2 月 21 日除息（每股分红 $0.08）。
+
+| 日期 | 收盘价 | 事件 |
+|------|--------|------|
+| 2/16 | 46.99 | - |
+| 2/17 | 48.30 | - |
+| 2/18 | 24.96 | 2:1 拆股 |
+| 2/19 | 24.91 | - |
+| 2/20 | 24.95 | - |
+| 2/21 | 24.53 | 除息 $0.08 |
+| 2/22 | 24.54 | - |
+
+**调整收盘价计算：**
+
+- 拆股乘数 = 0.5
+- 分红乘数 = 1 - 0.08/24.96 = 0.9968
+
+| 日期 | 调整收盘价计算 | 调整收盘价 |
+|------|----------------|------------|
+| 2/16 | 0.5 × 0.9968 × 46.99 | 23.42 |
+| 2/17 | 0.5 × 0.9968 × 48.30 | 24.07 |
+| 2/18 | 0.9968 × 24.96 | 24.88 |
+| 2/19 | 0.9968 × 24.91 | 24.83 |
+| 2/20 | 0.9968 × 24.95 | 24.87 |
+| 2/21 | 24.53（无需调整） | 24.53 |
+| 2/22 | 24.54（无需调整） | 24.54 |
+</Example>
+
+<QuestionRef id="q_flash_adjusted_close_v1" />
+<QuestionRef id="q_flash_adjusted_close_v2" />
+<QuestionRef id="q_quiz_adjusted_close_v1" />
+<QuestionRef id="q_quiz_adjusted_close_v2" />
+
+<QuestionFamily familyId="qf_long_adjusted_close" />
+
+<Checkpoint title="调整收盘价理解检查">
+<QuestionRef id="q_quiz_adjusted_close_v1" />
+<QuestionRef id="q_quiz_adjusted_close_v2" />
+</Checkpoint>
+
+## 数据库管理：SQLite 与金融数据存储 {#database-management}
+
+### 为什么需要数据库？
+
+<KeyPoint>
+在算法交易中，使用数据库存储市场数据可以避免每次回测都重新爬取，保证数据的一致性和完整性，并支持复杂的 SQL 查询。
+</KeyPoint>
+
+### SQLite 基础
+
+<Term id="sqlite" en="SQLite">SQLite</Term> 是一个轻量级的、基于磁盘的关系型数据库引擎，Python 内置支持。
+
+<Definition title="SQLite 基本操作">
+- **连接数据库**：`sqlite3.connect('example.db')`
+- **创建表**：`CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)`
+- **插入数据**：`INSERT INTO users (name, age) VALUES ('Alice', 30)`
+- **查询数据**：`SELECT * FROM users WHERE age > 25`
+- **更新数据**：`UPDATE users SET age=31 WHERE name='Alice'`
+- **删除数据**：`DELETE FROM users WHERE name='Alice'`
+</Definition>
+
+<Example title="使用 SQLite 存储市场数据">
 ```python
 import sqlite3
+import yfinance as yf
 
-# 1. 连接数据库 (如果不存在则创建)
-conn = sqlite3.connect('market.db')
+# 连接数据库
+conn = sqlite3.connect('market_data.db')
 cursor = conn.cursor()
 
-# 2. 创建表 (CREATE)
+# 创建表
 cursor.execute('''
-    CREATE TABLE IF NOT EXISTS stocks (
-        symbol TEXT,
-        date TEXT,
-        close_price REAL
+    CREATE TABLE market_candles (
+        symbol text,
+        timestamp text,
+        open_price float,
+        high_price float,
+        low_price float,
+        close_price float,
+        volume float
     )
 ''')
 
-# 3. 插入数据 (INSERT)
-cursor.execute("INSERT INTO stocks (symbol, date, close_price) VALUES (?, ?, ?)", 
-               ('0700.HK', '2025-01-02', 412.4))
+# 下载数据
+symbol = "0700.HK"
+ticker = yf.Ticker(symbol)
+data = ticker.history(period='max')
+
+# 插入数据
+for index, row in data.iterrows():
+    cursor.execute('''
+        INSERT INTO market_candles VALUES (?, ?, ?, ?, ?, ?, ?)
+    ''', (symbol, index, row['Open'], row['High'], 
+          row['Low'], row['Close'], row['Volume']))
+
 conn.commit()
 
-# 4. 查询数据 (SELECT)
-cursor.execute("SELECT * FROM stocks WHERE symbol = ?", ('0700.HK',))
+# 查询数据
+cursor.execute('''
+    SELECT * FROM market_candles 
+    WHERE symbol='0700.HK' 
+    AND timestamp >= '2025-06-01' 
+    AND timestamp <= '2025-06-30'
+    ORDER BY timestamp
+''')
 for row in cursor.fetchall():
     print(row)
 
-# 5. 更新数据 (UPDATE)
-cursor.execute("UPDATE stocks SET close_price = ? WHERE symbol = ? AND date = ?", 
-               (415.0, '0700.HK', '2025-01-02'))
-conn.commit()
-
-# 6. 删除数据 (DELETE)
-cursor.execute("DELETE FROM stocks WHERE symbol = ?", ('0700.HK',))
-conn.commit()
-
-# 7. 关闭连接
 conn.close()
 ```
 </Example>
 
-<QuestionRef id="q_flash_sqlite_crud_v1" />
-<QuestionFamily familyId="qf_long_sqlite_crud_example" />
+<QuestionRef id="q_flash_sqlite_v1" />
+<QuestionRef id="q_flash_sqlite_v2" />
+<QuestionRef id="q_flash_sqlite_v3" />
+<QuestionRef id="q_quiz_sqlite_v1" />
+<QuestionRef id="q_quiz_sqlite_v2" />
 
-## 金融数据存储的数据库设计 {#database-design}
+<QuestionFamily familyId="qf_long_sqlite" />
 
-设计存储金融数据的数据库时，没有完美的方案，关键在于权衡。主要考虑三种策略：
+### 金融数据库设计权衡
 
-### 策略一：所有股票放在同一张大表
+<Definition title="两种常见分区策略">
+**按股票分区：**
+- 优点：回测单只股票时查询速度快
+- 缺点：跨资产分析需要跨多个表，实现复杂
 
-- **优点**：结构简单，易于跨股票查询和分析。
-- **缺点**：表会非常庞大，查询和备份速度慢。
-
-### 策略二：按股票代码分表
-
-- **优点**：单只股票的回测查询非常快。
-- **缺点**：表数量庞大，跨股票分析需要查询多张表，代码复杂。
-
-### 策略三：按时间（如月份）分表
-
-- **优点**：按时间范围查询快，便于月度数据管理。
-- **缺点**：跨月查询需要动态拼接 SQL，单只股票的完整历史查询较慢。
+**按日期分区：**
+- 优点：跨资产分析方便，可以快速获取所有股票在某一时间段的数据
+- 缺点：回测单只股票需要扫描多个分区，速度慢
+</Definition>
 
 <KeyPoint>
-**如何选择？**
-- **策略回测**：主要查询单只股票的完整历史，推荐**按股票分表**。
-- **数据分析**：主要进行跨股票的截面分析，推荐**所有股票放在同一张大表**并建立合适的索引。
+没有完美的设计方案！需要在存储空间、查询速度和内存占用之间找到平衡，根据实际使用场景选择最合适的方案。
 </KeyPoint>
 
-<QuestionRef id="q_flash_db_design_tradeoffs_v1" />
-<QuestionFamily familyId="qf_long_db_design_analysis" />
+<QuestionRef id="q_flash_db_design_v1" />
+<QuestionRef id="q_flash_db_design_v2" />
+<QuestionRef id="q_quiz_db_design_v1" />
+<QuestionRef id="q_quiz_db_design_v2" />
+
+<QuestionFamily familyId="qf_long_db_design" />
+
+<Checkpoint title="数据库管理检查">
+<QuestionRef id="q_quiz_sqlite_v1" />
+<QuestionRef id="q_quiz_db_design_v1" />
+<QuestionRef id="q_quiz_db_design_v2" />
+</Checkpoint>
 
 ## 易错点 {#pitfalls}
 
-1.  **忽略 User-Agent**：直接使用 `requests.get(url)` 可能会被服务器拒绝。务必设置 `headers` 模拟浏览器访问。
-2.  **混淆 `Close` 与 `Adj Close`**：进行长期回测时，必须使用 `Adj Close`，否则结果会严重失真。
-3.  **数据库设计一刀切**：没有最好的设计，只有最适合当前场景的设计。不要盲目选择一种策略，要根据主要用途（回测 vs 分析）来权衡。
-4.  **忘记提交事务**：在 SQLite 中执行 `INSERT`、`UPDATE`、`DELETE` 后，必须调用 `conn.commit()` 才能使更改生效。
+<Pitfall title="忽略 User-Agent 导致请求被拒">
+许多网站会检查请求的 User-Agent 头。如果不设置合适的 User-Agent，请求可能会被拒绝或返回错误页面。
+```python
+# 正确做法：设置 User-Agent
+headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+response = requests.get(url, headers=headers)
+```
+</Pitfall>
+
+<Pitfall title="混淆原始收盘价与调整收盘价">
+在回测中，如果使用原始收盘价而不是调整收盘价，分红和拆股事件会造成价格序列的虚假跳跃，导致回测结果不准确。
+</Pitfall>
+
+<Pitfall title="忽略数据库设计权衡">
+将所有股票数据放在一张大表中会导致查询速度极慢。需要根据使用场景（回测 vs 数据分析）选择合适的分区策略。
+</Pitfall>
+
+<Pitfall title="忘记提交事务">
+在使用 SQLite 时，执行 INSERT、UPDATE、DELETE 操作后必须调用 `conn.commit()`，否则更改不会保存到数据库。
+</Pitfall>
+
+<Pitfall title="忽略反爬措施">
+频繁请求同一网站可能导致 IP 被封。应合理设置请求间隔，遵守网站的 robots.txt 协议。
+</Pitfall>
 
 ## 复习与自测 {#review-path}
 
-### 核心概念回顾
+### 主动回忆（Flashcard）
 
-- 网页的三大技术是什么？它们在抓取中各扮演什么角色？
-- 比较 BeautifulSoup、Selenium 和 yfinance 的适用场景。
-- 什么是调整收盘价？为什么它对回测至关重要？
-- SQLite 的 CRUD 操作分别对应哪些 SQL 语句？
-- 在设计金融数据库时，按股票分表和按时间分表各有什么优缺点？
+使用以下闪卡族进行主动检索，巩固核心概念：
 
-### 自测题目
+- <QuestionFamily familyId="qf_flash_web_scraping" />
+- <QuestionFamily familyId="qf_flash_html_tags" />
+- <QuestionFamily familyId="qf_flash_beautifulsoup" />
+- <QuestionFamily familyId="qf_flash_xpath" />
+- <QuestionFamily familyId="qf_flash_selenium" />
+- <QuestionFamily familyId="qf_flash_yfinance" />
+- <QuestionFamily familyId="qf_flash_adjusted_close" />
+- <QuestionFamily familyId="qf_flash_sqlite" />
+- <QuestionFamily familyId="qf_flash_db_design" />
+- <QuestionFamily familyId="qf_flash_limitations" />
 
-<QuestionFamily familyId="qf_flash_html_tags" />
-<QuestionFamily familyId="qf_flash_web_tech_roles" />
-<QuestionFamily familyId="qf_flash_bs4_methods" />
-<QuestionFamily familyId="qf_flash_xpath_syntax" />
-<QuestionFamily familyId="qf_flash_selenium_purpose" />
-<QuestionFamily familyId="qf_flash_yfinance_usage" />
-<QuestionFamily familyId="qf_flash_scraping_limits" />
-<QuestionFamily familyId="qf_flash_adjusted_close_concept" />
-<QuestionFamily familyId="qf_flash_sqlite_crud" />
-<QuestionFamily familyId="qf_flash_db_design_tradeoffs" />
+### 章节自测（Quiz）
 
-### 深入练习
+完成以下测验题，检验对本课知识的掌握程度：
 
-<QuestionFamily familyId="qf_long_web_structure_explain" />
-<QuestionFamily familyId="qf_long_scraping_tool_choice" />
-<QuestionFamily familyId="qf_long_scraping_limitations_explain" />
-<QuestionFamily familyId="qf_long_adjusted_close_calculation" />
-<QuestionFamily familyId="qf_long_sqlite_crud_example" />
-<QuestionFamily familyId="qf_long_db_design_analysis" />
+- <QuestionFamily familyId="qf_quiz_web_scraping_use" />
+- <QuestionFamily familyId="qf_quiz_html_tags" />
+- <QuestionFamily familyId="qf_quiz_beautifulsoup" />
+- <QuestionFamily familyId="qf_quiz_xpath" />
+- <QuestionFamily familyId="qf_quiz_selenium" />
+- <QuestionFamily familyId="qf_quiz_yfinance" />
+- <QuestionFamily familyId="qf_quiz_adjusted_close" />
+- <QuestionFamily familyId="qf_quiz_sqlite" />
+- <QuestionFamily familyId="qf_quiz_db_design" />
+- <QuestionFamily familyId="qf_quiz_limitations" />
+
+### 深入理解（Longform）
+
+尝试回答以下问题，检验对知识的综合应用能力：
+
+- <QuestionFamily familyId="qf_long_beautifulsoup" />
+- <QuestionFamily familyId="qf_long_yfinance" />
+- <QuestionFamily familyId="qf_long_adjusted_close" />
+- <QuestionFamily familyId="qf_long_sqlite" />
+- <QuestionFamily familyId="qf_long_db_design" />
+
+### 关键要点回顾
+
+<KeyPoint>
+1. **网络爬取**：用程序自动从网站提取数据，在算法交易中用于收集股价、新闻、情绪等数据
+2. **HTML 结构**：网页的骨架，爬虫通过解析 HTML 标签提取内容
+3. **BeautifulSoup**：最常用的 HTML 解析库，提供 `find()`、`find_all()`、`get_text()` 等方法
+4. **XPath**：强大的节点选择语言，配合 lxml 库解析速度更快
+5. **Selenium**：处理动态加载页面的利器，可以模拟浏览器操作
+6. **yfinance**：专为金融数据设计的库，一行代码即可下载股票历史数据
+7. **调整收盘价**：消除分红、拆股等事件对价格序列的影响，是回测的基础
+8. **SQLite**：轻量级数据库，Python 内置支持，适合存储金融数据
+9. **数据库设计**：需要在存储空间、查询速度和内存占用之间权衡，根据场景选择分区策略
+10. **爬取局限性**：数据质量、资源消耗、反爬措施是主要挑战
+</KeyPoint>

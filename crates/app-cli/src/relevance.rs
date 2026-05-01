@@ -270,7 +270,7 @@ fn markdown_heading(line: &str) -> Option<(usize, &str)> {
 
 fn collect_question_families(question_bank: &Value) -> Vec<Value> {
     let mut families = Vec::new();
-    for field in ["flashcard_families", "longform_families"] {
+    for field in ["flashcard_families", "quiz_families", "longform_families"] {
         if let Some(values) = question_bank.get(field).and_then(Value::as_array) {
             for value in values {
                 if let Some(family_id) = value.get("family_id").and_then(Value::as_str) {

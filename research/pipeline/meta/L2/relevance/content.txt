@@ -2,425 +2,516 @@
   "lesson_id": "L2",
   "target_language": "zh-CN",
   "exam_signal": {
-    "notes": ["exam_pdf_text_unavailable"],
+    "notes": [
+      "exam_pdf_text_unavailable"
+    ],
     "other_files": [],
     "path": "research/pipeline/0-raw/exam",
     "pdf_files": [
-      {"file": "5787b1e26c2d8fb8b3e8babf76f60eff.pdf", "note": "exam_pdf_text_unavailable", "path": "research/pipeline/0-raw/exam/5787b1e26c2d8fb8b3e8babf76f60eff.pdf"},
-      {"file": "5e64a400db844f6beea9e335ded8a49f.pdf", "note": "exam_pdf_text_unavailable", "path": "research/pipeline/0-raw/exam/5e64a400db844f6beea9e335ded8a49f.pdf"}
+      {
+        "file": "5787b1e26c2d8fb8b3e8babf76f60eff.pdf",
+        "note": "exam_pdf_text_unavailable",
+        "path": "research/pipeline/0-raw/exam/5787b1e26c2d8fb8b3e8babf76f60eff.pdf"
+      },
+      {
+        "file": "5e64a400db844f6beea9e335ded8a49f.pdf",
+        "note": "exam_pdf_text_unavailable",
+        "path": "research/pipeline/0-raw/exam/5e64a400db844f6beea9e335ded8a49f.pdf"
+      }
     ],
     "text_files": []
   },
   "step_scores": [
     {
       "sequence_id": "step1",
-      "importance": 0.95,
-      "course_relevance": 0.95,
+      "importance": 1.0,
+      "course_relevance": 1.0,
       "exam_relevance": 0.5,
       "recommended_treatment": "emphasize",
-      "reason": "This step covers the core lesson topics: web scraping, database management, adjusted close, and database design. It is foundational for the course's data pipeline and directly supports CLO2 and CLO3. Exam signal is weak due to unavailable text, but the content is essential for the course."
+      "reason": "This step covers the entire lesson content: web scraping, HTML, BeautifulSoup, XPath, Selenium, yfinance, adjusted close, SQLite, and database design. It is the core of the lesson and directly supports CLO1, CLO2, and CLO6. Exam relevance is moderate due to lack of exam text, but the topic is foundational for algorithmic trading."
     }
   ],
   "question_family_scores": [
     {
       "sequence_id": "step1",
+      "family_id": "qf_flash_web_scraping",
+      "importance": 0.8,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Defines web scraping and its uses in algo trading. Core concept, but basic. Exam relevance uncertain."
+    },
+    {
+      "sequence_id": "step1",
       "family_id": "qf_flash_html_tags",
-      "importance": 0.7,
+      "importance": 0.6,
       "course_relevance": 0.7,
       "exam_relevance": 0.3,
       "recommended_treatment": "condense",
-      "reason": "Basic HTML tag recognition is a prerequisite for web scraping but not a core learning outcome. It can be condensed to focus on the most relevant tags for scraping."
+      "reason": "HTML tags are foundational for scraping but not a primary learning outcome. Can be condensed."
     },
     {
       "sequence_id": "step1",
-      "family_id": "qf_flash_web_tech_roles",
-      "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "Understanding the roles of HTML, CSS, and JavaScript is important for choosing the right scraping tool. Directly supports the lesson's learning goal."
-    },
-    {
-      "sequence_id": "step1",
-      "family_id": "qf_flash_bs4_methods",
+      "family_id": "qf_flash_beautifulsoup",
       "importance": 0.9,
-      "course_relevance": 0.9,
-      "exam_relevance": 0.4,
+      "course_relevance": 1.0,
+      "exam_relevance": 0.5,
       "recommended_treatment": "emphasize",
-      "reason": "BeautifulSoup is a primary scraping tool. Knowing its core methods (find, find_all) is essential for practical data extraction. High course relevance."
+      "reason": "Key tool for web scraping. Directly supports CLO2. High course relevance."
     },
     {
       "sequence_id": "step1",
-      "family_id": "qf_flash_xpath_syntax",
+      "family_id": "qf_flash_xpath",
       "importance": 0.7,
-      "course_relevance": 0.7,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "XPath is a useful alternative for element location, especially with lxml. Relevant but not as critical as BeautifulSoup for the course's scope."
-    },
-    {
-      "sequence_id": "step1",
-      "family_id": "qf_flash_selenium_purpose",
-      "importance": 0.8,
       "course_relevance": 0.8,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "Understanding when to use Selenium (dynamic content) is a key concept in web scraping. Important for handling real-world scraping challenges."
-    },
-    {
-      "sequence_id": "step1",
-      "family_id": "qf_flash_yfinance_usage",
-      "importance": 0.9,
-      "course_relevance": 0.9,
       "exam_relevance": 0.4,
-      "recommended_treatment": "emphasize",
-      "reason": "yfinance is a practical, course-specific tool for financial data acquisition. Directly supports CLO2 and is highly relevant for the capstone project."
-    },
-    {
-      "sequence_id": "step1",
-      "family_id": "qf_flash_scraping_limits",
-      "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
       "recommended_treatment": "keep",
-      "reason": "Understanding the limitations of web scraping is crucial for realistic project planning and data quality assessment. Supports CLO5."
+      "reason": "Alternative to BeautifulSoup for parsing. Useful but not essential. Moderate relevance."
     },
     {
       "sequence_id": "step1",
-      "family_id": "qf_flash_adjusted_close_concept",
-      "importance": 0.9,
-      "course_relevance": 0.9,
-      "exam_relevance": 0.4,
-      "recommended_treatment": "emphasize",
-      "reason": "Adjusted close is a fundamental concept for backtesting and performance analysis. Directly supports CLO3 and is critical for accurate strategy evaluation."
-    },
-    {
-      "sequence_id": "step1",
-      "family_id": "qf_flash_sqlite_crud",
-      "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "SQLite CRUD operations are the foundation of database management in Python. Important for storing and retrieving scraped data."
-    },
-    {
-      "sequence_id": "step1",
-      "family_id": "qf_flash_db_design_tradeoffs",
-      "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "Understanding database design trade-offs (partitioning) is important for building efficient data storage solutions for financial data."
-    },
-    {
-      "sequence_id": "step1",
-      "family_id": "qf_long_web_structure_explain",
+      "family_id": "qf_flash_selenium",
       "importance": 0.7,
+      "course_relevance": 0.8,
+      "exam_relevance": 0.4,
+      "recommended_treatment": "keep",
+      "reason": "Handles dynamic content, important for real-world scraping. Moderate exam relevance."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_flash_yfinance",
+      "importance": 0.9,
+      "course_relevance": 1.0,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "emphasize",
+      "reason": "Directly used for financial data download. Core to CLO2 and CLO6. High importance."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_flash_adjusted_close",
+      "importance": 0.9,
+      "course_relevance": 1.0,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "emphasize",
+      "reason": "Critical concept for backtesting and data integrity. Directly supports CLO3. High importance."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_flash_sqlite",
+      "importance": 0.8,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Database management is a key lesson topic. Supports CLO2 and CLO6. Important."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_flash_db_design",
+      "importance": 0.8,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Database design trade-offs are practical and assessable. Supports CLO2 and CLO6."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_flash_limitations",
+      "importance": 0.6,
       "course_relevance": 0.7,
+      "exam_relevance": 0.4,
+      "recommended_treatment": "condense",
+      "reason": "Important awareness topic but less likely to be heavily tested. Can be condensed."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_quiz_web_scraping_use",
+      "importance": 0.7,
+      "course_relevance": 0.8,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Tests application of web scraping concepts. Good for assessment."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_quiz_html_tags",
+      "importance": 0.5,
+      "course_relevance": 0.6,
       "exam_relevance": 0.3,
       "recommended_treatment": "condense",
-      "reason": "Explaining web structure is a good conceptual exercise but can be condensed as the core knowledge is tested in flashcards."
+      "reason": "Basic recall of HTML tags. Low depth. Can be condensed."
     },
     {
       "sequence_id": "step1",
-      "family_id": "qf_long_scraping_tool_choice",
+      "family_id": "qf_quiz_beautifulsoup",
       "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "Comparing scraping tools based on scenarios is a higher-order thinking skill that reinforces practical decision-making."
-    },
-    {
-      "sequence_id": "step1",
-      "family_id": "qf_long_scrape_sp500",
-      "importance": 0.9,
       "course_relevance": 0.9,
-      "exam_relevance": 0.4,
-      "recommended_treatment": "emphasize",
-      "reason": "This worked example integrates multiple concepts (requests, BeautifulSoup, pandas) into a realistic scraping task. Highly relevant for the capstone project."
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Tests practical BeautifulSoup usage. Good for assessment."
     },
     {
       "sequence_id": "step1",
-      "family_id": "qf_long_scraping_limitations_explain",
-      "importance": 0.7,
+      "family_id": "qf_quiz_xpath",
+      "importance": 0.6,
       "course_relevance": 0.7,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "condense",
-      "reason": "Explaining limitations is important but can be condensed as the key points are covered in flashcards."
-    },
-    {
-      "sequence_id": "step1",
-      "family_id": "qf_long_adjusted_close_calculation",
-      "importance": 0.9,
-      "course_relevance": 0.9,
       "exam_relevance": 0.4,
+      "recommended_treatment": "keep",
+      "reason": "Tests XPath understanding. Moderate relevance."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_quiz_selenium",
+      "importance": 0.6,
+      "course_relevance": 0.7,
+      "exam_relevance": 0.4,
+      "recommended_treatment": "keep",
+      "reason": "Tests Selenium use cases. Moderate relevance."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_quiz_yfinance",
+      "importance": 0.8,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Tests yfinance usage. Important for practical skills."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_quiz_adjusted_close",
+      "importance": 0.8,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Tests understanding of adjusted close. Important for backtesting."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_quiz_sqlite",
+      "importance": 0.7,
+      "course_relevance": 0.8,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Tests SQLite CRUD operations. Important for database management."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_quiz_db_design",
+      "importance": 0.7,
+      "course_relevance": 0.8,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Tests database design trade-offs. Good for higher-order thinking."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_quiz_limitations",
+      "importance": 0.5,
+      "course_relevance": 0.6,
+      "exam_relevance": 0.4,
+      "recommended_treatment": "condense",
+      "reason": "Tests awareness of limitations. Less critical for assessment."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_long_beautifulsoup",
+      "importance": 0.8,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Deep understanding of BeautifulSoup workflow. Good for long-form assessment."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_long_yfinance",
+      "importance": 0.8,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Integrates yfinance and SQLite. Practical and assessable."
+    },
+    {
+      "sequence_id": "step1",
+      "family_id": "qf_long_adjusted_close",
+      "importance": 0.9,
+      "course_relevance": 1.0,
+      "exam_relevance": 0.5,
       "recommended_treatment": "emphasize",
-      "reason": "Calculating adjusted close is a core skill for backtesting. This mechanism trace question deepens understanding of a critical concept."
+      "reason": "In-depth understanding of adjusted close calculation and importance. High value for backtesting."
     },
     {
       "sequence_id": "step1",
-      "family_id": "qf_long_sqlite_crud_example",
-      "importance": 0.8,
+      "family_id": "qf_long_sqlite",
+      "importance": 0.7,
       "course_relevance": 0.8,
-      "exam_relevance": 0.3,
+      "exam_relevance": 0.5,
       "recommended_treatment": "keep",
-      "reason": "Writing CRUD code is a practical skill for database management. Important for the data pipeline."
+      "reason": "Tests SQLite workflow and rationale. Good for assessment."
     },
     {
       "sequence_id": "step1",
-      "family_id": "qf_long_db_design_analysis",
+      "family_id": "qf_long_db_design",
       "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
       "recommended_treatment": "keep",
-      "reason": "Analyzing database design strategies is a higher-order skill that prepares students for real-world system design."
+      "reason": "Tests database design trade-offs. Higher-order thinking, good for assessment."
     }
   ],
   "textbook_section_scores": [
     {
       "section_id": "section_2",
       "title": "为什么这一课重要 {#why-this-lesson-matters}",
-      "importance": 0.9,
+      "importance": 0.8,
       "course_relevance": 0.9,
-      "exam_relevance": 0.4,
-      "recommended_treatment": "emphasize",
-      "reason": "Sets the context and motivation for the lesson. High importance for student engagement and understanding the lesson's role in the course."
-    },
-    {
-      "section_id": "section_3",
-      "title": "课程全景与关键问题 {#concept-map}",
-      "importance": 0.9,
-      "course_relevance": 0.9,
-      "exam_relevance": 0.4,
-      "recommended_treatment": "emphasize",
-      "reason": "Provides a high-level overview of the entire data pipeline. Essential for connecting all lesson topics."
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Sets context and motivation. Important for engagement."
     },
     {
       "section_id": "section_4",
-      "title": "网页的三大基石：HTML、CSS、JavaScript {#web-structure}",
+      "title": "什么是网络爬取？",
       "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
       "recommended_treatment": "keep",
-      "reason": "Covers the fundamental web technologies needed for scraping. Important but foundational."
+      "reason": "Core definition and applications. Foundational."
     },
     {
       "section_id": "section_5",
-      "title": "常见 HTML 标签",
-      "importance": 0.7,
+      "title": "网页的基本结构",
+      "importance": 0.6,
       "course_relevance": 0.7,
       "exam_relevance": 0.3,
       "recommended_treatment": "condense",
-      "reason": "A reference list of HTML tags. Useful but can be condensed as the key tags are covered in the flashcards."
+      "reason": "Background knowledge for scraping. Can be condensed."
     },
     {
       "section_id": "section_6",
-      "title": "网页抓取工具与方法 {#scraping-tools}",
-      "importance": 0.95,
-      "course_relevance": 0.95,
-      "exam_relevance": 0.4,
-      "recommended_treatment": "emphasize",
-      "reason": "Core section covering all scraping tools. Directly supports CLO2 and is essential for the lesson."
-    },
-    {
-      "section_id": "section_7",
-      "title": "1. BeautifulSoup：静态页面的利器",
-      "importance": 0.9,
-      "course_relevance": 0.9,
-      "exam_relevance": 0.4,
-      "recommended_treatment": "emphasize",
-      "reason": "Primary scraping tool. High importance for practical data extraction."
-    },
-    {
-      "section_id": "section_13",
-      "title": "2. lxml 与 XPath：精准定位",
-      "importance": 0.7,
+      "title": "网络爬取的局限性",
+      "importance": 0.6,
       "course_relevance": 0.7,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "Alternative scraping method. Useful but not as critical as BeautifulSoup."
-    },
-    {
-      "section_id": "section_15",
-      "title": "3. Selenium：处理动态内容",
-      "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "Important for handling dynamic websites. Relevant for real-world scraping."
-    },
-    {
-      "section_id": "section_16",
-      "title": "4. yfinance：金融数据的快捷方式",
-      "importance": 0.9,
-      "course_relevance": 0.9,
       "exam_relevance": 0.4,
+      "recommended_treatment": "condense",
+      "reason": "Important awareness but less likely to be heavily tested."
+    },
+    {
+      "section_id": "section_8",
+      "title": "BeautifulSoup",
+      "importance": 0.9,
+      "course_relevance": 1.0,
+      "exam_relevance": 0.5,
       "recommended_treatment": "emphasize",
-      "reason": "Course-specific tool for financial data. Highly relevant for the capstone project."
+      "reason": "Key tool. Detailed examples and methods. Core to lesson."
     },
     {
-      "section_id": "section_18",
-      "title": "实战案例：抓取 S&P 500 成分股",
-      "importance": 0.9,
-      "course_relevance": 0.9,
-      "exam_relevance": 0.4,
-      "recommended_treatment": "emphasize",
-      "reason": "Integrates multiple concepts into a realistic example. High practical value."
-    },
-    {
-      "section_id": "section_23",
-      "title": "网页抓取的局限性 {#scraping-limitations}",
-      "importance": 0.8,
+      "section_id": "section_19",
+      "title": "XPath 与 lxml",
+      "importance": 0.7,
       "course_relevance": 0.8,
-      "exam_relevance": 0.3,
+      "exam_relevance": 0.4,
       "recommended_treatment": "keep",
-      "reason": "Important for understanding the challenges of web scraping. Supports CLO5."
+      "reason": "Alternative parsing method. Useful but not essential."
     },
     {
-      "section_id": "section_24",
-      "title": "调整收盘价：理解价格背后的故事 {#adjusted-close}",
-      "importance": 0.9,
-      "course_relevance": 0.9,
+      "section_id": "section_21",
+      "title": "Selenium：处理动态加载页面",
+      "importance": 0.7,
+      "course_relevance": 0.8,
       "exam_relevance": 0.4,
+      "recommended_treatment": "keep",
+      "reason": "Handles dynamic content. Important for real-world scraping."
+    },
+    {
+      "section_id": "section_28",
+      "title": "yfinance：专为金融数据而生",
+      "importance": 0.9,
+      "course_relevance": 1.0,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "emphasize",
+      "reason": "Directly used for financial data. Core to CLO2 and CLO6."
+    },
+    {
+      "section_id": "section_33",
+      "title": "为什么需要调整收盘价？",
+      "importance": 0.9,
+      "course_relevance": 1.0,
+      "exam_relevance": 0.5,
       "recommended_treatment": "emphasize",
       "reason": "Critical concept for backtesting. Directly supports CLO3."
     },
     {
-      "section_id": "section_25",
-      "title": "调整机制",
+      "section_id": "section_34",
+      "title": "调整因素",
       "importance": 0.9,
-      "course_relevance": 0.9,
-      "exam_relevance": 0.4,
+      "course_relevance": 1.0,
+      "exam_relevance": 0.5,
       "recommended_treatment": "emphasize",
-      "reason": "Detailed explanation of how adjusted close is calculated. Essential for deep understanding."
-    },
-    {
-      "section_id": "section_26",
-      "title": "使用 Python 管理 SQLite 数据库 {#sqlite-database}",
-      "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "Covers database management with SQLite. Important for data storage."
-    },
-    {
-      "section_id": "section_27",
-      "title": "核心操作 (CRUD)",
-      "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "Covers the fundamental database operations. Important for practical implementation."
-    },
-    {
-      "section_id": "section_35",
-      "title": "金融数据存储的数据库设计 {#database-design}",
-      "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "Covers database design strategies for financial data. Important for building efficient systems."
+      "reason": "Detailed calculation and examples. High assessability."
     },
     {
       "section_id": "section_36",
-      "title": "策略一：所有股票放在同一张大表",
+      "title": "为什么需要数据库？",
       "importance": 0.7,
-      "course_relevance": 0.7,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "condense",
-      "reason": "One of three design strategies. Can be condensed as the trade-offs are covered in the flashcards."
+      "course_relevance": 0.8,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Rationale for database use. Important context."
     },
     {
       "section_id": "section_37",
-      "title": "策略二：按股票代码分表",
-      "importance": 0.7,
-      "course_relevance": 0.7,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "condense",
-      "reason": "One of three design strategies. Can be condensed as the trade-offs are covered in the flashcards."
-    },
-    {
-      "section_id": "section_38",
-      "title": "策略三：按时间（如月份）分表",
-      "importance": 0.7,
-      "course_relevance": 0.7,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "condense",
-      "reason": "One of three design strategies. Can be condensed as the trade-offs are covered in the flashcards."
-    },
-    {
-      "section_id": "section_39",
-      "title": "易错点 {#pitfalls}",
+      "title": "SQLite 基础",
       "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
       "recommended_treatment": "keep",
-      "reason": "Highlights common mistakes. Important for student learning and avoiding errors."
+      "reason": "Core database operations. Supports CLO2 and CLO6."
     },
     {
-      "section_id": "section_40",
-      "title": "复习与自测 {#review-path}",
-      "importance": 0.9,
+      "section_id": "section_43",
+      "title": "金融数据库设计权衡",
+      "importance": 0.8,
       "course_relevance": 0.9,
-      "exam_relevance": 0.4,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Design trade-offs. Higher-order thinking, good for assessment."
+    },
+    {
+      "section_id": "section_44",
+      "title": "易错点 {#pitfalls}",
+      "importance": 0.7,
+      "course_relevance": 0.8,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Common mistakes. Useful for exam preparation."
+    },
+    {
+      "section_id": "section_47",
+      "title": "主动回忆（Flashcard）",
+      "importance": 0.8,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Review section. Important for consolidation."
+    },
+    {
+      "section_id": "section_48",
+      "title": "章节自测（Quiz）",
+      "importance": 0.8,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Self-assessment. Important for exam readiness."
+    },
+    {
+      "section_id": "section_49",
+      "title": "深入理解（Longform）",
+      "importance": 0.8,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Deep understanding questions. Good for higher-order assessment."
+    },
+    {
+      "section_id": "section_50",
+      "title": "关键要点回顾",
+      "importance": 0.9,
+      "course_relevance": 1.0,
+      "exam_relevance": 0.5,
       "recommended_treatment": "emphasize",
-      "reason": "Provides a structured review and self-assessment. Important for reinforcing learning."
+      "reason": "Summarizes all key points. Excellent for exam review."
     }
   ],
   "coverage_scores": [
     {
-      "coverage_id": "basic_website_structure",
-      "title": "理解网页基本结构：HTML、CSS、JavaScript 的角色",
+      "coverage_id": "web_scraping_definition",
+      "title": "网络爬取的定义与算法交易中的应用场景",
       "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "Foundational knowledge for web scraping. Important but not the core focus of the course."
-    },
-    {
-      "coverage_id": "web_scraping_libraries",
-      "title": "使用不同 Python 库进行网页抓取：BeautifulSoup, lxml/XPath, Selenium, yfinance",
-      "importance": 0.95,
-      "course_relevance": 0.95,
-      "exam_relevance": 0.4,
-      "recommended_treatment": "emphasize",
-      "reason": "Core skill for the lesson. Directly supports CLO2 and is essential for the capstone project."
-    },
-    {
-      "coverage_id": "web_scraping_limitations",
-      "title": "理解网页抓取的局限性：数据质量、资源消耗、技术挑战",
-      "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "Important for realistic project planning. Supports CLO5."
-    },
-    {
-      "coverage_id": "sqlite_database",
-      "title": "使用 Python 创建和管理 SQLite 数据库：CRUD 操作",
-      "importance": 0.8,
-      "course_relevance": 0.8,
-      "exam_relevance": 0.3,
-      "recommended_treatment": "keep",
-      "reason": "Essential for data storage and management. Important for the data pipeline."
-    },
-    {
-      "coverage_id": "adjusted_close_price",
-      "title": "理解调整收盘价的概念：分红、拆股对价格的影响及调整方法",
-      "importance": 0.9,
       "course_relevance": 0.9,
-      "exam_relevance": 0.4,
-      "recommended_treatment": "emphasize",
-      "reason": "Critical concept for backtesting and performance analysis. Directly supports CLO3."
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Core definition and applications. Foundational."
     },
     {
-      "coverage_id": "database_design_financial_data",
-      "title": "金融数据存储的数据库设计考量：分区策略、权衡",
-      "importance": 0.8,
-      "course_relevance": 0.8,
+      "coverage_id": "html_structure",
+      "title": "HTML基本结构与常见标签",
+      "importance": 0.6,
+      "course_relevance": 0.7,
       "exam_relevance": 0.3,
+      "recommended_treatment": "condense",
+      "reason": "Background knowledge. Can be condensed."
+    },
+    {
+      "coverage_id": "beautifulsoup_usage",
+      "title": "BeautifulSoup库的安装与基本用法（find, find_all, get_text, prettify）",
+      "importance": 0.9,
+      "course_relevance": 1.0,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "emphasize",
+      "reason": "Key tool. Directly supports CLO2."
+    },
+    {
+      "coverage_id": "xpath_lxml",
+      "title": "XPath语法与lxml库解析",
+      "importance": 0.7,
+      "course_relevance": 0.8,
+      "exam_relevance": 0.4,
       "recommended_treatment": "keep",
-      "reason": "Important for building efficient data storage solutions. Relevant for the capstone project."
+      "reason": "Alternative parsing method. Useful."
+    },
+    {
+      "coverage_id": "selenium_dynamic",
+      "title": "Selenium处理动态加载页面",
+      "importance": 0.7,
+      "course_relevance": 0.8,
+      "exam_relevance": 0.4,
+      "recommended_treatment": "keep",
+      "reason": "Handles dynamic content. Important."
+    },
+    {
+      "coverage_id": "yfinance_usage",
+      "title": "yfinance库下载金融数据",
+      "importance": 0.9,
+      "course_relevance": 1.0,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "emphasize",
+      "reason": "Directly used for financial data. Core to CLO2 and CLO6."
+    },
+    {
+      "coverage_id": "adjusted_close_concept",
+      "title": "调整收盘价的概念与计算逻辑",
+      "importance": 0.9,
+      "course_relevance": 1.0,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "emphasize",
+      "reason": "Critical for backtesting. Directly supports CLO3."
+    },
+    {
+      "coverage_id": "sqlite_basics",
+      "title": "SQLite数据库的创建、表操作与CRUD",
+      "importance": 0.8,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Core database operations. Supports CLO2 and CLO6."
+    },
+    {
+      "coverage_id": "database_design_tradeoffs",
+      "title": "金融数据库设计中的权衡（按股票/按日期分区）",
+      "importance": 0.8,
+      "course_relevance": 0.9,
+      "exam_relevance": 0.5,
+      "recommended_treatment": "keep",
+      "reason": "Design trade-offs. Higher-order thinking."
+    },
+    {
+      "coverage_id": "scraping_limitations",
+      "title": "网络爬取的局限性（数据质量、资源消耗、反爬）",
+      "importance": 0.6,
+      "course_relevance": 0.7,
+      "exam_relevance": 0.4,
+      "recommended_treatment": "condense",
+      "reason": "Awareness topic. Less likely to be heavily tested."
     }
   ]
 }

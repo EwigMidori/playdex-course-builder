@@ -12,17 +12,18 @@ import {
   loadStep,
   textbookPath
 } from "./data";
-import { lessons, selectedLessonAtom, selectedStepAtom, selectedTabAtom } from "./state";
+import { lessons, selectedAssetViewAtom, selectedLessonAtom, selectedStepAtom } from "./state";
 import type {
+  AssetView,
   LessonId,
+  LessonOption,
   QuestionBank,
   QuestionFamily,
   RelevanceReport,
   RelevanceScore,
   StoryManifest,
   StoryScreen,
-  StoryStep,
-  ViewerTab
+  StoryStep
 } from "./types";
 import "./styles.css";
 
@@ -108,7 +109,7 @@ function useRelevance(lessonId: LessonId) {
 
 function App() {
   const [lessonId, setLessonId] = useAtom(selectedLessonAtom);
-  const [tab, setTab] = useAtom(selectedTabAtom);
+  const [assetView, setAssetView] = useAtom(selectedAssetViewAtom);
   const [selectedStep, setSelectedStep] = useAtom(selectedStepAtom);
   const relevance = useRelevance(lessonId);
   const currentLesson = lessons.find((lesson) => lesson.id === lessonId) ?? lessons[0];
@@ -124,72 +125,180 @@ function App() {
       <header className="border-b border-stone-300 bg-white">
         <div className="mx-auto flex max-w-[1500px] flex-wrap items-center gap-3 px-4 py-3">
           <div className="mr-2">
-            <h1 className="text-base font-semibold">Pipeline Viewer</h1>
-            <p className="text-xs text-stone-500">Existing research/pipeline artifacts</p>
+            <h1 className="text-base font-semibold">Course Builder Workspace</h1>
+            <p className="text-xs text-stone-500">Creator review for generated course artifacts</p>
           </div>
-          <Segmented
-            value={lessonId}
-            options={lessons.map((lesson) => ({ value: lesson.id, label: lesson.label }))}
-            onChange={(value) => changeLesson(value as LessonId)}
-          />
-          <Segmented
-            value={tab}
-            options={[
-              { value: "textbook", label: "MDX textbook" },
-              { value: "story", label: "Guided story" },
-              { value: "relevance", label: "Relevance" }
-            ]}
-            onChange={(value) => setTab(value as ViewerTab)}
-          />
           <div className="ml-auto flex flex-wrap gap-2 text-xs">
-            <Badge label={`lesson ${currentLesson.id}`} />
+            <Badge label={currentLesson.courseLabel} />
+            <Badge label={`${currentLesson.lectureLabel} / ${currentLesson.id}`} />
             <RelevanceBadge report={relevance.data} sequenceId={selectedStep} />
           </div>
         </div>
       </header>
 
-      <main className="mx-auto max-w-[1500px] px-4 py-4">
-        {tab === "textbook" ? <TextbookView lessonId={lessonId} relevance={relevance.data} /> : null}
-        {tab === "story" ? (
-          <StoryView
-            lessonId={lessonId}
-            selectedStep={selectedStep}
-            setSelectedStep={setSelectedStep}
-            relevance={relevance.data}
-          />
-        ) : null}
-        {tab === "relevance" ? <RelevanceView relevance={relevance} /> : null}
+      <main className="mx-auto grid max-w-[1500px] gap-4 px-4 py-4 lg:grid-cols-[280px_minmax(0,1fr)]">
+        <WorkspaceNav
+          assetView={assetView}
+          lessonId={lessonId}
+          onAssetViewChange={setAssetView}
+          onLessonChange={changeLesson}
+        />
+        <div className="min-w-0">
+          {assetView === "overview" ? (
+            <OverviewView currentLesson={currentLesson} lessonId={lessonId} relevance={relevance} />
+          ) : null}
+          {assetView === "textbook" ? <TextbookView lessonId={lessonId} relevance={relevance.data} /> : null}
+          {assetView === "story" ? (
+            <StoryView
+              lessonId={lessonId}
+              selectedStep={selectedStep}
+              setSelectedStep={setSelectedStep}
+              relevance={relevance.data}
+            />
+          ) : null}
+          {assetView === "questions" ? (
+            <QuestionsView
+              lessonId={lessonId}
+              relevance={relevance.data}
+              selectedStep={selectedStep}
+              setSelectedStep={setSelectedStep}
+            />
+          ) : null}
+          {assetView === "relevance" ? <RelevanceView relevance={relevance} /> : null}
+        </div>
       </main>
     </div>
   );
 }
 
-function Segmented({
-  value,
-  options,
-  onChange
+function WorkspaceNav({
+  assetView,
+  lessonId,
+  onAssetViewChange,
+  onLessonChange
 }: {
-  value: string;
-  options: Array<{ value: string; label: string }>;
-  onChange: (value: string) => void;
+  assetView: AssetView;
+  lessonId: LessonId;
+  onAssetViewChange: (value: AssetView) => void;
+  onLessonChange: (value: LessonId) => void;
+}) {
+  const views: Array<{ value: AssetView; label: string; detail: string }> = [
+    { value: "overview", label: "Overview", detail: "creator checklist" },
+    { value: "textbook", label: "MDX viewer", detail: "lesson textbook" },
+    { value: "story", label: "Story viewer", detail: "guided screens" },
+    { value: "questions", label: "Practice viewer", detail: "flashcards / quiz / longform" },
+    { value: "relevance", label: "Relevance", detail: "sidecar scores" }
+  ];
+
+  return (
+    <aside className="space-y-4">
+      <Panel title="Lectures" subtitle="select generated lesson">
+        <div className="space-y-2">
+          {lessons.map((lesson) => (
+            <button
+              className={[
+                "w-full rounded-md border px-3 py-2 text-left text-sm",
+                lessonId === lesson.id ? "border-emerald-700 bg-emerald-50" : "border-stone-300 bg-white hover:border-stone-500"
+              ].join(" ")}
+              key={lesson.id}
+              onClick={() => onLessonChange(lesson.id)}
+              type="button"
+            >
+              <div className="flex items-center justify-between gap-2">
+                <span className="font-semibold">{lesson.lectureLabel}</span>
+                <span className="font-mono text-xs text-stone-500">{lesson.id}</span>
+              </div>
+              <div className="mt-1 text-xs text-stone-600">{lesson.label}</div>
+            </button>
+          ))}
+        </div>
+      </Panel>
+      <Panel title="Review Surface" subtitle="choose creator workflow">
+        <div className="space-y-1">
+          {views.map((view) => (
+            <button
+              className={[
+                "w-full rounded-md px-3 py-2 text-left",
+                assetView === view.value ? "bg-stone-950 text-white" : "bg-white text-stone-800 hover:bg-stone-100"
+              ].join(" ")}
+              key={view.value}
+              onClick={() => onAssetViewChange(view.value)}
+              type="button"
+            >
+              <div className="text-sm font-semibold">{view.label}</div>
+              <div className={assetView === view.value ? "text-xs text-stone-300" : "text-xs text-stone-500"}>
+                {view.detail}
+              </div>
+            </button>
+          ))}
+        </div>
+      </Panel>
+    </aside>
+  );
+}
+
+function OverviewView({
+  currentLesson,
+  lessonId,
+  relevance
+}: {
+  currentLesson: LessonOption;
+  lessonId: LessonId;
+  relevance: AsyncState<RelevanceReport>;
 }) {
   return (
-    <div className="flex rounded-md border border-stone-300 bg-stone-100 p-0.5">
-      {options.map((option) => (
-        <button
-          className={[
-            "h-8 whitespace-nowrap rounded px-3 text-xs font-medium",
-            value === option.value ? "bg-emerald-700 text-white shadow-sm" : "text-stone-700 hover:bg-white"
-          ].join(" ")}
-          key={option.value}
-          onClick={() => onChange(option.value)}
-          type="button"
-        >
-          {option.label}
-        </button>
-      ))}
+    <section className="grid gap-4 xl:grid-cols-3">
+      <Panel title="Creator Context" subtitle={`${currentLesson.courseLabel} / ${currentLesson.lectureLabel}`}>
+        <div className="space-y-3 text-sm">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wide text-stone-500">Current lecture</div>
+            <div className="mt-1 font-semibold">{currentLesson.label}</div>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <MetricCard label="lesson id" value={lessonId} />
+            <MetricCard label="default step" value={currentLesson.defaultStep} />
+          </div>
+          <Notice
+            title="Authoring stance"
+            detail="Flashcards are active-recall prompts for spaced repetition. Quiz items are assessment-like checks. Review them separately."
+          />
+        </div>
+      </Panel>
+      <Panel title="Primary Files" subtitle="read-only pipeline sources">
+        <div className="space-y-2 text-xs">
+          <FileLine path={textbookPath(lessonId)} />
+          <FileLine path={`research/pipeline/3-guided_story/${lessonId}/manifest.json`} />
+          <FileLine path={`research/pipeline/3-guided_story/${lessonId}/<step>/question_bank.json`} />
+          <FileLine path={`research/pipeline/meta/${lessonId}/relevance/report.json`} />
+        </div>
+      </Panel>
+      <Panel title="Quality Signals" subtitle={relevance.path}>
+        {relevance.loading ? <Muted>Loading relevance report...</Muted> : null}
+        {relevance.error ? <Notice title="Relevance missing" detail={relevance.error} /> : null}
+        {relevance.data ? (
+          <div className="grid grid-cols-2 gap-2">
+            <MetricCard label="steps scored" value={String(relevance.data.step_scores?.length ?? 0)} />
+            <MetricCard label="question families" value={String(relevance.data.question_family_scores?.length ?? 0)} />
+            <MetricCard label="textbook sections" value={String(relevance.data.textbook_section_scores?.length ?? 0)} />
+            <MetricCard label="coverage items" value={String(relevance.data.coverage_scores?.length ?? 0)} />
+          </div>
+        ) : null}
+      </Panel>
+    </section>
+  );
+}
+
+function MetricCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-md border border-stone-300 bg-white p-2">
+      <div className="text-[11px] uppercase tracking-wide text-stone-500">{label}</div>
+      <div className="mt-1 truncate font-mono text-sm font-semibold">{value}</div>
     </div>
   );
+}
+
+function FileLine({ path }: { path: string }) {
+  return <div className="truncate rounded border border-stone-200 bg-white px-2 py-1 font-mono text-stone-700">{path}</div>;
 }
 
 function TextbookView({ lessonId, relevance }: { lessonId: LessonId; relevance: RelevanceReport | null }) {
@@ -285,7 +394,7 @@ function StoryView({
       <Panel title="Question bank" subtitle={bank.path}>
         {bank.loading ? <Muted>Loading question bank...</Muted> : null}
         {bank.error ? <Notice title="Question bank unavailable" detail={bank.error} /> : null}
-        {bank.data ? <QuestionBankView bank={bank.data} relevance={relevance} selectedStep={selectedStep} /> : null}
+        {bank.data ? <QuestionBankView bank={bank.data} relevance={relevance} selectedStep={selectedStep} compact /> : null}
       </Panel>
     </section>
   );
@@ -358,28 +467,95 @@ function ExercisePreview({ exercise }: { exercise: NonNullable<StoryScreen["exer
 function QuestionBankView({
   bank,
   relevance,
-  selectedStep
+  selectedStep,
+  compact = false
 }: {
   bank: QuestionBank;
   relevance: RelevanceReport | null;
   selectedStep: string;
+  compact?: boolean;
 }) {
   return (
     <div className="space-y-4">
-      <CoverageMap bank={bank} />
+      {!compact ? <CoverageMap bank={bank} /> : null}
       <FamilyGroup
         title="Flashcards"
+        subtitle="active recall for spaced repetition"
         families={bank.flashcard_families}
+        kind="flashcard"
+        relevance={relevance}
+        selectedStep={selectedStep}
+      />
+      <FamilyGroup
+        title="Quiz"
+        subtitle="assessment-like checks"
+        families={bank.quiz_families}
+        kind="quiz"
         relevance={relevance}
         selectedStep={selectedStep}
       />
       <FamilyGroup
         title="Longform"
+        subtitle="explain, derive, compare, apply"
         families={bank.longform_families}
+        kind="longform"
         relevance={relevance}
         selectedStep={selectedStep}
       />
     </div>
+  );
+}
+
+function QuestionsView({
+  lessonId,
+  relevance,
+  selectedStep,
+  setSelectedStep
+}: {
+  lessonId: LessonId;
+  relevance: RelevanceReport | null;
+  selectedStep: string;
+  setSelectedStep: (step: string) => void;
+}) {
+  const { manifest, bank } = useStoryData(lessonId, selectedStep);
+  const steps = manifest.data?.steps ?? [];
+
+  return (
+    <section className="grid gap-4 xl:grid-cols-[280px_minmax(0,1fr)]">
+      <Panel title="Lecture Steps" subtitle={manifest.path}>
+        {manifest.loading ? <Muted>Loading manifest...</Muted> : null}
+        {manifest.error ? <Notice title="Manifest fallback" detail={manifest.error} /> : null}
+        <div className="space-y-2">
+          {steps.map((stepItem) => (
+            <button
+              className={[
+                "w-full rounded-md border px-3 py-2 text-left text-sm",
+                selectedStep === stepItem.sequence_id ? "border-emerald-700 bg-emerald-50" : "border-stone-300 bg-white"
+              ].join(" ")}
+              key={stepItem.sequence_id}
+              onClick={() => setSelectedStep(stepItem.sequence_id ?? "step1")}
+              type="button"
+            >
+              <div className="font-semibold">{stepItem.sequence_id}</div>
+              <div className="mt-1 text-xs text-stone-600">{stepItem.concept ?? stepItem.file}</div>
+            </button>
+          ))}
+        </div>
+      </Panel>
+      <Panel title={`Practice assets - ${selectedStep}`} subtitle={bank.path}>
+        {bank.loading ? <Muted>Loading question bank...</Muted> : null}
+        {bank.error ? <Notice title="Question bank unavailable" detail={bank.error} /> : null}
+        {bank.data ? (
+          <div className="space-y-4">
+            <Notice
+              title="Flashcards are not quiz questions"
+              detail="Review front/back cards for active recall. Keep options and distractors in Quiz, where assessment-style wording belongs."
+            />
+            <QuestionBankView bank={bank.data} relevance={relevance} selectedStep={selectedStep} />
+          </div>
+        ) : null}
+      </Panel>
+    </section>
   );
 }
 
@@ -405,12 +581,16 @@ function CoverageMap({ bank }: { bank: QuestionBank }) {
 
 function FamilyGroup({
   title,
+  subtitle,
   families = [],
+  kind,
   relevance,
   selectedStep
 }: {
   title: string;
+  subtitle: string;
   families?: QuestionFamily[];
+  kind: "flashcard" | "quiz" | "longform";
   relevance: RelevanceReport | null;
   selectedStep: string;
 }) {
@@ -426,9 +606,10 @@ function FamilyGroup({
       <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-stone-500">
         {title} <span className="font-normal">({filtered.length})</span>
       </h3>
+      <p className="mb-2 text-xs text-stone-500">{subtitle}</p>
       <div className="space-y-3">
         {filtered.map((family) => (
-          <QuestionFamilyCard family={family} key={family.family_id} relevance={relevance} />
+          <QuestionFamilyCard family={family} key={family.family_id} kind={kind} relevance={relevance} />
         ))}
         {filtered.length === 0 ? <Muted>No families linked to this step.</Muted> : null}
       </div>
@@ -436,7 +617,15 @@ function FamilyGroup({
   );
 }
 
-function QuestionFamilyCard({ family, relevance }: { family: QuestionFamily; relevance: RelevanceReport | null }) {
+function QuestionFamilyCard({
+  family,
+  kind,
+  relevance
+}: {
+  family: QuestionFamily;
+  kind: "flashcard" | "quiz" | "longform";
+  relevance: RelevanceReport | null;
+}) {
   const score = relevance?.question_family_scores?.find((item) => item.family_id === family.family_id);
   return (
     <article className="rounded-md border border-stone-300 bg-white p-3">
@@ -444,8 +633,10 @@ function QuestionFamilyCard({ family, relevance }: { family: QuestionFamily; rel
         <span className="font-mono text-xs font-semibold">{family.family_id}</span>
         {family.difficulty ? <Badge label={family.difficulty} /> : null}
         {family.question_type ? <Badge label={family.question_type} tone="blue" /> : null}
+        <Badge label={kind === "flashcard" ? "active recall" : kind} tone={kind === "flashcard" ? "emerald" : "stone"} />
         {score ? <TreatmentBadge score={score} /> : null}
       </div>
+      {family.retrieval_focus ? <p className="mb-2 text-xs text-emerald-800">{family.retrieval_focus}</p> : null}
       {family.learning_goal ? <p className="mb-2 text-sm text-stone-700">{family.learning_goal}</p> : null}
       {family.coverage_tags?.length ? (
         <div className="mb-2 flex flex-wrap gap-1">
@@ -457,8 +648,22 @@ function QuestionFamilyCard({ family, relevance }: { family: QuestionFamily; rel
       <div className="space-y-2">
         {family.variants?.map((variant) => (
           <details className="rounded border border-stone-200 bg-stone-50 p-2" key={variant.question_id}>
-            <summary className="cursor-pointer text-sm font-medium">{variant.question_id ?? variant.stem}</summary>
+            <summary className="cursor-pointer text-sm font-medium">
+              {variant.question_id ?? variant.front ?? variant.stem}
+            </summary>
             <div className="mt-2 text-sm">
+              {variant.front ? (
+                <div className="rounded border border-emerald-200 bg-emerald-50 p-2">
+                  <div className="text-[11px] font-semibold uppercase tracking-wide text-emerald-800">front</div>
+                  <p className="mt-1 font-medium">{variant.front}</p>
+                </div>
+              ) : null}
+              {variant.back ? (
+                <div className="mt-2 rounded border border-stone-300 bg-white p-2">
+                  <div className="text-[11px] font-semibold uppercase tracking-wide text-stone-500">back</div>
+                  <p className="mt-1">{variant.back}</p>
+                </div>
+              ) : null}
               {variant.stem ? <p className="font-medium">{variant.stem}</p> : null}
               {variant.prompt_blocks?.length ? (
                 <ul className="mt-1 list-disc pl-5">

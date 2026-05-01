@@ -10,6 +10,8 @@ lesson_id：
 - 面向整节课，而不是单个 step
 - 系统化组织内容，适合预习与复习
 - 要能嵌入题目与题族
+- 必须区分 `flashcard_families`、`quiz_families`、`longform_families` 的用途：闪卡用于主动检索，quiz 用于测验，longform 用于解释与应用
+- 不要把选择题称为 flashcard，也不要把 flashcard 放在考试题语境中
 - 术语与公式要可交互引用
 - 术语必须带英文备注，便于考试和交流
 - 不要依赖 `StepLink`

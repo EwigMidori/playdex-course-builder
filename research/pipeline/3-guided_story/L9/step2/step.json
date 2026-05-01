@@ -1,0 +1,165 @@
+{
+  "lesson_id": "L9",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "确定了优化目标后，下一步是选择优化方法。",
+        "有三种常见的方法。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s008",
+      "introduced_terms": [
+        "brute_force_search"
+      ],
+      "lines": [
+        "第一种：<term id=\"brute_force_search\">暴力搜索</term>。",
+        "它最简单直接——把所有可能的参数组合都试一遍。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "就像破解密码“12345”，",
+        "从“0”开始一个一个试，直到找到正确的那个。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "暴力搜索很可靠，但参数一多，计算量会爆炸式增长。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s011",
+      "introduced_terms": [
+        "gradient_descent"
+      ],
+      "lines": [
+        "第二种：<term id=\"gradient_descent\">梯度下降</term>。",
+        "它像一个下山的人，每次都沿着最陡的下坡路走一步。"
+      ],
+      "type": "narration"
+    },
+    {
+      "formula": {
+        "latex": "x_{n+1} = x_n - \\alpha \\cdot \\nabla f(x_n)",
+        "spoken": "下一个参数值等于当前值减去学习率乘以梯度。"
+      },
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "更新规则是：",
+        "$x_{n+1} = x_n - \\alpha \\cdot \\nabla f(x_n)$"
+      ],
+      "type": "formula"
+    },
+    {
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "其中 $\\alpha$ 是学习率，控制每一步的大小。",
+        "$\\nabla f(x_n)$ 是梯度，指向函数上升最快的方向。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "梯度下降的缺点是：",
+        "对初始值和学习率很敏感，而且可能只找到局部最优解。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s015",
+      "introduced_terms": [
+        "genetic_algorithm"
+      ],
+      "lines": [
+        "第三种：<term id=\"genetic_algorithm\">遗传算法</term>。",
+        "它模拟了“物竞天择，适者生存”的进化过程。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "先随机生成一批“参数个体”，",
+        "然后通过选择、交叉、变异，一代代进化出更好的解。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "遗传算法擅长探索广阔的解空间，",
+        "但同样不保证找到全局最优解。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "当参数组合很少时，暴力搜索可以遍历所有可能，保证找到全局最优解。",
+        "kind": "single_choice",
+        "options": [
+          "暴力搜索",
+          "梯度下降",
+          "遗传算法",
+          "随机猜测"
+        ],
+        "prompt": "以下哪种方法最适合参数很少、且需要精确最优解的场景？"
+      },
+      "id": "s018",
+      "lines": [
+        "以下哪种方法最适合参数很少、且需要精确最优解的场景？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Common methods: i. Brute force search / Grid search ii. Gradient descent iii. Genetic algorithm",
+    "related": [
+      "COMP7415 L9"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "brute_force_search": {
+      "aliases": [
+        "Brute Force Search",
+        "Grid Search"
+      ],
+      "display": "暴力搜索",
+      "gloss": "遍历所有可能的参数组合来寻找最优解。"
+    },
+    "genetic_algorithm": {
+      "aliases": [
+        "Genetic Algorithm"
+      ],
+      "display": "遗传算法",
+      "gloss": "模拟自然选择和生物进化过程的搜索启发式算法。"
+    },
+    "gradient_descent": {
+      "aliases": [
+        "Gradient Descent"
+      ],
+      "display": "梯度下降",
+      "gloss": "通过沿着函数梯度的反方向迭代更新，来寻找函数最小值。"
+    }
+  }
+}

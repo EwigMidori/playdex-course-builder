@@ -1,0 +1,26 @@
+{
+  "lesson_id": "L8",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "Order Book Basics and Insights",
+      "file": "research/pipeline/3-guided_story/L8/step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "Market Impact and Mitigation Strategies",
+      "file": "research/pipeline/3-guided_story/L8/step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "Queuing Theory for Order Book Modeling",
+      "file": "research/pipeline/3-guided_story/L8/step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "High Frequency Trading and Arbitrage",
+      "file": "research/pipeline/3-guided_story/L8/step4/step.json",
+      "sequence_id": "step4"
+    }
+  ]
+}

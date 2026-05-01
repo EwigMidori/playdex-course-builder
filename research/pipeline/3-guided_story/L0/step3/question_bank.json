@@ -1,0 +1,475 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "market_capitalization_comparison",
+      "covered_by": [
+        "qf_flash_market_cap",
+        "qf_quiz_market_cap"
+      ],
+      "description": "比较不同股票市场的市值大小，特别是中国A股、日本、香港、印度市场的市值数据。"
+    },
+    {
+      "coverage_tag": "daily_turnover_comparison",
+      "covered_by": [
+        "qf_flash_daily_turnover",
+        "qf_quiz_daily_turnover"
+      ],
+      "description": "比较不同金融市场的日交易额，包括全球股票市场、外汇市场、商品市场和加密货币市场。"
+    },
+    {
+      "coverage_tag": "market_cap_vs_turnover",
+      "covered_by": [
+        "qf_flash_market_cap_vs_turnover",
+        "qf_quiz_market_cap_vs_turnover"
+      ],
+      "description": "区分市值和日交易额两个概念，理解市值大不等于交易活跃。"
+    },
+    {
+      "coverage_tag": "forex_market_dominance",
+      "covered_by": [
+        "qf_flash_forex_dominance",
+        "qf_quiz_forex_dominance",
+        "qf_long_forex_dominance"
+      ],
+      "description": "理解外汇市场在日交易额上的主导地位，以及算法交易者偏爱外汇市场的原因。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "market_capitalization_comparison",
+      "coverage_tags": [
+        "market_capitalization_comparison"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_market_cap",
+      "learning_goal": "学生能准确回忆并比较主要股票市场的市值大小。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "要求学生主动提取特定市场的市值数值或排名。",
+      "term_refs": [
+        {
+          "display": "市值",
+          "en": "Market Capitalization"
+        }
+      ],
+      "variants": [
+        {
+          "back": "中国A股市场，约15万亿美元。",
+          "estimated_seconds": 8,
+          "explanation": "中国A股市场市值远超日本（7.6万亿）、香港（6万亿）和印度（5.3万亿）。",
+          "front": "截至2025年底，市值最大的股票市场是哪个？其市值约为多少？",
+          "question_id": "q_flash_market_cap_v1"
+        },
+        {
+          "back": "约7.6万亿美元。",
+          "estimated_seconds": 6,
+          "explanation": "日本市场市值排名第二，低于中国A股市场（15万亿），但高于香港（6万亿）和印度（5.3万亿）。",
+          "front": "截至2025年底，日本股票市场的市值约为多少？",
+          "question_id": "q_flash_market_cap_v2"
+        },
+        {
+          "back": "约6万亿美元。",
+          "estimated_seconds": 6,
+          "explanation": "香港市场市值排名第三，低于中国A股（15万亿）和日本（7.6万亿），但高于印度（5.3万亿）。",
+          "front": "截至2025年底，香港股票市场的市值约为多少？",
+          "question_id": "q_flash_market_cap_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "daily_turnover_comparison",
+      "coverage_tags": [
+        "daily_turnover_comparison"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_daily_turnover",
+      "learning_goal": "学生能准确回忆并比较不同金融市场的日交易额大小。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "要求学生主动提取特定市场的日交易额数值或排名。",
+      "term_refs": [
+        {
+          "display": "日交易额",
+          "en": "Daily Turnover"
+        }
+      ],
+      "variants": [
+        {
+          "back": "外汇市场，约6.6万亿美元。",
+          "estimated_seconds": 8,
+          "explanation": "外汇市场的日交易额远超全球股票市场（3.93万亿）、加密货币市场（1390亿）和商品市场（126亿）。",
+          "front": "日交易额最大的金融市场是哪个？其日交易额约为多少？",
+          "question_id": "q_flash_daily_turnover_v1"
+        },
+        {
+          "back": "约3.93万亿美元。",
+          "estimated_seconds": 6,
+          "explanation": "全球股票市场日交易额排名第二，低于外汇市场（6.6万亿），但高于加密货币市场（1390亿）和商品市场（126亿）。",
+          "front": "全球股票市场的日交易额约为多少？",
+          "question_id": "q_flash_daily_turnover_v2"
+        },
+        {
+          "back": "约1390亿美元。",
+          "estimated_seconds": 6,
+          "explanation": "加密货币市场日交易额远低于外汇市场（6.6万亿）和全球股票市场（3.93万亿），但略高于商品市场（126亿）。",
+          "front": "加密货币市场的日交易额约为多少？",
+          "question_id": "q_flash_daily_turnover_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "market_cap_vs_turnover",
+      "coverage_tags": [
+        "market_cap_vs_turnover"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_market_cap_vs_turnover",
+      "learning_goal": "学生能区分市值和日交易额这两个概念，并理解它们衡量市场不同维度。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "core_difference",
+      "retrieval_focus": "要求学生主动提取市值和日交易额的核心区别。",
+      "term_refs": [
+        {
+          "display": "市值",
+          "en": "Market Capitalization"
+        },
+        {
+          "display": "日交易额",
+          "en": "Daily Turnover"
+        }
+      ],
+      "variants": [
+        {
+          "back": "市值衡量市场总规模（存量），日交易额衡量市场活跃度（流量）。",
+          "estimated_seconds": 10,
+          "explanation": "市值是上市公司股票总数乘以股价的总价值，反映市场大小；日交易额是一天内所有交易的总金额，反映市场流动性。",
+          "front": "市值和日交易额分别衡量市场的什么维度？",
+          "question_id": "q_flash_market_cap_vs_turnover_v1"
+        },
+        {
+          "back": "不一定。市值大不代表交易活跃，因为活跃度由日交易额衡量，两者是不同概念。",
+          "estimated_seconds": 12,
+          "explanation": "例如中国A股市值最大，但日交易额最大的市场是外汇市场。市值大只说明市场总价值高，但不一定每天都有大量交易。",
+          "front": "一个市场市值很大，是否一定意味着它的交易很活跃？为什么？",
+          "question_id": "q_flash_market_cap_vs_turnover_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "forex_market_dominance",
+      "coverage_tags": [
+        "forex_market_dominance"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_forex_dominance",
+      "learning_goal": "学生能理解外汇市场在日交易额上的主导地位。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "要求学生主动提取外汇市场日交易额及其与其他市场的对比。",
+      "term_refs": [
+        {
+          "display": "外汇市场",
+          "en": "Forex"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为外汇市场日交易额最大（约6.6万亿美元），流动性极高，交易机会多。",
+          "estimated_seconds": 10,
+          "explanation": "高流动性意味着更容易进出市场，滑点更小，是算法交易者的理想环境。",
+          "front": "为什么算法交易者偏爱外汇市场？",
+          "question_id": "q_flash_forex_dominance_v1"
+        },
+        {
+          "back": "约52倍（6.6万亿美元 / 1260亿美元 ≈ 52.4）。",
+          "estimated_seconds": 10,
+          "explanation": "外汇市场日交易额6.6万亿美元，商品市场仅1260亿美元，差距巨大。",
+          "front": "外汇市场的日交易额大约是商品市场的多少倍？",
+          "question_id": "q_flash_forex_dominance_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L0",
+  "longform_families": [
+    {
+      "concept_key": "forex_market_dominance",
+      "coverage_tags": [
+        "forex_market_dominance",
+        "market_cap_vs_turnover"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_forex_dominance",
+      "learning_goal": "学生能综合运用市值和日交易额的概念，解释为什么算法交易者偏爱外汇市场。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "外汇市场",
+          "en": "Forex"
+        },
+        {
+          "display": "日交易额",
+          "en": "Daily Turnover"
+        },
+        {
+          "display": "市值",
+          "en": "Market Capitalization"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "比较中国A股市场和外汇市场的市值",
+            "比较中国A股市场和外汇市场的日交易额",
+            "解释日交易额对算法交易者的重要性"
+          ],
+          "question_id": "q_long_forex_dominance_v1",
+          "reference_answer": [
+            "中国A股市场市值约15万亿美元，是全球市值最大的股票市场。",
+            "但算法交易者更看重市场的流动性，即日交易额。外汇市场日交易额高达6.6万亿美元，远超全球股票市场的3.93万亿美元。",
+            "高日交易额意味着外汇市场流动性极佳，算法交易者可以快速执行大额订单而不显著影响价格，滑点成本低，交易机会更多。因此，尽管中国A股市值最大，但外汇市场因其卓越的流动性而更受算法交易者青睐。"
+          ],
+          "rubric_points": [
+            "正确指出中国A股市值最大（15万亿美元），外汇市场不是股票市场，没有可比市值。",
+            "正确指出外汇市场日交易额最大（6.6万亿美元），远高于全球股票市场（3.93万亿）。",
+            "解释高日交易额意味着高流动性，算法交易者更容易进出市场，滑点更小，交易机会更多。"
+          ],
+          "stem": "请解释为什么算法交易者偏爱外汇市场，而不是市值最大的中国A股市场。在回答中，请使用市值和日交易额这两个概念。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "比较两个市场的日交易额",
+            "讨论流动性对算法交易策略的影响",
+            "考虑市场成熟度和监管环境"
+          ],
+          "question_id": "q_long_forex_dominance_v2",
+          "reference_answer": [
+            "外汇市场日交易额约6.6万亿美元，而加密货币市场仅约1390亿美元，两者相差约47倍。",
+            "高流动性对外汇市场算法交易至关重要：它允许交易者快速执行订单，减少滑点，并支持更复杂的策略如统计套利。",
+            "此外，外汇市场是一个成熟、受监管的全球市场，而加密货币市场相对年轻，波动性大，监管环境不明确，可能增加策略风险。因此，对于追求稳定和可预测性的算法交易者，外汇市场通常是更优选择。"
+          ],
+          "rubric_points": [
+            "正确指出外汇市场日交易额（6.6万亿美元）远大于加密货币市场（1390亿美元）。",
+            "解释高流动性使外汇市场更适合高频和大额交易，滑点更小。",
+            "提及外汇市场更成熟、监管更完善，而加密货币市场波动性大、监管不确定性高。"
+          ],
+          "stem": "假设你是一名算法交易者，正在选择交易市场。请比较外汇市场和加密货币市场，并解释为什么外汇市场可能更适合算法交易。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "market_capitalization_comparison",
+      "coverage_tags": [
+        "market_capitalization_comparison"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_market_cap",
+      "learning_goal": "学生能在测验情境下准确判断不同股票市场的市值排名。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "市值",
+          "en": "Market Capitalization"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "中国A股市场市值约15万亿美元，日本约7.6万亿，香港约6万亿，印度约5.3万亿。",
+          "options": [
+            "中国A股市场",
+            "日本股票市场",
+            "香港股票市场",
+            "印度股票市场"
+          ],
+          "question_id": "q_quiz_market_cap_v1",
+          "stem": "截至2025年底，以下哪个股票市场的市值最大？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 15,
+          "explanation": "印度股票市场市值约5.3万亿美元，是四个选项中最低的。中国A股约15万亿，日本约7.6万亿，香港约6万亿。",
+          "options": [
+            "中国A股市场",
+            "日本股票市场",
+            "香港股票市场",
+            "印度股票市场"
+          ],
+          "question_id": "q_quiz_market_cap_v2",
+          "stem": "截至2025年底，以下哪个股票市场的市值最小？"
+        }
+      ]
+    },
+    {
+      "concept_key": "daily_turnover_comparison",
+      "coverage_tags": [
+        "daily_turnover_comparison"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_daily_turnover",
+      "learning_goal": "学生能在测验情境下准确判断不同金融市场的日交易额排名。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "日交易额",
+          "en": "Daily Turnover"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "外汇市场日交易额约6.6万亿美元，是全球最大的金融市场。全球股票市场约3.93万亿，加密货币市场约1390亿，商品市场约1260亿。",
+          "options": [
+            "全球股票市场",
+            "外汇市场",
+            "商品市场",
+            "加密货币市场"
+          ],
+          "question_id": "q_quiz_daily_turnover_v1",
+          "stem": "以下哪个金融市场的日交易额最大？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "商品市场日交易额约1260亿美元，是四个选项中最低的。外汇市场约6.6万亿，全球股票市场约3.93万亿，加密货币市场约1390亿。",
+          "options": [
+            "全球股票市场",
+            "外汇市场",
+            "商品市场",
+            "加密货币市场"
+          ],
+          "question_id": "q_quiz_daily_turnover_v2",
+          "stem": "以下哪个金融市场的日交易额最小？"
+        }
+      ]
+    },
+    {
+      "concept_key": "market_cap_vs_turnover",
+      "coverage_tags": [
+        "market_cap_vs_turnover"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_market_cap_vs_turnover",
+      "learning_goal": "学生能辨析市值和日交易额的区别，避免混淆。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "市值",
+          "en": "Market Capitalization"
+        },
+        {
+          "display": "日交易额",
+          "en": "Daily Turnover"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "错误。中国A股市值最大，但日交易额最大的市场是外汇市场（6.6万亿美元）。市值和日交易额是衡量市场不同维度的指标。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_market_cap_vs_turnover_v1",
+          "stem": "中国A股市场市值最大，因此它的日交易额也最大。"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "正确。日交易额是衡量市场活跃度和流动性的重要指标，交易额越大，流动性通常越好。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_market_cap_vs_turnover_v2",
+          "stem": "一个市场的日交易额越大，通常意味着它的流动性越好。"
+        }
+      ]
+    },
+    {
+      "concept_key": "forex_market_dominance",
+      "coverage_tags": [
+        "forex_market_dominance"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_forex_dominance",
+      "learning_goal": "学生能理解外汇市场在日交易额上的主导地位及其对算法交易者的意义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "外汇市场",
+          "en": "Forex"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "外汇市场日交易额高达6.6万亿美元，流动性极佳，是算法交易者的理想市场。",
+          "options": [
+            "商品市场",
+            "外汇市场",
+            "加密货币市场",
+            "全球股票市场"
+          ],
+          "question_id": "q_quiz_forex_dominance_v1",
+          "stem": "以下哪个市场是算法交易者最偏爱的市场之一，主要是因为其极高的日交易额？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "外汇市场日交易额6.6万亿美元，加密货币市场1390亿美元，6.6万亿 / 1390亿 ≈ 47.5倍。",
+          "options": [
+            "约4.7倍",
+            "约47倍",
+            "约470倍",
+            "约4700倍"
+          ],
+          "question_id": "q_quiz_forex_dominance_v2",
+          "stem": "外汇市场的日交易额大约是加密货币市场的多少倍？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/L0/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

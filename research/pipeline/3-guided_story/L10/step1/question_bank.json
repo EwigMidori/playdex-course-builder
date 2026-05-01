@@ -1,0 +1,590 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "machine_learning_definition",
+      "covered_by": [
+        "qf_flash_ml_def",
+        "qf_quiz_ml_def"
+      ],
+      "description": "机器学习的定义：AI的子集，从数据中学习模式并做出决策"
+    },
+    {
+      "coverage_tag": "ml_three_types_overview",
+      "covered_by": [
+        "qf_flash_three_types",
+        "qf_quiz_three_types",
+        "qf_long_three_types_compare"
+      ],
+      "description": "机器学习三大类型：监督学习、无监督学习、强化学习"
+    },
+    {
+      "coverage_tag": "supervised_learning_intro",
+      "covered_by": [
+        "qf_flash_supervised_intro",
+        "qf_quiz_supervised_use_case"
+      ],
+      "description": "监督学习：有标签数据，像有老师指导"
+    },
+    {
+      "coverage_tag": "unsupervised_learning_intro",
+      "covered_by": [
+        "qf_flash_unsupervised_intro",
+        "qf_quiz_unsupervised_use_case"
+      ],
+      "description": "无监督学习：无标签数据，自己发现规律"
+    },
+    {
+      "coverage_tag": "reinforcement_learning_intro",
+      "covered_by": [
+        "qf_flash_rl_intro",
+        "qf_quiz_rl_use_case"
+      ],
+      "description": "强化学习：智能体通过试错与环境互动，最大化累积奖励"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "machine_learning_definition",
+      "coverage_tags": [
+        "machine_learning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ml_def",
+      "learning_goal": "学生能准确说出机器学习的定义及其核心特征。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "机器学习的定义和两个关键特征。",
+      "term_refs": [
+        {
+          "display": "机器学习",
+          "en": "Machine Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "机器学习是人工智能的一个子集，它使系统能够从数据中学习、识别模式，并在最少人工干预下做出决策。",
+          "estimated_seconds": 10,
+          "explanation": "核心在于从数据中自动学习，而不是由人显式编程。",
+          "front": "什么是机器学习？请用一句话概括其核心思想。",
+          "question_id": "q_flash_ml_def_v1"
+        },
+        {
+          "back": "数据驱动（Data-driven）和自适应学习（Adaptive learning）。",
+          "estimated_seconds": 8,
+          "explanation": "数据驱动意味着模型从数据中学习规律；自适应学习意味着模型能根据新数据调整自身。",
+          "front": "机器学习的两大关键特征是什么？",
+          "question_id": "q_flash_ml_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "ml_three_types_overview",
+      "coverage_tags": [
+        "ml_three_types_overview"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_three_types",
+      "learning_goal": "学生能列举机器学习的三大类型，并说出每种类型的核心比喻。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "三种学习类型的名称和核心比喻。",
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "Supervised Learning"
+        },
+        {
+          "display": "无监督学习",
+          "en": "Unsupervised Learning"
+        },
+        {
+          "display": "强化学习",
+          "en": "Reinforcement Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "监督学习、无监督学习和强化学习。",
+          "estimated_seconds": 5,
+          "explanation": "这是机器学习最基本的分类，根据学习过程中使用的数据和反馈方式划分。",
+          "front": "机器学习主要分为哪三大类型？",
+          "question_id": "q_flash_three_types_v1"
+        },
+        {
+          "back": "监督学习。",
+          "estimated_seconds": 6,
+          "explanation": "监督学习使用有标签的数据进行训练，就像老师提供了正确答案。",
+          "front": "在机器学习的比喻中，哪种学习方式像“有老师给你标准答案”？",
+          "question_id": "q_flash_three_types_v2"
+        },
+        {
+          "back": "强化学习。",
+          "estimated_seconds": 6,
+          "explanation": "强化学习中的智能体通过与环境互动，根据获得的奖励或惩罚来调整行为。",
+          "front": "在机器学习的比喻中，哪种学习方式像“一个玩家通过不断试错来学习最优策略”？",
+          "question_id": "q_flash_three_types_v3"
+        },
+        {
+          "back": "无监督学习。",
+          "estimated_seconds": 6,
+          "explanation": "无监督学习处理的是没有标签的数据，目标是发现数据中隐藏的结构或模式。",
+          "front": "在机器学习的比喻中，哪种学习方式像“没有标准答案，全靠自己发现数据中的规律”？",
+          "question_id": "q_flash_three_types_v4"
+        }
+      ]
+    },
+    {
+      "concept_key": "supervised_learning_intro",
+      "coverage_tags": [
+        "supervised_learning_intro"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_supervised_intro",
+      "learning_goal": "学生能说出监督学习的定义和关键特征。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "监督学习的定义和核心特点。",
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "Supervised Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "有标签的数据集（labelled dataset）。",
+          "estimated_seconds": 5,
+          "explanation": "标签数据意味着每个训练样本都已知其对应的正确输出。",
+          "front": "监督学习使用什么类型的数据进行训练？",
+          "question_id": "q_flash_supervised_intro_v1"
+        },
+        {
+          "back": "学习一个模型，使其能够根据输入数据预测已知类型的输出。",
+          "estimated_seconds": 8,
+          "explanation": "模型从有标签的数据中学习输入到输出的映射关系。",
+          "front": "监督学习的主要目标是什么？",
+          "question_id": "q_flash_supervised_intro_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "unsupervised_learning_intro",
+      "coverage_tags": [
+        "unsupervised_learning_intro"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_unsupervised_intro",
+      "learning_goal": "学生能说出无监督学习的定义和关键特征。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "无监督学习的定义和核心特点。",
+      "term_refs": [
+        {
+          "display": "无监督学习",
+          "en": "Unsupervised Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "没有标签的数据（unlabelled data）。",
+          "estimated_seconds": 5,
+          "explanation": "无监督学习不需要预先标记好的答案，直接从原始数据中学习。",
+          "front": "无监督学习使用什么类型的数据进行训练？",
+          "question_id": "q_flash_unsupervised_intro_v1"
+        },
+        {
+          "back": "发现数据中隐藏的模式和结构。",
+          "estimated_seconds": 8,
+          "explanation": "例如，将相似的数据点分组（聚类）或发现数据项之间的关联规则。",
+          "front": "无监督学习的主要目标是什么？",
+          "question_id": "q_flash_unsupervised_intro_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "reinforcement_learning_intro",
+      "coverage_tags": [
+        "reinforcement_learning_intro"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_rl_intro",
+      "learning_goal": "学生能说出强化学习的定义和核心要素。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "强化学习的定义和核心要素。",
+      "term_refs": [
+        {
+          "display": "强化学习",
+          "en": "Reinforcement Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "通过与环境的互动，产生动作并发现错误，从而学习。",
+          "estimated_seconds": 8,
+          "explanation": "智能体在环境中尝试不同的动作，根据获得的奖励或惩罚来调整策略。",
+          "front": "强化学习中的智能体通过什么方式来学习决策？",
+          "question_id": "q_flash_rl_intro_v1"
+        },
+        {
+          "back": "最大化累积奖励。",
+          "estimated_seconds": 5,
+          "explanation": "智能体学习的目标是选择一系列动作，使得长期累积的奖励总和最大。",
+          "front": "强化学习的目标是什么？",
+          "question_id": "q_flash_rl_intro_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L10",
+  "longform_families": [
+    {
+      "concept_key": "ml_three_types_overview",
+      "coverage_tags": [
+        "ml_three_types_overview"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_three_types_compare",
+      "learning_goal": "学生能比较和对比监督学习、无监督学习和强化学习在数据需求、学习方式和目标上的主要区别。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "Supervised Learning"
+        },
+        {
+          "display": "无监督学习",
+          "en": "Unsupervised Learning"
+        },
+        {
+          "display": "强化学习",
+          "en": "Reinforcement Learning"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "数据类型",
+            "学习方式",
+            "主要目标"
+          ],
+          "question_id": "q_long_three_types_compare_v1",
+          "reference_answer": [
+            "监督学习使用有标签的数据集进行训练，学习从输入到已知输出的映射关系，主要目标是预测或分类。",
+            "无监督学习使用没有标签的数据，通过发现数据中的模式、结构或关系来学习，主要目标是聚类、降维或关联规则发现。",
+            "强化学习不依赖静态数据集，而是让一个智能体（agent）在环境中通过执行动作、接收奖励或惩罚来学习，主要目标是学习一个能最大化长期累积奖励的策略。"
+          ],
+          "rubric_points": [
+            "准确指出监督学习使用有标签数据，无监督学习使用无标签数据，强化学习通过与环境的互动来学习。",
+            "解释监督学习是学习输入到输出的映射，无监督学习是发现数据中的隐藏结构，强化学习是通过试错来最大化累积奖励。",
+            "能够清晰地对比三者的不同之处。"
+          ],
+          "stem": "请比较监督学习、无监督学习和强化学习这三种机器学习类型。你的回答应涵盖它们各自使用的数据类型、学习方式（如何从数据中学习）以及主要目标。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "问题1：预测明天是否会下雨",
+            "问题2：将顾客分组",
+            "问题3：训练AI下棋"
+          ],
+          "question_id": "q_long_three_types_compare_v2",
+          "reference_answer": [
+            "问题1：监督学习。因为我们可以使用历史气象数据（如温度、湿度、气压）作为特征，并以“是否下雨”作为标签来训练一个分类模型。",
+            "问题2：无监督学习。因为我们没有预先定义好的顾客类别标签，目标是让算法根据消费数据的相似性自动将顾客分组（聚类）。",
+            "问题3：强化学习。因为下棋是一个序列决策问题，AI（智能体）需要通过在当前棋局（状态）下选择走法（动作），并根据输赢（奖励）来学习最优策略。"
+          ],
+          "rubric_points": [
+            "问题1选择监督学习，并解释原因（有历史标签数据，是分类问题）。",
+            "问题2选择无监督学习，并解释原因（没有标签，目标是发现结构）。",
+            "问题3选择强化学习，并解释原因（需要通过试错和奖励来学习策略）。"
+          ],
+          "stem": "假设你被要求为以下三个问题选择机器学习方法：1) 预测明天是否会下雨；2) 将一群顾客根据消费习惯分成几个小组；3) 训练一个AI玩国际象棋。请分别说明你会选择哪种机器学习类型（监督、无监督、强化学习），并解释为什么。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "machine_learning_definition",
+      "coverage_tags": [
+        "machine_learning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_ml_def",
+      "learning_goal": "学生能在不同表述中准确识别机器学习的定义。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "机器学习",
+          "en": "Machine Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "机器学习是AI的子集，核心是从数据中学习模式并做出决策，而不是依赖固定的规则。",
+          "options": [
+            "一种通过预定义规则进行计算的编程方法",
+            "人工智能的一个子集，使系统能从数据中学习并做出决策",
+            "一种专门用于图像识别的算法",
+            "一个存储和处理大数据的数据库系统"
+          ],
+          "question_id": "q_quiz_ml_def_v1",
+          "stem": "以下哪一项最准确地描述了机器学习？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 12,
+          "explanation": "机器学习是数据驱动的，并且能够自适应地学习，即模型可以根据新数据调整自身。",
+          "options": [
+            "规则驱动",
+            "人工干预",
+            "自适应学习",
+            "静态模型"
+          ],
+          "question_id": "q_quiz_ml_def_v2",
+          "stem": "机器学习的两个关键特征是数据驱动和什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "ml_three_types_overview",
+      "coverage_tags": [
+        "ml_three_types_overview"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_three_types",
+      "learning_goal": "学生能根据任务描述判断应使用哪种机器学习类型。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "Supervised Learning"
+        },
+        {
+          "display": "无监督学习",
+          "en": "Unsupervised Learning"
+        },
+        {
+          "display": "强化学习",
+          "en": "Reinforcement Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "由于历史数据包含“是否违约”的标签，这是一个有监督的分类问题，适合使用监督学习。",
+          "options": [
+            "无监督学习",
+            "强化学习",
+            "监督学习",
+            "关联规则学习"
+          ],
+          "question_id": "q_quiz_three_types_v1",
+          "stem": "一家银行希望根据历史贷款数据（包含是否违约的标签）来预测新客户的违约风险。这最适合使用哪种机器学习方法？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "发现隐藏的关联规则属于无监督学习的范畴，因为它不需要预先标记好的数据。",
+          "options": [
+            "监督学习",
+            "强化学习",
+            "无监督学习",
+            "回归分析"
+          ],
+          "question_id": "q_quiz_three_types_v2",
+          "stem": "一个电商平台希望发现用户购买行为中的隐藏模式，例如“购买了A商品的用户也经常购买B商品”，而不需要预先知道任何购买组合。这最适合使用哪种机器学习方法？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "通过试错和最大化累积奖励来学习，是强化学习的典型特征。",
+          "options": [
+            "监督学习",
+            "无监督学习",
+            "强化学习",
+            "聚类分析"
+          ],
+          "question_id": "q_quiz_three_types_v3",
+          "stem": "一个游戏AI需要通过不断尝试不同的操作，并根据游戏得分（奖励）来学习如何通关。这最适合使用哪种机器学习方法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "supervised_learning_intro",
+      "coverage_tags": [
+        "supervised_learning_intro"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_supervised_use_case",
+      "learning_goal": "学生能识别监督学习的典型应用场景。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "Supervised Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "预测一个具体的数值（股票价格）是回归问题，属于监督学习。其他选项分别对应无监督学习（聚类、关联）和强化学习。",
+          "options": [
+            "将一组新闻文章自动分成几个主题类别",
+            "预测明天下午3点的股票价格",
+            "训练一个机器人在迷宫中找到出口",
+            "发现超市商品之间的购买关联"
+          ],
+          "question_id": "q_quiz_supervised_use_case_v1",
+          "stem": "以下哪个任务最适合使用监督学习？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "课程中明确指出，预测具体数值（如价格）属于回归任务，通常使用监督学习。",
+          "options": [
+            "无监督学习",
+            "强化学习",
+            "监督学习",
+            "半监督学习"
+          ],
+          "question_id": "q_quiz_supervised_use_case_v2",
+          "stem": "在课程中，预测明天的股票价格被用作哪种学习类型的例子？"
+        }
+      ]
+    },
+    {
+      "concept_key": "unsupervised_learning_intro",
+      "coverage_tags": [
+        "unsupervised_learning_intro"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_unsupervised_use_case",
+      "learning_goal": "学生能识别无监督学习的典型应用场景。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "无监督学习",
+          "en": "Unsupervised Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "将客户分组（客户细分）是典型的聚类问题，属于无监督学习。",
+          "options": [
+            "根据历史数据预测房价",
+            "将客户根据购买行为分成不同的群体",
+            "训练一个AI玩星际争霸",
+            "识别图片中是否有猫"
+          ],
+          "question_id": "q_quiz_unsupervised_use_case_v1",
+          "stem": "以下哪个任务最适合使用无监督学习？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "无监督学习可以处理无标签数据，省去了昂贵且耗时的人工标注过程。",
+          "options": [
+            "通常比监督学习更准确",
+            "不需要大量有标签的数据",
+            "结果总是很容易解释",
+            "可以处理任何类型的问题"
+          ],
+          "question_id": "q_quiz_unsupervised_use_case_v2",
+          "stem": "无监督学习的一个主要优势是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "reinforcement_learning_intro",
+      "coverage_tags": [
+        "reinforcement_learning_intro"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_rl_use_case",
+      "learning_goal": "学生能识别强化学习的典型应用场景。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "强化学习",
+          "en": "Reinforcement Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "机器人走路需要通过不断试错和接收反馈（如摔倒的惩罚或前进的奖励）来学习，这是强化学习的典型应用。",
+          "options": [
+            "根据房屋特征预测其价格",
+            "将文档自动分类",
+            "训练一个机器人学会走路",
+            "发现数据中的异常点"
+          ],
+          "question_id": "q_quiz_rl_use_case_v1",
+          "stem": "以下哪个任务最适合使用强化学习？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "奖励是环境对智能体动作的即时反馈，用于指导智能体学习。",
+          "options": [
+            "模型预测正确的次数",
+            "智能体执行动作后环境给予的即时反馈信号",
+            "数据集中样本的标签",
+            "算法的运行速度"
+          ],
+          "question_id": "q_quiz_rl_use_case_v2",
+          "stem": "强化学习中的“奖励”是什么？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "L10: Machine learning use cases in algorithmic trading - Agenda: Major categories of machine learning algorithms, Multiple use cases of machine learning in algo-trading, The future of smart investment systems; Introduction to Machine Learning; What is Machine Learning?; Types of Machine Learning: 1. Supervised Learning, 2. Unsupervised Learning, 3. Reinforcement Learning",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "{\"lesson_id\": \"L10\", \"mode\": \"guided_story\", \"steps\": [{\"concept\": \"机器学习三大类型概览\", \"file\": \"research/pipeline/3-guided_story/L10/step1/step.json\", \"sequence_id\": \"step1\"}, ...]}",
+    "plain_text": "pipeline/1-plain/L10/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "L10: Machine learning use cases in algorithmic trading - Agenda: Major categories of machine learning algorithms, Multiple use cases of machine learning in algo-trading, The future of smart investment systems; Introduction to Machine Learning; What is Machine Learning?; Types of Machine Learning: 1. Supervised Learning, 2. Unsupervised Learning, 3. Reinforcement Learning"
+  },
+  "target_language": "zh-CN"
+}

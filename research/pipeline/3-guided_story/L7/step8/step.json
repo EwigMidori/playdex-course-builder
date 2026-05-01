@@ -1,0 +1,84 @@
+{
+  "lesson_id": "L7",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s064",
+      "introduced_terms": [],
+      "lines": [
+        "来回顾一下这节课的核心。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s065",
+      "introduced_terms": [],
+      "lines": [
+        "组合的收益是加权平均，但风险取决于资产间的相关性。",
+        "相关系数越低，分散效果越好。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s066",
+      "introduced_terms": [],
+      "lines": [
+        "有效前沿给出了最优的风险收益组合。",
+        "加入无风险资产后，切点组合和资本市场线成为新基准。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s067",
+      "introduced_terms": [],
+      "lines": [
+        "CAPM用贝塔系数简洁地描述了资产与市场的关系。",
+        "证券市场线是它的图形化表达。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s068",
+      "introduced_terms": [],
+      "lines": [
+        "评价一个策略好不好，不能只看收益。",
+        "夏普、索提诺、特雷诺、詹森阿尔法……各有适用场景。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s069",
+      "introduced_terms": [],
+      "lines": [
+        "最后，别忘了风险控制。",
+        "止损和风险限额是保护资本的底线。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s070",
+      "introduced_terms": [],
+      "lines": [
+        "一句话带走：",
+        "投资不是选最好的资产，而是选最好的组合。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "plain_text": "Key Takeaways: We learnt how to calculate the overall risk and return of an investment portfolio. The lower the correlation, the better the diversification effect. Efficiency Frontier represents the set of optimal and feasible solutions for asset allocation. We learnt how to derive the Minimum Variance Portfolio, and Tangency portfolio. Capital Asset Pricing Model (CAPM) is a simplified model to relate an asset and the market. Different performance measures are introduced for investment comparison. Introduce different stop loss and risk limit control mechanism.",
+    "related": [
+      "Key Takeaways"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

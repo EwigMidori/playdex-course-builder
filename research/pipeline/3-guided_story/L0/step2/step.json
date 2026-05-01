@@ -1,0 +1,107 @@
+{
+  "lesson_id": "L1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "lines": [
+        "这门课会带你走完一条完整的路径：",
+        "从零开始，到部署一个真正的交易策略。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "backtesting"
+      ],
+      "lines": [
+        "前半段，你会学习如何获取金融数据、用Python分析它。",
+        "然后搭建一个 <term id=\"backtesting\">回测</term> 框架，验证你的想法。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "pairs_trading"
+      ],
+      "lines": [
+        "接着，你会接触到一些经典的策略思路。",
+        "比如利用统计关系做 <term id=\"pairs_trading\">配对交易</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "introduced_terms": [
+        "order_book"
+      ],
+      "lines": [
+        "后半段，话题转向实战：如何管理风险、优化投资组合。",
+        "甚至深入 <term id=\"order_book\">订单簿</term> 数据，理解高频交易的世界。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "lines": [
+        "最后，你还会看到机器学习如何被用在交易策略中。",
+        "整个课程就像一次从理论到实践的完整旅程。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "风险管理与投资组合优化属于实战应用部分，通常在课程后半段讨论。",
+        "kind": "single_choice",
+        "options": [
+          "用Python抓取股票数据",
+          "搭建回测框架",
+          "风险管理与投资组合优化",
+          "统计套利基础"
+        ],
+        "prompt": "以下哪个主题最可能出现在课程的后半段？"
+      },
+      "id": "s006",
+      "lines": [
+        "以下哪个主题最可能出现在课程的后半段？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Topics to be covered: 1. Algorithmic trading basics and financial markets 2. Data scraping and database management with Python 3. Building backtest framework and rule-based trading strategy 4. Statistical time series analysis for market classification 5. Statistical arbitrage and pairs trading 6. Capital and Risk Management 7. Performance measures and portfolio optimization 8. Order book and high frequency data modeling 9. Market practice in strategy optimization, broker selection, and market tricks 10. Machine learning use cases in algorithmic trading",
+    "related": [
+      "COMP7415A syllabus"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "backtesting": {
+      "aliases": [
+        "Backtesting"
+      ],
+      "display": "回测",
+      "gloss": "用历史数据测试交易策略表现的方法。"
+    },
+    "order_book": {
+      "aliases": [
+        "Order Book",
+        "L2 Data"
+      ],
+      "display": "订单簿",
+      "gloss": "记录所有未成交买卖订单的电子列表。"
+    },
+    "pairs_trading": {
+      "aliases": [
+        "Pairs Trading",
+        "Statistical Arbitrage"
+      ],
+      "display": "配对交易",
+      "gloss": "利用两只相关股票价格偏离进行套利的策略。"
+    }
+  }
+}

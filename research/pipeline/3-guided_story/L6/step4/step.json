@@ -1,0 +1,142 @@
+{
+  "lesson_id": "L6",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "波动率聚集告诉我们，波动率不是随机的，而是有规律的。",
+        "过去的波动会影响未来的波动。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s024",
+      "introduced_terms": [
+        "arch_effect"
+      ],
+      "lines": [
+        "这种规律被称为**<term id=\"arch_effect\">ARCH 效应</term>**。",
+        "为了捕捉这种效应，科学家们发明了专门的模型。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s025",
+      "introduced_terms": [
+        "arch"
+      ],
+      "lines": [
+        "第一个模型叫**<term id=\"arch\">ARCH 模型</term>**。",
+        "它假设今天的波动率，取决于过去几天的“冲击”（即价格的大幅变动）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "formula": {
+        "latex": "\\sigma_t^2 = \\alpha_0 + \\alpha_1 a_{t-1}^2",
+        "spoken": "sigma t 平方等于 alpha 0 加上 alpha 1 乘以 a t-1 的平方。"
+      },
+      "id": "s026",
+      "lines": [
+        "最简单的 ARCH(1) 模型："
+      ],
+      "type": "formula"
+    },
+    {
+      "id": "s027",
+      "introduced_terms": [
+        "garch"
+      ],
+      "lines": [
+        "但 ARCH 模型有个缺点：为了准确，它需要很多个过去的“冲击”项。",
+        "于是有了它的升级版：**<term id=\"garch\">GARCH 模型</term>**。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "GARCH 模型不仅考虑过去的冲击，还考虑过去的波动率本身。",
+        "这就像给波动率加上了“记忆”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "formula": {
+        "latex": "\\sigma_t^2 = \\alpha_0 + \\alpha_1 a_{t-1}^2 + \\beta_1 \\sigma_{t-1}^2",
+        "spoken": "sigma t 平方等于 alpha 0 加上 alpha 1 乘以 a t-1 的平方，再加上 beta 1 乘以 sigma t-1 的平方。"
+      },
+      "id": "s029",
+      "lines": [
+        "最常用的 GARCH(1,1) 模型："
+      ],
+      "type": "formula"
+    },
+    {
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "GARCH(1,1) 是业界最常用的波动率模型之一。",
+        "它用三个参数，就能很好地描述金融市场的波动特征。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "GARCH 模型在 ARCH 的基础上，加入了过去的波动率项，使得模型更简洁、更有效。",
+        "kind": "single_choice",
+        "options": [
+          "计算速度更快",
+          "加入了波动率自身的滞后项",
+          "不需要历史数据",
+          "只能用于股票市场"
+        ],
+        "prompt": "GARCH 模型相比于 ARCH 模型，最主要的改进是什么？"
+      },
+      "id": "s031",
+      "lines": [
+        "GARCH 模型相比于 ARCH 模型，最主要的改进是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "The ARCH or GARCH model are commonly used to model time-varying volatility, which take into account of volatility clustering. When volatility is autoregressive, we call this the ARCH effect. The GARCH(m, s) model reduces to a pure ARCH(m) model if s = 0. The most commonly used GARCH model is the simplest GARCH(1,1) model.",
+    "related": [
+      "ARCH",
+      "GARCH",
+      "ARCH effect"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "arch": {
+      "aliases": [
+        "ARCH",
+        "Autoregressive Conditional Heteroskedasticity"
+      ],
+      "display": "ARCH 模型",
+      "gloss": "自回归条件异方差模型，用于建模随时间变化的波动率。"
+    },
+    "arch_effect": {
+      "aliases": [
+        "ARCH Effect"
+      ],
+      "display": "ARCH 效应",
+      "gloss": "指波动率具有自相关性，即过去的波动会影响未来的波动。"
+    },
+    "garch": {
+      "aliases": [
+        "GARCH",
+        "Generalized Autoregressive Conditional Heteroskedasticity"
+      ],
+      "display": "GARCH 模型",
+      "gloss": "广义自回归条件异方差模型，是 ARCH 模型的扩展，加入了波动率自身的滞后项。"
+    }
+  }
+}

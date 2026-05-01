@@ -1,0 +1,126 @@
+{
+  "lesson_id": "L1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "introduced_terms": [
+        "market_capitalization"
+      ],
+      "lines": [
+        "在动手写代码之前，先看看我们面对的市场有多大。",
+        "猜猜看，哪个股票市场的 <term id=\"market_capitalization\">市值</term> 最高？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "中国A股市场市值约15万亿美元，远超其他选项。",
+        "kind": "single_choice",
+        "options": [
+          "中国A股市场",
+          "香港股票市场",
+          "印度股票市场",
+          "日本股票市场"
+        ],
+        "prompt": "截至2025年底，以下哪个市场的市值最大？"
+      },
+      "id": "s002",
+      "lines": [
+        "截至2025年底，以下哪个市场的市值最大？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s003",
+      "lines": [
+        "中国A股市场市值约15万亿美元，日本约7.6万亿，香港约6万亿。",
+        "但市值大，不代表交易最活跃。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "introduced_terms": [
+        "daily_turnover"
+      ],
+      "lines": [
+        "衡量活跃度的指标是 <term id=\"daily_turnover\">日交易额</term>。",
+        "全球股票市场每天交易约3.93万亿美元。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "introduced_terms": [
+        "forex"
+      ],
+      "lines": [
+        "但有一个市场比它大得多——<term id=\"forex\">外汇市场</term>。",
+        "每天的交易额高达6.6万亿美元。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "lines": [
+        "相比之下，加密货币市场每天只有1390亿美元。",
+        "知道这些数字，能帮你理解算法交易者为什么偏爱某些市场。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "外汇市场日交易额约6.6万亿美元，是全球最大的金融市场。",
+        "kind": "single_choice",
+        "options": [
+          "全球股票市场",
+          "外汇市场",
+          "商品市场",
+          "加密货币市场"
+        ],
+        "prompt": "哪个市场的日交易额最大？"
+      },
+      "id": "s007",
+      "lines": [
+        "哪个市场的日交易额最大？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Which of the following has the largest market capitalization? China: $15 trillion, Hong Kong: $6 trillion, India: $5.3 trillion, Japan: $7.6 trillion. Which market has the largest daily turnover? Global equity market: $3.93 trillion, Forex: $6.6 trillion, Commodity: $126 billion, Crypto: $139 billion.",
+    "related": [
+      "COMP7415A lecture slides"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "daily_turnover": {
+      "aliases": [
+        "Daily Turnover",
+        "Trading Volume"
+      ],
+      "display": "日交易额",
+      "gloss": "一天内所有交易的总金额。"
+    },
+    "forex": {
+      "aliases": [
+        "Forex",
+        "FX"
+      ],
+      "display": "外汇市场",
+      "gloss": "全球最大的金融市场，交易各国货币。"
+    },
+    "market_capitalization": {
+      "aliases": [
+        "Market Cap"
+      ],
+      "display": "市值",
+      "gloss": "上市公司股票总数乘以当前股价的总价值。"
+    }
+  }
+}

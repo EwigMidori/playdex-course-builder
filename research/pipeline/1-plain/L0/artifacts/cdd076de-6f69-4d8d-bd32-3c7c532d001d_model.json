@@ -1,0 +1,1404 @@
+[
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.217,
+                0.268,
+                0.784,
+                0.377
+            ],
+            "angle": 0,
+            "content": "Financial Analytics and"
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.255,
+                0.395,
+                0.743,
+                0.5
+            ],
+            "angle": 0,
+            "content": "Algorithmic Trading"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.37,
+                0.532,
+                0.627,
+                0.573
+            ],
+            "angle": 0,
+            "content": "Course Code: COMP7415"
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.03,
+                0.922,
+                0.177,
+                0.958
+            ],
+            "angle": 0,
+            "content": "Lecturer: Tony Lam"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.51,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Background of Lecturer"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.102,
+                0.251,
+                0.507,
+                0.297
+            ],
+            "angle": 0,
+            "content": "- Founder of AlgoGene (https://algogene.com)"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.102,
+                0.311,
+                0.733,
+                0.353
+            ],
+            "angle": 0,
+            "content": "Vice Chairman of Algo Challenge Association (https://algochallenge.org)"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.102,
+                0.37,
+                0.894,
+                0.41
+            ],
+            "angle": 0,
+            "content": "- Former algo developer, quant trader, risk manager, data analyst for hedge funds and banks."
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.102,
+                0.429,
+                0.878,
+                0.47
+            ],
+            "angle": 0,
+            "content": "- BSc in Math, Risk Management, Actuarial Science (HKU); MSc in Computer Science (HKU)"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.102,
+                0.487,
+                0.723,
+                0.528
+            ],
+            "angle": 0,
+            "content": "- Champion and awardee of several algo trading competitions, including"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.102,
+                0.251,
+                0.894,
+                0.528
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.14,
+                0.533,
+                0.644,
+                0.573
+            ],
+            "angle": 0,
+            "content": "CCTV证券资讯频道《宽客天下·全球量化争霸赛》(2017/18)"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.14,
+                0.582,
+                0.54,
+                0.618
+            ],
+            "angle": 0,
+            "content": "- Rotman International Trading Competition (2017)"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.14,
+                0.627,
+                0.42,
+                0.663
+            ],
+            "angle": 0,
+            "content": "CASH Algo Trading Contest (2016)"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.14,
+                0.672,
+                0.436,
+                0.707
+            ],
+            "angle": 0,
+            "content": "WorldQuant Challenge (2014, 2015)"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.14,
+                0.533,
+                0.644,
+                0.707
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.406,
+                0.194
+            ],
+            "angle": 0,
+            "content": "Let’s play a game!"
+        },
+        {
+            "type": "image",
+            "bbox": [
+                0.312,
+                0.298,
+                0.671,
+                0.948
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.595,
+                0.194
+            ],
+            "angle": 0,
+            "content": "1. What’s your study mode?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.269,
+                0.223,
+                0.33
+            ],
+            "angle": 0,
+            "content": "a) Full time"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.345,
+                0.228,
+                0.404
+            ],
+            "angle": 0,
+            "content": "b) Part time"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.42,
+                0.227,
+                0.478
+            ],
+            "angle": 0,
+            "content": "c) Just sit in"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.072,
+                0.269,
+                0.228,
+                0.478
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.071,
+                0.064,
+                0.856,
+                0.228
+            ],
+            "angle": 0,
+            "content": "2. What is your main reason for taking this course?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.269,
+                0.568,
+                0.337
+            ],
+            "angle": 0,
+            "content": "a) I want to start a career in algo-trading"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.344,
+                0.576,
+                0.408
+            ],
+            "angle": 0,
+            "content": "b) I want to enhance my current job skills"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.415,
+                0.723,
+                0.488
+            ],
+            "angle": 0,
+            "content": "c) I am interested in the topic and want to learn more"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.495,
+                0.554,
+                0.556
+            ],
+            "angle": 0,
+            "content": "d) Just to fulfill graduation requirement"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.269,
+                0.723,
+                0.556
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.071,
+                0.064,
+                0.823,
+                0.224
+            ],
+            "angle": 0,
+            "content": "3. What do you expect to learn from this course?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.269,
+                0.559,
+                0.33
+            ],
+            "angle": 0,
+            "content": "a) Some skills for financial data analysis"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.345,
+                0.678,
+                0.407
+            ],
+            "angle": 0,
+            "content": "b) I want to develop an automated trading system"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.415,
+                0.611,
+                0.48
+            ],
+            "angle": 0,
+            "content": "c) Tell me some profitable trading strategies"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.495,
+                0.268,
+                0.552
+            ],
+            "angle": 0,
+            "content": "d) Not sure yet"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.269,
+                0.678,
+                0.552
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.064,
+                0.886,
+                0.238
+            ],
+            "angle": 0,
+            "content": "4. Do you have any prior experience in algo-trading?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.272,
+                0.495,
+                0.329
+            ],
+            "angle": 0,
+            "content": "a) Yes, I have extensive experience"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.349,
+                0.449,
+                0.4
+            ],
+            "angle": 0,
+            "content": "b) Yes, I have some experience"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.422,
+                0.717,
+                0.477
+            ],
+            "angle": 0,
+            "content": "c) No, but I have experience in other forms of trading"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.498,
+                0.535,
+                0.552
+            ],
+            "angle": 0,
+            "content": "d) No, I am completely new to trading"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.272,
+                0.717,
+                0.552
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.071,
+                0.064,
+                0.792,
+                0.237
+            ],
+            "angle": 0,
+            "content": "5. Have you ever used any algo-trading platforms before?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.269,
+                0.452,
+                0.33
+            ],
+            "angle": 0,
+            "content": "a) Yes, I have used MetaTrader"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.345,
+                0.457,
+                0.405
+            ],
+            "angle": 0,
+            "content": "b) Yes, I have used TradingView"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.423,
+                0.425,
+                0.48
+            ],
+            "angle": 0,
+            "content": "c) Yes, I have used AlgoGene"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.073,
+                0.497,
+                0.446,
+                0.552
+            ],
+            "angle": 0,
+            "content": "d) No, I have no idea what it is"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.269,
+                0.457,
+                0.552
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.071,
+                0.064,
+                0.821,
+                0.237
+            ],
+            "angle": 0,
+            "content": "6. Which of the following has the largest market capitalization?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.074,
+                0.274,
+                0.346,
+                0.329
+            ],
+            "angle": 0,
+            "content": "a) China stock market"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.348,
+                0.406,
+                0.403
+            ],
+            "angle": 0,
+            "content": "b) Hong Kong stock market"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.426,
+                0.337,
+                0.475
+            ],
+            "angle": 0,
+            "content": "c) India stock market"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.498,
+                0.346,
+                0.55
+            ],
+            "angle": 0,
+            "content": "d) Japan stock market"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.074,
+                0.274,
+                0.406,
+                0.55
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.116,
+                0.215,
+                0.182
+            ],
+            "angle": 0,
+            "content": "Answer"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.274,
+                0.262,
+                0.329
+            ],
+            "angle": 0,
+            "content": "As of Dec-2025,"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.349,
+                0.3,
+                0.399
+            ],
+            "angle": 0,
+            "content": "- China: $15 trillion"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.423,
+                0.346,
+                0.475
+            ],
+            "angle": 0,
+            "content": "- Hong Kong: $6 trillion"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.498,
+                0.299,
+                0.547
+            ],
+            "angle": 0,
+            "content": "- India: $5.3 trillion"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.572,
+                0.308,
+                0.624
+            ],
+            "angle": 0,
+            "content": "- Japan: $7.6 trillion"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.349,
+                0.346,
+                0.624
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "footer",
+            "bbox": [
+                0.038,
+                0.93,
+                0.575,
+                0.967
+            ],
+            "angle": 0,
+            "content": "Source: https://www.ceicdata.com/en/indicator/market-capitalization"
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.071,
+                0.064,
+                0.828,
+                0.238
+            ],
+            "angle": 0,
+            "content": "7. Which of the following market has the largest daily turnover/trading volume?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.074,
+                0.274,
+                0.35,
+                0.329
+            ],
+            "angle": 0,
+            "content": "a) Commodity market"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.348,
+                0.29,
+                0.402
+            ],
+            "angle": 0,
+            "content": "b) Crypto market"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.423,
+                0.367,
+                0.478
+            ],
+            "angle": 0,
+            "content": "c) Global Equity market"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.498,
+                0.186,
+                0.552
+            ],
+            "angle": 0,
+            "content": "d) Forex"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.074,
+                0.274,
+                0.367,
+                0.552
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.116,
+                0.215,
+                0.182
+            ],
+            "angle": 0,
+            "content": "Answer"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.269,
+                0.51,
+                0.33
+            ],
+            "angle": 0,
+            "content": "Global equity market: $3.93 trillion"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.345,
+                0.312,
+                0.4
+            ],
+            "angle": 0,
+            "content": "• Forex: $6.6 trillion"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.42,
+                0.386,
+                0.478
+            ],
+            "angle": 0,
+            "content": "- Commodity: $126 billion"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.495,
+                0.329,
+                0.552
+            ],
+            "angle": 0,
+            "content": "- Crypto: $139 billion"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.269,
+                0.51,
+                0.552
+            ],
+            "angle": 0,
+            "content": null
+        },
+        {
+            "type": "title",
+            "bbox": [
+                0.066,
+                0.743,
+                0.15,
+                0.773
+            ],
+            "angle": 0,
+            "content": "Reference:"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.067,
+                0.782,
+                0.502,
+                0.819
+            ],
+            "angle": 0,
+            "content": "- https://www.world-exchanges.org/our-work/statistics"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.067,
+                0.823,
+                0.434,
+                0.857
+            ],
+            "angle": 0,
+            "content": "- https://www.bis.org/statistics/rpfx19 fx.htm"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.067,
+                0.864,
+                0.645,
+                0.898
+            ],
+            "angle": 0,
+            "content": "- https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.067,
+                0.904,
+                0.443,
+                0.937
+            ],
+            "angle": 0,
+            "content": "- https://www.coingecko.com/en/global charts"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.067,
+                0.782,
+                0.645,
+                0.937
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.071,
+                0.064,
+                0.818,
+                0.238
+            ],
+            "angle": 0,
+            "content": "8. Which programming language is most widely used in algo-trading?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.074,
+                0.274,
+                0.165,
+                0.328
+            ],
+            "angle": 0,
+            "content": "a) C++"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.074,
+                0.349,
+                0.169,
+                0.4
+            ],
+            "angle": 0,
+            "content": "b) Java"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.423,
+                0.203,
+                0.478
+            ],
+            "angle": 0,
+            "content": "c) Python"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.498,
+                0.135,
+                0.55
+            ],
+            "angle": 0,
+            "content": "d) R"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.074,
+                0.274,
+                0.203,
+                0.55
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.071,
+                0.064,
+                0.896,
+                0.237
+            ],
+            "angle": 0,
+            "content": "9. Which of the following market is the most popular for algo traders?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.074,
+                0.274,
+                0.277,
+                0.329
+            ],
+            "angle": 0,
+            "content": "a) Commodities"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.348,
+                0.301,
+                0.405
+            ],
+            "angle": 0,
+            "content": "b) Cryptocurrency"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.426,
+                0.194,
+                0.478
+            ],
+            "angle": 0,
+            "content": "c) Equity"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.498,
+                0.185,
+                0.549
+            ],
+            "angle": 0,
+            "content": "d) Forex"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.074,
+                0.274,
+                0.301,
+                0.549
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.109,
+                0.792,
+                0.19
+            ],
+            "angle": 0,
+            "content": "10. What's the name of your teachers?"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.272,
+                0.245,
+                0.329
+            ],
+            "angle": 0,
+            "content": "a) Tommy Lai"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.349,
+                0.229,
+                0.402
+            ],
+            "angle": 0,
+            "content": "b) Tony Lam"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.426,
+                0.241,
+                0.477
+            ],
+            "angle": 0,
+            "content": "c) Tim Leung"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.498,
+                0.263,
+                0.552
+            ],
+            "angle": 0,
+            "content": "d) Timothy Lau"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.272,
+                0.263,
+                0.552
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.818,
+                0.194
+            ],
+            "angle": 0,
+            "content": "Course Objectives & Learning Outcomes"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.272,
+                0.699,
+                0.329
+            ],
+            "angle": 0,
+            "content": "- Understand the trading process in financial market"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.071,
+                0.345,
+                0.881,
+                0.462
+            ],
+            "angle": 0,
+            "content": "- Understand the fundamental of algorithmic trading framework for building a trading strategy"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.475,
+                0.786,
+                0.645
+            ],
+            "angle": 0,
+            "content": "- Able to formulate trading strategies, carry out backtesting, optimization, risk management and interpret investment performance"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.072,
+                0.665,
+                0.872,
+                0.776
+            ],
+            "angle": 0,
+            "content": "- Develop practical skills in financial data analysis, trading strategy development, and deployment to real market and broker account"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.071,
+                0.272,
+                0.881,
+                0.776
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.072,
+                0.109,
+                0.453,
+                0.19
+            ],
+            "angle": 0,
+            "content": "Topics to be covered"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.262,
+                0.647,
+                0.317
+            ],
+            "angle": 0,
+            "content": "1. Algorithmic trading basics and financial markets"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.323,
+                0.712,
+                0.375
+            ],
+            "angle": 0,
+            "content": "2. Data scraping and database management with Python"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.383,
+                0.783,
+                0.436
+            ],
+            "angle": 0,
+            "content": "3. Building backtest framework and rule-based trading strategy"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.443,
+                0.71,
+                0.491
+            ],
+            "angle": 0,
+            "content": "4. Statistical time series analysis for market classification"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.501,
+                0.522,
+                0.553
+            ],
+            "angle": 0,
+            "content": "5. Statistical arbitrage and pairs trading"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.561,
+                0.446,
+                0.609
+            ],
+            "angle": 0,
+            "content": "6. Capital and Risk Management"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.62,
+                0.665,
+                0.669
+            ],
+            "angle": 0,
+            "content": "7. Performance measures and portfolio optimization"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.678,
+                0.626,
+                0.729
+            ],
+            "angle": 0,
+            "content": "8. Order book and high frequency data modeling"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.737,
+                0.886,
+                0.824
+            ],
+            "angle": 0,
+            "content": "9. Market practice in strategy optimization, broker selection, and market tricks"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.836,
+                0.662,
+                0.886
+            ],
+            "angle": 0,
+            "content": "10. Machine learning use cases in algorithmic trading"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.262,
+                0.886,
+                0.886
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.113,
+                0.467,
+                0.18
+            ],
+            "angle": 0,
+            "content": "Assessment methods"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.274,
+                0.341,
+                0.329
+            ],
+            "angle": 0,
+            "content": "- Group project - 50%"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.348,
+                0.851,
+                0.4
+            ],
+            "angle": 0,
+            "content": "• Written final exam covers all taught content in the course – 50%"
+        },
+        {
+            "type": "list",
+            "bbox": [
+                0.075,
+                0.274,
+                0.851,
+                0.4
+            ],
+            "angle": 0,
+            "content": null
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "bbox": [
+                0.074,
+                0.114,
+                0.221,
+                0.182
+            ],
+            "angle": 0,
+            "content": "Contact"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.074,
+                0.275,
+                0.177,
+                0.323
+            ],
+            "angle": 0,
+            "content": "Lecturer"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.346,
+                0.77,
+                0.405
+            ],
+            "angle": 0,
+            "content": "- Tony Lam: tonylamfm@hku.hk / tonylam@algogene.com"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.074,
+                0.498,
+                0.114,
+                0.545
+            ],
+            "angle": 0,
+            "content": "TA:"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.075,
+                0.571,
+                0.378,
+                0.628
+            ],
+            "angle": 0,
+            "content": "- Rex Tsang: trex@hku.hk"
+        }
+    ]
+]

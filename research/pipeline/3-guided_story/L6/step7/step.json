@@ -1,0 +1,146 @@
+{
+  "lesson_id": "L6",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s043",
+      "introduced_terms": [
+        "position_sizing"
+      ],
+      "lines": [
+        "知道风险有多大后，下一个问题是：每次交易该投入多少？",
+        "这就是**<term id=\"position_sizing\">仓位管理</term>**。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s044",
+      "introduced_terms": [
+        "fixed_size"
+      ],
+      "lines": [
+        "最简单的策略：**<term id=\"fixed_size\">固定规模法</term>**。",
+        "每次都买固定数量，比如 100 股。简单，但不够灵活。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s045",
+      "introduced_terms": [
+        "balance_rescaling"
+      ],
+      "lines": [
+        "进阶一点：**<term id=\"balance_rescaling\">余额重缩放法</term>**。",
+        "账户资金变多了，就多买点；变少了，就少买点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s046",
+      "introduced_terms": [
+        "dollar_risk_approach"
+      ],
+      "lines": [
+        "更精细的：**<term id=\"dollar_risk_approach\">美元风险法</term>**。",
+        "每笔交易只承担账户总资金的 1% 作为风险。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s047",
+      "introduced_terms": [
+        "kelly_criterion"
+      ],
+      "lines": [
+        "最后，还有一个数学上最优的策略：**<term id=\"kelly_criterion\">凯利公式</term>**。",
+        "它告诉你，为了长期让资金增长最快，应该下多大比例。"
+      ],
+      "type": "narration"
+    },
+    {
+      "formula": {
+        "latex": "f^* = \\frac{bp - q}{b}",
+        "spoken": "f 星等于 b 乘以 p 减去 q，再除以 b。"
+      },
+      "id": "s048",
+      "lines": [
+        "凯利公式："
+      ],
+      "type": "formula"
+    },
+    {
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "其中 p 是胜率，q 是败率，b 是赔率。",
+        "如果算出来是负数，说明这个交易不值得做。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.2"
+        ],
+        "explanation": "f* = (1*0.6 - 0.4) / 1 = 0.2，即每次投入 20% 的资金。",
+        "kind": "fill_in_blank",
+        "prompt": "根据凯利公式，最优投注比例是多少？（请用小数表示，如 0.2）"
+      },
+      "id": "s050",
+      "lines": [
+        "一个交易策略胜率 60%，赔率是 1:1（即赢了赚 1 元，输了亏 1 元）。",
+        "根据凯利公式，最优投注比例是多少？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "Common position sizing strategy: 1. Fixed Size, 2. Balance Rescaling, 3. Dollar Risk Approach, 4. Kelly Criterion.",
+    "related": [
+      "position sizing",
+      "fixed size",
+      "balance rescaling",
+      "dollar risk approach",
+      "kelly criterion"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "balance_rescaling": {
+      "aliases": [
+        "Balance Rescaling"
+      ],
+      "display": "余额重缩放法",
+      "gloss": "根据账户余额的变化，按比例调整交易规模。"
+    },
+    "dollar_risk_approach": {
+      "aliases": [
+        "Dollar Risk Approach"
+      ],
+      "display": "美元风险法",
+      "gloss": "每笔交易只承担账户总资金一个固定百分比的风险。"
+    },
+    "fixed_size": {
+      "aliases": [
+        "Fixed Size"
+      ],
+      "display": "固定规模法",
+      "gloss": "每次交易都使用相同的数量。"
+    },
+    "kelly_criterion": {
+      "aliases": [
+        "Kelly Criterion"
+      ],
+      "display": "凯利公式",
+      "gloss": "用于确定最优投注比例，以最大化长期资金增长率的公式。"
+    },
+    "position_sizing": {
+      "aliases": [
+        "Position Sizing"
+      ],
+      "display": "仓位管理",
+      "gloss": "决定每笔交易投入多少资金的方法。"
+    }
+  }
+}

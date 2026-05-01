@@ -1,0 +1,546 @@
+---
+lessonId: L3
+title: 构建回测框架与基于规则的交易策略
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["core_theme", "backtesting_definition", "backtesting_purpose", "backtesting_procedures"]
+    linkedSteps: ["step1"]
+  - sectionId: concept-map
+    title: 课程全景与关键问题
+    coverageTags: ["core_theme"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6", "step7", "step8"]
+  - sectionId: backtesting-foundation
+    title: 回测基础：定义、流程与数据清洗
+    coverageTags: ["backtesting_definition", "backtesting_purpose", "backtesting_procedures", "data_cleaning_definition", "data_cleaning_common_issues", "data_cleaning_missing_values", "data_cleaning_duplicates", "data_cleaning_logic_errors"]
+    linkedSteps: ["step1", "step2"]
+  - sectionId: candlestick-patterns
+    title: K线图与常见形态
+    coverageTags: ["candlestick_intro", "ohlc_components", "bullish_bearish_candle", "candlestick_body_wick", "doji_pattern", "hammer_pattern", "shooting_star_pattern", "pattern_trend_reversal"]
+    linkedSteps: ["step3"]
+  - sectionId: ma-cross-strategy
+    title: 移动平均线交叉策略
+    coverageTags: ["moving_average_definition", "simple_moving_average_formula", "ma_cross_strategy", "golden_cross", "death_cross"]
+    linkedSteps: ["step4"]
+  - sectionId: excel-implementation
+    title: 用Excel实现MA交叉策略
+    coverageTags: ["excel_ma_cross_steps", "excel_ma_calc_function", "excel_signal_identification", "excel_position_calculation", "excel_daily_pnl_calculation", "excel_cumulative_pnl_calculation"]
+    linkedSteps: ["step5"]
+  - sectionId: python-backtest-tools
+    title: 用Python和专用库回测
+    coverageTags: ["python_backtest_tools", "talib_overview", "backtesting_py_framework"]
+    linkedSteps: ["step7"]
+  - sectionId: pitfalls-assumptions
+    title: 回测的陷阱与假设
+    coverageTags: ["overfitting", "look_ahead_bias", "survivorship_bias", "backtest_assumptions", "best_practices"]
+    linkedSteps: ["step6"]
+  - sectionId: rsi-strategy
+    title: RSI策略练习
+    coverageTags: ["rsi_definition", "rsi_overbought_oversold", "rsi_trading_logic", "rsi_strategy_implementation"]
+    linkedSteps: ["step8"]
+  - sectionId: review-path
+    title: 复习路线
+    coverageTags: ["core_theme"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6", "step7", "step8"]
+coverageTrace:
+  - coverageTag: core_theme
+    description: 构建回测框架与基于规则的交易策略的整体主题
+    sectionIds: ["why-this-lesson-matters", "concept-map", "review-path"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6", "step7", "step8"]
+  - coverageTag: backtesting_definition
+    description: 回测的定义：用历史数据模拟交易策略，验证其有效性。
+    sectionIds: ["why-this-lesson-matters", "backtesting-foundation"]
+    linkedSteps: ["step1"]
+  - coverageTag: backtesting_purpose
+    description: 回测的目的：在实盘交易前验证策略的有效性。
+    sectionIds: ["why-this-lesson-matters", "backtesting-foundation"]
+    linkedSteps: ["step1"]
+  - coverageTag: backtesting_procedures
+    description: 回测的关键步骤：数据收集、数据清洗、策略实施、绩效评估。
+    sectionIds: ["why-this-lesson-matters", "backtesting-foundation"]
+    linkedSteps: ["step1"]
+  - coverageTag: data_cleaning_definition
+    description: 数据清洗的定义、目的和重要性
+    sectionIds: ["backtesting-foundation"]
+    linkedSteps: ["step2"]
+  - coverageTag: data_cleaning_common_issues
+    description: 数据清洗中常见的三种问题：缺失值、重复记录、逻辑错误
+    sectionIds: ["backtesting-foundation"]
+    linkedSteps: ["step2"]
+  - coverageTag: data_cleaning_missing_values
+    description: 缺失值的处理方法：补全、填充、删除
+    sectionIds: ["backtesting-foundation"]
+    linkedSteps: ["step2"]
+  - coverageTag: data_cleaning_duplicates
+    description: 重复记录的处理方法：保留一条、核对后处理
+    sectionIds: ["backtesting-foundation"]
+    linkedSteps: ["step2"]
+  - coverageTag: data_cleaning_logic_errors
+    description: 逻辑错误的识别与处理方法
+    sectionIds: ["backtesting-foundation"]
+    linkedSteps: ["step2"]
+  - coverageTag: candlestick_intro
+    description: K线图（蜡烛图）的定义、用途：展示资产价格波动，汇总OHLC数据。
+    sectionIds: ["candlestick-patterns"]
+    linkedSteps: ["step3"]
+  - coverageTag: ohlc_components
+    description: K线包含开盘价、收盘价、最高价、最低价四个关键信息。
+    sectionIds: ["candlestick-patterns"]
+    linkedSteps: ["step3"]
+  - coverageTag: bullish_bearish_candle
+    description: 阳线（收盘价>开盘价）和阴线（收盘价<开盘价）的视觉特征。
+    sectionIds: ["candlestick-patterns"]
+    linkedSteps: ["step3"]
+  - coverageTag: candlestick_body_wick
+    description: K线的实体（开盘价与收盘价之间）和影线（最高/最低价延伸线）。
+    sectionIds: ["candlestick-patterns"]
+    linkedSteps: ["step3"]
+  - coverageTag: doji_pattern
+    description: 十字星形态：开盘价与收盘价几乎相等，代表市场犹豫不决，可能预示趋势反转。
+    sectionIds: ["candlestick-patterns"]
+    linkedSteps: ["step3"]
+  - coverageTag: hammer_pattern
+    description: 锤子线形态：出现在下跌趋势后，下影线很长，实体很小，是看涨反转信号。
+    sectionIds: ["candlestick-patterns"]
+    linkedSteps: ["step3"]
+  - coverageTag: shooting_star_pattern
+    description: 射击之星形态：出现在上涨趋势后，上影线很长，实体很小，是看跌反转信号。
+    sectionIds: ["candlestick-patterns"]
+    linkedSteps: ["step3"]
+  - coverageTag: pattern_trend_reversal
+    description: K线形态可提供未来价格方向的信号，尤其是反转信号。
+    sectionIds: ["candlestick-patterns"]
+    linkedSteps: ["step3"]
+  - coverageTag: moving_average_definition
+    description: 移动平均线的定义、目的和计算方式
+    sectionIds: ["ma-cross-strategy"]
+    linkedSteps: ["step4"]
+  - coverageTag: simple_moving_average_formula
+    description: 简单移动平均线（SMA）的公式与计算
+    sectionIds: ["ma-cross-strategy"]
+    linkedSteps: ["step4"]
+  - coverageTag: ma_cross_strategy
+    description: MA交叉策略：快慢均线、黄金交叉与死亡交叉
+    sectionIds: ["ma-cross-strategy"]
+    linkedSteps: ["step4"]
+  - coverageTag: golden_cross
+    description: 黄金交叉的定义与交易信号
+    sectionIds: ["ma-cross-strategy"]
+    linkedSteps: ["step4"]
+  - coverageTag: death_cross
+    description: 死亡交叉的定义与交易信号
+    sectionIds: ["ma-cross-strategy"]
+    linkedSteps: ["step4"]
+  - coverageTag: excel_ma_cross_steps
+    description: 在Excel中实现MA交叉策略的完整步骤：计算MA(7)和MA(14)、识别交叉信号、计算持仓、计算每日盈亏、计算累计盈亏。
+    sectionIds: ["excel-implementation"]
+    linkedSteps: ["step5"]
+  - coverageTag: excel_ma_calc_function
+    description: 在Excel中使用AVERAGE函数计算移动平均线。
+    sectionIds: ["excel-implementation"]
+    linkedSteps: ["step5"]
+  - coverageTag: excel_signal_identification
+    description: 在Excel中识别黄金交叉（买入信号1）和死亡交叉（卖出信号-1）的逻辑。
+    sectionIds: ["excel-implementation"]
+    linkedSteps: ["step5"]
+  - coverageTag: excel_position_calculation
+    description: 在Excel中根据信号和当前持仓状态计算每日持仓的逻辑。
+    sectionIds: ["excel-implementation"]
+    linkedSteps: ["step5"]
+  - coverageTag: excel_daily_pnl_calculation
+    description: 在Excel中计算每日盈亏的公式：持仓 * (今日收盘价 - 昨日收盘价)。
+    sectionIds: ["excel-implementation"]
+    linkedSteps: ["step5"]
+  - coverageTag: excel_cumulative_pnl_calculation
+    description: 在Excel中通过累加每日盈亏计算累计盈亏。
+    sectionIds: ["excel-implementation"]
+    linkedSteps: ["step5"]
+  - coverageTag: python_backtest_tools
+    description: Python回测工具：TA-Lib和Backtesting.py的用途与基本用法
+    sectionIds: ["python-backtest-tools"]
+    linkedSteps: ["step7"]
+  - coverageTag: talib_overview
+    description: TA-Lib：120+技术指标库，一行代码计算指标
+    sectionIds: ["python-backtest-tools"]
+    linkedSteps: ["step7"]
+  - coverageTag: backtesting_py_framework
+    description: Backtesting.py：轻量级回测框架，init/next方法，自动绩效与图表
+    sectionIds: ["python-backtest-tools"]
+    linkedSteps: ["step7"]
+  - coverageTag: overfitting
+    description: 过度拟合：策略过于贴合历史数据，导致在新数据上表现不佳。
+    sectionIds: ["pitfalls-assumptions"]
+    linkedSteps: ["step6"]
+  - coverageTag: look_ahead_bias
+    description: 前视偏差：在回测中使用了当时无法获得的未来信息。
+    sectionIds: ["pitfalls-assumptions"]
+    linkedSteps: ["step6"]
+  - coverageTag: survivorship_bias
+    description: 幸存者偏差：只考虑存活至今的资产，忽略了已经退市的，导致高估策略表现。
+    sectionIds: ["pitfalls-assumptions"]
+    linkedSteps: ["step6"]
+  - coverageTag: backtest_assumptions
+    description: 回测假设：无交易成本、按收盘价成交、允许卖空等，在真实市场中往往不成立。
+    sectionIds: ["pitfalls-assumptions"]
+    linkedSteps: ["step6"]
+  - coverageTag: best_practices
+    description: 最佳实践：用现实的假设，并在样本外数据上验证。
+    sectionIds: ["pitfalls-assumptions"]
+    linkedSteps: ["step6"]
+  - coverageTag: rsi_definition
+    description: RSI（相对强弱指标）的定义：一个动量指标，范围0-100，衡量价格变动的速度和幅度。
+    sectionIds: ["rsi-strategy"]
+    linkedSteps: ["step8"]
+  - coverageTag: rsi_overbought_oversold
+    description: RSI超买（>70）和超卖（<30）的概念及其市场含义。
+    sectionIds: ["rsi-strategy"]
+    linkedSteps: ["step8"]
+  - coverageTag: rsi_trading_logic
+    description: RSI策略的交易规则：RSI<30买入，RSI>70卖出。
+    sectionIds: ["rsi-strategy"]
+    linkedSteps: ["step8"]
+  - coverageTag: rsi_strategy_implementation
+    description: 在Excel、Backtesting.py或ALGOGENE上实现RSI策略的练习。
+    sectionIds: ["rsi-strategy"]
+    linkedSteps: ["step8"]
+---
+
+# 构建回测框架与基于规则的交易策略
+
+## 为什么这一课重要 {#why-this-lesson-matters}
+
+在投入真金白银之前，如何知道你的交易策略是否有效？这一课将带你进入量化交易的核心环节——**回测**。你将学习如何用历史数据模拟交易策略，验证其有效性，并掌握从数据清洗到策略实现、从Excel到Python的完整回测框架。这是从理论走向实践的关键一步。
+
+<KeyPoint>
+回测（Backtesting）是用历史数据模拟交易策略，验证其有效性的过程。它是量化交易的生命线。
+</KeyPoint>
+
+<QuestionRef id="q_quiz_backtest_purpose_v1" />
+
+## 课程全景与关键问题 {#concept-map}
+
+本课围绕“构建回测框架”这一核心任务，依次展开以下主题：
+
+1.  **回测基础**：什么是回测？为什么需要数据清洗？
+2.  **技术分析工具**：如何读懂K线图？常见形态预示什么？
+3.  **策略实现**：如何用移动平均线交叉策略构建交易规则？
+4.  **动手实践**：如何在Excel和Python中实现回测？
+5.  **陷阱与反思**：回测结果可信吗？有哪些常见的坑？
+6.  **拓展练习**：如何实现一个RSI策略？
+
+<Figure src="images/eadd6f08094a3cade84ca188af3f43415558df388d1de9774ac77f29374cda95.jpg" alt="算法交易生命周期图，展示了从数据获取、回测、优化到实盘交易的完整流程">
+算法交易生命周期：从数据到实盘
+</Figure>
+
+## 回测基础：定义、流程与数据清洗 {#backtesting-foundation}
+
+### 什么是回测？
+
+<Definition title="回测 (Backtesting)">
+用历史数据模拟交易策略，验证其在过去表现如何的过程。其核心目的是在实盘交易前评估策略的有效性，避免盲目投资。
+</Definition>
+
+回测就像电影上映前的试映会——通过小范围观众的反馈来预测电影是否受欢迎，而不是直接大规模上映。
+
+<KeyPoint>
+回测的四大关键步骤：
+1. 数据收集 (Data Collection)
+2. 数据清洗 (Data Cleaning)
+3. 策略实施 (Strategy Implementation)
+4. 绩效评估 (Performance Evaluation)
+</KeyPoint>
+
+<QuestionFamily familyId="qf_flash_backtest_steps" />
+<QuestionRef id="q_quiz_backtest_steps_order_v1" />
+
+### 数据清洗：让数据可信
+
+原始数据中常常包含各种问题，直接使用会导致回测结果失真。这个过程称为**数据清洗**。
+
+<Definition title="数据清洗 (Data Cleaning)">
+识别并修正数据中的错误、缺失、重复或不一致，以提高数据质量，为后续分析打好基础。
+</Definition>
+
+#### 常见的数据问题
+
+1.  **缺失值 (Missing Values)**：某一天的价格数据为空。
+    -   **处理方法**：从其他来源补全、用相邻数据填充（如取平均值）、或直接删除该行。
+2.  **重复记录 (Duplicated Records)**：同一天出现两条完全一样的数据。
+    -   **处理方法**：保留一条即可。
+3.  **逻辑错误 (Incorrect Logics)**：数据违反了基本逻辑，例如收盘价高于当日最高价。
+    -   **处理方法**：从其他来源核对、删除该行、或将错误值修正为边界值（如将收盘价修正为最高价）。
+
+<Example title="逻辑错误识别">
+在Excel中，可以使用公式 `=AND(Close<=High, Close>=Low, Open<=High, Open>=Low)` 来快速检查一行数据是否有效。
+</Example>
+
+<QuestionFamily familyId="qf_flash_data_cleaning_def" />
+<QuestionRef id="q_quiz_data_issues_identify_v1" />
+<QuestionFamily familyId="qf_long_data_issues_handling" />
+
+## K线图与常见形态 {#candlestick-patterns}
+
+### K线图基础
+
+<Definition title="K线图 (Candlestick Chart)">
+一种展示资产价格波动的金融图表，它将一天（或任意时间段）的价格变化浓缩成一根“蜡烛”，直观地显示开盘价、收盘价、最高价和最低价（OHLC）。
+</Definition>
+
+<Figure src="images/a6fccb6cb2b229b6494f629e95a068ae057b8742065c1b4687634aa1d4a2283d.jpg" alt="K线图组成部分示意图，标注了实体、上影线、下影线、开盘价、收盘价、最高价和最低价">
+K线图的组成部分
+</Figure>
+
+-   **实体 (Body)**：开盘价与收盘价之间的区域。
+-   **影线 (Wicks)**：从实体上下延伸的线条，代表最高价和最低价。
+-   **阳线 (Bullish Candle)**：收盘价 > 开盘价，通常为绿色或白色。
+-   **阴线 (Bearish Candle)**：收盘价 < 开盘价，通常为红色或黑色。
+
+<Figure src="images/32aa7f44ab285e94b336d6d3a900f142f6de7fb7a2825f72524baa70e58182da.jpg" alt="阳线和阴线的对比图，分别用绿色和红色表示">
+阳线与阴线
+</Figure>
+
+<QuestionFamily familyId="qf_flash_candlestick_components" />
+<QuestionRef id="q_quiz_candlestick_definition_v1" />
+
+### 常见K线形态
+
+K线形态是技术分析的重要工具，它们可以提供未来价格方向的信号，尤其是趋势反转信号。
+
+#### 1. 十字星 (Doji)
+
+<Definition title="十字星 (Doji)">
+开盘价和收盘价几乎相等的K线形态，实体非常小。它代表市场多空双方力量均衡，犹豫不决，可能预示着趋势反转。
+</Definition>
+
+<Figure src="images/4098e61f0f1c3712c0190099a3bd383ae922bf4b310fbd774d6bc3ff0b3b9742.jpg" alt="十字星K线形态示例，实体极小">
+十字星形态
+</Figure>
+
+<QuestionFamily familyId="qf_flash_doji" />
+<QuestionRef id="q_quiz_doji_meaning_v1" />
+
+#### 2. 锤子线 (Hammer)
+
+<Definition title="锤子线 (Hammer)">
+出现在下跌趋势后，下影线很长、实体很小的K线。它表明价格被卖盘压低后，被买盘强势拉回，是潜在的**看涨反转**信号。
+</Definition>
+
+<Figure src="images/98d8bf4ccbf56e9ce8744a18d9a539f0d6aafb933941183a95bb507cd94b19fa.jpg" alt="锤子线K线形态示例，下影线很长，实体很小">
+锤子线形态
+</Figure>
+
+<QuestionFamily familyId="qf_flash_hammer" />
+<QuestionRef id="q_quiz_hammer_identification_v1" />
+
+#### 3. 射击之星 (Shooting Star)
+
+<Definition title="射击之星 (Shooting Star)">
+出现在上涨趋势后，上影线很长、实体很小的K线。它表明价格冲高后遭遇强大抛压，是潜在的**看跌反转**信号。
+</Definition>
+
+<Figure src="images/3be96a4b25aa70d8ba0fae6e08fcca40a570d3fb78897e0d47f430681d89a9b0.jpg" alt="射击之星K线形态示例，上影线很长，实体很小">
+射击之星形态
+</Figure>
+
+<QuestionFamily familyId="qf_flash_shooting_star" />
+<QuestionRef id="q_quiz_shooting_star_identification_v1" />
+
+<Checkpoint title="形态对比">
+锤子线和射击之星是镜像关系：锤子线有长下影线，出现在下跌后，是看涨信号；射击之星有长上影线，出现在上涨后，是看跌信号。
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_compare_reversal_patterns" />
+
+## 移动平均线交叉策略 {#ma-cross-strategy}
+
+### 移动平均线 (Moving Average)
+
+<Definition title="移动平均线 (Moving Average, MA)">
+对一定时期内的价格取平均值，用于平滑短期波动，显示长期趋势。
+</Definition>
+
+**简单移动平均线 (Simple Moving Average, SMA)** 是最基础的形式：
+
+<Formula latex="\mathrm{MA}(n) = \frac{\sum_{t=1}^{n} P_t}{n}">
+N日简单移动平均线等于过去N天的收盘价之和除以N。
+</Formula>
+
+<Example title="SMA计算示例">
+过去5天的收盘价分别为 [10, 12, 14, 16, 18]，则5日SMA = (10+12+14+16+18) / 5 = 14。
+</Example>
+
+<QuestionFamily familyId="qf_flash_ma_def" />
+<QuestionRef id="q_quiz_ma_calc_v1" />
+
+### MA交叉策略
+
+MA交叉策略使用两条不同周期的移动平均线：一条**快线**（短期，如7日MA）和一条**慢线**（长期，如14日MA）。
+
+-   **黄金交叉 (Golden Cross)**：快线上穿慢线，产生**买入**信号。
+-   **死亡交叉 (Death Cross)**：快线下穿慢线，产生**卖出**信号。
+
+<Figure src="images/60e7fc5a614b32e13d1088f66b5f01c23952e9cdaa053567460ff3718f1e428c.jpg" alt="MA交叉策略示意图，展示了快线上穿慢线（黄金交叉）和快线下穿慢线（死亡交叉）的位置">
+MA交叉策略：黄金交叉与死亡交叉
+</Figure>
+
+<QuestionFamily familyId="qf_flash_golden_death" />
+<QuestionRef id="q_quiz_cross_signal_v1" />
+
+<QuestionFamily familyId="qf_long_ma_strategy" />
+
+## 用Excel实现MA交叉策略 {#excel-implementation}
+
+在Excel中实现MA交叉策略，可以让你直观地理解回测的每一个步骤。以下是核心流程：
+
+1.  **计算移动平均线**：使用 `AVERAGE` 函数计算MA(7)和MA(14)。
+    -   例如，`=AVERAGE(F2:F8)` 计算第2到第8行的收盘价平均值，即7日SMA。
+2.  **识别交叉信号**：使用 `IF` 和 `AND` 函数判断黄金交叉和死亡交叉。
+    -   买入信号 (1)：`=IF(AND(H16>I16, H15<I15), 1, ...)`
+    -   卖出信号 (-1)：`=IF(AND(H16<I16, H15>I15), -1, 0)`
+3.  **计算每日持仓**：根据信号和前一日的持仓更新持仓。
+    -   例如，`=K2+IF(AND(K2=0, J3=-1), 0, J3)`
+4.  **计算每日盈亏**：`= 持仓 * (今日收盘价 - 昨日收盘价)`
+5.  **计算累计盈亏**：累加每日盈亏。
+
+<Example title="Excel回测示例">
+假设你下载了汇丰控股（0005.HK）的历史数据，通过上述步骤，你可以快速构建一个MA交叉策略的回测模型，并观察其累计盈亏曲线。
+</Example>
+
+<QuestionFamily familyId="qf_flash_ma_calc" />
+<QuestionRef id="q_quiz_signal_identification_v1" />
+<QuestionFamily familyId="qf_long_excel_workflow" />
+
+## 用Python和专用库回测 {#python-backtest-tools}
+
+当策略变得复杂或数据量巨大时，Python是更强大的选择。本课介绍两个核心工具：
+
+### TA-Lib
+
+<Definition title="TA-Lib">
+一个开源的技术分析库，内置了120多种技术指标（如MA、RSI、布林带等）的计算函数，一行代码即可完成计算。
+</Definition>
+
+```python
+from talib import MA, RSI
+import numpy as np
+
+close_prices = np.array([...])  # 你的收盘价数据
+ma_30 = MA(close_prices, timeperiod=30)  # 计算30日移动平均线
+rsi_14 = RSI(close_prices, timeperiod=14)  # 计算14日RSI
+```
+
+<QuestionFamily familyId="qf_flash_talib" />
+<QuestionRef id="q_quiz_talib_usage_v1" />
+
+### Backtesting.py
+
+<Definition title="Backtesting.py">
+一个轻量级的Python回测框架。你只需定义一个策略类，在 `init` 方法中初始化指标，在 `next` 方法中编写交易逻辑，框架会自动执行回测并生成绩效报告和图表。
+</Definition>
+
+```python
+from backtesting import Backtest, Strategy
+from backtesting.lib import crossover
+from backtesting.test import SMA
+
+class SmaCross(Strategy):
+    def init(self):
+        price = self.data.Close
+        self.ma1 = self.I(SMA, price, 10)
+        self.ma2 = self.I(SMA, price, 20)
+
+    def next(self):
+        if crossover(self.ma1, self.ma2):
+            self.buy()
+        elif crossover(self.ma2, self.ma1):
+            self.sell()
+
+bt = Backtest(GOOG, SmaCross, cash=10000, commission=0.002)
+stats = bt.run()
+bt.plot()
+```
+
+<QuestionFamily familyId="qf_flash_backtesting_py" />
+<QuestionRef id="q_quiz_backtesting_py_usage_v1" />
+
+<QuestionFamily familyId="qf_long_backtesting_py_workflow" />
+
+## 回测的陷阱与假设 {#pitfalls-assumptions}
+
+回测结果看起来很漂亮？先别急着高兴。回测中有很多陷阱，一不小心就会掉进去。
+
+### 常见陷阱
+
+1.  **过度拟合 (Overfitting)**：策略被调整得过于贴合历史数据，导致在新数据上表现不佳。
+    -   **避免方法**：使用样本外数据验证，保持策略简洁。
+2.  **前视偏差 (Look-ahead Bias)**：在回测中不小心使用了当时无法获得的未来信息。
+    -   **例子**：用今天的收盘价来决定昨天的交易。
+    -   **避免方法**：确保所有用于决策的数据在决策时点都是已知的。
+3.  **幸存者偏差 (Survivorship Bias)**：只测试了现在还活着的股票，忽略了那些已经退市的失败者。
+    -   **后果**：高估策略表现。
+    -   **避免方法**：使用包含所有历史资产（包括已退市）的数据集。
+
+<QuestionFamily familyId="qf_flash_overfitting" />
+<QuestionRef id="q_quiz_look_ahead_bias_v1" />
+<QuestionFamily familyId="qf_long_survivorship_bias" />
+
+### 不现实的假设
+
+回测中常做的假设，如“无交易成本”、“可以按收盘价成交”、“允许卖空”，在真实市场中往往不成立。交易成本、滑点、流动性限制都会影响最终收益。
+
+<KeyPoint>
+回测结果好，不代表实盘也能赚钱。关键是要用现实的假设，并在样本外数据上验证。
+</KeyPoint>
+
+<QuestionFamily familyId="qf_flash_backtest_assumptions" />
+<QuestionRef id="q_quiz_backtest_assumptions_v1" />
+<QuestionFamily familyId="qf_long_backtest_assumptions" />
+
+## RSI策略练习 {#rsi-strategy}
+
+### 相对强弱指标 (RSI)
+
+<Definition title="相对强弱指标 (Relative Strength Index, RSI)">
+一个动量指标，用于衡量价格变动的速度和幅度，取值范围在0到100之间。通常用于识别市场的超买或超卖状态。
+</Definition>
+
+-   **超买 (Overbought)**：RSI > 70，可能面临回调。
+-   **超卖 (Oversold)**：RSI < 30，可能迎来反弹。
+
+### RSI策略规则
+
+一个简单的RSI策略如下：
+
+-   当 `RSI(14) < 30` 时，**买入**。
+-   当 `RSI(14) > 70` 时，**卖出**。
+
+<Example title="RSI策略练习">
+尝试在Excel、Backtesting.py或ALGOGENE上实现这个RSI策略，用SPY（标普500 ETF）从2020年到2025年的日线数据来测试。
+</Example>
+
+<QuestionFamily familyId="qf_flash_rsi_def" />
+<QuestionRef id="q_quiz_rsi_action_v1" />
+<QuestionFamily familyId="qf_long_rsi_strategy_explain" />
+
+## 复习路线 {#review-path}
+
+1.  **回顾核心概念**：使用闪卡复习回测、数据清洗、K线形态、MA交叉、RSI等关键术语的定义。
+    -   <QuestionFamily familyId="qf_flash_backtest_def" />
+    -   <QuestionFamily familyId="qf_flash_data_cleaning_def" />
+    -   <QuestionFamily familyId="qf_flash_candlestick_components" />
+    -   <QuestionFamily familyId="qf_flash_ma_def" />
+    -   <QuestionFamily familyId="qf_flash_rsi_def" />
+2.  **检查理解**：完成各主题的章节测验，检验自己对概念和逻辑的掌握程度。
+    -   <QuestionRef id="q_quiz_backtest_purpose_v1" />
+    -   <QuestionRef id="q_quiz_data_cleaning_purpose_v1" />
+    -   <QuestionRef id="q_quiz_candlestick_definition_v1" />
+    -   <QuestionRef id="q_quiz_cross_signal_v1" />
+    -   <QuestionRef id="q_quiz_rsi_meaning_v1" />
+3.  **深入思考**：尝试回答长问题，锻炼自己解释机制、比较概念和应用知识的能力。
+    -   <QuestionFamily familyId="qf_long_backtest_analogy" />
+    -   <QuestionFamily familyId="qf_long_compare_reversal_patterns" />
+    -   <QuestionFamily familyId="qf_long_ma_strategy" />
+    -   <QuestionFamily familyId="qf_long_overfitting" />
+4.  **动手实践**：打开Excel或Python，亲自实现一个MA交叉策略或RSI策略的回测。这是巩固学习成果的最佳方式。

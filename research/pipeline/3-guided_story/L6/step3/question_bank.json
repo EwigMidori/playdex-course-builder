@@ -1,0 +1,539 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "volatility_definition",
+      "covered_by": [
+        "qf_flash_vol_def",
+        "qf_quiz_vol_def"
+      ],
+      "description": "波动率的定义：衡量资产价格变动幅度的指标，通常用标准差表示。"
+    },
+    {
+      "coverage_tag": "standard_deviation_formula",
+      "covered_by": [
+        "qf_flash_sd_formula",
+        "qf_quiz_sd_interpret"
+      ],
+      "description": "标准差公式：σ_{t,n} = sqrt(1/n * Σ(x_{t-i} - μ)^2)，用于计算历史波动率。"
+    },
+    {
+      "coverage_tag": "ewma_concept",
+      "covered_by": [
+        "qf_flash_ewma_def",
+        "qf_quiz_ewma_advantage",
+        "qf_long_ewma_compare"
+      ],
+      "description": "EWMA（指数加权移动平均）：给近期数据更高权重的波动率估计方法。"
+    },
+    {
+      "coverage_tag": "volatility_clustering",
+      "covered_by": [
+        "qf_flash_vc_def",
+        "qf_quiz_vc_example",
+        "qf_long_vc_explain"
+      ],
+      "description": "波动率聚集：大的价格变化后往往跟着大的变化，小的变化后跟着小的变化。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "volatility",
+      "coverage_tags": [
+        "volatility_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_vol_def",
+      "learning_goal": "学生能准确说出波动率的定义及其在金融中的衡量方式。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "波动率的定义和衡量工具。",
+      "term_refs": [
+        {
+          "display": "波动率",
+          "en": "Volatility"
+        }
+      ],
+      "variants": [
+        {
+          "back": "资产价格变动幅度的大小。",
+          "estimated_seconds": 5,
+          "explanation": "波动率是衡量资产价格波动剧烈程度的指标。",
+          "front": "在金融中，“波动率”衡量的是什么？",
+          "question_id": "q_flash_vol_def_v1"
+        },
+        {
+          "back": "标准差。",
+          "estimated_seconds": 5,
+          "explanation": "标准差越大，说明价格波动越剧烈，风险也越高。",
+          "front": "衡量波动率最常用的统计量是什么？",
+          "question_id": "q_flash_vol_def_v2"
+        },
+        {
+          "back": "剧烈；高。",
+          "estimated_seconds": 5,
+          "explanation": "标准差是衡量数据离散程度的统计量，数值越大表示波动越大。",
+          "front": "标准差越大，说明资产价格的波动越____，风险越____。",
+          "question_id": "q_flash_vol_def_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "standard_deviation",
+      "coverage_tags": [
+        "standard_deviation_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_sd_formula",
+      "learning_goal": "学生能回忆标准差公式的组成部分及其含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "标准差公式中的符号含义。",
+      "term_refs": [
+        {
+          "display": "标准差",
+          "en": "Standard Deviation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "数据的均值。",
+          "estimated_seconds": 8,
+          "explanation": "μ 是用于计算离差平方和的平均值。",
+          "front": "在标准差公式 σ_{t,n} = sqrt(1/n * Σ(x_{t-i} - μ)^2) 中，μ 代表什么？",
+          "question_id": "q_flash_sd_formula_v1"
+        },
+        {
+          "back": "观测值的数量（天数）。",
+          "estimated_seconds": 5,
+          "explanation": "n 是用于计算的历史数据点个数。",
+          "front": "在标准差公式中，n 代表什么？",
+          "question_id": "q_flash_sd_formula_v2"
+        },
+        {
+          "back": "相同的权重。",
+          "estimated_seconds": 5,
+          "explanation": "这是简单标准差的一个缺点，它不能突出近期数据的重要性。",
+          "front": "简单标准差给每一天的数据什么样的权重？",
+          "question_id": "q_flash_sd_formula_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "ewma",
+      "coverage_tags": [
+        "ewma_concept"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_ewma_def",
+      "learning_goal": "学生能说出EWMA的核心思想及其与简单标准差的区别。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "EWMA的核心改进点。",
+      "term_refs": [
+        {
+          "display": "指数加权移动平均",
+          "en": "Exponentially Weighted Moving Average (EWMA)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "给近期数据更高的权重。",
+          "estimated_seconds": 8,
+          "explanation": "EWMA 通过指数衰减权重，使模型对近期市场变化反应更灵敏。",
+          "front": "EWMA 相比于简单标准差，最大的改进是什么？",
+          "question_id": "q_flash_ewma_def_v1"
+        },
+        {
+          "back": "更灵敏（更反应近期事件）。",
+          "estimated_seconds": 8,
+          "explanation": "λ 越小，近期数据的权重越大，模型越容易受近期数据影响。",
+          "front": "EWMA 中的 λ（衰减因子）越接近 0，波动率估计对近期事件的反应会怎样？",
+          "question_id": "q_flash_ewma_def_v2"
+        },
+        {
+          "back": "0.94。",
+          "estimated_seconds": 5,
+          "explanation": "这是一个常用的经验值，用于平衡近期和远期数据的影响。",
+          "front": "RiskMetrics（JP Morgan）为 EWMA 的 λ 设置的默认值是多少？",
+          "question_id": "q_flash_ewma_def_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "volatility_clustering",
+      "coverage_tags": [
+        "volatility_clustering"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_vc_def",
+      "learning_goal": "学生能描述波动率聚集现象及其含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "波动率聚集的定义。",
+      "term_refs": [
+        {
+          "display": "波动率聚集",
+          "en": "Volatility Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "大的价格变化后往往跟着大的变化，小的变化后往往跟着小的变化。",
+          "estimated_seconds": 8,
+          "explanation": "这表明波动率不是随机的，而是具有自相关性。",
+          "front": "什么是“波动率聚集”现象？",
+          "question_id": "q_flash_vc_def_v1"
+        },
+        {
+          "back": "随时间变化的（不是恒定的）。",
+          "estimated_seconds": 5,
+          "explanation": "波动率聚集现象直接反驳了波动率恒定不变的假设。",
+          "front": "波动率聚集现象说明波动率是恒定的还是随时间变化的？",
+          "question_id": "q_flash_vc_def_v2"
+        },
+        {
+          "back": "持续很高。",
+          "estimated_seconds": 5,
+          "explanation": "这是波动率聚集的一个典型例子：大的负面冲击后，市场波动会持续一段时间。",
+          "front": "市场崩盘时，波动率通常会持续很高还是低？",
+          "question_id": "q_flash_vc_def_v3"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L6",
+  "longform_families": [
+    {
+      "concept_key": "ewma",
+      "coverage_tags": [
+        "ewma_concept",
+        "standard_deviation_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_ewma_compare",
+      "learning_goal": "学生能比较和对比简单标准差与EWMA在波动率估计中的优缺点。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "简单标准差",
+          "en": "Simple Standard Deviation"
+        },
+        {
+          "display": "指数加权移动平均",
+          "en": "EWMA"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "权重分配",
+            "对近期事件的反应速度",
+            "幽灵特征的影响"
+          ],
+          "question_id": "q_long_ewma_compare_v1",
+          "reference_answer": [
+            "简单标准差给过去n天内的每一天数据分配相同的权重。EWMA则通过指数衰减因子λ（0<λ<1）给近期数据更高权重，远期数据权重指数递减。",
+            "由于EWMA更重视近期数据，当市场发生突变时，EWMA的波动率估计值能更快地反映这一变化。简单标准差由于对所有数据一视同仁，其反应相对滞后。",
+            "“幽灵特征”指一个极端的观测值会在后续一段时间内持续影响波动率估计。在简单标准差中，这个极端值会在接下来的n天内一直以相同权重影响结果，直到它被移出窗口。在EWMA中，该极端值的影响会随着时间推移按λ的幂次迅速衰减，因此“幽灵”效应更短暂、更轻微。"
+          ],
+          "rubric_points": [
+            "明确指出简单标准差给所有数据点相同权重，而EWMA给近期数据更高权重。",
+            "解释EWMA因此对近期市场变化反应更灵敏，而简单标准差反应较慢。",
+            "解释简单标准差中一个极端观测值会在n天内持续影响估计值（幽灵特征），而EWMA中这种影响会随时间指数衰减。"
+          ],
+          "stem": "比较简单标准差和 EWMA 在估计金融资产波动率时的优缺点。请从权重分配、对近期事件的反应速度、以及“幽灵特征”（ghost features）的影响三个方面进行阐述。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "EWMA的优势",
+            "简单标准差的适用场景"
+          ],
+          "question_id": "q_long_ewma_compare_v2",
+          "reference_answer": [
+            "对于高频交易策略，风险状况可能迅速变化。EWMA通过给近期数据更高权重，能更快地调整波动率估计，从而更及时地反映当前市场风险。此外，EWMA对极端值的处理更平滑，避免了简单标准差中极端值在固定窗口期内持续产生影响的“幽灵特征”。",
+            "如果分析师有强有力的理论或实证证据表明资产的长期波动率是稳定的，并且希望估计值不受短期市场噪音的过度影响，那么使用一个较大时间窗口（例如n=120或252天）的简单标准差可能更合适。它能提供一个更平滑、更稳定的长期波动率基准。"
+          ],
+          "rubric_points": [
+            "解释EWMA对市场变化反应灵敏，适合捕捉快速变化的风险。",
+            "解释EWMA能更自然地处理“幽灵特征”。",
+            "指出如果相信长期波动率是常数，且不希望被短期噪音干扰，使用较大n的简单标准差可能更合适。"
+          ],
+          "stem": "假设你是一个风险管理师，需要为一个高频交易策略选择波动率估计模型。请解释为什么 EWMA 通常比简单标准差更受青睐？在什么情况下，简单标准差可能是更合适的选择？"
+        }
+      ]
+    },
+    {
+      "concept_key": "volatility_clustering",
+      "coverage_tags": [
+        "volatility_clustering"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_vc_explain",
+      "learning_goal": "学生能用自己的语言解释波动率聚集现象及其对风险管理的重要性。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "波动率聚集",
+          "en": "Volatility Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "波动率聚集的定义",
+            "对风险管理的重要性",
+            "市场实例"
+          ],
+          "question_id": "q_long_vc_explain_v1",
+          "reference_answer": [
+            "波动率聚集是指金融资产价格的大幅变动往往倾向于聚集在一起，即一个大的价格波动（无论是上涨还是下跌）之后，通常紧跟着另一个大的波动；同样，小的波动之后也往往跟着小的波动。",
+            "这一现象对风险管理至关重要，因为它推翻了“波动率恒定”的简单假设。认识到波动率是随时间变化且具有自相关性的，风险管理者才能使用更先进的模型（如ARCH和GARCH）来动态地预测和衡量风险，而不是依赖一个静态的标准差。这有助于更准确地设定保证金要求、计算在险价值（VaR）以及制定仓位管理策略。",
+            "一个典型的例子是2008年全球金融危机。危机爆发后，全球股市的波动率急剧上升，并在随后数月甚至数年内都保持在远高于危机前水平的状态，形成了明显的波动率聚集。"
+          ],
+          "rubric_points": [
+            "准确定义波动率聚集：大的价格变化后往往跟着大的变化，小的变化后跟着小的变化。",
+            "解释其重要性：它表明波动率不是常数，而是可预测的（自相关），因此可以使用ARCH/GARCH等模型进行建模和预测，从而更准确地衡量风险。",
+            "给出一个实例，如2008年金融危机期间市场波动率持续高企，或一个公司发布盈利报告后股价波动加剧。"
+          ],
+          "stem": "请解释什么是“波动率聚集”现象，并说明为什么这一现象对金融风险管理至关重要。请至少给出一个市场实例。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "用波动率聚集解释观察到的现象",
+            "对简单标准差风险评估的挑战"
+          ],
+          "question_id": "q_long_vc_explain_v2",
+          "reference_answer": [
+            "观察到的现象正是波动率聚集的典型表现。股票价格先是经历了一段高波动期（大的变化后跟着大的变化），然后进入了一段低波动期（小的变化后跟着小的变化）。这表明该股票的波动率状态发生了切换，而不是保持恒定。",
+            "如果使用一个覆盖了高波动期和低波动期的简单标准差来评估当前风险，会面临严重问题。在低波动期，这个包含了高波动历史数据的标准差会高估当前的实际风险，导致资金利用不足或过度保守。反之，如果市场刚刚进入高波动期，而标准差窗口还包含之前的低波动数据，则会低估当前的风险，可能导致仓位过大而遭受损失。因此，简单标准差无法有效处理波动率状态的变化，而波动率聚集现象恰恰说明了这种状态变化是常态。"
+          ],
+          "rubric_points": [
+            "正确地将观察到的现象归类为波动率聚集。",
+            "解释高波动期和低波动期交替出现是波动率聚集的典型表现。",
+            "指出如果使用包含整个时期（高波动和低波动）的简单标准差，会高估低波动期的风险，同时低估高波动期的风险，导致风险评估不准确。"
+          ],
+          "stem": "假设你观察到某只股票的价格在连续几天内都出现了超过2%的涨跌幅，随后又进入了连续几周波动率极低的时期。请用“波动率聚集”的概念解释这一现象，并讨论这对使用简单标准差进行风险评估可能带来的问题。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "volatility",
+      "coverage_tags": [
+        "volatility_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_vol_def",
+      "learning_goal": "学生能在选择题中准确识别波动率的定义和衡量方式。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "波动率",
+          "en": "Volatility"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "波动率衡量的是资产价格的不确定性或变动幅度，通常用标准差表示。",
+          "options": [
+            "资产的平均收益率",
+            "资产价格变动的幅度",
+            "资产的流动性",
+            "资产的信用评级"
+          ],
+          "question_id": "q_quiz_vol_def_v1",
+          "stem": "在金融风险管理中，“波动率”通常被用来衡量什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "标准差是衡量数据离散程度的标准统计量，常用于表示波动率。",
+          "options": [
+            "均值",
+            "中位数",
+            "标准差",
+            "峰度"
+          ],
+          "question_id": "q_quiz_vol_def_v2",
+          "stem": "以下哪个统计量最常用于量化金融资产的波动率？"
+        }
+      ]
+    },
+    {
+      "concept_key": "standard_deviation",
+      "coverage_tags": [
+        "standard_deviation_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_sd_interpret",
+      "learning_goal": "学生能理解标准差公式的含义及其局限性。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "标准差",
+          "en": "Standard Deviation"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "简单标准差给每一天的数据分配相同的权重，这是它的一个主要特点，也是其局限性所在。",
+          "options": [
+            "最近一天的数据权重最高",
+            "每一天的数据权重相同",
+            "过去 n 天以外的数据也会被考虑",
+            "计算结果总是比 EWMA 更准确"
+          ],
+          "question_id": "q_quiz_sd_interpret_v1",
+          "stem": "使用过去 n 天的数据计算简单标准差时，以下哪项描述是正确的？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 25,
+          "explanation": "使用较小的 n 值可以让简单标准差更关注近期数据，而 EWMA 通过指数加权更系统地实现了这一点。两者都可以，但 EWMA 更精细。",
+          "options": [
+            "使用较大 n 值的简单标准差",
+            "使用较小 n 值的简单标准差",
+            "使用 EWMA",
+            "以上两种方法（较小 n 的简单标准差和 EWMA）都可以，但 EWMA 更系统化"
+          ],
+          "question_id": "q_quiz_sd_interpret_v2",
+          "stem": "如果一位分析师认为近期市场波动更能反映当前风险状况，他应该选择哪种波动率估计方法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "ewma",
+      "coverage_tags": [
+        "ewma_concept"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ewma_advantage",
+      "learning_goal": "学生能辨析EWMA相对于简单标准差的优势。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "指数加权移动平均",
+          "en": "EWMA"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "EWMA 通过给近期数据更高权重，能更快地捕捉市场的最新变化。",
+          "options": [
+            "计算速度更快",
+            "不需要假设数据分布",
+            "对近期市场变化反应更灵敏",
+            "结果总是更小"
+          ],
+          "question_id": "q_quiz_ewma_advantage_v1",
+          "stem": "与使用相同数量历史数据的简单标准差相比，EWMA 的主要优势是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "λ 越小，近期数据的权重越大，因此模型对近期市场变化的反应会更灵敏。",
+          "options": [
+            "对近期数据的反应变得更迟钝",
+            "对近期数据的反应变得更灵敏",
+            "波动率估计值会完全不变",
+            "模型将不再有效"
+          ],
+          "question_id": "q_quiz_ewma_advantage_v2",
+          "stem": "在 EWMA 模型中，如果 λ（衰减因子）从 0.94 降低到 0.80，波动率估计值会如何变化？"
+        }
+      ]
+    },
+    {
+      "concept_key": "volatility_clustering",
+      "coverage_tags": [
+        "volatility_clustering"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_vc_example",
+      "learning_goal": "学生能识别波动率聚集现象的实际例子。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "波动率聚集",
+          "en": "Volatility Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "波动率聚集指大的波动后往往跟着大的波动，市场崩盘后的持续高波动是典型例子。",
+          "options": [
+            "股票价格长期稳定上涨",
+            "市场崩盘后，波动率持续处于高位",
+            "债券价格与利率呈反向变动",
+            "公司盈利超预期导致股价跳空高开"
+          ],
+          "question_id": "q_quiz_vc_example_v1",
+          "stem": "以下哪个市场现象最符合“波动率聚集”的描述？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "波动率聚集现象直接表明波动率不是恒定的，而是随时间变化的。",
+          "options": [
+            "该资产价格是随机游走的",
+            "该资产的波动率是随时间变化的",
+            "该资产没有风险",
+            "该资产的收益率是正态分布的"
+          ],
+          "question_id": "q_quiz_vc_example_v2",
+          "stem": "观察到某资产价格在一段时期内频繁出现大幅涨跌，随后进入一段相对平静期。这种现象支持以下哪个观点？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "L6: Capital and Risk Management - Risk Measurement: Volatility Analysis (Historical estimates, EWMA, GARCH model)",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "L6 step3: 衡量风险：从标准差到波动率模型",
+    "plain_text": "pipeline/1-plain/L6/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "L6: Capital and Risk Management - Risk Measurement: Volatility Analysis (Historical estimates, EWMA, GARCH model)"
+  },
+  "target_language": "zh-CN"
+}

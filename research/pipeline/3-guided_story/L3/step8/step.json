@@ -1,0 +1,100 @@
+{
+  "lesson_id": "L3",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s052",
+      "introduced_terms": [
+        "rsi"
+      ],
+      "lines": [
+        "最后，我们来挑战一个练习：RSI策略。",
+        "<term id=\"rsi\">相对强弱指标</term>是一个常用的动量指标。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "RSI的值在0到100之间。",
+        "通常认为，RSI超过70时，市场处于超买状态，可能回调。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "当RSI低于30时，市场处于超卖状态，可能反弹。",
+        "RSI策略就是基于这个逻辑。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "策略规则：",
+        "当RSI(14) < 30时，买入。",
+        "当RSI(14) > 70时，卖出。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s056",
+      "introduced_terms": [],
+      "lines": [
+        "你可以尝试在Excel、Backtesting.py或ALGOGENE上实现这个策略。",
+        "用SPY（标普500 ETF）从2020年到2025年的日线数据来测试。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "RSI低于30被视为超卖，是潜在的买入信号。",
+        "kind": "single_choice",
+        "options": [
+          "买入",
+          "卖出",
+          "持有不动",
+          "无法判断"
+        ],
+        "prompt": "根据RSI策略，当RSI(14)的值为25时，应该怎么做？"
+      },
+      "id": "s057",
+      "lines": [
+        "根据RSI策略，当RSI(14)的值为25时，应该怎么做？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [
+        "记住，没有完美的策略。",
+        "回测只是第一步，实盘交易还需要考虑更多现实因素。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "plain_text": "RSI（相对强弱指标）是一个动量指标，范围0-100。通常RSI>70为超买，RSI<30为超卖。RSI策略：当RSI<30时买入，当RSI>70时卖出。",
+    "related": [
+      "rsi"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "rsi": {
+      "aliases": [
+        "Relative Strength Index",
+        "RSI"
+      ],
+      "display": "相对强弱指标",
+      "gloss": "一种动量指标，用于衡量价格变动的速度和幅度，范围在0到100之间。"
+    }
+  }
+}

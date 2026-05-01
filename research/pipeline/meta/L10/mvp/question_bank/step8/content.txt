@@ -1,0 +1,286 @@
+```json
+{
+  "lesson_id": "L10",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L10/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "L10: Machine learning use cases in algorithmic trading - Agenda: Major categories of ML algorithms, Multiple use cases of ML in algo-trading, The future of smart investment systems",
+    "source_outline": "L10: Machine learning use cases in algorithmic trading - Agenda: Major categories of ML algorithms, Multiple use cases of ML in algo-trading, The future of smart investment systems",
+    "lesson_map": "step8: 挑战与未来：AI交易的边界"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "limitations_of_ai_trading",
+      "description": "AI交易的主要局限：非平稳市场、过拟合、高维状态空间",
+      "covered_by": ["qf_flash_limitations_v1", "qf_flash_limitations_v2", "qf_flash_limitations_v3", "qf_quiz_limitations_v1", "qf_quiz_limitations_v2", "qf_long_future_v1", "qf_long_future_v2"]
+    },
+    {
+      "coverage_tag": "non_stationary_market",
+      "description": "金融市场的非平稳性：市场规律随时间变化，模型需要持续适应",
+      "covered_by": ["qf_flash_limitations_v1", "qf_quiz_limitations_v1"]
+    },
+    {
+      "coverage_tag": "overfitting_risk",
+      "description": "过拟合风险：模型在历史数据上表现完美，但在实盘中失效",
+      "covered_by": ["qf_flash_limitations_v2", "qf_quiz_limitations_v2"]
+    },
+    {
+      "coverage_tag": "high_dimensionality",
+      "description": "高维状态空间：交易环境的状态和动作空间巨大，增加学习难度",
+      "covered_by": ["qf_flash_limitations_v3"]
+    },
+    {
+      "coverage_tag": "future_human_ai_synthesis",
+      "description": "未来方向：人机协同，AI提供建议，人类做最终判断",
+      "covered_by": ["qf_long_future_v1", "qf_long_future_v2"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_limitations_v1",
+      "question_type": "short_answer",
+      "linked_steps": ["step8"],
+      "concept_key": "non_stationary_market",
+      "coverage_tags": ["limitations_of_ai_trading", "non_stationary_market"],
+      "term_refs": [
+        {
+          "display": "非平稳性",
+          "en": "Non-Stationary"
+        }
+      ],
+      "learning_goal": "学生能解释金融市场非平稳性的含义及其对AI交易模型的影响。",
+      "difficulty": "easy",
+      "retrieval_focus": "非平稳性的定义及其对交易策略有效性的影响。",
+      "variants": [
+        {
+          "question_id": "q_flash_limitations_v1_v1",
+          "front": "金融市场被称为“非平稳”环境，这意味着什么？",
+          "back": "市场的统计特性（如规律、模式）会随时间变化。",
+          "explanation": "非平稳性意味着过去有效的策略可能在未来失效，模型需要持续适应。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_limitations_v1_v2",
+          "front": "如果去年有效的交易策略今年失效了，这反映了金融市场的什么特性？",
+          "back": "非平稳性。",
+          "explanation": "非平稳性意味着市场规律会变，模型不能一劳永逸。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_limitations_v2",
+      "question_type": "short_answer",
+      "linked_steps": ["step8"],
+      "concept_key": "overfitting_risk",
+      "coverage_tags": ["limitations_of_ai_trading", "overfitting_risk"],
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "learning_goal": "学生能定义过拟合，并说明其在AI交易中的具体表现。",
+      "difficulty": "easy",
+      "retrieval_focus": "过拟合的定义及其在交易中的典型表现。",
+      "variants": [
+        {
+          "question_id": "q_flash_limitations_v2_v1",
+          "front": "在AI交易中，“过拟合”指的是什么现象？",
+          "back": "模型在历史数据上表现完美，但在新数据（实盘）上表现很差。",
+          "explanation": "过拟合的模型学到了历史数据中的噪声而非普遍规律。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_limitations_v2_v2",
+          "front": "一个AI交易模型在回测中收益惊人，但实盘交易却持续亏损，这最可能是什么问题？",
+          "back": "过拟合。",
+          "explanation": "过拟合导致模型无法泛化到新的市场数据。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_limitations_v3",
+      "question_type": "short_answer",
+      "linked_steps": ["step8"],
+      "concept_key": "high_dimensionality",
+      "coverage_tags": ["limitations_of_ai_trading", "high_dimensionality"],
+      "term_refs": [
+        {
+          "display": "高维状态空间",
+          "en": "High Dimensionality"
+        }
+      ],
+      "learning_goal": "学生能理解交易环境的高维状态空间对强化学习模型的挑战。",
+      "difficulty": "medium",
+      "retrieval_focus": "高维状态空间对Q学习等强化学习算法的具体挑战。",
+      "variants": [
+        {
+          "question_id": "q_flash_limitations_v3_v1",
+          "front": "与下围棋相比，金融交易的状态空间有什么特点？",
+          "back": "状态空间巨大且非有限，有无数种可能的状态和动作。",
+          "explanation": "围棋的状态空间虽然大但有限，而市场状态是连续且无限的。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_limitations_v3_v2",
+          "front": "Q学习在交易中面临“高维状态空间”挑战，这会导致什么问题？",
+          "back": "需要巨大的计算资源和时间才能有效训练。",
+          "explanation": "状态和动作空间过大，使得Q表难以收敛。",
+          "estimated_seconds": 8
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_limitations_v1",
+      "question_type": "single_choice",
+      "linked_steps": ["step8"],
+      "concept_key": "non_stationary_market",
+      "coverage_tags": ["limitations_of_ai_trading", "non_stationary_market"],
+      "term_refs": [
+        {
+          "display": "非平稳性",
+          "en": "Non-Stationary"
+        }
+      ],
+      "learning_goal": "学生能辨析非平稳性对AI交易模型的具体影响。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_limitations_v1_v1",
+          "stem": "以下哪一项最能说明金融市场的“非平稳性”对AI交易模型的挑战？",
+          "options": [
+            "模型需要处理大量历史数据",
+            "模型学到的规律可能随时失效，需要持续更新",
+            "模型无法处理高频交易数据",
+            "模型需要更复杂的神经网络结构"
+          ],
+          "answer": 1,
+          "explanation": "非平稳性意味着市场规律会变，模型必须持续适应，否则策略会失效。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_limitations_v1_v2",
+          "stem": "一个Q学习交易员在2023年表现优异，但在2024年市场风格切换后表现糟糕。这最直接地反映了什么问题？",
+          "options": [
+            "过拟合",
+            "非平稳性",
+            "高维状态空间",
+            "奖励函数设计不当"
+          ],
+          "answer": 1,
+          "explanation": "市场风格切换体现了环境的非平稳性，导致之前学到的策略不再适用。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_limitations_v2",
+      "question_type": "single_choice",
+      "linked_steps": ["step8"],
+      "concept_key": "overfitting_risk",
+      "coverage_tags": ["limitations_of_ai_trading", "overfitting_risk"],
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "learning_goal": "学生能识别过拟合在交易模型中的表现及其原因。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_limitations_v2_v1",
+          "stem": "以下哪个现象最能表明一个AI交易模型可能过拟合了？",
+          "options": [
+            "模型在训练集和测试集上的表现一致",
+            "模型在历史数据上收益极高，但在模拟交易中表现平平",
+            "模型在训练集上收益极高，但在实盘交易中持续亏损",
+            "模型在训练集上收益较低，但在实盘交易中表现良好"
+          ],
+          "answer": 2,
+          "explanation": "过拟合的典型特征是训练集表现好，但无法泛化到新数据。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_limitations_v2_v2",
+          "stem": "为什么AI交易模型容易过拟合？",
+          "options": [
+            "因为市场数据太少",
+            "因为模型结构太简单",
+            "因为历史数据中的噪声和特定模式可能被模型当作普遍规律学习",
+            "因为交易策略本身就不稳定"
+          ],
+          "answer": 2,
+          "explanation": "模型可能过度学习历史数据中的噪声和偶然模式，导致在新数据上失效。",
+          "estimated_seconds": 20
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_future_v1",
+      "question_type": "short_explain",
+      "linked_steps": ["step8"],
+      "concept_key": "future_human_ai_synthesis",
+      "coverage_tags": ["limitations_of_ai_trading", "future_human_ai_synthesis"],
+      "term_refs": [
+        {
+          "display": "人机协同",
+          "en": "Human-AI Synthesis"
+        }
+      ],
+      "learning_goal": "学生能解释为什么AI交易需要人机协同，并阐述各自的角色。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_future_v1_v1",
+          "stem": "结合本课内容，解释为什么AI交易系统的未来方向是“人机协同”而非“AI完全取代人类”。请至少从两个AI的局限性出发进行论述。",
+          "prompt_blocks": [
+            "指出AI交易的两个主要局限性",
+            "解释这些局限性如何影响AI的自主决策",
+            "说明人类在协同中能发挥什么作用"
+          ],
+          "rubric_points": [
+            "正确指出非平稳性或过拟合等局限性（2分）",
+            "解释局限性如何导致AI无法完全自主（2分）",
+            "说明人类在判断、适应、风险管理等方面的价值（2分）"
+          ],
+          "reference_answer": [
+            "AI交易的主要局限包括：1）金融市场是非平稳的，模型学到的规律会随时间失效；2）模型容易过拟合，在历史数据上表现好但实盘可能亏损。",
+            "这些局限性意味着AI无法完全自主地应对所有市场变化。",
+            "因此，未来的方向是人机协同：AI负责快速分析大量数据、发现模式、提供交易建议，而人类负责最终判断、处理异常情况、管理风险，并不断调整和优化AI模型。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_future_v1_v2",
+          "stem": "假设你是一个量化基金的管理者，你的团队开发了一个基于Q学习的交易模型。请解释为什么你不能完全依赖这个模型，并说明你将如何设计一个人机协同的工作流程。",
+          "prompt_blocks": [
+            "指出Q学习模型在交易中的至少两个局限性",
+            "解释这些局限性对实盘交易的风险",
+            "描述人机协同的具体工作流程"
+          ],
+          "rubric_points": [
+            "正确指出Q学习的局限性（如非平稳性、过拟合、高维状态空间）（2分）",
+            "解释这些局限性带来的实盘风险（2分）",
+            "设计合理的人机协同流程，明确AI和人类的角色（2分）"
+          ],
+          "reference_answer": [
+            "Q学习模型面临非平稳市场、过拟合和高维状态空间等挑战，完全依赖它风险很高。",
+            "例如，模型可能在回测中表现优异，但市场风格切换后就会失效。",
+            "我会设计一个人机协同流程：AI模型每天生成交易信号和风险评估报告，交易员团队审核这些信号，结合市场新闻和宏观判断做出最终决策。同时，定期用最新数据重新训练模型，并监控模型的实时表现，一旦出现异常就人工介入。"
+          ],
+          "estimated_seconds": 150
+        }
+      ]
+    }
+  ]
+}
+```

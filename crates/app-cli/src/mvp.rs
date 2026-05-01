@@ -279,7 +279,7 @@ fn generate_textbook(
         ],
     );
     let response = call_chat_completion(lesson, llm, Stage::Textbook, &system, &user)?;
-    let content = strip_code_fence(&response.content, Some("mdx"));
+    let content = sanitize_textbook_mdx(&strip_code_fence(&response.content, Some("mdx")));
 
     if let Some(parent) = lesson.textbook_path().parent() {
         fs::create_dir_all(parent).map_err(|source| MvpError::Write {
@@ -292,6 +292,32 @@ fn generate_textbook(
         source,
     })?;
     Ok(())
+}
+
+fn sanitize_textbook_mdx(source: &str) -> String {
+    source
+        .lines()
+        .map(strip_heading_anchor)
+        .collect::<Vec<_>>()
+        .join("\n")
+}
+
+fn strip_heading_anchor(line: &str) -> String {
+    let trimmed = line.trim_end();
+    if !trimmed.starts_with('#') || !trimmed.ends_with('}') {
+        return line.to_owned();
+    }
+
+    let Some(anchor_start) = trimmed.rfind(" {#") else {
+        return line.to_owned();
+    };
+
+    let anchor = &trimmed[anchor_start + 2..];
+    if anchor.len() < 4 || !anchor.starts_with("{#") || !anchor.ends_with('}') {
+        return line.to_owned();
+    }
+
+    trimmed[..anchor_start].to_owned()
 }
 
 fn call_chat_completion(

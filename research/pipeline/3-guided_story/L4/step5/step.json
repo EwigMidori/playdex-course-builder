@@ -1,0 +1,136 @@
+{
+  "lesson_id": "L4",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "线性回归假设数据独立。",
+        "但金融数据往往前后依赖——今天的价格和昨天有关。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "arima"
+      ],
+      "id": "s031",
+      "introduced_terms": [
+        "arima"
+      ],
+      "lines": [
+        "ARIMA模型就是专门处理这种依赖关系的。",
+        "AR = 自回归，用过去的值预测现在。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "arima",
+        "stationarity"
+      ],
+      "id": "s032",
+      "introduced_terms": [
+        "stationarity"
+      ],
+      "lines": [
+        "I = 差分，让数据变得<term id=\"stationarity\">平稳</term>。",
+        "MA = 移动平均，用过去的预测误差来修正。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "arima"
+      ],
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "ARIMA(p,d,q) 有三个参数：",
+        "p是自回归阶数，d是差分次数，q是移动平均阶数。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "adf_test"
+      ],
+      "id": "s034",
+      "introduced_terms": [
+        "adf_test"
+      ],
+      "lines": [
+        "怎么判断数据是否平稳？",
+        "用<term id=\"adf_test\">ADF检验</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "adf_test",
+        "stationarity"
+      ],
+      "id": "s035",
+      "introduced_terms": [],
+      "lines": [
+        "ADF检验的p值小于0.05，说明数据平稳。",
+        "否则就需要差分，直到平稳为止。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "I代表Integrated，即通过差分使序列平稳。",
+        "kind": "single_choice",
+        "options": [
+          "自回归",
+          "差分",
+          "移动平均"
+        ],
+        "prompt": "ARIMA中的“I”代表什么？"
+      },
+      "focus_terms": [
+        "arima"
+      ],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "ARIMA中的“I”代表什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "ARIMA Model, ADF Test, Stationarity",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "adf_test": {
+      "aliases": [
+        "Augmented Dickey-Fuller Test"
+      ],
+      "display": "ADF检验",
+      "gloss": "检验时间序列是否平稳的统计方法。"
+    },
+    "arima": {
+      "aliases": [
+        "AutoRegressive Integrated Moving Average",
+        "ARIMA"
+      ],
+      "display": "ARIMA模型",
+      "gloss": "结合自回归、差分和移动平均的时间序列预测模型。"
+    },
+    "stationarity": {
+      "aliases": [
+        "Stationarity"
+      ],
+      "display": "平稳性",
+      "gloss": "时间序列的统计性质（均值、方差）不随时间变化。"
+    }
+  }
+}

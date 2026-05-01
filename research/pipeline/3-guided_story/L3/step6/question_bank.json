@@ -1,0 +1,783 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "overfitting",
+      "covered_by": [
+        "qf_flash_overfitting",
+        "qf_quiz_overfitting",
+        "qf_long_overfitting"
+      ],
+      "description": "过度拟合：策略过于贴合历史数据，导致在新数据上表现不佳。"
+    },
+    {
+      "coverage_tag": "look_ahead_bias",
+      "covered_by": [
+        "qf_flash_look_ahead_bias",
+        "qf_quiz_look_ahead_bias",
+        "qf_long_look_ahead_bias"
+      ],
+      "description": "前视偏差：在回测中使用了当时无法获得的未来信息。"
+    },
+    {
+      "coverage_tag": "survivorship_bias",
+      "covered_by": [
+        "qf_flash_survivorship_bias",
+        "qf_quiz_survivorship_bias",
+        "qf_long_survivorship_bias"
+      ],
+      "description": "幸存者偏差：只考虑存活至今的资产，忽略了已经退市的，导致高估策略表现。"
+    },
+    {
+      "coverage_tag": "backtest_assumptions",
+      "covered_by": [
+        "qf_flash_backtest_assumptions",
+        "qf_quiz_backtest_assumptions",
+        "qf_long_backtest_assumptions"
+      ],
+      "description": "回测假设：无交易成本、按收盘价成交、允许卖空等，在真实市场中往往不成立。"
+    },
+    {
+      "coverage_tag": "best_practices",
+      "covered_by": [
+        "qf_flash_best_practices",
+        "qf_quiz_best_practices",
+        "qf_long_best_practices"
+      ],
+      "description": "最佳实践：用现实的假设，并在样本外数据上验证。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "overfitting",
+      "coverage_tags": [
+        "overfitting"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_overfitting",
+      "learning_goal": "学生能准确回忆过度拟合的定义及其后果。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "过度拟合的定义和核心问题。",
+      "term_refs": [
+        {
+          "display": "过度拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "策略被调整得过于贴合历史数据，导致在新市场或新数据上表现不佳。",
+          "estimated_seconds": 8,
+          "explanation": "过度拟合的策略在历史数据上表现优异，但缺乏泛化能力。",
+          "front": "过度拟合（Overfitting）在回测中指的是什么？",
+          "question_id": "q_flash_overfitting_v1"
+        },
+        {
+          "back": "策略在样本外数据（新市场）上失效。",
+          "estimated_seconds": 6,
+          "explanation": "过度拟合导致策略无法适应新的市场环境。",
+          "front": "过度拟合的一个主要后果是什么？",
+          "question_id": "q_flash_overfitting_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "look_ahead_bias",
+      "coverage_tags": [
+        "look_ahead_bias"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_look_ahead_bias",
+      "learning_goal": "学生能准确回忆前视偏差的定义和典型例子。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "前视偏差的定义和常见例子。",
+      "term_refs": [
+        {
+          "display": "前视偏差",
+          "en": "Look-ahead Bias"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在回测中不小心使用了当时无法获得的未来信息。",
+          "estimated_seconds": 8,
+          "explanation": "例如，用今天的收盘价来决定昨天的交易。",
+          "front": "前视偏差（Look-ahead Bias）在回测中指的是什么？",
+          "question_id": "q_flash_look_ahead_bias_v1"
+        },
+        {
+          "back": "用当天的收盘价来计算交易信号，并假设在当天开盘时执行。",
+          "estimated_seconds": 8,
+          "explanation": "这相当于提前知道了收盘价，在真实交易中是不可能的。",
+          "front": "请举一个前视偏差的典型例子。",
+          "question_id": "q_flash_look_ahead_bias_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "survivorship_bias",
+      "coverage_tags": [
+        "survivorship_bias"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_survivorship_bias",
+      "learning_goal": "学生能准确回忆幸存者偏差的定义及其对回测结果的影响。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "幸存者偏差的定义和影响。",
+      "term_refs": [
+        {
+          "display": "幸存者偏差",
+          "en": "Survivorship Bias"
+        }
+      ],
+      "variants": [
+        {
+          "back": "只测试了现在还活着的股票，忽略了那些已经退市的失败者。",
+          "estimated_seconds": 8,
+          "explanation": "这会导致回测结果被高估，因为退市的股票通常表现不佳。",
+          "front": "幸存者偏差（Survivorship Bias）在回测中指的是什么？",
+          "question_id": "q_flash_survivorship_bias_v1"
+        },
+        {
+          "back": "高估。",
+          "estimated_seconds": 5,
+          "explanation": "因为忽略了表现差的退市股票，只保留了表现好的。",
+          "front": "幸存者偏差会导致回测结果被高估还是低估？",
+          "question_id": "q_flash_survivorship_bias_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "backtest_assumptions",
+      "coverage_tags": [
+        "backtest_assumptions"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_backtest_assumptions",
+      "learning_goal": "学生能列举出常见的回测假设，并理解其与现实市场的差异。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "常见的回测假设及其不现实之处。",
+      "term_refs": [
+        {
+          "display": "回测假设",
+          "en": "Backtest Assumptions"
+        }
+      ],
+      "variants": [
+        {
+          "back": "1. 没有交易成本；2. 可以按收盘价成交；3. 允许卖空。",
+          "estimated_seconds": 10,
+          "explanation": "真实市场中存在佣金、滑点、流动性限制和卖空限制。",
+          "front": "回测中常见的三个不现实的假设是什么？",
+          "question_id": "q_flash_backtest_assumptions_v1"
+        },
+        {
+          "back": "因为存在滑点，即实际成交价与预期价格之间的差异。",
+          "estimated_seconds": 8,
+          "explanation": "滑点可能由市场波动、流动性不足或大额订单引起。",
+          "front": "在真实市场中，为什么“按收盘价成交”这个假设通常不成立？",
+          "question_id": "q_flash_backtest_assumptions_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "best_practices",
+      "coverage_tags": [
+        "best_practices"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_best_practices",
+      "learning_goal": "学生能回忆出提高回测可靠性的关键最佳实践。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "提高回测可靠性的两个关键最佳实践。",
+      "term_refs": [
+        {
+          "display": "最佳实践",
+          "en": "Best Practices"
+        }
+      ],
+      "variants": [
+        {
+          "back": "1. 使用现实的假设（如考虑交易成本）；2. 在样本外数据上验证。",
+          "estimated_seconds": 10,
+          "explanation": "这有助于避免过度拟合和确保策略的泛化能力。",
+          "front": "提高回测可靠性的两个关键最佳实践是什么？",
+          "question_id": "q_flash_best_practices_v1"
+        },
+        {
+          "back": "使用在策略开发过程中未使用过的数据来测试策略的表现。",
+          "estimated_seconds": 8,
+          "explanation": "这是检验策略是否过度拟合的有效方法。",
+          "front": "什么是“样本外验证”？",
+          "question_id": "q_flash_best_practices_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L3",
+  "longform_families": [
+    {
+      "concept_key": "overfitting",
+      "coverage_tags": [
+        "overfitting"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_overfitting",
+      "learning_goal": "学生能用自己的语言解释过度拟合，并说明其危害和避免方法。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "过度拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "定义过度拟合",
+            "解释其危害",
+            "提出至少两种避免方法"
+          ],
+          "question_id": "q_long_overfitting_v1",
+          "reference_answer": [
+            "过度拟合是指交易策略被调整得过于贴合历史数据，以至于它学习到了数据中的随机噪音而非真实的市场规律。",
+            "其危害在于，策略在历史回测中表现优异，但一旦应用于新的、未见过的市场数据，其表现会急剧下降，导致实盘交易亏损。",
+            "避免过度拟合的方法包括：1）使用样本外数据（Out-of-Sample Data）进行验证，即用策略开发过程中未使用的数据来测试；2）保持策略的简洁性，避免使用过多参数；3）使用交叉验证（Cross-Validation）等技术。"
+          ],
+          "rubric_points": [
+            "正确解释过度拟合是策略过于贴合历史数据中的噪音",
+            "指出其危害是策略在新数据上表现不佳，缺乏泛化能力",
+            "提出至少两种方法，如：使用样本外验证、简化模型、交叉验证等"
+          ],
+          "stem": "请解释什么是回测中的“过度拟合”，它为什么有害，以及如何避免？"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "指出可能存在的问题",
+            "解释为什么会有这些问题",
+            "提出具体的改进建议"
+          ],
+          "question_id": "q_long_overfitting_v2",
+          "reference_answer": [
+            "这个策略很可能存在严重的过度拟合问题。10个参数提供了极大的灵活性，使得策略可以完美地匹配过去5年数据中的每一个波动，但这些波动很多是随机的。",
+            "问题在于，这些参数组合可能只是恰好捕捉到了历史数据中的噪音，而不是真正的市场规律。因此，策略在未来数据上几乎肯定会失效。",
+            "改进建议：1）大幅减少参数数量，只保留最核心的1-2个；2）将数据分为训练集和测试集，只在训练集上优化参数，然后在测试集上验证；3）进行样本外测试，比如用过去5年数据开发，用未来1年数据验证。"
+          ],
+          "rubric_points": [
+            "指出过度拟合的可能性很高",
+            "解释参数过多容易拟合噪音",
+            "提出简化模型、样本外验证、增加数据量等建议"
+          ],
+          "stem": "假设你开发了一个有10个参数的复杂策略，它在过去5年的数据上表现完美。请分析这个策略可能存在的问题，并给出改进建议。"
+        }
+      ]
+    },
+    {
+      "concept_key": "look_ahead_bias",
+      "coverage_tags": [
+        "look_ahead_bias"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_look_ahead_bias",
+      "learning_goal": "学生能识别并解释前视偏差，并能提出避免方法。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "前视偏差",
+          "en": "Look-ahead Bias"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "定义前视偏差",
+            "给出一个包含前视偏差的伪代码或逻辑示例",
+            "说明如何修正这个错误"
+          ],
+          "question_id": "q_long_look_ahead_bias_v1",
+          "reference_answer": [
+            "前视偏差是指在回测过程中，无意中使用了在决策时点尚未知晓的未来数据。",
+            "例如，一个错误的逻辑是：`if close_today > MA_20_today: buy_at_open_today`。这里，`close_today` 是当日收盘价，但在开盘时是无法知道的。",
+            "修正方法：将信号延迟一天，使用前一日的数据来做决策。正确的逻辑是：`if close_yesterday > MA_20_yesterday: buy_at_open_today`。这样，所有用于决策的数据在开盘时都是已知的。"
+          ],
+          "rubric_points": [
+            "正确解释前视偏差是使用了未来信息",
+            "给出的示例能清晰展示问题，例如用当日收盘价计算开盘信号",
+            "修正方法正确，例如使用前一日收盘价或延迟信号"
+          ],
+          "stem": "请解释什么是“前视偏差”，并给出一个具体的回测代码示例来说明它如何产生，以及如何修正。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "列举其他形式的前视偏差",
+            "解释每种形式如何产生"
+          ],
+          "question_id": "q_long_look_ahead_bias_v2",
+          "reference_answer": [
+            "1）使用未来发布的财务数据：例如，在回测中使用公司下一季度财报的净利润来计算估值指标，但财报数据在回测时间点尚未公布。",
+            "2）使用未来的指数成分股调整：例如，在回测中假设某股票当前就是标普500成分股，并使用其历史数据，但该股票可能是在回测时间点之后才被纳入指数的。",
+            "3）使用未来的拆分或分红数据：在计算复权价格时，如果使用了未来的拆分因子，也会引入前视偏差。"
+          ],
+          "rubric_points": [
+            "能列举出除价格外的其他形式，如使用未来财务数据、未来指数成分股调整等",
+            "解释清晰，说明为什么这些信息在当时不可得"
+          ],
+          "stem": "除了使用未来价格数据，前视偏差还可能以哪些形式出现？请列举至少两种并解释。"
+        }
+      ]
+    },
+    {
+      "concept_key": "survivorship_bias",
+      "coverage_tags": [
+        "survivorship_bias"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_survivorship_bias",
+      "learning_goal": "学生能解释幸存者偏差如何影响回测，并说明如何构建一个无偏的数据集。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "幸存者偏差",
+          "en": "Survivorship Bias"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "解释幸存者偏差的定义",
+            "说明它如何导致回测结果被高估",
+            "提出避免方法"
+          ],
+          "question_id": "q_long_survivorship_bias_v1",
+          "reference_answer": [
+            "幸存者偏差是指在回测中只使用当前仍然存在的资产（如股票）的历史数据，而忽略了那些因为破产、被收购等原因已经退市的资产。",
+            "由于退市的资产通常表现不佳，忽略它们会使回测结果看起来比实际情况好得多，给人一种“随便买一只股票都能赚钱”的错觉。",
+            "要避免幸存者偏差，必须使用一个“无幸存者偏差”的数据集，该数据集包含了在回测期间所有曾经存在过的资产的历史数据，无论它们当前是否还在交易。"
+          ],
+          "rubric_points": [
+            "正确解释幸存者偏差是只考虑存活资产",
+            "说明忽略退市资产会高估收益，因为退市资产通常表现差",
+            "提出使用包含所有历史资产（包括已退市）的数据集"
+          ],
+          "stem": "请解释“幸存者偏差”如何导致回测结果失真，并说明在构建回测数据集时应如何避免它。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "指出会有什么偏差",
+            "解释偏差产生的原因",
+            "描述一个更准确的回测方法"
+          ],
+          "question_id": "q_long_survivorship_bias_v2",
+          "reference_answer": [
+            "回测结果会被严重高估，这主要是由幸存者偏差导致的。",
+            "纳斯达克历史上有很多公司最终退市，尤其是在2000年互联网泡沫破裂时期。这些公司的股价跌至接近零，给投资者带来了巨大损失。如果只测试当前成分股，就相当于自动排除了这些失败案例，使得“买入并持有”策略的历史表现看起来异常优秀。",
+            "一个更准确的回测方法是使用纳斯达克综合指数本身的历史数据，或者获取一个包含所有历史上在纳斯达克上市公司的完整数据集，并动态调整持仓，模拟真实的指数构成变化。"
+          ],
+          "rubric_points": [
+            "指出结果会被高估（幸存者偏差）",
+            "解释因为退市的公司（如互联网泡沫时期的公司）表现极差，忽略它们会拉高平均收益",
+            "提出应使用包含所有曾上市公司的动态指数数据或历史成分股列表"
+          ],
+          "stem": "假设你想回测一个“买入并持有所有纳斯达克股票”的策略。如果你只使用当前纳斯达克成分股的历史数据，你的回测结果会有什么偏差？请详细解释。"
+        }
+      ]
+    },
+    {
+      "concept_key": "backtest_assumptions",
+      "coverage_tags": [
+        "backtest_assumptions"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_backtest_assumptions",
+      "learning_goal": "学生能批判性地评估回测假设，并解释其现实影响。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "回测假设",
+          "en": "Backtest Assumptions"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "分析“无交易成本”假设的影响",
+            "分析“按收盘价成交”假设的影响",
+            "提出调整回测的具体方法"
+          ],
+          "question_id": "q_long_backtest_assumptions_v1",
+          "reference_answer": [
+            "“无交易成本”假设会显著高估策略的净收益。在真实市场中，每次交易都涉及佣金、印花税、买卖价差等成本。对于交易频繁的策略，这些成本会累积成一笔巨大的开支，甚至可能将盈利策略变为亏损。",
+            "“按收盘价成交”假设忽略了滑点。滑点是指预期成交价与实际成交价之间的差异，通常由市场波动、流动性不足或大额订单引起。在真实市场中，尤其是在市场收盘前，价格波动可能很大，无法保证以收盘价成交。",
+            "为了使回测更现实，可以：1）在每日盈亏计算中扣除一个固定的交易成本（如每笔交易0.25点）；2）使用开盘价或下一根K线的开盘价来代替收盘价作为成交价；3）引入滑点模型，根据市场波动率和订单规模动态计算滑点。"
+          ],
+          "rubric_points": [
+            "指出无交易成本会高估收益，尤其是对高频策略",
+            "指出按收盘价成交忽略了滑点和市场冲击",
+            "提出加入佣金、滑点模型、使用开盘价或限价单等方法"
+          ],
+          "stem": "一个回测策略假设“无交易成本”和“可以按收盘价成交”。请分析这两个假设在真实市场中会如何影响策略的实际表现，并说明如何调整回测以使其更现实。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "列举两个其他常见假设",
+            "解释每个假设如何影响结果"
+          ],
+          "question_id": "q_long_backtest_assumptions_v2",
+          "reference_answer": [
+            "1）允许卖空（Short Selling）：很多回测假设可以无限制地卖空任何股票。但在真实市场中，卖空受到严格监管，很多股票难以借到，且需要支付融券费用。忽略这些限制会高估策略的潜在收益。",
+            "2）无限流动性（Infinite Liquidity）：回测通常假设可以按当前价格买卖任意数量的股票。但在真实市场中，大额订单会推动价格向不利方向移动，产生巨大的市场冲击成本。忽略这一点会高估策略的容量和收益。"
+          ],
+          "rubric_points": [
+            "能列举出如“允许卖空”、“无限流动性”、“无市场冲击”等假设",
+            "解释清晰，例如允许卖空可能高估收益，因为很多股票难以做空"
+          ],
+          "stem": "除了交易成本和成交价，回测中还有哪些常见的、可能不现实的假设？请列举两个并解释它们如何影响回测结果。"
+        }
+      ]
+    },
+    {
+      "concept_key": "best_practices",
+      "coverage_tags": [
+        "best_practices"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_best_practices",
+      "learning_goal": "学生能综合运用最佳实践来设计一个更可靠的回测流程。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "最佳实践",
+          "en": "Best Practices"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 180,
+          "prompt_blocks": [
+            "描述数据准备步骤",
+            "描述策略开发步骤",
+            "描述验证和评估步骤"
+          ],
+          "question_id": "q_long_best_practices_v1",
+          "reference_answer": [
+            "1. 数据准备：获取包含所有历史资产（包括已退市）的完整数据集。进行严格的数据清洗，处理缺失值、重复记录和逻辑错误。将数据分为训练集（如70%）、验证集（15%）和测试集（15%）。",
+            "2. 策略开发：仅在训练集上开发策略。从简单的规则开始，逐步增加复杂度，但始终保持警惕，避免过度拟合。使用验证集来微调参数。",
+            "3. 验证与评估：在从未使用过的测试集上进行最终评估。在回测中加入现实的假设，如交易成本、滑点和流动性限制。计算多个绩效指标（如夏普比率、最大回撤），并进行敏感性分析，测试策略在不同市场条件下的表现。"
+          ],
+          "rubric_points": [
+            "数据准备：使用无幸存者偏差的数据，进行彻底的数据清洗",
+            "策略开发：在训练集上开发，保持模型简洁",
+            "验证评估：使用样本外测试、考虑现实假设、进行敏感性分析"
+          ],
+          "stem": "请描述一个你认为最可靠的回测流程，包括从数据准备到结果评估的各个步骤，并解释每一步如何帮助你避免常见的回测陷阱。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "提出关于数据的问题",
+            "提出关于假设的问题",
+            "提出关于验证的问题"
+          ],
+          "question_id": "q_long_best_practices_v2",
+          "reference_answer": [
+            "1. “你的回测数据是否包含了所有股票，包括那些已经退市的？”（检验幸存者偏差）",
+            "2. “你在回测中假设的交易成本是多少？是否考虑了滑点和市场冲击？”（检验假设的现实性）",
+            "3. “这个策略是在整个数据集上开发的，还是使用了样本外数据来验证？”（检验过度拟合）",
+            "4. “这个策略的参数是固定的，还是经过大量优化后选出的最佳组合？”（检验数据窥探偏差）"
+          ],
+          "rubric_points": [
+            "问题应针对数据（如是否有幸存者偏差）",
+            "问题应针对假设（如是否考虑了交易成本）",
+            "问题应针对验证（如是否做过样本外测试）"
+          ],
+          "stem": "你的同事向你展示了一个回测结果，声称他的新策略年化收益高达80%，夏普比率3.0。在相信这个结果之前，你会向他提出哪些关键问题来检验其可靠性？请列出至少三个问题并解释为什么这些问题重要。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "overfitting",
+      "coverage_tags": [
+        "overfitting"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_overfitting",
+      "learning_goal": "学生能在具体情境中识别过度拟合的迹象。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "过度拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "历史表现异常优异但实盘表现糟糕，是过度拟合的典型症状。策略可能被过度优化以匹配历史数据中的噪音。",
+          "options": [
+            "市场发生了不可预见的黑天鹅事件",
+            "策略存在过度拟合，过于贴合历史数据",
+            "交易平台出现了技术故障",
+            "策略的交易频率过高"
+          ],
+          "question_id": "q_quiz_overfitting_v1",
+          "stem": "一个交易策略在历史回测中取得了年化50%的惊人回报，但在随后一年的实盘交易中却亏损了20%。以下哪个原因最可能解释这一现象？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "反复调整复杂参数以追求历史最优表现，是过度拟合的常见原因。这会使策略学习到历史数据中的噪音而非真实规律。",
+          "options": [
+            "使用10年的历史数据进行测试",
+            "在策略中加入多个复杂的参数，并反复调整直到历史表现最优",
+            "在回测中考虑0.1%的交易成本",
+            "使用样本外数据验证策略"
+          ],
+          "question_id": "q_quiz_overfitting_v2",
+          "stem": "以下哪种做法最有可能导致回测中的过度拟合？"
+        }
+      ]
+    },
+    {
+      "concept_key": "look_ahead_bias",
+      "coverage_tags": [
+        "look_ahead_bias"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_look_ahead_bias",
+      "learning_goal": "学生能识别出包含前视偏差的回测代码或逻辑。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "前视偏差",
+          "en": "Look-ahead Bias"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "在当日交易信号计算中使用当日最高价或最低价，意味着你提前知道了当日价格范围，这在真实交易中是不可能的。",
+          "options": [
+            "使用前一天的收盘价计算移动平均线",
+            "在计算当日交易信号时，使用了当日的最高价和最低价",
+            "在计算当日交易信号时，仅使用前一天的收盘价",
+            "在计算当日交易信号时，使用了前一天的成交量"
+          ],
+          "question_id": "q_quiz_look_ahead_bias_v1",
+          "stem": "在编写回测代码时，以下哪种做法会引入前视偏差？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "在开盘时，当日的收盘价是未知的。使用当日收盘价来决定开盘时的交易，相当于使用了未来信息。",
+          "options": [
+            "没有问题，这是一个标准的趋势跟踪策略",
+            "存在前视偏差，因为开盘时无法知道当日的收盘价",
+            "存在幸存者偏差",
+            "存在过度拟合"
+          ],
+          "question_id": "q_quiz_look_ahead_bias_v2",
+          "stem": "一个回测策略的规则是：如果当日收盘价高于20日移动平均线，则在当日开盘时买入。这个规则存在什么问题？"
+        }
+      ]
+    },
+    {
+      "concept_key": "survivorship_bias",
+      "coverage_tags": [
+        "survivorship_bias"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_survivorship_bias",
+      "learning_goal": "学生能理解幸存者偏差如何导致回测结果失真。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "幸存者偏差",
+          "en": "Survivorship Bias"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "这引入了幸存者偏差。退市的公司通常表现不佳，忽略它们会使回测结果看起来比实际情况更好。",
+          "options": [
+            "回测结果会被低估",
+            "回测结果会被高估",
+            "不会产生任何偏差",
+            "会导致前视偏差"
+          ],
+          "question_id": "q_quiz_survivorship_bias_v1",
+          "stem": "如果一个回测只测试了当前标普500指数中的成分股，而忽略了历史上曾经存在但现已退市的公司，这会导致什么问题？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "包含已退市股票的数据集能更真实地反映市场的全貌，避免幸存者偏差。",
+          "options": [
+            "当前所有上市公司的股票数据",
+            "过去20年所有曾经交易过的股票数据，包括已退市的",
+            "标普500指数当前成分股的历史数据",
+            "过去10年表现最好的100只股票数据"
+          ],
+          "question_id": "q_quiz_survivorship_bias_v2",
+          "stem": "以下哪个数据集最有可能避免幸存者偏差？"
+        }
+      ]
+    },
+    {
+      "concept_key": "backtest_assumptions",
+      "coverage_tags": [
+        "backtest_assumptions"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_backtest_assumptions",
+      "learning_goal": "学生能识别不现实的回测假设及其影响。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "回测假设",
+          "en": "Backtest Assumptions"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "忽略交易成本（佣金、滑点等）会高估策略的净收益，尤其是在高频交易策略中。",
+          "options": [
+            "使回测结果更保守",
+            "使回测结果更乐观，可能高估策略收益",
+            "对回测结果没有影响",
+            "会导致前视偏差"
+          ],
+          "question_id": "q_quiz_backtest_assumptions_v1",
+          "stem": "一个回测假设“没有交易成本”，这个假设会导致什么后果？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "对于流动性较差的股票或大额订单，市场冲击成本和滑点会非常显著，无法按收盘价成交。",
+          "options": [
+            "收盘价可能不准确",
+            "存在流动性限制，大额订单可能无法以理想价格成交",
+            "交易所有可能拒绝订单",
+            "没有太大问题，可以近似模拟"
+          ],
+          "question_id": "q_quiz_backtest_assumptions_v2",
+          "stem": "在回测中假设“可以按收盘价无限制地买卖任意数量股票”，这个假设在真实市场中最大的问题是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "best_practices",
+      "coverage_tags": [
+        "best_practices"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_best_practices",
+      "learning_goal": "学生能选择正确的回测最佳实践。",
+      "linked_steps": [
+        "step6"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "最佳实践",
+          "en": "Best Practices"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "样本外验证是检验策略是否过度拟合、是否具有泛化能力的关键步骤。",
+          "options": [
+            "使用尽可能多的历史数据，直到策略表现最优",
+            "在策略开发完成后，用一段全新的、未使用过的数据来验证",
+            "忽略交易成本，因为回测主要是看趋势",
+            "只测试当前表现最好的股票"
+          ],
+          "question_id": "q_quiz_best_practices_v1",
+          "stem": "以下哪项是提高回测结果可靠性的最佳实践？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "使用现实的假设，如交易成本、滑点和流动性限制，是获得可靠回测结果的基础。",
+          "options": [
+            "假设没有交易成本，简化计算",
+            "假设可以无限卖空，增加策略灵活性",
+            "根据真实市场数据，估算并加入合理的交易成本和滑点",
+            "假设所有订单都能以收盘价成交"
+          ],
+          "question_id": "q_quiz_best_practices_v2",
+          "stem": "为了确保回测假设更贴近现实，你应该怎么做？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/L3/step6/step.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/L3/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,665 @@
+[
+    {
+        "type": "text",
+        "text": "Financial Analytics and ",
+        "text_level": 1,
+        "bbox": [
+            216,
+            266,
+            783,
+            375
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Algorithmic Trading ",
+        "text_level": 1,
+        "bbox": [
+            254,
+            394,
+            742,
+            500
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Course Code: COMP7415 ",
+        "bbox": [
+            369,
+            531,
+            626,
+            572
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Lecturer: Tony Lam ",
+        "bbox": [
+            29,
+            920,
+            176,
+            957
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Background of Lecturer ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            509,
+            188
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Founder of AlgoGene (https://algogene.com) ",
+            "Vice Chairman of Algo Challenge Association (https://algochallenge.org) ",
+            "- Former algo developer, quant trader, risk manager, data analyst for hedge funds and banks. ",
+            "- BSc in Math, Risk Management, Actuarial Science (HKU); MSc in Computer Science (HKU) ",
+            "- Champion and awardee of several algo trading competitions, including "
+        ],
+        "bbox": [
+            101,
+            250,
+            893,
+            527
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "CCTV证券资讯频道《宽客天下·全球量化争霸赛》(2017/18)",
+            "- Rotman International Trading Competition (2017) ",
+            "CASH Algo Trading Contest (2016) ",
+            "WorldQuant Challenge (2014, 2015) "
+        ],
+        "bbox": [
+            139,
+            531,
+            643,
+            705
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Let’s play a game! ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            405,
+            192
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/997b92b1751c1ce70437186759220c5d106c40ed0862fb47cf1033ee018d9aa5.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            311,
+            296,
+            670,
+            946
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "1. What’s your study mode? ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            594,
+            192
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "a) Full time ",
+            "b) Part time ",
+            "c) Just sit in "
+        ],
+        "bbox": [
+            71,
+            268,
+            227,
+            477
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "2. What is your main reason for taking this course? ",
+        "text_level": 1,
+        "bbox": [
+            70,
+            62,
+            855,
+            227
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "a) I want to start a career in algo-trading ",
+            "b) I want to enhance my current job skills ",
+            "c) I am interested in the topic and want to learn more ",
+            "d) Just to fulfill graduation requirement "
+        ],
+        "bbox": [
+            70,
+            268,
+            722,
+            555
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3. What do you expect to learn from this course? ",
+        "text_level": 1,
+        "bbox": [
+            70,
+            62,
+            822,
+            222
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "a) Some skills for financial data analysis ",
+            "b) I want to develop an automated trading system ",
+            "c) Tell me some profitable trading strategies ",
+            "d) Not sure yet "
+        ],
+        "bbox": [
+            70,
+            268,
+            677,
+            551
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "4. Do you have any prior experience in algo-trading? ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            62,
+            885,
+            237
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "a) Yes, I have extensive experience ",
+            "b) Yes, I have some experience ",
+            "c) No, but I have experience in other forms of trading ",
+            "d) No, I am completely new to trading "
+        ],
+        "bbox": [
+            75,
+            270,
+            716,
+            551
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "5. Have you ever used any algo-trading platforms before? ",
+        "text_level": 1,
+        "bbox": [
+            70,
+            62,
+            791,
+            235
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "a) Yes, I have used MetaTrader ",
+            "b) Yes, I have used TradingView ",
+            "c) Yes, I have used AlgoGene ",
+            "d) No, I have no idea what it is "
+        ],
+        "bbox": [
+            70,
+            268,
+            456,
+            551
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "6. Which of the following has the largest market capitalization? ",
+        "text_level": 1,
+        "bbox": [
+            70,
+            62,
+            820,
+            235
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "a) China stock market ",
+            "b) Hong Kong stock market ",
+            "c) India stock market ",
+            "d) Japan stock market "
+        ],
+        "bbox": [
+            73,
+            272,
+            405,
+            550
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Answer ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            114,
+            214,
+            181
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "As of Dec-2025, ",
+        "bbox": [
+            75,
+            272,
+            261,
+            327
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- China: $15 trillion ",
+            "- Hong Kong: $6 trillion ",
+            "- India: $5.3 trillion ",
+            "- Japan: $7.6 trillion "
+        ],
+        "bbox": [
+            75,
+            348,
+            345,
+            622
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "Source: https://www.ceicdata.com/en/indicator/market-capitalization ",
+        "bbox": [
+            37,
+            929,
+            575,
+            966
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "7. Which of the following market has the largest daily turnover/trading volume? ",
+        "text_level": 1,
+        "bbox": [
+            70,
+            62,
+            827,
+            237
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "a) Commodity market ",
+            "b) Crypto market ",
+            "c) Global Equity market ",
+            "d) Forex "
+        ],
+        "bbox": [
+            73,
+            272,
+            366,
+            551
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Answer ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            114,
+            214,
+            181
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Global equity market: $3.93 trillion ",
+            "• Forex: $6.6 trillion ",
+            "- Commodity: $126 billion ",
+            "- Crypto: $139 billion "
+        ],
+        "bbox": [
+            75,
+            268,
+            509,
+            551
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Reference: ",
+        "text_level": 1,
+        "bbox": [
+            65,
+            742,
+            150,
+            772
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- https://www.world-exchanges.org/our-work/statistics ",
+            "- https://www.bis.org/statistics/rpfx19 fx.htm ",
+            "- https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm ",
+            "- https://www.coingecko.com/en/global charts "
+        ],
+        "bbox": [
+            66,
+            781,
+            644,
+            935
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "8. Which programming language is most widely used in algo-trading? ",
+        "text_level": 1,
+        "bbox": [
+            70,
+            62,
+            817,
+            237
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "a) C++ ",
+            "b) Java ",
+            "c) Python ",
+            "d) R "
+        ],
+        "bbox": [
+            73,
+            272,
+            202,
+            550
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "9. Which of the following market is the most popular for algo traders? ",
+        "text_level": 1,
+        "bbox": [
+            70,
+            62,
+            895,
+            235
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "a) Commodities ",
+            "b) Cryptocurrency ",
+            "c) Equity ",
+            "d) Forex "
+        ],
+        "bbox": [
+            73,
+            272,
+            300,
+            548
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "10. What's the name of your teachers? ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            791,
+            188
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "a) Tommy Lai ",
+            "b) Tony Lam ",
+            "c) Tim Leung ",
+            "d) Timothy Lau "
+        ],
+        "bbox": [
+            75,
+            270,
+            262,
+            551
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Course Objectives & Learning Outcomes ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            817,
+            192
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Understand the trading process in financial market ",
+            "- Understand the fundamental of algorithmic trading framework for building a trading strategy ",
+            "- Able to formulate trading strategies, carry out backtesting, optimization, risk management and interpret investment performance ",
+            "- Develop practical skills in financial data analysis, trading strategy development, and deployment to real market and broker account "
+        ],
+        "bbox": [
+            70,
+            270,
+            880,
+            775
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Topics to be covered ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            452,
+            188
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Algorithmic trading basics and financial markets ",
+            "2. Data scraping and database management with Python ",
+            "3. Building backtest framework and rule-based trading strategy ",
+            "4. Statistical time series analysis for market classification ",
+            "5. Statistical arbitrage and pairs trading ",
+            "6. Capital and Risk Management ",
+            "7. Performance measures and portfolio optimization ",
+            "8. Order book and high frequency data modeling ",
+            "9. Market practice in strategy optimization, broker selection, and market tricks ",
+            "10. Machine learning use cases in algorithmic trading "
+        ],
+        "bbox": [
+            75,
+            261,
+            885,
+            885
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Assessment methods ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            466,
+            179
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Group project - 50% ",
+            "• Written final exam covers all taught content in the course – 50% "
+        ],
+        "bbox": [
+            75,
+            272,
+            850,
+            400
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Contact ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            220,
+            181
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Lecturer ",
+        "bbox": [
+            73,
+            274,
+            176,
+            322
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "- Tony Lam: tonylamfm@hku.hk / tonylam@algogene.com ",
+        "bbox": [
+            75,
+            344,
+            769,
+            403
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "TA: ",
+        "bbox": [
+            73,
+            496,
+            113,
+            544
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "- Rex Tsang: trex@hku.hk ",
+        "bbox": [
+            75,
+            570,
+            377,
+            627
+        ],
+        "page_idx": 18
+    }
+]

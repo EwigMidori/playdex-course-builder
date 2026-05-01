@@ -1,0 +1,148 @@
+{
+  "lesson_id": "L3",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s012",
+      "introduced_terms": [
+        "candlestick"
+      ],
+      "lines": [
+        "在分析价格时，有一种非常直观的工具：<term id=\"candlestick\">K线图</term>。",
+        "它把一天的价格变化浓缩成一根蜡烛。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "每根K线包含四个关键信息：",
+        "开盘价、收盘价、最高价、最低价。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "如果收盘价高于开盘价，通常是阳线（绿色或白色）。",
+        "反之，则是阴线（红色或黑色）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s015",
+      "introduced_terms": [
+        "doji"
+      ],
+      "lines": [
+        "K线的实体和影线能告诉我们很多信息。",
+        "比如，一种叫<term id=\"doji\">十字星</term>的形态。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "十字星的开盘价和收盘价几乎一样。",
+        "它意味着市场多空双方力量均衡，犹豫不决，可能预示着趋势反转。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s017",
+      "introduced_terms": [
+        "hammer"
+      ],
+      "lines": [
+        "再看<term id=\"hammer\">锤子线</term>。",
+        "它出现在下跌趋势后，下影线很长，说明价格被压低后又被买盘拉回。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s018",
+      "introduced_terms": [
+        "shooting_star"
+      ],
+      "lines": [
+        "锤子线通常被视为一个看涨反转信号。",
+        "与之相反的是<term id=\"shooting_star\">射击之星</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "射击之星出现在上涨趋势后，上影线很长。",
+        "说明价格冲高后遭遇抛压，可能预示着下跌。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "锤子线出现在下跌趋势后，长长的下影线表明买方力量开始介入，是潜在的看涨反转信号。",
+        "kind": "single_choice",
+        "options": [
+          "十字星",
+          "锤子线",
+          "射击之星",
+          "以上都不是"
+        ],
+        "prompt": "以下哪种K线形态通常被视为看涨反转信号？"
+      },
+      "id": "s020",
+      "lines": [
+        "以下哪种K线形态通常被视为看涨反转信号？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "K线图（又称蜡烛图）是一种展示资产价格波动的图表。它包含开盘价、收盘价、最高价和最低价。常见的K线形态有十字星、锤子线、射击之星等，它们可以提供未来价格方向的信号。",
+    "related": [
+      "candlestick",
+      "doji",
+      "hammer",
+      "shooting_star"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "candlestick": {
+      "aliases": [
+        "Candlestick Chart",
+        "K线",
+        "蜡烛图"
+      ],
+      "display": "K线图",
+      "gloss": "一种展示资产价格波动的图表，包含开盘价、收盘价、最高价和最低价。"
+    },
+    "doji": {
+      "aliases": [
+        "Doji"
+      ],
+      "display": "十字星",
+      "gloss": "开盘价和收盘价几乎相等的K线形态，代表市场犹豫不决。"
+    },
+    "hammer": {
+      "aliases": [
+        "Hammer"
+      ],
+      "display": "锤子线",
+      "gloss": "下影线很长、实体很小的K线，出现在下跌趋势后，可能预示反转上涨。"
+    },
+    "shooting_star": {
+      "aliases": [
+        "Shooting Star"
+      ],
+      "display": "射击之星",
+      "gloss": "上影线很长、实体很小的K线，出现在上涨趋势后，可能预示反转下跌。"
+    }
+  }
+}

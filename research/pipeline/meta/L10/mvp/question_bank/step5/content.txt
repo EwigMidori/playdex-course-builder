@@ -1,0 +1,394 @@
+```json
+{
+  "lesson_id": "L10",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L10/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "L10: Machine learning use cases in algorithmic trading - Agenda: Major categories of ML algorithms, Multiple use cases of ML in algo-trading, The future of smart investment systems",
+    "source_outline": "L10: Machine learning use cases in algorithmic trading - Agenda: Major categories of ML algorithms, Multiple use cases of ML in algo-trading, The future of smart investment systems",
+    "lesson_map": "{\"lesson_id\": \"L10\", \"steps\": [{\"concept\": \"机器学习三大类型概览\", \"sequence_id\": \"step1\"}, {\"concept\": \"监督学习：分类与回归\", \"sequence_id\": \"step2\"}, {\"concept\": \"无监督学习：聚类与关联\", \"sequence_id\": \"step3\"}, {\"concept\": \"强化学习：Q学习与交易\", \"sequence_id\": \"step4\"}, {\"concept\": \"监督学习在交易中的应用：从规则到数据\", \"sequence_id\": \"step5\"}, {\"concept\": \"无监督学习在交易中的应用：股票聚类\", \"sequence_id\": \"step6\"}, {\"concept\": \"强化学习在交易中的应用：Q学习交易员\", \"sequence_id\": \"step7\"}, {\"concept\": \"挑战与未来：AI交易的边界\", \"sequence_id\": \"step8\"}]}"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "traditional_vs_ai_approach",
+      "description": "传统交易策略（规则驱动）与AI交易策略（数据驱动）的核心区别",
+      "covered_by": ["qf_flash_trad_vs_ai", "qf_quiz_trad_vs_ai", "qf_long_trad_vs_ai"]
+    },
+    {
+      "coverage_tag": "supervised_learning_trading_application",
+      "description": "监督学习在算法交易中的应用：通过标记历史交易来学习规则",
+      "covered_by": ["qf_flash_sl_trading", "qf_quiz_sl_trading", "qf_long_sl_trading"]
+    },
+    {
+      "coverage_tag": "rsi_trading_strategy",
+      "description": "RSI（相对强弱指标）作为传统规则驱动策略的典型例子",
+      "covered_by": ["qf_flash_rsi", "qf_quiz_rsi"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_trad_vs_ai",
+      "question_type": "short_answer",
+      "linked_steps": ["step5"],
+      "concept_key": "traditional_vs_ai_approach",
+      "coverage_tags": ["traditional_vs_ai_approach"],
+      "term_refs": [
+        {
+          "display": "规则驱动",
+          "en": "Rule-driven"
+        },
+        {
+          "display": "数据驱动",
+          "en": "Data-driven"
+        }
+      ],
+      "learning_goal": "学生能准确区分传统交易策略和AI交易策略的核心驱动方式。",
+      "difficulty": "easy",
+      "retrieval_focus": "传统策略与AI策略在规则来源上的根本差异。",
+      "variants": [
+        {
+          "question_id": "q_flash_trad_vs_ai_v1",
+          "front": "传统交易策略是规则驱动的，AI交易策略是什么驱动的？",
+          "back": "数据驱动（结果驱动）",
+          "explanation": "传统策略由人预先定义规则（如RSI阈值），AI策略则从标记好的历史数据中自动学习规则。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_trad_vs_ai_v2",
+          "front": "AI交易策略从数据中学习规则，传统交易策略的规则来自哪里？",
+          "back": "由人预先定义",
+          "explanation": "传统策略依赖专家设定的固定规则（如技术指标阈值），而AI策略从数据中自动发现隐藏规律。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_sl_trading",
+      "question_type": "short_answer",
+      "linked_steps": ["step5"],
+      "concept_key": "supervised_learning_trading_application",
+      "coverage_tags": ["supervised_learning_trading_application"],
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "Supervised Learning"
+        },
+        {
+          "display": "标记数据",
+          "en": "Labeled data"
+        }
+      ],
+      "learning_goal": "学生能说出监督学习应用于交易的基本流程：先标记后学习。",
+      "difficulty": "easy",
+      "retrieval_focus": "监督学习在交易中的核心步骤：标记期望的交易结果。",
+      "variants": [
+        {
+          "question_id": "q_flash_sl_trading_v1",
+          "front": "在监督学习交易策略中，模型学习规则之前，需要先做什么？",
+          "back": "标记历史上哪些交易是好的（标记期望的交易结果）",
+          "explanation": "先标记出历史上好的买入点和卖出点，然后让模型从这些标记数据中学习隐藏的市场规律。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_sl_trading_v2",
+          "front": "监督学习交易策略不再依赖固定的RSI阈值，而是从什么中发现隐藏规律？",
+          "back": "从标记好的历史数据中",
+          "explanation": "模型通过分析标记好的历史交易数据，自动学习什么样的市场特征会导致好的交易结果。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_rsi",
+      "question_type": "short_answer",
+      "linked_steps": ["step5"],
+      "concept_key": "rsi_trading_strategy",
+      "coverage_tags": ["rsi_trading_strategy"],
+      "term_refs": [
+        {
+          "display": "相对强弱指标",
+          "en": "Relative Strength Index (RSI)"
+        }
+      ],
+      "learning_goal": "学生能记住RSI策略的基本规则：超买和超卖的阈值。",
+      "difficulty": "easy",
+      "retrieval_focus": "RSI策略中买入和卖出的具体阈值。",
+      "variants": [
+        {
+          "question_id": "q_flash_rsi_v1",
+          "front": "在RSI交易策略中，当RSI低于多少时通常被视为买入信号？",
+          "back": "30",
+          "explanation": "RSI低于30通常被视为超卖状态，是买入信号。",
+          "estimated_seconds": 5
+        },
+        {
+          "question_id": "q_flash_rsi_v2",
+          "front": "在RSI交易策略中，当RSI高于多少时通常被视为卖出信号？",
+          "back": "70",
+          "explanation": "RSI高于70通常被视为超买状态，是卖出信号。",
+          "estimated_seconds": 5
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_trad_vs_ai",
+      "question_type": "single_choice",
+      "linked_steps": ["step5"],
+      "concept_key": "traditional_vs_ai_approach",
+      "coverage_tags": ["traditional_vs_ai_approach"],
+      "term_refs": [
+        {
+          "display": "规则驱动",
+          "en": "Rule-driven"
+        },
+        {
+          "display": "数据驱动",
+          "en": "Data-driven"
+        }
+      ],
+      "learning_goal": "学生能在选择题中准确辨析传统策略与AI策略的根本区别。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_trad_vs_ai_v1",
+          "stem": "以下哪一项最准确地描述了传统交易策略与AI交易策略的核心区别？",
+          "options": [
+            "传统策略更赚钱，AI策略更稳定",
+            "传统策略是规则驱动，AI策略是数据驱动",
+            "传统策略不需要数据，AI策略需要大量数据",
+            "传统策略只用于股票，AI策略用于所有资产"
+          ],
+          "answer": 1,
+          "explanation": "传统策略由人定义规则（如RSI阈值），AI策略从标记好的历史数据中自动学习规则。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_trad_vs_ai_v2",
+          "stem": "一个交易员使用“如果RSI低于30则买入，高于70则卖出”的策略。这属于哪种方法？",
+          "options": [
+            "监督学习方法",
+            "无监督学习方法",
+            "规则驱动方法",
+            "强化学习方法"
+          ],
+          "answer": 2,
+          "explanation": "该策略基于预先定义的固定规则（RSI阈值），属于传统的规则驱动方法，而非从数据中学习的AI方法。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_sl_trading",
+      "question_type": "single_choice",
+      "linked_steps": ["step5"],
+      "concept_key": "supervised_learning_trading_application",
+      "coverage_tags": ["supervised_learning_trading_application"],
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "Supervised Learning"
+        },
+        {
+          "display": "标记数据",
+          "en": "Labeled data"
+        }
+      ],
+      "learning_goal": "学生能理解监督学习在交易中如何从标记数据中学习。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_sl_trading_v1",
+          "stem": "在监督学习交易策略中，模型学习规则的第一步是什么？",
+          "options": [
+            "定义RSI阈值",
+            "标记历史上哪些交易是好的",
+            "随机生成交易信号",
+            "计算市场波动率"
+          ],
+          "answer": 1,
+          "explanation": "监督学习需要先标记出历史上期望的交易结果（如好的买入/卖出点），然后模型从这些标记数据中学习隐藏规律。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_sl_trading_v2",
+          "stem": "与传统RSI策略相比，监督学习交易策略的主要优势是什么？",
+          "options": [
+            "不需要历史数据",
+            "能从数据中发现隐藏的规律，而非依赖固定阈值",
+            "交易速度更快",
+            "永远不会亏损"
+          ],
+          "answer": 1,
+          "explanation": "监督学习策略能从标记好的历史数据中自动学习市场特征与交易结果之间的复杂关系，而不是依赖固定的RSI阈值。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_rsi",
+      "question_type": "true_false",
+      "linked_steps": ["step5"],
+      "concept_key": "rsi_trading_strategy",
+      "coverage_tags": ["rsi_trading_strategy"],
+      "term_refs": [
+        {
+          "display": "相对强弱指标",
+          "en": "Relative Strength Index (RSI)"
+        }
+      ],
+      "learning_goal": "学生能正确判断RSI策略的基本规则。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_rsi_v1",
+          "stem": "在RSI交易策略中，当RSI低于30时通常被视为卖出信号。",
+          "options": ["正确", "错误"],
+          "answer": 1,
+          "explanation": "RSI低于30通常被视为超卖状态，是买入信号，而非卖出信号。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_rsi_v2",
+          "stem": "RSI交易策略是规则驱动策略的一个典型例子。",
+          "options": ["正确", "错误"],
+          "answer": 0,
+          "explanation": "RSI策略基于预先定义的固定阈值（低于30买入，高于70卖出），属于规则驱动策略。",
+          "estimated_seconds": 15
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_trad_vs_ai",
+      "question_type": "compare_and_contrast",
+      "linked_steps": ["step5"],
+      "concept_key": "traditional_vs_ai_approach",
+      "coverage_tags": ["traditional_vs_ai_approach", "supervised_learning_trading_application"],
+      "term_refs": [
+        {
+          "display": "规则驱动",
+          "en": "Rule-driven"
+        },
+        {
+          "display": "数据驱动",
+          "en": "Data-driven"
+        },
+        {
+          "display": "监督学习",
+          "en": "Supervised Learning"
+        }
+      ],
+      "learning_goal": "学生能用自己的语言解释传统规则驱动策略与AI数据驱动策略在交易中的根本区别，并举例说明。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_trad_vs_ai_v1",
+          "stem": "请比较传统交易策略（如RSI策略）与监督学习交易策略在规则来源、数据需求和适应性方面的主要区别。",
+          "prompt_blocks": [
+            "规则来源",
+            "数据需求",
+            "适应性"
+          ],
+          "rubric_points": [
+            "明确指出传统策略的规则由人预先定义，AI策略的规则从数据中自动学习",
+            "指出传统策略依赖技术指标阈值，AI策略依赖标记好的历史交易数据",
+            "指出传统策略规则固定，难以适应市场变化；AI策略能从新数据中学习，适应性更强"
+          ],
+          "reference_answer": [
+            "规则来源：传统策略（如RSI策略）的规则由人预先定义，例如'RSI低于30买入，高于70卖出'；监督学习策略的规则从标记好的历史数据中自动学习，模型自己发现什么样的市场特征会导致好的交易。",
+            "数据需求：传统策略主要依赖技术指标的计算值（如RSI值），不需要标记数据；监督学习策略需要大量标记好的历史交易数据，即需要先标记出哪些交易是好的。",
+            "适应性：传统策略的规则是固定的，市场规律变化后可能失效；监督学习策略可以从新数据中持续学习，适应市场变化，发现隐藏的规律。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_trad_vs_ai_v2",
+          "stem": "假设你是一个量化交易员，请解释为什么从传统RSI策略转向监督学习策略可能带来优势，并指出这种转变的核心思想变化。",
+          "prompt_blocks": [
+            "核心思想变化",
+            "潜在优势",
+            "一个具体例子"
+          ],
+          "rubric_points": [
+            "准确描述从'定义规则然后看结果'到'标记好结果然后学习规则'的思想转变",
+            "指出数据驱动方法能发现更复杂的隐藏规律，而非依赖固定阈值",
+            "能结合RSI例子说明：不再问'RSI低于30是否该买入'，而是问'历史上哪些市场特征导致了好的买入机会'"
+          ],
+          "reference_answer": [
+            "核心思想变化：从'规则驱动'转变为'数据驱动'。传统方法是先定义规则（如RSI<30买入），然后看结果；监督学习方法是先标记期望的结果（如历史上好的买入点），然后让模型从数据中学习规则。",
+            "潜在优势：监督学习能发现比固定RSI阈值更复杂的隐藏规律，模型可以同时考虑多个市场特征，而不是仅依赖一个指标。",
+            "具体例子：在RSI策略中，我们固定使用30和70作为阈值；在监督学习中，我们标记出历史上所有盈利的交易点，让模型自己学习在这些点之前市场呈现什么特征，可能发现RSI、成交量、波动率等多个指标的组合规律。"
+          ],
+          "estimated_seconds": 120
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_sl_trading",
+      "question_type": "mechanism_trace",
+      "linked_steps": ["step5"],
+      "concept_key": "supervised_learning_trading_application",
+      "coverage_tags": ["supervised_learning_trading_application"],
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "Supervised Learning"
+        },
+        {
+          "display": "标记数据",
+          "en": "Labeled data"
+        }
+      ],
+      "learning_goal": "学生能描述监督学习应用于交易策略的完整流程：从数据标记到模型学习规则。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_sl_trading_v1",
+          "stem": "请描述监督学习如何应用于构建一个交易策略，从数据准备到模型学习规则的全过程。",
+          "prompt_blocks": [
+            "数据准备",
+            "标记过程",
+            "模型学习"
+          ],
+          "rubric_points": [
+            "指出需要历史价格、成交量等市场数据",
+            "准确描述如何标记期望的交易结果（好的买入点和卖出点）",
+            "说明模型如何从标记数据中学习市场特征与交易结果之间的关系"
+          ],
+          "reference_answer": [
+            "数据准备：收集历史市场数据，包括价格、成交量、技术指标等，作为模型的输入特征。",
+            "标记过程：在历史数据中标记出期望的交易结果，例如标记出哪些价格点是好的买入点（后续价格上涨），哪些是好的卖出点（后续价格下跌）。这些标记就是监督学习中的'标签'。",
+            "模型学习：将市场特征作为输入，交易标记作为输出，训练监督学习模型（如分类或回归模型）。模型学习什么样的市场特征组合会导致好的交易结果，从而自动发现隐藏的规律，不再依赖固定的RSI阈值。"
+          ],
+          "estimated_seconds": 90
+        },
+        {
+          "question_id": "q_long_sl_trading_v2",
+          "stem": "解释为什么监督学习交易策略被称为'结果驱动'方法，并说明它与传统'规则驱动'方法在逻辑方向上的根本不同。",
+          "prompt_blocks": [
+            "逻辑方向",
+            "结果驱动的含义",
+            "与传统方法的对比"
+          ],
+          "rubric_points": [
+            "准确指出传统方法是从规则到结果，监督学习是从结果到规则",
+            "解释'结果驱动'意味着先确定期望的结果，再反向学习规则",
+            "能结合RSI例子说明逻辑方向的不同"
+          ],
+          "reference_answer": [
+            "逻辑方向：传统规则驱动方法的逻辑是'定义规则 → 观察结果'；监督学习结果驱动方法的逻辑是'确定期望结果 → 学习规则'。",
+            "结果驱动的含义：先标记出历史上哪些交易结果是好的（如哪些买入点后续盈利），然后让模型反向学习：在这些好的交易发生之前，市场呈现什么特征？模型从结果出发，逆向推导出规则。",
+            "与传统方法的对比：传统RSI策略问'如果RSI低于30，是否应该买入？'；监督学习策略问'历史上那些盈利的买入点，在发生之前市场有什么共同特征？'。前者从规则出发，后者从结果出发。"
+          ],
+          "estimated_seconds": 90
+        }
+      ]
+    }
+  ]
+}
+```

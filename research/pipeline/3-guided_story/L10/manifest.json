@@ -1,0 +1,46 @@
+{
+  "lesson_id": "L10",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "机器学习三大类型概览",
+      "file": "research/pipeline/3-guided_story/L10/step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "监督学习：分类与回归",
+      "file": "research/pipeline/3-guided_story/L10/step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "无监督学习：聚类与关联",
+      "file": "research/pipeline/3-guided_story/L10/step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "强化学习：Q学习与交易",
+      "file": "research/pipeline/3-guided_story/L10/step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "监督学习在交易中的应用：从规则到数据",
+      "file": "research/pipeline/3-guided_story/L10/step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "无监督学习在交易中的应用：股票聚类",
+      "file": "research/pipeline/3-guided_story/L10/step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "强化学习在交易中的应用：Q学习交易员",
+      "file": "research/pipeline/3-guided_story/L10/step7/step.json",
+      "sequence_id": "step7"
+    },
+    {
+      "concept": "挑战与未来：AI交易的边界",
+      "file": "research/pipeline/3-guided_story/L10/step8/step.json",
+      "sequence_id": "step8"
+    }
+  ]
+}

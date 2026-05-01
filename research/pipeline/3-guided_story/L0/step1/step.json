@@ -1,0 +1,78 @@
+{
+  "lesson_id": "L1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "lines": [
+        "想象一下，你发现了一个赚钱的机会：某只股票的价格总是在下午三点突然上涨。",
+        "你手动下单，但每次点鼠标都慢了几秒。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "algorithmic_trading"
+      ],
+      "lines": [
+        "如果能让电脑替你盯着行情，自动下单呢？",
+        "这就是 <term id=\"algorithmic_trading\">算法交易</term> 的起点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "lines": [
+        "它把“发现机会”和“执行交易”这两件事，都交给了计算机程序。",
+        "速度更快，不受情绪干扰。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "算法交易的关键是自动化：从识别机会到执行下单，都由程序完成。",
+        "kind": "single_choice",
+        "options": [
+          "用手机App看股票行情",
+          "用Excel表格计算收益率",
+          "用程序自动识别机会并下单",
+          "每天收盘后手动复盘"
+        ],
+        "prompt": "下面哪个最接近算法交易的核心？"
+      },
+      "id": "s004",
+      "lines": [
+        "下面哪个最接近算法交易的核心？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s005",
+      "lines": [
+        "简单来说，算法交易就是用规则和代码，代替人的直觉和手指。",
+        "接下来的内容，会一步步带你走进这个领域。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Algorithmic trading is a trending investment approach nowadays that consists of identification of trading opportunities and implementation via computer algorithms.",
+    "related": [
+      "COMP7415A syllabus"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "algorithmic_trading": {
+      "aliases": [
+        "Algorithmic Trading",
+        "Algo Trading"
+      ],
+      "display": "算法交易",
+      "gloss": "用计算机程序自动执行交易决策和下单的过程。"
+    }
+  }
+}

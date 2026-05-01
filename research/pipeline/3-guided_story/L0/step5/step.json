@@ -1,0 +1,89 @@
+{
+  "lesson_id": "L1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "lines": [
+        "学完这门课，你应该能独立完成一件事：",
+        "从分析数据到写出策略，再到验证它是否有效。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "backtesting",
+        "risk_management"
+      ],
+      "lines": [
+        "具体来说，你要能进行 <term id=\"backtesting\">回测</term>、优化参数、做 <term id=\"risk_management\">风险管理</term>。",
+        "并且能解释策略的表现。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "lines": [
+        "最终，你会通过一个小组项目，完成一个完整的策略开发周期。",
+        "项目占最终成绩的50%。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "lines": [
+        "另外50%来自期末笔试，覆盖所有教过的内容。",
+        "所以，理解每一个环节都很重要。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "50"
+        ],
+        "explanation": "小组项目和期末笔试各占50%。",
+        "kind": "fill_in_blank",
+        "prompt": "课程评估中，小组项目占______%。"
+      },
+      "id": "s005",
+      "lines": [
+        "课程评估中，小组项目占多少比例？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s006",
+      "lines": [
+        "准备好了吗？",
+        "接下来的每一步，都会让你离一个真正的算法交易者更近一点。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Course Objectives: Understand the trading process, understand algorithmic trading framework, formulate trading strategies, carry out backtesting, optimization, risk management. Assessment: Group project - 50%, Written final exam - 50%.",
+    "related": [
+      "COMP7415A syllabus"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "backtesting": {
+      "aliases": [
+        "Backtesting"
+      ],
+      "display": "回测",
+      "gloss": "用历史数据测试交易策略表现的方法。"
+    },
+    "risk_management": {
+      "aliases": [
+        "Risk Management"
+      ],
+      "display": "风险管理",
+      "gloss": "识别、评估和控制投资风险的过程。"
+    }
+  }
+}

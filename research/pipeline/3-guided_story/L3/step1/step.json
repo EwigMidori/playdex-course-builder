@@ -1,0 +1,72 @@
+{
+  "lesson_id": "L3",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "想象一下，你设计了一套交易规则。",
+        "在投入真金白银之前，你想知道它是否有效。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "backtesting"
+      ],
+      "lines": [
+        "这就是<term id=\"backtesting\">回测</term>要做的事。",
+        "用历史数据来模拟你的策略，看看它过去表现如何。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "回测的核心流程很简单：",
+        "收集数据 → 清洗数据 → 运行策略 → 评估表现。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "回测的核心就是用历史数据来检验交易策略是否有效，而不是预测未来。",
+        "kind": "single_choice",
+        "options": [
+          "预测未来股价",
+          "在真实市场中赚钱",
+          "用历史数据验证策略的有效性",
+          "计算交易成本"
+        ],
+        "prompt": "回测的主要目的是什么？"
+      },
+      "id": "s004",
+      "lines": [
+        "回测的主要目的是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "回测是用历史数据模拟交易策略，验证其有效性。关键步骤包括数据收集、数据清洗、策略实施和绩效评估。",
+    "related": [
+      "backtesting"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "backtesting": {
+      "aliases": [
+        "Backtesting",
+        "Backtest"
+      ],
+      "display": "回测",
+      "gloss": "用历史数据模拟交易策略，验证其有效性。"
+    }
+  }
+}

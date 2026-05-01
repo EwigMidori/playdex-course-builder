@@ -1,0 +1,596 @@
+```json
+{
+  "lesson_id": "L7",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L7/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "Calculating risk and return of an investment portfolio; Portfolio return and risk; Portfolio Variance; Expected Portfolio Return; Markowitz Portfolio Theory; Investment Portfolio; Portfolio optimization",
+    "source_outline": "Portfolio Return and Risk; Expected Portfolio Return; Portfolio Variance; Markowitz Portfolio Theory; Investment Portfolio; Portfolio optimization",
+    "lesson_map": "Portfolio return and risk basics"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "portfolio_definition",
+      "description": "投资组合的定义：由多种资产构成的集合。",
+      "covered_by": ["qf_flash_portfolio_def", "qf_quiz_portfolio_def"]
+    },
+    {
+      "coverage_tag": "portfolio_optimization_goal",
+      "description": "投资组合优化的目标：在最大化收益的同时最小化风险。",
+      "covered_by": ["qf_flash_optimization_goal", "qf_quiz_optimization_goal"]
+    },
+    {
+      "coverage_tag": "markowitz_theory",
+      "description": "马科维茨投资组合理论（现代投资组合理论），1990年诺贝尔奖。",
+      "covered_by": ["qf_flash_markowitz", "qf_quiz_markowitz"]
+    },
+    {
+      "coverage_tag": "expected_portfolio_return",
+      "description": "组合期望收益率是各资产期望收益率的加权平均。",
+      "covered_by": ["qf_flash_expected_return", "qf_quiz_expected_return", "qf_long_expected_return_calc"]
+    },
+    {
+      "coverage_tag": "portfolio_variance_formula",
+      "description": "组合方差公式：σ_p² = w_A²σ_A² + w_B²σ_B² + 2w_A w_B σ_AB。",
+      "covered_by": ["qf_flash_variance_formula", "qf_quiz_variance_formula", "qf_long_variance_calc"]
+    },
+    {
+      "coverage_tag": "weight_constraint",
+      "description": "组合中所有资产的权重之和必须等于1。",
+      "covered_by": ["qf_flash_weight_constraint", "qf_quiz_weight_constraint"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_portfolio_def",
+      "question_type": "short_answer",
+      "linked_steps": ["step1"],
+      "concept_key": "portfolio_definition",
+      "coverage_tags": ["portfolio_definition"],
+      "term_refs": [
+        {
+          "display": "投资组合",
+          "en": "Portfolio"
+        }
+      ],
+      "learning_goal": "学生能准确说出投资组合的定义。",
+      "difficulty": "easy",
+      "retrieval_focus": "投资组合的核心定义：多种资产的集合。",
+      "variants": [
+        {
+          "question_id": "q_flash_portfolio_def_v1",
+          "front": "什么是投资组合？",
+          "back": "由多种资产（如股票、债券、外汇等）构成的集合。",
+          "explanation": "投资组合的核心是'多种资产'的集合，而不是单一资产。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_portfolio_def_v2",
+          "front": "把股票、债券和外汇放在一起，构成了什么？",
+          "back": "一个投资组合。",
+          "explanation": "多种不同类型的资产组合在一起就是投资组合。",
+          "estimated_seconds": 5
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_optimization_goal",
+      "question_type": "short_answer",
+      "linked_steps": ["step1"],
+      "concept_key": "portfolio_optimization_goal",
+      "coverage_tags": ["portfolio_optimization_goal"],
+      "term_refs": [
+        {
+          "display": "投资组合优化",
+          "en": "Portfolio Optimization"
+        }
+      ],
+      "learning_goal": "学生能说出投资组合优化的两个核心目标。",
+      "difficulty": "easy",
+      "retrieval_focus": "投资组合优化的双重目标：收益最大化和风险最小化。",
+      "variants": [
+        {
+          "question_id": "q_flash_optimization_goal_v1",
+          "front": "投资组合优化的两个核心目标是什么？",
+          "back": "最大化收益，同时最小化风险。",
+          "explanation": "优化过程就是在收益和风险之间寻找最佳平衡。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_optimization_goal_v2",
+          "front": "投资组合优化要解决的核心问题是什么？",
+          "back": "每种资产该买多少，才能在收益最大化的同时把风险降到最低。",
+          "explanation": "权重分配是优化的关键。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_markowitz",
+      "question_type": "short_answer",
+      "linked_steps": ["step1"],
+      "concept_key": "markowitz_theory",
+      "coverage_tags": ["markowitz_theory"],
+      "term_refs": [
+        {
+          "display": "马科维茨投资组合理论",
+          "en": "Markowitz Portfolio Theory"
+        }
+      ],
+      "learning_goal": "学生能说出马科维茨投资组合理论的核心内容和获奖年份。",
+      "difficulty": "easy",
+      "retrieval_focus": "马科维茨理论的核心：现代投资组合理论，1990年诺贝尔奖。",
+      "variants": [
+        {
+          "question_id": "q_flash_markowitz_v1",
+          "front": "马科维茨投资组合理论在哪一年获得了诺贝尔奖？",
+          "back": "1990年。",
+          "explanation": "马科维茨因现代投资组合理论获得1990年诺贝尔经济学奖。",
+          "estimated_seconds": 5
+        },
+        {
+          "question_id": "q_flash_markowitz_v2",
+          "front": "马科维茨投资组合理论的另一个常用名称是什么？",
+          "back": "现代投资组合理论。",
+          "explanation": "Markowitz Portfolio Theory 也被称为 Modern Portfolio Theory (MPT)。",
+          "estimated_seconds": 5
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_expected_return",
+      "question_type": "short_answer",
+      "linked_steps": ["step1"],
+      "concept_key": "expected_portfolio_return",
+      "coverage_tags": ["expected_portfolio_return"],
+      "term_refs": [
+        {
+          "display": "期望收益率",
+          "en": "Expected Return"
+        }
+      ],
+      "learning_goal": "学生能说出组合期望收益率的计算方法。",
+      "difficulty": "easy",
+      "retrieval_focus": "组合期望收益率 = 各资产期望收益率的加权平均。",
+      "variants": [
+        {
+          "question_id": "q_flash_expected_return_v1",
+          "front": "组合的期望收益率如何计算？",
+          "back": "各资产期望收益率的加权平均，权重之和为1。",
+          "explanation": "E(R_p) = w_A * E(R_A) + w_B * E(R_B) + ...",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_expected_return_v2",
+          "front": "资产A期望收益15%，资产B期望收益7.5%，各投一半，组合期望收益是多少？",
+          "back": "11.25%。",
+          "explanation": "0.5 * 15% + 0.5 * 7.5% = 11.25%。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_variance_formula",
+      "question_type": "short_answer",
+      "linked_steps": ["step1"],
+      "concept_key": "portfolio_variance_formula",
+      "coverage_tags": ["portfolio_variance_formula"],
+      "term_refs": [
+        {
+          "display": "投资组合方差",
+          "en": "Portfolio Variance"
+        }
+      ],
+      "learning_goal": "学生能写出两只资产组合的方差公式。",
+      "difficulty": "medium",
+      "retrieval_focus": "两只资产组合方差公式的构成项。",
+      "variants": [
+        {
+          "question_id": "q_flash_variance_formula_v1",
+          "front": "两只资产组合的方差公式中，包含哪三项？",
+          "back": "w_A²σ_A² + w_B²σ_B² + 2w_A w_B σ_AB。",
+          "explanation": "第一项是A的方差贡献，第二项是B的方差贡献，第三项是协方差贡献。",
+          "estimated_seconds": 12
+        },
+        {
+          "question_id": "q_flash_variance_formula_v2",
+          "front": "组合方差公式中，第三项 2w_A w_B σ_AB 代表什么？",
+          "back": "资产A和资产B之间的协方差对组合风险的贡献。",
+          "explanation": "协方差项反映了资产之间的相关性对组合风险的影响。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_weight_constraint",
+      "question_type": "short_answer",
+      "linked_steps": ["step1"],
+      "concept_key": "weight_constraint",
+      "coverage_tags": ["weight_constraint"],
+      "term_refs": [
+        {
+          "display": "权重约束",
+          "en": "Weight Constraint"
+        }
+      ],
+      "learning_goal": "学生能说出组合权重的约束条件。",
+      "difficulty": "easy",
+      "retrieval_focus": "所有资产权重之和必须等于1。",
+      "variants": [
+        {
+          "question_id": "q_flash_weight_constraint_v1",
+          "front": "投资组合中所有资产的权重之和必须等于多少？",
+          "back": "1（或100%）。",
+          "explanation": "∑w_i = 1 是组合权重的基本约束。",
+          "estimated_seconds": 5
+        },
+        {
+          "question_id": "q_flash_weight_constraint_v2",
+          "front": "如果组合中资产A的权重是0.4，资产B的权重是0.6，这满足什么条件？",
+          "back": "权重之和等于1（0.4 + 0.6 = 1）。",
+          "explanation": "这是组合权重的基本约束条件。",
+          "estimated_seconds": 5
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_portfolio_def",
+      "question_type": "single_choice",
+      "linked_steps": ["step1"],
+      "concept_key": "portfolio_definition",
+      "coverage_tags": ["portfolio_definition"],
+      "term_refs": [
+        {
+          "display": "投资组合",
+          "en": "Portfolio"
+        }
+      ],
+      "learning_goal": "学生能在选择题中识别投资组合的正确描述。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_portfolio_def_v1",
+          "stem": "以下哪一项最准确地描述了投资组合？",
+          "options": [
+            "单一的一种资产",
+            "多种资产构成的集合",
+            "只包含股票的投资",
+            "一种风险管理工具"
+          ],
+          "answer": 1,
+          "explanation": "投资组合是由多种资产（如股票、债券、外汇等）构成的集合。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_portfolio_def_v2",
+          "stem": "以下哪一项不是投资组合中常见的资产类型？",
+          "options": [
+            "股票",
+            "债券",
+            "外汇",
+            "个人信用评分"
+          ],
+          "answer": 3,
+          "explanation": "个人信用评分不是一种可交易的金融资产，不属于投资组合的构成部分。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_optimization_goal",
+      "question_type": "single_choice",
+      "linked_steps": ["step1"],
+      "concept_key": "portfolio_optimization_goal",
+      "coverage_tags": ["portfolio_optimization_goal"],
+      "term_refs": [
+        {
+          "display": "投资组合优化",
+          "en": "Portfolio Optimization"
+        }
+      ],
+      "learning_goal": "学生能识别投资组合优化的核心目标。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_optimization_goal_v1",
+          "stem": "投资组合优化的核心目标是什么？",
+          "options": [
+            "只追求最大收益",
+            "只追求最小风险",
+            "在最大化收益的同时最小化风险",
+            "保证每年正收益"
+          ],
+          "answer": 2,
+          "explanation": "投资组合优化是在收益和风险之间寻找最佳平衡，即最大化收益的同时最小化风险。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_optimization_goal_v2",
+          "stem": "投资组合优化主要解决什么问题？",
+          "options": [
+            "如何选择最好的单一资产",
+            "每种资产该分配多少权重",
+            "如何预测市场走势",
+            "如何降低交易成本"
+          ],
+          "answer": 1,
+          "explanation": "投资组合优化的核心是确定每种资产的最佳权重分配。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_markowitz",
+      "question_type": "true_false",
+      "linked_steps": ["step1"],
+      "concept_key": "markowitz_theory",
+      "coverage_tags": ["markowitz_theory"],
+      "term_refs": [
+        {
+          "display": "马科维茨投资组合理论",
+          "en": "Markowitz Portfolio Theory"
+        }
+      ],
+      "learning_goal": "学生能判断关于马科维茨理论的陈述是否正确。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_markowitz_v1",
+          "stem": "马科维茨投资组合理论在2000年获得了诺贝尔奖。",
+          "options": ["正确", "错误"],
+          "answer": 1,
+          "explanation": "马科维茨投资组合理论在1990年获得了诺贝尔奖，不是2000年。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_quiz_markowitz_v2",
+          "stem": "马科维茨投资组合理论也被称为现代投资组合理论。",
+          "options": ["正确", "错误"],
+          "answer": 0,
+          "explanation": "Markowitz Portfolio Theory 确实也被称为 Modern Portfolio Theory (MPT)。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_expected_return",
+      "question_type": "single_choice",
+      "linked_steps": ["step1"],
+      "concept_key": "expected_portfolio_return",
+      "coverage_tags": ["expected_portfolio_return"],
+      "term_refs": [
+        {
+          "display": "期望收益率",
+          "en": "Expected Return"
+        }
+      ],
+      "learning_goal": "学生能计算简单的组合期望收益率。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_expected_return_v1",
+          "stem": "资产A的期望收益是20%，资产B的期望收益是10%。如果组合中A占30%，B占70%，组合的期望收益率是多少？",
+          "options": ["15%", "13%", "17%", "30%"],
+          "answer": 1,
+          "explanation": "E(R_p) = 0.3 * 20% + 0.7 * 10% = 6% + 7% = 13%。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_expected_return_v2",
+          "stem": "资产X的期望收益是12%，资产Y的期望收益是8%。如果组合中X占60%，Y占40%，组合的期望收益率是多少？",
+          "options": ["10.4%", "9.6%", "11.2%", "20%"],
+          "answer": 0,
+          "explanation": "E(R_p) = 0.6 * 12% + 0.4 * 8% = 7.2% + 3.2% = 10.4%。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_variance_formula",
+      "question_type": "single_choice",
+      "linked_steps": ["step1"],
+      "concept_key": "portfolio_variance_formula",
+      "coverage_tags": ["portfolio_variance_formula"],
+      "term_refs": [
+        {
+          "display": "投资组合方差",
+          "en": "Portfolio Variance"
+        }
+      ],
+      "learning_goal": "学生能识别组合方差公式的正确形式。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_variance_formula_v1",
+          "stem": "两只资产组合的方差公式中，哪一项反映了资产之间的相关性对风险的影响？",
+          "options": [
+            "w_A²σ_A²",
+            "w_B²σ_B²",
+            "2w_A w_B σ_AB",
+            "w_A σ_A + w_B σ_B"
+          ],
+          "answer": 2,
+          "explanation": "协方差项 2w_A w_B σ_AB 反映了资产A和B之间的相关性对组合风险的贡献。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_variance_formula_v2",
+          "stem": "以下哪个公式是两只资产组合的正确方差公式？",
+          "options": [
+            "σ_p² = w_A²σ_A² + w_B²σ_B²",
+            "σ_p² = w_A²σ_A² + w_B²σ_B² + 2w_A w_B σ_AB",
+            "σ_p² = w_Aσ_A + w_Bσ_B",
+            "σ_p² = w_A²σ_A² + w_B²σ_B² + w_A w_B σ_AB"
+          ],
+          "answer": 1,
+          "explanation": "两只资产组合的方差公式包含三项：各自的方差贡献和协方差贡献。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_weight_constraint",
+      "question_type": "true_false",
+      "linked_steps": ["step1"],
+      "concept_key": "weight_constraint",
+      "coverage_tags": ["weight_constraint"],
+      "term_refs": [
+        {
+          "display": "权重约束",
+          "en": "Weight Constraint"
+        }
+      ],
+      "learning_goal": "学生能判断关于权重约束的陈述是否正确。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_weight_constraint_v1",
+          "stem": "投资组合中所有资产的权重之和必须小于1。",
+          "options": ["正确", "错误"],
+          "answer": 1,
+          "explanation": "所有资产的权重之和必须等于1（或100%），而不是小于1。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_quiz_weight_constraint_v2",
+          "stem": "如果组合中资产A的权重是0.6，资产B的权重是0.4，这个组合的权重分配是有效的。",
+          "options": ["正确", "错误"],
+          "answer": 0,
+          "explanation": "0.6 + 0.4 = 1，满足权重之和等于1的约束条件。",
+          "estimated_seconds": 10
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_expected_return_calc",
+      "question_type": "worked_example",
+      "linked_steps": ["step1"],
+      "concept_key": "expected_portfolio_return",
+      "coverage_tags": ["expected_portfolio_return"],
+      "term_refs": [
+        {
+          "display": "期望收益率",
+          "en": "Expected Return"
+        }
+      ],
+      "learning_goal": "学生能根据给定的资产期望收益率和权重，计算组合的期望收益率。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_expected_return_calc_v1",
+          "stem": "一个组合包含三种资产：资产A（权重40%，期望收益12%）、资产B（权重35%，期望收益8%）、资产C（权重25%，期望收益15%）。请计算该组合的期望收益率。",
+          "prompt_blocks": [
+            "写出组合期望收益率的公式",
+            "代入数值计算",
+            "给出最终结果"
+          ],
+          "rubric_points": [
+            "正确写出公式 E(R_p) = ∑w_i * E(R_i)",
+            "正确代入数值：0.4*12% + 0.35*8% + 0.25*15%",
+            "正确计算结果：4.8% + 2.8% + 3.75% = 11.35%"
+          ],
+          "reference_answer": [
+            "公式：E(R_p) = w_A * E(R_A) + w_B * E(R_B) + w_C * E(R_C)",
+            "代入：0.4 * 12% + 0.35 * 8% + 0.25 * 15%",
+            "计算：4.8% + 2.8% + 3.75% = 11.35%",
+            "该组合的期望收益率为11.35%。"
+          ],
+          "estimated_seconds": 90
+        },
+        {
+          "question_id": "q_long_expected_return_calc_v2",
+          "stem": "一个组合包含两只资产：资产X（权重70%，期望收益18%）、资产Y（权重30%，期望收益6%）。请计算该组合的期望收益率。",
+          "prompt_blocks": [
+            "写出组合期望收益率的公式",
+            "代入数值计算",
+            "给出最终结果"
+          ],
+          "rubric_points": [
+            "正确写出公式 E(R_p) = w_X * E(R_X) + w_Y * E(R_Y)",
+            "正确代入数值：0.7*18% + 0.3*6%",
+            "正确计算结果：12.6% + 1.8% = 14.4%"
+          ],
+          "reference_answer": [
+            "公式：E(R_p) = w_X * E(R_X) + w_Y * E(R_Y)",
+            "代入：0.7 * 18% + 0.3 * 6%",
+            "计算：12.6% + 1.8% = 14.4%",
+            "该组合的期望收益率为14.4%。"
+          ],
+          "estimated_seconds": 90
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_variance_calc",
+      "question_type": "worked_example",
+      "linked_steps": ["step1"],
+      "concept_key": "portfolio_variance_formula",
+      "coverage_tags": ["portfolio_variance_formula"],
+      "term_refs": [
+        {
+          "display": "投资组合方差",
+          "en": "Portfolio Variance"
+        }
+      ],
+      "learning_goal": "学生能根据给定的资产方差、协方差和权重，计算两只资产组合的方差。",
+      "difficulty": "hard",
+      "variants": [
+        {
+          "question_id": "q_long_variance_calc_v1",
+          "stem": "一个组合包含两只资产：资产A（权重60%，方差0.04）、资产B（权重40%，方差0.09），A和B的协方差为0.02。请计算该组合的方差。",
+          "prompt_blocks": [
+            "写出两只资产组合的方差公式",
+            "代入数值计算每一项",
+            "求和得到组合方差"
+          ],
+          "rubric_points": [
+            "正确写出公式 σ_p² = w_A²σ_A² + w_B²σ_B² + 2w_A w_B σ_AB",
+            "正确计算第一项：0.6² * 0.04 = 0.36 * 0.04 = 0.0144",
+            "正确计算第二项：0.4² * 0.09 = 0.16 * 0.09 = 0.0144",
+            "正确计算第三项：2 * 0.6 * 0.4 * 0.02 = 0.0096",
+            "正确求和：0.0144 + 0.0144 + 0.0096 = 0.0384"
+          ],
+          "reference_answer": [
+            "公式：σ_p² = w_A²σ_A² + w_B²σ_B² + 2w_A w_B σ_AB",
+            "第一项：0.6² * 0.04 = 0.0144",
+            "第二项：0.4² * 0.09 = 0.0144",
+            "第三项：2 * 0.6 * 0.4 * 0.02 = 0.0096",
+            "组合方差 = 0.0144 + 0.0144 + 0.0096 = 0.0384"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_variance_calc_v2",
+          "stem": "一个组合包含两只资产：资产P（权重50%，方差0.01）、资产Q（权重50%，方差0.04），P和Q的协方差为0.005。请计算该组合的方差。",
+          "prompt_blocks": [
+            "写出两只资产组合的方差公式",
+            "代入数值计算每一项",
+            "求和得到组合方差"
+          ],
+          "rubric_points": [
+            "正确写出公式 σ_p² = w_P²σ_P² + w_Q²σ_Q² + 2w_P w_Q σ_PQ",
+            "正确计算第一项：0.5² * 0.01 = 0.25 * 0.01 = 0.0025",
+            "正确计算第二项：0.5² * 0.04 = 0.25 * 0.04 = 0.01",
+            "正确计算第三项：2 * 0.5 * 0.5 * 0.005 = 0.0025",
+            "正确求和：0.0025 + 0.01 + 0.0025 = 0.015"
+          ],
+          "reference_answer": [
+            "公式：σ_p² = w_P²σ_P² + w_Q²σ_Q² + 2w_P w_Q σ_PQ",
+            "第一项：0.5² * 0.01 = 0.0025",
+            "第二项：0.5² * 0.04 = 0.01",
+            "第三项：2 * 0.5 * 0.5 * 0.005 = 0.0025",
+            "组合方差 = 0.0025 + 0.01 + 0.0025 = 0.015"
+          ],
+          "estimated_seconds": 120
+        }
+      ]
+    }
+  ]
+}
+```

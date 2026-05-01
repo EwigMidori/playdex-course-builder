@@ -1,0 +1,64 @@
+{
+  "lesson_id": "L4",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s051",
+      "introduced_terms": [],
+      "lines": [
+        "回顾一下：市场有三种状态。",
+        "每种状态都有对应的分析工具。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s052",
+      "introduced_terms": [],
+      "lines": [
+        "趋势市场 → 线性回归、ARIMA",
+        "均值回归 → Hurst指数、半衰期",
+        "随机游走 → Martingale策略"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "关键不是哪个模型更高级，",
+        "而是先判断当前市场属于哪种状态。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "用错模型比不用模型更危险。",
+        "在趋势市场做均值回归，会亏得很惨。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "一句话带走：",
+        "先分类，再建模，最后交易。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "plain_text": "Key Takeaways",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

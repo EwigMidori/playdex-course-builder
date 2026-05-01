@@ -1,0 +1,617 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "stop_loss_basics",
+      "covered_by": [
+        "qf_flash_stop_loss_def",
+        "qf_quiz_stop_loss_purpose"
+      ],
+      "description": "止损的基本概念：设定价格自动平仓以限制损失。"
+    },
+    {
+      "coverage_tag": "fixed_stop_loss",
+      "covered_by": [
+        "qf_flash_fixed_sl",
+        "qf_quiz_fixed_sl_calc"
+      ],
+      "description": "固定止损：设定固定价格水平，最大亏损锁定。"
+    },
+    {
+      "coverage_tag": "trailing_stop_loss",
+      "covered_by": [
+        "qf_flash_trailing_sl",
+        "qf_quiz_trailing_sl_advantage",
+        "qf_long_trailing_sl_mechanism"
+      ],
+      "description": "移动止损：动态调整止损线，随价格上涨上移，锁定利润。"
+    },
+    {
+      "coverage_tag": "portfolio_stop_loss",
+      "covered_by": [
+        "qf_flash_portfolio_sl",
+        "qf_quiz_portfolio_sl_purpose"
+      ],
+      "description": "组合止损：基于整个组合净值的第二层保护，从高点回撤一定比例时清仓。"
+    },
+    {
+      "coverage_tag": "risk_limit_stop_loss",
+      "covered_by": [
+        "qf_flash_risk_limit_types",
+        "qf_quiz_risk_limit_example"
+      ],
+      "description": "风险限额止损：日/周/月/季/年止损、VaR限额等风控措施。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "stop_loss",
+      "coverage_tags": [
+        "stop_loss_basics"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_stop_loss_def",
+      "learning_goal": "学生能准确说出止损的定义和核心作用。",
+      "linked_steps": [
+        "step7"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "止损的定义和自动平仓机制。",
+      "term_refs": [
+        {
+          "display": "止损",
+          "en": "Stop Loss"
+        }
+      ],
+      "variants": [
+        {
+          "back": "当价格达到预设水平时自动平仓，以限制单笔交易的损失。",
+          "estimated_seconds": 8,
+          "explanation": "止损是风险控制的最基本工具，避免情绪化决策和无限亏损。",
+          "front": "止损（Stop Loss）的核心作用是什么？",
+          "question_id": "q_flash_stop_loss_def_v1"
+        },
+        {
+          "back": "当资产价格达到或跌破预设的止损价格水平时自动触发平仓。",
+          "estimated_seconds": 8,
+          "explanation": "止损价格在开仓时设定，一旦触发即执行，无需人工干预。",
+          "front": "止损指令在什么条件下触发？",
+          "question_id": "q_flash_stop_loss_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "fixed_stop_loss",
+      "coverage_tags": [
+        "fixed_stop_loss"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_fixed_sl",
+      "learning_goal": "学生能描述固定止损的设定方式和最大亏损锁定原理。",
+      "linked_steps": [
+        "step7"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "固定止损的设定和最大亏损计算。",
+      "term_refs": [
+        {
+          "display": "固定止损",
+          "en": "Fixed Stop Loss"
+        }
+      ],
+      "variants": [
+        {
+          "back": "10元（每股）。",
+          "estimated_seconds": 6,
+          "explanation": "固定止损将最大亏损锁定在买入价与止损价的差值。",
+          "front": "以100元买入股票，设置固定止损价为90元，最大亏损是多少？",
+          "question_id": "q_flash_fixed_sl_v1"
+        },
+        {
+          "back": "不会，固定止损的止损价格是预先设定且不变的。",
+          "estimated_seconds": 6,
+          "explanation": "固定止损在开仓时设定一个固定价格，不会随市场变化调整。",
+          "front": "固定止损的止损线是否会随价格上涨而移动？",
+          "question_id": "q_flash_fixed_sl_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "trailing_stop_loss",
+      "coverage_tags": [
+        "trailing_stop_loss"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_trailing_sl",
+      "learning_goal": "学生能解释移动止损的运作机制和主要优势。",
+      "linked_steps": [
+        "step7"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "移动止损的动态调整规则。",
+      "term_refs": [
+        {
+          "display": "移动止损",
+          "en": "Trailing Stop Loss"
+        }
+      ],
+      "variants": [
+        {
+          "back": "止损线会随价格上涨而上移，但不会下移。",
+          "estimated_seconds": 8,
+          "explanation": "移动止损锁定已实现利润，同时保留进一步上涨的空间。",
+          "front": "移动止损的止损线在价格上涨时会如何变化？",
+          "question_id": "q_flash_trailing_sl_v1"
+        },
+        {
+          "back": "104.5（110 - 110 × 5% = 104.5）。",
+          "estimated_seconds": 10,
+          "explanation": "移动止损按设定的百分比或金额从最高价向下计算。",
+          "front": "设5%移动止损，价格从100涨到110，止损线会上移到多少？",
+          "question_id": "q_flash_trailing_sl_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "portfolio_stop_loss",
+      "coverage_tags": [
+        "portfolio_stop_loss"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_portfolio_sl",
+      "learning_goal": "学生能说明组合止损的作用和触发条件。",
+      "linked_steps": [
+        "step7"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "组合止损作为第二层保护的定义。",
+      "term_refs": [
+        {
+          "display": "组合止损",
+          "en": "Portfolio Stop Loss"
+        }
+      ],
+      "variants": [
+        {
+          "back": "当整个投资组合的净值从历史最高点回撤达到预设比例时，全部清仓。",
+          "estimated_seconds": 10,
+          "explanation": "组合止损是第二层保护，防止多个策略同时亏损导致资本大幅缩水。",
+          "front": "组合止损（Portfolio Stop Loss）在什么情况下触发？",
+          "question_id": "q_flash_portfolio_sl_v1"
+        },
+        {
+          "back": "组合止损基于整个组合净值，单笔止损基于单个资产价格。",
+          "estimated_seconds": 8,
+          "explanation": "组合止损从全局角度控制风险，单笔止损只控制单个头寸。",
+          "front": "组合止损与单笔交易止损的主要区别是什么？",
+          "question_id": "q_flash_portfolio_sl_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "risk_limit_stop_loss",
+      "coverage_tags": [
+        "risk_limit_stop_loss"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_risk_limit_types",
+      "learning_goal": "学生能列举常见的风险限额类型。",
+      "linked_steps": [
+        "step7"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "风险限额的时间维度分类。",
+      "term_refs": [
+        {
+          "display": "风险限额",
+          "en": "Risk Limit"
+        }
+      ],
+      "variants": [
+        {
+          "back": "日止损、周止损、月止损、季度止损、年度止损。",
+          "estimated_seconds": 8,
+          "explanation": "不同时间维度的止损限额用于控制不同周期内的最大亏损。",
+          "front": "风控部门常用的风险限额按时间维度分为哪几种？",
+          "question_id": "q_flash_risk_limit_types_v1"
+        },
+        {
+          "back": "VaR限额、DV01限额、Delta限额等。",
+          "estimated_seconds": 8,
+          "explanation": "这些限额针对不同类型的风险敞口进行控制。",
+          "front": "除了时间维度止损，风险限额还包括哪些类型？",
+          "question_id": "q_flash_risk_limit_types_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L7",
+  "longform_families": [
+    {
+      "concept_key": "trailing_stop_loss",
+      "coverage_tags": [
+        "trailing_stop_loss"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_trailing_sl_mechanism",
+      "learning_goal": "学生能完整解释移动止损的运作机制、优势及适用场景。",
+      "linked_steps": [
+        "step7"
+      ],
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "移动止损",
+          "en": "Trailing Stop Loss"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "移动止损的定义",
+            "止损线如何随价格变化",
+            "与固定止损的对比",
+            "一个具体数值例子"
+          ],
+          "question_id": "q_long_trailing_sl_mechanism_v1",
+          "reference_answer": [
+            "移动止损是一种动态止损指令，止损线随资产价格上涨而上移，但不会下移。",
+            "例如：以100元买入，设5%移动止损，初始止损线为95元。价格涨到110元时，止损线上移到104.5元（110-110×5%）。",
+            "与固定止损相比，移动止损能锁定已实现利润，同时保留继续上涨的空间。",
+            "固定止损的止损线固定不变，无法捕捉上涨带来的利润保护机会。"
+          ],
+          "rubric_points": [
+            "正确描述移动止损的动态调整规则",
+            "准确说明止损线只上移不下移",
+            "清晰对比固定止损的静态特性",
+            "给出自洽的数值例子"
+          ],
+          "stem": "请解释移动止损（Trailing Stop Loss）的运作机制，并说明它与固定止损相比的主要优势。"
+        },
+        {
+          "estimated_seconds": 100,
+          "prompt_blocks": [
+            "初始止损线计算",
+            "价格上涨时的止损线调整",
+            "价格下跌时的触发条件",
+            "最终盈亏计算"
+          ],
+          "question_id": "q_long_trailing_sl_mechanism_v2",
+          "reference_answer": [
+            "初始止损线：80 × (1 - 0.08) = 73.6元。",
+            "价格涨到100元时，止损线上移到100 × (1 - 0.08) = 92元。",
+            "价格从100元跌到90元时，90元低于92元止损线，触发卖出。",
+            "最终以92元卖出，每股盈利12元（92-80），利润被锁定。"
+          ],
+          "rubric_points": [
+            "正确计算初始止损线",
+            "正确计算每个价格点的止损线",
+            "正确判断触发时机",
+            "正确计算最终盈亏"
+          ],
+          "stem": "假设你以80元买入某股票，设置8%移动止损。请描述价格从80元涨到100元再跌到90元的过程中，止损线的变化情况，并说明最终结果。"
+        }
+      ]
+    },
+    {
+      "concept_key": "risk_management_hierarchy",
+      "coverage_tags": [
+        "stop_loss_basics",
+        "fixed_stop_loss",
+        "trailing_stop_loss",
+        "portfolio_stop_loss",
+        "risk_limit_stop_loss"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_risk_management_system",
+      "learning_goal": "学生能比较不同层次的风险控制工具及其适用场景。",
+      "linked_steps": [
+        "step7"
+      ],
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "止损与风险限额",
+          "en": "Stop Loss and Risk Limit"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "四种工具的定义",
+            "作用层次（交易层面 vs 组合层面）",
+            "触发条件对比",
+            "适用场景举例"
+          ],
+          "question_id": "q_long_risk_management_system_v1",
+          "reference_answer": [
+            "固定止损：交易层面，设定固定价格触发，适用于单笔交易风险控制。",
+            "移动止损：交易层面，随价格上涨上移，适用于趋势行情中保护利润。",
+            "组合止损：组合层面，基于总净值回撤比例触发，适用于多策略组合的全局保护。",
+            "风险限额止损：组合层面，按日/周/月等时间周期设定最大亏损限额，适用于风控部门的合规管理。",
+            "这四层工具形成从单笔到全局、从价格到时间的完整风控体系。"
+          ],
+          "rubric_points": [
+            "准确区分交易层面和组合层面的工具",
+            "正确描述每种工具的触发条件",
+            "给出合理的适用场景",
+            "逻辑清晰，层次分明"
+          ],
+          "stem": "请比较固定止损、移动止损、组合止损和风险限额止损这四种风险控制工具，说明它们各自的作用层次、触发条件和适用场景。"
+        },
+        {
+          "estimated_seconds": 130,
+          "prompt_blocks": [
+            "每个策略内部的风险控制",
+            "组合层面的风险控制",
+            "时间维度的风险限额",
+            "各层次之间的协调关系"
+          ],
+          "question_id": "q_long_risk_management_system_v2",
+          "reference_answer": [
+            "每个策略内部：对每笔交易设置固定止损（如5%）或移动止损（如8%），控制单笔最大亏损。",
+            "组合层面：设置组合止损，当总净值从高点回撤10%时全部清仓，作为第二层保护。",
+            "时间维度：设置日止损3%、月止损8%，由风控部门监控，超限则暂停所有策略。",
+            "各层次协调：单笔止损先触发，若多个策略同时亏损导致净值回撤，组合止损再触发；时间限额作为最后防线。"
+          ],
+          "rubric_points": [
+            "每个策略内部使用固定或移动止损",
+            "组合层面设置组合止损",
+            "设置时间维度风险限额",
+            "说明各层次如何互补"
+          ],
+          "stem": "一个量化交易团队同时运行5个策略，每个策略管理不同资产。请设计一个多层次风险控制方案，说明你会如何组合使用固定止损、移动止损、组合止损和风险限额止损。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "stop_loss",
+      "coverage_tags": [
+        "stop_loss_basics"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_stop_loss_purpose",
+      "learning_goal": "学生能辨析止损的核心目的。",
+      "linked_steps": [
+        "step7"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "止损",
+          "en": "Stop Loss"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "止损的核心目的是在价格不利时自动平仓，将损失控制在可接受范围内。",
+          "options": [
+            "最大化交易利润",
+            "限制单笔交易的潜在损失",
+            "增加交易频率",
+            "预测市场走势"
+          ],
+          "question_id": "q_quiz_stop_loss_purpose_v1",
+          "stem": "设置止损的主要目的是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "止损不能保证盈利，它只是限制亏损的工具。",
+          "options": [
+            "减少情绪化决策",
+            "锁定最大亏损",
+            "保证交易盈利",
+            "实现自动化风险管理"
+          ],
+          "question_id": "q_quiz_stop_loss_purpose_v2",
+          "stem": "以下哪一项不是止损带来的好处？"
+        }
+      ]
+    },
+    {
+      "concept_key": "fixed_stop_loss",
+      "coverage_tags": [
+        "fixed_stop_loss"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_fixed_sl_calc",
+      "learning_goal": "学生能计算固定止损下的最大亏损金额。",
+      "linked_steps": [
+        "step7"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "固定止损",
+          "en": "Fixed Stop Loss"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "每股亏损5元（50-45），共100股，总亏损500元。",
+          "options": [
+            "50元",
+            "500元",
+            "450元",
+            "100元"
+          ],
+          "question_id": "q_quiz_fixed_sl_calc_v1",
+          "stem": "以50元买入100股股票，设置固定止损价为45元。如果触发止损，最大亏损是多少？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "每股亏损20元（200-180），共100股，总亏损2000元。",
+          "options": [
+            "2000元",
+            "1800元",
+            "200元",
+            "20元"
+          ],
+          "question_id": "q_quiz_fixed_sl_calc_v2",
+          "stem": "以200元买入1手（100股），设置固定止损价为180元。最大亏损金额是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "trailing_stop_loss",
+      "coverage_tags": [
+        "trailing_stop_loss"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_trailing_sl_advantage",
+      "learning_goal": "学生能辨析移动止损相比固定止损的核心优势。",
+      "linked_steps": [
+        "step7"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "移动止损",
+          "en": "Trailing Stop Loss"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "移动止损随价格上涨而上移，锁定已实现利润，同时保留上涨空间。",
+          "options": [
+            "能锁定已获得的利润",
+            "能承受更大的亏损",
+            "不需要设置参数",
+            "适用于所有市场条件"
+          ],
+          "question_id": "q_quiz_trailing_sl_advantage_v1",
+          "stem": "移动止损相比固定止损的最大优势是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "上升趋势中移动止损可以不断上移，锁定利润的同时捕捉更大涨幅。",
+          "options": [
+            "市场处于长期横盘震荡",
+            "资产价格呈现明显上升趋势",
+            "资产价格持续下跌",
+            "投资者希望固定最大亏损"
+          ],
+          "question_id": "q_quiz_trailing_sl_advantage_v2",
+          "stem": "以下哪种情况最适合使用移动止损？"
+        }
+      ]
+    },
+    {
+      "concept_key": "portfolio_stop_loss",
+      "coverage_tags": [
+        "portfolio_stop_loss"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_portfolio_sl_purpose",
+      "learning_goal": "学生能理解组合止损的定位和作用。",
+      "linked_steps": [
+        "step7"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "组合止损",
+          "en": "Portfolio Stop Loss"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "组合止损作为第二层保护，在单笔止损之上提供全局风险控制。",
+          "options": [
+            "第一层保护",
+            "第二层保护",
+            "唯一的风险控制工具",
+            "替代单笔止损"
+          ],
+          "question_id": "q_quiz_portfolio_sl_purpose_v1",
+          "stem": "组合止损（Portfolio Stop Loss）通常被描述为什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "组合止损触发时，系统会平掉所有头寸以保护整体资本。",
+          "options": [
+            "只平仓亏损最大的头寸",
+            "全部清仓所有头寸",
+            "增加保证金",
+            "暂停交易一天"
+          ],
+          "question_id": "q_quiz_portfolio_sl_purpose_v2",
+          "stem": "当组合止损触发时，通常执行什么操作？"
+        }
+      ]
+    },
+    {
+      "concept_key": "risk_limit_stop_loss",
+      "coverage_tags": [
+        "risk_limit_stop_loss"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_risk_limit_example",
+      "learning_goal": "学生能识别不同时间维度的风险限额。",
+      "linked_steps": [
+        "step7"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "风险限额",
+          "en": "Risk Limit"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 12,
+          "explanation": "月度止损限额是风控部门设置的时间维度风险限额之一。",
+          "options": [
+            "移动止损",
+            "固定止损",
+            "月度止损限额",
+            "组合止损"
+          ],
+          "question_id": "q_quiz_risk_limit_example_v1",
+          "stem": "以下哪一项属于风险限额（Risk Limit）？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 12,
+          "explanation": "'m'代表monthly，即月度止损限额。",
+          "options": [
+            "'d'",
+            "'w'",
+            "'m'",
+            "'y'"
+          ],
+          "question_id": "q_quiz_risk_limit_example_v2",
+          "stem": "在ALGOGENE中，设置月度止损限额应使用哪个risk_type参数？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "Stop loss and risk limit",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "Stop loss and risk limit control",
+    "plain_text": "pipeline/1-plain/L7/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "Stop loss and risk limit"
+  },
+  "target_language": "zh-CN"
+}

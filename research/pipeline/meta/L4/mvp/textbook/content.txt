@@ -1,0 +1,638 @@
+---
+lessonId: L4
+title: 金融市场分类与统计时间序列分析
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["core_theme", "model_selection_principle", "key_takeaway_workflow"]
+    linkedSteps: ["step1", "step8"]
+  - sectionId: concept-map
+    title: 课程全景与关键问题
+    coverageTags: ["market_classification_three_types", "trending_market_definition", "mean_reversion_definition", "random_walk_definition", "trending_and_mean_reversion_coexistence", "random_walk_implication"]
+    linkedSteps: ["step1"]
+  - sectionId: simple-linear-regression
+    title: 核心工具一：简单线性回归与趋势识别
+    coverageTags: ["simple_linear_regression_model", "slr_slope_interpretation", "residual_definition", "r_squared_interpretation", "slr_for_trend_identification", "python_lr_implementation", "lr_model_evaluation_r2", "lr_trading_strategy", "lr_backtest_performance"]
+    linkedSteps: ["step2", "step3"]
+  - sectionId: multiple-linear-regression
+    title: 核心工具二：多元线性回归与因素选择
+    coverageTags: ["multiple_linear_regression_model", "multicollinearity", "factor_selection_guidelines"]
+    linkedSteps: ["step4"]
+  - sectionId: arima-model
+    title: 核心工具三：ARIMA模型与时间序列依赖
+    coverageTags: ["arima_model_definition", "arima_parameters", "stationarity_concept", "adf_test", "arima_motivation"]
+    linkedSteps: ["step5"]
+  - sectionId: hurst-exponent
+    title: 核心工具四：Hurst指数与市场状态量化
+    coverageTags: ["hurst_exponent_definition", "hurst_exponent_thresholds", "hurst_exponent_strength", "half_life_definition", "half_life_formula", "half_life_practical_use"]
+    linkedSteps: ["step6"]
+  - sectionId: martingale-strategy
+    title: 核心策略：Martingale与随机游走市场
+    coverageTags: ["martingale_strategy_definition", "martingale_strategy_mechanism", "martingale_strategy_probability", "martingale_strategy_risk", "martingale_strategy_practice"]
+    linkedSteps: ["step7"]
+  - sectionId: pitfalls
+    title: 易错点
+    coverageTags: ["model_selection_principle", "multicollinearity", "martingale_strategy_risk"]
+    linkedSteps: ["step4", "step7", "step8"]
+  - sectionId: review-path
+    title: 复习与自测
+    coverageTags: ["market_classification_summary", "model_market_mapping", "key_takeaway_workflow"]
+    linkedSteps: ["step8"]
+coverageTrace:
+  - coverageTag: core_theme
+    description: 核心主题：金融市场分类与统计模型选择
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: market_classification_three_types
+    description: 金融市场三种基本分类：趋势市场、均值回归、随机游走
+    sectionIds: ["concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: trending_market_definition
+    description: 趋势市场（动量）的定义与特征
+    sectionIds: ["concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: mean_reversion_definition
+    description: 均值回归的定义与特征
+    sectionIds: ["concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: random_walk_definition
+    description: 随机游走的定义与特征，与有效市场假说相关
+    sectionIds: ["concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: trending_and_mean_reversion_coexistence
+    description: 趋势和均值回归可以同时存在
+    sectionIds: ["concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: random_walk_implication
+    description: 随机游走意味着技术分析无效，但存在特殊策略可能盈利
+    sectionIds: ["concept-map", "martingale-strategy"]
+    linkedSteps: ["step1", "step7"]
+  - coverageTag: simple_linear_regression_model
+    description: 简单线性回归模型的定义、公式、变量含义
+    sectionIds: ["simple-linear-regression"]
+    linkedSteps: ["step2"]
+  - coverageTag: slr_slope_interpretation
+    description: 斜率β₁的正负与价格趋势方向的关系
+    sectionIds: ["simple-linear-regression"]
+    linkedSteps: ["step2"]
+  - coverageTag: residual_definition
+    description: 残差的定义：实际值与预测值之差
+    sectionIds: ["simple-linear-regression"]
+    linkedSteps: ["step2"]
+  - coverageTag: r_squared_interpretation
+    description: R²的含义：模型解释的价格变动比例，范围0到1
+    sectionIds: ["simple-linear-regression"]
+    linkedSteps: ["step2"]
+  - coverageTag: slr_for_trend_identification
+    description: 用简单线性回归识别市场趋势的基本思路
+    sectionIds: ["simple-linear-regression"]
+    linkedSteps: ["step2"]
+  - coverageTag: python_lr_implementation
+    description: 用Python实现简单线性回归模型拟合微软股票数据
+    sectionIds: ["simple-linear-regression"]
+    linkedSteps: ["step3"]
+  - coverageTag: lr_model_evaluation_r2
+    description: 评估线性回归模型：R²=0.46的含义
+    sectionIds: ["simple-linear-regression"]
+    linkedSteps: ["step3"]
+  - coverageTag: lr_trading_strategy
+    description: 线性回归交易策略：基于预测价格与当前价格的比较进行交易
+    sectionIds: ["simple-linear-regression"]
+    linkedSteps: ["step3"]
+  - coverageTag: lr_backtest_performance
+    description: 线性回归策略回测结果：年化收益3.6%，胜率58.8%
+    sectionIds: ["simple-linear-regression"]
+    linkedSteps: ["step3"]
+  - coverageTag: multiple_linear_regression_model
+    description: 多元线性回归模型的定义、公式、各组成部分的含义
+    sectionIds: ["multiple-linear-regression"]
+    linkedSteps: ["step4"]
+  - coverageTag: multicollinearity
+    description: 多重共线性的概念：自变量之间高度相关导致模型系数不可靠
+    sectionIds: ["multiple-linear-regression", "pitfalls"]
+    linkedSteps: ["step4"]
+  - coverageTag: factor_selection_guidelines
+    description: 选择预测因素的原则：逻辑关联、避免多重共线性、数据可用性等
+    sectionIds: ["multiple-linear-regression"]
+    linkedSteps: ["step4"]
+  - coverageTag: arima_model_definition
+    description: ARIMA模型的完整名称、三个组成部分及其各自的作用
+    sectionIds: ["arima-model"]
+    linkedSteps: ["step5"]
+  - coverageTag: arima_parameters
+    description: ARIMA(p,d,q)三个参数的含义
+    sectionIds: ["arima-model"]
+    linkedSteps: ["step5"]
+  - coverageTag: stationarity_concept
+    description: 平稳性的定义：时间序列的统计性质不随时间变化
+    sectionIds: ["arima-model"]
+    linkedSteps: ["step5"]
+  - coverageTag: adf_test
+    description: ADF检验用于判断时间序列是否平稳，p值<0.05表示平稳
+    sectionIds: ["arima-model"]
+    linkedSteps: ["step5"]
+  - coverageTag: arima_motivation
+    description: 线性回归假设数据独立，但金融数据存在前后依赖关系，ARIMA专门处理这种依赖
+    sectionIds: ["arima-model"]
+    linkedSteps: ["step5"]
+  - coverageTag: hurst_exponent_definition
+    description: Hurst指数（H）的定义：衡量时间序列趋势或均值回归强度的指标，范围0到1
+    sectionIds: ["hurst-exponent"]
+    linkedSteps: ["step6"]
+  - coverageTag: hurst_exponent_thresholds
+    description: Hurst指数的阈值解释：H=0.5随机游走，H<0.5均值回归，H>0.5趋势
+    sectionIds: ["hurst-exponent"]
+    linkedSteps: ["step6"]
+  - coverageTag: hurst_exponent_strength
+    description: H越接近0均值回归越强，H越接近1趋势越强
+    sectionIds: ["hurst-exponent"]
+    linkedSteps: ["step6"]
+  - coverageTag: half_life_definition
+    description: 半衰期：价格偏离均值后恢复到一半所需的时间
+    sectionIds: ["hurst-exponent"]
+    linkedSteps: ["step6"]
+  - coverageTag: half_life_formula
+    description: 半衰期公式：半衰期 = ln(2) / κ，κ是均值回归速度
+    sectionIds: ["hurst-exponent"]
+    linkedSteps: ["step6"]
+  - coverageTag: half_life_practical_use
+    description: 半衰期在均值回归策略中的实际应用：选择与半衰期匹配的均线周期
+    sectionIds: ["hurst-exponent"]
+    linkedSteps: ["step6"]
+  - coverageTag: martingale_strategy_definition
+    description: Martingale策略的定义：每次亏损后加倍下注，直到盈利后回到初始赌注
+    sectionIds: ["martingale-strategy"]
+    linkedSteps: ["step7"]
+  - coverageTag: martingale_strategy_mechanism
+    description: Martingale策略的运作机制：赌场例子，下注序列与盈亏计算
+    sectionIds: ["martingale-strategy"]
+    linkedSteps: ["step7"]
+  - coverageTag: martingale_strategy_probability
+    description: Martingale策略的概率基础：连续输n次的概率为0.5^n
+    sectionIds: ["martingale-strategy"]
+    linkedSteps: ["step7"]
+  - coverageTag: martingale_strategy_risk
+    description: Martingale策略的核心风险：需要无限资金，可能爆仓
+    sectionIds: ["martingale-strategy", "pitfalls"]
+    linkedSteps: ["step7"]
+  - coverageTag: martingale_strategy_practice
+    description: Martingale策略的实践注意事项：严格控制仓位和资金管理
+    sectionIds: ["martingale-strategy"]
+    linkedSteps: ["step7"]
+  - coverageTag: market_classification_summary
+    description: 金融市场三种状态的总结与对应分析工具
+    sectionIds: ["review-path"]
+    linkedSteps: ["step8"]
+  - coverageTag: model_market_mapping
+    description: 每种市场状态对应的统计模型/策略
+    sectionIds: ["review-path"]
+    linkedSteps: ["step8"]
+  - coverageTag: model_selection_principle
+    description: 先判断市场状态再选择模型，用错模型比不用模型更危险
+    sectionIds: ["why-this-lesson-matters", "pitfalls"]
+    linkedSteps: ["step8"]
+  - coverageTag: key_takeaway_workflow
+    description: 核心工作流：先分类，再建模，最后交易
+    sectionIds: ["why-this-lesson-matters", "review-path"]
+    linkedSteps: ["step8"]
+---
+
+# 金融市场分类与统计时间序列分析
+
+## 为什么这一课重要 {#why-this-lesson-matters}
+
+金融市场并非只有一种面孔。它至少会呈现出三种截然不同的状态：**趋势**、**均值回归**和**随机游走**。每种状态都需要不同的分析工具和交易策略。
+
+本课的核心方法论是：**先分类，再建模，最后交易**。关键不是哪个模型更高级，而是先判断当前市场属于哪种状态，再选择对应的工具。用错模型比不用模型更危险——在趋势市场做均值回归，会亏得很惨。
+
+<KeyPoint>
+核心工作流：先分类（判断市场状态）→ 再建模（选择对应模型）→ 最后交易（执行策略）。
+</KeyPoint>
+
+<QuestionRef id="q_quiz_workflow_v1" />
+<QuestionRef id="q_quiz_workflow_v2" />
+
+## 课程全景与关键问题 {#concept-map}
+
+### 金融市场的三种状态
+
+<Definition title="趋势市场 (Trending Market / Momentum)">
+价格像有惯性一样，持续朝一个方向移动。动量交易涉及买入上涨趋势的证券并在其见顶时卖出，或做空下跌趋势的证券并在其触底时回补。
+</Definition>
+
+<Definition title="均值回归 (Mean Reversion)">
+资产价格和历史收益最终会回归到它们的长期均值或平均水平。基于极端价格变动是暂时的、会回归均值的理念。
+</Definition>
+
+<Definition title="随机游走 (Random Walk)">
+价格变化完全随机，不遵循任何模式或趋势。与有效市场假说（EMH）一致：所有已知信息已反映在价格中，未来价格不可预测。每个价格变化独立于之前的变化。
+</Definition>
+
+<Figure src="images/09778c2b01cda28bb5b71d28e6d1e2b93355193e35bfb0b0d56d9a47a92629d4.jpg" alt="趋势市场示意图：价格持续朝一个方向移动">
+趋势市场：价格持续朝一个方向移动
+</Figure>
+
+<Figure src="images/9c30145270dc07b2f7ff723423144bade20fb1a716cbf144b29fa02a9777accd.jpg" alt="均值回归示意图：价格围绕均值波动">
+均值回归：价格围绕长期均值波动
+</Figure>
+
+### 趋势与均值回归可以同时存在
+
+有趣的是，趋势和均值回归可以同时存在。短时间看是趋势，长时间看可能是在回归。例如，一只股票在日内呈现明显的上涨趋势（短时间尺度），但从月度数据看，价格在围绕一个长期均值波动（长时间尺度）。
+
+<Figure src="images/f60784d53f2cbaa56f4be7f24b9d773bc6ce6fccd06fac8de18ebbf656f11f28.jpg" alt="趋势和均值回归同时存在的示意图">
+
+### 随机游走的含义
+
+如果市场是随机游走，任何技术分析都无效。但有一种策略反而能赚钱——Martingale策略，我们后面会讲到。
+
+<QuestionRef id="q_quiz_market_classify_v1" />
+<QuestionRef id="q_quiz_market_classify_v2" />
+<QuestionRef id="q_quiz_market_classify_v3" />
+<QuestionRef id="q_quiz_coexistence_v1" />
+<QuestionRef id="q_quiz_coexistence_v2" />
+
+<QuestionFamily familyId="qf_flash_market_types" />
+<QuestionFamily familyId="qf_long_market_compare" />
+
+## 核心工具一：简单线性回归与趋势识别 {#simple-linear-regression}
+
+### 模型定义
+
+如何判断市场是趋势还是随机？一个简单的方法：用直线去拟合价格。这就是<Term id="simple_linear_regression" en="Simple Linear Regression">简单线性回归</Term>。
+
+<Formula latex="Y = \beta_0 + \beta_1 X + \epsilon">
+简单线性回归公式：Y是因变量（价格），X是自变量（时间），β₀是截距，β₁是斜率，ε是误差项
+</Formula>
+
+- **Y（因变量）**：我们试图预测或解释的变量（价格）
+- **X（自变量）**：我们用来做预测的变量（时间）
+- **β₁（斜率）**：如果为正，价格在上涨；为负则在下跌
+- **ε（误差项）**：模型无法解释的随机波动
+
+<Definition title="残差 (Residual)">
+实际价格与模型预测值之间的差异：残差 = 实际值 - 预测值。残差越小，说明直线拟合得越好。
+</Definition>
+
+<Definition title="R² (R-squared / Coefficient of Determination)">
+衡量模型能解释多少数据变动的比例，范围0到1。R² = 1 表示完美拟合，价格完全沿着直线走；R² = 0 表示直线毫无解释力。
+</Definition>
+
+<Example title="R²计算示例">
+假设有以下数据点：
+- 实际值 Y: [3, 4, 5, 6, 7]
+- 预测值 Ŷ: [2.8, 4.1, 5.3, 6.2, 7.4]
+
+SS_res = (3-2.8)² + (4-4.1)² + (5-5.3)² + (6-6.2)² + (7-7.4)² = 0.37
+SS_tot = (3-5)² + (4-5)² + (5-5)² + (6-5)² + (7-5)² = 10
+R² = 1 - 0.37/10 = 0.963
+
+说明模型解释了96.3%的数据变动。
+</Example>
+
+<QuestionRef id="q_quiz_slr_model_v1" />
+<QuestionRef id="q_quiz_slr_model_v2" />
+<QuestionRef id="q_quiz_slr_slope_v1" />
+<QuestionRef id="q_quiz_slr_slope_v2" />
+<QuestionRef id="q_quiz_residual_v1" />
+<QuestionRef id="q_quiz_residual_v2" />
+<QuestionRef id="q_quiz_r_squared_v1" />
+<QuestionRef id="q_quiz_r_squared_v2" />
+
+<QuestionFamily familyId="qf_flash_slr_model" />
+<QuestionFamily familyId="qf_flash_slr_slope" />
+<QuestionFamily familyId="qf_flash_residual" />
+<QuestionFamily familyId="qf_flash_r_squared" />
+<QuestionFamily familyId="qf_flash_slr_trend" />
+<QuestionFamily familyId="qf_long_r_squared" />
+<QuestionFamily familyId="qf_long_slr_trend" />
+
+### Python实战：线性回归交易策略
+
+理论讲完了，来实战。我们用 Python 对微软股票跑一个线性回归。
+
+<Example title="Python实现步骤">
+1. **数据获取**：用 yfinance 下载 MSFT 2023年的日线数据
+2. **特征构造**：用"一年中的第几天"作为 X
+3. **模型训练**：用 sklearn 的 LinearRegression 拟合模型
+4. **模型评估**：得到 R² = 0.46，说明直线只能解释不到一半的价格变动
+5. **交易规则**：如果预测未来价格高于当前，就买入
+6. **回测结果**：年化收益约3.6%，胜率58.8%
+
+```python
+from sklearn.linear_model import LinearRegression
+import yfinance as yf
+
+# 下载数据
+msft_data = yf.download('MSFT', start='2023-01-01', end='2023-12-31')
+
+# 构造特征
+msft_data['Day'] = msft_data.index.dayofyear
+X = msft_data[['Day']]
+y = msft_data['Close']
+
+# 训练模型
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# 评估
+print(f"R-squared: {r2_score(y_test, y_pred)}")
+# 输出: R-squared: 0.46
+```
+</Example>
+
+<KeyPoint>
+线性回归策略的核心假设是价格存在可预测的线性趋势。即使R²不高（如0.46），只要胜率>50%，通过多次交易就能累积正收益。
+</KeyPoint>
+
+<QuestionRef id="q_quiz_lr_impl_v1" />
+<QuestionRef id="q_quiz_lr_impl_v2" />
+<QuestionRef id="q_quiz_r2_meaning_v1" />
+<QuestionRef id="q_quiz_r2_meaning_v2" />
+<QuestionRef id="q_quiz_lr_strategy_v1" />
+<QuestionRef id="q_quiz_lr_strategy_v2" />
+<QuestionRef id="q_quiz_backtest_result_v1" />
+<QuestionRef id="q_quiz_backtest_result_v2" />
+
+<QuestionFamily familyId="qf_flash_lr_impl" />
+<QuestionFamily familyId="qf_flash_r2_meaning" />
+<QuestionFamily familyId="qf_flash_lr_strategy" />
+<QuestionFamily familyId="qf_flash_backtest_result" />
+<QuestionFamily familyId="qf_long_lr_strategy" />
+
+## 核心工具二：多元线性回归与因素选择 {#multiple-linear-regression}
+
+### 模型定义
+
+只用时间做预测太简单了。如果能加入更多信息，预测会更准。这就是<Term id="multiple_linear_regression" en="Multiple Linear Regression">多元线性回归</Term>。
+
+<Formula latex="Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p + \epsilon">
+多元线性回归公式：用多个自变量预测一个因变量
+</Formula>
+
+比如预测电力公司的股价，可以考虑GDP、利率、煤价、气温等因素。
+
+### 多重共线性
+
+但要注意：不能什么因素都往里塞。如果两个因素高度相关，就会出现<Term id="multicollinearity" en="Multicollinearity">多重共线性</Term>。
+
+<Definition title="多重共线性 (Multicollinearity)">
+自变量之间高度相关，导致模型系数估计变得不可靠。例如，GDP和利率如果高度相关，你很难分清谁在起作用。
+</Definition>
+
+### 因素选择指南
+
+<KeyPoint>
+选择预测因素的原则：
+1. 确保因素与预测目标有逻辑关联
+2. 使用统计检验（如p值）评估每个因素的显著性
+3. 避免多重共线性
+4. 考虑数据可用性（如GDP每季度发布一次，有时间滞后）
+5. 保持简洁性和可解释性，避免过拟合
+</KeyPoint>
+
+<Example title="多元线性回归Python示例">
+```python
+import statsmodels.api as sm
+
+# 数据：股票价格与GDP、利率、通胀率
+X = df[['GDP', 'Interest_Rate', 'Inflation_Rate']]
+y = df['Stock_Price']
+X = sm.add_constant(X)
+
+model = sm.OLS(y, X).fit()
+print(model.summary())
+# R-squared: 0.995
+# 系数：GDP=25.82, 利率=12.73, 通胀率=-13.19
+```
+</Example>
+
+<QuestionRef id="q_quiz_mlr_interpret_v1" />
+<QuestionRef id="q_quiz_mlr_interpret_v2" />
+<QuestionRef id="q_quiz_multicollinearity_risk_v1" />
+<QuestionRef id="q_quiz_multicollinearity_risk_v2" />
+<QuestionRef id="q_quiz_factor_selection_v1" />
+<QuestionRef id="q_quiz_factor_selection_v2" />
+
+<QuestionFamily familyId="qf_flash_mlr_model" />
+<QuestionFamily familyId="qf_flash_multicollinearity" />
+<QuestionFamily familyId="qf_long_mlr_application" />
+
+## 核心工具三：ARIMA模型与时间序列依赖 {#arima-model}
+
+### 为什么需要ARIMA？
+
+线性回归假设数据独立。但金融数据往往前后依赖——今天的价格和昨天有关。ARIMA模型就是专门处理这种依赖关系的。
+
+<Definition title="ARIMA模型 (AutoRegressive Integrated Moving Average)">
+结合自回归、差分和移动平均的时间序列预测模型。
+- **AR（自回归）**：用过去的值预测现在
+- **I（差分）**：让数据变得平稳
+- **MA（移动平均）**：用过去的预测误差来修正
+</Definition>
+
+### ARIMA(p,d,q)参数
+
+<Formula latex="\text{ARIMA}(p,d,q)">
+- p：自回归阶数，即模型中使用的滞后观测值的数量
+- d：差分次数，即对原始时间序列进行差分的次数
+- q：移动平均阶数，即模型中使用的滞后预测误差的数量
+</Formula>
+
+### 平稳性与ADF检验
+
+<Definition title="平稳性 (Stationarity)">
+时间序列的统计性质（均值、方差）不随时间变化。平稳序列没有趋势和季节性。
+</Definition>
+
+<Definition title="ADF检验 (Augmented Dickey-Fuller Test)">
+检验时间序列是否平稳的统计方法。
+- p值 < 0.05：数据平稳，可以直接建模
+- p值 ≥ 0.05：数据非平稳，需要进行差分
+</Definition>
+
+<KeyPoint>
+ARIMA模型要求数据平稳。如果数据不平稳，需要对数据进行差分，直到ADF检验的p值小于0.05。差分次数就是ARIMA模型中的参数d。
+</KeyPoint>
+
+<Example title="ARIMA模型Python实现">
+```python
+from statsmodels.tsa.arima.model import ARIMA
+
+# 拟合ARIMA(1,0,1)模型
+model = ARIMA(data, order=(1, 0, 1))
+model_fit = model.fit()
+
+# 预测未来10个时间点
+forecast = model_fit.forecast(steps=10)
+print(forecast)
+```
+</Example>
+
+<QuestionRef id="q_quiz_arima_motivation_v1" />
+<QuestionRef id="q_quiz_arima_motivation_v2" />
+<QuestionRef id="q_quiz_arima_components_v1" />
+<QuestionRef id="q_quiz_arima_components_v2" />
+<QuestionRef id="q_quiz_arima_params_v1" />
+<QuestionRef id="q_quiz_arima_params_v2" />
+<QuestionRef id="q_quiz_stationarity_v1" />
+<QuestionRef id="q_quiz_stationarity_v2" />
+<QuestionRef id="q_quiz_adf_test_v1" />
+<QuestionRef id="q_quiz_adf_test_v2" />
+
+<QuestionFamily familyId="qf_flash_arima_motivation" />
+<QuestionFamily familyId="qf_flash_arima_components" />
+<QuestionFamily familyId="qf_flash_arima_params" />
+<QuestionFamily familyId="qf_flash_stationarity" />
+<QuestionFamily familyId="qf_flash_adf_test" />
+<QuestionFamily familyId="qf_long_adf_interpretation" />
+
+## 核心工具四：Hurst指数与市场状态量化 {#hurst-exponent}
+
+### Hurst指数
+
+有没有一个数字，能直接告诉我们市场是什么状态？有——<Term id="hurst_exponent" en="Hurst Exponent">Hurst指数</Term>。
+
+<Definition title="Hurst指数 (Hurst Exponent)">
+衡量时间序列趋势或均值回归强度的指标，范围0到1。
+- **H = 0.5** → 随机游走
+- **H < 0.5** → 均值回归（越接近0，回归越强）
+- **H > 0.5** → 趋势（越接近1，趋势越强）
+</Definition>
+
+### 半衰期
+
+对于均值回归策略，还需要知道一个关键数字：<Term id="half_life" en="Half Life">半衰期</Term>。
+
+<Formula latex="\text{半衰期} = \frac{\ln(2)}{\kappa}">
+κ是均值回归的速度。κ越大，回归越快，半衰期越短。
+</Formula>
+
+<KeyPoint>
+半衰期在均值回归策略中的实际应用：应该选择与半衰期匹配的均线周期。例如，如果半衰期是20天，就不应该用5天的均线来做均值回归。
+</KeyPoint>
+
+<Example title="Hurst指数应用示例">
+- H = 0.25：强均值回归市场，建议使用均值回归策略，计算半衰期确定参数
+- H = 0.8：强趋势市场，建议使用趋势跟踪策略，如线性回归或ARIMA
+</Example>
+
+<QuestionRef id="q_quiz_hurst_interpret_v1" />
+<QuestionRef id="q_quiz_hurst_interpret_v2" />
+<QuestionRef id="q_quiz_hurst_interpret_v3" />
+<QuestionRef id="q_quiz_half_life_calc_v1" />
+<QuestionRef id="q_quiz_half_life_calc_v2" />
+
+<QuestionFamily familyId="qf_flash_hurst_def" />
+<QuestionFamily familyId="qf_flash_hurst_thresholds" />
+<QuestionFamily familyId="qf_flash_hurst_strength" />
+<QuestionFamily familyId="qf_flash_half_life_def" />
+<QuestionFamily familyId="qf_flash_half_life_formula" />
+<QuestionFamily familyId="qf_long_hurst_application" />
+<QuestionFamily familyId="qf_long_half_life_application" />
+
+## 核心策略：Martingale与随机游走市场 {#martingale-strategy}
+
+如果市场真的是随机游走，还能赚钱吗？有一种古老的策略可以——<Term id="martingale_strategy" en="Martingale Strategy">Martingale策略</Term>。
+
+<Definition title="Martingale策略 (Martingale Strategy)">
+每次亏损后加倍下注，直到盈利后回到初始赌注的策略。
+</Definition>
+
+### 运作机制
+
+<Example title="赌场例子">
+初始赌注1元：
+- 第1次押1元，输了 → 累计亏损1元
+- 第2次押2元，输了 → 累计亏损3元
+- 第3次押4元，输了 → 累计亏损7元
+- 第4次押8元，赢了 → 净赚1元
+
+只要赢一次，就能把之前所有亏损赚回来，还多赚一点。
+</Example>
+
+### 概率基础
+
+<Formula latex="P(\text{连续输}n\text{次}) = 0.5^n">
+连续输10次的概率只有0.1%（0.5^10 ≈ 0.000976），看起来几乎不可能。
+</Formula>
+
+### 核心风险
+
+<KeyPoint>
+Martingale策略的核心风险：需要无限的资金。如果连续输10次，第11次需要押1024元。资金不足就会爆仓。
+</KeyPoint>
+
+<Checkpoint title="实践注意事项">
+- 理论上可行，但实践中必须严格控制仓位和资金管理
+- 适用于随机游走市场
+- 设置最大连续亏损次数限制
+- 降低初始赌注以降低风险
+</Checkpoint>
+
+<QuestionRef id="q_quiz_martingale_def_v1" />
+<QuestionRef id="q_quiz_martingale_def_v2" />
+<QuestionRef id="q_quiz_martingale_mechanism_v1" />
+<QuestionRef id="q_quiz_martingale_mechanism_v2" />
+<QuestionRef id="q_quiz_martingale_prob_v1" />
+<QuestionRef id="q_quiz_martingale_prob_v2" />
+<QuestionRef id="q_quiz_martingale_risk_v1" />
+<QuestionRef id="q_quiz_martingale_risk_v2" />
+<QuestionRef id="q_quiz_martingale_practice_v1" />
+<QuestionRef id="q_quiz_martingale_practice_v2" />
+
+<QuestionFamily familyId="qf_flash_martingale_def" />
+<QuestionFamily familyId="qf_flash_martingale_mechanism" />
+<QuestionFamily familyId="qf_flash_martingale_prob" />
+<QuestionFamily familyId="qf_flash_martingale_risk" />
+<QuestionFamily familyId="qf_long_martingale_risk" />
+
+## 易错点 {#pitfalls}
+
+### 1. 用错模型比不用模型更危险
+
+<Pitfall>
+在趋势市场中使用均值回归策略，会持续逆势操作，导致系统性亏损。关键不是哪个模型更高级，而是先判断当前市场属于哪种状态。
+</Pitfall>
+
+<QuestionRef id="q_quiz_model_selection_risk_v1" />
+<QuestionRef id="q_quiz_model_selection_risk_v2" />
+
+<QuestionFamily familyId="qf_flash_model_selection_risk" />
+<QuestionFamily familyId="qf_long_model_mismatch" />
+
+### 2. 忽视多重共线性
+
+<Pitfall>
+在多元线性回归中，如果两个自变量高度相关（如煤价和天然气价格），会导致系数估计不可靠。建模前应先计算自变量之间的相关系数矩阵。
+</Pitfall>
+
+### 3. 低估Martingale策略的资金需求
+
+<Pitfall>
+Martingale策略在短期看起来几乎必胜，但连续亏损时赌注指数增长。初始赌注1元，连续输10次后第11次需要1024元。实践中必须严格控制仓位和资金管理。
+</Pitfall>
+
+## 复习与自测 {#review-path}
+
+### 知识总结
+
+| 市场状态 | 对应分析工具 | 关键指标 |
+|---------|------------|---------|
+| 趋势市场 | 简单线性回归、ARIMA | 斜率β₁、R² |
+| 均值回归 | Hurst指数、半衰期 | H < 0.5、半衰期 = ln(2)/κ |
+| 随机游走 | Martingale策略 | H = 0.5 |
+
+### 核心工作流
+
+<KeyPoint>
+**先分类，再建模，最后交易。**
+</KeyPoint>
+
+### 自测题
+
+<QuestionFamily familyId="qf_flash_market_state_tool" />
+<QuestionFamily familyId="qf_flash_workflow" />
+<QuestionFamily familyId="qf_quiz_market_state_tool" />

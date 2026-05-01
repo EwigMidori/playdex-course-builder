@@ -1,0 +1,553 @@
+```json
+{
+  "lesson_id": "L9",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L9/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "input coverage checklist",
+    "source_outline": "input source outline",
+    "lesson_map": "input lesson map"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "optimization_methods_overview",
+      "description": "三种常见优化方法：暴力搜索、梯度下降、遗传算法",
+      "covered_by": ["qf_flash_opt_methods", "qf_quiz_opt_methods_choice", "qf_long_opt_methods_compare"]
+    },
+    {
+      "coverage_tag": "brute_force_search",
+      "description": "暴力搜索：遍历所有可能组合，可靠但计算量大",
+      "covered_by": ["qf_flash_brute_force", "qf_quiz_brute_force"]
+    },
+    {
+      "coverage_tag": "gradient_descent",
+      "description": "梯度下降：沿最陡下坡方向迭代，更新规则 x_{n+1} = x_n - α·∇f(x_n)",
+      "covered_by": ["qf_flash_gradient_descent", "qf_quiz_gradient_descent", "qf_long_gradient_descent_formula"]
+    },
+    {
+      "coverage_tag": "genetic_algorithm",
+      "description": "遗传算法：模拟自然选择，通过选择、交叉、变异进化",
+      "covered_by": ["qf_flash_genetic_algorithm", "qf_quiz_genetic_algorithm"]
+    },
+    {
+      "coverage_tag": "method_limitations",
+      "description": "各方法的局限：暴力搜索参数多时计算爆炸；梯度下降对初始值和学习率敏感，可能局部最优；遗传算法不保证全局最优",
+      "covered_by": ["qf_flash_limitations", "qf_quiz_limitations"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_opt_methods",
+      "question_type": "short_answer",
+      "linked_steps": ["step2"],
+      "concept_key": "optimization_methods_overview",
+      "coverage_tags": ["optimization_methods_overview"],
+      "term_refs": [
+        {
+          "display": "策略优化方法",
+          "en": "Optimization Methods"
+        }
+      ],
+      "learning_goal": "学生能列举并区分三种常见的策略优化方法。",
+      "difficulty": "easy",
+      "retrieval_focus": "三种优化方法的名称与核心思想",
+      "variants": [
+        {
+          "question_id": "q_flash_opt_methods_v1",
+          "front": "策略优化中，三种常见的优化方法是什么？",
+          "back": "暴力搜索（网格搜索）、梯度下降、遗传算法。",
+          "explanation": "这三种方法各有优劣，适用于不同场景。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_opt_methods_v2",
+          "front": "哪种优化方法通过遍历所有可能的参数组合来寻找最优解？",
+          "back": "暴力搜索（网格搜索）。",
+          "explanation": "暴力搜索最直接，但参数多时计算量会爆炸式增长。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_opt_methods_v3",
+          "front": "哪种优化方法模拟了“物竞天择，适者生存”的进化过程？",
+          "back": "遗传算法。",
+          "explanation": "遗传算法通过选择、交叉、变异等操作一代代进化出更好的解。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_brute_force",
+      "question_type": "short_answer",
+      "linked_steps": ["step2"],
+      "concept_key": "brute_force_search",
+      "coverage_tags": ["brute_force_search"],
+      "term_refs": [
+        {
+          "display": "暴力搜索",
+          "en": "Brute Force Search"
+        }
+      ],
+      "learning_goal": "学生能说出暴力搜索的定义、优点和缺点。",
+      "difficulty": "easy",
+      "retrieval_focus": "暴力搜索的核心特征",
+      "variants": [
+        {
+          "question_id": "q_flash_brute_force_v1",
+          "front": "暴力搜索的主要优点是什么？",
+          "back": "简单直接，能保证找到全局最优解（如果解空间是离散且有限的）。",
+          "explanation": "因为它遍历了所有可能的组合。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_brute_force_v2",
+          "front": "暴力搜索的主要缺点是什么？",
+          "back": "当参数很多时，计算量会爆炸式增长，变得不可行。",
+          "explanation": "参数每增加一个，组合数可能呈指数级增长。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_gradient_descent",
+      "question_type": "short_answer",
+      "linked_steps": ["step2"],
+      "concept_key": "gradient_descent",
+      "coverage_tags": ["gradient_descent"],
+      "term_refs": [
+        {
+          "display": "梯度下降",
+          "en": "Gradient Descent"
+        }
+      ],
+      "learning_goal": "学生能说出梯度下降的更新规则、关键参数和比喻。",
+      "difficulty": "easy",
+      "retrieval_focus": "梯度下降的更新公式和关键参数含义",
+      "variants": [
+        {
+          "question_id": "q_flash_gradient_descent_v1",
+          "front": "梯度下降的更新规则是什么？",
+          "back": "$x_{n+1} = x_n - \\alpha \\cdot \\nabla f(x_n)$",
+          "explanation": "下一个参数值等于当前值减去学习率乘以梯度。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_gradient_descent_v2",
+          "front": "在梯度下降中，$\\alpha$ 代表什么？",
+          "back": "学习率，控制每一步更新的大小。",
+          "explanation": "学习率太大可能震荡不收敛，太小则收敛慢。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_gradient_descent_v3",
+          "front": "在梯度下降中，$\\nabla f(x_n)$ 代表什么？",
+          "back": "梯度，指向函数上升最快的方向。",
+          "explanation": "梯度下降沿着梯度的反方向（最陡下坡方向）移动。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_gradient_descent_v4",
+          "front": "梯度下降被比喻成什么？",
+          "back": "像一个下山的人，每次都沿着最陡的下坡路走一步。",
+          "explanation": "这个比喻形象地说明了梯度下降的迭代过程。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_genetic_algorithm",
+      "question_type": "short_answer",
+      "linked_steps": ["step2"],
+      "concept_key": "genetic_algorithm",
+      "coverage_tags": ["genetic_algorithm"],
+      "term_refs": [
+        {
+          "display": "遗传算法",
+          "en": "Genetic Algorithm"
+        }
+      ],
+      "learning_goal": "学生能说出遗传算法的核心步骤和灵感来源。",
+      "difficulty": "easy",
+      "retrieval_focus": "遗传算法的核心步骤",
+      "variants": [
+        {
+          "question_id": "q_flash_genetic_algorithm_v1",
+          "front": "遗传算法的灵感来源于什么？",
+          "back": "自然选择和生物进化过程（物竞天择，适者生存）。",
+          "explanation": "它模拟了生物进化中的选择、交叉和变异。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_genetic_algorithm_v2",
+          "front": "遗传算法中，通过哪三个主要操作来产生新一代的解？",
+          "back": "选择、交叉（杂交）、变异。",
+          "explanation": "选择保留优秀个体，交叉组合产生后代，变异引入多样性。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_limitations",
+      "question_type": "short_answer",
+      "linked_steps": ["step2"],
+      "concept_key": "method_limitations",
+      "coverage_tags": ["method_limitations"],
+      "term_refs": [
+        {
+          "display": "方法局限性",
+          "en": "Method Limitations"
+        }
+      ],
+      "learning_goal": "学生能说出每种优化方法的主要局限性。",
+      "difficulty": "medium",
+      "retrieval_focus": "各优化方法的局限性",
+      "variants": [
+        {
+          "question_id": "q_flash_limitations_v1",
+          "front": "梯度下降的两个主要局限性是什么？",
+          "back": "1. 对初始值和学习率很敏感；2. 可能只找到局部最优解。",
+          "explanation": "初始值和学习率选择不当会导致不收敛或陷入局部最优。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_limitations_v2",
+          "front": "遗传算法的主要局限性是什么？",
+          "back": "不保证找到全局最优解。",
+          "explanation": "遗传算法擅长探索广阔的解空间，但无法保证收敛到全局最优。",
+          "estimated_seconds": 6
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_opt_methods_choice",
+      "question_type": "single_choice",
+      "linked_steps": ["step2"],
+      "concept_key": "optimization_methods_overview",
+      "coverage_tags": ["optimization_methods_overview"],
+      "term_refs": [
+        {
+          "display": "优化方法选择",
+          "en": "Optimization Method Selection"
+        }
+      ],
+      "learning_goal": "学生能根据场景选择最合适的优化方法。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_opt_methods_choice_v1",
+          "stem": "一个交易策略只有2个参数，每个参数只有5个可能取值。你需要精确找到全局最优解。以下哪种方法最合适？",
+          "options": [
+            "暴力搜索",
+            "梯度下降",
+            "遗传算法",
+            "随机搜索"
+          ],
+          "answer": 0,
+          "explanation": "参数组合很少（25种），暴力搜索可以遍历所有可能，保证找到全局最优解。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_opt_methods_choice_v2",
+          "stem": "一个优化问题的目标函数是连续可微的，但参数空间很大。你希望快速找到一个不错的解。以下哪种方法最合适？",
+          "options": [
+            "暴力搜索",
+            "梯度下降",
+            "遗传算法",
+            "随机猜测"
+          ],
+          "answer": 1,
+          "explanation": "梯度下降利用梯度信息，在连续可微的大参数空间中能高效地找到局部最优解。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_opt_methods_choice_v3",
+          "stem": "一个优化问题的参数是离散的，且解空间非常广阔、复杂，存在多个局部最优。你希望探索全局并避免过早陷入局部最优。以下哪种方法最合适？",
+          "options": [
+            "暴力搜索",
+            "梯度下降",
+            "遗传算法",
+            "爬山法"
+          ],
+          "answer": 2,
+          "explanation": "遗传算法通过种群和变异机制，擅长在广阔复杂的解空间中探索，不易陷入局部最优。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_brute_force",
+      "question_type": "true_false",
+      "linked_steps": ["step2"],
+      "concept_key": "brute_force_search",
+      "coverage_tags": ["brute_force_search"],
+      "term_refs": [
+        {
+          "display": "暴力搜索",
+          "en": "Brute Force Search"
+        }
+      ],
+      "learning_goal": "学生能判断关于暴力搜索的描述是否正确。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_brute_force_v1",
+          "stem": "暴力搜索在参数数量增加时，计算量会线性增长。",
+          "options": ["正确", "错误"],
+          "answer": 1,
+          "explanation": "暴力搜索的计算量通常随参数数量呈指数级增长，而不是线性增长。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_brute_force_v2",
+          "stem": "暴力搜索可以保证找到全局最优解（如果解空间是离散且有限的）。",
+          "options": ["正确", "错误"],
+          "answer": 0,
+          "explanation": "因为暴力搜索会遍历所有可能的参数组合，所以一定能找到全局最优解。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_gradient_descent",
+      "question_type": "single_choice",
+      "linked_steps": ["step2"],
+      "concept_key": "gradient_descent",
+      "coverage_tags": ["gradient_descent"],
+      "term_refs": [
+        {
+          "display": "梯度下降",
+          "en": "Gradient Descent"
+        }
+      ],
+      "learning_goal": "学生能理解梯度下降的更新规则和关键参数的作用。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_gradient_descent_v1",
+          "stem": "在梯度下降更新公式 $x_{n+1} = x_n - \\alpha \\cdot \\nabla f(x_n)$ 中，为什么是减号？",
+          "options": [
+            "因为梯度指向函数上升最快的方向，减号使其向反方向（下降方向）移动",
+            "因为梯度指向函数下降最快的方向，减号使其加速下降",
+            "因为学习率 $\\alpha$ 通常是负数",
+            "这是一个数学惯例，没有特殊含义"
+          ],
+          "answer": 0,
+          "explanation": "梯度 $\\nabla f(x_n)$ 指向函数值上升最快的方向，为了最小化函数，我们需要向反方向移动，所以用减号。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_gradient_descent_v2",
+          "stem": "如果梯度下降的学习率 $\\alpha$ 设置得过大，可能会导致什么后果？",
+          "options": [
+            "收敛速度变慢",
+            "可能震荡甚至不收敛",
+            "一定能更快找到全局最优",
+            "对结果没有影响"
+          ],
+          "answer": 1,
+          "explanation": "学习率过大可能导致每一步跨越太大，在最优值附近来回震荡，甚至发散不收敛。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_genetic_algorithm",
+      "question_type": "ordering",
+      "linked_steps": ["step2"],
+      "concept_key": "genetic_algorithm",
+      "coverage_tags": ["genetic_algorithm"],
+      "term_refs": [
+        {
+          "display": "遗传算法步骤",
+          "en": "Genetic Algorithm Steps"
+        }
+      ],
+      "learning_goal": "学生能正确排列遗传算法的主要步骤。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_genetic_algorithm_v1",
+          "stem": "请将遗传算法的以下步骤按正确顺序排列：\nA. 变异\nB. 初始化种群\nC. 选择\nD. 交叉\nE. 评估适应度",
+          "options": ["B → E → C → D → A", "B → C → D → A → E", "E → B → C → D → A", "B → E → D → C → A"],
+          "answer": 0,
+          "explanation": "正确的顺序是：初始化种群 → 评估适应度 → 选择 → 交叉 → 变异。",
+          "estimated_seconds": 25
+        },
+        {
+          "question_id": "q_quiz_genetic_algorithm_v2",
+          "stem": "在遗传算法中，'变异'操作的主要目的是什么？",
+          "options": [
+            "保留当前最优解",
+            "维持种群的多样性，防止过早收敛到局部最优",
+            "选择适应度最高的个体",
+            "组合两个父代个体的信息"
+          ],
+          "answer": 1,
+          "explanation": "变异通过随机改变个体的某些特征，引入新的遗传信息，帮助算法探索更广阔的解空间，避免早熟收敛。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_limitations",
+      "question_type": "multiple_choice",
+      "linked_steps": ["step2"],
+      "concept_key": "method_limitations",
+      "coverage_tags": ["method_limitations"],
+      "term_refs": [
+        {
+          "display": "方法局限性",
+          "en": "Method Limitations"
+        }
+      ],
+      "learning_goal": "学生能识别不同优化方法的共同和特有局限性。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_limitations_v1",
+          "stem": "以下哪些是梯度下降和遗传算法共同的局限性？（多选）",
+          "options": [
+            "不保证找到全局最优解",
+            "对初始值敏感",
+            "要求目标函数连续可微",
+            "计算量随参数增加而指数增长"
+          ],
+          "answer": [0],
+          "explanation": "梯度下降和遗传算法都不能保证找到全局最优解。对初始值敏感是梯度下降的特点；连续可微是梯度下降的要求；计算量指数增长是暴力搜索的特点。",
+          "estimated_seconds": 25
+        },
+        {
+          "question_id": "q_quiz_limitations_v2",
+          "stem": "以下关于优化方法局限性的描述，哪一个是正确的？",
+          "options": [
+            "暴力搜索在参数很多时仍然非常高效",
+            "梯度下降适用于任何类型的函数优化",
+            "遗传算法不保证找到全局最优解",
+            "所有优化方法都能保证找到全局最优解"
+          ],
+          "answer": 2,
+          "explanation": "遗传算法是一种启发式算法，它通过模拟进化来搜索，但不能保证收敛到全局最优解。",
+          "estimated_seconds": 20
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_opt_methods_compare",
+      "question_type": "compare_and_contrast",
+      "linked_steps": ["step2"],
+      "concept_key": "optimization_methods_overview",
+      "coverage_tags": ["optimization_methods_overview", "method_limitations"],
+      "term_refs": [
+        {
+          "display": "优化方法比较",
+          "en": "Comparison of Optimization Methods"
+        }
+      ],
+      "learning_goal": "学生能比较三种优化方法的工作原理、适用场景和局限性。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_opt_methods_compare_v1",
+          "stem": "请比较暴力搜索、梯度下降和遗传算法这三种优化方法。从以下三个方面进行阐述：\n1. 每种方法的核心工作原理\n2. 每种方法最适用的场景\n3. 每种方法的主要局限性",
+          "prompt_blocks": [
+            "暴力搜索的工作原理、适用场景和局限性",
+            "梯度下降的工作原理、适用场景和局限性",
+            "遗传算法的工作原理、适用场景和局限性"
+          ],
+          "rubric_points": [
+            "暴力搜索：遍历所有组合；参数少且需要精确最优解时适用；参数多时计算爆炸",
+            "梯度下降：沿梯度反方向迭代；连续可微函数优化时适用；对初始值和学习率敏感，可能局部最优",
+            "遗传算法：模拟进化（选择、交叉、变异）；解空间广阔复杂时适用；不保证全局最优"
+          ],
+          "reference_answer": [
+            "暴力搜索通过枚举所有可能的参数组合来寻找最优解。它最适用于参数数量少、解空间有限且需要精确全局最优的场景。其主要局限性是当参数增多时，计算量会呈指数级增长，变得不可行。",
+            "梯度下降通过计算目标函数的梯度，并沿着梯度反方向（最陡下降方向）迭代更新参数来寻找最小值。它适用于目标函数连续可微且参数空间较大的场景。其主要局限性是对初始值和学习率的选择非常敏感，并且可能只找到局部最优解而非全局最优。",
+            "遗传算法模拟自然选择和生物进化过程。它从一个随机初始化的种群开始，通过评估适应度、选择、交叉和变异等操作，一代代进化出更好的解。它适用于解空间广阔、复杂、存在多个局部最优的场景。其主要局限性是不保证找到全局最优解，且收敛速度可能较慢。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_opt_methods_compare_v2",
+          "stem": "假设你正在优化一个移动平均线交叉策略，有两个参数：快线周期（整数，范围5-50）和慢线周期（整数，范围50-200）。\n1. 解释为什么在这种情况下使用梯度下降可能不是最佳选择。\n2. 你会推荐使用暴力搜索还是遗传算法？请说明理由。\n3. 如果使用你推荐的方法，请简述其执行步骤。",
+          "prompt_blocks": [
+            "梯度下降不适合的原因",
+            "推荐的方法及理由",
+            "推荐方法的执行步骤"
+          ],
+          "rubric_points": [
+            "梯度下降不适合：参数是离散整数，函数不可微，梯度无法定义",
+            "暴力搜索：参数范围有限（46*151=6946种组合），可遍历所有，保证全局最优",
+            "遗传算法：如果参数范围更大或需要更快速度，遗传算法也可行，但不保证最优"
+          ],
+          "reference_answer": [
+            "梯度下降不适合，因为移动平均线的周期参数是离散整数，目标函数（如总收益）关于这些参数不是连续可微的，无法计算梯度。梯度下降要求目标函数连续可微。",
+            "我推荐使用暴力搜索。理由：参数范围虽然看起来大，但快线有46种可能（5到50），慢线有151种可能（50到200），总共只有46×151=6946种组合。这个数量级对于现代计算机来说完全可以在合理时间内遍历完，并且暴力搜索能保证找到全局最优解。",
+            "暴力搜索的执行步骤：1) 定义优化目标，例如最大化年化收益率；2) 定义参数网格，快线周期从5到50，慢线周期从50到200；3) 对于每一组参数组合（快线，慢线），运行一次回测，计算目标指标；4) 比较所有组合的结果，选择目标指标最优的那组参数。"
+          ],
+          "estimated_seconds": 150
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_gradient_descent_formula",
+      "question_type": "formula_apply",
+      "linked_steps": ["step2"],
+      "concept_key": "gradient_descent",
+      "coverage_tags": ["gradient_descent"],
+      "term_refs": [
+        {
+          "display": "梯度下降更新规则",
+          "en": "Gradient Descent Update Rule"
+        }
+      ],
+      "learning_goal": "学生能应用梯度下降更新公式进行手动计算。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_gradient_descent_formula_v1",
+          "stem": "给定函数 $f(x) = x^2$，其梯度为 $\\nabla f(x) = 2x$。假设初始点 $x_0 = 10$，学习率 $\\alpha = 0.2$。请使用梯度下降更新公式 $x_{n+1} = x_n - \\alpha \\cdot \\nabla f(x_n)$ 进行两次迭代，计算出 $x_1$ 和 $x_2$ 的值。",
+          "prompt_blocks": [
+            "写出第一次迭代的计算过程",
+            "写出第二次迭代的计算过程"
+          ],
+          "rubric_points": [
+            "正确计算 x1 = 10 - 0.2 * 20 = 6",
+            "正确计算 x2 = 6 - 0.2 * 12 = 3.6"
+          ],
+          "reference_answer": [
+            "第一次迭代：$x_1 = x_0 - \\alpha \\cdot \\nabla f(x_0) = 10 - 0.2 \\times (2 \\times 10) = 10 - 0.2 \\times 20 = 10 - 4 = 6$",
+            "第二次迭代：$x_2 = x_1 - \\alpha \\cdot \\nabla f(x_1) = 6 - 0.2 \\times (2 \\times 6) = 6 - 0.2 \\times 12 = 6 - 2.4 = 3.6$"
+          ],
+          "estimated_seconds": 90
+        },
+        {
+          "question_id": "q_long_gradient_descent_formula_v2",
+          "stem": "给定函数 $f(x) = x^2$，其梯度为 $\\nabla f(x) = 2x$。假设初始点 $x_0 = 8$，学习率 $\\alpha = 0.1$。请使用梯度下降更新公式 $x_{n+1} = x_n - \\alpha \\cdot \\nabla f(x_n)$ 进行三次迭代，计算出 $x_1$、$x_2$ 和 $x_3$ 的值，并观察 $x$ 的变化趋势。",
+          "prompt_blocks": [
+            "写出三次迭代的计算过程",
+            "描述 x 值的变化趋势"
+          ],
+          "rubric_points": [
+            "正确计算 x1 = 8 - 0.1 * 16 = 6.4",
+            "正确计算 x2 = 6.4 - 0.1 * 12.8 = 5.12",
+            "正确计算 x3 = 5.12 - 0.1 * 10.24 = 4.096",
+            "观察到 x 值逐渐减小，向函数最小值点 x=0 靠近"
+          ],
+          "reference_answer": [
+            "第一次迭代：$x_1 = 8 - 0.1 \\times (2 \\times 8) = 8 - 0.1 \\times 16 = 8 - 1.6 = 6.4$",
+            "第二次迭代：$x_2 = 6.4 - 0.1 \\times (2 \\times 6.4) = 6.4 - 0.1 \\times 12.8 = 6.4 - 1.28 = 5.12$",
+            "第三次迭代：$x_3 = 5.12 - 0.1 \\times (2 \\times 5.12) = 5.12 - 0.1 \\times 10.24 = 5.12 - 1.024 = 4.096$",
+            "变化趋势：$x$ 的值从 8 开始，经过三次迭代后减小到 4.096，每一步都在向函数 $f(x)=x^2$ 的最小值点 $x=0$ 靠近，但步长逐渐变小。"
+          ],
+          "estimated_seconds": 100
+        }
+      ]
+    }
+  ]
+}
+```

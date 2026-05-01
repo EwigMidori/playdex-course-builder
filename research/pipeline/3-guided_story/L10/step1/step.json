@@ -1,0 +1,136 @@
+{
+  "lesson_id": "L10",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "machine_learning"
+      ],
+      "id": "s001",
+      "introduced_terms": [
+        "machine_learning"
+      ],
+      "lines": [
+        "想象一下，你有一个能自己从数据中学习的助手。",
+        "这就是<term id=\"machine_learning\">机器学习</term>的核心想法。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "machine_learning"
+      ],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "根据学习方式的不同，机器学习主要分为三大类。",
+        "每一类都有自己擅长的任务。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "supervised_learning"
+      ],
+      "id": "s003",
+      "introduced_terms": [
+        "supervised_learning"
+      ],
+      "lines": [
+        "第一类：<term id=\"supervised_learning\">监督学习</term>。",
+        "就像有老师给你标准答案，你学会后去预测新问题。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "unsupervised_learning"
+      ],
+      "id": "s004",
+      "introduced_terms": [
+        "unsupervised_learning"
+      ],
+      "lines": [
+        "第二类：<term id=\"unsupervised_learning\">无监督学习</term>。",
+        "没有标准答案，全靠自己发现数据中的规律。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "reinforcement_learning"
+      ],
+      "id": "s005",
+      "introduced_terms": [
+        "reinforcement_learning"
+      ],
+      "lines": [
+        "第三类：<term id=\"reinforcement_learning\">强化学习</term>。",
+        "像一个玩家，通过不断试错来学习最优策略。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "预测具体数值（如价格）属于回归任务，通常使用监督学习。",
+        "kind": "single_choice",
+        "options": [
+          "监督学习",
+          "无监督学习",
+          "强化学习"
+        ],
+        "prompt": "哪种机器学习方法最适合用来预测明天的股票价格？"
+      },
+      "focus_terms": [
+        "supervised_learning"
+      ],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "哪种机器学习方法最适合用来预测明天的股票价格？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Machine learning is a subset of AI that enables systems to learn from data. Three main types: supervised, unsupervised, reinforcement learning.",
+    "related": [
+      "L10_ML_types"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "machine_learning": {
+      "aliases": [
+        "Machine Learning",
+        "ML"
+      ],
+      "display": "机器学习",
+      "gloss": "让系统从数据中学习模式并做出决策的技术。"
+    },
+    "reinforcement_learning": {
+      "aliases": [
+        "Reinforcement Learning",
+        "RL"
+      ],
+      "display": "强化学习",
+      "gloss": "智能体通过与环境互动，以最大化累积奖励来学习决策。"
+    },
+    "supervised_learning": {
+      "aliases": [
+        "Supervised Learning"
+      ],
+      "display": "监督学习",
+      "gloss": "使用有标签的数据训练模型，预测已知类型的结果。"
+    },
+    "unsupervised_learning": {
+      "aliases": [
+        "Unsupervised Learning"
+      ],
+      "display": "无监督学习",
+      "gloss": "在没有标签的数据中发现隐藏的模式和结构。"
+    }
+  }
+}

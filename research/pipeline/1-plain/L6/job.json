@@ -1,0 +1,17 @@
+{
+  "input_file": "/Users/zijingzhang/ewig/playdex-course-builder/research/pipeline/0-raw/L6.pdf",
+  "batch_id": "97796b59-c152-41a1-bf3e-f573bdaf7797",
+  "output_dir": "/Users/zijingzhang/ewig/playdex-course-builder/research/pipeline/1-plain/L6",
+  "model_version": "vlm",
+  "language": "ch",
+  "enable_formula": true,
+  "enable_table": true,
+  "is_ocr": true,
+  "result": {
+    "data_id": "L6",
+    "err_msg": "",
+    "file_name": "L6.pdf",
+    "full_zip_url": "https://cdn-mineru.openxlab.org.cn/pdf/2026-05-01/95685e36-c16b-42b3-b1f9-4b8dbdd1b0a1.zip",
+    "state": "done"
+  }
+}

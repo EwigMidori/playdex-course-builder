@@ -40,6 +40,9 @@ pub fn validate_outputs(lesson: &LessonPaths) -> Result<(), ValidationError> {
             path: lesson.textbook_path(),
             source,
         })?;
+    if let Some(line) = first_heading_anchor_line(&textbook) {
+        return Err(ValidationError::UnsupportedTextbookHeadingAnchor { line });
+    }
 
     for question_id in component_refs(&textbook, "QuestionRef", "id") {
         if !question_ids.contains(&question_id) {
@@ -233,6 +236,17 @@ fn attr_value(tag: &str, attr: &str) -> Option<String> {
     Some(rest[..end].to_owned())
 }
 
+fn first_heading_anchor_line(text: &str) -> Option<String> {
+    text.lines().find_map(|line| {
+        let trimmed = line.trim();
+        if trimmed.starts_with('#') && trimmed.contains(" {#") && trimmed.ends_with('}') {
+            Some(trimmed.to_owned())
+        } else {
+            None
+        }
+    })
+}
+
 #[derive(Debug)]
 pub enum ValidationError {
     Read {
@@ -260,6 +274,9 @@ pub enum ValidationError {
     },
     BrokenQuestionFamilyRef {
         family_id: String,
+    },
+    UnsupportedTextbookHeadingAnchor {
+        line: String,
     },
 }
 
@@ -306,6 +323,10 @@ impl fmt::Display for ValidationError {
                 f,
                 "textbook references unknown question family '{family_id}'"
             ),
+            Self::UnsupportedTextbookHeadingAnchor { line } => write!(
+                f,
+                "textbook uses unsupported MDX heading anchor syntax: '{line}'"
+            ),
         }
     }
 }
@@ -320,7 +341,8 @@ impl Error for ValidationError {
             | Self::MissingStepQuestionBank { .. }
             | Self::CrossStepQuestion { .. }
             | Self::BrokenQuestionRef { .. }
-            | Self::BrokenQuestionFamilyRef { .. } => None,
+            | Self::BrokenQuestionFamilyRef { .. }
+            | Self::UnsupportedTextbookHeadingAnchor { .. } => None,
         }
     }
 }

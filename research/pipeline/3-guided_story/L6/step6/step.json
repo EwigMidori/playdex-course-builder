@@ -1,0 +1,80 @@
+{
+  "lesson_id": "L6",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "VaR 基于“正常”市场情况。",
+        "但如果金融危机重演呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s039",
+      "introduced_terms": [
+        "stress_testing"
+      ],
+      "lines": [
+        "这就需要**<term id=\"stress_testing\">压力测试</term>**。",
+        "它问的是：“如果 2008 年金融危机再来一次，我的投资组合会怎样？”"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s040",
+      "introduced_terms": [
+        "scenario_analysis"
+      ],
+      "lines": [
+        "另一种方法是**<term id=\"scenario_analysis\">情景分析</term>**。",
+        "它构建各种“如果……会怎样”的场景。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "比如：如果美联储突然加息到 50%？",
+        "如果港股和美元脱钩？"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "这些极端情况虽然概率小，但一旦发生，后果可能是毁灭性的。",
+        "提前做好准备，才能有备无患。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Stress VaR calculates potential loss for holding the current portfolio during a stress period. Scenario analysis consists of evaluating the portfolio under various extreme but probable states of the world.",
+    "related": [
+      "stress testing",
+      "scenario analysis"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "scenario_analysis": {
+      "aliases": [
+        "Scenario Analysis"
+      ],
+      "display": "情景分析",
+      "gloss": "通过构建各种极端但可能发生的情景来评估投资组合的风险。"
+    },
+    "stress_testing": {
+      "aliases": [
+        "Stress Testing"
+      ],
+      "display": "压力测试",
+      "gloss": "评估投资组合在极端市场条件下的潜在损失。"
+    }
+  }
+}

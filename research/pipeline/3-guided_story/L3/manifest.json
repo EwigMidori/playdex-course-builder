@@ -1,0 +1,46 @@
+{
+  "lesson_id": "L3",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "什么是回测",
+      "file": "research/pipeline/3-guided_story/L3/step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "数据清洗：让数据可信",
+      "file": "research/pipeline/3-guided_story/L3/step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "K线图与常见形态",
+      "file": "research/pipeline/3-guided_story/L3/step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "移动平均线策略",
+      "file": "research/pipeline/3-guided_story/L3/step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "用Excel实现MA交叉策略",
+      "file": "research/pipeline/3-guided_story/L3/step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "回测的陷阱与假设",
+      "file": "research/pipeline/3-guided_story/L3/step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "用Python和专用库回测",
+      "file": "research/pipeline/3-guided_story/L3/step7/step.json",
+      "sequence_id": "step7"
+    },
+    {
+      "concept": "RSI策略练习",
+      "file": "research/pipeline/3-guided_story/L3/step8/step.json",
+      "sequence_id": "step8"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-export type LessonId = "L1" | "L2";
+export type LessonId = string;
 export type AssetView = "overview" | "textbook" | "story" | "questions" | "relevance";
 
 export type LessonOption = {

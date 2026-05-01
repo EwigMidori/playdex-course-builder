@@ -1,0 +1,141 @@
+{
+  "lesson_id": "L7",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s056",
+      "introduced_terms": [],
+      "lines": [
+        "策略再好，也要有风险控制。",
+        "否则一次大亏损就可能出局。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "stop_loss"
+      ],
+      "id": "s057",
+      "introduced_terms": [
+        "stop_loss"
+      ],
+      "lines": [
+        "最基本的工具是<term id=\"stop_loss\">止损</term>。",
+        "设定一个价格，到了就自动平仓。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [
+        "固定止损：比如100元买入，设止损90元。",
+        "最大亏损锁定在10元。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "trailing_stop_loss"
+      ],
+      "id": "s059",
+      "introduced_terms": [
+        "trailing_stop_loss"
+      ],
+      "lines": [
+        "<term id=\"trailing_stop_loss\">移动止损</term>更聪明。",
+        "价格涨，止损线也跟着上移，但不会下移。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s060",
+      "introduced_terms": [],
+      "lines": [
+        "比如设5%的移动止损。",
+        "价格从100涨到110，止损线就上移到104.5。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "portfolio_stop_loss"
+      ],
+      "id": "s061",
+      "introduced_terms": [
+        "portfolio_stop_loss"
+      ],
+      "lines": [
+        "如果同时运行多个策略，还需要<term id=\"portfolio_stop_loss\">组合止损</term>。",
+        "当总净值从高点回撤一定比例时，全部清仓。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s062",
+      "introduced_terms": [],
+      "lines": [
+        "风控部门还会设置风险限额：",
+        "日止损、周止损、月止损、VaR限额等。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "移动止损会随着价格上涨而上移，从而锁定已实现的利润。",
+        "kind": "single_choice",
+        "options": [
+          "能锁定已获得的利润",
+          "能承受更大的亏损",
+          "不需要设置参数",
+          "适用于所有市场"
+        ],
+        "prompt": "移动止损相比固定止损的最大优势是："
+      },
+      "focus_terms": [],
+      "id": "s063",
+      "introduced_terms": [],
+      "lines": [
+        "移动止损的主要好处是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "Stop Loss: minimizes losses on losing trades. Types: Fixed Stop Loss, Trailing Stop Loss, Dollar Risk Approach, Portfolio level Stop Loss. Risk Limit Stoploss: Daily, Weekly, Monthly, Quarterly, Yearly stop loss.",
+    "related": [
+      "Stop Loss & Risk Limit Control"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "portfolio_stop_loss": {
+      "aliases": [
+        "Portfolio Stop Loss"
+      ],
+      "display": "组合止损",
+      "gloss": "基于整个投资组合净值的止损机制，作为第二层保护。"
+    },
+    "stop_loss": {
+      "aliases": [
+        "Stop Loss",
+        "SL"
+      ],
+      "display": "止损",
+      "gloss": "当价格达到预设水平时自动平仓以限制损失的指令。"
+    },
+    "trailing_stop_loss": {
+      "aliases": [
+        "Trailing Stop Loss"
+      ],
+      "display": "移动止损",
+      "gloss": "一种动态止损，随价格上升而自动上移，锁定利润。"
+    }
+  }
+}

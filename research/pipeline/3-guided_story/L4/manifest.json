@@ -1,0 +1,46 @@
+{
+  "lesson_id": "L4",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "三种市场状态：趋势、均值回归、随机游走",
+      "file": "research/pipeline/3-guided_story/L4/step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "用简单线性回归识别趋势",
+      "file": "research/pipeline/3-guided_story/L4/step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "用Python实现线性回归交易策略",
+      "file": "research/pipeline/3-guided_story/L4/step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "多元线性回归：用多个因素预测价格",
+      "file": "research/pipeline/3-guided_story/L4/step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "ARIMA模型：处理时间序列的依赖关系",
+      "file": "research/pipeline/3-guided_story/L4/step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "Hurst指数：量化市场状态",
+      "file": "research/pipeline/3-guided_story/L4/step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "Martingale策略：在随机市场中赚钱",
+      "file": "research/pipeline/3-guided_story/L4/step7/step.json",
+      "sequence_id": "step7"
+    },
+    {
+      "concept": "总结：选择正确的模型匹配市场状态",
+      "file": "research/pipeline/3-guided_story/L4/step8/step.json",
+      "sequence_id": "step8"
+    }
+  ]
+}

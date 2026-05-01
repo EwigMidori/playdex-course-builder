@@ -1,0 +1,511 @@
+```json
+{
+  "lesson_id": "L8",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "sequence_id": "step1",
+      "concept": "Order Book Basics and Insights",
+      "step": {
+        "lesson_id": "L8",
+        "sequence_id": "step1",
+        "target_language": "zh-CN",
+        "mode": "guided_story",
+        "term_catalog": {
+          "order_book": {
+            "display": "订单簿",
+            "aliases": ["Order Book", "Orderbook"],
+            "gloss": "记录所有买入和卖出挂单的电子列表。"
+          },
+          "bid_book": {
+            "display": "买盘簿",
+            "aliases": ["Bid Book", "Bid Side"],
+            "gloss": "订单簿中所有买入订单的集合。"
+          },
+          "ask_book": {
+            "display": "卖盘簿",
+            "aliases": ["Ask Book", "Ask Side", "Offer Book"],
+            "gloss": "订单簿中所有卖出订单的集合。"
+          },
+          "market_depth": {
+            "display": "市场深度",
+            "aliases": ["Market Depth"],
+            "gloss": "在不同价格水平上可交易的订单数量。"
+          },
+          "market_liquidity": {
+            "display": "市场流动性",
+            "aliases": ["Market Liquidity", "Liquidity"],
+            "gloss": "在不引起价格大幅波动的情况下，买卖资产的难易程度。"
+          }
+        },
+        "source": {
+          "plain_text": "Order book is a list of buy and sell orders. Bid book represents the demand side. Ask book represents the supply side. An order book can provide insights for microeconomic structure. What an order book can tell you: 1. Supply & Demand: Insights into trader behaviour and market sentiment. 2. Support & Resistance Level: Insights from orders with large volume 3. Market Liquidity: Measure liquidity through order sizes. 4. Market Depth: Analysis of the number of buy/sell orders at various price levels.",
+          "related": ["order book mechanism", "limit order book"]
+        },
+        "screens": [
+          {
+            "id": "s001",
+            "type": "narration",
+            "lines": [
+              "想象一下，你面前有一块巨大的电子公告板。",
+              "上面实时滚动着所有人想买和想卖的东西。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s002",
+            "type": "narration",
+            "lines": [
+              "想买的人出价，想卖的人要价。",
+              "这块公告板，就是市场的 <term id=\"order_book\">订单簿</term>。"
+            ],
+            "introduced_terms": ["order_book"]
+          },
+          {
+            "id": "s003",
+            "type": "narration",
+            "lines": [
+              "订单簿分为两边：",
+              "<term id=\"bid_book\">买盘簿</term> 代表需求，<term id=\"ask_book\">卖盘簿</term> 代表供给。"
+            ],
+            "introduced_terms": ["bid_book", "ask_book"]
+          },
+          {
+            "id": "s004",
+            "type": "narration",
+            "lines": [
+              "它不只是个列表。",
+              "它能告诉你市场的微观结构——谁在着急买，谁在急着卖。"
+            ]
+          },
+          {
+            "id": "s005",
+            "type": "narration",
+            "lines": [
+              "比如，某个价格上堆了巨大的买单。",
+              "那可能就是一个强力的支撑位。"
+            ]
+          },
+          {
+            "id": "s006",
+            "type": "narration",
+            "lines": [
+              "通过观察订单簿，你可以判断 <term id=\"market_liquidity\">市场流动性</term>。",
+              "订单越多、越密集，流动性越好。"
+            ],
+            "introduced_terms": ["market_liquidity"]
+          },
+          {
+            "id": "s007",
+            "type": "narration",
+            "lines": [
+              "你还能看到 <term id=\"market_depth\">市场深度</term>。",
+              "深度越厚，大单对价格的冲击就越小。"
+            ],
+            "introduced_terms": ["market_depth"]
+          },
+          {
+            "id": "s008",
+            "type": "exercise",
+            "lines": [
+              "订单簿的哪一边代表市场的需求？"
+            ],
+            "exercise": {
+              "kind": "single_choice",
+              "prompt": "订单簿的哪一边代表市场的需求？",
+              "options": [
+                "卖盘簿 (Ask Book)",
+                "买盘簿 (Bid Book)",
+                "成交记录 (Trade History)",
+                "价格深度 (Price Depth)"
+              ],
+              "answer": 1,
+              "explanation": "买盘簿记录了所有买入意愿，代表市场的需求方。"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sequence_id": "step2",
+      "concept": "Market Impact and Mitigation Strategies",
+      "step": {
+        "lesson_id": "L8",
+        "sequence_id": "step2",
+        "target_language": "zh-CN",
+        "mode": "guided_story",
+        "term_catalog": {
+          "market_impact": {
+            "display": "市场冲击",
+            "aliases": ["Market Impact", "Slippage"],
+            "gloss": "执行大额订单时，因订单本身导致的价格不利变动。"
+          },
+          "order_splitting": {
+            "display": "订单拆分",
+            "aliases": ["Order Splitting", "Iceberg Order"],
+            "gloss": "将大额订单拆分成多个小额订单，以降低市场冲击。"
+          },
+          "twap": {
+            "display": "时间加权平均价格",
+            "aliases": ["TWAP", "Time-weighted Average Price"],
+            "gloss": "将订单均匀分配到一段时间内执行，以降低市场冲击。"
+          },
+          "vwap": {
+            "display": "成交量加权平均价格",
+            "aliases": ["VWAP", "Volume-weighted Average Price"],
+            "gloss": "根据市场成交量比例执行订单，使成交价接近市场均价。"
+          }
+        },
+        "source": {
+          "plain_text": "Market Impact: A large market order is likely to fill up the order book and lead to significant price movement, reduced market depth and liquidity. Strategies to Mitigate Market Impact: 1. Order Splitting: Break large orders into smaller segments. Execute over time to reduce immediate impact. 2. Use of Limit Orders: Place limit orders to control execution price. Avoid the risks of market orders. 3. Time-weighted Average Price (TWAP): Execute orders evenly over a specified time period. Helps in minimizing market impact. 4. Volume-weighted Average Price (VWAP): Execute orders in proportion to market volume. Reduces price impact by blending into the market.",
+          "related": ["order splitting example", "TWAP example", "VWAP example"]
+        },
+        "screens": [
+          {
+            "id": "s001",
+            "type": "narration",
+            "lines": [
+              "如果你要买一万股，直接下个市价单会怎样？",
+              "你会一路吃掉卖盘，把价格推高。"
+            ]
+          },
+          {
+            "id": "s002",
+            "type": "narration",
+            "lines": [
+              "这种由订单本身引起的价格不利变动，叫 <term id=\"market_impact\">市场冲击</term>。",
+              "大单的冲击尤其明显。"
+            ],
+            "introduced_terms": ["market_impact"]
+          },
+          {
+            "id": "s003",
+            "type": "narration",
+            "lines": [
+              "怎么减少冲击？第一个办法：<term id=\"order_splitting\">订单拆分</term>。",
+              "把一万股拆成一百个一百股，慢慢买。"
+            ],
+            "introduced_terms": ["order_splitting"]
+          },
+          {
+            "id": "s004",
+            "type": "narration",
+            "lines": [
+              "第二个办法：用限价单，而不是市价单。",
+              "限价单能控制成交价，但可能无法立即成交。"
+            ]
+          },
+          {
+            "id": "s005",
+            "type": "narration",
+            "lines": [
+              "第三个办法：<term id=\"twap\">时间加权平均价格</term>。",
+              "比如，在1小时内，每5分钟买入固定数量。"
+            ],
+            "introduced_terms": ["twap"]
+          },
+          {
+            "id": "s006",
+            "type": "narration",
+            "lines": [
+              "TWAP 假设价格是稳定的。",
+              "如果市场波动很大，效果会打折扣。"
+            ]
+          },
+          {
+            "id": "s007",
+            "type": "narration",
+            "lines": [
+              "第四个办法：<term id=\"vwap\">成交量加权平均价格</term>。",
+              "VWAP 根据市场的实际成交量来安排你的订单。"
+            ],
+            "introduced_terms": ["vwap"]
+          },
+          {
+            "id": "s008",
+            "type": "narration",
+            "lines": [
+              "市场成交量大的时候，你就多买一点。",
+              "成交量小的时候，你就少买一点。"
+            ]
+          },
+          {
+            "id": "s009",
+            "type": "narration",
+            "lines": [
+              "这样，你的订单就像融入了市场本身。",
+              "冲击自然就小了。"
+            ]
+          },
+          {
+            "id": "s010",
+            "type": "exercise",
+            "lines": [
+              "以下哪种策略是通过将大单拆小来降低市场冲击？"
+            ],
+            "exercise": {
+              "kind": "single_choice",
+              "prompt": "以下哪种策略是通过将大单拆小来降低市场冲击？",
+              "options": [
+                "使用市价单",
+                "订单拆分",
+                "使用止损单",
+                "增加订单数量"
+              ],
+              "answer": 1,
+              "explanation": "订单拆分将大额订单分解为多个小额订单，以减少对市场的即时冲击。"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sequence_id": "step3",
+      "concept": "Queuing Theory for Order Book Modeling",
+      "step": {
+        "lesson_id": "L8",
+        "sequence_id": "step3",
+        "target_language": "zh-CN",
+        "mode": "guided_story",
+        "term_catalog": {
+          "queuing_theory": {
+            "display": "排队论",
+            "aliases": ["Queuing Theory", "Queueing Theory"],
+            "gloss": "研究等待队列的数学理论，用于分析订单的等待和执行时间。"
+          },
+          "arrival_rate": {
+            "display": "到达率",
+            "aliases": ["Arrival Rate", "λ"],
+            "gloss": "单位时间内新订单到达市场的平均数量。"
+          },
+          "service_rate": {
+            "display": "服务率",
+            "aliases": ["Service Rate", "μ"],
+            "gloss": "单位时间内订单被成交的平均数量。"
+          },
+          "traffic_intensity": {
+            "display": "交通强度",
+            "aliases": ["Traffic Intensity", "ρ", "Utilization"],
+            "gloss": "到达率与服务率的比值，衡量系统繁忙程度。"
+          }
+        },
+        "source": {
+          "plain_text": "Why Queuing Theory? To analyze how orders flow through the market and how they impact price movement. Basic Concepts: Arrival Process (λ): Rate at which an event arrives. Service Rate (μ): Rate at which an event is executed. Queue Discipline: How events are processed (e.g. FIFO). How is it related to Order Book? Incoming orders (buy/sell) can be viewed as entities arriving at a queue. The order book acts as a queue where these orders wait to be matched. Each order can be treated as a customer in a queue, where the \"service\" is the execution of trades.",
+          "related": ["M/M/1 queue", "Poisson process", "Exponential distribution"]
+        },
+        "screens": [
+          {
+            "id": "s001",
+            "type": "narration",
+            "lines": [
+              "订单簿里的订单，就像在排队。",
+              "先来的先成交，后来的等着。"
+            ]
+          },
+          {
+            "id": "s002",
+            "type": "narration",
+            "lines": [
+              "我们可以用 <term id=\"queuing_theory\">排队论</term> 来分析这个排队过程。",
+              "它能回答：一个订单要等多久才能成交？"
+            ],
+            "introduced_terms": ["queuing_theory"]
+          },
+          {
+            "id": "s003",
+            "type": "narration",
+            "lines": [
+              "排队论有两个关键参数：",
+              "<term id=\"arrival_rate\">到达率</term> 和 <term id=\"service_rate\">服务率</term>。"
+            ],
+            "introduced_terms": ["arrival_rate", "service_rate"]
+          },
+          {
+            "id": "s004",
+            "type": "narration",
+            "lines": [
+              "到达率 (λ) 是每秒有多少新订单进来。",
+              "服务率 (μ) 是每秒有多少订单被成交。"
+            ]
+          },
+          {
+            "id": "s005",
+            "type": "narration",
+            "lines": [
+              "如果到达率大于服务率 (λ > μ)，队伍会越来越长。",
+              "如果到达率小于服务率 (λ < μ)，系统才能稳定。"
+            ]
+          },
+          {
+            "id": "s006",
+            "type": "narration",
+            "lines": [
+              "它们的比值 ρ = λ / μ，叫 <term id=\"traffic_intensity\">交通强度</term>。",
+              "ρ 越接近 1，系统越拥挤。"
+            ],
+            "introduced_terms": ["traffic_intensity"]
+          },
+          {
+            "id": "s007",
+            "type": "narration",
+            "lines": [
+              "在订单簿里，一个限价单从挂单到成交，就是一次完整的排队服务。",
+              "排队论能帮我们估算这个等待时间。"
+            ]
+          },
+          {
+            "id": "s008",
+            "type": "exercise",
+            "lines": [
+              "如果订单到达率 λ = 10 单/分钟，服务率 μ = 15 单/分钟，交通强度 ρ 是多少？"
+            ],
+            "exercise": {
+              "kind": "fill_in_blank",
+              "prompt": "如果订单到达率 λ = 10 单/分钟，服务率 μ = 15 单/分钟，交通强度 ρ 是多少？",
+              "answers": ["0.67", "2/3"],
+              "explanation": "ρ = λ / μ = 10 / 15 = 0.67。系统是稳定的，因为 ρ < 1。"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sequence_id": "step4",
+      "concept": "High Frequency Trading and Arbitrage",
+      "step": {
+        "lesson_id": "L8",
+        "sequence_id": "step4",
+        "target_language": "zh-CN",
+        "mode": "guided_story",
+        "term_catalog": {
+          "high_frequency_trading": {
+            "display": "高频交易",
+            "aliases": ["HFT", "High Frequency Trading"],
+            "gloss": "利用极快速度执行大量交易，从微小价差中获利的交易方式。"
+          },
+          "co_location": {
+            "display": "主机托管",
+            "aliases": ["Co-location", "Colo"],
+            "gloss": "将交易服务器放置在交易所数据中心内，以减少网络延迟。"
+          },
+          "latency_arbitrage": {
+            "display": "延迟套利",
+            "aliases": ["Latency Arbitrage"],
+            "gloss": "利用信息传输速度差异，比对手更快交易以获利。"
+          },
+          "arbitrage": {
+            "display": "套利",
+            "aliases": ["Arbitrage"],
+            "gloss": "在不同市场或资产间同时买卖，利用价格差异获利。"
+          },
+          "triangular_arbitrage": {
+            "display": "三角套利",
+            "aliases": ["Triangular Arbitrage"],
+            "gloss": "利用三种货币之间的汇率不一致进行套利。"
+          },
+          "market_making": {
+            "display": "做市",
+            "aliases": ["Market Making"],
+            "gloss": "同时挂出买单和卖单，通过赚取买卖价差获利。"
+          }
+        },
+        "source": {
+          "plain_text": "High Frequency Trading: Rapid executions of multiple transactions followed by extremely short holding periods. Profit from small price changes and discrepancies. Require sophisticated technology, communications and computing resources. High frequency trading depends heavily on execution speed and latency. Co-location: High frequency trading firms usually rent space from market centers, such as from the major exchanges. The purpose to put their servers next to the market center's data servers is to reduce latency. Latency Arbitrage: Exploiting delays in market data transmission to execute trades before other market participants can react. Common High Frequency Strategy: 1. Market Making 2. Latency Arbitrage 3. Cross Market Arbitrage 4. Order Flow Analysis. Triangular Arbitrage: Triangular arbitrage is a trading strategy that exploits discrepancies in currency exchange rates.",
+          "related": ["co-location example", "triangular arbitrage example", "market making strategy"]
+        },
+        "screens": [
+          {
+            "id": "s001",
+            "type": "narration",
+            "lines": [
+              "当交易速度快到毫秒甚至微秒级别，就进入了 <term id=\"high_frequency_trading\">高频交易</term> 的领域。",
+              "目标是抓住转瞬即逝的微小价差。"
+            ],
+            "introduced_terms": ["high_frequency_trading"]
+          },
+          {
+            "id": "s002",
+            "type": "narration",
+            "lines": [
+              "速度就是生命。",
+              "为了快，交易公司会把服务器搬到交易所旁边，这叫 <term id=\"co_location\">主机托管</term>。"
+            ],
+            "introduced_terms": ["co_location"]
+          },
+          {
+            "id": "s003",
+            "type": "narration",
+            "lines": [
+              "比别人快几微秒，就能看到订单流，提前行动。",
+              "这就是 <term id=\"latency_arbitrage\">延迟套利</term>。"
+            ],
+            "introduced_terms": ["latency_arbitrage"]
+          },
+          {
+            "id": "s004",
+            "type": "narration",
+            "lines": [
+              "高频交易的核心策略之一：<term id=\"arbitrage\">套利</term>。",
+              "利用不同市场或资产间的价格差异赚钱。"
+            ],
+            "introduced_terms": ["arbitrage"]
+          },
+          {
+            "id": "s005",
+            "type": "narration",
+            "lines": [
+              "比如 <term id=\"triangular_arbitrage\">三角套利</term>：",
+              "用美元换欧元，欧元换英镑，英镑再换回美元。"
+            ],
+            "introduced_terms": ["triangular_arbitrage"]
+          },
+          {
+            "id": "s006",
+            "type": "narration",
+            "lines": [
+              "如果一圈下来，钱变多了，就存在套利机会。",
+              "但这需要极快的计算和执行。"
+            ]
+          },
+          {
+            "id": "s007",
+            "type": "narration",
+            "lines": [
+              "另一种常见策略是 <term id=\"market_making\">做市</term>。",
+              "同时挂买单和卖单，赚取买卖价差。"
+            ],
+            "introduced_terms": ["market_making"]
+          },
+          {
+            "id": "s008",
+            "type": "narration",
+            "lines": [
+              "做市商为市场提供流动性，交易所有时还会给返佣。",
+              "但风险是，如果市场单边暴涨暴跌，做市商可能亏钱。"
+            ]
+          },
+          {
+            "id": "s009",
+            "type": "exercise",
+            "lines": [
+              "高频交易公司把服务器放在交易所数据中心，主要是为了什么？"
+            ],
+            "exercise": {
+              "kind": "single_choice",
+              "prompt": "高频交易公司把服务器放在交易所数据中心，主要是为了什么？",
+              "options": [
+                "节省电费",
+                "减少网络延迟",
+                "方便维护",
+                "获得更多数据"
+              ],
+              "answer": 1,
+              "explanation": "这称为主机托管，目的是将物理距离缩到最短，从而获得毫秒甚至微秒级的速度优势。"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+```

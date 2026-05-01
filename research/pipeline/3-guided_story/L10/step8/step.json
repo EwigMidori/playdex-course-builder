@@ -1,0 +1,108 @@
+{
+  "lesson_id": "L10",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "non_stationary"
+      ],
+      "id": "s038",
+      "introduced_terms": [
+        "non_stationary"
+      ],
+      "lines": [
+        "AI交易虽然强大，但也有自己的局限。",
+        "首先，金融市场是<term id=\"non_stationary\">非平稳</term>的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "non_stationary"
+      ],
+      "id": "s039",
+      "introduced_terms": [],
+      "lines": [
+        "市场规律会变，去年有效的策略今年可能就失效了。",
+        "模型需要不断适应，而不是学一次就一劳永逸。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "overfitting"
+      ],
+      "id": "s040",
+      "introduced_terms": [
+        "overfitting"
+      ],
+      "lines": [
+        "其次，<term id=\"overfitting\">过拟合</term>是个大问题。",
+        "模型可能在历史数据上表现完美，但一到实盘就亏钱。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "reinforcement_learning"
+      ],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "还有，交易的状态空间非常巨大。",
+        "不像下围棋，市场有无数种可能的状态和动作。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "所以，未来的方向不是AI完全取代人类。",
+        "而是人机协同：AI提供建议，人类做最终判断。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "explanation": "因为历史数据中的噪声和特定模式可能被模型当作普遍规律学习，导致在新数据上失效。",
+        "kind": "short_reflection",
+        "prompt": "为什么AI交易模型容易过拟合？"
+      },
+      "focus_terms": [
+        "overfitting"
+      ],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "为什么AI交易模型容易过拟合？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "plain_text": "Limitations of Q-learning in trading: high dimensionality, non-stationary environment, overfitting risks. Future: AI + human synthesis.",
+    "related": [
+      "L10_limitations_future"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "non_stationary": {
+      "aliases": [
+        "Non-Stationary"
+      ],
+      "display": "非平稳性",
+      "gloss": "环境的统计特性随时间变化，比如市场规律会变。"
+    },
+    "overfitting": {
+      "aliases": [
+        "Overfitting"
+      ],
+      "display": "过拟合",
+      "gloss": "模型在训练数据上表现很好，但在新数据上表现很差。"
+    }
+  }
+}

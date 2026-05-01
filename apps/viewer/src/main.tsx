@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import ReactMarkdown from "react-markdown";
 import { useAtom } from "jotai";
 import remarkGfm from "remark-gfm";
-import { mdxToMarkdownPreview, type MdxPreviewIndex } from "./mdxPreview";
+import { MdxCoursePreview, type MdxCourseIndex } from "./mdxCoursePreview";
 import {
   fetchText,
   loadManifest,
@@ -109,7 +109,7 @@ function useRelevance(lessonId: LessonId) {
 
 function useQuestionIndex(lessonId: LessonId) {
   const lesson = lessons.find((item) => item.id === lessonId);
-  const [state, setState] = React.useState<AsyncState<MdxPreviewIndex>>(emptyState);
+  const [state, setState] = React.useState<AsyncState<MdxCourseIndex>>(emptyState);
 
   React.useEffect(() => {
     let alive = true;
@@ -355,21 +355,15 @@ function FileLine({ path }: { path: string }) {
 function TextbookView({ lessonId, relevance }: { lessonId: LessonId; relevance: RelevanceReport | null }) {
   const textbook = useTextbook(lessonId);
   const questionIndex = useQuestionIndex(lessonId);
-  const preview = React.useMemo(
-    () => (textbook.data ? mdxToMarkdownPreview(textbook.data, questionIndex.data ?? undefined) : ""),
-    [questionIndex.data, textbook.data]
-  );
 
   return (
     <section className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
-      <Panel title="MDX preview" subtitle={textbook.path}>
+      <Panel title="Textbook preview" subtitle={textbook.path}>
         {textbook.loading ? <Muted>Loading textbook...</Muted> : null}
         {textbook.error ? <Notice title="Textbook unavailable" detail={textbook.error} /> : null}
         {questionIndex.error ? <Notice title="Practice lookup degraded" detail={questionIndex.error} /> : null}
         {textbook.data ? (
-          <article className="prose prose-stone max-w-none prose-headings:scroll-mt-4 prose-pre:bg-stone-950 prose-pre:text-stone-50">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{preview}</ReactMarkdown>
-          </article>
+          <MdxCoursePreview index={questionIndex.data ?? undefined} lessonId={lessonId} source={textbook.data} />
         ) : null}
       </Panel>
       <Panel title="Textbook relevance" subtitle="section badges">

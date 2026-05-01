@@ -1,0 +1,148 @@
+{
+  "lesson_id": "L7",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "把所有可能的组合画在风险-收益图上，",
+        "会形成一片区域——机会集。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "efficient_frontier"
+      ],
+      "id": "s020",
+      "introduced_terms": [
+        "efficient_frontier"
+      ],
+      "lines": [
+        "机会集的上边缘，就是<term id=\"efficient_frontier\">有效前沿</term>。",
+        "在相同风险下，它提供最高的收益。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "不在有效前沿上的组合，都是低效的。",
+        "同样的风险，收益却更低，应该避开。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "如果市场上存在无风险资产（比如国债），",
+        "情况会变得更有趣。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "tangency_portfolio"
+      ],
+      "id": "s023",
+      "introduced_terms": [
+        "tangency_portfolio"
+      ],
+      "lines": [
+        "从无风险利率出发，画一条与有效前沿相切的直线。",
+        "切点就是<term id=\"tangency_portfolio\">切点组合</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "capital_market_line"
+      ],
+      "id": "s024",
+      "introduced_terms": [
+        "capital_market_line"
+      ],
+      "lines": [
+        "这条直线被称为<term id=\"capital_market_line\">资本市场线</term>。",
+        "所有理性投资者都会在这条线上选择自己的组合。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "E(R_p) = R_f + \\frac{E(R_M) - R_f}{\\sigma_M} \\sigma_p",
+        "spoken": "组合的期望收益等于无风险利率加上市场风险溢价除以市场标准差再乘以组合标准差。"
+      },
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "资本市场线的公式：",
+        "$E(R_p) = R_f + \\frac{E(R_M) - R_f}{\\sigma_M} \\sigma_p$"
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "切点组合是最大化夏普比率（(μ_p - R_f)/σ_p）得到的。",
+        "kind": "single_choice",
+        "options": [
+          "组合收益",
+          "夏普比率",
+          "组合方差",
+          "相关系数"
+        ],
+        "prompt": "求解切点组合时，目标函数是最大化："
+      },
+      "focus_terms": [],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "切点组合的权重可以通过最大化什么来求解？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Efficient Frontier: Portfolios yielding the highest expected return for a specific variance. Tangency Portfolio: If risk-free asset is available, we can draw a tangent line between the risk-free rate and the efficient frontier. Capital Market Line (CML): For any efficient portfolio on CML, E(R_p) = R_f + (E(R_M) - R_f)/sigma_M * sigma_p.",
+    "related": [
+      "Efficient Frontier",
+      "Tangency Portfolio",
+      "Capital Market Line (CML)"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "capital_market_line": {
+      "aliases": [
+        "Capital Market Line",
+        "CML"
+      ],
+      "display": "资本市场线",
+      "gloss": "连接无风险利率与市场组合的直线，代表有效投资组合的风险收益关系。"
+    },
+    "efficient_frontier": {
+      "aliases": [
+        "Efficient Frontier",
+        "Efficient Set"
+      ],
+      "display": "有效前沿",
+      "gloss": "在给定风险水平下能获得最高预期收益的投资组合集合。"
+    },
+    "tangency_portfolio": {
+      "aliases": [
+        "Tangency Portfolio"
+      ],
+      "display": "切点组合",
+      "gloss": "无风险资产与有效前沿相切处的风险资产组合，是所有理性投资者持有的最优风险组合。"
+    }
+  }
+}

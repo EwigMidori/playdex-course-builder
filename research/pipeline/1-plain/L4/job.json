@@ -1,0 +1,17 @@
+{
+  "input_file": "/Users/zijingzhang/ewig/playdex-course-builder/research/pipeline/0-raw/L4.pdf",
+  "batch_id": "c1b58647-0a9a-4738-ac10-bf9ba6a01ef3",
+  "output_dir": "/Users/zijingzhang/ewig/playdex-course-builder/research/pipeline/1-plain/L4",
+  "model_version": "vlm",
+  "language": "ch",
+  "enable_formula": true,
+  "enable_table": true,
+  "is_ocr": true,
+  "result": {
+    "data_id": "L4",
+    "err_msg": "",
+    "file_name": "L4.pdf",
+    "full_zip_url": "https://cdn-mineru.openxlab.org.cn/pdf/2026-05-01/b247b921-2f1d-4341-8e1b-ce384a644707.zip",
+    "state": "done"
+  }
+}

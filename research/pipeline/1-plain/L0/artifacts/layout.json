@@ -1,0 +1,3962 @@
+{
+    "pdf_info": [
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        208,
+                        144,
+                        752,
+                        203
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                208,
+                                144,
+                                752,
+                                203
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        208,
+                                        144,
+                                        752,
+                                        203
+                                    ],
+                                    "type": "text",
+                                    "content": "Financial Analytics and"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        244,
+                        213,
+                        713,
+                        270
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                244,
+                                213,
+                                713,
+                                270
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        244,
+                                        213,
+                                        713,
+                                        270
+                                    ],
+                                    "type": "text",
+                                    "content": "Algorithmic Trading"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 1
+                },
+                {
+                    "bbox": [
+                        355,
+                        287,
+                        601,
+                        309
+                    ],
+                    "type": "text",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                355,
+                                287,
+                                601,
+                                309
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        355,
+                                        287,
+                                        601,
+                                        309
+                                    ],
+                                    "type": "text",
+                                    "content": "Course Code: COMP7415"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 2
+                }
+            ],
+            "discarded_blocks": [
+                {
+                    "bbox": [
+                        28,
+                        497,
+                        169,
+                        517
+                    ],
+                    "type": "footer",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                28,
+                                497,
+                                169,
+                                517
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        28,
+                                        497,
+                                        169,
+                                        517
+                                    ],
+                                    "type": "text",
+                                    "content": "Lecturer: Tony Lam"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 3
+                }
+            ],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 0
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        71,
+                        58,
+                        489,
+                        102
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                58,
+                                489,
+                                102
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        58,
+                                        489,
+                                        102
+                                    ],
+                                    "type": "text",
+                                    "content": "Background of Lecturer"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        97,
+                        135,
+                        858,
+                        285
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 6,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                97,
+                                135,
+                                486,
+                                160
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        97,
+                                        135,
+                                        486,
+                                        160
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                97,
+                                                135,
+                                                486,
+                                                160
+                                            ],
+                                            "type": "text",
+                                            "content": "- Founder of AlgoGene (https://algogene.com)"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                97,
+                                167,
+                                703,
+                                190
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        97,
+                                        167,
+                                        703,
+                                        190
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                97,
+                                                167,
+                                                703,
+                                                190
+                                            ],
+                                            "type": "text",
+                                            "content": "Vice Chairman of Algo Challenge Association (https://algochallenge.org)"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                97,
+                                199,
+                                858,
+                                221
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        97,
+                                        199,
+                                        858,
+                                        221
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                97,
+                                                199,
+                                                858,
+                                                221
+                                            ],
+                                            "type": "text",
+                                            "content": "- Former algo developer, quant trader, risk manager, data analyst for hedge funds and banks."
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                97,
+                                231,
+                                842,
+                                253
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        97,
+                                        231,
+                                        842,
+                                        253
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                97,
+                                                231,
+                                                842,
+                                                253
+                                            ],
+                                            "type": "text",
+                                            "content": "- BSc in Math, Risk Management, Actuarial Science (HKU); MSc in Computer Science (HKU)"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        },
+                        {
+                            "bbox": [
+                                97,
+                                262,
+                                694,
+                                285
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        97,
+                                        262,
+                                        694,
+                                        285
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                97,
+                                                262,
+                                                694,
+                                                285
+                                            ],
+                                            "type": "text",
+                                            "content": "- Champion and awardee of several algo trading competitions, including"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 5
+                        }
+                    ],
+                    "sub_type": "text"
+                },
+                {
+                    "bbox": [
+                        134,
+                        287,
+                        618,
+                        381
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 11,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                134,
+                                287,
+                                618,
+                                309
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        134,
+                                        287,
+                                        618,
+                                        309
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                134,
+                                                287,
+                                                618,
+                                                309
+                                            ],
+                                            "type": "text",
+                                            "content": "CCTV证券资讯频道《宽客天下·全球量化争霸赛》(2017/18)"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 7
+                        },
+                        {
+                            "bbox": [
+                                134,
+                                314,
+                                518,
+                                333
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        134,
+                                        314,
+                                        518,
+                                        333
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                134,
+                                                314,
+                                                518,
+                                                333
+                                            ],
+                                            "type": "text",
+                                            "content": "- Rotman International Trading Competition (2017)"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 8
+                        },
+                        {
+                            "bbox": [
+                                134,
+                                338,
+                                403,
+                                358
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        134,
+                                        338,
+                                        403,
+                                        358
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                134,
+                                                338,
+                                                403,
+                                                358
+                                            ],
+                                            "type": "text",
+                                            "content": "CASH Algo Trading Contest (2016)"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 9
+                        },
+                        {
+                            "bbox": [
+                                134,
+                                362,
+                                418,
+                                381
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        134,
+                                        362,
+                                        418,
+                                        381
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                134,
+                                                362,
+                                                418,
+                                                381
+                                            ],
+                                            "type": "text",
+                                            "content": "WorldQuant Challenge (2014, 2015)"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 10
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 1
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        71,
+                        58,
+                        389,
+                        104
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                58,
+                                389,
+                                104
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        58,
+                                        389,
+                                        104
+                                    ],
+                                    "type": "text",
+                                    "content": "Let’s play a game!"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "type": "image",
+                    "bbox": [
+                        299,
+                        160,
+                        644,
+                        511
+                    ],
+                    "blocks": [
+                        {
+                            "bbox": [
+                                299,
+                                160,
+                                644,
+                                511
+                            ],
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        299,
+                                        160,
+                                        644,
+                                        511
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                299,
+                                                160,
+                                                644,
+                                                511
+                                            ],
+                                            "type": "image",
+                                            "image_path": "997b92b1751c1ce70437186759220c5d106c40ed0862fb47cf1033ee018d9aa5.jpg"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1,
+                            "angle": 0,
+                            "type": "image_body"
+                        }
+                    ],
+                    "index": 1
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 2
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        71,
+                        58,
+                        571,
+                        104
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                58,
+                                571,
+                                104
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        58,
+                                        571,
+                                        104
+                                    ],
+                                    "type": "text",
+                                    "content": "1. What’s your study mode?"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        69,
+                        145,
+                        218,
+                        258
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 4,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                69,
+                                145,
+                                214,
+                                178
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        69,
+                                        145,
+                                        214,
+                                        178
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                69,
+                                                145,
+                                                214,
+                                                178
+                                            ],
+                                            "type": "text",
+                                            "content": "a) Full time"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                186,
+                                218,
+                                218
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        186,
+                                        218,
+                                        218
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                70,
+                                                186,
+                                                218,
+                                                218
+                                            ],
+                                            "type": "text",
+                                            "content": "b) Part time"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                226,
+                                217,
+                                258
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        226,
+                                        217,
+                                        258
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                70,
+                                                226,
+                                                217,
+                                                258
+                                            ],
+                                            "type": "text",
+                                            "content": "c) Just sit in"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 3
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        68,
+                        34,
+                        821,
+                        123
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                68,
+                                34,
+                                821,
+                                123
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        68,
+                                        34,
+                                        821,
+                                        123
+                                    ],
+                                    "type": "text",
+                                    "content": "2. What is your main reason for taking this course?"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        68,
+                        145,
+                        694,
+                        300
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 5,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                68,
+                                145,
+                                545,
+                                181
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        68,
+                                        145,
+                                        545,
+                                        181
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                68,
+                                                145,
+                                                545,
+                                                181
+                                            ],
+                                            "type": "text",
+                                            "content": "a) I want to start a career in algo-trading"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                69,
+                                185,
+                                552,
+                                220
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        69,
+                                        185,
+                                        552,
+                                        220
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                69,
+                                                185,
+                                                552,
+                                                220
+                                            ],
+                                            "type": "text",
+                                            "content": "b) I want to enhance my current job skills"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                224,
+                                694,
+                                263
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        224,
+                                        694,
+                                        263
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                70,
+                                                224,
+                                                694,
+                                                263
+                                            ],
+                                            "type": "text",
+                                            "content": "c) I am interested in the topic and want to learn more"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                267,
+                                531,
+                                300
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        267,
+                                        531,
+                                        300
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                70,
+                                                267,
+                                                531,
+                                                300
+                                            ],
+                                            "type": "text",
+                                            "content": "d) Just to fulfill graduation requirement"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 4
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        68,
+                        34,
+                        790,
+                        120
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                68,
+                                34,
+                                790,
+                                120
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        68,
+                                        34,
+                                        790,
+                                        120
+                                    ],
+                                    "type": "text",
+                                    "content": "3. What do you expect to learn from this course?"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        68,
+                        145,
+                        650,
+                        298
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 5,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                68,
+                                145,
+                                536,
+                                178
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        68,
+                                        145,
+                                        536,
+                                        178
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                68,
+                                                145,
+                                                536,
+                                                178
+                                            ],
+                                            "type": "text",
+                                            "content": "a) Some skills for financial data analysis"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                69,
+                                186,
+                                650,
+                                219
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        69,
+                                        186,
+                                        650,
+                                        219
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                69,
+                                                186,
+                                                650,
+                                                219
+                                            ],
+                                            "type": "text",
+                                            "content": "b) I want to develop an automated trading system"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                224,
+                                586,
+                                259
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        224,
+                                        586,
+                                        259
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                70,
+                                                224,
+                                                586,
+                                                259
+                                            ],
+                                            "type": "text",
+                                            "content": "c) Tell me some profitable trading strategies"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                267,
+                                257,
+                                298
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        267,
+                                        257,
+                                        298
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                70,
+                                                267,
+                                                257,
+                                                298
+                                            ],
+                                            "type": "text",
+                                            "content": "d) Not sure yet"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 5
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        69,
+                        34,
+                        850,
+                        128
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                69,
+                                34,
+                                850,
+                                128
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        69,
+                                        34,
+                                        850,
+                                        128
+                                    ],
+                                    "type": "text",
+                                    "content": "4. Do you have any prior experience in algo-trading?"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        72,
+                        146,
+                        688,
+                        298
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 5,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                72,
+                                146,
+                                475,
+                                177
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        146,
+                                        475,
+                                        177
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                146,
+                                                475,
+                                                177
+                                            ],
+                                            "type": "text",
+                                            "content": "a) Yes, I have extensive experience"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                188,
+                                431,
+                                216
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        188,
+                                        431,
+                                        216
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                188,
+                                                431,
+                                                216
+                                            ],
+                                            "type": "text",
+                                            "content": "b) Yes, I have some experience"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                227,
+                                688,
+                                257
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        227,
+                                        688,
+                                        257
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                227,
+                                                688,
+                                                257
+                                            ],
+                                            "type": "text",
+                                            "content": "c) No, but I have experience in other forms of trading"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                268,
+                                513,
+                                298
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        268,
+                                        513,
+                                        298
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                268,
+                                                513,
+                                                298
+                                            ],
+                                            "type": "text",
+                                            "content": "d) No, I am completely new to trading"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 6
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        68,
+                        34,
+                        760,
+                        127
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                68,
+                                34,
+                                760,
+                                127
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        68,
+                                        34,
+                                        760,
+                                        127
+                                    ],
+                                    "type": "text",
+                                    "content": "5. Have you ever used any algo-trading platforms before?"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        68,
+                        145,
+                        438,
+                        298
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 5,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                68,
+                                145,
+                                433,
+                                178
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        68,
+                                        145,
+                                        433,
+                                        178
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                68,
+                                                145,
+                                                433,
+                                                178
+                                            ],
+                                            "type": "text",
+                                            "content": "a) Yes, I have used MetaTrader"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                69,
+                                186,
+                                438,
+                                218
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        69,
+                                        186,
+                                        438,
+                                        218
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                69,
+                                                186,
+                                                438,
+                                                218
+                                            ],
+                                            "type": "text",
+                                            "content": "b) Yes, I have used TradingView"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                228,
+                                408,
+                                259
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        228,
+                                        408,
+                                        259
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                70,
+                                                228,
+                                                408,
+                                                259
+                                            ],
+                                            "type": "text",
+                                            "content": "c) Yes, I have used AlgoGene"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                70,
+                                268,
+                                428,
+                                298
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        70,
+                                        268,
+                                        428,
+                                        298
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                70,
+                                                268,
+                                                428,
+                                                298
+                                            ],
+                                            "type": "text",
+                                            "content": "d) No, I have no idea what it is"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 7
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        68,
+                        34,
+                        788,
+                        127
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                68,
+                                34,
+                                788,
+                                127
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        68,
+                                        34,
+                                        788,
+                                        127
+                                    ],
+                                    "type": "text",
+                                    "content": "6. Which of the following has the largest market capitalization?"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        71,
+                        147,
+                        389,
+                        297
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 5,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                71,
+                                147,
+                                332,
+                                177
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        147,
+                                        332,
+                                        177
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                71,
+                                                147,
+                                                332,
+                                                177
+                                            ],
+                                            "type": "text",
+                                            "content": "a) China stock market"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                187,
+                                389,
+                                217
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        187,
+                                        389,
+                                        217
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                187,
+                                                389,
+                                                217
+                                            ],
+                                            "type": "text",
+                                            "content": "b) Hong Kong stock market"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                230,
+                                323,
+                                256
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        230,
+                                        323,
+                                        256
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                230,
+                                                323,
+                                                256
+                                            ],
+                                            "type": "text",
+                                            "content": "c) India stock market"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                268,
+                                332,
+                                297
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        268,
+                                        332,
+                                        297
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                268,
+                                                332,
+                                                297
+                                            ],
+                                            "type": "text",
+                                            "content": "d) Japan stock market"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 8
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        71,
+                        62,
+                        206,
+                        98
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                62,
+                                206,
+                                98
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        62,
+                                        206,
+                                        98
+                                    ],
+                                    "type": "text",
+                                    "content": "Answer"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        72,
+                        147,
+                        251,
+                        177
+                    ],
+                    "type": "text",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                72,
+                                147,
+                                251,
+                                177
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        147,
+                                        251,
+                                        177
+                                    ],
+                                    "type": "text",
+                                    "content": "As of Dec-2025,"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 1
+                },
+                {
+                    "bbox": [
+                        72,
+                        188,
+                        332,
+                        336
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 6,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                72,
+                                188,
+                                288,
+                                215
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        188,
+                                        288,
+                                        215
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                188,
+                                                288,
+                                                215
+                                            ],
+                                            "type": "text",
+                                            "content": "- China: $15 trillion"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                228,
+                                332,
+                                256
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        228,
+                                        332,
+                                        256
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                228,
+                                                332,
+                                                256
+                                            ],
+                                            "type": "text",
+                                            "content": "- Hong Kong: $6 trillion"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                268,
+                                287,
+                                295
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        268,
+                                        287,
+                                        295
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                268,
+                                                287,
+                                                295
+                                            ],
+                                            "type": "text",
+                                            "content": "- India: $5.3 trillion"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                308,
+                                295,
+                                336
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        308,
+                                        295,
+                                        336
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                308,
+                                                295,
+                                                336
+                                            ],
+                                            "type": "text",
+                                            "content": "- Japan: $7.6 trillion"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 5
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [
+                {
+                    "bbox": [
+                        36,
+                        502,
+                        552,
+                        522
+                    ],
+                    "type": "footer",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                36,
+                                502,
+                                552,
+                                522
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        36,
+                                        502,
+                                        552,
+                                        522
+                                    ],
+                                    "type": "text",
+                                    "content": "Source: https://www.ceicdata.com/en/indicator/market-capitalization"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 7
+                }
+            ],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 9
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        68,
+                        34,
+                        794,
+                        128
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                68,
+                                34,
+                                794,
+                                128
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        68,
+                                        34,
+                                        794,
+                                        128
+                                    ],
+                                    "type": "text",
+                                    "content": "7. Which of the following market has the largest daily turnover/trading volume?"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        71,
+                        147,
+                        352,
+                        298
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 5,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                71,
+                                147,
+                                336,
+                                177
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        147,
+                                        336,
+                                        177
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                71,
+                                                147,
+                                                336,
+                                                177
+                                            ],
+                                            "type": "text",
+                                            "content": "a) Commodity market"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                187,
+                                278,
+                                217
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        187,
+                                        278,
+                                        217
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                187,
+                                                278,
+                                                217
+                                            ],
+                                            "type": "text",
+                                            "content": "b) Crypto market"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                228,
+                                352,
+                                258
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        228,
+                                        352,
+                                        258
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                228,
+                                                352,
+                                                258
+                                            ],
+                                            "type": "text",
+                                            "content": "c) Global Equity market"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                268,
+                                178,
+                                298
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        268,
+                                        178,
+                                        298
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                268,
+                                                178,
+                                                298
+                                            ],
+                                            "type": "text",
+                                            "content": "d) Forex"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 10
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        71,
+                        62,
+                        206,
+                        98
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                62,
+                                206,
+                                98
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        62,
+                                        206,
+                                        98
+                                    ],
+                                    "type": "text",
+                                    "content": "Answer"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        72,
+                        145,
+                        489,
+                        298
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 5,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                72,
+                                145,
+                                489,
+                                178
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        145,
+                                        489,
+                                        178
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                145,
+                                                489,
+                                                178
+                                            ],
+                                            "type": "text",
+                                            "content": "Global equity market: $3.93 trillion"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                186,
+                                299,
+                                216
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        186,
+                                        299,
+                                        216
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                186,
+                                                299,
+                                                216
+                                            ],
+                                            "type": "text",
+                                            "content": "• Forex: $6.6 trillion"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                226,
+                                370,
+                                258
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        226,
+                                        370,
+                                        258
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                226,
+                                                370,
+                                                258
+                                            ],
+                                            "type": "text",
+                                            "content": "- Commodity: $126 billion"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                267,
+                                315,
+                                298
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        267,
+                                        315,
+                                        298
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                267,
+                                                315,
+                                                298
+                                            ],
+                                            "type": "text",
+                                            "content": "- Crypto: $139 billion"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "sub_type": "text"
+                },
+                {
+                    "bbox": [
+                        63,
+                        401,
+                        144,
+                        417
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                63,
+                                401,
+                                144,
+                                417
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        63,
+                                        401,
+                                        144,
+                                        417
+                                    ],
+                                    "type": "text",
+                                    "content": "Reference:"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 6
+                },
+                {
+                    "bbox": [
+                        64,
+                        422,
+                        619,
+                        505
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 11,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                64,
+                                422,
+                                481,
+                                442
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        64,
+                                        422,
+                                        481,
+                                        442
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                64,
+                                                422,
+                                                481,
+                                                442
+                                            ],
+                                            "type": "text",
+                                            "content": "- https://www.world-exchanges.org/our-work/statistics"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 7
+                        },
+                        {
+                            "bbox": [
+                                64,
+                                444,
+                                416,
+                                462
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        64,
+                                        444,
+                                        416,
+                                        462
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                64,
+                                                444,
+                                                416,
+                                                462
+                                            ],
+                                            "type": "text",
+                                            "content": "- https://www.bis.org/statistics/rpfx19 fx.htm"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 8
+                        },
+                        {
+                            "bbox": [
+                                64,
+                                466,
+                                619,
+                                484
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        64,
+                                        466,
+                                        619,
+                                        484
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                64,
+                                                466,
+                                                619,
+                                                484
+                                            ],
+                                            "type": "text",
+                                            "content": "- https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 9
+                        },
+                        {
+                            "bbox": [
+                                64,
+                                488,
+                                425,
+                                505
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        64,
+                                        488,
+                                        425,
+                                        505
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                64,
+                                                488,
+                                                425,
+                                                505
+                                            ],
+                                            "type": "text",
+                                            "content": "- https://www.coingecko.com/en/global charts"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 10
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 11
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        68,
+                        34,
+                        785,
+                        128
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                68,
+                                34,
+                                785,
+                                128
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        68,
+                                        34,
+                                        785,
+                                        128
+                                    ],
+                                    "type": "text",
+                                    "content": "8. Which programming language is most widely used in algo-trading?"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        71,
+                        147,
+                        194,
+                        297
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 5,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                71,
+                                147,
+                                158,
+                                177
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        147,
+                                        158,
+                                        177
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                71,
+                                                147,
+                                                158,
+                                                177
+                                            ],
+                                            "type": "text",
+                                            "content": "a) C++"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                71,
+                                188,
+                                162,
+                                216
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        188,
+                                        162,
+                                        216
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                71,
+                                                188,
+                                                162,
+                                                216
+                                            ],
+                                            "type": "text",
+                                            "content": "b) Java"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                228,
+                                194,
+                                258
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        228,
+                                        194,
+                                        258
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                228,
+                                                194,
+                                                258
+                                            ],
+                                            "type": "text",
+                                            "content": "c) Python"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                268,
+                                129,
+                                297
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        268,
+                                        129,
+                                        297
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                268,
+                                                129,
+                                                297
+                                            ],
+                                            "type": "text",
+                                            "content": "d) R"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 12
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        68,
+                        34,
+                        860,
+                        127
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                68,
+                                34,
+                                860,
+                                127
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        68,
+                                        34,
+                                        860,
+                                        127
+                                    ],
+                                    "type": "text",
+                                    "content": "9. Which of the following market is the most popular for algo traders?"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        71,
+                        147,
+                        288,
+                        296
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 5,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                71,
+                                147,
+                                265,
+                                177
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        147,
+                                        265,
+                                        177
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                71,
+                                                147,
+                                                265,
+                                                177
+                                            ],
+                                            "type": "text",
+                                            "content": "a) Commodities"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                187,
+                                288,
+                                218
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        187,
+                                        288,
+                                        218
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                187,
+                                                288,
+                                                218
+                                            ],
+                                            "type": "text",
+                                            "content": "b) Cryptocurrency"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                230,
+                                186,
+                                258
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        230,
+                                        186,
+                                        258
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                230,
+                                                186,
+                                                258
+                                            ],
+                                            "type": "text",
+                                            "content": "c) Equity"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                268,
+                                177,
+                                296
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        268,
+                                        177,
+                                        296
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                268,
+                                                177,
+                                                296
+                                            ],
+                                            "type": "text",
+                                            "content": "d) Forex"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 13
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        71,
+                        58,
+                        760,
+                        102
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                58,
+                                760,
+                                102
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        58,
+                                        760,
+                                        102
+                                    ],
+                                    "type": "text",
+                                    "content": "10. What's the name of your teachers?"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        72,
+                        146,
+                        252,
+                        298
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 5,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                72,
+                                146,
+                                235,
+                                177
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        146,
+                                        235,
+                                        177
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                146,
+                                                235,
+                                                177
+                                            ],
+                                            "type": "text",
+                                            "content": "a) Tommy Lai"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                188,
+                                219,
+                                217
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        188,
+                                        219,
+                                        217
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                188,
+                                                219,
+                                                217
+                                            ],
+                                            "type": "text",
+                                            "content": "b) Tony Lam"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                230,
+                                231,
+                                257
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        230,
+                                        231,
+                                        257
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                230,
+                                                231,
+                                                257
+                                            ],
+                                            "type": "text",
+                                            "content": "c) Tim Leung"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                268,
+                                252,
+                                298
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        268,
+                                        252,
+                                        298
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                268,
+                                                252,
+                                                298
+                                            ],
+                                            "type": "text",
+                                            "content": "d) Timothy Lau"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 14
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        69,
+                        58,
+                        785,
+                        104
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                69,
+                                58,
+                                785,
+                                104
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        69,
+                                        58,
+                                        785,
+                                        104
+                                    ],
+                                    "type": "text",
+                                    "content": "Course Objectives & Learning Outcomes"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        68,
+                        146,
+                        845,
+                        419
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 5,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                68,
+                                146,
+                                671,
+                                177
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        68,
+                                        146,
+                                        671,
+                                        177
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                68,
+                                                146,
+                                                671,
+                                                177
+                                            ],
+                                            "type": "text",
+                                            "content": "- Understand the trading process in financial market"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                68,
+                                186,
+                                845,
+                                249
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        68,
+                                        186,
+                                        845,
+                                        249
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                68,
+                                                186,
+                                                845,
+                                                249
+                                            ],
+                                            "type": "text",
+                                            "content": "- Understand the fundamental of algorithmic trading framework for building a trading strategy"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                69,
+                                256,
+                                754,
+                                348
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        69,
+                                        256,
+                                        754,
+                                        348
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                69,
+                                                256,
+                                                754,
+                                                348
+                                            ],
+                                            "type": "text",
+                                            "content": "- Able to formulate trading strategies, carry out backtesting, optimization, risk management and interpret investment performance"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                69,
+                                359,
+                                837,
+                                419
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        69,
+                                        359,
+                                        837,
+                                        419
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                69,
+                                                359,
+                                                837,
+                                                419
+                                            ],
+                                            "type": "text",
+                                            "content": "- Develop practical skills in financial data analysis, trading strategy development, and deployment to real market and broker account"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 15
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        69,
+                        58,
+                        434,
+                        102
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                69,
+                                58,
+                                434,
+                                102
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        69,
+                                        58,
+                                        434,
+                                        102
+                                    ],
+                                    "type": "text",
+                                    "content": "Topics to be covered"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        72,
+                        141,
+                        850,
+                        478
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 11,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                72,
+                                141,
+                                621,
+                                171
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        141,
+                                        621,
+                                        171
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                141,
+                                                621,
+                                                171
+                                            ],
+                                            "type": "text",
+                                            "content": "1. Algorithmic trading basics and financial markets"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                174,
+                                683,
+                                202
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        174,
+                                        683,
+                                        202
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                174,
+                                                683,
+                                                202
+                                            ],
+                                            "type": "text",
+                                            "content": "2. Data scraping and database management with Python"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                206,
+                                751,
+                                235
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        206,
+                                        751,
+                                        235
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                206,
+                                                751,
+                                                235
+                                            ],
+                                            "type": "text",
+                                            "content": "3. Building backtest framework and rule-based trading strategy"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 3
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                239,
+                                681,
+                                265
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        239,
+                                        681,
+                                        265
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                239,
+                                                681,
+                                                265
+                                            ],
+                                            "type": "text",
+                                            "content": "4. Statistical time series analysis for market classification"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 4
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                270,
+                                501,
+                                298
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        270,
+                                        501,
+                                        298
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                270,
+                                                501,
+                                                298
+                                            ],
+                                            "type": "text",
+                                            "content": "5. Statistical arbitrage and pairs trading"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 5
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                302,
+                                428,
+                                328
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        302,
+                                        428,
+                                        328
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                302,
+                                                428,
+                                                328
+                                            ],
+                                            "type": "text",
+                                            "content": "6. Capital and Risk Management"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 6
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                334,
+                                638,
+                                361
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        334,
+                                        638,
+                                        361
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                334,
+                                                638,
+                                                361
+                                            ],
+                                            "type": "text",
+                                            "content": "7. Performance measures and portfolio optimization"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 7
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                366,
+                                600,
+                                393
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        366,
+                                        600,
+                                        393
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                366,
+                                                600,
+                                                393
+                                            ],
+                                            "type": "text",
+                                            "content": "8. Order book and high frequency data modeling"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 8
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                397,
+                                850,
+                                444
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        397,
+                                        850,
+                                        444
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                397,
+                                                850,
+                                                444
+                                            ],
+                                            "type": "text",
+                                            "content": "9. Market practice in strategy optimization, broker selection, and market tricks"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 9
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                451,
+                                635,
+                                478
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        451,
+                                        635,
+                                        478
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                451,
+                                                635,
+                                                478
+                                            ],
+                                            "type": "text",
+                                            "content": "10. Machine learning use cases in algorithmic trading"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 10
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 16
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        71,
+                        61,
+                        448,
+                        97
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                61,
+                                448,
+                                97
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        61,
+                                        448,
+                                        97
+                                    ],
+                                    "type": "text",
+                                    "content": "Assessment methods"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        72,
+                        147,
+                        816,
+                        216
+                    ],
+                    "type": "list",
+                    "angle": 0,
+                    "index": 3,
+                    "blocks": [
+                        {
+                            "bbox": [
+                                72,
+                                147,
+                                327,
+                                177
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        147,
+                                        327,
+                                        177
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                147,
+                                                327,
+                                                177
+                                            ],
+                                            "type": "text",
+                                            "content": "- Group project - 50%"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 1
+                        },
+                        {
+                            "bbox": [
+                                72,
+                                187,
+                                816,
+                                216
+                            ],
+                            "type": "text",
+                            "angle": 0,
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        187,
+                                        816,
+                                        216
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                72,
+                                                187,
+                                                816,
+                                                216
+                                            ],
+                                            "type": "text",
+                                            "content": "• Written final exam covers all taught content in the course – 50%"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "index": 2
+                        }
+                    ],
+                    "sub_type": "text"
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 17
+        },
+        {
+            "para_blocks": [
+                {
+                    "bbox": [
+                        71,
+                        61,
+                        212,
+                        98
+                    ],
+                    "type": "title",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                61,
+                                212,
+                                98
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        61,
+                                        212,
+                                        98
+                                    ],
+                                    "type": "text",
+                                    "content": "Contact"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 0
+                },
+                {
+                    "bbox": [
+                        71,
+                        148,
+                        169,
+                        174
+                    ],
+                    "type": "text",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                148,
+                                169,
+                                174
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        148,
+                                        169,
+                                        174
+                                    ],
+                                    "type": "text",
+                                    "content": "Lecturer"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 1
+                },
+                {
+                    "bbox": [
+                        72,
+                        186,
+                        739,
+                        218
+                    ],
+                    "type": "text",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                72,
+                                186,
+                                739,
+                                218
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        186,
+                                        739,
+                                        218
+                                    ],
+                                    "type": "text",
+                                    "content": "- Tony Lam: tonylamfm@hku.hk / tonylam@algogene.com"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 2
+                },
+                {
+                    "bbox": [
+                        71,
+                        268,
+                        109,
+                        294
+                    ],
+                    "type": "text",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                71,
+                                268,
+                                109,
+                                294
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        71,
+                                        268,
+                                        109,
+                                        294
+                                    ],
+                                    "type": "text",
+                                    "content": "TA:"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 3
+                },
+                {
+                    "bbox": [
+                        72,
+                        308,
+                        362,
+                        339
+                    ],
+                    "type": "text",
+                    "angle": 0,
+                    "lines": [
+                        {
+                            "bbox": [
+                                72,
+                                308,
+                                362,
+                                339
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        72,
+                                        308,
+                                        362,
+                                        339
+                                    ],
+                                    "type": "text",
+                                    "content": "- Rex Tsang: trex@hku.hk"
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 4
+                }
+            ],
+            "discarded_blocks": [],
+            "page_size": [
+                960,
+                540
+            ],
+            "page_idx": 18
+        }
+    ],
+    "_backend": "hybrid",
+    "_ocr_enable": true,
+    "_vlm_ocr_enable": true,
+    "_version_name": "2.7.6"
+}

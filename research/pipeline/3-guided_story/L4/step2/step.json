@@ -1,0 +1,163 @@
+{
+  "lesson_id": "L4",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "如何判断市场是趋势还是随机？",
+        "一个简单的方法：用直线去拟合价格。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "simple_linear_regression"
+      ],
+      "id": "s009",
+      "introduced_terms": [
+        "simple_linear_regression"
+      ],
+      "lines": [
+        "这就是<term id=\"simple_linear_regression\">简单线性回归</term>。",
+        "它用一条直线来描述价格和时间的关系。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "simple_linear_regression"
+      ],
+      "formula": {
+        "latex": "Y = \\beta_0 + \\beta_1 X + \\epsilon",
+        "spoken": "Y等于截距加上斜率乘以X，再加上误差项。"
+      },
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "公式很简单：",
+        "Y = β₀ + β₁X + ε"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "simple_linear_regression"
+      ],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "Y 是价格，X 是时间。",
+        "β₁ 是斜率——如果为正，价格在上涨；为负则在下跌。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "residual"
+      ],
+      "id": "s012",
+      "introduced_terms": [
+        "residual"
+      ],
+      "lines": [
+        "模型会给出一个预测值。",
+        "实际价格与预测值的差，叫做<term id=\"residual\">残差</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "residual"
+      ],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "残差越小，说明直线拟合得越好。",
+        "但怎么量化“拟合得好不好”呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "r_squared"
+      ],
+      "id": "s014",
+      "introduced_terms": [
+        "r_squared"
+      ],
+      "lines": [
+        "用<term id=\"r_squared\">R²</term>。",
+        "它告诉你模型能解释多少价格变动。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "r_squared"
+      ],
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [
+        "R² = 1 表示完美拟合，价格完全沿着直线走。",
+        "R² = 0 表示直线毫无解释力。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "R²越接近1，模型拟合越好，趋势越明显。",
+        "kind": "single_choice",
+        "options": [
+          "模型完全没用",
+          "模型解释了96%的价格变动",
+          "价格是随机游走"
+        ],
+        "prompt": "如果R² = 0.96，说明什么？"
+      },
+      "focus_terms": [
+        "r_squared"
+      ],
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "如果R² = 0.96，说明什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Simple Linear Regression for market trend identification",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "r_squared": {
+      "aliases": [
+        "R-squared",
+        "Coefficient of Determination"
+      ],
+      "display": "R²",
+      "gloss": "衡量模型解释了多少数据变动的比例，范围0到1。"
+    },
+    "residual": {
+      "aliases": [
+        "Residual"
+      ],
+      "display": "残差",
+      "gloss": "实际值与模型预测值之间的差异。"
+    },
+    "simple_linear_regression": {
+      "aliases": [
+        "Simple Linear Regression",
+        "SLR"
+      ],
+      "display": "简单线性回归",
+      "gloss": "用一个自变量预测一个因变量的线性模型。"
+    }
+  }
+}

@@ -1,0 +1,465 @@
+```json
+{
+  "lesson_id": "L9",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L9/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "input coverage checklist",
+    "source_outline": "input source outline",
+    "lesson_map": "input lesson map"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "fund_types",
+      "description": "五种主要投资基金类型：ETF、共同基金、货币市场基金、私募股权基金、对冲基金",
+      "covered_by": ["qf_flash_fund_types", "qf_quiz_fund_types"]
+    },
+    {
+      "coverage_tag": "hedge_fund_secret",
+      "description": "顶级对冲基金（如文艺复兴科技）的秘密：运行大量不相关策略，利用大数定律平滑收益",
+      "covered_by": ["qf_flash_hedge_secret", "qf_quiz_hedge_secret", "qf_long_hedge_secret"]
+    },
+    {
+      "coverage_tag": "uncorrelated_strategies",
+      "description": "不相关策略的定义与作用：彼此没有明显关联，不会同时涨跌，用于分散风险",
+      "covered_by": ["qf_flash_uncorrelated", "qf_quiz_uncorrelated"]
+    },
+    {
+      "coverage_tag": "law_of_large_numbers",
+      "description": "大数定律在不相关策略组合中的应用：独立试验次数足够多时，平均结果趋近于期望值",
+      "covered_by": ["qf_flash_law_large_numbers", "qf_quiz_law_large_numbers"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_fund_types",
+      "question_type": "short_answer",
+      "linked_steps": ["step4"],
+      "concept_key": "fund_types",
+      "coverage_tags": ["fund_types"],
+      "term_refs": [
+        {
+          "display": "交易所交易基金",
+          "en": "Exchange-Traded Fund (ETF)"
+        },
+        {
+          "display": "共同基金",
+          "en": "Mutual Fund"
+        },
+        {
+          "display": "货币市场基金",
+          "en": "Money Market Fund"
+        },
+        {
+          "display": "私募股权基金",
+          "en": "Private Equity Fund"
+        },
+        {
+          "display": "对冲基金",
+          "en": "Hedge Fund"
+        }
+      ],
+      "learning_goal": "学生能说出五种主要投资基金类型，并准确回忆每种基金的核心特征。",
+      "difficulty": "easy",
+      "retrieval_focus": "每种基金类型的核心特征：交易方式、流动性、风险水平。",
+      "variants": [
+        {
+          "question_id": "q_flash_fund_types_v1",
+          "front": "哪种基金像股票一样在交易所买卖，通常追踪某个指数，费用低、流动性好？",
+          "back": "交易所交易基金（ETF）",
+          "explanation": "ETF在交易所上市交易，投资者可以像买卖股票一样随时买卖，通常被动追踪指数。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_fund_types_v2",
+          "front": "哪种基金由专业经理主动管理，每天按收盘净值交易一次？",
+          "back": "共同基金（Mutual Fund）",
+          "explanation": "共同基金汇集投资者资金，由基金经理管理，每天只在收盘后按净值交易一次。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_fund_types_v3",
+          "front": "哪种基金风险低，主要投资短期债券，适合存放现金？",
+          "back": "货币市场基金（Money Market Fund）",
+          "explanation": "货币市场基金投资于短期、高信用等级的债务工具，如国库券、商业票据，风险低、流动性好。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_fund_types_v4",
+          "front": "哪种基金流动性差、投资期长（5-10年），但潜在回报高？",
+          "back": "私募股权基金（Private Equity Fund）",
+          "explanation": "私募股权基金投资于非上市公司或收购上市公司，通常需要较长时间才能退出变现。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_hedge_secret",
+      "question_type": "short_answer",
+      "linked_steps": ["step4"],
+      "concept_key": "hedge_fund_secret",
+      "coverage_tags": ["hedge_fund_secret"],
+      "term_refs": [
+        {
+          "display": "不相关策略",
+          "en": "Uncorrelated Strategies"
+        },
+        {
+          "display": "大数定律",
+          "en": "Law of Large Numbers"
+        }
+      ],
+      "learning_goal": "学生能准确回忆顶级对冲基金获得稳定收益的核心机制。",
+      "difficulty": "easy",
+      "retrieval_focus": "对冲基金秘密的两个关键要素：大量不相关策略 + 大数定律。",
+      "variants": [
+        {
+          "question_id": "q_flash_hedge_secret_v1",
+          "front": "顶级对冲基金（如文艺复兴科技）同时运行成百上千个什么类型的策略？",
+          "back": "不相关策略（Uncorrelated Strategies）",
+          "explanation": "这些策略彼此之间没有明显关联，不会同时涨跌，从而分散风险。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_hedge_secret_v2",
+          "front": "对冲基金利用哪个数学原理，通过大量不相关策略的组合来平滑收益曲线？",
+          "back": "大数定律（Law of Large Numbers）",
+          "explanation": "大数定律指出，当独立试验次数足够多时，平均结果会趋近于期望值。不相关策略的组合正是利用了这一点。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_uncorrelated",
+      "question_type": "definition_with_example",
+      "linked_steps": ["step4"],
+      "concept_key": "uncorrelated_strategies",
+      "coverage_tags": ["uncorrelated_strategies"],
+      "term_refs": [
+        {
+          "display": "不相关策略",
+          "en": "Uncorrelated Strategies"
+        }
+      ],
+      "learning_goal": "学生能定义不相关策略并理解其在投资组合中的作用。",
+      "difficulty": "easy",
+      "retrieval_focus": "不相关策略的定义和核心作用。",
+      "variants": [
+        {
+          "question_id": "q_flash_uncorrelated_v1",
+          "front": "什么是不相关策略？请给出一个简单的例子。",
+          "back": "不相关策略是指彼此之间没有明显关联、不会同时涨跌的交易策略。例如：一个策略在牛市中表现好，另一个策略在熊市中表现好。",
+          "explanation": "不相关策略的核心价值在于分散风险：当一个策略亏损时，其他策略可能盈利，从而平滑整体收益。",
+          "estimated_seconds": 12
+        },
+        {
+          "question_id": "q_flash_uncorrelated_v2",
+          "front": "对冲基金使用不相关策略的主要目的是什么？",
+          "back": "分散风险，稳定整体收益，平滑收益曲线。",
+          "explanation": "通过组合多个不相关的策略，可以降低单一策略波动对整体组合的影响。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_law_large_numbers",
+      "question_type": "cause_effect",
+      "linked_steps": ["step4"],
+      "concept_key": "law_of_large_numbers",
+      "coverage_tags": ["law_of_large_numbers"],
+      "term_refs": [
+        {
+          "display": "大数定律",
+          "en": "Law of Large Numbers"
+        }
+      ],
+      "learning_goal": "学生能解释大数定律如何帮助对冲基金获得稳定收益。",
+      "difficulty": "medium",
+      "retrieval_focus": "大数定律在不相关策略组合中的因果逻辑。",
+      "variants": [
+        {
+          "question_id": "q_flash_law_large_numbers_v1",
+          "front": "为什么对冲基金运行大量不相关策略（每个策略胜率仅略高于50%）能获得稳定收益？",
+          "back": "因为大数定律：独立策略数量足够多时，整体胜率趋近于期望值，波动被平滑。",
+          "explanation": "单个策略有波动，但大量不相关策略组合后，整体收益曲线会变得非常平滑和稳定。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_law_large_numbers_v2",
+          "front": "大数定律在对冲基金策略组合中起什么作用？",
+          "back": "使大量不相关策略的平均收益趋近于期望值，从而平滑收益曲线。",
+          "explanation": "这是对冲基金能长期保持稳定盈利的核心数学原理。",
+          "estimated_seconds": 8
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_fund_types",
+      "question_type": "single_choice",
+      "linked_steps": ["step4"],
+      "concept_key": "fund_types",
+      "coverage_tags": ["fund_types"],
+      "term_refs": [
+        {
+          "display": "交易所交易基金",
+          "en": "Exchange-Traded Fund (ETF)"
+        },
+        {
+          "display": "共同基金",
+          "en": "Mutual Fund"
+        },
+        {
+          "display": "货币市场基金",
+          "en": "Money Market Fund"
+        },
+        {
+          "display": "私募股权基金",
+          "en": "Private Equity Fund"
+        },
+        {
+          "display": "对冲基金",
+          "en": "Hedge Fund"
+        }
+      ],
+      "learning_goal": "学生能在不同场景下区分五种投资基金类型。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_fund_types_v1",
+          "stem": "一位投资者希望像买卖股票一样随时交易，并且希望费用较低、追踪某个指数。以下哪种基金最适合？",
+          "options": [
+            "共同基金",
+            "交易所交易基金（ETF）",
+            "货币市场基金",
+            "私募股权基金"
+          ],
+          "answer": 1,
+          "explanation": "ETF在交易所上市交易，可以像股票一样随时买卖，通常被动追踪指数，费用低。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_fund_types_v2",
+          "stem": "以下哪种基金通常使用杠杆、做空和衍生品等复杂策略来追求高回报？",
+          "options": [
+            "货币市场基金",
+            "共同基金",
+            "交易所交易基金（ETF）",
+            "对冲基金"
+          ],
+          "answer": 3,
+          "explanation": "对冲基金采用多种高级量化策略，包括杠杆、做空和衍生品，追求高回报。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_fund_types_v3",
+          "stem": "一位保守型投资者希望将短期闲置资金放在一个风险低、流动性好的地方，以下哪种基金最合适？",
+          "options": [
+            "私募股权基金",
+            "对冲基金",
+            "货币市场基金",
+            "交易所交易基金（ETF）"
+          ],
+          "answer": 2,
+          "explanation": "货币市场基金投资于短期高信用等级债务工具，风险低、流动性好，适合存放现金。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_hedge_secret",
+      "question_type": "single_choice",
+      "linked_steps": ["step4"],
+      "concept_key": "hedge_fund_secret",
+      "coverage_tags": ["hedge_fund_secret"],
+      "term_refs": [
+        {
+          "display": "不相关策略",
+          "en": "Uncorrelated Strategies"
+        },
+        {
+          "display": "大数定律",
+          "en": "Law of Large Numbers"
+        }
+      ],
+      "learning_goal": "学生能理解并应用对冲基金获得稳定收益的核心原理。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_hedge_secret_v1",
+          "stem": "对冲基金通过运行大量不相关策略来获得稳定收益，这主要利用了哪个原理？",
+          "options": [
+            "复利效应",
+            "大数定律",
+            "均值回归",
+            "有效市场假说"
+          ],
+          "answer": 1,
+          "explanation": "大数定律指出，当独立试验次数足够多时，平均结果会趋近于期望值。不相关策略的组合正是利用了这一点。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_hedge_secret_v2",
+          "stem": "以下哪项最准确地描述了顶级对冲基金（如文艺复兴科技）获得长期稳定收益的秘密？",
+          "options": [
+            "只投资于高收益债券",
+            "使用单一的高胜率策略",
+            "同时运行大量不相关的策略，利用大数定律平滑收益",
+            "依靠内幕消息进行交易"
+          ],
+          "answer": 2,
+          "explanation": "顶级对冲基金同时运行成百上千个不相关策略，每个策略胜率可能只比50%高一点，但组合起来利用大数定律获得稳定收益。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_uncorrelated",
+      "question_type": "true_false",
+      "linked_steps": ["step4"],
+      "concept_key": "uncorrelated_strategies",
+      "coverage_tags": ["uncorrelated_strategies"],
+      "term_refs": [
+        {
+          "display": "不相关策略",
+          "en": "Uncorrelated Strategies"
+        }
+      ],
+      "learning_goal": "学生能判断关于不相关策略的陈述是否正确。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_uncorrelated_v1",
+          "stem": "不相关策略意味着这些策略之间没有明显关联，不会同时涨跌。",
+          "options": ["正确", "错误"],
+          "answer": 0,
+          "explanation": "不相关策略的核心特征就是彼此之间没有明显关联，不会同时涨跌，从而起到分散风险的作用。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_quiz_uncorrelated_v2",
+          "stem": "对冲基金使用不相关策略的主要目的是为了提高单个策略的胜率。",
+          "options": ["正确", "错误"],
+          "answer": 1,
+          "explanation": "使用不相关策略的主要目的是分散风险、稳定整体收益，而不是提高单个策略的胜率。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_law_large_numbers",
+      "question_type": "single_choice",
+      "linked_steps": ["step4"],
+      "concept_key": "law_of_large_numbers",
+      "coverage_tags": ["law_of_large_numbers"],
+      "term_refs": [
+        {
+          "display": "大数定律",
+          "en": "Law of Large Numbers"
+        }
+      ],
+      "learning_goal": "学生能理解大数定律在不相关策略组合中的具体应用。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_law_large_numbers_v1",
+          "stem": "假设一个对冲基金运行了1000个不相关的策略，每个策略的胜率是55%。根据大数定律，以下哪个描述最准确？",
+          "options": [
+            "所有策略都会盈利",
+            "整体胜率会趋近于55%，收益曲线会变得平滑",
+            "每个策略的胜率都会提高到100%",
+            "整体收益会变得极不稳定"
+          ],
+          "answer": 1,
+          "explanation": "大数定律指出，当独立试验次数足够多时，平均结果会趋近于期望值。1000个不相关策略的整体胜率会趋近于55%，收益曲线被平滑。",
+          "estimated_seconds": 25
+        },
+        {
+          "question_id": "q_quiz_law_large_numbers_v2",
+          "stem": "以下哪个场景最符合大数定律在不相关策略组合中的应用？",
+          "options": [
+            "一个策略在牛市中赚了100%，在熊市中亏了50%",
+            "1000个不相关的策略，每个胜率52%，组合后整体收益稳定向上",
+            "一个策略连续10次盈利后第11次必然亏损",
+            "两个高度相关的策略同时盈利或同时亏损"
+          ],
+          "answer": 1,
+          "explanation": "大量不相关策略的组合，利用大数定律使整体收益趋近于期望值，从而获得稳定向上的收益曲线。",
+          "estimated_seconds": 20
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_hedge_secret",
+      "question_type": "mechanism_trace",
+      "linked_steps": ["step4"],
+      "concept_key": "hedge_fund_secret",
+      "coverage_tags": ["hedge_fund_secret", "uncorrelated_strategies", "law_of_large_numbers"],
+      "term_refs": [
+        {
+          "display": "不相关策略",
+          "en": "Uncorrelated Strategies"
+        },
+        {
+          "display": "大数定律",
+          "en": "Law of Large Numbers"
+        },
+        {
+          "display": "对冲基金",
+          "en": "Hedge Fund"
+        }
+      ],
+      "learning_goal": "学生能完整解释对冲基金如何通过不相关策略和大数定律获得稳定收益。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_hedge_secret_v1",
+          "stem": "请解释顶级对冲基金（如文艺复兴科技）如何通过运行大量不相关策略来获得长期稳定收益。在回答中，请说明：\n1. 什么是不相关策略？\n2. 为什么使用不相关策略而不是单一策略？\n3. 大数定律在这个机制中扮演什么角色？",
+          "prompt_blocks": [
+            "不相关策略的定义",
+            "使用不相关策略的原因",
+            "大数定律的作用"
+          ],
+          "rubric_points": [
+            "正确解释不相关策略：彼此没有明显关联，不会同时涨跌",
+            "说明使用不相关策略是为了分散风险，避免单一策略波动影响整体",
+            "解释大数定律：独立试验次数足够多时，平均结果趋近于期望值",
+            "将大数定律与策略组合联系起来：大量不相关策略使整体收益趋近于期望值，平滑收益曲线"
+          ],
+          "reference_answer": [
+            "不相关策略是指彼此之间没有明显关联、不会同时涨跌的交易策略。例如，一个策略在牛市中表现好，另一个在熊市中表现好。",
+            "使用不相关策略而不是单一策略，是因为单一策略的波动性很大，可能在某段时间表现很差。通过组合大量不相关的策略，可以分散风险：当一个策略亏损时，其他策略可能盈利，从而平滑整体收益。",
+            "大数定律在这个机制中扮演核心角色。每个策略的胜率可能只比50%高一点（例如55%），但因为有成百上千个不相关的策略同时运行，根据大数定律，独立试验次数足够多时，平均结果会趋近于期望值。因此，整体收益曲线会变得非常平滑和稳定，而不是依赖单个策略的表现。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_hedge_secret_v2",
+          "stem": "假设你是一个对冲基金的策略经理，你开发了1000个不相关的交易策略，每个策略的胜率约为52%。请解释：\n1. 为什么这些策略需要是“不相关”的？\n2. 大数定律如何帮助你的基金获得稳定收益？\n3. 如果这些策略是高度相关的，会发生什么？",
+          "prompt_blocks": [
+            "不相关的重要性",
+            "大数定律的应用",
+            "高度相关策略的后果"
+          ],
+          "rubric_points": [
+            "解释不相关策略的分散风险作用",
+            "正确应用大数定律解释稳定收益的来源",
+            "说明高度相关策略会导致同时亏损，无法分散风险"
+          ],
+          "reference_answer": [
+            "策略需要是不相关的，这样它们就不会同时涨跌。如果一个策略亏损，其他策略可能盈利，从而分散风险，平滑整体收益曲线。",
+            "大数定律指出，当独立试验次数足够多时，平均结果会趋近于期望值。1000个不相关策略，每个胜率52%，整体胜率会趋近于52%，并且波动被大大降低，从而获得稳定收益。",
+            "如果这些策略是高度相关的，它们会同时盈利或同时亏损。在市场不利时，所有策略可能同时亏损，导致基金遭受巨大损失，无法起到分散风险的作用。"
+          ],
+          "estimated_seconds": 120
+        }
+      ]
+    }
+  ]
+}
+```

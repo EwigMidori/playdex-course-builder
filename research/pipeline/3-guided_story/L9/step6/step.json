@@ -1,0 +1,125 @@
+{
+  "lesson_id": "L9",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s046",
+      "introduced_terms": [],
+      "lines": [
+        "市场上有些机构会故意美化业绩来吸引投资。",
+        "你需要学会识别这些伎俩。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [
+        "第一个伎俩：误导性的胜率定义。",
+        "有的机构把“一笔盈利的交易”算作100%胜率，即使这笔交易之前亏了4天。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "更合理的定义是按交易日计算：",
+        "5天里有1天赚钱，胜率是20%，而不是100%。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s049",
+      "introduced_terms": [
+        "sharpe_ratio_manipulation"
+      ],
+      "lines": [
+        "第二个伎俩：<term id=\"sharpe_ratio_manipulation\">夏普比率操纵</term>。",
+        "用日数据、周数据还是月数据计算，结果可能差很多。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s050",
+      "introduced_terms": [],
+      "lines": [
+        "机构会选择对自己最有利的频率来展示。",
+        "所以比较不同产品时，要确保计算方式一致。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s051",
+      "introduced_terms": [
+        "fomo"
+      ],
+      "lines": [
+        "第三个伎俩：利用 <term id=\"fomo\">错失恐惧症</term>。",
+        "“限时优惠”、“仅剩最后名额”、“别人都赚了30%”……"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s052",
+      "introduced_terms": [],
+      "lines": [
+        "这些都是在利用你的情绪，让你不做理性分析就匆忙投资。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "记住：永远看透表面指标，",
+        "关注完整的上下文、时间框架和风险度量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "使用一个看似很高但定义有问题的指标（胜率）来掩盖整体不盈利的事实，属于误导性指标。",
+        "kind": "single_choice",
+        "options": [
+          "选择性呈现数据",
+          "误导性指标",
+          "心理操纵",
+          "以上都是"
+        ],
+        "prompt": "一家基金宣称其策略胜率高达95%，但未披露平均亏损远大于平均盈利。这属于哪种伎俩？"
+      },
+      "id": "s054",
+      "lines": [
+        "一家基金宣称其策略胜率高达95%，但未披露平均亏损远大于平均盈利。这属于哪种伎俩？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Misleading metrics, Selective presentation of data, Psychological manipulation. Examples: Winning rate definition, Sharpe ratio calculation, FOMO.",
+    "related": [
+      "COMP7415 L9"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "fomo": {
+      "aliases": [
+        "FOMO",
+        "Fear of Missing Out"
+      ],
+      "display": "错失恐惧症",
+      "gloss": "担心错过潜在收益而做出冲动投资决策的心理现象。"
+    },
+    "sharpe_ratio_manipulation": {
+      "aliases": [
+        "Sharpe Ratio Manipulation"
+      ],
+      "display": "夏普比率操纵",
+      "gloss": "通过选择不同的时间频率或数据窗口，来呈现一个更高的夏普比率。"
+    }
+  }
+}

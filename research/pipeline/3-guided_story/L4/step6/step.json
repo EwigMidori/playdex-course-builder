@@ -1,0 +1,128 @@
+{
+  "lesson_id": "L4",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "hurst_exponent"
+      ],
+      "id": "s037",
+      "introduced_terms": [
+        "hurst_exponent"
+      ],
+      "lines": [
+        "有没有一个数字，能直接告诉我们市场是什么状态？",
+        "有——<term id=\"hurst_exponent\">Hurst指数</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "hurst_exponent"
+      ],
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "H = 0.5 → 随机游走",
+        "H < 0.5 → 均值回归",
+        "H > 0.5 → 趋势"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "hurst_exponent"
+      ],
+      "id": "s039",
+      "introduced_terms": [],
+      "lines": [
+        "H越接近0，均值回归越强；",
+        "H越接近1，趋势越强。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "half_life"
+      ],
+      "id": "s040",
+      "introduced_terms": [
+        "half_life"
+      ],
+      "lines": [
+        "对于均值回归策略，还需要知道一个关键数字：",
+        "<term id=\"half_life\">半衰期</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "half_life"
+      ],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "半衰期 = ln(2) / κ",
+        "κ是均值回归的速度。κ越大，回归越快。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "half_life"
+      ],
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "如果半衰期是20天，",
+        "那么用5天的均线来做均值回归就不太合适。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "H < 0.5 表示均值回归，越接近0回归越强。",
+        "kind": "single_choice",
+        "options": [
+          "强趋势",
+          "均值回归",
+          "随机游走"
+        ],
+        "prompt": "Hurst指数为0.3，说明市场处于什么状态？"
+      },
+      "focus_terms": [
+        "hurst_exponent"
+      ],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "Hurst指数为0.3，说明市场处于什么状态？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Hurst Exponent, Half Life of Mean Reversion",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "half_life": {
+      "aliases": [
+        "Half Life"
+      ],
+      "display": "半衰期",
+      "gloss": "价格偏离均值后恢复到一半所需的时间。"
+    },
+    "hurst_exponent": {
+      "aliases": [
+        "Hurst Exponent",
+        "H"
+      ],
+      "display": "Hurst指数",
+      "gloss": "衡量时间序列趋势或均值回归强度的指标，范围0到1。"
+    }
+  }
+}

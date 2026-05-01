@@ -1,0 +1,100 @@
+{
+  "lesson_id": "L9",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "优化完成后，你会得到一组“最优参数”。",
+        "但最优解真的是最好的选择吗？"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s020",
+      "introduced_terms": [
+        "overfitting"
+      ],
+      "lines": [
+        "最优解往往在历史数据上表现完美，",
+        "但很可能已经 <term id=\"overfitting\">过拟合</term> 了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "过拟合的策略一到实盘就会失效，",
+        "因为它学到的只是历史噪音，而不是真正的规律。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s022",
+      "introduced_terms": [
+        "robust_solution"
+      ],
+      "lines": [
+        "相比之下，<term id=\"robust_solution\">稳健解</term> 虽然回测收益不是最高，",
+        "但在不同市场环境下都能稳定表现。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "选择稳健策略的关键是：",
+        "进行参数敏感性分析和滚动窗口验证。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "比如，把5年数据分成5份，",
+        "看看哪组参数在每一年都表现不错，而不是只在某一年特别好。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "explanation": "因为最优解容易过拟合，在实盘新数据上表现不佳；而稳健解在不同市场条件下表现更稳定，风险更低。",
+        "kind": "short_reflection",
+        "prompt": "为什么在实盘交易中，稳健解通常比最优解更受青睐？"
+      },
+      "id": "s025",
+      "lines": [
+        "为什么在实盘交易中，稳健解通常比最优解更受青睐？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Optimal vs Robust Solution. Optimal Strategy: Good performance in backtesting but likely fails in live conditions. Robust Strategy: Moderate performance but performs steadily across market conditions.",
+    "related": [
+      "COMP7415 L9"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "overfitting": {
+      "aliases": [
+        "Overfitting"
+      ],
+      "display": "过拟合",
+      "gloss": "模型在训练数据上表现很好，但在新数据上表现很差的现象。"
+    },
+    "robust_solution": {
+      "aliases": [
+        "Robust Solution"
+      ],
+      "display": "稳健解",
+      "gloss": "在不同市场环境下都能保持稳定表现的参数组合。"
+    }
+  }
+}

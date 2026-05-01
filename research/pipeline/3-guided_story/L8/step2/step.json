@@ -1,0 +1,153 @@
+{
+  "lesson_id": "L8",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "lines": [
+        "如果你要买一万股，直接下个市价单会怎样？",
+        "你会一路吃掉卖盘，把价格推高。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "market_impact"
+      ],
+      "lines": [
+        "这种由订单本身引起的价格不利变动，叫 <term id=\"market_impact\">市场冲击</term>。",
+        "大单的冲击尤其明显。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "order_splitting"
+      ],
+      "lines": [
+        "怎么减少冲击？第一个办法：<term id=\"order_splitting\">订单拆分</term>。",
+        "把一万股拆成一百个一百股，慢慢买。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "lines": [
+        "第二个办法：用限价单，而不是市价单。",
+        "限价单能控制成交价，但可能无法立即成交。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "introduced_terms": [
+        "twap"
+      ],
+      "lines": [
+        "第三个办法：<term id=\"twap\">时间加权平均价格</term>。",
+        "比如，在1小时内，每5分钟买入固定数量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "lines": [
+        "TWAP 假设价格是稳定的。",
+        "如果市场波动很大，效果会打折扣。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s007",
+      "introduced_terms": [
+        "vwap"
+      ],
+      "lines": [
+        "第四个办法：<term id=\"vwap\">成交量加权平均价格</term>。",
+        "VWAP 根据市场的实际成交量来安排你的订单。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s008",
+      "lines": [
+        "市场成交量大的时候，你就多买一点。",
+        "成交量小的时候，你就少买一点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s009",
+      "lines": [
+        "这样，你的订单就像融入了市场本身。",
+        "冲击自然就小了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "订单拆分将大额订单分解为多个小额订单，以减少对市场的即时冲击。",
+        "kind": "single_choice",
+        "options": [
+          "使用市价单",
+          "订单拆分",
+          "使用止损单",
+          "增加订单数量"
+        ],
+        "prompt": "以下哪种策略是通过将大单拆小来降低市场冲击？"
+      },
+      "id": "s010",
+      "lines": [
+        "以下哪种策略是通过将大单拆小来降低市场冲击？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Market Impact: A large market order is likely to fill up the order book and lead to significant price movement, reduced market depth and liquidity. Strategies to Mitigate Market Impact: 1. Order Splitting: Break large orders into smaller segments. Execute over time to reduce immediate impact. 2. Use of Limit Orders: Place limit orders to control execution price. Avoid the risks of market orders. 3. Time-weighted Average Price (TWAP): Execute orders evenly over a specified time period. Helps in minimizing market impact. 4. Volume-weighted Average Price (VWAP): Execute orders in proportion to market volume. Reduces price impact by blending into the market.",
+    "related": [
+      "order splitting example",
+      "TWAP example",
+      "VWAP example"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "market_impact": {
+      "aliases": [
+        "Market Impact",
+        "Slippage"
+      ],
+      "display": "市场冲击",
+      "gloss": "执行大额订单时，因订单本身导致的价格不利变动。"
+    },
+    "order_splitting": {
+      "aliases": [
+        "Order Splitting",
+        "Iceberg Order"
+      ],
+      "display": "订单拆分",
+      "gloss": "将大额订单拆分成多个小额订单，以降低市场冲击。"
+    },
+    "twap": {
+      "aliases": [
+        "TWAP",
+        "Time-weighted Average Price"
+      ],
+      "display": "时间加权平均价格",
+      "gloss": "将订单均匀分配到一段时间内执行，以降低市场冲击。"
+    },
+    "vwap": {
+      "aliases": [
+        "VWAP",
+        "Volume-weighted Average Price"
+      ],
+      "display": "成交量加权平均价格",
+      "gloss": "根据市场成交量比例执行订单，使成交价接近市场均价。"
+    }
+  }
+}

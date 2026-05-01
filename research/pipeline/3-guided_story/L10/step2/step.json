@@ -1,0 +1,92 @@
+{
+  "lesson_id": "L10",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "classification",
+        "regression"
+      ],
+      "id": "s007",
+      "introduced_terms": [
+        "classification",
+        "regression"
+      ],
+      "lines": [
+        "监督学习内部又分为两大任务。",
+        "一个是<term id=\"classification\">分类</term>，一个是<term id=\"regression\">回归</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "classification"
+      ],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "分类：预测结果是类别。",
+        "比如判断明天股价是“涨”还是“跌”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "regression"
+      ],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "回归：预测结果是连续数值。",
+        "比如预测明天收盘价是 150.5 元。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "判断邮件类别是典型的分类问题。预测股价和销售额是回归问题。",
+        "kind": "single_choice",
+        "options": [
+          "预测明天苹果公司的股价",
+          "判断一封邮件是垃圾邮件还是正常邮件",
+          "预测下个月的销售额"
+        ],
+        "prompt": "以下哪个是分类问题？"
+      },
+      "focus_terms": [
+        "classification"
+      ],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个是分类问题？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Supervised learning has two main categories: classification (predict categorical variables) and regression (predict continuous variables).",
+    "related": [
+      "L10_supervised"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "classification": {
+      "aliases": [
+        "Classification"
+      ],
+      "display": "分类",
+      "gloss": "预测一个离散的类别，比如涨或跌。"
+    },
+    "regression": {
+      "aliases": [
+        "Regression"
+      ],
+      "display": "回归",
+      "gloss": "预测一个连续的数值，比如具体价格。"
+    }
+  }
+}

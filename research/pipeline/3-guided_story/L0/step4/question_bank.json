@@ -1,0 +1,272 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "algo_trading_tools_languages",
+      "covered_by": [
+        "qf_flash_python_popularity",
+        "qf_flash_platform_examples",
+        "qf_quiz_python_vs_others",
+        "qf_quiz_platform_recognition",
+        "qf_long_tool_analogy"
+      ],
+      "description": "算法交易的核心工具：编程语言（Python）和交易平台（MetaTrader, TradingView）"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "algo_trading_tools_languages",
+      "coverage_tags": [
+        "algo_trading_tools_languages"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_python_popularity",
+      "learning_goal": "学生能准确说出算法交易中最广泛使用的编程语言及其核心优势。",
+      "linked_steps": [
+        "step4"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "算法交易中最流行的编程语言名称及两个关键优势。",
+      "term_refs": [
+        {
+          "display": "Python",
+          "en": "Python"
+        }
+      ],
+      "variants": [
+        {
+          "back": "Python。优势：简单灵活，拥有大量现成的数据分析与回测库。",
+          "estimated_seconds": 8,
+          "explanation": "Python 因其易用性和丰富的生态（如 pandas, numpy, backtrader）成为算法交易的首选。",
+          "front": "在算法交易领域，使用最广泛的编程语言是什么？它有哪些主要优势？",
+          "question_id": "q_flash_python_popularity_v1"
+        },
+        {
+          "back": "1. 语法简单，开发效率高；2. 拥有大量现成的数据处理和回测库。",
+          "estimated_seconds": 10,
+          "explanation": "虽然 C++ 执行速度更快，但 Python 的开发速度和丰富的库使其在策略研究和原型开发中占主导地位。",
+          "front": "为什么 Python 在算法交易中比 C++ 或 Java 更受欢迎？说出两个原因。",
+          "question_id": "q_flash_python_popularity_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "algo_trading_tools_languages",
+      "coverage_tags": [
+        "algo_trading_tools_languages"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_platform_examples",
+      "learning_goal": "学生能列举出至少两个支持自动化交易的常用平台。",
+      "linked_steps": [
+        "step4"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "课程中提到的两个支持自动化交易的平台名称。",
+      "term_refs": [
+        {
+          "display": "MetaTrader",
+          "en": "MetaTrader"
+        },
+        {
+          "display": "TradingView",
+          "en": "TradingView"
+        }
+      ],
+      "variants": [
+        {
+          "back": "MetaTrader 和 TradingView。",
+          "estimated_seconds": 6,
+          "explanation": "这两个平台都支持用户编写和运行自动化交易策略。",
+          "front": "课程中提到了哪两个支持自动化交易的平台？",
+          "question_id": "q_flash_platform_examples_v1"
+        },
+        {
+          "back": "TradingView。",
+          "estimated_seconds": 6,
+          "explanation": "TradingView 是一个基于网页的图表分析和交易平台，也支持自动化交易。",
+          "front": "除了 MetaTrader，课程中还提到了哪个支持自动化交易的网页平台？",
+          "question_id": "q_flash_platform_examples_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L0",
+  "longform_families": [
+    {
+      "concept_key": "algo_trading_tools_languages",
+      "coverage_tags": [
+        "algo_trading_tools_languages"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_tool_analogy",
+      "learning_goal": "学生能解释 Python 和交易平台在算法交易中的不同角色，并用自己的比喻进行说明。",
+      "linked_steps": [
+        "step4"
+      ],
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "Python",
+          "en": "Python"
+        },
+        {
+          "display": "交易平台",
+          "en": "Trading Platform"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "解释“大脑”和“手脚”分别对应什么工具及其功能。",
+            "说明为什么 Python 适合作为“大脑”（至少两个理由）。",
+            "简要说明交易平台作为“手脚”的作用。"
+          ],
+          "question_id": "q_long_tool_analogy_v1",
+          "reference_answer": [
+            "在这个比喻中，'大脑'指的是 Python 编程语言，它负责策略的逻辑、数据分析、回测和决策生成。'手脚'指的是交易平台（如 MetaTrader 或 TradingView），它们负责接收大脑的指令并实际执行买卖操作。",
+            "Python 成为首选'大脑'的原因：1) 语法简单，开发效率高，能让交易者快速将想法转化为代码；2) 拥有大量现成的库（如 pandas, numpy, backtrader），可以高效地处理数据、进行统计分析和回测策略。",
+            "交易平台作为'手脚'，其核心作用是提供市场连接、账户管理和订单执行功能，确保策略的指令能准确、快速地传递到市场。"
+          ],
+          "rubric_points": [
+            "正确指出 Python 是大脑（负责思考、决策、策略逻辑），交易平台是手脚（负责执行下单）。",
+            "给出至少两个 Python 成为首选的原因（如：简单灵活、丰富的库、开发效率高）。",
+            "正确说明交易平台的作用是连接市场和执行交易。"
+          ],
+          "stem": "课程中将 Python 和交易平台的关系比喻为“大脑”和“手脚”。请解释这个比喻的含义，并说明为什么 Python 是算法交易者的首选“大脑”。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "提出一个你自己的比喻来描述 Python 和交易平台的关系。",
+            "解释 Python 在策略开发中的具体作用。",
+            "解释交易平台在策略执行中的具体作用。"
+          ],
+          "question_id": "q_long_tool_analogy_v2",
+          "reference_answer": [
+            "一个可能的比喻是：Python 就像一位厨师和他的菜谱，而交易平台就是厨房和炉灶。厨师（Python）负责研究食材（数据）、设计菜谱（策略）、并决定什么时候开始烹饪（生成交易信号）。",
+            "Python 的具体作用包括：从各种来源获取金融数据、编写策略逻辑（如当价格突破某均线时买入）、用历史数据测试策略表现（回测）、以及实时计算并生成买卖指令。",
+            "交易平台的具体作用包括：接收 Python 生成的买卖指令、连接到交易所或经纪商、检查账户资金和持仓、最终将订单发送到市场并报告成交结果。没有平台，Python 的指令就无法被执行。"
+          ],
+          "rubric_points": [
+            "提出一个清晰、合理的比喻（例如：Python 是厨师和菜谱，交易平台是厨房和炉灶）。",
+            "正确解释 Python 用于策略逻辑、数据分析、回测和生成交易信号。",
+            "正确解释交易平台用于接收信号、连接市场、管理账户和执行订单。"
+          ],
+          "stem": "假设你是一个刚入门的算法交易者，你需要向一个不懂技术的朋友解释为什么你需要同时学习 Python 和使用一个交易平台。请用你自己的比喻来解释这两者的不同作用。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "algo_trading_tools_languages",
+      "coverage_tags": [
+        "algo_trading_tools_languages"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_python_vs_others",
+      "learning_goal": "学生能在多个选项中准确识别出算法交易中最广泛使用的编程语言。",
+      "linked_steps": [
+        "step4"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Python",
+          "en": "Python"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "Python 凭借其丰富的数据分析库和易用性，成为算法交易领域的首选语言。",
+          "options": [
+            "C++",
+            "Java",
+            "Python",
+            "R"
+          ],
+          "question_id": "q_quiz_python_vs_others_v1",
+          "stem": "以下哪种编程语言在算法交易中使用最广泛？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "Python 拥有 pandas、numpy、statsmodels 等库，非常适合快速进行数据分析和策略回测。",
+          "options": [
+            "C++",
+            "Python",
+            "JavaScript",
+            "Swift"
+          ],
+          "question_id": "q_quiz_python_vs_others_v2",
+          "stem": "一个量化团队需要快速开发并测试一个新的统计套利策略。考虑到开发效率和库支持，他们最可能选择哪种语言？"
+        }
+      ]
+    },
+    {
+      "concept_key": "algo_trading_tools_languages",
+      "coverage_tags": [
+        "algo_trading_tools_languages"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_platform_recognition",
+      "learning_goal": "学生能识别出课程中提到的、支持自动化交易的平台。",
+      "linked_steps": [
+        "step4"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "MetaTrader",
+          "en": "MetaTrader"
+        },
+        {
+          "display": "TradingView",
+          "en": "TradingView"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "课程中明确提到了 MetaTrader 和 TradingView 作为支持自动化交易的平台。",
+          "options": [
+            "Bloomberg Terminal",
+            "MetaTrader",
+            "Excel",
+            "Tableau"
+          ],
+          "question_id": "q_quiz_platform_recognition_v1",
+          "stem": "以下哪个平台在课程中被提及为支持自动化交易的选项？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "TradingView 是一个基于网页的平台，提供图表分析并支持自动化交易。",
+          "options": [
+            "MetaTrader",
+            "TradingView",
+            "AlgoGene",
+            "Interactive Brokers TWS"
+          ],
+          "question_id": "q_quiz_platform_recognition_v2",
+          "stem": "一个交易者想使用基于网页的图表分析工具并运行自动化策略，以下哪个平台最符合他的需求？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/L0/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

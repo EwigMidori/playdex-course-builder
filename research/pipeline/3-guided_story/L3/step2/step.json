@@ -1,0 +1,99 @@
+{
+  "lesson_id": "L3",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "拿到数据后，不能直接使用。",
+        "原始数据里常常有各种问题。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "introduced_terms": [
+        "data_cleaning"
+      ],
+      "lines": [
+        "这个过程叫<term id=\"data_cleaning\">数据清洗</term>。",
+        "目的是让数据更准确、一致，为后续分析打好基础。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "常见的问题有三种：",
+        "缺失值、重复记录、逻辑错误。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "比如，某一天的收盘价数据缺失了。",
+        "你可以从其他来源补全，或者用相邻数据填充，甚至直接删除这一行。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "再比如，同一天出现了两条完全一样的数据。",
+        "通常保留一条就够了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "更隐蔽的是逻辑错误。",
+        "比如收盘价高于当日最高价，这在逻辑上是不可能的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "收盘价不可能高于当日最高价，这违反了基本的价格逻辑。",
+        "kind": "single_choice",
+        "options": [
+          "某天没有交易数据",
+          "某天的开盘价和收盘价数据完全相同",
+          "某天的收盘价高于当日最高价",
+          "某天的交易量特别大"
+        ],
+        "prompt": "以下哪种情况属于数据中的逻辑错误？"
+      },
+      "id": "s011",
+      "lines": [
+        "以下哪种情况属于数据中的逻辑错误？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "数据清洗是为了去除数据录入错误或系统错误，提高数据质量和一致性。常见问题包括缺失值、重复记录和逻辑错误。",
+    "related": [
+      "data_cleaning"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "data_cleaning": {
+      "aliases": [
+        "Data Cleaning",
+        "Data Cleansing"
+      ],
+      "display": "数据清洗",
+      "gloss": "识别并修正数据中的错误、缺失、重复或不一致，以提高数据质量。"
+    }
+  }
+}

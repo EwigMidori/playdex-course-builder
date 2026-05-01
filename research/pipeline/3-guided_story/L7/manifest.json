@@ -1,0 +1,46 @@
+{
+  "lesson_id": "L7",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "Portfolio return and risk basics",
+      "file": "research/pipeline/3-guided_story/L7/step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "Diversification and correlation effect",
+      "file": "research/pipeline/3-guided_story/L7/step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "Efficient frontier and tangency portfolio",
+      "file": "research/pipeline/3-guided_story/L7/step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "CAPM and Security Market Line",
+      "file": "research/pipeline/3-guided_story/L7/step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "Performance measures: Sharpe, Sortino, Treynor, Jensen's Alpha",
+      "file": "research/pipeline/3-guided_story/L7/step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "Information ratio, maximum drawdown, and Calmar ratio",
+      "file": "research/pipeline/3-guided_story/L7/step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "Stop loss and risk limit control",
+      "file": "research/pipeline/3-guided_story/L7/step7/step.json",
+      "sequence_id": "step7"
+    },
+    {
+      "concept": "Key takeaways and summary",
+      "file": "research/pipeline/3-guided_story/L7/step8/step.json",
+      "sequence_id": "step8"
+    }
+  ]
+}

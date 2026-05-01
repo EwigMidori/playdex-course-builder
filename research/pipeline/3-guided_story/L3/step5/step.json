@@ -1,0 +1,100 @@
+{
+  "lesson_id": "L3",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "理论讲完了，我们来动手实现。",
+        "先从Excel开始，因为它最直观。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "假设我们下载了汇丰控股（0005.HK）的历史数据。",
+        "第一步：计算两条移动平均线。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "用7日作为快线，14日作为慢线。",
+        "在Excel里，用AVERAGE函数就能轻松算出。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "第二步：识别交叉信号。",
+        "当MA(7)上穿MA(14)时，标记为买入信号（1）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "当MA(7)下穿MA(14)时，标记为卖出信号（-1）。",
+        "否则为0。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "第三步：计算每日持仓。",
+        "有买入信号且当前空仓时，持仓变为1。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "第四步：计算每日盈亏。",
+        "持仓 * (今日收盘价 - 昨日收盘价)。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s035",
+      "introduced_terms": [],
+      "lines": [
+        "最后，把每日盈亏累加起来，就是累计盈亏。",
+        "这样，一个简单的回测就完成了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "AVERAGE"
+        ],
+        "explanation": "AVERAGE函数用于计算一组数值的平均值，非常适合计算简单移动平均线。",
+        "kind": "fill_in_blank",
+        "prompt": "在Excel中，计算7日移动平均线应该使用哪个函数？"
+      },
+      "id": "s036",
+      "lines": [
+        "在Excel中，计算7日移动平均线应该使用哪个函数？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "在Excel中实现MA交叉策略的步骤：1. 计算MA(7)和MA(14)；2. 识别交叉信号；3. 计算持仓；4. 计算每日盈亏；5. 计算累计盈亏。",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

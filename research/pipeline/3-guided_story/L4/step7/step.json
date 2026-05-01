@@ -1,0 +1,117 @@
+{
+  "lesson_id": "L4",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "martingale_strategy"
+      ],
+      "id": "s044",
+      "introduced_terms": [
+        "martingale_strategy"
+      ],
+      "lines": [
+        "如果市场真的是随机游走，还能赚钱吗？",
+        "有一种古老的策略可以——<term id=\"martingale_strategy\">Martingale策略</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "martingale_strategy"
+      ],
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "原理很简单：每次输了就加倍下注。",
+        "只要赢一次，就能把之前所有亏损赚回来，还多赚一点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "martingale_strategy"
+      ],
+      "id": "s046",
+      "introduced_terms": [],
+      "lines": [
+        "赌场例子：第一局押1元，输了押2元，再输押4元……",
+        "直到赢了，净赚1元。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "martingale_strategy"
+      ],
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [
+        "数学上，连续输n次的概率是0.5ⁿ。",
+        "连续输10次的概率只有0.1%，看起来几乎不可能。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "martingale_strategy"
+      ],
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "但风险在于：你需要无限的资金。",
+        "如果连续输10次，第11次需要押1024元。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "martingale_strategy"
+      ],
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "所以Martingale策略在理论上可行，",
+        "但实践中必须严格控制仓位和资金管理。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "连续亏损时赌注指数增长，资金不足就会爆仓。",
+        "kind": "single_choice",
+        "options": [
+          "胜率太低",
+          "需要无限资金，可能爆仓",
+          "交易成本太高"
+        ],
+        "prompt": "Martingale策略的核心风险是什么？"
+      },
+      "focus_terms": [
+        "martingale_strategy"
+      ],
+      "id": "s050",
+      "introduced_terms": [],
+      "lines": [
+        "Martingale策略的核心风险是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "Martingale Strategy for random walk market",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "martingale_strategy": {
+      "aliases": [
+        "Martingale Strategy"
+      ],
+      "display": "Martingale策略",
+      "gloss": "每次亏损后加倍下注，直到盈利后回到初始赌注的策略。"
+    }
+  }
+}

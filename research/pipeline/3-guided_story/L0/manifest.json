@@ -1,0 +1,31 @@
+{
+  "lesson_id": "L0",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "什么是算法交易",
+      "file": "research/pipeline/3-guided_story/L0/step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "课程全景：你将学到什么",
+      "file": "research/pipeline/3-guided_story/L0/step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "市场有多大？先建立全局感",
+      "file": "research/pipeline/3-guided_story/L0/step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "工具与语言：算法交易者的武器",
+      "file": "research/pipeline/3-guided_story/L0/step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "课程目标与评估：你要交付什么",
+      "file": "research/pipeline/3-guided_story/L0/step5/step.json",
+      "sequence_id": "step5"
+    }
+  ]
+}

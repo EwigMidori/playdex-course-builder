@@ -1,0 +1,5802 @@
+[
+    {
+        "type": "text",
+        "text": "L7: Portfolio Optimization and Performance Measures ",
+        "text_level": 1,
+        "bbox": [
+            151,
+            270,
+            846,
+            481
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Course Code: COMP7415 ",
+        "bbox": [
+            369,
+            531,
+            628,
+            572
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Lecturer: Tony Lam ",
+        "bbox": [
+            28,
+            920,
+            178,
+            957
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Agenda ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            212,
+            188
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Calculating risk and return of an investment portfolio ",
+            "Correlation effect for diversification ",
+            "- Minimum variance portfolio ",
+            "- Efficiency frontier ",
+            "- Tangency portfolio ",
+            "- Capital Asset Pricing Model (CAPM) "
+        ],
+        "bbox": [
+            75,
+            268,
+            635,
+            651
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Capital Market Line (CML) ",
+            "Security Market Line (SML) "
+        ],
+        "bbox": [
+            112,
+            661,
+            359,
+            751
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Commonly used performance measures ",
+            "- Stop loss and risk limit "
+        ],
+        "bbox": [
+            75,
+            768,
+            500,
+            883
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Risk Management Cycle ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            512,
+            188
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Risk Identification ",
+            "2. Risk Assessment / Measurement ",
+            "3. Risk Treatment ",
+            "4. Risk Monitoring "
+        ],
+        "bbox": [
+            75,
+            272,
+            505,
+            551
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/79e05f423494a59b8f72adfb80a011ffb25c27e6f2d4fc60467d5150d464c33f.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            575,
+            151,
+            998,
+            905
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Investment Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            246,
+            390,
+            756,
+            490
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Investment Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            450,
+            181
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- There are many different kinds of assets in the market (eg. stocks, commodity, forex, bonds, etc). We can pick various assets for our investment as a portfolio ",
+            "- Portfolio optimization is the process of selecting the best distribution of assets to maximize returns while minimizing risk ",
+            "- Investment basically involves "
+        ],
+        "bbox": [
+            70,
+            270,
+            917,
+            546
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- asset selection ",
+            "- asset allocation "
+        ],
+        "bbox": [
+            110,
+            559,
+            289,
+            659
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "- In this section, we will discuss the Markowitz Portfolio Theory (or modern portfolio theory) which is a Nobel prize theory in 1990 ",
+        "bbox": [
+            70,
+            681,
+            841,
+            781
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Revision of Basic Statistics ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            555,
+            179
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "- Given that $a$ and $b$ are constants and $X$ and $Y$ are random variables. ",
+        "bbox": [
+            71,
+            272,
+            887,
+            320
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "$E(a + X) = a + E(X)$ ",
+            "$\\cdot E (a \\times X) = a \\times E (X)$ ",
+            "$\\cdot E(X + Y) = E(X) + E(Y)$ ",
+            "- $Var(a + X) = Var(X)$ ",
+            "$\\operatorname{Var}(a \\times X) = a^{2} \\times \\operatorname{Var}(X)$ ",
+            "- $\\operatorname{Var}\\left( {X + Y}\\right)  = \\operatorname{Var}\\left( X\\right)  + \\operatorname{Var}\\left( Y\\right)  + 2 \\times  \\operatorname{Cov}\\left( {X,Y}\\right)$ ",
+            "$\\operatorname{Cov}(a, X) = 0$ ",
+            "$\\operatorname{Cov}(a \\times X, b \\times Y) = a \\times b \\times \\operatorname{Cov}(X, Y)$ "
+        ],
+        "bbox": [
+            109,
+            335,
+            585,
+            724
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Portfolio Return and Risk ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            535,
+            179
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Suppose a portfolio $P$ contains $n$ assets ",
+            "- Portfolio return will be "
+        ],
+        "bbox": [
+            71,
+            268,
+            426,
+            366
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {p} = \\sum_ {i = 1} ^ {n} w _ {i} R _ {i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            343,
+            361,
+            458,
+            479
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where $\\begin{array}{r}\\left\\{ \\begin{array}{ll}w_{i} = \\mathrm{weight~of~the~asset~in~the~portfolio}\\\\ \\sum_{i = 1}^{n}w_{i} = 1 \\end{array} \\right. \\end{array}$ ",
+        "bbox": [
+            517,
+            335,
+            894,
+            501
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Expected Portfolio Return ",
+        "bbox": [
+            71,
+            505,
+            313,
+            546
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE (R _ {p}) = \\sum_ {i = 1} ^ {n} w _ {i} E (R _ {i})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            335,
+            555,
+            506,
+            670
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "- Portfolio Variance ",
+        "bbox": [
+            72,
+            681,
+            246,
+            718
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {p} ^ {2} = \\sum_ {i = 1} ^ {n} w _ {i} ^ {2} \\sigma_ {i} ^ {2} + \\sum_ {i = 1} ^ {n} \\sum_ {i \\neq j} w _ {i} w _ {j} \\sigma_ {i j}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            315,
+            740,
+            578,
+            868
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "where ",
+        "bbox": [
+            596,
+            774,
+            650,
+            812
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\sigma_ {p} ^ {2} = \\mathrm {v a r i a n c e} \\\\ \\sigma_ {i} ^ {2} = \\mathrm {v a r i a n c e} i \\\\ \\sigma_ {i j} = \\text {c o v a r i a n c e b e t w e e n a s s e t} I \\text {a n d} j \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            679,
+            720,
+            968,
+            868
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            232,
+            188
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Given 2 risky assets, A and B ",
+            "• At time 0, \\(P_{A,0} = \\\\)1\\) and \\(P_{B,0} = \\$100\\) ",
+            "- At time 1, you expect that the asset price may go up or down according to the economic conditions "
+        ],
+        "bbox": [
+            70,
+            268,
+            840,
+            450
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "table",
+        "img_path": "images/281df75d199def255b6bd1eaf82cc9f0351b5f8c3e39f4785fa9c8374511a134.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Economic Condition</td><td>Probability</td><td>Asset Price A</td><td>Return of A</td><td>Asset Price B</td><td>Return of B</td></tr><tr><td>Bad</td><td>0.25</td><td>$0.6</td><td>(0.6-1)/1 = -40%</td><td>$70</td><td>(70-100)/100 = -30%</td></tr><tr><td>Normal</td><td>0.5</td><td>$1.0</td><td>(1-1)/1 = 0%</td><td>$110</td><td>(110-100)/100 = 10%</td></tr><tr><td>Good</td><td>0.25</td><td>$2.0</td><td>(2-1)/1 = 100%</td><td>$140</td><td>(140-100)/100 = 40%</td></tr></table>",
+        "bbox": [
+            66,
+            503,
+            937,
+            727
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "• At time 0, you invest $40,000 in asset A and $60,000 in asset B (i.e. total investment $100,000). What is the expected return and variance of your portfolio? ",
+        "bbox": [
+            70,
+            790,
+            897,
+            868
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Example - Method 1 ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            455,
+            188
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "table",
+        "img_path": "images/af2f3b3be80e907ba26e42f61d049f0ce1832aeb30b508c1f49336b8bb0d568a.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Economic Condition</td><td>Probability</td><td>Portfolio Value</td><td>Return of Portfolio</td></tr><tr><td>Bad</td><td>0.25</td><td>40000(1-40%) + 60000(1-30%) = 66000</td><td>66000/100000-1 = -34%</td></tr><tr><td>Normal</td><td>0.5</td><td>40000(1+0%) + 60000(1+10%) = 106000</td><td>106000/100000-1 = 6%</td></tr><tr><td>Good</td><td>0.25</td><td>40000(1+100%) + 60000(1+40%) = 164000</td><td>164000/100000-1 = 64%</td></tr></table>",
+        "bbox": [
+            107,
+            285,
+            903,
+            509
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- $\\mu_{p} = 0.25\\left(-34\\%\\right) + 0.5\\left(6\\%\\right) + 0.25\\left(64\\%\\right) = 10.5\\%$ ",
+            "- $\\sigma_{P} = \\sqrt{0.25(-34\\% - 10.5\\%)^{2} + 0.5(6\\% - 10.5\\%)^{2} + 0.25(64\\% - 10.5\\%)^{2}} = 34.94\\%$ "
+        ],
+        "bbox": [
+            71,
+            596,
+            776,
+            705
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Example - Method 2 ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            458,
+            188
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "$w_{A} = \\frac{40000}{100000} = 0.4$ ",
+            "$w_{B} = \\frac{60000}{100000} = 0.6$ ",
+            "- $\\mu_{A} = E\\left(R_{A}\\right) = 0.25\\left(-40\\%\\right) + 0.5\\left(0\\%\\right) + 0.25\\left(100\\%\\right) = 15 \\%$ ",
+            "- $\\mu_{B} = E\\left(R_{B}\\right) = 0.25\\left(-30\\%\\right) + 0.5\\left(10\\%\\right) + 0.25\\left(40\\%\\right) = 7.5 \\%$ ",
+            "- $\\sigma_{A} = \\sqrt{0.25(-40\\% - 15\\%)^{2} + 0.5(0\\% - 15\\%)^{2} + 0.25(100\\% - 15\\%)^{2}} = 0.5712$ ",
+            "- $\\sigma_{B} = \\sqrt{0.25(-30\\% - 7.5\\%)^{2} + 0.5(10\\% - 7.5\\%)^{2} + 0.25(40\\% - 7.5\\%)^{2}} = 0.248747$ ",
+            "- $\\sigma_{AB} = 0.25(-40\\% -15\\%)(-30\\% -7.5\\%) + 0.5(0\\% -15\\%) (10\\% -7.5\\%) + 0.25(100\\% -15\\%) (40\\% -7.5\\%) = 0.11875$ ",
+            "• $\\rho_{AB} = \\frac{0.11875}{0.5712 * 0.248747} = 0.92303$ ",
+            "So, we have "
+        ],
+        "bbox": [
+            73,
+            225,
+            922,
+            801
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {P} = w _ {A} R _ {A} + w _ {B} R _ {B}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            262,
+            783,
+            421,
+            824
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mu_ {P} = w _ {A} \\mu_ {A} + w _ {B} \\mu_ {B} = 0.4 * 15 \\% + 0.6 * 7.5 \\% = 10.5 \\%\n$$",
+        "text_format": "latex",
+        "bbox": [
+            267,
+            846,
+            710,
+            885
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {P} = \\sqrt {w _ {A} ^ {2} \\sigma_ {A} ^ {2} + w _ {B} ^ {2} \\sigma_ {B} ^ {2} + 2 w _ {A} w _ {B} \\sigma_ {A B}} = 34.94 \\%\n$$",
+        "text_format": "latex",
+        "bbox": [
+            262,
+            887,
+            627,
+            968
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "2 assets Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            390,
+            179
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Using the previous example, ",
+            "- $\\mu_{A} = 15 \\%$ ",
+            "- $\\mu_{B} = 7.5\\%$ ",
+            "$\\sigma_{A} = 0.5172$ ",
+            "$\\sigma_{B} = 0.248747$ ",
+            "$\\sigma_{AB} = 0.11875$ ",
+            "$\\rho_{AB} = 0.92303$ "
+        ],
+        "bbox": [
+            75,
+            270,
+            334,
+            583
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "• For a general combination of A and B with weights $(w_{A}, w_{B})$ where $0 \\leq w_{A}, w_{B} \\leq 1$ and $w_{A} + w_{B} = 1$ ",
+        "bbox": [
+            73,
+            601,
+            521,
+            685
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "image",
+        "img_path": "images/802a07622e4579c5d0f8206bda9891f64260a907e1dd708d5c84764d52929d1d.jpg",
+        "image_caption": [
+            "Expected Return and Volatility of Portfolio (P) (with Correlation Coefficient $= 0.923026$ "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            575,
+            300,
+            990,
+            788
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "2 assets Portfolio - Correlation Effect ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            757,
+            179
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/bbb5ee02bf44bdf91491bb59e88d29a2156fef48ec9df1640e3cda9d262bf887.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            50,
+            238,
+            320,
+            596
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/8b6b71e93b4395102003c45ff52787d5bf254e55efb411552e749b3d5875aa7a.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            353,
+            238,
+            625,
+            596
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/42187edb8faeae78f8a92fa7d6f81c608fe5584ffdf987ce2b9df9d32d374660.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            681,
+            238,
+            947,
+            596
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/307b6afaa851b44065e419ff530ed60d2dc60edcd843a5e884459cddd913c301.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            211,
+            620,
+            480,
+            975
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "image",
+        "img_path": "images/f6d177c5275e5606329066d6f869b1c32aa2b9a93994c7cc3bf30ec400072e05.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            517,
+            620,
+            781,
+            975
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "2 assets Portfolio – Correlation Effect ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            757,
+            185
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- When the correlation is not very high, with appropriate weightings $(w_{A}$ and $w_{B})$ , the portfolio return can be higher than that of asset B but with a lower portfolio variance than that of asset B. As a risk averse investor, one would like to hold that portfolio rather than asset B alone. ",
+            "- The above diagrams illustrate that in most of the cases the overall risk of a portfolio of assets can be reduced but achieve the same expected return. This is called risk diversification ",
+            "- In general, if the 2 assets are more negatively correlated, it has better diversification effect "
+        ],
+        "bbox": [
+            71,
+            270,
+            595,
+            746
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "image",
+        "img_path": "images/efe22f088163b82237160086bebcf5a00378a76d62a80ceda9e56344c93c8377.jpg",
+        "image_caption": [
+            "Expected Return (%) "
+        ],
+        "image_footnote": [
+            "Standard Deviation $(\\%)$ "
+        ],
+        "bbox": [
+            670,
+            412,
+            990,
+            950
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Minimum Variance Portfolio - 2 assets ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            783,
+            187
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "- Given ",
+        "bbox": [
+            73,
+            216,
+            144,
+            251
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- $0 \\leq w_{A}, w_{B} \\leq 1$ and $w_{A} + w_{B} = 1$ ",
+            "$R_{p} = w_{A} R_{A} + w_{B} R_{B}$ ",
+            "$\\mu_{p} = w_{A}\\mu_{A} + w_{B}\\mu_{B}$ ",
+            "- $\\sigma_{p}^{2}=w_{A}^{2} \\sigma_{A}^{2}+w_{B}^{2} \\sigma_{B}^{2}+2 w_{A} w_{B} \\sigma_{A} \\sigma_{B} \\rho_{A B}$ "
+        ],
+        "bbox": [
+            112,
+            264,
+            435,
+            451
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If $|\\rho| \\neq 1$ , let $w_A = w$ , $w_B = 1 - w$ ",
+            "$\\frac {\\partial \\mu_ {p}}{\\partial w} = R _{A} - R _{B}$ ",
+            "$\\frac{\\partial \\sigma_{p}^{2}}{\\partial w} = 2 w \\left( \\sigma_{A}^{2} + \\sigma_{B}^{2} - 2 \\rho \\sigma_{A} \\sigma_{B} \\right) + 2 \\sigma_{B} \\left( \\rho \\sigma_{A} - \\sigma_{B} \\right)$ ",
+            "$\\frac{\\partial^{2} \\sigma_{p}^{2}}{\\partial w^{2}} = 2 \\left( \\sigma_{A}^{2} + \\sigma_{B}^{2} - 2 \\rho \\sigma_{A} \\sigma_{B} \\right) > 0$ "
+        ],
+        "bbox": [
+            75,
+            466,
+            508,
+            707
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "So $\\sigma_{p}^{2}$ has a global minimum at $w = \\frac{-\\sigma_{B}(\\rho \\sigma_{A} - \\sigma_{B})}{\\sigma_{A}^{2} + \\sigma_{B}^{2} - 2\\rho \\sigma_{A} \\sigma_{B}}$ ",
+            "If $0 \\leq w \\leq 1$ , $\\min(\\sigma_p)$ exists iff $\\rho \\leq \\min\\left(\\frac{\\sigma_A}{\\sigma_B}, \\frac{\\sigma_B}{\\sigma_A}\\right)$ . "
+        ],
+        "bbox": [
+            75,
+            720,
+            520,
+            870
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm {L e t} y = \\mu_ {p}, x = \\sigma_ {p}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            560,
+            431,
+            731,
+            483
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Minimum Variance Portfolio - 2 assets ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            783,
+            181
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "- If $\\rho = 1$ , ",
+        "bbox": [
+            75,
+            270,
+            181,
+            320
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "$\\mu_{p} = w \\mu_{A} + (1 - w) \\mu_{B}$ ",
+            "- $\\sigma_{p}^{2} = w^{2}\\sigma_{A}^{2} + (1 - w)^{2}\\sigma_{B}^{2} + 2w(1 - w)\\sigma_{A}\\sigma_{B} = (w\\sigma_{A} + (1 - w)\\sigma_{B})^{2}$ ",
+            "$\\sigma_{p} = w \\sigma_{A} + (1 - w) \\sigma_{B}$ "
+        ],
+        "bbox": [
+            112,
+            329,
+            731,
+            481
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "So we have ",
+        "bbox": [
+            75,
+            500,
+            228,
+            546
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "$\\frac{\\sigma_{p} - \\sigma_{B}}{\\sigma_{A} - \\sigma_{B}} = \\frac{\\mu_{p} - \\mu_{B}}{\\mu_{A} - \\mu_{B}}$ ",
+        "bbox": [
+            112,
+            557,
+            284,
+            640
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "i.e. a straight line $\\frac{x - \\sigma_B}{\\sigma_A - \\sigma_B} = \\frac{y - \\mu_B}{\\mu_A - \\mu_B}$ ",
+        "bbox": [
+            105,
+            696,
+            429,
+            777
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Minimum Variance Portfolio - 2 assets ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            783,
+            181
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "- If $\\rho = -1$ , ",
+        "bbox": [
+            75,
+            270,
+            201,
+            320
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\cdot \\sigma_ {p} ^ {2} = (w \\sigma_ {A} - (1 - w) \\sigma_ {B}) ^ {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            112,
+            327,
+            363,
+            379
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "- So ",
+        "bbox": [
+            75,
+            394,
+            123,
+            438
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {p} = \\left\\{ \\begin{array}{l l} (1 - w) \\sigma_ {B} - w \\sigma_ {A} & \\mathrm {I f} w <   \\frac {\\sigma_ {B}}{\\sigma_ {A} + \\sigma_ {B}} \\\\ 0 & \\mathrm {I f} w = \\frac {\\sigma_ {B}}{\\sigma_ {A} + \\sigma_ {B}} \\\\ w \\sigma_ {A} - (1 - w) \\sigma_ {B} & \\mathrm {I f} w > \\frac {\\sigma_ {B}}{\\sigma_ {A} + \\sigma_ {B}} \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            144,
+            453,
+            594,
+            685
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "2 assets Portfolio (with short selling allowed) ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            895,
+            192
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- For a general combination between asset A and asset B with weightings $(w_{A}, w_{B})$ , ",
+            "- No restriction on $w_{A}, w_{B}$ , except that $w_{A} + w_{B} = 1$ "
+        ],
+        "bbox": [
+            71,
+            270,
+            564,
+            400
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Example: ",
+        "text_level": 1,
+        "bbox": [
+            72,
+            474,
+            153,
+            512
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Given that at time 0, \\(P_{A,0} = \\\\)1\\( and \\(P_{B,0} = \\\\(100\\), and originally you have \\(\\$ 100\\) cash. ",
+            "• To create a portfolio with $w_{A} = 200\\%$ and $w_{B} = -100\\%$ , you need to: "
+        ],
+        "bbox": [
+            71,
+            531,
+            578,
+            694
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- buy 200 shares of asset A (cash outflow $200); and ",
+            "- shortsell 1 share of asset B (cash inflow $100) "
+        ],
+        "bbox": [
+            110,
+            705,
+            477,
+            779
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "- The total initial investment cost of the portfolio is $100. ",
+        "bbox": [
+            71,
+            798,
+            516,
+            833
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "image",
+        "img_path": "images/c2c0bd56213b8fb45da8009c25b9bcf91160faf6850659264f948a96c2b8e377.jpg",
+        "image_caption": [
+            "Expected Return and Volatility of Portfolio (P) (with Correlation Coefficient $= -0.5$ "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            607,
+            379,
+            990,
+            824
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Efficient Frontier ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            387,
+            181
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Given a set of risky assets, ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            272,
+            342,
+            318
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Opportunity Set: The set of all possible portfolios. ",
+            "- Minimum Variance Frontier (MVF): the set of portfolios with the lowest variance for a given expected return. ",
+            "- Minimum Variance Portfolio (MVP) (or global minimum variance portfolio): The portfolio with the lowest standard deviation among all possible portfolios. ",
+            "- Efficient Frontier (or efficient set): Portfolios yielding the highest expected return for a specific variance, represented as the upper curve of the MVF. ",
+            "- Inefficient Portfolio: Portfolios not on the efficient frontier, which should be avoided as better options exist for the same or lower risk "
+        ],
+        "bbox": [
+            108,
+            329,
+            910,
+            722
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Efficient Frontier ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            387,
+            181
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "- For 2-asset portfolio ",
+        "bbox": [
+            72,
+            272,
+            338,
+            327
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "image",
+        "img_path": "images/aac61be223da3ccc5ee88169a8e6bdea2cded5b3e83c82e7ef5bb0dd3fae4243.jpg",
+        "image_caption": [
+            "Expected Return and Volatility of Portfolio (P) (with Correlation Coefficient $= -0.5$ ) "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            277,
+            450,
+            731,
+            909
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Risk and Return of Portfolio P ",
+        "bbox": [
+            300,
+            929,
+            439,
+            951
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "100% in Asset A ",
+        "bbox": [
+            446,
+            931,
+            528,
+            950
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "100% in Asset B ",
+        "bbox": [
+            584,
+            931,
+            663,
+            950
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Shortselling Asset A ",
+        "bbox": [
+            301,
+            957,
+            404,
+            977
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Shortselling Asset B ",
+        "bbox": [
+            437,
+            959,
+            539,
+            977
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Efficient Frontier ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            387,
+            181
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "- For n-asset portfolio ",
+        "bbox": [
+            72,
+            272,
+            338,
+            327
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "E(Rp)",
+        "bbox": [
+            244,
+            394,
+            276,
+            431
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "image",
+        "img_path": "images/1409b733918e2f6ac6e3e6a0241bc19370a3c1ad992dc2e345568026c41bc7ec.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            282,
+            529,
+            705,
+            868
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "page_number",
+        "text": "σp ",
+        "bbox": [
+            662,
+            929,
+            677,
+            959
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Solving for Global Minimum Variance Portfolio for N assets ",
+        "text_level": 1,
+        "bbox": [
+            155,
+            290,
+            840,
+            490
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Global Minimum Variance Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            723,
+            185
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Given ",
+        "text_level": 1,
+        "bbox": [
+            72,
+            218,
+            136,
+            259
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "$\\sum_{i=1}^{N} w_{i} = 1$ ",
+            "$R_{p} = \\sum_{i=1}^{N} w_{i} R_{i}$ ",
+            "$\\mu_{p} = E\\left(R_{p}\\right) = \\sum_{i=1}^{N} w_{i} R_{i}$ ",
+            "$\\sigma_{p}^{2} = \\sum_{i=1}^{N} w_{i}^{2} \\sigma_{i}^{2} + 2 \\sum_{i<j} w_{i} w_{j} \\sigma_{i} \\sigma_{j} \\rho_{ij}$ "
+        ],
+        "bbox": [
+            110,
+            270,
+            428,
+            472
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Denote: ",
+        "text_level": 1,
+        "bbox": [
+            72,
+            488,
+            159,
+            529
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\cdot \\Sigma = \\left( \\begin{array}{c c c} \\sigma_ {1 1} & \\dots & \\sigma_ {1 N} \\\\ \\vdots & \\ddots & \\vdots \\\\ \\sigma_ {N 1} & \\dots & \\sigma_ {N N} \\end{array} \\right) = \\left( \\begin{array}{c c c c} \\sigma_ {1} & 0 & \\dots & 0 \\\\ 0 & \\sigma_ {2} & \\dots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & \\dots & \\sigma_ {N} \\end{array} \\right) \\left( \\begin{array}{c c c c} 1 & \\rho_ {1 2} & \\dots & \\rho_ {1 N} \\\\ \\rho_ {2 1} & 1 & \\dots & \\rho_ {2 N} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ \\rho_ {N 1} & \\rho_ {N 2} & \\dots & 1 \\end{array} \\right) \\left( \\begin{array}{c c c c} \\sigma_ {1} & 0 & \\dots & 0 \\\\ 0 & \\sigma_ {2} & \\dots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & \\dots & \\sigma_ {N} \\end{array} \\right) \\\\ \\cdot \\underline {{\\boldsymbol {w}}} = (w _ {1}, \\dots , w _ {N}) ^ {T} \\\\ \\cdot \\underline {{\\underline {{\\mu}}}} = (\\mu_ {1}, \\dots , \\mu_ {N}) ^ {T} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            110,
+            531,
+            835,
+            785
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "- So ",
+        "text_level": 1,
+        "bbox": [
+            72,
+            801,
+            121,
+            842
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\cdot \\mu_ {p} = \\underline {{w}} ^ {T} \\underline {{\\mu}} \\\\ \\cdot \\sigma_ {p} ^ {2} = \\underline {{\\boldsymbol {w}}} ^ {T} \\Sigma \\underline {{\\boldsymbol {w}}} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            111,
+            853,
+            228,
+            953
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Global Minimum Variance Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            723,
+            187
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": "Objective function: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            270,
+            271,
+            316
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": "• Min $\\frac{1}{2} Var\\left(R_{p}\\right) = \\frac{1}{2} \\sum_{i=1}^{N} \\sum_{j=1}^{N} w_{i} w_{j} \\sigma_{ij}$ ",
+        "bbox": [
+            110,
+            325,
+            458,
+            392
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Subject to ",
+            "$\\sum_{i=1}^{N} w_{i} = 1$ ",
+            "- Let $L = \\frac{1}{2}\\sum_{i=1}^{N}\\sum_{j=1}^{N}w_{i}w_{j}\\sigma_{ij} - \\lambda\\left(\\sum_{i=1}^{N}w_{i} - 1\\right)$ ",
+            "- Then, $\\frac{\\partial L}{\\partial w_k} = \\sum_{i=1}^N w_i \\sigma_{ik} - \\lambda = 0 \\quad \\forall k = 1, \\dots, N$ ",
+            "So we have "
+        ],
+        "bbox": [
+            71,
+            405,
+            584,
+            744
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left( \\begin{array}{c c c} \\sigma_ {1 1} & \\dots & \\sigma_ {1 N} \\\\ \\vdots & \\ddots & \\vdots \\\\ \\sigma_ {N 1} & \\dots & \\sigma_ {N N} \\end{array} \\right) \\left( \\begin{array}{c} w _ {1} \\\\ \\vdots \\\\ w _ {N} \\end{array} \\right) = \\lambda \\left( \\begin{array}{c} 1 \\\\ \\vdots \\\\ 1 \\end{array} \\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            150,
+            779,
+            439,
+            907
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": "or ",
+        "bbox": [
+            546,
+            838,
+            566,
+            864
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\Sigma_ {\\underline {{W}}} = \\lambda_ {\\underline {{I}} _ {N}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            614,
+            822,
+            720,
+            885
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": "Global Minimum Variance Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            723,
+            181
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "text",
+        "text": "- Then ",
+        "bbox": [
+            75,
+            272,
+            146,
+            312
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\cdot \\underline {{W}} = \\lambda \\Sigma^ {- 1} \\underline {{I _ {N}}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            112,
+            327,
+            238,
+            379
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "text",
+        "text": "As $\\sum_{i=1}^{N} w_{i} = 1$ , we get ",
+        "bbox": [
+            75,
+            392,
+            330,
+            451
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "equation",
+        "text": "$$\n1 = \\underline {{I _ {N}}} ^ {T} \\underline {{w}} = \\lambda \\underline {{I _ {N}}} ^ {T} \\Sigma^ {- 1} \\underline {{I _ {N}}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            172,
+            501,
+            360,
+            555
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\lambda = (\\underline {{I _ {N}}} ^ {T} \\Sigma^ {- 1} \\underline {{I _ {N}}}) ^ {- 1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            176,
+            588,
+            325,
+            642
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "text",
+        "text": "Thus, ",
+        "bbox": [
+            75,
+            666,
+            150,
+            711
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\underline {{\\boldsymbol {w}}} = \\frac {1}{\\underline {{\\boldsymbol {I _ {N}}}} ^ {T} \\Sigma^ {- 1} \\underline {{\\boldsymbol {I _ {N}}}}} \\Sigma^ {- 1} \\underline {{\\boldsymbol {I _ {N}}}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            194,
+            707,
+            395,
+            831
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "text",
+        "text": "Deriving Efficient Frontier for N assets ",
+        "text_level": 1,
+        "bbox": [
+            137,
+            266,
+            865,
+            494
+        ],
+        "page_idx": 24
+    },
+    {
+        "type": "text",
+        "text": "Deriving Efficient Frontier for N assets ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            772,
+            188
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "text",
+        "text": "- The idea is simply to iterate for each target return, then find the corresponding minimum variance portfolio ",
+        "bbox": [
+            71,
+            270,
+            850,
+            351
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "image",
+        "img_path": "images/926a01df3275ffa0d2dc58f5907e54291c1d952f9d549da9ccdbfedc45eda4ee.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            272,
+            361,
+            736,
+            996
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "text",
+        "text": "Optimal Portfolio with a target return ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            762,
+            188
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "text",
+        "text": "Given ",
+        "text_level": 1,
+        "bbox": [
+            72,
+            218,
+            134,
+            257
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "$\\sum_{i=1}^{N} w_{i} = 1$ ",
+            "$R_{p} = \\sum_{i=1}^{N} w_{i} R_{i}$ ",
+            "$\\mu_{p} = E\\left(R_{p}\\right) = \\sum_{i=1}^{N} w_{i} R_{i} = \\mu_{0}$ ",
+            "$\\sigma_{p}^{2} = \\sum_{i=1}^{N} w_{i}^{2} \\sigma_{i}^{2} + 2 \\sum_{i<j} w_{i} w_{j} \\sigma_{i} \\sigma_{j} \\rho_{ij}$ "
+        ],
+        "bbox": [
+            110,
+            270,
+            427,
+            472
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "text",
+        "text": "Denote: ",
+        "text_level": 1,
+        "bbox": [
+            72,
+            488,
+            159,
+            527
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\cdot \\Sigma = \\left( \\begin{array}{c c c} \\sigma_ {1 1} & \\dots & \\sigma_ {1 N} \\\\ \\vdots & \\ddots & \\vdots \\\\ \\sigma_ {N 1} & \\dots & \\sigma_ {N N} \\end{array} \\right) = \\left( \\begin{array}{c c c c} \\sigma_ {1} & 0 & \\dots & 0 \\\\ 0 & \\sigma_ {2} & \\dots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & \\dots & \\sigma_ {N} \\end{array} \\right) \\left( \\begin{array}{c c c c} 1 & \\rho_ {1 2} & \\dots & \\rho_ {1 N} \\\\ \\rho_ {2 1} & 1 & \\dots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ \\rho_ {N 1} & \\rho_ {N 2} & \\dots & 1 \\end{array} \\right) \\left( \\begin{array}{c c c c} \\sigma_ {1} & 0 & \\dots & 0 \\\\ 0 & \\sigma_ {2} & \\dots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & \\dots & \\sigma_ {N} \\end{array} \\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            110,
+            531,
+            835,
+            688
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "text",
+        "text": "$\\underline{\\underline{W}} = (w_{1},\\dots ,w_{N})^{T}$ ",
+        "bbox": [
+            111,
+            687,
+            279,
+            731
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "text",
+        "text": "$\\underline{\\mu} = (\\mu_{1},\\dots,\\mu_{N})^{T}$ ",
+        "bbox": [
+            111,
+            733,
+            269,
+            785
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "text",
+        "text": "- So ",
+        "text_level": 1,
+        "bbox": [
+            72,
+            801,
+            121,
+            842
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "$\\mu_{p} = \\underline{w}^{T}\\underline{\\mu} = \\mu_{0}$ ",
+            "$\\sigma_{p}^{2} = \\underline{w}^{T}\\Sigma \\underline{w}$ "
+        ],
+        "bbox": [
+            111,
+            853,
+            255,
+            953
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "text",
+        "text": "Optimal Portfolio with a target return ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            762,
+            188
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "text",
+        "text": "Objective function: ",
+        "bbox": [
+            71,
+            270,
+            238,
+            309
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\cdot \\operatorname {M i n} \\frac {1}{2} \\operatorname {V a r} \\left(R _ {p}\\right) = \\frac {1}{2} \\sum_ {i = 1} ^ {N} \\sum_ {j = 1} ^ {N} w _ {i} w _ {j} \\sigma_ {i j}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            110,
+            316,
+            392,
+            370
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "text",
+        "text": "• Subject to ",
+        "bbox": [
+            72,
+            385,
+            181,
+            422
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\bullet \\mu_ {p} = \\sum_ {i = 1} ^ {N} w _ {i} \\mu_ {i} = \\mu_ {0} \\\\ \\cdot \\sum_ {i = 1} ^ {N} w _ {i} = 1 \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            110,
+            431,
+            277,
+            516
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "$\\cdot$ Let $L = \\frac{1}{2}\\sum_{i=1}^{N}\\sum_{j=1}^{N}w_{i}w_{j}\\sigma_{ij} - \\lambda_{1}\\left(\\sum_{i=1}^{N}w_{i}\\mu_{i} - \\mu_{p}\\right) - \\lambda_{2}\\left(\\sum_{i=1}^{N}w_{i} - 1\\right)$ ",
+            "$\\frac{\\partial L}{\\partial w_{k}} = \\sum_{i=1}^{N} w_{i} \\sigma_{ik} - \\lambda_{1} \\mu_{k} - \\lambda_{2} = 0 \\quad \\forall k = 1, \\ldots, N$ ",
+            "So we have "
+        ],
+        "bbox": [
+            72,
+            529,
+            691,
+            724
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left( \\begin{array}{c c c} \\sigma_ {1 1} & \\dots & \\sigma_ {1 N} \\\\ \\vdots & \\ddots & \\vdots \\\\ \\sigma_ {N 1} & \\dots & \\sigma_ {N N} \\end{array} \\right) \\left( \\begin{array}{c} w _ {1} \\\\ \\vdots \\\\ w _ {N} \\end{array} \\right) = \\left( \\begin{array}{c c} \\mu_ {1} & 1 \\\\ \\vdots & \\vdots \\\\ \\mu_ {N} & 1 \\end{array} \\right) \\left( \\begin{array}{c} \\lambda_ {1} \\\\ \\lambda_ {2} \\end{array} \\right) \\qquad \\mathrm {o r} \\qquad \\Sigma_ {\\underline {{W}}} = \\left(\\underline {{\\mu}} \\underline {{I _ {N}}}\\right) \\left( \\begin{array}{c} \\lambda_ {1} \\\\ \\lambda_ {2} \\end{array} \\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            153,
+            781,
+            748,
+            916
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "text",
+        "text": "Optimal Portfolio with a target return ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            762,
+            188
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "text",
+        "text": "- That is ",
+        "bbox": [
+            73,
+            272,
+            155,
+            307
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\cdot \\underline {{w}} = \\Sigma^ {- 1} \\left( \\begin{array}{c c} \\underline {{\\mu}} & I _ {N} \\end{array} \\right) \\left( \\begin{array}{c} \\lambda_ {1} \\\\ \\lambda_ {2} \\end{array} \\right) \\dots \\dots \\dots ( ^ {*}) \\\\ \\bullet \\mu_ {p} = \\sum_ {i = 1} ^ {N} w _ {i} \\mu_ {i} = \\mu_ {0} \\\\ \\cdot \\sum_ {i = 1} ^ {N} w _ {i} = 1 \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            112,
+            316,
+            355,
+            470
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "text",
+        "text": "Now we will find $\\lambda_{1}, \\lambda_{2}$ such that ",
+        "bbox": [
+            75,
+            487,
+            377,
+            529
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\cdot \\quad 1 = \\underline {{I _ {N}}} ^ {T} \\underline {{w}} = \\underline {{I _ {N}}} ^ {T} \\Sigma^ {- 1} \\left( \\begin{array}{c c} \\underline {{\\mu}} & \\underline {{I _ {N}}} \\end{array} \\right) \\left( \\begin{array}{c} \\lambda_ {1} \\\\ \\lambda_ {2} \\end{array} \\right) \\\\ \\cdot \\mu_ {0} = \\underline {{\\mu}} ^ {T} \\underline {{w}} = \\underline {{\\mu}} ^ {T} \\Sigma^ {- 1} \\left( \\begin{array}{c c} \\underline {{\\mu}} & \\underline {{I _ {N}}} \\end{array} \\right) \\left( \\begin{array}{c} \\lambda_ {1} \\\\ \\lambda_ {2} \\end{array} \\right) \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            112,
+            535,
+            358,
+            672
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "image",
+        "img_path": "images/554a4dab82504ce3faad016b15627d934bfdb06b2c49cdb635254eff165bcc19.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            404,
+            592,
+            426,
+            622
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left( \\begin{array}{c} \\lambda_ {1} \\\\ \\lambda_ {2} \\end{array} \\right) = \\left(\\left( \\begin{array}{c} I _ {N} ^ {T} \\\\ \\underline {{\\mu}} ^ {T} \\end{array} \\right) \\Sigma^ {- 1} \\left( \\begin{array}{c c} \\underline {{\\mu}} & I _ {N} \\end{array} \\right)\\right) ^ {- 1} \\left( \\begin{array}{c} 1 \\\\ \\mu_ {0} \\end{array} \\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            463,
+            525,
+            750,
+            662
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "text",
+        "text": "- Substitute back to equation $(^{*})$ , we have ",
+        "bbox": [
+            75,
+            687,
+            437,
+            727
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\underline {{\\boldsymbol {w}}} = \\boldsymbol {\\Sigma} ^ {- 1} \\left( \\begin{array}{l l} \\underline {{\\boldsymbol {\\mu}}} & \\underline {{\\boldsymbol {I _ {N}}}} \\end{array} \\right) \\left(\\left( \\begin{array}{l} \\underline {{\\boldsymbol {I _ {N}}}} ^ {T} \\\\ \\underline {{\\boldsymbol {\\mu}}} ^ {T} \\end{array} \\right) \\boldsymbol {\\Sigma} ^ {- 1} \\left( \\begin{array}{l l} \\underline {{\\boldsymbol {\\mu}}} & \\underline {{\\boldsymbol {I _ {N}}}} \\end{array} \\right)\\right) ^ {- 1} \\left( \\begin{array}{l} 1 \\\\ \\boldsymbol {\\mu_ {0}} \\end{array} \\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            254,
+            775,
+            614,
+            916
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "text",
+        "text": "Tangency Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            265,
+            394,
+            729,
+            500
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "text",
+        "text": "Tangency Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            417,
+            192
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If risk-free asset is available, we can draw a tangent line between the risk-free rate and the efficient frontier ",
+            "- The toughing point is called tangency portfolio ",
+            "- We can create any portfolios along the tangent line by proper allocation on risk-free asset and the tangency portfolio "
+        ],
+        "bbox": [
+            71,
+            270,
+            493,
+            590
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "image",
+        "img_path": "images/854d8af52585526e0e5395fae93774bfa7c87dcd9cad02e9ef2bac845d8fd37d.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            533,
+            201,
+            1000,
+            838
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "text",
+        "text": "Deriving Tangency Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            581,
+            192
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "text",
+        "text": "In order to find the tangency portfolio, we consider to maximize the slope ",
+        "bbox": [
+            71,
+            270,
+            722,
+            314
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\max _ {w} \\frac {\\mu_ {p} - R _ {f}}{\\sigma_ {p}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            234,
+            370,
+            343,
+            464
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "text",
+        "text": "subject to $\\sum_{i=1}^{N} w_{i} = 1$ ",
+        "bbox": [
+            392,
+            400,
+            571,
+            450
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "text",
+        "text": "- Consider the Lagrangian ",
+        "bbox": [
+            72,
+            505,
+            302,
+            546
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL = \\frac {\\mu_ {p} - R _ {f}}{\\sigma_ {p}} - \\lambda \\left(\\sum_ {i = 1} ^ {N} w _ {i} - 1\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            200,
+            574,
+            442,
+            709
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial L}{\\partial w _ {k}} = \\frac {\\sigma_ {p} \\frac {\\partial (\\mu_ {p} - R _ {f})}{\\partial w _ {k}} - (\\mu_ {p} - R _ {f}) \\frac {\\partial \\sigma_ {p}}{\\partial w _ {k}}}{\\sigma_ {p} ^ {2}} - \\lambda\n$$",
+        "text_format": "latex",
+        "bbox": [
+            184,
+            751,
+            529,
+            887
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "text",
+        "text": "Deriving Tangency Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            577,
+            192
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "text",
+        "text": "As the risk-free rate $R_{f}$ is a constant ",
+        "bbox": [
+            71,
+            270,
+            401,
+            320
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial (\\mu_ {p} - R _ {f})}{\\partial w _ {k}} = \\frac {\\partial \\sum_ {i = 1} ^ {N} w _ {i} \\mu_ {i}}{\\partial w _ {k}} = \\mu_ {k}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            191,
+            335,
+            444,
+            429
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "text",
+        "text": "• Also, ",
+        "bbox": [
+            72,
+            451,
+            137,
+            488
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {p} ^ {2} = \\sum_ {i = 1} ^ {N} \\sum_ {j = 1} ^ {N} w _ {i} w _ {j} \\sigma_ {i j}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            188,
+            485,
+            355,
+            607
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "equation",
+        "text": "$$\n2 \\sigma_ {p} \\frac {\\partial \\sigma_ {p}}{\\partial w _ {k}} = 2 \\sum_ {i = 1} ^ {N} w _ {i} \\sigma_ {i k}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            181,
+            637,
+            360,
+            757
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial \\sigma_ {p}}{\\partial w _ {k}} = \\frac {1}{\\sigma_ {p}} \\sum_ {i = 1} ^ {N} w _ {i} \\sigma_ {i k}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            205,
+            770,
+            360,
+            888
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "text",
+        "text": "Deriving Tangency Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            581,
+            192
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Then $\\frac{\\partial L}{\\partial w_k} = \\frac{\\sigma_p \\frac{\\partial (\\mu_p - R_f)}{\\partial w_k} - (\\mu_p - R_f) \\frac{\\partial \\sigma_p}{\\partial w_k}}{\\sigma_p^2} - \\lambda = \\frac{\\sigma_p \\mu_k - (\\mu_p - R_f) \\frac{1}{\\sigma_p} \\sum_{i=1}^{N} w_i \\sigma_{ik}}{\\sigma_p^2} - \\lambda$ ",
+            "- Setting $\\frac{\\partial L}{\\partial w_k} = 0$ , we get $\\sigma_p \\mu_k - (\\mu_p - R_f) \\frac{1}{\\sigma_p} \\sum_{i=1}^{N} w_i \\sigma_{ik} = \\lambda \\sigma_p^2$ .... (*). ",
+            "From this line, multiply $w_{k}$ to both side and sum $k$ from 1 to $N$ "
+        ],
+        "bbox": [
+            70,
+            255,
+            817,
+            603
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\sigma_ {p} \\sum_ {k = 1} ^ {N} w _ {k} \\mu_ {k} - (\\mu_ {p} - R _ {f}) \\frac {1}{\\sigma_ {p}} \\sum_ {i = 1} ^ {N} \\sum_ {k = 1} ^ {N} w _ {i} w _ {k} \\sigma_ {i k} = \\lambda \\sigma_ {p} ^ {2} \\sum_ {k = 1} ^ {N} w _ {k} \\\\ \\sigma_ {p} \\mu_ {p} - (\\mu_ {p} - R _ {f}) \\sigma_ {p} = \\lambda \\sigma_ {p} ^ {2} \\\\ \\lambda = \\frac {R _ {f}}{\\sigma_ {p}} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            246,
+            635,
+            659,
+            951
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Deriving Tangency Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            581,
+            192
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "text",
+        "text": "- Put it in equation $(^{*})$ ",
+        "bbox": [
+            71,
+            268,
+            271,
+            312
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {p} \\mu_ {k} - (\\mu_ {p} - R _ {f}) \\frac {1}{\\sigma_ {p}} \\sum_ {i = 1} ^ {N} w _ {i} \\sigma_ {i k} = R _ {f} \\sigma_ {p}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            287,
+            292,
+            594,
+            412
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mu_ {k} - R _ {f} = \\frac {\\mu_ {p} - R _ {f}}{\\sigma_ {p} ^ {2}} \\sum_ {i = 1} ^ {N} w _ {i} \\sigma_ {i k} \\qquad \\mathrm {f o r k = 1 , . . . , N}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            287,
+            429,
+            671,
+            550
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "text",
+        "text": "Denote $z_{i} = \\frac{\\mu_{p} - R_{f}}{\\sigma_{p}^{2}} w_{i}$ , so it becomes $\\mu_{k} - R_{f} = \\sum_{i=1}^{N} z_{i} \\sigma_{ik}$ for $k = 1, \\ldots, N$ ",
+        "bbox": [
+            72,
+            592,
+            713,
+            700
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left( \\begin{array}{c} \\mu_ {1} - R _ {f} \\\\ \\vdots \\\\ \\mu_ {N} - R _ {f} \\end{array} \\right) = \\left( \\begin{array}{c c c} \\sigma_ {1 1} & \\dots & \\sigma_ {1 N} \\\\ \\vdots & \\ddots & \\vdots \\\\ \\sigma_ {N 1} & \\dots & \\sigma_ {N N} \\end{array} \\right) \\left( \\begin{array}{c} z _ {1} \\\\ \\vdots \\\\ z _ {N} \\end{array} \\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            381,
+            733,
+            650,
+            851
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\underline {{z}} = \\Sigma^ {- 1} \\left(\\underline {{\\mu}} - R _ {f} \\underline {{I}}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            412,
+            881,
+            547,
+            938
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "text",
+        "text": "Deriving Tangency Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            581,
+            192
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "- The equation simply means that the weights are proportional to ",
+        "bbox": [
+            71,
+            268,
+            632,
+            314
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\underline {{w}} \\propto \\Sigma^ {- 1} \\left(\\underline {{\\mu}} - R _ {f} \\underline {{I}}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            331,
+            340,
+            503,
+            412
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "- With the condition $\\sum_{i=1}^{N} w_{i} = 1$ ",
+        "bbox": [
+            72,
+            442,
+            362,
+            494
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\underline {{\\boldsymbol {w}}} = \\frac {\\boldsymbol {\\Sigma} ^ {- 1} \\left(\\underline {{\\boldsymbol {\\mu}}} - R _ {f} \\underline {{\\boldsymbol {I}}}\\right)}{\\underline {{\\boldsymbol {I}}} ^ {T} \\boldsymbol {\\Sigma} ^ {- 1} \\left(\\underline {{\\boldsymbol {\\mu}}} - R _ {f} \\underline {{\\boldsymbol {I}}}\\right)}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            331,
+            537,
+            526,
+            683
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "Python Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            377,
+            192
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Download stock data for AAPL, MSFT, TSLA, GOOG from 2018-2020 ",
+            "2. Calculate the minimum variance portfolio ",
+            "3. Suppose risk-free rate is $5\\%$ , calculate the tangency portfolio "
+        ],
+        "bbox": [
+            71,
+            268,
+            681,
+            433
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "- PyPortfolioOpt (https://pypportfolioopt.readthedocs.io/en/latest/) can be used to solve various portfolio optimization problems ",
+        "bbox": [
+            71,
+            562,
+            895,
+            646
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "image",
+        "img_path": "images/4fa30c0489a1842800aff364053417f3282e1682f39c770a3ac74c0675e6416a.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            262,
+            735,
+            765,
+            901
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "Python Example ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            109,
+            372,
+            188
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "Minimum Variance Portfolio Weights:  \nOrderedDict(['AAPL', 0.18907], ('GOOG', 0.55898), ('MSFT', 0.25195), ('TSLA', 0.0)])  \nTangency Portfolio Weights:  \nOrderedDict(['AAPL', 0.45481], ('GOOG', 0.0), ('MSFT', 0.0), ('TSLA', 0.54519])  \nExpected annual return: 28.9%  \nAnnual volatility: 29.5%  \nSharpe Ratio: 0.91  \nExpected annual return: 88.2%  \nAnnual volatility: 46.1%  \nSharpe Ratio: 1.80 ",
+        "guess_lang": "txt",
+        "bbox": [
+            32,
+            309,
+            510,
+            729
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "import yfinance as yf  \nimport pandas as pd  \nfrom pypfopt import EfficientFrontier, risk_models, expectedreturns ",
+        "guess_lang": "python",
+        "bbox": [
+            556,
+            64,
+            931,
+            144
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "Step 1: Download stock data  \ntickers = ['AAPL', 'MSFT', 'TSLA', 'GOOG']  \nstart_date = '2018-01-01'  \nend_date = '2020-12-31' ",
+        "guess_lang": "txt",
+        "bbox": [
+            555,
+            170,
+            791,
+            275
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "data = yf.download(tickers, start=start_date, end=end_date)[['Close'] # Step 2: Calculate expected returns and covariance matrix mu = expectedreturns.mean_historical_return(data) S = risk_models.sample_cov(data) ",
+        "guess_lang": "python",
+        "bbox": [
+            555,
+            303,
+            929,
+            437
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "Minimum Variance Portfolio ef_mv = EfficientFrontier(mu, S)  \nweights_mv = ef_mv.min_volatility()  \ncleanedweights_mv = ef_mv.cleanweights()  \nprint(\"Minimum Variance Portfolio Weights:\")  \nprint(cleannedweights_mv) ",
+        "guess_lang": "python",
+        "bbox": [
+            555,
+            464,
+            809,
+            624
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "Step 3: Calculate Tangency Portfolio risk free rate = 0.05 # 5% ",
+        "guess_lang": "txt",
+        "bbox": [
+            555,
+            651,
+            769,
+            701
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "ef_tangency = EfficientFrontier(mu, S, weight_bounds=(0, 1))  \nweights_tangency = ef_tangency.max_sharpe(risk_free_rate=risk_free_rate)  \ncleanedweights_tangency = ef_tangency.cleanweights()  \nprint(\"\\\\nTangency Portfolio Weights:\")  \nprint(cleannedweights_tangency) ",
+        "guess_lang": "python",
+        "bbox": [
+            555,
+            731,
+            975,
+            864
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "Display portfolio performance  \nperformance_mv = ef_mvportfolio_performance(verbatim=True)  \nperformance_tangency = ef_tangencyportfolio_performance(verbatim=True) ",
+        "guess_lang": "python",
+        "bbox": [
+            555,
+            890,
+            975,
+            970
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "text",
+        "text": "ALGOGENE Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            446,
+            188
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "image",
+        "img_path": "images/87c2df81f8c2a18cdbc7c0be67c47301b0d2b803125a5787ff8ece5c1f4804b8.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            77,
+            222,
+            900,
+            905
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "footer",
+        "text": "Reference: https://www.youtube.com/watch?v=rbP7KEeiMX8 ",
+        "bbox": [
+            42,
+            929,
+            516,
+            964
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "Capital Asset Pricing Model (CAPM) ",
+        "text_level": 1,
+        "bbox": [
+            155,
+            266,
+            842,
+            509
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "text",
+        "text": "Background ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            296,
+            190
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- We learnt from previous section how to construct an efficient frontier and determine the tangency portfolio ",
+            "- When the number of assets increase, the number of parameters will increase quadratically $O(N^{2})$ . It leads to difficulty to compute for a large portfolio. ",
+            "- So a simplified financial model is preferred "
+        ],
+        "bbox": [
+            70,
+            270,
+            878,
+            550
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "text",
+        "text": "Market Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            377,
+            181
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "text",
+        "text": "- Market portfolio (M) is a portfolio consisting of ALL risky assets in the economy. ",
+        "bbox": [
+            71,
+            270,
+            897,
+            316
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "text",
+        "text": "- Note that ALL risky assets are not limited to stocks. The market portfolio include stocks, bonds, real estates, human capital etc. It includes both tradable and non-tradable assets. ",
+        "bbox": [
+            107,
+            327,
+            883,
+            398
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "text",
+        "text": "Each asset is held in a proportion according to its market value: ",
+        "bbox": [
+            71,
+            420,
+            732,
+            466
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "equation",
+        "text": "$$\nw _ {i} ^ {*} = \\frac {\\text {M a r k e t V a l u e o f A s s e t i}}{\\text {M a r k e t V a l u e o f A l l A s s e t s}} = \\frac {P _ {i} S _ {i}}{\\sum_ {j = 1} ^ {N} P _ {j} S _ {j}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            114,
+            585,
+            537,
+            694
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "text",
+        "text": "where ",
+        "bbox": [
+            588,
+            572,
+            635,
+            600
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- $N =$ number of risky assets in the economy ",
+            "- $P_{i} =$ market price of asset i per unit of shares ",
+            "- $S_{i} =$ number of outstanding shares of asset i "
+        ],
+        "bbox": [
+            588,
+            607,
+            916,
+            711
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "text",
+        "text": "Market Portfolio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            377,
+            188
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "text",
+        "text": "A Major Conclusion under Market Equilibrium ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            268,
+            621,
+            327
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Recall that ALL (risk-averse) investors will hold portfolios formed by the risk-free asset and the tangency portfolio (T). ",
+            "- Under market equilibrium, the tangency portfolio (T) [Demand for risky assets] MUST be exactly the same as the market portfolio (M) [Supply for risky assets] in the economy. "
+        ],
+        "bbox": [
+            107,
+            335,
+            902,
+            590
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "text",
+        "text": "CAPM Assumptions ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            111,
+            437,
+            188
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Assets are all tradable and are all infinitely divisible. ",
+            "2. All investors are risk-averse and select their portfolios in a single-period time horizon based on the mean-variance criterion (Markowitz assumptions). ",
+            "3. All investors have the same belief in expected returns, variances and covariances of all assets (homogeneous expectations). ",
+            "4. All investors can do unlimited short selling of risky assets, and borrow or lend money at the same risk-free interest rate. ",
+            "5. No taxes, no transaction costs, information is costless and available to all investors. "
+        ],
+        "bbox": [
+            70,
+            270,
+            912,
+            666
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Assumptions 2,3,4 imply that all investors obtain the same efficient frontier ",
+            "- Using one-fund theorem, every investor hold a portfolio consisting of the tangency portfolio (T) and risk-free asset, with different portfolio weightings "
+        ],
+        "bbox": [
+            70,
+            742,
+            900,
+            885
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "text",
+        "text": "Capital Market Line (CML) ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            557,
+            192
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "text",
+        "text": "- For any efficient portfolio on CML, ",
+        "bbox": [
+            70,
+            266,
+            387,
+            314
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE \\big (R _ {p} \\big) = R _ {f} + \\frac {E (R _ {M}) - R _ {f}}{\\sigma_ {M}} \\sigma_ {p} \\qquad \\mathrm {o r} \\qquad \\mu_ {p} = R _ {f} + \\frac {\\mu_ {M} - R _ {f}}{\\sigma_ {M}} \\sigma_ {p}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            185,
+            351,
+            671,
+            440
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "image",
+        "img_path": "images/36f710232cdf2a68cbe7ddd9b2bf3e67f3c951149825f8fb6f17ad009249ea38.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            260,
+            464,
+            630,
+            901
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "text",
+        "text": "Note: The dashed line represents the efficient frontier of portfolios which consist of all risky assets. ",
+        "bbox": [
+            85,
+            912,
+            844,
+            955
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "text",
+        "text": "Deriving CAPM (Sharpe's Approach) ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            729,
+            192
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Consider a portfolio $i$ and market portfolio $M$ ",
+            "Note that for every portfolio $i$ , it cannot cross the capital market line ",
+            "- For a portfolio between $i$ and $M$ , we have "
+        ],
+        "bbox": [
+            71,
+            270,
+            636,
+            468
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\cdot \\mu_ {p} = w \\mu_ {i} + (1 - w) \\mu_ {M} \\\\ \\cdot \\sigma_ {p} = [ w ^ {2} \\sigma_ {i} ^ {2} + (1 - w) ^ {2} \\sigma_ {M} ^ {2} + 2 w (1 - w) \\sigma_ {i j} ] ^ {1 / 2} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            112,
+            477,
+            467,
+            566
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "text",
+        "text": "• Then, ",
+        "bbox": [
+            72,
+            581,
+            142,
+            618
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\frac {\\partial \\mu_ {p}}{\\partial w} = \\mu_ {i} - \\mu_ {M} \\\\ \\frac {\\partial \\sigma_ {p}}{\\partial w} = \\frac {w \\sigma_ {i} ^ {2} + (1 - 2 w) \\sigma_ {i M} - (1 - w) \\sigma_ {M} ^ {2}}{\\sigma_ {p}} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            171,
+            592,
+            462,
+            764
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "text",
+        "text": "- Consider the slope at M (i.e. $w = 0$ ) $\\frac{\\partial \\sigma_{p}}{\\partial w} = \\frac{\\sigma_{iM} - \\sigma_{M}^{2}}{\\sigma_{M}}$ ",
+        "bbox": [
+            71,
+            814,
+            565,
+            916
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "image",
+        "img_path": "images/7ee59a3c87c147b5e45d500032ebee0b8fea9006fb3981b35df562be72c05563.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            628,
+            424,
+            1000,
+            868
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "text",
+        "text": "Deriving CAPM (Sharpe's Approach) ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            729,
+            192
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Note that the slope of CML at portfolio M is $\\frac{\\mu_{M} - R_{f}}{\\sigma_{M}}$ ",
+            "So we have "
+        ],
+        "bbox": [
+            71,
+            268,
+            521,
+            390
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\mu_ {M} - R _ {f}}{\\sigma_ {M}} = \\frac {(\\mu_ {i} - \\mu_ {M}) \\sigma_ {M}}{\\sigma_ {i M} - \\sigma_ {M} ^ {2}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            250,
+            385,
+            450,
+            475
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial \\mu_ {p}}{\\partial w} / \\frac {\\partial w}{\\partial \\sigma_ {p}} \\mathrm {w h e n} w = 0\n$$",
+        "text_format": "latex",
+        "bbox": [
+            600,
+            361,
+            780,
+            442
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mu_ {i} = R _ {f} + \\frac {\\sigma_ {i M}}{\\sigma_ {M} ^ {2}} (\\mu_ {M} - R _ {f})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            269,
+            529,
+            469,
+            611
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "text",
+        "text": "• Define $\\beta_{i} = \\frac{\\sigma_{i M}}{\\sigma_{M}^{2}}$ ",
+        "bbox": [
+            72,
+            642,
+            229,
+            712
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "text",
+        "text": "CAPM model: $\\mu_{i} = R_{f} + \\beta_{i}\\left(\\mu_{M} - R_{f}\\right)$ ",
+        "bbox": [
+            141,
+            787,
+            455,
+            835
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "text",
+        "text": "Security Market Line (SML) ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            572,
+            192
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- SML is graphical representation of the CAPM ",
+            "- For any asset $i$ "
+        ],
+        "bbox": [
+            71,
+            270,
+            475,
+            370
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Expected market risk premium ",
+        "bbox": [
+            225,
+            403,
+            371,
+            429
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE (R _ {i}) = R _ {f} + \\underbrace {\\beta_ {i} \\left(E (R _ {M}) - R _ {f}\\right)} _ {\\mathrm {r e s p e c i e d}} \\qquad \\mathrm {o r} \\qquad \\mu_ {i} = R _ {f} + \\beta_ {i} \\left(\\mu_ {M} - R _ {f}\\right)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            125,
+            435,
+            600,
+            553
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Expected risk premium ",
+        "bbox": [
+            233,
+            562,
+            342,
+            587
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Properties of SML ",
+        "bbox": [
+            72,
+            622,
+            247,
+            662
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "$\\beta_{M} = 1$ ",
+            "$\\beta_{R_f} = 0$ ",
+            "- Beta of a portfolio $\\beta_{p} = \\sum_{i=1}^{N} w_{i} \\beta_{i}$ ",
+            "- Every assets lie on SML ",
+            "- For 2 assets A and B, $\\frac{E(R_A) - R_f}{\\beta_A} = \\frac{E(R_B) - R_f}{\\beta_B} = \\frac{E(R_M) - R_f}{1}$ "
+        ],
+        "bbox": [
+            112,
+            672,
+            559,
+            938
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "image",
+        "img_path": "images/96d5ce21d4e6290212b334ce5e32404d24de56dfc38c8f5b7db3dbcd88b29b71.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            683,
+            250,
+            1000,
+            653
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "CAPM ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            187,
+            177
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "text",
+        "text": "- Consider a linear regression model ",
+        "bbox": [
+            71,
+            270,
+            448,
+            316
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(R _ {i} - R _ {f}) _ {t} = \\alpha_ {i} + \\beta_ {i} (R _ {M} - R _ {f}) _ {t} + e _ {i, t} \\quad \\mathrm {t = 1 , 2 , \\ldots , T}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            242,
+            357,
+            706,
+            409
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "text",
+        "text": "We have ",
+        "bbox": [
+            72,
+            472,
+            183,
+            512
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "$\\widehat{\\beta}_{i} = \\frac{\\sum_{t=1}^{T}\\left(R_{M,t}-\\mu_{M}\\right)\\left(R_{i,t}-\\mu_{i}\\right)}{\\sum_{t=1}^{T}\\left(R_{M,t}-\\mu_{M}\\right)^{2}} = \\frac{\\operatorname{Cov}\\left(R_{M}, R_{i}\\right)}{\\operatorname{Var}\\left(R_{M}\\right)} = \\frac{\\sigma_{i M}}{\\sigma_{M}^{2}}$ ",
+            "$R^{2} = \\frac{\\beta_{i}\\sigma_{M}^{2}}{\\sigma_{i}^{2}} = (\\rho_{iM})^{2}$ ",
+            "- $\\sigma_{i}^{2} = \\beta_{i}^{2}\\sigma_{M}^{2} + \\tau_{i}^{2}$ "
+        ],
+        "bbox": [
+            110,
+            522,
+            517,
+            738
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "text",
+        "text": "Systematic risk that is non-diversifiable ",
+        "bbox": [
+            142,
+            805,
+            275,
+            862
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "text",
+        "text": "Non-systematic risk that is diversifiable ",
+        "bbox": [
+            310,
+            801,
+            431,
+            859
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "image",
+        "img_path": "images/0c828c130c924fb556c21e26da651cafec6fb0ad423e5959182a87947edd5434.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            442,
+            783,
+            516,
+            829
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "text",
+        "text": "Non-systematic risk ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            437,
+            188
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "text",
+        "text": "- Consider an equally weighted portfolio ",
+        "bbox": [
+            71,
+            270,
+            426,
+            312
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "equation",
+        "text": "$$\nR _ {p} = \\sum_ {i = 1} ^ {N} \\frac {R _ {i}}{N} = \\frac {1}{N} \\sum_ {i = 1} ^ {N} \\left[ R _ {f} + \\beta_ {i} (R _ {M} - R _ {f}) + e _ {i} \\right] = R _ {f} + \\beta_ {p} (R _ {M} - R _ {f}) + \\frac {1}{N} \\sum_ {i = 1} ^ {N} e _ {i}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            197,
+            351,
+            805,
+            468
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "text",
+        "text": "- Then, ",
+        "bbox": [
+            72,
+            507,
+            144,
+            546
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {p} ^ {2} = \\beta_ {p} ^ {2} \\sigma_ {M} ^ {2} + \\frac {1}{N ^ {2}} \\sum_ {i = 1} ^ {N} \\tau_ {i} ^ {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            195,
+            561,
+            405,
+            692
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "text",
+        "text": "Tends to 0 if N is large ",
+        "bbox": [
+            297,
+            750,
+            412,
+            777
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "text",
+        "text": "The Beta Coefficient ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            450,
+            181
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The beta coefficient is a key parameter in the capital asset pricing model (CAPM). ",
+            "- Beta (also referred to as financial elasticity or correlated relative volatility) can be regarded as a measure of the sensitivity of the asset's returns to market returns. ",
+            "- For a well diversified portfolio, "
+        ],
+        "bbox": [
+            70,
+            270,
+            914,
+            500
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If $\\beta_{i} > 1$ , the portfolio is more aggressive than the market portfolio. ",
+            "- If $\\beta_{i} = 1$ , the portfolio is as aggressive than the market portfolio ",
+            "- If $\\beta_{i} < 1$ , the portfolio is less aggressive than the market portfolio "
+        ],
+        "bbox": [
+            107,
+            509,
+            701,
+            650
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "text",
+        "text": "Performance Measures ",
+        "text_level": 1,
+        "bbox": [
+            207,
+            390,
+            791,
+            490
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "text",
+        "text": "Which investment do you prefer? ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            690,
+            192
+        ],
+        "page_idx": 52
+    },
+    {
+        "type": "image",
+        "img_path": "images/1f9fcc4c26c964729b6b81a53d4324c0a945d28090b5f926e2a714fd4c807a6c.jpg",
+        "image_caption": [
+            "Two Equal Return Investments: Which is Better? "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            159,
+            266,
+            767,
+            977
+        ],
+        "page_idx": 52
+    },
+    {
+        "type": "text",
+        "text": "Reasons for Performance Evaluation ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            743,
+            188
+        ],
+        "page_idx": 53
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Fund managers want to know ",
+            "- how good their portfolio performs ",
+            "- the ability to diversify a portfolio effectively ",
+            "- Investors want to ",
+            "- compare different investment products in the market ",
+            "- whether their investment advisors/ fund managers have “value added” "
+        ],
+        "bbox": [
+            71,
+            272,
+            850,
+            629
+        ],
+        "page_idx": 53
+    },
+    {
+        "type": "text",
+        "text": "Performance Measures ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            503,
+            179
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Sharpe Ratio ",
+            "2. Sortino Ratio ",
+            "3. Treynor Ratio ",
+            "4. Jensen's Alpha ",
+            "5. Information Ratio ",
+            "6. Maximum Drawdown ",
+            "7. Calmar Ratio "
+        ],
+        "bbox": [
+            110,
+            270,
+            368,
+            655
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "text",
+        "text": "Sharpe Ratio ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            312,
+            190
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- A risk-adjusted measure introduced by Sharpe in 1966 ",
+            "- Risk is measured by standard deviations of portfolio returns ",
+            "- Sharpe ratio (SR) is the reward-to-variability ratio for a portfolio. "
+        ],
+        "bbox": [
+            70,
+            270,
+            637,
+            431
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS R _ {p} = \\frac {E (R _ {p}) - R _ {f}}{\\sigma_ {p}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            244,
+            477,
+            401,
+            579
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "where $E\\big(R_p\\big)$ and $\\sigma_{p}$ are the annualized expected return and standard derivation respectively ",
+        "bbox": [
+            483,
+            500,
+            783,
+            570
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "• Aim: ",
+        "bbox": [
+            72,
+            624,
+            136,
+            659
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "- Compare $S R_{p}$ with the slope of the ex-post CML in which ",
+        "bbox": [
+            109,
+            672,
+            566,
+            714
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If $S{R}_{p} > S{R}_{M}$ ,our portfolio beat the market. ",
+            "- If $S{R}_{p} < S{R}_{M}$ ,our portfolio lost to the market. "
+        ],
+        "bbox": [
+            147,
+            718,
+            439,
+            794
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "We may also compare $S R_{p}$ with the slope of the peers. ",
+        "bbox": [
+            109,
+            800,
+            550,
+            842
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "Sharpe Ratio ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            312,
+            190
+        ],
+        "page_idx": 56
+    },
+    {
+        "type": "text",
+        "text": "- An investment is considered to be sensible if Sharpe ratio is at least 1. i.e. ",
+        "bbox": [
+            71,
+            268,
+            840,
+            318
+        ],
+        "page_idx": 56
+    },
+    {
+        "type": "text",
+        "text": "- for 1 unit of risk taken, you can get at least 1 unit of returns ",
+        "bbox": [
+            108,
+            327,
+            636,
+            372
+        ],
+        "page_idx": 56
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "In the asset management industry, ",
+            "It is very common to see funds having Sharpe ratio between 0.5 to 1.5 ",
+            "- A fund manager that achieve Sharpe ratio between 1.5 to 2.5 is considered to be good (around top $10\\%$ in the market) ",
+            "- A Sharpe ratio above 2.5 is exceptionally good investment (around the top $1 \\%$ "
+        ],
+        "bbox": [
+            72,
+            388,
+            860,
+            627
+        ],
+        "page_idx": 56
+    },
+    {
+        "type": "text",
+        "text": "Sharpe Ratio ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            312,
+            192
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- We can interpret Sharpe ratio in another way ",
+            "- Suppose risk-free rate $R_{f}$ is zero and return is normally distributed ",
+            "- Let's say we want Sharpe ratio to be greater than $z$ "
+        ],
+        "bbox": [
+            34,
+            268,
+            525,
+            457
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {E (R _ {p}) - R _ {f}}{\\sigma_ {p}} > z \\quad \\Rightarrow \\quad \\mu_ {p} - z \\sigma_ {p} > 0\n$$",
+        "text_format": "latex",
+        "bbox": [
+            150,
+            479,
+            483,
+            579
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- For $z = 1$ , we have $0.5 + 0.6827 / 2 = 84.14\\%$ probability for having positive return in a 1-year horizon. ",
+            "- For $z = 2$ , we have $0.5 + 0.9545 / 2 = 97.73\\%$ probability for having positive return in a 1-year horizon. ",
+            "- For $z = 3$ , we have $0.5 + 0.9973 / 2 = 99.87\\%$ probability for having positive return in a 1-year horizon. "
+        ],
+        "bbox": [
+            34,
+            631,
+            544,
+            885
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "image",
+        "img_path": "images/3570ee38fdd094cba17604ae1bd71380aa04d362cfbcc7157005d77a2d4eb0ad.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            558,
+            314,
+            1000,
+            733
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "text",
+        "text": "Sharpe Ratio - example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            501,
+            188
+        ],
+        "page_idx": 58
+    },
+    {
+        "type": "text",
+        "text": "- Suppose risk-free rate is $1\\%$ . You are given the following monthly returns of a fund. Calculate the Sharpe ratio. ",
+        "bbox": [
+            70,
+            270,
+            877,
+            368
+        ],
+        "page_idx": 58
+    },
+    {
+        "type": "table",
+        "img_path": "images/009fc9f69c5fafe9b1ed715416c09195f98a9f104d10887cf4153353488ad63f.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Month</td><td>Jan-24</td><td>Feb-24</td><td>Mar-24</td><td>Apr-24</td><td>May-24</td><td>Jun-24</td><td>Jul-24</td><td>Aug-24</td><td>Sep-24</td><td>Oct-24</td><td>Nov-24</td><td>Dec-24</td></tr><tr><td>Return</td><td>1.20%</td><td>2.30%</td><td>-1.50%</td><td>0.80%</td><td>1.70%</td><td>-2.10%</td><td>3.20%</td><td>0.40%</td><td>2.10%</td><td>-0.90%</td><td>1.10%</td><td>0.30%</td></tr></table>",
+        "bbox": [
+            46,
+            398,
+            960,
+            479
+        ],
+        "page_idx": 58
+    },
+    {
+        "type": "text",
+        "text": "- Answer: ",
+        "bbox": [
+            71,
+            522,
+            181,
+            562
+        ],
+        "page_idx": 58
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Average monthly return $= \\frac{\\left( {{1.2}\\%  + {2.3}\\%  + \\cdots  + {0.3}\\% }\\right) /{12}} = {0.7167}\\%$ ",
+            "Monthly std dev = $\\sqrt{\\frac{(1.2\\%-0.7167\\%)^2+(2.3\\%-0.7167\\%)^2+\\cdots+(0.3\\%-0.7167\\%)^2}{12-1}}$ = 1.59% ",
+            "- Annualized return $= {12}^{ * }{0.7167}\\%  = {8.6}\\%$ ",
+            "Annual std dev = 1.59%*√12 = 5.4948% ",
+            "- Sharp ratio $= \\frac{8.6\\% - 1\\%}{5.4948\\%} = 1.383$ "
+        ],
+        "bbox": [
+            107,
+            574,
+            822,
+            885
+        ],
+        "page_idx": 58
+    },
+    {
+        "type": "text",
+        "text": "Sharpe Ratio - example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            501,
+            188
+        ],
+        "page_idx": 59
+    },
+    {
+        "type": "text",
+        "text": "Given the following info: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            270,
+            283,
+            309
+        ],
+        "page_idx": 59
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "average annual risk-free return was $5 \\%$ ",
+            "average annual return on the S&P 500 was $24.1\\%$ ",
+            "average annual return on Fund A was $20.5\\%$ ",
+            "average annual return on Fund B was $11.8\\%$ ",
+            "- betas of Fund A and Fund B are 1.0 and 0.6, respectively ",
+            "standard deviation of S&P 500 was $14\\%$ ",
+            "standard deviation of Fund A was $15\\%$ ",
+            "standard deviation of Fund B was $10\\%$ "
+        ],
+        "bbox": [
+            110,
+            320,
+            560,
+            672
+        ],
+        "page_idx": 59
+    },
+    {
+        "type": "text",
+        "text": "We evaluate the performance of the two funds ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            755,
+            513,
+            798
+        ],
+        "page_idx": 59
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• $S R_{F u n d A} = (20.5 - 5) / 15 = 1.003$ ",
+            "• $S R_{F u n d B} = (11.8 - 5) / 15 = 0.68$ ",
+            "• $S R_{S \\& P 500} = (24.1 - 5) / 14 = 1.346$ "
+        ],
+        "bbox": [
+            110,
+            807,
+            380,
+            924
+        ],
+        "page_idx": 59
+    },
+    {
+        "type": "text",
+        "text": "none of the funds can beat the market ",
+        "bbox": [
+            497,
+            857,
+            817,
+            890
+        ],
+        "page_idx": 59
+    },
+    {
+        "type": "text",
+        "text": "Sharpe Ratio - example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            501,
+            192
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "text",
+        "text": "- When the dotted lines of portfolios (Fund A and Fund B) are flatter than the solid line (the ex-post CML for S&P 500), the performance of both portfolios is worse than the market portfolio because the CML represents the efficient allocation of capital between market portfolio and risk-free asset. ",
+        "bbox": [
+            70,
+            268,
+            926,
+            431
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "image",
+        "img_path": "images/ace886ecdeb3177799c8d81c0eb6277f08aa84da7ac267fb208cc7519357c1be.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            213,
+            435,
+            775,
+            998
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "text",
+        "text": "Sharpe Ratio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            309,
+            188
+        ],
+        "page_idx": 61
+    },
+    {
+        "type": "text",
+        "text": "- Advantages ",
+        "bbox": [
+            75,
+            272,
+            211,
+            316
+        ],
+        "page_idx": 61
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Easy to interpret and calculate ",
+            "Useful for comparing different portfolios "
+        ],
+        "bbox": [
+            110,
+            331,
+            475,
+            416
+        ],
+        "page_idx": 61
+    },
+    {
+        "type": "text",
+        "text": "- Limitations ",
+        "bbox": [
+            75,
+            440,
+            207,
+            477
+        ],
+        "page_idx": 61
+    },
+    {
+        "type": "text",
+        "text": "- Sensitive to the choice of the risk-free rate and sampling period ",
+        "bbox": [
+            110,
+            494,
+            667,
+            531
+        ],
+        "page_idx": 61
+    },
+    {
+        "type": "text",
+        "text": "Sortino Ratio ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            112,
+            316,
+            181
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "- Sortino Ratio is similar to Sharpe Ratio but focuses on downside risk $\\sigma_{d}$ ",
+        "bbox": [
+            70,
+            270,
+            815,
+            325
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} {S o r t i n o R a t i o = \\frac {E (R _ {p}) - R _ {f}}{\\sigma_ {d}}} \\\\ {\\mathrm {w h e r e}} \\end{array} \\left\\{ \\begin{array}{l} {\\mu_ {d} = \\frac {1}{n} \\sum_ {i = 1} ^ {n} \\min (0, r _ {i})} \\\\ {\\sigma_ {d} = \\sqrt {\\frac {1}{n - 1} \\sum_ {i = 1} ^ {n} [ \\min (0 , r _ {i}) - \\mu_ {d} ] ^ {2}}} \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            168,
+            370,
+            822,
+            700
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "- Aim: choose the portfolio with the highest Sortino Ratio ",
+        "bbox": [
+            70,
+            803,
+            661,
+            851
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "Sortino Ratio - example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            112,
+            503,
+            188
+        ],
+        "page_idx": 63
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Assume risk free rate $= 0\\%$ ",
+            "Given a return series $= \\{1\\%, 1.2\\%, -0.5\\%, -1.6\\%, 2.1\\% \\}$ ",
+            "- Downside return series = $\\{0\\%, 0\\%, -0.5\\%, -1.6\\%, 0\\%\\}$ "
+        ],
+        "bbox": [
+            75,
+            270,
+            678,
+            451
+        ],
+        "page_idx": 63
+    },
+    {
+        "type": "text",
+        "text": "We have ",
+        "bbox": [
+            75,
+            538,
+            181,
+            579
+        ],
+        "page_idx": 63
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\cdot E \\left(R _ {p}\\right) = \\frac {1 \\% + 1.2 \\% - 0.5 \\% - 1.6 \\% + 2.1 \\%}{5} = 0.0044 \\\\ \\cdot \\mu_ {d} = \\frac {0 + 0 - 0 . 5 \\% - 1 . 6 \\% + 0}{5} = - 0. 0 0 4 2 \\\\ \\cdot \\sigma_ {d} = \\sqrt {\\frac {(0 + 0 . 0 0 4 2) ^ {2} + (0 + 0 . 0 0 4 2) ^ {2} + (- 0 . 5 \\% + 0 . 0 0 4 2) ^ {2} + (- 1 . 6 \\% + 0 . 0 0 4 2) ^ {2} + (0 + 0 . 0 0 4 2) ^ {2}}{4}} = 0. 0 0 6 9 4 2 6 2 \\\\ \\cdot \\text {S o r t i n o R a t i o} = \\frac {0 . 0 0 4 4 - 0}{0 . 0 0 6 9 4 2 6 2} = 0. 6 3 3 8 \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            112,
+            590,
+            881,
+            881
+        ],
+        "page_idx": 63
+    },
+    {
+        "type": "text",
+        "text": "Sortino Ratio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            313,
+            179
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Pros: ",
+            "Take into account of downside risk ",
+            "- Cons: ",
+            "- Also sensitive to the choice of risk-free rate and sampling period "
+        ],
+        "bbox": [
+            75,
+            272,
+            783,
+            516
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "text",
+        "text": "Treynor Ratio (1965) ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            450,
+            188
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "text",
+        "text": "- Similar to Sharpe Ratio but risk is measured by portfolio beta ",
+        "bbox": [
+            71,
+            270,
+            710,
+            316
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT r e y n o r R a t i o = \\frac {E (R _ {p}) - R _ {f}}{\\beta_ {p}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            311,
+            394,
+            554,
+            494
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "text",
+        "text": "• Aim: ",
+        "bbox": [
+            72,
+            538,
+            134,
+            572
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Choose the portfolio with the highest Treynor Ratio ",
+            "- Compare $T R_{p}$ with the slope of the ex-post SML "
+        ],
+        "bbox": [
+            110,
+            585,
+            525,
+            674
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "If $TP_{p} > TP_{M}$ , our portfolio beat the market. ",
+            "If $TP_{p} < TP_{M}$ , our portfolio lost to the market. "
+        ],
+        "bbox": [
+            147,
+            679,
+            477,
+            762
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "text",
+        "text": "We may also compare $T P_{p}$ with the slope of the peers. ",
+        "bbox": [
+            110,
+            768,
+            547,
+            809
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "text",
+        "text": "Treynor Ratio - example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            512,
+            188
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "text",
+        "text": "Given the following info: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            270,
+            283,
+            309
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "average annual risk-free return was $5 \\%$ ",
+            "average annual return on the S&P 500 was $24.1\\%$ ",
+            "average annual return on Fund A was $20.5\\%$ ",
+            "average annual return on Fund B was $11.8\\%$ ",
+            "- betas of Fund A and Fund B are 1.0 and 0.6, respectively ",
+            "standard deviation of S&P 500 was $14\\%$ ",
+            "standard deviation of Fund A was $15\\%$ ",
+            "standard deviation of Fund B was $10\\%$ "
+        ],
+        "bbox": [
+            110,
+            320,
+            564,
+            672
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "text",
+        "text": "We evaluate the performance of the two funds ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            755,
+            513,
+            796
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• $T R_{F u n d A} = (20.5\\% - 5\\%) / 1 = 0.155$ ",
+            "• $T R_{F u n d B} = (11.8\\% - 5\\%) / 0.6 = 0.113$ ",
+            "- $TR_{S\\& P500} = (24.1\\% - 5\\%) / 1 = 0.191$ "
+        ],
+        "bbox": [
+            110,
+            807,
+            413,
+            924
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "text",
+        "text": "none of the funds can beat the market ",
+        "bbox": [
+            516,
+            857,
+            837,
+            890
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "text",
+        "text": "Treynor Ratio - example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            111,
+            512,
+            190
+        ],
+        "page_idx": 67
+    },
+    {
+        "type": "text",
+        "text": "- When the dotted lines of portfolios (Fund A and Fund B) are flatter than the solid line (the ex-post SML for S&P 500), the performance of both portfolios is worse than the market index. ",
+        "bbox": [
+            71,
+            268,
+            918,
+            412
+        ],
+        "page_idx": 67
+    },
+    {
+        "type": "image",
+        "img_path": "images/477064c4920e9ac7d1cd5c6ef41d1e039494b3e1d4b3e5a160d919d06b75c0fb.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            250,
+            435,
+            760,
+            977
+        ],
+        "page_idx": 67
+    },
+    {
+        "type": "text",
+        "text": "Jensen's Alpha (1968) ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            472,
+            192
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "text",
+        "text": "- Jensen's Alpha (from the SML) ",
+        "bbox": [
+            71,
+            268,
+            351,
+            312
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {p} = E \\big (R _ {p} \\big) - \\big \\{R _ {f} + \\beta_ {p} \\big [ E (R _ {M}) - R _ {f} \\big ] \\big \\}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            269,
+            340,
+            580,
+            394
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "text",
+        "text": "Expected return from CAPM ",
+        "bbox": [
+            421,
+            459,
+            567,
+            485
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "text",
+        "text": "- $\\alpha_{p}$ can be estimated from ",
+        "bbox": [
+            72,
+            564,
+            316,
+            611
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "equation",
+        "text": "$$\n(R _ {p} - R _ {f}) _ {t} = \\alpha_ {p} + \\beta_ {p} (E (R _ {M}) - R _ {f}) _ {t} + e _ {p, t}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            266,
+            633,
+            600,
+            681
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "We can test for $H_{0}$ : $\\alpha_{0} = 0$ ",
+            "If $\\alpha_0 > 0$ , our portfolio beat the market ",
+            "If $\\alpha_0 < 0$ , our portfolio beat the market "
+        ],
+        "bbox": [
+            109,
+            733,
+            401,
+            850
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "text",
+        "text": "Jensen's Alpha - example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            535,
+            192
+        ],
+        "page_idx": 69
+    },
+    {
+        "type": "text",
+        "text": "Given the following info: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            270,
+            283,
+            309
+        ],
+        "page_idx": 69
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "average annual risk-free return was $5 \\%$ ",
+            "average annual return on the S&P 500 was $24.1\\%$ ",
+            "average annual return on Fund A was $20.5\\%$ ",
+            "average annual return on Fund B was $11.8\\%$ ",
+            "- betas of Fund A and Fund B are 1.0 and 0.6, respectively ",
+            "standard deviation of S&P 500 was $14\\%$ ",
+            "standard deviation of Fund A was $15\\%$ ",
+            "standard deviation of Fund B was $10\\%$ "
+        ],
+        "bbox": [
+            110,
+            322,
+            560,
+            670
+        ],
+        "page_idx": 69
+    },
+    {
+        "type": "text",
+        "text": "We evaluate the performance of the two funds ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            755,
+            512,
+            798
+        ],
+        "page_idx": 69
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- $\\alpha_{Fund A} = 20.5\\% - [5\\% + 1(24.1 - 5)] = -3.6\\%$ . ",
+            "- $\\alpha_{\\text {Fund } B} = 11.8\\% - [5\\% + 0.6(24.1 - 5)] = -4.66\\%$ "
+        ],
+        "bbox": [
+            110,
+            807,
+            507,
+            883
+        ],
+        "page_idx": 69
+    },
+    {
+        "type": "text",
+        "text": "none of the funds can beat the market ",
+        "bbox": [
+            589,
+            838,
+            909,
+            870
+        ],
+        "page_idx": 69
+    },
+    {
+        "type": "text",
+        "text": "Jensen's Alpha - example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            535,
+            192
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "- When the points of portfolios (Fund A and Fund B) are below the ex-post SML for S&P 500, the performance of both portfolios is worse than the market index. ",
+        "bbox": [
+            71,
+            266,
+            922,
+            368
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "image",
+        "img_path": "images/25965b232fa8acc0ce35488e5c100a4c32db7a70938c1862c3ed9ef8626bc15d.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            223,
+            377,
+            778,
+            998
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "Jensen's Alpha ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            340,
+            188
+        ],
+        "page_idx": 71
+    },
+    {
+        "type": "text",
+        "text": "- Note that Treynor Ratio and Jensen's Alpha can be illustrated in return-beta plane. ",
+        "bbox": [
+            75,
+            270,
+            855,
+            364
+        ],
+        "page_idx": 71
+    },
+    {
+        "type": "image",
+        "img_path": "images/b33111658187dd671dc9dee73b724827f8af2938517d7723aea90d90f0d661d6.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            202,
+            448,
+            795,
+            959
+        ],
+        "page_idx": 71
+    },
+    {
+        "type": "text",
+        "text": "Comparing the Measures ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            112,
+            542,
+            188
+        ],
+        "page_idx": 72
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• $T R_{p}$ and $\\alpha_{p}$ usually give the same sign and ranking. ",
+            "- It is possible that $S{R}_{p}$ indicate our portfolio lost to the market while $T{R}_{p}$ and ${\\alpha }_{p}$ indicate that our portfolio beat the market because the presence of non-systematic risk in our portfolio. ",
+            "- $SR_{p}$ can rank a set of portfolios differently than $TR_{p}$ and $\\alpha_{p}$ since they use different risk measures. ",
+            "- All the measures may not be meaningful if $E(R_{M}) < R_{f}$ since both the SML and CML will be downward sloping. ",
+            "- All the measures have been criticized for the subjectivity in the choice of the market index and the risk-free rate. "
+        ],
+        "bbox": [
+            70,
+            270,
+            919,
+            714
+        ],
+        "page_idx": 72
+    },
+    {
+        "type": "text",
+        "text": "Information Ratio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            402,
+            181
+        ],
+        "page_idx": 73
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Other than comparing with the risk-free rate $R_{f}$ , we can also choose a benchmark rate of return, $R_{b}$ , for comparison. ",
+            "- Define the tracking error "
+        ],
+        "bbox": [
+            70,
+            270,
+            912,
+            412
+        ],
+        "page_idx": 73
+    },
+    {
+        "type": "equation",
+        "text": "$$\nT E = \\sigma (R _ {p} - R _ {b})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            309,
+            448,
+            458,
+            494
+        ],
+        "page_idx": 73
+    },
+    {
+        "type": "text",
+        "text": "- Then the information ratio (or appraisal ratio) is ",
+        "bbox": [
+            70,
+            548,
+            501,
+            590
+        ],
+        "page_idx": 73
+    },
+    {
+        "type": "equation",
+        "text": "$$\nI R = \\frac {E (R _ {p} - R _ {b})}{\\sigma (R _ {p} - R _ {b})}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            300,
+            622,
+            447,
+            718
+        ],
+        "page_idx": 73
+    },
+    {
+        "type": "text",
+        "text": "- Aim: choose the portfolio with the largest Information Ratio ",
+        "bbox": [
+            70,
+            783,
+            604,
+            825
+        ],
+        "page_idx": 73
+    },
+    {
+        "type": "text",
+        "text": "Information Ratio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            402,
+            181
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "text",
+        "text": "- Suppose the benchmark is the portfolio on SML with the same beta and its expected return is ",
+        "bbox": [
+            70,
+            270,
+            887,
+            314
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE (R _ {b}) = R _ {f} + \\beta_ {p} [ E (R _ {p}) - R _ {f} ]\n$$",
+        "text_format": "latex",
+        "bbox": [
+            284,
+            357,
+            534,
+            412
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Using $R_{p} - R_{f} = \\alpha_{p} + \\beta_{p}\\big[R_{M} - R_{f}\\big] + e_{p}$ with $\\operatorname {E}(e_p) = 0$ and $\\operatorname {Var}\\bigl (e_p\\bigr) = \\tau_p^2$ ",
+            "Therefore, "
+        ],
+        "bbox": [
+            70,
+            444,
+            746,
+            551
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{\\begin{array}{r l r}E (R _ {p} - R _ {b}) = \\alpha_ {p}&&\\rightarrow I R = \\frac {\\alpha_ {p}}{\\tau_ {p}}\\\\\\sigma (R _ {p} - R _ {b}) = \\tau_ {p}&&\\end{array}\\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            240,
+            564,
+            600,
+            738
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "text",
+        "text": "Information Ratio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            402,
+            181
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Using information ratio, evaluate the performance of the two funds: ",
+            "- Recall that "
+        ],
+        "bbox": [
+            71,
+            270,
+            671,
+            366
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {F u n d A} = 20.5 \\% - [ 5 \\% + 1 (24.1 - 5) ] = -3.6 \\%\n$$",
+        "text_format": "latex",
+        "bbox": [
+            235,
+            366,
+            636,
+            405
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {F u n d B} = 11.8 \\% - [ 5 \\% + 0.6 (24.1 - 5) ] = -4.66 \\%\n$$",
+        "text_format": "latex",
+        "bbox": [
+            237,
+            405,
+            661,
+            448
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "text",
+        "text": "• Also, $\\sigma_{p}^{2} = \\beta_{p}^{2} \\sigma_{M}^{2} + \\tau_{p}^{2}$ . So we have ",
+        "bbox": [
+            71,
+            501,
+            390,
+            553
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tau_ {F u n d A} = \\sqrt {1 5 ^ {2} - 1 ^ {2} 1 4 ^ {2}} = 5. 3 8 5 2\n$$",
+        "text_format": "latex",
+        "bbox": [
+            241,
+            577,
+            542,
+            631
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\tau_ {F u n d B} = \\sqrt {10 ^ {2} - 0.6 ^ {2} 14 ^ {2}} = 5.4259 \\%\n$$",
+        "text_format": "latex",
+        "bbox": [
+            237,
+            638,
+            550,
+            692
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "text",
+        "text": "Therefore, ",
+        "bbox": [
+            72,
+            744,
+            183,
+            783
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "equation",
+        "text": "$$\nI R _ {F u n d A} = \\frac {- 3 . 6}{5 . 3 8 5 2} = - 0. 6 6 8 5\n$$",
+        "text_format": "latex",
+        "bbox": [
+            229,
+            761,
+            450,
+            833
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "equation",
+        "text": "$$\nI R _ {F u n d B} = \\frac {- 4 . 6 6}{5 . 4 2 5 9} = - 0. 8 5 8 8\n$$",
+        "text_format": "latex",
+        "bbox": [
+            229,
+            851,
+            450,
+            925
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "text",
+        "text": "$\\rightarrow$ Fund A is better than Fund B, but both perform worse than the benchmark ",
+        "bbox": [
+            562,
+            824,
+            936,
+            881
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "text",
+        "text": "Information Ratio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            402,
+            181
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "text",
+        "text": "Remarks: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            272,
+            171,
+            312
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "text",
+        "text": "- If $R_{p} - R_{f} = \\alpha_{p} + \\beta_{p}\\left[R_{M} - R_{f}\\right] + e_{p}$ is fitted using monthly data, we obtain monthly $IR =$ ",
+        "bbox": [
+            107,
+            325,
+            905,
+            444
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "text",
+        "text": "- Annualized $IR = \\frac{12\\alpha_p}{\\sqrt{12}\\tau_p} = \\sqrt{12} IR$ ",
+        "bbox": [
+            109,
+            446,
+            417,
+            522
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "text",
+        "text": "- Grinold and Kahn (2000, Active Portfolio Management, McGrawHill, 2nd Ed) argued that reasonable IR should range from 0.50 to 1.00. ",
+        "bbox": [
+            107,
+            574,
+            880,
+            655
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Good: IR > 0.5 ",
+            "- Exceptional: IR > 1.0 "
+        ],
+        "bbox": [
+            147,
+            664,
+            325,
+            746
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "text",
+        "text": "Maximum Drawdown ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            472,
+            181
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Maximum Drawdown (MDD), expressed as a percentage, measures the largest peak-to-trough decline in the value of an investment portfolio ",
+            "- Indicates potential risk and the worst-case scenario for an investor. ",
+            "- Useful for assessing the volatility and risk of an investment strategy. ",
+            "- Formula: "
+        ],
+        "bbox": [
+            70,
+            270,
+            887,
+            522
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "equation",
+        "text": "$$\nM D D = \\frac {P _ {p e a k} - P _ {t r o u g h}}{P _ {p e a k}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            315,
+            553,
+            520,
+            646
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "where $P_{peak} = \\text{Maximum value (peak) of the portfolio}$ $P_{trough} = \\text{Minimum value (trough) following the peak}$ ",
+        "bbox": [
+            179,
+            707,
+            671,
+            798
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "Maximum Drawdown ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            471,
+            181
+        ],
+        "page_idx": 78
+    },
+    {
+        "type": "image",
+        "img_path": "images/f6f6a101506ed9c7f2c0abccf145a0dab8d89c64546732d24bd6b9080ff7d8d5.jpg",
+        "image_caption": [
+            "Time "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            161,
+            240,
+            867,
+            883
+        ],
+        "page_idx": 78
+    },
+    {
+        "type": "text",
+        "text": "Maximum Drawdown - example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            660,
+            188
+        ],
+        "page_idx": 79
+    },
+    {
+        "type": "text",
+        "text": "- Suppose the daily portfolio value is [100, 120, 90, 110, 80, 130, 70, 150] ",
+        "bbox": [
+            71,
+            268,
+            820,
+            322
+        ],
+        "page_idx": 79
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [],
+        "code_body": "import numpy as np   \ndef calculate_mdd(data): portfolio_values $\\equiv$ np.array(data) #Calculate the running maximum running_max $=$ npmaximumaccumulate.portfolio_values) #Calculate drawdowns drawdowns $=$ (running_max - portfolio_values)/running_max #Maximum Drawdown max_drawdown $=$ np.max drawnowns return max_drawdown   \nmdd $=$ calculate_mdd([100, 120, 90, 110, 80, 130, 70, 150])   \nprint(f\"Maximum Drawdown: {mdd:.}\") ",
+        "bbox": [
+            63,
+            377,
+            480,
+            942
+        ],
+        "page_idx": 79
+    },
+    {
+        "type": "text",
+        "text": "Maximum Drawdown: $46.15\\%$ ",
+        "bbox": [
+            517,
+            414,
+            743,
+            444
+        ],
+        "page_idx": 79
+    },
+    {
+        "type": "text",
+        "text": "Calmar Ratio ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            312,
+            181
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The Calmar Ratio measures the performance of an investment relative to its maximum drawdown. ",
+            "- Formula: "
+        ],
+        "bbox": [
+            71,
+            270,
+            865,
+            427
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "equation",
+        "text": "$$\nC a l m a r R a t i o = \\frac {A n n u a l i z e d R e t u r n}{\\left| M a x . D r a w d o w n \\right|}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            278,
+            451,
+            619,
+            546
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Pros: risk adjusted metric that focus on downside risk ",
+            "- Cons: ignore the frequency of drawdown or volatility within the period "
+        ],
+        "bbox": [
+            71,
+            651,
+            810,
+            764
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "text",
+        "text": "Calmar Ratio - Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            501,
+            188
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Given a portfolio's monthly value: [100, 120, 90, 110, 80, 130, 70, 150], what is the Calmar Ratio? ",
+            "- Answer: "
+        ],
+        "bbox": [
+            54,
+            272,
+            525,
+            479
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Max. Drawdown = 46.15% ",
+            "- Annualized Return = (20% - 25% + 22.22% +...+ 114.29%) / 7*12 = 206.71% ",
+            "- Thus, Calmar Ratio = 206.71%/ 46.15% = 4.48 "
+        ],
+        "bbox": [
+            91,
+            494,
+            505,
+            670
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "table",
+        "img_path": "images/597b27802346b7e0578f0be0a2a7eea462e8802f393db2706ffaec672431a610.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Month</td><td>Portfolio Value</td><td>Monthly Return</td><td>Drawdown</td></tr><tr><td>1</td><td>100</td><td></td><td>0.00%</td></tr><tr><td>2</td><td>120</td><td>20.00%</td><td>0.00%</td></tr><tr><td>3</td><td>90</td><td>-25.00%</td><td>25.00%</td></tr><tr><td>4</td><td>110</td><td>22.22%</td><td>8.33%</td></tr><tr><td>5</td><td>80</td><td>-27.27%</td><td>33.33%</td></tr><tr><td>6</td><td>130</td><td>62.50%</td><td>0.00%</td></tr><tr><td>7</td><td>70</td><td>-46.15%</td><td>46.15%</td></tr><tr><td>8</td><td>150</td><td>114.29%</td><td>0.00%</td></tr></table>",
+        "bbox": [
+            546,
+            335,
+            1000,
+            750
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Choosing an Appropriate Measure ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            707,
+            188
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "- The criterion to choose an appropriate performance measure depends on the investment assumptions. ",
+        "bbox": [
+            70,
+            272,
+            821,
+            379
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If the portfolio represents our entire risky investment fund, use Sharpe, Sortino or Calmar Ratio. ",
+            "- For an actively managed portfolio with benchmark comparison, use Information ratio ",
+            "- If the portfolio is one of many portfolios combined into a large investment fund, use the Jensen's alpha or the Treynor ratio but the Treynor ratio is more complete because it adjusts for risk. "
+        ],
+        "bbox": [
+            107,
+            392,
+            917,
+            740
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Inclusion of a new asset ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            516,
+            187
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "text",
+        "text": "- If we are holding a portfolio $P$ , we will add the new asset $Q$ to our portfolio if ",
+        "bbox": [
+            71,
+            266,
+            875,
+            322
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS R _ {Q} > S R _ {P} C o r r (R _ {Q}, R _ {P})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            341,
+            361,
+            547,
+            409
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "image",
+        "img_path": "images/9fdfd563f76da05f371b4c658cbb8cee95c7d65065ad3bb7fa7bbe262aea1a51.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            240,
+            450,
+            723,
+            998
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "text",
+        "text": "Stop Loss & Risk Limit Control ",
+        "text_level": 1,
+        "bbox": [
+            126,
+            394,
+            865,
+            500
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "Stop Loss ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            250,
+            188
+        ],
+        "page_idx": 85
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Minimizes losses on losing trades. ",
+            "• Removes emotional decision-making during losses. ",
+            "- Types of Stop Loss "
+        ],
+        "bbox": [
+            71,
+            272,
+            697,
+            474
+        ],
+        "page_idx": 85
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Fixed Stop Loss ",
+            "2. Trailing Stop Loss ",
+            "3. Dollar Risk Approach ",
+            "4. Portfolio level Stop Loss "
+        ],
+        "bbox": [
+            109,
+            485,
+            392,
+            707
+        ],
+        "page_idx": 85
+    },
+    {
+        "type": "text",
+        "text": "Trade level ",
+        "bbox": [
+            423,
+            516,
+            509,
+            550
+        ],
+        "page_idx": 85
+    },
+    {
+        "type": "text",
+        "text": "Already discussed in L6 ",
+        "bbox": [
+            504,
+            612,
+            683,
+            650
+        ],
+        "page_idx": 85
+    },
+    {
+        "type": "text",
+        "text": "Fixed Stop Loss ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            357,
+            188
+        ],
+        "page_idx": 86
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Set the stop loss at a specific price level. ",
+            "• For example, we buy 1 share of a stock at $100 and set stop loss at$ 90. "
+        ],
+        "bbox": [
+            70,
+            270,
+            885,
+            451
+        ],
+        "page_idx": 86
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- When price drops significantly, our position will be automatically closed at \\(90. ",
+            "- The maximum loss of this trade is capped at $10. "
+        ],
+        "bbox": [
+            107,
+            466,
+            883,
+            620
+        ],
+        "page_idx": 86
+    },
+    {
+        "type": "text",
+        "text": "Fixed Stop Loss ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            357,
+            188
+        ],
+        "page_idx": 87
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Implement on ALGOGENE (https://algogene.com/TechDoc#PlaceOrder) ",
+            "- Eg. We set TP and SL at $10\\%$ from the current mid price "
+        ],
+        "bbox": [
+            71,
+            268,
+            820,
+            385
+        ],
+        "page_idx": 87
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "def on_marketdatafeed(self, md, ab):  \n    sl = md.midPrice*0.9  \n    tp = md.midPrice*1.1  \n    order = AlgoAPIUtil.OrderObject(instrument = md.instrument, openclose = 'open', buysell = 1, #1=buy, -1=sell  \n    ordertype = 0,  \n    volume = 1.  \n    stopLossLevel = sl,  \n    takeProfitLevel = tp  \n)  \nself.evt.sendOrder(order) ",
+        "guess_lang": "python",
+        "bbox": [
+            284,
+            470,
+            527,
+            942
+        ],
+        "page_idx": 87
+    },
+    {
+        "type": "text",
+        "text": "Trailing Stop Loss ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            111,
+            391,
+            188
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- A trailing stop loss is a dynamic order that adjusts as the price of an asset moves in your favor, locking in profits while limiting potential losses. ",
+            "- Mechanism: (assume buy order) "
+        ],
+        "bbox": [
+            51,
+            277,
+            576,
+            488
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Set at a specific percentage or amount below the market price. ",
+            "- As the price increases, the stop loss level moves up, but it does not move down. "
+        ],
+        "bbox": [
+            89,
+            498,
+            547,
+            662
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "- Benefits: ",
+        "bbox": [
+            52,
+            688,
+            165,
+            729
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Protects profits while allowing for potential gains as the price increases. ",
+            "- Reduces the need for constant monitoring. "
+        ],
+        "bbox": [
+            89,
+            742,
+            550,
+            872
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "image",
+        "img_path": "images/30fa209ea2170f2dfd3fd113a7a1b9f36a46b48729156b97e212def6ec7b5d43.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            595,
+            353,
+            1000,
+            753
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "Trailing Stop Loss ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            391,
+            188
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "Example: ",
+        "bbox": [
+            75,
+            272,
+            203,
+            327
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Initial Position: Buy 100 shares of XYZ stock at $50. ",
+            "- Trailing Stop Loss: Set at $5 below the highest price reached. "
+        ],
+        "bbox": [
+            110,
+            337,
+            742,
+            442
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "- Price Movement: ",
+        "bbox": [
+            75,
+            464,
+            297,
+            509
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• If XYZ rises to $55, the trailing stop loss adjusts to $50 (i.e. $55 - $5). ",
+            "- If XYZ then rises to $60, the trailing stop loss moves up to $55. ",
+            "- If XYZ drops to $55, the order triggers a sell, locking in a $5 profit per share. "
+        ],
+        "bbox": [
+            110,
+            525,
+            893,
+            685
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "- Outcome: ",
+        "bbox": [
+            75,
+            712,
+            211,
+            755
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Final Sell Price: $55 (when trailing stop is triggered). ",
+            "Profit: $(\\$ 55 - \\$ 50) $x 100 shares = \\$ 500. "
+        ],
+        "bbox": [
+            110,
+            772,
+            655,
+            875
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "Trailing Stop Loss ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            391,
+            188
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Implement on ALGOGENE (https://algogene.com/TechDoc#PlaceOrder) ",
+            "- Eg. We set trailing stop at $5 \\%$ from its highest value "
+        ],
+        "bbox": [
+            71,
+            268,
+            816,
+            387
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "text",
+        "text": "def on_marketdatafeed(self, md, ab): ",
+        "bbox": [
+            284,
+            507,
+            561,
+            550
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "order = AlgoAPIUtil.OrderObject( instrument = md.instrument, openclose = 'open', buysell = 1, #1=buy, -1=sell ordertype = 0, volume = 1, trailingstop = 0.05  \n) self.evt.sendOrder(order) ",
+        "guess_lang": "python",
+        "bbox": [
+            300,
+            574,
+            553,
+            907
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "text",
+        "text": "Portfolio Stop Loss ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            417,
+            188
+        ],
+        "page_idx": 91
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- When a portfolio involves multiple positions, instruments, or trading strategies, setting only a trade level stop loss will not be sufficient. ",
+            "- A portfolio stop loss acts as a $2^{\\text{nd}}$ layer protection for overall capital. "
+        ],
+        "bbox": [
+            71,
+            270,
+            897,
+            435
+        ],
+        "page_idx": 91
+    },
+    {
+        "type": "image",
+        "img_path": "images/3b0640af1b7751b9a031578e5f83b6a9ca3cad517a2c4fbdd7013725af93a344.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            230,
+            494,
+            743,
+            1000
+        ],
+        "page_idx": 91
+    },
+    {
+        "type": "text",
+        "text": "Portfolio Stop Loss ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            109,
+            417,
+            188
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "- Implement on ALGOGENE ",
+        "bbox": [
+            73,
+            272,
+            358,
+            316
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "(https://algogene.com/TechDoc#UpdatePortfolioStop) ",
+        "bbox": [
+            91,
+            320,
+            492,
+            416
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "- Eg. We set portfolio stop at $10\\%$ from its highest value ",
+        "bbox": [
+            75,
+            435,
+            473,
+            529
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "class AlgoEvent: ",
+        "bbox": [
+            539,
+            233,
+            650,
+            264
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "def __init__(self): ",
+        "bbox": [
+            556,
+            266,
+            666,
+            296
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "pass ",
+        "bbox": [
+            572,
+            301,
+            605,
+            327
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "def start(self, mEvt): ",
+        "bbox": [
+            555,
+            357,
+            687,
+            388
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "self.evt = AlgoAPI_Backtest.AlgoEvtHandler(self, mEvt) ",
+        "bbox": [
+            572,
+            390,
+            931,
+            420
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "self.evt.update portfolioslsl $\\mathsf{sl} = 0.1$ ,resume_after $= 60^{*}60^{*}24^{*}7$ ",
+        "bbox": [
+            571,
+            422,
+            970,
+            451
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "self.evt.start()",
+        "bbox": [
+            571,
+            483,
+            662,
+            514
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "table",
+        "img_path": "images/0748cda5c46845e74fd456ce3d9cabaee69cebd9b3df77de93c458771076a14d.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>&#x27;self.evt.update portfoliosl&#x27; INPUT\nPARAMETER</td><td>IS\nNECESSARY</td><td>DATA\nTYPE</td><td>DESCRIPTIONS</td><td>SAMPLE</td></tr><tr><td>sl</td><td>Yes</td><td>float</td><td>• the stoploss (in percentage) from a portfolio NAV&#x27;s high water mark\n• value between 0 to 1. eg. 0.1 refers to cutting all positions when a portfolio NAV drops 10% from its previous highest level.\n• set the value to 0 to disable this feature\n• once this stoploss condition trigger, the high water level will be reset to the latest NAV</td><td>0.1</td></tr><tr><td>resume_after</td><td>No</td><td>float</td><td>• when the portfolio stoploss event trigger, this parameter refers to the &quot;cooling period&quot; before resuming the algo\n• unit in second, and default is 0</td><td>60*60*24</td></tr></table>",
+        "bbox": [
+            142,
+            587,
+            876,
+            1000
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "Risk Limit Stoploss ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            416,
+            194
+        ],
+        "page_idx": 93
+    },
+    {
+        "type": "text",
+        "text": "- Risk managers usually apply additional limits for traders ",
+        "bbox": [
+            71,
+            268,
+            758,
+            329
+        ],
+        "page_idx": 93
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Daily stop loss ",
+            "Weekly stop loss ",
+            "Monthly stop loss ",
+            "• Quarterly stop loss ",
+            "- Yearly stop loss ",
+            "VaR Limit ",
+            "- DV01 Limit ",
+            "- Delta Limit ",
+            "0 "
+        ],
+        "bbox": [
+            109,
+            338,
+            323,
+            838
+        ],
+        "page_idx": 93
+    },
+    {
+        "type": "text",
+        "text": "Risk Limit Stoploss ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            109,
+            414,
+            192
+        ],
+        "page_idx": 94
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Implement on ALGOGENE (https://algogene.com/TechDoc#UpdateRiskLimitStopLoss) ",
+            "- Eg. We set $5 \\%$ monthly and $10 \\%$ yearly stop loss "
+        ],
+        "bbox": [
+            73,
+            253,
+            505,
+            509
+        ],
+        "page_idx": 94
+    },
+    {
+        "type": "text",
+        "text": "class AlgoEvent: ",
+        "bbox": [
+            568,
+            125,
+            679,
+            155
+        ],
+        "page_idx": 94
+    },
+    {
+        "type": "text",
+        "text": "def __init__(self): ",
+        "bbox": [
+            585,
+            159,
+            695,
+            187
+        ],
+        "page_idx": 94
+    },
+    {
+        "type": "text",
+        "text": "pass ",
+        "bbox": [
+            601,
+            192,
+            634,
+            218
+        ],
+        "page_idx": 94
+    },
+    {
+        "type": "text",
+        "text": "def start(self, mEvt): ",
+        "bbox": [
+            585,
+            251,
+            717,
+            281
+        ],
+        "page_idx": 94
+    },
+    {
+        "type": "text",
+        "text": "self.evt = AlgoAPI_Backtest.AlgoEvtHandler(self, mEvt) ",
+        "bbox": [
+            601,
+            283,
+            961,
+            312
+        ],
+        "page_idx": 94
+    },
+    {
+        "type": "text",
+        "text": "self.evt.update_risk_limit_sl(sl=0.05, risk_type='m')  \nself.evt.update_risk_limit_sl(sl=0.1, risk_type='y') ",
+        "bbox": [
+            600,
+            342,
+            929,
+            407
+        ],
+        "page_idx": 94
+    },
+    {
+        "type": "text",
+        "text": "self.evt.start()",
+        "bbox": [
+            600,
+            435,
+            692,
+            468
+        ],
+        "page_idx": 94
+    },
+    {
+        "type": "table",
+        "img_path": "images/ea98770bd99304353a56a9e1e86276defe4f4e7b76e5623fab7a0110ea83704c.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>&#x27;self.evt.update_risk_limit_sI&#x27; INPUTPARAMETER</td><td>ISNECESSARY</td><td>DATATYPE</td><td>DESCRIPTIONS</td><td>SAMPLE</td></tr><tr><td>sl</td><td>Yes</td><td>float</td><td>• the stoploss (in percentage) from the portfolio NAV at a period start • value between 0 to 1. eg. 0.1 refers to cutting all positions when a portfolio NAV drops 10% from its previous highest level.• set the value to 0 to disable this feature • once this stoploss condition trigger, the high water level will be reset to the latest NAV</td><td>0.1</td></tr><tr><td>risk_type</td><td>Yes</td><td>string</td><td>• set the risk limit type • &#x27;d&#x27; for daily stop loss limit • &#x27;w&#x27; for weekly stop loss limit • &#x27;m&#x27; for monthly stop loss limit • &#x27;q&#x27; for quarterly stop loss limit • &#x27;y&#x27; for yearly stop loss limit</td><td>&#x27;m&#x27;</td></tr></table>",
+        "bbox": [
+            197,
+            542,
+            845,
+            1000
+        ],
+        "page_idx": 94
+    },
+    {
+        "type": "text",
+        "text": "Key Takeaways ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            347,
+            190
+        ],
+        "page_idx": 95
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "We learnt how to calculate the overall risk and return of an investment portfolio ",
+            "- The lower the correlation, the better the diversification effect will be ",
+            "- Efficiency Frontier represents the set of optimal and feasible solutions for asset allocation ",
+            "We learnt how to derive the Minimum Variance Portfolio, and Tangency portfolio ",
+            "- Capital Asset Pricing Model (CAPM) is a simplified model to relate an asset and the market ",
+            "- A rational investor should allocate on the Capital Market Line (CML) ",
+            "- Security Market Line (SML) is a graphical presentation of CAPM ",
+            "- Different performance measures are introduced for investment comparison ",
+            "- Introduce different stop loss and risk limit control mechanism "
+        ],
+        "bbox": [
+            70,
+            268,
+            914,
+            888
+        ],
+        "page_idx": 95
+    }
+]

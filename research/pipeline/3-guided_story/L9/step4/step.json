@@ -1,0 +1,144 @@
+{
+  "lesson_id": "L9",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "了解市场中的各类基金，有助于你理解资金是如何运作的。",
+        "主要有五种类型。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s027",
+      "introduced_terms": [
+        "etf"
+      ],
+      "lines": [
+        "<term id=\"etf\">交易所交易基金</term> 像股票一样在交易所买卖，",
+        "通常追踪某个指数，费用低，流动性好。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s028",
+      "introduced_terms": [
+        "mutual_fund"
+      ],
+      "lines": [
+        "<term id=\"mutual_fund\">共同基金</term> 由专业经理主动管理，",
+        "每天按收盘净值交易一次。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "货币市场基金风险低，投资短期债券。",
+        "私募股权基金流动性差，投资期长，但潜在回报高。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s030",
+      "introduced_terms": [
+        "hedge_fund"
+      ],
+      "lines": [
+        "最后是 <term id=\"hedge_fund\">对冲基金</term>，",
+        "它们使用杠杆、做空、衍生品等复杂策略追求高回报。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s031",
+      "introduced_terms": [
+        "uncorrelated_strategies"
+      ],
+      "lines": [
+        "顶级对冲基金（如文艺复兴科技）的秘密是什么？",
+        "它们同时运行成百上千个 <term id=\"uncorrelated_strategies\">不相关策略</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "每个策略的胜率可能只比50%高一点，",
+        "但因为策略之间不相关，整体收益会非常稳定。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "这就是大数定律的力量：",
+        "单个策略有波动，但组合起来就能平滑收益曲线。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "大数定律指出，当独立试验次数足够多时，平均结果会趋近于期望值。不相关策略的组合正是利用了这一点。",
+        "kind": "single_choice",
+        "options": [
+          "复利效应",
+          "大数定律",
+          "均值回归",
+          "有效市场假说"
+        ],
+        "prompt": "对冲基金通过运行大量不相关策略来获得稳定收益，这主要利用了哪个原理？"
+      },
+      "id": "s034",
+      "lines": [
+        "对冲基金通过运行大量不相关策略来获得稳定收益，这主要利用了哪个原理？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Different Type of Investment Funds: ETFs, Mutual Funds, Money Market Funds, Private Equity Funds, Hedge Funds. Hedge funds utilize multiple uncorrelated strategies to diversify risk.",
+    "related": [
+      "COMP7415 L9"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "etf": {
+      "aliases": [
+        "ETF",
+        "Exchange-Traded Fund"
+      ],
+      "display": "交易所交易基金",
+      "gloss": "在交易所上市交易、通常追踪某个指数的基金。"
+    },
+    "hedge_fund": {
+      "aliases": [
+        "Hedge Fund"
+      ],
+      "display": "对冲基金",
+      "gloss": "采用多种高级量化策略，追求高回报的私募投资基金。"
+    },
+    "mutual_fund": {
+      "aliases": [
+        "Mutual Fund"
+      ],
+      "display": "共同基金",
+      "gloss": "汇集投资者资金，由专业基金经理管理的投资组合。"
+    },
+    "uncorrelated_strategies": {
+      "aliases": [
+        "Uncorrelated Strategies"
+      ],
+      "display": "不相关策略",
+      "gloss": "彼此之间没有明显关联、不会同时涨跌的交易策略。"
+    }
+  }
+}

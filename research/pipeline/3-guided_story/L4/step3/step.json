@@ -1,0 +1,111 @@
+{
+  "lesson_id": "L4",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "理论讲完了，来实战。",
+        "我们用 Python 对微软股票跑一个线性回归。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "先获取数据：用 yfinance 下载 MSFT 2023年的日线数据。",
+        "然后构造特征：用“一年中的第几天”作为 X。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "用 sklearn 的 LinearRegression 拟合模型。",
+        "得到截距和斜率。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "r_squared"
+      ],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "然后评估：R² = 0.46。",
+        "说明直线只能解释不到一半的价格变动。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "linear_regression_strategy"
+      ],
+      "id": "s021",
+      "introduced_terms": [
+        "linear_regression_strategy"
+      ],
+      "lines": [
+        "但这不妨碍我们用它来交易。",
+        "策略很简单：如果预测未来价格高于当前，就买入。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "linear_regression_strategy"
+      ],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "回测结果显示：年化收益约3.6%，胜率58.8%。",
+        "不算惊艳，但证明了线性模型确实能捕捉到一些趋势。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "线性回归假设价格与时间存在线性关系，即趋势。",
+        "kind": "single_choice",
+        "options": [
+          "价格会随机波动",
+          "价格存在可预测的线性趋势",
+          "价格永远回归均值"
+        ],
+        "prompt": "线性回归策略的核心假设是什么？"
+      },
+      "focus_terms": [
+        "linear_regression_strategy"
+      ],
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "线性回归策略的核心假设是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Python Example: fit LR model, backtest LR strategy",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "linear_regression_strategy": {
+      "aliases": [
+        "LR Trading Strategy"
+      ],
+      "display": "线性回归交易策略",
+      "gloss": "利用线性回归模型预测价格，当实际价格偏离预测值时进行交易。"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "lesson_id": "L9",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "策略优化的目标与流程",
+      "file": "research/pipeline/3-guided_story/L9/step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "三种优化方法：暴力搜索、梯度下降、遗传算法",
+      "file": "research/pipeline/3-guided_story/L9/step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "最优解 vs 稳健解：为什么稳健更重要",
+      "file": "research/pipeline/3-guided_story/L9/step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "投资基金的分类与对冲基金的秘密",
+      "file": "research/pipeline/3-guided_story/L9/step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "如何选择交易券商",
+      "file": "research/pipeline/3-guided_story/L9/step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "警惕市场中的销售伎俩",
+      "file": "research/pipeline/3-guided_story/L9/step6/step.json",
+      "sequence_id": "step6"
+    }
+  ]
+}

@@ -1,0 +1,7027 @@
+[
+    {
+        "type": "text",
+        "text": "L8: Order book and high frequency data modeling ",
+        "text_level": 1,
+        "bbox": [
+            183,
+            266,
+            812,
+            500
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Course Code: COMP7415 ",
+        "bbox": [
+            369,
+            531,
+            628,
+            572
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Lecturer: Tony Lam ",
+        "bbox": [
+            28,
+            920,
+            178,
+            957
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Agenda ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            212,
+            190
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Trading ideas and insights from an order book ",
+            "Market impact of a large order ",
+            "- Queuing theory for order book modelling ",
+            "• Introduction to high frequency trading ",
+            "Major types of arbitrage ",
+            "- Triangular Arbitrage Strategy ",
+            "- Market Making Strategy "
+        ],
+        "bbox": [
+            75,
+            268,
+            638,
+            777
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Revision of Order Book ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            500,
+            179
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Order book is a list of buy and sell orders ",
+            "- Bid book represents the demand side ",
+            "- Ask book represents the supply side ",
+            "- An order book can provide insights for microeconomic structure "
+        ],
+        "bbox": [
+            75,
+            270,
+            509,
+            527
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/1890d1b4de992ca5c1c0849ef2f8bf35661f3778212c240b4f34e7c584840660.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            205,
+            572,
+            558,
+            987
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "table",
+        "img_path": "images/7d848f7a5978e0f51de4e6e3f56d0010550345ede1849fab0b6c9c88086a2f4b.jpg",
+        "table_caption": [
+            "Order Book "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td></td><td>Bid</td><td>Ask</td><td></td></tr><tr><td>3,151</td><td>9139.60</td><td>9152.80</td><td>167</td></tr><tr><td>1,574</td><td>9138.40</td><td>9153.21</td><td>1,600</td></tr><tr><td>338</td><td>9138.20</td><td>9153.60</td><td>736</td></tr><tr><td>789</td><td>9138.10</td><td>9153.71</td><td>1,602</td></tr><tr><td>800</td><td>9138.00</td><td>9154.10</td><td>1,649</td></tr><tr><td>309</td><td>9137.79</td><td>9154.21</td><td>1,965</td></tr><tr><td>2,140</td><td>9137.60</td><td>9154.50</td><td>3,984</td></tr><tr><td>48</td><td>9137.40</td><td>9154.60</td><td>763</td></tr><tr><td>144</td><td>9137.29</td><td>9154.71</td><td>157</td></tr><tr><td>136</td><td>9137.20</td><td>9154.80</td><td>56</td></tr><tr><td>528</td><td>9137.00</td><td>9155.50</td><td>320</td></tr><tr><td>1,654</td><td>9136.90</td><td>9155.71</td><td>200</td></tr><tr><td>40</td><td>9136.79</td><td>9156.10</td><td>16</td></tr><tr><td>46</td><td>9136.70</td><td>9156.21</td><td>219</td></tr><tr><td>608</td><td>9136.60</td><td>9156.30</td><td>40</td></tr><tr><td>48</td><td>9136.50</td><td>9156.40</td><td>80</td></tr></table>",
+        "bbox": [
+            663,
+            157,
+            986,
+            972
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Breakdown an Order Book ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            107,
+            561,
+            179
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/be1d9dd9583cc58d1bd249941340f7a1d8d070de10531a5d686b7ca5e950ec99.jpg",
+        "image_caption": [
+            "Level 1 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            13,
+            314,
+            312,
+            729
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/c13567b7d72046003a7ff73888f9489e3f61d1de71c48c4a337ace79af3f9679.jpg",
+        "image_caption": [
+            "Level 2 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            347,
+            314,
+            646,
+            855
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/73f455bfb0c450ad79e0403359ca6fa2a0901fcad6dcad3faeb9f93f9af88efb.jpg",
+        "image_caption": [
+            "Level 3 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            675,
+            314,
+            975,
+            857
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "Reference: https://www.hkex.com.hk/Services/Rules-and-Forms-and-Fees/Fees/Securities-(Hong-Kong)/Market-Data/Market-Data-Vendors?sc lang=en ",
+        "bbox": [
+            15,
+            942,
+            789,
+            970
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Order Book Mechanism ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            510,
+            179
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "- Limit orders operated under a price-time priority rule. ",
+        "bbox": [
+            72,
+            272,
+            400,
+            366
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Limit orders are sorted by the price and higher priority is given to the orders at the best prices ",
+            "- Orders at the same price are ranked depending on when they entered the queue according to FIFO "
+        ],
+        "bbox": [
+            109,
+            377,
+            435,
+            627
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/4f370778225b8f47bb8707a3c2ae2d152a2d63c4ef06f1bcc675dbd8fce3af67.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            502,
+            307,
+            986,
+            766
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "What an order book can tell you? ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            689,
+            192
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Supply & Demand: Insights into trader behaviour and market sentiment. ",
+            "2. Support & Resistance Level: Insights from orders with large volume ",
+            "3. Market Liquidity: Measure liquidity through order sizes. ",
+            "4. Market Depth: Analysis of the number of buy/sell orders at various price levels. "
+        ],
+        "bbox": [
+            70,
+            268,
+            917,
+            666
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Trading Strategies Based on Order Book Data ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            897,
+            188
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "1. Momentum Trading: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            272,
+            334,
+            320
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Identifying trends through order flow signals. ",
+            "- Monitor the ratio of buy to sell orders. A significant imbalance can signal potential price movements. "
+        ],
+        "bbox": [
+            108,
+            329,
+            871,
+            455
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "2. Sniping Strategy: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            479,
+            293,
+            527
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "- Taking advantage of large orders (eg. iceberg orders) before they get fully executed. ",
+        "bbox": [
+            109,
+            533,
+            835,
+            574
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "3. Liquidity Provisioning: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            594,
+            350,
+            640
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "- Market-making strategies to earn from the bid-ask spread. ",
+        "bbox": [
+            109,
+            650,
+            626,
+            688
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Market Impact ",
+        "text_level": 1,
+        "bbox": [
+            315,
+            392,
+            683,
+            500
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Market Impact ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            347,
+            188
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "A large market order is likely to fill up the order book and lead to ",
+            "- significant price movement ",
+            "- reduced market depth and liquidity "
+        ],
+        "bbox": [
+            71,
+            270,
+            512,
+            485
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Immediate Impact: Price change upon execution of the order. ",
+            "- Temporary Impact: Short-term fluctuations that revert after order execution. ",
+            "- Permanent Impact: Lasting price changes due to order flow "
+        ],
+        "bbox": [
+            71,
+            503,
+            512,
+            872
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "image",
+        "img_path": "images/e48e94161c73aa4fc59bbf27b0baf348a33f213143f2a2ebac43f58c1bd580ff.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            533,
+            387,
+            768,
+            772
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "image",
+        "img_path": "images/28ff73b6a0696bb14e363a757f31d2c67fc1fb232c4f84472041cdc29241ed34.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            770,
+            394,
+            1000,
+            770
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Factors Influencing Market Impact ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            707,
+            192
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "1. Order Size: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            272,
+            227,
+            316
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "- Larger orders typically lead to greater impact ",
+        "bbox": [
+            109,
+            329,
+            588,
+            379
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "2. Order Type: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            398,
+            235,
+            442
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Market orders vs limit orders ",
+        "bbox": [
+            110,
+            455,
+            426,
+            496
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "3. Market Conditions: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            520,
+            313,
+            562
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Less liquid markets experience higher impact ",
+            "- Volatility and market volume affect impact "
+        ],
+        "bbox": [
+            109,
+            577,
+            588,
+            681
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Strategies to Mitigate Market Impact ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            112,
+            754,
+            190
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "1. Order Splitting: ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            272,
+            278,
+            318
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Break large orders into smaller segments. ",
+            "- Execute over time to reduce immediate impact. "
+        ],
+        "bbox": [
+            110,
+            329,
+            533,
+            418
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "2. Use of Limit Orders: ",
+        "text_level": 1,
+        "bbox": [
+            72,
+            438,
+            326,
+            479
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Place limit orders to control execution price. ",
+            "- Avoid the risks of market orders. "
+        ],
+        "bbox": [
+            110,
+            494,
+            505,
+            579
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "3. Time-weighted Average Price (TWAP): ",
+        "text_level": 1,
+        "bbox": [
+            72,
+            603,
+            510,
+            648
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Execute orders evenly over a specified time period. ",
+            "- Helps in minimizing market impact. "
+        ],
+        "bbox": [
+            110,
+            659,
+            562,
+            746
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "4. Volume-weighted Average Price (VWAP): ",
+        "text_level": 1,
+        "bbox": [
+            72,
+            768,
+            542,
+            812
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Execute orders in proportion to market volume. ",
+            "- Reduces price impact by blending into the market. "
+        ],
+        "bbox": [
+            110,
+            825,
+            556,
+            912
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "1. Order Splitting ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            397,
+            192
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If informed investors' trades are the main cause of stock price changes, large trades by informed traders would reveal their information because traders can easily discern those who execute large transactions. ",
+            "- However, small trades executed repeatedly will incur excessive transactions costs. ",
+            "- Thus, informed traders will tend to fragment orders into medium-sized trades sufficiently small to disguise themselves but large enough to maintain fairly small transactions costs. "
+        ],
+        "bbox": [
+            70,
+            270,
+            922,
+            644
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Example: Slicing the Large Order ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            672,
+            188
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Suppose a client of the XYZ brokerage firm wants to buy $X = 80,000$ shares with the best possible execution. ",
+            "These execution costs $B$ will include "
+        ],
+        "bbox": [
+            70,
+            270,
+            893,
+            431
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "order processing costs $F$ and ",
+            "- market impact (slippage) costs that are increasing in the size $c$ of each of $n$ equal-size transactions. "
+        ],
+        "bbox": [
+            108,
+            444,
+            848,
+            568
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "- Broker XYZ works with a market impact model that estimates the slippage cost $S$ of each execution of size $c = X / n$ with function $S = \\nu c^{\\mathfrak{m}}$ , where the coefficient $\\nu$ and exponent $m$ are related to the liquidity of the security: ",
+        "bbox": [
+            70,
+            590,
+            905,
+            735
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "equation",
+        "text": "$$\nB / n = F + v (X / n) ^ {m}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            394,
+            820,
+            601,
+            875
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Example: Slicing the Large Order ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            672,
+            188
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "- Suppose that broker estimated F to be \\(0.03 per order, and v and m to be 0.00001 and 1.5. What are the optimal number of transactions and transaction sizes? We set up a total transactions cost function as follows: ",
+        "bbox": [
+            70,
+            268,
+            893,
+            370
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "equation",
+        "text": "$$\nB = n F + n v \\left(\\frac {X}{n}\\right) ^ {m} = 0. 0 3 n + 0. 0 0 0 0 1 \\frac {8 0 , 0 0 0 ^ {1 . 5}}{n ^ {0 . 5}} = 0. 0 3 n + 2 2 6. 2 7 n ^ {- 0. 5}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            213,
+            372,
+            808,
+            468
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Take derivative of $B$ with respect to $n$ , and solve for $n$ as follows: ",
+        "bbox": [
+            70,
+            503,
+            587,
+            542
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {d B}{d n} = \\frac {d \\left[ n F + n v \\left(\\frac {X}{n}\\right) ^ {m} \\right]}{d n} = F - (m - 1) v \\frac {X ^ {m}}{n ^ {m}} = 0. 0 3 - 0. 5 (0. 0 0 0 0 1) \\frac {X ^ {m}}{n ^ {m}} = 0. 0 3 - \\frac {1 1 3 . 1 4}{n ^ {1 . 5}} = 0. 0 2\n$$",
+        "text_format": "latex",
+        "bbox": [
+            130,
+            566,
+            894,
+            670
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "equation",
+        "text": "$$\nn = \\sqrt [ m ]{\\frac {(m - 1) v X ^ {m}}{F}} = \\sqrt [ 1. 5 ]{\\frac {0 . 5 (0 . 0 0 0 0 1) \\cdot 8 0 , 0 0 0 ^ {1 . 5}}{0 . 0 3}} = 2 4 2. 2 8 \\approx 2 4 2\n$$",
+        "text_format": "latex",
+        "bbox": [
+            192,
+            696,
+            750,
+            824
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "- Thus, the optimal number of stock transactions for this order is $n = 242$ , each with transaction size of $X / n$ equal to $80,000 / 242 = 330$ (subject to rounding) ",
+        "bbox": [
+            70,
+            885,
+            894,
+            959
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Improve the order split mechanism ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            723,
+            188
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- There are many factors that we can consider when designing the optimal cost or trade-slicing functions. ",
+            "- The model above provides no guidance on spacing trades through the day or time frame "
+        ],
+        "bbox": [
+            70,
+            270,
+            925,
+            474
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The amount of time elapsing between trades executing at time $t$ and time $t + 1$ would be inversely related to market impact costs. That is, more time elapses between the transactions, slippage will be reduced. ",
+            "- Stocks tend to be more liquid during the earliest and latest parts of the day, and least liquid in the middle. That is, one might expect liquidity during the day to be \"U\"-shaped, and market impact costs to resemble an upside down U. "
+        ],
+        "bbox": [
+            108,
+            490,
+            901,
+            738
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "2. Use of Limit Orders ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            472,
+            181
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "- Suppose we want to buy 1000 shares ",
+        "bbox": [
+            71,
+            272,
+            472,
+            320
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If we directly send a market order, the whole ask book will be cleared and the purchase price can be expensive ",
+            "Instead of market order, we can place multiple limit orders at different price levels "
+        ],
+        "bbox": [
+            108,
+            327,
+            917,
+            459
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "table",
+        "img_path": "images/af44da69e08c3e2ac86d470e0629eed99ae846b99ea7eb01a78667b21390d544.jpg",
+        "table_caption": [
+            "Current order book "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Bid Size</td><td>Bid Price</td><td>Ask Price</td><td>Ask Size</td></tr><tr><td>20</td><td>9.9</td><td>10.5</td><td>100</td></tr><tr><td>30</td><td>9.6</td><td>11.0</td><td>50</td></tr><tr><td>50</td><td>8.8</td><td>11.6</td><td>300</td></tr><tr><td>50</td><td>8.1</td><td>12.3</td><td>100</td></tr><tr><td>10</td><td>7.5</td><td>12.9</td><td>120</td></tr><tr><td>50</td><td>7.3</td><td>20.0</td><td>200</td></tr><tr><td>10</td><td>7.1</td><td></td><td></td></tr><tr><td>70</td><td>6.9</td><td></td><td></td></tr><tr><td>80</td><td>6.6</td><td></td><td></td></tr></table>",
+        "bbox": [
+            109,
+            574,
+            390,
+            901
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "image",
+        "img_path": "images/180115e22b3274fefb2f1b805af5eead3f8797dc508be190c90eaf6e174e8dd9.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            434,
+            664,
+            531,
+            757
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "table",
+        "img_path": "images/180c9356dd7abdf797e1e7597fc3fe1f10335b439e1163c4a2b9539deec728cf.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Bid Size</td><td>Bid Price</td><td>Ask Price</td><td>Ask Size</td></tr><tr><td>250</td><td>10</td><td>10.5</td><td>100</td></tr><tr><td>20</td><td>9.9</td><td>11.0</td><td>50</td></tr><tr><td>30</td><td>9.6</td><td>11.6</td><td>300</td></tr><tr><td>250</td><td>9.5</td><td>12.3</td><td>100</td></tr><tr><td>250</td><td>9.0</td><td>12.9</td><td>120</td></tr><tr><td>50</td><td>8.8</td><td>20.0</td><td>200</td></tr><tr><td>250</td><td>8.5</td><td></td><td></td></tr><tr><td>50</td><td>8.1</td><td></td><td></td></tr><tr><td>10</td><td>7.5</td><td></td><td></td></tr><tr><td>50</td><td>7.3</td><td></td><td></td></tr><tr><td>10</td><td>7.1</td><td></td><td></td></tr><tr><td>70</td><td>6.9</td><td></td><td></td></tr><tr><td>80</td><td>6.6</td><td></td><td></td></tr></table>",
+        "bbox": [
+            577,
+            520,
+            858,
+            979
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Potential issues of using limit orders ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            743,
+            192
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Wait too long for the limit order to get filled if the limit price is set too far from the top book. ",
+            "- Other market participants may discover the large order buyer/seller if there is a sudden increase in the order book's volume. "
+        ],
+        "bbox": [
+            70,
+            270,
+            922,
+            512
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "- Solution: split into smaller limit order and place slowly to the market ",
+        "bbox": [
+            107,
+            524,
+            855,
+            637
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "3. Time-weighted Average Price (TWAP) ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            805,
+            192
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Place market orders with the same size evenly over a specified time period. ",
+            "- Parameters: "
+        ],
+        "bbox": [
+            70,
+            270,
+            895,
+            451
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- total_order_size: Total number of shares you want to buy or sell. ",
+            "- execution_duration: Total time over which to execute the order. ",
+            "- interval: Time interval for executing parts of the order. "
+        ],
+        "bbox": [
+            107,
+            466,
+            789,
+            629
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS h a r e s p e r i n t e r v a l = R o u n d (\\frac {t o t a l \\_ o r d e r \\_ s i z e}{e x e c u t i o n \\_ d u r a t i o n / i n t e r v a l}, 0)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            164,
+            757,
+            765,
+            857
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Example: TWAP ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            362,
+            188
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Suppose we want to buy a total of 1000 shares. ",
+            "- To reduce the market impact, we decide to buy a small fraction every 5 minutes for a total duration of 1 hour. ",
+            "Thus, "
+        ],
+        "bbox": [
+            70,
+            270,
+            902,
+            500
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- total_order_size = 1000 ",
+            "- execution_duration = 60 ",
+            "- interval = 5 "
+        ],
+        "bbox": [
+            109,
+            512,
+            381,
+            670
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Shares per interval = round(1000 / (60 / 5), 0) = 83 ",
+            "• Remaining shares = 1000 - 83* (60/5) = 4 "
+        ],
+        "bbox": [
+            71,
+            688,
+            605,
+            809
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Potential issues of TWAP ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            530,
+            188
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Large orders executed over time can still impact market prices, especially for illiquid markets. ",
+            "- Delays or failures in order execution at specified intervals (eg. due to market close) can disrupt the planned strategy. ",
+            "- TWAP assumes a stable price environment; high volatility can lead to significant deviations. "
+        ],
+        "bbox": [
+            70,
+            272,
+            905,
+            638
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "4. Volume-weighted Average Price (VWAP) ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            855,
+            192
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- VWAP is the average price a security has traded at throughout the day, based on both volume and price. ",
+            "- Formula "
+        ],
+        "bbox": [
+            70,
+            270,
+            906,
+            431
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "equation",
+        "text": "$$\nV W A P = \\frac {\\sum (P r i c e \\times V o l u m e)}{\\sum V o l u m e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            280,
+            481,
+            611,
+            600
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Where ",
+        "text_level": 1,
+        "bbox": [
+            237,
+            737,
+            293,
+            768
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Price: The price at which trades occur. ",
+            "Volume: The number of shares traded at each price. "
+        ],
+        "bbox": [
+            237,
+            777,
+            660,
+            850
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Use of VWAP ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            315,
+            181
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Benchmarking: Provides a standard for evaluating our purchase price. ",
+            "- Execution Strategy: Helps traders execute orders with minimal market impact. ",
+            "- Trend Indicator: Can signal potential reversals when the price diverges from VWAP. "
+        ],
+        "bbox": [
+            70,
+            270,
+            919,
+            588
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "VWAP Example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            357,
+            188
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": "- Assume the following trades occur throughout a trading day: ",
+        "bbox": [
+            78,
+            268,
+            667,
+            312
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "table",
+        "img_path": "images/49d7eb50ec7b4b8b8d2f71ec92d82df786aed8a3b48282ef44a429f503a57ee5.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Time</td><td>Price</td><td>Volume</td></tr><tr><td>09:30</td><td>$100</td><td>200</td></tr><tr><td>09:35</td><td>$101</td><td>150</td></tr><tr><td>09:40</td><td>$102</td><td>250</td></tr><tr><td>09:45</td><td>$100</td><td>300</td></tr><tr><td>09:50</td><td>$103</td><td>100</td></tr></table>",
+        "bbox": [
+            375,
+            331,
+            568,
+            533
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- VWAP = $\\frac{100 * 200 + 101 * 150 + 102 * 250 + 100 * 300 + 103 * 100}{200 + 150 + 250 + 300 + 100} = 100.95$ ",
+            "- So we can execute order in smaller increments around the VWAP to avoid impacting the market ",
+            "- For example, you might place the following orders close to VWAP: "
+        ],
+        "bbox": [
+            79,
+            555,
+            919,
+            777
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Buy 200 shares at \\(100.90 ",
+            "Buy 300 shares at \\(100.95 ",
+            "Buy 500 shares at \\(101.00 "
+        ],
+        "bbox": [
+            118,
+            783,
+            329,
+            894
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": "Impact of VWAP on Execution ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            623,
+            188
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "text",
+        "text": "- By using VWAP: ",
+        "bbox": [
+            71,
+            272,
+            281,
+            327
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The majority of orders are executed around the VWAP price, which is $100.95. ",
+            "- The average execution price might be slightly higher than the VWAP, but it reduces the likelihood of large market movements caused by a single large order. "
+        ],
+        "bbox": [
+            107,
+            337,
+            882,
+            583
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "text",
+        "text": "Order Book Modeling with Queuing Theory ",
+        "text_level": 1,
+        "bbox": [
+            165,
+            266,
+            832,
+            509
+        ],
+        "page_idx": 24
+    },
+    {
+        "type": "text",
+        "text": "Why Queuing Theory? ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            487,
+            192
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- To analyze how orders flow through the market and how they impact price movement. ",
+            "Key Questions: "
+        ],
+        "bbox": [
+            71,
+            268,
+            850,
+            431
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "How long do orders wait before being executed? ",
+            "What is the optimal order size? ",
+            "- How do market conditions (eg. volatility) affect execution time? "
+        ],
+        "bbox": [
+            109,
+            444,
+            669,
+            581
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "text",
+        "text": "Basic Concepts of Queuing Theory ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            707,
+            192
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "text",
+        "text": "- Queue Components ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            274,
+            334,
+            327
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Arrival Process $(\\lambda)$ : Rate at which an event arrives. (eg. customer) ",
+            "- Service Rate $(\\mu)$ : Rate at which an event is executed. ",
+            "- Queue Discipline: How events are processed (e.g. FIFO). "
+        ],
+        "bbox": [
+            107,
+            337,
+            779,
+            500
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "image",
+        "img_path": "images/0be7434e791c4d3578e9a90f2777940e0384ae45c8bcb5895f02b71ecc82e4ac.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            192,
+            540,
+            777,
+            1000
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "text",
+        "text": "How is it related to Order Book? ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            667,
+            185
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Incoming orders (buy/sell) can be viewed as entities arriving at a queue. The order book acts as a queue where these orders wait to be matched. ",
+            "- Each order can be treated as a customer in a queue, where the \"service\" is the execution of trades. ",
+            "- Arrival and Service Rates: "
+        ],
+        "bbox": [
+            70,
+            270,
+            887,
+            542
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Arrival Rate: The rate at which orders enter the order book (eg. how many orders are placed per second). ",
+            "- Service Rate: The speed at which orders are matched and executed. This is influenced by the market's liquidity and the efficiency of the trading system. "
+        ],
+        "bbox": [
+            108,
+            557,
+            900,
+            757
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "text",
+        "text": "How is it related to Order Book? ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            667,
+            179
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Event: arrival of a new limit order ",
+            "- Queuing time: the time to wait from placing a limit order until it reaches to the top book ",
+            "- Service time: the elapsed time for the limit order being matched/executed when it is at the top book "
+        ],
+        "bbox": [
+            70,
+            272,
+            912,
+            550
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "table",
+        "img_path": "images/f800de0fc949616a67ca3450a34d16afa68457b75a488d60e2faf8b6a1ab91ef.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Bid Size</td><td>Bid Price</td><td>Ask Price</td><td>Ask Size</td></tr><tr><td>20</td><td>9.9</td><td>10.5</td><td>100</td></tr><tr><td>30</td><td>9.6</td><td>11.0</td><td>50</td></tr><tr><td>50</td><td>8.8</td><td>11.6</td><td>300</td></tr><tr><td>50</td><td>8.1</td><td>12.3</td><td>100</td></tr><tr><td>10</td><td>7.5</td><td>12.9</td><td>120</td></tr><tr><td>50</td><td>7.3</td><td>13.0</td><td>1000</td></tr><tr><td>10</td><td>7.1</td><td>13.4</td><td>50</td></tr><tr><td>70</td><td>6.9</td><td></td><td></td></tr><tr><td>80</td><td>6.6</td><td></td><td></td></tr></table>",
+        "bbox": [
+            144,
+            572,
+            427,
+            901
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "image",
+        "img_path": "images/5b8500ae14878dc14a027160ac1c8074a4fbe9e2cbc7c257706f63a33b25eee0.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            455,
+            683,
+            537,
+            740
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "table",
+        "img_path": "images/a67e59ad04bf80074590521555ee9a279853334077e37e308a710edbea3e069c.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Bid Size</td><td>Bid Price</td><td>Ask Price</td><td>Ask Size</td></tr><tr><td>150</td><td>12.0</td><td>13.0</td><td>1000</td></tr><tr><td>150</td><td>11.5</td><td>13.4</td><td>50</td></tr><tr><td>100</td><td>10.8</td><td>13.6</td><td>200</td></tr><tr><td>100</td><td>10.5</td><td>14.3</td><td>150</td></tr><tr><td>20</td><td>9.9</td><td>14.9</td><td>100</td></tr><tr><td>30</td><td>9.6</td><td></td><td></td></tr><tr><td>50</td><td>8.8</td><td></td><td></td></tr><tr><td>50</td><td>8.1</td><td></td><td></td></tr><tr><td>10</td><td>7.5</td><td></td><td></td></tr></table>",
+        "bbox": [
+            578,
+            570,
+            859,
+            900
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "text",
+        "text": "Probability density function ",
+        "text_level": 1,
+        "bbox": [
+            745,
+            11,
+            928,
+            40
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "text",
+        "text": "Exponential Distribution ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            107,
+            520,
+            188
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "text",
+        "text": "Density function ",
+        "bbox": [
+            75,
+            268,
+            236,
+            312
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf (x) = \\left\\{ \\begin{array}{l l} \\frac {1}{\\lambda} e ^ {\\frac {- x}{\\lambda}}, & x \\geq 0 \\\\ 0, & x <   0 \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            280,
+            266,
+            490,
+            396
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "text",
+        "text": "where $\\lambda$ is the average time taken between events. ",
+        "bbox": [
+            161,
+            418,
+            554,
+            451
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "text",
+        "text": "- Cumulative function ",
+        "bbox": [
+            75,
+            507,
+            267,
+            542
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "equation",
+        "text": "$$\nF (x) = \\left\\{ \\begin{array}{l l} 1 - e ^ {\\frac {- x}{\\lambda}}, & \\quad x \\geq 0 \\\\ 0, & \\quad x <   0 \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            300,
+            551,
+            531,
+            659
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Expected value $E(X) = \\lambda$ ",
+            "- Variance $\\operatorname{Var}\\left( X\\right)  = {\\lambda }^{2}$ ",
+            "- Memorylessness property "
+        ],
+        "bbox": [
+            75,
+            681,
+            316,
+            838
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "equation",
+        "text": "$$\nP (X > s + t | X > s) = P (X > t)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            301,
+            881,
+            559,
+            922
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "image",
+        "img_path": "images/dd5c4057f20a3e41cad7eb055105136c971066fabaa64ed8d8e29f954786d228.jpg",
+        "image_caption": [
+            "Cumulative distribution function "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            683,
+            92,
+            966,
+            481
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "image",
+        "img_path": "images/7a0a83da17eccc89c0c77aab0431082cd8bfe39ec709ffe794f6d0e1f88e04a0.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            683,
+            588,
+            966,
+            979
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "text",
+        "text": "Poisson Distribution ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            444,
+            179
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "text",
+        "text": "Density function ",
+        "bbox": [
+            71,
+            268,
+            236,
+            312
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf (x) = \\left\\{ \\begin{array}{c c} \\frac {\\theta^ {x} e ^ {- \\theta}}{x !}, & x = 0, 1, 2, \\ldots \\\\ 0, & o t h e r w i s e s \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            280,
+            266,
+            559,
+            420
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "text",
+        "text": "where $\\theta$ is the average number of events occurred in a fixed time interval. ",
+        "bbox": [
+            67,
+            457,
+            637,
+            496
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "text",
+        "text": "- Cumulative function ",
+        "bbox": [
+            71,
+            564,
+            267,
+            601
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "equation",
+        "text": "$$\nF (x) = \\sum_ {k = 0} ^ {x} \\frac {\\theta^ {k} e ^ {- \\theta}}{k !}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            301,
+            614,
+            454,
+            733
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "text",
+        "text": "- $E(X) = \\operatorname{Var}(X) = \\theta$ ",
+        "bbox": [
+            71,
+            738,
+            275,
+            781
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "image",
+        "img_path": "images/500e3ee9b82188f2e7ea7b2418d0bcd37cc9f49485d854b37e978d2848df04e3.jpg",
+        "image_caption": [
+            "Probability mass function "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            672,
+            51,
+            992,
+            479
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "image",
+        "img_path": "images/0c064f2a280574be7f02aa64fbf21327c4f62e47b48223e646f3dfb9b800113c.jpg",
+        "image_caption": [
+            "Cumulative distribution function "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            672,
+            538,
+            990,
+            977
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "text",
+        "text": "Poisson vs Exponential Distribution ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            719,
+            188
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The Poisson distribution is used to count the number of events in a fixed time period, while the exponential distribution is used to model the time between these events. ",
+            "- If events occur according to a Poisson process with rate $\\theta$ , the time between consecutive events follows an exponential distribution with the rate $\\lambda$ . Then, we have "
+        ],
+        "bbox": [
+            70,
+            270,
+            906,
+            450
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\theta = \\frac {1}{\\lambda}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            438,
+            496,
+            506,
+            601
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "image",
+        "img_path": "images/53a40ce0460076c3dd4d48f40133fbf4c11f57bdbaeec903986ed538e1c8bb27.jpg",
+        "image_caption": [
+            "Arrival time t1 ",
+            "Arrival time t2 ",
+            "Exponential Distribution $f(t)$ "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            122,
+            625,
+            377,
+            825
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "image",
+        "img_path": "images/5ae84d9484e5f7116daa354c3c879a3a96b078f6f2e298bb3fb8c08a12b8e4ce.jpg",
+        "image_caption": [
+            "Number of arrival k1 ",
+            "Number of arrival k2 ",
+            "Poisson Distribution $f(k)$ "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            588,
+            625,
+            856,
+            833
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "text",
+        "text": "One-side Queuing Model Formulation ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            776,
+            188
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "text",
+        "text": "M/M/1 Queue: ",
+        "bbox": [
+            71,
+            270,
+            225,
+            309
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "M: Memoryless arrival process (Poisson) ",
+            "M: Memoryless service process (Exponential) ",
+            "1: Single service channel (eg. one market maker) "
+        ],
+        "bbox": [
+            109,
+            320,
+            500,
+            446
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "text",
+        "text": "• The model can be described as continuous time Markov chain with transition rate matrix on the state space $\\{0,1,2,3,\\ldots\\}$ ",
+        "bbox": [
+            71,
+            466,
+            569,
+            585
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "image",
+        "img_path": "images/b2068c10c2e588a1c063c2c2d90ef0f92e4779930813cbde73715fdaa35b24ed.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            700,
+            290,
+            920,
+            457
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ = \\left[ \\begin{array}{c c c c c} - \\lambda & \\lambda & & & \\\\ \\mu & - (\\mu + \\lambda) & \\lambda & & \\\\ & \\mu & - (\\mu + \\lambda) & \\lambda & \\\\ & & \\mu & - (\\mu + \\lambda) & \\\\ & & & & \\ddots \\end{array} \\right]\n$$",
+        "text_format": "latex",
+        "bbox": [
+            52,
+            657,
+            445,
+            859
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "image",
+        "img_path": "images/f2dbb65264cb4452f140a4990c99bea6752b36937ce8d22f9634bf884a301045.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            464,
+            700,
+            1000,
+            833
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "text",
+        "text": "Transition Rate Matrix ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            112,
+            482,
+            181
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "- In a typical M/M/1 queue transition rate matrix, the off-diagonal elements represent the rates of moving between states: ",
+        "bbox": [
+            70,
+            270,
+            848,
+            366
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- $Q_{i,i + 1} = \\lambda$ : Transition from state $i$ to $i + 1$ (arrival). ",
+            "- $Q_{i,i - 1} = \\mu$ : Transition from state $i$ to $i - 1$ (service completion). "
+        ],
+        "bbox": [
+            108,
+            377,
+            654,
+            472
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The diagonal entry $Q_{ii} = -(\\lambda + \\mu)$ refers to the total rate of leaving state $i$ . ",
+            "- The sum of each row in the transition rate matrix equals zero, meaning that the rate of leaving state $i$ must equal the total rate of entering state $i$ from all other states. "
+        ],
+        "bbox": [
+            70,
+            485,
+            897,
+            696
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sum_ {j} Q _ {i j} = 0\n$$",
+        "text_format": "latex",
+        "bbox": [
+            429,
+            744,
+            523,
+            842
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "Steady-State Probabilities $(\\pi)$ ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            610,
+            192
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "text",
+        "text": "- To find the steady-state probabilities $\\pi$ of being in each state, we solve the system of equations derived from the balance equations $\\pi Q = 0$ along with the normalization condition $\\sum \\pi_{i} = 1$ . ",
+        "bbox": [
+            70,
+            270,
+            922,
+            416
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "text",
+        "text": "- $\\pi_{i}$ means the probability of having $i$ events (i.e. limit orders) in the queuing system ",
+        "bbox": [
+            107,
+            424,
+            830,
+            468
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "text",
+        "text": "- From the steady-state probabilities, we can derive various useful metrics: ",
+        "bbox": [
+            70,
+            485,
+            837,
+            531
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Average number of customers in the system (L) ",
+            "- Average time a customer spends in the system (W) ",
+            "- Utilization of the server $(\\rho)$ "
+        ],
+        "bbox": [
+            109,
+            542,
+            560,
+            679
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "text",
+        "text": "Queuing Model Formulation ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            600,
+            192
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The model is considered stable only if $\\lambda < \\mu$ . If, on average, arrivals happen faster than service completions the queue will grow indefinitely long and the system will not have a stationary distribution. The stationary distribution is the limiting distribution for large values of $t$ . ",
+            "- Under stationary process and first-come first-served (FIFO) discipline, the response time (i.e. the sum of waiting and service time) has a probability density function "
+        ],
+        "bbox": [
+            70,
+            266,
+            917,
+            620
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "- i.e. the time for a new limit order entering into the order book until it is filled ",
+        "bbox": [
+            107,
+            633,
+            785,
+            677
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf (t) = \\left\\{ \\begin{array}{l l} (\\mu - \\lambda) e ^ {- (\\mu - \\lambda) t}, & t > 0 \\\\ 0, & \\text {o t h e r w i s e} \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            293,
+            750,
+            671,
+            872
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "Traffic Intensity ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            360,
+            192
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Traffic Intensity $(\\rho)$ : $\\rho = \\frac{\\lambda}{\\mu}$ ",
+            "- Traffic intensity $\\rho$ measures the utilization of the queuing system. ",
+            "• Ranges "
+        ],
+        "bbox": [
+            70,
+            240,
+            757,
+            518
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- $\\rho < 1$ : The system is stable which can handle incoming traffic without becoming overloaded. The queue will not grow indefinitely. Customers are served on average faster than they arrive. ",
+            "- $\\rho = 1$ : The system is operating at its capacity. The arrival rate equals the service rate, leading to a steady-state condition where the queue can grow without bound. ",
+            "- $\\rho > 1$ : The system is unstable. The arrival rate exceeds the service rate, leading to an ever-growing queue. "
+        ],
+        "bbox": [
+            107,
+            527,
+            919,
+            829
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "Key Results of M/M/1 Queuing Model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            772,
+            188
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "text",
+        "text": "- Average time an order spends in the system (W): ",
+        "bbox": [
+            70,
+            270,
+            509,
+            312
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "equation",
+        "text": "$$\nW = E (T) = \\frac {1}{\\mu - \\lambda} = \\frac {1}{\\mu (1 - \\rho)}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            361,
+            333,
+            614,
+            420
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "text",
+        "text": "Average number of orders in the system (L): ",
+        "bbox": [
+            70,
+            446,
+            468,
+            485
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL = \\lambda W = \\frac {\\lambda}{\\mu - \\lambda} = \\frac {\\rho}{1 - \\rho}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            351,
+            516,
+            559,
+            603
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "text",
+        "text": "- Average time an order waiting in the queue $(W_{q})$ : ",
+        "bbox": [
+            70,
+            624,
+            512,
+            670
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "equation",
+        "text": "$$\nW _ {q} = W - \\frac {1}{\\mu} = \\frac {\\lambda}{\\mu - \\lambda} = \\frac {\\rho}{\\mu (1 - \\rho)}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            353,
+            698,
+            623,
+            787
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "text",
+        "text": "- Average number of orders in the queue $(L_{q})$ : ",
+        "bbox": [
+            70,
+            801,
+            475,
+            850
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "text",
+        "text": "Here $\\frac{1}{\\mu}$ represents the average service time. ",
+        "bbox": [
+            691,
+            725,
+            989,
+            781
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {q} = \\lambda W _ {q} = \\frac {\\rho^ {2}}{1 - \\rho}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            360,
+            875,
+            515,
+            968
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "text",
+        "text": "Estimating $\\lambda$ (Arrival Rate) ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            557,
+            192
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- In trading, an \"arrival\" can refer to new limit orders entering the market. ",
+            "- The arrival rate $\\lambda$ can be calculated as "
+        ],
+        "bbox": [
+            70,
+            270,
+            829,
+            387
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\lambda = \\frac {T o t a l n u m b e r o f a r r i v a l s}{T o t a l t i m e p e r i o d}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            346,
+            438,
+            601,
+            529
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "- Example: if a trading system receives 600 limit orders over a 10-minute period, $\\lambda$ would be ",
+        "bbox": [
+            70,
+            603,
+            912,
+            696
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\lambda = \\frac {6 0 0}{1 0} = 6 0 o r d e r s p e r m i n u t e\n$$",
+        "text_format": "latex",
+        "bbox": [
+            329,
+            764,
+            594,
+            844
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "Estimating $\\mu$ (Service Rate) ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            570,
+            192
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- In trading, the \"service\" could refer to the execution of orders. ",
+            "- The service rate $\\mu$ can be calculated as: "
+        ],
+        "bbox": [
+            71,
+            270,
+            726,
+            385
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mu = \\frac {1}{A v e r a g e s e r v i c e t i m e}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            337,
+            427,
+            559,
+            512
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "text",
+        "text": "Example: If the average time to execute an order is 2 seconds, then ",
+        "bbox": [
+            71,
+            537,
+            777,
+            583
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mu = \\frac {1}{2} = 0. 5 o r d e r s p e r s e c o n d = 3 0 o r d e r s p e r m i n u t e\n$$",
+        "text_format": "latex",
+        "bbox": [
+            265,
+            646,
+            729,
+            722
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "text",
+        "text": "Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            232,
+            190
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- In an order book, buy orders arrive at an average rate of 12 orders per minute, while sell orders arrive at an average rate of 10 orders per minute. ",
+            "- Assuming that both types of orders are processed immediately and that the system operates under a Poisson arrival process, what is the expected number of buy orders in the queue at any given time? ",
+            "• Answer: "
+        ],
+        "bbox": [
+            70,
+            270,
+            901,
+            542
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Arrival rate $\\lambda$ for buy orders $= 12$ ",
+            "- Service rate $\\mu = 12 + 10$ (i.e. the total rate at which orders can be processed) ",
+            "Average number of orders in the system (L): "
+        ],
+        "bbox": [
+            108,
+            557,
+            700,
+            683
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL = \\frac {\\lambda}{\\mu - \\lambda} = \\frac {1 2}{2 2 - 1 2} = 1. 2\n$$",
+        "text_format": "latex",
+        "bbox": [
+            494,
+            690,
+            716,
+            777
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "text",
+        "text": "Average number of buy orders in the queue $(L_{q})$ ",
+        "bbox": [
+            109,
+            829,
+            506,
+            872
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL _ {q} = \\frac {\\lambda}{\\mu} L = \\frac {1 2}{2 2} 1. 2 = 0. 6 5\n$$",
+        "text_format": "latex",
+        "bbox": [
+            539,
+            833,
+            744,
+            920
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "text",
+        "text": "Remarks ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            237,
+            181
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Time Period: Ensure that the time period for your data collection is consistent when calculating $\\lambda$ and $\\mu$ . ",
+            "- Market Conditions: Be aware that both $\\lambda$ and $\\mu$ can vary significantly with market conditions (eg. volatility, liquidity). ",
+            "- Statistical Methods: You can use statistical methods to refine your estimates, such as calculating confidence intervals or conducting regression analysis if you have larger datasets. "
+        ],
+        "bbox": [
+            70,
+            270,
+            921,
+            646
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "text",
+        "text": "Key Assumptions of the Basic Queuing Model ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            910,
+            192
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "text",
+        "text": "- Poisson Arrivals: ",
+        "bbox": [
+            71,
+            272,
+            291,
+            320
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Assumes that orders arrive randomly and independently. ",
+            "Real-world order flows can exhibit clustering or trends. "
+        ],
+        "bbox": [
+            107,
+            337,
+            706,
+            442
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "text",
+        "text": "- Exponential Service Times: ",
+        "bbox": [
+            71,
+            462,
+            412,
+            512
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Assumes a constant average execution time for orders. ",
+            "- In reality, execution times can vary significantly due to order size, market volatility, etc. "
+        ],
+        "bbox": [
+            108,
+            527,
+            867,
+            677
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "text",
+        "text": "- Single Server: ",
+        "bbox": [
+            71,
+            701,
+            257,
+            751
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Assumes a single market maker or execution venue. ",
+            "- Multiple venues and decentralized markets can complicate execution dynamics "
+        ],
+        "bbox": [
+            108,
+            764,
+            830,
+            912
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "text",
+        "text": "Trading Strategies based on Queuing Theory ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            890,
+            192
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "text",
+        "text": "1. Optimal Order Placement ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            270,
+            420,
+            327
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Concept: Apply queuing principles to optimize order placement. ",
+            "Strategy: "
+        ],
+        "bbox": [
+            107,
+            337,
+            783,
+            442
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Analyze the average waiting times and queue lengths to determine the best times to place orders. ",
+            "- Use limit orders strategically when the queue is shorter (lower waiting times), and market orders when the queue is longer. ",
+            "- Adjust order sizes based on the current traffic intensity $(\\rho)$ to avoid slippage. "
+        ],
+        "bbox": [
+            146,
+            451,
+            880,
+            670
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "text",
+        "text": "Trading Strategies based on Queuing Theory ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            890,
+            192
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "text",
+        "text": "2. Order Flow Analysis ",
+        "text_level": 1,
+        "bbox": [
+            70,
+            270,
+            357,
+            327
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Concept: Use arrival rates $(\\lambda)$ and service rates $(\\mu)$ to analyse market liquidity. ",
+            "Strategy: "
+        ],
+        "bbox": [
+            107,
+            337,
+            914,
+            442
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Monitor the number of incoming orders and execution times to gauge market activity. ",
+            "- Increase trading frequency during periods of high arrival rates to capitalize on liquidity. ",
+            "- Reduce trading during low liquidity periods. "
+        ],
+        "bbox": [
+            146,
+            451,
+            900,
+            590
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "text",
+        "text": "Trading Strategies based on Queuing Theory ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            890,
+            192
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "text",
+        "text": "3. Queue Analysis ",
+        "text_level": 1,
+        "bbox": [
+            70,
+            272,
+            296,
+            327
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Concept: Utilize queue lengths to inform directional move. ",
+            "Strategy: "
+        ],
+        "bbox": [
+            109,
+            337,
+            544,
+            490
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- When the queue length (or the area) of bid book is much longer than that of ask book, it may imply a strong market demand and suggest a short-term upward trend ",
+            "- Pair this with indicators that signal buy or sell conditions. "
+        ],
+        "bbox": [
+            147,
+            500,
+            547,
+            746
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "image",
+        "img_path": "images/82f9716bbdf26269dd93d2e07f3deae061ab9a2f39aedeeaa6925abcedf129ed.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            572,
+            312,
+            1000,
+            822
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "text",
+        "text": "Backtest Order Book Imbalance ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            657,
+            188
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "text",
+        "text": "Trading Logic: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            272,
+            216,
+            320
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "text",
+        "text": "- For each second, ",
+        "bbox": [
+            72,
+            338,
+            267,
+            385
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Collect the latest bid-book and ask-book data ",
+            "- Compute the total volume in both bid-book and ask-book respectively ",
+            "Market Entry: "
+        ],
+        "bbox": [
+            108,
+            394,
+            725,
+            535
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "text",
+        "text": "- If last trade time is 15 minutes before, ",
+        "bbox": [
+            147,
+            544,
+            459,
+            579
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If bid-book volume $>2^{*}$ ask-book volume, open a BUY order ",
+            "- If ask-book volume $>2^{*}$ bid-book volume, open a SELL order "
+        ],
+        "bbox": [
+            184,
+            588,
+            667,
+            670
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "text",
+        "text": "Market Exit: ",
+        "bbox": [
+            110,
+            679,
+            235,
+            716
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Close if previously open a BUY order, but now bid-book volume $<$ ask-book volume ",
+            "- Close if previously open a SELL order, but now ask-book volume $<$ bid-book volume "
+        ],
+        "bbox": [
+            146,
+            727,
+            800,
+            809
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "text",
+        "text": "Backtest Settings ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            111,
+            389,
+            192
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Backtest Period = 2024-01 ",
+            "- Data Interval = Tick ",
+            "- Initial Capital = 10,000 USD ",
+            "- Leverage = 5 ",
+            "Transaction Cost = 0 ",
+            "- Allow Short Sell = True ",
+            "- Position Netting = False ",
+            "- Instruments = BTCUSDM "
+        ],
+        "bbox": [
+            75,
+            270,
+            325,
+            716
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Settings ",
+        "text_level": 1,
+        "bbox": [
+            761,
+            74,
+            805,
+            100
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Strategy Name ",
+        "text_level": 1,
+        "bbox": [
+            607,
+            168,
+            669,
+            190
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Order Imbalance ",
+        "text_level": 1,
+        "bbox": [
+            720,
+            177,
+            780,
+            196
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Start Period ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            224,
+            662,
+            242
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "2024-01 ",
+        "bbox": [
+            723,
+            233,
+            756,
+            253
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "End Period * ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            281,
+            659,
+            301
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "2024-01 ",
+        "bbox": [
+            723,
+            294,
+            756,
+            312
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "# ",
+        "bbox": [
+            926,
+            294,
+            936,
+            311
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Data Interval ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            342,
+            665,
+            361
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "tick ",
+        "bbox": [
+            723,
+            351,
+            738,
+            370
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "# ",
+        "bbox": [
+            926,
+            351,
+            936,
+            368
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Initial Capital ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            400,
+            666,
+            420
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "10000.0 ",
+        "bbox": [
+            720,
+            407,
+            752,
+            425
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            926,
+            407,
+            936,
+            422
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Base Currency ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            453,
+            671,
+            474
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "USD ",
+        "bbox": [
+            723,
+            464,
+            740,
+            483
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "# ",
+        "bbox": [
+            926,
+            464,
+            936,
+            481
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Leverage ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            512,
+            646,
+            533
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "5.0 ",
+        "bbox": [
+            720,
+            522,
+            733,
+            538
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            926,
+            522,
+            936,
+            538
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Transaction Cost ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            566,
+            675,
+            585
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "0.0 ",
+        "bbox": [
+            720,
+            575,
+            734,
+            592
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            926,
+            575,
+            936,
+            590
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Risk free Rate ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            622,
+            664,
+            640
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "0.0 ",
+        "bbox": [
+            720,
+            631,
+            734,
+            646
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            926,
+            631,
+            936,
+            646
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Enable Short Sell ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            681,
+            676,
+            701
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "image",
+        "img_path": "images/0184a33af81ba2fa33a9d0299f09252734d9d40521a32559682819301d3c3d89.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            780,
+            672,
+            828,
+            705
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Position Netting ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            720,
+            672,
+            740
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "image",
+        "img_path": "images/30378578eca83fe332a2241da4271d2409766d5623155d0b2380817d68d54462.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            780,
+            709,
+            828,
+            744
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "News Data ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            757,
+            652,
+            777
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "image",
+        "img_path": "images/84970d597dc2e9e8af22e18fafaf8555523902ab13f8ff611bd7f8dba7e7dfcc.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            780,
+            750,
+            828,
+            783
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Weather Data ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            796,
+            663,
+            814
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "image",
+        "img_path": "images/0832eaafa31015b4af659614e6f096f1972e24fd0d6c2fbd28e3a8b0b93653aa.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            780,
+            785,
+            828,
+            820
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Economics Data ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            835,
+            671,
+            853
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "image",
+        "img_path": "images/a727deaf39c23328cfd9c32ceac0385cb5e785f00b254b5d71f008d48398be8b.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            780,
+            825,
+            828,
+            859
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Instruments ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            901,
+            657,
+            922
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "image",
+        "img_path": "images/7addec570ed93cdf7e3a14df50c799f93f4e454a771a98d8c772ee858a47145e.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            665,
+            901,
+            671,
+            920
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "(Max. 100 items) ",
+        "text_level": 1,
+        "bbox": [
+            608,
+            933,
+            675,
+            953
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "BTCUSD X ",
+        "bbox": [
+            723,
+            942,
+            776,
+            962
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "footer",
+        "text": "ALGOGENE ",
+        "bbox": [
+            926,
+            966,
+            975,
+            981
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "footer",
+        "text": "ALGOGENE ",
+        "bbox": [
+            936,
+            966,
+            975,
+            979
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "Full Script ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            109,
+            258,
+            188
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "from AlgoAPI import AlgoAPIUtil, AlgoAPI_Backtest from datetime import datetime, timedelta ",
+        "guess_lang": "python",
+        "bbox": [
+            33,
+            248,
+            300,
+            300
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [],
+        "code_body": "class AlgoEvent: def __init__(self): self_timer $=$ datetime(1970,1,1) self.last_trade $=$ datetime(1970,1,1) self.thre $= 2$ ",
+        "bbox": [
+            34,
+            322,
+            343,
+            446
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "def start(self, mEvt): self.evt = AlgoAPI_Backtest.AlgoEvtHandler(self, mEvt) self.evt.start() ",
+        "guess_lang": "python",
+        "bbox": [
+            46,
+            468,
+            343,
+            544
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "code",
+        "sub_type": "algorithm",
+        "code_caption": [],
+        "code_body": "def on_marketdatafeed(self, md, ab): # reset grid every 1 minute if md.timestamp $> =$ self.timemr+timedelta(seconds=1): # update timer self.timemr $\\equiv$ md.timestamp ",
+        "bbox": [
+            46,
+            566,
+            330,
+            690
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "calculate cumulative volume for bid and ask book  \nbid_volume, ask_volume = 0, 0  \nfor p,v in md.bidOrderBook:  \n    bid_volume += v  \nfor p,v in md.askOrderBook:  \n    ask_volume += v ",
+        "guess_lang": "python",
+        "bbox": [
+            71,
+            714,
+            333,
+            861
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "# entry signal\nif md.timestamp >= self.last_trade + timedelta(minutes=15):\n    if bid_volume > self.thre*ask_volume:\n        self.last_trade = md.timestamp\n        order = AlgoAPIUtil.OrderObject(\n            instrument=md.instrument,\n            openclose='open',\n            buysell=1,\n            volume=0.0001\n        )\n        self.evt.sendOrder(order)\nelif ask_volume > self.thre*bid_volume:\n    self.last_trade = md.timestamp\n    order = AlgoAPIUtil.OrderObject(\n        instrument=md.instrument,\n        openclose='open',\n        buysell=-1,\n        volume=0.0001\n    )\n    self.evt.sendOrder(order) ",
+        "guess_lang": "python",
+        "bbox": [
+            478,
+            148,
+            956,
+            909
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "text",
+        "text": "Backtest Result ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            111,
+            355,
+            179
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "image",
+        "img_path": "images/1e290d6f6bfd3d8eb11ddfd29ba9d17204770fe9e3adb3b97dd522aa91a09866.jpg",
+        "image_caption": [
+            "Capital Usage: "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            4,
+            281,
+            978,
+            564
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "image",
+        "img_path": "images/89749bdc2d9a3b21d1d9fa280348b41c61adf61a67976ea508590b90a2d6f794.jpg",
+        "image_caption": [
+            "Equity Drawdown $(\\%)$ : "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            7,
+            657,
+            978,
+            935
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "table",
+        "img_path": "images/cdbb0c304569b0a45a35305ff2b65dbde95095888d703f701e1372fb3efb3876.jpg",
+        "table_caption": [
+            "Performance Statistics: 1 "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>No. of Tradable Days:</td><td>31</td><td>No. of Win Days:</td><td>16</td><td>No. of Loss Days:</td><td>14</td></tr><tr><td>Win Rate:</td><td>53.3333%</td><td>Max. Consecutive Win Day:</td><td>5</td><td>Max. Consecutive Loss Day:</td><td>3</td></tr><tr><td>Odd Ratio:</td><td>1.1429</td><td>Max. Consecutive Gains:</td><td>457.88</td><td>Max. Consecutive Loss:</td><td>-461.27</td></tr><tr><td>No. of Trades:</td><td>2919</td><td>Average Consecutive Win Day:</td><td>0.93</td><td>Average Consecutive Loss Day:</td><td>0.6</td></tr><tr><td>Total PnL:</td><td>-173.62</td><td>Average Per Trade PnL:</td><td>-0.06</td><td>Average Per Day PnL:</td><td>-5.6</td></tr><tr><td>Mean Daily Return:</td><td>-0.0462%</td><td>Median Daily Return:</td><td>0.1058%</td><td>Mean Annual Return:</td><td>-11.6511%</td></tr><tr><td>Daily Return StdDev:</td><td>1.5529%</td><td>25th percentile Daily Return:</td><td>-0.5793%</td><td>75th percentile Daily Return:</td><td>0.5763%</td></tr><tr><td>Daily Return Downside StdDev:</td><td>1.0594%</td><td>95% 1 day return VaR:</td><td>-2.9652%</td><td>99% 1 day return VaR:</td><td>-4.128%</td></tr><tr><td>Daily Sharpe Ratio:</td><td>-0.0298</td><td>Annual Sharpe Ratio:</td><td>-0.4726</td><td>Max. Drawdown Amount:</td><td>995.9</td></tr><tr><td>Daily Sortino Ratio:</td><td>-0.0436</td><td>Annual Sortino Ratio:</td><td>-0.6928</td><td>Max. Drawdown Percent:</td><td>9.2023%</td></tr><tr><td>Max. Drawdown Duration:</td><td>8</td><td>Average Drawdown Duration:</td><td>2.45</td><td>Annual Volatility:</td><td>24.5542%</td></tr><tr><td>Gross Profit:</td><td>0.0</td><td>Gross Loss:</td><td>0.0</td><td>Profit Factor:</td><td>0.0</td></tr><tr><td>Jensen Alpha:</td><td>0.0</td><td>Beta:</td><td>0.0</td><td>Information Ratio:</td><td>0.0</td></tr><tr><td>Omega Ratio:</td><td>0.0</td><td>Treynor Ratio:</td><td>0.0</td><td>Tail Ratio:</td><td>0.8897</td></tr><tr><td>Calmar Ratio:</td><td>1.2661</td><td>Average Holding Day:</td><td>14.4259</td><td>Annual Turnover Rate:</td><td>0.0%</td></tr></table>",
+        "bbox": [
+            26,
+            285,
+            969,
+            764
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "text",
+        "text": "Limitations of the Basic M/M/1 Queuing Model ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            861,
+            187
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Assumes a simple FIFO processing, while actual order execution may depend on priority rules or other factors. Eg. a trader can randomly place a limit order at any price level. ",
+            "- Market makers may keep placing and cancelling limit orders which makes the analysis more complicated. ",
+            "It ignores the size of order. A larger size is expected to take longer time to get filled (i.e. longer service time) ",
+            "- Assumes constant arrival and service rates, while these rates can fluctuate with market volatility and liquidity "
+        ],
+        "bbox": [
+            70,
+            270,
+            918,
+            759
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "text",
+        "text": "Optional Reading ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            397,
+            192
+        ],
+        "page_idx": 52
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The order book as a queueing system: average depth and influence of the size of limit orders (https://hal.science/hal-01006410/document) ",
+            "- Simulating and analyzing order book data: The queue-reactive model (https://arxiv.org/pdf/1312.0563) ",
+            "- A Model for Queue Position Valuation in a Limit Order Book (https://moallemi.com/ciamac/papers/queue-value-2016.pdf) "
+        ],
+        "bbox": [
+            71,
+            268,
+            913,
+            596
+        ],
+        "page_idx": 52
+    },
+    {
+        "type": "text",
+        "text": "High Frequency Trading ",
+        "text_level": 1,
+        "bbox": [
+            206,
+            390,
+            795,
+            500
+        ],
+        "page_idx": 53
+    },
+    {
+        "type": "image",
+        "img_path": "images/2f8765a874883a6028c0203618704b9e572e4275ac66e87d0f42a4ccdc31546d.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            0,
+            0,
+            1000,
+            1000
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "text",
+        "text": "High Frequency Trading ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            510,
+            192
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Rapid executions of multiple transactions followed by extremely short holding periods. ",
+            "Profit from small price changes and discrepancies ",
+            "- Require sophisticated technology, communications and computing resources ",
+            "- High frequency trading depends heavily on execution speed and latency "
+        ],
+        "bbox": [
+            71,
+            268,
+            909,
+            550
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "Co-location ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            286,
+            181
+        ],
+        "page_idx": 56
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- High frequency trading firms usually rent space from market centers, such as from the major exchanges ",
+            "- The purpose to put their servers next to the market center's data servers is to reduce latency. It provides significant millisecond and even microseconds advantages, and enable institutions to better serve their clients. "
+        ],
+        "bbox": [
+            71,
+            272,
+            546,
+            718
+        ],
+        "page_idx": 56
+    },
+    {
+        "type": "image",
+        "img_path": "images/d121d9591e8f65b4dc14955890ec69bf275a0fa4fdb1fc978dea4b9ae4716b99.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            558,
+            262,
+            1000,
+            775
+        ],
+        "page_idx": 56
+    },
+    {
+        "type": "text",
+        "text": "Co-location ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            286,
+            181
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Light or an electronic signal, travels approximately 300 meters in just 1 microsecond. Therefore, ",
+            "- from the NYSE to a financial institution in Hong Kong, which is around 13,000 kilometers away, it would take about 43.3 milliseconds ",
+            "- This calculation ignores the additional latency induced by routers, switches, etc. ",
+            "- An exchange provides institutions that co-locate in its facilities with cables of identical length to connect its data feeds, regardless of how many meters an office is from the feeds. "
+        ],
+        "bbox": [
+            70,
+            270,
+            912,
+            700
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "text",
+        "text": "Latency Arbitrage ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            402,
+            190
+        ],
+        "page_idx": 58
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Latency refers to the speed at which quotations are displayed or orders are executed after being placed ",
+            "- Consider this example involving a high-frequency trader (HFT) that uses automated trading to leverage its informational edge: "
+        ],
+        "bbox": [
+            70,
+            270,
+            855,
+            481
+        ],
+        "page_idx": 58
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The initial market bid and ask price for Stock X are 50.00 and 50.01. ",
+            "- Due to its advanced technology and strategic location, HFT receives an institutional market order for Stock X. This information reaches the trader's system 10 microseconds before it does for most competing traders. ",
+            "- HFT purchases all available shares at 50.01 before other traders can react. ",
+            "- As a result, the institutional buyer is unable to buy at 50.01. ",
+            "- HFT then place a sell limit order at 50.02, and thus market ask price adjusts to 50.02. ",
+            "- The institutional buyer's market order finally execute at 50.02, locking a 0.01 profit per share for HFT "
+        ],
+        "bbox": [
+            108,
+            490,
+            917,
+            894
+        ],
+        "page_idx": 58
+    },
+    {
+        "type": "text",
+        "text": "Latency Arbitrage ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            402,
+            190
+        ],
+        "page_idx": 59
+    },
+    {
+        "type": "text",
+        "text": "- Another example highlighted in the Wall Street Journal. ",
+        "bbox": [
+            71,
+            270,
+            661,
+            320
+        ],
+        "page_idx": 59
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- In July 2009, Intel, announced strong earnings, prompting some traders to view the semiconductor company Broadcom as a potential buying opportunity. ",
+            "- To mask their interest, many of these traders divided their orders into smaller quantities. ",
+            "- On that day, Broadcom opened trading at \\(26.20. High-frequency traders (HFTs), who had quicker access to market quotes, noticed the significant interest in Broadcom. ",
+            "- Consequently, the HFTs started purchasing Broadcom shares and subsequently reselling them to slower investors at elevated prices. The share price of Broadcom swiftly climbed to $26.39 as HFTs began offering hundreds of thousands of shares for sale. ",
+            "- Slower traders ended up spending $1.4 million for around 56,000 shares, incurring an additional cost of $7,800 compared to if they had been able to act as quickly as the high-frequency traders. "
+        ],
+        "bbox": [
+            107,
+            329,
+            919,
+            807
+        ],
+        "page_idx": 59
+    },
+    {
+        "type": "text",
+        "text": "Common High Frequency Strategy ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            707,
+            192
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "text",
+        "text": "1. Market Making ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            268,
+            275,
+            314
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Providing liquidity by placing buy and sell orders simultaneously to profit from the bid-ask spread ",
+            "- Some exchanges also provide rebates to market makers "
+        ],
+        "bbox": [
+            107,
+            320,
+            893,
+            442
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "text",
+        "text": "2. Latency Arbitrage ",
+        "text_level": 1,
+        "bbox": [
+            69,
+            455,
+            297,
+            501
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Exploiting delays in market data transmission to execute trades before other market participants can react ",
+            "- Co-location for rapid data feed and order execution is crucial "
+        ],
+        "bbox": [
+            108,
+            507,
+            841,
+            627
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "text",
+        "text": "3. Cross Market Arbitrage ",
+        "text_level": 1,
+        "bbox": [
+            69,
+            642,
+            353,
+            688
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "text",
+        "text": "Identifying and exploiting price discrepancies between different asset classes, markets or exchanges. (eg. 0700.HK vs TCEHY) ",
+        "bbox": [
+            108,
+            692,
+            887,
+            768
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "text",
+        "text": "4. Order Flow Analysis ",
+        "text_level": 1,
+        "bbox": [
+            69,
+            783,
+            321,
+            829
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "text",
+        "text": "- Monitoring the flow of buy and sell orders to predict short-term market direction. ",
+        "bbox": [
+            108,
+            833,
+            825,
+            875
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "text",
+        "text": "HFT: Is it worth? ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            377,
+            181
+        ],
+        "page_idx": 61
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "It is an arms race to build ",
+            "- more reliable and faster execution platforms (computer engineering and science) ",
+            "- more comprehensive and accurate prediction models (mathematics, physics) ",
+            "- Reduce the latency (information engineering) ",
+            "- It is a money burning game to buy or rent ",
+            "- Faster data feed and lower latency ",
+            "- Bigger storage space and more powerful system ",
+            "- But, after you spend so much money, can you make the profit? "
+        ],
+        "bbox": [
+            71,
+            272,
+            603,
+            825
+        ],
+        "page_idx": 61
+    },
+    {
+        "type": "image",
+        "img_path": "images/22afc88597c080b5099857d2607e01973f757b921c0f8aee5f692812aea0df3e.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            617,
+            353,
+            1000,
+            785
+        ],
+        "page_idx": 61
+    },
+    {
+        "type": "text",
+        "text": "投資組合",
+        "bbox": [
+            154,
+            122,
+            197,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "新闻",
+        "bbox": [
+            218,
+            122,
+            242,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "外幣",
+        "bbox": [
+            261,
+            122,
+            285,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "港股",
+        "bbox": [
+            305,
+            122,
+            330,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "美股",
+        "bbox": [
+            345,
+            122,
+            370,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "金價",
+        "bbox": [
+            394,
+            122,
+            417,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "油價 ",
+        "bbox": [
+            438,
+            122,
+            462,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "行情",
+        "bbox": [
+            481,
+            122,
+            504,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "財經日曆 ",
+        "bbox": [
+            525,
+            122,
+            568,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "地產",
+        "bbox": [
+            588,
+            122,
+            611,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "理财 ",
+        "bbox": [
+            633,
+            122,
+            655,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "專欄",
+        "bbox": [
+            677,
+            122,
+            700,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "財經大人物",
+        "bbox": [
+            721,
+            122,
+            773,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "媒 ",
+        "bbox": [
+            794,
+            122,
+            807,
+            146
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "高頻交易|傳內地打壓高頻交易要求將客戶伺服器遷出交易所數據中心",
+        "text_level": 1,
+        "bbox": [
+            260,
+            177,
+            703,
+            262
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "BossMind ",
+        "bbox": [
+            261,
+            324,
+            316,
+            348
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "2026年1月16日",
+        "bbox": [
+            261,
+            353,
+            329,
+            375
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "image",
+        "img_path": "images/cd03ad0a6946a6b1a7d79c758cd77f489887f705a5f2bd78ae42a66e46d8f9f2.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            684,
+            329,
+            698,
+            368
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "彭博引述知情人士報道，中國監管機構要求將客戶伺服器遷出交易所運營的數據中心，料將削高頻交易機構的優勢。據報上海和廣州的大宗商品期貨交易所，已依照監管機構指示，要求本地經紀公司將客戶伺服器遷出交易所營運的數據中心。",
+        "bbox": [
+            263,
+            422,
+            697,
+            568
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "知情人士透露，這一舉措由監管機構主導，上海期貨交易所已告知經紀商，他們需要在下個月底前將高頻客戶的設備移出，而其他客戶則需要在4月30日前完成。",
+        "bbox": [
+            263,
+            614,
+            697,
+            725
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "這一措施影響的不僅僅是高頻交易機構，但它們受到的衝擊可能最大。除了內地本土的高頻交易公司，城堡證券（Citadel Securities）、Jane Street Group和Jump Trading等外國公司的伺服器接入亦將受到影響。",
+        "bbox": [
+            263,
+            768,
+            697,
+            916
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "header",
+        "text": "yahoo/財經 ",
+        "bbox": [
+            147,
+            48,
+            221,
+            79
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "header",
+        "text": "搜尋新聞、股票代號或公司",
+        "bbox": [
+            250,
+            51,
+            389,
+            77
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "header",
+        "text": "Q ",
+        "bbox": [
+            630,
+            51,
+            642,
+            75
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "header",
+        "text": "首頁",
+        "bbox": [
+            703,
+            51,
+            725,
+            72
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "header",
+        "text": "新闻",
+        "bbox": [
+            757,
+            51,
+            779,
+            72
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "footer",
+        "text": "Reference: Yahoo Finance ",
+        "bbox": [
+            19,
+            944,
+            153,
+            970
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "Arbitrage ",
+        "text_level": 1,
+        "bbox": [
+            377,
+            392,
+            614,
+            501
+        ],
+        "page_idx": 63
+    },
+    {
+        "type": "text",
+        "text": "What is arbitrage? ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            414,
+            188
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Arbitrage is the simultaneous purchase and sale of related assets in different markets to profit from price discrepancies. ",
+            "- It usually requires efficient algorithms and high performing computers for execution. ",
+            "- Helps in maintaining market efficiency by aligning prices across different markets. "
+        ],
+        "bbox": [
+            70,
+            270,
+            926,
+            640
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "text",
+        "text": "Type of Arbitrage ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            396,
+            192
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "text",
+        "text": "1. Spatial Arbitrage ",
+        "bbox": [
+            75,
+            270,
+            312,
+            327
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "text",
+        "text": "- Involves buying and selling the same asset in different locations. ",
+        "bbox": [
+            110,
+            337,
+            781,
+            383
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "2. Temporal Arbitrage ",
+            "- Involves buying and selling the same asset at different times. ",
+            "3. Statistical Arbitrage ",
+            "- Relies on mathematical models to identify price inefficiencies. "
+        ],
+        "bbox": [
+            71,
+            405,
+            759,
+            646
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "text",
+        "text": "Spatial Arbitrage: Big Mac Example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            716,
+            192
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "text",
+        "text": "Suppose ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            274,
+            164,
+            318
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Big Mac in Hong Kong costs 30 HKD ",
+            "Big Mac in Shenzhen costs 26 RMB ",
+            "Exchange rate: 1 HKD = 0.9 RMB "
+        ],
+        "bbox": [
+            71,
+            338,
+            452,
+            518
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "text",
+        "text": "Actions: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            607,
+            158,
+            646
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Buy a Big Mac in Shenzhen ",
+            "- Sell it in Hong Kong ",
+            "- Net Profit = $30^{*}0.9 - 26 = 1$ RMB "
+        ],
+        "bbox": [
+            71,
+            672,
+            426,
+            846
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "text",
+        "text": "HKD 1 <> RMB 0.9 ",
+        "bbox": [
+            679,
+            400,
+            793,
+            425
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "image",
+        "img_path": "images/82b6b2de2ddd4c4b96bccc43a51984adfb3e3e80d467cca43dd75d4916d690f5.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            548,
+            448,
+            608,
+            535
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "text",
+        "text": "HKD 30.0 ",
+        "bbox": [
+            613,
+            477,
+            671,
+            501
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "image",
+        "img_path": "images/0af2617b8eec4e251c40fe1be9f77e53820433a31dbf7364538e5bdca76b6feb.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            505,
+            561,
+            715,
+            857
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "image",
+        "img_path": "images/c604b973daf8eb334f35304fa4b1bf6dc8985b1a1a9a32f68405a36d7d3ab397.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            787,
+            453,
+            848,
+            542
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "text",
+        "text": "RMB 26.0 ",
+        "bbox": [
+            853,
+            487,
+            914,
+            511
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "image",
+        "img_path": "images/d566fe4ced7fc76e3aecb90503a37258c7d26a4daa4a09409330395c36b7092e.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            772,
+            557,
+            977,
+            853
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "text",
+        "text": "Spatial Arbitrage: Cross Exchanges Example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            871,
+            192
+        ],
+        "page_idx": 67
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Suppose you have US\\(100,000 in both Binance and Bybit account. ",
+            "- Let's say you observe the following bitcoin future prices: "
+        ],
+        "bbox": [
+            70,
+            270,
+            766,
+            387
+        ],
+        "page_idx": 67
+    },
+    {
+        "type": "table",
+        "img_path": "images/e04efd87e6797a9dc244312e893bb589dd9809c1aa5cb669748725663b9a9eb2.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Exchange</td><td>Bid Price</td><td>Ask Price</td></tr><tr><td>Binance</td><td>96,531.5</td><td>96,532.0</td></tr><tr><td>Bybit</td><td>96,529.0</td><td>96,531.0</td></tr></table>",
+        "bbox": [
+            311,
+            414,
+            664,
+            562
+        ],
+        "page_idx": 67
+    },
+    {
+        "type": "text",
+        "text": "- Actions: ",
+        "bbox": [
+            71,
+            607,
+            178,
+            646
+        ],
+        "page_idx": 67
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Buy 1 contract of bitcoin future on Bybit at $96,531 ",
+            "- Sell 1 contract of bitcoin future on Binance at \\(96,531.5 ",
+            "- Net Profit = $0.5 "
+        ],
+        "bbox": [
+            107,
+            661,
+            697,
+            822
+        ],
+        "page_idx": 67
+    },
+    {
+        "type": "text",
+        "text": "Temporal Arbitrage Example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            594,
+            188
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Suppose 2 companies A (acquiring company) and B (target company) are going to merge to company C. ",
+            "- After merge, A and B will be removed from stock exchange while C will be listed. ",
+            "- Before the merge is done "
+        ],
+        "bbox": [
+            70,
+            270,
+            918,
+            500
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- the shares value of the targeted company B will typically be lower than that of the combined company C ",
+            "- the share value of the acquiring company A will be slightly higher than that of the combined company C "
+        ],
+        "bbox": [
+            107,
+            509,
+            912,
+            679
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "text",
+        "text": "- An arbitrager can buy shares from the targeted company and sells shares for the acquiring company at the same time. Upon the merger is closed, the discrepancy in shares value will be the profit. ",
+        "bbox": [
+            70,
+            698,
+            917,
+            844
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "text",
+        "text": "High Frequency Strategy 1: Triangular Arbitrage ",
+        "text_level": 1,
+        "bbox": [
+            161,
+            270,
+            837,
+            507
+        ],
+        "page_idx": 69
+    },
+    {
+        "type": "text",
+        "text": "Triangular Arbitrage ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            442,
+            192
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Triangular arbitrage is a trading strategy that exploits discrepancies in currency exchange rates. ",
+            "• Suppose you have US\\(1000 and observe the current exchange rates in the market "
+        ],
+        "bbox": [
+            70,
+            270,
+            922,
+            431
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "EUR/USD = 0.8631 ",
+            "• EUR/GBP = 1.4600 ",
+            "- USD/GBP = 1.6939 "
+        ],
+        "bbox": [
+            110,
+            444,
+            289,
+            579
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "Note: ",
+        "bbox": [
+            71,
+            603,
+            151,
+            640
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "- In market convention, the quotation XXX/YYY means the amount of XXX you can get in exchange for 1 unit of YYY ",
+        "bbox": [
+            108,
+            657,
+            860,
+            735
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "Triangular Arbitrage ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            441,
+            188
+        ],
+        "page_idx": 71
+    },
+    {
+        "type": "text",
+        "text": "- The exchange rates do not match up. We can capture the arbitrage profit as follows: ",
+        "bbox": [
+            71,
+            268,
+            806,
+            312
+        ],
+        "page_idx": 71
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Sell dollars for euros: \\(1000 \\times 0.8631 = €863.1 ",
+            "- Sell euros for pounds: €863.1/1.4600 = £591.1644 ",
+            "• Sell pounds for dollars: £591.1644 x 1.6939 = $1001.373 ",
+            "• Net profit = $1001.373 -$ 1000 = $1.373 "
+        ],
+        "bbox": [
+            109,
+            320,
+            605,
+            509
+        ],
+        "page_idx": 71
+    },
+    {
+        "type": "image",
+        "img_path": "images/a166eecd1907ba0bd6bc72e0d2f7afcbfde2e76a52af95f4e85db7f54c393e74.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            367,
+            557,
+            650,
+            959
+        ],
+        "page_idx": 71
+    },
+    {
+        "type": "text",
+        "text": "Polygonal Arbitrage ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            437,
+            192
+        ],
+        "page_idx": 72
+    },
+    {
+        "type": "text",
+        "text": "- The idea of Triangular Arbitrage can be extended to a so-called “Polygonal Arbitrage” among $N$ currencies ",
+        "bbox": [
+            71,
+            266,
+            846,
+            364
+        ],
+        "page_idx": 72
+    },
+    {
+        "type": "image",
+        "img_path": "images/6ee4aa20312816bae388754c98fbb91e3f640474173e0284e532a69f75952876.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            357,
+            357,
+            737,
+            955
+        ],
+        "page_idx": 72
+    },
+    {
+        "type": "text",
+        "text": "Polygonal Arbitrage - Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            625,
+            188
+        ],
+        "page_idx": 73
+    },
+    {
+        "type": "text",
+        "text": "- Suppose we obtain the following snapshot at a particular time during a trading day. ",
+        "bbox": [
+            71,
+            270,
+            797,
+            314
+        ],
+        "page_idx": 73
+    },
+    {
+        "type": "table",
+        "img_path": "images/72569764e9f8095871a2eb23534f1790f1bd69c73ac9921357ea0d6f93defbf3.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Symbol</td><td>Bid</td><td>Ask</td></tr><tr><td>CAD/AUD</td><td>0.89068</td><td>0.89071</td></tr><tr><td>CNY/AUD</td><td>4.67769</td><td>4.67784</td></tr><tr><td>EUR/AUD</td><td>0.61055</td><td>0.61065</td></tr><tr><td>GBP/AUD</td><td>0.5178</td><td>0.51791</td></tr><tr><td>JPY/AUD</td><td>73.5981</td><td>73.6017</td></tr><tr><td>NZD/AUD</td><td>1.04152</td><td>1.04163</td></tr><tr><td>USD/AUD</td><td>0.66956</td><td>0.66964</td></tr><tr><td>CNY/CAD</td><td>5.24968</td><td>5.25003</td></tr><tr><td>EUR/CAD</td><td>0.68523</td><td>0.6853</td></tr><tr><td>GBP/CAD</td><td>0.58144</td><td>0.58161</td></tr><tr><td>JPY/CAD</td><td>82.5996</td><td>82.6034</td></tr><tr><td>NZD/CAD</td><td>1.16878</td><td>1.16898</td></tr><tr><td>CAD/USD</td><td>1.33033</td><td>1.33037</td></tr><tr><td>EUR/CNY</td><td>0.13051</td><td>0.13055</td></tr></table>",
+        "bbox": [
+            155,
+            357,
+            454,
+            959
+        ],
+        "page_idx": 73
+    },
+    {
+        "type": "table",
+        "img_path": "images/268b88ef8b6ba9fc03491d98ecd17d528897ac1d3982e06ed069f6499b566554.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Symbol</td><td>Bid</td><td>Ask</td></tr><tr><td>GBP/CNY</td><td>0.11074</td><td>0.11075</td></tr><tr><td>JPY/CNY</td><td>15.7357</td><td>15.7364</td></tr><tr><td>NZD/CNY</td><td>0.22269</td><td>0.22277</td></tr><tr><td>CNY/USD</td><td>6.98578</td><td>6.98589</td></tr><tr><td>GBP/EUR</td><td>0.84851</td><td>0.84853</td></tr><tr><td>JPY/EUR</td><td>120.558</td><td>120.562</td></tr><tr><td>NZD/EUR</td><td>1.70653</td><td>1.70667</td></tr><tr><td>USD/EUR</td><td>1.09665</td><td>1.09667</td></tr><tr><td>JPY/GBP</td><td>142.092</td><td>142.113</td></tr><tr><td>NZD/GBP</td><td>2.01151</td><td>2.01182</td></tr><tr><td>USD/GBP</td><td>1.29277</td><td>1.2929</td></tr><tr><td>JPY/NZD</td><td>64.7773</td><td>64.7779</td></tr><tr><td>JPY/USD</td><td>109.924</td><td>109.931</td></tr><tr><td>USD/NZD</td><td>0.64288</td><td>0.64298</td></tr></table>",
+        "bbox": [
+            489,
+            357,
+            778,
+            957
+        ],
+        "page_idx": 73
+    },
+    {
+        "type": "text",
+        "text": "Polygonal Arbitrage - Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            625,
+            188
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- We need to take into account of the bid-ask direction. ",
+            "- For a quotation XXX/YYY, "
+        ],
+        "bbox": [
+            71,
+            270,
+            640,
+            385
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Use ask price for calculation if we convert from XXX to YYY ",
+            "- Use bid price for calculation if we convert from YYY to XXX "
+        ],
+        "bbox": [
+            109,
+            394,
+            625,
+            485
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "text",
+        "text": "- Eg. JPY/USD, ",
+        "bbox": [
+            71,
+            503,
+            220,
+            551
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If you sell 100 JPY for USD (i.e. buy USD), you will convert using ask and get $100 / 109.931 = 0.91$ USD. ",
+            "If you sell 100 USD for JPY (i.e. buy JPY), you will convert using bid and get 10,992.4 JPY "
+        ],
+        "bbox": [
+            107,
+            559,
+            893,
+            688
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "table",
+        "img_path": "images/287b481c673205c7d1acc98d34dfc909e1f19d8aecd683bf2cf5adcc2553bccc.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Symbol</td><td>Bid</td><td>Ask</td></tr><tr><td>JPY/USD</td><td>109.924</td><td>109.931</td></tr></table>",
+        "bbox": [
+            325,
+            790,
+            671,
+            892
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "text",
+        "text": "Polygonal Arbitrage - Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            625,
+            188
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "text",
+        "text": "We are interested in the following questions ",
+        "bbox": [
+            71,
+            270,
+            546,
+            316
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Is there arbitrage opportunity? ",
+            "2. What is the optimal path that can yield the highest return after a circulation? "
+        ],
+        "bbox": [
+            109,
+            329,
+            802,
+            418
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "text",
+        "text": "- The most straightforward method is by using high school mathematics!!! ",
+        "bbox": [
+            71,
+            501,
+            830,
+            551
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Loop for any $3,4,5,\\ldots$ number of currencies (i.e. combination) ",
+            "2. For each combination, loop for different currency order (i.e. permutation) ",
+            "3. Multiply the exchange rate along the currency path ",
+            "4. Arbitrage exists if the value is greater than 1 "
+        ],
+        "bbox": [
+            109,
+            561,
+            772,
+            746
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "text",
+        "text": "Polygonal Arbitrage - Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            625,
+            188
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [
+            "from itertools import combinations, permutations ",
+            "print('currencies=','currencies') "
+        ],
+        "code_body": "def calculate_profit(rate_dict, currencies): initial_amount = 1 # Starting with 1 unit of the first currency current_amount = initial_amount action_path = [] ",
+        "guess_lang": "python",
+        "bbox": [
+            45,
+            281,
+            387,
+            390
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "for i in range(len(currencies)): from_currency = currencies[i] to_currency = currencies[(i + 1) % len(currencies)] # Wrap around ",
+        "guess_lang": "javascript",
+        "bbox": [
+            44,
+            466,
+            440,
+            551
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "if (to_currency, from_currency) in rate_dict:  \n    bid_price = rate_dict[(to_currency, from_currency)][0]  \n    current_amount *= bid_price  \n    action_path.append(f\"Buy {current_amount:.5f} {to_currency} from {initial_amount:.4f} {from_currency} at bid price {bid_price:.5f}\")  \n    initial_amount = current_amount # Update for the next trade ",
+        "guess_lang": "txt",
+        "bbox": [
+            45,
+            574,
+            455,
+            735
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [
+            "return current_amount, action_path "
+        ],
+        "code_body": "if (from_currency, to_currency) in rate_dict: ask_price = rate_dict[(from_currency, to_currency)][1] current_amount /= ask_price action_path.append(f\"Sell {initial_amount:.5f} {from_currency} for {current_amount} {to_currency} at ask price {ask_price:.5f}\") initial_amount = current_amount # Update for the next trade ",
+        "guess_lang": "python",
+        "bbox": [
+            45,
+            761,
+            448,
+            922
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "def findpolygonal_arbitrage(exchangeRates): # Create a dictionary to store the exchange rates  \nrate_dict = {}  \nfor pair, bid, ask in exchangeRates:  \n    cur1, cur2 = pair.split('/')  \n    rate_dict[(cur1, cur2)] = (bid, ask) ",
+        "guess_lang": "python",
+        "bbox": [
+            526,
+            290,
+            969,
+            457
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "Iterate through combinations of currencies (from 3 up to the number of currencies available)  \ncurrencies = setPAIR.split('/')[0] for pair in [pair[0] for pair in exchangeRates]) ",
+        "guess_lang": "txt",
+        "bbox": [
+            526,
+            477,
+            965,
+            562
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "for r in range(3, len(currencies) + 1):  \n    for currency Combination in combinations(currencies, r):  \n        for currency_permutation in permutations(currency Combination):  \n            value, action_path = calculate_profit(rate_dict, currency_permutation)  \n            if value > 1: # More than the initial investment indicates arbitrage return True, action_path, value  \nreturn False, [], 0 # No arbitrage opportunity found ",
+        "guess_lang": "python",
+        "bbox": [
+            542,
+            585,
+            967,
+            772
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "text",
+        "text": "Polygonal Arbitrage - Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            625,
+            188
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "currencies= ('JPY', 'CAD', 'NZD')  \ncurrencies= ('JPY', 'NZD', 'CAD')  \nArbitrage OpportunityExists:  \nSell 1.00000 JPY for 0.0154373636687821 NZD at ask price 64.77790  \nSell 0.01544 NZD for 0.013205840706241425 CAD at ask price 1.16898  \nBuy 1.09080 JPY from 0.0132 CAD at bid price 82.59960  \nTotal value after circulation: 1.0908 ",
+        "bbox": [
+            39,
+            312,
+            467,
+            600
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "exchangeRates $=$ [ ",
+        "bbox": [
+            638,
+            88,
+            727,
+            109
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[′CAD/AUD, 0.89068, 0.89071], ",
+        "bbox": [
+            647,
+            111,
+            795,
+            131
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[CNY/AUD', 4.67769, 4.67784], ",
+        "bbox": [
+            648,
+            133,
+            795,
+            153
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[EUR/AUD', 0.61055, 0.61065], ",
+        "bbox": [
+            648,
+            157,
+            795,
+            177
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[GBP/AUD', 0.5178, 0.51791], ",
+        "bbox": [
+            648,
+            177,
+            789,
+            200
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "['JPY/AUD', 73.5981, 73.6017], ",
+        "bbox": [
+            648,
+            201,
+            791,
+            222
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[NZD/AUD', 1.04152, 1.04163] ",
+        "bbox": [
+            648,
+            224,
+            793,
+            242
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[USD/AUD', 0.66956, 0.66964]. ",
+        "bbox": [
+            648,
+            244,
+            794,
+            264
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[CNY/CAD', 5.24968, 5.25003] ",
+        "bbox": [
+            648,
+            266,
+            793,
+            288
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[EUR/CAD', 0.68523, 0.6853], ",
+        "bbox": [
+            648,
+            290,
+            789,
+            309
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[GBP/CAD', 0.58144, 0.58161] ",
+        "bbox": [
+            648,
+            312,
+            793,
+            333
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "['JPY/CAD', 82.5996, 82.6034], ",
+        "bbox": [
+            648,
+            335,
+            791,
+            355
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[NZD/CAD', 1.16878, 1.16898] ",
+        "bbox": [
+            648,
+            357,
+            793,
+            377
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[CAD/USD', 1.33033, 1.33037], ",
+        "bbox": [
+            648,
+            379,
+            794,
+            400
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[EUR/CNY, 0.13051, 0.13055] ",
+        "bbox": [
+            648,
+            401,
+            793,
+            420
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[GBP/CNY', 0.11074, 0.11075], ",
+        "bbox": [
+            648,
+            422,
+            794,
+            442
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "['JPY/CNY', 15.7357, 15.7364], ",
+        "bbox": [
+            648,
+            446,
+            792,
+            466
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[NZD/CNY, 0.22269, 0.22277] ",
+        "bbox": [
+            648,
+            468,
+            793,
+            488
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[CNY/USD', 6.98578, 6.98589] ",
+        "bbox": [
+            648,
+            490,
+            793,
+            509
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[GBP/EUR', 0.84851, 0.84853] ",
+        "bbox": [
+            648,
+            512,
+            793,
+            531
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "['JPY/EUR', 120.558, 120.562], ",
+        "bbox": [
+            648,
+            535,
+            791,
+            555
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[NZD/EUR', 1.70653, 1.70667] ",
+        "bbox": [
+            648,
+            557,
+            793,
+            577
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[USD/EUR', 1.09665, 1.09667] ",
+        "bbox": [
+            648,
+            579,
+            793,
+            600
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "['JPY/GBP', 142.092, 142.113], ",
+        "bbox": [
+            648,
+            601,
+            791,
+            620
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[NZD/GBP', 2.01151, 2.01182]. ",
+        "bbox": [
+            648,
+            622,
+            793,
+            642
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[USD/GBP', 1.29277, 1.2929], ",
+        "bbox": [
+            648,
+            646,
+            789,
+            664
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "['JPY/NZD', 64.7773, 64.7779], ",
+        "bbox": [
+            648,
+            668,
+            791,
+            688
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "['JPY/USD', 109.924, 109.931], ",
+        "bbox": [
+            648,
+            690,
+            791,
+            709
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "[USD/NZD', 0.64288, 0.6429] ",
+        "bbox": [
+            648,
+            712,
+            786,
+            733
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "] ",
+        "bbox": [
+            638,
+            735,
+            641,
+            755
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "has_arbitrage, action_path, value = findpolygonal_arbitrage(exchangeRates) ",
+        "bbox": [
+            638,
+            777,
+            995,
+            800
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "If has_arbitrage: ",
+        "bbox": [
+            638,
+            801,
+            711,
+            820
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "print(\"Arbitrage Opportunity EXISTS:\") ",
+        "bbox": [
+            648,
+            822,
+            815,
+            844
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "for action in action_path: ",
+        "bbox": [
+            648,
+            846,
+            762,
+            866
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "print(action) ",
+        "bbox": [
+            660,
+            868,
+            716,
+            888
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "print(f\"Total value after circulation: {value:.4f}\") ",
+        "bbox": [
+            648,
+            890,
+            863,
+            911
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "else: ",
+        "bbox": [
+            639,
+            912,
+            660,
+            931
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "print(\"No Arbitrage Opportunity.\") ",
+        "bbox": [
+            648,
+            933,
+            802,
+            955
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "Computational Complexity ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            566,
+            188
+        ],
+        "page_idx": 78
+    },
+    {
+        "type": "text",
+        "text": "- Combinations ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            268,
+            237,
+            316
+        ],
+        "page_idx": 78
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• The number of combinations of $n$ currencies taken $r$ at a time is given by $C(n, r)$ which is $\\frac{n!}{r!(n - r)!}$ ",
+            "- This operates in $O(n^{r})$ for each combination size $r$ "
+        ],
+        "bbox": [
+            107,
+            327,
+            876,
+            479
+        ],
+        "page_idx": 78
+    },
+    {
+        "type": "text",
+        "text": "Permutations ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            500,
+            233,
+            542
+        ],
+        "page_idx": 78
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The number of permutations of $r$ currencies is $r!$ ",
+            "- For each combination, we need to consider all permutations, which adds an additional factor of $r!$ "
+        ],
+        "bbox": [
+            108,
+            555,
+            916,
+            679
+        ],
+        "page_idx": 78
+    },
+    {
+        "type": "text",
+        "text": "- Total Complexity ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            703,
+            264,
+            751
+        ],
+        "page_idx": 78
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- For each combination of currencies, we compute the profit for all permutations. Therefore, the total computational complexity can be approximated as: $O\\left(\\sum_{r=3}^{n} C(n, r) \\cdot r!\\right)$ ",
+            "- This can be simplified to $O(n! \\cdot 2^{n})$ in the worst case because you are iterating through all combinations and permutations of the currencies. "
+        ],
+        "bbox": [
+            108,
+            759,
+            900,
+            929
+        ],
+        "page_idx": 78
+    },
+    {
+        "type": "text",
+        "text": "Important Notes ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            381,
+            188
+        ],
+        "page_idx": 79
+    },
+    {
+        "type": "text",
+        "text": "To successfully implement the polygonal arbitrage strategy, ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            270,
+            776,
+            329
+        ],
+        "page_idx": 79
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Take into account of the bid-ask prices ",
+            "- Factor in transaction cost in the calculation ",
+            "- Beware of the rounding issue ",
+            "- Beware of market slippage ",
+            "- Lower chance of arbitrage if the bid-ask spread is large ",
+            "- Need a fast-computing algorithm to solve for a path with "
+        ],
+        "bbox": [
+            108,
+            337,
+            705,
+            668
+        ],
+        "page_idx": 79
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The highest return (global maximum), or ",
+            "- The first identified arbitrage "
+        ],
+        "bbox": [
+            147,
+            681,
+            580,
+            783
+        ],
+        "page_idx": 79
+    },
+    {
+        "type": "text",
+        "text": "Can you execute in real market? ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            111,
+            667,
+            188
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "text",
+        "text": "1. Cash exchange physically ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            270,
+            357,
+            320
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Compare prices across different shops ",
+            "- Need manually input price in your program for calculation ",
+            "- Slow processing and settlement due to human operation "
+        ],
+        "bbox": [
+            109,
+            331,
+            569,
+            588
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "text",
+        "text": "NO ",
+        "bbox": [
+            282,
+            738,
+            358,
+            816
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "image",
+        "img_path": "images/6b3e5d4867fc03ede997e63d71eb1be8f1b853b0bce257c9eef75451730ddbae.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            644,
+            312,
+            1000,
+            814
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "text",
+        "text": "Can you execute in real market? ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            661,
+            188
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "2. Currency exchanges via banks ",
+        "bbox": [
+            41,
+            277,
+            369,
+            322
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Bid-ask spread is too large ",
+            "- How can you to get the real-time exchange rates and trade programmatically on the banking system? "
+        ],
+        "bbox": [
+            79,
+            337,
+            386,
+            581
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "NO ",
+        "bbox": [
+            158,
+            709,
+            233,
+            783
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "image",
+        "img_path": "images/56941231d9fd8218016cbfa98ef91419ca717e81755738634de6f4ce70136bd1.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            425,
+            242,
+            459,
+            277
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "HSBC ",
+        "bbox": [
+            461,
+            250,
+            489,
+            268
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Banking ",
+        "bbox": [
+            525,
+            242,
+            558,
+            262
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Accounts & Services ",
+        "bbox": [
+            525,
+            264,
+            580,
+            275
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Borrowing ",
+        "bbox": [
+            601,
+            244,
+            643,
+            262
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Cards & Loans ",
+        "bbox": [
+            601,
+            264,
+            640,
+            275
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Investing ",
+        "bbox": [
+            664,
+            244,
+            700,
+            262
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Securities & Currency Exchange ",
+        "bbox": [
+            665,
+            264,
+            748,
+            277
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Insurance ",
+        "bbox": [
+            769,
+            244,
+            809,
+            261
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Protection & Planning ",
+        "bbox": [
+            769,
+            264,
+            827,
+            275
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Insights ",
+        "bbox": [
+            850,
+            244,
+            881,
+            262
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Analysis & Market Data ",
+        "bbox": [
+            850,
+            264,
+            911,
+            275
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Offers ",
+        "bbox": [
+            933,
+            244,
+            956,
+            261
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Latest Rewards ",
+        "bbox": [
+            933,
+            264,
+            973,
+            275
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Exchange rates of foreign currencies against HK Dollar ",
+        "bbox": [
+            422,
+            301,
+            759,
+            329
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "table",
+        "img_path": "images/ac7d50279277588656e5213d0295a490dc42058f5c0578942e7e0b47534356d3.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Currency</td><td>Telegraphic Transfer Bank Buy</td><td>Telegraphic Transfer Bank Sell</td><td>Banknotes Bank Buy</td><td>Banknotes Bank Sell</td><td>Last Updated</td></tr><tr><td>US Dollar</td><td>7.74820</td><td>7.80980</td><td>7.71630</td><td>7.84170</td><td>as at 18 Feb 2025 13:28 HKT</td></tr><tr><td>Australian Dollar</td><td>4.90450</td><td>4.97840</td><td>4.87720</td><td>5.00560</td><td>as at 18 Feb 2025 13:28 HKT</td></tr><tr><td>Canadian Dollar</td><td>5.43200</td><td>5.51860</td><td>5.40080</td><td>5.54980</td><td>as at 18 Feb 2025 13:28 HKT</td></tr><tr><td>Euro</td><td>8.06410</td><td>8.20180</td><td>8.02470</td><td>8.24120</td><td>as at 18 Feb 2025 13:28 HKT</td></tr><tr><td>Japanese Yen</td><td>0.05076</td><td>0.05154</td><td>0.05041</td><td>0.05189</td><td>as at 18 Feb 2025 13:28 HKT</td></tr><tr><td>New Zealand Dollar</td><td>4.39730</td><td>4.47870</td><td>4.37250</td><td>4.50400</td><td>as at 18 Feb 2025 13:28 HKT</td></tr><tr><td>Pound Sterling</td><td>9.71900</td><td>9.87600</td><td>9.61600</td><td>9.97800</td><td>as at 18 Feb 2025 13:28 HKT</td></tr><tr><td>Renminbi</td><td>1.06170</td><td>1.07590</td><td>1.05570</td><td>1.08190</td><td>as at 18 Feb 2025 13:28 HKT</td></tr><tr><td>Singapore Dollar</td><td>5.74340</td><td>5.83060</td><td>5.70300</td><td>5.87100</td><td>as at 18 Feb 2025 13:28 HKT</td></tr><tr><td>Swiss Franc</td><td>8.55460</td><td>8.67190</td><td>8.50010</td><td>8.72650</td><td>as at 18 Feb 2025 13:28 HKT</td></tr><tr><td>Thai Baht</td><td>0.22660</td><td>0.23420</td><td>0.21690</td><td>0.24390</td><td>as at 18 Feb 2025 13:28 HKT</td></tr></table>",
+        "bbox": [
+            422,
+            340,
+            993,
+            931
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "footer",
+        "text": "Reference: https://www.hsbc.com.hk/investments/products/foreign-exchange/currency-rate/ ",
+        "bbox": [
+            434,
+            955,
+            992,
+            983
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Can you execute in real market? ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            661,
+            188
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "3. FX brokers (eg. via MetaTrader) ",
+        "bbox": [
+            71,
+            270,
+            416,
+            320
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "It is CFD trading, not currency exchange! ",
+            "- But it might still work… "
+        ],
+        "bbox": [
+            109,
+            331,
+            432,
+            479
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "MAY BE ",
+        "bbox": [
+            159,
+            648,
+            339,
+            722
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Order ",
+        "bbox": [
+            493,
+            340,
+            521,
+            362
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "image",
+        "img_path": "images/baac06ae2e59844ea7ec5ad9be414633ac2483cec9cd86c87ff08c1d1a624716.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            494,
+            381,
+            700,
+            790
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Symbol: ",
+        "bbox": [
+            739,
+            385,
+            768,
+            403
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "EURUSD, Euro vs US Dollar ",
+        "bbox": [
+            769,
+            385,
+            863,
+            403
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Type: ",
+        "bbox": [
+            746,
+            422,
+            768,
+            438
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Instant Execution ",
+        "bbox": [
+            769,
+            422,
+            829,
+            438
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Volume: ",
+        "bbox": [
+            738,
+            479,
+            768,
+            496
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "image",
+        "img_path": "images/b0e49d52f4b9cf92f7b40065baec2f422a81af45c3b2f8996e6c1a6d0af1c841.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            769,
+            479,
+            829,
+            500
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "1000EUR ",
+        "bbox": [
+            831,
+            479,
+            875,
+            496
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Stop Loss: ",
+        "bbox": [
+            733,
+            514,
+            768,
+            531
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "0.0000 ",
+        "bbox": [
+            769,
+            514,
+            834,
+            531
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Take Profit: ",
+        "bbox": [
+            848,
+            514,
+            915,
+            531
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "0.0000 ",
+        "bbox": [
+            941,
+            514,
+            984,
+            531
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Comment: ",
+        "bbox": [
+            733,
+            550,
+            768,
+            564
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            769,
+            550,
+            793,
+            564
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Deviation: ",
+        "bbox": [
+            733,
+            583,
+            768,
+            596
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "0 ",
+        "bbox": [
+            769,
+            581,
+            834,
+            600
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "1.04644 / 1.04651 ",
+        "bbox": [
+            775,
+            637,
+            920,
+            670
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Sell ",
+        "bbox": [
+            769,
+            712,
+            784,
+            729
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Buy ",
+        "bbox": [
+            911,
+            712,
+            927,
+            729
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Triangular Arbitrage for CFD market ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            729,
+            188
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "text",
+        "text": "- Recall that triangular arbitrage exists if ",
+        "bbox": [
+            70,
+            270,
+            423,
+            312
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {E U R}{U S D} \\frac {U S D}{J P Y} \\frac {J P Y}{E U R} > 1\n$$",
+        "text_format": "latex",
+        "bbox": [
+            369,
+            335,
+            527,
+            425
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "text",
+        "text": "It can be re-written as ",
+        "bbox": [
+            70,
+            448,
+            282,
+            485
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\log \\left(\\frac {U S D}{E U R}\\right) = \\log \\left(\\frac {U S D}{J P Y}\\right) + \\log \\left(\\frac {J P Y}{E U R}\\right) + \\varepsilon , \\mathrm {w h e r e} \\varepsilon \\mathrm {i s a n e r r o r t e r m v e r y c l o s e t o z e r o}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            304,
+            485,
+            978,
+            583
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "text",
+        "text": "- We can fit a multiple linear regression (without intercept). ",
+        "bbox": [
+            70,
+            622,
+            587,
+            664
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "equation",
+        "text": "$$\nY _ {t} = \\beta_ {1} X _ {1, t} + \\beta_ {2} X _ {2, t} + \\varepsilon_ {t}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            375,
+            703,
+            578,
+            750
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The estimated value of $\\beta_{1}$ and $\\beta_{2}$ will be very close to 1. ",
+            "- It can be traded as a mean reversion strategy based on the price discrepancies. "
+        ],
+        "bbox": [
+            108,
+            787,
+            731,
+            872
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "text",
+        "text": "Can you execute in real market? ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            661,
+            188
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "We need a broker that supports FX Spot trading or currency exchange (eg. Interactive Brokers, Futu, etc) ",
+            "IB charges at least 2 USD commission per transaction ",
+            "- For a circulation involving 3 currencies, total cost = 6 USD. ",
+            "- Suppose our program detects $0.01\\%$ arbitrage profit among 3 currencies, the breakeven capital will be $\\frac{6}{0.01\\%} = 60,000 \\mathrm{USD}$ ",
+            "• If we require the cost ratio to be $10\\%$ , we need capital at least $\\frac{60,000}{10\\%} = 600,000$ USD "
+        ],
+        "bbox": [
+            63,
+            270,
+            534,
+            787
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "MAY BE ",
+        "text_level": 1,
+        "bbox": [
+            700,
+            327,
+            880,
+            405
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "image",
+        "img_path": "images/c055a74ceb44bbce6ea0f55890443fef9b6f2ddf8d4404e6b5170063cbdd8308.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            565,
+            540,
+            579,
+            577
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "InteractiveBrokers ",
+        "text_level": 1,
+        "bbox": [
+            580,
+            551,
+            701,
+            577
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "Monthly Trade Value (USD) $^2$ ",
+        "bbox": [
+            583,
+            640,
+            713,
+            666
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "≤1,000,000,000 ",
+            "1,000,000,000.01 - 2,000,000,000 ",
+            "2,000,000,000.01 - 5,000,000,000 ",
+            ">5,000,000,000 "
+        ],
+        "bbox": [
+            590,
+            685,
+            727,
+            801
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "Minimum per order ",
+        "bbox": [
+            590,
+            853,
+            672,
+            875
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "Tiered ",
+        "bbox": [
+            835,
+            642,
+            866,
+            662
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "0.20 basis point $^3$ * Trade Value $^4$ ",
+        "bbox": [
+            835,
+            683,
+            966,
+            705
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "0.15 basis point $^{3*}$ Trade Value ",
+        "bbox": [
+            836,
+            714,
+            963,
+            738
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "0.10 basis point $^{3*}$ Trade Value ",
+        "bbox": [
+            836,
+            748,
+            963,
+            768
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "0.08 basis point $^{3}$ * Trade Value $^{4}$ ",
+        "bbox": [
+            836,
+            779,
+            966,
+            801
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "Tier 1 - USD 2.00 ",
+        "bbox": [
+            836,
+            824,
+            905,
+            844
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "Tier II - USD 1.50 ",
+        "bbox": [
+            836,
+            846,
+            905,
+            864
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "Tier III - USD 1.25 ",
+        "bbox": [
+            836,
+            866,
+            907,
+            885
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "Tier IV - USD 1.00 ",
+        "bbox": [
+            836,
+            887,
+            908,
+            905
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "footer",
+        "text": "Reference: https://www.interactivebrokers.com/en/pricing/commissions-spot-currencies.php ",
+        "bbox": [
+            516,
+            950,
+            996,
+            974
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "Conclusion ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            280,
+            181
+        ],
+        "page_idx": 85
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- FX market is quite efficient nowadays. ",
+            "- Triangular/Polygonal arbitrage doesn’t occur very often. ",
+            "- Arbitrage profit, if any, its return won't be too high. ",
+            "- However, it requires ",
+            "- a large capital to cover the potential costs ",
+            "- an efficient algorithm (software) and fast computer (hardware) to execute the trades ",
+            "It is not wise to put so much idle money to wait for small profits ",
+            "- Thus, not many market players still use this strategy "
+        ],
+        "bbox": [
+            75,
+            270,
+            922,
+            829
+        ],
+        "page_idx": 85
+    },
+    {
+        "type": "text",
+        "text": "High Frequency Strategy 2: Market Making ",
+        "text_level": 1,
+        "bbox": [
+            161,
+            270,
+            837,
+            507
+        ],
+        "page_idx": 86
+    },
+    {
+        "type": "text",
+        "text": "Liquidity Providing ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            417,
+            192
+        ],
+        "page_idx": 87
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Some high frequency traders can make profits from order flow. ",
+            "- Exchanges usually offer rebates (eg. $0.0025 per share) to certain brokers (so called “market maker”) that place limit orders in the market. ",
+            "- The rebate is a payment to encourage brokers to provide liquidity in the market. ",
+            "• A broker places a buy limit order that filled at $10, and quickly places another sell limit order that filled again at$ 10, can still make a $0.005 profit per share from the liquidity rebate. ",
+            "- Other buy side traders may pay higher fee to exchange, because it is regarded as the cost of using liquidity in the market. "
+        ],
+        "bbox": [
+            70,
+            270,
+            919,
+            781
+        ],
+        "page_idx": 87
+    },
+    {
+        "type": "text",
+        "text": "Market Making Strategy ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            520,
+            190
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Market making strategy generates profits by capturing the bid-ask spread ",
+            "- The simplest execution of a market making strategy is to place a pair of bid and offer trades, and have the 2 trades filled over time. ",
+            "- When the market is not in trending, this algorithm is reasonably effective to earn the price differential. "
+        ],
+        "bbox": [
+            70,
+            270,
+            912,
+            546
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "image",
+        "img_path": "images/b391ae76b398f3f9cf9615131ffbb7df73677384fee1d4ee31fa41ad53417558.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            187,
+            661,
+            755,
+            853
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "Market Making Strategy ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            519,
+            190
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- However, this strategy fails if the market does not stay in a trading range, because one of the orders doesn't get fill and wait for a long time to capture the spread. ",
+            "- A logical solution to this is, if a pair of order doesn't get fill on both side, we would want to reset the algorithm and submit a new set of pairs: "
+        ],
+        "bbox": [
+            70,
+            270,
+            909,
+            450
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Constantly check if we have unfilled orders in the order book. ",
+            "- If no, we can simply submit a new set of pairs. ",
+            "- Otherwise, we should cancel the previous unfilled order, and submit another pair of limit orders. ",
+            "- Try to adjust the bid-ask level or quantity so as to balance the inventory. "
+        ],
+        "bbox": [
+            108,
+            459,
+            865,
+            631
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "image",
+        "img_path": "images/2b646e4711fd4c66edcbf235750849925e8d80f922340e1071e15f20dc870495.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            244,
+            674,
+            736,
+            996
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "Market Making Strategy Backtest ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            684,
+            192
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Backtest Period = 2024-01 to 2024-03 ",
+            "- Data Interval = 1 hour ",
+            "- Initial Capital = 100,000 USD ",
+            "- Leverage $= 1$ ",
+            "Transaction Cost = 0 ",
+            "- Allow Short Sell = True ",
+            "- Position Netting = True ",
+            "- Instruments = XAUUSD "
+        ],
+        "bbox": [
+            75,
+            270,
+            381,
+            685
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "text",
+        "text": "from AlgoAPI import AlgoAPIUtil, AlgoAPI_Backtest from datetime import datetime, timedelta ",
+        "bbox": [
+            571,
+            235,
+            812,
+            281
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "text",
+        "text": "class AlgoEvent: def __init__(self): self.lasttradetime = datetime(1970,1,1) ",
+        "bbox": [
+            572,
+            303,
+            776,
+            372
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "text",
+        "text": "def start(self, mEvt): self EVT = AlgoAPI_Backtest.AlgoEvtHandler(self, mEvt) self EVT.start() ",
+        "bbox": [
+            583,
+            392,
+            853,
+            459
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "text",
+        "text": "def on_marketdatafeed(self, md, ab): if md.timestamp $> =$ self.lasttradetime + timedelta(hours=1): self.lasttradetime $\\equiv$ md.timestamp self.mm_order(md, 1, 'open') self.mm_order(md, -1, 'open') ",
+        "bbox": [
+            583,
+            479,
+            869,
+            592
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "text",
+        "text": "def mm_order(self, md, buysell, openclose): order = AlgoAPIUtil.OrderObject( instrument = md.instrument, orderRef = 1, volume = 0.01, openclose = openclose, buysell = buysell, ordertype = 1, #0=market_order, 1=limit_order, #2=stop_order timeinforce = 60*60*24 #cancel unfilled order every day, unit in second ) if buysell $= = 1$ : order.price = md.bidPrice\\*0.999 elif buysell $= = -1$ .. order.price = md.askPrice\\*1.001 self.evt.sendOrder(order) ",
+        "bbox": [
+            583,
+            614,
+            934,
+            950
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "text",
+        "text": "Market Making Strategy Backtest ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            109,
+            683,
+            190
+        ],
+        "page_idx": 91
+    },
+    {
+        "type": "image",
+        "img_path": "images/48c40301b73425c5a363f250cb680e85e96d4fa2cf0b2cae990352d36c795d3c.jpg",
+        "image_caption": [
+            "Equity Drawdown (%): "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            120,
+            222,
+            844,
+            514
+        ],
+        "page_idx": 91
+    },
+    {
+        "type": "image",
+        "img_path": "images/d53a0cf10846e8b1090c93a42afc91f70c508295113e015b3ef5894a193af18b.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            128,
+            562,
+            841,
+            824
+        ],
+        "page_idx": 91
+    },
+    {
+        "type": "table",
+        "img_path": "images/f0c0f03a2f63fa6ef166a76ff2a2d7b762535bfa13dd581b4faa40aa8ee20412.jpg",
+        "table_caption": [
+            "Monthly Return: "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Year</td><td>Jan</td><td>Feb</td><td>Mar</td><td>Apr</td><td>May</td><td>Jun</td><td>Jul</td><td>Aug</td><td>Sep</td><td>Oct</td><td>Nov</td><td>Dec</td><td>YTD</td></tr><tr><td>2024</td><td>0.68%</td><td>0.94%</td><td>-1.6%</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-0.0%</td></tr></table>",
+        "bbox": [
+            163,
+            907,
+            817,
+            955
+        ],
+        "page_idx": 91
+    },
+    {
+        "type": "text",
+        "text": "Conclusion ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            280,
+            181
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Even rebates can provide stable income, a market maker still need to manage the risks of taking unwanted positions. ",
+            "- A key point to implement a market making strategy successfully is to maintain the net position as close to zero as possible over time, while maximizing the number of filled pairs. ",
+            "- Some improvements to above strategy: "
+        ],
+        "bbox": [
+            70,
+            270,
+            922,
+            596
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Only open a set of pair trades when the market is detected to be ranging ",
+            "- Early cut loss if the market is detected to be trending in opposite direction ",
+            "- Set a wider spread if the market is less liquid; and tighter spread for liquid market ",
+            "- Set a wider spread when market is volatile; and tighter spread for less volatile market "
+        ],
+        "bbox": [
+            107,
+            605,
+            854,
+            792
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "Key Takeaways ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            347,
+            190
+        ],
+        "page_idx": 93
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Reveals order book insights through real-time market depth and liquidity dynamics. ",
+            "- Common trading ideas/strategies through order flow analysis ",
+            "- Market impact of a large order and strategies to mitigate ",
+            "- The basics of Queuing theory for modelling order execution dynamics and waiting times in an order book ",
+            "- High frequency trading focuses on rapid execution to capture small price movements. ",
+            "- Most arbitrage strategies require high frequency trading to capture price discrepancies ",
+            "- Understand the principles for some popular high frequency strategies "
+        ],
+        "bbox": [
+            70,
+            270,
+            912,
+            735
+        ],
+        "page_idx": 93
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Triangular Arbitrage Strategy ",
+            "Market Making Strategy "
+        ],
+        "bbox": [
+            110,
+            744,
+            363,
+            831
+        ],
+        "page_idx": 93
+    }
+]

@@ -1,0 +1,470 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "python_lr_implementation",
+      "covered_by": [
+        "qf_flash_lr_impl",
+        "qf_quiz_lr_impl",
+        "qf_long_lr_strategy"
+      ],
+      "description": "用Python（yfinance, sklearn）实现简单线性回归模型拟合微软股票数据"
+    },
+    {
+      "coverage_tag": "lr_model_evaluation_r2",
+      "covered_by": [
+        "qf_flash_r2_meaning",
+        "qf_quiz_r2_meaning"
+      ],
+      "description": "评估线性回归模型：R²=0.46的含义"
+    },
+    {
+      "coverage_tag": "lr_trading_strategy",
+      "covered_by": [
+        "qf_flash_lr_strategy",
+        "qf_quiz_lr_strategy",
+        "qf_long_lr_strategy"
+      ],
+      "description": "线性回归交易策略：基于预测价格与当前价格的比较进行交易"
+    },
+    {
+      "coverage_tag": "lr_backtest_performance",
+      "covered_by": [
+        "qf_flash_backtest_result",
+        "qf_quiz_backtest_result"
+      ],
+      "description": "线性回归策略回测结果：年化收益3.6%，胜率58.8%"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "python_lr_implementation",
+      "coverage_tags": [
+        "python_lr_implementation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_lr_impl",
+      "learning_goal": "学生能回忆出用Python实现线性回归的关键步骤和工具库。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "Python实现线性回归的具体工具和步骤。",
+      "term_refs": [
+        {
+          "display": "yfinance",
+          "en": "yfinance"
+        },
+        {
+          "display": "LinearRegression",
+          "en": "LinearRegression"
+        }
+      ],
+      "variants": [
+        {
+          "back": "yfinance",
+          "estimated_seconds": 5,
+          "explanation": "yfinance 是一个用于下载雅虎财经历史市场数据的Python库。",
+          "front": "在step3的Python示例中，用哪个库下载微软（MSFT）2023年的股票数据？",
+          "question_id": "q_flash_lr_impl_v1"
+        },
+        {
+          "back": "sklearn.linear_model.LinearRegression",
+          "estimated_seconds": 8,
+          "explanation": "scikit-learn 的 LinearRegression 类用于拟合线性模型。",
+          "front": "在step3的Python示例中，用哪个库的哪个类来拟合线性回归模型？",
+          "question_id": "q_flash_lr_impl_v2"
+        },
+        {
+          "back": "一年中的第几天（Day of Year）",
+          "estimated_seconds": 6,
+          "explanation": "代码中通过 msft_data.index.dayofyear 创建了'Day'特征。",
+          "front": "在step3的Python示例中，用什么作为特征X来预测股票价格？",
+          "question_id": "q_flash_lr_impl_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "lr_model_evaluation_r2",
+      "coverage_tags": [
+        "lr_model_evaluation_r2"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_r2_meaning",
+      "learning_goal": "学生能准确回忆出step3中线性回归模型的R²值及其含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "具体数值和解释。",
+      "term_refs": [
+        {
+          "display": "R²",
+          "en": "R-squared"
+        }
+      ],
+      "variants": [
+        {
+          "back": "0.46",
+          "estimated_seconds": 5,
+          "explanation": "R² = 0.46，意味着模型只能解释约46%的价格变动。",
+          "front": "在step3的微软股票线性回归模型中，R²的值是多少？",
+          "question_id": "q_flash_r2_meaning_v1"
+        },
+        {
+          "back": "直线只能解释不到一半的价格变动，模型拟合效果一般。",
+          "estimated_seconds": 8,
+          "explanation": "R²越接近1，模型拟合越好；0.46说明价格变动中只有46%能被时间趋势解释。",
+          "front": "R² = 0.46 这个结果说明了什么？",
+          "question_id": "q_flash_r2_meaning_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "lr_trading_strategy",
+      "coverage_tags": [
+        "lr_trading_strategy"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_lr_strategy",
+      "learning_goal": "学生能回忆出线性回归交易策略的核心规则。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "策略的买卖触发条件。",
+      "term_refs": [
+        {
+          "display": "线性回归交易策略",
+          "en": "Linear Regression Trading Strategy"
+        }
+      ],
+      "variants": [
+        {
+          "back": "当预测的未来价格高于当前价格时，买入。",
+          "estimated_seconds": 6,
+          "explanation": "策略假设如果模型预测价格将上涨，则当前价格被低估，应买入。",
+          "front": "线性回归交易策略中，什么条件下会买入？",
+          "question_id": "q_flash_lr_strategy_v1"
+        },
+        {
+          "back": "价格存在可预测的线性趋势。",
+          "estimated_seconds": 6,
+          "explanation": "该策略基于线性回归模型，而线性回归假设价格与时间存在线性关系。",
+          "front": "线性回归交易策略的核心假设是什么？",
+          "question_id": "q_flash_lr_strategy_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "lr_backtest_performance",
+      "coverage_tags": [
+        "lr_backtest_performance"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_backtest_result",
+      "learning_goal": "学生能回忆出线性回归策略回测的关键绩效指标。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "具体的年化收益和胜率数值。",
+      "term_refs": [
+        {
+          "display": "年化收益",
+          "en": "Annualized Return"
+        },
+        {
+          "display": "胜率",
+          "en": "Win Rate"
+        }
+      ],
+      "variants": [
+        {
+          "back": "约3.6%",
+          "estimated_seconds": 5,
+          "explanation": "回测结果显示年化收益约为3.6%。",
+          "front": "step3中线性回归交易策略回测的年化收益是多少？",
+          "question_id": "q_flash_backtest_result_v1"
+        },
+        {
+          "back": "58.8%",
+          "estimated_seconds": 5,
+          "explanation": "胜率为58.8%，意味着超过一半的交易是盈利的。",
+          "front": "step3中线性回归交易策略回测的胜率是多少？",
+          "question_id": "q_flash_backtest_result_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L4",
+  "longform_families": [
+    {
+      "concept_key": "lr_trading_strategy",
+      "coverage_tags": [
+        "python_lr_implementation",
+        "lr_model_evaluation_r2",
+        "lr_trading_strategy",
+        "lr_backtest_performance"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_lr_strategy",
+      "learning_goal": "学生能完整描述从数据获取、模型训练、策略制定到回测评估的整个流程。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "线性回归交易策略",
+          "en": "Linear Regression Trading Strategy"
+        },
+        {
+          "display": "回测",
+          "en": "Backtest"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "数据获取与特征构造",
+            "模型训练与评估",
+            "交易规则",
+            "回测结果与结论"
+          ],
+          "question_id": "q_long_lr_strategy_v1",
+          "reference_answer": [
+            "1. 数据获取与特征构造：使用yfinance库下载微软（MSFT）2023年的日线数据，然后从日期中提取'一年中的第几天'作为特征X，以收盘价作为目标变量Y。",
+            "2. 模型训练与评估：使用sklearn的LinearRegression类对前80%的数据进行训练，得到模型的截距和斜率。在测试集上评估，得到R²=0.46，说明直线只能解释不到一半的价格变动。",
+            "3. 交易规则：策略的核心是，如果模型预测的未来价格高于当前价格，就买入（做多）；反之则卖出（做空）。",
+            "4. 回测结果与结论：回测结果显示年化收益约3.6%，胜率58.8%。虽然收益不算惊艳，但证明了线性模型确实能捕捉到一些市场趋势。"
+          ],
+          "rubric_points": [
+            "正确指出使用yfinance下载MSFT数据，并构造'Day of Year'作为特征。",
+            "正确指出使用sklearn的LinearRegression拟合模型，并得到R²=0.46。",
+            "正确描述交易规则：预测未来价格高于当前则买入。",
+            "正确指出回测结果：年化收益约3.6%，胜率58.8%，并得出'线性模型能捕捉到一些趋势'的结论。"
+          ],
+          "stem": "请描述step3中线性回归交易策略的完整流程，包括数据获取、模型训练、交易规则和回测结果。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "复现流程的关键步骤",
+            "R²=0.46的意义",
+            "策略可行的原因"
+          ],
+          "question_id": "q_long_lr_strategy_v2",
+          "reference_answer": [
+            "1. 复现流程：首先使用yfinance下载AAPL 2023年的数据；然后构造'Day of Year'作为特征X；接着用sklearn的LinearRegression拟合模型；最后制定交易规则：当预测未来价格高于当前价格时买入。",
+            "2. R²=0.46的意义：这个值说明价格变动中只有46%能被时间趋势解释，模型并不完美。但这并不意味着模型完全无用，它仍然捕捉到了一部分趋势信息。",
+            "3. 策略可行的原因：线性回归策略的核心不是追求完美预测，而是利用模型捕捉到的微弱趋势信号。只要模型预测的方向（涨/跌）比随机猜测更准确（即胜率>50%），通过多次交易就能累积正收益。step3中58.8%的胜率证明了这一点。"
+          ],
+          "rubric_points": [
+            "正确描述复现流程：下载数据、构造特征、训练模型、制定规则、回测。",
+            "正确解释R²=0.46意味着模型解释力有限，但并非无用。",
+            "正确解释策略可行的原因：即使模型解释力不高，但只要存在微弱的趋势，策略就能通过多次交易累积利润（胜率>50%）。"
+          ],
+          "stem": "假设你被要求用线性回归策略交易另一只股票（如AAPL）。请描述你将如何复现step3中的流程，并解释为什么R²=0.46的结果仍然可以用于构建交易策略。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "python_lr_implementation",
+      "coverage_tags": [
+        "python_lr_implementation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_lr_impl",
+      "learning_goal": "学生能理解Python实现线性回归时的数据准备和模型训练步骤。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征工程",
+          "en": "Feature Engineering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "从日期中提取'Day of Year'并作为预测变量，是特征工程的一部分。",
+          "options": [
+            "数据下载",
+            "特征工程",
+            "模型训练",
+            "模型评估"
+          ],
+          "question_id": "q_quiz_lr_impl_v1",
+          "stem": "在step3的Python示例中，将'一年中的第几天'作为特征X，这属于以下哪个步骤？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "model.fit() 方法用于在训练数据上拟合模型。",
+          "options": [
+            "model = LinearRegression()",
+            "model.fit(X_train, y_train)",
+            "model.predict(X_test)",
+            "r2_score(y_test, y_pred)"
+          ],
+          "question_id": "q_quiz_lr_impl_v2",
+          "stem": "在step3的Python示例中，以下哪行代码用于训练线性回归模型？"
+        }
+      ]
+    },
+    {
+      "concept_key": "lr_model_evaluation_r2",
+      "coverage_tags": [
+        "lr_model_evaluation_r2"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_r2_meaning",
+      "learning_goal": "学生能正确解释R²值的含义，并理解其对模型效果的指示作用。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "R²",
+          "en": "R-squared"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "R²衡量的是模型解释的方差比例，0.46意味着模型解释了46%的价格变动。",
+          "options": [
+            "模型预测准确率为46%",
+            "模型能解释46%的价格变动",
+            "模型有46%的概率是正确的",
+            "模型误差为46%"
+          ],
+          "question_id": "q_quiz_r2_meaning_v1",
+          "stem": "在step3中，线性回归模型的R²为0.46。以下哪个是对该结果最准确的解释？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "R²接近0表示模型无法解释数据中的任何变异性，直线拟合效果很差。",
+          "options": [
+            "模型完美拟合数据",
+            "模型对价格变动几乎没有解释力",
+            "价格呈强趋势",
+            "模型斜率很大"
+          ],
+          "question_id": "q_quiz_r2_meaning_v2",
+          "stem": "如果线性回归模型的R²接近0，这意味着什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "lr_trading_strategy",
+      "coverage_tags": [
+        "lr_trading_strategy"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_lr_strategy",
+      "learning_goal": "学生能辨析线性回归交易策略的适用条件和核心逻辑。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "线性回归交易策略",
+          "en": "Linear Regression Trading Strategy"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "线性回归假设价格与时间存在线性关系，即趋势，因此最适合趋势市场。",
+          "options": [
+            "强均值回归市场",
+            "趋势市场",
+            "随机游走市场",
+            "高波动市场"
+          ],
+          "question_id": "q_quiz_lr_strategy_v1",
+          "stem": "线性回归交易策略最适用于哪种市场状态？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "策略规则是：如果预测未来价格低于当前价格，则卖出（做空）。",
+          "options": [
+            "买入",
+            "卖出（做空）",
+            "持有不动",
+            "加倍买入"
+          ],
+          "question_id": "q_quiz_lr_strategy_v2",
+          "stem": "在step3的线性回归策略中，如果模型预测未来5天的价格将低于当前价格，策略应如何操作？"
+        }
+      ]
+    },
+    {
+      "concept_key": "lr_backtest_performance",
+      "coverage_tags": [
+        "lr_backtest_performance"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_backtest_result",
+      "learning_goal": "学生能判断关于线性回归策略回测结果的陈述是否正确。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "回测",
+          "en": "Backtest"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "回测结果显示年化收益约为3.6%，远低于10%。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_backtest_result_v1",
+          "stem": "step3中线性回归策略的回测结果显示，该策略的年化收益超过了10%。"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "胜率为58.8%，确实高于50%。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_backtest_result_v2",
+          "stem": "step3中线性回归策略的回测结果显示，该策略的胜率高于50%。"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "L4 coverage checklist (Market Classification, Simple Linear Regression, Python Example, LR Trading Strategy)",
+    "guided_story_manifest": "pipeline/3-guided_story/L4/manifest.json",
+    "lesson_map": "L4 lesson map (step3: 用Python实现线性回归交易策略)",
+    "plain_text": "pipeline/1-plain/L4/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "L4 source outline (Python Example: fit LR model, backtest LR strategy)"
+  },
+  "target_language": "zh-CN"
+}

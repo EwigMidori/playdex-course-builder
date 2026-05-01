@@ -1,0 +1,6545 @@
+[
+    {
+        "type": "text",
+        "text": "L6: Capital and Risk Management ",
+        "text_level": 1,
+        "bbox": [
+            83,
+            388,
+            918,
+            503
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Course Code: COMP7415 ",
+        "bbox": [
+            369,
+            529,
+            628,
+            574
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "Lecturer: Tony Lam ",
+        "bbox": [
+            28,
+            920,
+            178,
+            957
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Agenda ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            111,
+            215,
+            190
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• Introduction to the risk management cycle ",
+        "bbox": [
+            75,
+            268,
+            600,
+            322
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Risk identification ",
+            "- Risk measurement "
+        ],
+        "bbox": [
+            111,
+            327,
+            322,
+            422
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Volatility modelling including ARCH, GARCH ",
+            "- Value-at-Risk (VaR) ",
+            "- Stress testing, Scenario analysis "
+        ],
+        "bbox": [
+            147,
+            431,
+            537,
+            561
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "- Position sizing strategy ",
+        "bbox": [
+            75,
+            577,
+            366,
+            629
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Fixed Size ",
+            "Balance Rescaling ",
+            "- Dollar Risk Approach ",
+            "- Kelly Criterion "
+        ],
+        "bbox": [
+            111,
+            635,
+            342,
+            835
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "What is Risk? ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            319,
+            181
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/5356a963e01aaccc319c2604722e58132deb56083bf83b844da77a029d6e0cba.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            180,
+            314,
+            817,
+            918
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "What is Risk? ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            319,
+            179
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Risk simply refers to uncertainty ",
+            "- In finance, risk refers to the uncertainty of the investment return. "
+        ],
+        "bbox": [
+            75,
+            270,
+            865,
+            400
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Up-side risk: the possibility of making money ",
+            "- Down-side risk: the possibility of losing money "
+        ],
+        "bbox": [
+            110,
+            412,
+            602,
+            518
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Risk Management Cycle ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            512,
+            188
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Risk Identification ",
+            "2. Risk Assessment / Measurement ",
+            "3. Risk Treatment ",
+            "4. Risk Monitoring "
+        ],
+        "bbox": [
+            75,
+            272,
+            505,
+            551
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/1b25afef457cce7d0af1c1efc7bad43caa138fea188417d07cc746c7cfa3cd86.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            575,
+            151,
+            998,
+            905
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Risk Identification ",
+        "text_level": 1,
+        "bbox": [
+            276,
+            390,
+            722,
+            492
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Major Risk Types for a financial institution ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            844,
+            192
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "1. Market Risk ",
+        "bbox": [
+            75,
+            268,
+            251,
+            316
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Equity Risk ",
+            "- FX Risk ",
+            "Commodity Risk "
+        ],
+        "bbox": [
+            111,
+            325,
+            284,
+            466
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "2. Interest rate Risk ",
+            "3. Credit Risk ",
+            "4. Liquidity Risk ",
+            "5. Operational Risk ",
+            "6. Legal Risk ",
+            "7. Reputational Risk ",
+            "8. Strategic Risk "
+        ],
+        "bbox": [
+            73,
+            477,
+            310,
+            918
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Investment related risks ",
+        "bbox": [
+            471,
+            444,
+            658,
+            479
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "Reference: Basel Committee on Banking Supervision ",
+        "bbox": [
+            661,
+            938,
+            973,
+            968
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Market Risk ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            296,
+            181
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Market Risk is the potential for financial losses due to changes in market prices. It affects assets such as stocks, bonds, currencies, and commodities. ",
+            "- Example: Suppose you own shares in a tech company. If the stock market experiences a downturn, the value of your shares may decrease regardless of the company's performance, due to overall market sentiment. ",
+            "- This type of risk is inherent to all investments and can be influenced by factors like economic changes, political events, and natural disasters. "
+        ],
+        "bbox": [
+            70,
+            270,
+            919,
+            646
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Interest Risk ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            305,
+            181
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Interest Rate Risk is the potential for investment losses due to fluctuations in interest rates. It primarily affects the value of bonds and other fixed-income securities. When interest rates rise, bond prices typically fall, and vice versa. ",
+            "- Example: Imagine you own a bond with a fixed interest rate of $3\\%$ . If the market interest rate rises to $4\\%$ , new bonds offer better returns, making your bond less attractive. Consequently, the market value of your bond decreases. ",
+            "- This risk is crucial for investors and financial institutions managing portfolios sensitive to interest rate changes. "
+        ],
+        "bbox": [
+            70,
+            270,
+            902,
+            692
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Credit Risk ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            272,
+            181
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Credit Risk is the possibility of a loss resulting from a borrower's failure to repay a loan or meet contractual obligations. It affects lenders and investors in bonds or loans. ",
+            "- Example: If a bank lends money to a business, and the business defaults on the loan, the bank faces credit risk. This risk can lead to financial loss for the bank due to the unpaid loan amount. ",
+            "- Credit risk is a key consideration in lending and investing, influencing interest rates and lending terms. "
+        ],
+        "bbox": [
+            70,
+            270,
+            926,
+            692
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Liquidity Risk ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            315,
+            188
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Liquidity Risk is the risk that an entity may not be able to quickly convert assets into cash without significant loss in value. It affects individuals, businesses, and financial institutions. ",
+            "- Example: Imagine a company owns a large amount of real estate. If it suddenly needs cash to cover expenses, selling the properties quickly might force them to accept lower prices, resulting in a financial loss. ",
+            "- Liquidity risk is important for managing cash flow and ensuring that obligations can be met when they come due. "
+        ],
+        "bbox": [
+            70,
+            270,
+            905,
+            692
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "What type of risk involved in these examples? ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            917,
+            192
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. A company defaults on its loan payment. ",
+            "2. You need to sell a property quickly but can't find a buyer without reducing the price significantly. ",
+            "3. The value of your bond portfolio decreases due to rising interest rates. ",
+            "4. Stock prices drop due to a sudden economic downturn. ",
+            "5. A bank is unable to meet its short-term cash obligations. ",
+            "6. An investor worries about a borrower's ability to repay a loan. ",
+            "7. The price of a commodity fluctuates widely and affects your investment. ",
+            "8. You are a fresh graduate. You worry about the house price keeps increasing and unaffordable to buy. "
+        ],
+        "bbox": [
+            70,
+            270,
+            902,
+            801
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Risk Measurement ",
+        "text_level": 1,
+        "bbox": [
+            266,
+            390,
+            734,
+            490
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Measuring Risk ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            357,
+            190
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "1. Volatility Analysis ",
+        "bbox": [
+            75,
+            270,
+            326,
+            327
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Historical estimates ",
+            "- Exponentially weighted moving average (EWMA) ",
+            "GARCH model "
+        ],
+        "bbox": [
+            110,
+            337,
+            625,
+            492
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "2. Value at Risk (VaR) ",
+            "3. Stress Testing and Scenario Analysis "
+        ],
+        "bbox": [
+            75,
+            518,
+            539,
+            646
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Standard Derivation ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            442,
+            181
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "- Standard derivation is a statistical measure that quantifies the amount of variation or dispersion in a set of data values ",
+        "bbox": [
+            70,
+            270,
+            837,
+            364
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {t, n} = \\sqrt {\\frac {1}{n} \\sum_ {i = 1} ^ {n} (x _ {t - i} - \\mu) ^ {2}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            242,
+            427,
+            435,
+            583
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "where $\\sigma_{t,n}$ is standard deviation at time $t$ , $n$ is the number of observations, $x_{t - i}$ is each value, and $\\mu$ is the mean. ",
+        "bbox": [
+            483,
+            472,
+            875,
+            538
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Volatility is often measured using standard deviation. ",
+            "- High standard deviation indicates high volatility, meaning the asset's price can vary significantly. "
+        ],
+        "bbox": [
+            70,
+            651,
+            885,
+            816
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Standard Derivation ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            442,
+            181
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Since $n$ is fixed and the last $n$ observations are used, we also call this a moving average (MA) estimate ",
+            "• Common values for $n$ : 30, 60, 120 days, etc ",
+            "- If one believes that the long term volatility is a constant, then a larger $n$ should be used. ",
+            "- If one wants to reflect more about the current situation, then a smaller $n$ should be considered. ",
+            "- Disadvantage: extreme observations can affect the estimate for a prolonged period of time (ghost features). A small n gives more pronounced ghost features but for a shorter period of time. "
+        ],
+        "bbox": [
+            70,
+            270,
+            922,
+            825
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "EWMA ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            206,
+            181
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- To avoid the problem of equally weighted averages in the moving average estimates, we alternatively use the exponentially weighted moving averages (EWMA) by putting more weight on the recent data. ",
+            "- EWMA is defined as "
+        ],
+        "bbox": [
+            70,
+            270,
+            865,
+            479
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {t} ^ {2} = \\frac {r _ {t - 1} ^ {2} + \\lambda r _ {t - 2} ^ {2} + \\lambda^ {2} r _ {t - 3} ^ {2} + \\cdots + \\lambda^ {n - 1} r _ {t - n} ^ {2}}{1 + \\lambda + \\lambda^ {2} + \\cdots + \\lambda^ {n - 1}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            153,
+            535,
+            527,
+            633
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "where $0 < \\lambda < 1$ is the discounting factor. ",
+        "bbox": [
+            583,
+            564,
+            906,
+            603
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "- Here we assume $r_t$ are mean-corrected returns. Otherwise, we should subtract estimated mean from them. ",
+        "bbox": [
+            70,
+            701,
+            895,
+            792
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "EWMA ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            206,
+            181
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "• Since ",
+        "bbox": [
+            71,
+            268,
+            151,
+            322
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "equation",
+        "text": "$$\n1 + \\lambda + \\lambda^ {2} + \\dots + \\lambda^ {n - 1} \\approx \\frac {1}{1 - \\lambda}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            197,
+            270,
+            450,
+            357
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "- So ",
+        "bbox": [
+            72,
+            405,
+            122,
+            450
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\sigma_ {t} ^ {2} \\approx (1 - \\lambda) (r _ {t - 1} ^ {2} + \\lambda r _ {t - 2} ^ {2} + \\lambda^ {2} r _ {t - 3} ^ {2} + \\dots + \\lambda^ {n - 1} r _ {t - n} ^ {2}) \\\\ \\approx (1 - \\lambda) \\sum_ {i = 1} ^ {n} \\lambda^ {i - 1} r _ {t - i} ^ {2} \\\\ \\approx (1 - \\lambda) \\sum_ {i = 1} ^ {\\infty} \\lambda^ {i - 1} r _ {t - i} ^ {2} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            205,
+            440,
+            626,
+            770
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "EWMA ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            206,
+            181
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If $\\lambda$ close to 0, $\\sigma_t^2$ will be more reactive to current events ",
+            "- If $\\lambda$ close to $1$ , $\\sigma_t^2$ will depend more on past values ",
+            "- RiskMetrics (JP Morgan) has a default value of 0.94 for $\\lambda$ "
+        ],
+        "bbox": [
+            71,
+            268,
+            667,
+            451
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Volatility Clustering ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            431,
+            192
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Volatility clustering refers to the observation that large changes in asset prices are often followed by large changes, and small changes tend to be followed by small changes. This suggests that volatility is not constant over time. ",
+            "- In financial market, volatility tends to increase during "
+        ],
+        "bbox": [
+            70,
+            270,
+            925,
+            485
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Market crash ",
+            "- Natural disasters ",
+            "- Wars ",
+            "- Company earning release ",
+            "President election due to policy uncertainty "
+        ],
+        "bbox": [
+            109,
+            492,
+            575,
+            768
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Volatility Clustering - SP500 ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            589,
+            188
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "import yfinance as yf ",
+        "bbox": [
+            10,
+            287,
+            111,
+            311
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "import numpy as np ",
+        "bbox": [
+            10,
+            312,
+            106,
+            333
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "import pandas as pd ",
+        "bbox": [
+            11,
+            335,
+            108,
+            355
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "import matplotlib.pyplot as plt ",
+        "bbox": [
+            11,
+            355,
+            150,
+            377
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Download S&P 500 (^GSPC) data ",
+        "bbox": [
+            11,
+            400,
+            180,
+            420
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "data = yf.download('^GSPC', start='2000-01-01', end='2024-12-31') ",
+        "bbox": [
+            11,
+            422,
+            322,
+            446
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Calculate daily returns ",
+        "bbox": [
+            11,
+            466,
+            126,
+            487
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "data['Daily Return'] = data['Close'].pct_change() ",
+        "bbox": [
+            11,
+            488,
+            233,
+            512
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Calculate rolling volatility with a 30-day lookback period ",
+        "bbox": [
+            11,
+            531,
+            277,
+            553
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "data['Volatility'] = data['Daily Return'].rollingwindow=30).std() * np.sqrt(252) ",
+        "bbox": [
+            11,
+            555,
+            360,
+            579
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Annualized volatility # Plot the volatility ",
+        "bbox": [
+            11,
+            600,
+            200,
+            620
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "plt.figure(figsize=(12,6)) ",
+        "bbox": [
+            11,
+            622,
+            127,
+            644
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "plt.plot(data index, data['Volatility'], label='30-Day Rolling Volatility') ",
+        "bbox": [
+            11,
+            646,
+            320,
+            666
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "plt title('S&P 500 Volatility Clustering (2000-2024)') ",
+        "bbox": [
+            11,
+            668,
+            246,
+            688
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "plt.xlabel('Date') ",
+        "bbox": [
+            11,
+            690,
+            88,
+            711
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "plt ylabel('Annualized Volatility') ",
+        "bbox": [
+            11,
+            712,
+            158,
+            733
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "pltlegend() ",
+        "bbox": [
+            11,
+            735,
+            66,
+            755
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "plt grid(True) ",
+        "bbox": [
+            11,
+            757,
+            73,
+            777
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "plt.show() ",
+        "bbox": [
+            11,
+            779,
+            59,
+            800
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "image",
+        "img_path": "images/a91a75dc7ceb2a80004445757599b6098717ad44d4709fa3ad61399798a94c2a.jpg",
+        "image_caption": [
+            "S&P 500 Volatility Clustering (2000-2024) "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            372,
+            329,
+            1000,
+            898
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "ARCH/ GARCH model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            463,
+            187
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The ARCH or GARCH (Generalized Autoregressive Conditional Heteroskedasticity) model are commonly used to model time-varying volatility, which take into account of volatility clustering. ",
+            "- When volatility is autoregressive, we call this the ARCH effect. ",
+            "- To check whether $\\left\\{r_{t}^{2}\\right\\}$ is correlated, we can look at the ACF terms "
+        ],
+        "bbox": [
+            70,
+            270,
+            912,
+            551
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "equation",
+        "text": "$$\n| \\widehat {\\rho_ {1}} | > \\frac {2}{\\sqrt {T}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            445,
+            622,
+            547,
+            705
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "equation",
+        "text": "$$\n| \\widehat {\\rho_ {2}} | > \\frac {2}{\\sqrt {T}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            445,
+            742,
+            547,
+            825
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "··· ",
+        "bbox": [
+            485,
+            868,
+            504,
+            888
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "ARCH/ GARCH model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            463,
+            187
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": "- For overall checking, we can use McLeod-Li test (1983) ",
+        "bbox": [
+            70,
+            268,
+            647,
+            322
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "equation",
+        "text": "$$\nQ _ {2} (m) = T (T + 2) \\sum_ {i = 1} ^ {m} \\frac {\\widehat {\\rho_ {i}} ^ {2}}{T - i} \\quad \\sim \\quad \\chi^ {2} (m)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            223,
+            361,
+            594,
+            479
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": "Hypothesis: ",
+        "bbox": [
+            71,
+            538,
+            216,
+            585
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- $H_{0}$ : ARCH effect is not present ",
+            "- $H_{1}$ : ARCH effect is present (i.e. volatility clustering effect exists) "
+        ],
+        "bbox": [
+            107,
+            592,
+            697,
+            692
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": "- In McLeod-Li test, commonly used $m$ are 6, 12, 18, and 24 ",
+        "bbox": [
+            70,
+            711,
+            681,
+            759
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "text",
+        "text": "ARCH/ GARCH model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            463,
+            187
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "text",
+        "text": "- Generally the conditional variance $R_{t}$ is defined as ",
+        "bbox": [
+            70,
+            268,
+            606,
+            322
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {t} ^ {2} = E \\left[ \\left(R _ {t} - \\mu_ {t}\\right) ^ {2} \\mid F _ {t - 1} \\right]\n$$",
+        "text_format": "latex",
+        "bbox": [
+            326,
+            370,
+            565,
+            431
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "text",
+        "text": "where $F_{t-1}$ is the information up to time $t-1$ ",
+        "bbox": [
+            144,
+            470,
+            615,
+            522
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If $R_{t} = \\mu_{t} + a_{t},\\sigma_{t}^{2} = E\\left[a_{t}{}^{2}\\mid F_{t - 1}\\right]$ ",
+            "- In the trivial case of $\\mu_t = 0$ (i.e. $R_t = a_t$ ), $\\sigma_t^2 = E[R_t^2 \\mid F_{t-1}]$ "
+        ],
+        "bbox": [
+            71,
+            596,
+            719,
+            733
+        ],
+        "page_idx": 23
+    },
+    {
+        "type": "text",
+        "text": "The ARCH(1) model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            437,
+            188
+        ],
+        "page_idx": 24
+    },
+    {
+        "type": "text",
+        "text": "- Since volatility is autoregressive and dependent on past squared returns, it is natural to assume, say ",
+        "bbox": [
+            70,
+            270,
+            877,
+            368
+        ],
+        "page_idx": 24
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {t} ^ {2} = \\alpha_ {0} + \\alpha_ {1} r _ {t - 1} ^ {2} \\qquad \\mathrm {w h e r e} \\alpha_ {0} > 0 \\mathrm {a n d} 0 \\leq \\alpha_ {1} <   1 \\mathrm {a r e c o n s t a n t s}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            261,
+            396,
+            838,
+            466
+        ],
+        "page_idx": 24
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "It is the so called ARCH(1) model. ",
+            "- Here we assume $\\{r_t\\}$ is mean corrected and serially uncorrelated. If not, we replace $r_{t - 1}$ by $\\varepsilon_{t - 1}$ , where its realization $\\widehat{a_{t - 1}}$ are the residuals from an AR model fitted to $r_{t - 1}$ "
+        ],
+        "bbox": [
+            70,
+            518,
+            867,
+            733
+        ],
+        "page_idx": 24
+    },
+    {
+        "type": "text",
+        "text": "The ARCH(1) model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            437,
+            188
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "text",
+        "text": "- A more formal definition of ARCH(1) model for a return series $\\{r_t\\}$ is defined as ",
+        "bbox": [
+            70,
+            264,
+            844,
+            359
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l} r _ {t} = \\varphi_ {0} + \\varphi_ {1} r _ {t - 1} + \\dots + \\varphi_ {p} r _ {t - p} + a _ {t} \\\\ \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad i. i. d. \\\\ a _ {t} = \\sigma_ {t} \\varepsilon_ {t} \\qquad \\mathrm {w h e r e} \\{\\varepsilon_ {t} \\} \\sim \\mathrm {N} (0, 1) \\\\ \\sigma_ {t} ^ {2} = E (\\varepsilon_ {t} ^ {2} | F _ {t - 1}) = \\alpha_ {0} + \\alpha_ {1} a _ {t - 1} ^ {2} \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            256,
+            364,
+            681,
+            650
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The first AR(p) equation is used to estimate the conditional means, and the last one to estimate volatilities. ",
+            "- Therefore, they are usually referred to as the mean equation and the volatility equation respectively. "
+        ],
+        "bbox": [
+            70,
+            701,
+            919,
+            911
+        ],
+        "page_idx": 25
+    },
+    {
+        "type": "text",
+        "text": "Properties of the ARCH(1) model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            677,
+            188
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "text",
+        "text": "- The AR residuals or mean-corrected returns $\\{a_{t}\\}$ are serially uncorrelated. ",
+        "bbox": [
+            70,
+            270,
+            840,
+            320
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "$E\\left(a_{t}\\right) = 0$ ",
+            "$\\operatorname{Var}\\left(a_{t}\\right) = \\operatorname{E}\\left(a_{t}^{2}\\right) = \\frac{\\alpha_{0}}{1 - \\alpha_{1}}$ ",
+            "- The residuals $\\left\\{a_{t}\\right\\}$ are statistically independent. ",
+            "- Conditioning on previous information $F_{t - 1}, a_t$ is conditionally normal $N(0, \\sigma_t^2)$ "
+        ],
+        "bbox": [
+            108,
+            327,
+            797,
+            538
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "text",
+        "text": "- The squared residual $\\left\\{a_{t}^{2}\\right\\}$ are serially correlated with ",
+        "bbox": [
+            70,
+            551,
+            635,
+            607
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\rho (k) = C o r r \\bigl (a _ {t} ^ {2}, a _ {t - k} ^ {2} \\bigr) = \\alpha_ {1} ^ {k}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            343,
+            712,
+            651,
+            775
+        ],
+        "page_idx": 26
+    },
+    {
+        "type": "text",
+        "text": "Properties of the ARCH(1) model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            677,
+            188
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- $E\\left(a_{t}^{4}\\right)$ exists if and only if $\\alpha_{1}< \\frac{1}{\\sqrt{3}}$ . Moreover, the kurtosis is $\\kappa = \\frac{3(1 - \\alpha_{1}^{2})}{1 - 3\\alpha_{1}^{2}} >3$ ",
+            "- Define $\\eta_{t} = a_{t}^{2} - \\sigma_{t}^{2}$ . Substituting this into the volatility equation becomes "
+        ],
+        "bbox": [
+            70,
+            268,
+            872,
+            424
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "equation",
+        "text": "$$\na _ {t} ^ {2} = \\alpha_ {0} + \\alpha_ {1} a _ {t - 1} ^ {2} + \\eta_ {t}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            371,
+            475,
+            623,
+            535
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "text",
+        "text": "which is in the form of an AR(1) model. This fact is usually used for specification of ARCH models ",
+        "bbox": [
+            69,
+            572,
+            902,
+            666
+        ],
+        "page_idx": 27
+    },
+    {
+        "type": "text",
+        "text": "The ARCH(m) model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            450,
+            188
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "text",
+        "text": "A generalization $\\mathrm{ARCH}(\\mathfrak{m})$ model is ",
+        "bbox": [
+            70,
+            270,
+            451,
+            320
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l l} a _ {t} = \\sigma_ {t} \\varepsilon_ {t} & \\{\\varepsilon_ {t} \\} \\stackrel {\\mathrm {i . i . d .}} {\\sim} \\mathrm {N} (0, 1) \\\\ \\sigma_ {t} ^ {2} = \\alpha_ {0} + \\alpha_ {1} a _ {t - 1} ^ {2} + \\dots + \\alpha_ {m} a _ {t - m} ^ {2} \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            220,
+            353,
+            616,
+            529
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "text",
+        "text": "- Here $\\alpha_0 > 0$ and $\\alpha_1, \\ldots, \\alpha_m \\geq 0$ . Also, we assume for stationary that ",
+        "bbox": [
+            70,
+            603,
+            791,
+            655
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\alpha_ {1} + \\dots + \\alpha_ {m} <   1\n$$",
+        "text_format": "latex",
+        "bbox": [
+            401,
+            720,
+            594,
+            770
+        ],
+        "page_idx": 28
+    },
+    {
+        "type": "text",
+        "text": "Properties of ARCH(m) models ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            635,
+            192
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "text",
+        "text": "- The ARCH(m) model has similar properties as the ARCH(1). For example, ",
+        "bbox": [
+            70,
+            268,
+            827,
+            320
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- $\\{a_{t}\\}$ is serially uncorrelated, conditional normal; ",
+            "• $\\left\\{a_{t}^{2}\\right\\}$ is serially correlated; ",
+            "- $a_{t}$ has a kurtosis (under more strict conditions) greater than 3 "
+        ],
+        "bbox": [
+            109,
+            327,
+            654,
+            468
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "text",
+        "text": "- We simple state here that ",
+        "bbox": [
+            70,
+            485,
+            358,
+            533
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "equation",
+        "text": "$$\nV a r (a _ {t}) = \\frac {\\alpha_ {0}}{1 - \\alpha_ {1} - \\cdots - \\alpha_ {m}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            207,
+            562,
+            442,
+            644
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "text",
+        "text": "- Moreover, if we define $\\eta_{t} = a_{t}^{2} - \\sigma_{t}^{2}$ , then ",
+        "bbox": [
+            70,
+            679,
+            530,
+            738
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "equation",
+        "text": "$$\na _ {t} ^ {2} = \\alpha_ {0} + \\alpha_ {1} a _ {t - 1} ^ {2} + \\dots + \\alpha_ {m} a _ {t - m} ^ {2} + \\eta_ {t}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            210,
+            800,
+            563,
+            851
+        ],
+        "page_idx": 29
+    },
+    {
+        "type": "text",
+        "text": "Lagrange multiplier test for ARCH effects ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            107,
+            820,
+            188
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "text",
+        "text": "- Lagrange multiplier test considers a multiple linear regression of $a_{t}^{2}$ on the lagged values ",
+        "bbox": [
+            75,
+            266,
+            919,
+            359
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "equation",
+        "text": "$$\na _ {t} ^ {2} = \\beta_ {0} + \\beta_ {1} a _ {t - 1} ^ {2} + \\dots + \\beta_ {m} a _ {t - m} ^ {2} + \\varepsilon_ {t}, \\qquad t = m + 1, \\ldots , T\n$$",
+        "text_format": "latex",
+        "bbox": [
+            197,
+            403,
+            795,
+            455
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "text",
+        "text": "where $\\varepsilon_{t}$ denotes the error term, $m$ is a pre-specified positive integer, and $T$ is sample size ",
+        "bbox": [
+            153,
+            525,
+            837,
+            557
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "text",
+        "text": "Hypotheses: ",
+        "bbox": [
+            75,
+            653,
+            219,
+            698
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "equation",
+        "text": "$$\nH _ {0} \\colon \\beta_ {0} = \\dots = \\beta_ {m} = 0\n$$",
+        "text_format": "latex",
+        "bbox": [
+            251,
+            750,
+            421,
+            783
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "text",
+        "text": "$H_{1}$ : Not all $\\beta$ 's equal to zero ",
+        "bbox": [
+            250,
+            825,
+            476,
+            861
+        ],
+        "page_idx": 30
+    },
+    {
+        "type": "text",
+        "text": "Lagrange multiplier test ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            512,
+            188
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "text",
+        "text": "- The Lagrange multiplier test statistic is ",
+        "bbox": [
+            70,
+            270,
+            487,
+            320
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "equation",
+        "text": "$$\nL M = (T - m) R ^ {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            220,
+            375,
+            409,
+            431
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "text",
+        "text": "where $R^2$ is the coefficient of determination of the regression ",
+        "bbox": [
+            464,
+            381,
+            947,
+            425
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Under $H_{0}$ , LM asymptotically follows $\\chi^{2}(m)$ ",
+            "- We reject $H_{0}$ if $LM > \\chi_{\\alpha}^{2}(m)$ at the $\\alpha$ level of significance "
+        ],
+        "bbox": [
+            70,
+            533,
+            689,
+            657
+        ],
+        "page_idx": 31
+    },
+    {
+        "type": "text",
+        "text": "Model Building Steps ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            463,
+            188
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "text",
+        "text": "1. Specify a mean equation by testing for serial dependence in the data. ",
+        "bbox": [
+            71,
+            270,
+            819,
+            318
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- For most asset return series, the serial correlations are weak. ",
+            "- If, necessary, build an economic model (simple AR or MA model) for the return series to remove any linear dependence. ",
+            "- Some explanatory variables may be employed. "
+        ],
+        "bbox": [
+            108,
+            329,
+            871,
+            507
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "2. Use the residuals of the mean equation to test for ARCH effects. ",
+            "3. Specify a volatility model if ARCH effects are statistically significant and perform a joint estimation of the mean and volatility equations ",
+            "4. Check the fitted model and refine. "
+        ],
+        "bbox": [
+            70,
+            527,
+            921,
+            751
+        ],
+        "page_idx": 32
+    },
+    {
+        "type": "text",
+        "text": "Estimating ARCH models ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            527,
+            188
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Notice that the volatility equation in an ARCH(m) model is equivalent to an AR(m) model for the squared residuals from the mean equation. ",
+            "- We can separately estimate the mean equation and the volatility equation by either least-squares or maximum likelihood method. ",
+            "- As an alternative, we can jointly estimate the mean and volatility equations. "
+        ],
+        "bbox": [
+            70,
+            270,
+            919,
+            546
+        ],
+        "page_idx": 33
+    },
+    {
+        "type": "text",
+        "text": "ARCH library ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            307,
+            188
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "text",
+        "text": "- Official Doc: https://bashtage.github.io/arch/ ",
+        "bbox": [
+            72,
+            270,
+            630,
+            327
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "image",
+        "img_path": "images/d518a3f443ead3d436e3a0ba690558c22e2b15b2891ab4c3ee09f9d3a3028a21.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            252,
+            577,
+            753,
+            742
+        ],
+        "page_idx": 34
+    },
+    {
+        "type": "text",
+        "text": "SPY Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            307,
+            188
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "- Let's consider the SPY daily closing price in 2010-2020 ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            270,
+            640,
+            318
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "import yfinance as yf ",
+        "bbox": [
+            23,
+            357,
+            143,
+            385
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "import numpy as np ",
+        "bbox": [
+            25,
+            387,
+            138,
+            412
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "import pandas as pd ",
+        "bbox": [
+            25,
+            412,
+            140,
+            437
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "import matplotlib.pyplot as plt ",
+        "bbox": [
+            25,
+            438,
+            190,
+            464
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "from statsmodels.graphics.tsaplots import plot_acf, plot_pacf ",
+        "bbox": [
+            25,
+            466,
+            362,
+            492
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "Download data ",
+        "bbox": [
+            25,
+            518,
+            121,
+            540
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "data = yf.download('SPY', start='2010-01-01', end='2020-12-31') ",
+        "bbox": [
+            25,
+            544,
+            381,
+            572
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "Calculate daily returns ",
+        "bbox": [
+            25,
+            598,
+            161,
+            622
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "data['Daily Return'] = data['Close'].pct_change() ",
+        "bbox": [
+            25,
+            625,
+            289,
+            651
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "data['Squared Return'] = data['Daily Return'] **2 ",
+        "bbox": [
+            25,
+            651,
+            291,
+            679
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "Plot the return ",
+        "bbox": [
+            25,
+            705,
+            116,
+            727
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "plt.figure(figsize=(12,6)) ",
+        "bbox": [
+            25,
+            731,
+            162,
+            757
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "plt.plot(data.index, data['Daily Return'], label='Daily Return') ",
+        "bbox": [
+            25,
+            759,
+            355,
+            785
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "plt.title('SPY Daily Return') ",
+        "bbox": [
+            25,
+            785,
+            175,
+            811
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "pltxlabel('Date') ",
+        "bbox": [
+            25,
+            812,
+            115,
+            837
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "pltylabel('Daily Return') ",
+        "bbox": [
+            25,
+            838,
+            158,
+            864
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "plt.legend() ",
+        "bbox": [
+            25,
+            866,
+            90,
+            890
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "plt.grid(True) ",
+        "bbox": [
+            25,
+            892,
+            100,
+            918
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "plt show() ",
+        "bbox": [
+            25,
+            920,
+            82,
+            944
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "image",
+        "img_path": "images/62c44ff2b867f879ea544c36db80fd9c7c3f7627ee01c577fe5e04886f3d2b75.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            401,
+            385,
+            1000,
+            922
+        ],
+        "page_idx": 35
+    },
+    {
+        "type": "text",
+        "text": "SPY Example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            309,
+            192
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- ACF for returns series shown to be serially uncorrelated ",
+            "- Thus, mean equation is set to $A R(0)$ "
+        ],
+        "bbox": [
+            71,
+            270,
+            661,
+            388
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l l} r _ {t} = \\varphi_ {0} + a _ {t} & \\\\ a _ {t} = \\sigma_ {t} \\varepsilon_ {t} & \\{\\varepsilon_ {t} \\} \\stackrel {\\mathrm {i . i . d .}} {\\sim} \\mathrm {N} (0, 1) \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            120,
+            455,
+            414,
+            612
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "Plot ACF ",
+        "bbox": [
+            393,
+            774,
+            468,
+            803
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "data1 = data['Daily Return']) ",
+        "bbox": [
+            393,
+            807,
+            580,
+            838
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "data1 = data1.dropna() ",
+        "bbox": [
+            394,
+            838,
+            545,
+            868
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "plot_acf(data1) ",
+        "bbox": [
+            394,
+            870,
+            494,
+            901
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "plt.show() ",
+        "bbox": [
+            394,
+            901,
+            460,
+            933
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "image",
+        "img_path": "images/1991fb9ac9812ab565595e29928715bfe98c7a9027b64b1d16c7513772750b6c.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            602,
+            422,
+            990,
+            946
+        ],
+        "page_idx": 36
+    },
+    {
+        "type": "text",
+        "text": "SPY Example - Mean equation ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            634,
+            188
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "text",
+        "text": "- The parameters are significant, thus we got ",
+        "bbox": [
+            73,
+            270,
+            463,
+            312
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l l} r _ {t} = 0. 0 0 0 5 7 + a _ {t} & \\\\ & \\text {i . i . d .} \\\\ a _ {t} = 0. 0 0 0 1 1 8   \\varepsilon_ {t} \\quad \\text {w h e r e} \\{\\varepsilon_ {t} \\} \\sim \\mathrm {N} (0, 1) \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            72,
+            342,
+            459,
+            490
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "text",
+        "text": "import arch",
+        "bbox": [
+            78,
+            550,
+            166,
+            581
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\text {d a t a 1} = \\text {d a t a} [ [ ^ {\\prime} D a l l y R e t u r n ^ {\\prime} ] ] \\\\ \\mathsf {d a t a 1} = \\mathsf {d a t a 1 . d r o p n a ()} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            78,
+            618,
+            291,
+            690
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\operatorname {a r x} = \\text {a r c h . u n i v a r i a t e . A R X (y = d a t a 1 , l a g s = N o n e)} \\\\ \\mathrm {r e s} = \\operatorname {a r x . f i t ()} \\\\ \\mathsf {p r i n t} (\\mathsf {r e s}) \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            78,
+            725,
+            435,
+            831
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "text",
+        "text": "Lag terms for mean series $r_t$ ",
+        "bbox": [
+            247,
+            850,
+            417,
+            879
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "table",
+        "img_path": "images/9d621704eb647d50e55b1928c547e7cb87f1ad1a6cd2c090a1c52e134f7eb9f1.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td colspan=\"6\">AR - Constant Variance Model Results</td></tr><tr><td>Dep. Variable:</td><td colspan=\"2\">(&#x27;Daily Return&#x27;, &#x27;&#x27;)</td><td>R-squared:</td><td>0.000</td><td></td></tr><tr><td>Mean Model:</td><td colspan=\"2\">AR</td><td>Adj. R-squared:</td><td>0.000</td><td></td></tr><tr><td>Vol Model:</td><td colspan=\"2\">Constant Variance</td><td>Log-Likelihood:</td><td>8585.64</td><td></td></tr><tr><td>Distribution:</td><td colspan=\"2\">Normal</td><td>AIC:</td><td>-17167.3</td><td></td></tr><tr><td>Method:</td><td colspan=\"2\">Maximum Likelihood</td><td>BIC:</td><td>-17155.4</td><td></td></tr><tr><td></td><td colspan=\"2\"></td><td>No. Observations:</td><td>2767</td><td></td></tr><tr><td>Date:</td><td colspan=\"2\">Sun, Oct 05 2025</td><td>Df Residuals:</td><td>2766</td><td></td></tr><tr><td>Time:</td><td colspan=\"2\">22:05:45</td><td>Df Model:</td><td>1</td><td></td></tr><tr><td colspan=\"6\">Mean Model</td></tr><tr><td>coef</td><td>std err</td><td>t</td><td>P&gt;|t|</td><td>95.0% Conf. Int.</td><td></td></tr><tr><td>Const</td><td>5.6800e-04</td><td>2.066e-04</td><td>2.749</td><td>5.981e-03</td><td>[1.630e-04,9.730e-04]</td></tr><tr><td></td><td></td><td colspan=\"4\">Volatility Model</td></tr><tr><td>coef</td><td>std err</td><td>t</td><td>P&gt;|t|</td><td>95.0% Conf. Int.</td><td></td></tr><tr><td>sigma2</td><td>1.1814e-04</td><td>8.819e-06</td><td>13.397</td><td>6.306e-41</td><td>[1.009e-04,1.354e-04]</td></tr><tr><td colspan=\"6\">Covariance estimator: White&#x27;s Heteroskedasticity Consistent Estimator</td></tr></table>",
+        "bbox": [
+            520,
+            233,
+            997,
+            733
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "footer",
+        "text": "Reference: ",
+        "bbox": [
+            19,
+            920,
+            71,
+            940
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "footer",
+        "text": "https://arch.readthedocs.io/en/latest/univariate/generated/arch.univariate.ARX.html#arch.univariate.ARX ",
+        "bbox": [
+            19,
+            944,
+            497,
+            966
+        ],
+        "page_idx": 37
+    },
+    {
+        "type": "text",
+        "text": "SPY Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            307,
+            188
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "- Volatility clustering is obvious from the squared return chart ",
+        "text_level": 1,
+        "bbox": [
+            72,
+            270,
+            707,
+            318
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "plot Squared return ",
+        "bbox": [
+            98,
+            344,
+            240,
+            374
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "plt.figure(figsize=(12,6)) ",
+        "bbox": [
+            100,
+            377,
+            259,
+            405
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "plt.plot(data.index, data['Squared Return'], label='Squared Return') ",
+        "bbox": [
+            100,
+            407,
+            529,
+            438
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "plt.title('SPY Squared Return') ",
+        "bbox": [
+            100,
+            438,
+            295,
+            468
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "plt.xlabel('Date') ",
+        "bbox": [
+            101,
+            470,
+            205,
+            500
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "pltylabel('Squared Return') ",
+        "bbox": [
+            101,
+            501,
+            277,
+            531
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "pltlegend() ",
+        "bbox": [
+            101,
+            533,
+            175,
+            562
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "plt.grid(True) ",
+        "bbox": [
+            101,
+            564,
+            185,
+            592
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "plt.show() ",
+        "bbox": [
+            101,
+            596,
+            165,
+            624
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "image",
+        "img_path": "images/a531e14dcfdc796253226464d0f5f2d42d3998af260ed2d909eff42da07a261a.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            407,
+            464,
+            1000,
+            1000
+        ],
+        "page_idx": 38
+    },
+    {
+        "type": "text",
+        "text": "SPY Example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            309,
+            190
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "text",
+        "text": "- From squared returns' PACF, an ARCH(2) model is tentatively identified ",
+        "bbox": [
+            71,
+            268,
+            696,
+            314
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{c} a _ {t} = \\sigma_ {t} \\varepsilon_ {t} \\qquad \\{\\varepsilon_ {t} \\} \\stackrel {\\mathrm {i . i . d .}} {\\sim} \\mathrm {N} (0, 1) \\\\ \\sigma_ {t} ^ {2} = \\alpha_ {0} + \\alpha_ {1} a _ {t - 1} ^ {2} + \\alpha_ {2} a _ {t - 2} ^ {2} \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            107,
+            335,
+            406,
+            512
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "text",
+        "text": "Plot ACF and PACF  \ndata1 = data['Squared Return'].  \ndata1 = data1.dropna()  \nplot_acf(data1)  \nplot_pacf(data1)  \nplt.show() ",
+        "bbox": [
+            752,
+            305,
+            963,
+            492
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "image",
+        "img_path": "images/42b904ecd132882101228fb0b875d3e845ab19eed4adabee4ed9aca286622f33.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            180,
+            562,
+            503,
+            1000
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "image",
+        "img_path": "images/dc69fb702dbfc3ab61c368e2626415bcd5201ea7d61550b476a0eb7c25d9993f.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            516,
+            557,
+            835,
+            1000
+        ],
+        "page_idx": 39
+    },
+    {
+        "type": "text",
+        "text": "SPY Example - Joint Estimation ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            644,
+            188
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "text",
+        "text": "- All parameters are significant, so our model will be ",
+        "bbox": [
+            41,
+            268,
+            494,
+            309
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{l} r _ {t} = 0. 0 0 0 9 8 3 7 3 + a _ {t} \\\\ \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad \\qquad i. i. d. \\\\ a _ {t} = \\sigma_ {t} \\varepsilon_ {t} \\qquad \\{\\varepsilon_ {t} \\} \\sim N (0, 1) \\\\ \\sigma_ {t} ^ {2} = 0. 0 0 0 0 4 1 3 5 + 0. 3 2 5 a _ {t - 1} ^ {2} + 0. 3 2 5 a _ {t - 2} ^ {2} \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            58,
+            335,
+            409,
+            540
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "text",
+        "text": "import arch",
+        "bbox": [
+            108,
+            568,
+            176,
+            596
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "text",
+        "text": "data1 = data[['Daily Return']) ",
+        "bbox": [
+            108,
+            620,
+            270,
+            650
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "text",
+        "text": "data1 = data1.dropna() ",
+        "bbox": [
+            109,
+            651,
+            240,
+            677
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "text",
+        "text": "arm = arch.univariate.arch_model( y=data1, lags=None, mean='AR', vol='ARCH', p=2 ",
+        "bbox": [
+            109,
+            701,
+            304,
+            892
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "text",
+        "text": "res = arm.fit()\nprint(res) ",
+        "bbox": [
+            108,
+            916,
+            187,
+            970
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "image",
+        "img_path": "images/0666524872d854b8d7641df8e025e553bd211d835436dc04a1e8f544d0e725b4.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            520,
+            233,
+            994,
+            888
+        ],
+        "page_idx": 40
+    },
+    {
+        "type": "text",
+        "text": "SPY Example - Final model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            566,
+            188
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "text",
+        "text": "- The unconditional variance of $a_{t}$ ",
+        "bbox": [
+            72,
+            266,
+            426,
+            322
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "equation",
+        "text": "$$\nV a r (a _ {t}) = \\frac {\\alpha_ {0}}{1 - \\alpha_ {1} - \\cdots - \\alpha_ {m}} = \\frac {0 . 0 0 0 0 4 1 3 5}{1 - 0 . 3 2 5 - 0 . 3 2 5} = 0. 0 0 0 1 1 8 1 4\n$$",
+        "text_format": "latex",
+        "bbox": [
+            167,
+            420,
+            751,
+            520
+        ],
+        "page_idx": 41
+    },
+    {
+        "type": "text",
+        "text": "Model Forecast ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            361,
+            181
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Forecasting of ARCH models can be obtained recursively as that of AR ",
+            "1-step ahead forecast "
+        ],
+        "bbox": [
+            71,
+            270,
+            683,
+            370
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\sigma_ {h} ^ {2} (1) = E \\big (\\sigma_ {h + 1} ^ {2} \\big | F _ {h} \\big) \\\\ = E \\left(\\alpha_ {0} + \\alpha_ {1} a _ {h} ^ {2} + \\dots + \\alpha_ {m} a _ {h + 1 - m} ^ {2} \\mid F _ {h}\\right) \\\\ = \\alpha_ {0} + \\alpha_ {1} a _ {h} ^ {2} + \\dots + \\alpha_ {m} a _ {h + 1 - m} ^ {2} \\\\ = \\sigma_ {h} ^ {2} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            214,
+            405,
+            605,
+            661
+        ],
+        "page_idx": 42
+    },
+    {
+        "type": "text",
+        "text": "Model Forecast ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            361,
+            181
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "text",
+        "text": "2-step ahead forecast ",
+        "bbox": [
+            72,
+            270,
+            280,
+            312
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} \\sigma_ {h} ^ {2} (2) = E \\big (\\sigma_ {h + 2} ^ {2} \\big | F _ {h} \\big) \\\\ = E \\left(\\alpha_ {0} + \\alpha_ {1} a _ {h + 1} ^ {2} + \\dots + \\alpha_ {m} a _ {h + 2 - m} ^ {2} \\mid F _ {h}\\right) \\\\ = \\alpha_ {0} + \\alpha_ {1} E \\left(a _ {h + 1} ^ {2} \\mid F _ {h}\\right) + \\alpha_ {2} a _ {h} ^ {2} + \\dots + \\alpha_ {m} a _ {h + 2 - m} ^ {2} \\\\ = \\alpha_ {0} + \\alpha_ {1} E \\left(\\sigma_ {h + 1} ^ {2} \\varepsilon_ {h + 1} ^ {2} \\mid F _ {h}\\right) + \\alpha_ {2} a _ {h} ^ {2} + \\dots + \\alpha_ {m} a _ {h + 2 - m} ^ {2} \\\\ = \\alpha_ {0} + \\alpha_ {1} \\sigma_ {h + 1} ^ {2} E \\left(\\varepsilon_ {h + 1} ^ {2} \\mid F _ {h}\\right) + \\alpha_ {2} a _ {h} ^ {2} + \\dots + \\alpha_ {m} a _ {h + 2 - m} ^ {2} \\\\ = \\alpha_ {0} + \\alpha_ {1} \\sigma_ {h} ^ {2} (1) + \\alpha_ {2} a _ {h} ^ {2} + \\dots + \\alpha_ {m} a _ {h + 2 - m} ^ {2} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            214,
+            405,
+            732,
+            838
+        ],
+        "page_idx": 43
+    },
+    {
+        "type": "text",
+        "text": "ARCH Model Forecast ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            477,
+            181
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "text",
+        "text": "- k-step ahead forecast ",
+        "bbox": [
+            72,
+            266,
+            281,
+            312
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {h} ^ {2} (k) = E \\big (\\sigma_ {h + k} ^ {2} \\big | F _ {h} \\big) = \\alpha_ {0} + \\sum_ {i = 1} ^ {m} \\alpha_ {i} \\sigma_ {h} ^ {2} (k - i)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            269,
+            385,
+            671,
+            512
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm {w h e r e} \\sigma_ {h} ^ {2} (k - i) = a _ {h + k - m} ^ {2} \\mathrm {i f k - i \\leq 0}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            293,
+            614,
+            650,
+            664
+        ],
+        "page_idx": 44
+    },
+    {
+        "type": "text",
+        "text": "GARCH Model ",
+        "text_level": 1,
+        "bbox": [
+            319,
+            392,
+            675,
+            481
+        ],
+        "page_idx": 45
+    },
+    {
+        "type": "text",
+        "text": "GARCH model ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            334,
+            181
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "text",
+        "text": "- Bollerslev (1986) proposes a useful extension known as the generalized ARCH (GARCH) model. For a mean-corrected return series $\\{a_{t}\\}$ , it is said to follow a GARCH(m, s) model if ",
+        "bbox": [
+            71,
+            270,
+            880,
+            416
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\left\\{ \\begin{array}{c} a _ {t} = \\sigma_ {t} \\varepsilon_ {t} \\\\ \\sigma_ {t} ^ {2} = \\alpha_ {0} + \\sum_ {i = 1} ^ {m} \\alpha_ {i} a _ {t - i} ^ {2} + \\sum_ {j = 1} ^ {s} \\beta_ {j} \\sigma_ {t - j} ^ {2} \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            233,
+            453,
+            570,
+            666
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\text {w h e r e} \\left\\{ \\begin{array}{c} \\quad \\text {i . i . d .} \\\\ \\{\\varepsilon_ {t} \\} \\sim \\mathrm {N} (0, 1) \\\\ \\max  _ {i = 1} ^ {m, s} (\\alpha_ {i} + \\beta_ {i}) <   1 \\qquad \\text {i n w h i c h} \\alpha_ {i} = 0 f o r i > m a n d \\beta_ {j} = 0 f o r j > s \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            164,
+            738,
+            850,
+            955
+        ],
+        "page_idx": 46
+    },
+    {
+        "type": "text",
+        "text": "GARCH model ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            334,
+            181
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The GARCH(m, s) model reduces to a pure ARCH(m) model if $s = 0$ . ",
+            "- $\\alpha_{i}$ is referred to as ARCH parameters. "
+        ],
+        "bbox": [
+            71,
+            268,
+            766,
+            387
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "GARCH error coefficients. ",
+            "Large value indicate volatility reacts quite intensely to market movements. ",
+            "- Volatility tend to be more spiky. "
+        ],
+        "bbox": [
+            108,
+            394,
+            760,
+            535
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "- $\\beta_{j}$ is referred to as GARCH parameters. ",
+        "bbox": [
+            72,
+            553,
+            487,
+            611
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "GARCH lag coefficient. ",
+            "Large value indicate shocks to conditional variance take a long time to die out. ",
+            "- Volatility is persistent. "
+        ],
+        "bbox": [
+            108,
+            612,
+            790,
+            751
+        ],
+        "page_idx": 47
+    },
+    {
+        "type": "text",
+        "text": "GARCH(1,1) model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            420,
+            188
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "text",
+        "text": "- The most commonly used GARCH model is the simplest GARCH(1,1) model ",
+        "bbox": [
+            70,
+            266,
+            851,
+            322
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {t} ^ {2} = \\alpha_ {0} + \\alpha_ {1} a _ {t - 1} ^ {2} + \\beta_ {1} \\sigma_ {t - 1} ^ {2} \\qquad \\mathrm {w h e r e} 0 \\leq \\alpha_ {1}, \\beta_ {1} \\leq 1, \\alpha_ {1} + \\beta_ {1} <   1\n$$",
+        "text_format": "latex",
+        "bbox": [
+            215,
+            385,
+            789,
+            442
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "text",
+        "text": "- It can be seen that a large $a_{t - 1}^2$ or $\\sigma_{t - 1}^2$ give rise to a large $\\sigma_t^2$ . This means that a large $a_{t - 1}^2$ tends to be followed by another large $a_{t}^{2}$ generating the well-know behavior of volatility clustering in financial time series. ",
+        "bbox": [
+            70,
+            531,
+            902,
+            685
+        ],
+        "page_idx": 48
+    },
+    {
+        "type": "text",
+        "text": "GARCH(1,1) model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            420,
+            188
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Tail distribution: similar to ARCH models, the tail distribution of a GARCH(1,1) process is heavier than that of a normal distribution (kurtosis $>3$ ) ",
+            "- Actually, if $a_t$ is 4-th order stationary with $m_4 = a_t^4$ and $m_2 = a_t^2$ . Then, "
+        ],
+        "bbox": [
+            70,
+            268,
+            880,
+            442
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} m _ {2} = E [ E (a _ {t} ^ {2} | F _ {t - 1}) ] = E [ E (\\varepsilon_ {t} ^ {2} \\sigma_ {t} ^ {2} | F _ {t - 1}) ] = E [ E (\\sigma_ {t} ^ {2} | F _ {t - 1}) ] \\\\ = E (\\sigma_ {t} ^ {2}) = \\frac {1}{1 - \\alpha_ {1} - \\beta_ {1}} \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            200,
+            542,
+            719,
+            729
+        ],
+        "page_idx": 49
+    },
+    {
+        "type": "text",
+        "text": "GARCH(1,1) model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            419,
+            188
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "equation",
+        "text": "$$\nm _ {4} = E [ E (a _ {t} ^ {4} | F _ {t - 1}) ] = E [ E (\\varepsilon_ {t} ^ {4} \\sigma_ {t} ^ {4} | F _ {t - 1}) ] = E (3 \\sigma_ {t} ^ {4}) = 3 E (\\sigma_ {t} ^ {4})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            125,
+            272,
+            618,
+            314
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "text",
+        "text": "Also, $E(a_{t}^{2}\\sigma_{t}^{2}) = E(E(a_{t}^{2}\\sigma_{t}^{2}|F_{t - 1})) = E(\\sigma_{t}^{2}E(a_{t}^{2}|F_{t - 1})) = E(\\sigma_{t}^{2}\\sigma_{t}^{2}) = \\frac{m_{4}}{3}$ ",
+        "bbox": [
+            67,
+            346,
+            675,
+            418
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "text",
+        "text": "Then, ",
+        "bbox": [
+            62,
+            442,
+            107,
+            472
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} m _ {4} = 3 E (\\sigma_ {t} ^ {4}) = 3 E ((\\alpha_ {0} + \\alpha_ {1} a _ {t - 1} ^ {2} + \\beta_ {1} \\sigma_ {t - 1} ^ {2}) ^ {2}) \\\\ = 3 E (\\alpha_ {0} ^ {2} + \\alpha_ {1} ^ {2} a _ {t - 1} ^ {4} + \\beta_ {1} ^ {2} \\sigma_ {t - 1} ^ {4} + 2 \\alpha_ {0} \\alpha_ {1} a _ {t - 1} ^ {2} + 2 \\alpha_ {0} \\beta_ {1} \\sigma_ {t - 1} ^ {2} + 2 \\alpha_ {1} \\beta_ {1} a _ {t - 1} ^ {2} \\sigma_ {t - 1} ^ {2}) \\\\ = 3 (\\alpha_ {0} ^ {2} + \\alpha_ {1} ^ {2} m _ {4} + \\beta_ {1} ^ {2} m _ {4} / 3 + 2 \\alpha_ {0} \\alpha_ {1} m _ {2} + 2 \\alpha_ {0} \\beta_ {1} m _ {2} + 2 \\alpha_ {1} \\beta_ {1} m _ {4} / 3) \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            139,
+            466,
+            765,
+            683
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\Rightarrow \\qquad m _ {4} = \\frac {3 (\\alpha_ {0} ^ {2} + 2 \\alpha_ {0} (\\alpha_ {1} + \\beta_ {1}) m _ {2})}{1 - 3 \\alpha_ {t} ^ {2} - \\beta_ {t} ^ {2} - 2 \\alpha_ {1} \\beta_ {1}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            109,
+            742,
+            426,
+            831
+        ],
+        "page_idx": 50
+    },
+    {
+        "type": "text",
+        "text": "GARCH(1,1) model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            420,
+            188
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "text",
+        "text": "- So Kurtosis of $a_{t}$ is ",
+        "bbox": [
+            71,
+            270,
+            288,
+            322
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "equation",
+        "text": "$$\nK (a _ {t}) = \\frac {m _ {4}}{m _ {2} ^ {2}} = \\frac {3 (\\alpha_ {0} ^ {2} + 2 \\alpha_ {0} (\\alpha_ {1} + \\beta_ {1}) m _ {2})}{(1 - 3 \\alpha_ {t} ^ {2} - \\beta_ {t} ^ {2} - 2 \\alpha_ {1} \\beta_ {1}) m _ {2} ^ {2}} = \\frac {3 [ 1 - (\\alpha_ {1} + \\beta_ {1}) ^ {2} ]}{1 - (\\alpha_ {1} + \\beta_ {1}) ^ {2} - 2 \\alpha_ {1} ^ {2}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            164,
+            396,
+            765,
+            501
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "text",
+        "text": "- $1 - (\\alpha_{1} + \\beta_{1})^{2} - 2\\alpha_{1}^{2} > 0$ the condition for the 4-order stationarity of the GARCH(1,1) model ",
+        "bbox": [
+            70,
+            596,
+            855,
+            701
+        ],
+        "page_idx": 51
+    },
+    {
+        "type": "text",
+        "text": "Forecasting GARCH model ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            557,
+            188
+        ],
+        "page_idx": 52
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Consider GARCH(1,1) model $\\left\\{ \\begin{array}{l}\\sigma_t^2 = \\alpha_0 + \\alpha_1a_{t - 1}^2 +\\beta_1\\sigma_{t - 1}^2\\\\ a_t = \\sigma_t\\varepsilon_t \\end{array} \\right.$ ",
+            "- For 1-step ahead forecast, we have "
+        ],
+        "bbox": [
+            71,
+            251,
+            661,
+            488
+        ],
+        "page_idx": 52
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {h} ^ {2} (1) = E \\big (\\alpha_ {0} + \\alpha_ {1} a _ {h} ^ {2} + \\beta_ {1} \\sigma_ {h} ^ {2} \\big | F _ {h} \\big) = \\alpha_ {0} + \\alpha_ {1} a _ {h} ^ {2} + \\beta_ {1} \\sigma_ {h} ^ {2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            229,
+            538,
+            727,
+            600
+        ],
+        "page_idx": 52
+    },
+    {
+        "type": "text",
+        "text": "Forecasting GARCH model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            557,
+            188
+        ],
+        "page_idx": 53
+    },
+    {
+        "type": "text",
+        "text": "- For 2-step ahead forecast, we use $a_{t}^{2} = \\sigma_{t}^{2}\\varepsilon_{t}^{2}$ and rewrite the volatility equation as ",
+        "bbox": [
+            70,
+            266,
+            902,
+            359
+        ],
+        "page_idx": 53
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {t} ^ {2} = \\alpha_ {0} + (\\alpha_ {1} + \\beta_ {1}) \\sigma_ {t - 1} ^ {2} + \\alpha_ {1} \\sigma_ {t} ^ {2} (\\varepsilon_ {t} ^ {2} - 1)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            293,
+            405,
+            664,
+            455
+        ],
+        "page_idx": 53
+    },
+    {
+        "type": "text",
+        "text": "- When $t = h + 1$ , the equation becomes ",
+        "bbox": [
+            70,
+            520,
+            461,
+            566
+        ],
+        "page_idx": 53
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {h + 2} ^ {2} = \\alpha_ {0} + (\\alpha_ {1} + \\beta_ {1}) \\sigma_ {h + 1} ^ {2} + \\alpha_ {1} \\sigma_ {h + 1} ^ {2} (\\varepsilon_ {h + 1} ^ {2} - 1)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            276,
+            631,
+            706,
+            683
+        ],
+        "page_idx": 53
+    },
+    {
+        "type": "text",
+        "text": "- Since $E\\left( {{\\varepsilon }_{h + 1}^{2} - 1 \\mid  {F}_{h}}\\right)  = 0$ ,the 2-step ahead volatility forecast ",
+        "bbox": [
+            70,
+            720,
+            677,
+            766
+        ],
+        "page_idx": 53
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {h} ^ {2} (2) = \\alpha_ {0} + (\\alpha_ {1} + \\beta_ {1}) \\sigma_ {h} ^ {2} (1)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            275,
+            837,
+            542,
+            885
+        ],
+        "page_idx": 53
+    },
+    {
+        "type": "text",
+        "text": "Forecasting GARCH model ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            558,
+            188
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "text",
+        "text": "In general, we have ",
+        "bbox": [
+            70,
+            268,
+            296,
+            316
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {h} ^ {2} (k) = \\alpha_ {0} + (\\alpha_ {1} + \\beta_ {1}) \\sigma_ {h} ^ {2} (k - 1)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            234,
+            357,
+            542,
+            412
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- This result is the same as that of an ARCH(1) model with ARCH parameter $(\\alpha_{1} + \\beta_{1})$ ",
+            "- By repeated substitutions, the k-step ahead forecast can be written as "
+        ],
+        "bbox": [
+            70,
+            450,
+            842,
+            603
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\sigma_ {h} ^ {2} (k) = \\frac {\\alpha_ {0} [ 1 - (\\alpha_ {1} + \\beta_ {1}) ^ {k - 1} ]}{1 - \\alpha_ {1} - \\beta_ {1}} + (\\alpha_ {1} + \\beta_ {1}) ^ {k - 1} \\sigma_ {h} ^ {2} (1)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            234,
+            650,
+            702,
+            751
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "text",
+        "text": "- Provided that $\\alpha_{1} + \\beta_{1} < 1$ , it tends to $\\frac{\\alpha_{0}}{1 - \\alpha_{1} - \\beta_{1}}$ when $k$ tends to $\\infty$ ",
+        "bbox": [
+            70,
+            794,
+            754,
+            881
+        ],
+        "page_idx": 54
+    },
+    {
+        "type": "text",
+        "text": "Summary of ARCH/GARCH models ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            707,
+            188
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "Advantages ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            275,
+            167,
+            309
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "They can model heteroscedasticity. ",
+            "They can model volatility clustering. ",
+            "They can model fat tail property. ",
+            "- They can model the evolution of the volatility. "
+        ],
+        "bbox": [
+            75,
+            329,
+            376,
+            525
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "Weaknesses ",
+        "text_level": 1,
+        "bbox": [
+            401,
+            275,
+            500,
+            307
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The model assumes that positive and negative shocks have the same effects on volatility because it depends on the square of the previous shocks. In practice, it is well known that price of a financial asset responds differently to positive and negative shocks. ",
+            "- GARCH models are likely to over-predict the lower volatilities because they respond slowly to large isolated shocks to the return series. ",
+            "- Recent empirical studies of high-frequency financial time series indicate that the tail behavior of GARCH models remains too short even with standardized Student-t innovations. "
+        ],
+        "bbox": [
+            401,
+            329,
+            909,
+            764
+        ],
+        "page_idx": 55
+    },
+    {
+        "type": "text",
+        "text": "Value at Risk (VaR) ",
+        "text_level": 1,
+        "bbox": [
+            267,
+            390,
+            727,
+            496
+        ],
+        "page_idx": 56
+    },
+    {
+        "type": "text",
+        "text": "Value at Risk (VaR) ",
+        "text_level": 1,
+        "bbox": [
+            70,
+            107,
+            412,
+            188
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• VaR is the “maximum” loss of an asset over a time horizon (e.g. 1 day, 10 days) with a high confidence (eg. $95\\%$ , $99\\%$ ) ",
+            "- For example, what is the maximum daily loss of an investment at $95\\%$ confidence? ",
+            "A formal definition "
+        ],
+        "bbox": [
+            70,
+            268,
+            892,
+            542
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Let X be the PnL distribution (loss is negative, profit is positive) ",
+            "- The VaR at level $\\alpha \\epsilon (0,1)$ is the smallest number $y$ such that the probability that the loss $Y := -X$ does not exceed $y$ is $1 - \\alpha$ "
+        ],
+        "bbox": [
+            108,
+            557,
+            875,
+            688
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "equation",
+        "text": "$$\nV a R _ {\\alpha} (X) = - \\inf \\{x \\epsilon \\mathbb {R}: F _ {X} (x) > \\alpha \\} = F _ {Y} ^ {- 1} (1 - \\alpha)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            210,
+            757,
+            737,
+            816
+        ],
+        "page_idx": 57
+    },
+    {
+        "type": "text",
+        "text": "VaR Example ",
+        "text_level": 1,
+        "bbox": [
+            70,
+            107,
+            312,
+            188
+        ],
+        "page_idx": 58
+    },
+    {
+        "type": "text",
+        "text": "Consider an investment of $W_0 = \\$ 10,000 in a stock for one month, and the monthly return is R ~ N(0.05, 0.1^2). ",
+        "bbox": [
+            70,
+            266,
+            857,
+            368
+        ],
+        "page_idx": 58
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "(a) What is the probability distribution at the end of month wealth $W_{1} = W_{0}(1 + R)?$ ",
+            "(b) Calculate $P\\left(W_{1}< 9000\\right)$ ",
+            "(c) Find the \\(95 \\%\\)value- at- risk (VaR) on the \\(\\$ 10,000 investment in one month. i.e. to find VaR such that \\(P \\left(W _ {0} - W _ {1} < V a R\\right) = 0. 9 5\\) "
+        ],
+        "bbox": [
+            71,
+            383,
+            912,
+            585
+        ],
+        "page_idx": 58
+    },
+    {
+        "type": "text",
+        "text": "VaR Example - answer ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            112,
+            479,
+            188
+        ],
+        "page_idx": 59
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "(a) $W_{1} = W_{0}(1 + R) \\sim N(10000(1 + 0.05), 10000^{2}0.1^{2}) = N(10500, 1000^{2})$ ",
+            "(b) $P\\left(W_{1}< 9000\\right)=P\\left(Z< \\frac{9000-10500}{1000}\\right)=P\\left(Z< -1.5\\right)=0.0668$ ",
+            "(c) $P\\left(W_{0} - W_{1}< V a R\\right) = 0.95$ "
+        ],
+        "bbox": [
+            75,
+            264,
+            772,
+            451
+        ],
+        "page_idx": 59
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} P (1 0 0 0 0 - (1 0 5 0 0 + 1 0 0 0 Z) <   V a R) = 0. 9 5 \\\\ P \\left(Z > \\frac {- V a R - 5 0 0}{1 0 0 0}\\right) = 0. 9 5 \\\\ \\frac {- V a R - 5 0 0}{1 0 0 0} = - 1. 6 4 5 \\\\ V a R = 1 1 4 5 \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            123,
+            500,
+            494,
+            846
+        ],
+        "page_idx": 59
+    },
+    {
+        "type": "text",
+        "text": "Relative VaR vs Absolute VaR ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            603,
+            181
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "image",
+        "img_path": "images/4c826b75e86d7ba3e29658562efc8f113c501df25721b7262487cbf1289cbba8.jpg",
+        "image_caption": [
+            "Distribution of Portfolio Value "
+        ],
+        "image_footnote": [],
+        "bbox": [
+            170,
+            281,
+            805,
+            883
+        ],
+        "page_idx": 60
+    },
+    {
+        "type": "text",
+        "text": "Value-at-Risk (VaR) Estimation Method ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            783,
+            188
+        ],
+        "page_idx": 61
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The example above is calculated based on parametric method (i.e. normal distribution) ",
+            "- Some common VaR approach used in the industry "
+        ],
+        "bbox": [
+            71,
+            268,
+            880,
+            457
+        ],
+        "page_idx": 61
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Parametric VaR (or Variance-Covariance method) ",
+            "2. Historical VaR ",
+            "3. Hypothetical VaR ",
+            "4. Monte Carlo Simulation "
+        ],
+        "bbox": [
+            110,
+            468,
+            647,
+            681
+        ],
+        "page_idx": 61
+    },
+    {
+        "type": "text",
+        "text": "Parametric VaR ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            357,
+            181
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- In previous example, the return R is assumed to be normally distributed which is NOT a proper assumption. ",
+            "- The maximum loss of an investment cannot exceed -100% ",
+            "- In finance, it is more common to assume the log return $R$ follows normal distribution. (i.e. $e^{R}$ follows log-normal distribution) ",
+            "- Log normal distribution: "
+        ],
+        "bbox": [
+            70,
+            270,
+            906,
+            612
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- If $X \\sim N(\\mu, \\sigma^2)$ where $-\\infty < X < \\infty$ ",
+            "- Then $Y = e^{X} \\sim \\operatorname{LogN}(\\mu, \\sigma^{2})$ where $0 < Y < \\infty$ ",
+            "$E(Y) = \\exp \\left(\\mu +\\frac{\\sigma^2}{2}\\right)$ ",
+            "$\\operatorname{Var}(Y) = \\exp (2\\mu + \\sigma^2)\\left[\\exp (\\sigma^2) - 1\\right]$ "
+        ],
+        "bbox": [
+            110,
+            622,
+            558,
+            838
+        ],
+        "page_idx": 62
+    },
+    {
+        "type": "text",
+        "text": "Parametric VaR Log-Normal Example ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            750,
+            192
+        ],
+        "page_idx": 63
+    },
+    {
+        "type": "text",
+        "text": "Consider an investment of $W_0 = \\$ 10,000 in a stock for one month, and the monthly log return is R ~ N(0.05, 0.1^2). ",
+        "bbox": [
+            70,
+            266,
+            858,
+            372
+        ],
+        "page_idx": 63
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "(a) What is the probability distribution at the end of month wealth $W_{1} = W_{0} e^{R?}$ ? ",
+            "(b) Calculate $P\\left(W_{1}< 9000\\right)$ ",
+            "(c) Find the \\(95 \\%\\)value- at- risk (VaR) on the \\(\\$ 10,000 investment in one month. i.e. to find VaR such that \\(P \\left(W _ {0} - W _ {1} < V a R\\right) = 0. 9 5\\) "
+        ],
+        "bbox": [
+            71,
+            381,
+            912,
+            588
+        ],
+        "page_idx": 63
+    },
+    {
+        "type": "text",
+        "text": "Parametric VaR Log-Normal Example - answer ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            917,
+            188
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "text",
+        "text": "(a) $\\operatorname{Log}\\left( {W}_{1}\\right)  = \\operatorname{Log}\\left( {W}_{0}\\right)  + R \\sim  N\\left( {\\operatorname{Log}\\left( {W}_{0}\\right)  + E\\left( R\\right) ,\\operatorname{Var}\\left( R\\right) }\\right)  = N\\left( {\\log \\left( {{10000}}\\right)  + {0.05},{0.1}^{2}}\\right)  =$ $N\\left( {{9.26},{0.1}^{2}}\\right)$ ",
+        "bbox": [
+            70,
+            266,
+            905,
+            355
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\mathrm {S o} W _ {1} \\sim \\operatorname {L o g N} (9. 2 6, 0. 1 ^ {2})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            105,
+            364,
+            336,
+            412
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "(b) $P(W_{1} < 9000) = P(\\log (W_{1}) < \\log (9000)) = P\\left(Z < \\frac{\\log(9000) - 9.26}{0.1}\\right) = P(Z < -1.55) = 0.0605$ ",
+            "(c) $P\\left(W_{0} - W_{1}< V a R\\right) = 0.95$ "
+        ],
+        "bbox": [
+            71,
+            475,
+            885,
+            640
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "equation",
+        "text": "$$\nP \\left(W _ {1} > 1 0 0 0 0 - V a R\\right) = 0. 9 5\n$$",
+        "text_format": "latex",
+        "bbox": [
+            118,
+            661,
+            366,
+            703
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "equation",
+        "text": "$$\nP \\left(Z > \\frac {\\log (1 0 0 0 0 - V a R) - 9 . 2 6}{0 . 1}\\right) = 0. 9 5\n$$",
+        "text_format": "latex",
+        "bbox": [
+            118,
+            735,
+            463,
+            827
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\log (1 0 0 0 0 - V a R) - 9 . 2 6}{0 . 1} = - 1. 6 4 5\n$$",
+        "text_format": "latex",
+        "bbox": [
+            138,
+            859,
+            438,
+            942
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "image",
+        "img_path": "images/7e4db99193bc550897ebe0f2b784bfc49436ebcabab70ea7114b9c4d33803066.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            471,
+            868,
+            544,
+            929
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "text",
+        "text": "$V a R = 1084.9$ ",
+        "bbox": [
+            561,
+            881,
+            679,
+            916
+        ],
+        "page_idx": 64
+    },
+    {
+        "type": "text",
+        "text": "Historical VaR ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            330,
+            181
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "text",
+        "text": "Question: Give the previous 10 days’ return series. What’s the $90 \\%$ daily VaR? ",
+        "bbox": [
+            70,
+            268,
+            734,
+            314
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\{1.1 \\%, 2.4 \\%, -1.3 \\%, -0.4 \\%, 3 \\%, 2.6 \\%, 1.4 \\%, -0.8 \\%, 0.9 \\%, -0.5 \\% \\}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            191,
+            364,
+            791,
+            412
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "text",
+        "text": "Answer: ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            450,
+            148,
+            485
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\{-1.3 \\%, -0.8 \\%, -0.5 \\%, -0.4 \\%, 0.9 \\%, 1.1 \\%, 1.4 \\%, 2.4 \\%, 2.6 \\%, 3 \\% \\}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            185,
+            562,
+            725,
+            607
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "sort the series in ascending order ",
+            "- Find the smallest number $y$ such that the probability that the loss does not exceed $y$ is $1 - 90\\%$ ",
+            "So $90\\%$ worst case is $-0.8\\%$ ",
+            "- Also, the mean is $0.84\\%$ . ",
+            "- So daily VaR (relative) will be $0.84\\% - (-0.8\\%) = 1.64\\%$ . "
+        ],
+        "bbox": [
+            70,
+            505,
+            905,
+            838
+        ],
+        "page_idx": 65
+    },
+    {
+        "type": "text",
+        "text": "Historical VaR ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            330,
+            188
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- For the example above, what would be the $95 \\%$ VaR? ",
+            "- The worst case lose is … "
+        ],
+        "bbox": [
+            71,
+            266,
+            723,
+            398
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- $1.3\\%$ ",
+            "- $0.8\\%$ ",
+            "• $0.5^{*}(-1.3\\% - 0.8\\%) = -1.05\\%$ ? "
+        ],
+        "bbox": [
+            109,
+            412,
+            422,
+            574
+        ],
+        "page_idx": 66
+    },
+    {
+        "type": "text",
+        "text": "Stress VaR ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            267,
+            181
+        ],
+        "page_idx": 67
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- VaR measures based on recent data can miss out extreme situations that could cause severe losses. ",
+            "- Stress VaR calculates potential loss for holding the current portfolio during a stress period. ",
+            "- A stress period is an actual event happened in the past, such as "
+        ],
+        "bbox": [
+            70,
+            268,
+            893,
+            522
+        ],
+        "page_idx": 67
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Asian Financial Crisis in 1997; ",
+            "Dot-com bubbles in 2000; ",
+            "- Global Financial crisis in 2008; ",
+            "- European Debt Crisis in 2012; ",
+            "etc "
+        ],
+        "bbox": [
+            110,
+            527,
+            387,
+            740
+        ],
+        "page_idx": 67
+    },
+    {
+        "type": "text",
+        "text": "- In other words, if financial crisis happen again and I do nothing with my portfolio during the whole period, what would be my \"maximum\" loss? ",
+        "bbox": [
+            70,
+            759,
+            902,
+            850
+        ],
+        "page_idx": 67
+    },
+    {
+        "type": "text",
+        "text": "Hypothetical VaR ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            391,
+            188
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Hypothetical VaR calculates potential losses based on hypothetical scenarios rather than actual past data. ",
+            "- It is commonly used for risk assessment on extreme scenarios that don’t have past reference. ",
+            "- In other word, it calculates the \"maximum\" loss for \"what-if\" scenarios. eg. "
+        ],
+        "bbox": [
+            70,
+            270,
+            879,
+            546
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "US Fed Fund rate increase to $50\\%$ , ",
+            "S&P500 Index drops $90\\%$ , ",
+            "HKD and USD unpegged ",
+            "0 "
+        ],
+        "bbox": [
+            110,
+            557,
+            419,
+            740
+        ],
+        "page_idx": 68
+    },
+    {
+        "type": "text",
+        "text": "Monte Carlo Simulation ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            512,
+            181
+        ],
+        "page_idx": 69
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- For a large investment portfolio consisting of many securities (eg. stocks, options, futures, currencies, bonds, etc), it involves multiple risk factors that make the risk assessment difficult. ",
+            "- Monte Carlo can be used to simulate the portfolio value under different possible paths and movements "
+        ],
+        "bbox": [
+            71,
+            272,
+            477,
+            720
+        ],
+        "page_idx": 69
+    },
+    {
+        "type": "image",
+        "img_path": "images/d52beae300afb6b2e182c83582e83eb275ed31a30abbfeb151825dc45028ee22.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            507,
+            266,
+            997,
+            779
+        ],
+        "page_idx": 69
+    },
+    {
+        "type": "text",
+        "text": "Monte Carlo example ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            109,
+            470,
+            188
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "image",
+        "img_path": "images/5c696aa1c3994195ab2420225411eda0e7661b86e48a33a9049d65692eca29a8.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            22,
+            257,
+            61,
+            274
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "Mean stock price at the end of the year: 102.56 ",
+        "bbox": [
+            25,
+            285,
+            323,
+            307
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "5th percentile stock price at the end of the year: 102.00 ",
+        "bbox": [
+            25,
+            309,
+            384,
+            331
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "image",
+        "img_path": "images/b4a63eb50702a456a75160a168e6739084dd29fe2256f813700d32121cf93d21.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            0,
+            531,
+            494,
+            1000
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "import numpy as np ",
+        "bbox": [
+            512,
+            38,
+            615,
+            62
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "import matplotlib.pyplot as plt ",
+        "bbox": [
+            512,
+            62,
+            664,
+            88
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "Parameters ",
+        "bbox": [
+            513,
+            109,
+            585,
+            133
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "initial_price = 100 ",
+        "bbox": [
+            513,
+            135,
+            604,
+            159
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "num_simulations = 1000 ",
+        "bbox": [
+            513,
+            162,
+            639,
+            183
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "num.days = 252 ",
+        "bbox": [
+            513,
+            185,
+            600,
+            207
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "Approximate trading days in a year ",
+        "bbox": [
+            513,
+            233,
+            702,
+            257
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "daily_mean = 0.0001 ",
+        "bbox": [
+            513,
+            259,
+            620,
+            281
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "daily_std_dev = 0.0002 ",
+        "bbox": [
+            513,
+            283,
+            633,
+            305
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "Simulate the stock prices ",
+        "bbox": [
+            513,
+            331,
+            652,
+            355
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "simulatedprices $\\equiv$ np.zeros((num_simulations, num_day)) ",
+        "bbox": [
+            513,
+            355,
+            816,
+            381
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "for i in range(num_simulations): ",
+        "bbox": [
+            513,
+            381,
+            675,
+            403
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "dailyreturns $=$ np.random.normal(daily_mean,daily_std_dev,num_dayse) ",
+        "bbox": [
+            526,
+            405,
+            898,
+            429
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "price_series = initial_price * np.exp(np cumsum(dailyreturns)) ",
+        "bbox": [
+            526,
+            429,
+            844,
+            453
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "simulated_price[i] = price_series ",
+        "bbox": [
+            526,
+            455,
+            696,
+            479
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "Calculate mean and 5th percentile at the end of the year ",
+        "bbox": [
+            513,
+            501,
+            810,
+            525
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "final_price $=$ simulated_price[:,-1] ",
+        "bbox": [
+            513,
+            527,
+            697,
+            551
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "mean_price = np.mean(final_price) ",
+        "bbox": [
+            513,
+            553,
+            697,
+            575
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "percentile_5 = np-percentile(final_price, 5) ",
+        "bbox": [
+            513,
+            577,
+            733,
+            600
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "Output the results ",
+        "bbox": [
+            513,
+            625,
+            615,
+            646
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "print(f\"Mean stock price at the end of the year: {mean_price:.2f}\") ",
+        "bbox": [
+            513,
+            650,
+            843,
+            674
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "print(f\"5th percentile stock price at the end of the year: {percentile_5:.2f}\") ",
+        "bbox": [
+            513,
+            675,
+            886,
+            700
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "Plotting the simulations with different colors ",
+        "bbox": [
+            513,
+            722,
+            745,
+            744
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "plt.figure(figsize=(12,6)) ",
+        "bbox": [
+            513,
+            746,
+            639,
+            770
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "colors = plt.cm.viridis(np.linspace(0, 1, num_simulations)) # Use a colormap for different colors ",
+        "bbox": [
+            513,
+            772,
+            994,
+            796
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "for i in range(num_simulations): ",
+        "bbox": [
+            513,
+            796,
+            675,
+            820
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "plt.plot(simulated的价格[i], color=colors[i], alpha=0.5) # Set alpha for transparency ",
+        "bbox": [
+            526,
+            820,
+            945,
+            846
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "plt title('Monte Carlo Simulations of Daily Stock Price') ",
+        "bbox": [
+            513,
+            868,
+            787,
+            892
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "plt.xlabel('Days') ",
+        "bbox": [
+            513,
+            894,
+            600,
+            918
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "plt.ylabel('Stock Price') ",
+        "bbox": [
+            513,
+            918,
+            630,
+            942
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "plt.grid() ",
+        "bbox": [
+            513,
+            944,
+            557,
+            966
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "plt show() ",
+        "bbox": [
+            513,
+            968,
+            565,
+            990
+        ],
+        "page_idx": 70
+    },
+    {
+        "type": "text",
+        "text": "Limitation of VaR ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            389,
+            179
+        ],
+        "page_idx": 71
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Assumptions: Assumes normal distribution of returns, which may not hold in reality. ",
+            "- Non-linear Risks: VaR does not account for extreme market movements. ",
+            "- Time Horizon Sensitivity: VaR can change significantly with the time horizon chosen. ",
+            "- Ignore about the loss in the tail distribution "
+        ],
+        "bbox": [
+            70,
+            270,
+            875,
+            614
+        ],
+        "page_idx": 71
+    },
+    {
+        "type": "text",
+        "text": "Other Risk Measures ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            458,
+            179
+        ],
+        "page_idx": 72
+    },
+    {
+        "type": "text",
+        "text": "- Conditional Value-at-Risk(CVaR) or Expected Shortfall (ES) or Tail Value-at-Risk (TVaR) or Conditional Tail Expectation (CTE) ",
+        "bbox": [
+            71,
+            270,
+            880,
+            368
+        ],
+        "page_idx": 72
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE (L o s s \\mid L o s s > V a R)\n$$",
+        "text_format": "latex",
+        "bbox": [
+            360,
+            416,
+            594,
+            468
+        ],
+        "page_idx": 72
+    },
+    {
+        "type": "text",
+        "text": "• Lower Partial Movement (r is the target return) ",
+        "bbox": [
+            72,
+            518,
+            571,
+            568
+        ],
+        "page_idx": 72
+    },
+    {
+        "type": "equation",
+        "text": "$$\nE ([ \\max (0, r - R) ] ^ {2})\n$$",
+        "text_format": "latex",
+        "bbox": [
+            366,
+            662,
+            585,
+            718
+        ],
+        "page_idx": 72
+    },
+    {
+        "type": "text",
+        "text": "Scenario Analysis ",
+        "text_level": 1,
+        "bbox": [
+            280,
+            392,
+            716,
+            501
+        ],
+        "page_idx": 73
+    },
+    {
+        "type": "text",
+        "text": "Scenario Analysis ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            396,
+            190
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "text",
+        "text": "- Scenario analysis consists of evaluating the portfolio under various extreme but probable states of the world. It includes ",
+        "bbox": [
+            71,
+            270,
+            885,
+            387
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Sensitivity Testing: Evaluate the portfolio by moving key variables sequentially by a large amount (ignoring correlations). ",
+            "2. Evaluate portfolios by creating scenarios of joint (but unusual) movements in key variables. "
+        ],
+        "bbox": [
+            108,
+            392,
+            902,
+            588
+        ],
+        "page_idx": 74
+    },
+    {
+        "type": "text",
+        "text": "Scenario Analysis ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            109,
+            396,
+            190
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "text",
+        "text": "Ways to come up with scenario ",
+        "text_level": 1,
+        "bbox": [
+            70,
+            272,
+            448,
+            327
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Prospective Scenarios: hypothetical events (eg. earthquake in Tokyo, Korean reunification, etc) ",
+            "2. Factor Push Method: push up or down all risk-factors individually by, say standard deviations, and then compute the changes to the portfolio ",
+            "3. Historical scenarios: based on extreme historical event to provide guideline on joint movements ",
+            "4. Conditional Scenario Method: "
+        ],
+        "bbox": [
+            107,
+            337,
+            917,
+            696
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Denote extreme movements in the key variable by $\\mathsf{R}^{*}$ ",
+            "- Regress other variables (denote by $\\mathsf{R}$ ) on $\\mathsf{R}^*$ . i.e. $R_{j} = \\beta_{0} + \\sum_{i}\\beta_{ji}R_{i}^{*} + \\varepsilon_{j}$ ",
+            "- Predict $R_{j}$ by $E\\left(R_{j} \\mid R^{*}\\right)$ "
+        ],
+        "bbox": [
+            145,
+            709,
+            782,
+            859
+        ],
+        "page_idx": 75
+    },
+    {
+        "type": "text",
+        "text": "Capital Management ",
+        "text_level": 1,
+        "bbox": [
+            236,
+            394,
+            760,
+            500
+        ],
+        "page_idx": 76
+    },
+    {
+        "type": "text",
+        "text": "Position Sizing ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            112,
+            339,
+            190
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "Common position sizing strategy ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            272,
+            463,
+            327
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "1. Fixed Size ",
+            "2. Balance Rescaling ",
+            "3. Dollar Risk Approach ",
+            "4. Kelly Criterion "
+        ],
+        "bbox": [
+            75,
+            348,
+            323,
+            590
+        ],
+        "page_idx": 77
+    },
+    {
+        "type": "text",
+        "text": "Position Sizing - Fixed Size ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            560,
+            188
+        ],
+        "page_idx": 78
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Trade at a fixed quantity every time regardless of balance change ",
+            "- Pros: simple to implement ",
+            "- Cons: "
+        ],
+        "bbox": [
+            71,
+            268,
+            755,
+            446
+        ],
+        "page_idx": 78
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Capital will be under utilized when profit keep accumulating ",
+            "- Expose to higher risk when balance decreases due to losses "
+        ],
+        "bbox": [
+            109,
+            462,
+            640,
+            551
+        ],
+        "page_idx": 78
+    },
+    {
+        "type": "text",
+        "text": "Position Sizing – Balance Rescaling ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            707,
+            192
+        ],
+        "page_idx": 79
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Suppose initial capital is $B_{0}$ and initial trade size is $q_{0}$ ",
+            "- We can adjust the trade size according to latest balance "
+        ],
+        "bbox": [
+            71,
+            268,
+            660,
+            387
+        ],
+        "page_idx": 79
+    },
+    {
+        "type": "equation",
+        "text": "$$\nq _ {t} = \\frac {B _ {t}}{B _ {0}} q _ {0}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            397,
+            425,
+            512,
+            540
+        ],
+        "page_idx": 79
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Then round to the closest Tradable lot size ",
+            "Pros: dynamic quantity with the same risk level ",
+            "- Cons: ignore the win rate of a trade "
+        ],
+        "bbox": [
+            71,
+            603,
+            575,
+            787
+        ],
+        "page_idx": 79
+    },
+    {
+        "type": "text",
+        "text": "Dollar Risk Approach ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            455,
+            192
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Dollar Risk is to risk on each trade only a small percentage of your entire account. It is to prevent your account from going straight to zero in case of a streak of losing trades. ",
+            "• For example, your account balance is US $10,000. Assume you want to risk only \\(1 \\%$ of your balance on each trade. In other word, you want to cap the maximum loss for each individual trade to US\\)100. "
+        ],
+        "bbox": [
+            70,
+            270,
+            926,
+            488
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "equation",
+        "text": "$$\nU S\\\\(10,000*1\\% = US\\\\)100\n$$",
+        "text_format": "latex",
+        "bbox": [
+            346,
+            527,
+            596,
+            570
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "text",
+        "text": "- Assuming this trade is EUR/USD, a standard lot has contract size of 100,000 units and therefore every pip has a value of US$10. ",
+        "bbox": [
+            70,
+            624,
+            902,
+            707
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "equation",
+        "text": "$$\n1 0 0, 0 0 0 * 0. 0 0 0 1 = U S \\mathbb {S} 1 0\n$$",
+        "text_format": "latex",
+        "bbox": [
+            377,
+            768,
+            595,
+            809
+        ],
+        "page_idx": 80
+    },
+    {
+        "type": "text",
+        "text": "Dollar Risk Approach ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            455,
+            192
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "• Also suppose you want the stop-loss is 50 pips from the open price. This means that 50 pips are valued US$500 for a standard lot. ",
+        "bbox": [
+            70,
+            270,
+            902,
+            350
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "equation",
+        "text": "$$\nU S \\mathbb {S} 1 0 * 5 0 p i p s = U S \\mathbb {S} 5 0 0\n$$",
+        "text_format": "latex",
+        "bbox": [
+            346,
+            385,
+            605,
+            429
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "- Since you want to only risk $100, while maintaining your stop-loss 50 pips away, then your position size should be 0.2 standard lot. ",
+        "bbox": [
+            70,
+            485,
+            857,
+            566
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\$ 100 / (\\$ 10 * 50) = 0.2\n$$",
+        "text_format": "latex",
+        "bbox": [
+            358,
+            624,
+            547,
+            666
+        ],
+        "page_idx": 81
+    },
+    {
+        "type": "text",
+        "text": "Dollar Risk Approach ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            455,
+            188
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "- To summarize, we need these inputs to calculate the trade size ",
+        "bbox": [
+            71,
+            270,
+            731,
+            318
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Current account balance ",
+            "Percentage of risk for a single trade ",
+            "- Stop loss in pips/points/ticks ",
+            "- Pip/point/tick value "
+        ],
+        "bbox": [
+            109,
+            329,
+            401,
+            500
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Pros: maximum loss of each trade is fixed ",
+            "- Cons: only applicable to strategy that have fixed trade-level stop-loss "
+        ],
+        "bbox": [
+            71,
+            520,
+            790,
+            635
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "footer",
+        "text": "def DollarRiskSizeBAL, risk_pct, sl,contractSize,tickValue): ",
+        "bbox": [
+            250,
+            750,
+            696,
+            785
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "footer",
+        "text": "return roundBAL\\*risk_pct/(sl\\*contractSize\\*tickValue),2) ",
+        "bbox": [
+            271,
+            785,
+            675,
+            820
+        ],
+        "page_idx": 82
+    },
+    {
+        "type": "text",
+        "text": "Kelly Criterion ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            334,
+            188
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- The Kelly Criterion is a formula used to determine the optimal size of a series of bets. ",
+            "- It aims to maximize the long term wealth, balancing risk and reward. ",
+            "- Formula: "
+        ],
+        "bbox": [
+            71,
+            270,
+            812,
+            424
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf ^ {*} = \\frac {b p - q}{b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            244,
+            470,
+            359,
+            559
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "text",
+        "text": "where ",
+        "bbox": [
+            443,
+            435,
+            490,
+            462
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- $f^{*} =$ the optimal percentage of capital to put in a bet ",
+            "- $b =$ odds received on the wager (net odds) ",
+            "p = probability of winning ",
+            "• $q =$ probability of losing $(1 - p)$ "
+        ],
+        "bbox": [
+            443,
+            470,
+            827,
+            609
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "text",
+        "text": "- Understand the components: ",
+        "bbox": [
+            72,
+            681,
+            344,
+            718
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "• Odds (b): If you bet $1 and win$ b, you gain $b. i.e. win amount / loss amount ",
+            "- Probability (p): Your estimated chance of winning the bet. "
+        ],
+        "bbox": [
+            109,
+            729,
+            657,
+            803
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "text",
+        "text": "- If $f^{*}$ is calculated to be negative, then we shouldn't bet at all ",
+        "bbox": [
+            71,
+            822,
+            609,
+            862
+        ],
+        "page_idx": 83
+    },
+    {
+        "type": "text",
+        "text": "Utility Function U(W) ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            463,
+            192
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- A measure of satisfaction or value derived from consumption or wealth. ",
+            "- Types of Utility Functions: "
+        ],
+        "bbox": [
+            71,
+            270,
+            851,
+            457
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "1. Linear ",
+        "bbox": [
+            110,
+            470,
+            216,
+            509
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "$U(W) \\propto W$ ",
+        "bbox": [
+            148,
+            522,
+            259,
+            562
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "2. Quadratic ",
+        "bbox": [
+            109,
+            616,
+            252,
+            659
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "$U(W) \\propto W^{2}$ ",
+        "bbox": [
+            148,
+            668,
+            279,
+            712
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "3. Logarithmic ",
+        "bbox": [
+            109,
+            772,
+            271,
+            816
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "- $U(W) \\propto \\log (W)$ ",
+        "bbox": [
+            148,
+            825,
+            312,
+            870
+        ],
+        "page_idx": 84
+    },
+    {
+        "type": "text",
+        "text": "Log Utility ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            267,
+            194
+        ],
+        "page_idx": 85
+    },
+    {
+        "type": "image",
+        "img_path": "images/9788e04b41530746f52c0e5284890e91cc2cd9d8455c8d2c379a2308224ed4a4.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            225,
+            201,
+            745,
+            977
+        ],
+        "page_idx": 85
+    },
+    {
+        "type": "text",
+        "text": "Proof of Kelly Criterion ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            490,
+            188
+        ],
+        "page_idx": 86
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Objective: maximize the log-utility function ",
+            "- Denote "
+        ],
+        "bbox": [
+            71,
+            270,
+            531,
+            381
+        ],
+        "page_idx": 86
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "W be the initial wealth ",
+            "- $f$ be the fraction of wealth bet ",
+            "W' be the wealth after the bet "
+        ],
+        "bbox": [
+            110,
+            394,
+            390,
+            529
+        ],
+        "page_idx": 86
+    },
+    {
+        "type": "text",
+        "text": "- Then, $W'$ can be expressed as ",
+        "bbox": [
+            71,
+            551,
+            395,
+            601
+        ],
+        "page_idx": 86
+    },
+    {
+        "type": "equation",
+        "text": "$$\nW ^ {\\prime} = \\left\\{ \\begin{array}{l l} W (1 + b f), & \\text {w i t h p r o b a b i t y o f p} \\\\ W (1 - f), & \\text {w i t h p r o b a b i t y o f q} \\end{array} \\right.\n$$",
+        "text_format": "latex",
+        "bbox": [
+            421,
+            551,
+            779,
+            644
+        ],
+        "page_idx": 86
+    },
+    {
+        "type": "text",
+        "text": "Expected Log Wealth: ",
+        "bbox": [
+            71,
+            685,
+            316,
+            733
+        ],
+        "page_idx": 86
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\begin{array}{l} E (\\log (W ^ {\\prime})) = p \\log \\bigl (W (1 + b f) \\bigr) + q \\log \\bigl (W (1 - f) \\bigr) \\\\ = p \\log (W) + p \\log (1 + b f) + q \\log (W) + q \\log (1 - f) \\\\ = \\log (W) + p \\log (1 + b f) + q \\log (1 - f) \\\\ \\end{array}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            353,
+            692,
+            892,
+            918
+        ],
+        "page_idx": 86
+    },
+    {
+        "type": "text",
+        "text": "Proof of Kelly Criterion ",
+        "text_level": 1,
+        "bbox": [
+            71,
+            107,
+            493,
+            188
+        ],
+        "page_idx": 87
+    },
+    {
+        "type": "text",
+        "text": "- Differentiate with respect to $f$ : ",
+        "bbox": [
+            70,
+            270,
+            409,
+            320
+        ],
+        "page_idx": 87
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {\\partial E (\\log (W ^ {\\prime}))}{\\partial f} = \\frac {p b}{1 + b f} - \\frac {q}{1 - f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            328,
+            374,
+            585,
+            468
+        ],
+        "page_idx": 87
+    },
+    {
+        "type": "text",
+        "text": "- Set the derivative to zero and substitute $q = 1 - p$ , then solve for $f$ , ",
+        "bbox": [
+            70,
+            537,
+            791,
+            588
+        ],
+        "page_idx": 87
+    },
+    {
+        "type": "equation",
+        "text": "$$\n\\frac {p b}{1 + b f} = \\frac {1 - p}{1 - f}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            389,
+            620,
+            523,
+            712
+        ],
+        "page_idx": 87
+    },
+    {
+        "type": "equation",
+        "text": "$$\np b - p b f = 1 - p + b f - p b f\n$$",
+        "text_format": "latex",
+        "bbox": [
+            375,
+            742,
+            621,
+            787
+        ],
+        "page_idx": 87
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf = \\frac {b p - (1 - p)}{b} = \\frac {b p - q}{b}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            386,
+            829,
+            611,
+            911
+        ],
+        "page_idx": 87
+    },
+    {
+        "type": "text",
+        "text": "Kelly Criterion Example ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            109,
+            500,
+            188
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "image",
+        "img_path": "images/63c51beb56c279feb4c518e08aeab0b4c798e17b5744e1e63a0f17c159fdc232.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            0,
+            301,
+            597,
+            862
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "import numpy as np ",
+        "bbox": [
+            623,
+            31,
+            717,
+            53
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "import matplotlib.pyplot as plt ",
+        "bbox": [
+            623,
+            53,
+            761,
+            74
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "Parameters ",
+        "bbox": [
+            623,
+            98,
+            688,
+            116
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "np.random.seed(42) # For reproducibility ",
+        "bbox": [
+            623,
+            120,
+            813,
+            140
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "num_trades = 1000 # Number of trades ",
+        "bbox": [
+            623,
+            142,
+            806,
+            162
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "win_rate = 0.55 # Probability of winning ",
+        "bbox": [
+            623,
+            164,
+            805,
+            185
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "avg_win = 0.1 # Average win (10% return) ",
+        "bbox": [
+            623,
+            188,
+            818,
+            207
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "avg_loss = -0.05 # Average loss (-5% return) # Kelly Criterion Calculation ",
+        "bbox": [
+            623,
+            209,
+            961,
+            231
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "def calculate_kelly(p, b): ",
+        "bbox": [
+            623,
+            251,
+            736,
+            275
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "q = 1 - p ",
+        "bbox": [
+            635,
+            277,
+            676,
+            296
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "return $(\\mathsf{b}^{*}\\mathsf{p} - \\mathsf{q}) / \\mathsf{b}$ ",
+        "bbox": [
+            635,
+            300,
+            725,
+            320
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "Simulate Trades ",
+        "bbox": [
+            623,
+            342,
+            709,
+            362
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "def simulate_trades(num_trades, win_rate, avg_win, avg_loss): ",
+        "bbox": [
+            623,
+            364,
+            913,
+            385
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "kelly_fraction = calculate_kelly(win_rate, avg_win / abs(avg_loss)) ",
+        "bbox": [
+            635,
+            387,
+            937,
+            409
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "capital = 1.0 # Starting capital ",
+        "bbox": [
+            635,
+            429,
+            773,
+            451
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "capital_history = [capital] ",
+        "bbox": [
+            635,
+            453,
+            750,
+            475
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "for_in range(num_trades): ",
+        "bbox": [
+            635,
+            496,
+            761,
+            518
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "if np.random.randint() < win_rate: # Win ",
+        "bbox": [
+            647,
+            520,
+            819,
+            540
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "capital += capital * kelly_fraction * avg_win ",
+        "bbox": [
+            658,
+            542,
+            855,
+            564
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "else:#Loss ",
+        "bbox": [
+            647,
+            566,
+            704,
+            583
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "capital $+ =$ capital \\* kelly_fraction \\* avg_loss ",
+        "bbox": [
+            658,
+            587,
+            858,
+            607
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "capital_history.append(capital) ",
+        "bbox": [
+            647,
+            609,
+            789,
+            631
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "return capital_history ",
+        "bbox": [
+            635,
+            633,
+            733,
+            653
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "Run the simulation ",
+        "bbox": [
+            623,
+            675,
+            720,
+            694
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "capital_history = simulate_trades(num_trades, win_rate, avg_win, avg_loss) ",
+        "bbox": [
+            623,
+            698,
+            971,
+            720
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "Plot the results ",
+        "bbox": [
+            623,
+            742,
+            703,
+            762
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "plt.figure(figsize=(12,6)) ",
+        "bbox": [
+            623,
+            764,
+            737,
+            785
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "plt.plot(capital_history, label='Capital Growth', color='blue')",
+        "bbox": [
+            623,
+            788,
+            893,
+            807
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "plt.title('Capital Growth Simulation Using Kelly Criterion') ",
+        "bbox": [
+            623,
+            809,
+            883,
+            831
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "plt.xlabel('Number of Trades') ",
+        "bbox": [
+            623,
+            831,
+            760,
+            853
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "plt. ylabel('Capital') ",
+        "bbox": [
+            623,
+            855,
+            709,
+            875
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "plt(axhline(y=1, color='red', linestyle='---', label='Initial Capital') ",
+        "bbox": [
+            623,
+            877,
+            907,
+            896
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "pltlegend() ",
+        "bbox": [
+            623,
+            900,
+            677,
+            918
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "plt grid() ",
+        "bbox": [
+            623,
+            920,
+            663,
+            942
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "plt.show() ",
+        "bbox": [
+            623,
+            944,
+            670,
+            964
+        ],
+        "page_idx": 88
+    },
+    {
+        "type": "text",
+        "text": "Kelly Criterion Strategy ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            109,
+            495,
+            190
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "- Backtest Setting ",
+        "text_level": 1,
+        "bbox": [
+            75,
+            272,
+            257,
+            318
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "Instrument: SPYUS ",
+            "Data Interval: 1-day ",
+            "- Start Date: 2024-01 ",
+            "End Date: 2024-07 ",
+            "Initial Capital: US$100,000 "
+        ],
+        "bbox": [
+            112,
+            329,
+            333,
+            544
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "from AlgoAPI import AlgoAPIUtil, AlgoAPI_Backtest ",
+        "bbox": [
+            564,
+            33,
+            746,
+            51
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "from datetime import datetime, timedelta ",
+        "bbox": [
+            564,
+            53,
+            707,
+            70
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "def calculate_kelly(p, b): ",
+        "bbox": [
+            564,
+            85,
+            651,
+            103
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "q = 1 - p ",
+        "bbox": [
+            575,
+            105,
+            604,
+            118
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "return $(\\mathsf{b}^{*}\\mathsf{p} - \\mathsf{q}) / \\mathsf{b}$ ",
+        "bbox": [
+            575,
+            120,
+            641,
+            135
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "class AlgoEvent: ",
+        "bbox": [
+            564,
+            151,
+            626,
+            168
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "def __init__(self): ",
+        "bbox": [
+            575,
+            170,
+            634,
+            185
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "self timer = datetime(1970, 1, 1) ",
+        "bbox": [
+            583,
+            187,
+            691,
+            201
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "self.last_close = None ",
+        "bbox": [
+            583,
+            203,
+            661,
+            218
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "selfreturns $\\equiv$ [] ",
+        "bbox": [
+            583,
+            220,
+            636,
+            235
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "self.numObs = 30 ",
+        "bbox": [
+            583,
+            237,
+            646,
+            251
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "def start(self, mEvt): ",
+        "bbox": [
+            575,
+            268,
+            645,
+            285
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "self EVT = AlgoAPI_Backtest.AlgoEvtHandler(self, mEvt) ",
+        "bbox": [
+            583,
+            287,
+            776,
+            303
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "get lot size ",
+        "bbox": [
+            583,
+            320,
+            628,
+            335
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "self.instrument = mEvt['subscribeList'][0] ",
+        "bbox": [
+            583,
+            337,
+            723,
+            353
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "self contractSize = self.evt.getContractSpec(self.instrument)[\"contractSize\"] ",
+        "bbox": [
+            583,
+            353,
+            844,
+            370
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "self.evt.start()",
+        "bbox": [
+            583,
+            385,
+            632,
+            401
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "def on_markdatafeed(self, md, ab): ",
+        "bbox": [
+            575,
+            418,
+            703,
+            435
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "if md.timestamp $> =$ self.timetherimedelta(hours=24): ",
+        "bbox": [
+            583,
+            437,
+            761,
+            451
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "self_timer = md.timestamp ",
+        "bbox": [
+            591,
+            453,
+            683,
+            468
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "update return series ",
+        "bbox": [
+            591,
+            487,
+            669,
+            501
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "if self.last_close != None: ",
+        "bbox": [
+            591,
+            503,
+            675,
+            518
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "selfreturns.append Md lastPrice/self.last_close-1) ",
+        "bbox": [
+            601,
+            520,
+            775,
+            535
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "self.last_close = md(lastPrice ",
+        "bbox": [
+            591,
+            537,
+            694,
+            551
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "keep only the recent observations ",
+        "bbox": [
+            591,
+            570,
+            716,
+            585
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "if len(selfreturns) $\\rightharpoondown$ self.numObs: ",
+        "bbox": [
+            591,
+            587,
+            709,
+            601
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "selfreturns $=$ selfreturns[-self numObs:] ",
+        "bbox": [
+            601,
+            603,
+            742,
+            620
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "calculate Kelly Criterion ",
+        "bbox": [
+            601,
+            637,
+            690,
+            651
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "win_rate = sum([1 for r in selfreturns if r > 0]) / len(selfreturns) ",
+        "bbox": [
+            601,
+            653,
+            810,
+            670
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "avg_win = sum([r for r in selfreturns if r > 0]) / len(selfreturns) ",
+        "bbox": [
+            601,
+            670,
+            808,
+            685
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "avg_loss = sum([r for r in selfreturns if r < 0]) / len(selfreturns) ",
+        "bbox": [
+            601,
+            687,
+            809,
+            703
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "b = abs(avg_win/avg_loss) ",
+        "bbox": [
+            601,
+            703,
+            693,
+            718
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "kelly_fraction = calculate_kelly(win_rate, b) ",
+        "bbox": [
+            601,
+            720,
+            748,
+            735
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "if kelly_fraction<=0 or kelly_fraction>1: return ",
+        "bbox": [
+            601,
+            737,
+            757,
+            751
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "round to the closest number of lot ",
+        "bbox": [
+            601,
+            770,
+            725,
+            785
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "quantity = round(ab['availableBalance'] * kelly_fraction / (md.lastPrice * self_contractSize), 0) ",
+        "bbox": [
+            601,
+            787,
+            905,
+            803
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "if quantity>0: ",
+        "bbox": [
+            601,
+            803,
+            647,
+            818
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "order $=$ AlgoAPIUtil.OrderObject( ",
+        "bbox": [
+            610,
+            820,
+            725,
+            835
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "openclose = \"open\", ",
+        "bbox": [
+            618,
+            838,
+            689,
+            851
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "instrument = md.instrument, ",
+        "bbox": [
+            618,
+            853,
+            717,
+            868
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "buysell $= 1$ ",
+        "bbox": [
+            618,
+            870,
+            659,
+            885
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "volume $=$ quantity, ",
+        "bbox": [
+            618,
+            887,
+            683,
+            903
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "ordertype $= 0$ # market order ",
+        "bbox": [
+            618,
+            903,
+            721,
+            918
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "holdtime $= 24^{*}60^{*}60$ # hold for 1 day only ",
+        "bbox": [
+            618,
+            920,
+            762,
+            935
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "(1) ${\\mathrm{F}}_{2}$ 与黄色亲本杂交,后代有两种表现型。 现状为_____,黄色为_____;红色为_____;判断依据是：",
+        "bbox": [
+            609,
+            938,
+            697,
+            953
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "self.evt.sendOrder(order) ",
+        "bbox": [
+            609,
+            953,
+            698,
+            968
+        ],
+        "page_idx": 89
+    },
+    {
+        "type": "text",
+        "text": "Kelly Criterion Example ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            500,
+            188
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "text",
+        "text": "Why performance not good? ",
+        "bbox": [
+            627,
+            287,
+            897,
+            329
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "image",
+        "img_path": "images/9eb0a4478182df3030aeb1e4a72337c4f0ac04596c9edfb4c33f5b3c1c5ea92e.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+            0,
+            398,
+            1000,
+            733
+        ],
+        "page_idx": 90
+    },
+    {
+        "type": "text",
+        "text": "Kelly Criterion Assumptions ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            109,
+            580,
+            188
+        ],
+        "page_idx": 91
+    },
+    {
+        "type": "table",
+        "img_path": "images/3a1db5e7b9ed468f7b49d2d9e9fd4c32470cf94284d86d3241f8a71fe3154252.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Gambling</td><td>Investment</td></tr><tr><td>The risk and reward are determined. (eg. 50% win rate for flipping a coin)</td><td>The chance of winning a trade is a variable</td></tr><tr><td>Each bet has only binary outcomes which are determined. (eg. Every time when if you win, you get $10; if you lose, you lose $10)</td><td>The outcome is return which is a continuous variable</td></tr><tr><td>Each bet is independent</td><td>There could be serial correlation</td></tr></table>",
+        "bbox": [
+            85,
+            277,
+            910,
+            696
+        ],
+        "page_idx": 91
+    },
+    {
+        "type": "text",
+        "text": "Kelly Criterion Enhancement ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            107,
+            600,
+            188
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- For risk averse traders, only trade at a fraction of $f^{*}$ ",
+            "- Define a take-profit and stop-loss level (eg. 20 points from entry price) $\\rightarrow$ fix the profit/loss amount of each trade ",
+            "Instead of applying Kelly formula directly to the original price, we can apply it to the trading signals generated from other models $\\rightarrow$ ensure the trades are independent ",
+            "• There are other literature studying the applicability of Kelly Criterion in financial market. For example, this paper (https://sites.math.washington.edu/~morrow/336_20/2016papers/nikhil.pdf) suggests the optimal quantity would be "
+        ],
+        "bbox": [
+            70,
+            270,
+            871,
+            687
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "equation",
+        "text": "$$\nf ^ {*} = \\frac {\\mu - r}{\\sigma^ {2}}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            396,
+            764,
+            500,
+            846
+        ],
+        "page_idx": 92
+    },
+    {
+        "type": "text",
+        "text": "Key Takeaways ",
+        "text_level": 1,
+        "bbox": [
+            73,
+            111,
+            347,
+            190
+        ],
+        "page_idx": 93
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Understand the risk management cycle employed by financial institutions ",
+            "- Learn about commonly used risk models "
+        ],
+        "bbox": [
+            71,
+            268,
+            822,
+            437
+        ],
+        "page_idx": 93
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "ARCH and GARCH model ",
+            "- Value-at-Risk (VaR) ",
+            "- Stress testing, Scenario analysis "
+        ],
+        "bbox": [
+            109,
+            444,
+            452,
+            594
+        ],
+        "page_idx": 93
+    },
+    {
+        "type": "text",
+        "text": "- Learn about common position sizing strategy for capital management ",
+        "bbox": [
+            71,
+            611,
+            917,
+            662
+        ],
+        "page_idx": 93
+    },
+    {
+        "type": "list",
+        "sub_type": "text",
+        "list_items": [
+            "- Fixed Size ",
+            "- Balance Rescaling ",
+            "- Dollar Risk Approach ",
+            "- Kelly Criterion "
+        ],
+        "bbox": [
+            110,
+            670,
+            342,
+            868
+        ],
+        "page_idx": 93
+    }
+]

@@ -1,0 +1,140 @@
+{
+  "lesson_id": "L6",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s015",
+      "introduced_terms": [
+        "volatility"
+      ],
+      "lines": [
+        "识别了风险，下一步就是衡量它有多大。",
+        "最常用的工具是**<term id=\"volatility\">波动率</term>**。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s016",
+      "introduced_terms": [
+        "standard_deviation"
+      ],
+      "lines": [
+        "波动率通常用**<term id=\"standard_deviation\">标准差</term>**来衡量。",
+        "标准差越大，说明价格波动越剧烈，风险也越高。"
+      ],
+      "type": "narration"
+    },
+    {
+      "formula": {
+        "latex": "\\sigma_{t,n} = \\sqrt{\\frac{1}{n}\\sum_{i=1}^{n}(x_{t-i} - \\mu)^2}",
+        "spoken": "sigma t n 等于 n 分之一乘以 x 减去 mu 的平方和，再开根号。"
+      },
+      "id": "s017",
+      "lines": [
+        "计算过去 n 天的标准差，公式是这样的："
+      ],
+      "type": "formula"
+    },
+    {
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "但简单的标准差有个问题：它给每一天的数据相同的权重。",
+        "而实际上，最近发生的事情往往更重要。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s019",
+      "introduced_terms": [
+        "ewma"
+      ],
+      "lines": [
+        "于是有了**<term id=\"ewma\">指数加权移动平均（EWMA）</term>**。",
+        "它给近期的数据更高的权重，反应更灵敏。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s020",
+      "introduced_terms": [
+        "volatility_clustering"
+      ],
+      "lines": [
+        "还有一个有趣的现象：**<term id=\"volatility_clustering\">波动率聚集</term>**。",
+        "大的波动之后往往跟着大的波动，小的之后跟着小的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "比如市场崩盘时，波动率会持续很高。",
+        "而在平静期，波动率会持续很低。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "EWMA 通过给近期数据更高权重，能更快地反映市场的最新变化。",
+        "kind": "single_choice",
+        "options": [
+          "计算更简单",
+          "给近期数据更高权重，反应更灵敏",
+          "不需要历史数据",
+          "结果总是更小"
+        ],
+        "prompt": "EWMA 相比于简单标准差，最大的优势是什么？"
+      },
+      "id": "s022",
+      "lines": [
+        "EWMA 相比于简单标准差，最大的优势是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Measuring Risk: 1. Volatility Analysis (Historical estimates, EWMA, GARCH model), 2. Value at Risk (VaR), 3. Stress Testing and Scenario Analysis. Standard deviation is a statistical measure that quantifies the amount of variation or dispersion in a set of data values. Volatility is often measured using standard deviation. EWMA: exponentially weighted moving averages by putting more weight on the recent data. Volatility clustering refers to the observation that large changes in asset prices are often followed by large changes.",
+    "related": [
+      "volatility",
+      "standard deviation",
+      "EWMA",
+      "volatility clustering"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "ewma": {
+      "aliases": [
+        "EWMA",
+        "Exponentially Weighted Moving Average"
+      ],
+      "display": "指数加权移动平均",
+      "gloss": "一种给近期数据更高权重的波动率估计方法。"
+    },
+    "standard_deviation": {
+      "aliases": [
+        "Standard Deviation"
+      ],
+      "display": "标准差",
+      "gloss": "衡量一组数据离散程度的统计量。"
+    },
+    "volatility": {
+      "aliases": [
+        "Volatility"
+      ],
+      "display": "波动率",
+      "gloss": "衡量资产价格变动幅度的指标，通常用标准差表示。"
+    },
+    "volatility_clustering": {
+      "aliases": [
+        "Volatility Clustering"
+      ],
+      "display": "波动率聚集",
+      "gloss": "大的价格变化后往往跟着大的变化，小的变化后跟着小的变化的现象。"
+    }
+  }
+}

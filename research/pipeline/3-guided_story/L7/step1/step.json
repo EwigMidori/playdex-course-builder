@@ -1,0 +1,193 @@
+{
+  "lesson_id": "L7",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "portfolio"
+      ],
+      "id": "s001",
+      "introduced_terms": [
+        "portfolio"
+      ],
+      "lines": [
+        "市场上有股票、债券、外汇……",
+        "你不可能只买一种资产。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "portfolio"
+      ],
+      "id": "s002",
+      "introduced_terms": [
+        "portfolio"
+      ],
+      "lines": [
+        "把多种资产放在一起，就构成了一个<term id=\"portfolio\">投资组合</term>。",
+        "关键问题：每种资产该买多少？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "portfolio_optimization"
+      ],
+      "id": "s003",
+      "introduced_terms": [
+        "portfolio_optimization"
+      ],
+      "lines": [
+        "这就是<term id=\"portfolio_optimization\">投资组合优化</term>——",
+        "在最大化收益的同时，把风险降到最低。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "markowitz_portfolio_theory"
+      ],
+      "id": "s004",
+      "introduced_terms": [
+        "markowitz_portfolio_theory"
+      ],
+      "lines": [
+        "这套方法的核心，是<term id=\"markowitz_portfolio_theory\">马科维茨投资组合理论</term>。",
+        "它在1990年获得了诺贝尔奖。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "先看一个简单情况：组合里只有两只资产。",
+        "假设你买了40%的A和60%的B。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "expected_return"
+      ],
+      "id": "s006",
+      "introduced_terms": [
+        "expected_return"
+      ],
+      "lines": [
+        "组合的<term id=\"expected_return\">期望收益率</term>就是各资产收益率的加权平均。",
+        "权重加起来等于1。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "E(R_p) = w_A \\cdot E(R_A) + w_B \\cdot E(R_B)",
+        "spoken": "组合的期望收益率等于资产A的权重乘它的期望收益率，加上资产B的权重乘它的期望收益率。"
+      },
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "公式很简单：",
+        "$E(R_p) = w_A \\cdot E(R_A) + w_B \\cdot E(R_B)$"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "portfolio_variance"
+      ],
+      "id": "s008",
+      "introduced_terms": [
+        "portfolio_variance"
+      ],
+      "lines": [
+        "但风险不是简单的加权平均。",
+        "组合的<term id=\"portfolio_variance\">方差</term>还取决于资产之间的相关性。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "\\sigma_p^2 = w_A^2 \\sigma_A^2 + w_B^2 \\sigma_B^2 + 2 w_A w_B \\sigma_{AB}",
+        "spoken": "组合方差等于A的权重平方乘A的方差，加B的权重平方乘B的方差，再加两倍的A权重乘B权重乘A和B的协方差。"
+      },
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "两只资产时，组合方差为：",
+        "$\\sigma_p^2 = w_A^2 \\sigma_A^2 + w_B^2 \\sigma_B^2 + 2 w_A w_B \\sigma_{AB}$"
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "11.25"
+        ],
+        "explanation": "0.5 * 15% + 0.5 * 7.5% = 11.25%。",
+        "kind": "fill_in_blank",
+        "prompt": "组合期望收益率 = ____ %"
+      },
+      "focus_terms": [],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "如果资产A的期望收益是15%，资产B是7.5%。",
+        "你各投一半，组合的期望收益是多少？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Portfolio optimization is the process of selecting the best distribution of assets to maximize returns while minimizing risk. Markowitz Portfolio Theory (modern portfolio theory) is a Nobel prize theory in 1990. Portfolio return: R_p = sum(w_i * R_i). Expected Portfolio Return: E(R_p) = sum(w_i * E(R_i)). Portfolio Variance: sigma_p^2 = sum(w_i^2 * sigma_i^2) + sum_{i != j} w_i w_j sigma_ij.",
+    "related": [
+      "Portfolio return and risk"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "expected_return": {
+      "aliases": [
+        "Expected Return"
+      ],
+      "display": "期望收益率",
+      "gloss": "资产或组合未来收益的加权平均值。"
+    },
+    "markowitz_portfolio_theory": {
+      "aliases": [
+        "Markowitz Portfolio Theory",
+        "Modern Portfolio Theory",
+        "MPT"
+      ],
+      "display": "马科维茨投资组合理论",
+      "gloss": "1952年由哈里·马科维茨提出的现代投资组合理论，强调通过分散投资降低风险。"
+    },
+    "portfolio": {
+      "aliases": [
+        "Portfolio"
+      ],
+      "display": "投资组合",
+      "gloss": "由多种资产构成的集合。"
+    },
+    "portfolio_optimization": {
+      "aliases": [
+        "Portfolio Optimization"
+      ],
+      "display": "投资组合优化",
+      "gloss": "选择最佳资产分配比例，在最大化收益的同时最小化风险的过程。"
+    },
+    "portfolio_variance": {
+      "aliases": [
+        "Portfolio Variance"
+      ],
+      "display": "投资组合方差",
+      "gloss": "衡量投资组合收益波动性的指标。"
+    }
+  }
+}

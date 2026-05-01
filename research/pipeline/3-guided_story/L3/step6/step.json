@@ -1,0 +1,127 @@
+{
+  "lesson_id": "L3",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "回测结果看起来很漂亮？先别急着高兴。",
+        "回测中有很多陷阱，一不小心就会掉进去。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s038",
+      "introduced_terms": [
+        "overfitting"
+      ],
+      "lines": [
+        "第一个陷阱：<term id=\"overfitting\">过度拟合</term>。",
+        "策略被调整得过于贴合历史数据，但一到新市场就失效。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s039",
+      "introduced_terms": [
+        "look_ahead_bias"
+      ],
+      "lines": [
+        "第二个陷阱：<term id=\"look_ahead_bias\">前视偏差</term>。",
+        "在回测中不小心使用了未来的数据，比如用今天的收盘价来决定昨天的交易。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s040",
+      "introduced_terms": [
+        "survivorship_bias"
+      ],
+      "lines": [
+        "第三个陷阱：<term id=\"survivorship_bias\">幸存者偏差</term>。",
+        "只测试了现在还活着的股票，那些已经退市的失败者被忽略了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "还有，我们做回测时总会做一些假设。",
+        "比如：没有交易成本、可以按收盘价成交、允许卖空。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "但在真实市场中，这些假设往往不成立。",
+        "交易成本、滑点、流动性限制都会影响最终收益。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "所以，回测结果好，不代表实盘也能赚钱。",
+        "关键是要用现实的假设，并在样本外数据上验证。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "在计算交易信号时使用当天的收盘价，意味着你提前知道了当天收盘时的信息，这在真实交易中是不可能的。",
+        "kind": "single_choice",
+        "options": [
+          "使用过去10年的数据测试策略",
+          "在计算信号时，使用了当天的收盘价",
+          "只测试了目前仍在交易的股票",
+          "在回测中忽略了交易成本"
+        ],
+        "prompt": "以下哪种行为属于前视偏差？"
+      },
+      "id": "s044",
+      "lines": [
+        "以下哪种行为属于前视偏差？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "回测中常见的陷阱包括：过度拟合、前视偏差、幸存者偏差、数据窥探偏差和忽略假设。最佳实践包括稳健验证、现实假设和持续监控。",
+    "related": [
+      "overfitting",
+      "look_ahead_bias",
+      "survivorship_bias"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "look_ahead_bias": {
+      "aliases": [
+        "Look-ahead Bias"
+      ],
+      "display": "前视偏差",
+      "gloss": "在回测中使用了当时无法获得的未来信息。"
+    },
+    "overfitting": {
+      "aliases": [
+        "Overfitting"
+      ],
+      "display": "过度拟合",
+      "gloss": "策略过于贴合历史数据，导致在新数据上表现不佳。"
+    },
+    "survivorship_bias": {
+      "aliases": [
+        "Survivorship Bias"
+      ],
+      "display": "幸存者偏差",
+      "gloss": "只考虑存活至今的资产，忽略了已经退市的，导致高估策略表现。"
+    }
+  }
+}

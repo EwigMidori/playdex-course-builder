@@ -1,0 +1,105 @@
+{
+  "lesson_id": "L10",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "clustering"
+      ],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "无监督学习在交易中的一个重要应用是股票聚类。",
+        "把走势相似的股票自动分到一组。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "k_means"
+      ],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "比如，用K均值聚类把7只股票分成2组。",
+        "一组可能是科技股（微软、谷歌、苹果），另一组是银行股（摩根大通、美国银行）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "euclidean_distance",
+        "cosine_distance"
+      ],
+      "id": "s030",
+      "introduced_terms": [
+        "euclidean_distance",
+        "cosine_distance"
+      ],
+      "lines": [
+        "聚类时，需要定义“相似度”。",
+        "常用的度量有<term id=\"euclidean_distance\">欧几里得距离</term>和<term id=\"cosine_distance\">余弦距离</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "euclidean_distance",
+        "cosine_distance"
+      ],
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "欧几里得距离：直接计算两条收益率曲线之间的“直线”距离。",
+        "余弦距离：更关注两条曲线的形状是否相似，而不是它们的绝对值。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "余弦距离关注方向（形状），对幅度不敏感，更适合这种情况。",
+        "kind": "single_choice",
+        "options": [
+          "欧几里得距离",
+          "余弦距离",
+          "两者一样"
+        ],
+        "prompt": "如果两只股票的收益率曲线形状非常相似，但幅度不同，哪种距离度量更合适？"
+      },
+      "focus_terms": [
+        "cosine_distance"
+      ],
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "如果两只股票的收益率曲线形状非常相似，但幅度不同，哪种距离度量更合适？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Use K-Means to cluster stocks based on historical returns. Distance measures: Euclidean, Cosine, Correlation-based.",
+    "related": [
+      "L10_stock_clustering"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "cosine_distance": {
+      "aliases": [
+        "Cosine Distance"
+      ],
+      "display": "余弦距离",
+      "gloss": "基于向量夹角的距离度量，关注方向而非大小。"
+    },
+    "euclidean_distance": {
+      "aliases": [
+        "Euclidean Distance"
+      ],
+      "display": "欧几里得距离",
+      "gloss": "两点之间的直线距离，用于衡量相似度。"
+    }
+  }
+}

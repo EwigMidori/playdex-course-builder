@@ -1,0 +1,133 @@
+{
+  "lesson_id": "L8",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "lines": [
+        "订单簿里的订单，就像在排队。",
+        "先来的先成交，后来的等着。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "queuing_theory"
+      ],
+      "lines": [
+        "我们可以用 <term id=\"queuing_theory\">排队论</term> 来分析这个排队过程。",
+        "它能回答：一个订单要等多久才能成交？"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "arrival_rate",
+        "service_rate"
+      ],
+      "lines": [
+        "排队论有两个关键参数：",
+        "<term id=\"arrival_rate\">到达率</term> 和 <term id=\"service_rate\">服务率</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "lines": [
+        "到达率 (λ) 是每秒有多少新订单进来。",
+        "服务率 (μ) 是每秒有多少订单被成交。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "lines": [
+        "如果到达率大于服务率 (λ > μ)，队伍会越来越长。",
+        "如果到达率小于服务率 (λ < μ)，系统才能稳定。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "introduced_terms": [
+        "traffic_intensity"
+      ],
+      "lines": [
+        "它们的比值 ρ = λ / μ，叫 <term id=\"traffic_intensity\">交通强度</term>。",
+        "ρ 越接近 1，系统越拥挤。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s007",
+      "lines": [
+        "在订单簿里，一个限价单从挂单到成交，就是一次完整的排队服务。",
+        "排队论能帮我们估算这个等待时间。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.67",
+          "2/3"
+        ],
+        "explanation": "ρ = λ / μ = 10 / 15 = 0.67。系统是稳定的，因为 ρ < 1。",
+        "kind": "fill_in_blank",
+        "prompt": "如果订单到达率 λ = 10 单/分钟，服务率 μ = 15 单/分钟，交通强度 ρ 是多少？"
+      },
+      "id": "s008",
+      "lines": [
+        "如果订单到达率 λ = 10 单/分钟，服务率 μ = 15 单/分钟，交通强度 ρ 是多少？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Why Queuing Theory? To analyze how orders flow through the market and how they impact price movement. Basic Concepts: Arrival Process (λ): Rate at which an event arrives. Service Rate (μ): Rate at which an event is executed. Queue Discipline: How events are processed (e.g. FIFO). How is it related to Order Book? Incoming orders (buy/sell) can be viewed as entities arriving at a queue. The order book acts as a queue where these orders wait to be matched. Each order can be treated as a customer in a queue, where the \"service\" is the execution of trades.",
+    "related": [
+      "M/M/1 queue",
+      "Poisson process",
+      "Exponential distribution"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "arrival_rate": {
+      "aliases": [
+        "Arrival Rate",
+        "λ"
+      ],
+      "display": "到达率",
+      "gloss": "单位时间内新订单到达市场的平均数量。"
+    },
+    "queuing_theory": {
+      "aliases": [
+        "Queuing Theory",
+        "Queueing Theory"
+      ],
+      "display": "排队论",
+      "gloss": "研究等待队列的数学理论，用于分析订单的等待和执行时间。"
+    },
+    "service_rate": {
+      "aliases": [
+        "Service Rate",
+        "μ"
+      ],
+      "display": "服务率",
+      "gloss": "单位时间内订单被成交的平均数量。"
+    },
+    "traffic_intensity": {
+      "aliases": [
+        "Traffic Intensity",
+        "ρ",
+        "Utilization"
+      ],
+      "display": "交通强度",
+      "gloss": "到达率与服务率的比值，衡量系统繁忙程度。"
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "lesson_id": "L10",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "trading_strategy",
+        "rsi"
+      ],
+      "id": "s023",
+      "introduced_terms": [
+        "trading_strategy",
+        "rsi"
+      ],
+      "lines": [
+        "传统<term id=\"trading_strategy\">交易策略</term>是规则驱动的。",
+        "比如：如果<term id=\"rsi\">相对强弱指标</term>低于30就买入，高于70就卖出。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "supervised_learning"
+      ],
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "但机器学习的方法不同。",
+        "它是结果驱动的：先标记出历史上哪些交易是好的，然后让模型自己学习规则。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "supervised_learning"
+      ],
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "比如，你告诉模型：",
+        "“在这些价格点买入是好的，在这些点卖出是好的。”"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "supervised_learning"
+      ],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "模型就会自己学习，什么样的市场特征会导致好的交易。",
+        "它不再依赖固定的RSI阈值，而是从数据中发现隐藏的规律。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "传统策略由人定义规则，AI策略从标记好的数据中自动学习规则。",
+        "kind": "single_choice",
+        "options": [
+          "传统策略更赚钱",
+          "传统策略是规则驱动，AI策略是数据驱动",
+          "AI策略不需要数据"
+        ],
+        "prompt": "传统交易策略和AI交易策略的主要区别是什么？"
+      },
+      "focus_terms": [
+        "trading_strategy"
+      ],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "传统交易策略和AI交易策略的主要区别是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Traditional trading strategy: define rules (e.g., RSI). AI approach: learn rules from data by labeling desired trades.",
+    "related": [
+      "L10_supervised_trading"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "rsi": {
+      "aliases": [
+        "RSI",
+        "Relative Strength Index"
+      ],
+      "display": "相对强弱指标",
+      "gloss": "一种技术指标，用于衡量价格变动的速度和变化，判断超买或超卖。"
+    },
+    "trading_strategy": {
+      "aliases": [
+        "Trading Strategy"
+      ],
+      "display": "交易策略",
+      "gloss": "决定何时买卖、买卖多少的规则集合。"
+    }
+  }
+}

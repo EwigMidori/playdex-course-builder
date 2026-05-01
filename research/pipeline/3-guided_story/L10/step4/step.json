@@ -1,0 +1,137 @@
+{
+  "lesson_id": "L10",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "reinforcement_learning"
+      ],
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "强化学习里，一个智能体在环境中学习。",
+        "它通过尝试不同的动作，来获得最大的累积奖励。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "state",
+        "action"
+      ],
+      "id": "s018",
+      "introduced_terms": [
+        "state",
+        "action"
+      ],
+      "lines": [
+        "想象一个交易机器人：",
+        "它看到市场<term id=\"state\">状态</term>，然后决定<term id=\"action\">动作</term>（买/卖/持有）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "reward"
+      ],
+      "id": "s019",
+      "introduced_terms": [
+        "reward"
+      ],
+      "lines": [
+        "如果这个动作让它赚钱了，它就得到一个正<term id=\"reward\">奖励</term>。",
+        "如果亏钱了，就得到负奖励。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "q_learning"
+      ],
+      "id": "s020",
+      "introduced_terms": [
+        "q_learning"
+      ],
+      "lines": [
+        "一个经典的强化学习算法是<term id=\"q_learning\">Q学习</term>。",
+        "它维护一张Q值表，记录在每个状态下做每个动作的“好坏”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "q_learning"
+      ],
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "Q学习的更新公式：",
+        "新Q值 = 旧Q值 + 学习率 × (奖励 + 折扣因子 × 未来最佳Q值 - 旧Q值)"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "Q(s, a) 表示在状态s下采取动作a后，所能获得的预期累积奖励。",
+        "kind": "single_choice",
+        "options": [
+          "当前状态的好坏",
+          "在某个状态下采取某个动作的预期未来总奖励",
+          "立即获得的奖励"
+        ],
+        "prompt": "在Q学习中，Q值代表什么？"
+      },
+      "focus_terms": [
+        "q_learning"
+      ],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "在Q学习中，Q值代表什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Reinforcement learning: agent learns by interacting with environment. Q-Learning is a key algorithm. Key components: state, action, reward.",
+    "related": [
+      "L10_rl"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "action": {
+      "aliases": [
+        "Action",
+        "a"
+      ],
+      "display": "动作",
+      "gloss": "智能体可以执行的操作。"
+    },
+    "q_learning": {
+      "aliases": [
+        "Q-Learning"
+      ],
+      "display": "Q学习",
+      "gloss": "一种无模型的强化学习算法，通过Q值表学习最优策略。"
+    },
+    "reward": {
+      "aliases": [
+        "Reward",
+        "r"
+      ],
+      "display": "奖励",
+      "gloss": "执行动作后环境给予的即时反馈信号。"
+    },
+    "state": {
+      "aliases": [
+        "State",
+        "s"
+      ],
+      "display": "状态",
+      "gloss": "环境在某一时刻的描述。"
+    }
+  }
+}

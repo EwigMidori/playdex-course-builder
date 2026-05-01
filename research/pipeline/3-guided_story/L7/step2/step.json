@@ -1,0 +1,148 @@
+{
+  "lesson_id": "L7",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "correlation"
+      ],
+      "id": "s011",
+      "introduced_terms": [
+        "correlation"
+      ],
+      "lines": [
+        "两只资产之间的<term id=\"correlation\">相关系数</term>，决定了分散风险的效果。",
+        "相关系数越低，分散效果越好。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "当相关系数不是特别高时，",
+        "你可以找到一个组合，收益比B高，风险却比B低。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "diversification"
+      ],
+      "id": "s013",
+      "introduced_terms": [
+        "diversification"
+      ],
+      "lines": [
+        "这就是<term id=\"diversification\">风险分散</term>的力量。",
+        "不把鸡蛋放在同一个篮子里。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "如果两只资产完全正相关（ρ=1），分散无效。",
+        "如果完全负相关（ρ=-1），理论上可以把风险降到零。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "minimum_variance_portfolio"
+      ],
+      "id": "s015",
+      "introduced_terms": [
+        "minimum_variance_portfolio"
+      ],
+      "lines": [
+        "在所有可能的组合中，风险最低的那个被称为",
+        "<term id=\"minimum_variance_portfolio\">最小方差组合</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "它的权重可以通过求导得到。",
+        "当导数等于零时，方差最小。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "w = \\frac{-\\sigma_B(\\rho \\sigma_A - \\sigma_B)}{\\sigma_A^2 + \\sigma_B^2 - 2\\rho \\sigma_A \\sigma_B}",
+        "spoken": "最小方差组合中资产A的权重等于负的资产B标准差乘以相关系数乘资产A标准差减资产B标准差，除以资产A方差加资产B方差减两倍相关系数乘资产A标准差乘资产B标准差。"
+      },
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "最小方差组合的权重公式：",
+        "$w = \\frac{-\\sigma_B(\\rho \\sigma_A - \\sigma_B)}{\\sigma_A^2 + \\sigma_B^2 - 2\\rho \\sigma_A \\sigma_B}$"
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "当ρ=1时，组合标准差就是各资产标准差的加权平均，没有分散效果。",
+        "kind": "single_choice",
+        "options": [
+          "各资产标准差的加权平均",
+          "小于各资产标准差的加权平均",
+          "等于零",
+          "无法确定"
+        ],
+        "prompt": "当两只资产完全正相关时，组合的标准差等于："
+      },
+      "focus_terms": [],
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "如果ρ=1，组合的风险会怎样？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "When the correlation is not very high, with appropriate weightings, the portfolio return can be higher than that of asset B but with a lower portfolio variance than that of asset B. This is called risk diversification. If the 2 assets are more negatively correlated, it has better diversification effect. Minimum Variance Portfolio: the portfolio with the lowest standard deviation among all possible portfolios.",
+    "related": [
+      "2 assets Portfolio - Correlation Effect",
+      "Minimum Variance Portfolio"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "correlation": {
+      "aliases": [
+        "Correlation Coefficient",
+        "ρ"
+      ],
+      "display": "相关系数",
+      "gloss": "衡量两个资产收益率之间线性关系的指标，取值范围在-1到1之间。"
+    },
+    "diversification": {
+      "aliases": [
+        "Diversification"
+      ],
+      "display": "风险分散",
+      "gloss": "通过持有多种不完美正相关的资产来降低整体组合风险。"
+    },
+    "minimum_variance_portfolio": {
+      "aliases": [
+        "Minimum Variance Portfolio",
+        "MVP",
+        "Global Minimum Variance Portfolio"
+      ],
+      "display": "最小方差组合",
+      "gloss": "在所有可能的投资组合中，风险（标准差）最低的那个组合。"
+    }
+  }
+}

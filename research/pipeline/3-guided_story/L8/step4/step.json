@@ -1,0 +1,163 @@
+{
+  "lesson_id": "L8",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "introduced_terms": [
+        "high_frequency_trading"
+      ],
+      "lines": [
+        "当交易速度快到毫秒甚至微秒级别，就进入了 <term id=\"high_frequency_trading\">高频交易</term> 的领域。",
+        "目标是抓住转瞬即逝的微小价差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "co_location"
+      ],
+      "lines": [
+        "速度就是生命。",
+        "为了快，交易公司会把服务器搬到交易所旁边，这叫 <term id=\"co_location\">主机托管</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "latency_arbitrage"
+      ],
+      "lines": [
+        "比别人快几微秒，就能看到订单流，提前行动。",
+        "这就是 <term id=\"latency_arbitrage\">延迟套利</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "introduced_terms": [
+        "arbitrage"
+      ],
+      "lines": [
+        "高频交易的核心策略之一：<term id=\"arbitrage\">套利</term>。",
+        "利用不同市场或资产间的价格差异赚钱。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "introduced_terms": [
+        "triangular_arbitrage"
+      ],
+      "lines": [
+        "比如 <term id=\"triangular_arbitrage\">三角套利</term>：",
+        "用美元换欧元，欧元换英镑，英镑再换回美元。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "lines": [
+        "如果一圈下来，钱变多了，就存在套利机会。",
+        "但这需要极快的计算和执行。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s007",
+      "introduced_terms": [
+        "market_making"
+      ],
+      "lines": [
+        "另一种常见策略是 <term id=\"market_making\">做市</term>。",
+        "同时挂买单和卖单，赚取买卖价差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s008",
+      "lines": [
+        "做市商为市场提供流动性，交易所有时还会给返佣。",
+        "但风险是，如果市场单边暴涨暴跌，做市商可能亏钱。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "这称为主机托管，目的是将物理距离缩到最短，从而获得毫秒甚至微秒级的速度优势。",
+        "kind": "single_choice",
+        "options": [
+          "节省电费",
+          "减少网络延迟",
+          "方便维护",
+          "获得更多数据"
+        ],
+        "prompt": "高频交易公司把服务器放在交易所数据中心，主要是为了什么？"
+      },
+      "id": "s009",
+      "lines": [
+        "高频交易公司把服务器放在交易所数据中心，主要是为了什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "High Frequency Trading: Rapid executions of multiple transactions followed by extremely short holding periods. Profit from small price changes and discrepancies. Require sophisticated technology, communications and computing resources. High frequency trading depends heavily on execution speed and latency. Co-location: High frequency trading firms usually rent space from market centers, such as from the major exchanges. The purpose to put their servers next to the market center's data servers is to reduce latency. Latency Arbitrage: Exploiting delays in market data transmission to execute trades before other market participants can react. Common High Frequency Strategy: 1. Market Making 2. Latency Arbitrage 3. Cross Market Arbitrage 4. Order Flow Analysis. Triangular Arbitrage: Triangular arbitrage is a trading strategy that exploits discrepancies in currency exchange rates.",
+    "related": [
+      "co-location example",
+      "triangular arbitrage example",
+      "market making strategy"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "arbitrage": {
+      "aliases": [
+        "Arbitrage"
+      ],
+      "display": "套利",
+      "gloss": "在不同市场或资产间同时买卖，利用价格差异获利。"
+    },
+    "co_location": {
+      "aliases": [
+        "Co-location",
+        "Colo"
+      ],
+      "display": "主机托管",
+      "gloss": "将交易服务器放置在交易所数据中心内，以减少网络延迟。"
+    },
+    "high_frequency_trading": {
+      "aliases": [
+        "HFT",
+        "High Frequency Trading"
+      ],
+      "display": "高频交易",
+      "gloss": "利用极快速度执行大量交易，从微小价差中获利的交易方式。"
+    },
+    "latency_arbitrage": {
+      "aliases": [
+        "Latency Arbitrage"
+      ],
+      "display": "延迟套利",
+      "gloss": "利用信息传输速度差异，比对手更快交易以获利。"
+    },
+    "market_making": {
+      "aliases": [
+        "Market Making"
+      ],
+      "display": "做市",
+      "gloss": "同时挂出买单和卖单，通过赚取买卖价差获利。"
+    },
+    "triangular_arbitrage": {
+      "aliases": [
+        "Triangular Arbitrage"
+      ],
+      "display": "三角套利",
+      "gloss": "利用三种货币之间的汇率不一致进行套利。"
+    }
+  }
+}

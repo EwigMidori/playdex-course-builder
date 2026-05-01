@@ -1,0 +1,125 @@
+{
+  "lesson_id": "L6",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "想象你刚买入一只股票。",
+        "明天它的价格会涨，还是会跌？"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "risk"
+      ],
+      "lines": [
+        "这种“不确定”的感觉，就是**<term id=\"risk\">风险</term>**。",
+        "在金融世界里，风险就是投资回报的不确定性。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "upside_risk",
+        "downside_risk"
+      ],
+      "lines": [
+        "风险不一定是坏事。",
+        "赚钱的可能性叫**<term id=\"upside_risk\">上行风险</term>**，亏钱的可能性叫**<term id=\"downside_risk\">下行风险</term>**。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "既然风险无处不在，我们该怎么对付它？",
+        "这就需要一个系统性的流程。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "introduced_terms": [
+        "risk_management_cycle"
+      ],
+      "lines": [
+        "这个流程叫做**<term id=\"risk_management_cycle\">风险管理循环</term>**。",
+        "它包含四个步骤：识别、评估、处理、监控。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "第一步：识别风险。",
+        "第二步：衡量风险有多大。",
+        "第三步：采取措施。第四步：持续观察。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "风险的核心是“不确定性”，它既包含赚钱的可能，也包含亏钱的可能。",
+        "kind": "single_choice",
+        "options": [
+          "一定会亏钱",
+          "投资回报的不确定性",
+          "股票价格下跌",
+          "市场波动"
+        ],
+        "prompt": "下面哪个选项最准确地描述了金融中的“风险”？"
+      },
+      "id": "s007",
+      "lines": [
+        "下面哪个选项最准确地描述了金融中的“风险”？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "L6: Capital and Risk Management. What is Risk? Risk simply refers to uncertainty. In finance, risk refers to the uncertainty of the investment return. Up-side risk: the possibility of making money. Down-side risk: the possibility of losing money. Risk Management Cycle: 1. Risk Identification, 2. Risk Assessment / Measurement, 3. Risk Treatment, 4. Risk Monitoring.",
+    "related": [
+      "risk management cycle"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "downside_risk": {
+      "aliases": [
+        "Downside Risk"
+      ],
+      "display": "下行风险",
+      "gloss": "亏钱的可能性。"
+    },
+    "risk": {
+      "aliases": [
+        "Risk"
+      ],
+      "display": "风险",
+      "gloss": "在金融中，指投资回报的不确定性。"
+    },
+    "risk_management_cycle": {
+      "aliases": [
+        "Risk Management Cycle"
+      ],
+      "display": "风险管理循环",
+      "gloss": "一个包含识别、评估、处理、监控风险的持续过程。"
+    },
+    "upside_risk": {
+      "aliases": [
+        "Upside Risk"
+      ],
+      "display": "上行风险",
+      "gloss": "赚钱的可能性。"
+    }
+  }
+}

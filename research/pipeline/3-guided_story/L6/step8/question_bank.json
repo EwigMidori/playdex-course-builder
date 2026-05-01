@@ -1,0 +1,482 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "kelly_criterion_limitations",
+      "covered_by": [
+        "qf_flash_kelly_limits",
+        "qf_quiz_kelly_assumptions",
+        "qf_long_kelly_limitations"
+      ],
+      "description": "凯利公式的严格假设及其在真实交易中的局限性"
+    },
+    {
+      "coverage_tag": "kelly_criterion_enhancement",
+      "covered_by": [
+        "qf_flash_kelly_fraction",
+        "qf_quiz_kelly_fraction",
+        "qf_long_kelly_limitations"
+      ],
+      "description": "针对凯利公式局限性的常见改进方法（如使用分数比例）"
+    },
+    {
+      "coverage_tag": "risk_management_summary",
+      "covered_by": [
+        "qf_flash_rm_cycle_recap",
+        "qf_quiz_rm_cycle_recap"
+      ],
+      "description": "风险管理循环的完整回顾：识别、衡量、控制风险"
+    },
+    {
+      "coverage_tag": "risk_management_philosophy",
+      "covered_by": [
+        "qf_flash_rm_philosophy",
+        "qf_quiz_rm_philosophy"
+      ],
+      "description": "风险管理的核心理念：不是消除风险，而是明智决策"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "kelly_criterion_limitations",
+      "coverage_tags": [
+        "kelly_criterion_limitations"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_kelly_limits",
+      "learning_goal": "学生能准确回忆凯利公式在真实交易中的两个关键假设及其与现实不符之处。",
+      "linked_steps": [
+        "step8"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "凯利公式的两个核心假设（独立性与固定胜率/赔率）以及它们在真实交易中为何不成立。",
+      "term_refs": [
+        {
+          "display": "凯利公式",
+          "en": "Kelly Criterion"
+        },
+        {
+          "display": "独立性假设",
+          "en": "Independence Assumption"
+        }
+      ],
+      "variants": [
+        {
+          "back": "相互独立",
+          "estimated_seconds": 8,
+          "explanation": "凯利公式假设每次交易的结果是独立的，但真实交易中可能存在序列相关性。",
+          "front": "凯利公式假设每次交易的结果之间是什么关系？",
+          "question_id": "q_flash_kelly_limits_v1"
+        },
+        {
+          "back": "固定不变",
+          "estimated_seconds": 8,
+          "explanation": "凯利公式假设胜率和赔率是确定的常数，但真实市场中它们是变化的。",
+          "front": "凯利公式假设交易的胜率和赔率是什么状态？",
+          "question_id": "q_flash_kelly_limits_v2"
+        },
+        {
+          "back": "因为真实交易的胜率/赔率会变化，且交易之间可能存在相关性",
+          "estimated_seconds": 10,
+          "explanation": "凯利公式的严格假设（独立、固定参数）在真实金融市场中通常不成立。",
+          "front": "为什么直接套用凯利公式到真实交易中结果可能不好？",
+          "question_id": "q_flash_kelly_limits_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "kelly_criterion_enhancement",
+      "coverage_tags": [
+        "kelly_criterion_enhancement"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_kelly_fraction",
+      "learning_goal": "学生能回忆针对凯利公式局限性的一个常见改进方法。",
+      "linked_steps": [
+        "step8"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "风险厌恶交易者如何调整凯利公式的结果。",
+      "term_refs": [
+        {
+          "display": "分数凯利",
+          "en": "Fractional Kelly"
+        }
+      ],
+      "variants": [
+        {
+          "back": "只使用计算出的比例的一部分（如一半）",
+          "estimated_seconds": 8,
+          "explanation": "使用分数凯利（Fractional Kelly）可以降低风险，提高策略的稳健性。",
+          "front": "风险厌恶的交易者通常如何使用凯利公式的结果？",
+          "question_id": "q_flash_kelly_fraction_v1"
+        },
+        {
+          "back": "一部分（例如一半）",
+          "estimated_seconds": 6,
+          "explanation": "这被称为分数凯利策略，旨在平衡增长潜力与风险。",
+          "front": "为了降低风险，一个常见的改进是只使用凯利公式计算出的比例的多少？",
+          "question_id": "q_flash_kelly_fraction_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "risk_management_cycle",
+      "coverage_tags": [
+        "risk_management_summary"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_rm_cycle_recap",
+      "learning_goal": "学生能回忆风险管理循环的四个主要步骤。",
+      "linked_steps": [
+        "step8"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "风险管理循环的四个步骤。",
+      "term_refs": [
+        {
+          "display": "风险管理循环",
+          "en": "Risk Management Cycle"
+        }
+      ],
+      "variants": [
+        {
+          "back": "识别风险",
+          "estimated_seconds": 5,
+          "explanation": "风险管理循环包括：识别、评估/衡量、处理、监控。",
+          "front": "风险管理循环的第一步是什么？",
+          "question_id": "q_flash_rm_cycle_recap_v1"
+        },
+        {
+          "back": "评估/衡量风险",
+          "estimated_seconds": 5,
+          "explanation": "在识别风险后，需要衡量其大小，例如使用波动率或VaR。",
+          "front": "风险管理循环的第二步是什么？",
+          "question_id": "q_flash_rm_cycle_recap_v2"
+        },
+        {
+          "back": "处理风险",
+          "estimated_seconds": 5,
+          "explanation": "处理风险包括仓位管理等策略。",
+          "front": "风险管理循环的第三步是什么？",
+          "question_id": "q_flash_rm_cycle_recap_v3"
+        },
+        {
+          "back": "监控风险",
+          "estimated_seconds": 5,
+          "explanation": "风险需要持续监控，以确保管理措施有效。",
+          "front": "风险管理循环的第四步是什么？",
+          "question_id": "q_flash_rm_cycle_recap_v4"
+        }
+      ]
+    },
+    {
+      "concept_key": "risk_management_philosophy",
+      "coverage_tags": [
+        "risk_management_philosophy"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_rm_philosophy",
+      "learning_goal": "学生能准确复述风险管理的核心理念。",
+      "linked_steps": [
+        "step8"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "风险管理的最终目标是什么。",
+      "term_refs": [
+        {
+          "display": "风险管理",
+          "en": "Risk Management"
+        }
+      ],
+      "variants": [
+        {
+          "back": "不是消除风险，而是在了解风险的基础上做出明智的决策",
+          "estimated_seconds": 8,
+          "explanation": "风险是投资中固有的，管理的目的是更好地理解和应对它。",
+          "front": "风险管理的核心目标是什么？",
+          "question_id": "q_flash_rm_philosophy_v1"
+        },
+        {
+          "back": "在了解风险的基础上做出明智的决策",
+          "estimated_seconds": 8,
+          "explanation": "风险无法被完全消除，但可以被识别、衡量和管理。",
+          "front": "根据课程总结，风险管理应该如何看待风险？",
+          "question_id": "q_flash_rm_philosophy_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L6",
+  "longform_families": [
+    {
+      "concept_key": "kelly_criterion_limitations",
+      "coverage_tags": [
+        "kelly_criterion_limitations",
+        "kelly_criterion_enhancement"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_kelly_limitations",
+      "learning_goal": "学生能解释凯利公式在赌博与投资中的假设差异，并说明分数凯利策略的原理。",
+      "linked_steps": [
+        "step8"
+      ],
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "凯利公式",
+          "en": "Kelly Criterion"
+        },
+        {
+          "display": "分数凯利",
+          "en": "Fractional Kelly"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "凯利公式在赌博中的假设",
+            "这些假设在投资中为何不成立",
+            "一种改进方法及其原理"
+          ],
+          "question_id": "q_long_kelly_limitations_v1",
+          "reference_answer": [
+            "凯利公式在赌博中表现良好，因为它假设每次下注的风险回报（赔率）和胜率是确定的，并且每次下注的结果是独立的。",
+            "然而，在真实投资中，这些假设通常不成立。交易的胜率和赔率会随市场变化，交易之间也可能存在相关性。",
+            "一种常见的改进方法是使用分数凯利（Fractional Kelly），即只使用凯利公式计算出的最优比例的一部分（例如一半）。这样可以降低策略的波动性和风险，使策略更加稳健。"
+          ],
+          "rubric_points": [
+            "正确指出凯利公式假设赌博中风险回报和胜率是确定的（1分）。",
+            "正确指出凯利公式假设每次下注是独立的（1分）。",
+            "解释在投资中，胜率和赔率是变化的，交易可能存在序列相关性（2分）。",
+            "提出分数凯利（Fractional Kelly）作为改进方法（1分）。",
+            "解释分数凯利通过使用计算出的比例的一部分来降低风险和波动性（1分）。"
+          ],
+          "stem": "请解释为什么凯利公式在赌博场景中表现良好，但在真实投资中直接套用效果不佳？并说明一种常见的改进方法及其原理。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "直接使用30%比例的风险",
+            "凯利公式的假设为何不适用",
+            "建议的稳健实施方案"
+          ],
+          "question_id": "q_long_kelly_limitations_v2",
+          "reference_answer": [
+            "直接使用30%的比例风险很高，因为凯利公式假设胜率和赔率是固定的，但市场是动态的。如果未来胜率下降，30%的仓位可能导致巨大亏损。",
+            "一个更稳健的实施方案是使用分数凯利，例如只使用一半，即15%的仓位。这样可以降低策略对参数估计误差的敏感性，减少回撤，使资金曲线更平滑。"
+          ],
+          "rubric_points": [
+            "指出直接使用可能因市场变化导致过度交易或巨大回撤（1分）。",
+            "解释凯利公式假设参数固定，但实际胜率和赔率会变（2分）。",
+            "建议使用分数凯利，例如使用15%（一半凯利）（1分）。",
+            "解释分数凯利可以降低风险，提高策略的生存概率（1分）。"
+          ],
+          "stem": "一个交易者使用凯利公式计算出一个策略的最优仓位比例为 30%。请分析直接使用这个比例可能面临的风险，并建议一个更稳健的实施方案。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "kelly_criterion_limitations",
+      "coverage_tags": [
+        "kelly_criterion_limitations"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_kelly_assumptions",
+      "learning_goal": "学生能辨析凯利公式的假设在赌博与投资场景下的区别。",
+      "linked_steps": [
+        "step8"
+      ],
+      "question_type": "multiple_choice",
+      "term_refs": [
+        {
+          "display": "凯利公式",
+          "en": "Kelly Criterion"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "凯利公式假设每次下注的结果相互独立，但投资中交易可能存在序列相关性。",
+          "options": [
+            "每次交易的结果是独立的",
+            "交易成本为零",
+            "市场是有效的",
+            "投资者是风险中性的"
+          ],
+          "question_id": "q_quiz_kelly_assumptions_v1",
+          "stem": "以下哪项是凯利公式在赌博场景中的假设，但在真实投资中通常不成立？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "投资的回报通常是连续的百分比变化，而不是赌博中固定的赢或输金额。",
+          "options": [
+            "投资回报是连续变量，而非二元结果",
+            "投资者无法设定止损",
+            "市场总是有效的",
+            "交易次数总是有限的"
+          ],
+          "question_id": "q_quiz_kelly_assumptions_v2",
+          "stem": "凯利公式假设每次交易的结果是二元的（赢或输），且风险回报是确定的。这在真实投资中面临什么问题？"
+        }
+      ]
+    },
+    {
+      "concept_key": "kelly_criterion_enhancement",
+      "coverage_tags": [
+        "kelly_criterion_enhancement"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_kelly_fraction",
+      "learning_goal": "学生能理解并应用分数凯利策略。",
+      "linked_steps": [
+        "step8"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "分数凯利",
+          "en": "Fractional Kelly"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "一半凯利即使用 f* 的一半：0.4 * 0.5 = 0.2。",
+          "options": [
+            "0.1",
+            "0.2",
+            "0.4",
+            "0.8"
+          ],
+          "question_id": "q_quiz_kelly_fraction_v1",
+          "stem": "一个交易者使用凯利公式计算出最优投注比例 f* 为 0.4。如果他是一个风险厌恶者，决定使用一半凯利，那么他实际投入的资金比例是多少？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "分数凯利通过使用更小的比例来降低风险，使策略更稳健。",
+          "options": [
+            "最大化长期增长率",
+            "简化计算过程",
+            "降低策略的风险和波动性",
+            "提高交易的胜率"
+          ],
+          "question_id": "q_quiz_kelly_fraction_v2",
+          "stem": "使用分数凯利（Fractional Kelly）的主要目的是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "risk_management_cycle",
+      "coverage_tags": [
+        "risk_management_summary"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_rm_cycle_recap",
+      "learning_goal": "学生能正确排列风险管理循环的四个步骤。",
+      "linked_steps": [
+        "step8"
+      ],
+      "question_type": "ordering",
+      "term_refs": [
+        {
+          "display": "风险管理循环",
+          "en": "Risk Management Cycle"
+        }
+      ],
+      "variants": [
+        {
+          "answer": [
+            1,
+            3,
+            2,
+            0
+          ],
+          "estimated_seconds": 15,
+          "explanation": "正确的顺序是：识别 -> 评估/衡量 -> 处理 -> 监控。",
+          "options": [
+            "风险监控",
+            "风险识别",
+            "风险处理",
+            "风险评估/衡量"
+          ],
+          "question_id": "q_quiz_rm_cycle_recap_v1",
+          "stem": "请将风险管理循环的四个步骤按正确顺序排列。"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 10,
+          "explanation": "识别风险后，需要评估和衡量其大小。",
+          "options": [
+            "风险监控",
+            "风险处理",
+            "风险评估/衡量",
+            "风险报告"
+          ],
+          "question_id": "q_quiz_rm_cycle_recap_v2",
+          "stem": "在风险管理循环中，在“识别风险”之后，下一步应该做什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "risk_management_philosophy",
+      "coverage_tags": [
+        "risk_management_philosophy"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_rm_philosophy",
+      "learning_goal": "学生能判断关于风险管理目标的陈述是否正确。",
+      "linked_steps": [
+        "step8"
+      ],
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "风险管理",
+          "en": "Risk Management"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "风险管理的目标不是消除风险，而是在了解风险的基础上做出明智的决策。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_rm_philosophy_v1",
+          "stem": "风险管理的最终目标是完全消除所有投资风险。"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "这是课程总结中强调的核心理念。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_rm_philosophy_v2",
+          "stem": "根据课程总结，有效的风险管理意味着在了解风险的前提下做出更明智的决策。"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "L6: Capital and Risk Management ... (see input)",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "L6 guided_story lesson map (see input)",
+    "plain_text": "pipeline/1-plain/L6/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "L6: Capital and Risk Management ... (see input)"
+  },
+  "target_language": "zh-CN"
+}

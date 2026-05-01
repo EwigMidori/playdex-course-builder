@@ -1,0 +1,126 @@
+{
+  "lesson_id": "L10",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "clustering",
+        "association"
+      ],
+      "id": "s011",
+      "introduced_terms": [
+        "clustering",
+        "association"
+      ],
+      "lines": [
+        "无监督学习没有标准答案，但能发现有趣的结构。",
+        "它的两大任务是<term id=\"clustering\">聚类</term>和<term id=\"association\">关联规则</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "clustering"
+      ],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "聚类：把相似的东西自动归为一类。",
+        "比如，把走势相似的股票分到同一个组里。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "association"
+      ],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "关联规则：发现“买了A的人通常也会买B”。",
+        "比如，93%买了某只科技股的人也买了另一只。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "k_means"
+      ],
+      "id": "s014",
+      "introduced_terms": [
+        "k_means"
+      ],
+      "lines": [
+        "一个非常经典的聚类算法是<term id=\"k_means\">K均值聚类</term>。",
+        "它的目标是把数据分成K个组，让组内数据尽量相似。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "k_means"
+      ],
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [
+        "K均值的工作原理很简单：",
+        "先随机选K个中心点，然后反复调整，直到分组稳定。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "K",
+          "k",
+          "簇的数量",
+          "分组数"
+        ],
+        "explanation": "K均值需要用户指定要分成几个簇，即K值。",
+        "kind": "fill_in_blank",
+        "prompt": "K均值聚类需要用户提前指定什么参数？"
+      },
+      "focus_terms": [
+        "k_means"
+      ],
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "K均值聚类需要用户提前指定什么参数？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Unsupervised learning includes clustering (group similar data) and association (find rules). K-Means is a popular clustering algorithm.",
+    "related": [
+      "L10_unsupervised"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "association": {
+      "aliases": [
+        "Association Rule Learning"
+      ],
+      "display": "关联规则",
+      "gloss": "发现数据中“如果A发生，B也经常发生”的规律。"
+    },
+    "clustering": {
+      "aliases": [
+        "Clustering"
+      ],
+      "display": "聚类",
+      "gloss": "将数据点根据相似度自动分组。"
+    },
+    "k_means": {
+      "aliases": [
+        "K-Means",
+        "K-Means Clustering"
+      ],
+      "display": "K均值聚类",
+      "gloss": "一种常用的聚类算法，通过迭代优化将数据分成K个组。"
+    }
+  }
+}

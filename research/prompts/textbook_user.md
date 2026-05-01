@@ -22,7 +22,8 @@ lesson_id：
 - 内容结构应由输入中的 `coverage checklist`、`source outline`、`lesson map` 驱动
 - 不要写死任何学科、固定主题列表或固定 slide bucket
 - frontmatter 中必须包含 `sectionMap` 和 `coverageTrace`
-- 每个主要 `##` section 必须带显式 `sectionId`，并与 `sectionMap` / `coverageTrace` 对齐
+- 每个主要 `##` section 必须在 `sectionMap` / `coverageTrace` 中有显式 `sectionId`，并与标题对齐
+- 不要输出 `## 标题 {#section-id}` 这种 heading anchor 语法；这不是稳定的 MDX
 - `coverageTrace` 中每个 coverage item 必须明确列出它落在哪些 `sectionIds`
 
 建议 section：

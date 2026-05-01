@@ -1,0 +1,161 @@
+{
+  "lesson_id": "L7",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [
+        "有时我们想跟一个具体的基准比较，而不是无风险利率。",
+        "比如跟沪深300指数比。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "information_ratio"
+      ],
+      "id": "s048",
+      "introduced_terms": [
+        "information_ratio"
+      ],
+      "lines": [
+        "这时用<term id=\"information_ratio\">信息比率</term>。",
+        "它衡量的是相对于基准的超额收益，除以跟踪误差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "IR = \\frac{E(R_p - R_b)}{\\sigma(R_p - R_b)}",
+        "spoken": "信息比率等于组合与基准收益差值的期望，除以这个差值的标准差。"
+      },
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "信息比率 = 超额收益 / 跟踪误差",
+        "$IR = \\frac{E(R_p - R_b)}{\\sigma(R_p - R_b)}$"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [],
+      "id": "s050",
+      "introduced_terms": [],
+      "lines": [
+        "信息比率超过0.5算不错，超过1.0算非常优秀。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "maximum_drawdown"
+      ],
+      "id": "s051",
+      "introduced_terms": [
+        "maximum_drawdown"
+      ],
+      "lines": [
+        "另一个直观的风险指标是<term id=\"maximum_drawdown\">最大回撤</term>。",
+        "它告诉你：历史上最惨的时候亏了多少。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "MDD = \\frac{P_{peak} - P_{trough}}{P_{peak}}",
+        "spoken": "最大回撤等于最高点减去最低点，再除以最高点。"
+      },
+      "id": "s052",
+      "introduced_terms": [],
+      "lines": [
+        "最大回撤 = (峰值 - 谷值) / 峰值",
+        "$MDD = \\frac{P_{peak} - P_{trough}}{P_{peak}}$"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "calmar_ratio"
+      ],
+      "id": "s053",
+      "introduced_terms": [
+        "calmar_ratio"
+      ],
+      "lines": [
+        "把年化收益和最大回撤结合起来，就得到<term id=\"calmar_ratio\">卡尔玛比率</term>。",
+        "它衡量每单位最大回撤能带来多少收益。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "Calmar\\ Ratio = \\frac{Annualized\\ Return}{|Max.\\ Drawdown|}",
+        "spoken": "卡尔玛比率等于年化收益除以最大回撤的绝对值。"
+      },
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "卡尔玛比率 = 年化收益 / |最大回撤|"
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "46.67"
+        ],
+        "explanation": "(150 - 80) / 150 = 46.67%。",
+        "kind": "fill_in_blank",
+        "prompt": "最大回撤 = ____ %"
+      },
+      "focus_terms": [],
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "一个组合净值从100涨到150，然后跌到80。",
+        "最大回撤是多少？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Information Ratio: IR = E(R_p - R_b)/sigma(R_p - R_b). Maximum Drawdown: MDD = (P_peak - P_trough)/P_peak. Calmar Ratio = Annualized Return / |Max. Drawdown|.",
+    "related": [
+      "Information Ratio",
+      "Maximum Drawdown",
+      "Calmar Ratio"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "calmar_ratio": {
+      "aliases": [
+        "Calmar Ratio"
+      ],
+      "display": "卡尔玛比率",
+      "gloss": "年化收益与最大回撤的比值。"
+    },
+    "information_ratio": {
+      "aliases": [
+        "Information Ratio",
+        "IR"
+      ],
+      "display": "信息比率",
+      "gloss": "衡量组合相对于基准的主动管理能力。"
+    },
+    "maximum_drawdown": {
+      "aliases": [
+        "Maximum Drawdown",
+        "MDD"
+      ],
+      "display": "最大回撤",
+      "gloss": "从历史最高点到随后最低点的最大跌幅。"
+    }
+  }
+}

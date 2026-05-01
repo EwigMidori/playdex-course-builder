@@ -1,0 +1,133 @@
+{
+  "lesson_id": "L3",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s021",
+      "introduced_terms": [
+        "moving_average"
+      ],
+      "lines": [
+        "现在，我们来看一个经典策略：移动平均线交叉。",
+        "首先，什么是<term id=\"moving_average\">移动平均线</term>？"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "它就是把过去N天的收盘价加起来，再除以N。",
+        "比如，5日移动平均线就是最近5天收盘价的平均值。"
+      ],
+      "type": "narration"
+    },
+    {
+      "formula": {
+        "latex": "\\mathrm{MA}(n) = \\frac{\\sum_{t=1}^{n} P_t}{n}",
+        "spoken": "N日移动平均线等于过去N天的收盘价之和除以N。"
+      },
+      "id": "s023",
+      "introduced_terms": [
+        "simple_moving_average"
+      ],
+      "lines": [
+        "这是<term id=\"simple_moving_average\">简单移动平均线</term>的公式："
+      ],
+      "type": "formula"
+    },
+    {
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "移动平均线可以平滑价格，让我们更容易看清趋势。",
+        "我们通常使用两条不同周期的均线：一条快线，一条慢线。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s025",
+      "introduced_terms": [
+        "golden_cross"
+      ],
+      "lines": [
+        "当快线上穿慢线时，称为<term id=\"golden_cross\">黄金交叉</term>。",
+        "这是一个买入信号。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s026",
+      "introduced_terms": [
+        "death_cross"
+      ],
+      "lines": [
+        "当快线下穿慢线时，称为<term id=\"death_cross\">死亡交叉</term>。",
+        "这是一个卖出信号。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "黄金交叉是短期移动平均线上穿长期移动平均线，通常被视为看涨信号。",
+        "kind": "single_choice",
+        "options": [
+          "价格创出新高",
+          "短期均线上穿长期均线",
+          "长期均线上穿短期均线",
+          "交易量放大"
+        ],
+        "prompt": "黄金交叉是指什么？"
+      },
+      "id": "s027",
+      "lines": [
+        "黄金交叉是指什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "移动平均线（MA）用于平滑价格数据，识别趋势。简单移动平均线（SMA）是过去N个周期的平均价格。MA交叉策略使用快慢两条均线，当快线上穿慢线时买入（黄金交叉），下穿时卖出（死亡交叉）。",
+    "related": [
+      "moving_average",
+      "simple_moving_average",
+      "golden_cross",
+      "death_cross"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "death_cross": {
+      "aliases": [
+        "Death Cross"
+      ],
+      "display": "死亡交叉",
+      "gloss": "短期移动平均线下穿长期移动平均线，通常被视为卖出信号。"
+    },
+    "golden_cross": {
+      "aliases": [
+        "Golden Cross"
+      ],
+      "display": "黄金交叉",
+      "gloss": "短期移动平均线上穿长期移动平均线，通常被视为买入信号。"
+    },
+    "moving_average": {
+      "aliases": [
+        "Moving Average",
+        "MA"
+      ],
+      "display": "移动平均线",
+      "gloss": "对一定时期内的价格取平均值，用于平滑短期波动，显示长期趋势。"
+    },
+    "simple_moving_average": {
+      "aliases": [
+        "Simple Moving Average",
+        "SMA"
+      ],
+      "display": "简单移动平均线",
+      "gloss": "对过去N个周期的价格直接取算术平均值。"
+    }
+  }
+}

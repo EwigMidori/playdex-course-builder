@@ -1,0 +1,282 @@
+```json
+{
+  "lesson_id": "L3",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L3/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "L3: Building backtest framework and rule-based trading strategy",
+    "source_outline": "L3: Building backtest framework and rule-based trading strategy",
+    "lesson_map": "L3 guided_story steps"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "python_backtest_tools",
+      "description": "Python回测工具：TA-Lib和Backtesting.py的用途与基本用法",
+      "covered_by": ["qf_flash_talib", "qf_flash_backtesting_py", "qf_quiz_talib_usage", "qf_quiz_backtesting_py_usage", "qf_long_backtesting_py_workflow"]
+    },
+    {
+      "coverage_tag": "talib_overview",
+      "description": "TA-Lib：120+技术指标库，一行代码计算指标",
+      "covered_by": ["qf_flash_talib", "qf_quiz_talib_usage"]
+    },
+    {
+      "coverage_tag": "backtesting_py_framework",
+      "description": "Backtesting.py：轻量级回测框架，init/next方法，自动绩效与图表",
+      "covered_by": ["qf_flash_backtesting_py", "qf_quiz_backtesting_py_usage", "qf_long_backtesting_py_workflow"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_talib",
+      "question_type": "short_answer",
+      "linked_steps": ["step7"],
+      "concept_key": "talib_overview",
+      "coverage_tags": ["python_backtest_tools", "talib_overview"],
+      "term_refs": [
+        {
+          "display": "TA-Lib",
+          "en": "TA-Lib (Technical Analysis Library)"
+        }
+      ],
+      "learning_goal": "学生能回忆TA-Lib的核心功能：它是一个包含120多种技术指标的开源Python库。",
+      "difficulty": "easy",
+      "retrieval_focus": "TA-Lib是什么，以及它的主要特点。",
+      "variants": [
+        {
+          "question_id": "q_flash_talib_v1",
+          "front": "TA-Lib是什么类型的Python库？它大约包含多少种技术指标？",
+          "back": "TA-Lib是一个开源的技术分析库，包含120多种技术指标。",
+          "explanation": "TA-Lib（Technical Analysis Library）提供了如移动平均线、RSI、布林带等常用指标的一行代码计算。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_talib_v2",
+          "front": "在TA-Lib中，计算30日简单移动平均线的函数调用是什么？",
+          "back": "`real = MA(close, timeperiod=30)`",
+          "explanation": "TA-Lib的MA函数用于计算移动平均线，timeperiod参数指定周期。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_talib_v3",
+          "front": "除了移动平均线，请列举两个TA-Lib可以计算的技术指标。",
+          "back": "RSI（相对强弱指标）和BBANDS（布林带）。",
+          "explanation": "TA-Lib包含RSI、布林带、MACD、随机指标等大量技术指标。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_backtesting_py",
+      "question_type": "short_answer",
+      "linked_steps": ["step7"],
+      "concept_key": "backtesting_py_framework",
+      "coverage_tags": ["python_backtest_tools", "backtesting_py_framework"],
+      "term_refs": [
+        {
+          "display": "Backtesting.py",
+          "en": "Backtesting.py"
+        }
+      ],
+      "learning_goal": "学生能回忆Backtesting.py的核心概念：它是一个轻量级回测框架，通过定义策略类中的init和next方法来实现回测。",
+      "difficulty": "easy",
+      "retrieval_focus": "Backtesting.py是什么，以及它的两个核心方法。",
+      "variants": [
+        {
+          "question_id": "q_flash_backtesting_py_v1",
+          "front": "Backtesting.py是一个什么类型的Python库？",
+          "back": "一个轻量级的回测框架，用于快速测试交易策略。",
+          "explanation": "Backtesting.py可以自动计算绩效指标并生成图表，代码简洁。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_backtesting_py_v2",
+          "front": "在Backtesting.py的策略类中，应该在哪个方法里初始化技术指标？",
+          "back": "`init`方法。",
+          "explanation": "`init`方法在回测开始时被调用一次，用于设置指标。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_backtesting_py_v3",
+          "front": "在Backtesting.py的策略类中，应该在哪个方法里编写买卖条件？",
+          "back": "`next`方法。",
+          "explanation": "`next`方法在每个新的K线数据到来时被调用，是编写交易逻辑的地方。",
+          "estimated_seconds": 8
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_talib_usage",
+      "question_type": "single_choice",
+      "linked_steps": ["step7"],
+      "concept_key": "talib_overview",
+      "coverage_tags": ["python_backtest_tools", "talib_overview"],
+      "term_refs": [
+        {
+          "display": "TA-Lib",
+          "en": "TA-Lib"
+        }
+      ],
+      "learning_goal": "学生能在测验中识别TA-Lib的功能和用法。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_talib_usage_v1",
+          "stem": "以下哪个关于TA-Lib的描述是正确的？",
+          "options": [
+            "TA-Lib是一个用于数据可视化的Python库",
+            "TA-Lib内置了120多种技术指标的计算函数",
+            "TA-Lib只能用于计算移动平均线",
+            "TA-Lib是Backtesting.py的一个子模块"
+          ],
+          "answer": 1,
+          "explanation": "TA-Lib是一个开源的技术分析库，包含120多种技术指标，如MA、RSI、布林带等。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_talib_usage_v2",
+          "stem": "在Python中使用TA-Lib计算14日RSI，正确的函数调用是？",
+          "options": [
+            "`RSI(close, timeperiod=14)`",
+            "`MA(close, timeperiod=14)`",
+            "`BBANDS(close, timeperiod=14)`",
+            "`SMA(close, timeperiod=14)`"
+          ],
+          "answer": 0,
+          "explanation": "TA-Lib中计算RSI的函数是`RSI(close, timeperiod=14)`。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_backtesting_py_usage",
+      "question_type": "single_choice",
+      "linked_steps": ["step7"],
+      "concept_key": "backtesting_py_framework",
+      "coverage_tags": ["python_backtest_tools", "backtesting_py_framework"],
+      "term_refs": [
+        {
+          "display": "Backtesting.py",
+          "en": "Backtesting.py"
+        }
+      ],
+      "learning_goal": "学生能在测验中识别Backtesting.py的使用方法和核心概念。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_backtesting_py_usage_v1",
+          "stem": "在Backtesting.py中，以下哪个方法用于在每个新的K线数据到来时执行交易逻辑？",
+          "options": [
+            "`init`",
+            "`start`",
+            "`next`",
+            "`run`"
+          ],
+          "answer": 2,
+          "explanation": "`next`方法会在每个新的K线数据到来时被调用，是编写买卖条件的地方。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_backtesting_py_usage_v2",
+          "stem": "使用Backtesting.py进行回测时，以下哪个步骤是必需的？",
+          "options": [
+            "手动计算每日盈亏",
+            "定义策略类并实现`init`和`next`方法",
+            "使用TA-Lib计算所有指标",
+            "将数据保存为Excel文件"
+          ],
+          "answer": 1,
+          "explanation": "Backtesting.py要求用户定义一个策略类，在`init`中初始化指标，在`next`中编写交易逻辑，然后传入`Backtest`对象运行。",
+          "estimated_seconds": 20
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_backtesting_py_workflow",
+      "question_type": "mechanism_trace",
+      "linked_steps": ["step7"],
+      "concept_key": "backtesting_py_framework",
+      "coverage_tags": ["python_backtest_tools", "backtesting_py_framework"],
+      "term_refs": [
+        {
+          "display": "Backtesting.py",
+          "en": "Backtesting.py"
+        }
+      ],
+      "learning_goal": "学生能解释使用Backtesting.py进行回测的完整工作流程，包括策略定义、数据准备和运行回测。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_backtesting_py_workflow_v1",
+          "stem": "请描述使用Backtesting.py库对一个简单的移动平均线交叉策略进行回测的完整步骤。",
+          "prompt_blocks": [
+            "策略定义",
+            "数据准备",
+            "运行回测"
+          ],
+          "rubric_points": [
+            "正确指出需要定义一个继承自`Strategy`的策略类",
+            "正确指出在`init`方法中初始化移动平均线指标",
+            "正确指出在`next`方法中使用`crossover`函数判断交叉信号并调用`self.buy()`或`self.sell()`",
+            "正确指出需要准备OHLCV格式的历史数据",
+            "正确指出创建`Backtest`对象并传入数据和策略，调用`run()`方法执行回测"
+          ],
+          "reference_answer": [
+            "1. 定义策略类：创建一个继承自`backtesting.Strategy`的类，例如`SmaCross`。",
+            "2. 初始化指标：在类的`init`方法中，通过`self.data.Close`获取收盘价数据，并使用`self.I(SMA, price, 10)`和`self.I(SMA, price, 20)`分别计算10日和20日简单移动平均线。",
+            "3. 编写交易逻辑：在`next`方法中，使用`crossover(self.ma1, self.ma2)`判断是否发生黄金交叉（快线上穿慢线），如果是则调用`self.buy()`；使用`crossover(self.ma2, self.ma1)`判断是否发生死亡交叉，如果是则调用`self.sell()`。",
+            "4. 准备数据：获取历史OHLCV数据，确保列名顺序为`Date, Open, High, Low, Close, Volume`。",
+            "5. 运行回测：创建`Backtest`对象，传入数据、策略类、初始资金和佣金等参数，然后调用`bt.run()`执行回测，最后可以通过`bt.plot()`查看图表。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_backtesting_py_workflow_v2",
+          "stem": "假设你有一个包含`Date, Open, High, Low, Close, Volume`列的DataFrame `df`，请写出使用Backtesting.py实现一个基于TA-Lib计算的RSI策略（RSI<30买入，RSI>70卖出）的核心代码框架。",
+          "prompt_blocks": [
+            "导入库",
+            "定义策略类",
+            "在init中计算RSI",
+            "在next中编写交易逻辑",
+            "运行回测"
+          ],
+          "rubric_points": [
+            "正确导入`Backtest`, `Strategy`以及`talib`",
+            "正确在`init`方法中使用`talib.RSI`计算RSI指标",
+            "正确在`next`方法中判断RSI值并调用`self.buy()`或`self.sell()`",
+            "正确创建`Backtest`对象并运行"
+          ],
+          "reference_answer": [
+            "```python",
+            "from backtesting import Backtest, Strategy",
+            "import talib",
+            "",
+            "class RsiStrategy(Strategy):",
+            "    def init(self):",
+            "        price = self.data.Close",
+            "        self.rsi = self.I(talib.RSI, price, 14)",
+            "",
+            "    def next(self):",
+            "        if self.rsi[-1] < 30 and not self.position:",
+            "            self.buy()",
+            "        elif self.rsi[-1] > 70 and self.position:",
+            "            self.position.close()",
+            "",
+            "bt = Backtest(df, RsiStrategy, cash=10000, commission=0.002)",
+            "stats = bt.run()",
+            "print(stats)",
+            "bt.plot()",
+            "```"
+          ],
+          "estimated_seconds": 120
+        }
+      ]
+    }
+  ]
+}
+```

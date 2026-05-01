@@ -1,0 +1,374 @@
+```json
+{
+  "lesson_id": "L4",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L4/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "L4: Statistical time series analysis for market classification",
+    "source_outline": "L4: Statistical time series analysis for market classification",
+    "lesson_map": "L4 lesson map"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "market_classification_summary",
+      "description": "金融市场三种状态（趋势、均值回归、随机游走）的总结与对应分析工具",
+      "covered_by": ["qf_flash_market_state_tool", "qf_quiz_market_state_tool", "qf_long_model_mismatch"]
+    },
+    {
+      "coverage_tag": "model_market_mapping",
+      "description": "每种市场状态对应的统计模型/策略：趋势→线性回归/ARIMA，均值回归→Hurst指数/半衰期，随机游走→Martingale",
+      "covered_by": ["qf_flash_market_state_tool", "qf_quiz_market_state_tool", "qf_long_model_mismatch"]
+    },
+    {
+      "coverage_tag": "model_selection_principle",
+      "description": "先判断市场状态再选择模型，用错模型比不用模型更危险",
+      "covered_by": ["qf_flash_model_selection_risk", "qf_quiz_model_selection_risk", "qf_long_model_mismatch"]
+    },
+    {
+      "coverage_tag": "key_takeaway_workflow",
+      "description": "核心工作流：先分类，再建模，最后交易",
+      "covered_by": ["qf_flash_workflow", "qf_quiz_workflow"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_market_state_tool",
+      "question_type": "short_answer",
+      "linked_steps": ["step8"],
+      "concept_key": "market_state_tool_mapping",
+      "coverage_tags": ["market_classification_summary", "model_market_mapping"],
+      "term_refs": [
+        {
+          "display": "趋势市场",
+          "en": "Trending Market"
+        },
+        {
+          "display": "均值回归",
+          "en": "Mean Reversion"
+        },
+        {
+          "display": "随机游走",
+          "en": "Random Walk"
+        }
+      ],
+      "learning_goal": "学生能准确说出每种市场状态对应的主要分析工具或策略。",
+      "difficulty": "easy",
+      "retrieval_focus": "市场状态与对应分析工具的配对关系。",
+      "variants": [
+        {
+          "question_id": "q_flash_market_state_tool_v1",
+          "front": "趋势市场通常使用哪两种统计模型进行分析？",
+          "back": "线性回归 和 ARIMA",
+          "explanation": "趋势市场具有可预测的方向性，线性回归和ARIMA都能捕捉这种趋势。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_market_state_tool_v2",
+          "front": "均值回归市场通常使用哪两个指标来量化分析？",
+          "back": "Hurst指数 和 半衰期",
+          "explanation": "Hurst指数判断市场是否均值回归，半衰期衡量回归速度。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_market_state_tool_v3",
+          "front": "随机游走市场适合使用哪种交易策略？",
+          "back": "Martingale策略",
+          "explanation": "Martingale策略通过加倍下注，在随机市场中利用概率优势获利。",
+          "estimated_seconds": 6
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_model_selection_risk",
+      "question_type": "short_answer",
+      "linked_steps": ["step8"],
+      "concept_key": "model_selection_risk",
+      "coverage_tags": ["model_selection_principle"],
+      "term_refs": [
+        {
+          "display": "模型选择",
+          "en": "Model Selection"
+        }
+      ],
+      "learning_goal": "学生能理解用错模型的风险。",
+      "difficulty": "easy",
+      "retrieval_focus": "用错模型的具体后果。",
+      "variants": [
+        {
+          "question_id": "q_flash_model_selection_risk_v1",
+          "front": "在趋势市场中使用均值回归策略，通常会导致什么结果？",
+          "back": "会亏得很惨",
+          "explanation": "趋势市场中价格持续朝一个方向移动，均值回归策略会逆势操作，导致持续亏损。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_model_selection_risk_v2",
+          "front": "用错模型比不用模型更危险，这句话的核心含义是什么？",
+          "back": "错误模型会导致系统性亏损，比不交易更糟糕",
+          "explanation": "不交易至少不会亏损，而用错模型会持续做出错误的交易决策。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_workflow",
+      "question_type": "short_answer",
+      "linked_steps": ["step8"],
+      "concept_key": "workflow",
+      "coverage_tags": ["key_takeaway_workflow"],
+      "term_refs": [
+        {
+          "display": "工作流",
+          "en": "Workflow"
+        }
+      ],
+      "learning_goal": "学生能记住核心工作流的三个步骤。",
+      "difficulty": "easy",
+      "retrieval_focus": "核心工作流的顺序。",
+      "variants": [
+        {
+          "question_id": "q_flash_workflow_v1",
+          "front": "本课总结的核心工作流是哪三个步骤？",
+          "back": "先分类，再建模，最后交易",
+          "explanation": "这是整个课程的核心方法论：先判断市场状态，再选择对应模型，最后执行交易。",
+          "estimated_seconds": 6
+        },
+        {
+          "question_id": "q_flash_workflow_v2",
+          "front": "在核心工作流中，第一步应该做什么？",
+          "back": "先分类（判断市场状态）",
+          "explanation": "分类是基础，只有知道市场处于哪种状态，才能选择合适的模型。",
+          "estimated_seconds": 5
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_market_state_tool",
+      "question_type": "single_choice",
+      "linked_steps": ["step8"],
+      "concept_key": "market_state_tool_mapping",
+      "coverage_tags": ["market_classification_summary", "model_market_mapping"],
+      "term_refs": [
+        {
+          "display": "Hurst指数",
+          "en": "Hurst Exponent"
+        },
+        {
+          "display": "半衰期",
+          "en": "Half Life"
+        }
+      ],
+      "learning_goal": "学生能在测验中正确匹配市场状态与对应的分析工具。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_market_state_tool_v1",
+          "stem": "以下哪个工具最适合用于分析均值回归市场？",
+          "options": [
+            "简单线性回归",
+            "ARIMA模型",
+            "Hurst指数",
+            "Martingale策略"
+          ],
+          "answer": 2,
+          "explanation": "Hurst指数（H<0.5）和半衰期是专门用于量化均值回归的工具。线性回归和ARIMA更适合趋势市场，Martingale适合随机游走市场。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_market_state_tool_v2",
+          "stem": "如果市场处于随机游走状态，以下哪种策略理论上可以获利？",
+          "options": [
+            "线性回归交易策略",
+            "均值回归策略",
+            "Martingale策略",
+            "ARIMA预测策略"
+          ],
+          "answer": 2,
+          "explanation": "Martingale策略通过加倍下注利用概率优势，在随机市场中理论上可以获利。其他策略都依赖价格的可预测性。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_market_state_tool_v3",
+          "stem": "趋势市场、均值回归市场、随机游走市场分别对应的分析工具组合是？",
+          "options": [
+            "线性回归/ARIMA、Hurst指数/半衰期、Martingale",
+            "Hurst指数/半衰期、线性回归/ARIMA、Martingale",
+            "Martingale、线性回归/ARIMA、Hurst指数/半衰期",
+            "线性回归/ARIMA、Martingale、Hurst指数/半衰期"
+          ],
+          "answer": 0,
+          "explanation": "趋势市场用线性回归和ARIMA捕捉方向；均值回归用Hurst指数和半衰期量化回归特性；随机游走用Martingale策略利用概率优势。",
+          "estimated_seconds": 25
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_model_selection_risk",
+      "question_type": "single_choice",
+      "linked_steps": ["step8"],
+      "concept_key": "model_selection_risk",
+      "coverage_tags": ["model_selection_principle"],
+      "term_refs": [
+        {
+          "display": "模型选择",
+          "en": "Model Selection"
+        }
+      ],
+      "learning_goal": "学生能识别用错模型的后果。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_model_selection_risk_v1",
+          "stem": "以下哪种说法最准确地描述了用错模型的风险？",
+          "options": [
+            "用错模型只是效率低一些，总比不用好",
+            "用错模型会导致系统性亏损，比不交易更危险",
+            "用错模型只会影响短期收益，长期会自动修正",
+            "用错模型没有风险，因为市场总会回归均值"
+          ],
+          "answer": 1,
+          "explanation": "在趋势市场做均值回归会持续逆势操作，导致系统性亏损，比不交易更糟糕。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_model_selection_risk_v2",
+          "stem": "一个交易员在明显的上升趋势市场中使用了均值回归策略，最可能的结果是？",
+          "options": [
+            "获得稳定收益",
+            "持续亏损",
+            "收益与风险平衡",
+            "无法判断"
+          ],
+          "answer": 1,
+          "explanation": "上升趋势中价格持续上涨，均值回归策略会认为价格过高而做空，导致持续亏损。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_workflow",
+      "question_type": "single_choice",
+      "linked_steps": ["step8"],
+      "concept_key": "workflow",
+      "coverage_tags": ["key_takeaway_workflow"],
+      "term_refs": [
+        {
+          "display": "工作流",
+          "en": "Workflow"
+        }
+      ],
+      "learning_goal": "学生能正确排序核心工作流。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_workflow_v1",
+          "stem": "本课总结的核心工作流正确顺序是？",
+          "options": [
+            "先交易，再分类，最后建模",
+            "先建模，再分类，最后交易",
+            "先分类，再建模，最后交易",
+            "先交易，再建模，最后分类"
+          ],
+          "answer": 2,
+          "explanation": "核心工作流是：先分类（判断市场状态），再建模（选择对应模型），最后交易（执行策略）。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_workflow_v2",
+          "stem": "以下哪个选项最符合本课的核心方法论？",
+          "options": [
+            "模型越复杂越好",
+            "先判断市场状态，再选择对应模型",
+            "所有市场都适用同一种策略",
+            "交易频率越高收益越高"
+          ],
+          "answer": 1,
+          "explanation": "关键不是哪个模型更高级，而是先判断当前市场属于哪种状态，再选择对应的工具。",
+          "estimated_seconds": 15
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_model_mismatch",
+      "question_type": "short_explain",
+      "linked_steps": ["step8"],
+      "concept_key": "model_selection_principle",
+      "coverage_tags": ["market_classification_summary", "model_market_mapping", "model_selection_principle"],
+      "term_refs": [
+        {
+          "display": "趋势市场",
+          "en": "Trending Market"
+        },
+        {
+          "display": "均值回归",
+          "en": "Mean Reversion"
+        },
+        {
+          "display": "随机游走",
+          "en": "Random Walk"
+        },
+        {
+          "display": "Hurst指数",
+          "en": "Hurst Exponent"
+        }
+      ],
+      "learning_goal": "学生能解释为什么用错模型比不用模型更危险，并能举例说明。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_model_mismatch_v1",
+          "stem": "请解释为什么在趋势市场中使用均值回归策略会导致亏损，并说明如何避免这种错误。",
+          "prompt_blocks": [
+            "趋势市场的特征",
+            "均值回归策略的假设",
+            "两者冲突的后果",
+            "避免方法"
+          ],
+          "rubric_points": [
+            "正确描述趋势市场：价格持续朝一个方向移动",
+            "正确描述均值回归策略：认为价格会回到均值",
+            "解释冲突：趋势市场中价格不会回归，逆势操作导致亏损",
+            "提出避免方法：先用Hurst指数等工具判断市场状态"
+          ],
+          "reference_answer": [
+            "趋势市场的特征是价格像有惯性一样持续朝一个方向移动，无论是上涨还是下跌。",
+            "均值回归策略基于一个假设：价格在极端波动后会回到长期平均水平，因此在价格偏离时反向操作。",
+            "在趋势市场中，价格不会回归均值，而是继续朝原方向移动。使用均值回归策略会不断逆势操作，导致持续亏损。",
+            "要避免这种错误，应该先使用Hurst指数等工具判断市场状态：H>0.5是趋势市场，H<0.5是均值回归市场，H=0.5是随机游走。根据判断结果选择对应的模型。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_model_mismatch_v2",
+          "stem": "假设你发现某只股票的Hurst指数为0.3，但你的同事却用ARIMA模型进行交易。请分析可能的问题，并给出正确的建议。",
+          "prompt_blocks": [
+            "Hurst指数0.3的含义",
+            "ARIMA模型的适用场景",
+            "模型与市场不匹配的后果",
+            "正确的模型选择建议"
+          ],
+          "rubric_points": [
+            "正确解释H=0.3：均值回归市场",
+            "正确说明ARIMA适用场景：趋势市场",
+            "分析不匹配后果：ARIMA在均值回归市场中预测不准",
+            "给出正确建议：使用Hurst指数和半衰期来设计均值回归策略"
+          ],
+          "reference_answer": [
+            "Hurst指数0.3小于0.5，说明该股票处于均值回归状态，价格倾向于回到长期平均水平。",
+            "ARIMA模型（自回归积分滑动平均模型）主要用于捕捉时间序列的趋势和自相关结构，更适合趋势市场。",
+            "在均值回归市场中使用ARIMA模型，模型会错误地认为价格趋势会持续，导致预测方向与实际情况相反，造成亏损。",
+            "正确的做法是：使用Hurst指数确认均值回归状态，计算半衰期（ln(2)/κ）了解回归速度，然后设计均值回归交易策略，例如在价格偏离均值时反向开仓。"
+          ],
+          "estimated_seconds": 120
+        }
+      ]
+    }
+  ]
+}
+```

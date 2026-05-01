@@ -1,0 +1,104 @@
+{
+  "lesson_id": "L3",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "Excel虽然方便，但处理复杂策略和数据量时力不从心。",
+        "这时候，Python就派上用场了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s046",
+      "introduced_terms": [
+        "talib"
+      ],
+      "lines": [
+        "首先，<term id=\"talib\">TA-Lib</term>是一个宝藏库。",
+        "它内置了120多种技术指标，比如移动平均线、RSI、布林带等。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [
+        "用TA-Lib计算移动平均线，一行代码就够了。",
+        "`real = MA(close, timeperiod=30)`"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s048",
+      "introduced_terms": [
+        "backtesting_py"
+      ],
+      "lines": [
+        "另一个好用的工具是<term id=\"backtesting_py\">Backtesting.py</term>。",
+        "它是一个轻量级的回测框架，代码非常简洁。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "你只需要定义一个策略类，在`init`方法中初始化指标，",
+        "在`next`方法中编写交易逻辑。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s050",
+      "introduced_terms": [],
+      "lines": [
+        "然后，把数据和策略传给`Backtest`对象，运行即可。",
+        "它会自动计算各种绩效指标，并生成图表。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "next"
+        ],
+        "explanation": "`next`方法会在每个新的K线数据到来时被调用，是编写买卖条件的地方。",
+        "kind": "fill_in_blank",
+        "prompt": "在Backtesting.py中，交易逻辑应该写在哪个方法里？"
+      },
+      "id": "s051",
+      "lines": [
+        "在Backtesting.py中，交易逻辑应该写在哪个方法里？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "Python中有很多强大的回测工具。TA-Lib提供了120多种技术指标。Backtesting.py是一个轻量级的回测框架，可以快速实现和测试策略。",
+    "related": [
+      "talib",
+      "backtesting_py"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "backtesting_py": {
+      "aliases": [
+        "backtesting.py"
+      ],
+      "display": "Backtesting.py",
+      "gloss": "一个轻量级的Python回测框架，可以快速测试交易策略。"
+    },
+    "talib": {
+      "aliases": [
+        "Technical Analysis Library"
+      ],
+      "display": "TA-Lib",
+      "gloss": "一个开源的Python库，包含120多种技术指标的计算函数。"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "lesson_id": "L1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "lines": [
+        "想做算法交易，你需要两样东西：一门编程语言，和一个交易平台。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "lines": [
+        "先问个简单的问题：哪种语言在算法交易中最流行？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "Python凭借其丰富的数据分析库和易用性，成为算法交易领域的首选语言。",
+        "kind": "single_choice",
+        "options": [
+          "C++",
+          "Java",
+          "Python",
+          "R"
+        ],
+        "prompt": "以下哪种编程语言在算法交易中使用最广泛？"
+      },
+      "id": "s003",
+      "lines": [
+        "以下哪种编程语言在算法交易中使用最广泛？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s004",
+      "introduced_terms": [
+        "python"
+      ],
+      "lines": [
+        "没错，就是 <term id=\"python\">Python</term>。",
+        "它简单、灵活，而且有大量现成的库帮你处理数据、回测策略。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "introduced_terms": [
+        "metatrader",
+        "tradingview"
+      ],
+      "lines": [
+        "至于交易平台，市面上有很多选择。",
+        "比如 <term id=\"metatrader\">MetaTrader</term> 和 <term id=\"tradingview\">TradingView</term>，都支持自动化交易。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "lines": [
+        "这门课会教你如何用Python从零搭建自己的交易系统。",
+        "你不需要依赖任何特定平台，就能拥有完全的控制权。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s007",
+      "lines": [
+        "一句话总结：Python是你的大脑，交易平台是你的手脚。",
+        "接下来，我们开始动手。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Which programming language is most widely used in algo-trading? Python. Have you ever used any algo-trading platforms before? MetaTrader, TradingView, AlgoGene.",
+    "related": [
+      "COMP7415A lecture slides"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "metatrader": {
+      "aliases": [
+        "MT4",
+        "MT5"
+      ],
+      "display": "MetaTrader",
+      "gloss": "一款流行的外汇和差价合约交易平台，支持自动化交易。"
+    },
+    "python": {
+      "aliases": [],
+      "display": "Python",
+      "gloss": "一种广泛用于数据分析和算法交易的高级编程语言。"
+    },
+    "tradingview": {
+      "aliases": [],
+      "display": "TradingView",
+      "gloss": "一款基于网页的图表分析和交易平台。"
+    }
+  }
+}

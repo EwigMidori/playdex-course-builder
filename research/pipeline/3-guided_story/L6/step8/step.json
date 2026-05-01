@@ -1,0 +1,60 @@
+{
+  "lesson_id": "L6",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s051",
+      "introduced_terms": [],
+      "lines": [
+        "凯利公式看起来很完美，但它有严格的假设。",
+        "它假设每次交易的结果是独立的，且胜率和赔率是固定的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s052",
+      "introduced_terms": [],
+      "lines": [
+        "但在真实交易中，胜率和赔率是变化的，交易之间也可能存在相关性。",
+        "所以直接套用凯利公式，结果可能并不好。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "一个常见的改进是：只使用凯利公式计算出的比例的一部分。",
+        "比如用一半，来降低风险。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "回顾一下，我们走过了完整的风险管理之旅：",
+        "从识别风险，到用波动率和 VaR 衡量风险，再到用仓位管理来控制风险。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "记住一句话：",
+        "**风险管理不是要消除风险，而是要在了解风险的基础上，做出明智的决策。**"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "plain_text": "Kelly Criterion Assumptions: Gambling vs Investment. The risk and reward are determined. Each bet has only binary outcomes. Each bet is independent. For risk averse traders, only trade at a fraction of f*. Key Takeaways.",
+    "related": [
+      "kelly criterion limitations"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

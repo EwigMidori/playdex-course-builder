@@ -1,0 +1,165 @@
+{
+  "lesson_id": "L7",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "当资产数量很多时，计算协方差矩阵会变得非常复杂。",
+        "需要一种更简洁的模型。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "capital_asset_pricing_model"
+      ],
+      "id": "s028",
+      "introduced_terms": [
+        "capital_asset_pricing_model"
+      ],
+      "lines": [
+        "这就是<term id=\"capital_asset_pricing_model\">资本资产定价模型</term>。",
+        "它用一个简单的线性关系描述资产收益。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "beta"
+      ],
+      "id": "s029",
+      "introduced_terms": [
+        "beta"
+      ],
+      "lines": [
+        "CAPM的核心是<term id=\"beta\">贝塔系数</term>。",
+        "它衡量资产对市场波动的敏感度。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "E(R_i) = R_f + \\beta_i (E(R_M) - R_f)",
+        "spoken": "资产的期望收益等于无风险利率加上贝塔系数乘以市场风险溢价。"
+      },
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "CAPM公式：",
+        "$E(R_i) = R_f + \\beta_i (E(R_M) - R_f)$"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [],
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "贝塔的计算：",
+        "$\\beta_i = \\frac{\\sigma_{iM}}{\\sigma_M^2}$"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "如果β > 1，资产比市场更激进。",
+        "如果β < 1，资产比市场更保守。",
+        "市场的β等于1。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "security_market_line"
+      ],
+      "id": "s033",
+      "introduced_terms": [
+        "security_market_line"
+      ],
+      "lines": [
+        "CAPM的图形就是<term id=\"security_market_line\">证券市场线</term>。",
+        "所有资产都应该落在这条线上。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "落在线上方，说明资产被低估（α > 0）。",
+        "落在下方，说明资产被高估（α < 0）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "13.5"
+        ],
+        "explanation": "3% + 1.5 * (10% - 3%) = 13.5%。",
+        "kind": "fill_in_blank",
+        "prompt": "期望收益 = ____ %"
+      },
+      "focus_terms": [],
+      "id": "s035",
+      "introduced_terms": [],
+      "lines": [
+        "如果无风险利率是3%，市场收益是10%，某资产的β=1.5。",
+        "根据CAPM，它的期望收益是多少？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "CAPM model: mu_i = R_f + beta_i (mu_M - R_f). Beta_i = sigma_iM / sigma_M^2. SML is graphical representation of the CAPM. Market portfolio (M) is a portfolio consisting of ALL risky assets in the economy.",
+    "related": [
+      "Capital Asset Pricing Model (CAPM)",
+      "Security Market Line (SML)",
+      "Market Portfolio"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "beta": {
+      "aliases": [
+        "Beta",
+        "β"
+      ],
+      "display": "贝塔系数",
+      "gloss": "衡量资产收益对市场收益敏感程度的指标。"
+    },
+    "capital_asset_pricing_model": {
+      "aliases": [
+        "Capital Asset Pricing Model",
+        "CAPM"
+      ],
+      "display": "资本资产定价模型",
+      "gloss": "描述资产预期收益与市场风险之间关系的线性模型。"
+    },
+    "market_portfolio": {
+      "aliases": [
+        "Market Portfolio",
+        "M"
+      ],
+      "display": "市场组合",
+      "gloss": "包含经济体中所有风险资产的组合，每种资产的权重按其市值比例分配。"
+    },
+    "security_market_line": {
+      "aliases": [
+        "Security Market Line",
+        "SML"
+      ],
+      "display": "证券市场线",
+      "gloss": "CAPM的图形表示，展示单个资产的预期收益与其贝塔值的关系。"
+    }
+  }
+}

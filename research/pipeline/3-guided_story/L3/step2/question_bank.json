@@ -1,0 +1,629 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "data_cleaning_definition",
+      "covered_by": [
+        "qf_flash_data_cleaning_def",
+        "qf_quiz_data_cleaning_purpose"
+      ],
+      "description": "数据清洗的定义、目的和重要性"
+    },
+    {
+      "coverage_tag": "data_cleaning_common_issues",
+      "covered_by": [
+        "qf_flash_data_issues",
+        "qf_quiz_data_issues_identify",
+        "qf_long_data_issues_handling"
+      ],
+      "description": "数据清洗中常见的三种问题：缺失值、重复记录、逻辑错误"
+    },
+    {
+      "coverage_tag": "data_cleaning_missing_values",
+      "covered_by": [
+        "qf_flash_missing_handling",
+        "qf_quiz_missing_handling"
+      ],
+      "description": "缺失值的处理方法：补全、填充、删除"
+    },
+    {
+      "coverage_tag": "data_cleaning_duplicates",
+      "covered_by": [
+        "qf_flash_duplicate_handling",
+        "qf_quiz_duplicate_handling"
+      ],
+      "description": "重复记录的处理方法：保留一条、核对后处理"
+    },
+    {
+      "coverage_tag": "data_cleaning_logic_errors",
+      "covered_by": [
+        "qf_flash_logic_error_example",
+        "qf_quiz_logic_error_identify",
+        "qf_long_logic_error_handling"
+      ],
+      "description": "逻辑错误的识别与处理方法"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "data_cleaning_definition",
+      "coverage_tags": [
+        "data_cleaning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_data_cleaning_def",
+      "learning_goal": "学生能准确说出数据清洗的定义和核心目的。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "数据清洗的定义和目的",
+      "term_refs": [
+        {
+          "display": "数据清洗",
+          "en": "Data Cleaning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "让数据更准确、一致，为后续分析打好基础。",
+          "estimated_seconds": 8,
+          "explanation": "数据清洗旨在去除数据中的错误、缺失、重复和不一致，提高数据质量。",
+          "front": "数据清洗的核心目的是什么？",
+          "question_id": "q_flash_data_cleaning_def_v1"
+        },
+        {
+          "back": "数据收集之后。",
+          "estimated_seconds": 6,
+          "explanation": "回测的标准流程是：收集数据 → 清洗数据 → 运行策略 → 评估表现。",
+          "front": "在回测流程中，数据清洗处于哪个步骤之后？",
+          "question_id": "q_flash_data_cleaning_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "data_cleaning_common_issues",
+      "coverage_tags": [
+        "data_cleaning_common_issues"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_data_issues",
+      "learning_goal": "学生能列举出数据清洗中常见的三种问题类型。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "数据清洗的三大常见问题",
+      "term_refs": [
+        {
+          "display": "缺失值",
+          "en": "Missing Values"
+        },
+        {
+          "display": "重复记录",
+          "en": "Duplicated Records"
+        },
+        {
+          "display": "逻辑错误",
+          "en": "Incorrect Logics"
+        }
+      ],
+      "variants": [
+        {
+          "back": "缺失值、重复记录、逻辑错误。",
+          "estimated_seconds": 8,
+          "explanation": "这三种问题会严重影响数据质量和后续分析的准确性。",
+          "front": "原始数据中常见的三种问题是什么？",
+          "question_id": "q_flash_data_issues_v1"
+        },
+        {
+          "back": "逻辑错误。",
+          "estimated_seconds": 7,
+          "explanation": "逻辑错误，如收盘价高于最高价，违反了基本的价格逻辑，需要被识别和修正。",
+          "front": "除了缺失值和重复记录，数据清洗还需要处理哪一类更隐蔽的问题？",
+          "question_id": "q_flash_data_issues_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "data_cleaning_missing_values",
+      "coverage_tags": [
+        "data_cleaning_missing_values"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_missing_handling",
+      "learning_goal": "学生能说出处理缺失值的三种常见方法。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "缺失值的处理方法",
+      "term_refs": [
+        {
+          "display": "缺失值",
+          "en": "Missing Values"
+        }
+      ],
+      "variants": [
+        {
+          "back": "用相邻数据填充，或者直接删除这一行。",
+          "estimated_seconds": 10,
+          "explanation": "这三种方法各有优劣，选择取决于数据的重要性和缺失程度。",
+          "front": "处理缺失值的一种方法是“从其他来源补全”，请说出另外两种。",
+          "question_id": "q_flash_missing_handling_v1"
+        },
+        {
+          "back": "用相邻几天的平均值填充。",
+          "estimated_seconds": 8,
+          "explanation": "这是一种常见的基于相邻观测值的填充方法，可以保持数据序列的连续性。",
+          "front": "如果某天的收盘价数据缺失，且无法从其他来源获取，一种简单的处理方式是什么？",
+          "question_id": "q_flash_missing_handling_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "data_cleaning_duplicates",
+      "coverage_tags": [
+        "data_cleaning_duplicates"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_duplicate_handling",
+      "learning_goal": "学生能说出处理完全相同的重复记录的基本方法。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "重复记录的处理方法",
+      "term_refs": [
+        {
+          "display": "重复记录",
+          "en": "Duplicated Records"
+        }
+      ],
+      "variants": [
+        {
+          "back": "只保留其中一条。",
+          "estimated_seconds": 6,
+          "explanation": "完全相同的重复记录不提供额外信息，保留一条即可。",
+          "front": "对于完全相同的重复记录，通常的处理方法是什么？",
+          "question_id": "q_flash_duplicate_handling_v1"
+        },
+        {
+          "back": "从其他数据源核对，或删除所有重复记录，或取它们的平均值。",
+          "estimated_seconds": 10,
+          "explanation": "对于不完全相同的重复记录，需要更谨慎地处理，以确定哪条数据是正确的。",
+          "front": "如果同一天出现两条数据，但内容不完全相同，应该怎么处理？",
+          "question_id": "q_flash_duplicate_handling_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "data_cleaning_logic_errors",
+      "coverage_tags": [
+        "data_cleaning_logic_errors"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_logic_error_example",
+      "learning_goal": "学生能举出一个数据中逻辑错误的典型例子。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "逻辑错误的典型例子",
+      "term_refs": [
+        {
+          "display": "逻辑错误",
+          "en": "Incorrect Logics"
+        }
+      ],
+      "variants": [
+        {
+          "back": "收盘价高于当日最高价。",
+          "estimated_seconds": 7,
+          "explanation": "收盘价不可能高于当日最高价，这违反了基本的价格逻辑。",
+          "front": "请举出一个数据中逻辑错误的例子。",
+          "question_id": "q_flash_logic_error_example_v1"
+        },
+        {
+          "back": "开盘价低于当日最低价。",
+          "estimated_seconds": 7,
+          "explanation": "开盘价必须在当日最高价和最低价之间，否则就是逻辑错误。",
+          "front": "除了收盘价高于最高价，还有哪种情况属于逻辑错误？",
+          "question_id": "q_flash_logic_error_example_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L3",
+  "longform_families": [
+    {
+      "concept_key": "data_cleaning_common_issues",
+      "coverage_tags": [
+        "data_cleaning_common_issues",
+        "data_cleaning_missing_values",
+        "data_cleaning_duplicates",
+        "data_cleaning_logic_errors"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_data_issues_handling",
+      "learning_goal": "学生能解释数据清洗中三种常见问题的具体表现和相应的处理方法。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "数据清洗",
+          "en": "Data Cleaning"
+        },
+        {
+          "display": "缺失值",
+          "en": "Missing Values"
+        },
+        {
+          "display": "重复记录",
+          "en": "Duplicated Records"
+        },
+        {
+          "display": "逻辑错误",
+          "en": "Incorrect Logics"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "缺失值的表现与例子",
+            "重复记录的表现与例子",
+            "逻辑错误的表现与例子"
+          ],
+          "question_id": "q_long_data_issues_handling_v1",
+          "reference_answer": [
+            "缺失值：数据集中某些字段没有值。例如，某一天的收盘价数据缺失，单元格为空。",
+            "重复记录：数据集中存在完全相同的行。例如，2023年1月5日的所有价格和交易量数据出现了两次。",
+            "逻辑错误：数据违反了基本的业务或物理逻辑。例如，某天的收盘价是105，但当日最高价是100，这在逻辑上是不可能的。"
+          ],
+          "rubric_points": [
+            "正确解释缺失值的表现（如某字段为空）并给出恰当例子（如某天收盘价缺失）。",
+            "正确解释重复记录的表现（如完全相同的行）并给出恰当例子（如同一天出现两次相同数据）。",
+            "正确解释逻辑错误的表现（如数据违反基本规则）并给出恰当例子（如收盘价高于最高价）。"
+          ],
+          "stem": "请分别说明数据清洗中“缺失值”、“重复记录”和“逻辑错误”这三种问题的具体表现，并为每种问题各举一个例子。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "处理缺失值的方法与理由",
+            "处理重复记录的方法与理由",
+            "处理逻辑错误的方法与理由"
+          ],
+          "question_id": "q_long_data_issues_handling_v2",
+          "reference_answer": [
+            "缺失值：可以用前后两天开盘价的平均值来填充。理由是这种方法能利用相邻数据点，保持时间序列的平滑性。",
+            "重复记录：直接删除其中一条，只保留一条。理由是两条完全相同的记录不提供额外信息，保留一条即可。",
+            "逻辑错误：删除该行数据。理由是收盘价低于最低价是明显的错误，该数据不可靠，删除是最直接的方法。"
+          ],
+          "rubric_points": [
+            "为缺失值提出合理方法（如用相邻数据填充）并给出理由（如保持数据连续性）。",
+            "为重复记录提出合理方法（如保留一条）并给出理由（如不提供额外信息）。",
+            "为逻辑错误提出合理方法（如删除该行）并给出理由（如数据不可靠）。"
+          ],
+          "stem": "假设你在进行回测时，发现数据集中存在以下三种问题：1) 某天开盘价缺失；2) 同一天出现两条完全相同的记录；3) 某天收盘价低于当日最低价。请分别为每种问题提出一种可行的处理方法，并简要说明理由。"
+        }
+      ]
+    },
+    {
+      "concept_key": "data_cleaning_logic_errors",
+      "coverage_tags": [
+        "data_cleaning_logic_errors"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_logic_error_handling",
+      "learning_goal": "学生能解释在Excel中如何通过逻辑公式来识别数据中的逻辑错误。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "逻辑错误",
+          "en": "Incorrect Logics"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "写出用于判断的Excel公式",
+            "解释公式中每个部分的作用"
+          ],
+          "question_id": "q_long_logic_error_handling_v1",
+          "reference_answer": [
+            "公式：=AND(E2<=C2, E2>=D2, B2<=C2, B2>=D2)",
+            "解释：AND函数要求所有条件都为TRUE时，结果才为TRUE。E2<=C2检查收盘价是否小于等于最高价；E2>=D2检查收盘价是否大于等于最低价；B2<=C2检查开盘价是否小于等于最高价；B2>=D2检查开盘价是否大于等于最低价。只有当这四个条件都满足时，该行数据才被视为有效。"
+          ],
+          "rubric_points": [
+            "正确写出公式，如 =AND(E2<=C2, E2>=D2, B2<=C2, B2>=D2)。",
+            "正确解释AND函数用于同时满足多个条件。",
+            "正确解释每个比较条件（如E2<=C2表示收盘价小于等于最高价）的含义。"
+          ],
+          "stem": "在Excel中，要检查某一行数据是否有效，需要验证收盘价和开盘价是否都在最高价和最低价之间。请写出一个Excel公式（假设数据在A到E列，分别为日期、开盘价、最高价、最低价、收盘价），用于判断第2行数据是否有效，并解释该公式的逻辑。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "方法一：删除该行",
+            "方法二：将收盘价修正为最高价"
+          ],
+          "question_id": "q_long_logic_error_handling_v2",
+          "reference_answer": [
+            "方法一：删除该行。优点是操作简单，能彻底排除错误数据。缺点是会丢失该天的所有数据，如果错误数据较多，会导致样本量减少。",
+            "方法二：将收盘价修正为最高价。优点是保留了该天的数据，且修正后的值在逻辑上成立。缺点是修正后的数据并非真实值，可能会对分析结果引入偏差。",
+            "方法三：从其他数据源核对。优点是能获得最准确的数据。缺点是耗时，且不一定能找到其他数据源。"
+          ],
+          "rubric_points": [
+            "正确描述删除方法的优缺点（优点：简单直接，缺点：丢失数据）。",
+            "正确描述修正方法的优缺点（优点：保留数据，缺点：可能引入偏差）。",
+            "能提出其他合理方法（如从其他数据源核对）并说明优缺点。"
+          ],
+          "stem": "假设你发现某行数据中，收盘价高于最高价。请列出至少两种处理这种逻辑错误的方法，并分别说明每种方法的优缺点。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "data_cleaning_definition",
+      "coverage_tags": [
+        "data_cleaning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_data_cleaning_purpose",
+      "learning_goal": "学生能在多个选项中准确识别数据清洗的主要目的。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "数据清洗",
+          "en": "Data Cleaning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "数据清洗的目的是提高数据质量，为后续分析打好基础，而不是直接预测未来。",
+          "options": [
+            "去除数据录入错误",
+            "提高数据质量",
+            "预测未来股价",
+            "让数据更一致"
+          ],
+          "question_id": "q_quiz_data_cleaning_purpose_v1",
+          "stem": "以下哪项不是数据清洗的主要目的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "通过清洗数据，可以提高数据质量，从而产生更准确的统计模型，但无法保证盈利或消除风险。",
+          "options": [
+            "增加数据量",
+            "产生更准确的统计模型",
+            "保证策略一定盈利",
+            "消除所有交易风险"
+          ],
+          "question_id": "q_quiz_data_cleaning_purpose_v2",
+          "stem": "数据清洗能带来以下哪些好处？"
+        }
+      ]
+    },
+    {
+      "concept_key": "data_cleaning_common_issues",
+      "coverage_tags": [
+        "data_cleaning_common_issues"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_data_issues_identify",
+      "learning_goal": "学生能根据描述判断数据问题属于缺失值、重复记录还是逻辑错误。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "缺失值",
+          "en": "Missing Values"
+        },
+        {
+          "display": "重复记录",
+          "en": "Duplicated Records"
+        },
+        {
+          "display": "逻辑错误",
+          "en": "Incorrect Logics"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "数据全部为空，属于典型的缺失值问题。",
+          "options": [
+            "缺失值",
+            "重复记录",
+            "逻辑错误",
+            "数据格式错误"
+          ],
+          "question_id": "q_quiz_data_issues_identify_v1",
+          "stem": "某天的开盘价、最高价、最低价、收盘价数据全部为空，这属于哪种数据问题？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "同一天出现两条完全一样的数据，属于重复记录。",
+          "options": [
+            "缺失值",
+            "重复记录",
+            "逻辑错误",
+            "数据漂移"
+          ],
+          "question_id": "q_quiz_data_issues_identify_v2",
+          "stem": "数据表中，2023年1月5日的数据出现了两次，且所有字段都相同，这属于哪种数据问题？"
+        }
+      ]
+    },
+    {
+      "concept_key": "data_cleaning_missing_values",
+      "coverage_tags": [
+        "data_cleaning_missing_values"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_missing_handling",
+      "learning_goal": "学生能根据场景选择合适的缺失值处理方法。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "缺失值",
+          "en": "Missing Values"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "用相邻数据填充是一种常见且合理的处理方法，可以保持数据序列的连续性。",
+          "options": [
+            "用当天的收盘价代替",
+            "用前后两天的开盘价平均值填充",
+            "删除整只股票的所有数据",
+            "忽略该问题，继续使用数据"
+          ],
+          "question_id": "q_quiz_missing_handling_v1",
+          "stem": "如果某只股票的历史数据中，只有一天的开盘价缺失，而其他数据源也无法提供，最直接的处理方法是？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "当数据缺失严重时，填充可能会引入较大偏差，直接删除该行是更稳妥的做法。",
+          "options": [
+            "用0填充所有缺失字段",
+            "用该列的平均值填充",
+            "直接删除该行数据",
+            "从其他数据源复制一行数据"
+          ],
+          "question_id": "q_quiz_missing_handling_v2",
+          "stem": "当数据集中某一行的大部分字段都缺失时，最合适的处理方法是？"
+        }
+      ]
+    },
+    {
+      "concept_key": "data_cleaning_duplicates",
+      "coverage_tags": [
+        "data_cleaning_duplicates"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_duplicate_handling",
+      "learning_goal": "学生能判断处理重复记录的正确做法。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "重复记录",
+          "en": "Duplicated Records"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "COUNTIF函数可以统计某个值在指定范围内出现的次数，从而快速识别重复项。",
+          "options": [
+            "SUM",
+            "AVERAGE",
+            "COUNTIF",
+            "IF"
+          ],
+          "question_id": "q_quiz_duplicate_handling_v1",
+          "stem": "在Excel中，要快速找出重复的日期记录，可以使用哪个函数？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 20,
+          "explanation": "随机保留一条会引入不确定性，可能导致数据失真，是最不可取的方法。",
+          "options": [
+            "从其他数据源核对哪个是正确的",
+            "删除所有重复记录",
+            "取两条记录的平均值",
+            "随机保留其中一条"
+          ],
+          "question_id": "q_quiz_duplicate_handling_v2",
+          "stem": "对于两个日期相同但价格数据不同的重复记录，以下哪种处理方式最不可取？"
+        }
+      ]
+    },
+    {
+      "concept_key": "data_cleaning_logic_errors",
+      "coverage_tags": [
+        "data_cleaning_logic_errors"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_logic_error_identify",
+      "learning_goal": "学生能识别出数据中违反基本逻辑的错误。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "逻辑错误",
+          "en": "Incorrect Logics"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "最高价(98)低于开盘价(100)，这在逻辑上是不可能的。",
+          "options": [
+            "开盘价: 100, 最高价: 105, 最低价: 95, 收盘价: 102",
+            "开盘价: 100, 最高价: 102, 最低价: 98, 收盘价: 99",
+            "开盘价: 100, 最高价: 98, 最低价: 95, 收盘价: 97",
+            "开盘价: 100, 最高价: 103, 最低价: 99, 收盘价: 101"
+          ],
+          "question_id": "q_quiz_logic_error_identify_v1",
+          "stem": "以下哪条数据记录很可能包含逻辑错误？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "一个有效的收盘价必须同时满足小于等于最高价和大于等于最低价两个条件。",
+          "options": [
+            "收盘价 <= 最高价 AND 收盘价 >= 最低价",
+            "收盘价 >= 最高价 OR 收盘价 <= 最低价",
+            "收盘价 = 最高价 AND 收盘价 = 最低价",
+            "收盘价 <> 最高价 AND 收盘价 <> 最低价"
+          ],
+          "question_id": "q_quiz_logic_error_identify_v2",
+          "stem": "在Excel中，要检查收盘价是否在最高价和最低价之间，可以使用什么逻辑判断？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/L3/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/L3/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

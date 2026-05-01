@@ -1,0 +1,408 @@
+```json
+{
+  "lesson_id": "L9",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L9/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "input coverage checklist",
+    "source_outline": "input source outline",
+    "lesson_map": "input lesson map"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "market_tricks_misleading_metrics",
+      "description": "市场伎俩：误导性指标（胜率定义操纵）",
+      "covered_by": ["qf_flash_winrate_def", "qf_quiz_winrate_trick", "qf_long_misleading_metrics"]
+    },
+    {
+      "coverage_tag": "market_tricks_selective_presentation",
+      "description": "市场伎俩：选择性呈现数据（夏普比率操纵）",
+      "covered_by": ["qf_flash_sharpe_manip", "qf_quiz_sharpe_frequency", "qf_long_misleading_metrics"]
+    },
+    {
+      "coverage_tag": "market_tricks_psychological_manipulation",
+      "description": "市场伎俩：心理操纵（错失恐惧症FOMO）",
+      "covered_by": ["qf_flash_fomo", "qf_quiz_fomo_example", "qf_long_misleading_metrics"]
+    },
+    {
+      "coverage_tag": "market_tricks_defense",
+      "description": "应对市场伎俩的建议：看透表面指标，关注上下文、时间框架和风险度量",
+      "covered_by": ["qf_flash_defense_advice", "qf_quiz_defense_approach"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_winrate_def",
+      "question_type": "short_answer",
+      "linked_steps": ["step6"],
+      "concept_key": "misleading_winning_rate",
+      "coverage_tags": ["market_tricks_misleading_metrics"],
+      "term_refs": [
+        {
+          "display": "误导性胜率定义",
+          "en": "Misleading Winning Rate Definition"
+        }
+      ],
+      "learning_goal": "学生能区分两种胜率定义，并指出哪种更容易被操纵。",
+      "difficulty": "easy",
+      "retrieval_focus": "两种胜率定义的核心差异及其误导性。",
+      "variants": [
+        {
+          "question_id": "q_flash_winrate_def_v1",
+          "front": "一家机构宣称其策略胜率100%，因为一笔持仓5天的交易最终盈利。按交易日计算，这5天里只有1天盈利，真实胜率是多少？",
+          "back": "20%（1天盈利 ÷ 5个交易日）",
+          "explanation": "按交易日计算胜率更能反映策略的日常表现，而按订单计算容易被单笔大盈利扭曲。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_winrate_def_v2",
+          "front": "按订单计算的胜率（一笔交易最终盈利即算100%胜率）有什么主要问题？",
+          "back": "它掩盖了交易过程中的连续亏损天数，无法反映策略的日常波动和风险。",
+          "explanation": "这种定义让机构可以展示一个很高的胜率，但投资者看不到交易过程中的实际亏损天数。",
+          "estimated_seconds": 12
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_sharpe_manip",
+      "question_type": "short_answer",
+      "linked_steps": ["step6"],
+      "concept_key": "sharpe_ratio_manipulation",
+      "coverage_tags": ["market_tricks_selective_presentation"],
+      "term_refs": [
+        {
+          "display": "夏普比率操纵",
+          "en": "Sharpe Ratio Manipulation"
+        }
+      ],
+      "learning_goal": "学生能解释机构如何通过选择不同的时间频率来操纵夏普比率。",
+      "difficulty": "easy",
+      "retrieval_focus": "夏普比率操纵的核心手段。",
+      "variants": [
+        {
+          "question_id": "q_flash_sharpe_manip_v1",
+          "front": "机构可以通过选择哪种数据频率来操纵夏普比率，使其看起来更高？",
+          "back": "选择波动率较低的时间频率（如日数据 vs 月数据），因为夏普比率 = 年化收益 / 年化波动率。",
+          "explanation": "不同频率的数据计算出的年化波动率不同，机构会选择对自己最有利的频率来展示。",
+          "estimated_seconds": 12
+        },
+        {
+          "question_id": "q_flash_sharpe_manip_v2",
+          "front": "比较两个投资产品的夏普比率时，必须确保什么条件才能进行公平比较？",
+          "back": "必须确保计算方式一致，特别是数据频率（日/周/月）和计算窗口相同。",
+          "explanation": "否则机构可能选择对自己最有利的频率来展示，导致误导性的比较结果。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_fomo",
+      "question_type": "short_answer",
+      "linked_steps": ["step6"],
+      "concept_key": "fomo",
+      "coverage_tags": ["market_tricks_psychological_manipulation"],
+      "term_refs": [
+        {
+          "display": "错失恐惧症",
+          "en": "Fear of Missing Out (FOMO)"
+        }
+      ],
+      "learning_goal": "学生能识别FOMO营销手段及其对投资决策的影响。",
+      "difficulty": "easy",
+      "retrieval_focus": "FOMO的定义和典型营销话术。",
+      "variants": [
+        {
+          "question_id": "q_flash_fomo_v1",
+          "front": "什么是错失恐惧症（FOMO）？",
+          "back": "担心错过潜在收益而做出冲动投资决策的心理现象。",
+          "explanation": "机构利用FOMO制造紧迫感，让投资者不做理性分析就匆忙投资。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_fomo_v2",
+          "front": "举一个机构利用FOMO的典型营销话术例子。",
+          "back": "“限时优惠”、“仅剩最后名额”、“别人都赚了30%”。",
+          "explanation": "这些话术制造紧迫感和社交压力，促使投资者冲动决策。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_defense_advice",
+      "question_type": "short_answer",
+      "linked_steps": ["step6"],
+      "concept_key": "defense_against_market_tricks",
+      "coverage_tags": ["market_tricks_defense"],
+      "term_refs": [
+        {
+          "display": "应对市场伎俩的建议",
+          "en": "Defense Against Market Tricks"
+        }
+      ],
+      "learning_goal": "学生能记住应对市场销售伎俩的核心建议。",
+      "difficulty": "easy",
+      "retrieval_focus": "应对市场伎俩的核心建议。",
+      "variants": [
+        {
+          "question_id": "q_flash_defense_advice_v1",
+          "front": "面对机构展示的业绩指标，你应该关注哪些方面来避免被误导？",
+          "back": "关注完整的上下文、时间框架和风险度量。",
+          "explanation": "不要只看表面指标，要理解指标是如何计算的，以及它是否全面反映了风险和收益。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_defense_advice_v2",
+          "front": "面对“限时优惠”等营销话术，你应该怎么做？",
+          "back": "保持理性，避免冲动投资决策，进行充分的尽职调查。",
+          "explanation": "FOMO利用情绪驱动决策，理性分析和尽职调查是避免陷阱的关键。",
+          "estimated_seconds": 8
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_winrate_trick",
+      "question_type": "single_choice",
+      "linked_steps": ["step6"],
+      "concept_key": "misleading_winning_rate",
+      "coverage_tags": ["market_tricks_misleading_metrics"],
+      "term_refs": [
+        {
+          "display": "误导性胜率定义",
+          "en": "Misleading Winning Rate Definition"
+        }
+      ],
+      "learning_goal": "学生能识别并分析利用胜率定义误导投资者的案例。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_winrate_trick_v1",
+          "stem": "一家基金宣称其策略胜率高达95%，但未披露平均亏损远大于平均盈利。这属于哪种市场伎俩？",
+          "options": [
+            "选择性呈现数据",
+            "误导性指标",
+            "心理操纵",
+            "以上都是"
+          ],
+          "answer": 1,
+          "explanation": "使用一个看似很高但定义有问题的指标（胜率）来掩盖整体不盈利的事实，属于误导性指标。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_winrate_trick_v2",
+          "stem": "一个策略在10个交易日中进行了5笔交易，其中4笔盈利，1笔亏损。按订单计算胜率是80%。但如果按交易日计算，10天中有3天盈利，胜率是30%。以下哪个说法正确？",
+          "options": [
+            "按订单计算的胜率更能反映策略的日常表现",
+            "按交易日计算的胜率更能反映策略的日常表现",
+            "两种计算方式结果相同",
+            "按交易日计算的胜率总是更高"
+          ],
+          "answer": 1,
+          "explanation": "按交易日计算胜率能反映策略在每一天的表现，更全面地展示策略的波动性和稳定性。",
+          "estimated_seconds": 25
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_sharpe_frequency",
+      "question_type": "single_choice",
+      "linked_steps": ["step6"],
+      "concept_key": "sharpe_ratio_manipulation",
+      "coverage_tags": ["market_tricks_selective_presentation"],
+      "term_refs": [
+        {
+          "display": "夏普比率操纵",
+          "en": "Sharpe Ratio Manipulation"
+        }
+      ],
+      "learning_goal": "学生能理解不同数据频率对夏普比率的影响，并识别操纵手段。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_sharpe_frequency_v1",
+          "stem": "假设一个策略的日收益均值为0.1%，日波动率为1%。年化夏普比率（假设无风险利率为0）约为多少？",
+          "options": [
+            "0.1",
+            "0.1 * sqrt(252) ≈ 1.59",
+            "0.1 / 1 = 0.1",
+            "1 / 0.1 = 10"
+          ],
+          "answer": 1,
+          "explanation": "年化夏普比率 = (日收益均值 / 日波动率) * sqrt(252) = (0.1%/1%) * sqrt(252) ≈ 1.59。",
+          "estimated_seconds": 30
+        },
+        {
+          "question_id": "q_quiz_sharpe_frequency_v2",
+          "stem": "一家机构展示其策略的夏普比率为3.0，但使用的是周数据计算。如果改用日数据计算，夏普比率最可能发生什么变化？",
+          "options": [
+            "保持不变",
+            "变得更高",
+            "变得更低",
+            "无法确定"
+          ],
+          "answer": 2,
+          "explanation": "周数据的波动率通常低于日数据，因此用周数据计算的夏普比率可能被高估。改用日数据后，波动率更高，夏普比率通常会降低。",
+          "estimated_seconds": 25
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_fomo_example",
+      "question_type": "single_choice",
+      "linked_steps": ["step6"],
+      "concept_key": "fomo",
+      "coverage_tags": ["market_tricks_psychological_manipulation"],
+      "term_refs": [
+        {
+          "display": "错失恐惧症",
+          "en": "Fear of Missing Out (FOMO)"
+        }
+      ],
+      "learning_goal": "学生能识别FOMO营销手段，并理解其如何影响投资决策。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_fomo_example_v1",
+          "stem": "以下哪个营销话术最典型地利用了错失恐惧症（FOMO）？",
+          "options": [
+            "“我们的策略在过去5年平均年化收益15%”",
+            "“限时优惠：仅剩最后10个名额，错过就要等一年”",
+            "“我们的基金经理拥有20年从业经验”",
+            "“本基金投资于多元化的资产组合”"
+          ],
+          "answer": 1,
+          "explanation": "“限时优惠”和“仅剩最后名额”制造紧迫感，利用FOMO促使投资者冲动决策。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_fomo_example_v2",
+          "stem": "一家投资机构在广告中展示“别人都赚了30%”的客户 testimonials，并配以豪车、度假图片。这主要利用了哪种心理？",
+          "options": [
+            "损失厌恶",
+            "确认偏误",
+            "错失恐惧症（FOMO）",
+            "锚定效应"
+          ],
+          "answer": 2,
+          "explanation": "展示他人成功和奢华生活方式，激发投资者害怕错过潜在收益的心理，即FOMO。",
+          "estimated_seconds": 15
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_defense_approach",
+      "question_type": "single_choice",
+      "linked_steps": ["step6"],
+      "concept_key": "defense_against_market_tricks",
+      "coverage_tags": ["market_tricks_defense"],
+      "term_refs": [
+        {
+          "display": "应对市场伎俩的建议",
+          "en": "Defense Against Market Tricks"
+        }
+      ],
+      "learning_goal": "学生能选择正确的应对策略来避免被市场销售伎俩误导。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_defense_approach_v1",
+          "stem": "面对一个宣称“年化收益50%，夏普比率5.0”的投资产品，最理性的第一步行动是什么？",
+          "options": [
+            "立即投资，以免错过机会",
+            "要求查看完整的业绩报告，包括计算方式和风险指标",
+            "相信知名机构的背书",
+            "只关注收益，忽略风险"
+          ],
+          "answer": 1,
+          "explanation": "应该要求查看完整的上下文，包括指标的计算方式、时间框架和风险度量，避免被表面指标误导。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_defense_approach_v2",
+          "stem": "以下哪个做法最能帮助投资者避免被市场销售伎俩误导？",
+          "options": [
+            "只投资朋友推荐的产品",
+            "关注表面指标，如高胜率和高夏普比率",
+            "进行尽职调查，理解指标的计算方式和局限性",
+            "在限时优惠活动期间尽快做出决定"
+          ],
+          "answer": 2,
+          "explanation": "尽职调查和理性分析是避免被误导的关键，要理解指标背后的含义和潜在操纵空间。",
+          "estimated_seconds": 15
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_misleading_metrics",
+      "question_type": "compare_and_contrast",
+      "linked_steps": ["step6"],
+      "concept_key": "market_tricks_overview",
+      "coverage_tags": ["market_tricks_misleading_metrics", "market_tricks_selective_presentation", "market_tricks_psychological_manipulation", "market_tricks_defense"],
+      "term_refs": [
+        {
+          "display": "市场销售伎俩",
+          "en": "Market Sales Tricks"
+        }
+      ],
+      "learning_goal": "学生能比较三种市场销售伎俩（误导性指标、选择性呈现、心理操纵），并给出应对建议。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_misleading_metrics_v1",
+          "stem": "请比较并解释三种常见的市场销售伎俩：误导性指标、选择性呈现数据和心理操纵。对于每种伎俩，请给出一个具体例子，并说明投资者应该如何应对。",
+          "prompt_blocks": [
+            "定义每种伎俩",
+            "为每种伎俩提供一个来自课程材料的例子",
+            "解释每种伎俩如何误导投资者",
+            "给出针对每种伎俩的具体应对建议"
+          ],
+          "rubric_points": [
+            "正确区分三种伎俩的定义",
+            "每个例子准确对应课程内容",
+            "解释清晰，指出误导机制",
+            "应对建议具体且可行"
+          ],
+          "reference_answer": [
+            "1. 误导性指标：使用定义有问题的指标来美化业绩。例如，按订单计算胜率（一笔交易最终盈利即算100%胜率），掩盖交易过程中的连续亏损。应对：要求按交易日计算胜率，并查看完整的盈亏分布。",
+            "2. 选择性呈现数据：选择对自己最有利的数据频率或时间窗口来展示指标。例如，用周数据计算夏普比率，因为周波动率通常低于日波动率，从而得到更高的夏普比率。应对：比较不同产品时，确保计算方式（数据频率、窗口）一致。",
+            "3. 心理操纵：利用投资者的情绪（如FOMO）来驱动冲动决策。例如，使用“限时优惠”、“仅剩最后名额”等话术制造紧迫感。应对：保持理性，避免在压力下做决定，进行充分的尽职调查。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_misleading_metrics_v2",
+          "stem": "假设你是一家投资机构的分析师，你的团队发现一个潜在的投资产品，其宣传材料显示“年化收益30%，夏普比率2.5，胜率85%”。请分析这些指标可能存在的误导性，并制定一个尽职调查计划来验证其真实性。",
+          "prompt_blocks": [
+            "分析每个指标可能被操纵的方式",
+            "提出具体的验证步骤",
+            "解释为什么这些步骤能帮助识别潜在问题"
+          ],
+          "rubric_points": [
+            "识别出胜率、夏普比率可能被操纵",
+            "验证步骤具体且可行",
+            "解释验证步骤如何揭露潜在问题"
+          ],
+          "reference_answer": [
+            "可能存在的误导性：",
+            "- 胜率85%：可能按订单计算，未披露平均亏损大小；或者只平仓盈利交易，让亏损交易一直开着。",
+            "- 夏普比率2.5：可能使用了较低频率的数据（如周或月数据），或者选择了特定的时间窗口。",
+            "- 年化收益30%：可能只展示了表现最好的时间段。",
+            "尽职调查计划：",
+            "1. 要求提供完整的交易记录，包括每笔交易的盈亏、持仓时间、以及每日的PnL。",
+            "2. 按交易日重新计算胜率，并查看盈亏分布（平均盈利 vs 平均亏损）。",
+            "3. 要求提供日数据计算的夏普比率，并查看不同时间窗口（如滚动3年）的夏普比率。",
+            "4. 查看完整的回测报告，包括最大回撤、收益曲线、以及不同市场环境下的表现。",
+            "5. 要求提供第三方审计或独立的业绩验证。"
+          ],
+          "estimated_seconds": 150
+        }
+      ]
+    }
+  ]
+}
+```

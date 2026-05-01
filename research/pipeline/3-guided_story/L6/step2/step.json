@@ -1,0 +1,129 @@
+{
+  "lesson_id": "L6",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "金融机构每天要面对好几种风险。",
+        "我们先认识四个最重要的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s009",
+      "introduced_terms": [
+        "market_risk"
+      ],
+      "lines": [
+        "第一种：**<term id=\"market_risk\">市场风险</term>**。",
+        "因为股价、汇率、商品价格波动而亏钱的风险。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "比如你持有一家科技公司的股票。",
+        "即使公司本身没问题，整个市场大跌，你的股票也会跟着跌。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s011",
+      "introduced_terms": [
+        "interest_rate_risk"
+      ],
+      "lines": [
+        "第二种：**<term id=\"interest_rate_risk\">利率风险</term>**。",
+        "主要影响债券。利率上升，你手里的旧债券就不值钱了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s012",
+      "introduced_terms": [
+        "credit_risk"
+      ],
+      "lines": [
+        "第三种：**<term id=\"credit_risk\">信用风险</term>**。",
+        "借钱的人不还钱了，这就是信用风险。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s013",
+      "introduced_terms": [
+        "liquidity_risk"
+      ],
+      "lines": [
+        "第四种：**<term id=\"liquidity_risk\">流动性风险</term>**。",
+        "急需用钱时，手里的资产卖不掉，或者只能打折卖。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 3,
+        "explanation": "无法快速将资产变现而不损失价值，正是流动性风险的核心。",
+        "kind": "single_choice",
+        "options": [
+          "市场风险",
+          "利率风险",
+          "信用风险",
+          "流动性风险"
+        ],
+        "prompt": "这主要体现了哪种风险？"
+      },
+      "id": "s014",
+      "lines": [
+        "一家公司突然需要大量现金，但它的资产主要是很难快速出手的房产。",
+        "这主要体现了哪种风险？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Major Risk Types for a financial institution: 1. Market Risk (Equity Risk, FX Risk, Commodity Risk), 2. Interest rate Risk, 3. Credit Risk, 4. Liquidity Risk, 5. Operational Risk, 6. Legal Risk, 7. Reputational Risk, 8. Strategic Risk.",
+    "related": [
+      "market risk",
+      "interest rate risk",
+      "credit risk",
+      "liquidity risk"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "credit_risk": {
+      "aliases": [
+        "Credit Risk"
+      ],
+      "display": "信用风险",
+      "gloss": "借款方未能偿还贷款或履行合约义务而导致损失的风险。"
+    },
+    "interest_rate_risk": {
+      "aliases": [
+        "Interest Rate Risk"
+      ],
+      "display": "利率风险",
+      "gloss": "因利率波动导致投资损失的风险，主要影响债券等固定收益证券。"
+    },
+    "liquidity_risk": {
+      "aliases": [
+        "Liquidity Risk"
+      ],
+      "display": "流动性风险",
+      "gloss": "无法在不显著损失价值的情况下，快速将资产转换为现金的风险。"
+    },
+    "market_risk": {
+      "aliases": [
+        "Market Risk"
+      ],
+      "display": "市场风险",
+      "gloss": "因市场价格变动导致损失的风险。"
+    }
+  }
+}

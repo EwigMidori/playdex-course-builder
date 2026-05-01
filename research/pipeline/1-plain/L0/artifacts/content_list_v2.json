@@ -1,0 +1,1506 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Financial Analytics and "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                216,
+                266,
+                783,
+                375
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Algorithmic Trading "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                254,
+                394,
+                742,
+                500
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Course Code: COMP7415 "
+                    }
+                ]
+            },
+            "bbox": [
+                369,
+                531,
+                626,
+                572
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Lecturer: Tony Lam "
+                    }
+                ]
+            },
+            "bbox": [
+                29,
+                920,
+                176,
+                957
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Background of Lecturer "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                73,
+                107,
+                509,
+                188
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Founder of AlgoGene (https://algogene.com) "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "Vice Chairman of Algo Challenge Association (https://algochallenge.org) "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Former algo developer, quant trader, risk manager, data analyst for hedge funds and banks. "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- BSc in Math, Risk Management, Actuarial Science (HKU); MSc in Computer Science (HKU) "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Champion and awardee of several algo trading competitions, including "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                101,
+                250,
+                893,
+                527
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "CCTV证券资讯频道《宽客天下·全球量化争霸赛》(2017/18)"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Rotman International Trading Competition (2017) "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "CASH Algo Trading Contest (2016) "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "WorldQuant Challenge (2014, 2015) "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                139,
+                531,
+                643,
+                705
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Let’s play a game! "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                73,
+                107,
+                405,
+                192
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/997b92b1751c1ce70437186759220c5d106c40ed0862fb47cf1033ee018d9aa5.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                311,
+                296,
+                670,
+                946
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1. What’s your study mode? "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                73,
+                107,
+                594,
+                192
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "a) Full time "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "b) Part time "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "c) Just sit in "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                71,
+                268,
+                227,
+                477
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2. What is your main reason for taking this course? "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                70,
+                62,
+                855,
+                227
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "a) I want to start a career in algo-trading "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "b) I want to enhance my current job skills "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "c) I am interested in the topic and want to learn more "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "d) Just to fulfill graduation requirement "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                70,
+                268,
+                722,
+                555
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3. What do you expect to learn from this course? "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                70,
+                62,
+                822,
+                222
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "a) Some skills for financial data analysis "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "b) I want to develop an automated trading system "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "c) Tell me some profitable trading strategies "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "d) Not sure yet "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                70,
+                268,
+                677,
+                551
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "4. Do you have any prior experience in algo-trading? "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                71,
+                62,
+                885,
+                237
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "a) Yes, I have extensive experience "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "b) Yes, I have some experience "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "c) No, but I have experience in other forms of trading "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "d) No, I am completely new to trading "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                270,
+                716,
+                551
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "5. Have you ever used any algo-trading platforms before? "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                70,
+                62,
+                791,
+                235
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "a) Yes, I have used MetaTrader "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "b) Yes, I have used TradingView "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "c) Yes, I have used AlgoGene "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "d) No, I have no idea what it is "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                70,
+                268,
+                456,
+                551
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "6. Which of the following has the largest market capitalization? "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                70,
+                62,
+                820,
+                235
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "a) China stock market "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "b) Hong Kong stock market "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "c) India stock market "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "d) Japan stock market "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                272,
+                405,
+                550
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Answer "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                73,
+                114,
+                214,
+                181
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "As of Dec-2025, "
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                272,
+                261,
+                327
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- China: $15 trillion "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Hong Kong: $6 trillion "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- India: $5.3 trillion "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Japan: $7.6 trillion "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                348,
+                345,
+                622
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "Source: https://www.ceicdata.com/en/indicator/market-capitalization "
+                    }
+                ]
+            },
+            "bbox": [
+                37,
+                929,
+                575,
+                966
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "7. Which of the following market has the largest daily turnover/trading volume? "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                70,
+                62,
+                827,
+                237
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "a) Commodity market "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "b) Crypto market "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "c) Global Equity market "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "d) Forex "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                272,
+                366,
+                551
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Answer "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                73,
+                114,
+                214,
+                181
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "Global equity market: $3.93 trillion "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "• Forex: $6.6 trillion "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Commodity: $126 billion "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Crypto: $139 billion "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                268,
+                509,
+                551
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Reference: "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                65,
+                742,
+                150,
+                772
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- https://www.world-exchanges.org/our-work/statistics "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- https://www.bis.org/statistics/rpfx19 fx.htm "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- https://www.coingecko.com/en/global charts "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                66,
+                781,
+                644,
+                935
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "8. Which programming language is most widely used in algo-trading? "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                70,
+                62,
+                817,
+                237
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "a) C++ "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "b) Java "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "c) Python "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "d) R "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                272,
+                202,
+                550
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "9. Which of the following market is the most popular for algo traders? "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                70,
+                62,
+                895,
+                235
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "a) Commodities "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "b) Cryptocurrency "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "c) Equity "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "d) Forex "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                272,
+                300,
+                548
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "10. What's the name of your teachers? "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                73,
+                107,
+                791,
+                188
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "a) Tommy Lai "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "b) Tony Lam "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "c) Tim Leung "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "d) Timothy Lau "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                270,
+                262,
+                551
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Course Objectives & Learning Outcomes "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                71,
+                107,
+                817,
+                192
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Understand the trading process in financial market "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Understand the fundamental of algorithmic trading framework for building a trading strategy "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Able to formulate trading strategies, carry out backtesting, optimization, risk management and interpret investment performance "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Develop practical skills in financial data analysis, trading strategy development, and deployment to real market and broker account "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                70,
+                270,
+                880,
+                775
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Topics to be covered "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                71,
+                107,
+                452,
+                188
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "1. Algorithmic trading basics and financial markets "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "2. Data scraping and database management with Python "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "3. Building backtest framework and rule-based trading strategy "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "4. Statistical time series analysis for market classification "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "5. Statistical arbitrage and pairs trading "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "6. Capital and Risk Management "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "7. Performance measures and portfolio optimization "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "8. Order book and high frequency data modeling "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "9. Market practice in strategy optimization, broker selection, and market tricks "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "10. Machine learning use cases in algorithmic trading "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                261,
+                885,
+                885
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Assessment methods "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                73,
+                112,
+                466,
+                179
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "- Group project - 50% "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "• Written final exam covers all taught content in the course – 50% "
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                272,
+                850,
+                400
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Contact "
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                73,
+                112,
+                220,
+                181
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Lecturer "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                274,
+                176,
+                322
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Tony Lam: tonylamfm@hku.hk / tonylam@algogene.com "
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                344,
+                769,
+                403
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "TA: "
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                496,
+                113,
+                544
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Rex Tsang: trex@hku.hk "
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                570,
+                377,
+                627
+            ]
+        }
+    ]
+]

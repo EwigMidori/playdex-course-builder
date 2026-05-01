@@ -1,0 +1,95 @@
+{
+  "lesson_id": "L10",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "q_learning"
+      ],
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "现在，把Q学习应用到交易中。",
+        "状态：当前的市场情况（价格、成交量等）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "q_learning"
+      ],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "动作：只有三个选择——买入、卖出、持有。",
+        "奖励：这次交易赚了还是亏了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "exploration_exploitation"
+      ],
+      "id": "s035",
+      "introduced_terms": [
+        "exploration_exploitation"
+      ],
+      "lines": [
+        "Q学习智能体通过反复模拟交易来学习。",
+        "它会在<term id=\"exploration_exploitation\">探索与利用</term>之间平衡。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "q_learning"
+      ],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "刚开始，它会随机探索各种交易。",
+        "慢慢地，它会学会在什么状态下买入、什么状态下卖出最赚钱。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "初期需要更多探索，以发现各种可能的交易策略。",
+        "kind": "single_choice",
+        "options": [
+          "探索",
+          "利用",
+          "两者一样"
+        ],
+        "prompt": "Q学习交易员在训练初期应该更偏向探索还是利用？"
+      },
+      "focus_terms": [
+        "exploration_exploitation"
+      ],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "Q学习交易员在训练初期应该更偏向探索还是利用？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "Apply Q-Learning to trading: define state (market conditions), action (buy/sell/hold), reward (profit/loss).",
+    "related": [
+      "L10_rl_trading"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "exploration_exploitation": {
+      "aliases": [
+        "Exploration vs Exploitation"
+      ],
+      "display": "探索与利用",
+      "gloss": "在尝试新动作（探索）和选择已知最佳动作（利用）之间平衡。"
+    }
+  }
+}

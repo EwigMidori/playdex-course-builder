@@ -1,0 +1,113 @@
+{
+  "lesson_id": "L4",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "只用时间做预测太简单了。",
+        "如果能加入更多信息，预测会更准。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "multiple_linear_regression"
+      ],
+      "id": "s025",
+      "introduced_terms": [
+        "multiple_linear_regression"
+      ],
+      "lines": [
+        "这就是<term id=\"multiple_linear_regression\">多元线性回归</term>。",
+        "Y = β₀ + β₁X₁ + β₂X₂ + ... + βₚXₚ + ε"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "multiple_linear_regression"
+      ],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "比如预测电力公司的股价，",
+        "可以考虑GDP、利率、煤价、气温等因素。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "multicollinearity"
+      ],
+      "id": "s027",
+      "introduced_terms": [
+        "multicollinearity"
+      ],
+      "lines": [
+        "但要注意：不能什么因素都往里塞。",
+        "如果两个因素高度相关，就会出现<term id=\"multicollinearity\">多重共线性</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "multicollinearity"
+      ],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "多重共线性会让模型系数变得不可靠。",
+        "比如GDP和利率如果高度相关，你很难分清谁在起作用。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "因素要有逻辑关联，同时要避免多重共线性。",
+        "kind": "single_choice",
+        "options": [
+          "因素越多越好",
+          "确保因素之间有逻辑关联，且避免高度相关",
+          "只选一个因素"
+        ],
+        "prompt": "以下哪个是选择因素时的正确做法？"
+      },
+      "focus_terms": [
+        "multicollinearity"
+      ],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个是选择因素时的正确做法？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Multiple Linear Regression Model",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "multicollinearity": {
+      "aliases": [
+        "Multicollinearity"
+      ],
+      "display": "多重共线性",
+      "gloss": "自变量之间高度相关，导致模型估计不稳定。"
+    },
+    "multiple_linear_regression": {
+      "aliases": [
+        "Multiple Linear Regression",
+        "MLR"
+      ],
+      "display": "多元线性回归",
+      "gloss": "用多个自变量预测一个因变量的线性模型。"
+    }
+  }
+}

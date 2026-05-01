@@ -1,0 +1,423 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "order_book_definition",
+      "covered_by": [
+        "qf_flash_order_book_def",
+        "qf_quiz_order_book_side"
+      ],
+      "description": "订单簿的定义：记录所有买入和卖出挂单的电子列表。"
+    },
+    {
+      "coverage_tag": "bid_book_ask_book",
+      "covered_by": [
+        "qf_flash_bid_ask_role",
+        "qf_quiz_order_book_side"
+      ],
+      "description": "买盘簿代表需求，卖盘簿代表供给。"
+    },
+    {
+      "coverage_tag": "order_book_insights",
+      "covered_by": [
+        "qf_flash_order_book_insights",
+        "qf_quiz_order_book_insights",
+        "qf_long_order_book_insights"
+      ],
+      "description": "订单簿能揭示的四种信息：供需、支撑阻力、流动性、市场深度。"
+    },
+    {
+      "coverage_tag": "market_liquidity",
+      "covered_by": [
+        "qf_flash_liquidity_depth",
+        "qf_quiz_order_book_insights"
+      ],
+      "description": "市场流动性：在不引起价格大幅波动的情况下买卖资产的难易程度。"
+    },
+    {
+      "coverage_tag": "market_depth",
+      "covered_by": [
+        "qf_flash_liquidity_depth",
+        "qf_quiz_order_book_insights"
+      ],
+      "description": "市场深度：在不同价格水平上可交易的订单数量。"
+    },
+    {
+      "coverage_tag": "support_resistance_level",
+      "covered_by": [
+        "qf_flash_order_book_insights",
+        "qf_long_order_book_insights"
+      ],
+      "description": "支撑位与阻力位：从大额订单中洞察。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "order_book_definition",
+      "coverage_tags": [
+        "order_book_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_order_book_def",
+      "learning_goal": "学生能准确回忆订单簿的定义及其基本构成。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "订单簿是什么，以及它记录什么内容。",
+      "term_refs": [
+        {
+          "display": "订单簿",
+          "en": "Order Book"
+        }
+      ],
+      "variants": [
+        {
+          "back": "记录所有买入和卖出挂单的电子列表。",
+          "estimated_seconds": 8,
+          "explanation": "订单簿是市场微观结构的核心，实时显示所有未成交的买卖意愿。",
+          "front": "订单簿（Order Book）是什么？",
+          "question_id": "q_flash_order_book_def_v1"
+        },
+        {
+          "back": "买入订单（买单）和卖出订单（卖单）。",
+          "estimated_seconds": 6,
+          "explanation": "买单挂在买盘簿（Bid Book），卖单挂在卖盘簿（Ask Book）。",
+          "front": "订单簿中记录哪两类订单？",
+          "question_id": "q_flash_order_book_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "bid_book_ask_book",
+      "coverage_tags": [
+        "bid_book_ask_book"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bid_ask_role",
+      "learning_goal": "学生能区分买盘簿和卖盘簿分别代表市场的哪一方。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "买盘簿和卖盘簿各自代表需求还是供给。",
+      "term_refs": [
+        {
+          "display": "买盘簿",
+          "en": "Bid Book"
+        },
+        {
+          "display": "卖盘簿",
+          "en": "Ask Book"
+        }
+      ],
+      "variants": [
+        {
+          "back": "需求方。",
+          "estimated_seconds": 5,
+          "explanation": "买盘簿记录了所有买入意愿，反映市场对资产的需求。",
+          "front": "买盘簿（Bid Book）代表市场的哪一方？",
+          "question_id": "q_flash_bid_ask_role_v1"
+        },
+        {
+          "back": "供给方。",
+          "estimated_seconds": 5,
+          "explanation": "卖盘簿记录了所有卖出意愿，反映市场对资产的供给。",
+          "front": "卖盘簿（Ask Book）代表市场的哪一方？",
+          "question_id": "q_flash_bid_ask_role_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "order_book_insights",
+      "coverage_tags": [
+        "order_book_insights",
+        "support_resistance_level"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_order_book_insights",
+      "learning_goal": "学生能列举订单簿可以揭示的至少两种市场信息。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "订单簿能提供的四种关键洞察。",
+      "term_refs": [
+        {
+          "display": "支撑位",
+          "en": "Support Level"
+        },
+        {
+          "display": "阻力位",
+          "en": "Resistance Level"
+        }
+      ],
+      "variants": [
+        {
+          "back": "一个强力的支撑位。",
+          "estimated_seconds": 10,
+          "explanation": "大量买单集中在某个价格，表明该价位有强劲的买入需求，可能阻止价格进一步下跌。",
+          "front": "订单簿中某个价格上堆了巨大的买单，这通常暗示什么？",
+          "question_id": "q_flash_order_book_insights_v1"
+        },
+        {
+          "back": "市场流动性和市场深度。",
+          "estimated_seconds": 10,
+          "explanation": "订单越多越密集，流动性越好；深度越厚，大单对价格的冲击越小。",
+          "front": "通过观察订单簿，你可以判断哪两种市场特性？",
+          "question_id": "q_flash_order_book_insights_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "market_liquidity_and_depth",
+      "coverage_tags": [
+        "market_liquidity",
+        "market_depth"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_liquidity_depth",
+      "learning_goal": "学生能区分市场流动性和市场深度这两个相关但不同的概念。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "core_difference",
+      "retrieval_focus": "市场流动性和市场深度的核心区别。",
+      "term_refs": [
+        {
+          "display": "市场流动性",
+          "en": "Market Liquidity"
+        },
+        {
+          "display": "市场深度",
+          "en": "Market Depth"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在不引起价格大幅波动的情况下，买卖资产的难易程度。",
+          "estimated_seconds": 8,
+          "explanation": "流动性好的市场，大额交易不会显著影响价格。",
+          "front": "市场流动性衡量的是什么？",
+          "question_id": "q_flash_liquidity_depth_v1"
+        },
+        {
+          "back": "在不同价格水平上可交易的订单数量。",
+          "estimated_seconds": 8,
+          "explanation": "深度越厚，意味着在每个价位都有较多的订单，大单的冲击因此被分散。",
+          "front": "市场深度衡量的是什么？",
+          "question_id": "q_flash_liquidity_depth_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L8",
+  "longform_families": [
+    {
+      "concept_key": "order_book_insights",
+      "coverage_tags": [
+        "order_book_insights",
+        "support_resistance_level"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_order_book_insights",
+      "learning_goal": "学生能用自己的话解释订单簿如何揭示市场的微观结构，并举例说明。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "支撑位",
+          "en": "Support Level"
+        },
+        {
+          "display": "阻力位",
+          "en": "Resistance Level"
+        },
+        {
+          "display": "市场流动性",
+          "en": "Market Liquidity"
+        },
+        {
+          "display": "市场深度",
+          "en": "Market Depth"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "支撑位的定义",
+            "阻力位的定义",
+            "订单簿中如何识别它们",
+            "背后的市场心理"
+          ],
+          "question_id": "q_long_order_book_insights_v1",
+          "reference_answer": [
+            "支撑位是指价格下跌时，由于大量买单的存在，可能阻止价格进一步下跌的价格水平。",
+            "阻力位是指价格上涨时，由于大量卖单的存在，可能阻止价格进一步上涨的价格水平。",
+            "在订单簿中，如果某个价格水平上堆积了巨大的买单（买盘簿），这通常意味着有强劲的买入需求，可能形成支撑位。",
+            "相反，如果某个价格水平上堆积了巨大的卖单（卖盘簿），则可能形成阻力位。",
+            "背后的逻辑是，这些大额订单代表了市场参与者在特定价格上的强烈供需意愿，从而对价格产生心理和实际的阻挡作用。"
+          ],
+          "rubric_points": [
+            "正确解释支撑位是价格下跌时可能遇到买盘支撑的水平",
+            "正确解释阻力位是价格上涨时可能遇到卖盘压力的水平",
+            "指出订单簿中大量买单堆积处可能形成支撑位，大量卖单堆积处可能形成阻力位",
+            "解释这反映了市场参与者在特定价位的集中供需意愿"
+          ],
+          "stem": "请解释订单簿如何帮助交易者判断市场的支撑位和阻力位，并说明其背后的逻辑。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "市场流动性的定义",
+            "市场深度的定义",
+            "从订单簿观察流动性的方法",
+            "从订单簿观察深度的方法",
+            "两者的关系"
+          ],
+          "question_id": "q_long_order_book_insights_v2",
+          "reference_answer": [
+            "市场流动性衡量的是在不引起价格大幅波动的情况下，买卖资产的难易程度。流动性好的市场，大额交易对价格影响小。",
+            "市场深度是指在不同价格水平上可交易的订单数量。深度越厚，意味着在每个价位都有较多的订单等待成交。",
+            "从订单簿看，如果买卖盘在各个价格水平上都有大量且密集的订单，说明市场流动性好。",
+            "从订单簿看，通过分析每个价格水平上的订单数量，可以评估市场深度。例如，一个深度厚的订单簿，其买卖盘在各个价位都有显著的挂单量。",
+            "市场深度是衡量市场流动性的一个重要指标。通常，市场深度越大，流动性越好，大额订单对价格的冲击也越小。"
+          ],
+          "rubric_points": [
+            "正确解释市场流动性是资产在不引起价格大幅波动的情况下被买卖的难易程度",
+            "正确解释市场深度是在不同价格水平上可交易的订单数量",
+            "指出流动性可以通过订单簿中订单的密集程度来观察",
+            "指出深度可以通过分析各价格水平的订单数量来观察",
+            "解释深度是流动性的一个维度，深度越厚通常流动性越好"
+          ],
+          "stem": "请解释市场流动性和市场深度这两个概念的区别，并说明它们如何从订单簿中体现。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "bid_book_ask_book",
+      "coverage_tags": [
+        "order_book_definition",
+        "bid_book_ask_book"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_order_book_side",
+      "learning_goal": "学生能在测验中准确识别订单簿中代表需求和供给的边。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "买盘簿",
+          "en": "Bid Book"
+        },
+        {
+          "display": "卖盘簿",
+          "en": "Ask Book"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "买盘簿记录了所有买入意愿，代表市场的需求方。",
+          "options": [
+            "卖盘簿 (Ask Book)",
+            "买盘簿 (Bid Book)",
+            "成交记录 (Trade History)",
+            "价格深度 (Price Depth)"
+          ],
+          "question_id": "q_quiz_order_book_side_v1",
+          "stem": "订单簿的哪一边代表市场的需求？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "卖盘簿记录了所有卖出意愿，代表市场的供给方。",
+          "options": [
+            "市场的需求",
+            "市场的供给",
+            "已成交的订单",
+            "市场的波动率"
+          ],
+          "question_id": "q_quiz_order_book_side_v2",
+          "stem": "在订单簿中，卖盘簿 (Ask Book) 代表什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "order_book_insights",
+      "coverage_tags": [
+        "order_book_insights",
+        "market_liquidity",
+        "market_depth"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_order_book_insights",
+      "learning_goal": "学生能识别订单簿可以提供的多种市场洞察。",
+      "linked_steps": [
+        "step1"
+      ],
+      "question_type": "multiple_choice",
+      "term_refs": [
+        {
+          "display": "市场流动性",
+          "en": "Market Liquidity"
+        },
+        {
+          "display": "市场深度",
+          "en": "Market Depth"
+        }
+      ],
+      "variants": [
+        {
+          "answer": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "estimated_seconds": 25,
+          "explanation": "订单簿可以揭示供需、支撑阻力、流动性和深度，共四种关键信息。",
+          "options": [
+            "市场的供需关系",
+            "支撑位与阻力位",
+            "市场流动性",
+            "市场深度"
+          ],
+          "question_id": "q_quiz_order_book_insights_v1",
+          "stem": "以下哪些是订单簿可以告诉我们的信息？（多选）"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "市场深度越厚，意味着在每个价位有更多订单，大额订单的影响被分散，因此冲击更小。",
+          "options": [
+            "深度越厚，大单对价格的冲击越大",
+            "深度越厚，大单对价格的冲击越小",
+            "深度与流动性无关",
+            "深度只与买单数量有关"
+          ],
+          "question_id": "q_quiz_order_book_insights_v2",
+          "stem": "关于市场深度（Market Depth），以下哪个描述是正确的？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/L8/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

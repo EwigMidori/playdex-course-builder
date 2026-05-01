@@ -1,0 +1,632 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "market_impact_definition",
+      "covered_by": [
+        "qf_flash_market_impact_def",
+        "qf_quiz_market_impact_def"
+      ],
+      "description": "市场冲击的定义：由订单本身引起的价格不利变动。"
+    },
+    {
+      "coverage_tag": "market_impact_mitigation_strategies",
+      "covered_by": [
+        "qf_flash_mitigation_strategies",
+        "qf_quiz_mitigation_strategies",
+        "qf_long_mitigation_strategies"
+      ],
+      "description": "降低市场冲击的四种策略：订单拆分、限价单、TWAP、VWAP。"
+    },
+    {
+      "coverage_tag": "order_splitting",
+      "covered_by": [
+        "qf_flash_order_splitting",
+        "qf_quiz_order_splitting"
+      ],
+      "description": "订单拆分：将大单拆分为多个小单以降低即时冲击。"
+    },
+    {
+      "coverage_tag": "use_of_limit_orders",
+      "covered_by": [
+        "qf_flash_limit_orders",
+        "qf_quiz_limit_orders"
+      ],
+      "description": "使用限价单：控制成交价，避免市价单风险。"
+    },
+    {
+      "coverage_tag": "twap_strategy",
+      "covered_by": [
+        "qf_flash_twap",
+        "qf_quiz_twap"
+      ],
+      "description": "时间加权平均价格（TWAP）：在指定时间段内均匀执行订单。"
+    },
+    {
+      "coverage_tag": "vwap_strategy",
+      "covered_by": [
+        "qf_flash_vwap",
+        "qf_quiz_vwap"
+      ],
+      "description": "成交量加权平均价格（VWAP）：根据市场成交量比例执行订单。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "market_impact",
+      "coverage_tags": [
+        "market_impact_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_market_impact_def",
+      "learning_goal": "学生能准确回忆市场冲击的定义及其核心特征。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "市场冲击的定义和直接后果。",
+      "term_refs": [
+        {
+          "display": "市场冲击",
+          "en": "Market Impact"
+        }
+      ],
+      "variants": [
+        {
+          "back": "由订单本身引起的价格不利变动。",
+          "estimated_seconds": 8,
+          "explanation": "市场冲击是指执行订单时，因订单本身导致的价格向不利方向变动。大额订单尤其明显。",
+          "front": "什么是市场冲击？",
+          "question_id": "q_flash_market_impact_def_v1"
+        },
+        {
+          "back": "市场深度和流动性。",
+          "estimated_seconds": 10,
+          "explanation": "大额市价单会吃掉订单簿上的多个价位，导致市场深度减少，流动性也随之降低。",
+          "front": "大额市价单执行时，除了价格变动，还会导致哪两个市场特征下降？",
+          "question_id": "q_flash_market_impact_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "market_impact_mitigation",
+      "coverage_tags": [
+        "market_impact_mitigation_strategies"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_mitigation_strategies",
+      "learning_goal": "学生能列举并简要描述降低市场冲击的四种主要策略。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "四种降低市场冲击策略的名称。",
+      "term_refs": [
+        {
+          "display": "降低市场冲击的策略",
+          "en": "Market Impact Mitigation Strategies"
+        }
+      ],
+      "variants": [
+        {
+          "back": "订单拆分、使用限价单、TWAP、VWAP。",
+          "estimated_seconds": 12,
+          "explanation": "这四种策略分别从订单大小、订单类型、时间分布和成交量分布的角度来减少对市场的冲击。",
+          "front": "列举降低市场冲击的四种策略。",
+          "question_id": "q_flash_mitigation_strategies_v1"
+        },
+        {
+          "back": "TWAP 按时间均匀分配订单，VWAP 按市场成交量比例分配订单。",
+          "estimated_seconds": 10,
+          "explanation": "TWAP 假设价格稳定，VWAP 则根据实际成交量调整，使订单融入市场。",
+          "front": "TWAP 和 VWAP 的核心区别是什么？",
+          "question_id": "q_flash_mitigation_strategies_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "order_splitting",
+      "coverage_tags": [
+        "order_splitting"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_order_splitting",
+      "learning_goal": "学生能解释订单拆分的原理和目的。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "订单拆分的核心机制。",
+      "term_refs": [
+        {
+          "display": "订单拆分",
+          "en": "Order Splitting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将大额订单拆分成多个小额订单，分批执行，减少即时冲击。",
+          "estimated_seconds": 10,
+          "explanation": "例如，将一万股拆成一百个一百股，慢慢买入，避免一次性吃掉所有卖单。",
+          "front": "订单拆分是如何降低市场冲击的？",
+          "question_id": "q_flash_order_splitting_v1"
+        },
+        {
+          "back": "可能增加交易成本。",
+          "estimated_seconds": 8,
+          "explanation": "多次小额交易会产生更多的交易费用，需要在降低冲击和增加成本之间权衡。",
+          "front": "订单拆分的主要缺点是什么？",
+          "question_id": "q_flash_order_splitting_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "limit_orders",
+      "coverage_tags": [
+        "use_of_limit_orders"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_limit_orders",
+      "learning_goal": "学生能理解限价单在降低市场冲击中的作用及其局限性。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "限价单的优点和缺点。",
+      "term_refs": [
+        {
+          "display": "限价单",
+          "en": "Limit Order"
+        }
+      ],
+      "variants": [
+        {
+          "back": "限价单可以控制成交价，避免以不利价格成交。",
+          "estimated_seconds": 10,
+          "explanation": "限价单指定了最高买入价或最低卖出价，从而避免了市价单可能导致的滑点。",
+          "front": "使用限价单代替市价单如何降低市场冲击？",
+          "question_id": "q_flash_limit_orders_v1"
+        },
+        {
+          "back": "可能无法立即成交，甚至永远无法成交。",
+          "estimated_seconds": 8,
+          "explanation": "如果限价单的价格设定得过于保守，可能无法被市场接受，导致订单无法执行。",
+          "front": "使用限价单的主要风险是什么？",
+          "question_id": "q_flash_limit_orders_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "twap",
+      "coverage_tags": [
+        "twap_strategy"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_twap",
+      "learning_goal": "学生能解释TWAP策略的基本原理和适用条件。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "TWAP的执行方式和假设。",
+      "term_refs": [
+        {
+          "display": "时间加权平均价格",
+          "en": "Time-weighted Average Price (TWAP)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在指定时间段内，按固定时间间隔均匀地执行订单。",
+          "estimated_seconds": 10,
+          "explanation": "例如，在1小时内，每5分钟买入固定数量，使交易时间均匀分布。",
+          "front": "TWAP 策略如何执行订单？",
+          "question_id": "q_flash_twap_v1"
+        },
+        {
+          "back": "假设价格在交易期间是稳定的。",
+          "estimated_seconds": 8,
+          "explanation": "如果市场波动很大，TWAP 策略的效果会打折扣，因为均匀分配的时间点可能正好是价格不利的时候。",
+          "front": "TWAP 策略的一个关键假设是什么？",
+          "question_id": "q_flash_twap_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "vwap",
+      "coverage_tags": [
+        "vwap_strategy"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_vwap",
+      "learning_goal": "学生能解释VWAP策略的基本原理和优势。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "VWAP的执行方式和目的。",
+      "term_refs": [
+        {
+          "display": "成交量加权平均价格",
+          "en": "Volume-weighted Average Price (VWAP)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "根据市场的实际成交量比例来安排订单。",
+          "estimated_seconds": 10,
+          "explanation": "市场成交量大的时候多买，成交量小的时候少买，使订单融入市场。",
+          "front": "VWAP 策略如何决定每个时间点的交易量？",
+          "question_id": "q_flash_vwap_v1"
+        },
+        {
+          "back": "减少价格冲击，使成交价接近市场均价。",
+          "estimated_seconds": 8,
+          "explanation": "通过跟随市场成交量分布，VWAP 策略能有效降低大额订单对市场的冲击。",
+          "front": "VWAP 策略的主要优势是什么？",
+          "question_id": "q_flash_vwap_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L8",
+  "longform_families": [
+    {
+      "concept_key": "market_impact_mitigation",
+      "coverage_tags": [
+        "market_impact_mitigation_strategies"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_mitigation_strategies",
+      "learning_goal": "学生能比较和对比TWAP与VWAP两种策略，并解释其适用场景。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "降低市场冲击的策略",
+          "en": "Market Impact Mitigation Strategies"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "执行逻辑",
+            "适用市场条件",
+            "优缺点"
+          ],
+          "question_id": "q_long_mitigation_strategies_v1",
+          "reference_answer": [
+            "TWAP（时间加权平均价格）策略的核心是在一个指定的时间段内，按照固定的时间间隔均匀地执行订单。它假设价格在该时间段内是稳定的。",
+            "VWAP（成交量加权平均价格）策略则是根据市场的实际成交量分布来安排订单的执行。在成交量大的时候多交易，成交量小的时候少交易。",
+            "TWAP适用于价格相对稳定、波动不大的市场。VWAP则更适用于成交量分布不均匀、有明显活跃期和清淡期的市场。",
+            "TWAP的优点是逻辑简单、易于执行。缺点是当市场波动剧烈时，成交价格可能与预期产生较大偏差。",
+            "VWAP的优点是能更好地将大订单融入市场，减少对价格的冲击，使成交价更接近市场均价。缺点是如果市场成交量突然萎缩，可能导致订单无法按计划完全执行。"
+          ],
+          "rubric_points": [
+            "正确解释TWAP按时间均匀分配订单的逻辑。",
+            "正确解释VWAP按成交量比例分配订单的逻辑。",
+            "指出TWAP适用于价格稳定市场，VWAP适用于成交量分布不均的市场。",
+            "指出TWAP的优点是简单，缺点是在波动市场中效果差。",
+            "指出VWAP的优点是能更好地融入市场，缺点是可能无法完全执行。"
+          ],
+          "stem": "比较并对比TWAP和VWAP两种降低市场冲击的策略。请从执行逻辑、适用市场条件、以及各自的优缺点三个方面进行阐述。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "方案设计",
+            "策略组合理由",
+            "潜在风险与应对"
+          ],
+          "question_id": "q_long_mitigation_strategies_v2",
+          "reference_answer": [
+            "我的方案是：首先，将100万股的订单拆分成多个小订单，例如每个订单1万股。然后，使用VWAP策略，在一天内根据市场的成交量分布来执行这些小订单。同时，主要使用限价单来执行，将限价设定在VWAP价格附近的一个小范围内。",
+            "选择这个方案的理由是：订单拆分是基础，可以避免一次性冲击。VWAP策略能确保我们的交易活动与市场节奏保持一致，减少被其他交易者注意到的风险。使用限价单可以控制成交价格，避免在市场波动时以过高的价格买入。",
+            "潜在风险是：如果市场成交量突然下降，我们的VWAP订单可能无法按时完成。应对方法是：设置一个时间阈值，如果在一定时间内未完成，则转为使用TWAP策略，确保在收盘前完成大部分交易。另外，需要监控市场冲击成本，如果冲击过大，应暂停交易。"
+          ],
+          "rubric_points": [
+            "方案中至少包含一种降低市场冲击的策略（如订单拆分、限价单、TWAP、VWAP）。",
+            "合理解释了所选策略如何帮助降低冲击。",
+            "考虑了流动性一般的市场条件。",
+            "识别了方案的一个潜在风险（如执行延迟、成本增加）。",
+            "提出了一个应对该风险的方法。"
+          ],
+          "stem": "假设你是一位基金经理，需要在一天内买入100万股某流动性一般的股票。请设计一个降低市场冲击的方案，并解释你选择该方案的理由。你的方案可以结合多种策略。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "market_impact",
+      "coverage_tags": [
+        "market_impact_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_market_impact_def",
+      "learning_goal": "学生能在测验中准确识别市场冲击的定义和后果。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "市场冲击",
+          "en": "Market Impact"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "市场冲击特指执行订单时，因订单本身导致的价格向不利方向变动。",
+          "options": [
+            "市场整体波动性增加",
+            "由订单本身引起的价格不利变动",
+            "交易佣金和手续费的总和",
+            "买卖价差的扩大"
+          ],
+          "question_id": "q_quiz_market_impact_def_v1",
+          "stem": "以下哪一项最准确地描述了“市场冲击”？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "大额市价单会消耗订单簿上的流动性，导致市场深度减少，而不是增加。",
+          "options": [
+            "价格显著变动",
+            "市场深度增加",
+            "流动性降低",
+            "订单簿被部分填满"
+          ],
+          "question_id": "q_quiz_market_impact_def_v2",
+          "stem": "大额市价单执行后，最不可能出现以下哪种情况？"
+        }
+      ]
+    },
+    {
+      "concept_key": "market_impact_mitigation",
+      "coverage_tags": [
+        "market_impact_mitigation_strategies"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_mitigation_strategies",
+      "learning_goal": "学生能区分不同降低市场冲击策略的特点。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "降低市场冲击的策略",
+          "en": "Market Impact Mitigation Strategies"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "TWAP策略的核心是在指定时间段内按固定时间间隔均匀执行订单。",
+          "options": [
+            "订单拆分",
+            "TWAP",
+            "VWAP",
+            "使用限价单"
+          ],
+          "question_id": "q_quiz_mitigation_strategies_v1",
+          "stem": "一位交易员计划在1小时内买入1000股，他决定每5分钟买入约83股。他使用的是哪种策略？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 25,
+          "explanation": "VWAP策略根据市场成交量比例执行订单，其目标就是使成交价接近成交量加权平均价。",
+          "options": [
+            "使用市价单一次性买入",
+            "使用限价单在固定价格挂单",
+            "TWAP 策略",
+            "VWAP 策略"
+          ],
+          "question_id": "q_quiz_mitigation_strategies_v2",
+          "stem": "以下哪种策略最有可能使大额订单的成交价接近当天的市场平均价格？"
+        }
+      ]
+    },
+    {
+      "concept_key": "order_splitting",
+      "coverage_tags": [
+        "order_splitting"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_order_splitting",
+      "learning_goal": "学生能识别订单拆分策略的应用场景和潜在问题。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "订单拆分",
+          "en": "Order Splitting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "订单拆分的主要目的就是通过将大单拆小来降低对市场的即时冲击。",
+          "options": [
+            "市场流动性极好，可以一次性成交大量订单",
+            "交易员希望尽快完成交易，不考虑成本",
+            "交易员需要买入大量股票，但希望最小化对价格的即时影响",
+            "交易员只进行小额交易"
+          ],
+          "question_id": "q_quiz_order_splitting_v1",
+          "stem": "以下哪种情况最适合使用订单拆分策略？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "多次小额交易会产生更多的交易费用（如佣金），从而增加总成本。",
+          "options": [
+            "增加了市场冲击",
+            "可能导致更高的总交易成本",
+            "无法控制成交价格",
+            "需要更复杂的算法"
+          ],
+          "question_id": "q_quiz_order_splitting_v2",
+          "stem": "订单拆分策略的一个潜在缺点是？"
+        }
+      ]
+    },
+    {
+      "concept_key": "limit_orders",
+      "coverage_tags": [
+        "use_of_limit_orders"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_limit_orders",
+      "learning_goal": "学生能判断关于限价单陈述的正确性。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "限价单",
+          "en": "Limit Order"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "限价单可以控制成交价，但并不能完全消除市场冲击，尤其是当订单量很大时，仍可能影响市场。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_limit_orders_v1",
+          "stem": "使用限价单可以完全消除市场冲击。"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "限价单指定了价格，因此可以避免以不利价格成交，这是它相对于市价单的主要优势。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_limit_orders_v2",
+          "stem": "与市价单相比，限价单的主要优势在于可以控制成交价格。"
+        }
+      ]
+    },
+    {
+      "concept_key": "twap",
+      "coverage_tags": [
+        "twap_strategy"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_twap",
+      "learning_goal": "学生能计算简单的TWAP交易量，并理解其局限性。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "时间加权平均价格",
+          "en": "Time-weighted Average Price (TWAP)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "执行次数 = 30分钟 / 5分钟 = 6次。每次买入量 = 600股 / 6次 = 100股。",
+          "options": [
+            "100股",
+            "120股",
+            "60股",
+            "200股"
+          ],
+          "question_id": "q_quiz_twap_v1",
+          "stem": "一个TWAP策略计划在30分钟内买入600股，每5分钟执行一次。每次应买入多少股？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 20,
+          "explanation": "TWAP假设价格稳定，高波动市场会导致成交价格与预期产生较大偏差。",
+          "options": [
+            "价格稳定、低波动的市场",
+            "价格持续上涨的趋势市场",
+            "价格持续下跌的趋势市场",
+            "价格高波动、方向不明的市场"
+          ],
+          "question_id": "q_quiz_twap_v2",
+          "stem": "TWAP策略在哪种市场环境下效果最差？"
+        }
+      ]
+    },
+    {
+      "concept_key": "vwap",
+      "coverage_tags": [
+        "vwap_strategy"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_vwap",
+      "learning_goal": "学生能理解VWAP的计算逻辑和应用场景。",
+      "linked_steps": [
+        "step2"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "成交量加权平均价格",
+          "en": "Volume-weighted Average Price (VWAP)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "VWAP = Σ(价格 × 成交量) / Σ(成交量)，分子是总成交金额。",
+          "options": [
+            "所有交易的总成交量",
+            "所有交易的总金额（价格×成交量）",
+            "所有交易的价格之和",
+            "所有交易的成交量之和"
+          ],
+          "question_id": "q_quiz_vwap_v1",
+          "stem": "VWAP的计算公式中，分子代表什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "通过跟随市场成交量分布执行订单，VWAP策略旨在将大订单“融入”市场，从而减少对价格的冲击。",
+          "options": [
+            "最大化交易利润",
+            "最小化市场冲击",
+            "确保订单立即成交",
+            "预测未来价格走势"
+          ],
+          "question_id": "q_quiz_vwap_v2",
+          "stem": "一个交易员使用VWAP策略，其目标是使自己的成交价接近VWAP。这主要有助于："
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/L8/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

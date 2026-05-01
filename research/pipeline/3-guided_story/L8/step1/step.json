@@ -1,0 +1,146 @@
+{
+  "lesson_id": "L8",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "想象一下，你面前有一块巨大的电子公告板。",
+        "上面实时滚动着所有人想买和想卖的东西。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "order_book"
+      ],
+      "lines": [
+        "想买的人出价，想卖的人要价。",
+        "这块公告板，就是市场的 <term id=\"order_book\">订单簿</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "bid_book",
+        "ask_book"
+      ],
+      "lines": [
+        "订单簿分为两边：",
+        "<term id=\"bid_book\">买盘簿</term> 代表需求，<term id=\"ask_book\">卖盘簿</term> 代表供给。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "lines": [
+        "它不只是个列表。",
+        "它能告诉你市场的微观结构——谁在着急买，谁在急着卖。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "lines": [
+        "比如，某个价格上堆了巨大的买单。",
+        "那可能就是一个强力的支撑位。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "introduced_terms": [
+        "market_liquidity"
+      ],
+      "lines": [
+        "通过观察订单簿，你可以判断 <term id=\"market_liquidity\">市场流动性</term>。",
+        "订单越多、越密集，流动性越好。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s007",
+      "introduced_terms": [
+        "market_depth"
+      ],
+      "lines": [
+        "你还能看到 <term id=\"market_depth\">市场深度</term>。",
+        "深度越厚，大单对价格的冲击就越小。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "买盘簿记录了所有买入意愿，代表市场的需求方。",
+        "kind": "single_choice",
+        "options": [
+          "卖盘簿 (Ask Book)",
+          "买盘簿 (Bid Book)",
+          "成交记录 (Trade History)",
+          "价格深度 (Price Depth)"
+        ],
+        "prompt": "订单簿的哪一边代表市场的需求？"
+      },
+      "id": "s008",
+      "lines": [
+        "订单簿的哪一边代表市场的需求？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Order book is a list of buy and sell orders. Bid book represents the demand side. Ask book represents the supply side. An order book can provide insights for microeconomic structure. What an order book can tell you: 1. Supply & Demand: Insights into trader behaviour and market sentiment. 2. Support & Resistance Level: Insights from orders with large volume 3. Market Liquidity: Measure liquidity through order sizes. 4. Market Depth: Analysis of the number of buy/sell orders at various price levels.",
+    "related": [
+      "order book mechanism",
+      "limit order book"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "ask_book": {
+      "aliases": [
+        "Ask Book",
+        "Ask Side",
+        "Offer Book"
+      ],
+      "display": "卖盘簿",
+      "gloss": "订单簿中所有卖出订单的集合。"
+    },
+    "bid_book": {
+      "aliases": [
+        "Bid Book",
+        "Bid Side"
+      ],
+      "display": "买盘簿",
+      "gloss": "订单簿中所有买入订单的集合。"
+    },
+    "market_depth": {
+      "aliases": [
+        "Market Depth"
+      ],
+      "display": "市场深度",
+      "gloss": "在不同价格水平上可交易的订单数量。"
+    },
+    "market_liquidity": {
+      "aliases": [
+        "Market Liquidity",
+        "Liquidity"
+      ],
+      "display": "市场流动性",
+      "gloss": "在不引起价格大幅波动的情况下，买卖资产的难易程度。"
+    },
+    "order_book": {
+      "aliases": [
+        "Order Book",
+        "Orderbook"
+      ],
+      "display": "订单簿",
+      "gloss": "记录所有买入和卖出挂单的电子列表。"
+    }
+  }
+}

@@ -1,0 +1,390 @@
+```json
+{
+  "lesson_id": "L6",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L6/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "input coverage checklist",
+    "source_outline": "input source outline",
+    "lesson_map": "input lesson map"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "stress_testing",
+      "description": "压力测试：评估投资组合在极端市场条件下的潜在损失。",
+      "covered_by": ["qf_flash_stress_testing", "qf_quiz_stress_testing", "qf_long_stress_testing"]
+    },
+    {
+      "coverage_tag": "scenario_analysis",
+      "description": "情景分析：通过构建各种极端但可能发生的情景来评估投资组合的风险。",
+      "covered_by": ["qf_flash_scenario_analysis", "qf_quiz_scenario_analysis", "qf_long_scenario_analysis"]
+    },
+    {
+      "coverage_tag": "var_limitation",
+      "description": "VaR 的局限性：基于正常市场情况，无法覆盖极端事件。",
+      "covered_by": ["qf_flash_var_limitation", "qf_quiz_var_limitation"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_stress_testing",
+      "question_type": "short_answer",
+      "linked_steps": ["step6"],
+      "concept_key": "stress_testing",
+      "coverage_tags": ["stress_testing"],
+      "term_refs": [
+        {
+          "display": "压力测试",
+          "en": "Stress Testing"
+        }
+      ],
+      "learning_goal": "学生能准确回忆压力测试的定义和核心目的。",
+      "difficulty": "easy",
+      "retrieval_focus": "压力测试的定义和它与 VaR 的关键区别。",
+      "variants": [
+        {
+          "question_id": "q_flash_stress_testing_v1",
+          "front": "压力测试（Stress Testing）的核心目的是什么？",
+          "back": "评估投资组合在极端市场条件（如金融危机重演）下的潜在损失。",
+          "explanation": "压力测试关注的是 VaR 无法覆盖的极端但可能发生的事件。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_stress_testing_v2",
+          "front": "压力测试与 VaR 在评估风险时的主要区别是什么？",
+          "back": "VaR 基于正常市场情况，压力测试基于极端市场条件。",
+          "explanation": "VaR 回答“正常情况下最多亏多少”，压力测试回答“如果危机重演会怎样”。",
+          "estimated_seconds": 10
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_scenario_analysis",
+      "question_type": "short_answer",
+      "linked_steps": ["step6"],
+      "concept_key": "scenario_analysis",
+      "coverage_tags": ["scenario_analysis"],
+      "term_refs": [
+        {
+          "display": "情景分析",
+          "en": "Scenario Analysis"
+        }
+      ],
+      "learning_goal": "学生能准确回忆情景分析的定义和典型例子。",
+      "difficulty": "easy",
+      "retrieval_focus": "情景分析的定义和它与压力测试的细微差别。",
+      "variants": [
+        {
+          "question_id": "q_flash_scenario_analysis_v1",
+          "front": "情景分析（Scenario Analysis）的核心方法是什么？",
+          "back": "构建各种“如果……会怎样”的极端但可能发生的情景，来评估投资组合的风险。",
+          "explanation": "它不局限于历史事件，可以包含假设性情景。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_scenario_analysis_v2",
+          "front": "给出一个情景分析中可能使用的假设性情景例子。",
+          "back": "例如：美联储突然加息到 50%，或港股与美元脱钩。",
+          "explanation": "这些情景概率小但后果严重，情景分析用于评估其影响。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_var_limitation",
+      "question_type": "short_answer",
+      "linked_steps": ["step6"],
+      "concept_key": "var_limitation",
+      "coverage_tags": ["var_limitation"],
+      "term_refs": [
+        {
+          "display": "VaR 的局限性",
+          "en": "Limitation of VaR"
+        }
+      ],
+      "learning_goal": "学生能准确回忆 VaR 的一个关键局限性。",
+      "difficulty": "easy",
+      "retrieval_focus": "VaR 无法覆盖极端事件这一核心局限。",
+      "variants": [
+        {
+          "question_id": "q_flash_var_limitation_v1",
+          "front": "VaR 的一个主要局限性是什么？",
+          "back": "它基于“正常”市场情况，无法覆盖金融危机等极端事件。",
+          "explanation": "VaR 给出的是正常市场下的最大可能损失，但极端事件可能造成远超 VaR 的损失。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_var_limitation_v2",
+          "front": "为什么仅靠 VaR 进行风险管理是不够的？",
+          "back": "因为 VaR 无法捕捉极端但可能发生的市场事件（如金融危机）带来的风险。",
+          "explanation": "压力测试和情景分析正是为了弥补 VaR 的这一不足。",
+          "estimated_seconds": 10
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_stress_testing",
+      "question_type": "single_choice",
+      "linked_steps": ["step6"],
+      "concept_key": "stress_testing",
+      "coverage_tags": ["stress_testing"],
+      "term_refs": [
+        {
+          "display": "压力测试",
+          "en": "Stress Testing"
+        }
+      ],
+      "learning_goal": "学生能在测验情境下辨析压力测试的核心特征。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_stress_testing_v1",
+          "stem": "以下哪项最准确地描述了压力测试（Stress Testing）在风险管理中的作用？",
+          "options": [
+            "计算投资组合在正常市场条件下的最大可能损失",
+            "评估投资组合在极端历史事件（如2008年金融危机）重演时的潜在损失",
+            "预测未来市场价格的走势",
+            "优化投资组合的资产配置比例"
+          ],
+          "answer": 1,
+          "explanation": "压力测试的核心是评估极端市场条件下的损失，通常基于过去发生的危机事件。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_stress_testing_v2",
+          "stem": "一家银行使用压力测试来评估其投资组合。以下哪个最可能是压力测试的场景？",
+          "options": [
+            "假设未来一年市场波动率保持在当前水平",
+            "假设2008年全球金融危机再次发生",
+            "假设股票市场每天上涨0.5%",
+            "假设通货膨胀率保持在2%不变"
+          ],
+          "answer": 1,
+          "explanation": "压力测试使用过去发生的极端事件作为场景，来评估当前投资组合的脆弱性。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_scenario_analysis",
+      "question_type": "single_choice",
+      "linked_steps": ["step6"],
+      "concept_key": "scenario_analysis",
+      "coverage_tags": ["scenario_analysis"],
+      "term_refs": [
+        {
+          "display": "情景分析",
+          "en": "Scenario Analysis"
+        }
+      ],
+      "learning_goal": "学生能在测验情境下辨析情景分析的核心特征。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_scenario_analysis_v1",
+          "stem": "情景分析（Scenario Analysis）与压力测试（Stress Testing）的主要区别是什么？",
+          "options": [
+            "情景分析只使用历史数据，压力测试使用假设数据",
+            "情景分析可以包含从未发生过的假设性事件，而压力测试通常基于历史事件",
+            "情景分析只适用于债券，压力测试只适用于股票",
+            "情景分析的结果更精确，压力测试的结果更模糊"
+          ],
+          "answer": 1,
+          "explanation": "情景分析可以构建假设性场景（如美联储加息到50%），而压力测试通常基于过去发生的危机事件。",
+          "estimated_seconds": 25
+        },
+        {
+          "question_id": "q_quiz_scenario_analysis_v2",
+          "stem": "以下哪个是情景分析（Scenario Analysis）的典型应用？",
+          "options": [
+            "计算过去30天的平均收益率",
+            "评估如果港股与美元脱钩，投资组合会受多大影响",
+            "预测明天股票价格的涨跌",
+            "计算投资组合的夏普比率"
+          ],
+          "answer": 1,
+          "explanation": "情景分析通过构建“如果……会怎样”的假设性场景来评估风险，港股与美元脱钩就是一个典型的假设性情景。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_var_limitation",
+      "question_type": "true_false",
+      "linked_steps": ["step6"],
+      "concept_key": "var_limitation",
+      "coverage_tags": ["var_limitation"],
+      "term_refs": [
+        {
+          "display": "VaR 的局限性",
+          "en": "Limitation of VaR"
+        }
+      ],
+      "learning_goal": "学生能判断 VaR 局限性的相关陈述是否正确。",
+      "difficulty": "easy",
+      "variants": [
+        {
+          "question_id": "q_quiz_var_limitation_v1",
+          "stem": "VaR 能够完全覆盖金融危机等极端事件带来的风险。",
+          "options": ["正确", "错误"],
+          "answer": 1,
+          "explanation": "VaR 基于正常市场情况，无法覆盖极端事件。压力测试和情景分析用于弥补这一不足。",
+          "estimated_seconds": 15
+        },
+        {
+          "question_id": "q_quiz_var_limitation_v2",
+          "stem": "压力测试和情景分析是为了弥补 VaR 无法覆盖极端事件的局限性而设计的。",
+          "options": ["正确", "错误"],
+          "answer": 0,
+          "explanation": "VaR 关注正常市场，压力测试和情景分析关注极端但可能发生的事件，三者互补。",
+          "estimated_seconds": 15
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_stress_testing",
+      "question_type": "compare_and_contrast",
+      "linked_steps": ["step6"],
+      "concept_key": "stress_testing",
+      "coverage_tags": ["stress_testing", "var_limitation"],
+      "term_refs": [
+        {
+          "display": "压力测试",
+          "en": "Stress Testing"
+        },
+        {
+          "display": "在险价值",
+          "en": "Value at Risk (VaR)"
+        }
+      ],
+      "learning_goal": "学生能解释压力测试与 VaR 的区别，并说明为什么两者需要结合使用。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_stress_testing_v1",
+          "stem": "请解释压力测试（Stress Testing）与在险价值（VaR）在风险管理中的不同作用，并说明为什么金融机构需要同时使用这两种方法。",
+          "prompt_blocks": [
+            "分别定义 VaR 和压力测试",
+            "指出 VaR 的局限性",
+            "说明压力测试如何弥补 VaR 的不足",
+            "总结两者结合使用的必要性"
+          ],
+          "rubric_points": [
+            "正确解释 VaR 用于正常市场情况下的最大可能损失",
+            "正确解释压力测试用于评估极端市场条件下的损失",
+            "指出 VaR 无法覆盖极端事件",
+            "说明压力测试通过模拟危机事件来评估尾部风险",
+            "总结两者互补，构成完整的风险管理框架"
+          ],
+          "reference_answer": [
+            "VaR（在险价值）用于回答“在正常市场条件下，给定置信水平（如95%），明天最多可能亏多少钱”。它基于历史数据或统计分布，适用于日常风险管理。",
+            "压力测试则用于回答“如果2008年金融危机重演，我的投资组合会怎样”。它模拟极端但可能发生的市场条件，评估投资组合在压力情景下的损失。",
+            "VaR 的主要局限性在于它假设市场行为符合历史模式，无法捕捉从未发生或极少发生的极端事件。这些事件虽然概率低，但一旦发生可能造成毁灭性损失。",
+            "压力测试通过重现历史危机事件（如亚洲金融风暴、全球金融危机）来评估投资组合的脆弱性，帮助金融机构提前做好准备。",
+            "因此，VaR 和压力测试是互补的：VaR 提供日常风险监控，压力测试提供极端风险预警。两者结合使用，才能构建更全面的风险管理体系。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_stress_testing_v2",
+          "stem": "假设你是一家投资银行的风险经理，你的投资组合主要持有美国股票和债券。请设计一个压力测试方案，并解释为什么仅靠 VaR 是不够的。",
+          "prompt_blocks": [
+            "描述你的投资组合构成",
+            "选择一个合适的压力测试场景",
+            "解释为什么 VaR 不足以评估该场景的风险",
+            "说明压力测试可能揭示的风险"
+          ],
+          "rubric_points": [
+            "合理描述投资组合（如60%股票，40%债券）",
+            "选择一个相关的历史危机场景（如2008年全球金融危机）",
+            "指出 VaR 基于正常市场假设，无法反映极端事件",
+            "说明压力测试可以模拟市场同时暴跌、信用利差飙升等极端情况",
+            "总结压力测试能帮助识别 VaR 无法捕捉的尾部风险"
+          ],
+          "reference_answer": [
+            "我的投资组合由60%的美国股票（如标普500指数基金）和40%的美国国债组成。",
+            "我会选择2008年全球金融危机作为压力测试场景。当时标普500指数下跌约38%，而国债因避险需求上涨。",
+            "仅靠 VaR 是不够的，因为 VaR 基于过去几年的正常市场数据，无法反映金融危机时市场同时大幅下跌、流动性枯竭等极端情况。VaR 可能会低估尾部风险。",
+            "压力测试可以揭示：在金融危机重演时，我的股票部分可能损失约38%，而债券部分可能上涨约10%，整体组合可能仍面临较大亏损。此外，压力测试还能暴露流动性风险——在危机时可能无法以合理价格卖出资产。",
+            "通过压力测试，我可以提前制定应对措施，如降低股票仓位、增加现金储备或使用期权对冲，从而更好地管理极端风险。"
+          ],
+          "estimated_seconds": 150
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_scenario_analysis",
+      "question_type": "short_explain",
+      "linked_steps": ["step6"],
+      "concept_key": "scenario_analysis",
+      "coverage_tags": ["scenario_analysis"],
+      "term_refs": [
+        {
+          "display": "情景分析",
+          "en": "Scenario Analysis"
+        }
+      ],
+      "learning_goal": "学生能解释情景分析的方法及其在风险管理中的价值。",
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_scenario_analysis_v1",
+          "stem": "请解释情景分析（Scenario Analysis）在风险管理中的价值，并给出一个具体的假设性情景例子，说明如何用它来评估风险。",
+          "prompt_blocks": [
+            "定义情景分析",
+            "说明它与压力测试的区别",
+            "给出一个假设性情景例子",
+            "解释该情景如何帮助评估风险"
+          ],
+          "rubric_points": [
+            "正确解释情景分析是构建极端但可能发生的情景来评估风险",
+            "指出情景分析可以包含假设性事件，而压力测试通常基于历史事件",
+            "给出一个合理的假设性情景（如美联储加息到50%）",
+            "说明该情景对投资组合的潜在影响",
+            "总结情景分析的价值在于发现 VaR 和压力测试可能遗漏的风险"
+          ],
+          "reference_answer": [
+            "情景分析是一种风险管理方法，通过构建各种极端但可能发生的情景来评估投资组合的风险。它不局限于历史事件，可以包含假设性情景。",
+            "与压力测试不同，压力测试通常基于过去发生的危机事件（如2008年金融危机），而情景分析可以探索从未发生过的“如果……会怎样”的场景。",
+            "例如，假设美联储突然将基准利率从当前水平加息到50%。这是一个极端但理论上可能的情景。",
+            "通过情景分析，我可以评估我的债券投资组合在这种极端加息下的损失。由于债券价格与利率反向变动，加息50%将导致债券价格暴跌，可能造成巨大亏损。同时，股票市场也可能因利率飙升而大幅下跌。",
+            "情景分析的价值在于，它帮助我识别 VaR 和压力测试可能无法覆盖的、但一旦发生后果严重的风险，从而提前制定应对策略，如减少债券久期、增加浮动利率债券配置或使用利率衍生品对冲。"
+          ],
+          "estimated_seconds": 120
+        },
+        {
+          "question_id": "q_long_scenario_analysis_v2",
+          "stem": "请比较情景分析（Scenario Analysis）和压力测试（Stress Testing）在构建风险场景时的不同方法，并说明为什么情景分析在某些情况下更有优势。",
+          "prompt_blocks": [
+            "分别描述两种方法的场景构建方式",
+            "指出情景分析可以包含假设性事件",
+            "说明情景分析的优势",
+            "给出一个情景分析优于压力测试的例子"
+          ],
+          "rubric_points": [
+            "正确描述压力测试使用历史危机事件作为场景",
+            "正确描述情景分析可以构建假设性事件",
+            "指出情景分析能探索从未发生过的风险",
+            "给出一个合理的例子（如港股与美元脱钩）",
+            "总结情景分析在应对未知风险方面的优势"
+          ],
+          "reference_answer": [
+            "压力测试的场景通常基于过去发生的极端事件，如1997年亚洲金融风暴、2000年互联网泡沫、2008年全球金融危机等。它假设这些事件重演，评估当前投资组合的损失。",
+            "情景分析的场景构建更加灵活，可以包含从未发生过的假设性事件。例如，它可以构建“如果港股与美元脱钩”或“如果美国主权信用评级被下调”等场景。",
+            "情景分析的优势在于，它能够探索历史上从未发生过、但理论上可能发生的风险。这些风险可能被压力测试遗漏，因为压力测试只关注过去。",
+            "例如，对于持有大量港币资产的投资者，“港股与美元脱钩”是一个重要的风险，但历史上从未发生过。压力测试无法覆盖这一场景，而情景分析可以。",
+            "因此，情景分析在应对未知风险、黑天鹅事件方面具有独特优势，能够帮助投资者更全面地识别和管理风险。"
+          ],
+          "estimated_seconds": 120
+        }
+      ]
+    }
+  ]
+}
+```

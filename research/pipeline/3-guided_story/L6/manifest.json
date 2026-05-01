@@ -1,0 +1,46 @@
+{
+  "lesson_id": "L6",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "风险是什么？为什么需要管理风险？",
+      "file": "research/pipeline/3-guided_story/L6/step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "金融机构面临的主要风险类型",
+      "file": "research/pipeline/3-guided_story/L6/step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "衡量风险：从标准差到波动率模型",
+      "file": "research/pipeline/3-guided_story/L6/step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "ARCH 与 GARCH：给波动率建模",
+      "file": "research/pipeline/3-guided_story/L6/step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "在险价值（VaR）：一个数字告诉你最大可能亏损",
+      "file": "research/pipeline/3-guided_story/L6/step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "压力测试与情景分析：为最坏情况做准备",
+      "file": "research/pipeline/3-guided_story/L6/step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "仓位管理：每次交易该下多大注？",
+      "file": "research/pipeline/3-guided_story/L6/step7/step.json",
+      "sequence_id": "step7"
+    },
+    {
+      "concept": "凯利公式的局限与总结",
+      "file": "research/pipeline/3-guided_story/L6/step8/step.json",
+      "sequence_id": "step8"
+    }
+  ]
+}

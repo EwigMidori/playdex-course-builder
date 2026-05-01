@@ -1,0 +1,526 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "excel_ma_cross_steps",
+      "covered_by": [
+        "qf_flash_ma_calc",
+        "qf_flash_signal_logic",
+        "qf_flash_position_logic",
+        "qf_flash_pnl_calc",
+        "qf_quiz_signal_identification",
+        "qf_quiz_position_logic",
+        "qf_long_excel_workflow"
+      ],
+      "description": "在Excel中实现MA交叉策略的完整步骤：计算MA(7)和MA(14)、识别交叉信号、计算持仓、计算每日盈亏、计算累计盈亏。"
+    },
+    {
+      "coverage_tag": "excel_ma_calc_function",
+      "covered_by": [
+        "qf_flash_ma_calc",
+        "qf_quiz_ma_function"
+      ],
+      "description": "在Excel中使用AVERAGE函数计算移动平均线。"
+    },
+    {
+      "coverage_tag": "excel_signal_identification",
+      "covered_by": [
+        "qf_flash_signal_logic",
+        "qf_quiz_signal_identification"
+      ],
+      "description": "在Excel中识别黄金交叉（买入信号1）和死亡交叉（卖出信号-1）的逻辑。"
+    },
+    {
+      "coverage_tag": "excel_position_calculation",
+      "covered_by": [
+        "qf_flash_position_logic",
+        "qf_quiz_position_logic"
+      ],
+      "description": "在Excel中根据信号和当前持仓状态计算每日持仓的逻辑。"
+    },
+    {
+      "coverage_tag": "excel_daily_pnl_calculation",
+      "covered_by": [
+        "qf_flash_pnl_calc",
+        "qf_quiz_pnl_calc"
+      ],
+      "description": "在Excel中计算每日盈亏的公式：持仓 * (今日收盘价 - 昨日收盘价)。"
+    },
+    {
+      "coverage_tag": "excel_cumulative_pnl_calculation",
+      "covered_by": [
+        "qf_flash_pnl_calc",
+        "qf_long_excel_workflow"
+      ],
+      "description": "在Excel中通过累加每日盈亏计算累计盈亏。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "excel_ma_calc_function",
+      "coverage_tags": [
+        "excel_ma_cross_steps",
+        "excel_ma_calc_function"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ma_calc",
+      "learning_goal": "学生能准确回忆在Excel中计算移动平均线所使用的函数和参数范围。",
+      "linked_steps": [
+        "step5"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "在Excel中计算特定周期移动平均线的函数名称和参数范围。",
+      "term_refs": [
+        {
+          "display": "移动平均线",
+          "en": "Moving Average"
+        },
+        {
+          "display": "AVERAGE函数",
+          "en": "AVERAGE function"
+        }
+      ],
+      "variants": [
+        {
+          "back": "AVERAGE",
+          "estimated_seconds": 5,
+          "explanation": "AVERAGE函数用于计算一组数值的平均值，非常适合计算简单移动平均线。",
+          "front": "在Excel中，要计算7日移动平均线，应该使用哪个函数？",
+          "question_id": "q_flash_ma_calc_v1"
+        },
+        {
+          "back": "收盘价（Close）列",
+          "estimated_seconds": 8,
+          "explanation": "移动平均线通常基于收盘价计算，因此AVERAGE函数应引用收盘价列的数据。",
+          "front": "在Excel中，要计算MA(14)，AVERAGE函数应该引用哪一列数据？",
+          "question_id": "q_flash_ma_calc_v2"
+        },
+        {
+          "back": "7行",
+          "estimated_seconds": 5,
+          "explanation": "MA(7)是过去7个周期的平均价格，因此需要引用最近的7行收盘价数据。",
+          "front": "在Excel中，计算MA(7)时，AVERAGE函数需要引用多少行收盘价数据？",
+          "question_id": "q_flash_ma_calc_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "excel_signal_identification",
+      "coverage_tags": [
+        "excel_ma_cross_steps",
+        "excel_signal_identification"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_signal_logic",
+      "learning_goal": "学生能准确回忆在Excel中识别黄金交叉和死亡交叉的条件。",
+      "linked_steps": [
+        "step5"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "在Excel中，黄金交叉和死亡交叉的IF条件判断逻辑。",
+      "term_refs": [
+        {
+          "display": "黄金交叉",
+          "en": "Golden Cross"
+        },
+        {
+          "display": "死亡交叉",
+          "en": "Death Cross"
+        }
+      ],
+      "variants": [
+        {
+          "back": "1（买入信号）",
+          "estimated_seconds": 8,
+          "explanation": "MA(7)上穿MA(14)是黄金交叉，产生买入信号，标记为1。",
+          "front": "在Excel中，当MA(7)上穿MA(14)时，信号列应标记为什么值？",
+          "question_id": "q_flash_signal_logic_v1"
+        },
+        {
+          "back": "-1（卖出信号）",
+          "estimated_seconds": 8,
+          "explanation": "MA(7)下穿MA(14)是死亡交叉，产生卖出信号，标记为-1。",
+          "front": "在Excel中，当MA(7)下穿MA(14)时，信号列应标记为什么值？",
+          "question_id": "q_flash_signal_logic_v2"
+        },
+        {
+          "back": "0",
+          "estimated_seconds": 5,
+          "explanation": "没有交叉信号时，信号列标记为0，表示无操作。",
+          "front": "在Excel中，如果MA(7)和MA(14)没有发生交叉，信号列应标记为什么值？",
+          "question_id": "q_flash_signal_logic_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "excel_position_calculation",
+      "coverage_tags": [
+        "excel_ma_cross_steps",
+        "excel_position_calculation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_position_logic",
+      "learning_goal": "学生能准确回忆在Excel中计算每日持仓的逻辑。",
+      "linked_steps": [
+        "step5"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "在Excel中，根据信号和当前持仓状态计算新持仓的规则。",
+      "term_refs": [
+        {
+          "display": "持仓",
+          "en": "Position"
+        }
+      ],
+      "variants": [
+        {
+          "back": "1",
+          "estimated_seconds": 8,
+          "explanation": "当空仓且出现买入信号时，持仓变为1。",
+          "front": "在Excel中，如果当前持仓为0，且当日信号为1，那么新的持仓是多少？",
+          "question_id": "q_flash_position_logic_v1"
+        },
+        {
+          "back": "0",
+          "estimated_seconds": 8,
+          "explanation": "当持仓为1且出现卖出信号时，持仓变为0。",
+          "front": "在Excel中，如果当前持仓为1，且当日信号为-1，那么新的持仓是多少？",
+          "question_id": "q_flash_position_logic_v2"
+        },
+        {
+          "back": "1",
+          "estimated_seconds": 8,
+          "explanation": "当持仓为1且无新信号时，持仓保持不变。",
+          "front": "在Excel中，如果当前持仓为1，且当日信号为0，那么新的持仓是多少？",
+          "question_id": "q_flash_position_logic_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "excel_daily_pnl_calculation",
+      "coverage_tags": [
+        "excel_ma_cross_steps",
+        "excel_daily_pnl_calculation",
+        "excel_cumulative_pnl_calculation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_pnl_calc",
+      "learning_goal": "学生能准确回忆在Excel中计算每日盈亏和累计盈亏的公式。",
+      "linked_steps": [
+        "step5"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "在Excel中，每日盈亏和累计盈亏的计算公式。",
+      "term_refs": [
+        {
+          "display": "每日盈亏",
+          "en": "Daily PnL"
+        },
+        {
+          "display": "累计盈亏",
+          "en": "Cumulative PnL"
+        }
+      ],
+      "variants": [
+        {
+          "back": "持仓 * (今日收盘价 - 昨日收盘价)",
+          "estimated_seconds": 8,
+          "explanation": "每日盈亏等于持仓数量乘以当日价格变动。",
+          "front": "在Excel中，计算每日盈亏的公式是什么？",
+          "question_id": "q_flash_pnl_calc_v1"
+        },
+        {
+          "back": "上一日累计盈亏 + 当日每日盈亏",
+          "estimated_seconds": 8,
+          "explanation": "累计盈亏是每日盈亏的累加和。",
+          "front": "在Excel中，计算累计盈亏的公式是什么？",
+          "question_id": "q_flash_pnl_calc_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L3",
+  "longform_families": [
+    {
+      "concept_key": "excel_ma_cross_steps",
+      "coverage_tags": [
+        "excel_ma_cross_steps",
+        "excel_cumulative_pnl_calculation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_excel_workflow",
+      "learning_goal": "学生能完整描述在Excel中实现MA交叉策略的五个步骤，并解释每一步的目的。",
+      "linked_steps": [
+        "step5"
+      ],
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "移动平均线交叉策略",
+          "en": "Moving Average Cross Strategy"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "步骤一：计算移动平均线",
+            "步骤二：识别交叉信号",
+            "步骤三：计算每日持仓",
+            "步骤四：计算每日盈亏",
+            "步骤五：计算累计盈亏"
+          ],
+          "question_id": "q_long_excel_workflow_v1",
+          "reference_answer": [
+            "步骤一：计算移动平均线。使用AVERAGE函数，分别计算过去7天和14天的收盘价平均值，得到MA(7)和MA(14)两列数据。",
+            "步骤二：识别交叉信号。使用IF函数判断：如果MA(7)上穿MA(14)（即MA(7) > MA(14)且前一天MA(7) < MA(14)），则信号为1（买入）；如果MA(7)下穿MA(14)（即MA(7) < MA(14)且前一天MA(7) > MA(14)），则信号为-1（卖出）；否则为0。",
+            "步骤三：计算每日持仓。根据前一天的持仓和当天的信号更新持仓：如果前一日持仓为0且信号为1，则持仓变为1；如果前一日持仓为1且信号为-1，则持仓变为0；否则持仓保持不变。",
+            "步骤四：计算每日盈亏。每日盈亏 = 持仓 * (今日收盘价 - 昨日收盘价)。",
+            "步骤五：计算累计盈亏。累计盈亏 = 上一日累计盈亏 + 当日每日盈亏。"
+          ],
+          "rubric_points": [
+            "正确指出使用AVERAGE函数计算MA(7)和MA(14)。",
+            "正确解释黄金交叉（买入信号1）和死亡交叉（卖出信号-1）的判断逻辑。",
+            "正确解释根据信号和当前持仓状态更新持仓的逻辑。",
+            "正确给出每日盈亏的计算公式：持仓 * (今日收盘价 - 昨日收盘价)。",
+            "正确解释累计盈亏是每日盈亏的累加和。"
+          ],
+          "stem": "请详细描述在Excel中实现MA(7)和MA(14)交叉策略的完整步骤，并解释每一步的作用。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "步骤一：计算移动平均线",
+            "步骤二：识别交叉信号",
+            "步骤三：计算每日持仓",
+            "步骤四：计算每日盈亏",
+            "步骤五：计算累计盈亏"
+          ],
+          "question_id": "q_long_excel_workflow_v2",
+          "reference_answer": [
+            "步骤一：计算移动平均线。在Excel中，使用AVERAGE函数。例如，在MA(7)列的第一个有效单元格中输入 =AVERAGE(F2:F8)，其中F列为收盘价。然后向下拖动填充公式。同样地，计算MA(14)。",
+            "步骤二：识别交叉信号。在信号列使用IF函数。例如，=IF(AND(H16>I16, H15<I15), 1, IF(AND(H16<I16, H15>I15), -1, 0))。其中H列为MA(7)，I列为MA(14)。",
+            "步骤三：计算每日持仓。在持仓列，根据前一日持仓和当日信号更新。例如，=K2+IF(AND(K2=0, J3=-1), 0, J3)。其中K列为持仓，J列为信号。",
+            "步骤四：计算每日盈亏。在每日盈亏列，使用公式 =K2*(F3-F2)。其中K列为持仓，F列为收盘价。",
+            "步骤五：计算累计盈亏。在累计盈亏列，使用公式 =M2+L3。其中M列为累计盈亏，L列为每日盈亏。"
+          ],
+          "rubric_points": [
+            "正确指出使用AVERAGE函数，并说明引用的数据范围。",
+            "正确解释使用IF函数判断交叉的条件。",
+            "正确解释持仓更新的逻辑。",
+            "正确给出每日盈亏的计算公式。",
+            "正确解释累计盈亏的计算方法。"
+          ],
+          "stem": "假设你已经在Excel中下载了汇丰控股（0005.HK）的历史数据，请写出实现MA(7)和MA(14)交叉策略回测的五个关键步骤，并说明每个步骤在Excel中如何操作。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "excel_ma_calc_function",
+      "coverage_tags": [
+        "excel_ma_calc_function"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_ma_function",
+      "learning_goal": "学生能在测验情境下正确选择用于计算移动平均线的Excel函数。",
+      "linked_steps": [
+        "step5"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "AVERAGE函数",
+          "en": "AVERAGE function"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "AVERAGE函数用于计算一组数值的平均值，适合计算简单移动平均线。",
+          "options": [
+            "SUM",
+            "AVERAGE",
+            "MEDIAN",
+            "COUNT"
+          ],
+          "question_id": "q_quiz_ma_function_v1",
+          "stem": "在Excel中，要计算一组收盘价的7日简单移动平均线，应该使用哪个函数？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 15,
+          "explanation": "移动平均线通常基于收盘价计算。",
+          "options": [
+            "开盘价（Open）",
+            "最高价（High）",
+            "最低价（Low）",
+            "收盘价（Close）"
+          ],
+          "question_id": "q_quiz_ma_function_v2",
+          "stem": "在Excel中，要计算MA(14)，AVERAGE函数应该引用哪一列数据？"
+        }
+      ]
+    },
+    {
+      "concept_key": "excel_signal_identification",
+      "coverage_tags": [
+        "excel_ma_cross_steps",
+        "excel_signal_identification"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_signal_identification",
+      "learning_goal": "学生能在测验情境下正确识别黄金交叉和死亡交叉的条件。",
+      "linked_steps": [
+        "step5"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "黄金交叉",
+          "en": "Golden Cross"
+        },
+        {
+          "display": "死亡交叉",
+          "en": "Death Cross"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "MA(7)上穿MA(14)是黄金交叉，产生买入信号。",
+          "options": [
+            "MA(7) > MA(14) 且 MA(7)前一天 < MA(14)前一天",
+            "MA(7) < MA(14) 且 MA(7)前一天 > MA(14)前一天",
+            "MA(7) > MA(14) 且 MA(7)前一天 > MA(14)前一天",
+            "MA(7) < MA(14) 且 MA(7)前一天 < MA(14)前一天"
+          ],
+          "question_id": "q_quiz_signal_identification_v1",
+          "stem": "在Excel的MA交叉策略中，以下哪种情况会产生买入信号（标记为1）？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "MA(7)下穿MA(14)是死亡交叉，产生卖出信号。",
+          "options": [
+            "MA(7) > MA(14) 且 MA(7)前一天 < MA(14)前一天",
+            "MA(7) < MA(14) 且 MA(7)前一天 > MA(14)前一天",
+            "MA(7) > MA(14) 且 MA(7)前一天 > MA(14)前一天",
+            "MA(7) < MA(14) 且 MA(7)前一天 < MA(14)前一天"
+          ],
+          "question_id": "q_quiz_signal_identification_v2",
+          "stem": "在Excel的MA交叉策略中，以下哪种情况会产生卖出信号（标记为-1）？"
+        }
+      ]
+    },
+    {
+      "concept_key": "excel_position_calculation",
+      "coverage_tags": [
+        "excel_ma_cross_steps",
+        "excel_position_calculation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_position_logic",
+      "learning_goal": "学生能在测验情境下正确推导出在给定信号和持仓状态下的新持仓。",
+      "linked_steps": [
+        "step5"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "持仓",
+          "en": "Position"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "空仓时出现买入信号，持仓变为1。",
+          "options": [
+            "0",
+            "1",
+            "-1",
+            "无法确定"
+          ],
+          "question_id": "q_quiz_position_logic_v1",
+          "stem": "在Excel的MA交叉策略中，如果前一天的持仓为0，当天的信号为1，那么当天的持仓应该是多少？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "持仓为1时出现卖出信号，持仓变为0。",
+          "options": [
+            "0",
+            "1",
+            "-1",
+            "无法确定"
+          ],
+          "question_id": "q_quiz_position_logic_v2",
+          "stem": "在Excel的MA交叉策略中，如果前一天的持仓为1，当天的信号为-1，那么当天的持仓应该是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "excel_daily_pnl_calculation",
+      "coverage_tags": [
+        "excel_ma_cross_steps",
+        "excel_daily_pnl_calculation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_pnl_calc",
+      "learning_goal": "学生能在测验情境下正确计算每日盈亏。",
+      "linked_steps": [
+        "step5"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "每日盈亏",
+          "en": "Daily PnL"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "每日盈亏 = 持仓 * (今日收盘价 - 昨日收盘价) = 1 * (102 - 100) = 2。",
+          "options": [
+            "-2",
+            "0",
+            "2",
+            "102"
+          ],
+          "question_id": "q_quiz_pnl_calc_v1",
+          "stem": "在Excel的MA交叉策略中，如果当天的持仓为1，昨天的收盘价是100，今天的收盘价是102，那么当天的每日盈亏是多少？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "每日盈亏 = 持仓 * (今日收盘价 - 昨日收盘价) = 0 * (102 - 100) = 0。",
+          "options": [
+            "-2",
+            "0",
+            "2",
+            "102"
+          ],
+          "question_id": "q_quiz_pnl_calc_v2",
+          "stem": "在Excel的MA交叉策略中，如果当天的持仓为0，昨天的收盘价是100，今天的收盘价是102，那么当天的每日盈亏是多少？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "L3: Building backtest framework and rule-based trading strategy - Implement an MA Cross Strategy on Excel",
+    "guided_story_manifest": "pipeline/3-guided_story/L3/manifest.json",
+    "lesson_map": "L3 step5: 用Excel实现MA交叉策略",
+    "plain_text": "pipeline/1-plain/L3/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "L3: Building backtest framework and rule-based trading strategy - Implement an MA Cross Strategy on Excel"
+  },
+  "target_language": "zh-CN"
+}

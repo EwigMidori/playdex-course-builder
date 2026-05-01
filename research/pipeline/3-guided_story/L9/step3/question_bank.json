@@ -1,0 +1,634 @@
+{
+  "coverage_map": [
+    {
+      "coverage_tag": "optimal_vs_robust",
+      "covered_by": [
+        "qf_flash_optimal_vs_robust",
+        "qf_quiz_optimal_vs_robust",
+        "qf_long_robust_choice"
+      ],
+      "description": "最优解与稳健解的核心区别：回测表现 vs 实盘稳定性"
+    },
+    {
+      "coverage_tag": "overfitting_definition",
+      "covered_by": [
+        "qf_flash_overfitting",
+        "qf_quiz_overfitting"
+      ],
+      "description": "过拟合的定义及其在策略优化中的危害"
+    },
+    {
+      "coverage_tag": "robust_solution_definition",
+      "covered_by": [
+        "qf_flash_robust_solution",
+        "qf_quiz_robust_solution"
+      ],
+      "description": "稳健解的定义及其在不同市场环境下的表现"
+    },
+    {
+      "coverage_tag": "parameter_sensitivity_analysis",
+      "covered_by": [
+        "qf_flash_parameter_sensitivity",
+        "qf_quiz_parameter_sensitivity"
+      ],
+      "description": "参数敏感性分析：测试参数变化对性能的影响，识别稳定区域"
+    },
+    {
+      "coverage_tag": "walk_forward_validation",
+      "covered_by": [
+        "qf_flash_walk_forward",
+        "qf_quiz_walk_forward",
+        "qf_long_walk_forward_example"
+      ],
+      "description": "滚动窗口验证：将数据分段，选择在各段表现一致的参数"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "optimal_vs_robust",
+      "coverage_tags": [
+        "optimal_vs_robust"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_optimal_vs_robust",
+      "learning_goal": "学生能准确区分最优解和稳健解在回测与实盘中的表现差异。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "core_difference",
+      "retrieval_focus": "最优解和稳健解在回测表现和实盘稳定性上的核心差异。",
+      "term_refs": [
+        {
+          "display": "最优解",
+          "en": "Optimal Solution"
+        },
+        {
+          "display": "稳健解",
+          "en": "Robust Solution"
+        }
+      ],
+      "variants": [
+        {
+          "back": "回测表现很好，但容易过拟合，在实盘中失效。",
+          "estimated_seconds": 8,
+          "explanation": "最优解过度拟合了历史数据中的噪音，导致在新数据上表现不佳。",
+          "front": "在策略优化中，最优解在回测中表现如何？在实盘中又可能面临什么问题？",
+          "question_id": "q_flash_optimal_vs_robust_v1"
+        },
+        {
+          "back": "回测收益不是最高，但在不同市场环境下都能稳定表现。",
+          "estimated_seconds": 8,
+          "explanation": "稳健解牺牲了部分回测收益，换取了实盘中的稳定性和抗风险能力。",
+          "front": "稳健解在回测中的表现通常如何？它在实盘中的优势是什么？",
+          "question_id": "q_flash_optimal_vs_robust_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "overfitting",
+      "coverage_tags": [
+        "overfitting_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_overfitting",
+      "learning_goal": "学生能定义过拟合，并理解其在策略优化中的危害。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "definition_with_example",
+      "retrieval_focus": "过拟合的定义及其导致策略实盘失效的原因。",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "模型在历史数据上表现完美，但在新数据（实盘）上表现很差的现象。",
+          "estimated_seconds": 8,
+          "explanation": "过拟合的策略学到了历史噪音而非真实规律，因此无法适应未来市场变化。",
+          "front": "什么是策略优化中的过拟合？",
+          "question_id": "q_flash_overfitting_v1"
+        },
+        {
+          "back": "因为它学到的只是历史噪音，而不是真正的市场规律。",
+          "estimated_seconds": 6,
+          "explanation": "历史噪音是随机波动，不具备预测性，因此策略在实盘中无法复制回测表现。",
+          "front": "过拟合的策略在实盘中为什么会失效？",
+          "question_id": "q_flash_overfitting_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "robust_solution",
+      "coverage_tags": [
+        "robust_solution_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_robust_solution",
+      "learning_goal": "学生能定义稳健解，并理解其相对于最优解的价值。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "definition_with_example",
+      "retrieval_focus": "稳健解的定义及其核心优势。",
+      "term_refs": [
+        {
+          "display": "稳健解",
+          "en": "Robust Solution"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在不同市场环境下都能保持稳定表现的参数组合。",
+          "estimated_seconds": 8,
+          "explanation": "稳健解不追求回测收益最大化，而是追求实盘表现的稳定性和可靠性。",
+          "front": "什么是策略优化中的稳健解？",
+          "question_id": "q_flash_robust_solution_v1"
+        },
+        {
+          "back": "在不同市场条件下表现更稳定，实盘失效风险更低。",
+          "estimated_seconds": 8,
+          "explanation": "稳健解通过牺牲部分回测收益，换取了更强的泛化能力和抗风险能力。",
+          "front": "与最优解相比，稳健解的主要优势是什么？",
+          "question_id": "q_flash_robust_solution_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "parameter_sensitivity_analysis",
+      "coverage_tags": [
+        "parameter_sensitivity_analysis"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_parameter_sensitivity",
+      "learning_goal": "学生能解释参数敏感性分析的目的和做法。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "参数敏感性分析的目的：评估参数变化对性能的影响，识别稳定区域。",
+      "term_refs": [
+        {
+          "display": "参数敏感性分析",
+          "en": "Parameter Sensitivity Analysis"
+        }
+      ],
+      "variants": [
+        {
+          "back": "评估策略性能如何随参数变化，并识别出能产生一致结果的稳定参数区域。",
+          "estimated_seconds": 10,
+          "explanation": "通过观察参数微调时性能的波动情况，可以判断策略是否对参数选择过于敏感。",
+          "front": "选择稳健策略时，进行参数敏感性分析的目的是什么？",
+          "question_id": "q_flash_parameter_sensitivity_v1"
+        },
+        {
+          "back": "在一系列参数值上都能产生一致结果的参数范围。",
+          "estimated_seconds": 8,
+          "explanation": "稳定区域内的参数对微调不敏感，表明策略更稳健。",
+          "front": "在参数敏感性分析中，我们寻找的“稳定区域”是指什么？",
+          "question_id": "q_flash_parameter_sensitivity_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "walk_forward_validation",
+      "coverage_tags": [
+        "walk_forward_validation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_walk_forward",
+      "learning_goal": "学生能描述滚动窗口验证的基本步骤和目的。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_answer",
+      "retrieval_focus": "滚动窗口验证的核心步骤：将数据分段，选择在各段表现一致的参数。",
+      "term_refs": [
+        {
+          "display": "滚动窗口验证",
+          "en": "Walk-Forward Validation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "选择在多个数据子集上都能取得中等以上且稳定表现的参数组合。",
+          "estimated_seconds": 10,
+          "explanation": "不是选择在某一段表现最好的参数，而是选择在所有段都表现不错的参数，以确保稳健性。",
+          "front": "滚动窗口验证中，如何选择最终的参数组合？",
+          "question_id": "q_flash_walk_forward_v1"
+        },
+        {
+          "back": "将5年数据分成5份，每份1年，然后分别测试参数组合在各年份的表现。",
+          "estimated_seconds": 8,
+          "explanation": "这是课程中给出的例子，目的是检验参数在不同市场周期下的表现一致性。",
+          "front": "假设你有5年数据，使用滚动窗口验证时，通常如何划分数据？",
+          "question_id": "q_flash_walk_forward_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L9",
+  "longform_families": [
+    {
+      "concept_key": "optimal_vs_robust",
+      "coverage_tags": [
+        "optimal_vs_robust",
+        "overfitting_definition",
+        "robust_solution_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_robust_choice",
+      "learning_goal": "学生能解释为什么在实盘交易中稳健解通常优于最优解，并阐述过拟合的风险。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "最优解",
+          "en": "Optimal Solution"
+        },
+        {
+          "display": "稳健解",
+          "en": "Robust Solution"
+        },
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "定义最优解和稳健解",
+            "解释过拟合及其危害",
+            "说明稳健解如何降低过拟合风险"
+          ],
+          "question_id": "q_long_robust_choice_v1",
+          "reference_answer": [
+            "最优解是在历史回测中表现最好的参数组合，但它容易过拟合，即过度学习了历史数据中的噪音而非真实规律。",
+            "过拟合的策略在实盘新数据上会表现很差，因为噪音不具有预测性。",
+            "稳健解虽然回测收益不是最高，但它对参数变化不敏感，在不同市场环境下表现稳定。",
+            "因此，稳健解降低了实盘失效的风险，是更可靠的选择。"
+          ],
+          "rubric_points": [
+            "准确区分最优解和稳健解（2分）",
+            "正确解释过拟合的定义（2分）",
+            "阐述过拟合导致最优解实盘失效的原因（2分）",
+            "说明稳健解通过牺牲部分回测收益换取实盘稳定性的逻辑（2分）",
+            "逻辑清晰，表述完整（2分）"
+          ],
+          "stem": "请解释为什么在实盘交易中，一个稳健解通常比一个在回测中表现最好的最优解更受青睐。你的回答应包含对过拟合的解释。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "指出A组和B组分别对应最优解还是稳健解",
+            "解释参数敏感性分析的结果意味着什么",
+            "结合过拟合风险说明选择理由"
+          ],
+          "question_id": "q_long_robust_choice_v2",
+          "reference_answer": [
+            "A组是回测中的最优解，B组是稳健解。",
+            "A组对参数微调非常敏感，说明它可能过拟合了历史数据中的特定模式，实盘风险高。",
+            "B组对参数变化不敏感，表明其在不同市场条件下表现更稳定，是更稳健的选择。",
+            "因此，我会选择B组进行实盘，因为它虽然牺牲了部分回测收益，但大大降低了实盘失效的风险。"
+          ],
+          "rubric_points": [
+            "正确识别A组为最优解，B组为稳健解（2分）",
+            "解释A组参数敏感意味着过拟合风险高（2分）",
+            "解释B组参数稳定意味着更稳健，实盘失效风险低（2分）",
+            "做出选择并给出合理理由（2分）",
+            "逻辑清晰，表述完整（2分）"
+          ],
+          "stem": "假设你优化一个移动平均线交叉策略，得到了两组参数：A组（快线10，慢线50）回测年化收益35%，B组（快线20，慢线100）回测年化收益22%。但参数敏感性分析显示，A组收益对参数微调非常敏感，而B组则相对稳定。你会选择哪组参数实盘？请结合最优解、稳健解和过拟合的概念说明理由。"
+        }
+      ]
+    },
+    {
+      "concept_key": "walk_forward_validation",
+      "coverage_tags": [
+        "walk_forward_validation",
+        "parameter_sensitivity_analysis"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_walk_forward_example",
+      "learning_goal": "学生能描述滚动窗口验证的步骤，并解释其如何帮助选择稳健解。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "滚动窗口验证",
+          "en": "Walk-Forward Validation"
+        },
+        {
+          "display": "参数敏感性分析",
+          "en": "Parameter Sensitivity Analysis"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "描述滚动窗口验证的步骤（数据划分、滚动测试）",
+            "解释如何根据各段结果选择参数",
+            "说明该方法如何降低过拟合风险"
+          ],
+          "question_id": "q_long_walk_forward_example_v1",
+          "reference_answer": [
+            "滚动窗口验证的步骤：首先将历史数据（如5年）分成多个连续的子集（如5个1年段）。然后，对每个参数组合，分别计算其在每个子集上的表现。",
+            "选择参数时，不是选择在某个子集上表现最好的，而是选择在所有子集上都表现中等以上且收益波动最小的参数组合。",
+            "这种方法通过在不同市场周期（如牛市、熊市、震荡市）上测试策略，可以检验其是否具有普适性。",
+            "如果一个参数只在特定年份表现好，而在其他年份表现差，它很可能是过拟合的。滚动窗口验证能有效识别并排除这类参数，从而引导我们选择更稳健的解。"
+          ],
+          "rubric_points": [
+            "正确描述数据划分和滚动测试的过程（3分）",
+            "解释选择在各段表现一致的参数而非单段最优参数（3分）",
+            "说明该方法通过在不同市场周期验证，降低了选择过拟合参数的风险（2分）",
+            "逻辑清晰，表述完整（2分）"
+          ],
+          "stem": "描述滚动窗口验证（Walk-Forward Validation）的基本步骤，并解释它为什么能帮助交易者选择一个更稳健的策略参数组合，而不是一个可能过拟合的最优解。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "设计数据划分方案",
+            "描述测试流程",
+            "说明参数选择标准"
+          ],
+          "question_id": "q_long_walk_forward_example_v2",
+          "reference_answer": [
+            "我会将5年数据按年份分成5个独立的子集：Year1, Year2, ..., Year5。",
+            "对于每一个候选的参数组合，我会分别在Year1到Year5上运行回测，记录每年的收益、夏普比率等关键指标。",
+            "然后，我会分析每个参数组合在5年中的表现：计算平均收益和收益的标准差。",
+            "最终，我会选择平均收益尚可（不一定是最高）且收益标准差最小的参数组合。这样的组合在历史上表现最稳定，最有可能在未来也保持稳健。"
+          ],
+          "rubric_points": [
+            "设计合理的数据划分方案（如5个1年段）（2分）",
+            "描述对每个参数组合在所有段上进行测试的流程（3分）",
+            "解释选择在各段表现稳定且中等以上的参数组合（3分）",
+            "逻辑清晰，表述完整（2分）"
+          ],
+          "stem": "假设你有一个5年的数据集，你想使用滚动窗口验证来优化一个策略的两个参数。请详细说明你将如何设计这个验证过程，以及你将如何根据结果选择最终的参数组合。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "optimal_vs_robust",
+      "coverage_tags": [
+        "optimal_vs_robust"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_optimal_vs_robust",
+      "learning_goal": "学生能在具体场景中判断应选择最优解还是稳健解。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "最优解",
+          "en": "Optimal Solution"
+        },
+        {
+          "display": "稳健解",
+          "en": "Robust Solution"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 30,
+          "explanation": "参数敏感的最优解容易过拟合，实盘风险高。应选择对参数变化不敏感的稳健解，以确保实盘表现稳定。",
+          "options": [
+            "直接部署该最优参数，因为回测收益最高",
+            "寻找一个在参数微调时收益变化更小的稳健参数组合",
+            "增加参数数量，以进一步提高回测收益",
+            "放弃该策略，因为参数敏感意味着策略无效"
+          ],
+          "question_id": "q_quiz_optimal_vs_robust_v1",
+          "stem": "一个量化策略在回测中获得了最高的年化收益，但参数敏感性分析显示，参数微调会导致收益大幅波动。在实盘部署时，最合理的做法是："
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "稳健解牺牲了部分回测收益，以换取在不同市场环境下的稳定表现，从而降低了实盘失效的风险。",
+          "options": [
+            "最优解在实盘中一定比稳健解表现更好",
+            "稳健解在回测中的收益通常低于最优解，但在实盘中更可靠",
+            "最优解和稳健解在实盘中的表现没有区别",
+            "稳健解意味着策略参数是固定不变的"
+          ],
+          "question_id": "q_quiz_optimal_vs_robust_v2",
+          "stem": "以下关于最优解和稳健解的描述，哪一项是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "overfitting",
+      "coverage_tags": [
+        "overfitting_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_overfitting",
+      "learning_goal": "学生能识别过拟合的迹象及其后果。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "回测表现极好但实盘表现急剧恶化，是过拟合的典型特征。策略过度适应了历史数据中的噪音。",
+          "options": [
+            "市场风格发生了根本性变化",
+            "策略存在过拟合，学到了历史噪音而非真实规律",
+            "交易成本计算错误",
+            "实盘数据质量不如回测数据"
+          ],
+          "question_id": "q_quiz_overfitting_v1",
+          "stem": "一个策略在3年历史回测中年化收益达到45%，但在随后1年的实盘测试中亏损10%。最可能的原因是："
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "在大量参数组合中反复回测并选择历史表现最好的，很容易找到恰好拟合历史噪音的参数，导致过拟合。",
+          "options": [
+            "使用较少的优化参数",
+            "在优化时使用滚动窗口验证",
+            "在大量参数组合中反复回测，选择历史表现最好的那一个",
+            "优先选择稳健解而非最优解"
+          ],
+          "question_id": "q_quiz_overfitting_v2",
+          "stem": "以下哪种做法最有可能导致策略过拟合？"
+        }
+      ]
+    },
+    {
+      "concept_key": "robust_solution",
+      "coverage_tags": [
+        "robust_solution_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_robust_solution",
+      "learning_goal": "学生能理解稳健解的特征和选择理由。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "稳健解",
+          "en": "Robust Solution"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "回测收益最高是最优解的特征，而非稳健解。稳健解可能牺牲部分收益以换取稳定性。",
+          "options": [
+            "在不同市场环境下表现稳定",
+            "回测收益在所有参数组合中最高",
+            "对参数微调不敏感",
+            "在滚动窗口验证的各段数据上表现一致"
+          ],
+          "question_id": "q_quiz_robust_solution_v1",
+          "stem": "在选择稳健策略时，以下哪一项不是稳健解的特征？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "稳健解的核心优势在于其泛化能力和稳定性，能有效降低因过拟合导致的实盘失效风险。",
+          "options": [
+            "因为稳健解的计算速度更快",
+            "因为稳健解能保证在任何市场条件下都盈利",
+            "因为稳健解降低了过拟合风险，在不同市场条件下表现更稳定",
+            "因为稳健解需要的参数更少"
+          ],
+          "question_id": "q_quiz_robust_solution_v2",
+          "stem": "为什么在实盘交易中，稳健解通常比最优解更受青睐？"
+        }
+      ]
+    },
+    {
+      "concept_key": "parameter_sensitivity_analysis",
+      "coverage_tags": [
+        "parameter_sensitivity_analysis"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_parameter_sensitivity",
+      "learning_goal": "学生能理解参数敏感性分析在评估策略稳健性中的作用。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "参数敏感性分析",
+          "en": "Parameter Sensitivity Analysis"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "收益对参数微调过于敏感，说明策略可能过拟合了特定参数值，不是一个稳健的策略。",
+          "options": [
+            "策略非常稳健，因为收益对参数变化敏感",
+            "策略可能不稳健，因为收益对参数微调过于敏感",
+            "参数 (11, 51) 是更好的选择",
+            "需要增加更多参数来稳定收益"
+          ],
+          "question_id": "q_quiz_parameter_sensitivity_v1",
+          "stem": "一个策略在参数 (10, 50) 时年化收益为20%，当参数微调为 (11, 51) 时，年化收益骤降至5%。这个现象说明："
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "参数敏感性分析旨在评估策略对参数变化的敏感程度，并找出能产生稳定结果的参数区域，这是选择稳健解的关键步骤。",
+          "options": [
+            "找到使回测收益最高的精确参数值",
+            "评估策略性能如何随参数变化，并识别稳定区域",
+            "减少策略中的参数数量",
+            "计算所有参数组合的平均收益"
+          ],
+          "question_id": "q_quiz_parameter_sensitivity_v2",
+          "stem": "参数敏感性分析的主要目的是："
+        }
+      ]
+    },
+    {
+      "concept_key": "walk_forward_validation",
+      "coverage_tags": [
+        "walk_forward_validation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_walk_forward",
+      "learning_goal": "学生能理解滚动窗口验证的原理和目的。",
+      "linked_steps": [
+        "step3"
+      ],
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "滚动窗口验证",
+          "en": "Walk-Forward Validation"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 3,
+          "estimated_seconds": 25,
+          "explanation": "稳健解要求在不同市场环境下表现一致。选择每年都表现不错且波动小的参数，能更好地应对未来未知的市场状况。",
+          "options": [
+            "选择在第1年表现最好的参数",
+            "选择在第5年表现最好的参数",
+            "选择在5年中平均收益最高的参数",
+            "选择在5年中每年都表现中等以上且收益波动最小的参数"
+          ],
+          "question_id": "q_quiz_walk_forward_v1",
+          "stem": "在滚动窗口验证中，将5年数据分成5份，每份1年。以下哪种参数选择策略最符合稳健性原则？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "滚动窗口验证通过在不同时间段上测试策略，可以评估其在不同市场环境下的表现一致性，从而更有效地识别过拟合和选择稳健解。",
+          "options": [
+            "计算速度更快",
+            "能更好地检验策略在不同市场周期下的稳健性",
+            "总能找到收益更高的参数组合",
+            "不需要定义优化目标"
+          ],
+          "question_id": "q_quiz_walk_forward_v2",
+          "stem": "滚动窗口验证与仅在全部历史数据上做一次回测相比，主要优势是什么？"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "coverage_checklist": "L9 coverage checklist (step3 focus: optimal vs robust solution, overfitting, parameter sensitivity, walk-forward validation)",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "L9 lesson map (step3: 最优解 vs 稳健解：为什么稳健更重要)",
+    "plain_text": "pipeline/1-plain/L9/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "L9 source outline (step3 focus: Optimal vs Robust Solution)"
+  },
+  "target_language": "zh-CN"
+}

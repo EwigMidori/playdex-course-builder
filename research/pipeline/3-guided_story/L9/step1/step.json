@@ -1,0 +1,106 @@
+{
+  "lesson_id": "L9",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "一个策略在回测里表现很好，",
+        "但一到实盘就失效，问题出在哪？"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "strategy_optimization"
+      ],
+      "lines": [
+        "很可能是因为参数没有经过优化。",
+        "**<term id=\"strategy_optimization\">策略优化</term>** 就是调整参数的过程。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "目标是让策略在历史数据上表现更好，",
+        "比如提高总收益或降低风险。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "introduced_terms": [
+        "sharpe_ratio",
+        "max_drawdown"
+      ],
+      "lines": [
+        "常见的优化目标有：",
+        "最大化年化收益、最大化 <term id=\"sharpe_ratio\">夏普比率</term>、最小化 <term id=\"max_drawdown\">最大回撤</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "也可以自定义目标函数，",
+        "比如把胜率、交易次数和风险都考虑进去。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "首先要明确你想优化什么，比如最大化收益还是最小化回撤，这就是定义优化目标。",
+        "kind": "single_choice",
+        "options": [
+          "运行回测",
+          "定义优化目标",
+          "选择参数范围",
+          "部署到实盘"
+        ],
+        "prompt": "策略优化的第一步是什么？"
+      },
+      "id": "s006",
+      "lines": [
+        "策略优化的第一步是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Strategy optimization involves fine-tuning trading algorithms to maximize performance metrics like returns, Sharpe ratio, etc. Helps in improving trading strategies based on historical data, leading to better decision-making in live trading.",
+    "related": [
+      "COMP7415 L9"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "max_drawdown": {
+      "aliases": [
+        "Max Drawdown"
+      ],
+      "display": "最大回撤",
+      "gloss": "从峰值到谷底的最大亏损幅度。"
+    },
+    "sharpe_ratio": {
+      "aliases": [
+        "Sharpe Ratio"
+      ],
+      "display": "夏普比率",
+      "gloss": "衡量每单位风险能获得多少超额回报的指标。"
+    },
+    "strategy_optimization": {
+      "aliases": [
+        "Strategy Optimization"
+      ],
+      "display": "策略优化",
+      "gloss": "调整交易算法的参数，以最大化收益、夏普比率等绩效指标的过程。"
+    }
+  }
+}

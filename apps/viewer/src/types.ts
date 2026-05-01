@@ -1,4 +1,5 @@
 export type LessonId = "L1" | "L2";
+export type DataMode = "real" | "stress";
 export type AssetView = "overview" | "textbook" | "story" | "questions" | "relevance";
 
 export type LessonOption = {

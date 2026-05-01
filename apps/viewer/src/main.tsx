@@ -4,17 +4,11 @@ import ReactMarkdown from "react-markdown";
 import { useAtom } from "jotai";
 import remarkGfm from "remark-gfm";
 import { mdxToMarkdownPreview, type MdxPreviewIndex } from "./mdxPreview";
-import {
-  fetchText,
-  loadManifest,
-  loadQuestionBank,
-  loadRelevance,
-  loadStep,
-  textbookPath
-} from "./data";
-import { lessons, selectedAssetViewAtom, selectedLessonAtom, selectedStepAtom } from "./state";
+import { loadManifest, loadQuestionBank, loadRelevance, loadStep, loadTextbook, textbookPath } from "./data";
+import { lessons, selectedAssetViewAtom, selectedDataModeAtom, selectedLessonAtom, selectedStepAtom } from "./state";
 import type {
   AssetView,
+  DataMode,
   LessonId,
   LessonOption,
   QuestionBank,
@@ -36,12 +30,12 @@ type AsyncState<T> = {
 
 const emptyState = <T,>(): AsyncState<T> => ({ loading: true, data: null, error: null });
 
-function useTextbook(lessonId: LessonId) {
+function useTextbook(lessonId: LessonId, mode: DataMode) {
   const [state, setState] = React.useState<AsyncState<string>>(emptyState);
   React.useEffect(() => {
     let alive = true;
     setState(emptyState());
-    fetchText(textbookPath(lessonId)).then((result) => {
+    loadTextbook(lessonId, mode).then((result) => {
       if (alive) {
         setState({ loading: false, data: result.data, error: result.error, path: result.path });
       }
@@ -49,11 +43,11 @@ function useTextbook(lessonId: LessonId) {
     return () => {
       alive = false;
     };
-  }, [lessonId]);
+  }, [lessonId, mode]);
   return state;
 }
 
-function useStoryData(lessonId: LessonId, stepId: string) {
+function useStoryData(lessonId: LessonId, stepId: string, mode: DataMode) {
   const lesson = lessons.find((item) => item.id === lessonId);
   const [manifest, setManifest] = React.useState<AsyncState<StoryManifest>>(emptyState);
   const [step, setStep] = React.useState<AsyncState<StoryStep>>(emptyState);
@@ -62,7 +56,7 @@ function useStoryData(lessonId: LessonId, stepId: string) {
   React.useEffect(() => {
     let alive = true;
     setManifest(emptyState());
-    loadManifest(lessonId, lesson?.legacySteps).then((result) => {
+    loadManifest(lessonId, lesson?.legacySteps, mode).then((result) => {
       if (alive) {
         setManifest({ loading: false, data: result.data, error: result.error, path: result.path });
       }
@@ -70,13 +64,13 @@ function useStoryData(lessonId: LessonId, stepId: string) {
     return () => {
       alive = false;
     };
-  }, [lesson?.legacySteps, lessonId]);
+  }, [lesson?.legacySteps, lessonId, mode]);
 
   React.useEffect(() => {
     let alive = true;
     setStep(emptyState());
     setBank(emptyState());
-    Promise.all([loadStep(lessonId, stepId), loadQuestionBank(lessonId, stepId)]).then(([stepResult, bankResult]) => {
+    Promise.all([loadStep(lessonId, stepId, mode), loadQuestionBank(lessonId, stepId, mode)]).then(([stepResult, bankResult]) => {
       if (alive) {
         setStep({ loading: false, data: stepResult.data, error: stepResult.error, path: stepResult.path });
         setBank({ loading: false, data: bankResult.data, error: bankResult.error, path: bankResult.path });
@@ -85,17 +79,17 @@ function useStoryData(lessonId: LessonId, stepId: string) {
     return () => {
       alive = false;
     };
-  }, [lessonId, stepId]);
+  }, [lessonId, stepId, mode]);
 
   return { manifest, step, bank };
 }
 
-function useRelevance(lessonId: LessonId) {
+function useRelevance(lessonId: LessonId, mode: DataMode) {
   const [state, setState] = React.useState<AsyncState<RelevanceReport>>(emptyState);
   React.useEffect(() => {
     let alive = true;
     setState(emptyState());
-    loadRelevance(lessonId).then((result) => {
+    loadRelevance(lessonId, mode).then((result) => {
       if (alive) {
         setState({ loading: false, data: result.data, error: result.error, path: result.path });
       }
@@ -103,11 +97,11 @@ function useRelevance(lessonId: LessonId) {
     return () => {
       alive = false;
     };
-  }, [lessonId]);
+  }, [lessonId, mode]);
   return state;
 }
 
-function useQuestionIndex(lessonId: LessonId) {
+function useQuestionIndex(lessonId: LessonId, mode: DataMode) {
   const lesson = lessons.find((item) => item.id === lessonId);
   const [state, setState] = React.useState<AsyncState<MdxPreviewIndex>>(emptyState);
 
@@ -115,10 +109,10 @@ function useQuestionIndex(lessonId: LessonId) {
     let alive = true;
     setState(emptyState());
 
-    loadManifest(lessonId, lesson?.legacySteps).then(async (manifest) => {
+    loadManifest(lessonId, lesson?.legacySteps, mode).then(async (manifest) => {
       const steps = manifest.data?.steps ?? [{ sequence_id: lesson?.defaultStep ?? "step1" }];
       const banks = await Promise.all(
-        steps.map((step) => loadQuestionBank(lessonId, step.sequence_id ?? lesson?.defaultStep ?? "step1"))
+        steps.map((step) => loadQuestionBank(lessonId, step.sequence_id ?? lesson?.defaultStep ?? "step1", mode))
       );
       const families = new Map<string, QuestionFamily>();
       const questions = new Map<string, { family: QuestionFamily; variant: NonNullable<QuestionFamily["variants"]>[number] }>();
@@ -153,7 +147,7 @@ function useQuestionIndex(lessonId: LessonId) {
     return () => {
       alive = false;
     };
-  }, [lesson?.defaultStep, lesson?.legacySteps, lessonId]);
+  }, [lesson?.defaultStep, lesson?.legacySteps, lessonId, mode]);
 
   return state;
 }
@@ -162,7 +156,8 @@ function App() {
   const [lessonId, setLessonId] = useAtom(selectedLessonAtom);
   const [assetView, setAssetView] = useAtom(selectedAssetViewAtom);
   const [selectedStep, setSelectedStep] = useAtom(selectedStepAtom);
-  const relevance = useRelevance(lessonId);
+  const [dataMode, setDataMode] = useAtom(selectedDataModeAtom);
+  const relevance = useRelevance(lessonId, dataMode);
   const currentLesson = lessons.find((lesson) => lesson.id === lessonId) ?? lessons[0];
 
   const changeLesson = (nextLesson: LessonId) => {
@@ -182,6 +177,7 @@ function App() {
           <div className="ml-auto flex flex-wrap gap-2 text-xs">
             <Badge label={currentLesson.courseLabel} />
             <Badge label={`${currentLesson.lectureLabel} / ${currentLesson.id}`} />
+            <DataModeToggle mode={dataMode} onChange={setDataMode} />
             <RelevanceBadge report={relevance.data} sequenceId={selectedStep} />
           </div>
         </div>
@@ -193,17 +189,20 @@ function App() {
           lessonId={lessonId}
           onAssetViewChange={setAssetView}
           onLessonChange={changeLesson}
+          dataMode={dataMode}
+          onDataModeChange={setDataMode}
         />
         <div className="min-w-0">
           {assetView === "overview" ? (
-            <OverviewView currentLesson={currentLesson} lessonId={lessonId} relevance={relevance} />
+            <OverviewView currentLesson={currentLesson} lessonId={lessonId} dataMode={dataMode} relevance={relevance} />
           ) : null}
-          {assetView === "textbook" ? <TextbookView lessonId={lessonId} relevance={relevance.data} /> : null}
+          {assetView === "textbook" ? <TextbookView lessonId={lessonId} mode={dataMode} relevance={relevance.data} /> : null}
           {assetView === "story" ? (
             <StoryView
               lessonId={lessonId}
               selectedStep={selectedStep}
               setSelectedStep={setSelectedStep}
+              mode={dataMode}
               relevance={relevance.data}
             />
           ) : null}
@@ -213,6 +212,7 @@ function App() {
               relevance={relevance.data}
               selectedStep={selectedStep}
               setSelectedStep={setSelectedStep}
+              mode={dataMode}
             />
           ) : null}
           {assetView === "relevance" ? <RelevanceView relevance={relevance} /> : null}
@@ -225,13 +225,17 @@ function App() {
 function WorkspaceNav({
   assetView,
   lessonId,
+  dataMode,
   onAssetViewChange,
-  onLessonChange
+  onLessonChange,
+  onDataModeChange
 }: {
   assetView: AssetView;
   lessonId: LessonId;
+  dataMode: DataMode;
   onAssetViewChange: (value: AssetView) => void;
   onLessonChange: (value: LessonId) => void;
+  onDataModeChange: (value: DataMode) => void;
 }) {
   const views: Array<{ value: AssetView; label: string; detail: string }> = [
     { value: "overview", label: "Overview", detail: "creator checklist" },
@@ -284,6 +288,9 @@ function WorkspaceNav({
           ))}
         </div>
       </Panel>
+      <Panel title="Data Mode" subtitle="toggle dataset density">
+        <DataModeToggleBlock mode={dataMode} onChange={onDataModeChange} />
+      </Panel>
     </aside>
   );
 }
@@ -291,10 +298,12 @@ function WorkspaceNav({
 function OverviewView({
   currentLesson,
   lessonId,
+  dataMode,
   relevance
 }: {
   currentLesson: LessonOption;
   lessonId: LessonId;
+  dataMode: DataMode;
   relevance: AsyncState<RelevanceReport>;
 }) {
   return (
@@ -308,6 +317,7 @@ function OverviewView({
           <div className="grid grid-cols-2 gap-2">
             <MetricCard label="lesson id" value={lessonId} />
             <MetricCard label="default step" value={currentLesson.defaultStep} />
+            <MetricCard label="data mode" value={dataMode} />
           </div>
           <Notice
             title="Authoring stance"
@@ -352,9 +362,50 @@ function FileLine({ path }: { path: string }) {
   return <div className="truncate rounded border border-stone-200 bg-white px-2 py-1 font-mono text-stone-700">{path}</div>;
 }
 
-function TextbookView({ lessonId, relevance }: { lessonId: LessonId; relevance: RelevanceReport | null }) {
-  const textbook = useTextbook(lessonId);
-  const questionIndex = useQuestionIndex(lessonId);
+function DataModeToggle({
+  mode,
+  onChange
+}: {
+  mode: DataMode;
+  onChange: (value: DataMode) => void;
+}) {
+  return (
+    <div className="inline-flex rounded border border-stone-300 bg-white p-0.5 text-[11px]">
+      {[
+        { value: "real" as const, label: "Real" },
+        { value: "stress" as const, label: "Stress" }
+      ].map((item) => (
+        <button
+          className={[
+            "rounded px-2 py-1 font-medium",
+            mode === item.value ? "bg-stone-950 text-white" : "text-stone-600 hover:text-stone-900"
+          ].join(" ")}
+          key={item.value}
+          onClick={() => onChange(item.value)}
+          type="button"
+        >
+          {item.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function DataModeToggleBlock({ mode, onChange }: { mode: DataMode; onChange: (value: DataMode) => void }) {
+  return (
+    <div className="space-y-2">
+      <DataModeToggle mode={mode} onChange={onChange} />
+      <p className="text-xs leading-5 text-stone-600">
+        Stress mode synthesizes 30-plus rows per list so you can test scrolling, density, and pagination behavior without
+        changing real pipeline artifacts.
+      </p>
+    </div>
+  );
+}
+
+function TextbookView({ lessonId, mode, relevance }: { lessonId: LessonId; mode: DataMode; relevance: RelevanceReport | null }) {
+  const textbook = useTextbook(lessonId, mode);
+  const questionIndex = useQuestionIndex(lessonId, mode);
   const preview = React.useMemo(
     () => (textbook.data ? mdxToMarkdownPreview(textbook.data, questionIndex.data ?? undefined) : ""),
     [questionIndex.data, textbook.data]
@@ -387,14 +438,16 @@ function StoryView({
   lessonId,
   selectedStep,
   setSelectedStep,
+  mode,
   relevance
 }: {
   lessonId: LessonId;
   selectedStep: string;
   setSelectedStep: (step: string) => void;
+  mode: DataMode;
   relevance: RelevanceReport | null;
 }) {
-  const { manifest, step, bank } = useStoryData(lessonId, selectedStep);
+  const { manifest, step, bank } = useStoryData(lessonId, selectedStep, mode);
   const steps = manifest.data?.steps ?? [];
 
   React.useEffect(() => {
@@ -566,14 +619,16 @@ function QuestionsView({
   lessonId,
   relevance,
   selectedStep,
-  setSelectedStep
+  setSelectedStep,
+  mode
 }: {
   lessonId: LessonId;
   relevance: RelevanceReport | null;
   selectedStep: string;
   setSelectedStep: (step: string) => void;
+  mode: DataMode;
 }) {
-  const { manifest, bank } = useStoryData(lessonId, selectedStep);
+  const { manifest, bank } = useStoryData(lessonId, selectedStep, mode);
   const steps = manifest.data?.steps ?? [];
 
   return (

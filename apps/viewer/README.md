@@ -11,3 +11,4 @@ npm run build
 ```
 
 The default lesson is `L2`. `L1` is available with graceful fallback for the older guided story layout.
+Use the `Stress` data mode in the app to synthesize 30+ rows per list for scrolling and pagination testing.

@@ -149,5 +149,7 @@
       "display": "成交量加权平均价格",
       "gloss": "根据市场成交量比例执行订单，使成交价接近市场均价。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-8"
 }

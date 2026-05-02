@@ -6,16 +6,20 @@ import remarkGfm from "remark-gfm";
 import { MdxCoursePreview, type MdxCourseIndex } from "./mdxCoursePreview";
 import {
   fetchText,
+  loadCourseCatalog,
   loadManifest,
   loadQuestionBank,
   loadRelevance,
   loadStep,
+  manifestPath,
+  plainArtifactsDir,
+  relevancePath,
   textbookPath
 } from "./data";
-import { lessons, selectedAssetViewAtom, selectedLessonAtom, selectedStepAtom } from "./state";
+import { selectedAssetViewAtom, selectedLessonAtom, selectedStepAtom } from "./state";
 import type {
   AssetView,
-  LessonId,
+  CourseCatalog,
   LessonOption,
   QuestionBank,
   QuestionFamily,
@@ -36,12 +40,12 @@ type AsyncState<T> = {
 
 const emptyState = <T,>(): AsyncState<T> => ({ loading: true, data: null, error: null });
 
-function useTextbook(lessonId: LessonId) {
-  const [state, setState] = React.useState<AsyncState<string>>(emptyState);
+function useCourseCatalogState() {
+  const [state, setState] = React.useState<AsyncState<CourseCatalog>>(emptyState);
+
   React.useEffect(() => {
     let alive = true;
-    setState(emptyState());
-    fetchText(textbookPath(lessonId)).then((result) => {
+    loadCourseCatalog().then((result) => {
       if (alive) {
         setState({ loading: false, data: result.data, error: result.error, path: result.path });
       }
@@ -49,20 +53,45 @@ function useTextbook(lessonId: LessonId) {
     return () => {
       alive = false;
     };
-  }, [lessonId]);
+  }, []);
+
   return state;
 }
 
-function useStoryData(lessonId: LessonId, stepId: string) {
-  const lesson = lessons.find((item) => item.id === lessonId);
+function useTextbook(lesson: LessonOption | null) {
+  const [state, setState] = React.useState<AsyncState<string>>(emptyState);
+  React.useEffect(() => {
+    if (!lesson) {
+      setState({ loading: false, data: null, error: "No chapter selected.", path: undefined });
+      return;
+    }
+    let alive = true;
+    setState(emptyState());
+    fetchText(textbookPath(lesson)).then((result) => {
+      if (alive) {
+        setState({ loading: false, data: result.data, error: result.error, path: result.path });
+      }
+    });
+    return () => {
+      alive = false;
+    };
+  }, [lesson]);
+  return state;
+}
+
+function useStoryData(lesson: LessonOption | null, stepId: string) {
   const [manifest, setManifest] = React.useState<AsyncState<StoryManifest>>(emptyState);
   const [step, setStep] = React.useState<AsyncState<StoryStep>>(emptyState);
   const [bank, setBank] = React.useState<AsyncState<QuestionBank>>(emptyState);
 
   React.useEffect(() => {
+    if (!lesson) {
+      setManifest({ loading: false, data: null, error: "No chapter selected.", path: undefined });
+      return;
+    }
     let alive = true;
     setManifest(emptyState());
-    loadManifest(lessonId, lesson?.legacySteps).then((result) => {
+    loadManifest(lesson).then((result) => {
       if (alive) {
         setManifest({ loading: false, data: result.data, error: result.error, path: result.path });
       }
@@ -70,13 +99,18 @@ function useStoryData(lessonId: LessonId, stepId: string) {
     return () => {
       alive = false;
     };
-  }, [lesson?.legacySteps, lessonId]);
+  }, [lesson]);
 
   React.useEffect(() => {
+    if (!lesson) {
+      setStep({ loading: false, data: null, error: "No chapter selected.", path: undefined });
+      setBank({ loading: false, data: null, error: "No chapter selected.", path: undefined });
+      return;
+    }
     let alive = true;
     setStep(emptyState());
     setBank(emptyState());
-    Promise.all([loadStep(lessonId, stepId), loadQuestionBank(lessonId, stepId)]).then(([stepResult, bankResult]) => {
+    Promise.all([loadStep(lesson, stepId), loadQuestionBank(lesson, stepId)]).then(([stepResult, bankResult]) => {
       if (alive) {
         setStep({ loading: false, data: stepResult.data, error: stepResult.error, path: stepResult.path });
         setBank({ loading: false, data: bankResult.data, error: bankResult.error, path: bankResult.path });
@@ -85,17 +119,21 @@ function useStoryData(lessonId: LessonId, stepId: string) {
     return () => {
       alive = false;
     };
-  }, [lessonId, stepId]);
+  }, [lesson, stepId]);
 
   return { manifest, step, bank };
 }
 
-function useRelevance(lessonId: LessonId) {
+function useRelevance(lesson: LessonOption | null) {
   const [state, setState] = React.useState<AsyncState<RelevanceReport>>(emptyState);
   React.useEffect(() => {
+    if (!lesson) {
+      setState({ loading: false, data: null, error: "No chapter selected.", path: undefined });
+      return;
+    }
     let alive = true;
     setState(emptyState());
-    loadRelevance(lessonId).then((result) => {
+    loadRelevance(lesson).then((result) => {
       if (alive) {
         setState({ loading: false, data: result.data, error: result.error, path: result.path });
       }
@@ -103,22 +141,36 @@ function useRelevance(lessonId: LessonId) {
     return () => {
       alive = false;
     };
-  }, [lessonId]);
+  }, [lesson]);
   return state;
 }
 
-function useQuestionIndex(lessonId: LessonId) {
-  const lesson = lessons.find((item) => item.id === lessonId);
+function useQuestionIndex(lesson: LessonOption | null) {
   const [state, setState] = React.useState<AsyncState<MdxCourseIndex>>(emptyState);
 
   React.useEffect(() => {
+    if (!lesson) {
+      setState({ loading: false, data: null, error: "No chapter selected.", path: undefined });
+      return;
+    }
     let alive = true;
     setState(emptyState());
 
-    loadManifest(lessonId, lesson?.legacySteps).then(async (manifest) => {
-      const steps = manifest.data?.steps ?? [{ sequence_id: lesson?.defaultStep ?? "step1" }];
+    loadManifest(lesson).then(async (manifest) => {
+      if (!manifest.data?.steps?.length) {
+        if (alive) {
+          setState({
+            loading: false,
+            data: null,
+            error: manifest.error ?? "Manifest did not contain any steps.",
+            path: manifest.path
+          });
+        }
+        return;
+      }
+      const steps = manifest.data.steps;
       const banks = await Promise.all(
-        steps.map((step) => loadQuestionBank(lessonId, step.sequence_id ?? lesson?.defaultStep ?? "step1"))
+        steps.map((step) => loadQuestionBank(lesson, step.sequence_id ?? lesson.defaultStep ?? "step1"))
       );
       const families = new Map<string, QuestionFamily>();
       const questions = new Map<string, { family: QuestionFamily; variant: NonNullable<QuestionFamily["variants"]>[number] }>();
@@ -144,7 +196,7 @@ function useQuestionIndex(lessonId: LessonId) {
         setState({
           loading: false,
           data: { families, questions },
-          error: manifest.error,
+          error: null,
           path: manifest.path
         });
       }
@@ -153,7 +205,7 @@ function useQuestionIndex(lessonId: LessonId) {
     return () => {
       alive = false;
     };
-  }, [lesson?.defaultStep, lesson?.legacySteps, lessonId]);
+  }, [lesson]);
 
   return state;
 }
@@ -162,13 +214,27 @@ function App() {
   const [lessonId, setLessonId] = useAtom(selectedLessonAtom);
   const [assetView, setAssetView] = useAtom(selectedAssetViewAtom);
   const [selectedStep, setSelectedStep] = useAtom(selectedStepAtom);
-  const relevance = useRelevance(lessonId);
-  const currentLesson = lessons.find((lesson) => lesson.id === lessonId) ?? lessons[0];
+  const catalog = useCourseCatalogState();
+  const lessons = catalog.data?.lessons ?? [];
+  const currentLesson = lessons.find((lesson) => lesson.id === lessonId) ?? lessons[0] ?? null;
+  const relevance = useRelevance(currentLesson);
 
-  const changeLesson = (nextLesson: LessonId) => {
+  React.useEffect(() => {
+    if (!lessons.length) {
+      return;
+    }
+    if (!lessonId || !lessons.some((lesson) => lesson.id === lessonId)) {
+      setLessonId(lessons[0].id);
+      setSelectedStep(lessons[0].defaultStep);
+    }
+  }, [lessonId, lessons, setLessonId, setSelectedStep]);
+
+  const changeLesson = (nextLesson: string) => {
     const lesson = lessons.find((item) => item.id === nextLesson) ?? lessons[0];
     setLessonId(nextLesson);
-    setSelectedStep(lesson.defaultStep);
+    if (lesson) {
+      setSelectedStep(lesson.defaultStep);
+    }
   };
 
   return (
@@ -179,43 +245,51 @@ function App() {
             <h1 className="text-base font-semibold">Course Builder Workspace</h1>
             <p className="text-xs text-stone-500">Creator review for generated course artifacts</p>
           </div>
+          {catalog.error ? <Badge label="catalog error" tone="amber" /> : null}
           <div className="ml-auto flex flex-wrap gap-2 text-xs">
-            <Badge label={currentLesson.courseLabel} />
-            <Badge label={`${currentLesson.lectureLabel} / ${currentLesson.id}`} />
-            <RelevanceBadge report={relevance.data} sequenceId={selectedStep} />
+            {currentLesson ? <Badge label={currentLesson.courseLabel} /> : null}
+            {currentLesson ? <Badge label={`${currentLesson.chapterLabel} / ${currentLesson.lessonId}`} /> : null}
+            {currentLesson ? <RelevanceBadge report={relevance.data} sequenceId={selectedStep} /> : null}
           </div>
         </div>
       </header>
 
       <main className="mx-auto grid max-w-[1500px] gap-4 px-4 py-4 lg:grid-cols-[280px_minmax(0,1fr)]">
         <WorkspaceNav
+          catalog={catalog}
           assetView={assetView}
           lessonId={lessonId}
           onAssetViewChange={setAssetView}
           onLessonChange={changeLesson}
         />
         <div className="min-w-0">
-          {assetView === "overview" ? (
+          {!currentLesson && catalog.loading ? <Panel title="Catalog" subtitle={catalog.path}><Muted>Loading course index...</Muted></Panel> : null}
+          {!currentLesson && !catalog.loading ? (
+            <Panel title="Catalog unavailable" subtitle={catalog.path}>
+              <Notice title="No chapters found" detail={catalog.error ?? "course-index.json did not resolve to any chapter."} />
+            </Panel>
+          ) : null}
+          {assetView === "overview" && currentLesson ? (
             <OverviewView currentLesson={currentLesson} lessonId={lessonId} relevance={relevance} />
           ) : null}
-          {assetView === "textbook" ? <TextbookView lessonId={lessonId} relevance={relevance.data} /> : null}
-          {assetView === "story" ? (
+          {assetView === "textbook" && currentLesson ? <TextbookView lesson={currentLesson} relevance={relevance.data} /> : null}
+          {assetView === "story" && currentLesson ? (
             <StoryView
-              lessonId={lessonId}
+              lesson={currentLesson}
               selectedStep={selectedStep}
               setSelectedStep={setSelectedStep}
               relevance={relevance.data}
             />
           ) : null}
-          {assetView === "questions" ? (
+          {assetView === "questions" && currentLesson ? (
             <QuestionsView
-              lessonId={lessonId}
+              lesson={currentLesson}
               relevance={relevance.data}
               selectedStep={selectedStep}
               setSelectedStep={setSelectedStep}
             />
           ) : null}
-          {assetView === "relevance" ? <RelevanceView relevance={relevance} /> : null}
+          {assetView === "relevance" && currentLesson ? <RelevanceView relevance={relevance} /> : null}
         </div>
       </main>
     </div>
@@ -223,15 +297,17 @@ function App() {
 }
 
 function WorkspaceNav({
+  catalog,
   assetView,
   lessonId,
   onAssetViewChange,
   onLessonChange
 }: {
+  catalog: AsyncState<CourseCatalog>;
   assetView: AssetView;
-  lessonId: LessonId;
+  lessonId: string;
   onAssetViewChange: (value: AssetView) => void;
-  onLessonChange: (value: LessonId) => void;
+  onLessonChange: (value: string) => void;
 }) {
   const views: Array<{ value: AssetView; label: string; detail: string }> = [
     { value: "overview", label: "Overview", detail: "creator checklist" },
@@ -243,24 +319,40 @@ function WorkspaceNav({
 
   return (
     <aside className="space-y-4">
-      <Panel title="Lectures" subtitle="select generated lesson">
-        <div className="space-y-2">
-          {lessons.map((lesson) => (
-            <button
-              className={[
-                "w-full rounded-md border px-3 py-2 text-left text-sm",
-                lessonId === lesson.id ? "border-emerald-700 bg-emerald-50" : "border-stone-300 bg-white hover:border-stone-500"
-              ].join(" ")}
-              key={lesson.id}
-              onClick={() => onLessonChange(lesson.id)}
-              type="button"
-            >
-              <div className="flex items-center justify-between gap-2">
-                <span className="font-semibold">{lesson.lectureLabel}</span>
-                <span className="font-mono text-xs text-stone-500">{lesson.id}</span>
+      <Panel title="Courses" subtitle={catalog.path ? `source: ${catalog.path}` : "select generated chapter"}>
+        {catalog.loading ? <Muted>Loading course index...</Muted> : null}
+        {catalog.error ? <Notice title="Catalog unavailable" detail={catalog.error} /> : null}
+        <div className="space-y-3">
+          {(catalog.data?.courses ?? []).map((course) => (
+            <div className="space-y-2" key={course.id}>
+              <div className="flex items-center gap-2 px-1">
+                <span
+                  className="h-2.5 w-2.5 rounded-full border border-stone-300"
+                  style={{ backgroundColor: course.brandColor ?? "#d6d3d1" }}
+                />
+                <div className="min-w-0">
+                  <div className="truncate text-xs font-semibold uppercase tracking-wide text-stone-500">{course.id}</div>
+                  <div className="truncate text-sm font-semibold text-stone-900">{course.title}</div>
+                </div>
               </div>
-              <div className="mt-1 text-xs text-stone-600">{lesson.label}</div>
-            </button>
+              {course.chapters.map((lesson) => (
+                <button
+                  className={[
+                    "w-full rounded-md border px-3 py-2 text-left text-sm",
+                    lessonId === lesson.id ? "border-emerald-700 bg-emerald-50" : "border-stone-300 bg-white hover:border-stone-500"
+                  ].join(" ")}
+                  key={lesson.id}
+                  onClick={() => onLessonChange(lesson.id)}
+                  type="button"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-semibold">{lesson.chapterLabel}</span>
+                    <span className="font-mono text-xs text-stone-500">{lesson.lessonId}</span>
+                  </div>
+                  <div className="mt-1 text-xs text-stone-600">{lesson.chapterTitle}</div>
+                </button>
+              ))}
+            </div>
           ))}
         </div>
       </Panel>
@@ -294,16 +386,17 @@ function OverviewView({
   relevance
 }: {
   currentLesson: LessonOption;
-  lessonId: LessonId;
+  lessonId: string;
   relevance: AsyncState<RelevanceReport>;
 }) {
   return (
     <section className="grid gap-4 xl:grid-cols-3">
-      <Panel title="Creator Context" subtitle={`${currentLesson.courseLabel} / ${currentLesson.lectureLabel}`}>
+      <Panel title="Creator Context" subtitle={`${currentLesson.courseLabel} / ${currentLesson.chapterLabel}`}>
         <div className="space-y-3 text-sm">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-wide text-stone-500">Current lecture</div>
-            <div className="mt-1 font-semibold">{currentLesson.label}</div>
+            <div className="text-xs font-semibold uppercase tracking-wide text-stone-500">Current chapter</div>
+            <div className="mt-1 font-semibold">{currentLesson.chapterTitle}</div>
+            <div className="mt-1 text-xs text-stone-500">{currentLesson.courseTitle}</div>
           </div>
           <div className="grid grid-cols-2 gap-2">
             <MetricCard label="lesson id" value={lessonId} />
@@ -317,10 +410,11 @@ function OverviewView({
       </Panel>
       <Panel title="Primary Files" subtitle="read-only pipeline sources">
         <div className="space-y-2 text-xs">
-          <FileLine path={textbookPath(lessonId)} />
-          <FileLine path={`research/pipeline/3-guided_story/${lessonId}/manifest.json`} />
-          <FileLine path={`research/pipeline/3-guided_story/${lessonId}/<step>/question_bank.json`} />
-          <FileLine path={`research/pipeline/meta/${lessonId}/relevance/report.json`} />
+          <FileLine path={textbookPath(currentLesson)} />
+          <FileLine path={manifestPath(currentLesson)} />
+          <FileLine path={`${currentLesson.paths.guidedStoryDir}/<step>/question_bank.json`} />
+          <FileLine path={relevancePath(currentLesson)} />
+          <FileLine path={plainArtifactsDir(currentLesson)} />
         </div>
       </Panel>
       <Panel title="Quality Signals" subtitle={relevance.path}>
@@ -352,9 +446,9 @@ function FileLine({ path }: { path: string }) {
   return <div className="truncate rounded border border-stone-200 bg-white px-2 py-1 font-mono text-stone-700">{path}</div>;
 }
 
-function TextbookView({ lessonId, relevance }: { lessonId: LessonId; relevance: RelevanceReport | null }) {
-  const textbook = useTextbook(lessonId);
-  const questionIndex = useQuestionIndex(lessonId);
+function TextbookView({ lesson, relevance }: { lesson: LessonOption; relevance: RelevanceReport | null }) {
+  const textbook = useTextbook(lesson);
+  const questionIndex = useQuestionIndex(lesson);
 
   return (
     <section className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
@@ -363,7 +457,11 @@ function TextbookView({ lessonId, relevance }: { lessonId: LessonId; relevance: 
         {textbook.error ? <Notice title="Textbook unavailable" detail={textbook.error} /> : null}
         {questionIndex.error ? <Notice title="Practice lookup degraded" detail={questionIndex.error} /> : null}
         {textbook.data ? (
-          <MdxCoursePreview index={questionIndex.data ?? undefined} lessonId={lessonId} source={textbook.data} />
+          <MdxCoursePreview
+            index={questionIndex.data ?? undefined}
+            plainArtifactsDir={lesson.paths.plainArtifactsDir}
+            source={textbook.data}
+          />
         ) : null}
       </Panel>
       <Panel title="Textbook relevance" subtitle="section badges">
@@ -378,17 +476,17 @@ function TextbookView({ lessonId, relevance }: { lessonId: LessonId; relevance: 
 }
 
 function StoryView({
-  lessonId,
+  lesson,
   selectedStep,
   setSelectedStep,
   relevance
 }: {
-  lessonId: LessonId;
+  lesson: LessonOption;
   selectedStep: string;
   setSelectedStep: (step: string) => void;
   relevance: RelevanceReport | null;
 }) {
-  const { manifest, step, bank } = useStoryData(lessonId, selectedStep);
+  const { manifest, step, bank } = useStoryData(lesson, selectedStep);
   const steps = manifest.data?.steps ?? [];
 
   React.useEffect(() => {
@@ -401,7 +499,7 @@ function StoryView({
     <section className="grid gap-4 xl:grid-cols-[270px_minmax(0,1fr)_420px]">
       <Panel title="Steps" subtitle={manifest.path}>
         {manifest.loading ? <Muted>Loading manifest...</Muted> : null}
-        {manifest.error ? <Notice title="Manifest fallback" detail={manifest.error} /> : null}
+        {manifest.error ? <Notice title="Manifest unavailable" detail={manifest.error} /> : null}
         <div className="space-y-2">
           {steps.map((stepItem) => {
             const stepId = stepItem.sequence_id ?? "step1";
@@ -557,24 +655,24 @@ function QuestionBankView({
 }
 
 function QuestionsView({
-  lessonId,
+  lesson,
   relevance,
   selectedStep,
   setSelectedStep
 }: {
-  lessonId: LessonId;
+  lesson: LessonOption;
   relevance: RelevanceReport | null;
   selectedStep: string;
   setSelectedStep: (step: string) => void;
 }) {
-  const { manifest, bank } = useStoryData(lessonId, selectedStep);
+  const { manifest, bank } = useStoryData(lesson, selectedStep);
   const steps = manifest.data?.steps ?? [];
 
   return (
     <section className="grid gap-4 xl:grid-cols-[280px_minmax(0,1fr)]">
       <Panel title="Lecture Steps" subtitle={manifest.path}>
         {manifest.loading ? <Muted>Loading manifest...</Muted> : null}
-        {manifest.error ? <Notice title="Manifest fallback" detail={manifest.error} /> : null}
+        {manifest.error ? <Notice title="Manifest unavailable" detail={manifest.error} /> : null}
         <div className="space-y-2">
           {steps.map((stepItem) => (
             <button
@@ -763,7 +861,7 @@ function RelevanceView({ relevance }: { relevance: AsyncState<RelevanceReport> }
             <ScoreSection title="Textbook sections" idKey="section_id" scores={relevance.data.textbook_section_scores} />
           </div>
         ) : (
-          <Muted>Open L2 to inspect available relevance data.</Muted>
+          <Muted>Select a chapter to inspect available relevance data.</Muted>
         )}
       </Panel>
     </section>

@@ -140,5 +140,7 @@
       "display": "不相关策略",
       "gloss": "彼此之间没有明显关联、不会同时涨跌的交易策略。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-9"
 }

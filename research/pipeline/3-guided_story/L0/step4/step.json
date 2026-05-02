@@ -1,5 +1,5 @@
 {
-  "lesson_id": "L1",
+  "lesson_id": "L0",
   "mode": "guided_story",
   "screens": [
     {
@@ -102,5 +102,7 @@
       "display": "TradingView",
       "gloss": "一款基于网页的图表分析和交易平台。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-0"
 }

@@ -42,5 +42,9 @@
       "file": "research/pipeline/3-guided_story/L3/step8/step.json",
       "sequence_id": "step8"
     }
-  ]
+  ],
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-3",
+  "course_title": "COMP7415A Algorithmic Trading",
+  "chapter_title": "Backtesting Framework and Rule-Based Strategy"
 }

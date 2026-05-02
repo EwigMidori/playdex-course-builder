@@ -529,5 +529,8 @@
     ],
     "source_outline": "L10: Machine learning use cases in algorithmic trading - 2. Unsupervised Learning"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-10",
+  "sequence_id": "step3"
 }

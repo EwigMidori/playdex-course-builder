@@ -116,5 +116,7 @@
       "display": "JavaScript",
       "gloss": "为网页添加交互和动态行为的脚本语言。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-2"
 }

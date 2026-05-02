@@ -96,5 +96,7 @@
     "related": []
   },
   "target_language": "zh-CN",
-  "term_catalog": {}
+  "term_catalog": {},
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-3"
 }

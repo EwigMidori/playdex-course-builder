@@ -93,5 +93,7 @@
       "display": "订单管理系统",
       "gloss": "用于管理、发送和跟踪订单的软件系统。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-1"
 }

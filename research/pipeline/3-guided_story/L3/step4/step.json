@@ -129,5 +129,7 @@
       "display": "简单移动平均线",
       "gloss": "对过去N个周期的价格直接取算术平均值。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-3"
 }

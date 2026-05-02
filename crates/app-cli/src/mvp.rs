@@ -45,7 +45,7 @@ pub fn run_mvp(
     }
 
     let plain_text = read_required_text(&lesson.plain_text_path())?;
-    let related_important = read_optional_text(&repo.related_important_path())?;
+    let related_important = read_optional_text(&lesson.related_important_path())?;
     let mut llm = None;
 
     if force_guided_story || !guided_story_ready(lesson) {
@@ -133,11 +133,20 @@ fn generate_guided_story(
     related_important: &str,
 ) -> Result<(), MvpError> {
     let repo = lesson.repo();
+    let course_id = lesson.course_id().unwrap_or("");
+    let course_title = lesson.course_title().unwrap_or("");
+    let chapter_id = lesson.chapter_id().unwrap_or("");
+    let chapter_title = lesson.chapter_title().unwrap_or("");
     let system = read_prompt(repo, "guided_story_system.md")?;
     let user = render_prompt(
         &read_prompt(repo, "guided_story_user.md")?,
         &[
             ("target_language", target_language),
+            ("course_id", course_id),
+            ("course_title", course_title),
+            ("chapter_id", chapter_id),
+            ("chapter_title", chapter_title),
+            ("lesson_id", lesson.lesson_id()),
             (
                 "step_scope",
                 "full lecture; split into 4-8 natural learning steps unless the source is very short",
@@ -180,6 +189,10 @@ fn generate_question_bank(
     related_important: &str,
 ) -> Result<bool, MvpError> {
     let repo = lesson.repo();
+    let course_id = lesson.course_id().unwrap_or("");
+    let course_title = lesson.course_title().unwrap_or("");
+    let chapter_id = lesson.chapter_id().unwrap_or("");
+    let chapter_title = lesson.chapter_title().unwrap_or("");
     let system = read_prompt(repo, "question_bank_system.md")?;
     let manifest = read_required_text(&lesson.guided_story_manifest_path())?;
     let step_refs = read_manifest_step_refs(lesson)?;
@@ -203,6 +216,10 @@ fn generate_question_bank(
             &prompt,
             &[
                 ("target_language", target_language),
+                ("course_id", course_id),
+                ("course_title", course_title),
+                ("chapter_id", chapter_id),
+                ("chapter_title", chapter_title),
                 ("lesson_id", lesson.lesson_id()),
                 ("coverage_checklist", &source_outline),
                 ("source_outline", &source_outline),
@@ -230,11 +247,12 @@ fn generate_question_bank(
             &user,
         )?;
         let content = strip_code_fence(&response.content, Some("json"));
-        let question_bank: Value =
+        let mut question_bank: Value =
             serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
                 stage: Stage::QuestionBank.as_str(),
                 source,
             })?;
+        normalize_question_bank_json(lesson, &step_ref.sequence_id, &mut question_bank);
 
         if let Some(parent) = step_ref.question_bank_path.parent() {
             fs::create_dir_all(parent).map_err(|source| MvpError::Write {
@@ -257,6 +275,10 @@ fn generate_textbook(
     related_important: &str,
 ) -> Result<(), MvpError> {
     let repo = lesson.repo();
+    let course_id = lesson.course_id().unwrap_or("");
+    let course_title = lesson.course_title().unwrap_or("");
+    let chapter_id = lesson.chapter_id().unwrap_or("");
+    let chapter_title = lesson.chapter_title().unwrap_or("");
     let system = read_prompt(repo, "textbook_system.md")?;
     let manifest = read_required_text(&lesson.guided_story_manifest_path())?;
     let step_refs = read_manifest_step_refs(lesson)?;
@@ -267,6 +289,10 @@ fn generate_textbook(
         &read_prompt(repo, "textbook_user.md")?,
         &[
             ("target_language", target_language),
+            ("course_id", course_id),
+            ("course_title", course_title),
+            ("chapter_id", chapter_id),
+            ("chapter_title", chapter_title),
             ("lesson_id", lesson.lesson_id()),
             ("coverage_checklist", &source_outline),
             ("source_outline", &source_outline),
@@ -540,11 +566,27 @@ fn write_guided_story_steps(lesson: &LessonPaths, story_json: &Value) -> Result<
         }));
     }
 
-    Ok(json!({
+    let mut manifest = json!({
         "lesson_id": lesson.lesson_id(),
         "mode": "guided_story",
         "steps": manifest_steps
-    }))
+    });
+    if let Some(object) = manifest.as_object_mut() {
+        if let Some(course_id) = lesson.course_id() {
+            object.insert("course_id".to_owned(), json!(course_id));
+        }
+        if let Some(chapter_id) = lesson.chapter_id() {
+            object.insert("chapter_id".to_owned(), json!(chapter_id));
+        }
+        if let Some(course_title) = lesson.course_title() {
+            object.insert("course_title".to_owned(), json!(course_title));
+        }
+        if let Some(chapter_title) = lesson.chapter_title() {
+            object.insert("chapter_title".to_owned(), json!(chapter_title));
+        }
+    }
+
+    Ok(manifest)
 }
 
 fn normalize_step_json(lesson: &LessonPaths, sequence_id: &str, step_json: &mut Value) {
@@ -554,6 +596,16 @@ fn normalize_step_json(lesson: &LessonPaths, sequence_id: &str, step_json: &mut 
     object
         .entry("lesson_id")
         .or_insert_with(|| json!(lesson.lesson_id()));
+    if let Some(course_id) = lesson.course_id() {
+        object
+            .entry("course_id")
+            .or_insert_with(|| json!(course_id));
+    }
+    if let Some(chapter_id) = lesson.chapter_id() {
+        object
+            .entry("chapter_id")
+            .or_insert_with(|| json!(chapter_id));
+    }
     object
         .entry("sequence_id")
         .or_insert_with(|| json!(sequence_id));
@@ -561,6 +613,28 @@ fn normalize_step_json(lesson: &LessonPaths, sequence_id: &str, step_json: &mut 
         .entry("mode")
         .or_insert_with(|| json!("guided_story"));
     object.entry("term_catalog").or_insert_with(|| json!({}));
+}
+
+fn normalize_question_bank_json(lesson: &LessonPaths, sequence_id: &str, question_bank: &mut Value) {
+    let Some(object) = question_bank.as_object_mut() else {
+        return;
+    };
+    object
+        .entry("lesson_id")
+        .or_insert_with(|| json!(lesson.lesson_id()));
+    if let Some(course_id) = lesson.course_id() {
+        object
+            .entry("course_id")
+            .or_insert_with(|| json!(course_id));
+    }
+    if let Some(chapter_id) = lesson.chapter_id() {
+        object
+            .entry("chapter_id")
+            .or_insert_with(|| json!(chapter_id));
+    }
+    object
+        .entry("sequence_id")
+        .or_insert_with(|| json!(sequence_id));
 }
 
 fn read_manifest_step_refs(lesson: &LessonPaths) -> Result<Vec<StepRef>, MvpError> {

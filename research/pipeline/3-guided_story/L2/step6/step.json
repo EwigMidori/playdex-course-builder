@@ -113,5 +113,7 @@
       "display": "SQLite",
       "gloss": "一个轻量级的、基于文件的数据库引擎。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-2"
 }

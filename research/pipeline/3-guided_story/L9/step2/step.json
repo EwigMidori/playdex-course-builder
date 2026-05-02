@@ -161,5 +161,7 @@
       "display": "梯度下降",
       "gloss": "通过沿着函数梯度的反方向迭代更新，来寻找函数最小值。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-9"
 }

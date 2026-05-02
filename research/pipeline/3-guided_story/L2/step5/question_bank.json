@@ -515,5 +515,8 @@
     ],
     "source_outline": "L2: Data scraping and database management with Python; Understand the concept of adjusted price"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-2",
+  "sequence_id": "step5"
 }

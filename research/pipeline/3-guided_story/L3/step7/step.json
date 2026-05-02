@@ -100,5 +100,7 @@
       "display": "TA-Lib",
       "gloss": "一个开源的Python库，包含120多种技术指标的计算函数。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-3"
 }

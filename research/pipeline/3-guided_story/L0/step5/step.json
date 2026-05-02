@@ -1,5 +1,5 @@
 {
-  "lesson_id": "L1",
+  "lesson_id": "L0",
   "mode": "guided_story",
   "screens": [
     {
@@ -85,5 +85,7 @@
       "display": "风险管理",
       "gloss": "识别、评估和控制投资风险的过程。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-0"
 }

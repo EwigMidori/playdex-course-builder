@@ -123,5 +123,7 @@
       "display": "幸存者偏差",
       "gloss": "只考虑存活至今的资产，忽略了已经退市的，导致高估策略表现。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-3"
 }

@@ -144,5 +144,7 @@
       "display": "最小方差组合",
       "gloss": "在所有可能的投资组合中，风险（标准差）最低的那个组合。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-7"
 }

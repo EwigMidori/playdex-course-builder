@@ -135,5 +135,7 @@
       "display": "基于头寸的系统",
       "gloss": "交易按净头寸管理，支持部分平仓。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-1"
 }

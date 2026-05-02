@@ -690,5 +690,8 @@
     ],
     "source_outline": "Portfolio Return and Risk; Expected Portfolio Return; Portfolio Variance; Markowitz Portfolio Theory; Investment Portfolio; Portfolio optimization"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-7",
+  "sequence_id": "step1"
 }

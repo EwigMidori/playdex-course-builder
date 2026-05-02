@@ -1,5 +1,5 @@
 {
-  "lesson_id": "L1",
+  "lesson_id": "L0",
   "mode": "guided_story",
   "screens": [
     {
@@ -122,5 +122,7 @@
       "display": "市值",
       "gloss": "上市公司股票总数乘以当前股价的总价值。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-0"
 }

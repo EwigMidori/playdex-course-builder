@@ -144,5 +144,7 @@
       "display": "射击之星",
       "gloss": "上影线很长、实体很小的K线，出现在上涨趋势后，可能预示反转下跌。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-3"
 }

@@ -101,5 +101,7 @@
       "display": "交易策略",
       "gloss": "决定何时买卖、买卖多少的规则集合。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-10"
 }

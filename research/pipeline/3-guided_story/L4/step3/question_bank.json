@@ -466,5 +466,8 @@
     ],
     "source_outline": "L4 source outline (Python Example: fit LR model, backtest LR strategy)"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-4",
+  "sequence_id": "step3"
 }

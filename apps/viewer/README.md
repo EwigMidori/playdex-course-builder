@@ -10,4 +10,4 @@ npm run dev -- --host 127.0.0.1
 npm run build
 ```
 
-The default lesson is `L2`. `L1` is available with graceful fallback for the older guided story layout.
+The viewer reads `research/pipeline/course-index.json` and opens the indexed course chapters directly from the in-place pipeline assets.

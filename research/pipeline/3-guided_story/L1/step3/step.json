@@ -200,5 +200,7 @@
       "display": "止损单",
       "gloss": "当价格触及指定水平时，自动变成市价单的订单。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-1"
 }

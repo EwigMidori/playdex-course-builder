@@ -538,5 +538,8 @@
     ],
     "source_outline": "L6: Capital and Risk Management - Risk Identification - Major Risk Types for a financial institution: 1. Market Risk (Equity Risk, FX Risk, Commodity Risk), 2. Interest rate Risk, 3. Credit Risk, 4. Liquidity Risk, 5. Operational Risk, 6. Legal Risk, 7. Reputational Risk, 8. Strategic Risk"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-6",
+  "sequence_id": "step2"
 }

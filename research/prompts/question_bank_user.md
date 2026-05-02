@@ -3,6 +3,18 @@
 目标语言：
 {{target_language}}
 
+course_id：
+{{course_id}}
+
+course_title：
+{{course_title}}
+
+chapter_id：
+{{chapter_id}}
+
+chapter_title：
+{{chapter_title}}
+
 lesson_id：
 {{lesson_id}}
 

@@ -157,5 +157,7 @@
       "display": "最大回撤",
       "gloss": "从历史最高点到随后最低点的最大跌幅。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-7"
 }

@@ -121,5 +121,7 @@
       "display": "夏普比率操纵",
       "gloss": "通过选择不同的时间频率或数据窗口，来呈现一个更高的夏普比率。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-9"
 }

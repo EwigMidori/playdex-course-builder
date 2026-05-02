@@ -1,0 +1,137 @@
+{
+  "version": 1,
+  "courses": [
+    {
+      "courseId": "comp7415a",
+      "title": "COMP7415A Algorithmic Trading",
+      "category": "Quantitative Finance",
+      "brandColor": "#1ed760",
+      "relatedImportantPath": "research/pipeline/2-related_important/course_desc.md",
+      "examRawDir": "research/pipeline/0-raw/exam",
+      "examPlainRoot": "research/pipeline/1-plain/exam",
+      "chapters": [
+        {
+          "chapterId": "lecture-0",
+          "title": "Course Introduction and Market Overview",
+          "order": 0,
+          "lessonId": "L0",
+          "rawPdfPath": "research/pipeline/0-raw/L0.pdf",
+          "plainOutputDir": "research/pipeline/1-plain/L0",
+          "guidedStoryDir": "research/pipeline/3-guided_story/L0",
+          "textbookPath": "research/pipeline/5-textbook/L0.mdx",
+          "metaDir": "research/pipeline/meta/L0"
+        },
+        {
+          "chapterId": "lecture-1",
+          "title": "Algorithmic Trading Basics",
+          "order": 1,
+          "lessonId": "L1",
+          "rawPdfPath": "research/pipeline/0-raw/L1.pdf",
+          "plainOutputDir": "research/pipeline/1-plain/L1",
+          "guidedStoryDir": "research/pipeline/3-guided_story/L1",
+          "textbookPath": "research/pipeline/5-textbook/L1.mdx",
+          "metaDir": "research/pipeline/meta/L1"
+        },
+        {
+          "chapterId": "lecture-2",
+          "title": "Data Scraping and Database Management",
+          "order": 2,
+          "lessonId": "L2",
+          "rawPdfPath": "research/pipeline/0-raw/L2.pdf",
+          "plainOutputDir": "research/pipeline/1-plain/L2",
+          "guidedStoryDir": "research/pipeline/3-guided_story/L2",
+          "textbookPath": "research/pipeline/5-textbook/L2.mdx",
+          "metaDir": "research/pipeline/meta/L2"
+        },
+        {
+          "chapterId": "lecture-3",
+          "title": "Backtesting Framework and Rule-Based Strategy",
+          "order": 3,
+          "lessonId": "L3",
+          "rawPdfPath": "research/pipeline/0-raw/L3.pdf",
+          "plainOutputDir": "research/pipeline/1-plain/L3",
+          "guidedStoryDir": "research/pipeline/3-guided_story/L3",
+          "textbookPath": "research/pipeline/5-textbook/L3.mdx",
+          "metaDir": "research/pipeline/meta/L3"
+        },
+        {
+          "chapterId": "lecture-4",
+          "title": "Time Series Analysis for Market Classification",
+          "order": 4,
+          "lessonId": "L4",
+          "rawPdfPath": "research/pipeline/0-raw/L4.pdf",
+          "plainOutputDir": "research/pipeline/1-plain/L4",
+          "guidedStoryDir": "research/pipeline/3-guided_story/L4",
+          "textbookPath": "research/pipeline/5-textbook/L4.mdx",
+          "metaDir": "research/pipeline/meta/L4"
+        },
+        {
+          "chapterId": "lecture-5",
+          "title": "Statistical Arbitrage and Pairs Trading",
+          "order": 5,
+          "lessonId": "L5",
+          "rawPdfPath": "research/pipeline/0-raw/L5.pdf",
+          "plainOutputDir": "research/pipeline/1-plain/L5",
+          "guidedStoryDir": "research/pipeline/3-guided_story/L5",
+          "textbookPath": "research/pipeline/5-textbook/L5.mdx",
+          "metaDir": "research/pipeline/meta/L5"
+        },
+        {
+          "chapterId": "lecture-6",
+          "title": "Capital and Risk Management",
+          "order": 6,
+          "lessonId": "L6",
+          "rawPdfPath": "research/pipeline/0-raw/L6.pdf",
+          "plainOutputDir": "research/pipeline/1-plain/L6",
+          "guidedStoryDir": "research/pipeline/3-guided_story/L6",
+          "textbookPath": "research/pipeline/5-textbook/L6.mdx",
+          "metaDir": "research/pipeline/meta/L6"
+        },
+        {
+          "chapterId": "lecture-7",
+          "title": "Performance Measures and Portfolio Optimization",
+          "order": 7,
+          "lessonId": "L7",
+          "rawPdfPath": "research/pipeline/0-raw/L7.pdf",
+          "plainOutputDir": "research/pipeline/1-plain/L7",
+          "guidedStoryDir": "research/pipeline/3-guided_story/L7",
+          "textbookPath": "research/pipeline/5-textbook/L7.mdx",
+          "metaDir": "research/pipeline/meta/L7"
+        },
+        {
+          "chapterId": "lecture-8",
+          "title": "Order Book and High Frequency Data Modeling",
+          "order": 8,
+          "lessonId": "L8",
+          "rawPdfPath": "research/pipeline/0-raw/L8.pdf",
+          "plainOutputDir": "research/pipeline/1-plain/L8",
+          "guidedStoryDir": "research/pipeline/3-guided_story/L8",
+          "textbookPath": "research/pipeline/5-textbook/L8.mdx",
+          "metaDir": "research/pipeline/meta/L8"
+        },
+        {
+          "chapterId": "lecture-9",
+          "title": "Broker Connectivity and Live Deployment",
+          "order": 9,
+          "lessonId": "L9",
+          "rawPdfPath": "research/pipeline/0-raw/L9.pdf",
+          "plainOutputDir": "research/pipeline/1-plain/L9",
+          "guidedStoryDir": "research/pipeline/3-guided_story/L9",
+          "textbookPath": "research/pipeline/5-textbook/L9.mdx",
+          "metaDir": "research/pipeline/meta/L9"
+        },
+        {
+          "chapterId": "lecture-10",
+          "title": "Machine Learning in Algorithmic Trading",
+          "order": 10,
+          "lessonId": "L10",
+          "rawPdfPath": "research/pipeline/0-raw/L10.pdf",
+          "plainOutputDir": "research/pipeline/1-plain/L10",
+          "guidedStoryDir": "research/pipeline/3-guided_story/L10",
+          "textbookPath": "research/pipeline/5-textbook/L10.mdx",
+          "metaDir": "research/pipeline/meta/L10"
+        }
+      ]
+    }
+  ]
+}

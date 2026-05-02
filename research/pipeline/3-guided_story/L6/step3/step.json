@@ -136,5 +136,7 @@
       "display": "波动率聚集",
       "gloss": "大的价格变化后往往跟着大的变化，小的变化后跟着小的变化的现象。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-6"
 }

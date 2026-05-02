@@ -550,5 +550,8 @@
     ],
     "source_outline": "L2: Data scraping and database management with Python - BeautifulSoup: Popular python library for searching and parsing HTML and XML data"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-2",
+  "sequence_id": "step3"
 }

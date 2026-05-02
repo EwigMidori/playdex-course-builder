@@ -586,5 +586,8 @@
     ],
     "source_outline": "L10: Machine learning use cases in algorithmic trading - Agenda: Major categories of machine learning algorithms, Multiple use cases of machine learning in algo-trading, The future of smart investment systems; Introduction to Machine Learning; What is Machine Learning?; Types of Machine Learning: 1. Supervised Learning, 2. Unsupervised Learning, 3. Reinforcement Learning"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-10",
+  "sequence_id": "step1"
 }

@@ -142,5 +142,7 @@
       "display": "卖空",
       "gloss": "借入股票卖出，希望未来以更低价格买回。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-1"
 }

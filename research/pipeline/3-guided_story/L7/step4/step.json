@@ -161,5 +161,7 @@
       "display": "证券市场线",
       "gloss": "CAPM的图形表示，展示单个资产的预期收益与其贝塔值的关系。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-7"
 }

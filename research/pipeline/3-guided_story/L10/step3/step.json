@@ -122,5 +122,7 @@
       "display": "K均值聚类",
       "gloss": "一种常用的聚类算法，通过迭代优化将数据分成K个组。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-10"
 }

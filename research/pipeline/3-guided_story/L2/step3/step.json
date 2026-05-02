@@ -113,5 +113,7 @@
       "display": "Requests",
       "gloss": "一个用于发送 HTTP 请求的 Python 库。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-2"
 }

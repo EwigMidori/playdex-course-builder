@@ -129,5 +129,7 @@
       "display": "交通强度",
       "gloss": "到达率与服务率的比值，衡量系统繁忙程度。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-8"
 }

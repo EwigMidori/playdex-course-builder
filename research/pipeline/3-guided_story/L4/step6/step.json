@@ -124,5 +124,7 @@
       "display": "Hurst指数",
       "gloss": "衡量时间序列趋势或均值回归强度的指标，范围0到1。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-4"
 }

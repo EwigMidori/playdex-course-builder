@@ -584,5 +584,8 @@
     ],
     "source_outline": "L2: Data scraping and database management with Python - Basic Web structure - A website is usually made of 1. HTML 2. CSS 3. JavaScript"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-2",
+  "sequence_id": "step2"
 }

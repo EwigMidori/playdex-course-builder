@@ -111,5 +111,7 @@
       "display": "XPath",
       "gloss": "一种在 XML 文档中导航和选择节点的查询语言。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-2"
 }

@@ -132,5 +132,7 @@
       "display": "平稳性",
       "gloss": "时间序列的统计性质（均值、方差）不随时间变化。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-4"
 }

@@ -137,5 +137,7 @@
       "display": "移动止损",
       "gloss": "一种动态止损，随价格上升而自动上移，锁定利润。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-7"
 }

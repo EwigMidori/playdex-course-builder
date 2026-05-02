@@ -95,5 +95,7 @@
       "display": "数据清洗",
       "gloss": "识别并修正数据中的错误、缺失、重复或不一致，以提高数据质量。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-3"
 }

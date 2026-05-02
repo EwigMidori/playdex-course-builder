@@ -1,5 +1,5 @@
 {
-  "lesson_id": "L1",
+  "lesson_id": "L0",
   "mode": "guided_story",
   "screens": [
     {
@@ -74,5 +74,7 @@
       "display": "算法交易",
       "gloss": "用计算机程序自动执行交易决策和下单的过程。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-0"
 }

@@ -1,5 +1,5 @@
 {
-  "lesson_id": "L1",
+  "lesson_id": "L0",
   "mode": "guided_story",
   "screens": [
     {
@@ -103,5 +103,7 @@
       "display": "配对交易",
       "gloss": "利用两只相关股票价格偏离进行套利的策略。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-0"
 }

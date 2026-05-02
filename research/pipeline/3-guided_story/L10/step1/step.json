@@ -132,5 +132,7 @@
       "display": "无监督学习",
       "gloss": "在没有标签的数据中发现隐藏的模式和结构。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-10"
 }

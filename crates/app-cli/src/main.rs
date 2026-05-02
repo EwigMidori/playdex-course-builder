@@ -30,20 +30,31 @@ fn run() -> Result<(), AppError> {
 
     match cli.command {
         Command::Run {
-            lesson_id,
+            target,
             target_language,
             force_stage,
         } => {
-            let lesson = repo.resolve_lesson(&lesson_id)?;
+            let lesson = repo.resolve_target(
+                target.lesson_id.as_deref(),
+                target.course.as_deref(),
+                target.chapter.as_deref(),
+            )?;
             mvp::run_mvp(&repo, &lesson, &target_language, force_stage)?;
-            println!("mvp complete: lesson={lesson_id} target_language={target_language}");
+            println!(
+                "mvp complete: target={} target_language={target_language}",
+                lesson.target_display()
+            );
         }
-        Command::Convert { lesson_id, resume } => {
-            let lesson = repo.resolve_lesson(&lesson_id)?;
+        Command::Convert { target, resume } => {
+            let lesson = repo.resolve_target(
+                target.lesson_id.as_deref(),
+                target.course.as_deref(),
+                target.chapter.as_deref(),
+            )?;
             mineru::convert_lesson(&repo, &lesson, resume)?;
             println!(
-                "convert complete: lesson={} plain_text={}",
-                lesson.lesson_id(),
+                "convert complete: target={} plain_text={}",
+                lesson.target_display(),
                 lesson.relative_display(&lesson.plain_text_path())
             );
         }
@@ -56,20 +67,28 @@ fn run() -> Result<(), AppError> {
                 repo.relative_display(&repo.exam_plain_root())
             );
         }
-        Command::Validate { lesson_id } => {
-            let lesson = repo.resolve_lesson(&lesson_id)?;
+        Command::Validate { target } => {
+            let lesson = repo.resolve_target(
+                target.lesson_id.as_deref(),
+                target.course.as_deref(),
+                target.chapter.as_deref(),
+            )?;
             validation::validate_outputs(&lesson)?;
-            println!("validation passed: lesson={lesson_id}");
+            println!("validation passed: target={}", lesson.target_display());
         }
         Command::ScoreRelevance {
-            lesson_id,
+            target,
             target_language,
         } => {
-            let lesson = repo.resolve_lesson(&lesson_id)?;
+            let lesson = repo.resolve_target(
+                target.lesson_id.as_deref(),
+                target.course.as_deref(),
+                target.chapter.as_deref(),
+            )?;
             relevance::score_relevance(&repo, &lesson, &target_language)?;
             println!(
-                "relevance scoring complete: lesson={} report={}",
-                lesson_id,
+                "relevance scoring complete: target={} report={}",
+                lesson.target_display(),
                 lesson.relative_display(&lesson.relevance_report_path())
             );
         }

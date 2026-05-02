@@ -498,5 +498,8 @@
     ],
     "source_outline": "L4: Statistical time series analysis for market classification - Martingale Strategy"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-4",
+  "sequence_id": "step7"
 }

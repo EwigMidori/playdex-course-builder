@@ -1,17 +1,69 @@
 export type LessonId = string;
 export type AssetView = "overview" | "textbook" | "story" | "questions" | "relevance";
 
+export type LessonPaths = {
+  plainOutputDir: string;
+  guidedStoryDir: string;
+  textbookPath: string;
+  relevancePath: string;
+  plainArtifactsDir: string;
+};
+
 export type LessonOption = {
-  id: LessonId;
-  label: string;
+  id: string;
+  lessonId: LessonId;
+  courseId?: string;
+  chapterId?: string;
   courseLabel: string;
-  lectureLabel: string;
+  courseTitle: string;
+  chapterLabel: string;
+  chapterTitle: string;
+  label: string;
   defaultStep: string;
-  legacySteps?: string[];
+  paths: LessonPaths;
+};
+
+export type CourseCatalog = {
+  courses: CourseOption[];
+  lessons: LessonOption[];
+};
+
+export type CourseOption = {
+  id: string;
+  title: string;
+  category?: string;
+  brandColor?: string;
+  chapters: LessonOption[];
+};
+
+export type CourseIndex = {
+  version: number;
+  courses: CourseIndexEntry[];
+};
+
+export type CourseIndexEntry = {
+  courseId: string;
+  title: string;
+  category?: string;
+  brandColor?: string;
+  chapters: ChapterIndexEntry[];
+};
+
+export type ChapterIndexEntry = {
+  chapterId: string;
+  title: string;
+  order?: number;
+  lessonId: string;
+  guidedStoryDir: string;
+  textbookPath?: string;
+  plainOutputDir?: string;
+  metaDir?: string;
 };
 
 export type StoryManifest = {
   lesson_id?: string;
+  course_id?: string;
+  chapter_id?: string;
   mode?: string;
   steps?: Array<{
     concept?: string;
@@ -44,6 +96,8 @@ export type StoryScreen = {
 
 export type StoryStep = {
   lesson_id?: string;
+  course_id?: string;
+  chapter_id?: string;
   mode?: string;
   screens?: StoryScreen[];
   [key: string]: unknown;
@@ -80,6 +134,8 @@ export type QuestionFamily = {
 
 export type QuestionBank = {
   lesson_id?: string;
+  course_id?: string;
+  chapter_id?: string;
   coverage_map?: Array<{
     coverage_tag?: string;
     coverage_id?: string;
@@ -107,6 +163,8 @@ export type RelevanceScore = {
 
 export type RelevanceReport = {
   lesson_id?: string;
+  course_id?: string;
+  chapter_id?: string;
   coverage_scores?: RelevanceScore[];
   question_family_scores?: RelevanceScore[];
   step_scores?: RelevanceScore[];

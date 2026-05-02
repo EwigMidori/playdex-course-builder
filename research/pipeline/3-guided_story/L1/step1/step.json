@@ -96,5 +96,7 @@
       "display": "交易信号",
       "gloss": "根据规则或模型产生的买入或卖出指示。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-1"
 }

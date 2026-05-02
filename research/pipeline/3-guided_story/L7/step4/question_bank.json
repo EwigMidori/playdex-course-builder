@@ -732,5 +732,8 @@
     ],
     "source_outline": "L7: Portfolio Optimization and Performance Measures - Capital Asset Pricing Model (CAPM), Security Market Line (SML)"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-7",
+  "sequence_id": "step4"
 }

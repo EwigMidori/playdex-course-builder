@@ -76,5 +76,7 @@
       "display": "压力测试",
       "gloss": "评估投资组合在极端市场条件下的潜在损失。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-6"
 }

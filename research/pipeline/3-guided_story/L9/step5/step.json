@@ -140,5 +140,7 @@
       "display": "储备金证明",
       "gloss": "金融机构用来证明其持有足够资产来覆盖客户负债的方法。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-9"
 }

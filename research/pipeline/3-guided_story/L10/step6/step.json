@@ -101,5 +101,7 @@
       "display": "欧几里得距离",
       "gloss": "两点之间的直线距离，用于衡量相似度。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-10"
 }

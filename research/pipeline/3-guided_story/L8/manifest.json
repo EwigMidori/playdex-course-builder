@@ -22,5 +22,9 @@
       "file": "research/pipeline/3-guided_story/L8/step4/step.json",
       "sequence_id": "step4"
     }
-  ]
+  ],
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-8",
+  "course_title": "COMP7415A Algorithmic Trading",
+  "chapter_title": "Order Book and High Frequency Data Modeling"
 }

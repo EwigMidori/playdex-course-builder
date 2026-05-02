@@ -386,5 +386,8 @@
     ],
     "source_outline": "L6: Capital and Risk Management. Agenda: Introduction to the risk management cycle, Risk identification, Risk measurement, Volatility modelling including ARCH, GARCH, Value-at-Risk (VaR), Stress testing, Scenario analysis, Position sizing strategy, Fixed Size, Balance Rescaling, Dollar Risk Approach, Kelly Criterion. What is Risk? Risk simply refers to uncertainty. In finance, risk refers to the uncertainty of the investment return. Up-side risk: the possibility of making money. Down-side risk: the possibility of losing money. Risk Management Cycle: 1. Risk Identification, 2. Risk Assessment / Measurement, 3. Risk Treatment, 4. Risk Monitoring. Risk Identification. Major Risk Types for a financial institution: 1. Market Risk, Equity Risk, FX Risk, Commodity Risk, 2. Interest rate Risk, 3. Credit Risk, 4. Liquidity Risk, 5. Operational Risk, 6. Legal Risk, 7. Reputational Risk, 8. Strategic Risk. Investment related risks. Market Risk, Interest Risk, Credit Risk, Liquidity Risk."
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-6",
+  "sequence_id": "step1"
 }

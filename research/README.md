@@ -7,8 +7,9 @@
 - `pipeline/1-plain/`：通过 MinerU 等工具抽取得到的 plain text 与原始 artifacts
 - `pipeline/2-related_important/`：课程背景、教学意图、补充上下文
 - `pipeline/3-guided_story/`：面向 learn mode 的 step-by-step 引导式内容
-- `pipeline/4-question_bank/`：题库，包含 flashcards 与 longform families
 - `pipeline/5-textbook/`：lesson 级 MDX 课本与必要图片资产
+
+题库已经并入 `pipeline/3-guided_story/<lesson_id>/<step_id>/question_bank.json`，不再使用独立的 `pipeline/4-question_bank/` 目录。
 
 项目的核心思路是：先把源材料变成结构化中间表示，再通过 prompt、校验器和 reviewer 回路，逐步生成更高层的教学内容，而不是一次性让模型直接“写完整课程”。
 

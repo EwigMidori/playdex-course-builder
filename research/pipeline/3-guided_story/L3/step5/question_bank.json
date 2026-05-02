@@ -522,5 +522,8 @@
     ],
     "source_outline": "L3: Building backtest framework and rule-based trading strategy - Implement an MA Cross Strategy on Excel"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-3",
+  "sequence_id": "step5"
 }

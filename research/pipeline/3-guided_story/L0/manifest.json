@@ -27,5 +27,9 @@
       "file": "research/pipeline/3-guided_story/L0/step5/step.json",
       "sequence_id": "step5"
     }
-  ]
+  ],
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-0",
+  "course_title": "COMP7415A Algorithmic Trading",
+  "chapter_title": "Course Introduction and Market Overview"
 }

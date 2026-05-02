@@ -131,5 +131,7 @@
       "display": "趋势市场",
       "gloss": "价格朝一个方向持续移动的市场状态。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-4"
 }

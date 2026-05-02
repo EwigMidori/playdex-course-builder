@@ -441,5 +441,8 @@
     ],
     "source_outline": "L1: Algorithmic trading basics and financial markets - What is algo-trading?, Market Trend for Algo-Trading, Robo-Trading vs Robo-Advisory, Comparison of Trading Approaches, What should you consider to implement a trading algo?, Algo is the vehicle; Data is the Fuel!, Other factors for infrastructure setup"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-1",
+  "sequence_id": "step1"
 }

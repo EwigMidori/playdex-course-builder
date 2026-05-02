@@ -88,5 +88,7 @@
       "display": "回归",
       "gloss": "预测一个连续的数值，比如具体价格。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-10"
 }

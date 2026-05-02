@@ -42,5 +42,9 @@
       "file": "research/pipeline/3-guided_story/L10/step8/step.json",
       "sequence_id": "step8"
     }
-  ]
+  ],
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-10",
+  "course_title": "COMP7415A Algorithmic Trading",
+  "chapter_title": "Machine Learning in Algorithmic Trading"
 }

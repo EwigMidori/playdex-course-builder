@@ -692,5 +692,8 @@
     ],
     "source_outline": "L10 source outline (3. Reinforcement Learning, Q-learning, SARSA)"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-10",
+  "sequence_id": "step4"
 }

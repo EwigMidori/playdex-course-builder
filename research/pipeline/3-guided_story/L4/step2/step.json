@@ -159,5 +159,7 @@
       "display": "简单线性回归",
       "gloss": "用一个自变量预测一个因变量的线性模型。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-4"
 }

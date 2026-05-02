@@ -68,5 +68,7 @@
       "display": "回测",
       "gloss": "用历史数据模拟交易策略，验证其有效性。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-3"
 }

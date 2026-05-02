@@ -10,7 +10,7 @@ export type MdxCourseIndex = {
 };
 
 type MdxCoursePreviewProps = {
-  lessonId: string;
+  plainArtifactsDir: string;
   source: string;
   index?: MdxCourseIndex;
 };
@@ -36,14 +36,14 @@ const normalizeMdxSource = (source: string) =>
     .replace(/^---[\s\S]*?---\s*/, "")
     .replace(/^(#{1,6}\s+.+?)\s+\{#[^}]+}\s*$/gm, "$1");
 
-const resolveFigureSource = (lessonId: string, src?: string) => {
+const resolveFigureSource = (plainArtifactsDir: string, src?: string) => {
   if (!src) {
     return null;
   }
   if (src.startsWith("http://") || src.startsWith("https://") || src.startsWith("/")) {
     return src;
   }
-  return `/research/pipeline/1-plain/${lessonId}/artifacts/${src.replace(/^\.\//, "")}`;
+  return `/${plainArtifactsDir.replace(/^\/+/, "")}/${src.replace(/^\.\//, "")}`;
 };
 
 const flattenText = (value: React.ReactNode): string => {
@@ -281,7 +281,7 @@ function MermaidFlow({ value }: { value: string }) {
   );
 }
 
-function createCourseComponents(lessonId: string, index?: MdxCourseIndex): Record<string, React.ComponentType<any>> {
+function createCourseComponents(plainArtifactsDir: string, index?: MdxCourseIndex): Record<string, React.ComponentType<any>> {
   return {
     h1: ({ children }: { children?: React.ReactNode }) => <h1 className="text-4xl font-semibold tracking-tight text-stone-950">{children}</h1>,
     h2: ({ children, id }: { children?: React.ReactNode; id?: string }) => (
@@ -364,7 +364,7 @@ function createCourseComponents(lessonId: string, index?: MdxCourseIndex): Recor
       </span>
     ),
     Figure: ({ src, alt, children }: { src?: string; alt?: string; children?: React.ReactNode }) => {
-      const resolved = resolveFigureSource(lessonId, src);
+      const resolved = resolveFigureSource(plainArtifactsDir, src);
       return (
         <figure className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
           {resolved ? <img alt={alt ?? "Course figure"} className="max-h-[420px] w-full object-cover" src={resolved} /> : null}
@@ -383,7 +383,7 @@ function createCourseComponents(lessonId: string, index?: MdxCourseIndex): Recor
   };
 }
 
-export function MdxCoursePreview({ lessonId, source, index }: MdxCoursePreviewProps) {
+export function MdxCoursePreview({ plainArtifactsDir, source, index }: MdxCoursePreviewProps) {
   const [state, setState] = React.useState<PreviewState>(emptyPreviewState);
 
   React.useEffect(() => {
@@ -422,7 +422,10 @@ export function MdxCoursePreview({ lessonId, source, index }: MdxCoursePreviewPr
     };
   }, [source]);
 
-  const components = React.useMemo(() => createCourseComponents(lessonId, index), [index, lessonId]);
+  const components = React.useMemo(
+    () => createCourseComponents(plainArtifactsDir, index),
+    [index, plainArtifactsDir]
+  );
 
   if (state.loading) {
     return <p className="text-sm text-stone-500">Rendering textbook...</p>;

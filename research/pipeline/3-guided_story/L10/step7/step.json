@@ -91,5 +91,7 @@
       "display": "探索与利用",
       "gloss": "在尝试新动作（探索）和选择已知最佳动作（利用）之间平衡。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-10"
 }

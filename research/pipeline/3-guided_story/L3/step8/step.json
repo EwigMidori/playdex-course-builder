@@ -96,5 +96,7 @@
       "display": "相对强弱指标",
       "gloss": "一种动量指标，用于衡量价格变动的速度和幅度，范围在0到100之间。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-3"
 }

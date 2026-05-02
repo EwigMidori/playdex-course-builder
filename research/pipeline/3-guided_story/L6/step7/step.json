@@ -142,5 +142,7 @@
       "display": "仓位管理",
       "gloss": "决定每笔交易投入多少资金的方法。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-6"
 }

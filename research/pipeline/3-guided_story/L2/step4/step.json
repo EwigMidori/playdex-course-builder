@@ -102,5 +102,7 @@
       "display": "User-Agent",
       "gloss": "HTTP 请求头中的一个字段，用于标识客户端类型。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-2"
 }

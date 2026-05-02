@@ -47,7 +47,7 @@ fn build_scorer_input(
     lesson: &LessonPaths,
     target_language: &str,
 ) -> Result<Value, RelevanceError> {
-    let course_description = read_optional_text(&repo.related_important_path())?;
+    let course_description = read_optional_text(&lesson.related_important_path())?;
     let plain_text = read_required_text(&lesson.plain_text_path())?;
     let manifest = read_json(
         &lesson.guided_story_manifest_path(),
@@ -56,9 +56,13 @@ fn build_scorer_input(
     let step_assets = read_step_assets(lesson)?;
     let textbook = read_required_text(&lesson.textbook_path())?;
     let textbook_sections = extract_textbook_sections(&textbook);
-    let exam_signal = read_exam_signal(repo)?;
+    let exam_signal = read_exam_signal(repo, lesson)?;
 
     Ok(json!({
+        "course_id": lesson.course_id(),
+        "course_title": lesson.course_title(),
+        "chapter_id": lesson.chapter_id(),
+        "chapter_title": lesson.chapter_title(),
         "lesson_id": lesson.lesson_id(),
         "target_language": target_language,
         "course_description": course_description,
@@ -128,8 +132,8 @@ fn read_step_assets(lesson: &LessonPaths) -> Result<Vec<Value>, RelevanceError> 
     Ok(assets)
 }
 
-fn read_exam_signal(repo: &RepoPaths) -> Result<Value, RelevanceError> {
-    let exam_dir = repo.exam_raw_dir();
+fn read_exam_signal(repo: &RepoPaths, lesson: &LessonPaths) -> Result<Value, RelevanceError> {
+    let exam_dir = lesson.exam_raw_dir();
     let mut text_files = Vec::new();
     let mut pdf_files = Vec::new();
     let mut other_files = Vec::new();
@@ -176,7 +180,7 @@ fn read_exam_signal(repo: &RepoPaths) -> Result<Value, RelevanceError> {
                 }));
             }
             Some(ext) if ext.eq_ignore_ascii_case("pdf") => {
-                let cache_path = exam_pdf_plain_text_path(repo, &path);
+                let cache_path = exam_pdf_plain_text_path(lesson, &path);
                 match cache_path {
                     Some(cache_path) if cache_path.is_file() => {
                         pdf_files.push(json!({
@@ -234,9 +238,9 @@ fn read_exam_signal(repo: &RepoPaths) -> Result<Value, RelevanceError> {
     }))
 }
 
-fn exam_pdf_plain_text_path(repo: &RepoPaths, path: &Path) -> Option<PathBuf> {
+fn exam_pdf_plain_text_path(lesson: &LessonPaths, path: &Path) -> Option<PathBuf> {
     let stem = path.file_stem()?.to_str()?;
-    Some(repo.exam_plain_text_path(stem))
+    Some(lesson.exam_plain_text_path(stem))
 }
 
 fn extract_textbook_sections(textbook: &str) -> Vec<Value> {

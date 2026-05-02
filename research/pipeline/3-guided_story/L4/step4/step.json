@@ -109,5 +109,7 @@
       "display": "多元线性回归",
       "gloss": "用多个自变量预测一个因变量的线性模型。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-4"
 }

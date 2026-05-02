@@ -302,5 +302,8 @@
     ],
     "source_outline": "L6: Capital and Risk Management. Agenda includes Value-at-Risk (VaR)."
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-6",
+  "sequence_id": "step5"
 }

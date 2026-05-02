@@ -17,7 +17,7 @@ pub fn validate_outputs(lesson: &LessonPaths) -> Result<(), ValidationError> {
     let step_files = manifest_step_files(lesson, &manifest)?;
     let mut question_banks = Vec::new();
     for step_file in &step_files {
-        read_json(step_file, "guided story step")?;
+        let step = read_json(step_file, "guided story step")?;
         let question_bank_path = step_file
             .parent()
             .map(|parent| parent.join("question_bank.json"))
@@ -29,7 +29,10 @@ pub fn validate_outputs(lesson: &LessonPaths) -> Result<(), ValidationError> {
                 path: question_bank_path,
             });
         }
-        question_banks.push(read_json(&question_bank_path, "step question bank")?);
+        validate_step_identity(lesson, &manifest, step_file, &step)?;
+        let question_bank = read_json(&question_bank_path, "step question bank")?;
+        validate_question_bank_identity(lesson, &step, &question_bank_path, &question_bank)?;
+        question_banks.push(question_bank);
     }
 
     let question_ids = collect_many_string_fields(&question_banks, &["question_id", "id"]);
@@ -81,6 +84,151 @@ fn validate_step_local_question_banks(
         }
     }
 
+    Ok(())
+}
+
+fn validate_step_identity(
+    lesson: &LessonPaths,
+    manifest: &Value,
+    step_path: &Path,
+    step: &Value,
+) -> Result<(), ValidationError> {
+    validate_identity_field(
+        lesson.lesson_id(),
+        manifest,
+        "lesson_id",
+        "guided story manifest",
+        step_path,
+        step,
+        "guided story step",
+    )?;
+    validate_optional_identity_field(
+        lesson.course_id(),
+        manifest,
+        "course_id",
+        "guided story manifest",
+        step_path,
+        step,
+        "guided story step",
+    )?;
+    validate_optional_identity_field(
+        lesson.chapter_id(),
+        manifest,
+        "chapter_id",
+        "guided story manifest",
+        step_path,
+        step,
+        "guided story step",
+    )?;
+    Ok(())
+}
+
+fn validate_question_bank_identity(
+    lesson: &LessonPaths,
+    step: &Value,
+    question_bank_path: &Path,
+    question_bank: &Value,
+) -> Result<(), ValidationError> {
+    validate_identity_field(
+        lesson.lesson_id(),
+        step,
+        "lesson_id",
+        "guided story step",
+        question_bank_path,
+        question_bank,
+        "step question bank",
+    )?;
+    validate_optional_identity_field(
+        lesson.course_id(),
+        step,
+        "course_id",
+        "guided story step",
+        question_bank_path,
+        question_bank,
+        "step question bank",
+    )?;
+    validate_optional_identity_field(
+        lesson.chapter_id(),
+        step,
+        "chapter_id",
+        "guided story step",
+        question_bank_path,
+        question_bank,
+        "step question bank",
+    )?;
+    if let Some(sequence_id) = string_field(step, "sequence_id") {
+        validate_identity_field(
+            sequence_id,
+            step,
+            "sequence_id",
+            "guided story step",
+            question_bank_path,
+            question_bank,
+            "step question bank",
+        )?;
+    }
+    Ok(())
+}
+
+fn validate_identity_field(
+    expected: &str,
+    source: &Value,
+    field: &'static str,
+    source_label: &'static str,
+    path: &Path,
+    target: &Value,
+    target_label: &'static str,
+) -> Result<(), ValidationError> {
+    let source_value = string_field(source, field).ok_or(ValidationError::ManifestShape)?;
+    let target_value =
+        string_field(target, field).ok_or_else(|| ValidationError::IdentityMismatch {
+            path: path.to_path_buf(),
+            label: target_label,
+            field,
+            expected: expected.to_owned(),
+            actual: "<missing>".to_owned(),
+            source_label,
+        })?;
+    if source_value != expected || target_value != expected {
+        return Err(ValidationError::IdentityMismatch {
+            path: path.to_path_buf(),
+            label: target_label,
+            field,
+            expected: expected.to_owned(),
+            actual: target_value.to_owned(),
+            source_label,
+        });
+    }
+    Ok(())
+}
+
+fn validate_optional_identity_field(
+    expected: Option<&str>,
+    source: &Value,
+    field: &'static str,
+    source_label: &'static str,
+    path: &Path,
+    target: &Value,
+    target_label: &'static str,
+) -> Result<(), ValidationError> {
+    let Some(expected) = expected else {
+        return Ok(());
+    };
+    let source_value = string_field(source, field);
+    let target_value = string_field(target, field);
+    if source_value.is_none() && target_value.is_none() {
+        return Ok(());
+    }
+    if source_value != Some(expected) || target_value != Some(expected) {
+        return Err(ValidationError::IdentityMismatch {
+            path: path.to_path_buf(),
+            label: target_label,
+            field,
+            expected: expected.to_owned(),
+            actual: target_value.unwrap_or("<missing>").to_owned(),
+            source_label,
+        });
+    }
     Ok(())
 }
 
@@ -236,6 +384,10 @@ fn attr_value(tag: &str, attr: &str) -> Option<String> {
     Some(rest[..end].to_owned())
 }
 
+fn string_field<'a>(value: &'a Value, field: &str) -> Option<&'a str> {
+    value.get(field).and_then(Value::as_str)
+}
+
 fn first_heading_anchor_line(text: &str) -> Option<String> {
     text.lines().find_map(|line| {
         let trimmed = line.trim();
@@ -268,6 +420,14 @@ pub enum ValidationError {
     CrossStepQuestion {
         sequence_id: String,
         linked_steps: Vec<String>,
+    },
+    IdentityMismatch {
+        path: PathBuf,
+        label: &'static str,
+        field: &'static str,
+        expected: String,
+        actual: String,
+        source_label: &'static str,
     },
     BrokenQuestionRef {
         question_id: String,
@@ -316,6 +476,18 @@ impl fmt::Display for ValidationError {
                 f,
                 "question bank for {sequence_id} must only link to itself, got linked_steps={linked_steps:?}"
             ),
+            Self::IdentityMismatch {
+                path,
+                label,
+                field,
+                expected,
+                actual,
+                source_label,
+            } => write!(
+                f,
+                "{label} {} has {field}='{actual}', expected '{expected}' to match {source_label}",
+                path.display()
+            ),
             Self::BrokenQuestionRef { question_id } => {
                 write!(f, "textbook references unknown question id '{question_id}'")
             }
@@ -340,6 +512,7 @@ impl Error for ValidationError {
             | Self::MissingManifestStep { .. }
             | Self::MissingStepQuestionBank { .. }
             | Self::CrossStepQuestion { .. }
+            | Self::IdentityMismatch { .. }
             | Self::BrokenQuestionRef { .. }
             | Self::BrokenQuestionFamilyRef { .. }
             | Self::UnsupportedTextbookHeadingAnchor { .. } => None,

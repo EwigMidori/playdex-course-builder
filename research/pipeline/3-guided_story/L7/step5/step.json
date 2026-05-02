@@ -189,5 +189,7 @@
       "display": "特雷诺比率",
       "gloss": "衡量每单位系统性风险（贝塔）所获得的超额收益。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-7"
 }

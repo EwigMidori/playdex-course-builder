@@ -525,5 +525,8 @@
     ],
     "source_outline": "L2: Data scraping and database management with Python - Database Management: Why use a database for algo-trading? SQL Syntax Overview: SELECT, INSERT, UPDATE, DELETE. Using SQLite in Python. Basic Usage: import sqlite3; conn = sqlite3.connect('example.db'); cursor = conn.cursor(). Create a Table, Inserting Data, Querying Data, Updating Data, Deleting Data. Scrape Market Data into database."
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-2",
+  "sequence_id": "step6"
 }

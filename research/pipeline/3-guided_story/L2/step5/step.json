@@ -114,5 +114,7 @@
       "display": "yfinance",
       "gloss": "一个非官方的 Yahoo Finance Python 库，用于获取股票数据。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-2"
 }

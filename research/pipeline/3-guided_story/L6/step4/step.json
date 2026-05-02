@@ -138,5 +138,7 @@
       "display": "GARCH 模型",
       "gloss": "广义自回归条件异方差模型，是 ARCH 模型的扩展，加入了波动率自身的滞后项。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-6"
 }

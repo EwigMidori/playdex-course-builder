@@ -289,5 +289,8 @@
     ],
     "source_outline": "L9: Market practice in strategy optimization, broker selection, and market tricks"
   },
-  "target_language": "zh-CN"
+  "target_language": "zh-CN",
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-9",
+  "sequence_id": "step1"
 }

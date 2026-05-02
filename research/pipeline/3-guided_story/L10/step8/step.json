@@ -104,5 +104,7 @@
       "display": "过拟合",
       "gloss": "模型在训练数据上表现很好，但在新数据上表现很差。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-10"
 }

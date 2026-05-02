@@ -99,5 +99,7 @@
       "display": "机器人交易",
       "gloss": "完全自动化的算法交易，包括决策和执行。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-1"
 }

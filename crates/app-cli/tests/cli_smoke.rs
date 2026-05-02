@@ -66,8 +66,9 @@ impl TempRepo {
         write_file(&root.join(".ci/agent/AGENTS.md"), "test harness\n");
         write_file(&root.join("docs/progress.json"), "{}\n");
         write_file(&root.join("research/README.md"), "test harness\n");
-
-        Self { root }
+        let repo = Self { root };
+        repo.seed_course_index();
+        repo
     }
 
     fn root(&self) -> &Path {
@@ -110,15 +111,15 @@ impl TempRepo {
         );
         self.write(
             "research/pipeline/3-guided_story/L2/manifest.json",
-            r#"{"lesson_id":"L2","mode":"guided_story","steps":[{"sequence_id":"step1","file":"research/pipeline/3-guided_story/L2/step1/step.json","concept":"Execution"}]}"#,
+            r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","mode":"guided_story","steps":[{"sequence_id":"step1","file":"research/pipeline/3-guided_story/L2/step1/step.json","concept":"Execution"}]}"#,
         );
         self.write(
             "research/pipeline/3-guided_story/L2/step1/step.json",
-            r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[{"id":"s1","body":"Execution matters."}],"term_catalog":{}}"#,
+            r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","mode":"guided_story","screens":[{"id":"s1","body":"Execution matters."}],"term_catalog":{}}"#,
         );
         self.write(
             "research/pipeline/3-guided_story/L2/step1/question_bank.json",
-            r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_a","linked_steps":["step1"],"variants":[{"question_id":"question_a","linked_steps":["step1"],"stem":"A?","answer":0}]}],"longform_families":[]}"#,
+            r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","flashcard_families":[{"family_id":"family_a","linked_steps":["step1"],"variants":[{"question_id":"question_a","linked_steps":["step1"],"stem":"A?","answer":0}]}],"longform_families":[]}"#,
         );
         self.write(
             "research/pipeline/5-textbook/L2.mdx",
@@ -132,6 +133,37 @@ impl TempRepo {
         self.write(
             "research/pipeline/1-plain/exam/sample/plain.txt",
             "cached exam PDF text about assessed execution tradeoffs\n",
+        );
+    }
+
+    fn seed_course_index(&self) {
+        self.write(
+            "research/pipeline/course-index.json",
+            r#"{
+  "version": 1,
+  "courses": [
+    {
+      "courseId": "comp7415a",
+      "title": "COMP7415A Algorithmic Trading",
+      "relatedImportantPath": "research/pipeline/2-related_important/course_desc.md",
+      "examRawDir": "research/pipeline/0-raw/exam",
+      "examPlainRoot": "research/pipeline/1-plain/exam",
+      "chapters": [
+        {
+          "chapterId": "lecture-2",
+          "title": "Data Scraping and Database Management",
+          "lessonId": "L2",
+          "guidedStoryDir": "research/pipeline/3-guided_story/L2",
+          "textbookPath": "research/pipeline/5-textbook/L2.mdx",
+          "rawPdfPath": "research/pipeline/0-raw/L2.pdf",
+          "plainOutputDir": "research/pipeline/1-plain/L2",
+          "metaDir": "research/pipeline/meta/L2"
+        }
+      ]
+    }
+  ]
+}
+"#,
         );
     }
 }
@@ -443,7 +475,8 @@ fn score_relevance_writes_report_and_audit_outputs_with_local_llm_stub() {
         String::from_utf8_lossy(&output.stderr)
     );
     assert!(
-        String::from_utf8_lossy(&output.stdout).contains("relevance scoring complete: lesson=L2"),
+        String::from_utf8_lossy(&output.stdout)
+            .contains("relevance scoring complete: target=comp7415a/lecture-2 (lesson L2)"),
         "stdout: {}",
         String::from_utf8_lossy(&output.stdout)
     );
@@ -543,7 +576,8 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
         String::from_utf8_lossy(&output.stderr)
     );
     assert!(
-        String::from_utf8_lossy(&output.stdout).contains("mvp complete: lesson=L2"),
+        String::from_utf8_lossy(&output.stdout)
+            .contains("mvp complete: target=comp7415a/lecture-2 (lesson L2)"),
         "stdout: {}",
         String::from_utf8_lossy(&output.stdout)
     );
@@ -699,6 +733,82 @@ lessonId: L2
 }
 
 #[test]
+fn run_accepts_course_and_chapter_selectors_from_course_index() {
+    let repo = TempRepo::new();
+    repo.seed_prompts();
+    repo.seed_course_index();
+    repo.write(
+        "research/pipeline/1-plain/L2/plain.txt",
+        "A lesson about execution, questions, and review.\n",
+    );
+    repo.write(
+        "research/pipeline/2-related_important/course_desc.md",
+        "Related course note.\n",
+    );
+
+    let guided_story = r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[],"term_catalog":{}}"#.to_owned();
+    let question_bank = r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_a","linked_steps":["step1"],"variants":[{"question_id":"question_a","linked_steps":["step1"],"stem":"A?","answer":0}]}],"longform_families":[]}"#.to_owned();
+    let textbook =
+        r#"---\nlessonId: L2\n---\n# L2\n<QuestionFamily familyId="family_a" />\n<QuestionRef id="question_a" />\n"#.to_owned();
+    let server = StubLlmServer::start(vec![guided_story, question_bank, textbook]);
+
+    let output = coursegen_command()
+        .current_dir(repo.root())
+        .env("COURSEGEN_LLM_API_KEY", "test-token")
+        .env("COURSEGEN_LLM_MODEL", "test-model")
+        .env("COURSEGEN_LLM_BASE_URL", server.base_url())
+        .args([
+            "run",
+            "--course",
+            "comp7415a",
+            "--chapter",
+            "lecture-2",
+            "--target-language",
+            "zh-CN",
+        ])
+        .output()
+        .expect("coursegen should run");
+
+    server.finish();
+
+    assert!(
+        output.status.success(),
+        "stderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(
+        String::from_utf8_lossy(&output.stdout)
+            .contains("mvp complete: target=comp7415a/lecture-2 (lesson L2)"),
+        "stdout: {}",
+        String::from_utf8_lossy(&output.stdout)
+    );
+
+    let manifest: serde_json::Value = serde_json::from_str(&read_text(
+        repo.root()
+            .join("research/pipeline/3-guided_story/L2/manifest.json"),
+    ))
+    .expect("manifest should parse");
+    assert_eq!(manifest["course_id"], "comp7415a");
+    assert_eq!(manifest["chapter_id"], "lecture-2");
+
+    let step: serde_json::Value = serde_json::from_str(&read_text(
+        repo.root()
+            .join("research/pipeline/3-guided_story/L2/step1/step.json"),
+    ))
+    .expect("step should parse");
+    assert_eq!(step["course_id"], "comp7415a");
+    assert_eq!(step["chapter_id"], "lecture-2");
+
+    let question_bank: serde_json::Value = serde_json::from_str(&read_text(
+        repo.root()
+            .join("research/pipeline/3-guided_story/L2/step1/question_bank.json"),
+    ))
+    .expect("question bank should parse");
+    assert_eq!(question_bank["course_id"], "comp7415a");
+    assert_eq!(question_bank["chapter_id"], "lecture-2");
+}
+
+#[test]
 fn run_resumes_from_missing_step_question_bank_without_regenerating_prior_steps() {
     let repo = TempRepo::new();
     repo.seed_prompts();
@@ -708,22 +818,22 @@ fn run_resumes_from_missing_step_question_bank_without_regenerating_prior_steps(
     );
     repo.write(
         "research/pipeline/3-guided_story/L2/manifest.json",
-        r#"{"lesson_id":"L2","mode":"guided_story","steps":[{"sequence_id":"step1","file":"research/pipeline/3-guided_story/L2/step1/step.json","concept":"First"},{"sequence_id":"step2","file":"research/pipeline/3-guided_story/L2/step2/step.json","concept":"Second"}]}"#,
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","mode":"guided_story","steps":[{"sequence_id":"step1","file":"research/pipeline/3-guided_story/L2/step1/step.json","concept":"First"},{"sequence_id":"step2","file":"research/pipeline/3-guided_story/L2/step2/step.json","concept":"Second"}]}"#,
     );
     repo.write(
         "research/pipeline/3-guided_story/L2/step1/step.json",
-        r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[{"id":"s1","lines":["First"]}],"term_catalog":{}}"#,
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","mode":"guided_story","screens":[{"id":"s1","lines":["First"]}],"term_catalog":{}}"#,
     );
     repo.write(
         "research/pipeline/3-guided_story/L2/step2/step.json",
-        r#"{"lesson_id":"L2","sequence_id":"step2","mode":"guided_story","screens":[{"id":"s1","lines":["Second"]}],"term_catalog":{}}"#,
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step2","mode":"guided_story","screens":[{"id":"s1","lines":["Second"]}],"term_catalog":{}}"#,
     );
     repo.write(
         "research/pipeline/3-guided_story/L2/step1/question_bank.json",
-        r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_step1","linked_steps":["step1"],"variants":[{"question_id":"question_step1","linked_steps":["step1"],"front":"A?","back":"A"}]}],"quiz_families":[],"longform_families":[]}"#,
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","flashcard_families":[{"family_id":"family_step1","linked_steps":["step1"],"variants":[{"question_id":"question_step1","linked_steps":["step1"],"front":"A?","back":"A"}]}],"quiz_families":[],"longform_families":[]}"#,
     );
 
-    let question_bank_2 = r#"{"lesson_id":"L2","sequence_id":"step2","flashcard_families":[{"family_id":"family_step2","linked_steps":["step2"],"variants":[{"question_id":"question_step2","linked_steps":["step2"],"front":"B?","back":"B"}]}],"quiz_families":[],"longform_families":[]}"#.to_owned();
+    let question_bank_2 = r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step2","flashcard_families":[{"family_id":"family_step2","linked_steps":["step2"],"variants":[{"question_id":"question_step2","linked_steps":["step2"],"front":"B?","back":"B"}]}],"quiz_families":[],"longform_families":[]}"#.to_owned();
     let textbook = r#"---
 lessonId: L2
 ---

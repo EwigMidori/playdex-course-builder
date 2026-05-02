@@ -142,5 +142,7 @@
       "display": "订单簿",
       "gloss": "记录所有买入和卖出挂单的电子列表。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-8"
 }

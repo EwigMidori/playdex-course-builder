@@ -107,5 +107,7 @@
       "display": "线性回归交易策略",
       "gloss": "利用线性回归模型预测价格，当实际价格偏离预测值时进行交易。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-4"
 }

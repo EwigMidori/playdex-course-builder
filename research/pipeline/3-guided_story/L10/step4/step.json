@@ -133,5 +133,7 @@
       "display": "状态",
       "gloss": "环境在某一时刻的描述。"
     }
-  }
+  },
+  "course_id": "comp7415a",
+  "chapter_id": "lecture-10"
 }

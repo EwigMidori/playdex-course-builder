@@ -76,64 +76,92 @@ impl Config {
         repo: &RepoPaths,
         process_env: &BTreeMap<String, String>,
     ) -> Result<Self, ConfigError> {
-        let dotenv = load_dotenv_map(&repo.dotenv_path())?;
-        let merged = merge_env(dotenv, process_env);
+        let dotenv = ConfigEnvResolver::load_dotenv_map(&repo.dotenv_path())?;
+        let merged = ConfigEnvResolver::merge_env(dotenv, process_env);
 
         Ok(Self {
             mineru: MineruConfig {
-                api_base_url: resolve_string_with_default(
+                api_base_url: ConfigEnvResolver::resolve_string_with_default(
                     &merged,
                     MINERU_API_BASE_URL,
                     "https://mineru.net",
                 ),
-                token_file: resolve_token_file(repo, &merged),
-                model_version: resolve_string_with_default(&merged, MINERU_MODEL_VERSION, "vlm"),
-                language: resolve_string_with_default(&merged, MINERU_LANGUAGE, "ch"),
-                enable_formula: resolve_bool_with_default(&merged, MINERU_ENABLE_FORMULA, true),
-                enable_table: resolve_bool_with_default(&merged, MINERU_ENABLE_TABLE, true),
-                is_ocr: resolve_bool_with_default(&merged, MINERU_IS_OCR, true),
-                fail_on_empty_text: resolve_bool_with_default(
+                token_file: ConfigEnvResolver::resolve_token_file(repo, &merged),
+                model_version: ConfigEnvResolver::resolve_string_with_default(
+                    &merged,
+                    MINERU_MODEL_VERSION,
+                    "vlm",
+                ),
+                language: ConfigEnvResolver::resolve_string_with_default(
+                    &merged,
+                    MINERU_LANGUAGE,
+                    "ch",
+                ),
+                enable_formula: ConfigEnvResolver::resolve_bool_with_default(
+                    &merged,
+                    MINERU_ENABLE_FORMULA,
+                    true,
+                ),
+                enable_table: ConfigEnvResolver::resolve_bool_with_default(
+                    &merged,
+                    MINERU_ENABLE_TABLE,
+                    true,
+                ),
+                is_ocr: ConfigEnvResolver::resolve_bool_with_default(&merged, MINERU_IS_OCR, true),
+                fail_on_empty_text: ConfigEnvResolver::resolve_bool_with_default(
                     &merged,
                     MINERU_FAIL_ON_EMPTY_TEXT,
                     false,
                 ),
-                request_timeout_seconds: resolve_u64_with_default(
+                request_timeout_seconds: ConfigEnvResolver::resolve_u64_with_default(
                     &merged,
                     MINERU_REQUEST_TIMEOUT_SECONDS,
                     120,
                 )?,
-                upload_timeout_seconds: resolve_u64_with_default(
+                upload_timeout_seconds: ConfigEnvResolver::resolve_u64_with_default(
                     &merged,
                     MINERU_UPLOAD_TIMEOUT_SECONDS,
                     600,
                 )?,
-                result_timeout_seconds: resolve_u64_with_default(
+                result_timeout_seconds: ConfigEnvResolver::resolve_u64_with_default(
                     &merged,
                     MINERU_RESULT_TIMEOUT_SECONDS,
                     3600,
                 )?,
-                poll_interval_seconds: resolve_u64_with_default(
+                poll_interval_seconds: ConfigEnvResolver::resolve_u64_with_default(
                     &merged,
                     MINERU_POLL_INTERVAL_SECONDS,
                     15,
                 )?,
-                download_timeout_seconds: resolve_u64_with_default(
+                download_timeout_seconds: ConfigEnvResolver::resolve_u64_with_default(
                     &merged,
                     MINERU_DOWNLOAD_TIMEOUT_SECONDS,
                     600,
                 )?,
-                inline_token: resolve_optional_string(&merged, MINERU_API_TOKEN),
+                inline_token: ConfigEnvResolver::resolve_optional_string(&merged, MINERU_API_TOKEN),
             },
             llm: LlmConfig {
-                api_key: resolve_optional_string(&merged, "COURSEGEN_LLM_API_KEY")
-                    .or_else(|| resolve_optional_string(&merged, "OPENAI_API_KEY")),
-                base_url: resolve_optional_string(&merged, "COURSEGEN_LLM_BASE_URL")
-                    .or_else(|| resolve_optional_string(&merged, "OPENAI_BASE_URL"))
-                    .unwrap_or_else(|| "https://api.openai.com/v1".to_owned()),
-                model: resolve_optional_string(&merged, "COURSEGEN_LLM_MODEL")
-                    .or_else(|| resolve_optional_string(&merged, "OPENAI_MODEL")),
-                max_tokens: resolve_u64_with_default(&merged, COURSEGEN_LLM_MAX_TOKENS, 393_216)?,
-                timeout_seconds: resolve_u64_with_default(
+                api_key: ConfigEnvResolver::resolve_optional_string(
+                    &merged,
+                    "COURSEGEN_LLM_API_KEY",
+                )
+                .or_else(|| ConfigEnvResolver::resolve_optional_string(&merged, "OPENAI_API_KEY")),
+                base_url: ConfigEnvResolver::resolve_optional_string(
+                    &merged,
+                    "COURSEGEN_LLM_BASE_URL",
+                )
+                .or_else(|| ConfigEnvResolver::resolve_optional_string(&merged, "OPENAI_BASE_URL"))
+                .unwrap_or_else(|| "https://api.openai.com/v1".to_owned()),
+                model: ConfigEnvResolver::resolve_optional_string(&merged, "COURSEGEN_LLM_MODEL")
+                    .or_else(|| {
+                        ConfigEnvResolver::resolve_optional_string(&merged, "OPENAI_MODEL")
+                    }),
+                max_tokens: ConfigEnvResolver::resolve_u64_with_default(
+                    &merged,
+                    COURSEGEN_LLM_MAX_TOKENS,
+                    393_216,
+                )?,
+                timeout_seconds: ConfigEnvResolver::resolve_u64_with_default(
                     &merged,
                     COURSEGEN_LLM_TIMEOUT_SECONDS,
                     3600,
@@ -149,7 +177,7 @@ impl MineruConfig {
             return Ok(token.clone());
         }
 
-        read_trimmed_file(&self.token_file)
+        ConfigEnvResolver::read_trimmed_file(&self.token_file)
     }
 }
 
@@ -241,155 +269,159 @@ impl Error for ConfigError {
     }
 }
 
-fn load_dotenv_map(path: &Path) -> Result<BTreeMap<String, String>, ConfigError> {
-    let mut env = BTreeMap::new();
-    let contents = match fs::read_to_string(path) {
-        Ok(contents) => contents,
-        Err(source) if source.kind() == io::ErrorKind::NotFound => return Ok(env),
-        Err(source) => {
-            return Err(ConfigError::DotenvRead {
-                path: path.to_path_buf(),
-                source,
-            });
-        }
-    };
+struct ConfigEnvResolver;
 
-    for raw_line in contents.lines() {
-        let line = raw_line.trim();
-        if line.is_empty() || line.starts_with('#') {
-            continue;
-        }
-
-        let Some((raw_key, raw_value)) = line.split_once('=') else {
-            continue;
+impl ConfigEnvResolver {
+    fn load_dotenv_map(path: &Path) -> Result<BTreeMap<String, String>, ConfigError> {
+        let mut env = BTreeMap::new();
+        let contents = match fs::read_to_string(path) {
+            Ok(contents) => contents,
+            Err(source) if source.kind() == io::ErrorKind::NotFound => return Ok(env),
+            Err(source) => {
+                return Err(ConfigError::DotenvRead {
+                    path: path.to_path_buf(),
+                    source,
+                });
+            }
         };
-        let key = raw_key.trim();
-        if !key.is_empty() {
-            env.insert(
-                key.to_owned(),
-                strip_surrounding_quotes(raw_value.trim()).to_owned(),
-            );
+
+        for raw_line in contents.lines() {
+            let line = raw_line.trim();
+            if line.is_empty() || line.starts_with('#') {
+                continue;
+            }
+
+            let Some((raw_key, raw_value)) = line.split_once('=') else {
+                continue;
+            };
+            let key = raw_key.trim();
+            if !key.is_empty() {
+                env.insert(
+                    key.to_owned(),
+                    Self::strip_surrounding_quotes(raw_value.trim()).to_owned(),
+                );
+            }
+        }
+
+        Ok(env)
+    }
+
+    fn merge_env(
+        dotenv: BTreeMap<String, String>,
+        process_env: &BTreeMap<String, String>,
+    ) -> BTreeMap<String, String> {
+        let mut merged = dotenv;
+        for (key, value) in process_env {
+            merged.insert(key.clone(), value.clone());
+        }
+        merged
+    }
+
+    fn resolve_token_file(repo: &RepoPaths, env: &BTreeMap<String, String>) -> PathBuf {
+        let token_file = Self::resolve_optional_string(env, MINERU_TOKEN_FILE)
+            .map(PathBuf::from)
+            .unwrap_or_else(|| repo.default_mineru_token_file_path());
+
+        if token_file.is_absolute() {
+            token_file
+        } else {
+            repo.root().join(token_file)
         }
     }
 
-    Ok(env)
-}
-
-fn merge_env(
-    dotenv: BTreeMap<String, String>,
-    process_env: &BTreeMap<String, String>,
-) -> BTreeMap<String, String> {
-    let mut merged = dotenv;
-    for (key, value) in process_env {
-        merged.insert(key.clone(), value.clone());
-    }
-    merged
-}
-
-fn resolve_token_file(repo: &RepoPaths, env: &BTreeMap<String, String>) -> PathBuf {
-    let token_file = resolve_optional_string(env, MINERU_TOKEN_FILE)
-        .map(PathBuf::from)
-        .unwrap_or_else(|| repo.default_mineru_token_file_path());
-
-    if token_file.is_absolute() {
-        token_file
-    } else {
-        repo.root().join(token_file)
-    }
-}
-
-fn resolve_string_with_default(
-    env: &BTreeMap<String, String>,
-    key: &'static str,
-    default: &str,
-) -> String {
-    resolve_optional_string(env, key)
-        .filter(|value| !value.is_empty())
-        .unwrap_or_else(|| default.to_owned())
-}
-
-fn resolve_optional_string(env: &BTreeMap<String, String>, key: &str) -> Option<String> {
-    env.get(key)
-        .map(|value| value.trim().to_owned())
-        .filter(|value| !value.is_empty())
-}
-
-fn resolve_bool_with_default(
-    env: &BTreeMap<String, String>,
-    key: &'static str,
-    default: bool,
-) -> bool {
-    let Some(value) = env.get(key) else {
-        return default;
-    };
-
-    let value = value.trim();
-    if value.is_empty() {
-        return default;
+    fn resolve_string_with_default(
+        env: &BTreeMap<String, String>,
+        key: &'static str,
+        default: &str,
+    ) -> String {
+        Self::resolve_optional_string(env, key)
+            .filter(|value| !value.is_empty())
+            .unwrap_or_else(|| default.to_owned())
     }
 
-    matches!(
-        value.to_ascii_lowercase().as_str(),
-        "1" | "true" | "yes" | "on"
-    )
-}
-
-fn resolve_u64_with_default(
-    env: &BTreeMap<String, String>,
-    key: &'static str,
-    default: u64,
-) -> Result<u64, ConfigError> {
-    let Some(value) = env.get(key) else {
-        return Ok(default);
-    };
-
-    let value = value.trim();
-    if value.is_empty() {
-        return Ok(default);
+    fn resolve_optional_string(env: &BTreeMap<String, String>, key: &str) -> Option<String> {
+        env.get(key)
+            .map(|value| value.trim().to_owned())
+            .filter(|value| !value.is_empty())
     }
 
-    value
-        .parse::<u64>()
-        .map_err(|source| ConfigError::InvalidInteger {
-            key,
-            value: value.to_owned(),
-            source,
-        })
-}
+    fn resolve_bool_with_default(
+        env: &BTreeMap<String, String>,
+        key: &'static str,
+        default: bool,
+    ) -> bool {
+        let Some(value) = env.get(key) else {
+            return default;
+        };
 
-fn read_trimmed_file(path: &Path) -> Result<String, ConfigError> {
-    match fs::read_to_string(path) {
-        Ok(contents) => {
-            let token = contents.trim().to_owned();
-            if token.is_empty() {
+        let value = value.trim();
+        if value.is_empty() {
+            return default;
+        }
+
+        matches!(
+            value.to_ascii_lowercase().as_str(),
+            "1" | "true" | "yes" | "on"
+        )
+    }
+
+    fn resolve_u64_with_default(
+        env: &BTreeMap<String, String>,
+        key: &'static str,
+        default: u64,
+    ) -> Result<u64, ConfigError> {
+        let Some(value) = env.get(key) else {
+            return Ok(default);
+        };
+
+        let value = value.trim();
+        if value.is_empty() {
+            return Ok(default);
+        }
+
+        value
+            .parse::<u64>()
+            .map_err(|source| ConfigError::InvalidInteger {
+                key,
+                value: value.to_owned(),
+                source,
+            })
+    }
+
+    fn read_trimmed_file(path: &Path) -> Result<String, ConfigError> {
+        match fs::read_to_string(path) {
+            Ok(contents) => {
+                let token = contents.trim().to_owned();
+                if token.is_empty() {
+                    Err(ConfigError::MissingMineruToken {
+                        path: path.to_path_buf(),
+                    })
+                } else {
+                    Ok(token)
+                }
+            }
+            Err(source) if source.kind() == io::ErrorKind::NotFound => {
                 Err(ConfigError::MissingMineruToken {
                     path: path.to_path_buf(),
                 })
-            } else {
-                Ok(token)
+            }
+            Err(source) => Err(ConfigError::MineruTokenRead {
+                path: path.to_path_buf(),
+                source,
+            }),
+        }
+    }
+
+    fn strip_surrounding_quotes(value: &str) -> &str {
+        if value.len() >= 2 {
+            let bytes = value.as_bytes();
+            let first = bytes[0];
+            let last = bytes[value.len() - 1];
+            if (first == b'"' && last == b'"') || (first == b'\'' && last == b'\'') {
+                return &value[1..value.len() - 1];
             }
         }
-        Err(source) if source.kind() == io::ErrorKind::NotFound => {
-            Err(ConfigError::MissingMineruToken {
-                path: path.to_path_buf(),
-            })
-        }
-        Err(source) => Err(ConfigError::MineruTokenRead {
-            path: path.to_path_buf(),
-            source,
-        }),
-    }
-}
 
-fn strip_surrounding_quotes(value: &str) -> &str {
-    if value.len() >= 2 {
-        let bytes = value.as_bytes();
-        let first = bytes[0];
-        let last = bytes[value.len() - 1];
-        if (first == b'"' && last == b'"') || (first == b'\'' && last == b'\'') {
-            return &value[1..value.len() - 1];
-        }
+        value
     }
-
-    value
 }

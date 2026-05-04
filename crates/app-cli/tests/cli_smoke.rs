@@ -37,12 +37,16 @@ const ENV_KEYS: &[&str] = &[
     "MINERU_DOWNLOAD_TIMEOUT_SECONDS",
 ];
 
-fn repo_root() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-        .ancestors()
-        .nth(2)
-        .expect("crate directory should live under the repository root")
-        .to_path_buf()
+struct TestSupport;
+
+impl TestSupport {
+    fn repo_root() -> PathBuf {
+        PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .ancestors()
+            .nth(2)
+            .expect("crate directory should live under the repository root")
+            .to_path_buf()
+    }
 }
 
 struct TempRepo {
@@ -63,9 +67,9 @@ impl TempRepo {
         let root = env::temp_dir().join(format!("coursegen-mvp-tests-{unique_id}"));
 
         fs::create_dir_all(root.join(".git")).expect("temp repo should create .git directory");
-        write_file(&root.join(".ci/agent/AGENTS.md"), "test harness\n");
-        write_file(&root.join("docs/progress.json"), "{}\n");
-        write_file(&root.join("research/README.md"), "test harness\n");
+        TestSupport::write_file(&root.join(".ci/agent/AGENTS.md"), "test harness\n");
+        TestSupport::write_file(&root.join("docs/progress.json"), "{}\n");
+        TestSupport::write_file(&root.join("research/README.md"), "test harness\n");
         let repo = Self { root };
         repo.seed_course_index();
         repo
@@ -76,7 +80,7 @@ impl TempRepo {
     }
 
     fn write(&self, relative: impl AsRef<Path>, contents: &str) {
-        write_file(&self.root.join(relative), contents);
+        TestSupport::write_file(&self.root.join(relative), contents);
     }
 
     fn seed_prompts(&self) {
@@ -182,47 +186,49 @@ impl Drop for TempRepo {
     }
 }
 
-fn coursegen_command() -> Command {
-    let mut command = Command::new(env!("CARGO_BIN_EXE_coursegen"));
-    for key in ENV_KEYS {
-        command.env_remove(key);
-    }
-    command
-}
-
-fn write_file(path: &Path, contents: &str) {
-    if let Some(parent) = path.parent() {
-        fs::create_dir_all(parent).expect("parent directories should be created");
-    }
-    fs::write(path, contents).expect("file should be written");
-}
-
-fn read_text(path: impl AsRef<Path>) -> String {
-    fs::read_to_string(path).expect("file should be readable")
-}
-
-fn gate_pass_report(family_ids: &[&str]) -> String {
-    let decisions = family_ids
-        .iter()
-        .map(|family_id| {
-            serde_json::json!({
-                "family_id": family_id,
-                "decision": "pass",
-                "reason": "Checks practice content.",
-                "practice_target": "Practice content."
-            })
-        })
-        .collect::<Vec<_>>();
-
-    serde_json::json!({
-        "decisions": decisions,
-        "summary": {
-            "passed": family_ids.len(),
-            "failed": 0,
-            "uncertain": 0
+impl TestSupport {
+    fn coursegen_command() -> Command {
+        let mut command = Command::new(env!("CARGO_BIN_EXE_coursegen"));
+        for key in ENV_KEYS {
+            command.env_remove(key);
         }
-    })
-    .to_string()
+        command
+    }
+
+    fn write_file(path: &Path, contents: &str) {
+        if let Some(parent) = path.parent() {
+            fs::create_dir_all(parent).expect("parent directories should be created");
+        }
+        fs::write(path, contents).expect("file should be written");
+    }
+
+    fn read_text(path: impl AsRef<Path>) -> String {
+        fs::read_to_string(path).expect("file should be readable")
+    }
+
+    fn gate_pass_report(family_ids: &[&str]) -> String {
+        let decisions = family_ids
+            .iter()
+            .map(|family_id| {
+                serde_json::json!({
+                    "family_id": family_id,
+                    "decision": "pass",
+                    "reason": "Checks practice content.",
+                    "practice_target": "Practice content."
+                })
+            })
+            .collect::<Vec<_>>();
+
+        serde_json::json!({
+            "decisions": decisions,
+            "summary": {
+                "passed": family_ids.len(),
+                "failed": 0,
+                "uncertain": 0
+            }
+        })
+        .to_string()
+    }
 }
 
 struct StubLlmServer {
@@ -283,8 +289,8 @@ impl StubLlmServer {
 
 #[test]
 fn validate_fails_clearly_outside_the_repository_root() {
-    let cwd = repo_root().join("research");
-    let output = coursegen_command()
+    let cwd = TestSupport::repo_root().join("research");
+    let output = TestSupport::coursegen_command()
         .current_dir(&cwd)
         .args(["validate", "L2"])
         .output()
@@ -316,7 +322,7 @@ fn validate_fails_clearly_outside_the_repository_root() {
 fn run_reports_missing_raw_pdf_when_plain_text_is_missing() {
     let repo = TempRepo::new();
 
-    let output = coursegen_command()
+    let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
         .args(["run", "L2", "--target-language", "zh-CN"])
         .output()
@@ -346,7 +352,7 @@ fn run_reports_missing_llm_api_key_before_prompts_or_network() {
         "plain text is already available\n",
     );
 
-    let output = coursegen_command()
+    let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
         .env("COURSEGEN_LLM_MODEL", "test-model")
         .args(["run", "L2"])
@@ -373,7 +379,7 @@ fn run_reports_missing_llm_model_before_prompts_or_network() {
         "plain text is already available\n",
     );
 
-    let output = coursegen_command()
+    let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
         .env("COURSEGEN_LLM_API_KEY", "test-token")
         .args(["run", "L2"])
@@ -397,7 +403,7 @@ fn score_relevance_reports_missing_llm_api_key_before_network() {
     let repo = TempRepo::new();
     repo.seed_relevance_inputs();
 
-    let output = coursegen_command()
+    let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
         .env("COURSEGEN_LLM_MODEL", "test-model")
         .args(["score-relevance", "L2"])
@@ -421,7 +427,7 @@ fn score_relevance_reports_missing_llm_model_before_network() {
     let repo = TempRepo::new();
     repo.seed_relevance_inputs();
 
-    let output = coursegen_command()
+    let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
         .env("COURSEGEN_LLM_API_KEY", "test-token")
         .args(["score-relevance", "L2"])
@@ -490,7 +496,7 @@ fn score_relevance_writes_report_and_audit_outputs_with_local_llm_stub() {
     .to_string();
     let server = StubLlmServer::start(vec![report]);
 
-    let output = coursegen_command()
+    let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
         .env("COURSEGEN_LLM_API_KEY", "test-token")
         .env("COURSEGEN_LLM_MODEL", "test-model")
@@ -531,7 +537,7 @@ fn score_relevance_writes_report_and_audit_outputs_with_local_llm_stub() {
     }
 
     let report: serde_json::Value =
-        serde_json::from_str(&read_text(report_path)).expect("report should parse");
+        serde_json::from_str(&TestSupport::read_text(report_path)).expect("report should parse");
     assert!(
         report["step_scores"]
             .as_array()
@@ -557,7 +563,7 @@ fn score_relevance_writes_report_and_audit_outputs_with_local_llm_stub() {
         "coverage scores should be present"
     );
 
-    let user_prompt = read_text(audit_root.join("user.md"));
+    let user_prompt = TestSupport::read_text(audit_root.join("user.md"));
     assert!(
         user_prompt.contains("cached exam PDF text about assessed execution tradeoffs"),
         "cached PDF exam text should be included in scorer input"
@@ -587,12 +593,12 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
 
     let guided_story = r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[],"term_catalog":{}}"#.to_owned();
     let question_bank = r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_a","linked_steps":["step1"],"variants":[{"question_id":"question_a","linked_steps":["step1"],"stem":"A?","answer":0}]}],"longform_families":[]}"#.to_owned();
-    let gate_report = gate_pass_report(&["family_a"]);
+    let gate_report = TestSupport::gate_pass_report(&["family_a"]);
     let textbook =
         r#"---\nlessonId: L2\n---\n# L2\n<QuestionFamily familyId="family_a" />\n<QuestionRef id="question_a" />\n"#.to_owned();
     let server = StubLlmServer::start(vec![guided_story, question_bank, gate_report, textbook]);
 
-    let output = coursegen_command()
+    let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
         .env("COURSEGEN_LLM_API_KEY", "test-token")
         .env("COURSEGEN_LLM_MODEL", "test-model")
@@ -652,17 +658,17 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
     }
 
     assert!(
-        read_text(audit_root.join("guided_story/user.md")).contains("zh-CN"),
+        TestSupport::read_text(audit_root.join("guided_story/user.md")).contains("zh-CN"),
         "rendered prompt should include target language"
     );
     assert!(
-        read_text(textbook_path).contains(r#"<QuestionRef id=\"question_a\" />"#)
-            || read_text(repo.root().join("research/pipeline/5-textbook/L2.mdx"))
+        TestSupport::read_text(textbook_path).contains(r#"<QuestionRef id=\"question_a\" />"#)
+            || TestSupport::read_text(repo.root().join("research/pipeline/5-textbook/L2.mdx"))
                 .contains(r#"<QuestionRef id="question_a" />"#),
         "textbook should contain the stubbed question reference"
     );
 
-    let validate = coursegen_command()
+    let validate = TestSupport::coursegen_command()
         .current_dir(repo.root())
         .args(["validate", "L2"])
         .output()
@@ -737,7 +743,7 @@ fn run_filters_question_bank_with_gate_and_writes_rejected_artifact() {
         r#"---\nlessonId: L2\n---\n# L2\n<QuestionFamily familyId="family_keep" />\n<QuestionRef id="question_keep" />\n"#.to_owned();
     let server = StubLlmServer::start(vec![guided_story, question_bank, gate_report, textbook]);
 
-    let output = coursegen_command()
+    let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
         .env("COURSEGEN_LLM_API_KEY", "test-token")
         .env("COURSEGEN_LLM_MODEL", "test-model")
@@ -758,14 +764,16 @@ fn run_filters_question_bank_with_gate_and_writes_rejected_artifact() {
         .root()
         .join("research/pipeline/3-guided_story/L2/step1");
     let main_bank: serde_json::Value =
-        serde_json::from_str(&read_text(step_dir.join("question_bank.json")))
+        serde_json::from_str(&TestSupport::read_text(step_dir.join("question_bank.json")))
             .expect("main question bank should parse");
-    let candidate: serde_json::Value =
-        serde_json::from_str(&read_text(step_dir.join("candidate_question_bank.json")))
-            .expect("candidate question bank should parse");
-    let rejected: serde_json::Value =
-        serde_json::from_str(&read_text(step_dir.join("question_bank.rejected.json")))
-            .expect("rejected question bank should parse");
+    let candidate: serde_json::Value = serde_json::from_str(&TestSupport::read_text(
+        step_dir.join("candidate_question_bank.json"),
+    ))
+    .expect("candidate question bank should parse");
+    let rejected: serde_json::Value = serde_json::from_str(&TestSupport::read_text(
+        step_dir.join("question_bank.rejected.json"),
+    ))
+    .expect("rejected question bank should parse");
 
     assert_eq!(
         main_bank["flashcard_families"][0]["family_id"],
@@ -821,8 +829,8 @@ fn run_writes_question_banks_for_each_generated_step() {
     }"#.to_owned();
     let question_bank_1 = r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_step1","linked_steps":["step1"],"variants":[{"question_id":"question_step1","linked_steps":["step1"],"front":"A?","back":"A"}]}],"quiz_families":[],"longform_families":[]}"#.to_owned();
     let question_bank_2 = r#"{"lesson_id":"L2","sequence_id":"step2","flashcard_families":[{"family_id":"family_step2","linked_steps":["step2"],"variants":[{"question_id":"question_step2","linked_steps":["step2"],"front":"B?","back":"B"}]}],"quiz_families":[],"longform_families":[]}"#.to_owned();
-    let gate_report_1 = gate_pass_report(&["family_step1"]);
-    let gate_report_2 = gate_pass_report(&["family_step2"]);
+    let gate_report_1 = TestSupport::gate_pass_report(&["family_step1"]);
+    let gate_report_2 = TestSupport::gate_pass_report(&["family_step2"]);
     let textbook = r#"---
 lessonId: L2
 ---
@@ -842,7 +850,7 @@ lessonId: L2
         textbook,
     ]);
 
-    let output = coursegen_command()
+    let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
         .env("COURSEGEN_LLM_API_KEY", "test-token")
         .env("COURSEGEN_LLM_MODEL", "test-model")
@@ -859,7 +867,7 @@ lessonId: L2
         String::from_utf8_lossy(&output.stderr)
     );
 
-    let manifest: serde_json::Value = serde_json::from_str(&read_text(
+    let manifest: serde_json::Value = serde_json::from_str(&TestSupport::read_text(
         repo.root()
             .join("research/pipeline/3-guided_story/L2/manifest.json"),
     ))
@@ -918,12 +926,12 @@ fn run_accepts_course_and_chapter_selectors_from_course_index() {
 
     let guided_story = r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[],"term_catalog":{}}"#.to_owned();
     let question_bank = r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_a","linked_steps":["step1"],"variants":[{"question_id":"question_a","linked_steps":["step1"],"stem":"A?","answer":0}]}],"longform_families":[]}"#.to_owned();
-    let gate_report = gate_pass_report(&["family_a"]);
+    let gate_report = TestSupport::gate_pass_report(&["family_a"]);
     let textbook =
         r#"---\nlessonId: L2\n---\n# L2\n<QuestionFamily familyId="family_a" />\n<QuestionRef id="question_a" />\n"#.to_owned();
     let server = StubLlmServer::start(vec![guided_story, question_bank, gate_report, textbook]);
 
-    let output = coursegen_command()
+    let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
         .env("COURSEGEN_LLM_API_KEY", "test-token")
         .env("COURSEGEN_LLM_MODEL", "test-model")
@@ -954,7 +962,7 @@ fn run_accepts_course_and_chapter_selectors_from_course_index() {
         String::from_utf8_lossy(&output.stdout)
     );
 
-    let manifest: serde_json::Value = serde_json::from_str(&read_text(
+    let manifest: serde_json::Value = serde_json::from_str(&TestSupport::read_text(
         repo.root()
             .join("research/pipeline/3-guided_story/L2/manifest.json"),
     ))
@@ -962,7 +970,7 @@ fn run_accepts_course_and_chapter_selectors_from_course_index() {
     assert_eq!(manifest["course_id"], "comp7415a");
     assert_eq!(manifest["chapter_id"], "lecture-2");
 
-    let step: serde_json::Value = serde_json::from_str(&read_text(
+    let step: serde_json::Value = serde_json::from_str(&TestSupport::read_text(
         repo.root()
             .join("research/pipeline/3-guided_story/L2/step1/step.json"),
     ))
@@ -970,7 +978,7 @@ fn run_accepts_course_and_chapter_selectors_from_course_index() {
     assert_eq!(step["course_id"], "comp7415a");
     assert_eq!(step["chapter_id"], "lecture-2");
 
-    let question_bank: serde_json::Value = serde_json::from_str(&read_text(
+    let question_bank: serde_json::Value = serde_json::from_str(&TestSupport::read_text(
         repo.root()
             .join("research/pipeline/3-guided_story/L2/step1/question_bank.json"),
     ))
@@ -1004,9 +1012,9 @@ fn run_resumes_from_missing_step_question_bank_without_regenerating_prior_steps(
         r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","flashcard_families":[{"family_id":"family_step1","linked_steps":["step1"],"variants":[{"question_id":"question_step1","linked_steps":["step1"],"front":"A?","back":"A"}]}],"quiz_families":[],"longform_families":[]}"#,
     );
 
-    let gate_report_1 = gate_pass_report(&["family_step1"]);
+    let gate_report_1 = TestSupport::gate_pass_report(&["family_step1"]);
     let question_bank_2 = r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step2","flashcard_families":[{"family_id":"family_step2","linked_steps":["step2"],"variants":[{"question_id":"question_step2","linked_steps":["step2"],"front":"B?","back":"B"}]}],"quiz_families":[],"longform_families":[]}"#.to_owned();
-    let gate_report_2 = gate_pass_report(&["family_step2"]);
+    let gate_report_2 = TestSupport::gate_pass_report(&["family_step2"]);
     let textbook = r#"---
 lessonId: L2
 ---
@@ -1024,7 +1032,7 @@ lessonId: L2
         textbook,
     ]);
 
-    let output = coursegen_command()
+    let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
         .env("COURSEGEN_LLM_API_KEY", "test-token")
         .env("COURSEGEN_LLM_MODEL", "test-model")

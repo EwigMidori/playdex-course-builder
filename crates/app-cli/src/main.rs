@@ -1,5 +1,6 @@
 mod cli;
 mod config;
+mod llm;
 mod mineru;
 mod mvp;
 mod paths;
@@ -39,7 +40,7 @@ fn run() -> Result<(), AppError> {
                 target.course.as_deref(),
                 target.chapter.as_deref(),
             )?;
-            mvp::run_mvp(&repo, &lesson, &target_language, force_stage)?;
+            mvp::MvpRunner::run(&repo, &lesson, &target_language, force_stage)?;
             println!(
                 "mvp complete: target={} target_language={target_language}",
                 lesson.target_display()
@@ -51,7 +52,7 @@ fn run() -> Result<(), AppError> {
                 target.course.as_deref(),
                 target.chapter.as_deref(),
             )?;
-            mineru::convert_lesson(&repo, &lesson, resume)?;
+            mineru::MineruConverter::convert_lesson(&repo, &lesson, resume)?;
             println!(
                 "convert complete: target={} plain_text={}",
                 lesson.target_display(),
@@ -59,7 +60,7 @@ fn run() -> Result<(), AppError> {
             );
         }
         Command::ConvertExams { force } => {
-            let converted = mineru::convert_exam_pdfs(&repo, !force)?;
+            let converted = mineru::MineruConverter::convert_exam_pdfs(&repo, !force)?;
             println!(
                 "convert exams complete: converted={} raw={} plain={}",
                 converted,
@@ -73,7 +74,7 @@ fn run() -> Result<(), AppError> {
                 target.course.as_deref(),
                 target.chapter.as_deref(),
             )?;
-            validation::validate_outputs(&lesson)?;
+            validation::OutputValidator::new(&lesson).validate()?;
             println!("validation passed: target={}", lesson.target_display());
         }
         Command::ScoreRelevance {
@@ -85,7 +86,7 @@ fn run() -> Result<(), AppError> {
                 target.course.as_deref(),
                 target.chapter.as_deref(),
             )?;
-            relevance::score_relevance(&repo, &lesson, &target_language)?;
+            relevance::RelevanceScorer::score(&repo, &lesson, &target_language)?;
             println!(
                 "relevance scoring complete: target={} report={}",
                 lesson.target_display(),

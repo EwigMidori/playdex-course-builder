@@ -7,144 +7,154 @@ use std::{
     time::Duration,
 };
 
-use reqwest::blocking::Client;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 
 use crate::{
     cli::ForceStage,
     config::{Config, ConfigError, LlmReadyConfig},
-    mineru::{self, ConvertError},
+    llm::{LlmClient, LlmClientError},
+    mineru::{ConvertError, MineruConverter},
     paths::LessonPaths,
-    validation::{self, ValidationError},
+    validation::{OutputValidator, ValidationError},
 };
 
-pub fn run_mvp(
-    repo: &crate::paths::RepoPaths,
-    lesson: &LessonPaths,
-    target_language: &str,
-    force_stage: ForceStage,
-) -> Result<(), MvpError> {
-    let force_convert = matches!(force_stage, ForceStage::Convert | ForceStage::All);
-    let force_guided_story = matches!(force_stage, ForceStage::GuidedStory | ForceStage::All);
-    let force_question_bank = matches!(
-        force_stage,
-        ForceStage::GuidedStory | ForceStage::QuestionBank | ForceStage::All
-    );
-    let force_textbook = matches!(
-        force_stage,
-        ForceStage::GuidedStory | ForceStage::QuestionBank | ForceStage::Textbook | ForceStage::All
-    );
+pub struct MvpRunner;
 
-    if force_convert || !lesson.plain_text_path().is_file() {
-        mineru::convert_lesson(repo, lesson, false)?;
-    } else {
-        eprintln!(
-            "reusing plain text: {}",
-            lesson.relative_display(&lesson.plain_text_path())
+impl MvpRunner {
+    pub fn run(
+        repo: &crate::paths::RepoPaths,
+        lesson: &LessonPaths,
+        target_language: &str,
+        force_stage: ForceStage,
+    ) -> Result<(), MvpError> {
+        let force_convert = matches!(force_stage, ForceStage::Convert | ForceStage::All);
+        let force_guided_story = matches!(force_stage, ForceStage::GuidedStory | ForceStage::All);
+        let force_question_bank = matches!(
+            force_stage,
+            ForceStage::GuidedStory | ForceStage::QuestionBank | ForceStage::All
         );
-    }
+        let force_textbook = matches!(
+            force_stage,
+            ForceStage::GuidedStory
+                | ForceStage::QuestionBank
+                | ForceStage::Textbook
+                | ForceStage::All
+        );
 
-    let plain_text = read_required_text(&lesson.plain_text_path())?;
-    let related_important = read_optional_text(&lesson.related_important_path())?;
-    let mut llm = None;
+        if force_convert || !lesson.plain_text_path().is_file() {
+            MineruConverter::convert_lesson(repo, lesson, false)?;
+        } else {
+            eprintln!(
+                "reusing plain text: {}",
+                lesson.relative_display(&lesson.plain_text_path())
+            );
+        }
 
-    if force_guided_story || !guided_story_ready(lesson) {
-        let llm = ready_llm(repo, &mut llm)?;
-        generate_guided_story(
+        let plain_text = Self::read_required_text(&lesson.plain_text_path())?;
+        let related_important = Self::read_optional_text(&lesson.related_important_path())?;
+        let mut llm = None;
+
+        if force_guided_story || !Self::guided_story_ready(lesson) {
+            let llm = Self::ready_llm(repo, &mut llm)?;
+            Self::generate_guided_story(
+                lesson,
+                llm,
+                target_language,
+                &plain_text,
+                &related_important,
+            )?;
+        } else {
+            eprintln!(
+                "reusing guided story: {}",
+                lesson.relative_display(&lesson.guided_story_manifest_path())
+            );
+        }
+
+        let generated_question_banks = Self::generate_question_bank(
             lesson,
-            llm,
+            &mut llm,
+            force_question_bank,
             target_language,
             &plain_text,
             &related_important,
         )?;
-    } else {
-        eprintln!(
-            "reusing guided story: {}",
-            lesson.relative_display(&lesson.guided_story_manifest_path())
-        );
+
+        if force_textbook || generated_question_banks || !Self::textbook_ready(lesson) {
+            let llm = Self::ready_llm(repo, &mut llm)?;
+            Self::generate_textbook(
+                lesson,
+                llm,
+                target_language,
+                &plain_text,
+                &related_important,
+            )?;
+        } else {
+            eprintln!(
+                "reusing textbook: {}",
+                lesson.relative_display(&lesson.textbook_path())
+            );
+        }
+
+        OutputValidator::new(lesson).validate()?;
+
+        Ok(())
     }
 
-    let generated_question_banks = generate_question_bank(
-        lesson,
-        &mut llm,
-        force_question_bank,
-        target_language,
-        &plain_text,
-        &related_important,
-    )?;
-
-    if force_textbook || generated_question_banks || !textbook_ready(lesson) {
-        let llm = ready_llm(repo, &mut llm)?;
-        generate_textbook(
-            lesson,
-            llm,
-            target_language,
-            &plain_text,
-            &related_important,
-        )?;
-    } else {
-        eprintln!(
-            "reusing textbook: {}",
-            lesson.relative_display(&lesson.textbook_path())
-        );
+    fn ready_llm<'a>(
+        repo: &crate::paths::RepoPaths,
+        llm: &'a mut Option<LlmReadyConfig>,
+    ) -> Result<&'a LlmReadyConfig, MvpError> {
+        if llm.is_none() {
+            let config = Config::load(repo)?;
+            *llm = Some(config.llm.require_ready()?);
+        }
+        Ok(llm.as_ref().expect("llm config should be initialized"))
     }
 
-    validation::validate_outputs(lesson)?;
-
-    Ok(())
-}
-
-fn ready_llm<'a>(
-    repo: &crate::paths::RepoPaths,
-    llm: &'a mut Option<LlmReadyConfig>,
-) -> Result<&'a LlmReadyConfig, MvpError> {
-    if llm.is_none() {
-        let config = Config::load(repo)?;
-        *llm = Some(config.llm.require_ready()?);
+    fn guided_story_ready(lesson: &LessonPaths) -> bool {
+        let Ok(step_refs) = Self::read_manifest_step_refs(lesson) else {
+            return false;
+        };
+        if step_refs.is_empty() {
+            return false;
+        }
+        step_refs
+            .iter()
+            .all(|step_ref| Self::read_json(&step_ref.path, Stage::GuidedStory).is_ok())
     }
-    Ok(llm.as_ref().expect("llm config should be initialized"))
-}
 
-fn guided_story_ready(lesson: &LessonPaths) -> bool {
-    let Ok(step_refs) = read_manifest_step_refs(lesson) else {
-        return false;
-    };
-    if step_refs.is_empty() {
-        return false;
+    fn question_bank_ready(path: &Path) -> bool {
+        Self::read_json(path, Stage::QuestionBank).is_ok()
     }
-    step_refs
-        .iter()
-        .all(|step_ref| read_json(&step_ref.path, Stage::GuidedStory).is_ok())
-}
 
-fn question_bank_ready(path: &Path) -> bool {
-    read_json(path, Stage::QuestionBank).is_ok()
-}
+    fn question_bank_gate_ready(path: &Path) -> bool {
+        Self::read_json(
+            &Self::rejected_question_bank_path(path),
+            Stage::QuestionBankGate,
+        )
+        .is_ok()
+    }
 
-fn question_bank_gate_ready(path: &Path) -> bool {
-    read_json(&rejected_question_bank_path(path), Stage::QuestionBankGate).is_ok()
-}
+    fn textbook_ready(lesson: &LessonPaths) -> bool {
+        lesson.textbook_path().is_file() && OutputValidator::new(lesson).validate().is_ok()
+    }
 
-fn textbook_ready(lesson: &LessonPaths) -> bool {
-    lesson.textbook_path().is_file() && validation::validate_outputs(lesson).is_ok()
-}
-
-fn generate_guided_story(
-    lesson: &LessonPaths,
-    llm: &LlmReadyConfig,
-    target_language: &str,
-    plain_text: &str,
-    related_important: &str,
-) -> Result<(), MvpError> {
-    let repo = lesson.repo();
-    let course_id = lesson.course_id().unwrap_or("");
-    let course_title = lesson.course_title().unwrap_or("");
-    let chapter_id = lesson.chapter_id().unwrap_or("");
-    let chapter_title = lesson.chapter_title().unwrap_or("");
-    let system = read_prompt(repo, "guided_story_system.md")?;
-    let user = render_prompt(
-        &read_prompt(repo, "guided_story_user.md")?,
+    fn generate_guided_story(
+        lesson: &LessonPaths,
+        llm: &LlmReadyConfig,
+        target_language: &str,
+        plain_text: &str,
+        related_important: &str,
+    ) -> Result<(), MvpError> {
+        let repo = lesson.repo();
+        let course_id = lesson.course_id().unwrap_or("");
+        let course_title = lesson.course_title().unwrap_or("");
+        let chapter_id = lesson.chapter_id().unwrap_or("");
+        let chapter_title = lesson.chapter_title().unwrap_or("");
+        let system = Self::read_prompt(repo, "guided_story_system.md")?;
+        let user = Self::render_prompt(
+        &Self::read_prompt(repo, "guided_story_user.md")?,
         &[
             ("target_language", target_language),
             ("course_id", course_id),
@@ -161,73 +171,139 @@ fn generate_guided_story(
             ("image_hints", ""),
         ],
     );
-    let response = call_chat_completion(lesson, llm, Stage::GuidedStory, &system, &user)?;
-    let content = strip_code_fence(&response.content, Some("json"));
-    let story_json: Value =
-        serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
-            stage: Stage::GuidedStory.as_str(),
-            source,
-        })?;
+        let response = Self::call_chat_completion(lesson, llm, Stage::GuidedStory, &system, &user)?;
+        let content = Self::strip_code_fence(&response.content, Some("json"));
+        let story_json: Value =
+            serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
+                stage: Stage::GuidedStory.as_str(),
+                source,
+            })?;
 
-    if lesson.guided_story_dir().is_dir() {
-        fs::remove_dir_all(lesson.guided_story_dir()).map_err(|source| MvpError::Write {
+        if lesson.guided_story_dir().is_dir() {
+            fs::remove_dir_all(lesson.guided_story_dir()).map_err(|source| MvpError::Write {
+                path: lesson.guided_story_dir(),
+                source,
+            })?;
+        }
+        fs::create_dir_all(lesson.guided_story_dir()).map_err(|source| MvpError::Write {
             path: lesson.guided_story_dir(),
             source,
         })?;
+
+        let manifest = Self::write_guided_story_steps(lesson, &story_json)?;
+        Self::write_pretty_json(&lesson.guided_story_manifest_path(), &manifest)?;
+        Ok(())
     }
-    fs::create_dir_all(lesson.guided_story_dir()).map_err(|source| MvpError::Write {
-        path: lesson.guided_story_dir(),
-        source,
-    })?;
 
-    let manifest = write_guided_story_steps(lesson, &story_json)?;
-    write_pretty_json(&lesson.guided_story_manifest_path(), &manifest)?;
-    Ok(())
-}
+    fn generate_question_bank(
+        lesson: &LessonPaths,
+        llm: &mut Option<LlmReadyConfig>,
+        force: bool,
+        target_language: &str,
+        plain_text: &str,
+        related_important: &str,
+    ) -> Result<bool, MvpError> {
+        let repo = lesson.repo();
+        let course_id = lesson.course_id().unwrap_or("");
+        let course_title = lesson.course_title().unwrap_or("");
+        let chapter_id = lesson.chapter_id().unwrap_or("");
+        let chapter_title = lesson.chapter_title().unwrap_or("");
+        let system = Self::read_prompt(repo, "question_bank_system.md")?;
+        let manifest = Self::read_required_text(&lesson.guided_story_manifest_path())?;
+        let step_refs = Self::read_manifest_step_refs(lesson)?;
+        let step_count = step_refs.len();
+        let steps = Self::read_guided_story_steps(lesson, &step_refs)?;
+        let source_outline = Self::source_outline_from_plain_text(plain_text);
+        let prompt = Self::read_prompt(repo, "question_bank_user.md")?;
+        let gate_system = Self::read_prompt(repo, "question_bank_gate_system.md")?;
+        let gate_prompt = Self::read_prompt(repo, "question_bank_gate_user.md")?;
+        let mut generated_any = false;
 
-fn generate_question_bank(
-    lesson: &LessonPaths,
-    llm: &mut Option<LlmReadyConfig>,
-    force: bool,
-    target_language: &str,
-    plain_text: &str,
-    related_important: &str,
-) -> Result<bool, MvpError> {
-    let repo = lesson.repo();
-    let course_id = lesson.course_id().unwrap_or("");
-    let course_title = lesson.course_title().unwrap_or("");
-    let chapter_id = lesson.chapter_id().unwrap_or("");
-    let chapter_title = lesson.chapter_title().unwrap_or("");
-    let system = read_prompt(repo, "question_bank_system.md")?;
-    let manifest = read_required_text(&lesson.guided_story_manifest_path())?;
-    let step_refs = read_manifest_step_refs(lesson)?;
-    let step_count = step_refs.len();
-    let steps = read_guided_story_steps(lesson, &step_refs)?;
-    let source_outline = source_outline_from_plain_text(plain_text);
-    let prompt = read_prompt(repo, "question_bank_user.md")?;
-    let gate_system = read_prompt(repo, "question_bank_gate_system.md")?;
-    let gate_prompt = read_prompt(repo, "question_bank_gate_user.md")?;
-    let mut generated_any = false;
+        for step_ref in step_refs {
+            let current_step = Self::read_required_text(&step_ref.path)?;
+            if !force && Self::question_bank_ready(&step_ref.question_bank_path) {
+                if Self::question_bank_gate_ready(&step_ref.question_bank_path) {
+                    eprintln!(
+                        "reusing question bank: {}",
+                        lesson.relative_display(&step_ref.question_bank_path)
+                    );
+                    continue;
+                }
 
-    for step_ref in step_refs {
-        let current_step = read_required_text(&step_ref.path)?;
-        if !force && question_bank_ready(&step_ref.question_bank_path) {
-            if question_bank_gate_ready(&step_ref.question_bank_path) {
                 eprintln!(
-                    "reusing question bank: {}",
+                    "gating existing question bank: {}",
                     lesson.relative_display(&step_ref.question_bank_path)
                 );
+                let llm = Self::ready_llm(repo, llm)?;
+                let mut question_bank =
+                    Self::read_json(&step_ref.question_bank_path, Stage::QuestionBank)?;
+                Self::normalize_question_bank_json(
+                    lesson,
+                    &step_ref.sequence_id,
+                    &mut question_bank,
+                );
+                Self::gate_and_write_question_bank(
+                    lesson,
+                    llm,
+                    &gate_system,
+                    &gate_prompt,
+                    &step_ref,
+                    step_count,
+                    target_language,
+                    course_id,
+                    course_title,
+                    chapter_id,
+                    chapter_title,
+                    &current_step,
+                    &mut question_bank,
+                )?;
+                generated_any = true;
                 continue;
             }
 
-            eprintln!(
-                "gating existing question bank: {}",
-                lesson.relative_display(&step_ref.question_bank_path)
+            let user = Self::render_prompt(
+                &prompt,
+                &[
+                    ("target_language", target_language),
+                    ("course_id", course_id),
+                    ("course_title", course_title),
+                    ("chapter_id", chapter_id),
+                    ("chapter_title", chapter_title),
+                    ("lesson_id", lesson.lesson_id()),
+                    ("coverage_checklist", &source_outline),
+                    ("source_outline", &source_outline),
+                    ("lesson_map", &manifest),
+                    ("guided_story_manifest", &manifest),
+                    ("guided_story_steps", &steps),
+                    ("current_step_id", &step_ref.sequence_id),
+                    ("current_step", &current_step),
+                    ("plain_text", plain_text),
+                    ("related_important", related_important),
+                ],
             );
-            let llm = ready_llm(repo, llm)?;
-            let mut question_bank = read_json(&step_ref.question_bank_path, Stage::QuestionBank)?;
-            normalize_question_bank_json(lesson, &step_ref.sequence_id, &mut question_bank);
-            gate_and_write_question_bank(
+            let audit_stage = if step_count == 1 {
+                "question_bank".to_owned()
+            } else {
+                format!("question_bank/{}", step_ref.sequence_id)
+            };
+            let llm = Self::ready_llm(repo, llm)?;
+            let response = Self::call_chat_completion_with_audit(
+                lesson,
+                llm,
+                Stage::QuestionBank,
+                &audit_stage,
+                &system,
+                &user,
+            )?;
+            let content = Self::strip_code_fence(&response.content, Some("json"));
+            let mut question_bank: Value =
+                serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
+                    stage: Stage::QuestionBank.as_str(),
+                    source,
+                })?;
+            Self::normalize_question_bank_json(lesson, &step_ref.sequence_id, &mut question_bank);
+
+            Self::gate_and_write_question_bank(
                 lesson,
                 llm,
                 &gate_system,
@@ -243,11 +319,146 @@ fn generate_question_bank(
                 &mut question_bank,
             )?;
             generated_any = true;
-            continue;
         }
 
-        let user = render_prompt(
-            &prompt,
+        Ok(generated_any)
+    }
+
+    fn gate_question_bank(
+        lesson: &LessonPaths,
+        llm: &LlmReadyConfig,
+        system: &str,
+        prompt: &str,
+        audit_stage: &str,
+        target_language: &str,
+        course_id: &str,
+        course_title: &str,
+        chapter_id: &str,
+        chapter_title: &str,
+        current_step_id: &str,
+        current_step: &str,
+        question_bank: &mut Value,
+    ) -> Result<Value, MvpError> {
+        let candidate_question_bank =
+            serde_json::to_string_pretty(question_bank).map_err(|source| MvpError::JsonWrite {
+                path: lesson.audit_stage_dir(audit_stage),
+                source,
+            })?;
+        let user = Self::render_prompt(
+            prompt,
+            &[
+                ("target_language", target_language),
+                ("course_id", course_id),
+                ("course_title", course_title),
+                ("chapter_id", chapter_id),
+                ("chapter_title", chapter_title),
+                ("lesson_id", lesson.lesson_id()),
+                ("current_step_id", current_step_id),
+                ("current_step", current_step),
+                ("candidate_question_bank", &candidate_question_bank),
+            ],
+        );
+        let response = Self::call_chat_completion_with_audit(
+            lesson,
+            llm,
+            Stage::QuestionBankGate,
+            audit_stage,
+            system,
+            &user,
+        )?;
+        let content = Self::strip_code_fence(&response.content, Some("json"));
+        let report: GateReport =
+            serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
+                stage: Stage::QuestionBankGate.as_str(),
+                source,
+            })?;
+
+        Ok(QuestionBankGate::apply(question_bank, report))
+    }
+
+    fn gate_and_write_question_bank(
+        lesson: &LessonPaths,
+        llm: &LlmReadyConfig,
+        gate_system: &str,
+        gate_prompt: &str,
+        step_ref: &StepRef,
+        step_count: usize,
+        target_language: &str,
+        course_id: &str,
+        course_title: &str,
+        chapter_id: &str,
+        chapter_title: &str,
+        current_step: &str,
+        question_bank: &mut Value,
+    ) -> Result<(), MvpError> {
+        if let Some(parent) = step_ref.question_bank_path.parent() {
+            fs::create_dir_all(parent).map_err(|source| MvpError::Write {
+                path: parent.to_path_buf(),
+                source,
+            })?;
+        }
+        Self::write_pretty_json(
+            &Self::candidate_question_bank_path(&step_ref.question_bank_path),
+            question_bank,
+        )?;
+
+        let gate_audit_stage = if step_count == 1 {
+            "question_bank_gate".to_owned()
+        } else {
+            format!("question_bank_gate/{}", step_ref.sequence_id)
+        };
+        let rejected = Self::gate_question_bank(
+            lesson,
+            llm,
+            gate_system,
+            gate_prompt,
+            &gate_audit_stage,
+            target_language,
+            course_id,
+            course_title,
+            chapter_id,
+            chapter_title,
+            &step_ref.sequence_id,
+            current_step,
+            question_bank,
+        )?;
+        eprintln!(
+            "question bank gate kept {}, rejected {}: {}",
+            QuestionBankGate::count_question_families(question_bank),
+            rejected
+                .get("rejected_family_ids")
+                .and_then(Value::as_array)
+                .map(Vec::len)
+                .unwrap_or(0),
+            lesson.relative_display(&step_ref.question_bank_path)
+        );
+        Self::write_pretty_json(
+            &Self::rejected_question_bank_path(&step_ref.question_bank_path),
+            &rejected,
+        )?;
+        Self::write_pretty_json(&step_ref.question_bank_path, question_bank)
+    }
+
+    fn generate_textbook(
+        lesson: &LessonPaths,
+        llm: &LlmReadyConfig,
+        target_language: &str,
+        plain_text: &str,
+        related_important: &str,
+    ) -> Result<(), MvpError> {
+        let repo = lesson.repo();
+        let course_id = lesson.course_id().unwrap_or("");
+        let course_title = lesson.course_title().unwrap_or("");
+        let chapter_id = lesson.chapter_id().unwrap_or("");
+        let chapter_title = lesson.chapter_title().unwrap_or("");
+        let system = Self::read_prompt(repo, "textbook_system.md")?;
+        let manifest = Self::read_required_text(&lesson.guided_story_manifest_path())?;
+        let step_refs = Self::read_manifest_step_refs(lesson)?;
+        let steps = Self::read_guided_story_steps(lesson, &step_refs)?;
+        let question_bank = Self::read_step_question_banks(lesson)?;
+        let source_outline = Self::source_outline_from_plain_text(plain_text);
+        let user = Self::render_prompt(
+            &Self::read_prompt(repo, "textbook_user.md")?,
             &[
                 ("target_language", target_language),
                 ("course_id", course_id),
@@ -260,379 +471,157 @@ fn generate_question_bank(
                 ("lesson_map", &manifest),
                 ("guided_story_manifest", &manifest),
                 ("guided_story_steps", &steps),
-                ("current_step_id", &step_ref.sequence_id),
-                ("current_step", &current_step),
+                ("question_bank", &question_bank),
                 ("plain_text", plain_text),
                 ("related_important", related_important),
             ],
         );
-        let audit_stage = if step_count == 1 {
-            "question_bank".to_owned()
-        } else {
-            format!("question_bank/{}", step_ref.sequence_id)
-        };
-        let llm = ready_llm(repo, llm)?;
-        let response = call_chat_completion_with_audit(
-            lesson,
-            llm,
-            Stage::QuestionBank,
-            &audit_stage,
-            &system,
-            &user,
-        )?;
-        let content = strip_code_fence(&response.content, Some("json"));
-        let mut question_bank: Value =
-            serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
-                stage: Stage::QuestionBank.as_str(),
+        let response = Self::call_chat_completion(lesson, llm, Stage::Textbook, &system, &user)?;
+        let content =
+            Self::sanitize_textbook_mdx(&Self::strip_code_fence(&response.content, Some("mdx")));
+
+        if let Some(parent) = lesson.textbook_path().parent() {
+            fs::create_dir_all(parent).map_err(|source| MvpError::Write {
+                path: parent.to_path_buf(),
                 source,
             })?;
-        normalize_question_bank_json(lesson, &step_ref.sequence_id, &mut question_bank);
-
-        gate_and_write_question_bank(
-            lesson,
-            llm,
-            &gate_system,
-            &gate_prompt,
-            &step_ref,
-            step_count,
-            target_language,
-            course_id,
-            course_title,
-            chapter_id,
-            chapter_title,
-            &current_step,
-            &mut question_bank,
-        )?;
-        generated_any = true;
-    }
-
-    Ok(generated_any)
-}
-
-fn gate_question_bank(
-    lesson: &LessonPaths,
-    llm: &LlmReadyConfig,
-    system: &str,
-    prompt: &str,
-    audit_stage: &str,
-    target_language: &str,
-    course_id: &str,
-    course_title: &str,
-    chapter_id: &str,
-    chapter_title: &str,
-    current_step_id: &str,
-    current_step: &str,
-    question_bank: &mut Value,
-) -> Result<Value, MvpError> {
-    let candidate_question_bank =
-        serde_json::to_string_pretty(question_bank).map_err(|source| MvpError::JsonWrite {
-            path: lesson.audit_stage_dir(audit_stage),
+        }
+        fs::write(lesson.textbook_path(), content).map_err(|source| MvpError::Write {
+            path: lesson.textbook_path(),
             source,
         })?;
-    let user = render_prompt(
-        prompt,
-        &[
-            ("target_language", target_language),
-            ("course_id", course_id),
-            ("course_title", course_title),
-            ("chapter_id", chapter_id),
-            ("chapter_title", chapter_title),
-            ("lesson_id", lesson.lesson_id()),
-            ("current_step_id", current_step_id),
-            ("current_step", current_step),
-            ("candidate_question_bank", &candidate_question_bank),
-        ],
-    );
-    let response = call_chat_completion_with_audit(
-        lesson,
-        llm,
-        Stage::QuestionBankGate,
-        audit_stage,
-        system,
-        &user,
-    )?;
-    let content = strip_code_fence(&response.content, Some("json"));
-    let report: GateReport =
-        serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
-            stage: Stage::QuestionBankGate.as_str(),
-            source,
-        })?;
-
-    Ok(apply_question_bank_gate(question_bank, report))
-}
-
-fn gate_and_write_question_bank(
-    lesson: &LessonPaths,
-    llm: &LlmReadyConfig,
-    gate_system: &str,
-    gate_prompt: &str,
-    step_ref: &StepRef,
-    step_count: usize,
-    target_language: &str,
-    course_id: &str,
-    course_title: &str,
-    chapter_id: &str,
-    chapter_title: &str,
-    current_step: &str,
-    question_bank: &mut Value,
-) -> Result<(), MvpError> {
-    if let Some(parent) = step_ref.question_bank_path.parent() {
-        fs::create_dir_all(parent).map_err(|source| MvpError::Write {
-            path: parent.to_path_buf(),
-            source,
-        })?;
-    }
-    write_pretty_json(
-        &candidate_question_bank_path(&step_ref.question_bank_path),
-        question_bank,
-    )?;
-
-    let gate_audit_stage = if step_count == 1 {
-        "question_bank_gate".to_owned()
-    } else {
-        format!("question_bank_gate/{}", step_ref.sequence_id)
-    };
-    let rejected = gate_question_bank(
-        lesson,
-        llm,
-        gate_system,
-        gate_prompt,
-        &gate_audit_stage,
-        target_language,
-        course_id,
-        course_title,
-        chapter_id,
-        chapter_title,
-        &step_ref.sequence_id,
-        current_step,
-        question_bank,
-    )?;
-    eprintln!(
-        "question bank gate kept {}, rejected {}: {}",
-        count_question_families(question_bank),
-        rejected
-            .get("rejected_family_ids")
-            .and_then(Value::as_array)
-            .map(Vec::len)
-            .unwrap_or(0),
-        lesson.relative_display(&step_ref.question_bank_path)
-    );
-    write_pretty_json(
-        &rejected_question_bank_path(&step_ref.question_bank_path),
-        &rejected,
-    )?;
-    write_pretty_json(&step_ref.question_bank_path, question_bank)
-}
-
-fn generate_textbook(
-    lesson: &LessonPaths,
-    llm: &LlmReadyConfig,
-    target_language: &str,
-    plain_text: &str,
-    related_important: &str,
-) -> Result<(), MvpError> {
-    let repo = lesson.repo();
-    let course_id = lesson.course_id().unwrap_or("");
-    let course_title = lesson.course_title().unwrap_or("");
-    let chapter_id = lesson.chapter_id().unwrap_or("");
-    let chapter_title = lesson.chapter_title().unwrap_or("");
-    let system = read_prompt(repo, "textbook_system.md")?;
-    let manifest = read_required_text(&lesson.guided_story_manifest_path())?;
-    let step_refs = read_manifest_step_refs(lesson)?;
-    let steps = read_guided_story_steps(lesson, &step_refs)?;
-    let question_bank = read_step_question_banks(lesson)?;
-    let source_outline = source_outline_from_plain_text(plain_text);
-    let user = render_prompt(
-        &read_prompt(repo, "textbook_user.md")?,
-        &[
-            ("target_language", target_language),
-            ("course_id", course_id),
-            ("course_title", course_title),
-            ("chapter_id", chapter_id),
-            ("chapter_title", chapter_title),
-            ("lesson_id", lesson.lesson_id()),
-            ("coverage_checklist", &source_outline),
-            ("source_outline", &source_outline),
-            ("lesson_map", &manifest),
-            ("guided_story_manifest", &manifest),
-            ("guided_story_steps", &steps),
-            ("question_bank", &question_bank),
-            ("plain_text", plain_text),
-            ("related_important", related_important),
-        ],
-    );
-    let response = call_chat_completion(lesson, llm, Stage::Textbook, &system, &user)?;
-    let content = sanitize_textbook_mdx(&strip_code_fence(&response.content, Some("mdx")));
-
-    if let Some(parent) = lesson.textbook_path().parent() {
-        fs::create_dir_all(parent).map_err(|source| MvpError::Write {
-            path: parent.to_path_buf(),
-            source,
-        })?;
-    }
-    fs::write(lesson.textbook_path(), content).map_err(|source| MvpError::Write {
-        path: lesson.textbook_path(),
-        source,
-    })?;
-    Ok(())
-}
-
-fn sanitize_textbook_mdx(source: &str) -> String {
-    source
-        .lines()
-        .map(strip_heading_anchor)
-        .collect::<Vec<_>>()
-        .join("\n")
-}
-
-fn strip_heading_anchor(line: &str) -> String {
-    let trimmed = line.trim_end();
-    if !trimmed.starts_with('#') || !trimmed.ends_with('}') {
-        return line.to_owned();
+        Ok(())
     }
 
-    let Some(anchor_start) = trimmed.rfind(" {#") else {
-        return line.to_owned();
-    };
-
-    let anchor = &trimmed[anchor_start + 2..];
-    if anchor.len() < 4 || !anchor.starts_with("{#") || !anchor.ends_with('}') {
-        return line.to_owned();
+    fn sanitize_textbook_mdx(source: &str) -> String {
+        source
+            .lines()
+            .map(Self::strip_heading_anchor)
+            .collect::<Vec<_>>()
+            .join("\n")
     }
 
-    trimmed[..anchor_start].to_owned()
-}
+    fn strip_heading_anchor(line: &str) -> String {
+        let trimmed = line.trim_end();
+        if !trimmed.starts_with('#') || !trimmed.ends_with('}') {
+            return line.to_owned();
+        }
 
-fn call_chat_completion(
-    lesson: &LessonPaths,
-    llm: &LlmReadyConfig,
-    stage: Stage,
-    system: &str,
-    user: &str,
-) -> Result<LlmResponse, MvpError> {
-    call_chat_completion_with_audit(lesson, llm, stage, stage.as_str(), system, user)
-}
+        let Some(anchor_start) = trimmed.rfind(" {#") else {
+            return line.to_owned();
+        };
 
-fn call_chat_completion_with_audit(
-    lesson: &LessonPaths,
-    llm: &LlmReadyConfig,
-    stage: Stage,
-    audit_stage: &str,
-    system: &str,
-    user: &str,
-) -> Result<LlmResponse, MvpError> {
-    for attempt in 1..=3 {
-        match call_chat_completion_once(lesson, llm, stage, audit_stage, system, user) {
-            Ok(response) => return Ok(response),
-            Err(error @ MvpError::LlmRequest { .. }) if attempt < 3 => {
-                eprintln!(
-                    "{} LLM request failed on attempt {attempt}/3; retrying: {error}",
-                    stage.as_str()
-                );
-                thread::sleep(Duration::from_secs(2 * attempt));
+        let anchor = &trimmed[anchor_start + 2..];
+        if anchor.len() < 4 || !anchor.starts_with("{#") || !anchor.ends_with('}') {
+            return line.to_owned();
+        }
+
+        trimmed[..anchor_start].to_owned()
+    }
+
+    fn call_chat_completion(
+        lesson: &LessonPaths,
+        llm: &LlmReadyConfig,
+        stage: Stage,
+        system: &str,
+        user: &str,
+    ) -> Result<LlmResponse, MvpError> {
+        Self::call_chat_completion_with_audit(lesson, llm, stage, stage.as_str(), system, user)
+    }
+
+    fn call_chat_completion_with_audit(
+        lesson: &LessonPaths,
+        llm: &LlmReadyConfig,
+        stage: Stage,
+        audit_stage: &str,
+        system: &str,
+        user: &str,
+    ) -> Result<LlmResponse, MvpError> {
+        for attempt in 1..=3 {
+            match Self::call_chat_completion_once(lesson, llm, stage, audit_stage, system, user) {
+                Ok(response) => return Ok(response),
+                Err(error @ MvpError::LlmRequest { .. }) if attempt < 3 => {
+                    eprintln!(
+                        "{} LLM request failed on attempt {attempt}/3; retrying: {error}",
+                        stage.as_str()
+                    );
+                    thread::sleep(Duration::from_secs(2 * attempt));
+                }
+                Err(error) => return Err(error),
             }
-            Err(error) => return Err(error),
+        }
+
+        unreachable!("retry loop returns on success or final failure")
+    }
+
+    fn call_chat_completion_once(
+        lesson: &LessonPaths,
+        llm: &LlmReadyConfig,
+        stage: Stage,
+        audit_stage: &str,
+        system: &str,
+        user: &str,
+    ) -> Result<LlmResponse, MvpError> {
+        let audit_dir = lesson.audit_stage_dir(audit_stage);
+        fs::create_dir_all(&audit_dir).map_err(|source| MvpError::Write {
+            path: audit_dir.clone(),
+            source,
+        })?;
+        fs::write(audit_dir.join("system.md"), system).map_err(|source| MvpError::Write {
+            path: audit_dir.join("system.md"),
+            source,
+        })?;
+        fs::write(audit_dir.join("user.md"), user).map_err(|source| MvpError::Write {
+            path: audit_dir.join("user.md"),
+            source,
+        })?;
+
+        let client = LlmClient::new(llm);
+        let request = client.request(system, user, 0.2);
+        Self::write_pretty_json(&audit_dir.join("request.json"), &request)?;
+
+        let response = client
+            .send(&request)
+            .map_err(|error| Self::map_llm_error(stage, error))?;
+        fs::write(audit_dir.join("raw_response.txt"), &response.raw_text).map_err(|source| {
+            MvpError::Write {
+                path: audit_dir.join("raw_response.txt"),
+                source,
+            }
+        })?;
+        Self::write_pretty_json(&audit_dir.join("raw_response.json"), &response.raw_json)?;
+        fs::write(audit_dir.join("content.txt"), &response.content).map_err(|source| {
+            MvpError::Write {
+                path: audit_dir.join("content.txt"),
+                source,
+            }
+        })?;
+
+        Ok(LlmResponse {
+            content: response.content,
+        })
+    }
+
+    fn map_llm_error(stage: Stage, error: LlmClientError) -> MvpError {
+        match error {
+            LlmClientError::Request(source) => MvpError::LlmRequest {
+                stage: stage.as_str(),
+                source,
+            },
+            LlmClientError::Status { status, body } => MvpError::LlmStatus {
+                stage: stage.as_str(),
+                status,
+                body,
+            },
+            LlmClientError::Json(source) => MvpError::JsonParse {
+                stage: stage.as_str(),
+                source,
+            },
+            LlmClientError::MissingContent => MvpError::LlmMissingContent {
+                stage: stage.as_str(),
+            },
         }
     }
-
-    unreachable!("retry loop returns on success or final failure")
-}
-
-fn call_chat_completion_once(
-    lesson: &LessonPaths,
-    llm: &LlmReadyConfig,
-    stage: Stage,
-    audit_stage: &str,
-    system: &str,
-    user: &str,
-) -> Result<LlmResponse, MvpError> {
-    let audit_dir = lesson.audit_stage_dir(audit_stage);
-    fs::create_dir_all(&audit_dir).map_err(|source| MvpError::Write {
-        path: audit_dir.clone(),
-        source,
-    })?;
-    fs::write(audit_dir.join("system.md"), system).map_err(|source| MvpError::Write {
-        path: audit_dir.join("system.md"),
-        source,
-    })?;
-    fs::write(audit_dir.join("user.md"), user).map_err(|source| MvpError::Write {
-        path: audit_dir.join("user.md"),
-        source,
-    })?;
-
-    let request = ChatRequest {
-        model: &llm.model,
-        messages: vec![
-            ChatMessage {
-                role: "system",
-                content: system,
-            },
-            ChatMessage {
-                role: "user",
-                content: user,
-            },
-        ],
-        temperature: 0.2,
-        max_tokens: llm.max_tokens,
-    };
-    write_pretty_json(&audit_dir.join("request.json"), &request)?;
-
-    let client = Client::builder()
-        .http1_only()
-        .timeout(Duration::from_secs(llm.timeout_seconds))
-        .build()
-        .map_err(|source| MvpError::LlmRequest {
-            stage: stage.as_str(),
-            source,
-        })?;
-    let url = format!("{}/chat/completions", llm.base_url.trim_end_matches('/'));
-    let response = client
-        .post(url)
-        .header("Accept-Encoding", "identity")
-        .bearer_auth(&llm.api_key)
-        .json(&request)
-        .send()
-        .map_err(|source| MvpError::LlmRequest {
-            stage: stage.as_str(),
-            source,
-        })?;
-    let status = response.status();
-    let raw_bytes = response.bytes().map_err(|source| MvpError::LlmRequest {
-        stage: stage.as_str(),
-        source,
-    })?;
-    let raw_text = String::from_utf8_lossy(&raw_bytes).into_owned();
-    fs::write(audit_dir.join("raw_response.txt"), &raw_text).map_err(|source| MvpError::Write {
-        path: audit_dir.join("raw_response.txt"),
-        source,
-    })?;
-    if !status.is_success() {
-        return Err(MvpError::LlmStatus {
-            stage: stage.as_str(),
-            status: status.as_u16(),
-            body: raw_text,
-        });
-    }
-    let raw: Value = serde_json::from_str(&raw_text).map_err(|source| MvpError::JsonParse {
-        stage: stage.as_str(),
-        source,
-    })?;
-    write_pretty_json(&audit_dir.join("raw_response.json"), &raw)?;
-
-    let content = raw
-        .pointer("/choices/0/message/content")
-        .and_then(Value::as_str)
-        .or_else(|| raw.pointer("/choices/0/text").and_then(Value::as_str))
-        .ok_or(MvpError::LlmMissingContent {
-            stage: stage.as_str(),
-        })?
-        .to_owned();
-    fs::write(audit_dir.join("content.txt"), &content).map_err(|source| MvpError::Write {
-        path: audit_dir.join("content.txt"),
-        source,
-    })?;
-
-    Ok(LlmResponse { content })
 }
 
 #[derive(Clone, Copy)]
@@ -678,20 +667,6 @@ struct GateDecision {
     practice_target: String,
 }
 
-#[derive(Serialize)]
-struct ChatRequest<'a> {
-    model: &'a str,
-    messages: Vec<ChatMessage<'a>>,
-    temperature: f32,
-    max_tokens: u64,
-}
-
-#[derive(Serialize)]
-struct ChatMessage<'a> {
-    role: &'a str,
-    content: &'a str,
-}
-
 #[derive(Clone, Debug)]
 struct StepRef {
     sequence_id: String,
@@ -699,456 +674,469 @@ struct StepRef {
     question_bank_path: PathBuf,
 }
 
-fn read_prompt(repo: &crate::paths::RepoPaths, file_name: &str) -> Result<String, MvpError> {
-    read_required_text(&repo.prompts_dir().join(file_name))
-}
+impl MvpRunner {
+    fn read_prompt(repo: &crate::paths::RepoPaths, file_name: &str) -> Result<String, MvpError> {
+        Self::read_required_text(&repo.prompts_dir().join(file_name))
+    }
 
-fn write_guided_story_steps(lesson: &LessonPaths, story_json: &Value) -> Result<Value, MvpError> {
-    let mut manifest_steps = Vec::new();
+    fn write_guided_story_steps(
+        lesson: &LessonPaths,
+        story_json: &Value,
+    ) -> Result<Value, MvpError> {
+        let mut manifest_steps = Vec::new();
 
-    if let Some(steps) = story_json.get("steps").and_then(Value::as_array) {
-        for (index, item) in steps.iter().enumerate() {
-            let sequence_id = item
-                .get("sequence_id")
-                .and_then(Value::as_str)
-                .map(ToOwned::to_owned)
-                .unwrap_or_else(|| format!("step{}", index + 1));
-            let concept = item
-                .get("concept")
-                .and_then(Value::as_str)
-                .unwrap_or("Guided story step")
-                .to_owned();
-            let mut step_json = item.get("step").cloned().unwrap_or_else(|| item.clone());
-            normalize_step_json(lesson, &sequence_id, &mut step_json);
+        if let Some(steps) = story_json.get("steps").and_then(Value::as_array) {
+            for (index, item) in steps.iter().enumerate() {
+                let sequence_id = item
+                    .get("sequence_id")
+                    .and_then(Value::as_str)
+                    .map(ToOwned::to_owned)
+                    .unwrap_or_else(|| format!("step{}", index + 1));
+                let concept = item
+                    .get("concept")
+                    .and_then(Value::as_str)
+                    .unwrap_or("Guided story step")
+                    .to_owned();
+                let mut step_json = item.get("step").cloned().unwrap_or_else(|| item.clone());
+                Self::normalize_step_json(lesson, &sequence_id, &mut step_json);
 
-            let step_path = lesson
-                .guided_story_dir()
-                .join(&sequence_id)
-                .join("step.json");
-            write_pretty_json(&step_path, &step_json)?;
+                let step_path = lesson
+                    .guided_story_dir()
+                    .join(&sequence_id)
+                    .join("step.json");
+                Self::write_pretty_json(&step_path, &step_json)?;
+                manifest_steps.push(json!({
+                    "sequence_id": sequence_id,
+                    "file": lesson.relative_display(&step_path),
+                    "concept": concept
+                }));
+            }
+        }
+
+        if manifest_steps.is_empty() {
+            let mut step_json = story_json.clone();
+            Self::normalize_step_json(lesson, "step1", &mut step_json);
+            Self::write_pretty_json(&lesson.guided_story_step_path(1), &step_json)?;
             manifest_steps.push(json!({
-                "sequence_id": sequence_id,
-                "file": lesson.relative_display(&step_path),
-                "concept": concept
+                "sequence_id": "step1",
+                "file": lesson.relative_display(&lesson.guided_story_step_path(1)),
+                "concept": "Guided story step"
             }));
         }
+
+        let mut manifest = json!({
+            "lesson_id": lesson.lesson_id(),
+            "mode": "guided_story",
+            "steps": manifest_steps
+        });
+        if let Some(object) = manifest.as_object_mut() {
+            if let Some(course_id) = lesson.course_id() {
+                object.insert("course_id".to_owned(), json!(course_id));
+            }
+            if let Some(chapter_id) = lesson.chapter_id() {
+                object.insert("chapter_id".to_owned(), json!(chapter_id));
+            }
+            if let Some(course_title) = lesson.course_title() {
+                object.insert("course_title".to_owned(), json!(course_title));
+            }
+            if let Some(chapter_title) = lesson.chapter_title() {
+                object.insert("chapter_title".to_owned(), json!(chapter_title));
+            }
+        }
+
+        Ok(manifest)
     }
 
-    if manifest_steps.is_empty() {
-        let mut step_json = story_json.clone();
-        normalize_step_json(lesson, "step1", &mut step_json);
-        write_pretty_json(&lesson.guided_story_step_path(1), &step_json)?;
-        manifest_steps.push(json!({
-            "sequence_id": "step1",
-            "file": lesson.relative_display(&lesson.guided_story_step_path(1)),
-            "concept": "Guided story step"
-        }));
-    }
-
-    let mut manifest = json!({
-        "lesson_id": lesson.lesson_id(),
-        "mode": "guided_story",
-        "steps": manifest_steps
-    });
-    if let Some(object) = manifest.as_object_mut() {
+    fn normalize_step_json(lesson: &LessonPaths, sequence_id: &str, step_json: &mut Value) {
+        let Some(object) = step_json.as_object_mut() else {
+            return;
+        };
+        object
+            .entry("lesson_id")
+            .or_insert_with(|| json!(lesson.lesson_id()));
         if let Some(course_id) = lesson.course_id() {
-            object.insert("course_id".to_owned(), json!(course_id));
+            object
+                .entry("course_id")
+                .or_insert_with(|| json!(course_id));
         }
         if let Some(chapter_id) = lesson.chapter_id() {
-            object.insert("chapter_id".to_owned(), json!(chapter_id));
+            object
+                .entry("chapter_id")
+                .or_insert_with(|| json!(chapter_id));
         }
-        if let Some(course_title) = lesson.course_title() {
-            object.insert("course_title".to_owned(), json!(course_title));
-        }
-        if let Some(chapter_title) = lesson.chapter_title() {
-            object.insert("chapter_title".to_owned(), json!(chapter_title));
-        }
+        object
+            .entry("sequence_id")
+            .or_insert_with(|| json!(sequence_id));
+        object
+            .entry("mode")
+            .or_insert_with(|| json!("guided_story"));
+        object.entry("term_catalog").or_insert_with(|| json!({}));
     }
 
-    Ok(manifest)
+    fn normalize_question_bank_json(
+        lesson: &LessonPaths,
+        sequence_id: &str,
+        question_bank: &mut Value,
+    ) {
+        let Some(object) = question_bank.as_object_mut() else {
+            return;
+        };
+        object
+            .entry("lesson_id")
+            .or_insert_with(|| json!(lesson.lesson_id()));
+        if let Some(course_id) = lesson.course_id() {
+            object
+                .entry("course_id")
+                .or_insert_with(|| json!(course_id));
+        }
+        if let Some(chapter_id) = lesson.chapter_id() {
+            object
+                .entry("chapter_id")
+                .or_insert_with(|| json!(chapter_id));
+        }
+        object
+            .entry("sequence_id")
+            .or_insert_with(|| json!(sequence_id));
+    }
 }
 
-fn normalize_step_json(lesson: &LessonPaths, sequence_id: &str, step_json: &mut Value) {
-    let Some(object) = step_json.as_object_mut() else {
-        return;
-    };
-    object
-        .entry("lesson_id")
-        .or_insert_with(|| json!(lesson.lesson_id()));
-    if let Some(course_id) = lesson.course_id() {
-        object
-            .entry("course_id")
-            .or_insert_with(|| json!(course_id));
-    }
-    if let Some(chapter_id) = lesson.chapter_id() {
-        object
-            .entry("chapter_id")
-            .or_insert_with(|| json!(chapter_id));
-    }
-    object
-        .entry("sequence_id")
-        .or_insert_with(|| json!(sequence_id));
-    object
-        .entry("mode")
-        .or_insert_with(|| json!("guided_story"));
-    object.entry("term_catalog").or_insert_with(|| json!({}));
-}
+struct QuestionBankGate;
 
-fn normalize_question_bank_json(
-    lesson: &LessonPaths,
-    sequence_id: &str,
-    question_bank: &mut Value,
-) {
-    let Some(object) = question_bank.as_object_mut() else {
-        return;
-    };
-    object
-        .entry("lesson_id")
-        .or_insert_with(|| json!(lesson.lesson_id()));
-    if let Some(course_id) = lesson.course_id() {
-        object
-            .entry("course_id")
-            .or_insert_with(|| json!(course_id));
-    }
-    if let Some(chapter_id) = lesson.chapter_id() {
-        object
-            .entry("chapter_id")
-            .or_insert_with(|| json!(chapter_id));
-    }
-    object
-        .entry("sequence_id")
-        .or_insert_with(|| json!(sequence_id));
-}
+impl QuestionBankGate {
+    fn apply(question_bank: &mut Value, report: GateReport) -> Value {
+        let decisions_by_id = report
+            .decisions
+            .iter()
+            .cloned()
+            .map(|decision| (decision.family_id.clone(), decision))
+            .collect::<BTreeMap<_, _>>();
+        let mut rejected_ids = BTreeSet::new();
+        let mut kept_family_ids = Vec::new();
+        let mut rejected_by_field = serde_json::Map::new();
 
-fn apply_question_bank_gate(question_bank: &mut Value, report: GateReport) -> Value {
-    let decisions_by_id = report
-        .decisions
-        .iter()
-        .cloned()
-        .map(|decision| (decision.family_id.clone(), decision))
-        .collect::<BTreeMap<_, _>>();
-    let mut rejected_ids = BTreeSet::new();
-    let mut kept_family_ids = Vec::new();
-    let mut rejected_by_field = serde_json::Map::new();
+        for field in QUESTION_FAMILY_FIELDS {
+            let mut rejected_families = Vec::new();
 
-    for field in QUESTION_FAMILY_FIELDS {
-        let mut rejected_families = Vec::new();
+            if let Some(families) = question_bank.get_mut(*field).and_then(Value::as_array_mut) {
+                let mut kept_families = Vec::new();
 
-        if let Some(families) = question_bank.get_mut(*field).and_then(Value::as_array_mut) {
-            let mut kept_families = Vec::new();
+                for family in std::mem::take(families) {
+                    let family_id = family
+                        .get("family_id")
+                        .and_then(Value::as_str)
+                        .unwrap_or("<missing_family_id>")
+                        .to_owned();
+                    let mut decision =
+                        decisions_by_id
+                            .get(&family_id)
+                            .cloned()
+                            .unwrap_or_else(|| GateDecision {
+                                family_id: family_id.clone(),
+                                decision: "uncertain".to_owned(),
+                                reason: "gate did not return a decision for this family".to_owned(),
+                                practice_target: String::new(),
+                            });
 
-            for family in std::mem::take(families) {
-                let family_id = family
-                    .get("family_id")
-                    .and_then(Value::as_str)
-                    .unwrap_or("<missing_family_id>")
-                    .to_owned();
-                let mut decision =
-                    decisions_by_id
-                        .get(&family_id)
-                        .cloned()
-                        .unwrap_or_else(|| GateDecision {
-                            family_id: family_id.clone(),
-                            decision: "uncertain".to_owned(),
-                            reason: "gate did not return a decision for this family".to_owned(),
-                            practice_target: String::new(),
-                        });
+                    if family_id == "<missing_family_id>" {
+                        decision.decision = "fail".to_owned();
+                        decision.reason = "family is missing family_id".to_owned();
+                    } else if Self::family_is_marked_meta(&family) {
+                        decision.decision = "fail".to_owned();
+                        decision.reason =
+                            "candidate marked this family as meta about course or material"
+                                .to_owned();
+                    }
 
-                if family_id == "<missing_family_id>" {
-                    decision.decision = "fail".to_owned();
-                    decision.reason = "family is missing family_id".to_owned();
-                } else if family_is_marked_meta(&family) {
-                    decision.decision = "fail".to_owned();
-                    decision.reason =
-                        "candidate marked this family as meta about course or material".to_owned();
+                    if decision.decision.eq_ignore_ascii_case("pass") {
+                        kept_family_ids.push(Value::String(family_id));
+                        kept_families.push(family);
+                    } else {
+                        rejected_ids.insert(family_id);
+                        rejected_families.push(Self::family_with_gate_decision(family, &decision));
+                    }
                 }
 
-                if decision.decision.eq_ignore_ascii_case("pass") {
-                    kept_family_ids.push(Value::String(family_id));
-                    kept_families.push(family);
-                } else {
-                    rejected_ids.insert(family_id);
-                    rejected_families.push(family_with_gate_decision(family, &decision));
-                }
+                *families = kept_families;
             }
 
-            *families = kept_families;
+            rejected_by_field.insert((*field).to_owned(), Value::Array(rejected_families));
         }
 
-        rejected_by_field.insert((*field).to_owned(), Value::Array(rejected_families));
+        Self::remove_rejected_coverage_refs(question_bank, &rejected_ids);
+
+        json!({
+            "gate": "question_bank_gate",
+            "decisions": report.decisions,
+            "summary": report.summary,
+            "kept_family_ids": kept_family_ids,
+            "rejected_family_ids": rejected_ids.into_iter().collect::<Vec<_>>(),
+            "rejected_families": Value::Object(rejected_by_field)
+        })
     }
 
-    remove_rejected_coverage_refs(question_bank, &rejected_ids);
-
-    json!({
-        "gate": "question_bank_gate",
-        "decisions": report.decisions,
-        "summary": report.summary,
-        "kept_family_ids": kept_family_ids,
-        "rejected_family_ids": rejected_ids.into_iter().collect::<Vec<_>>(),
-        "rejected_families": Value::Object(rejected_by_field)
-    })
-}
-
-fn family_is_marked_meta(family: &Value) -> bool {
-    family
-        .get("is_meta_about_course_or_material")
-        .and_then(Value::as_bool)
-        .unwrap_or(false)
-}
-
-fn family_with_gate_decision(mut family: Value, decision: &GateDecision) -> Value {
-    if let Some(object) = family.as_object_mut() {
-        object.insert(
-            "_gate_decision".to_owned(),
-            json!({
-                "decision": decision.decision,
-                "reason": decision.reason,
-                "practice_target": decision.practice_target
-            }),
-        );
-    }
-    family
-}
-
-fn remove_rejected_coverage_refs(question_bank: &mut Value, rejected_ids: &BTreeSet<String>) {
-    if rejected_ids.is_empty() {
-        return;
+    fn family_is_marked_meta(family: &Value) -> bool {
+        family
+            .get("is_meta_about_course_or_material")
+            .and_then(Value::as_bool)
+            .unwrap_or(false)
     }
 
-    let Some(items) = question_bank
-        .get_mut("coverage_map")
-        .and_then(Value::as_array_mut)
-    else {
-        return;
-    };
+    fn family_with_gate_decision(mut family: Value, decision: &GateDecision) -> Value {
+        if let Some(object) = family.as_object_mut() {
+            object.insert(
+                "_gate_decision".to_owned(),
+                json!({
+                    "decision": decision.decision,
+                    "reason": decision.reason,
+                    "practice_target": decision.practice_target
+                }),
+            );
+        }
+        family
+    }
 
-    for item in items {
-        if let Some(covered_by) = item.get_mut("covered_by").and_then(Value::as_array_mut) {
-            covered_by.retain(|family_id| {
-                family_id
-                    .as_str()
-                    .map_or(true, |family_id| !rejected_ids.contains(family_id))
+    fn remove_rejected_coverage_refs(question_bank: &mut Value, rejected_ids: &BTreeSet<String>) {
+        if rejected_ids.is_empty() {
+            return;
+        }
+
+        let Some(items) = question_bank
+            .get_mut("coverage_map")
+            .and_then(Value::as_array_mut)
+        else {
+            return;
+        };
+
+        for item in items {
+            if let Some(covered_by) = item.get_mut("covered_by").and_then(Value::as_array_mut) {
+                covered_by.retain(|family_id| {
+                    family_id
+                        .as_str()
+                        .map_or(true, |family_id| !rejected_ids.contains(family_id))
+                });
+            }
+        }
+    }
+
+    fn count_question_families(question_bank: &Value) -> usize {
+        QUESTION_FAMILY_FIELDS
+            .iter()
+            .filter_map(|field| question_bank.get(*field).and_then(Value::as_array))
+            .map(Vec::len)
+            .sum()
+    }
+}
+
+impl MvpRunner {
+    fn candidate_question_bank_path(question_bank_path: &Path) -> PathBuf {
+        question_bank_path.with_file_name("candidate_question_bank.json")
+    }
+
+    fn rejected_question_bank_path(question_bank_path: &Path) -> PathBuf {
+        question_bank_path.with_file_name("question_bank.rejected.json")
+    }
+
+    fn read_manifest_step_refs(lesson: &LessonPaths) -> Result<Vec<StepRef>, MvpError> {
+        let manifest = Self::read_json(&lesson.guided_story_manifest_path(), Stage::GuidedStory)?;
+        let steps = manifest
+            .get("steps")
+            .and_then(Value::as_array)
+            .ok_or(MvpError::ManifestShape)?;
+        let mut refs = Vec::new();
+
+        for step in steps {
+            let sequence_id = step
+                .get("sequence_id")
+                .and_then(Value::as_str)
+                .ok_or(MvpError::ManifestShape)?
+                .to_owned();
+            let file = step
+                .get("file")
+                .and_then(Value::as_str)
+                .ok_or(MvpError::ManifestShape)?;
+            let path = Self::resolve_manifest_file(lesson, file);
+            let question_bank_path = path
+                .parent()
+                .map(|parent| parent.join("question_bank.json"))
+                .ok_or_else(|| MvpError::Read {
+                    path: path.with_file_name("question_bank.json"),
+                    source: io::Error::new(io::ErrorKind::InvalidInput, "step path has no parent"),
+                })?;
+            refs.push(StepRef {
+                sequence_id,
+                path,
+                question_bank_path,
             });
         }
-    }
-}
 
-fn candidate_question_bank_path(question_bank_path: &Path) -> PathBuf {
-    question_bank_path.with_file_name("candidate_question_bank.json")
-}
-
-fn rejected_question_bank_path(question_bank_path: &Path) -> PathBuf {
-    question_bank_path.with_file_name("question_bank.rejected.json")
-}
-
-fn count_question_families(question_bank: &Value) -> usize {
-    QUESTION_FAMILY_FIELDS
-        .iter()
-        .filter_map(|field| question_bank.get(*field).and_then(Value::as_array))
-        .map(Vec::len)
-        .sum()
-}
-
-fn read_manifest_step_refs(lesson: &LessonPaths) -> Result<Vec<StepRef>, MvpError> {
-    let manifest = read_json(&lesson.guided_story_manifest_path(), Stage::GuidedStory)?;
-    let steps = manifest
-        .get("steps")
-        .and_then(Value::as_array)
-        .ok_or(MvpError::ManifestShape)?;
-    let mut refs = Vec::new();
-
-    for step in steps {
-        let sequence_id = step
-            .get("sequence_id")
-            .and_then(Value::as_str)
-            .ok_or(MvpError::ManifestShape)?
-            .to_owned();
-        let file = step
-            .get("file")
-            .and_then(Value::as_str)
-            .ok_or(MvpError::ManifestShape)?;
-        let path = resolve_manifest_file(lesson, file);
-        let question_bank_path = path
-            .parent()
-            .map(|parent| parent.join("question_bank.json"))
-            .ok_or_else(|| MvpError::Read {
-                path: path.with_file_name("question_bank.json"),
-                source: io::Error::new(io::ErrorKind::InvalidInput, "step path has no parent"),
-            })?;
-        refs.push(StepRef {
-            sequence_id,
-            path,
-            question_bank_path,
-        });
+        Ok(refs)
     }
 
-    Ok(refs)
-}
+    fn read_guided_story_steps(
+        lesson: &LessonPaths,
+        step_refs: &[StepRef],
+    ) -> Result<String, MvpError> {
+        let mut steps = Vec::new();
+        for step_ref in step_refs {
+            let content = Self::read_required_text(&step_ref.path)?;
+            let value: Value =
+                serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
+                    stage: Stage::GuidedStory.as_str(),
+                    source,
+                })?;
+            steps.push(value);
+        }
 
-fn read_guided_story_steps(
-    lesson: &LessonPaths,
-    step_refs: &[StepRef],
-) -> Result<String, MvpError> {
-    let mut steps = Vec::new();
-    for step_ref in step_refs {
-        let content = read_required_text(&step_ref.path)?;
-        let value: Value =
-            serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
-                stage: Stage::GuidedStory.as_str(),
-                source,
-            })?;
-        steps.push(value);
-    }
-
-    let mut payload =
-        serde_json::to_string_pretty(&steps).map_err(|source| MvpError::JsonWrite {
-            path: lesson.guided_story_dir(),
-            source,
-        })?;
-    payload.push('\n');
-    Ok(payload)
-}
-
-fn read_json(path: &Path, stage: Stage) -> Result<Value, MvpError> {
-    let content = read_required_text(path)?;
-    serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
-        stage: stage.as_str(),
-        source,
-    })
-}
-
-fn resolve_manifest_file(lesson: &LessonPaths, file: &str) -> PathBuf {
-    let path = PathBuf::from(file);
-    if path.is_absolute() {
-        return path;
-    }
-
-    if file.starts_with("research/") {
-        return lesson.repo_root().join(path);
-    }
-
-    if file.starts_with("pipeline/") {
-        return lesson.repo_root().join("research").join(path);
-    }
-
-    lesson.guided_story_dir().join(path)
-}
-
-fn read_step_question_banks(lesson: &LessonPaths) -> Result<String, MvpError> {
-    let mut banks = Vec::new();
-    let step_dirs = match fs::read_dir(lesson.guided_story_dir()) {
-        Ok(step_dirs) => step_dirs,
-        Err(source) => {
-            return Err(MvpError::Read {
+        let mut payload =
+            serde_json::to_string_pretty(&steps).map_err(|source| MvpError::JsonWrite {
                 path: lesson.guided_story_dir(),
                 source,
-            })
-        }
-    };
-
-    for entry in step_dirs {
-        let entry = entry.map_err(|source| MvpError::Read {
-            path: lesson.guided_story_dir(),
-            source,
-        })?;
-        let path = entry.path();
-        if !path.is_dir() {
-            continue;
-        }
-        let Some(name) = path.file_name().and_then(|name| name.to_str()) else {
-            continue;
-        };
-        if !name.starts_with("step") {
-            continue;
-        }
-
-        let question_bank_path = path.join("question_bank.json");
-        if question_bank_path.is_file() {
-            banks.push(read_required_text(&question_bank_path)?);
-        }
+            })?;
+        payload.push('\n');
+        Ok(payload)
     }
 
-    banks.sort();
-    Ok(format!("[\n{}\n]", banks.join(",\n")))
-}
+    fn read_json(path: &Path, stage: Stage) -> Result<Value, MvpError> {
+        let content = Self::read_required_text(path)?;
+        serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
+            stage: stage.as_str(),
+            source,
+        })
+    }
 
-fn read_required_text(path: &Path) -> Result<String, MvpError> {
-    fs::read_to_string(path).map_err(|source| MvpError::Read {
-        path: path.to_path_buf(),
-        source,
-    })
-}
+    fn resolve_manifest_file(lesson: &LessonPaths, file: &str) -> PathBuf {
+        let path = PathBuf::from(file);
+        if path.is_absolute() {
+            return path;
+        }
 
-fn read_optional_text(path: &Path) -> Result<String, MvpError> {
-    match fs::read_to_string(path) {
-        Ok(contents) => Ok(contents),
-        Err(source) if source.kind() == io::ErrorKind::NotFound => Ok(String::new()),
-        Err(source) => Err(MvpError::Read {
+        if file.starts_with("research/") {
+            return lesson.repo_root().join(path);
+        }
+
+        if file.starts_with("pipeline/") {
+            return lesson.repo_root().join("research").join(path);
+        }
+
+        lesson.guided_story_dir().join(path)
+    }
+
+    fn read_step_question_banks(lesson: &LessonPaths) -> Result<String, MvpError> {
+        let mut banks = Vec::new();
+        let step_dirs = match fs::read_dir(lesson.guided_story_dir()) {
+            Ok(step_dirs) => step_dirs,
+            Err(source) => {
+                return Err(MvpError::Read {
+                    path: lesson.guided_story_dir(),
+                    source,
+                })
+            }
+        };
+
+        for entry in step_dirs {
+            let entry = entry.map_err(|source| MvpError::Read {
+                path: lesson.guided_story_dir(),
+                source,
+            })?;
+            let path = entry.path();
+            if !path.is_dir() {
+                continue;
+            }
+            let Some(name) = path.file_name().and_then(|name| name.to_str()) else {
+                continue;
+            };
+            if !name.starts_with("step") {
+                continue;
+            }
+
+            let question_bank_path = path.join("question_bank.json");
+            if question_bank_path.is_file() {
+                banks.push(Self::read_required_text(&question_bank_path)?);
+            }
+        }
+
+        banks.sort();
+        Ok(format!("[\n{}\n]", banks.join(",\n")))
+    }
+
+    fn read_required_text(path: &Path) -> Result<String, MvpError> {
+        fs::read_to_string(path).map_err(|source| MvpError::Read {
             path: path.to_path_buf(),
             source,
-        }),
-    }
-}
-
-fn render_prompt(template: &str, vars: &[(&str, &str)]) -> String {
-    let mut rendered = template.to_owned();
-    for (key, value) in vars {
-        rendered = rendered.replace(&format!("{{{{{key}}}}}"), value);
-    }
-    rendered
-}
-
-fn source_outline_from_plain_text(plain_text: &str) -> String {
-    plain_text
-        .lines()
-        .map(str::trim)
-        .filter(|line| !line.is_empty())
-        .take(60)
-        .collect::<Vec<_>>()
-        .join("\n")
-}
-
-fn strip_code_fence(content: &str, language: Option<&str>) -> String {
-    let trimmed = content.trim();
-    if !trimmed.starts_with("```") {
-        return trimmed.to_owned();
+        })
     }
 
-    let mut lines = trimmed.lines();
-    let first = lines.next().unwrap_or_default().trim();
-    let expected = language.unwrap_or_default();
-    if !expected.is_empty()
-        && first.trim_start_matches("```").trim() != expected
-        && !first.trim_start_matches("```").trim().is_empty()
+    fn read_optional_text(path: &Path) -> Result<String, MvpError> {
+        match fs::read_to_string(path) {
+            Ok(contents) => Ok(contents),
+            Err(source) if source.kind() == io::ErrorKind::NotFound => Ok(String::new()),
+            Err(source) => Err(MvpError::Read {
+                path: path.to_path_buf(),
+                source,
+            }),
+        }
+    }
+
+    fn render_prompt(template: &str, vars: &[(&str, &str)]) -> String {
+        let mut rendered = template.to_owned();
+        for (key, value) in vars {
+            rendered = rendered.replace(&format!("{{{{{key}}}}}"), value);
+        }
+        rendered
+    }
+
+    fn source_outline_from_plain_text(plain_text: &str) -> String {
+        plain_text
+            .lines()
+            .map(str::trim)
+            .filter(|line| !line.is_empty())
+            .take(60)
+            .collect::<Vec<_>>()
+            .join("\n")
+    }
+
+    fn strip_code_fence(content: &str, language: Option<&str>) -> String {
+        let trimmed = content.trim();
+        if !trimmed.starts_with("```") {
+            return trimmed.to_owned();
+        }
+
+        let mut lines = trimmed.lines();
+        let first = lines.next().unwrap_or_default().trim();
+        let expected = language.unwrap_or_default();
+        if !expected.is_empty()
+            && first.trim_start_matches("```").trim() != expected
+            && !first.trim_start_matches("```").trim().is_empty()
+        {
+            return trimmed.to_owned();
+        }
+
+        let body = lines.collect::<Vec<_>>().join("\n");
+        body.strip_suffix("```").unwrap_or(&body).trim().to_owned()
+    }
+
+    fn write_pretty_json<T>(path: &Path, value: &T) -> Result<(), MvpError>
+    where
+        T: Serialize,
     {
-        return trimmed.to_owned();
-    }
+        if let Some(parent) = path.parent() {
+            fs::create_dir_all(parent).map_err(|source| MvpError::Write {
+                path: parent.to_path_buf(),
+                source,
+            })?;
+        }
 
-    let body = lines.collect::<Vec<_>>().join("\n");
-    body.strip_suffix("```").unwrap_or(&body).trim().to_owned()
-}
-
-fn write_pretty_json<T>(path: &Path, value: &T) -> Result<(), MvpError>
-where
-    T: Serialize,
-{
-    if let Some(parent) = path.parent() {
-        fs::create_dir_all(parent).map_err(|source| MvpError::Write {
-            path: parent.to_path_buf(),
+        let mut payload =
+            serde_json::to_vec_pretty(value).map_err(|source| MvpError::JsonWrite {
+                path: path.to_path_buf(),
+                source,
+            })?;
+        payload.push(b'\n');
+        fs::write(path, payload).map_err(|source| MvpError::Write {
+            path: path.to_path_buf(),
             source,
-        })?;
+        })
     }
-
-    let mut payload = serde_json::to_vec_pretty(value).map_err(|source| MvpError::JsonWrite {
-        path: path.to_path_buf(),
-        source,
-    })?;
-    payload.push(b'\n');
-    fs::write(path, payload).map_err(|source| MvpError::Write {
-        path: path.to_path_buf(),
-        source,
-    })
 }
 
 #[derive(Debug)]

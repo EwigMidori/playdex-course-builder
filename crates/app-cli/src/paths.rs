@@ -26,7 +26,7 @@ impl RepoPaths {
     }
 
     pub fn from_root(root: PathBuf) -> Result<Self, LessonPathError> {
-        if !looks_like_repo_root(&root) {
+        if !PathRules::looks_like_repo_root(&root) {
             return Err(LessonPathError::NotRepositoryRoot { cwd: root });
         }
 
@@ -84,7 +84,7 @@ impl RepoPaths {
             (Some(course_id), Some(chapter_id)) => {
                 let chapter = self.resolve_course_chapter(course_id, chapter_id)?;
                 if let Some(lesson_id) = lesson_id {
-                    validate_lesson_id(lesson_id)?;
+                    PathRules::validate_lesson_id(lesson_id)?;
                     if chapter.lesson_id() != lesson_id {
                         return Err(LessonPathError::TargetMismatch {
                             lesson_id: lesson_id.to_owned(),
@@ -96,12 +96,8 @@ impl RepoPaths {
                 }
                 Ok(chapter)
             }
-            (Some(_), None) => Err(LessonPathError::IncompleteTarget {
-                missing: "chapter",
-            }),
-            (None, Some(_)) => Err(LessonPathError::IncompleteTarget {
-                missing: "course",
-            }),
+            (Some(_), None) => Err(LessonPathError::IncompleteTarget { missing: "chapter" }),
+            (None, Some(_)) => Err(LessonPathError::IncompleteTarget { missing: "course" }),
             (None, None) => {
                 let Some(lesson_id) = lesson_id else {
                     return Err(LessonPathError::MissingTarget);
@@ -112,7 +108,7 @@ impl RepoPaths {
     }
 
     pub fn resolve_lesson(&self, lesson_id: &str) -> Result<ChapterPaths, LessonPathError> {
-        validate_lesson_id(lesson_id)?;
+        PathRules::validate_lesson_id(lesson_id)?;
 
         let index = self.load_course_index()?;
 
@@ -145,8 +141,8 @@ impl RepoPaths {
         course_id: &str,
         chapter_id: &str,
     ) -> Result<ChapterPaths, LessonPathError> {
-        validate_scoped_id("course ID", course_id)?;
-        validate_scoped_id("chapter ID", chapter_id)?;
+        PathRules::validate_scoped_id("course ID", course_id)?;
+        PathRules::validate_scoped_id("chapter ID", chapter_id)?;
 
         let index = self.load_course_index()?;
 
@@ -173,8 +169,8 @@ impl RepoPaths {
     pub fn relative_display(&self, path: &Path) -> String {
         path.strip_prefix(&self.root)
             .ok()
-            .map(path_to_forward_slashes)
-            .unwrap_or_else(|| path_to_forward_slashes(path))
+            .map(PathText::to_forward_slashes)
+            .unwrap_or_else(|| PathText::to_forward_slashes(path))
     }
 
     fn load_course_index(&self) -> Result<CourseIndex, LessonPathError> {
@@ -192,7 +188,7 @@ impl RepoPaths {
                 path: path.clone(),
                 source,
             })?;
-        validate_course_index(&path, &index)?;
+        PathRules::validate_course_index(&path, &index)?;
         Ok(index)
     }
 
@@ -202,48 +198,48 @@ impl RepoPaths {
         chapter: &ChapterIndexEntry,
     ) -> Result<ChapterPaths, LessonPathError> {
         let lesson_id = chapter.lesson_id.as_str();
-        validate_lesson_id(lesson_id)?;
+        PathRules::validate_lesson_id(lesson_id)?;
 
         let raw_pdf_relative = chapter
             .raw_pdf_path
             .as_deref()
-            .map(|path| parse_repo_relative_path("rawPdfPath", path))
+            .map(|path| PathRules::parse_repo_relative_path("rawPdfPath", path))
             .transpose()?
             .unwrap_or_else(|| PathBuf::from(RAW_PIPELINE_ROOT).join(format!("{lesson_id}.pdf")));
         let plain_output_relative = chapter
             .plain_output_dir
             .as_deref()
-            .map(|path| parse_repo_relative_path("plainOutputDir", path))
+            .map(|path| PathRules::parse_repo_relative_path("plainOutputDir", path))
             .transpose()?
             .unwrap_or_else(|| PathBuf::from(PLAIN_PIPELINE_ROOT).join(lesson_id));
         let guided_story_relative =
-            parse_repo_relative_path("guidedStoryDir", &chapter.guided_story_dir)?;
+            PathRules::parse_repo_relative_path("guidedStoryDir", &chapter.guided_story_dir)?;
         let textbook_relative = chapter
             .textbook_path
             .as_deref()
-            .map(|path| parse_repo_relative_path("textbookPath", path))
+            .map(|path| PathRules::parse_repo_relative_path("textbookPath", path))
             .transpose()?
             .unwrap_or_else(|| PathBuf::from(TEXTBOOK_ROOT).join(format!("{lesson_id}.mdx")));
         let meta_relative = chapter
             .meta_dir
             .as_deref()
-            .map(|path| parse_repo_relative_path("metaDir", path))
+            .map(|path| PathRules::parse_repo_relative_path("metaDir", path))
             .transpose()?
             .unwrap_or_else(|| PathBuf::from(META_PIPELINE_ROOT).join(lesson_id));
         let related_important_relative = course
             .related_important_path
             .as_deref()
-            .map(|path| parse_repo_relative_path("relatedImportantPath", path))
+            .map(|path| PathRules::parse_repo_relative_path("relatedImportantPath", path))
             .transpose()?;
         let exam_raw_relative = course
             .exam_raw_dir
             .as_deref()
-            .map(|path| parse_repo_relative_path("examRawDir", path))
+            .map(|path| PathRules::parse_repo_relative_path("examRawDir", path))
             .transpose()?;
         let exam_plain_relative = course
             .exam_plain_root
             .as_deref()
-            .map(|path| parse_repo_relative_path("examPlainRoot", path))
+            .map(|path| PathRules::parse_repo_relative_path("examPlainRoot", path))
             .transpose()?;
 
         Ok(ChapterPaths {
@@ -517,22 +513,22 @@ impl fmt::Display for LessonPathError {
             Self::MissingCourseIndex { path } => write!(
                 f,
                 "missing multi-course source of truth: {}",
-                path_to_forward_slashes(path)
+                PathText::to_forward_slashes(path)
             ),
             Self::ReadCourseIndex { path, source } => write!(
                 f,
                 "failed to read course index {}: {source}",
-                path_to_forward_slashes(path)
+                PathText::to_forward_slashes(path)
             ),
             Self::ParseCourseIndex { path, source } => write!(
                 f,
                 "failed to parse course index {}: {source}",
-                path_to_forward_slashes(path)
+                PathText::to_forward_slashes(path)
             ),
             Self::InvalidCourseIndex { path, reason } => write!(
                 f,
                 "invalid course index {}: {reason}",
-                path_to_forward_slashes(path)
+                PathText::to_forward_slashes(path)
             ),
             Self::UnknownCourseId { course_id } => {
                 write!(f, "unknown course ID '{course_id}' in course index")
@@ -558,7 +554,7 @@ impl fmt::Display for LessonPathError {
             } => write!(
                 f,
                 "missing raw PDF for lesson '{lesson_id}': {}; provide this file or run with a configured MinerU setup",
-                path_to_forward_slashes(raw_pdf_relative)
+                PathText::to_forward_slashes(raw_pdf_relative)
             ),
         }
     }
@@ -587,129 +583,211 @@ impl Error for LessonPathError {
     }
 }
 
-pub fn path_to_forward_slashes(path: &Path) -> String {
-    path.to_string_lossy().replace('\\', "/")
+pub struct PathText;
+
+impl PathText {
+    pub fn to_forward_slashes(path: &Path) -> String {
+        path.to_string_lossy().replace('\\', "/")
+    }
 }
 
-fn validate_lesson_id(lesson_id: &str) -> Result<(), LessonPathError> {
-    if lesson_id.is_empty() {
-        return Err(LessonPathError::InvalidLessonId {
-            lesson_id: lesson_id.to_owned(),
-            reason: "lesson ID must not be empty",
-        });
+struct PathRules;
+
+impl PathRules {
+    fn validate_lesson_id(lesson_id: &str) -> Result<(), LessonPathError> {
+        if lesson_id.is_empty() {
+            return Err(LessonPathError::InvalidLessonId {
+                lesson_id: lesson_id.to_owned(),
+                reason: "lesson ID must not be empty",
+            });
+        }
+
+        if lesson_id == "." || lesson_id == ".." {
+            return Err(LessonPathError::InvalidLessonId {
+                lesson_id: lesson_id.to_owned(),
+                reason: "lesson ID must not be '.' or '..'",
+            });
+        }
+
+        if lesson_id.contains('/') || lesson_id.contains('\\') {
+            return Err(LessonPathError::InvalidLessonId {
+                lesson_id: lesson_id.to_owned(),
+                reason: "lesson ID must not contain path separators",
+            });
+        }
+
+        Ok(())
     }
 
-    if lesson_id == "." || lesson_id == ".." {
-        return Err(LessonPathError::InvalidLessonId {
-            lesson_id: lesson_id.to_owned(),
-            reason: "lesson ID must not be '.' or '..'",
-        });
+    fn validate_scoped_id(kind: &'static str, value: &str) -> Result<(), LessonPathError> {
+        if value.is_empty() {
+            return Err(LessonPathError::InvalidScopedId {
+                kind,
+                value: value.to_owned(),
+                reason: "value must not be empty",
+            });
+        }
+
+        if value == "." || value == ".." {
+            return Err(LessonPathError::InvalidScopedId {
+                kind,
+                value: value.to_owned(),
+                reason: "value must not be '.' or '..'",
+            });
+        }
+
+        if value.contains('/') || value.contains('\\') {
+            return Err(LessonPathError::InvalidScopedId {
+                kind,
+                value: value.to_owned(),
+                reason: "value must not contain path separators",
+            });
+        }
+
+        Ok(())
     }
 
-    if lesson_id.contains('/') || lesson_id.contains('\\') {
-        return Err(LessonPathError::InvalidLessonId {
-            lesson_id: lesson_id.to_owned(),
-            reason: "lesson ID must not contain path separators",
-        });
-    }
-
-    Ok(())
-}
-
-fn validate_scoped_id(kind: &'static str, value: &str) -> Result<(), LessonPathError> {
-    if value.is_empty() {
-        return Err(LessonPathError::InvalidScopedId {
-            kind,
-            value: value.to_owned(),
-            reason: "value must not be empty",
-        });
-    }
-
-    if value == "." || value == ".." {
-        return Err(LessonPathError::InvalidScopedId {
-            kind,
-            value: value.to_owned(),
-            reason: "value must not be '.' or '..'",
-        });
-    }
-
-    if value.contains('/') || value.contains('\\') {
-        return Err(LessonPathError::InvalidScopedId {
-            kind,
-            value: value.to_owned(),
-            reason: "value must not contain path separators",
-        });
-    }
-
-    Ok(())
-}
-
-fn parse_repo_relative_path(
-    field: &'static str,
-    value: &str,
-) -> Result<PathBuf, LessonPathError> {
-    if value.is_empty() {
-        return Err(LessonPathError::InvalidCourseIndex {
-            path: PathBuf::from(COURSE_INDEX_PATH),
-            reason: format!("{field} must not be empty"),
-        });
-    }
-
-    let path = PathBuf::from(value);
-    if path.is_absolute() {
-        return Err(LessonPathError::InvalidCourseIndex {
-            path: PathBuf::from(COURSE_INDEX_PATH),
-            reason: format!("{field} must be repo-relative, got absolute path '{value}'"),
-        });
-    }
-
-    for component in path.components() {
-        if matches!(component, Component::ParentDir) {
+    fn parse_repo_relative_path(
+        field: &'static str,
+        value: &str,
+    ) -> Result<PathBuf, LessonPathError> {
+        if value.is_empty() {
             return Err(LessonPathError::InvalidCourseIndex {
                 path: PathBuf::from(COURSE_INDEX_PATH),
-                reason: format!("{field} must not traverse parent directories: '{value}'"),
+                reason: format!("{field} must not be empty"),
             });
         }
+
+        let path = PathBuf::from(value);
+        if path.is_absolute() {
+            return Err(LessonPathError::InvalidCourseIndex {
+                path: PathBuf::from(COURSE_INDEX_PATH),
+                reason: format!("{field} must be repo-relative, got absolute path '{value}'"),
+            });
+        }
+
+        for component in path.components() {
+            if matches!(component, Component::ParentDir) {
+                return Err(LessonPathError::InvalidCourseIndex {
+                    path: PathBuf::from(COURSE_INDEX_PATH),
+                    reason: format!("{field} must not traverse parent directories: '{value}'"),
+                });
+            }
+        }
+
+        Ok(path)
     }
 
-    Ok(path)
-}
-
-fn validate_course_index(path: &Path, index: &CourseIndex) -> Result<(), LessonPathError> {
-    if index.version != 1 {
-        return Err(LessonPathError::InvalidCourseIndex {
-            path: path.to_path_buf(),
-            reason: format!("unsupported version {}; expected 1", index.version),
-        });
-    }
-
-    let mut course_ids = BTreeSet::new();
-    for course in &index.courses {
-        validate_scoped_id("course ID", &course.course_id)?;
-        if !course_ids.insert(course.course_id.clone()) {
+    fn validate_course_index(path: &Path, index: &CourseIndex) -> Result<(), LessonPathError> {
+        if index.version != 1 {
             return Err(LessonPathError::InvalidCourseIndex {
                 path: path.to_path_buf(),
-                reason: format!("duplicate courseId '{}'", course.course_id),
+                reason: format!("unsupported version {}; expected 1", index.version),
             });
         }
 
-        let mut chapter_ids = BTreeSet::new();
-        for chapter in &course.chapters {
-            validate_scoped_id("chapter ID", &chapter.chapter_id)?;
-            validate_lesson_id(&chapter.lesson_id)?;
-            parse_repo_relative_path("guidedStoryDir", &chapter.guided_story_dir).map_err(
-                |error| match error {
-                    LessonPathError::InvalidCourseIndex { reason, .. } => {
-                        LessonPathError::InvalidCourseIndex {
-                            path: path.to_path_buf(),
-                            reason,
+        let mut course_ids = BTreeSet::new();
+        for course in &index.courses {
+            Self::validate_scoped_id("course ID", &course.course_id)?;
+            if !course_ids.insert(course.course_id.clone()) {
+                return Err(LessonPathError::InvalidCourseIndex {
+                    path: path.to_path_buf(),
+                    reason: format!("duplicate courseId '{}'", course.course_id),
+                });
+            }
+
+            let mut chapter_ids = BTreeSet::new();
+            for chapter in &course.chapters {
+                Self::validate_scoped_id("chapter ID", &chapter.chapter_id)?;
+                Self::validate_lesson_id(&chapter.lesson_id)?;
+                Self::parse_repo_relative_path("guidedStoryDir", &chapter.guided_story_dir)
+                    .map_err(|error| match error {
+                        LessonPathError::InvalidCourseIndex { reason, .. } => {
+                            LessonPathError::InvalidCourseIndex {
+                                path: path.to_path_buf(),
+                                reason,
+                            }
                         }
-                    }
-                    other => other,
-                },
-            )?;
-            if let Some(textbook_path) = &chapter.textbook_path {
-                parse_repo_relative_path("textbookPath", textbook_path).map_err(|error| {
+                        other => other,
+                    })?;
+                if let Some(textbook_path) = &chapter.textbook_path {
+                    Self::parse_repo_relative_path("textbookPath", textbook_path).map_err(
+                        |error| match error {
+                            LessonPathError::InvalidCourseIndex { reason, .. } => {
+                                LessonPathError::InvalidCourseIndex {
+                                    path: path.to_path_buf(),
+                                    reason,
+                                }
+                            }
+                            other => other,
+                        },
+                    )?;
+                }
+                if let Some(raw_pdf_path) = &chapter.raw_pdf_path {
+                    Self::parse_repo_relative_path("rawPdfPath", raw_pdf_path).map_err(
+                        |error| match error {
+                            LessonPathError::InvalidCourseIndex { reason, .. } => {
+                                LessonPathError::InvalidCourseIndex {
+                                    path: path.to_path_buf(),
+                                    reason,
+                                }
+                            }
+                            other => other,
+                        },
+                    )?;
+                }
+                if let Some(plain_output_dir) = &chapter.plain_output_dir {
+                    Self::parse_repo_relative_path("plainOutputDir", plain_output_dir).map_err(
+                        |error| match error {
+                            LessonPathError::InvalidCourseIndex { reason, .. } => {
+                                LessonPathError::InvalidCourseIndex {
+                                    path: path.to_path_buf(),
+                                    reason,
+                                }
+                            }
+                            other => other,
+                        },
+                    )?;
+                }
+                if let Some(meta_dir) = &chapter.meta_dir {
+                    Self::parse_repo_relative_path("metaDir", meta_dir).map_err(
+                        |error| match error {
+                            LessonPathError::InvalidCourseIndex { reason, .. } => {
+                                LessonPathError::InvalidCourseIndex {
+                                    path: path.to_path_buf(),
+                                    reason,
+                                }
+                            }
+                            other => other,
+                        },
+                    )?;
+                }
+
+                if !chapter_ids.insert(chapter.chapter_id.clone()) {
+                    return Err(LessonPathError::InvalidCourseIndex {
+                        path: path.to_path_buf(),
+                        reason: format!(
+                            "duplicate chapterId '{}' inside course '{}'",
+                            chapter.chapter_id, course.course_id
+                        ),
+                    });
+                }
+            }
+
+            if let Some(related_important_path) = &course.related_important_path {
+                Self::parse_repo_relative_path("relatedImportantPath", related_important_path)
+                    .map_err(|error| match error {
+                        LessonPathError::InvalidCourseIndex { reason, .. } => {
+                            LessonPathError::InvalidCourseIndex {
+                                path: path.to_path_buf(),
+                                reason,
+                            }
+                        }
+                        other => other,
+                    })?;
+            }
+            if let Some(exam_raw_dir) = &course.exam_raw_dir {
+                Self::parse_repo_relative_path("examRawDir", exam_raw_dir).map_err(|error| {
                     match error {
                         LessonPathError::InvalidCourseIndex { reason, .. } => {
                             LessonPathError::InvalidCourseIndex {
@@ -721,19 +799,8 @@ fn validate_course_index(path: &Path, index: &CourseIndex) -> Result<(), LessonP
                     }
                 })?;
             }
-            if let Some(raw_pdf_path) = &chapter.raw_pdf_path {
-                parse_repo_relative_path("rawPdfPath", raw_pdf_path).map_err(|error| match error {
-                    LessonPathError::InvalidCourseIndex { reason, .. } => {
-                        LessonPathError::InvalidCourseIndex {
-                            path: path.to_path_buf(),
-                            reason,
-                        }
-                    }
-                    other => other,
-                })?;
-            }
-            if let Some(plain_output_dir) = &chapter.plain_output_dir {
-                parse_repo_relative_path("plainOutputDir", plain_output_dir).map_err(
+            if let Some(exam_plain_root) = &course.exam_plain_root {
+                Self::parse_repo_relative_path("examPlainRoot", exam_plain_root).map_err(
                     |error| match error {
                         LessonPathError::InvalidCourseIndex { reason, .. } => {
                             LessonPathError::InvalidCourseIndex {
@@ -745,76 +812,17 @@ fn validate_course_index(path: &Path, index: &CourseIndex) -> Result<(), LessonP
                     },
                 )?;
             }
-            if let Some(meta_dir) = &chapter.meta_dir {
-                parse_repo_relative_path("metaDir", meta_dir).map_err(|error| match error {
-                    LessonPathError::InvalidCourseIndex { reason, .. } => {
-                        LessonPathError::InvalidCourseIndex {
-                            path: path.to_path_buf(),
-                            reason,
-                        }
-                    }
-                    other => other,
-                })?;
-            }
-
-            if !chapter_ids.insert(chapter.chapter_id.clone()) {
-                return Err(LessonPathError::InvalidCourseIndex {
-                    path: path.to_path_buf(),
-                    reason: format!(
-                        "duplicate chapterId '{}' inside course '{}'",
-                        chapter.chapter_id, course.course_id
-                    ),
-                });
-            }
         }
 
-        if let Some(related_important_path) = &course.related_important_path {
-            parse_repo_relative_path("relatedImportantPath", related_important_path).map_err(
-                |error| match error {
-                    LessonPathError::InvalidCourseIndex { reason, .. } => {
-                        LessonPathError::InvalidCourseIndex {
-                            path: path.to_path_buf(),
-                            reason,
-                        }
-                    }
-                    other => other,
-                },
-            )?;
-        }
-        if let Some(exam_raw_dir) = &course.exam_raw_dir {
-            parse_repo_relative_path("examRawDir", exam_raw_dir).map_err(|error| match error {
-                LessonPathError::InvalidCourseIndex { reason, .. } => {
-                    LessonPathError::InvalidCourseIndex {
-                        path: path.to_path_buf(),
-                        reason,
-                    }
-                }
-                other => other,
-            })?;
-        }
-        if let Some(exam_plain_root) = &course.exam_plain_root {
-            parse_repo_relative_path("examPlainRoot", exam_plain_root).map_err(|error| {
-                match error {
-                    LessonPathError::InvalidCourseIndex { reason, .. } => {
-                        LessonPathError::InvalidCourseIndex {
-                            path: path.to_path_buf(),
-                            reason,
-                        }
-                    }
-                    other => other,
-                }
-            })?;
-        }
+        Ok(())
     }
 
-    Ok(())
-}
-
-fn looks_like_repo_root(root: &Path) -> bool {
-    root.join(".git").exists()
-        && root.join(".ci/agent/AGENTS.md").is_file()
-        && root.join("docs/progress.json").is_file()
-        && root.join("research/README.md").is_file()
+    fn looks_like_repo_root(root: &Path) -> bool {
+        root.join(".git").exists()
+            && root.join(".ci/agent/AGENTS.md").is_file()
+            && root.join("docs/progress.json").is_file()
+            && root.join("research/README.md").is_file()
+    }
 }
 
 #[derive(Clone, Debug, Deserialize)]

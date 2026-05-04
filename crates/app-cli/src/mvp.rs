@@ -1,4 +1,5 @@
 use std::{
+    collections::{BTreeMap, BTreeSet},
     error::Error,
     fmt, fs, io,
     path::{Path, PathBuf},
@@ -7,7 +8,7 @@ use std::{
 };
 
 use reqwest::blocking::Client;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 
 use crate::{
@@ -121,6 +122,10 @@ fn question_bank_ready(path: &Path) -> bool {
     read_json(path, Stage::QuestionBank).is_ok()
 }
 
+fn question_bank_gate_ready(path: &Path) -> bool {
+    read_json(&rejected_question_bank_path(path), Stage::QuestionBankGate).is_ok()
+}
+
 fn textbook_ready(lesson: &LessonPaths) -> bool {
     lesson.textbook_path().is_file() && validation::validate_outputs(lesson).is_ok()
 }
@@ -200,18 +205,47 @@ fn generate_question_bank(
     let steps = read_guided_story_steps(lesson, &step_refs)?;
     let source_outline = source_outline_from_plain_text(plain_text);
     let prompt = read_prompt(repo, "question_bank_user.md")?;
+    let gate_system = read_prompt(repo, "question_bank_gate_system.md")?;
+    let gate_prompt = read_prompt(repo, "question_bank_gate_user.md")?;
     let mut generated_any = false;
 
     for step_ref in step_refs {
+        let current_step = read_required_text(&step_ref.path)?;
         if !force && question_bank_ready(&step_ref.question_bank_path) {
+            if question_bank_gate_ready(&step_ref.question_bank_path) {
+                eprintln!(
+                    "reusing question bank: {}",
+                    lesson.relative_display(&step_ref.question_bank_path)
+                );
+                continue;
+            }
+
             eprintln!(
-                "reusing question bank: {}",
+                "gating existing question bank: {}",
                 lesson.relative_display(&step_ref.question_bank_path)
             );
+            let llm = ready_llm(repo, llm)?;
+            let mut question_bank = read_json(&step_ref.question_bank_path, Stage::QuestionBank)?;
+            normalize_question_bank_json(lesson, &step_ref.sequence_id, &mut question_bank);
+            gate_and_write_question_bank(
+                lesson,
+                llm,
+                &gate_system,
+                &gate_prompt,
+                &step_ref,
+                step_count,
+                target_language,
+                course_id,
+                course_title,
+                chapter_id,
+                chapter_title,
+                &current_step,
+                &mut question_bank,
+            )?;
+            generated_any = true;
             continue;
         }
 
-        let current_step = read_required_text(&step_ref.path)?;
         let user = render_prompt(
             &prompt,
             &[
@@ -254,17 +288,140 @@ fn generate_question_bank(
             })?;
         normalize_question_bank_json(lesson, &step_ref.sequence_id, &mut question_bank);
 
-        if let Some(parent) = step_ref.question_bank_path.parent() {
-            fs::create_dir_all(parent).map_err(|source| MvpError::Write {
-                path: parent.to_path_buf(),
-                source,
-            })?;
-        }
-        write_pretty_json(&step_ref.question_bank_path, &question_bank)?;
+        gate_and_write_question_bank(
+            lesson,
+            llm,
+            &gate_system,
+            &gate_prompt,
+            &step_ref,
+            step_count,
+            target_language,
+            course_id,
+            course_title,
+            chapter_id,
+            chapter_title,
+            &current_step,
+            &mut question_bank,
+        )?;
         generated_any = true;
     }
 
     Ok(generated_any)
+}
+
+fn gate_question_bank(
+    lesson: &LessonPaths,
+    llm: &LlmReadyConfig,
+    system: &str,
+    prompt: &str,
+    audit_stage: &str,
+    target_language: &str,
+    course_id: &str,
+    course_title: &str,
+    chapter_id: &str,
+    chapter_title: &str,
+    current_step_id: &str,
+    current_step: &str,
+    question_bank: &mut Value,
+) -> Result<Value, MvpError> {
+    let candidate_question_bank =
+        serde_json::to_string_pretty(question_bank).map_err(|source| MvpError::JsonWrite {
+            path: lesson.audit_stage_dir(audit_stage),
+            source,
+        })?;
+    let user = render_prompt(
+        prompt,
+        &[
+            ("target_language", target_language),
+            ("course_id", course_id),
+            ("course_title", course_title),
+            ("chapter_id", chapter_id),
+            ("chapter_title", chapter_title),
+            ("lesson_id", lesson.lesson_id()),
+            ("current_step_id", current_step_id),
+            ("current_step", current_step),
+            ("candidate_question_bank", &candidate_question_bank),
+        ],
+    );
+    let response = call_chat_completion_with_audit(
+        lesson,
+        llm,
+        Stage::QuestionBankGate,
+        audit_stage,
+        system,
+        &user,
+    )?;
+    let content = strip_code_fence(&response.content, Some("json"));
+    let report: GateReport =
+        serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
+            stage: Stage::QuestionBankGate.as_str(),
+            source,
+        })?;
+
+    Ok(apply_question_bank_gate(question_bank, report))
+}
+
+fn gate_and_write_question_bank(
+    lesson: &LessonPaths,
+    llm: &LlmReadyConfig,
+    gate_system: &str,
+    gate_prompt: &str,
+    step_ref: &StepRef,
+    step_count: usize,
+    target_language: &str,
+    course_id: &str,
+    course_title: &str,
+    chapter_id: &str,
+    chapter_title: &str,
+    current_step: &str,
+    question_bank: &mut Value,
+) -> Result<(), MvpError> {
+    if let Some(parent) = step_ref.question_bank_path.parent() {
+        fs::create_dir_all(parent).map_err(|source| MvpError::Write {
+            path: parent.to_path_buf(),
+            source,
+        })?;
+    }
+    write_pretty_json(
+        &candidate_question_bank_path(&step_ref.question_bank_path),
+        question_bank,
+    )?;
+
+    let gate_audit_stage = if step_count == 1 {
+        "question_bank_gate".to_owned()
+    } else {
+        format!("question_bank_gate/{}", step_ref.sequence_id)
+    };
+    let rejected = gate_question_bank(
+        lesson,
+        llm,
+        gate_system,
+        gate_prompt,
+        &gate_audit_stage,
+        target_language,
+        course_id,
+        course_title,
+        chapter_id,
+        chapter_title,
+        &step_ref.sequence_id,
+        current_step,
+        question_bank,
+    )?;
+    eprintln!(
+        "question bank gate kept {}, rejected {}: {}",
+        count_question_families(question_bank),
+        rejected
+            .get("rejected_family_ids")
+            .and_then(Value::as_array)
+            .map(Vec::len)
+            .unwrap_or(0),
+        lesson.relative_display(&step_ref.question_bank_path)
+    );
+    write_pretty_json(
+        &rejected_question_bank_path(&step_ref.question_bank_path),
+        &rejected,
+    )?;
+    write_pretty_json(&step_ref.question_bank_path, question_bank)
 }
 
 fn generate_textbook(
@@ -482,6 +639,7 @@ fn call_chat_completion_once(
 enum Stage {
     GuidedStory,
     QuestionBank,
+    QuestionBankGate,
     Textbook,
 }
 
@@ -490,6 +648,7 @@ impl Stage {
         match self {
             Self::GuidedStory => "guided_story",
             Self::QuestionBank => "question_bank",
+            Self::QuestionBankGate => "question_bank_gate",
             Self::Textbook => "textbook",
         }
     }
@@ -497,6 +656,26 @@ impl Stage {
 
 struct LlmResponse {
     content: String,
+}
+
+const QUESTION_FAMILY_FIELDS: &[&str] =
+    &["flashcard_families", "quiz_families", "longform_families"];
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+struct GateReport {
+    decisions: Vec<GateDecision>,
+    #[serde(default)]
+    summary: Value,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+struct GateDecision {
+    family_id: String,
+    decision: String,
+    #[serde(default)]
+    reason: String,
+    #[serde(default)]
+    practice_target: String,
 }
 
 #[derive(Serialize)]
@@ -615,7 +794,11 @@ fn normalize_step_json(lesson: &LessonPaths, sequence_id: &str, step_json: &mut 
     object.entry("term_catalog").or_insert_with(|| json!({}));
 }
 
-fn normalize_question_bank_json(lesson: &LessonPaths, sequence_id: &str, question_bank: &mut Value) {
+fn normalize_question_bank_json(
+    lesson: &LessonPaths,
+    sequence_id: &str,
+    question_bank: &mut Value,
+) {
     let Some(object) = question_bank.as_object_mut() else {
         return;
     };
@@ -635,6 +818,136 @@ fn normalize_question_bank_json(lesson: &LessonPaths, sequence_id: &str, questio
     object
         .entry("sequence_id")
         .or_insert_with(|| json!(sequence_id));
+}
+
+fn apply_question_bank_gate(question_bank: &mut Value, report: GateReport) -> Value {
+    let decisions_by_id = report
+        .decisions
+        .iter()
+        .cloned()
+        .map(|decision| (decision.family_id.clone(), decision))
+        .collect::<BTreeMap<_, _>>();
+    let mut rejected_ids = BTreeSet::new();
+    let mut kept_family_ids = Vec::new();
+    let mut rejected_by_field = serde_json::Map::new();
+
+    for field in QUESTION_FAMILY_FIELDS {
+        let mut rejected_families = Vec::new();
+
+        if let Some(families) = question_bank.get_mut(*field).and_then(Value::as_array_mut) {
+            let mut kept_families = Vec::new();
+
+            for family in std::mem::take(families) {
+                let family_id = family
+                    .get("family_id")
+                    .and_then(Value::as_str)
+                    .unwrap_or("<missing_family_id>")
+                    .to_owned();
+                let mut decision =
+                    decisions_by_id
+                        .get(&family_id)
+                        .cloned()
+                        .unwrap_or_else(|| GateDecision {
+                            family_id: family_id.clone(),
+                            decision: "uncertain".to_owned(),
+                            reason: "gate did not return a decision for this family".to_owned(),
+                            practice_target: String::new(),
+                        });
+
+                if family_id == "<missing_family_id>" {
+                    decision.decision = "fail".to_owned();
+                    decision.reason = "family is missing family_id".to_owned();
+                } else if family_is_marked_meta(&family) {
+                    decision.decision = "fail".to_owned();
+                    decision.reason =
+                        "candidate marked this family as meta about course or material".to_owned();
+                }
+
+                if decision.decision.eq_ignore_ascii_case("pass") {
+                    kept_family_ids.push(Value::String(family_id));
+                    kept_families.push(family);
+                } else {
+                    rejected_ids.insert(family_id);
+                    rejected_families.push(family_with_gate_decision(family, &decision));
+                }
+            }
+
+            *families = kept_families;
+        }
+
+        rejected_by_field.insert((*field).to_owned(), Value::Array(rejected_families));
+    }
+
+    remove_rejected_coverage_refs(question_bank, &rejected_ids);
+
+    json!({
+        "gate": "question_bank_gate",
+        "decisions": report.decisions,
+        "summary": report.summary,
+        "kept_family_ids": kept_family_ids,
+        "rejected_family_ids": rejected_ids.into_iter().collect::<Vec<_>>(),
+        "rejected_families": Value::Object(rejected_by_field)
+    })
+}
+
+fn family_is_marked_meta(family: &Value) -> bool {
+    family
+        .get("is_meta_about_course_or_material")
+        .and_then(Value::as_bool)
+        .unwrap_or(false)
+}
+
+fn family_with_gate_decision(mut family: Value, decision: &GateDecision) -> Value {
+    if let Some(object) = family.as_object_mut() {
+        object.insert(
+            "_gate_decision".to_owned(),
+            json!({
+                "decision": decision.decision,
+                "reason": decision.reason,
+                "practice_target": decision.practice_target
+            }),
+        );
+    }
+    family
+}
+
+fn remove_rejected_coverage_refs(question_bank: &mut Value, rejected_ids: &BTreeSet<String>) {
+    if rejected_ids.is_empty() {
+        return;
+    }
+
+    let Some(items) = question_bank
+        .get_mut("coverage_map")
+        .and_then(Value::as_array_mut)
+    else {
+        return;
+    };
+
+    for item in items {
+        if let Some(covered_by) = item.get_mut("covered_by").and_then(Value::as_array_mut) {
+            covered_by.retain(|family_id| {
+                family_id
+                    .as_str()
+                    .map_or(true, |family_id| !rejected_ids.contains(family_id))
+            });
+        }
+    }
+}
+
+fn candidate_question_bank_path(question_bank_path: &Path) -> PathBuf {
+    question_bank_path.with_file_name("candidate_question_bank.json")
+}
+
+fn rejected_question_bank_path(question_bank_path: &Path) -> PathBuf {
+    question_bank_path.with_file_name("question_bank.rejected.json")
+}
+
+fn count_question_families(question_bank: &Value) -> usize {
+    QUESTION_FAMILY_FIELDS
+        .iter()
+        .filter_map(|field| question_bank.get(*field).and_then(Value::as_array))
+        .map(Vec::len)
+        .sum()
 }
 
 fn read_manifest_step_refs(lesson: &LessonPaths) -> Result<Vec<StepRef>, MvpError> {

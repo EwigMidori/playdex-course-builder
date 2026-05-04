@@ -93,6 +93,14 @@ impl TempRepo {
             "research/prompts/question_bank_user.md",
             "question {{target_language}} {{lesson_id}} {{guided_story_manifest}} {{guided_story_steps}}\n",
         );
+        self.write(
+            "research/prompts/question_bank_gate_system.md",
+            "gate system\n",
+        );
+        self.write(
+            "research/prompts/question_bank_gate_user.md",
+            "gate {{target_language}} {{lesson_id}} {{current_step_id}} {{candidate_question_bank}}\n",
+        );
         self.write("research/prompts/textbook_system.md", "textbook system\n");
         self.write(
             "research/prompts/textbook_user.md",
@@ -191,6 +199,30 @@ fn write_file(path: &Path, contents: &str) {
 
 fn read_text(path: impl AsRef<Path>) -> String {
     fs::read_to_string(path).expect("file should be readable")
+}
+
+fn gate_pass_report(family_ids: &[&str]) -> String {
+    let decisions = family_ids
+        .iter()
+        .map(|family_id| {
+            serde_json::json!({
+                "family_id": family_id,
+                "decision": "pass",
+                "reason": "Checks practice content.",
+                "practice_target": "Practice content."
+            })
+        })
+        .collect::<Vec<_>>();
+
+    serde_json::json!({
+        "decisions": decisions,
+        "summary": {
+            "passed": family_ids.len(),
+            "failed": 0,
+            "uncertain": 0
+        }
+    })
+    .to_string()
 }
 
 struct StubLlmServer {
@@ -555,9 +587,10 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
 
     let guided_story = r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[],"term_catalog":{}}"#.to_owned();
     let question_bank = r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_a","linked_steps":["step1"],"variants":[{"question_id":"question_a","linked_steps":["step1"],"stem":"A?","answer":0}]}],"longform_families":[]}"#.to_owned();
+    let gate_report = gate_pass_report(&["family_a"]);
     let textbook =
         r#"---\nlessonId: L2\n---\n# L2\n<QuestionFamily familyId="family_a" />\n<QuestionRef id="question_a" />\n"#.to_owned();
-    let server = StubLlmServer::start(vec![guided_story, question_bank, textbook]);
+    let server = StubLlmServer::start(vec![guided_story, question_bank, gate_report, textbook]);
 
     let output = coursegen_command()
         .current_dir(repo.root())
@@ -598,7 +631,12 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
     assert!(textbook_path.is_file(), "textbook should be written");
 
     let audit_root = repo.root().join("research/pipeline/meta/L2/mvp");
-    for stage in ["guided_story", "question_bank", "textbook"] {
+    for stage in [
+        "guided_story",
+        "question_bank",
+        "question_bank_gate",
+        "textbook",
+    ] {
         assert!(
             audit_root.join(stage).join("system.md").is_file(),
             "{stage} system prompt should be audited"
@@ -637,6 +675,126 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
 }
 
 #[test]
+fn run_filters_question_bank_with_gate_and_writes_rejected_artifact() {
+    let repo = TempRepo::new();
+    repo.seed_prompts();
+    repo.write(
+        "research/pipeline/1-plain/L2/plain.txt",
+        "A lesson about execution quality and course orientation.\n",
+    );
+    repo.write(
+        "research/pipeline/2-related_important/course_desc.md",
+        "Related course note.\n",
+    );
+
+    let guided_story = r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[],"term_catalog":{}}"#.to_owned();
+    let question_bank = r#"{
+      "lesson_id": "L2",
+      "sequence_id": "step1",
+      "coverage_map": [
+        {"coverage_tag":"execution_quality","covered_by":["family_keep"]},
+        {"coverage_tag":"course_orientation","covered_by":["family_meta"]}
+      ],
+      "flashcard_families": [
+        {
+          "family_id":"family_keep",
+          "linked_steps":["step1"],
+          "practice_target":"Students recall the execution concept.",
+          "is_meta_about_course_or_material":false,
+          "variants":[{"question_id":"question_keep","linked_steps":["step1"],"front":"A?","back":"A"}]
+        }
+      ],
+      "quiz_families": [
+        {
+          "family_id":"family_meta",
+          "linked_steps":["step1"],
+          "practice_target":"Students recall the course order.",
+          "is_meta_about_course_or_material":false,
+          "variants":[{"question_id":"question_meta","linked_steps":["step1"],"stem":"Which topic comes later?","answer":0}]
+        }
+      ],
+      "longform_families": []
+    }"#.to_owned();
+    let gate_report = serde_json::json!({
+        "decisions": [
+            {
+                "family_id": "family_keep",
+                "decision": "pass",
+                "reason": "Trains practice content.",
+                "practice_target": "Execution concept."
+            },
+            {
+                "family_id": "family_meta",
+                "decision": "fail",
+                "reason": "Mainly asks about course organization.",
+                "practice_target": "Course order."
+            }
+        ],
+        "summary": {"passed": 1, "failed": 1, "uncertain": 0}
+    })
+    .to_string();
+    let textbook =
+        r#"---\nlessonId: L2\n---\n# L2\n<QuestionFamily familyId="family_keep" />\n<QuestionRef id="question_keep" />\n"#.to_owned();
+    let server = StubLlmServer::start(vec![guided_story, question_bank, gate_report, textbook]);
+
+    let output = coursegen_command()
+        .current_dir(repo.root())
+        .env("COURSEGEN_LLM_API_KEY", "test-token")
+        .env("COURSEGEN_LLM_MODEL", "test-model")
+        .env("COURSEGEN_LLM_BASE_URL", server.base_url())
+        .args(["run", "L2", "--target-language", "zh-CN"])
+        .output()
+        .expect("coursegen should run");
+
+    server.finish();
+
+    assert!(
+        output.status.success(),
+        "stderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+
+    let step_dir = repo
+        .root()
+        .join("research/pipeline/3-guided_story/L2/step1");
+    let main_bank: serde_json::Value =
+        serde_json::from_str(&read_text(step_dir.join("question_bank.json")))
+            .expect("main question bank should parse");
+    let candidate: serde_json::Value =
+        serde_json::from_str(&read_text(step_dir.join("candidate_question_bank.json")))
+            .expect("candidate question bank should parse");
+    let rejected: serde_json::Value =
+        serde_json::from_str(&read_text(step_dir.join("question_bank.rejected.json")))
+            .expect("rejected question bank should parse");
+
+    assert_eq!(
+        main_bank["flashcard_families"][0]["family_id"],
+        "family_keep"
+    );
+    assert!(
+        main_bank["quiz_families"]
+            .as_array()
+            .is_some_and(Vec::is_empty),
+        "rejected quiz family should not remain in the main bank"
+    );
+    assert_eq!(
+        main_bank["coverage_map"][1]["covered_by"]
+            .as_array()
+            .map(Vec::len),
+        Some(0),
+        "coverage refs should drop rejected family ids"
+    );
+    assert_eq!(
+        candidate["quiz_families"][0]["family_id"], "family_meta",
+        "candidate artifact should preserve generated families"
+    );
+    assert_eq!(
+        rejected["rejected_families"]["quiz_families"][0]["family_id"], "family_meta",
+        "rejected artifact should preserve removed families"
+    );
+}
+
+#[test]
 fn run_writes_question_banks_for_each_generated_step() {
     let repo = TempRepo::new();
     repo.seed_prompts();
@@ -663,6 +821,8 @@ fn run_writes_question_banks_for_each_generated_step() {
     }"#.to_owned();
     let question_bank_1 = r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_step1","linked_steps":["step1"],"variants":[{"question_id":"question_step1","linked_steps":["step1"],"front":"A?","back":"A"}]}],"quiz_families":[],"longform_families":[]}"#.to_owned();
     let question_bank_2 = r#"{"lesson_id":"L2","sequence_id":"step2","flashcard_families":[{"family_id":"family_step2","linked_steps":["step2"],"variants":[{"question_id":"question_step2","linked_steps":["step2"],"front":"B?","back":"B"}]}],"quiz_families":[],"longform_families":[]}"#.to_owned();
+    let gate_report_1 = gate_pass_report(&["family_step1"]);
+    let gate_report_2 = gate_pass_report(&["family_step2"]);
     let textbook = r#"---
 lessonId: L2
 ---
@@ -676,7 +836,9 @@ lessonId: L2
     let server = StubLlmServer::start(vec![
         guided_story,
         question_bank_1,
+        gate_report_1,
         question_bank_2,
+        gate_report_2,
         textbook,
     ]);
 
@@ -729,6 +891,14 @@ lessonId: L2
                 .is_file(),
             "{step} question bank prompt should be audited"
         );
+        assert!(
+            repo.root()
+                .join(format!(
+                    "research/pipeline/meta/L2/mvp/question_bank_gate/{step}/user.md"
+                ))
+                .is_file(),
+            "{step} question bank gate prompt should be audited"
+        );
     }
 }
 
@@ -748,9 +918,10 @@ fn run_accepts_course_and_chapter_selectors_from_course_index() {
 
     let guided_story = r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[],"term_catalog":{}}"#.to_owned();
     let question_bank = r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_a","linked_steps":["step1"],"variants":[{"question_id":"question_a","linked_steps":["step1"],"stem":"A?","answer":0}]}],"longform_families":[]}"#.to_owned();
+    let gate_report = gate_pass_report(&["family_a"]);
     let textbook =
         r#"---\nlessonId: L2\n---\n# L2\n<QuestionFamily familyId="family_a" />\n<QuestionRef id="question_a" />\n"#.to_owned();
-    let server = StubLlmServer::start(vec![guided_story, question_bank, textbook]);
+    let server = StubLlmServer::start(vec![guided_story, question_bank, gate_report, textbook]);
 
     let output = coursegen_command()
         .current_dir(repo.root())
@@ -833,7 +1004,9 @@ fn run_resumes_from_missing_step_question_bank_without_regenerating_prior_steps(
         r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","flashcard_families":[{"family_id":"family_step1","linked_steps":["step1"],"variants":[{"question_id":"question_step1","linked_steps":["step1"],"front":"A?","back":"A"}]}],"quiz_families":[],"longform_families":[]}"#,
     );
 
+    let gate_report_1 = gate_pass_report(&["family_step1"]);
     let question_bank_2 = r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step2","flashcard_families":[{"family_id":"family_step2","linked_steps":["step2"],"variants":[{"question_id":"question_step2","linked_steps":["step2"],"front":"B?","back":"B"}]}],"quiz_families":[],"longform_families":[]}"#.to_owned();
+    let gate_report_2 = gate_pass_report(&["family_step2"]);
     let textbook = r#"---
 lessonId: L2
 ---
@@ -844,7 +1017,12 @@ lessonId: L2
 <QuestionRef id="question_step2" />
 "#
     .to_owned();
-    let server = StubLlmServer::start(vec![question_bank_2, textbook]);
+    let server = StubLlmServer::start(vec![
+        gate_report_1,
+        question_bank_2,
+        gate_report_2,
+        textbook,
+    ]);
 
     let output = coursegen_command()
         .current_dir(repo.root())
@@ -869,9 +1047,9 @@ lessonId: L2
     );
     assert!(
         stderr.contains(
-            "reusing question bank: research/pipeline/3-guided_story/L2/step1/question_bank.json"
+            "gating existing question bank: research/pipeline/3-guided_story/L2/step1/question_bank.json"
         ),
-        "stderr should show step1 question bank reuse: {stderr}"
+        "stderr should show step1 existing question bank gate: {stderr}"
     );
     assert!(
         !repo
@@ -886,6 +1064,12 @@ lessonId: L2
             .join("research/pipeline/meta/L2/mvp/question_bank/step1/request.json")
             .exists(),
         "existing step1 question bank should not be requested again"
+    );
+    assert!(
+        repo.root()
+            .join("research/pipeline/meta/L2/mvp/question_bank_gate/step1/request.json")
+            .is_file(),
+        "existing step1 question bank should be gated"
     );
     assert!(
         repo.root()

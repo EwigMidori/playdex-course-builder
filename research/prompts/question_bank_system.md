@@ -14,10 +14,17 @@
 最高优先级：
 - source alignment
 - coverage completeness
+- practice eligibility
 
 如果输入中的关键内容、关键概念、关键机制、关键步骤、关键公式、关键图表读法或关键术语没有进入题库，导致学生复习不全，这是严重失败。
 
 当前调用只为一个 step 生成题库。必须覆盖当前 step 的关键内容，但不要跨 step 出题。跨 step 的综合题以后单独处理。
+
+题库只包含真正适合练习的内容。题目必须考当前 step 的可学习内容，而不是关于课程、材料、教学过程、内容组织或题库自身的元信息。如果当前 step 主要是导览、介绍或安排说明，且缺少可练习内容，可以少生成 family，甚至生成空数组，不要为了满足数量要求制造低价值题。
+
+每个 family 必须给出机器可读的练习资格说明：
+- `practice_target`: 学生答对这组题后证明掌握了什么内容或能力
+- `is_meta_about_course_or_material`: 布尔值；如果这组题主要考课程、材料、教学过程、内容组织或题库自身的信息，必须为 `true`
 
 必须遵守：
 
@@ -59,6 +66,8 @@
    - `linked_steps`
    - `concept_key`
    - `learning_goal`
+   - `practice_target`
+   - `is_meta_about_course_or_material`
    - `variants`
 12. 如果题目涉及公式、图形、代码、数据表、流程图或其他形式化表示：
    - 先考直觉或读法，再考应用
@@ -80,6 +89,7 @@
    - `coverage checklist` 中明确标注的必覆盖项
    - `source outline` 中高层主题与子主题
    - `lesson map` 中的知识依赖、主题流和 step 落点
+20. 不要让数量要求压过练习资格。如果某个 step 的可练习内容很少，宁可少出题，也不要把元信息、材料组织方式或课程安排包装成题目。
 
 推荐题型：
 
@@ -142,6 +152,8 @@
         }
       ],
       "learning_goal": "学生完成后应具备的可观察理解目标。",
+      "practice_target": "学生答对后证明掌握的可学习内容或能力。",
+      "is_meta_about_course_or_material": false,
       "difficulty": "easy",
       "retrieval_focus": "这组闪卡要求学生主动提取的最小知识单元。",
       "variants": [
@@ -169,6 +181,8 @@
         }
       ],
       "learning_goal": "学生能在测验情境下辨析或应用该知识点。",
+      "practice_target": "学生答对后证明掌握的可学习内容或能力。",
+      "is_meta_about_course_or_material": false,
       "difficulty": "medium",
       "variants": [
         {
@@ -196,6 +210,8 @@
         }
       ],
       "learning_goal": "学生能把关键概念、机制、公式、证据或流程连起来解释。",
+      "practice_target": "学生答对后证明掌握的可学习内容或能力。",
+      "is_meta_about_course_or_material": false,
       "difficulty": "medium",
       "variants": [
         {
@@ -212,7 +228,7 @@
 }
 
 额外要求：
-- 每个 family 至少 2 个 variants
+- 每个合格 family 尽量至少 2 个 variants；如果当前 step 的可练习内容不足，允许减少 family 或 variants
 - `flashcard` family 的变体尽量 2 到 4 个，且每个 variant 都必须是主动检索问答闭环
 - `quiz` family 的变体尽量 2 到 4 个，允许选择题，但必须有解释
 - `longform` family 的变体尽量 2 个

@@ -22,11 +22,14 @@ lesson_id：
 - 同时生成 `flashcard_families`、`quiz_families` 和 `longform_families`
 - 题目必须只关联到当前 step：`{{current_step_id}}`
 - 所有 family 和 variant 的 `linked_steps` 都必须等于 `["{{current_step_id}}"]`
-- 同一个 family 必须至少给出 2 个 variants
+- 同一个合格 family 尽量给出 2 个 variants；可练习内容不足时允许更少
 - 题目应覆盖当前 step 的关键内容；不要把其它 step 的内容塞进这个 step 的题库
 - `flashcard` 是间隔重复用的主动检索载体，不是选择题；每张卡必须有精准 front 与短 back
 - `quiz` 才承载选择题、判断题、配对题等更像考试的小题
 - `longform` 要能真正检查理解与表达
+- 每个 family 必须包含 `practice_target` 和 `is_meta_about_course_or_material`
+- 题目必须考当前 step 的可学习内容，而不是关于课程、材料、教学过程、内容组织或题库自身的元信息
+- 如果当前 step 缺少可练习内容，可以减少 family 或 variants，不要为了凑数量制造低价值题
 - 如果涉及公式，务必保证数值自洽
 - 不要生成和输入材料脱节的题
 - 输出里必须包含 `coverage_map`

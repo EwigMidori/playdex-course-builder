@@ -1,0 +1,27 @@
+{
+  "gate": "manual_practice_eligibility_cleanup",
+  "rejected_screen_ids": [
+    "s005"
+  ],
+  "rejected_screens": [
+    {
+      "exercise": {
+        "answers": [
+          "50"
+        ],
+        "explanation": "小组项目和期末笔试各占50%。",
+        "kind": "fill_in_blank",
+        "prompt": "课程评估中，小组项目占______%。"
+      },
+      "id": "s005",
+      "lines": [
+        "课程评估中，小组项目占多少比例？"
+      ],
+      "type": "exercise",
+      "_gate_decision": {
+        "decision": "fail",
+        "reason": "Exercise asks about assessment weighting rather than practice-eligible learning content."
+      }
+    }
+  ]
+}

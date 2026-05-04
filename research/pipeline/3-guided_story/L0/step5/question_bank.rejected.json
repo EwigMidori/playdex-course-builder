@@ -1,0 +1,332 @@
+{
+  "gate": "manual_practice_eligibility_cleanup",
+  "decisions": [
+    {
+      "family_id": "qf_flash_course_obj",
+      "decision": "fail",
+      "reason": "This family primarily asks about course objectives or assessment structure, not practice-eligible learning content.",
+      "practice_target": "学生能准确回忆课程目标中要求学生掌握的核心能力项。"
+    },
+    {
+      "family_id": "qf_flash_assessment",
+      "decision": "fail",
+      "reason": "This family primarily asks about course objectives or assessment structure, not practice-eligible learning content.",
+      "practice_target": "学生能准确回忆课程评估的两大部分及其权重。"
+    },
+    {
+      "family_id": "qf_quiz_course_obj",
+      "decision": "fail",
+      "reason": "This family primarily asks about course objectives or assessment structure, not practice-eligible learning content.",
+      "practice_target": "学生能在测验情境下辨析课程目标中要求学生掌握的核心能力。"
+    },
+    {
+      "family_id": "qf_quiz_assessment",
+      "decision": "fail",
+      "reason": "This family primarily asks about course objectives or assessment structure, not practice-eligible learning content.",
+      "practice_target": "学生能在测验情境下准确识别课程评估的构成和权重。"
+    },
+    {
+      "family_id": "qf_long_course_obj",
+      "decision": "fail",
+      "reason": "This family primarily asks about course objectives or assessment structure, not practice-eligible learning content.",
+      "practice_target": "学生能用自己的话解释课程目标中要求学生掌握的核心能力，并说明这些能力如何通过小组项目体现。"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 5,
+    "uncertain": 0
+  },
+  "kept_family_ids": [],
+  "rejected_family_ids": [
+    "qf_flash_course_obj",
+    "qf_flash_assessment",
+    "qf_quiz_course_obj",
+    "qf_quiz_assessment",
+    "qf_long_course_obj"
+  ],
+  "rejected_families": {
+    "flashcard_families": [
+      {
+        "concept_key": "course_objectives",
+        "coverage_tags": [
+          "course_objectives"
+        ],
+        "difficulty": "easy",
+        "family_id": "qf_flash_course_obj",
+        "learning_goal": "学生能准确回忆课程目标中要求学生掌握的核心能力项。",
+        "linked_steps": [
+          "step5"
+        ],
+        "question_type": "short_answer",
+        "retrieval_focus": "课程目标中要求学生能进行的核心操作步骤。",
+        "term_refs": [
+          {
+            "display": "回测",
+            "en": "backtesting"
+          },
+          {
+            "display": "风险管理",
+            "en": "risk management"
+          }
+        ],
+        "variants": [
+          {
+            "back": "回测和优化参数",
+            "estimated_seconds": 8,
+            "explanation": "课程目标明确要求学生能进行回测（backtesting）和参数优化（optimization）来验证策略的有效性。",
+            "front": "课程目标中，学生需要能进行哪两项关键操作来验证策略？",
+            "question_id": "q_flash_course_obj_v1"
+          },
+          {
+            "back": "风险管理",
+            "estimated_seconds": 8,
+            "explanation": "课程目标要求学生能进行风险管理（risk management），以识别、评估和控制投资风险。",
+            "front": "除了回测和优化，课程目标还要求学生能做什么来管理策略风险？",
+            "question_id": "q_flash_course_obj_v2"
+          },
+          {
+            "back": "策略的表现",
+            "estimated_seconds": 8,
+            "explanation": "课程目标要求学生能解释策略的表现（interpret investment performance），即分析策略的收益和风险特征。",
+            "front": "完成回测、优化和风险管理后，学生还需要能解释什么？",
+            "question_id": "q_flash_course_obj_v3"
+          }
+        ],
+        "_gate_decision": {
+          "decision": "fail",
+          "reason": "This family primarily asks about course objectives or assessment structure, not practice-eligible learning content.",
+          "practice_target": "学生能准确回忆课程目标中要求学生掌握的核心能力项。"
+        }
+      },
+      {
+        "concept_key": "assessment_structure",
+        "coverage_tags": [
+          "assessment_structure",
+          "group_project"
+        ],
+        "difficulty": "easy",
+        "family_id": "qf_flash_assessment",
+        "learning_goal": "学生能准确回忆课程评估的两大部分及其权重。",
+        "linked_steps": [
+          "step5"
+        ],
+        "question_type": "short_answer",
+        "retrieval_focus": "课程评估的两大组成部分及其各自占比。",
+        "term_refs": [
+          {
+            "display": "小组项目",
+            "en": "group project"
+          },
+          {
+            "display": "期末笔试",
+            "en": "written final exam"
+          }
+        ],
+        "variants": [
+          {
+            "back": "50%",
+            "estimated_seconds": 5,
+            "explanation": "小组项目占最终成绩的50%。",
+            "front": "课程评估中，小组项目占最终成绩的百分之多少？",
+            "question_id": "q_flash_assessment_v1"
+          },
+          {
+            "back": "期末笔试，占50%",
+            "estimated_seconds": 8,
+            "explanation": "另外50%来自期末笔试，覆盖所有教过的内容。",
+            "front": "课程评估中，除了小组项目，另一部分评估是什么？它占多少比例？",
+            "question_id": "q_flash_assessment_v2"
+          }
+        ],
+        "_gate_decision": {
+          "decision": "fail",
+          "reason": "This family primarily asks about course objectives or assessment structure, not practice-eligible learning content.",
+          "practice_target": "学生能准确回忆课程评估的两大部分及其权重。"
+        }
+      }
+    ],
+    "quiz_families": [
+      {
+        "concept_key": "course_objectives",
+        "coverage_tags": [
+          "course_objectives"
+        ],
+        "difficulty": "medium",
+        "family_id": "qf_quiz_course_obj",
+        "learning_goal": "学生能在测验情境下辨析课程目标中要求学生掌握的核心能力。",
+        "linked_steps": [
+          "step5"
+        ],
+        "question_type": "single_choice",
+        "term_refs": [
+          {
+            "display": "回测",
+            "en": "backtesting"
+          },
+          {
+            "display": "风险管理",
+            "en": "risk management"
+          }
+        ],
+        "variants": [
+          {
+            "answer": 2,
+            "estimated_seconds": 20,
+            "explanation": "课程目标包括回测、优化参数、风险管理和解释策略表现，但不涉及开发高频交易硬件。",
+            "options": [
+              "进行回测",
+              "优化交易策略参数",
+              "开发高频交易硬件",
+              "解释策略表现"
+            ],
+            "question_id": "q_quiz_course_obj_v1",
+            "stem": "以下哪一项不是本课程目标要求学生掌握的能力？"
+          },
+          {
+            "answer": 2,
+            "estimated_seconds": 20,
+            "explanation": "课程目标要求学生能独立完成从分析数据、写出策略到验证策略有效性的完整流程。",
+            "options": [
+              "仅完成回测",
+              "仅优化参数",
+              "从分析数据到写出策略，再到验证其有效性",
+              "仅进行风险管理"
+            ],
+            "question_id": "q_quiz_course_obj_v2",
+            "stem": "根据课程目标，学生完成一个完整的策略开发周期后，最终需要能做什么？"
+          }
+        ],
+        "_gate_decision": {
+          "decision": "fail",
+          "reason": "This family primarily asks about course objectives or assessment structure, not practice-eligible learning content.",
+          "practice_target": "学生能在测验情境下辨析课程目标中要求学生掌握的核心能力。"
+        }
+      },
+      {
+        "concept_key": "assessment_structure",
+        "coverage_tags": [
+          "assessment_structure",
+          "group_project"
+        ],
+        "difficulty": "easy",
+        "family_id": "qf_quiz_assessment",
+        "learning_goal": "学生能在测验情境下准确识别课程评估的构成和权重。",
+        "linked_steps": [
+          "step5"
+        ],
+        "question_type": "single_choice",
+        "term_refs": [
+          {
+            "display": "小组项目",
+            "en": "group project"
+          },
+          {
+            "display": "期末笔试",
+            "en": "written final exam"
+          }
+        ],
+        "variants": [
+          {
+            "answer": 1,
+            "estimated_seconds": 15,
+            "explanation": "课程评估中，小组项目占50%，期末笔试占50%。",
+            "options": [
+              "小组项目30%，期末笔试70%",
+              "小组项目50%，期末笔试50%",
+              "小组项目70%，期末笔试30%",
+              "小组项目40%，期末笔试60%"
+            ],
+            "question_id": "q_quiz_assessment_v1",
+            "stem": "本课程的评估方式中，小组项目和期末笔试的占比分别是多少？"
+          },
+          {
+            "answer": 1,
+            "estimated_seconds": 15,
+            "explanation": "小组项目占最终成绩的50%，即一半。期末笔试覆盖所有教过的内容。",
+            "options": [
+              "只有小组项目，没有考试",
+              "小组项目占最终成绩的一半",
+              "期末笔试只覆盖部分内容",
+              "小组项目是可选任务"
+            ],
+            "question_id": "q_quiz_assessment_v2",
+            "stem": "关于本课程的评估，以下哪项描述是正确的？"
+          }
+        ],
+        "_gate_decision": {
+          "decision": "fail",
+          "reason": "This family primarily asks about course objectives or assessment structure, not practice-eligible learning content.",
+          "practice_target": "学生能在测验情境下准确识别课程评估的构成和权重。"
+        }
+      }
+    ],
+    "longform_families": [
+      {
+        "concept_key": "course_objectives",
+        "coverage_tags": [
+          "course_objectives",
+          "group_project"
+        ],
+        "difficulty": "medium",
+        "family_id": "qf_long_course_obj",
+        "learning_goal": "学生能用自己的话解释课程目标中要求学生掌握的核心能力，并说明这些能力如何通过小组项目体现。",
+        "linked_steps": [
+          "step5"
+        ],
+        "question_type": "short_explain",
+        "term_refs": [
+          {
+            "display": "回测",
+            "en": "backtesting"
+          },
+          {
+            "display": "风险管理",
+            "en": "risk management"
+          }
+        ],
+        "variants": [
+          {
+            "estimated_seconds": 90,
+            "prompt_blocks": [
+              "列出课程目标中的核心能力",
+              "解释小组项目如何让学生实践这些能力"
+            ],
+            "question_id": "q_long_course_obj_v1",
+            "reference_answer": [
+              "课程目标要求学生掌握的核心能力包括：进行回测（用历史数据测试策略）、优化参数（调整策略参数以提升表现）、进行风险管理（控制投资风险）、以及解释策略的表现（分析收益和风险特征）。",
+              "小组项目要求学生完成一个完整的策略开发周期，从分析数据、制定策略、进行回测和优化，到进行风险管理和最终解释策略表现，从而全面实践这些能力。"
+            ],
+            "rubric_points": [
+              "准确列出回测、优化参数、风险管理、解释策略表现等能力",
+              "说明小组项目要求学生完成一个完整的策略开发周期，从而实践上述能力"
+            ],
+            "stem": "请简要解释本课程的目标要求学生掌握哪些核心能力？并说明这些能力如何通过小组项目来体现。"
+          },
+          {
+            "estimated_seconds": 90,
+            "prompt_blocks": [
+              "描述回测的具体步骤",
+              "描述风险管理的具体做法"
+            ],
+            "question_id": "q_long_course_obj_v2",
+            "reference_answer": [
+              "在小组项目中，我会先编写策略代码，然后使用历史数据运行回测，计算策略的累计收益、最大回撤、夏普比率等指标，以评估策略的有效性。",
+              "在风险管理方面，我会设置止损点以限制单笔交易的最大亏损，控制每笔交易的仓位大小以避免过度集中，并考虑分散投资于不同资产以降低整体风险。"
+            ],
+            "rubric_points": [
+              "回测：使用历史数据运行策略，计算收益、回撤等指标",
+              "风险管理：设置止损、控制仓位、分散投资等"
+            ],
+            "stem": "假设你正在完成小组项目，请描述你将如何应用课程目标中提到的“回测”和“风险管理”两个能力。"
+          }
+        ],
+        "_gate_decision": {
+          "decision": "fail",
+          "reason": "This family primarily asks about course objectives or assessment structure, not practice-eligible learning content.",
+          "practice_target": "学生能用自己的话解释课程目标中要求学生掌握的核心能力，并说明这些能力如何通过小组项目体现。"
+        }
+      }
+    ]
+  }
+}

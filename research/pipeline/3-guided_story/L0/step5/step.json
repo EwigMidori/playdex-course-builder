@@ -39,21 +39,6 @@
       "type": "narration"
     },
     {
-      "exercise": {
-        "answers": [
-          "50"
-        ],
-        "explanation": "小组项目和期末笔试各占50%。",
-        "kind": "fill_in_blank",
-        "prompt": "课程评估中，小组项目占______%。"
-      },
-      "id": "s005",
-      "lines": [
-        "课程评估中，小组项目占多少比例？"
-      ],
-      "type": "exercise"
-    },
-    {
       "id": "s006",
       "lines": [
         "准备好了吗？",

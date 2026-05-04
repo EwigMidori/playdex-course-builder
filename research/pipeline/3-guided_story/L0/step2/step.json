@@ -50,25 +50,6 @@
         "整个课程就像一次从理论到实践的完整旅程。"
       ],
       "type": "narration"
-    },
-    {
-      "exercise": {
-        "answer": 2,
-        "explanation": "风险管理与投资组合优化属于实战应用部分，通常在课程后半段讨论。",
-        "kind": "single_choice",
-        "options": [
-          "用Python抓取股票数据",
-          "搭建回测框架",
-          "风险管理与投资组合优化",
-          "统计套利基础"
-        ],
-        "prompt": "以下哪个主题最可能出现在课程的后半段？"
-      },
-      "id": "s006",
-      "lines": [
-        "以下哪个主题最可能出现在课程的后半段？"
-      ],
-      "type": "exercise"
     }
   ],
   "sequence_id": "step2",

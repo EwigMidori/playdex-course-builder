@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Magy Progress Report</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 16mm 14mm 18mm;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background: #ffffff;
+      color: #17201a;
+      font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.55;
+      margin: 0;
+    }
+    html {
+      background: #ffffff;
+    }
+    h1, h2, h3 {
+      color: #07110c;
+      line-height: 1.18;
+      margin: 0 0 8px;
+    }
+    h1 {
+      border-bottom: 2px solid #111;
+      font-size: 26pt;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+    }
+    h2 {
+      border-top: 1px solid #cfd7d1;
+      font-size: 16pt;
+      margin-top: 24px;
+      padding-top: 14px;
+    }
+    h3 {
+      font-size: 12pt;
+      margin-top: 18px;
+    }
+    p {
+      margin: 7px 0;
+    }
+    ul, ol {
+      margin: 7px 0 10px 22px;
+      padding: 0;
+    }
+    li {
+      margin: 3px 0;
+    }
+    table {
+      border-collapse: collapse;
+      font-size: 9.5pt;
+      margin: 10px 0 14px;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #cfd7d1;
+      padding: 6px 8px;
+      vertical-align: top;
+    }
+    th {
+      background: #eef4ef;
+      font-weight: 700;
+      text-align: left;
+    }
+    code {
+      background: #eef4ef;
+      border-radius: 3px;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.92em;
+      padding: 1px 3px;
+    }
+    img {
+      border: 1px solid #c5cec8;
+      border-radius: 6px;
+      display: block;
+      margin: 12px auto 5px;
+      max-height: 128mm;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    p:has(img) {
+      break-inside: avoid;
+      margin-top: 14px;
+    }
+    em {
+      color: #526158;
+      display: block;
+      font-size: 9.2pt;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    strong {
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+<h1>Magy Progress Report</h1>
+<p><strong>Project title:</strong> Magy: Designing an Immersive, Interactive Platform for Gamified Instruction and Discovery<br><strong>Mentor:</strong> Kenneth Wong<br><strong>Team:</strong> Zhang Zijing, Zhan Huang, Jia Fanbo, Li Zhilin<br><strong>Report date:</strong> 4 May 2026</p>
+<h2>1. Executive Summary</h2>
+<p>Magy has moved from the original proposal stage into a working prototype with two concrete subsystems:</p>
+<ol>
+<li>A course generation system that transforms source course materials into structured learning assets.</li>
+<li>A learner-facing course learning system that renders those assets as an interactive, gamified study experience.</li>
+</ol>
+<p>The current implementation is built around a real sample course, COMP7415A Algorithmic Trading. The system now contains a ready course catalog, generated lesson routes, step-level question banks, textbook-style MDX materials, relevance reports, validation commands, and two browser-based frontends for learner delivery and creator review.</p>
+<p>The prototype is not yet a production deployment, but it already demonstrates the main technical direction of the project: generated educational content is not kept as loose text. It is converted into structured, validated, reviewable, and playable learning units.</p>
+<h2>2. Current System Status</h2>
+<p>The current repository contains one indexed course package:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th align="right">Current status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ready courses in catalog</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Course chapters</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>Plain-text lesson conversions</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>Generated guided-story steps</td>
+<td align="right">75</td>
+</tr>
+<tr>
+<td>Step-local question banks</td>
+<td align="right">75</td>
+</tr>
+<tr>
+<td>Question families</td>
+<td align="right">686</td>
+</tr>
+<tr>
+<td>Question variants</td>
+<td align="right">1,445</td>
+</tr>
+<tr>
+<td>Generated textbook MDX files</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td>Catalog validation result</td>
+<td align="right">ready=1, blocked=0</td>
+</tr>
+</tbody></table>
+<p>The generated course covers the full lecture sequence from course introduction to machine learning in algorithmic trading. Each lecture is represented as a chapter with a guided story route, practice assets, and a textbook file.</p>
+<h2>3. Course Generation System</h2>
+<p>The generation pipeline has been implemented as a Rust CLI called <code>coursegen</code>. It currently supports the following workflow:</p>
+<ol>
+<li>Convert raw lecture PDFs into reusable plain text.</li>
+<li>Generate guided-story lesson steps from the plain text and course context.</li>
+<li>Store each generated step as a self-contained <code>step.json</code>.</li>
+<li>Generate a colocated <code>question_bank.json</code> for each step.</li>
+<li>Generate a lesson-level textbook in MDX.</li>
+<li>Score generated assets against course and exam signals where available.</li>
+<li>Validate the catalog before exposing generated courses to the player.</li>
+</ol>
+<p>This staged design is important because a course package contains several related artifact families. A single prompt-response output would be hard to inspect, validate, or resume. The current layout instead gives each step its own content and question bank, while the course index remains the single catalog source for the frontend.</p>
+<p>The backend also now includes:</p>
+<ul>
+<li>reusable stage execution, so existing valid assets can be reused instead of regenerated;</li>
+<li>targeted regeneration controls through <code>--force-stage</code>;</li>
+<li>a DeepSeek API provider option for large-context model calls;</li>
+<li>cached exam text conversion for relevance scoring;</li>
+<li>backend-owned catalog validation that marks a course as <code>ready</code> or <code>blocked</code>.</li>
+</ul>
+<p>This directly supports the project objective of making AI-assisted content generation more controllable and auditable.</p>
+<h2>4. Learner-Facing Course Learning System</h2>
+<p>The learner app is a React/Vite prototype that reads the generated course catalog and pipeline assets directly. It presents the generated course as a learning game rather than as a file browser.</p>
+<p>Current learner-facing functions include:</p>
+<ul>
+<li>course library and course home views;</li>
+<li>chapter route selection;</li>
+<li>immersive guided-story playback;</li>
+<li>interactive checkpoint questions inside story screens;</li>
+<li>local progress tracking;</li>
+<li>textbook reading mode from generated MDX;</li>
+<li>flashcard-style recall session;</li>
+<li>practice vault separated into flashcards, quizzes, and longform items;</li>
+<li>backend validation awareness, so invalid courses can be blocked before students enter them.</li>
+</ul>
+<p>This implements the core learner-delivery part of the proposal. The current interaction model is not just static reading: the student enters a route, advances through scenes, answers checkpoints, reviews cards, and explores a practice bank.</p>
+<h3>Learner System Screenshots</h3>
+<p><img src="screenshots/01_player_library.png" alt="Learner course library"></p>
+<p><em>Figure 1. Magy learner library showing a ready generated course package.</em></p>
+<p><img src="screenshots/02_player_course_home.png" alt="Learner course home"></p>
+<p><em>Figure 2. Course home with route progress, recall entry, and vault entry.</em></p>
+<p><img src="screenshots/03_player_chapter_route.png" alt="Chapter route selection"></p>
+<p><em>Figure 3. A generated chapter represented as a route with multiple concept scenes.</em></p>
+<p><img src="screenshots/04_player_story_overlay.png" alt="Immersive guided story"></p>
+<p><em>Figure 4. Guided-story playback with a full-screen learning overlay.</em></p>
+<p><img src="screenshots/05_player_textbook_room.png" alt="Generated textbook view"></p>
+<p><em>Figure 5. Textbook reading mode using generated MDX content.</em></p>
+<p><img src="screenshots/06_player_recall_center.png" alt="Recall center"></p>
+<p><em>Figure 6. Flashcard-based recall loop using generated practice assets.</em></p>
+<p><img src="screenshots/07_player_vault.png" alt="Practice vault"></p>
+<p><em>Figure 7. Practice vault separating flashcards, quizzes, and longform questions.</em></p>
+<h2>5. Creator Review and Debugging Workspace</h2>
+<p>In addition to the learner app, the project includes a browser-based creator workspace for inspecting generated artifacts. This workspace is intended for content review and debugging. It is not a full authoring studio yet, but it provides a practical foundation for human-in-the-loop review.</p>
+<p>Current creator-side functions include:</p>
+<ul>
+<li>course and lecture selection from the generated catalog;</li>
+<li>overview of primary artifact paths;</li>
+<li>MDX textbook preview;</li>
+<li>guided-story screen inspection;</li>
+<li>step-local question bank inspection;</li>
+<li>separate display of flashcards, quiz items, and longform questions;</li>
+<li>relevance report viewing when sidecar scoring output is available.</li>
+</ul>
+<p>This helps address a central risk in AI-generated education: outputs must be reviewable. The creator workspace makes it possible to inspect exactly what the model generated and how it is stored.</p>
+<h3>Creator Workspace Screenshots</h3>
+<p><img src="screenshots/08_viewer_overview.png" alt="Creator overview"></p>
+<p><em>Figure 8. Creator overview for a generated lecture package.</em></p>
+<p><img src="screenshots/09_viewer_mdx_preview.png" alt="MDX preview"></p>
+<p><em>Figure 9. Generated textbook preview with custom course components.</em></p>
+<p><img src="screenshots/10_viewer_story_review.png" alt="Story review"></p>
+<p><em>Figure 10. Guided-story review surface showing step screens and question bank context.</em></p>
+<p><img src="screenshots/11_viewer_practice_review.png" alt="Practice review"></p>
+<p><em>Figure 11. Practice review surface separating flashcards, quiz, and longform items.</em></p>
+<p><img src="screenshots/12_viewer_relevance_scores.png" alt="Relevance report"></p>
+<p><em>Figure 12. Relevance sidecar report for generated steps, question families, coverage, and textbook sections.</em></p>
+<h2>6. Progress Against the Proposal</h2>
+<p>The original proposal described four major components: an AI-assisted generation pipeline, a web-based authoring and review environment, a structured course editor, and a learner-facing mobile application.</p>
+<p>The current implementation has achieved the first and fourth components as working prototypes, and has partially achieved the second and third components through the creator workspace.</p>
+<table>
+<thead>
+<tr>
+<th>Original objective</th>
+<th>Current progress</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Structured representation for modular learning content</td>
+<td>Implemented through course index, guided-story manifests, step-local <code>step.json</code>, step-local <code>question_bank.json</code>, and MDX textbooks</td>
+</tr>
+<tr>
+<td>AI-assisted pipeline</td>
+<td>Implemented through <code>coursegen run</code>, conversion, generation, relevance scoring, and provider configuration</td>
+</tr>
+<tr>
+<td>Review and validation workflow</td>
+<td>Partially implemented through creator workspace, relevance reports, and backend catalog validation</td>
+</tr>
+<tr>
+<td>Learner-facing gamified delivery</td>
+<td>Implemented as a React player with library, routes, story mode, recall, vault, and textbook mode</td>
+</tr>
+<tr>
+<td>Evaluation of feasibility</td>
+<td>Initial feasibility demonstrated through one complete 11-chapter generated course package</td>
+</tr>
+</tbody></table>
+<p>The implementation has therefore progressed beyond a single isolated AI prompt. It now has an end-to-end path from course material to structured assets to learner-facing interaction.</p>
+<h2>7. Technical Highlights</h2>
+<p>The most important technical progress so far is the decision to make generated content structured and validated.</p>
+<p>Key engineering decisions include:</p>
+<ul>
+<li>Step-local ownership: each concept step owns its own guided-story content and question bank.</li>
+<li>Single course catalog: the player reads from <code>course-index.json</code> instead of inventing a second frontend-only catalog.</li>
+<li>Backend validation: catalog readiness is determined by the backend and then consumed by the frontend.</li>
+<li>Resume-friendly generation: existing generated assets are reused unless explicitly forced.</li>
+<li>Auditability: prompts, requests, raw responses, and content outputs are saved under pipeline metadata.</li>
+<li>Provider abstraction: DeepSeek is treated as an explicit API provider for large-context generation use cases.</li>
+</ul>
+<p>These decisions reduce duplicated state, lower AI regeneration cost, and make generated output easier to inspect.</p>
+<h2>8. Limitations</h2>
+<p>Several limitations remain:</p>
+<ul>
+<li>The system currently demonstrates one course domain, algorithmic trading, rather than many unrelated subjects.</li>
+<li>The creator workspace is still primarily a review and debugging surface, not a complete authoring studio.</li>
+<li>Some quality checks are implemented, but deeper pedagogical validation still needs to be expanded.</li>
+<li>The learner app currently runs as a web prototype. Mobile packaging and device-level testing remain future work.</li>
+<li>Generated content still requires review for correctness, phrasing quality, and exam alignment.</li>
+</ul>
+<p>These limitations are expected at the current stage. The main prototype risk has shifted from basic feasibility to quality control, authoring workflow, and evaluation.</p>
+<h2>9. Next Steps</h2>
+<p>The next stage will focus on strengthening the system from a working prototype into a more complete project demonstration.</p>
+<p>Planned work:</p>
+<ol>
+<li>Expand deterministic validation for generated guided stories, question banks, textbook references, term catalogs, and coverage traces.</li>
+<li>Improve the creator workflow so reviewers can approve, reject, and edit generated content more directly.</li>
+<li>Continue improving prompts and gates to reduce low-quality or meta-level questions.</li>
+<li>Package the learner experience for mobile or mobile-like delivery and test responsive interaction.</li>
+<li>Add more evaluation evidence, including build checks, validation reports, and sample learner walkthroughs.</li>
+<li>Prepare the interim presentation around the completed end-to-end workflow.</li>
+</ol>
+<p>The immediate target is to show that Magy can support the full workflow proposed at the start of the project: source material ingestion, AI-assisted course generation, structured validation, human review, and interactive learner delivery.</p>
+<h2>10. Conclusion</h2>
+<p>Magy currently has a working vertical slice of the proposed platform. The project now demonstrates both sides of the system: content can be generated into structured course assets, and those assets can be consumed by a learner-facing interactive application.</p>
+<p>The next phase should focus less on proving that generation and rendering are possible, and more on improving reliability, reviewability, and evaluation quality. This is the right direction for turning the prototype into a strong final computing project.</p>
+
+</body>
+</html>

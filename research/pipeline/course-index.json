@@ -6,21 +6,7 @@
       "title": "COMP7415A Algorithmic Trading",
       "category": "Quantitative Finance",
       "brandColor": "#1ed760",
-      "status": "blocked",
-      "validationErrors": [
-        {
-          "code": "MISSING_MANIFEST",
-          "message": "Manifest is missing.",
-          "chapterId": "lecture-5",
-          "path": "research/pipeline/3-guided_story/L5/manifest.json"
-        },
-        {
-          "code": "MISSING_TEXTBOOK",
-          "message": "Declared textbookPath is missing.",
-          "chapterId": "lecture-5",
-          "path": "research/pipeline/5-textbook/L5.mdx"
-        }
-      ],
+      "status": "ready",
       "relatedImportantPath": "research/pipeline/2-related_important/course_desc.md",
       "examRawDir": "research/pipeline/0-raw/exam",
       "examPlainRoot": "research/pipeline/1-plain/exam",

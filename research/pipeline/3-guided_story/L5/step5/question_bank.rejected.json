@@ -1,0 +1,60 @@
+{
+  "decisions": [
+    {
+      "decision": "pass",
+      "family_id": "qf_flash_zscore_formula",
+      "practice_target": "Z分数的计算公式及其各部分的含义。",
+      "reason": "直接训练Z分数的计算公式，属于当前step的可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_flash_entry_exit_logic",
+      "practice_target": "配对交易中何时开仓和平仓的核心规则。",
+      "reason": "训练基于Z分数阈值的入场和出场规则，是当前step的核心内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_long_implement_strategy",
+      "practice_target": "连贯阐述从资产选择到平仓的完整策略链条。",
+      "reason": "训练完整配对交易策略的六步流程，涵盖当前step所有关键步骤。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_quiz_trade_direction",
+      "practice_target": "应用Z分数阈值规则区分多空操作。",
+      "reason": "训练根据Z分数信号判断交易方向，是当前step的应用能力。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_quiz_zscore_interpretation",
+      "practice_target": "理解Z分数作为标准化偏离度量的意义。",
+      "reason": "训练Z分数的含义及其在交易信号中的作用，属于当前step的可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_quiz_strategy_steps",
+      "practice_target": "掌握实施配对交易策略的完整流程顺序。",
+      "reason": "训练配对交易策略的六个核心步骤顺序，是当前step的流程知识。"
+    }
+  ],
+  "gate": "question_bank_gate",
+  "kept_family_ids": [
+    "qf_flash_zscore_formula",
+    "qf_flash_entry_exit_logic",
+    "qf_quiz_trade_direction",
+    "qf_quiz_zscore_interpretation",
+    "qf_quiz_strategy_steps",
+    "qf_long_implement_strategy"
+  ],
+  "rejected_families": {
+    "flashcard_families": [],
+    "longform_families": [],
+    "quiz_families": []
+  },
+  "rejected_family_ids": [],
+  "summary": {
+    "failed": 0,
+    "passed": 6,
+    "uncertain": 0
+  }
+}

@@ -1,3 +1,4 @@
+mod catalog_validation;
 mod cli;
 mod config;
 mod llm;
@@ -77,6 +78,17 @@ fn run() -> Result<(), AppError> {
             validation::OutputValidator::new(&lesson).validate()?;
             println!("validation passed: target={}", lesson.target_display());
         }
+        Command::ValidateCatalog { write } => {
+            let summary =
+                catalog_validation::CourseCatalogValidationService::new(&repo).validate(write)?;
+            let action = if summary.written { "wrote" } else { "checked" };
+            println!(
+                "catalog validation {action}: ready={} blocked={} path={}",
+                summary.ready,
+                summary.blocked,
+                repo.relative_display(&summary.path)
+            );
+        }
         Command::ScoreRelevance {
             target,
             target_language,
@@ -103,6 +115,7 @@ enum AppError {
     Paths(paths::LessonPathError),
     Config(config::ConfigError),
     Convert(mineru::ConvertError),
+    CatalogValidation(catalog_validation::CatalogValidationError),
     Mvp(mvp::MvpError),
     Relevance(relevance::RelevanceError),
     Validation(validation::ValidationError),
@@ -114,6 +127,7 @@ impl fmt::Display for AppError {
             Self::Paths(error) => error.fmt(f),
             Self::Config(error) => error.fmt(f),
             Self::Convert(error) => error.fmt(f),
+            Self::CatalogValidation(error) => error.fmt(f),
             Self::Mvp(error) => error.fmt(f),
             Self::Relevance(error) => error.fmt(f),
             Self::Validation(error) => error.fmt(f),
@@ -127,6 +141,7 @@ impl Error for AppError {
             Self::Paths(error) => Some(error),
             Self::Config(error) => Some(error),
             Self::Convert(error) => Some(error),
+            Self::CatalogValidation(error) => Some(error),
             Self::Mvp(error) => Some(error),
             Self::Relevance(error) => Some(error),
             Self::Validation(error) => Some(error),
@@ -149,6 +164,12 @@ impl From<config::ConfigError> for AppError {
 impl From<mineru::ConvertError> for AppError {
     fn from(error: mineru::ConvertError) -> Self {
         Self::Convert(error)
+    }
+}
+
+impl From<catalog_validation::CatalogValidationError> for AppError {
+    fn from(error: catalog_validation::CatalogValidationError) -> Self {
+        Self::CatalogValidation(error)
     }
 }
 

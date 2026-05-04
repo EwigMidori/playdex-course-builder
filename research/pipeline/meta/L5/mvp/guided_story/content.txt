@@ -1,0 +1,587 @@
+```json
+{
+  "lesson_id": "L5",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "sequence_id": "step1",
+      "concept": "Statistical Arbitrage and Pairs Trading Introduction",
+      "step": {
+        "lesson_id": "L5",
+        "sequence_id": "step1",
+        "target_language": "zh-CN",
+        "mode": "guided_story",
+        "term_catalog": {
+          "statistical_arbitrage": {
+            "display": "统计套利",
+            "aliases": ["Statistical Arbitrage", "Stat Arb"],
+            "gloss": "利用历史数据寻找资产价格统计性错误定价，并押注价格回归的交易策略。"
+          },
+          "mean_reversion": {
+            "display": "均值回归",
+            "aliases": ["Mean Reversion"],
+            "gloss": "资产价格偏离历史均值后，倾向于回归到该均值的现象。"
+          },
+          "market_neutral": {
+            "display": "市场中性",
+            "aliases": ["Market Neutral"],
+            "gloss": "投资组合的整体市场风险敞口为零，收益不依赖大盘涨跌。"
+          },
+          "pairs_trading": {
+            "display": "配对交易",
+            "aliases": ["Pairs Trading"],
+            "gloss": "同时买入一只资产、卖出另一只相关资产，押注两者价差回归的交易方式。"
+          }
+        },
+        "source": {
+          "plain_text": "Statistical arbitrage is a trading strategy that seeks to exploit statistical mis-pricings of one or more assets based on historical data. It is a mean reversion strategy that profits from the convergence of asset prices. Commonly involves pairs trading, basket trading, or market-neutral strategies. Due to market-neutral, it reduces exposure to overall market risk of a portfolio.",
+          "related": ["Pairs Trading", "Mean Reversion"]
+        },
+        "screens": [
+          {
+            "id": "s001",
+            "type": "narration",
+            "lines": [
+              "想象一下，你发现两只股票的价格总是像跳舞一样，你进我退。",
+              "当它们暂时分开时，你赌它们会重新靠近。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s002",
+            "type": "narration",
+            "lines": [
+              "这种思路，就是**<term id=\"statistical_arbitrage\">统计套利</term>**的核心。",
+              "它不预测市场涨跌，而是寻找价格关系中出现的统计偏差。"
+            ],
+            "introduced_terms": ["statistical_arbitrage"]
+          },
+          {
+            "id": "s003",
+            "type": "narration",
+            "lines": [
+              "它本质上是一种**<term id=\"mean_reversion\">均值回归</term>**策略。",
+              "当价格偏离历史平均水平太远时，就押注它会回来。"
+            ],
+            "introduced_terms": ["mean_reversion"]
+          },
+          {
+            "id": "s004",
+            "type": "narration",
+            "lines": [
+              "最经典的做法是**<term id=\"pairs_trading\">配对交易</term>**：",
+              "同时买入一只资产，卖出另一只高度相关的资产。"
+            ],
+            "introduced_terms": ["pairs_trading"]
+          },
+          {
+            "id": "s005",
+            "type": "narration",
+            "lines": [
+              "因为同时持有多头和空头，整个组合是**<term id=\"market_neutral\">市场中性</term>**的。",
+              "大盘涨跌的影响被抵消，收益只来自两只资产之间的相对价格变化。"
+            ],
+            "introduced_terms": ["market_neutral"]
+          },
+          {
+            "id": "s006",
+            "type": "exercise",
+            "lines": [
+              "统计套利策略的核心假设是什么？"
+            ],
+            "exercise": {
+              "kind": "single_choice",
+              "prompt": "统计套利策略的核心假设是什么？",
+              "options": [
+                "市场永远有效",
+                "价格偏离后最终会回归",
+                "资产价格会一直上涨",
+                "两只资产完全独立"
+              ],
+              "answer": 1,
+              "explanation": "统计套利依赖均值回归假设：价格偏离历史关系后，倾向于回归。"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sequence_id": "step2",
+      "concept": "Cointegration: The Statistical Foundation",
+      "step": {
+        "lesson_id": "L5",
+        "sequence_id": "step2",
+        "target_language": "zh-CN",
+        "mode": "guided_story",
+        "term_catalog": {
+          "cointegration": {
+            "display": "协整",
+            "aliases": ["Cointegration"],
+            "gloss": "两个或多个非平稳时间序列的线性组合是平稳的，表明它们存在长期均衡关系。"
+          },
+          "stationary": {
+            "display": "平稳性",
+            "aliases": ["Stationarity"],
+            "gloss": "时间序列的统计性质（如均值、方差）不随时间变化。"
+          },
+          "hedge_ratio": {
+            "display": "对冲比率",
+            "aliases": ["Hedge Ratio", "Cointegrating Coefficient"],
+            "gloss": "构建平稳组合时，每单位资产X需要对应多少单位资产Y的系数。"
+          },
+          "spread": {
+            "display": "价差",
+            "aliases": ["Spread"],
+            "gloss": "配对交易中，两只资产价格经过对冲比率调整后的差值。"
+          }
+        },
+        "source": {
+          "plain_text": "Most financial time series are not stationary nor mean reverting. However, we can create a portfolio of individual price series so that the market value (or price) series of this portfolio is stationary. If we can find a stationary linear combination of several non-stationary price series, then these price series are called cointegrated.",
+          "related": ["Cointegration", "Stationarity", "Hedge Ratio"]
+        },
+        "screens": [
+          {
+            "id": "s007",
+            "type": "narration",
+            "lines": [
+              "大多数金融价格序列本身并不平稳，它们会随机游走。",
+              "但两只不平稳的股票，它们的某种组合却可能是平稳的。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s008",
+            "type": "narration",
+            "lines": [
+              "这种性质叫做**<term id=\"cointegration\">协整</term>**。",
+              "它描述的是两个或多个时间序列之间的长期均衡关系。"
+            ],
+            "introduced_terms": ["cointegration"]
+          },
+          {
+            "id": "s009",
+            "type": "narration",
+            "lines": [
+              "如果序列Y和X是协整的，就存在一个常数β，",
+              "使得组合 $z_t = y_t - \\beta x_t$ 是**<term id=\"stationary\">平稳</term>**的。"
+            ],
+            "introduced_terms": ["stationary"]
+          },
+          {
+            "id": "s010",
+            "type": "narration",
+            "lines": [
+              "这个β就是**<term id=\"hedge_ratio\">对冲比率</term>**。",
+              "它告诉你：每买入1股Y，应该卖出多少股X来构建市场中性组合。"
+            ],
+            "introduced_terms": ["hedge_ratio"]
+          },
+          {
+            "id": "s011",
+            "type": "narration",
+            "lines": [
+              "组合 $z_t$ 就是**<term id=\"spread\">价差</term>**。",
+              "当价差偏离均值太远时，就出现了交易信号。"
+            ],
+            "introduced_terms": ["spread"]
+          },
+          {
+            "id": "s012",
+            "type": "formula",
+            "lines": [
+              "协整的数学定义很简洁：",
+              "$z_t = y_t - \\beta x_t$ 是平稳的。"
+            ],
+            "formula": {
+              "latex": "z_t = y_t - \\beta x_t \\text{ is stationary}",
+              "spoken": "价差序列等于Y的价格减去β乘以X的价格，这个序列是平稳的。"
+            }
+          },
+          {
+            "id": "s013",
+            "type": "exercise",
+            "lines": [
+              "协整关系中的β被称为什么？"
+            ],
+            "exercise": {
+              "kind": "fill_in_blank",
+              "prompt": "协整关系中的β被称为______。",
+              "answers": ["对冲比率"],
+              "explanation": "β决定了构建平稳组合时两种资产的比例，因此称为对冲比率。"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sequence_id": "step3",
+      "concept": "Correlation vs. Cointegration",
+      "step": {
+        "lesson_id": "L5",
+        "sequence_id": "step3",
+        "target_language": "zh-CN",
+        "mode": "guided_story",
+        "term_catalog": {
+          "correlation": {
+            "display": "相关性",
+            "aliases": ["Correlation"],
+            "gloss": "衡量两个变量之间线性关系的强度和方向，取值范围在-1到1之间。"
+          }
+        },
+        "source": {
+          "plain_text": "Correlation measures the strength and direction of a linear relationship between 2 variables. Cointegration indicates a long-term equilibrium relationship between 2 or more time series, even if they are non-stationary individually. Correlation is about the short-term relationship. Cointegration focuses on the long-term relationship.",
+          "related": ["Correlation", "Cointegration"]
+        },
+        "screens": [
+          {
+            "id": "s014",
+            "type": "narration",
+            "lines": [
+              "很多人会把协整和**<term id=\"correlation\">相关性</term>**搞混。",
+              "它们听起来很像，但本质完全不同。"
+            ],
+            "introduced_terms": ["correlation"]
+          },
+          {
+            "id": "s015",
+            "type": "narration",
+            "lines": [
+              "相关性衡量的是短期线性关系。",
+              "两只股票过去一年高度相关，不代表它们未来不会分道扬镳。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s016",
+            "type": "narration",
+            "lines": [
+              "协整关注的是长期均衡关系。",
+              "即使短期偏离，协整的序列最终会重新走到一起。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s017",
+            "type": "narration",
+            "lines": [
+              "一个经典例子：醉汉和他的狗。",
+              "狗可能跑前跑后（短期偏离），但始终跟着主人（长期均衡）。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s018",
+            "type": "narration",
+            "lines": [
+              "相关性用于分散投资，协整用于寻找可交易的配对。",
+              "对于配对交易，协整才是关键，而不是高相关性。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s019",
+            "type": "exercise",
+            "lines": [
+              "以下哪个说法是正确的？"
+            ],
+            "exercise": {
+              "kind": "single_choice",
+              "prompt": "以下哪个说法是正确的？",
+              "options": [
+                "高相关性意味着一定协整",
+                "协整关注长期均衡，相关性关注短期关系",
+                "协整和相关性是同一个概念",
+                "协整只适用于平稳序列"
+              ],
+              "answer": 1,
+              "explanation": "相关性衡量短期线性关系，协整衡量长期均衡关系。两者不同。"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sequence_id": "step4",
+      "concept": "Testing for Cointegration: CADF and Johansen Test",
+      "step": {
+        "lesson_id": "L5",
+        "sequence_id": "step4",
+        "target_language": "zh-CN",
+        "mode": "guided_story",
+        "term_catalog": {
+          "cadf": {
+            "display": "协整增强迪基-富勒检验",
+            "aliases": ["CADF", "Cointegrated Augmented Dickey Fuller Test"],
+            "gloss": "先通过回归确定对冲比率，再对价差进行ADF检验，判断序列是否协整。"
+          },
+          "johansen_test": {
+            "display": "约翰森检验",
+            "aliases": ["Johansen Test"],
+            "gloss": "用于检验多个时间序列之间协整关系的个数，并给出对冲比率。"
+          },
+          "trace_statistic": {
+            "display": "迹统计量",
+            "aliases": ["Trace Statistic"],
+            "gloss": "约翰森检验中的一种统计量，检验协整向量个数是否小于等于r。"
+          },
+          "max_eigenvalue_statistic": {
+            "display": "最大特征值统计量",
+            "aliases": ["Maximum Eigenvalue Statistic"],
+            "gloss": "约翰森检验中的另一种统计量，检验恰好有r个协整向量。"
+          }
+        },
+        "source": {
+          "plain_text": "Cointegrated Augmented Dickey Fuller Test (CADF): We first determine the optimal hedge ratio by running a linear regression between two price series. Use this hedge ratio to form a portfolio. Then run an ADF test on this portfolio price series. Johansen Test for Cointegration: It tests for cointegration of more than 2 variables.",
+          "related": ["CADF", "Johansen Test"]
+        },
+        "screens": [
+          {
+            "id": "s020",
+            "type": "narration",
+            "lines": [
+              "如何判断两只股票是否协整？",
+              "最常用的方法是**<term id=\"cadf\">协整增强迪基-富勒检验</term>**，简称CADF。"
+            ],
+            "introduced_terms": ["cadf"]
+          },
+          {
+            "id": "s021",
+            "type": "narration",
+            "lines": [
+              "第一步：对两只股票的价格做线性回归，得到对冲比率β。",
+              "第二步：用β构建价差序列 $z_t = y_t - \\beta x_t$。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s022",
+            "type": "narration",
+            "lines": [
+              "第三步：对价差序列进行ADF平稳性检验。",
+              "如果p值小于0.05，就拒绝“不平稳”的原假设，认为序列协整。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s023",
+            "type": "narration",
+            "lines": [
+              "当涉及三只或更多资产时，需要用**<term id=\"johansen_test\">约翰森检验</term>**。",
+              "它可以找出存在多少个协整关系。"
+            ],
+            "introduced_terms": ["johansen_test"]
+          },
+          {
+            "id": "s024",
+            "type": "narration",
+            "lines": [
+              "约翰森检验给出两个统计量：**<term id=\"trace_statistic\">迹统计量</term>**和**<term id=\"max_eigenvalue_statistic\">最大特征值统计量</term>**。",
+              "它们从不同角度判断协整关系的个数r。"
+            ],
+            "introduced_terms": ["trace_statistic", "max_eigenvalue_statistic"]
+          },
+          {
+            "id": "s025",
+            "type": "narration",
+            "lines": [
+              "如果r=0，说明没有协整关系。",
+              "如果r>0，说明存在r个独立的平稳组合，对应的特征向量就是对冲比率。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s026",
+            "type": "exercise",
+            "lines": [
+              "CADF检验的第一步是什么？"
+            ],
+            "exercise": {
+              "kind": "fill_in_blank",
+              "prompt": "CADF检验的第一步是：通过______确定最优对冲比率。",
+              "answers": ["线性回归"],
+              "explanation": "先对两只股票的价格做线性回归，得到对冲比率β。"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sequence_id": "step5",
+      "concept": "Implementing a Pairs Trading Strategy",
+      "step": {
+        "lesson_id": "L5",
+        "sequence_id": "step5",
+        "target_language": "zh-CN",
+        "mode": "guided_story",
+        "term_catalog": {
+          "z_score": {
+            "display": "Z分数",
+            "aliases": ["Z-score"],
+            "gloss": "衡量当前价差偏离均值多少个标准差的标准化指标。"
+          },
+          "entry_threshold": {
+            "display": "入场阈值",
+            "aliases": ["Entry Threshold"],
+            "gloss": "触发交易信号的价差偏离程度，通常用Z分数的绝对值表示。"
+          }
+        },
+        "source": {
+          "plain_text": "Steps to Implement Pair Trading: 1. Identify a pair of correlated assets. 2. Test for co-integration between the assets. 3. Calculate the spread and determine the historical mean and standard deviation. 4. Generate trading signals when the spread deviates from the mean by a certain threshold. 5. Execute trades. 6. Close positions when the spread reverts to the mean.",
+          "related": ["Pairs Trading", "Z-score", "Entry Threshold"]
+        },
+        "screens": [
+          {
+            "id": "s027",
+            "type": "narration",
+            "lines": [
+              "有了协整工具，就可以搭建完整的配对交易策略了。",
+              "一共六步，每一步都很清晰。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s028",
+            "type": "narration",
+            "lines": [
+              "第一步：找到一对可能相关的资产。",
+              "第二步：用CADF或约翰森检验确认它们是否协整。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s029",
+            "type": "narration",
+            "lines": [
+              "第三步：计算价差，并求出历史均值和标准差。",
+              "第四步：设定**<term id=\"entry_threshold\">入场阈值</term>**，当价差偏离超过阈值时触发信号。"
+            ],
+            "introduced_terms": ["entry_threshold"]
+          },
+          {
+            "id": "s030",
+            "type": "narration",
+            "lines": [
+              "通常用**<term id=\"z_score\">Z分数</term>**来衡量偏离程度：",
+              "$Z = \\frac{\\text{当前价差} - \\text{均值}}{\\text{标准差}}$"
+            ],
+            "introduced_terms": ["z_score"]
+          },
+          {
+            "id": "s031",
+            "type": "narration",
+            "lines": [
+              "第五步：执行交易。",
+              "如果Z > 阈值，卖出Y、买入X（押注价差缩小）。",
+              "如果Z < -阈值，买入Y、卖出X。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s032",
+            "type": "narration",
+            "lines": [
+              "第六步：当价差回归到均值附近时，平仓离场。",
+              "整个策略的核心就是：低买高卖价差。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s033",
+            "type": "exercise",
+            "lines": [
+              "当Z分数大于入场阈值时，应该怎么做？"
+            ],
+            "exercise": {
+              "kind": "single_choice",
+              "prompt": "当Z分数大于入场阈值时，应该怎么做？",
+              "options": [
+                "买入Y，卖出X",
+                "买入X，卖出Y",
+                "同时买入X和Y",
+                "什么都不做"
+              ],
+              "answer": 0,
+              "explanation": "Z > 阈值意味着价差过高，应卖出被高估的Y，买入被低估的X。"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sequence_id": "step6",
+      "concept": "Real-World Challenges and Wrap-Up",
+      "step": {
+        "lesson_id": "L5",
+        "sequence_id": "step6",
+        "target_language": "zh-CN",
+        "mode": "guided_story",
+        "term_catalog": {
+          "model_risk": {
+            "display": "模型风险",
+            "aliases": ["Model Risk"],
+            "gloss": "因模型假设错误或过拟合导致策略表现不佳的风险。"
+          },
+          "execution_risk": {
+            "display": "执行风险",
+            "aliases": ["Execution Risk"],
+            "gloss": "因滑点、延迟等因素导致实际成交价格偏离预期的风险。"
+          }
+        },
+        "source": {
+          "plain_text": "Real Market Challenges: Model Risk, Execution Risk, Market Risk, Regulatory Risk. Statistical arbitrage is a popular strategy used by many quant trading firms that effectively make profits over years. From statistics point of view, it has a high probability of winning.",
+          "related": ["Model Risk", "Execution Risk"]
+        },
+        "screens": [
+          {
+            "id": "s034",
+            "type": "narration",
+            "lines": [
+              "统计套利听起来很完美，但真实市场充满挑战。",
+              "**<term id=\"model_risk\">模型风险</term>**：假设错误或过拟合，策略可能失效。"
+            ],
+            "introduced_terms": ["model_risk"]
+          },
+          {
+            "id": "s035",
+            "type": "narration",
+            "lines": [
+              "**<term id=\"execution_risk\">执行风险</term>**：滑点和延迟会侵蚀利润。",
+              "市场风险：突发事件可能打破历史关系。",
+              "监管风险：做空限制、杠杆要求变化等。"
+            ],
+            "introduced_terms": ["execution_risk"]
+          },
+          {
+            "id": "s036",
+            "type": "narration",
+            "lines": [
+              "尽管如此，统计套利仍是许多量化基金的核心策略。",
+              "从统计上看，它有很高的胜率。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s037",
+            "type": "narration",
+            "lines": [
+              "要有效运行这个策略：",
+              "选择协整的资产组，尝试不同的观察窗口，",
+              "选择合适的距离度量，并定期重新平衡。"
+            ],
+            "introduced_terms": []
+          },
+          {
+            "id": "s038",
+            "type": "narration",
+            "lines": [
+              "一句话带走：",
+              "统计套利不是预测价格，而是押注关系——当关系被打破时，它终将回归。"
+            ],
+            "introduced_terms": []
+          }
+        ]
+      }
+    }
+  ]
+}
+```

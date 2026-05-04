@@ -1,0 +1,84 @@
+{
+  "chapter_id": "lecture-5",
+  "course_id": "comp7415a",
+  "lesson_id": "L5",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s034",
+      "introduced_terms": [
+        "model_risk"
+      ],
+      "lines": [
+        "统计套利听起来很完美，但真实市场充满挑战。",
+        "**<term id=\"model_risk\">模型风险</term>**：假设错误或过拟合，策略可能失效。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s035",
+      "introduced_terms": [
+        "execution_risk"
+      ],
+      "lines": [
+        "**<term id=\"execution_risk\">执行风险</term>**：滑点和延迟会侵蚀利润。",
+        "市场风险：突发事件可能打破历史关系。",
+        "监管风险：做空限制、杠杆要求变化等。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "尽管如此，统计套利仍是许多量化基金的核心策略。",
+        "从统计上看，它有很高的胜率。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "要有效运行这个策略：",
+        "选择协整的资产组，尝试不同的观察窗口，",
+        "选择合适的距离度量，并定期重新平衡。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "一句话带走：",
+        "统计套利不是预测价格，而是押注关系——当关系被打破时，它终将回归。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Real Market Challenges: Model Risk, Execution Risk, Market Risk, Regulatory Risk. Statistical arbitrage is a popular strategy used by many quant trading firms that effectively make profits over years. From statistics point of view, it has a high probability of winning.",
+    "related": [
+      "Model Risk",
+      "Execution Risk"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "execution_risk": {
+      "aliases": [
+        "Execution Risk"
+      ],
+      "display": "执行风险",
+      "gloss": "因滑点、延迟等因素导致实际成交价格偏离预期的风险。"
+    },
+    "model_risk": {
+      "aliases": [
+        "Model Risk"
+      ],
+      "display": "模型风险",
+      "gloss": "因模型假设错误或过拟合导致策略表现不佳的风险。"
+    }
+  }
+}

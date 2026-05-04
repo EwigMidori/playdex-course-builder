@@ -1,0 +1,92 @@
+{
+  "chapter_id": "lecture-5",
+  "course_id": "comp7415a",
+  "lesson_id": "L5",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s014",
+      "introduced_terms": [
+        "correlation"
+      ],
+      "lines": [
+        "很多人会把协整和**<term id=\"correlation\">相关性</term>**搞混。",
+        "它们听起来很像，但本质完全不同。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [
+        "相关性衡量的是短期线性关系。",
+        "两只股票过去一年高度相关，不代表它们未来不会分道扬镳。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "协整关注的是长期均衡关系。",
+        "即使短期偏离，协整的序列最终会重新走到一起。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "一个经典例子：醉汉和他的狗。",
+        "狗可能跑前跑后（短期偏离），但始终跟着主人（长期均衡）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "相关性用于分散投资，协整用于寻找可交易的配对。",
+        "对于配对交易，协整才是关键，而不是高相关性。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "相关性衡量短期线性关系，协整衡量长期均衡关系。两者不同。",
+        "kind": "single_choice",
+        "options": [
+          "高相关性意味着一定协整",
+          "协整关注长期均衡，相关性关注短期关系",
+          "协整和相关性是同一个概念",
+          "协整只适用于平稳序列"
+        ],
+        "prompt": "以下哪个说法是正确的？"
+      },
+      "id": "s019",
+      "lines": [
+        "以下哪个说法是正确的？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Correlation measures the strength and direction of a linear relationship between 2 variables. Cointegration indicates a long-term equilibrium relationship between 2 or more time series, even if they are non-stationary individually. Correlation is about the short-term relationship. Cointegration focuses on the long-term relationship.",
+    "related": [
+      "Correlation",
+      "Cointegration"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "correlation": {
+      "aliases": [
+        "Correlation"
+      ],
+      "display": "相关性",
+      "gloss": "衡量两个变量之间线性关系的强度和方向，取值范围在-1到1之间。"
+    }
+  }
+}

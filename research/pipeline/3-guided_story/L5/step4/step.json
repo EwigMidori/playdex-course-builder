@@ -1,0 +1,124 @@
+{
+  "chapter_id": "lecture-5",
+  "course_id": "comp7415a",
+  "lesson_id": "L5",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s020",
+      "introduced_terms": [
+        "cadf"
+      ],
+      "lines": [
+        "如何判断两只股票是否协整？",
+        "最常用的方法是**<term id=\"cadf\">协整增强迪基-富勒检验</term>**，简称CADF。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "第一步：对两只股票的价格做线性回归，得到对冲比率β。",
+        "第二步：用β构建价差序列 $z_t = y_t - \\beta x_t$。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "第三步：对价差序列进行ADF平稳性检验。",
+        "如果p值小于0.05，就拒绝“不平稳”的原假设，认为序列协整。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s023",
+      "introduced_terms": [
+        "johansen_test"
+      ],
+      "lines": [
+        "当涉及三只或更多资产时，需要用**<term id=\"johansen_test\">约翰森检验</term>**。",
+        "它可以找出存在多少个协整关系。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s024",
+      "introduced_terms": [
+        "trace_statistic",
+        "max_eigenvalue_statistic"
+      ],
+      "lines": [
+        "约翰森检验给出两个统计量：**<term id=\"trace_statistic\">迹统计量</term>**和**<term id=\"max_eigenvalue_statistic\">最大特征值统计量</term>**。",
+        "它们从不同角度判断协整关系的个数r。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "如果r=0，说明没有协整关系。",
+        "如果r>0，说明存在r个独立的平稳组合，对应的特征向量就是对冲比率。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "线性回归"
+        ],
+        "explanation": "先对两只股票的价格做线性回归，得到对冲比率β。",
+        "kind": "fill_in_blank",
+        "prompt": "CADF检验的第一步是：通过______确定最优对冲比率。"
+      },
+      "id": "s026",
+      "lines": [
+        "CADF检验的第一步是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Cointegrated Augmented Dickey Fuller Test (CADF): We first determine the optimal hedge ratio by running a linear regression between two price series. Use this hedge ratio to form a portfolio. Then run an ADF test on this portfolio price series. Johansen Test for Cointegration: It tests for cointegration of more than 2 variables.",
+    "related": [
+      "CADF",
+      "Johansen Test"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "cadf": {
+      "aliases": [
+        "CADF",
+        "Cointegrated Augmented Dickey Fuller Test"
+      ],
+      "display": "协整增强迪基-富勒检验",
+      "gloss": "先通过回归确定对冲比率，再对价差进行ADF检验，判断序列是否协整。"
+    },
+    "johansen_test": {
+      "aliases": [
+        "Johansen Test"
+      ],
+      "display": "约翰森检验",
+      "gloss": "用于检验多个时间序列之间协整关系的个数，并给出对冲比率。"
+    },
+    "max_eigenvalue_statistic": {
+      "aliases": [
+        "Maximum Eigenvalue Statistic"
+      ],
+      "display": "最大特征值统计量",
+      "gloss": "约翰森检验中的另一种统计量，检验恰好有r个协整向量。"
+    },
+    "trace_statistic": {
+      "aliases": [
+        "Trace Statistic"
+      ],
+      "display": "迹统计量",
+      "gloss": "约翰森检验中的一种统计量，检验协整向量个数是否小于等于r。"
+    }
+  }
+}

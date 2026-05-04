@@ -1,0 +1,486 @@
+{
+  "chapter_id": "lecture-5",
+  "course_id": "comp7415a",
+  "coverage_map": [
+    {
+      "coverage_tag": "cointegration_definition",
+      "covered_by": [
+        "qf_flash_coint_def",
+        "qf_quiz_coint_def"
+      ],
+      "description": "协整的定义：两个或多个非平稳时间序列的线性组合是平稳的，表明存在长期均衡关系。"
+    },
+    {
+      "coverage_tag": "cointegration_formula",
+      "covered_by": [
+        "qf_flash_coint_formula",
+        "qf_quiz_coint_formula"
+      ],
+      "description": "协整的数学公式：z_t = y_t - β x_t 是平稳的。"
+    },
+    {
+      "coverage_tag": "hedge_ratio",
+      "covered_by": [
+        "qf_flash_hedge_ratio",
+        "qf_quiz_hedge_ratio"
+      ],
+      "description": "对冲比率β的含义：构建市场中性组合时每单位X对应Y的数量。"
+    },
+    {
+      "coverage_tag": "spread_definition",
+      "covered_by": [
+        "qf_flash_spread_def"
+      ],
+      "description": "价差的定义：配对交易中两只资产价格经对冲比率调整后的差值。"
+    },
+    {
+      "coverage_tag": "stationarity",
+      "covered_by": [
+        "qf_flash_stationarity"
+      ],
+      "description": "平稳性的概念：时间序列的统计性质（如均值、方差）不随时间变化。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "cointegration",
+      "coverage_tags": [
+        "cointegration_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_coint_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的话准确说出协整的定义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了协整的核心定义：非平稳序列的线性组合是平稳的，代表长期均衡关系。",
+      "question_type": "short_answer",
+      "retrieval_focus": "协整的定义：非平稳序列的线性组合是平稳的，代表长期均衡关系。",
+      "term_refs": [
+        {
+          "display": "协整",
+          "en": "Cointegration"
+        }
+      ],
+      "variants": [
+        {
+          "back": "长期均衡关系。",
+          "estimated_seconds": 8,
+          "explanation": "协整的核心是长期均衡：即使单个序列不平稳，它们的线性组合却是平稳的，意味着它们长期会一起运动。",
+          "front": "协整描述的是两个或多个时间序列之间的什么关系？",
+          "question_id": "q_flash_coint_def_v1"
+        },
+        {
+          "back": "平稳性。",
+          "estimated_seconds": 8,
+          "explanation": "协整的定义就是：存在一个线性组合使得组合序列是平稳的。",
+          "front": "如果两个非平稳的价格序列是协整的，它们的某个线性组合具有什么性质？",
+          "question_id": "q_flash_coint_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "cointegration_formula",
+      "coverage_tags": [
+        "cointegration_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_coint_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能写出协整的数学表达式，并理解各符号的含义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了协整的数学定义：z_t = y_t - β x_t 是平稳的。",
+      "question_type": "short_answer",
+      "retrieval_focus": "协整的数学表达式：z_t = y_t - β x_t 是平稳的。",
+      "term_refs": [
+        {
+          "display": "协整公式",
+          "en": "Cointegration Formula"
+        }
+      ],
+      "variants": [
+        {
+          "back": "$z_t = y_t - \\beta x_t$ 是平稳的。",
+          "estimated_seconds": 10,
+          "explanation": "这是协整的核心公式：组合z_t是平稳的，意味着y和x存在长期均衡关系。",
+          "front": "写出协整关系的数学表达式，其中y和x是两只资产的价格，β是常数。",
+          "question_id": "q_flash_coint_formula_v1"
+        },
+        {
+          "back": "平稳性。",
+          "estimated_seconds": 6,
+          "explanation": "z_t必须是平稳的，这是协整的定义。",
+          "front": "在协整公式 $z_t = y_t - \\beta x_t$ 中，$z_t$ 必须满足什么统计性质？",
+          "question_id": "q_flash_coint_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "hedge_ratio",
+      "coverage_tags": [
+        "hedge_ratio"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_hedge_ratio",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释对冲比率β在配对交易中的实际含义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了对冲比率的定义：每买入1股Y，应卖出β股X来构建市场中性组合。",
+      "question_type": "short_answer",
+      "retrieval_focus": "对冲比率β的含义：每单位Y对应多少单位X。",
+      "term_refs": [
+        {
+          "display": "对冲比率",
+          "en": "Hedge Ratio"
+        }
+      ],
+      "variants": [
+        {
+          "back": "每买入1股Y，应该卖出多少股X来构建市场中性组合。",
+          "estimated_seconds": 10,
+          "explanation": "β决定了两种资产的比例，使得组合的市场风险被对冲掉。",
+          "front": "在配对交易中，对冲比率β告诉你什么？",
+          "question_id": "q_flash_hedge_ratio_v1"
+        },
+        {
+          "back": "对冲比率。",
+          "estimated_seconds": 6,
+          "explanation": "β也称为协整系数，在配对交易中用于确定多空头寸的比例。",
+          "front": "协整关系中的β在交易实践中被称为什么？",
+          "question_id": "q_flash_hedge_ratio_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "spread",
+      "coverage_tags": [
+        "spread_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_spread_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能定义价差并理解其在配对交易中的作用。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了价差的定义：配对交易中两只资产价格经对冲比率调整后的差值。",
+      "question_type": "short_answer",
+      "retrieval_focus": "价差的定义：y_t - β x_t。",
+      "term_refs": [
+        {
+          "display": "价差",
+          "en": "Spread"
+        }
+      ],
+      "variants": [
+        {
+          "back": "价差 = y_t - β x_t，其中β是对冲比率。",
+          "estimated_seconds": 8,
+          "explanation": "价差是两只资产价格经过对冲比率调整后的差值，当价差偏离均值时产生交易信号。",
+          "front": "在配对交易中，价差（spread）是如何计算的？",
+          "question_id": "q_flash_spread_def_v1"
+        },
+        {
+          "back": "价差。",
+          "estimated_seconds": 6,
+          "explanation": "z_t就是价差，当它偏离历史均值太远时，就出现了交易信号。",
+          "front": "协整公式中的 $z_t$ 在配对交易中通常被称为什么？",
+          "question_id": "q_flash_spread_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "stationary",
+      "coverage_tags": [
+        "stationarity"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_stationarity",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释平稳性的基本概念。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了平稳性的定义：时间序列的统计性质（如均值、方差）不随时间变化。",
+      "question_type": "short_answer",
+      "retrieval_focus": "平稳性的定义：统计性质不随时间变化。",
+      "term_refs": [
+        {
+          "display": "平稳性",
+          "en": "Stationarity"
+        }
+      ],
+      "variants": [
+        {
+          "back": "均值、方差等统计性质。",
+          "estimated_seconds": 8,
+          "explanation": "平稳序列的统计特征（如均值、方差）是常数，不随时间推移而改变。",
+          "front": "一个平稳的时间序列，它的哪些统计性质不随时间变化？",
+          "question_id": "q_flash_stationarity_v1"
+        },
+        {
+          "back": "非平稳的。",
+          "estimated_seconds": 6,
+          "explanation": "大多数金融价格序列是随机游走的，即非平稳的。协整正是利用非平稳序列构建平稳组合。",
+          "front": "大多数金融价格序列本身是平稳的还是非平稳的？",
+          "question_id": "q_flash_stationarity_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "L5",
+  "longform_families": [
+    {
+      "concept_key": "cointegration",
+      "coverage_tags": [
+        "cointegration_definition",
+        "cointegration_formula",
+        "hedge_ratio",
+        "spread_definition",
+        "stationarity"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_coint_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的语言完整解释协整的概念、公式及其在配对交易中的意义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能综合运用协整的定义、公式、对冲比率和价差等概念，解释协整如何为配对交易提供统计基础。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "协整",
+          "en": "Cointegration"
+        },
+        {
+          "display": "对冲比率",
+          "en": "Hedge Ratio"
+        },
+        {
+          "display": "价差",
+          "en": "Spread"
+        },
+        {
+          "display": "平稳性",
+          "en": "Stationarity"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "协整的定义",
+            "数学表达式 $z_t = y_t - \\beta x_t$",
+            "对冲比率β的含义",
+            "价差的作用"
+          ],
+          "question_id": "q_long_coint_explain_v1",
+          "reference_answer": [
+            "协整是指两个或多个非平稳时间序列之间存在长期均衡关系，使得它们的某个线性组合是平稳的。",
+            "数学上，如果存在常数β使得 $z_t = y_t - \\beta x_t$ 是平稳的，则y和x是协整的。",
+            "β称为对冲比率，它告诉我们在配对交易中每买入1股Y应该卖出多少股X来构建市场中性组合。",
+            "价差就是z_t，当价差偏离历史均值太远时，我们押注它会回归，从而产生交易信号。",
+            "协整是配对交易的统计基础，因为它保证了价差具有均值回归的性质，使得交易策略有可盈利的预期。"
+          ],
+          "rubric_points": [
+            "正确给出协整的定义：两个或多个非平稳时间序列的线性组合是平稳的，表明长期均衡关系。",
+            "正确写出数学表达式 $z_t = y_t - \\beta x_t$，并说明z_t是平稳的。",
+            "解释β是对冲比率，决定了构建市场中性组合时两种资产的比例。",
+            "解释价差就是z_t，当价差偏离历史均值时产生交易信号，押注价差回归。",
+            "说明协整保证了价差最终会回归均值，这是配对交易盈利的基础。"
+          ],
+          "stem": "请解释什么是协整（Cointegration），并说明它为什么是配对交易（Pairs Trading）的统计基础。在你的解释中，请包含以下要点：协整的定义、数学表达式、对冲比率（β）的含义、以及价差（spread）的作用。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "A和B之间的统计关系",
+            "β=2的实际含义",
+            "价差产生交易信号的条件"
+          ],
+          "question_id": "q_long_coint_explain_v2",
+          "reference_answer": [
+            "A和B是协整的，意味着它们之间存在长期均衡关系，即使短期偏离，最终也会回归。",
+            "β=2是对冲比率，意味着每买入1股A，需要卖出2股B来对冲市场风险，使组合市场中性。",
+            "价差z_t偏离历史均值时产生交易信号。通常用Z分数衡量偏离程度，当Z分数超过设定阈值（如±2）时触发交易。",
+            "例如，当z_t远高于均值时，说明A相对B被高估，应卖出A、买入B；当z_t远低于均值时，说明A相对B被低估，应买入A、卖出B。"
+          ],
+          "rubric_points": [
+            "正确指出A和B是协整的，存在长期均衡关系。",
+            "解释β=2意味着每买入1股A，应卖出2股B来构建市场中性组合。",
+            "说明价差z_t偏离其历史均值时产生交易信号，偏离越大信号越强。",
+            "说明交易逻辑：当价差过高时卖出A买入B，价差过低时买入A卖出B，押注价差回归均值。"
+          ],
+          "stem": "假设你发现两只股票A和B的价格序列都是非平稳的，但它们的线性组合 $z_t = A_t - 2B_t$ 是平稳的。请解释：1）这个发现意味着A和B之间有什么统计关系？2）β=2在实际交易中意味着什么？3）价差z_t在什么情况下会产生交易信号？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "cointegration",
+      "coverage_tags": [
+        "cointegration_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_coint_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在选择题中准确识别协整的定义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能区分协整与其他统计概念，准确理解协整描述的是长期均衡关系。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "协整",
+          "en": "Cointegration"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "协整的定义是：两个或多个非平稳时间序列的线性组合是平稳的，表明它们存在长期均衡关系。高相关性不等于协整。",
+          "options": [
+            "两个时间序列的相关系数很高",
+            "两个或多个非平稳时间序列的线性组合是平稳的",
+            "两个时间序列的均值相等",
+            "两个时间序列的方差相等"
+          ],
+          "question_id": "q_quiz_coint_def_v1",
+          "stem": "以下哪个选项最准确地描述了协整（Cointegration）？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "协整意味着长期均衡关系：短期可能偏离，但长期会一起运动。单个价格序列通常是非平稳的。",
+          "options": [
+            "它们的价格总是完全同步变动",
+            "它们的价格之间存在长期均衡关系，短期可能偏离但最终会回归",
+            "它们的收益率完全正相关",
+            "它们的价格序列都是平稳的"
+          ],
+          "question_id": "q_quiz_coint_def_v2",
+          "stem": "如果两只股票的价格序列是协整的，这意味着什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "cointegration_formula",
+      "coverage_tags": [
+        "cointegration_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_coint_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确理解协整公式中各部分的意义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能正确解读协整公式 $z_t = y_t - \\beta x_t$ 中每个符号的含义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "协整公式",
+          "en": "Cointegration Formula"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "如果存在β使得z_t平稳，则y_t和x_t是协整的。单个序列y_t和x_t通常是非平稳的。",
+          "options": [
+            "$y_t$ 和 $x_t$ 都是平稳的",
+            "$y_t$ 和 $x_t$ 是协整的",
+            "$y_t$ 和 $x_t$ 完全独立",
+            "$y_t$ 和 $x_t$ 的相关系数为1"
+          ],
+          "question_id": "q_quiz_coint_formula_v1",
+          "stem": "在协整公式 $z_t = y_t - \\beta x_t$ 中，如果 $z_t$ 是平稳的，那么 $y_t$ 和 $x_t$ 是什么关系？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "β是对冲比率（协整系数），决定了构建平稳组合时两种资产的比例。",
+          "options": [
+            "两只股票的相关系数",
+            "对冲比率",
+            "价差的均值",
+            "时间趋势项"
+          ],
+          "question_id": "q_quiz_coint_formula_v2",
+          "stem": "协整公式 $z_t = y_t - \\beta x_t$ 中，β代表什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "hedge_ratio",
+      "coverage_tags": [
+        "hedge_ratio"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_hedge_ratio",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在实际情境中应用对冲比率的概念。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能理解对冲比率β在构建市场中性组合中的实际应用。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "对冲比率",
+          "en": "Hedge Ratio"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "β=1.5，意味着每买入1股Y，应卖出1.5股X来对冲。买入100股Y，应卖出150股X。",
+          "options": [
+            "买入150股X",
+            "卖出150股X",
+            "买入100股X",
+            "卖出100股X"
+          ],
+          "question_id": "q_quiz_hedge_ratio_v1",
+          "stem": "假设两只股票Y和X的协整关系为 $z_t = y_t - 1.5 x_t$，且z_t是平稳的。如果你想买入100股Y来构建市场中性组合，你应该如何处理X？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "β决定了多空头寸的比例，使得组合的市场风险被对冲掉，实现市场中性。",
+          "options": [
+            "预测市场整体走势",
+            "确定多空头寸的比例，使组合市场中性",
+            "计算两只股票的相关系数",
+            "衡量交易成本"
+          ],
+          "question_id": "q_quiz_hedge_ratio_v2",
+          "stem": "在配对交易中，对冲比率β的主要作用是什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/L5/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

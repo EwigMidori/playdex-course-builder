@@ -1,0 +1,67 @@
+{
+  "decisions": [
+    {
+      "decision": "pass",
+      "family_id": "qf_flash_statarb_def",
+      "practice_target": "统计套利的定义和均值回归假设",
+      "reason": "直接训练统计套利的定义和核心假设（均值回归），属于当前step的可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_flash_pairs_trading",
+      "practice_target": "配对交易的操作方式",
+      "reason": "训练配对交易的基本操作方式，属于当前step引入的可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_flash_market_neutral",
+      "practice_target": "市场中性策略的含义和收益来源",
+      "reason": "训练市场中性策略的含义和收益来源，属于当前step引入的可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_long_statarb_explain",
+      "practice_target": "统计套利策略的完整逻辑链条",
+      "reason": "训练学生连贯解释统计套利、均值回归、配对交易和市场中性之间的关系，属于当前step的综合可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_quiz_statarb_assumption",
+      "practice_target": "统计套利策略的核心假设",
+      "reason": "训练识别统计套利的核心假设，属于当前step的可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_quiz_pairs_trading",
+      "practice_target": "配对交易的操作方式",
+      "reason": "训练识别配对交易的基本操作，属于当前step的可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_quiz_market_neutral",
+      "practice_target": "市场中性策略降低市场风险的原理",
+      "reason": "训练理解市场中性策略如何降低市场风险，属于当前step的可学习内容。"
+    }
+  ],
+  "gate": "question_bank_gate",
+  "kept_family_ids": [
+    "qf_flash_statarb_def",
+    "qf_flash_pairs_trading",
+    "qf_flash_market_neutral",
+    "qf_quiz_statarb_assumption",
+    "qf_quiz_pairs_trading",
+    "qf_quiz_market_neutral",
+    "qf_long_statarb_explain"
+  ],
+  "rejected_families": {
+    "flashcard_families": [],
+    "longform_families": [],
+    "quiz_families": []
+  },
+  "rejected_family_ids": [],
+  "summary": {
+    "failed": 0,
+    "passed": 7,
+    "uncertain": 0
+  }
+}

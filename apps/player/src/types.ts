@@ -8,7 +8,18 @@ export type CourseRecord = {
   title: string;
   category?: string;
   brandColor?: string;
+  status?: CourseStatus;
+  validationErrors?: CourseValidationError[];
   chapters: ChapterRecord[];
+};
+
+export type CourseStatus = "ready" | "blocked";
+
+export type CourseValidationError = {
+  code: string;
+  message: string;
+  chapterId?: string;
+  path?: string;
 };
 
 export type ChapterRecord = {

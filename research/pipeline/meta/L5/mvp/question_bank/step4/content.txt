@@ -1,0 +1,373 @@
+```json
+{
+  "lesson_id": "L5",
+  "target_language": "zh-CN",
+  "source": {
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "plain_text": "pipeline/1-plain/L5/plain.txt",
+    "related": ["pipeline/2-related_important/course_desc.md"],
+    "coverage_checklist": "input coverage checklist",
+    "source_outline": "input source outline",
+    "lesson_map": "input lesson map"
+  },
+  "coverage_map": [
+    {
+      "coverage_tag": "cadf_test",
+      "description": "协整增强迪基-富勒检验（CADF）的步骤和原理",
+      "covered_by": ["qf_flash_cadf_steps", "qf_quiz_cadf_interpretation", "qf_long_cadf_process"]
+    },
+    {
+      "coverage_tag": "johansen_test",
+      "description": "约翰森检验的用途、统计量和结果解读",
+      "covered_by": ["qf_flash_johansen_stats", "qf_quiz_johansen_rank", "qf_long_johansen_interpretation"]
+    },
+    {
+      "coverage_tag": "hedge_ratio_determination",
+      "description": "通过线性回归确定对冲比率β",
+      "covered_by": ["qf_flash_cadf_steps", "qf_quiz_cadf_interpretation"]
+    },
+    {
+      "coverage_tag": "adf_test_on_spread",
+      "description": "对价差序列进行ADF平稳性检验",
+      "covered_by": ["qf_flash_cadf_steps", "qf_quiz_cadf_interpretation"]
+    },
+    {
+      "coverage_tag": "cointegration_rank_r",
+      "description": "协整关系个数r的含义（r=0 vs r>0）",
+      "covered_by": ["qf_flash_johansen_stats", "qf_quiz_johansen_rank", "qf_long_johansen_interpretation"]
+    },
+    {
+      "coverage_tag": "trace_statistic",
+      "description": "迹统计量的用途：检验协整向量个数是否小于等于r",
+      "covered_by": ["qf_flash_johansen_stats", "qf_quiz_johansen_rank"]
+    },
+    {
+      "coverage_tag": "max_eigenvalue_statistic",
+      "description": "最大特征值统计量的用途：检验恰好有r个协整向量",
+      "covered_by": ["qf_flash_johansen_stats", "qf_quiz_johansen_rank"]
+    },
+    {
+      "coverage_tag": "eigenvectors_as_hedge_ratios",
+      "description": "约翰森检验的特征向量可作为多资产组合的对冲比率",
+      "covered_by": ["qf_long_johansen_interpretation"]
+    }
+  ],
+  "flashcard_families": [
+    {
+      "family_id": "qf_flash_cadf_steps",
+      "question_type": "short_answer",
+      "linked_steps": ["step4"],
+      "concept_key": "cadf_test",
+      "coverage_tags": ["cadf_test", "hedge_ratio_determination", "adf_test_on_spread"],
+      "term_refs": [
+        {
+          "display": "协整增强迪基-富勒检验",
+          "en": "Cointegrated Augmented Dickey Fuller Test (CADF)"
+        },
+        {
+          "display": "对冲比率",
+          "en": "Hedge Ratio"
+        },
+        {
+          "display": "价差",
+          "en": "Spread"
+        }
+      ],
+      "learning_goal": "学生能准确回忆CADF检验的三个主要步骤及其顺序。",
+      "practice_target": "学生答对后证明掌握了CADF检验的标准流程：先回归求β，再构建价差，最后做ADF检验。",
+      "is_meta_about_course_or_material": false,
+      "difficulty": "easy",
+      "retrieval_focus": "CADF检验的步骤顺序和每个步骤的核心操作。",
+      "variants": [
+        {
+          "question_id": "q_flash_cadf_steps_v1",
+          "front": "CADF检验的第一步是什么？",
+          "back": "对两只股票的价格做线性回归，得到对冲比率β。",
+          "explanation": "线性回归用于确定最优对冲比率，这是构建平稳组合的基础。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_cadf_steps_v2",
+          "front": "CADF检验中，得到对冲比率β后，下一步做什么？",
+          "back": "用β构建价差序列 $z_t = y_t - \\beta x_t$。",
+          "explanation": "价差序列是两只股票价格经对冲比率调整后的差值，用于后续的平稳性检验。",
+          "estimated_seconds": 8
+        },
+        {
+          "question_id": "q_flash_cadf_steps_v3",
+          "front": "CADF检验的最后一步是什么？",
+          "back": "对价差序列进行ADF平稳性检验。",
+          "explanation": "ADF检验用于判断价差序列是否平稳，从而推断原始序列是否协整。",
+          "estimated_seconds": 8
+        }
+      ]
+    },
+    {
+      "family_id": "qf_flash_johansen_stats",
+      "question_type": "short_answer",
+      "linked_steps": ["step4"],
+      "concept_key": "johansen_test",
+      "coverage_tags": ["johansen_test", "trace_statistic", "max_eigenvalue_statistic", "cointegration_rank_r"],
+      "term_refs": [
+        {
+          "display": "约翰森检验",
+          "en": "Johansen Test"
+        },
+        {
+          "display": "迹统计量",
+          "en": "Trace Statistic"
+        },
+        {
+          "display": "最大特征值统计量",
+          "en": "Maximum Eigenvalue Statistic"
+        },
+        {
+          "display": "协整关系个数",
+          "en": "Cointegration Rank (r)"
+        }
+      ],
+      "learning_goal": "学生能准确回忆约翰森检验的两个统计量及其检验的假设。",
+      "practice_target": "学生答对后证明掌握了迹统计量和最大特征值统计量的核心区别：一个检验≤r，一个检验=r。",
+      "is_meta_about_course_or_material": false,
+      "difficulty": "medium",
+      "retrieval_focus": "约翰森检验中两个统计量的名称和各自检验的原假设。",
+      "variants": [
+        {
+          "question_id": "q_flash_johansen_stats_v1",
+          "front": "约翰森检验中，迹统计量检验的原假设是什么？",
+          "back": "协整向量的个数小于或等于r。",
+          "explanation": "迹统计量从累积角度检验协整关系个数是否不超过某个值。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_johansen_stats_v2",
+          "front": "约翰森检验中，最大特征值统计量检验的原假设是什么？",
+          "back": "恰好存在r个协整向量。",
+          "explanation": "最大特征值统计量逐个检验第r+1个特征值是否为零，判断是否存在恰好r个协整关系。",
+          "estimated_seconds": 10
+        },
+        {
+          "question_id": "q_flash_johansen_stats_v3",
+          "front": "约翰森检验中，如果r=0意味着什么？",
+          "back": "没有协整关系，时间序列的任何线性组合都不平稳。",
+          "explanation": "r=0表示无法找到平稳的线性组合，资产之间不存在长期均衡关系。",
+          "estimated_seconds": 8
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "family_id": "qf_quiz_cadf_interpretation",
+      "question_type": "single_choice",
+      "linked_steps": ["step4"],
+      "concept_key": "cadf_test",
+      "coverage_tags": ["cadf_test", "hedge_ratio_determination", "adf_test_on_spread"],
+      "term_refs": [
+        {
+          "display": "协整增强迪基-富勒检验",
+          "en": "CADF"
+        },
+        {
+          "display": "p值",
+          "en": "p-value"
+        }
+      ],
+      "learning_goal": "学生能在测验情境下正确解读CADF检验的p值结果。",
+      "practice_target": "学生答对后证明能根据p值判断是否拒绝原假设，从而得出序列是否协整的结论。",
+      "is_meta_about_course_or_material": false,
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_cadf_interpretation_v1",
+          "stem": "在CADF检验中，对价差序列进行ADF检验后得到p值为0.03。以下哪个结论是正确的？",
+          "options": [
+            "在5%显著性水平下，不能拒绝原假设，序列不平稳",
+            "在5%显著性水平下，拒绝原假设，序列平稳，因此原始序列协整",
+            "p值大于0.05，说明价差序列是平稳的",
+            "需要重新计算对冲比率"
+          ],
+          "answer": 1,
+          "explanation": "p值0.03 < 0.05，拒绝'不平稳'的原假设，认为价差序列平稳，从而两只股票的价格序列是协整的。",
+          "estimated_seconds": 20
+        },
+        {
+          "question_id": "q_quiz_cadf_interpretation_v2",
+          "stem": "CADF检验中，如果对价差序列的ADF检验p值为0.08，在5%显著性水平下应如何解读？",
+          "options": [
+            "价差序列平稳，两只股票协整",
+            "价差序列不平稳，两只股票不协整",
+            "需要增加样本量重新检验",
+            "对冲比率计算错误"
+          ],
+          "answer": 1,
+          "explanation": "p值0.08 > 0.05，不能拒绝原假设，价差序列不平稳，因此两只股票不协整。",
+          "estimated_seconds": 20
+        }
+      ]
+    },
+    {
+      "family_id": "qf_quiz_johansen_rank",
+      "question_type": "single_choice",
+      "linked_steps": ["step4"],
+      "concept_key": "johansen_test",
+      "coverage_tags": ["johansen_test", "cointegration_rank_r", "trace_statistic", "max_eigenvalue_statistic"],
+      "term_refs": [
+        {
+          "display": "约翰森检验",
+          "en": "Johansen Test"
+        },
+        {
+          "display": "协整关系个数",
+          "en": "Cointegration Rank (r)"
+        }
+      ],
+      "learning_goal": "学生能根据约翰森检验的结果判断协整关系个数，并理解其含义。",
+      "practice_target": "学生答对后证明能根据迹统计量或最大特征值统计量与临界值的比较，确定r的值并解释其意义。",
+      "is_meta_about_course_or_material": false,
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_quiz_johansen_rank_v1",
+          "stem": "约翰森检验对4只股票进行检验，迹统计量序列为[55.2, 30.1, 12.3, 3.1]，5%临界值为[47.9, 29.8, 15.5, 3.8]。协整关系个数r是多少？",
+          "options": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "answer": 1,
+          "explanation": "迹统计量55.2 > 47.9（r≤0被拒绝），30.1 > 29.8（r≤1被拒绝），12.3 < 15.5（r≤2不能被拒绝），因此r=2。注意：这里r表示协整向量个数，当r≤2不能被拒绝时，说明存在2个协整关系。",
+          "estimated_seconds": 30
+        },
+        {
+          "question_id": "q_quiz_johansen_rank_v2",
+          "stem": "约翰森检验中，如果r=3，以下哪个说法正确？",
+          "options": [
+            "不存在任何协整关系",
+            "存在3个独立的平稳组合，对应的特征向量可作为对冲比率",
+            "所有股票价格序列都是平稳的",
+            "只能构建一个投资组合"
+          ],
+          "answer": 1,
+          "explanation": "r>0表示存在r个协整关系，即r个独立的平稳线性组合，其对应的特征向量就是各资产的对冲比率。",
+          "estimated_seconds": 20
+        }
+      ]
+    }
+  ],
+  "longform_families": [
+    {
+      "family_id": "qf_long_cadf_process",
+      "question_type": "mechanism_trace",
+      "linked_steps": ["step4"],
+      "concept_key": "cadf_test",
+      "coverage_tags": ["cadf_test", "hedge_ratio_determination", "adf_test_on_spread"],
+      "term_refs": [
+        {
+          "display": "协整增强迪基-富勒检验",
+          "en": "CADF"
+        },
+        {
+          "display": "对冲比率",
+          "en": "Hedge Ratio"
+        },
+        {
+          "display": "价差",
+          "en": "Spread"
+        },
+        {
+          "display": "ADF检验",
+          "en": "Augmented Dickey Fuller Test"
+        }
+      ],
+      "learning_goal": "学生能完整解释CADF检验的流程、每一步的目的以及如何根据结果判断协整性。",
+      "practice_target": "学生答对后证明能系统阐述CADF检验的完整逻辑链，包括回归求β、构建价差、ADF检验和结果解读。",
+      "is_meta_about_course_or_material": false,
+      "difficulty": "medium",
+      "variants": [
+        {
+          "question_id": "q_long_cadf_process_v1",
+          "stem": "请详细说明协整增强迪基-富勒检验（CADF）的完整步骤，并解释每一步的目的。最后说明如何根据检验结果判断两只股票是否协整。",
+          "prompt_blocks": [
+            "第一步的目的和操作",
+            "第二步的目的和操作",
+            "第三步的目的和操作",
+            "结果判断标准"
+          ],
+          "rubric_points": [
+            "正确指出第一步是线性回归，目的是确定最优对冲比率β",
+            "正确指出第二步是用β构建价差序列 $z_t = y_t - \\beta x_t$",
+            "正确指出第三步是对价差序列进行ADF平稳性检验",
+            "正确说明判断标准：p值<0.05则拒绝原假设，认为价差平稳，原始序列协整",
+            "逻辑连贯，术语使用准确"
+          ],
+          "reference_answer": [
+            "第一步：对两只股票的价格序列进行线性回归，得到对冲比率β。目的是确定构建平稳组合时两种资产的最优比例。",
+            "第二步：用得到的β构建价差序列 $z_t = y_t - \\beta x_t$。价差代表了两只股票价格经对冲调整后的差值。",
+            "第三步：对价差序列进行ADF平稳性检验。如果p值小于0.05，拒绝'序列不平稳'的原假设，认为价差是平稳的。",
+            "结论：如果价差序列平稳，则两只股票的价格序列是协整的，存在长期均衡关系。"
+          ],
+          "estimated_seconds": 90
+        }
+      ]
+    },
+    {
+      "family_id": "qf_long_johansen_interpretation",
+      "question_type": "short_explain",
+      "linked_steps": ["step4"],
+      "concept_key": "johansen_test",
+      "coverage_tags": ["johansen_test", "cointegration_rank_r", "trace_statistic", "max_eigenvalue_statistic", "eigenvectors_as_hedge_ratios"],
+      "term_refs": [
+        {
+          "display": "约翰森检验",
+          "en": "Johansen Test"
+        },
+        {
+          "display": "迹统计量",
+          "en": "Trace Statistic"
+        },
+        {
+          "display": "最大特征值统计量",
+          "en": "Maximum Eigenvalue Statistic"
+        },
+        {
+          "display": "协整关系个数",
+          "en": "Cointegration Rank (r)"
+        },
+        {
+          "display": "特征向量",
+          "en": "Eigenvectors"
+        }
+      ],
+      "learning_goal": "学生能解释约翰森检验的两个统计量的区别，以及如何利用检验结果构建多资产组合的对冲比率。",
+      "practice_target": "学生答对后证明能区分迹统计量和最大特征值统计量的检验假设，并理解r>0时特征向量作为对冲比率的实际用途。",
+      "is_meta_about_course_or_material": false,
+      "difficulty": "hard",
+      "variants": [
+        {
+          "question_id": "q_long_johansen_interpretation_v1",
+          "stem": "请解释约翰森检验中迹统计量和最大特征值统计量的区别。如果检验结果显示r=2，这对构建配对交易策略意味着什么？特征向量在此过程中起什么作用？",
+          "prompt_blocks": [
+            "两个统计量的原假设区别",
+            "r=2的实际含义",
+            "特征向量的作用"
+          ],
+          "rubric_points": [
+            "正确说明迹统计量检验协整向量个数≤r，最大特征值统计量检验恰好有r个",
+            "正确解释r=2意味着存在2个独立的平稳线性组合",
+            "正确说明特征向量可作为各资产的对冲比率，用于构建市场中性组合",
+            "逻辑清晰，术语使用准确"
+          ],
+          "reference_answer": [
+            "迹统计量检验原假设H0: 协整向量个数 ≤ r，最大特征值统计量检验H0: 恰好有r个协整向量。两者从不同角度判断r的值。",
+            "r=2意味着在多个资产中存在2个独立的平稳线性组合，即可以构建2个不同的市场中性投资组合。",
+            "特征向量就是这些平稳组合的系数，每个特征向量对应一组对冲比率。例如，对于4只股票，一个特征向量 [1, -0.5, -0.3, -0.2] 表示买入1单位股票A，同时卖出0.5单位B、0.3单位C和0.2单位D来构建平稳组合。"
+          ],
+          "estimated_seconds": 120
+        }
+      ]
+    }
+  ]
+}
+```

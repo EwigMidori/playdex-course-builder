@@ -1,0 +1,81 @@
+{
+  "decisions": [
+    {
+      "decision": "pass",
+      "family_id": "qf_flash_coint_def",
+      "practice_target": "协整的定义：非平稳序列的线性组合是平稳的，代表长期均衡关系。",
+      "reason": "直接训练协整的核心定义，与当前step内容一致。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_flash_coint_formula",
+      "practice_target": "协整的数学定义：z_t = y_t - β x_t 是平稳的。",
+      "reason": "训练协整的数学表达式，与当前step内容一致。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_flash_hedge_ratio",
+      "practice_target": "对冲比率β的含义：每买入1股Y，应卖出β股X来构建市场中性组合。",
+      "reason": "训练对冲比率的含义，与当前step内容一致。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_flash_spread_def",
+      "practice_target": "价差的定义：配对交易中两只资产价格经对冲比率调整后的差值。",
+      "reason": "训练价差的定义，与当前step内容一致。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_flash_stationarity",
+      "practice_target": "平稳性的定义：时间序列的统计性质不随时间变化。",
+      "reason": "训练平稳性的基本概念，与当前step内容一致。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_long_coint_explain",
+      "practice_target": "综合运用协整的定义、公式、对冲比率和价差等概念，解释协整如何为配对交易提供统计基础。",
+      "reason": "综合训练协整概念、公式、对冲比率和价差，与当前step内容一致。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_quiz_coint_def",
+      "practice_target": "区分协整与其他统计概念，准确理解协整描述的是长期均衡关系。",
+      "reason": "选择题形式训练协整定义，与当前step内容一致。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_quiz_coint_formula",
+      "practice_target": "正确解读协整公式 z_t = y_t - β x_t 中每个符号的含义。",
+      "reason": "选择题形式训练协整公式中各部分的意义，与当前step内容一致。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_quiz_hedge_ratio",
+      "practice_target": "理解对冲比率β在构建市场中性组合中的实际应用。",
+      "reason": "选择题形式训练对冲比率的实际应用，与当前step内容一致。"
+    }
+  ],
+  "gate": "question_bank_gate",
+  "kept_family_ids": [
+    "qf_flash_coint_def",
+    "qf_flash_coint_formula",
+    "qf_flash_hedge_ratio",
+    "qf_flash_spread_def",
+    "qf_flash_stationarity",
+    "qf_quiz_coint_def",
+    "qf_quiz_coint_formula",
+    "qf_quiz_hedge_ratio",
+    "qf_long_coint_explain"
+  ],
+  "rejected_families": {
+    "flashcard_families": [],
+    "longform_families": [],
+    "quiz_families": []
+  },
+  "rejected_family_ids": [],
+  "summary": {
+    "failed": 0,
+    "passed": 9,
+    "uncertain": 0
+  }
+}

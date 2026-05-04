@@ -1,0 +1,40 @@
+{
+  "chapter_id": "lecture-5",
+  "chapter_title": "Statistical Arbitrage and Pairs Trading",
+  "course_id": "comp7415a",
+  "course_title": "COMP7415A Algorithmic Trading",
+  "lesson_id": "L5",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "Statistical Arbitrage and Pairs Trading Introduction",
+      "file": "research/pipeline/3-guided_story/L5/step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "Cointegration: The Statistical Foundation",
+      "file": "research/pipeline/3-guided_story/L5/step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "Correlation vs. Cointegration",
+      "file": "research/pipeline/3-guided_story/L5/step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "Testing for Cointegration: CADF and Johansen Test",
+      "file": "research/pipeline/3-guided_story/L5/step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "Implementing a Pairs Trading Strategy",
+      "file": "research/pipeline/3-guided_story/L5/step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "Real-World Challenges and Wrap-Up",
+      "file": "research/pipeline/3-guided_story/L5/step6/step.json",
+      "sequence_id": "step6"
+    }
+  ]
+}

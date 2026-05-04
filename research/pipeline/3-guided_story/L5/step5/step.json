@@ -1,0 +1,112 @@
+{
+  "chapter_id": "lecture-5",
+  "course_id": "comp7415a",
+  "lesson_id": "L5",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "有了协整工具，就可以搭建完整的配对交易策略了。",
+        "一共六步，每一步都很清晰。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "第一步：找到一对可能相关的资产。",
+        "第二步：用CADF或约翰森检验确认它们是否协整。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s029",
+      "introduced_terms": [
+        "entry_threshold"
+      ],
+      "lines": [
+        "第三步：计算价差，并求出历史均值和标准差。",
+        "第四步：设定**<term id=\"entry_threshold\">入场阈值</term>**，当价差偏离超过阈值时触发信号。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s030",
+      "introduced_terms": [
+        "z_score"
+      ],
+      "lines": [
+        "通常用**<term id=\"z_score\">Z分数</term>**来衡量偏离程度：",
+        "$Z = \\frac{\\text{当前价差} - \\text{均值}}{\\text{标准差}}$"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "第五步：执行交易。",
+        "如果Z > 阈值，卖出Y、买入X（押注价差缩小）。",
+        "如果Z < -阈值，买入Y、卖出X。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "第六步：当价差回归到均值附近时，平仓离场。",
+        "整个策略的核心就是：低买高卖价差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "Z > 阈值意味着价差过高，应卖出被高估的Y，买入被低估的X。",
+        "kind": "single_choice",
+        "options": [
+          "买入Y，卖出X",
+          "买入X，卖出Y",
+          "同时买入X和Y",
+          "什么都不做"
+        ],
+        "prompt": "当Z分数大于入场阈值时，应该怎么做？"
+      },
+      "id": "s033",
+      "lines": [
+        "当Z分数大于入场阈值时，应该怎么做？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Steps to Implement Pair Trading: 1. Identify a pair of correlated assets. 2. Test for co-integration between the assets. 3. Calculate the spread and determine the historical mean and standard deviation. 4. Generate trading signals when the spread deviates from the mean by a certain threshold. 5. Execute trades. 6. Close positions when the spread reverts to the mean.",
+    "related": [
+      "Pairs Trading",
+      "Z-score",
+      "Entry Threshold"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "entry_threshold": {
+      "aliases": [
+        "Entry Threshold"
+      ],
+      "display": "入场阈值",
+      "gloss": "触发交易信号的价差偏离程度，通常用Z分数的绝对值表示。"
+    },
+    "z_score": {
+      "aliases": [
+        "Z-score"
+      ],
+      "display": "Z分数",
+      "gloss": "衡量当前价差偏离均值多少个标准差的标准化指标。"
+    }
+  }
+}

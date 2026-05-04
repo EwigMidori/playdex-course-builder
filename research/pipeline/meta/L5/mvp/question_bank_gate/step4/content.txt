@@ -1,0 +1,45 @@
+{
+  "decisions": [
+    {
+      "family_id": "qf_flash_cadf_steps",
+      "decision": "pass",
+      "reason": "直接训练CADF检验的三个步骤，属于当前step的核心可学习内容。",
+      "practice_target": "学生能准确回忆CADF检验的三个主要步骤及其顺序。"
+    },
+    {
+      "family_id": "qf_flash_johansen_stats",
+      "decision": "pass",
+      "reason": "训练约翰森检验的两个统计量及其假设，属于当前step的核心可学习内容。",
+      "practice_target": "学生能准确回忆迹统计量和最大特征值统计量的核心区别。"
+    },
+    {
+      "family_id": "qf_long_cadf_process",
+      "decision": "pass",
+      "reason": "训练CADF检验的完整流程和逻辑，属于当前step的可学习内容。",
+      "practice_target": "学生能系统阐述CADF检验的完整逻辑链。"
+    },
+    {
+      "family_id": "qf_long_johansen_interpretation",
+      "decision": "pass",
+      "reason": "训练约翰森检验统计量区别及结果应用，属于当前step的可学习内容。",
+      "practice_target": "学生能区分两个统计量并理解特征向量的实际用途。"
+    },
+    {
+      "family_id": "qf_quiz_cadf_interpretation",
+      "decision": "pass",
+      "reason": "训练根据p值解读CADF检验结果，属于当前step的可学习内容。",
+      "practice_target": "学生能根据p值判断序列是否协整。"
+    },
+    {
+      "family_id": "qf_quiz_johansen_rank",
+      "decision": "pass",
+      "reason": "训练根据统计量判断协整关系个数，属于当前step的可学习内容。",
+      "practice_target": "学生能根据迹统计量或最大特征值统计量确定r的值并解释其意义。"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "uncertain": 0
+  }
+}

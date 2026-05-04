@@ -1,0 +1,120 @@
+{
+  "chapter_id": "lecture-5",
+  "course_id": "comp7415a",
+  "lesson_id": "L5",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "想象一下，你发现两只股票的价格总是像跳舞一样，你进我退。",
+        "当它们暂时分开时，你赌它们会重新靠近。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "statistical_arbitrage"
+      ],
+      "lines": [
+        "这种思路，就是**<term id=\"statistical_arbitrage\">统计套利</term>**的核心。",
+        "它不预测市场涨跌，而是寻找价格关系中出现的统计偏差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "mean_reversion"
+      ],
+      "lines": [
+        "它本质上是一种**<term id=\"mean_reversion\">均值回归</term>**策略。",
+        "当价格偏离历史平均水平太远时，就押注它会回来。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "introduced_terms": [
+        "pairs_trading"
+      ],
+      "lines": [
+        "最经典的做法是**<term id=\"pairs_trading\">配对交易</term>**：",
+        "同时买入一只资产，卖出另一只高度相关的资产。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "introduced_terms": [
+        "market_neutral"
+      ],
+      "lines": [
+        "因为同时持有多头和空头，整个组合是**<term id=\"market_neutral\">市场中性</term>**的。",
+        "大盘涨跌的影响被抵消，收益只来自两只资产之间的相对价格变化。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "统计套利依赖均值回归假设：价格偏离历史关系后，倾向于回归。",
+        "kind": "single_choice",
+        "options": [
+          "市场永远有效",
+          "价格偏离后最终会回归",
+          "资产价格会一直上涨",
+          "两只资产完全独立"
+        ],
+        "prompt": "统计套利策略的核心假设是什么？"
+      },
+      "id": "s006",
+      "lines": [
+        "统计套利策略的核心假设是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Statistical arbitrage is a trading strategy that seeks to exploit statistical mis-pricings of one or more assets based on historical data. It is a mean reversion strategy that profits from the convergence of asset prices. Commonly involves pairs trading, basket trading, or market-neutral strategies. Due to market-neutral, it reduces exposure to overall market risk of a portfolio.",
+    "related": [
+      "Pairs Trading",
+      "Mean Reversion"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "market_neutral": {
+      "aliases": [
+        "Market Neutral"
+      ],
+      "display": "市场中性",
+      "gloss": "投资组合的整体市场风险敞口为零，收益不依赖大盘涨跌。"
+    },
+    "mean_reversion": {
+      "aliases": [
+        "Mean Reversion"
+      ],
+      "display": "均值回归",
+      "gloss": "资产价格偏离历史均值后，倾向于回归到该均值的现象。"
+    },
+    "pairs_trading": {
+      "aliases": [
+        "Pairs Trading"
+      ],
+      "display": "配对交易",
+      "gloss": "同时买入一只资产、卖出另一只相关资产，押注两者价差回归的交易方式。"
+    },
+    "statistical_arbitrage": {
+      "aliases": [
+        "Statistical Arbitrage",
+        "Stat Arb"
+      ],
+      "display": "统计套利",
+      "gloss": "利用历史数据寻找资产价格统计性错误定价，并押注价格回归的交易策略。"
+    }
+  }
+}

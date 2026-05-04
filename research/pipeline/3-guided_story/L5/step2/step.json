@@ -1,0 +1,129 @@
+{
+  "chapter_id": "lecture-5",
+  "course_id": "comp7415a",
+  "lesson_id": "L5",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "大多数金融价格序列本身并不平稳，它们会随机游走。",
+        "但两只不平稳的股票，它们的某种组合却可能是平稳的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s008",
+      "introduced_terms": [
+        "cointegration"
+      ],
+      "lines": [
+        "这种性质叫做**<term id=\"cointegration\">协整</term>**。",
+        "它描述的是两个或多个时间序列之间的长期均衡关系。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s009",
+      "introduced_terms": [
+        "stationary"
+      ],
+      "lines": [
+        "如果序列Y和X是协整的，就存在一个常数β，",
+        "使得组合 $z_t = y_t - \\beta x_t$ 是**<term id=\"stationary\">平稳</term>**的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s010",
+      "introduced_terms": [
+        "hedge_ratio"
+      ],
+      "lines": [
+        "这个β就是**<term id=\"hedge_ratio\">对冲比率</term>**。",
+        "它告诉你：每买入1股Y，应该卖出多少股X来构建市场中性组合。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s011",
+      "introduced_terms": [
+        "spread"
+      ],
+      "lines": [
+        "组合 $z_t$ 就是**<term id=\"spread\">价差</term>**。",
+        "当价差偏离均值太远时，就出现了交易信号。"
+      ],
+      "type": "narration"
+    },
+    {
+      "formula": {
+        "latex": "z_t = y_t - \\beta x_t \\text{ is stationary}",
+        "spoken": "价差序列等于Y的价格减去β乘以X的价格，这个序列是平稳的。"
+      },
+      "id": "s012",
+      "lines": [
+        "协整的数学定义很简洁：",
+        "$z_t = y_t - \\beta x_t$ 是平稳的。"
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "对冲比率"
+        ],
+        "explanation": "β决定了构建平稳组合时两种资产的比例，因此称为对冲比率。",
+        "kind": "fill_in_blank",
+        "prompt": "协整关系中的β被称为______。"
+      },
+      "id": "s013",
+      "lines": [
+        "协整关系中的β被称为什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Most financial time series are not stationary nor mean reverting. However, we can create a portfolio of individual price series so that the market value (or price) series of this portfolio is stationary. If we can find a stationary linear combination of several non-stationary price series, then these price series are called cointegrated.",
+    "related": [
+      "Cointegration",
+      "Stationarity",
+      "Hedge Ratio"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "cointegration": {
+      "aliases": [
+        "Cointegration"
+      ],
+      "display": "协整",
+      "gloss": "两个或多个非平稳时间序列的线性组合是平稳的，表明它们存在长期均衡关系。"
+    },
+    "hedge_ratio": {
+      "aliases": [
+        "Hedge Ratio",
+        "Cointegrating Coefficient"
+      ],
+      "display": "对冲比率",
+      "gloss": "构建平稳组合时，每单位资产X需要对应多少单位资产Y的系数。"
+    },
+    "spread": {
+      "aliases": [
+        "Spread"
+      ],
+      "display": "价差",
+      "gloss": "配对交易中，两只资产价格经过对冲比率调整后的差值。"
+    },
+    "stationary": {
+      "aliases": [
+        "Stationarity"
+      ],
+      "display": "平稳性",
+      "gloss": "时间序列的统计性质（如均值、方差）不随时间变化。"
+    }
+  }
+}

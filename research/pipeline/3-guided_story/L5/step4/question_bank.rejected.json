@@ -1,0 +1,60 @@
+{
+  "decisions": [
+    {
+      "decision": "pass",
+      "family_id": "qf_flash_cadf_steps",
+      "practice_target": "学生能准确回忆CADF检验的三个主要步骤及其顺序。",
+      "reason": "直接训练CADF检验的三个步骤，属于当前step的核心可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_flash_johansen_stats",
+      "practice_target": "学生能准确回忆迹统计量和最大特征值统计量的核心区别。",
+      "reason": "训练约翰森检验的两个统计量及其假设，属于当前step的核心可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_long_cadf_process",
+      "practice_target": "学生能系统阐述CADF检验的完整逻辑链。",
+      "reason": "训练CADF检验的完整流程和逻辑，属于当前step的可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_long_johansen_interpretation",
+      "practice_target": "学生能区分两个统计量并理解特征向量的实际用途。",
+      "reason": "训练约翰森检验统计量区别及结果应用，属于当前step的可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_quiz_cadf_interpretation",
+      "practice_target": "学生能根据p值判断序列是否协整。",
+      "reason": "训练根据p值解读CADF检验结果，属于当前step的可学习内容。"
+    },
+    {
+      "decision": "pass",
+      "family_id": "qf_quiz_johansen_rank",
+      "practice_target": "学生能根据迹统计量或最大特征值统计量确定r的值并解释其意义。",
+      "reason": "训练根据统计量判断协整关系个数，属于当前step的可学习内容。"
+    }
+  ],
+  "gate": "question_bank_gate",
+  "kept_family_ids": [
+    "qf_flash_cadf_steps",
+    "qf_flash_johansen_stats",
+    "qf_quiz_cadf_interpretation",
+    "qf_quiz_johansen_rank",
+    "qf_long_cadf_process",
+    "qf_long_johansen_interpretation"
+  ],
+  "rejected_families": {
+    "flashcard_families": [],
+    "longform_families": [],
+    "quiz_families": []
+  },
+  "rejected_family_ids": [],
+  "summary": {
+    "failed": 0,
+    "passed": 6,
+    "uncertain": 0
+  }
+}

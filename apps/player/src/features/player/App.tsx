@@ -51,6 +51,10 @@ type CourseSummary = {
 
 const emptyState = <T,>(): AsyncState<T> => ({ loading: true, data: null, error: null });
 
+const EMPTY_COURSES: CourseRecord[] = [];
+const EMPTY_MANIFESTS: Record<string, StoryManifest> = {};
+const EMPTY_STEPS: StoryManifestStep[] = [];
+
 const PROGRESS_STORAGE_KEY = "playdex-player-progress-v1";
 
 const defaultProgress = (): PlayerProgress => ({
@@ -62,6 +66,14 @@ const defaultProgress = (): PlayerProgress => ({
 const chapterKey = (courseId: string, chapterId: string) => `${courseId}:${chapterId}`;
 
 const safeColor = (value?: string, fallback = "#6ee7b7") => value ?? fallback;
+
+function isCourseReady(course: CourseRecord) {
+  return course.status === "ready";
+}
+
+function courseUnavailableMessage(course: CourseRecord) {
+  return course.validationErrors?.[0]?.message ?? "Course is blocked by backend catalog validation.";
+}
 
 function loadProgressFromStorage(): PlayerProgress {
   try {
@@ -154,7 +166,7 @@ function useCatalogState(): CatalogState {
       }
 
       const manifestPairs = await Promise.all(
-        result.data.courses.flatMap((course) =>
+        result.data.courses.filter(isCourseReady).flatMap((course) =>
           course.chapters.map(async (chapter) => {
             const manifest = await CourseAssetClient.loadManifest(chapter);
             return [chapterKey(course.courseId, chapter.chapterId), manifest.data ?? {}] as const;
@@ -426,27 +438,37 @@ export function App() {
   const [activeStepId, setActiveStepId] = React.useState<string | null>(null);
   const [selectedTerm, setSelectedTerm] = React.useState<{ id: string; term: TermEntry } | null>(null);
 
-  const courses = catalog.data?.index.courses ?? [];
-  const activeCourse = courses.find((course) => course.courseId === activeCourseId) ?? courses[0] ?? null;
+  const courses = catalog.data?.index.courses ?? EMPTY_COURSES;
+  const readyCourses = React.useMemo(() => courses.filter(isCourseReady), [courses]);
+  const activeCourse = readyCourses.find((course) => course.courseId === activeCourseId) ?? readyCourses[0] ?? null;
   const activeChapter =
     activeCourse?.chapters.find((chapter) => chapter.chapterId === activeChapterId) ?? activeCourse?.chapters[0] ?? null;
 
-  const manifests = catalog.data?.manifests ?? {};
+  const manifests = catalog.data?.manifests ?? EMPTY_MANIFESTS;
   const activeManifest = activeCourse && activeChapter ? manifests[chapterKey(activeCourse.courseId, activeChapter.chapterId)] : undefined;
-  const activeSteps = activeManifest?.steps ?? [];
+  const activeSteps = activeManifest?.steps ?? EMPTY_STEPS;
   const story = useStoryBundle(activeCourse, activeChapter, activeStepId);
   const textbook = useTextbookState(view === "textbook" ? activeChapter : null);
   const practice = usePracticeIndex(activeCourse, manifests);
 
   React.useEffect(() => {
-    if (!courses.length) {
+    if (!readyCourses.length) {
+      if (activeCourseId !== null) {
+        setActiveCourseId(null);
+      }
+      if (activeChapterId !== null) {
+        setActiveChapterId(null);
+      }
+      if (activeStepId !== null) {
+        setActiveStepId(null);
+      }
       return;
     }
-    if (!activeCourseId || !courses.some((course) => course.courseId === activeCourseId)) {
-      setActiveCourseId(courses[0].courseId);
-      setActiveChapterId(courses[0].chapters[0]?.chapterId ?? null);
+    if (!activeCourseId || !readyCourses.some((course) => course.courseId === activeCourseId)) {
+      setActiveCourseId(readyCourses[0].courseId);
+      setActiveChapterId(readyCourses[0].chapters[0]?.chapterId ?? null);
     }
-  }, [courses, activeCourseId]);
+  }, [readyCourses, activeCourseId, activeChapterId, activeStepId]);
 
   React.useEffect(() => {
     if (!activeCourse) {
@@ -465,7 +487,7 @@ export function App() {
     const remembered = progress.lastStepByChapter[key];
     const fallback = activeSteps[0]?.sequence_id ?? null;
     const nextStep = activeSteps.find((step) => step.sequence_id === remembered)?.sequence_id ?? fallback;
-    if (nextStep && nextStep !== activeStepId) {
+    if (nextStep !== activeStepId) {
       setActiveStepId(nextStep);
     }
   }, [activeCourse, activeChapter, activeSteps, progress.lastStepByChapter, activeStepId]);
@@ -517,14 +539,14 @@ export function App() {
   }, [practice.data, progress.reviewHistory]);
 
   const openCourse = React.useCallback((courseId: string) => {
-    const course = courses.find((entry) => entry.courseId === courseId);
+    const course = readyCourses.find((entry) => entry.courseId === courseId);
     if (!course) {
       return;
     }
     setActiveCourseId(courseId);
     setActiveChapterId(course.chapters[0]?.chapterId ?? null);
     setView("course");
-  }, [courses]);
+  }, [readyCourses]);
 
   const openChapter = React.useCallback((chapterId: string) => {
     if (!activeCourse) {
@@ -615,16 +637,19 @@ export function App() {
         <div className="course-list">
           {courses.map((course) => {
             const stats = courseStats.get(course.courseId);
+            const isBlocked = !isCourseReady(course);
             return (
               <button
                 key={course.courseId}
                 className={`course-jump ${activeCourse?.courseId === course.courseId ? "active" : ""}`}
+                disabled={isBlocked}
+                title={isBlocked ? courseUnavailableMessage(course) : undefined}
                 onClick={() => openCourse(course.courseId)}
               >
                 <div className="course-jump-title">{course.title}</div>
                 <div className="course-jump-meta">
                   <span>{course.category ?? "Course"}</span>
-                  <span>{stats?.mastery ?? 0}% mastery</span>
+                  <span>{isBlocked ? "blocked" : `${stats?.mastery ?? 0}% mastery`}</span>
                 </div>
                 <div className="progress-track" style={{ marginTop: 12 }}>
                   <div className="progress-fill" style={{ width: `${stats?.mastery ?? 0}%` }} />
@@ -661,6 +686,10 @@ export function App() {
         <main className="content-shell">
           {view === "library" ? (
             <LibraryView courses={courses} courseStats={courseStats} onOpenCourse={openCourse} />
+          ) : null}
+
+          {view !== "library" && !activeCourse ? (
+            <div className="empty-state">No ready courses are available. Open Course Library to inspect backend validation errors.</div>
           ) : null}
 
           {view === "course" && activeCourse ? (
@@ -762,21 +791,42 @@ function LibraryView({
       <div className="library-grid">
         {courses.map((course) => {
           const stats = courseStats.get(course.courseId);
+          const isBlocked = !isCourseReady(course);
           const color = safeColor(course.brandColor);
           return (
             <article
               key={course.courseId}
-              className="course-card"
+              className={`course-card ${isBlocked ? "disabled" : ""}`}
               style={{ ["--card-accent" as string]: `${color}22` }}
-              onClick={() => onOpenCourse(course.courseId)}
+              aria-disabled={isBlocked}
+              onClick={() => {
+                if (!isBlocked) {
+                  onOpenCourse(course.courseId);
+                }
+              }}
             >
               <div className="course-card-head">
-                <span className="pill">{course.category ?? "Course"}</span>
+                <div className="metric-row">
+                  <span className="pill">{course.category ?? "Course"}</span>
+                  <span className={`pill ${isBlocked ? "danger" : "accent"}`}>
+                    {isBlocked ? "Blocked" : "Ready"}
+                  </span>
+                </div>
                 <div className="course-emblem" style={{ background: `linear-gradient(135deg, ${color}, #60a5fa)` }}>
                   {course.courseId.slice(0, 2).toUpperCase()}
                 </div>
                 <h3>{course.title}</h3>
                 <p>{course.chapters.length} chapters · {stats?.totalSteps ?? 0} scenes · progression tracked locally</p>
+                {isBlocked ? (
+                  <div className="validation-error">
+                    {(course.validationErrors ?? [{ code: "BLOCKED", message: courseUnavailableMessage(course) }]).slice(0, 3).map((error, index) => (
+                      <span key={`${error.code ?? "validation"}-${index}`}>
+                        {error.path ? `${error.path}: ` : ""}
+                        {error.message}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
               </div>
               <div className="course-card-footer">
                 <div className="metric-row">
@@ -1603,4 +1653,3 @@ function LearningDock({
     </div>
   );
 }
-

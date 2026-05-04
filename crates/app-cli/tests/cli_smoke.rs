@@ -5,7 +5,10 @@ use std::{
     path::{Path, PathBuf},
     process,
     process::Command,
-    sync::atomic::{AtomicU64, Ordering},
+    sync::{
+        atomic::{AtomicU64, Ordering},
+        Arc, Mutex,
+    },
     thread,
     time::{SystemTime, UNIX_EPOCH},
 };
@@ -17,7 +20,13 @@ const ENV_KEYS: &[&str] = &[
     "COURSEGEN_LLM_BASE_URL",
     "COURSEGEN_LLM_MODEL",
     "COURSEGEN_LLM_MAX_TOKENS",
+    "COURSEGEN_LLM_PROVIDER",
     "COURSEGEN_LLM_TIMEOUT_SECONDS",
+    "DEEPSEEK_API_KEY",
+    "DEEPSEEK_BASE_URL",
+    "DEEPSEEK_MAX_TOKENS",
+    "DEEPSEEK_MODEL",
+    "DEEPSEEK_TIMEOUT_SECONDS",
     "OPENAI_API_KEY",
     "OPENAI_BASE_URL",
     "OPENAI_MODEL",
@@ -234,6 +243,7 @@ impl TestSupport {
 struct StubLlmServer {
     base_url: String,
     handle: thread::JoinHandle<()>,
+    requests: Arc<Mutex<Vec<String>>>,
 }
 
 impl StubLlmServer {
@@ -244,14 +254,19 @@ impl StubLlmServer {
             .local_addr()
             .expect("stub server should report its bound address");
         let base_url = format!("http://{addr}/v1");
+        let requests = Arc::new(Mutex::new(Vec::new()));
+        let request_sink = Arc::clone(&requests);
 
         let handle = thread::spawn(move || {
             for content in contents {
                 let (mut stream, _) = listener
                     .accept()
                     .expect("stub server should accept an LLM request");
-                let mut buffer = [0_u8; 8192];
-                let _ = stream.read(&mut buffer);
+                let request = Self::read_http_request(&mut stream);
+                request_sink
+                    .lock()
+                    .expect("request sink should not be poisoned")
+                    .push(request);
                 let body = serde_json::json!({
                     "choices": [{
                         "message": {
@@ -273,17 +288,74 @@ impl StubLlmServer {
             }
         });
 
-        Self { base_url, handle }
+        Self {
+            base_url,
+            handle,
+            requests,
+        }
     }
 
     fn base_url(&self) -> &str {
         &self.base_url
     }
 
-    fn finish(self) {
+    fn finish(self) -> Vec<String> {
         self.handle
             .join()
             .expect("stub server should finish cleanly");
+        Arc::try_unwrap(self.requests)
+            .expect("stub server request sink should have one owner")
+            .into_inner()
+            .expect("request sink should not be poisoned")
+    }
+
+    fn read_http_request(stream: &mut impl Read) -> String {
+        let mut buffer = Vec::new();
+        let mut chunk = [0_u8; 4096];
+        let header_end = loop {
+            let bytes_read = stream
+                .read(&mut chunk)
+                .expect("stub server should read request bytes");
+            if bytes_read == 0 {
+                break buffer.len();
+            }
+
+            buffer.extend_from_slice(&chunk[..bytes_read]);
+            if let Some(header_end) = Self::find_header_end(&buffer) {
+                break header_end;
+            }
+        };
+
+        let headers = String::from_utf8_lossy(&buffer[..header_end]);
+        let content_length = headers
+            .lines()
+            .find_map(|line| {
+                let (key, value) = line.split_once(':')?;
+                if key.eq_ignore_ascii_case("content-length") {
+                    return value.trim().parse::<usize>().ok();
+                }
+                None
+            })
+            .unwrap_or(0);
+
+        while buffer.len().saturating_sub(header_end) < content_length {
+            let bytes_read = stream
+                .read(&mut chunk)
+                .expect("stub server should read request body bytes");
+            if bytes_read == 0 {
+                break;
+            }
+            buffer.extend_from_slice(&chunk[..bytes_read]);
+        }
+
+        String::from_utf8_lossy(&buffer).into_owned()
+    }
+
+    fn find_header_end(buffer: &[u8]) -> Option<usize> {
+        buffer
+            .windows(b"\r\n\r\n".len())
+            .position(|window| window == b"\r\n\r\n")
+            .map(|position| position + b"\r\n\r\n".len())
     }
 }
 
@@ -579,6 +651,64 @@ fn score_relevance_writes_report_and_audit_outputs_with_local_llm_stub() {
 }
 
 #[test]
+fn score_relevance_uses_deepseek_provider_defaults_and_api_keys_file() {
+    let repo = TempRepo::new();
+    repo.seed_relevance_inputs();
+    repo.write("research/API_KEYS.md", "DEEPSEEK: test-token\n");
+    let report = serde_json::json!({
+        "lesson_id": "L2",
+        "target_language": "zh-CN",
+        "exam_signal": {"summary": "sample", "notes": []},
+        "step_scores": [],
+        "question_family_scores": [],
+        "textbook_section_scores": [],
+        "coverage_scores": []
+    })
+    .to_string();
+    let server = StubLlmServer::start(vec![report]);
+
+    let output = TestSupport::coursegen_command()
+        .current_dir(repo.root())
+        .env("COURSEGEN_LLM_PROVIDER", "deepseek")
+        .env("DEEPSEEK_BASE_URL", server.base_url())
+        .args(["score-relevance", "L2", "--target-language", "zh-CN"])
+        .output()
+        .expect("coursegen should run");
+
+    let requests = server.finish();
+
+    assert!(
+        output.status.success(),
+        "stderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert_eq!(
+        requests.len(),
+        1,
+        "DeepSeek provider should send one request"
+    );
+    let request = &requests[0];
+    assert!(
+        request.starts_with("POST /v1/chat/completions HTTP/1.1"),
+        "request should use the provider chat completions path: {request}"
+    );
+    assert!(
+        request
+            .to_ascii_lowercase()
+            .contains("authorization: bearer test-token"),
+        "request should use the DeepSeek key from research/API_KEYS.md"
+    );
+    let body = request
+        .split_once("\r\n\r\n")
+        .map(|(_, body)| body)
+        .expect("request should include a JSON body");
+    let request_json: serde_json::Value =
+        serde_json::from_str(body).expect("request body should parse as JSON");
+    assert_eq!(request_json["model"], "deepseek-chat");
+    assert_eq!(request_json["max_tokens"].as_u64(), Some(8192));
+}
+
+#[test]
 fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
     let repo = TempRepo::new();
     repo.seed_prompts();
@@ -677,6 +807,77 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
         validate.status.success(),
         "stderr: {}",
         String::from_utf8_lossy(&validate.stderr)
+    );
+}
+
+#[test]
+fn validate_catalog_writes_ready_status_for_complete_course() {
+    let repo = TempRepo::new();
+    repo.seed_relevance_inputs();
+
+    let output = TestSupport::coursegen_command()
+        .current_dir(repo.root())
+        .args(["validate-catalog", "--write"])
+        .output()
+        .expect("coursegen should validate catalog");
+
+    assert!(
+        output.status.success(),
+        "stderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(
+        String::from_utf8_lossy(&output.stdout).contains("ready=1 blocked=0"),
+        "stdout: {}",
+        String::from_utf8_lossy(&output.stdout)
+    );
+
+    let index: serde_json::Value = serde_json::from_str(&TestSupport::read_text(
+        repo.root().join("research/pipeline/course-index.json"),
+    ))
+    .expect("course index should parse");
+    let course = &index["courses"][0];
+    assert_eq!(course["status"], "ready");
+    assert!(
+        course.get("validationErrors").is_none(),
+        "ready courses should not carry stale validation errors"
+    );
+}
+
+#[test]
+fn validate_catalog_writes_blocked_status_for_missing_assets() {
+    let repo = TempRepo::new();
+
+    let output = TestSupport::coursegen_command()
+        .current_dir(repo.root())
+        .args(["validate-catalog", "--write"])
+        .output()
+        .expect("coursegen should validate catalog");
+
+    assert!(
+        !output.status.success(),
+        "incomplete catalog validation should fail"
+    );
+    assert!(
+        String::from_utf8_lossy(&output.stderr).contains("ready=0 blocked=1"),
+        "stderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+
+    let index: serde_json::Value = serde_json::from_str(&TestSupport::read_text(
+        repo.root().join("research/pipeline/course-index.json"),
+    ))
+    .expect("course index should parse");
+    let course = &index["courses"][0];
+    let errors = course["validationErrors"]
+        .as_array()
+        .expect("blocked course should carry validation errors");
+    assert_eq!(course["status"], "blocked");
+    assert!(
+        errors
+            .iter()
+            .any(|error| error["code"] == "MISSING_MANIFEST"),
+        "errors should include missing manifest: {errors:?}"
     );
 }
 

@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "{\n  \"decisions\": [\n    {\n      \"family_id\": \"qf_flash_cadf_steps\",\n      \"decision\": \"pass\",\n      \"reason\": \"直接训练CADF检验的三个步骤，属于当前step的核心可学习内容。\",\n      \"practice_target\": \"学生能准确回忆CADF检验的三个主要步骤及其顺序。\"\n    },\n    {\n      \"family_id\": \"qf_flash_johansen_stats\",\n      \"decision\": \"pass\",\n      \"reason\": \"训练约翰森检验的两个统计量及其假设，属于当前step的核心可学习内容。\",\n      \"practice_target\": \"学生能准确回忆迹统计量和最大特征值统计量的核心区别。\"\n    },\n    {\n      \"family_id\": \"qf_long_cadf_process\",\n      \"decision\": \"pass\",\n      \"reason\": \"训练CADF检验的完整流程和逻辑，属于当前step的可学习内容。\",\n      \"practice_target\": \"学生能系统阐述CADF检验的完整逻辑链。\"\n    },\n    {\n      \"family_id\": \"qf_long_johansen_interpretation\",\n      \"decision\": \"pass\",\n      \"reason\": \"训练约翰森检验统计量区别及结果应用，属于当前step的可学习内容。\",\n      \"practice_target\": \"学生能区分两个统计量并理解特征向量的实际用途。\"\n    },\n    {\n      \"family_id\": \"qf_quiz_cadf_interpretation\",\n      \"decision\": \"pass\",\n      \"reason\": \"训练根据p值解读CADF检验结果，属于当前step的可学习内容。\",\n      \"practice_target\": \"学生能根据p值判断序列是否协整。\"\n    },\n    {\n      \"family_id\": \"qf_quiz_johansen_rank\",\n      \"decision\": \"pass\",\n      \"reason\": \"训练根据统计量判断协整关系个数，属于当前step的可学习内容。\",\n      \"practice_target\": \"学生能根据迹统计量或最大特征值统计量确定r的值并解释其意义。\"\n    }\n  ],\n  \"summary\": {\n    \"passed\": 6,\n    \"failed\": 0,\n    \"uncertain\": 0\n  }\n}",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1777875973,
+  "id": "ddf0c592-fbab-4214-bf45-4e05542a934f",
+  "model": "deepseek-v4-flash",
+  "object": "chat.completion",
+  "system_fingerprint": "fp_058df29938_prod0820_fp8_kvcache_20260402",
+  "usage": {
+    "completion_tokens": 459,
+    "prompt_cache_hit_tokens": 128,
+    "prompt_cache_miss_tokens": 5754,
+    "prompt_tokens": 5882,
+    "prompt_tokens_details": {
+      "cached_tokens": 128
+    },
+    "total_tokens": 6341
+  }
+}

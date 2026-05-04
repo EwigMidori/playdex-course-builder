@@ -48,8 +48,9 @@ impl<'a> LlmClient<'a> {
             .build()
             .map_err(LlmClientError::Request)?;
         let url = format!(
-            "{}/chat/completions",
-            self.config.base_url.trim_end_matches('/')
+            "{}/{}",
+            self.config.base_url.trim_end_matches('/'),
+            self.config.provider.chat_completions_path()
         );
         let response = client
             .post(url)

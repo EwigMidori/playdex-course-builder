@@ -40,6 +40,10 @@ pub enum Command {
         #[command(flatten)]
         target: TargetArgs,
     },
+    ValidateCatalog {
+        #[arg(long)]
+        write: bool,
+    },
     ScoreRelevance {
         #[command(flatten)]
         target: TargetArgs,

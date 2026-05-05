@@ -15,6 +15,7 @@ import {
   getRuntimeProgress
 } from "../runtime/story-runtime";
 import type { SceneModel, StoryRuntimeAction, StoryRuntimeEvaluation, StoryRuntimeState } from "../runtime/story-runtime-types";
+import { GlossaryTooltip } from "./GlossaryTooltip";
 import "./StoryOverlay.css";
 
 function debugStoryRuntime(event: string, payload: Record<string, unknown>) {
@@ -262,9 +263,9 @@ export function StoryOverlay({
           }
           const [, id, label] = match;
           const term = runtimeScene.termCatalog[id];
-          return (
-            <span
-              key={partIndex}
+          const labelNode = (
+            <button
+              key={`token-${partIndex}`}
               className="term-token"
               onClick={(event) => {
                 event.stopPropagation();
@@ -272,9 +273,20 @@ export function StoryOverlay({
                   onOpenTerm(id, term);
                 }
               }}
+              type="button"
             >
               {label}
-            </span>
+            </button>
+          );
+
+          if (!term) {
+            return labelNode;
+          }
+
+          return (
+            <GlossaryTooltip key={partIndex} termId={id} term={term}>
+              {labelNode}
+            </GlossaryTooltip>
           );
         })}
       </p>

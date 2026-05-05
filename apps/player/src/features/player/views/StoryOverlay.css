@@ -121,9 +121,22 @@
 }
 
 .term-token {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--accent);
   border-bottom: 1px dotted var(--accent);
   cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.term-token:hover,
+.term-token:focus-visible {
+  color: #7ff2a5;
+  border-bottom-color: #7ff2a5;
+  outline: none;
 }
 
 .story-footer {

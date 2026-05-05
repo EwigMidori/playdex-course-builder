@@ -28,6 +28,12 @@ type RuntimeControllerState = {
   revision: number;
 };
 
+type DialogPointerSnapshot = {
+  x: number;
+  y: number;
+  at: number;
+};
+
 function createRuntimeControllerState(scene: SceneModel): RuntimeControllerState {
   return {
     runtimeState: createStoryRuntimeState(scene),
@@ -54,6 +60,7 @@ export function StoryOverlay({
   onOpenTerm: (id: string, term: TermEntry) => void;
 }) {
   const [showLog, setShowLog] = React.useState(false);
+  const dialogPointerRef = React.useRef<DialogPointerSnapshot | null>(null);
   const runtimeScene = sceneState.data ?? {
     sceneId: "pending-scene",
     courseId: course.courseId,
@@ -203,6 +210,59 @@ export function StoryOverlay({
     }
     applyRuntimeAction({ type: "back" });
   }, [applyRuntimeAction, runtimeScene.sceneId, runtimeState.cursor, runtimeState.history.length]);
+
+  const selectionBlocksAdvance = React.useCallback((container: HTMLDivElement | null) => {
+    if (!container) {
+      return false;
+    }
+    const selection = window.getSelection();
+    if (!selection || selection.isCollapsed || selection.toString().trim().length === 0) {
+      return false;
+    }
+    const anchorNode = selection.anchorNode;
+    const focusNode = selection.focusNode;
+    return Boolean(anchorNode && focusNode && container.contains(anchorNode) && container.contains(focusNode));
+  }, []);
+
+  const handleDialogPointerDown = React.useCallback((event: React.PointerEvent<HTMLDivElement>) => {
+    if (currentNode?.kind === "exercise") {
+      return;
+    }
+    dialogPointerRef.current = {
+      x: event.clientX,
+      y: event.clientY,
+      at: Date.now()
+    };
+  }, [currentNode?.kind]);
+
+  const handleDialogClick = React.useCallback(
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      if (currentNode?.kind === "exercise") {
+        return;
+      }
+
+      const target = event.target instanceof Element ? event.target : null;
+      if (target?.closest("button, a, input, textarea, select, label, [role='button'], [data-no-advance='true']")) {
+        return;
+      }
+
+      if (selectionBlocksAdvance(event.currentTarget)) {
+        return;
+      }
+
+      const pointer = dialogPointerRef.current;
+      if (pointer) {
+        const moved = Math.hypot(event.clientX - pointer.x, event.clientY - pointer.y);
+        const held = Date.now() - pointer.at;
+        if (moved > 6 || held > 600) {
+          return;
+        }
+      }
+
+      handleNext();
+    },
+    [currentNode?.kind, handleNext, selectionBlocksAdvance]
+  );
 
   React.useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -357,7 +417,11 @@ export function StoryOverlay({
           )}
         </div>
 
-        <div className="dialog-shell" onClick={currentNode?.kind === "exercise" ? undefined : handleNext}>
+        <div
+          className="dialog-shell"
+          onClick={currentNode?.kind === "exercise" ? undefined : handleDialogClick}
+          onPointerDown={currentNode?.kind === "exercise" ? undefined : handleDialogPointerDown}
+        >
           <div className="dialog-topline">
             <span className="dialog-speaker">{currentNode?.kind === "exercise" ? "System Test" : "Instructor"}</span>
             <div className="dialog-progress">

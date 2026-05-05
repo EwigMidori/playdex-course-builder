@@ -49,7 +49,11 @@ impl RelevanceScorer {
         lesson: &LessonPaths,
         target_language: &str,
     ) -> Result<Value, RelevanceError> {
-        let course_description = Self::read_optional_text(&lesson.related_important_path())?;
+        let course_description = lesson
+            .related_important_path()
+            .map(|path| Self::read_optional_text(&path))
+            .transpose()?
+            .unwrap_or_default();
         let plain_text = Self::read_required_text(&lesson.plain_text_path())?;
         let manifest = Self::read_json(
             &lesson.guided_story_manifest_path(),

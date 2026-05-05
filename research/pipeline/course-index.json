@@ -133,6 +133,89 @@
           "metaDir": "research/pipeline/meta/L10"
         }
       ]
+    },
+    {
+      "courseId": "user-1-comp7103",
+      "title": "COMP7103",
+      "category": "User Course",
+      "brandColor": "#d97706",
+      "status": "blocked",
+      "validationErrors": [
+        {
+          "code": "PIPELINE_PENDING",
+          "message": "Course assets have not been generated yet under users/1/courses/comp7103/pipeline."
+        }
+      ],
+      "examRawDir": "users/1/courses/comp7103/inputs/uploads/original/exams",
+      "examPlainRoot": "users/1/courses/comp7103/pipeline/plain/exams",
+      "chapters": [
+        {
+          "chapterId": "lecture-01-association-1",
+          "title": "Association 1",
+          "order": 1,
+          "lessonId": "u1-comp7103-association-1",
+          "rawPdfPath": "users/1/courses/comp7103/inputs/uploads/original/slides/association1.pdf",
+          "plainOutputDir": "users/1/courses/comp7103/pipeline/plain/u1-comp7103-association-1",
+          "guidedStoryDir": "users/1/courses/comp7103/pipeline/guided_story/u1-comp7103-association-1",
+          "textbookPath": "users/1/courses/comp7103/pipeline/textbook/u1-comp7103-association-1.mdx",
+          "metaDir": "users/1/courses/comp7103/pipeline/meta/u1-comp7103-association-1"
+        },
+        {
+          "chapterId": "lecture-02-association-2",
+          "title": "Association 2",
+          "order": 2,
+          "lessonId": "u1-comp7103-association-2",
+          "rawPdfPath": "users/1/courses/comp7103/inputs/uploads/original/slides/association2.pdf",
+          "plainOutputDir": "users/1/courses/comp7103/pipeline/plain/u1-comp7103-association-2",
+          "guidedStoryDir": "users/1/courses/comp7103/pipeline/guided_story/u1-comp7103-association-2",
+          "textbookPath": "users/1/courses/comp7103/pipeline/textbook/u1-comp7103-association-2.mdx",
+          "metaDir": "users/1/courses/comp7103/pipeline/meta/u1-comp7103-association-2"
+        },
+        {
+          "chapterId": "lecture-03-classification-1",
+          "title": "Classification 1",
+          "order": 3,
+          "lessonId": "u1-comp7103-classification-1",
+          "rawPdfPath": "users/1/courses/comp7103/inputs/uploads/original/slides/classification1 (2).pdf",
+          "plainOutputDir": "users/1/courses/comp7103/pipeline/plain/u1-comp7103-classification-1",
+          "guidedStoryDir": "users/1/courses/comp7103/pipeline/guided_story/u1-comp7103-classification-1",
+          "textbookPath": "users/1/courses/comp7103/pipeline/textbook/u1-comp7103-classification-1.mdx",
+          "metaDir": "users/1/courses/comp7103/pipeline/meta/u1-comp7103-classification-1"
+        },
+        {
+          "chapterId": "lecture-04-classification-2",
+          "title": "Classification 2",
+          "order": 4,
+          "lessonId": "u1-comp7103-classification-2",
+          "rawPdfPath": "users/1/courses/comp7103/inputs/uploads/original/slides/classification2 (1).pdf",
+          "plainOutputDir": "users/1/courses/comp7103/pipeline/plain/u1-comp7103-classification-2",
+          "guidedStoryDir": "users/1/courses/comp7103/pipeline/guided_story/u1-comp7103-classification-2",
+          "textbookPath": "users/1/courses/comp7103/pipeline/textbook/u1-comp7103-classification-2.mdx",
+          "metaDir": "users/1/courses/comp7103/pipeline/meta/u1-comp7103-classification-2"
+        },
+        {
+          "chapterId": "lecture-05-clustering-1",
+          "title": "Clustering 1",
+          "order": 5,
+          "lessonId": "u1-comp7103-clustering-1",
+          "rawPdfPath": "users/1/courses/comp7103/inputs/uploads/original/slides/clustering1.pdf",
+          "plainOutputDir": "users/1/courses/comp7103/pipeline/plain/u1-comp7103-clustering-1",
+          "guidedStoryDir": "users/1/courses/comp7103/pipeline/guided_story/u1-comp7103-clustering-1",
+          "textbookPath": "users/1/courses/comp7103/pipeline/textbook/u1-comp7103-clustering-1.mdx",
+          "metaDir": "users/1/courses/comp7103/pipeline/meta/u1-comp7103-clustering-1"
+        },
+        {
+          "chapterId": "lecture-06-data-1",
+          "title": "Data 1",
+          "order": 6,
+          "lessonId": "u1-comp7103-data-1",
+          "rawPdfPath": "users/1/courses/comp7103/inputs/uploads/original/slides/data (1).pdf",
+          "plainOutputDir": "users/1/courses/comp7103/pipeline/plain/u1-comp7103-data-1",
+          "guidedStoryDir": "users/1/courses/comp7103/pipeline/guided_story/u1-comp7103-data-1",
+          "textbookPath": "users/1/courses/comp7103/pipeline/textbook/u1-comp7103-data-1.mdx",
+          "metaDir": "users/1/courses/comp7103/pipeline/meta/u1-comp7103-data-1"
+        }
+      ]
     }
   ]
 }

@@ -52,7 +52,11 @@ impl MvpRunner {
         }
 
         let plain_text = Self::read_required_text(&lesson.plain_text_path())?;
-        let related_important = Self::read_optional_text(&lesson.related_important_path())?;
+        let related_important = lesson
+            .related_important_path()
+            .map(|path| Self::read_optional_text(&path))
+            .transpose()?
+            .unwrap_or_default();
         let mut llm = None;
 
         if force_guided_story || !Self::guided_story_ready(lesson) {

@@ -1,8 +1,20 @@
 import React from "react";
 import { evaluate } from "@mdx-js/mdx";
+import { useAtomValue, useSetAtom } from "jotai";
 import * as runtime from "react/jsx-runtime";
 import remarkGfm from "remark-gfm";
+import { toast } from "sonner";
 import { CourseAssetClient } from "../../data";
+import {
+  markStepCompleteAtom,
+  patchPlayerNavigationAtom,
+  playerNavigationAtom,
+  playerProgressAtom,
+  rateReviewAtom,
+  rememberStepAtom,
+  type PlayerNavigationState,
+  type ViewMode
+} from "../../state";
 import type {
   ChapterRecord,
   CourseIndex,
@@ -19,8 +31,6 @@ import type {
   StoryStep,
   TermEntry
 } from "../../types";
-
-type ViewMode = "library" | "course" | "chapter" | "learning" | "review" | "bank" | "textbook";
 
 type AsyncState<T> = {
   loading: boolean;
@@ -55,17 +65,18 @@ const EMPTY_COURSES: CourseRecord[] = [];
 const EMPTY_MANIFESTS: Record<string, StoryManifest> = {};
 const EMPTY_STEPS: StoryManifestStep[] = [];
 
-const PROGRESS_STORAGE_KEY = "playdex-player-progress-v1";
-
-const defaultProgress = (): PlayerProgress => ({
-  completedSteps: {},
-  lastStepByChapter: {},
-  reviewHistory: {}
-});
-
 const chapterKey = (courseId: string, chapterId: string) => `${courseId}:${chapterId}`;
 
 const safeColor = (value?: string, fallback = "#6ee7b7") => value ?? fallback;
+
+type ContinueTarget = {
+  chapterId: string;
+  stepId: string;
+};
+
+function normalizeExerciseText(value: string) {
+  return value.trim().toLowerCase().split(/\s+/).filter(Boolean).join(" ");
+}
 
 function isCourseReady(course: CourseRecord) {
   return course.status === "ready";
@@ -75,79 +86,34 @@ function courseUnavailableMessage(course: CourseRecord) {
   return course.validationErrors?.[0]?.message ?? "Course is blocked by backend catalog validation.";
 }
 
-function loadProgressFromStorage(): PlayerProgress {
-  try {
-    const raw = window.localStorage.getItem(PROGRESS_STORAGE_KEY);
-    if (!raw) {
-      return defaultProgress();
-    }
-    const parsed = JSON.parse(raw) as PlayerProgress;
-    return {
-      completedSteps: parsed.completedSteps ?? {},
-      lastStepByChapter: parsed.lastStepByChapter ?? {},
-      reviewHistory: parsed.reviewHistory ?? {}
-    };
-  } catch {
-    return defaultProgress();
+function getCourseContinueTarget(
+  course: CourseRecord | null,
+  manifests: Record<string, StoryManifest>,
+  progress: PlayerProgress
+): ContinueTarget | null {
+  if (!course) {
+    return null;
   }
-}
 
-function usePlayerProgress() {
-  const [progress, setProgress] = React.useState<PlayerProgress>(() => loadProgressFromStorage());
+  let fallback: ContinueTarget | null = null;
 
-  React.useEffect(() => {
-    window.localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(progress));
-  }, [progress]);
+  for (const chapter of course.chapters) {
+    const manifest = manifests[chapterKey(course.courseId, chapter.chapterId)];
+    const completed = new Set(progress.completedSteps[chapterKey(course.courseId, chapter.chapterId)] ?? []);
 
-  const markStepComplete = React.useCallback((courseId: string, chapterId: string, stepId: string) => {
-    const key = chapterKey(courseId, chapterId);
-    setProgress((current) => {
-      const completed = new Set(current.completedSteps[key] ?? []);
-      completed.add(stepId);
-      return {
-        ...current,
-        completedSteps: {
-          ...current.completedSteps,
-          [key]: [...completed]
-        },
-        lastStepByChapter: {
-          ...current.lastStepByChapter,
-          [key]: stepId
-        }
-      };
-    });
-  }, []);
-
-  const rememberStep = React.useCallback((courseId: string, chapterId: string, stepId: string) => {
-    const key = chapterKey(courseId, chapterId);
-    setProgress((current) => ({
-      ...current,
-      lastStepByChapter: {
-        ...current.lastStepByChapter,
-        [key]: stepId
+    for (const step of manifest?.steps ?? EMPTY_STEPS) {
+      if (!step.sequence_id) {
+        continue;
       }
-    }));
-  }, []);
 
-  const rateReview = React.useCallback((questionId: string, rating: number) => {
-    setProgress((current) => {
-      const previous = current.reviewHistory[questionId];
-      const nextEntry: ReviewHistoryEntry = {
-        seenCount: (previous?.seenCount ?? 0) + 1,
-        lastRating: rating,
-        updatedAt: Date.now()
-      };
-      return {
-        ...current,
-        reviewHistory: {
-          ...current.reviewHistory,
-          [questionId]: nextEntry
-        }
-      };
-    });
-  }, []);
+      fallback = { chapterId: chapter.chapterId, stepId: step.sequence_id };
+      if (!completed.has(step.sequence_id)) {
+        return fallback;
+      }
+    }
+  }
 
-  return { progress, markStepComplete, rememberStep, rateReview };
+  return fallback;
 }
 
 function useCatalogState(): CatalogState {
@@ -431,12 +397,15 @@ function useCompiledMdx(source: string | null) {
 
 export function App() {
   const catalog = useCatalogState();
-  const { progress, markStepComplete, rememberStep, rateReview } = usePlayerProgress();
-  const [view, setView] = React.useState<ViewMode>("library");
-  const [activeCourseId, setActiveCourseId] = React.useState<string | null>(null);
-  const [activeChapterId, setActiveChapterId] = React.useState<string | null>(null);
-  const [activeStepId, setActiveStepId] = React.useState<string | null>(null);
+  const progress = useAtomValue(playerProgressAtom);
+  const navigation = useAtomValue(playerNavigationAtom);
+  const patchNavigation = useSetAtom(patchPlayerNavigationAtom);
+  const markStepComplete = useSetAtom(markStepCompleteAtom);
+  const rememberStep = useSetAtom(rememberStepAtom);
+  const rateReview = useSetAtom(rateReviewAtom);
   const [selectedTerm, setSelectedTerm] = React.useState<{ id: string; term: TermEntry } | null>(null);
+
+  const { view, activeCourseId, activeChapterId, activeStepId } = navigation;
 
   const courses = catalog.data?.index.courses ?? EMPTY_COURSES;
   const readyCourses = React.useMemo(() => courses.filter(isCourseReady), [courses]);
@@ -447,50 +416,75 @@ export function App() {
   const manifests = catalog.data?.manifests ?? EMPTY_MANIFESTS;
   const activeManifest = activeCourse && activeChapter ? manifests[chapterKey(activeCourse.courseId, activeChapter.chapterId)] : undefined;
   const activeSteps = activeManifest?.steps ?? EMPTY_STEPS;
+  const continueTarget = React.useMemo(
+    () => getCourseContinueTarget(activeCourse, manifests, progress),
+    [activeCourse, manifests, progress]
+  );
   const story = useStoryBundle(activeCourse, activeChapter, activeStepId);
   const textbook = useTextbookState(view === "textbook" ? activeChapter : null);
   const practice = usePracticeIndex(activeCourse, manifests);
 
+  const setNavigationState = React.useCallback(
+    (patch: Partial<PlayerNavigationState>) => {
+      patchNavigation(patch);
+    },
+    [patchNavigation]
+  );
+
+  const setView = React.useCallback(
+    (nextView: ViewMode) => {
+      setNavigationState({ view: nextView });
+    },
+    [setNavigationState]
+  );
+
   React.useEffect(() => {
     if (!readyCourses.length) {
-      if (activeCourseId !== null) {
-        setActiveCourseId(null);
-      }
-      if (activeChapterId !== null) {
-        setActiveChapterId(null);
-      }
-      if (activeStepId !== null) {
-        setActiveStepId(null);
+      if (activeCourseId !== null || activeChapterId !== null || activeStepId !== null) {
+        setNavigationState({
+          activeCourseId: null,
+          activeChapterId: null,
+          activeStepId: null
+        });
       }
       return;
     }
+
     if (!activeCourseId || !readyCourses.some((course) => course.courseId === activeCourseId)) {
-      setActiveCourseId(readyCourses[0].courseId);
-      setActiveChapterId(readyCourses[0].chapters[0]?.chapterId ?? null);
+      setNavigationState({
+        activeCourseId: readyCourses[0].courseId,
+        activeChapterId: readyCourses[0].chapters[0]?.chapterId ?? null
+      });
     }
-  }, [readyCourses, activeCourseId, activeChapterId, activeStepId]);
+  }, [activeChapterId, activeCourseId, activeStepId, readyCourses, setNavigationState]);
 
   React.useEffect(() => {
     if (!activeCourse) {
       return;
     }
+
     if (!activeChapterId || !activeCourse.chapters.some((chapter) => chapter.chapterId === activeChapterId)) {
-      setActiveChapterId(activeCourse.chapters[0]?.chapterId ?? null);
+      setNavigationState({
+        activeChapterId: activeCourse.chapters[0]?.chapterId ?? null
+      });
     }
-  }, [activeCourse, activeChapterId]);
+  }, [activeChapterId, activeCourse, setNavigationState]);
 
   React.useEffect(() => {
     if (!activeCourse || !activeChapter) {
       return;
     }
+
     const key = chapterKey(activeCourse.courseId, activeChapter.chapterId);
     const remembered = progress.lastStepByChapter[key];
     const fallback = activeSteps[0]?.sequence_id ?? null;
     const nextStep = activeSteps.find((step) => step.sequence_id === remembered)?.sequence_id ?? fallback;
     if (nextStep !== activeStepId) {
-      setActiveStepId(nextStep);
+      setNavigationState({
+        activeStepId: nextStep
+      });
     }
-  }, [activeCourse, activeChapter, activeSteps, progress.lastStepByChapter, activeStepId]);
+  }, [activeCourse, activeChapter, activeStepId, activeSteps, progress.lastStepByChapter, setNavigationState]);
 
   const courseStats = React.useMemo(() => {
     return new Map<string, CourseSummary>(
@@ -538,27 +532,61 @@ export function App() {
     }).length;
   }, [practice.data, progress.reviewHistory]);
 
-  const openCourse = React.useCallback((courseId: string) => {
-    const course = readyCourses.find((entry) => entry.courseId === courseId);
-    if (!course) {
-      return;
-    }
-    setActiveCourseId(courseId);
-    setActiveChapterId(course.chapters[0]?.chapterId ?? null);
-    setView("course");
-  }, [readyCourses]);
+  const openCourse = React.useCallback(
+    (courseId: string) => {
+      const course = readyCourses.find((entry) => entry.courseId === courseId);
+      if (!course) {
+        return;
+      }
+      setNavigationState({
+        activeCourseId: courseId,
+        activeChapterId: course.chapters[0]?.chapterId ?? null,
+        view: "course"
+      });
+    },
+    [readyCourses, setNavigationState]
+  );
 
-  const openChapter = React.useCallback((chapterId: string) => {
-    if (!activeCourse) {
-      return;
-    }
-    const chapter = activeCourse.chapters.find((entry) => entry.chapterId === chapterId);
-    if (!chapter) {
-      return;
-    }
-    setActiveChapterId(chapterId);
-    setView("chapter");
-  }, [activeCourse]);
+  const openChapter = React.useCallback(
+    (chapterId: string) => {
+      if (!activeCourse) {
+        return;
+      }
+      const chapter = activeCourse.chapters.find((entry) => entry.chapterId === chapterId);
+      if (!chapter) {
+        return;
+      }
+      setNavigationState({
+        activeChapterId: chapterId,
+        view: "chapter"
+      });
+    },
+    [activeCourse, setNavigationState]
+  );
+
+  const navigateToStep = React.useCallback(
+    (chapterId: string, stepId: string, nextView: ViewMode = "learning") => {
+      if (!activeCourse) {
+        return;
+      }
+      const chapter = activeCourse.chapters.find((entry) => entry.chapterId === chapterId);
+      if (!chapter) {
+        return;
+      }
+      rememberStep({
+        courseId: activeCourse.courseId,
+        chapterId,
+        stepId
+      });
+      setNavigationState({
+        activeCourseId: activeCourse.courseId,
+        activeChapterId: chapterId,
+        activeStepId: stepId,
+        view: nextView
+      });
+    },
+    [activeCourse, rememberStep, setNavigationState]
+  );
 
   const launchLearning = React.useCallback(
     (stepId?: string) => {
@@ -569,27 +597,52 @@ export function App() {
       if (!nextStepId) {
         return;
       }
-      rememberStep(activeCourse.courseId, activeChapter.chapterId, nextStepId);
-      setActiveStepId(nextStepId);
-      setView("learning");
+      navigateToStep(activeChapter.chapterId, nextStepId);
     },
-    [activeCourse, activeChapter, activeStepId, activeSteps, rememberStep]
+    [activeChapter, activeCourse, activeStepId, activeSteps, navigateToStep]
+  );
+
+  const continueCourse = React.useCallback(() => {
+    if (!continueTarget) {
+      return;
+    }
+    navigateToStep(continueTarget.chapterId, continueTarget.stepId);
+  }, [continueTarget, navigateToStep]);
+
+  const selectChapterStep = React.useCallback(
+    (stepId: string) => {
+      if (!activeCourse || !activeChapter) {
+        return;
+      }
+      rememberStep({
+        courseId: activeCourse.courseId,
+        chapterId: activeChapter.chapterId,
+        stepId
+      });
+      setNavigationState({
+        activeStepId: stepId
+      });
+    },
+    [activeChapter, activeCourse, rememberStep, setNavigationState]
   );
 
   const storyComplete = React.useCallback(() => {
     if (!activeCourse || !activeChapter || !activeStepId) {
       return;
     }
-    markStepComplete(activeCourse.courseId, activeChapter.chapterId, activeStepId);
+    markStepComplete({
+      courseId: activeCourse.courseId,
+      chapterId: activeChapter.chapterId,
+      stepId: activeStepId
+    });
     const currentIndex = activeSteps.findIndex((step) => step.sequence_id === activeStepId);
     const nextStep = activeSteps[currentIndex + 1]?.sequence_id;
     if (nextStep) {
-      setActiveStepId(nextStep);
-      rememberStep(activeCourse.courseId, activeChapter.chapterId, nextStep);
+      navigateToStep(activeChapter.chapterId, nextStep);
       return;
     }
     setView("chapter");
-  }, [activeCourse, activeChapter, activeStepId, activeSteps, markStepComplete, rememberStep]);
+  }, [activeChapter, activeCourse, activeStepId, activeSteps, markStepComplete, navigateToStep, setView]);
 
   if (catalog.loading) {
     return <div className="content-shell"><div className="loading-state">Loading course worlds...</div></div>;
@@ -699,6 +752,7 @@ export function App() {
               courseStats={courseStats.get(activeCourse.courseId)}
               dueCards={dueCards}
               progress={progress}
+              onContinueRoute={continueCourse}
               onOpenChapter={openChapter}
               onOpenReview={() => setView("review")}
               onOpenVault={() => setView("bank")}
@@ -714,10 +768,7 @@ export function App() {
               activeStepId={activeStepId}
               onStartStory={launchLearning}
               onOpenTextbook={() => setView("textbook")}
-              onSelectStep={(stepId) => {
-                setActiveStepId(stepId);
-                rememberStep(activeCourse.courseId, activeChapter.chapterId, stepId);
-              }}
+              onSelectStep={selectChapterStep}
             />
           ) : null}
 
@@ -726,7 +777,7 @@ export function App() {
               course={activeCourse}
               practice={practice}
               reviewHistory={progress.reviewHistory}
-              onRate={rateReview}
+              onRate={(questionId, rating) => rateReview({ questionId, rating })}
             />
           ) : null}
 
@@ -743,9 +794,10 @@ export function App() {
             chapter={activeChapter}
             dueCards={dueCards}
             onHome={() => setView("course")}
-            onContinue={() => launchLearning()}
+            onContinue={continueCourse}
             onReview={() => setView("review")}
             onVault={() => setView("bank")}
+            canContinue={Boolean(continueTarget)}
           />
         ) : null}
 
@@ -851,6 +903,7 @@ function CourseHomeView({
   courseStats,
   dueCards,
   progress,
+  onContinueRoute,
   onOpenChapter,
   onOpenReview,
   onOpenVault
@@ -860,6 +913,7 @@ function CourseHomeView({
   courseStats?: CourseSummary;
   dueCards: number;
   progress: PlayerProgress;
+  onContinueRoute: () => void;
   onOpenChapter: (chapterId: string) => void;
   onOpenReview: () => void;
   onOpenVault: () => void;
@@ -875,7 +929,7 @@ function CourseHomeView({
             Enter the learner home base for this course: route selection, immersive scene play, recall loops, and a vault of generated challenges.
           </p>
           <div className="hero-actions" style={{ marginTop: 22 }}>
-            <button className="pill-button primary" onClick={() => onOpenChapter(course.chapters[0]?.chapterId ?? "")}>
+            <button className="pill-button primary" onClick={onContinueRoute}>
               Continue Route
             </button>
             <button className="pill-button" onClick={onOpenReview}>
@@ -1057,42 +1111,142 @@ function StoryOverlay({
   const [screenIndex, setScreenIndex] = React.useState(0);
   const [showLog, setShowLog] = React.useState(false);
   const [selectedAnswer, setSelectedAnswer] = React.useState<number | null>(null);
+  const [textAnswer, setTextAnswer] = React.useState("");
+  const [textSubmitted, setTextSubmitted] = React.useState<string | null>(null);
+  const [textAnswerCorrect, setTextAnswerCorrect] = React.useState<boolean | null>(null);
   const [answered, setAnswered] = React.useState(false);
 
   React.useEffect(() => {
     setScreenIndex(0);
     setShowLog(false);
     setSelectedAnswer(null);
+    setTextAnswer("");
+    setTextSubmitted(null);
+    setTextAnswerCorrect(null);
     setAnswered(false);
   }, [stepMeta?.sequence_id]);
 
-  if (bundle.loading || !bundle.data) {
-    return (
-      <div className="story-overlay">
-        <div className="overlay-layer">
-          <div className="dialog-shell">
-            <div className="loading-state">{bundle.error ?? "Loading route scene..."}</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  const screens = bundle.data.step.screens ?? [];
+  const screens = bundle.data?.step.screens ?? [];
   const current = screens[screenIndex];
+  const currentExercise = current?.exercise;
+  const currentExerciseKind = currentExercise?.kind;
   const progress = screens.length === 0 ? 0 : ((screenIndex + 1) / screens.length) * 100;
   const history = screens.slice(0, screenIndex);
+  const isExerciseScreen = current?.type === "exercise";
+  const acceptedAnswers = currentExercise?.answers ?? [];
+  const normalizedAcceptedAnswers = acceptedAnswers.map(normalizeExerciseText).filter(Boolean);
+  const stepId = stepMeta?.sequence_id ?? bundle.data?.step.sequence_id ?? "unknown-step";
+  const screenId = current?.id ?? `screen-${screenIndex + 1}`;
+  const exerciseContext = `course=${course.courseId} · chapter=${chapter.chapterId} · step=${stepId} · screen=${screenId} · kind=${currentExerciseKind ?? "missing"}`;
+  const unsupportedExerciseReason = (() => {
+    if (!isExerciseScreen) {
+      return null;
+    }
+    if (!currentExerciseKind) {
+      return "Exercise payload is missing `kind`";
+    }
+    if (currentExerciseKind === "single_choice") {
+      return (currentExercise.options?.length ?? 0) > 0 ? null : "single_choice exercise has no options";
+    }
+    if (currentExerciseKind === "fill_in_blank") {
+      return acceptedAnswers.length > 0 ? null : "fill_in_blank exercise has no accepted answers";
+    }
+    if (currentExerciseKind === "short_reflection") {
+      return null;
+    }
+    return `Unsupported exercise kind \`${currentExerciseKind}\``;
+  })();
+  const nextStepBlockedReason = (() => {
+    if (!current) {
+      return "No scene content loaded";
+    }
+    if (current.type !== "exercise") {
+      return null;
+    }
+    if (unsupportedExerciseReason) {
+      return unsupportedExerciseReason;
+    }
+    if (answered) {
+      return null;
+    }
+    if (currentExerciseKind === "fill_in_blank") {
+      return "Submit a text answer before continuing";
+    }
+    if (currentExerciseKind === "short_reflection") {
+      return "Submit a reflection before continuing";
+    }
+    return "Answer this checkpoint before continuing";
+  })();
+  const nextStepDisabled = current == null || nextStepBlockedReason !== null;
+  const nextStepHint =
+    nextStepBlockedReason ??
+    (screenIndex === screens.length - 1 ? "Checkpoint complete. You can finish this step." : "Checkpoint complete. Continue to the next scene.");
+
+  React.useEffect(() => {
+    if (!isExerciseScreen || !unsupportedExerciseReason) {
+      return;
+    }
+    toast.error("Unsupported checkpoint in route player", {
+      description: `${unsupportedExerciseReason}. ${exerciseContext}`
+    });
+  }, [exerciseContext, isExerciseScreen, unsupportedExerciseReason]);
+
+  const notifyBlockedAdvance = React.useCallback(
+    (reason: string) => {
+      toast.warning("Checkpoint cannot continue yet", {
+        description: `${reason}. ${exerciseContext}`
+      });
+    },
+    [exerciseContext]
+  );
+
+  const handleTextExerciseSubmit = React.useCallback(() => {
+    if (!currentExerciseKind || !currentExercise) {
+      return;
+    }
+
+    const submitted = textAnswer.trim();
+    if (!submitted) {
+      toast.warning("Answer required before submission", {
+        description: `No text was entered. ${exerciseContext}`
+      });
+      return;
+    }
+
+    if (currentExerciseKind === "fill_in_blank") {
+      const isCorrect = normalizedAcceptedAnswers.includes(normalizeExerciseText(submitted));
+      setTextSubmitted(submitted);
+      setTextAnswerCorrect(isCorrect);
+      setAnswered(true);
+      if (!isCorrect) {
+        toast.message("Submitted answer did not match the reference", {
+          description: `submitted=${submitted} · accepted=${acceptedAnswers.join(" / ")} · ${exerciseContext}`
+        });
+      }
+      return;
+    }
+
+    if (currentExerciseKind === "short_reflection") {
+      setTextSubmitted(submitted);
+      setTextAnswerCorrect(null);
+      setAnswered(true);
+    }
+  }, [acceptedAnswers, currentExercise, currentExerciseKind, exerciseContext, normalizedAcceptedAnswers, textAnswer]);
 
   const handleNext = () => {
     if (!current) {
       return;
     }
-    if (current.type === "exercise" && !answered) {
+    if (nextStepBlockedReason) {
+      notifyBlockedAdvance(nextStepBlockedReason);
       return;
     }
     if (screenIndex < screens.length - 1) {
       setScreenIndex((value) => value + 1);
       setSelectedAnswer(null);
+      setTextAnswer("");
+      setTextSubmitted(null);
+      setTextAnswerCorrect(null);
       setAnswered(false);
       return;
     }
@@ -1105,6 +1259,9 @@ function StoryOverlay({
     }
     setScreenIndex((value) => value - 1);
     setSelectedAnswer(null);
+    setTextAnswer("");
+    setTextSubmitted(null);
+    setTextAnswerCorrect(null);
     setAnswered(false);
   };
 
@@ -1138,6 +1295,18 @@ function StoryOverlay({
     };
   }, [handleNext]);
 
+  if (bundle.loading || !bundle.data) {
+    return (
+      <div className="story-overlay">
+        <div className="overlay-layer">
+          <div className="dialog-shell">
+            <div className="loading-state">{bundle.error ?? "Loading route scene..."}</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const parseLines = (line: string, index: number) => {
     const parts = line.split(/(<term id="[^"]+">.*?<\/term>)/g);
     return (
@@ -1170,6 +1339,11 @@ function StoryOverlay({
 
   const answerIndex =
     typeof current?.exercise?.answer === "number" ? current.exercise.answer : Number.NaN;
+  const answeredNote =
+    currentExercise?.explanation ??
+    (currentExerciseKind === "short_reflection"
+      ? "Reflection captured for this step. Continue when ready."
+      : "Checkpoint complete. Continue the route.");
 
   return (
     <div className="story-overlay">
@@ -1195,33 +1369,94 @@ function StoryOverlay({
               <span className="pill accent">Checkpoint</span>
               <h3>{current.exercise?.prompt ?? current.lines?.[0] ?? "Quick check"}</h3>
               <p className="story-note">Answer first, then continue. This keeps the story from becoming passive scrolling.</p>
-              <div className="exercise-options">
-                {(current.exercise?.options ?? []).map((option, index) => {
-                  let stateClass = "";
-                  if (answered && index === answerIndex) {
-                    stateClass = "correct";
-                  } else if (answered && index === selectedAnswer && index !== answerIndex) {
-                    stateClass = "wrong";
-                  }
-                  return (
-                    <button
-                      key={option}
-                      className={`exercise-option ${stateClass}`.trim()}
-                      onClick={() => {
-                        if (answered) {
-                          return;
-                        }
-                        setSelectedAnswer(index);
-                        setAnswered(true);
-                      }}
-                    >
-                      {option}
+              {currentExerciseKind === "single_choice" && !unsupportedExerciseReason ? (
+                <div className="exercise-options">
+                  {(current.exercise?.options ?? []).map((option, index) => {
+                    let stateClass = "";
+                    if (answered && index === answerIndex) {
+                      stateClass = "correct";
+                    } else if (answered && index === selectedAnswer && index !== answerIndex) {
+                      stateClass = "wrong";
+                    }
+                    return (
+                      <button
+                        key={option}
+                        className={`exercise-option ${stateClass}`.trim()}
+                        disabled={answered}
+                        onClick={() => {
+                          if (answered) {
+                            return;
+                          }
+                          setSelectedAnswer(index);
+                          setTextSubmitted(null);
+                          setTextAnswerCorrect(index === answerIndex);
+                          setAnswered(true);
+                        }}
+                      >
+                        {option}
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : null}
+              {(currentExerciseKind === "fill_in_blank" || currentExerciseKind === "short_reflection") && !unsupportedExerciseReason ? (
+                <form
+                  className="exercise-text-form"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    handleTextExerciseSubmit();
+                  }}
+                >
+                  {currentExerciseKind === "fill_in_blank" ? (
+                    <input
+                      className="exercise-text-input"
+                      disabled={answered}
+                      onChange={(event) => setTextAnswer(event.target.value)}
+                      placeholder="Type your answer here"
+                      value={textAnswer}
+                    />
+                  ) : (
+                    <textarea
+                      className="exercise-textarea"
+                      disabled={answered}
+                      onChange={(event) => setTextAnswer(event.target.value)}
+                      placeholder="Write your reflection here"
+                      rows={4}
+                      value={textAnswer}
+                    />
+                  )}
+                  <div className="exercise-actions">
+                    <button className="pill-button primary" disabled={answered} type="submit">
+                      {currentExerciseKind === "short_reflection" ? "Submit Reflection" : "Submit Answer"}
                     </button>
-                  );
-                })}
-              </div>
+                    <span className="exercise-action-hint">
+                      {currentExerciseKind === "short_reflection" ? "A non-empty response unlocks Continue." : "Your answer is checked after submission."}
+                    </span>
+                  </div>
+                </form>
+              ) : null}
+              {unsupportedExerciseReason ? (
+                <div className="exercise-unsupported">
+                  <strong>Checkpoint cannot be answered in the player right now.</strong>
+                  <p>{unsupportedExerciseReason}.</p>
+                  <p>{exerciseContext}</p>
+                </div>
+              ) : null}
+              {answered && currentExerciseKind === "fill_in_blank" ? (
+                <div className={`exercise-answer-status ${textAnswerCorrect === false ? "wrong" : "correct"}`}>
+                  <strong>{textAnswerCorrect ? "Answer accepted." : "Answer submitted."}</strong>
+                  <p>Your answer: {textSubmitted ?? textAnswer}</p>
+                  {acceptedAnswers.length ? <p>Reference answer: {acceptedAnswers.join(" / ")}</p> : null}
+                </div>
+              ) : null}
+              {answered && currentExerciseKind === "short_reflection" ? (
+                <div className="exercise-answer-status correct">
+                  <strong>Reflection submitted.</strong>
+                  <p>{textSubmitted}</p>
+                </div>
+              ) : null}
               {answered ? (
-                <p className="story-note">{current.exercise?.explanation ?? "Checkpoint complete. Continue the route."}</p>
+                <p className="story-note">{answeredNote}</p>
               ) : null}
             </div>
           ) : (
@@ -1247,15 +1482,15 @@ function StoryOverlay({
                 Back
               </button>
             </div>
-          <div>
+            <div className="story-footer-status" title={nextStepHint}>
               {current?.type === "exercise"
                 ? answered
                   ? "Continue"
-                  : "Answer to Continue"
+                  : nextStepBlockedReason ?? "Answer to Continue"
                 : "Tap Anywhere to Continue"}
-          </div>
+            </div>
             <div className="topbar-actions">
-              <button className="pill-button primary" onClick={handleNext}>
+              <button className="pill-button primary" disabled={nextStepDisabled} onClick={handleNext} title={nextStepHint}>
                 {screenIndex === screens.length - 1 ? "Finish Step" : "Next"}
               </button>
             </div>
@@ -1618,7 +1853,8 @@ function LearningDock({
   onHome,
   onContinue,
   onReview,
-  onVault
+  onVault,
+  canContinue
 }: {
   course: CourseRecord;
   chapter: ChapterRecord | null;
@@ -1627,6 +1863,7 @@ function LearningDock({
   onContinue: () => void;
   onReview: () => void;
   onVault: () => void;
+  canContinue: boolean;
 }) {
   return (
     <div className="learning-dock">
@@ -1639,7 +1876,7 @@ function LearningDock({
         <button className="pill-button ghost" onClick={onHome}>
           Home
         </button>
-        <button className="pill-button primary" onClick={onContinue} disabled={!chapter}>
+        <button className="pill-button primary" onClick={onContinue} disabled={!chapter || !canContinue}>
           Continue
         </button>
         <button className="pill-button ghost" onClick={onReview}>

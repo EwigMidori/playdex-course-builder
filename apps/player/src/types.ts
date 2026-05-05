@@ -54,6 +54,7 @@ export type Exercise = {
   prompt?: string;
   options?: string[];
   answer?: number | string;
+  answers?: string[];
   explanation?: string;
 };
 

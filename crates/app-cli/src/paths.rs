@@ -53,11 +53,6 @@ impl RepoPaths {
         self.root.join("research/prompts")
     }
 
-    pub fn related_important_path(&self) -> PathBuf {
-        self.root
-            .join("research/pipeline/2-related_important/course_desc.md")
-    }
-
     pub fn exam_raw_dir(&self) -> PathBuf {
         self.root.join(RAW_PIPELINE_ROOT).join("exam")
     }
@@ -368,11 +363,10 @@ impl ChapterPaths {
         self.repo.root().join(&self.textbook_relative)
     }
 
-    pub fn related_important_path(&self) -> PathBuf {
+    pub fn related_important_path(&self) -> Option<PathBuf> {
         self.related_important_relative
             .as_ref()
             .map(|relative| self.repo.root().join(relative))
-            .unwrap_or_else(|| self.repo.related_important_path())
     }
 
     pub fn meta_dir(&self) -> PathBuf {

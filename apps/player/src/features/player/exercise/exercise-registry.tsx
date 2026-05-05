@@ -1,11 +1,11 @@
-import type { Exercise } from "../player-model";
+import type { NormalizedExercise } from "../runtime/story-runtime-types";
 import { normalizeExerciseText } from "../player-utils";
 import { FillInBlank } from "./FillInBlank";
 import { ShortReflection } from "./ShortReflection";
 import { SingleChoice } from "./SingleChoice";
 
 export type ExerciseRendererProps = {
-  exercise: Exercise;
+  exercise: NormalizedExercise;
   answered: boolean;
   selectedAnswer: number | null;
   textAnswer: string;
@@ -34,12 +34,12 @@ export type ExerciseSubmissionResult = {
 
 type ExerciseDefinition = {
   Component: React.ComponentType<ExerciseRendererProps>;
-  validate: (exercise: Exercise) => string | null;
-  getBlockedReason: (exercise: Exercise, answered: boolean) => string | null;
-  getAnsweredNote: (exercise: Exercise) => string;
-  selectChoice?: (exercise: Exercise, choiceIndex: number, answerIndex: number) => ExerciseSubmissionResult;
+  validate: (exercise: NormalizedExercise) => string | null;
+  getBlockedReason: (exercise: NormalizedExercise, answered: boolean) => string | null;
+  getAnsweredNote: (exercise: NormalizedExercise) => string;
+  selectChoice?: (exercise: NormalizedExercise, choiceIndex: number, answerIndex: number) => ExerciseSubmissionResult;
   submitText?: (args: {
-    exercise: Exercise;
+    exercise: NormalizedExercise;
     textAnswer: string;
     acceptedAnswers: string[];
     normalizedAcceptedAnswers: string[];
@@ -50,7 +50,7 @@ type ExerciseDefinition = {
 const registry: Record<string, ExerciseDefinition> = {
   single_choice: {
     Component: SingleChoice,
-    validate: (exercise) => ((exercise.options?.length ?? 0) > 0 ? null : "single_choice exercise has no options"),
+    validate: (exercise) => (exercise.options.length > 0 ? null : "single_choice exercise has no options"),
     getBlockedReason: (_exercise, answered) => (answered ? null : "Answer this checkpoint before continuing"),
     getAnsweredNote: (exercise) => exercise.explanation ?? "Checkpoint complete. Continue the route.",
     selectChoice: (_exercise, choiceIndex, answerIndex) => ({
@@ -62,7 +62,7 @@ const registry: Record<string, ExerciseDefinition> = {
   },
   fill_in_blank: {
     Component: FillInBlank,
-    validate: (exercise) => ((exercise.answers?.length ?? 0) > 0 ? null : "fill_in_blank exercise has no accepted answers"),
+    validate: (exercise) => (exercise.acceptedAnswers.length > 0 ? null : "fill_in_blank exercise has no accepted answers"),
     getBlockedReason: (_exercise, answered) => (answered ? null : "Submit a text answer before continuing"),
     getAnsweredNote: (exercise) => exercise.explanation ?? "Checkpoint complete. Continue the route.",
     submitText: ({ textAnswer, acceptedAnswers, normalizedAcceptedAnswers, exerciseContext }) => {
@@ -118,7 +118,7 @@ const registry: Record<string, ExerciseDefinition> = {
   }
 };
 
-export function resolveExercise(exercise: Exercise | undefined) {
+export function resolveExercise(exercise: NormalizedExercise | null | undefined) {
   const kind = exercise?.kind;
   if (!kind) {
     return {
@@ -135,7 +135,7 @@ export function resolveExercise(exercise: Exercise | undefined) {
     };
   }
 
-  const unsupportedReason = definition.validate(exercise ?? {});
+  const unsupportedReason = definition.validate(exercise);
   return {
     definition,
     Component: unsupportedReason ? null : definition.Component,

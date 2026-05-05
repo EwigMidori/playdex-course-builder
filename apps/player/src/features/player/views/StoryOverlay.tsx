@@ -2,18 +2,44 @@ import { AlertTriangle, ArrowRight, BookOpen, ChevronRight } from "lucide-react"
 import React from "react";
 import { toast } from "sonner";
 import { ExerciseRenderer } from "../exercise/ExerciseRenderer";
-import { resolveExercise, type ExerciseSubmissionResult } from "../exercise/exercise-registry";
+import { resolveExercise } from "../exercise/exercise-registry";
 import type { AsyncState } from "../player-hooks";
 import { EmptyState, LoadingState } from "../player-primitives";
-import type { ChapterRecord, CourseRecord, QuestionBank, StoryManifestStep, StoryStep, TermEntry } from "../player-model";
-import { normalizeExerciseText } from "../player-utils";
+import type { ChapterRecord, CourseRecord, StoryManifestStep, TermEntry } from "../player-model";
+import { getExerciseAnsweredNote, getExerciseBlockedReason, getRuntimeExerciseState } from "../runtime/exercise-engine";
+import {
+  createStoryRuntimeState,
+  evaluateStoryRuntimeAction,
+  getCurrentStoryNode,
+  getRuntimeBacklog,
+  getRuntimeProgress
+} from "../runtime/story-runtime";
+import type { SceneModel, StoryRuntimeAction, StoryRuntimeEvaluation, StoryRuntimeState } from "../runtime/story-runtime-types";
 import "./StoryOverlay.css";
+
+function debugStoryRuntime(event: string, payload: Record<string, unknown>) {
+  console.debug(`[story-runtime] ${event}`, payload);
+}
+
+type RuntimeControllerState = {
+  runtimeState: StoryRuntimeState;
+  lastEvaluation: StoryRuntimeEvaluation | null;
+  revision: number;
+};
+
+function createRuntimeControllerState(scene: SceneModel): RuntimeControllerState {
+  return {
+    runtimeState: createStoryRuntimeState(scene),
+    lastEvaluation: null,
+    revision: 0
+  };
+}
 
 export function StoryOverlay({
   course,
   chapter,
   stepMeta,
-  bundle,
+  sceneState,
   onClose,
   onComplete,
   onOpenTerm
@@ -21,91 +47,77 @@ export function StoryOverlay({
   course: CourseRecord;
   chapter: ChapterRecord;
   stepMeta: StoryManifestStep | null;
-  bundle: AsyncState<{ step: StoryStep; bank: QuestionBank }>;
+  sceneState: AsyncState<SceneModel>;
   onClose: () => void;
   onComplete: () => void;
   onOpenTerm: (id: string, term: TermEntry) => void;
 }) {
-  const [screenIndex, setScreenIndex] = React.useState(0);
   const [showLog, setShowLog] = React.useState(false);
-  const [selectedAnswer, setSelectedAnswer] = React.useState<number | null>(null);
-  const [textAnswer, setTextAnswer] = React.useState("");
-  const [textSubmitted, setTextSubmitted] = React.useState<string | null>(null);
-  const [textAnswerCorrect, setTextAnswerCorrect] = React.useState<boolean | null>(null);
-  const [answered, setAnswered] = React.useState(false);
+  const runtimeScene = sceneState.data ?? {
+    sceneId: "pending-scene",
+    courseId: course.courseId,
+    chapterId: chapter.chapterId,
+    lessonId: chapter.lessonId,
+    stepId: stepMeta?.sequence_id ?? "unknown-step",
+    concept: stepMeta?.concept ?? "Route Scene",
+    termCatalog: {},
+    nodes: [
+      {
+        id: "pending-scene:node:1",
+        kind: "narration" as const,
+        lines: ["Loading route scene..."],
+        termRefs: [],
+        rawScreenIndex: 0,
+        rawScreenType: null
+      }
+    ]
+  };
+  const [runtimeController, setRuntimeController] = React.useState<RuntimeControllerState>(() =>
+    createRuntimeControllerState(runtimeScene)
+  );
+  const runtimeState = runtimeController.runtimeState;
 
   React.useEffect(() => {
-    setScreenIndex(0);
+    if (!sceneState.data) {
+      return;
+    }
+    debugStoryRuntime("enter-scene", {
+      sceneId: sceneState.data.sceneId,
+      stepId: sceneState.data.stepId,
+      concept: sceneState.data.concept,
+      nodeIds: sceneState.data.nodes.map((node) => node.id)
+    });
+    setRuntimeController(createRuntimeControllerState(sceneState.data));
     setShowLog(false);
-    setSelectedAnswer(null);
-    setTextAnswer("");
-    setTextSubmitted(null);
-    setTextAnswerCorrect(null);
-    setAnswered(false);
-  }, [stepMeta?.sequence_id]);
+  }, [sceneState.data?.sceneId]);
 
-  const screens = bundle.data?.step.screens ?? [];
-  const current = screens[screenIndex];
-  const currentExercise = current?.exercise;
-  const progress = screens.length === 0 ? 0 : ((screenIndex + 1) / screens.length) * 100;
-  const history = screens.slice(0, screenIndex);
-  const isExerciseScreen = current?.type === "exercise";
-  const acceptedAnswers = currentExercise?.answers ?? [];
-  const normalizedAcceptedAnswers = acceptedAnswers.map(normalizeExerciseText).filter(Boolean);
-  const stepId = stepMeta?.sequence_id ?? bundle.data?.step.sequence_id ?? "unknown-step";
-  const screenId = current?.id ?? `screen-${screenIndex + 1}`;
-  const exerciseContext = `course=${course.courseId} · chapter=${chapter.chapterId} · step=${stepId} · screen=${screenId} · kind=${currentExercise?.kind ?? "missing"}`;
-  const { definition, unsupportedReason } = resolveExercise(currentExercise);
-  const nextStepBlockedReason = (() => {
-    if (!current) {
-      return "No scene content loaded";
-    }
-    if (current.type !== "exercise") {
-      return null;
-    }
-    if (unsupportedReason) {
-      return unsupportedReason;
-    }
-    return definition?.getBlockedReason(currentExercise ?? {}, answered) ?? null;
-  })();
-  const nextStepDisabled = current == null || nextStepBlockedReason !== null;
+  const currentNode = getCurrentStoryNode(runtimeScene, runtimeState);
+  const currentExerciseState =
+    currentNode?.kind === "exercise"
+      ? getRuntimeExerciseState(runtimeState.exerciseStateByNode, currentNode.id)
+      : null;
+  const progress = getRuntimeProgress(runtimeScene, runtimeState);
+  const history = getRuntimeBacklog(runtimeState);
+  const currentExercise = currentNode?.kind === "exercise" ? currentNode.exercise : null;
+  const exerciseContext = currentNode
+    ? `course=${course.courseId} · chapter=${chapter.chapterId} · step=${runtimeScene.stepId} · node=${currentNode.id} · kind=${currentNode.kind}`
+    : `course=${course.courseId} · chapter=${chapter.chapterId} · step=${runtimeScene.stepId} · node=missing`;
+  const { unsupportedReason } = resolveExercise(currentExercise);
+  const nextStepBlockedReason = currentNode?.kind === "exercise" && currentExerciseState ? getExerciseBlockedReason(currentNode, currentExerciseState) : currentNode ? null : "No scene content loaded";
   const nextStepHint =
     nextStepBlockedReason ??
-    (screenIndex === screens.length - 1 ? "Checkpoint complete. You can finish this step." : "Checkpoint complete. Continue to the next scene.");
+    (runtimeState.cursor.nodeIndex === runtimeScene.nodes.length - 1
+      ? "Checkpoint complete. You can finish this step."
+      : "Checkpoint complete. Continue to the next scene.");
 
   React.useEffect(() => {
-    if (!isExerciseScreen || !unsupportedReason) {
+    if (currentNode?.kind !== "exercise" || !unsupportedReason) {
       return;
     }
     toast.error("Unsupported checkpoint in route player", {
       description: `${unsupportedReason}. ${exerciseContext}`
     });
-  }, [exerciseContext, isExerciseScreen, unsupportedReason]);
-
-  const applySubmissionResult = React.useCallback(
-    (result: ExerciseSubmissionResult) => {
-      if (typeof result.answered === "boolean") {
-        setAnswered(result.answered);
-      }
-      if (typeof result.selectedAnswer !== "undefined") {
-        setSelectedAnswer(result.selectedAnswer);
-      }
-      if (typeof result.textSubmitted !== "undefined") {
-        setTextSubmitted(result.textSubmitted);
-      }
-      if (typeof result.textAnswerCorrect !== "undefined") {
-        setTextAnswerCorrect(result.textAnswerCorrect);
-      }
-      if (result.feedback) {
-        if (result.feedback.level === "warning") {
-          toast.warning(result.feedback.title, { description: result.feedback.description });
-        } else {
-          toast.message(result.feedback.title, { description: result.feedback.description });
-        }
-      }
-    },
-    []
-  );
+  }, [currentNode?.kind, exerciseContext, unsupportedReason]);
 
   const notifyBlockedAdvance = React.useCallback(
     (reason: string) => {
@@ -116,52 +128,80 @@ export function StoryOverlay({
     [exerciseContext]
   );
 
-  const handleTextExerciseSubmit = React.useCallback(() => {
-    if (!definition?.submitText || !currentExercise) {
+  const applyRuntimeAction = React.useCallback(
+    (action: StoryRuntimeAction) => {
+      setRuntimeController((current) => {
+        const evaluation = evaluateStoryRuntimeAction(runtimeScene, current.runtimeState, action);
+        debugStoryRuntime("apply-action", {
+          action,
+          sceneId: runtimeScene.sceneId,
+          beforeCursor: current.runtimeState.cursor,
+          beforeHistorySize: current.runtimeState.history.length,
+          afterCursor: evaluation.state.cursor,
+          afterHistorySize: evaluation.state.history.length,
+          blockedReason: evaluation.blockedReason,
+          didAdvance: evaluation.didAdvance,
+          didCompleteScene: evaluation.didCompleteScene,
+          feedback: evaluation.feedback
+        });
+        return {
+          runtimeState: evaluation.state,
+          lastEvaluation: evaluation,
+          revision: current.revision + 1
+        };
+      });
+    },
+    [runtimeScene]
+  );
+
+  React.useEffect(() => {
+    const evaluation = runtimeController.lastEvaluation;
+    if (!evaluation) {
       return;
     }
-    applySubmissionResult(
-      definition.submitText({
-        exercise: currentExercise,
-        textAnswer,
-        acceptedAnswers,
-        normalizedAcceptedAnswers,
-        exerciseContext
-      })
-    );
-  }, [acceptedAnswers, applySubmissionResult, currentExercise, definition, exerciseContext, normalizedAcceptedAnswers, textAnswer]);
 
-  const resetAnswerState = React.useCallback(() => {
-    setSelectedAnswer(null);
-    setTextAnswer("");
-    setTextSubmitted(null);
-    setTextAnswerCorrect(null);
-    setAnswered(false);
-  }, []);
+    if (evaluation.feedback) {
+      if (evaluation.feedback.level === "warning") {
+        toast.warning(evaluation.feedback.title, { description: evaluation.feedback.description });
+      } else {
+        toast.message(evaluation.feedback.title, { description: evaluation.feedback.description });
+      }
+    }
+
+    if (evaluation.blockedReason) {
+      notifyBlockedAdvance(evaluation.blockedReason);
+    }
+
+    if (evaluation.didCompleteScene) {
+      onComplete();
+    }
+  }, [notifyBlockedAdvance, onComplete, runtimeController.lastEvaluation, runtimeController.revision]);
+
+  const handleTextExerciseSubmit = React.useCallback(() => {
+    if (currentNode?.kind !== "exercise") {
+      return;
+    }
+    applyRuntimeAction({ type: "submit-exercise", nodeId: currentNode.id });
+  }, [applyRuntimeAction, currentNode]);
 
   const handleNext = React.useCallback(() => {
-    if (!current) {
+    if (!currentNode) {
       return;
     }
-    if (nextStepBlockedReason) {
-      notifyBlockedAdvance(nextStepBlockedReason);
-      return;
-    }
-    if (screenIndex < screens.length - 1) {
-      setScreenIndex((value) => value + 1);
-      resetAnswerState();
-      return;
-    }
-    onComplete();
-  }, [current, nextStepBlockedReason, notifyBlockedAdvance, onComplete, resetAnswerState, screenIndex, screens.length]);
+    applyRuntimeAction({ type: "advance" });
+  }, [applyRuntimeAction, currentNode]);
 
   const handlePrev = React.useCallback(() => {
-    if (screenIndex === 0) {
+    debugStoryRuntime("back-click", {
+      sceneId: runtimeScene.sceneId,
+      cursor: runtimeState.cursor,
+      historySize: runtimeState.history.length
+    });
+    if (runtimeState.history.length <= 1) {
       return;
     }
-    setScreenIndex((value) => value - 1);
-    resetAnswerState();
-  }, [resetAnswerState, screenIndex]);
+    applyRuntimeAction({ type: "back" });
+  }, [applyRuntimeAction, runtimeScene.sceneId, runtimeState.cursor, runtimeState.history.length]);
 
   React.useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -184,6 +224,12 @@ export function StoryOverlay({
       }
 
       event.preventDefault();
+      debugStoryRuntime("space-advance", {
+        sceneId: runtimeScene.sceneId,
+        cursor: runtimeState.cursor,
+        historySize: runtimeState.history.length,
+        currentNodeId: currentNode?.id ?? null
+      });
       handleNext();
     };
 
@@ -191,14 +237,14 @@ export function StoryOverlay({
     return () => {
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [handleNext]);
+  }, [currentNode?.id, handleNext, runtimeScene.sceneId, runtimeState.cursor, runtimeState.history.length]);
 
-  if (bundle.loading || !bundle.data) {
+  if (sceneState.loading || !sceneState.data) {
     return (
       <div className="story-overlay">
         <div className="overlay-layer">
           <div className="dialog-shell">
-            <LoadingState message={bundle.error ?? "Loading route scene..."} />
+            <LoadingState message={sceneState.error ?? "Loading route scene..."} />
           </div>
         </div>
       </div>
@@ -208,14 +254,14 @@ export function StoryOverlay({
   const parseLines = (line: string, index: number) => {
     const parts = line.split(/(<term id="[^"]+">.*?<\/term>)/g);
     return (
-      <p key={`${current?.id ?? "screen"}-${index}`}>
+      <p key={`${currentNode?.id ?? "node"}-${index}`}>
         {parts.map((part, partIndex) => {
           const match = part.match(/<term id="([^"]+)">([\s\S]*?)<\/term>/);
           if (!match) {
             return <React.Fragment key={partIndex}>{part}</React.Fragment>;
           }
           const [, id, label] = match;
-          const term = bundle.data?.step.term_catalog?.[id];
+          const term = runtimeScene.termCatalog[id];
           return (
             <span
               key={partIndex}
@@ -235,8 +281,7 @@ export function StoryOverlay({
     );
   };
 
-  const answerIndex = typeof current?.exercise?.answer === "number" ? current.exercise.answer : Number.NaN;
-  const answeredNote = definition?.getAnsweredNote(currentExercise ?? {}) ?? currentExercise?.explanation ?? "Checkpoint complete. Continue the route.";
+  const answeredNote = currentNode?.kind === "exercise" ? getExerciseAnsweredNote(currentNode) : null;
 
   return (
     <div className="story-overlay">
@@ -244,7 +289,7 @@ export function StoryOverlay({
         <div className="overlay-controls">
           <div className="overlay-title">
             <span>{course.title}</span>
-            <strong>{chapter.lessonId} · {stepMeta?.concept ?? stepMeta?.sequence_id ?? "Route Scene"}</strong>
+            <strong>{chapter.lessonId} · {runtimeScene.concept}</strong>
           </div>
           <div className="topbar-actions">
             <button className="pill-button ghost" onClick={() => setShowLog(true)}>
@@ -263,53 +308,64 @@ export function StoryOverlay({
         </div>
 
         <div className="scene-stage">
-          {current?.type === "exercise" ? (
-            <div className="scene-exercise">
-              <span className="pill accent">Checkpoint</span>
-              <h3>{currentExercise?.prompt ?? current.lines?.[0] ?? "Quick check"}</h3>
-              <p className="story-note">Answer first, then continue. This keeps the story from becoming passive scrolling.</p>
-              <ExerciseRenderer
-                acceptedAnswers={acceptedAnswers}
-                answerIndex={answerIndex}
-                answered={answered}
-                exercise={currentExercise ?? {}}
-                exerciseContext={exerciseContext}
-                onSelectAnswer={(index) => {
-                  if (answered || !definition?.selectChoice || !currentExercise) {
-                    return;
-                  }
-                  applySubmissionResult(definition.selectChoice(currentExercise, index, answerIndex));
-                }}
-                onSubmitTextAnswer={handleTextExerciseSubmit}
-                onTextAnswerChange={setTextAnswer}
-                selectedAnswer={selectedAnswer}
-                textAnswer={textAnswer}
-                textAnswerCorrect={textAnswerCorrect}
-                textSubmitted={textSubmitted}
-                unsupportedReason={unsupportedReason}
-              />
-              {answered ? <p className="story-note">{answeredNote}</p> : null}
-            </div>
+          {currentNode?.kind === "exercise" && currentExerciseState ? (
+            (() => {
+              const exercise = currentNode.exercise;
+              return (
+                <div className="scene-exercise">
+                  <span className="pill accent">Checkpoint</span>
+                  <h3>{exercise.prompt ?? currentNode.lines[0] ?? "Quick check"}</h3>
+                  <p className="story-note">Answer first, then continue. This keeps the story from becoming passive scrolling.</p>
+                  <ExerciseRenderer
+                    acceptedAnswers={exercise.acceptedAnswers}
+                    answerIndex={exercise.answerIndex ?? Number.NaN}
+                    answered={currentExerciseState.answered}
+                    exercise={exercise}
+                    exerciseContext={exerciseContext}
+                    onSelectAnswer={(index) => {
+                      if (currentExerciseState.answered || currentNode.kind !== "exercise") {
+                        return;
+                      }
+                      applyRuntimeAction({ type: "select-choice", nodeId: currentNode.id, choiceIndex: index });
+                    }}
+                    onSubmitTextAnswer={handleTextExerciseSubmit}
+                    onTextAnswerChange={(value) => applyRuntimeAction({ type: "set-text-answer", nodeId: currentNode.id, value })}
+                    selectedAnswer={currentExerciseState.selectedAnswer}
+                    textAnswer={currentExerciseState.textAnswer}
+                    textAnswerCorrect={currentExerciseState.textAnswerCorrect}
+                    textSubmitted={currentExerciseState.textSubmitted}
+                    unsupportedReason={unsupportedReason}
+                  />
+                  {currentExerciseState.answered && answeredNote ? <p className="story-note">{answeredNote}</p> : null}
+                </div>
+              );
+            })()
           ) : (
             <div className="scene-avatar">✦</div>
           )}
         </div>
 
-        <div className="dialog-shell" onClick={current?.type === "exercise" ? undefined : handleNext}>
+        <div className="dialog-shell" onClick={currentNode?.kind === "exercise" ? undefined : handleNext}>
           <div className="dialog-topline">
-            <span className="dialog-speaker">{current?.type === "exercise" ? "System Test" : "Instructor"}</span>
+            <span className="dialog-speaker">{currentNode?.kind === "exercise" ? "System Test" : "Instructor"}</span>
             <div className="dialog-progress">
               <div className="progress-fill" style={{ width: `${progress}%` }} />
             </div>
           </div>
 
           <div className="dialog-lines">
-            {(current?.lines ?? ["No scene content found."]).map((line, index) => parseLines(line, index))}
+            {(currentNode?.lines ?? ["No scene content found."]).map((line, index) => parseLines(line, index))}
           </div>
 
           <div className="story-footer">
             <div className="topbar-actions">
-              <button className="pill-button ghost" onClick={handlePrev}>
+              <button
+                className="pill-button ghost"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  handlePrev();
+                }}
+              >
                 <span className="button-label">
                   <ChevronRight className="button-icon-flip" size={15} />
                   <span>Back</span>
@@ -317,12 +373,16 @@ export function StoryOverlay({
               </button>
             </div>
             <div className="story-footer-status" title={nextStepHint}>
-              {current?.type === "exercise" ? (answered ? "Continue" : nextStepBlockedReason ?? "Answer to Continue") : "Tap Anywhere to Continue"}
+              {currentNode?.kind === "exercise"
+                ? currentExerciseState?.answered
+                  ? "Continue"
+                  : nextStepBlockedReason ?? "Answer to Continue"
+                : "Tap Anywhere to Continue"}
             </div>
             <div className="topbar-actions">
-              <button className="pill-button primary" disabled={nextStepDisabled} onClick={handleNext} title={nextStepHint}>
+              <button className="pill-button primary" disabled={!currentNode} onClick={handleNext} title={nextStepHint}>
                 <span className="button-label">
-                  <span>{screenIndex === screens.length - 1 ? "Finish Step" : "Next"}</span>
+                  <span>{runtimeState.cursor.nodeIndex === runtimeScene.nodes.length - 1 ? "Finish Step" : "Next"}</span>
                   <ArrowRight size={15} />
                 </span>
               </button>
@@ -345,13 +405,13 @@ export function StoryOverlay({
             </div>
             <div className="log-list">
               {history.length === 0 ? <EmptyState message="No prior lines yet." /> : null}
-              {history.map((screen, index) => (
-                <article key={`${screen.id ?? "log"}-${index}`} className="log-item">
+              {history.map((visit, index) => (
+                <article key={`${visit.cursor.nodeId}-${index}`} className="log-item">
                   <span className="pill">
                     <BookOpen size={13} />
                     <span>Page {index + 1}</span>
                   </span>
-                  <p>{(screen.lines ?? []).join(" ")}</p>
+                  <p>{visit.lines.join(" ")}</p>
                 </article>
               ))}
             </div>

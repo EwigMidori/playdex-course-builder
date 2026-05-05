@@ -2,10 +2,12 @@ import { Archive, Brain, Clock3, Compass, Home, Library, Map as MapIcon, Search,
 import React from "react";
 import { useAtomValue, useSetAtom } from "jotai";
 import { appShellStateAtom, patchAppShellStateAtom, type AppShellState, type ViewMode } from "../../app-shell-state";
-import { useCatalogState, usePracticeIndex, useStoryBundle, useTextbookState } from "./player-hooks";
+import { useCatalogState, usePracticeIndex, useStoryBundle, useTextbookState, type AsyncState } from "./player-hooks";
 import type { CourseRecord, CourseSummary, PlayerProgress, StoryManifest, TermEntry } from "./player-model";
 import { EmptyState, LoadingState } from "./player-primitives";
 import { markStepCompleteAtom, playerProgressAtom, rateReviewAtom, rememberStepAtom } from "./player-state";
+import { buildSceneDescriptor, normalizeStoryStep } from "./runtime/story-adapter";
+import type { SceneModel } from "./runtime/story-runtime-types";
 import { ChapterHomeView } from "./views/ChapterHomeView";
 import { CourseHomeView } from "./views/CourseHomeView";
 import { LearningDock } from "./views/LearningDock";
@@ -17,6 +19,10 @@ import { TextbookView } from "./views/TextbookView";
 import { VaultView } from "./views/VaultView";
 import { EMPTY_COURSES, EMPTY_MANIFESTS, EMPTY_STEPS, chapterKey, getCourseContinueTarget, isCourseReady } from "./player-utils";
 import "./App.css";
+
+function debugPlayerApp(event: string, payload: Record<string, unknown>) {
+  console.debug(`[player-app] ${event}`, payload);
+}
 
 function buildCourseStats(
   courses: CourseRecord[],
@@ -88,12 +94,42 @@ export function App() {
   const manifests = catalog.data?.manifests ?? EMPTY_MANIFESTS;
   const activeManifest = activeCourse && activeChapter ? manifests[chapterKey(activeCourse.courseId, activeChapter.chapterId)] : undefined;
   const activeSteps = activeManifest?.steps ?? EMPTY_STEPS;
+  const activeStepMeta = activeSteps.find((step) => step.sequence_id === activeStepId) ?? null;
   const continueTarget = React.useMemo(() => getCourseContinueTarget(activeCourse, manifests, progress), [activeCourse, manifests, progress]);
   const story = useStoryBundle(activeCourse, activeChapter, activeStepId);
   const textbook = useTextbookState(view === "textbook" ? activeChapter : null);
   const practice = usePracticeIndex(activeCourse, manifests);
   const courseStats = React.useMemo(() => buildCourseStats(courses, manifests, progress), [courses, manifests, progress]);
   const dueCards = React.useMemo(() => countDueCards(practice, progress), [practice, progress]);
+  const storyScene = React.useMemo<AsyncState<SceneModel>>(() => {
+    if (story.loading) {
+      return { loading: true, data: null, error: story.error };
+    }
+
+    if (story.error || !story.data || !activeCourse || !activeChapter) {
+      return { loading: false, data: null, error: story.error };
+    }
+
+    const descriptor = buildSceneDescriptor(activeCourse, activeChapter, activeStepMeta, story.data.step);
+    return {
+      loading: false,
+      data: normalizeStoryStep(story.data.step, descriptor),
+      error: null
+    };
+  }, [activeChapter, activeCourse, activeStepMeta, story]);
+
+  React.useEffect(() => {
+    debugPlayerApp("navigation-snapshot", {
+      view,
+      activeCourseId,
+      activeChapterId,
+      activeStepId,
+      activeStepMeta: activeStepMeta?.sequence_id ?? null,
+      continueTarget,
+      lastStepByChapter: progress.lastStepByChapter,
+      completedSteps: progress.completedSteps
+    });
+  }, [activeChapterId, activeCourseId, activeStepId, activeStepMeta?.sequence_id, continueTarget, progress.completedSteps, progress.lastStepByChapter, view]);
 
   const setNavigationState = React.useCallback(
     (patch: Partial<AppShellState>) => {
@@ -150,6 +186,15 @@ export function App() {
     const remembered = progress.lastStepByChapter[key];
     const fallback = activeSteps[0]?.sequence_id ?? null;
     const nextStep = activeSteps.find((step) => step.sequence_id === remembered)?.sequence_id ?? fallback;
+    debugPlayerApp("resolve-active-step", {
+      chapterKey: key,
+      remembered,
+      fallback,
+      nextStep,
+      activeStepId,
+      completedInChapter: progress.completedSteps[key] ?? [],
+      availableSteps: activeSteps.map((step) => step.sequence_id ?? null)
+    });
     if (nextStep !== activeStepId) {
       setNavigationState({
         activeStepId: nextStep
@@ -203,6 +248,12 @@ export function App() {
         chapterId,
         stepId
       });
+      debugPlayerApp("navigate-to-step", {
+        courseId: activeCourse.courseId,
+        chapterId,
+        stepId,
+        nextView
+      });
       setNavigationState({
         activeCourseId: activeCourse.courseId,
         activeChapterId: chapterId,
@@ -229,10 +280,16 @@ export function App() {
 
   const continueCourse = React.useCallback(() => {
     if (!continueTarget) {
+      debugPlayerApp("continue-course-missing-target", {
+        activeCourseId: activeCourse?.courseId ?? null,
+        activeChapterId: activeChapter?.chapterId ?? null,
+        activeStepId
+      });
       return;
     }
+    debugPlayerApp("continue-course", continueTarget);
     navigateToStep(continueTarget.chapterId, continueTarget.stepId);
-  }, [continueTarget, navigateToStep]);
+  }, [activeChapter?.chapterId, activeCourse?.courseId, activeStepId, continueTarget, navigateToStep]);
 
   const selectChapterStep = React.useCallback(
     (stepId: string) => {
@@ -255,10 +312,24 @@ export function App() {
     if (!activeCourse || !activeChapter || !activeStepId) {
       return;
     }
+    const key = chapterKey(activeCourse.courseId, activeChapter.chapterId);
+    const currentCompleted = progress.completedSteps[key] ?? [];
+    debugPlayerApp("story-complete", {
+      courseId: activeCourse.courseId,
+      chapterId: activeChapter.chapterId,
+      stepId: activeStepId,
+      beforeCompletedSteps: currentCompleted,
+      beforeLastStep: progress.lastStepByChapter[key] ?? null
+    });
     markStepComplete({
       courseId: activeCourse.courseId,
       chapterId: activeChapter.chapterId,
       stepId: activeStepId
+    });
+    debugPlayerApp("story-complete-expected-progress", {
+      chapterKey: key,
+      afterCompletedSteps: [...new Set([...currentCompleted, activeStepId])],
+      afterLastStep: activeStepId
     });
     const currentIndex = activeSteps.findIndex((step) => step.sequence_id === activeStepId);
     const nextStep = activeSteps[currentIndex + 1]?.sequence_id;
@@ -267,7 +338,7 @@ export function App() {
       return;
     }
     setView("chapter");
-  }, [activeChapter, activeCourse, activeStepId, activeSteps, markStepComplete, navigateToStep, setView]);
+  }, [activeChapter, activeCourse, activeStepId, activeSteps, markStepComplete, navigateToStep, progress.completedSteps, progress.lastStepByChapter, setView]);
 
   if (catalog.loading) {
     return (
@@ -465,8 +536,8 @@ export function App() {
             key={`${activeChapter.chapterId}:${activeStepId ?? "none"}`}
             course={activeCourse}
             chapter={activeChapter}
-            stepMeta={activeSteps.find((step) => step.sequence_id === activeStepId) ?? null}
-            bundle={story}
+            stepMeta={activeStepMeta}
+            sceneState={storyScene}
             onClose={() => setView("chapter")}
             onComplete={storyComplete}
             onOpenTerm={(id, term) => setSelectedTerm({ id, term })}

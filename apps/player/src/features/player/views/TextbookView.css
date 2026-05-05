@@ -1,0 +1,58 @@
+.textbook-shell {
+  border-radius: 8px;
+  padding: 18px;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-medium);
+}
+
+.textbook-shell h2 {
+  margin: 0;
+  font-family: var(--font-title);
+}
+
+.mdx-shell {
+  display: grid;
+  gap: 18px;
+  color: var(--text-soft);
+}
+
+.mdx-shell p,
+.mdx-shell li {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.mdx-shell h1,
+.mdx-shell h2,
+.mdx-shell h3 {
+  color: var(--text-base);
+  font-family: var(--font-title);
+}
+
+.mdx-shell section,
+.mdx-shell article,
+.mdx-shell aside,
+.inline-practice {
+  border-radius: 8px;
+  background: #1f1f1f;
+  padding: 18px;
+}
+
+.mdx-shell table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mdx-shell th,
+.mdx-shell td {
+  border-bottom: 1px solid #2d2d2d;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.inline-practice h4,
+.inline-practice h5 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-family: var(--font-title);
+}

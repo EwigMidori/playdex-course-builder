@@ -4,7 +4,7 @@ import type {
   QuestionBank,
   StoryManifest,
   StoryStep
-} from "./types";
+} from "../course-asset-contract";
 
 export type Loadable<T> = {
   data: T | null;

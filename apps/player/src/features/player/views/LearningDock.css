@@ -1,0 +1,68 @@
+.learning-dock {
+  position: fixed;
+  left: 264px;
+  right: 24px;
+  bottom: 20px;
+  z-index: 25;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  border-radius: 9999px;
+  background: rgba(24, 24, 24, 0.94);
+  box-shadow: var(--shadow-heavy);
+  backdrop-filter: blur(14px);
+}
+
+.dock-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.dock-copy strong,
+.dock-copy span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dock-copy strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.dock-copy span:last-child {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.dock-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .learning-dock {
+    left: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .learning-dock,
+  .dock-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .learning-dock {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border-radius: 20px;
+  }
+}

@@ -1,0 +1,45 @@
+.bank-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.vault-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.vault-card {
+  border-radius: 8px;
+  padding: 18px;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-medium);
+  cursor: pointer;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.vault-card:hover {
+  background: var(--bg-card);
+  transform: translateY(-2px);
+}
+
+.vault-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.vault-card h4 {
+  margin: 0;
+  font-family: var(--font-title);
+}
+
+.vault-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}

@@ -1,18 +1,8 @@
 import { atom } from "jotai";
 import { atomWithStorage, createJSONStorage } from "jotai/utils";
-import type { PlayerProgress, ReviewHistoryEntry } from "./types";
-
-export type ViewMode = "library" | "course" | "chapter" | "learning" | "review" | "bank" | "textbook";
-
-export type PlayerNavigationState = {
-  view: ViewMode;
-  activeCourseId: string | null;
-  activeChapterId: string | null;
-  activeStepId: string | null;
-};
+import type { PlayerProgress, ReviewHistoryEntry } from "./player-model";
 
 const PROGRESS_STORAGE_KEY = "playdex-player-progress-v1";
-const NAVIGATION_STORAGE_KEY = "playdex-player-navigation-v1";
 
 const chapterKey = (courseId: string, chapterId: string) => `${courseId}:${chapterId}`;
 
@@ -20,13 +10,6 @@ const defaultProgress = (): PlayerProgress => ({
   completedSteps: {},
   lastStepByChapter: {},
   reviewHistory: {}
-});
-
-const defaultNavigationState = (): PlayerNavigationState => ({
-  view: "library",
-  activeCourseId: null,
-  activeChapterId: null,
-  activeStepId: null
 });
 
 function normalizeProgress(value: unknown): PlayerProgress {
@@ -42,20 +25,6 @@ function normalizeProgress(value: unknown): PlayerProgress {
   };
 }
 
-function normalizeNavigationState(value: unknown): PlayerNavigationState {
-  if (!value || typeof value !== "object") {
-    return defaultNavigationState();
-  }
-
-  const parsed = value as Partial<PlayerNavigationState>;
-  return {
-    view: parsed.view ?? "library",
-    activeCourseId: parsed.activeCourseId ?? null,
-    activeChapterId: parsed.activeChapterId ?? null,
-    activeStepId: parsed.activeStepId ?? null
-  };
-}
-
 const jsonStorage = createJSONStorage<unknown>(() => window.localStorage);
 
 const progressStorage = {
@@ -64,30 +33,7 @@ const progressStorage = {
   removeItem: (key: string) => jsonStorage.removeItem(key)
 };
 
-const navigationStorage = {
-  getItem: (key: string, initialValue: PlayerNavigationState) =>
-    normalizeNavigationState(jsonStorage.getItem(key, initialValue)),
-  setItem: (key: string, value: PlayerNavigationState) => jsonStorage.setItem(key, value),
-  removeItem: (key: string) => jsonStorage.removeItem(key)
-};
-
 export const playerProgressAtom = atomWithStorage<PlayerProgress>(PROGRESS_STORAGE_KEY, defaultProgress(), progressStorage);
-
-export const playerNavigationAtom = atomWithStorage<PlayerNavigationState>(
-  NAVIGATION_STORAGE_KEY,
-  defaultNavigationState(),
-  navigationStorage
-);
-
-export const patchPlayerNavigationAtom = atom(
-  null,
-  (get, set, patch: Partial<PlayerNavigationState>) => {
-    set(playerNavigationAtom, {
-      ...get(playerNavigationAtom),
-      ...patch
-    });
-  }
-);
 
 export const markStepCompleteAtom = atom(
   null,

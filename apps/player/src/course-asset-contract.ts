@@ -134,30 +134,3 @@ export type QuestionBank = {
   quiz_families?: QuestionFamily[];
   longform_families?: QuestionFamily[];
 };
-
-export type QuestionIndex = {
-  families: Map<string, QuestionFamily>;
-  questions: Map<string, { family: QuestionFamily; variant: QuestionVariant }>;
-  flashcards: Array<{
-    family: QuestionFamily;
-    variant: QuestionVariant;
-    chapterId: string;
-    chapterTitle: string;
-    stepId: string;
-  }>;
-  quizFamilies: QuestionFamily[];
-  longformFamilies: QuestionFamily[];
-  coverage: CoverageEntry[];
-};
-
-export type ReviewHistoryEntry = {
-  seenCount: number;
-  lastRating: number;
-  updatedAt: number;
-};
-
-export type PlayerProgress = {
-  completedSteps: Record<string, string[]>;
-  lastStepByChapter: Record<string, string>;
-  reviewHistory: Record<string, ReviewHistoryEntry>;
-};

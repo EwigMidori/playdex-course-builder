@@ -50,7 +50,10 @@
 12. 术语引用统一使用：
    - `<Term id="..." en="English Term">显示文本</Term>`
 13. 公式引用统一使用：
+   - 行内公式：`<InlineFormula latex="..." />`
    - `<Formula latex="...">简短说明</Formula>`
+   - 不要输出行内 `$...$` 或块级 `$$...$$` 数学语法
+   - 需要公式时，一律改写为自定义组件形式
 14. 嵌题建议使用：
    - `<QuestionRef id="..." />`
    - `<QuestionFamily familyId="..." />`

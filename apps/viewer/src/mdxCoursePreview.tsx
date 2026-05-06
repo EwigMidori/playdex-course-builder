@@ -1,6 +1,8 @@
 import React from "react";
 import { evaluate } from "@mdx-js/mdx";
 import * as runtime from "react/jsx-runtime";
+import katex from "katex";
+import "katex/dist/katex.min.css";
 import remarkGfm from "remark-gfm";
 import type { QuestionFamily, QuestionVariant } from "./types";
 
@@ -84,6 +86,14 @@ const familyTone = (family?: QuestionFamily) => {
     card: "border-emerald-200 bg-emerald-50/60"
   };
 };
+
+const renderKatex = (latex: string, displayMode: boolean) =>
+  katex.renderToString(latex, {
+    displayMode,
+    output: "html",
+    throwOnError: true,
+    strict: "warn"
+  });
 
 function VariantPreview({
   family,
@@ -324,6 +334,25 @@ function createCourseComponents(plainArtifactsDir: string, index?: MdxCourseInde
       }
       return <code className="rounded bg-stone-100 px-1.5 py-0.5 font-mono text-[0.92em] text-stone-900">{children}</code>;
     },
+    InlineFormula: ({ latex }: { latex?: string }) => {
+      if (!latex) {
+        return <code className="rounded bg-rose-100 px-1.5 py-0.5 font-mono text-[0.92em] text-rose-700">inline formula</code>;
+      }
+      try {
+        return (
+          <span
+            className="inline-block align-baseline text-stone-950"
+            dangerouslySetInnerHTML={{ __html: renderKatex(latex, false) }}
+          />
+        );
+      } catch (error) {
+        return (
+          <code className="rounded bg-rose-100 px-1.5 py-0.5 font-mono text-[0.92em] text-rose-700" title={error instanceof Error ? error.message : String(error)}>
+            {latex}
+          </code>
+        );
+      }
+    },
     Definition: ({ title, children }: { title?: string; children?: React.ReactNode }) => (
       <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-5 shadow-sm">
         <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-700">Definition</div>
@@ -375,6 +404,42 @@ function createCourseComponents(plainArtifactsDir: string, index?: MdxCourseInde
           </figcaption>
         </figure>
       );
+    },
+    Formula: ({ latex, en, children }: { latex?: string; en?: string; children?: React.ReactNode }) => {
+      if (!latex) {
+        return (
+          <div className="rounded-2xl border border-rose-200 bg-rose-50/80 p-5 shadow-sm">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-rose-700">{en ?? "Formula"}</div>
+            <div className="mt-3 rounded-lg bg-white px-3 py-2 font-mono text-sm text-rose-700">missing latex</div>
+            {children ? <div className="mt-3 text-sm leading-7 text-rose-950">{children}</div> : null}
+          </div>
+        );
+      }
+      try {
+        return (
+          <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 shadow-sm">
+            <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-700">{en ?? "Formula"}</div>
+            <div
+              className="overflow-x-auto rounded-xl bg-white px-4 py-3 text-stone-950 shadow-sm [&_.katex-display]:m-0"
+              dangerouslySetInnerHTML={{ __html: renderKatex(latex, true) }}
+            />
+            {children ? <div className="mt-3 text-sm leading-7 text-slate-700">{children}</div> : null}
+          </div>
+        );
+      } catch (error) {
+        return (
+          <div className="rounded-2xl border border-rose-200 bg-rose-50/80 p-5 shadow-sm">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-rose-700">{en ?? "Formula"}</div>
+            <div
+              className="mt-3 rounded-lg bg-white px-3 py-2 font-mono text-sm text-rose-700"
+              title={error instanceof Error ? error.message : String(error)}
+            >
+              {latex}
+            </div>
+            {children ? <div className="mt-3 text-sm leading-7 text-rose-950">{children}</div> : null}
+          </div>
+        );
+      }
     },
     QuestionRef: ({ id }: { id?: string }) => (id ? <QuestionRefCard id={id} index={index} /> : null),
     QuestionFamily: ({ familyId, id }: { familyId?: string; id?: string }) => (

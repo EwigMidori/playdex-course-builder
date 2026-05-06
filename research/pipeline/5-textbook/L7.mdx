@@ -215,7 +215,7 @@ coverageTrace:
 
 ### 组合期望收益率
 
-假设一个组合 $P$ 包含 $n$ 种资产，每种资产的权重为 $w_i$，且 $\sum w_i = 1$。
+假设一个组合 <InlineFormula latex="P" /> 包含 <InlineFormula latex="n" /> 种资产，每种资产的权重为 <InlineFormula latex="w_i" />，且 <InlineFormula latex="\sum w_i = 1" />。
 
 <Definition title="组合期望收益率">
 组合的期望收益率是各资产期望收益率的加权平均：
@@ -225,8 +225,10 @@ coverageTrace:
 </Definition>
 
 <Example title="两只资产组合的期望收益">
-资产A期望收益15%，资产B期望收益7.5%，各投一半（$w_A=0.5, w_B=0.5$）：
-$$E(R_p) = 0.5 \times 15\% + 0.5 \times 7.5\% = 11.25\%$$
+资产A期望收益15%，资产B期望收益7.5%，各投一半（<InlineFormula latex="w_A=0.5, w_B=0.5" />）：
+<Formula latex="E(R_p) = 0.5 \times 15\% + 0.5 \times 7.5\% = 11.25\%">
+Worked example: expected portfolio return
+</Formula>
 </Example>
 
 <QuestionRef id="q_quiz_expected_return_v1" />
@@ -239,14 +241,16 @@ $$E(R_p) = 0.5 \times 15\% + 0.5 \times 7.5\% = 11.25\%$$
 <Formula latex="\sigma_p^2 = w_A^2 \sigma_A^2 + w_B^2 \sigma_B^2 + 2 w_A w_B \sigma_{AB}" en="Portfolio Variance (Two Assets)">
 两只资产组合方差公式
 </Formula>
-其中 $\sigma_{AB} = \rho_{AB} \sigma_A \sigma_B$ 是资产A和B的协方差。
+其中 <InlineFormula latex="\sigma_{AB} = \rho_{AB} \sigma_A \sigma_B" /> 是资产A和B的协方差。
 </Definition>
 
 <KeyPoint>组合方差 = 资产A的方差贡献 + 资产B的方差贡献 + 两者的协方差贡献。协方差项是分散风险的关键。</KeyPoint>
 
 <Example title="计算组合方差">
 资产A（权重60%，方差0.04）、资产B（权重40%，方差0.09），协方差为0.02：
-$$\sigma_p^2 = 0.6^2 \times 0.04 + 0.4^2 \times 0.09 + 2 \times 0.6 \times 0.4 \times 0.02 = 0.0144 + 0.0144 + 0.0096 = 0.0384$$
+<Formula latex="\sigma_p^2 = 0.6^2 \times 0.04 + 0.4^2 \times 0.09 + 2 \times 0.6 \times 0.4 \times 0.02 = 0.0144 + 0.0144 + 0.0096 = 0.0384">
+Worked example: portfolio variance calculation
+</Formula>
 </Example>
 
 <QuestionFamily familyId="qf_long_variance_calc" />
@@ -261,22 +265,27 @@ $$\sigma_p^2 = 0.6^2 \times 0.04 + 0.4^2 \times 0.09 + 2 \times 0.6 \times 0.4 \
 | 正常 | 0.50 | 0% | 10% |
 | 好 | 0.25 | 100% | 40% |
 
-投资$40,000在A，$60,000在B（$w_A=0.4, w_B=0.6$）：
+投资$40,000在A，$60,000在B（<InlineFormula latex="w_A=0.4, w_B=0.6" />）：
 
 **方法一：直接计算组合收益率**
-- 差：$0.4 \times (-40\%) + 0.6 \times (-30\%) = -34\%$
-- 正常：$0.4 \times 0\% + 0.6 \times 10\% = 6\%$
-- 好：$0.4 \times 100\% + 0.6 \times 40\% = 64\%$
+- 差：<InlineFormula latex="0.4 \times (-40\%) + 0.6 \times (-30\%) = -34\%" />
+- 正常：<InlineFormula latex="0.4 \times 0\% + 0.6 \times 10\% = 6\%" />
+- 好：<InlineFormula latex="0.4 \times 100\% + 0.6 \times 40\% = 64\%" />
 
-$$\mu_p = 0.25(-34\%) + 0.5(6\%) + 0.25(64\%) = 10.5\%$$
-$$\sigma_p = \sqrt{0.25(-34\%-10.5\%)^2 + 0.5(6\%-10.5\%)^2 + 0.25(64\%-10.5\%)^2} = 34.94\%$$
+<Formula latex="\mu_p = 0.25(-34\%) + 0.5(6\%) + 0.25(64\%) = 10.5\%">
+Worked example: expected return under scenarios
+</Formula>
+
+<Formula latex="\sigma_p = \sqrt{0.25(-34\%-10.5\%)^2 + 0.5(6\%-10.5\%)^2 + 0.25(64\%-10.5\%)^2} = 34.94\%">
+Worked example: scenario-based portfolio volatility
+</Formula>
 
 **方法二：用公式计算**
-- $\mu_A = 15\%, \mu_B = 7.5\%$
-- $\sigma_A = 0.5712, \sigma_B = 0.2487$
-- $\sigma_{AB} = 0.11875, \rho_{AB} = 0.923$
-- $\mu_p = 0.4 \times 15\% + 0.6 \times 7.5\% = 10.5\%$
-- $\sigma_p = \sqrt{0.4^2 \times 0.5712^2 + 0.6^2 \times 0.2487^2 + 2 \times 0.4 \times 0.6 \times 0.11875} = 34.94\%$
+- <InlineFormula latex="\mu_A = 15\%, \mu_B = 7.5\%" />
+- <InlineFormula latex="\sigma_A = 0.5712, \sigma_B = 0.2487" />
+- <InlineFormula latex="\sigma_{AB} = 0.11875, \rho_{AB} = 0.923" />
+- <InlineFormula latex="\mu_p = 0.4 \times 15\% + 0.6 \times 7.5\% = 10.5\%" />
+- <InlineFormula latex="\sigma_p = \sqrt{0.4^2 \times 0.5712^2 + 0.6^2 \times 0.2487^2 + 2 \times 0.4 \times 0.6 \times 0.11875} = 34.94\%" />
 
 <Checkpoint title="自测：组合期望收益">
 <QuestionRef id="q_quiz_portfolio_return_risk_v1" />
@@ -284,12 +293,12 @@ $$\sigma_p = \sqrt{0.25(-34\%-10.5\%)^2 + 0.5(6\%-10.5\%)^2 + 0.25(64\%-10.5\%)^
 
 ## 风险分散与相关系数 {#diversification-correlation}
 
-<Term id="correlation" en="Correlation Coefficient">相关系数</Term> $\rho$ 决定了分散风险的效果。
+<Term id="correlation" en="Correlation Coefficient">相关系数</Term> <InlineFormula latex="\rho" /> 决定了分散风险的效果。
 
 <Definition title="相关系数与分散效果">
-- $\rho = 1$（完全正相关）：分散**无效**，组合标准差 = 各资产标准差的加权平均
-- $\rho = -1$（完全负相关）：理论上可将风险**降至零**
-- $\rho$ 越低，分散效果越好
+- <InlineFormula latex="\rho = 1" />（完全正相关）：分散**无效**，组合标准差 = 各资产标准差的加权平均
+- <InlineFormula latex="\rho = -1" />（完全负相关）：理论上可将风险**降至零**
+- <InlineFormula latex="\rho" /> 越低，分散效果越好
 </Definition>
 
 <KeyPoint>不把鸡蛋放在同一个篮子里。相关系数越低，分散效果越好。</KeyPoint>
@@ -311,17 +320,19 @@ $$\sigma_p = \sqrt{0.25(-34\%-10.5\%)^2 + 0.5(6\%-10.5\%)^2 + 0.25(64\%-10.5\%)^
 在所有可能的组合中，风险最低的那个被称为<Term id="minimum_variance_portfolio" en="Minimum Variance Portfolio">最小方差组合</Term>（MVP）。
 
 <Definition title="最小方差组合的权重（两只资产）">
-令 $w_A = w, w_B = 1-w$，对组合方差求导并令导数为零：
+令 <InlineFormula latex="w_A = w, w_B = 1-w" />，对组合方差求导并令导数为零：
 <Formula latex="w = \frac{-\sigma_B(\rho \sigma_A - \sigma_B)}{\sigma_A^2 + \sigma_B^2 - 2\rho \sigma_A \sigma_B}" en="Minimum Variance Portfolio Weight">
 最小方差组合权重公式
 </Formula>
-如果 $0 \leq w \leq 1$，则最小方差组合存在，条件是 $\rho \leq \min(\sigma_A/\sigma_B, \sigma_B/\sigma_A)$。
+如果 <InlineFormula latex="0 \leq w \leq 1" />，则最小方差组合存在，条件是 <InlineFormula latex="\rho \leq \min(\sigma_A/\sigma_B, \sigma_B/\sigma_A)" />。
 </Definition>
 
 <Example title="计算最小方差组合">
-已知 $\sigma_A = 0.3, \sigma_B = 0.2, \rho = 0.3$：
-$$w = \frac{-0.2(0.3 \times 0.3 - 0.2)}{0.3^2 + 0.2^2 - 2 \times 0.3 \times 0.3 \times 0.2} = \frac{-0.2(-0.11)}{0.09 + 0.04 - 0.036} = \frac{0.022}{0.094} \approx 0.234$$
-组合标准差 $\sigma_p \approx 0.203$
+已知 <InlineFormula latex="\sigma_A = 0.3, \sigma_B = 0.2, \rho = 0.3" />：
+<Formula latex="w = \frac{-0.2(0.3 \times 0.3 - 0.2)}{0.3^2 + 0.2^2 - 2 \times 0.3 \times 0.3 \times 0.2} = \frac{-0.2(-0.11)}{0.09 + 0.04 - 0.036} = \frac{0.022}{0.094} \approx 0.234">
+Worked example: minimum-variance weight
+</Formula>
+组合标准差 <InlineFormula latex="\sigma_p \approx 0.203" />
 </Example>
 
 <QuestionFamily familyId="qf_long_mvp_derivation" />
@@ -349,14 +360,14 @@ $$w = \frac{-0.2(0.3 \times 0.3 - 0.2)}{0.3^2 + 0.2^2 - 2 \times 0.3 \times 0.3 
 如果市场上存在无风险资产（比如国债），情况会变得更有趣。
 
 <Definition title="切点组合与资本市场线">
-从无风险利率 $R_f$ 出发，画一条与有效前沿相切的直线。切点就是<Term id="tangency_portfolio" en="Tangency Portfolio">切点组合</Term>，这条直线被称为<Term id="capital_market_line" en="Capital Market Line">资本市场线</Term>（CML）。
+从无风险利率 <InlineFormula latex="R_f" /> 出发，画一条与有效前沿相切的直线。切点就是<Term id="tangency_portfolio" en="Tangency Portfolio">切点组合</Term>，这条直线被称为<Term id="capital_market_line" en="Capital Market Line">资本市场线</Term>（CML）。
 </Definition>
 
 <Formula latex="E(R_p) = R_f + \frac{E(R_M) - R_f}{\sigma_M} \sigma_p" en="Capital Market Line">
 资本市场线公式
 </Formula>
 
-<KeyPoint>切点组合的权重通过**最大化夏普比率** $(\mu_p - R_f)/\sigma_p$ 得到。所有理性投资者都会在CML上选择自己的组合。</KeyPoint>
+<KeyPoint>切点组合的权重通过**最大化夏普比率** <InlineFormula latex="(\mu_p - R_f)/\sigma_p" /> 得到。所有理性投资者都会在CML上选择自己的组合。</KeyPoint>
 
 <Figure src="images/854d8af52585526e0e5395fae93774bfa7c87dcd9cad02e9ef2bac845d8fd37d.jpg" alt="资本市场线示意图，显示从无风险利率出发与有效前沿相切的直线">
 资本市场线
@@ -382,18 +393,20 @@ $$w = \frac{-0.2(0.3 \times 0.3 - 0.2)}{0.3^2 + 0.2^2 - 2 \times 0.3 \times 0.3 
 <Formula latex="E(R_i) = R_f + \beta_i (E(R_M) - R_f)" en="Capital Asset Pricing Model">
 CAPM公式
 </Formula>
-其中 $\beta_i = \frac{\sigma_{iM}}{\sigma_M^2}$ 是<Term id="beta" en="Beta Coefficient">贝塔系数</Term>。
+其中 <InlineFormula latex="\beta_i = \frac{\sigma_{iM}}{\sigma_M^2}" /> 是<Term id="beta" en="Beta Coefficient">贝塔系数</Term>。
 </Definition>
 
 <KeyPoint>
-- $\beta > 1$：资产比市场更**激进**（波动更大）
-- $\beta < 1$：资产比市场更**保守**
-- $\beta = 1$：与市场同步
+- <InlineFormula latex="\beta > 1" />：资产比市场更**激进**（波动更大）
+- <InlineFormula latex="\beta < 1" />：资产比市场更**保守**
+- <InlineFormula latex="\beta = 1" />：与市场同步
 </KeyPoint>
 
 <Example title="CAPM计算">
-无风险利率3%，市场收益10%，某资产 $\beta=1.5$：
-$$E(R_i) = 3\% + 1.5 \times (10\% - 3\%) = 13.5\%$$
+无风险利率3%，市场收益10%，某资产 <InlineFormula latex="\beta=1.5" />：
+<Formula latex="E(R_i) = 3\% + 1.5 \times (10\% - 3\%) = 13.5\%">
+Worked example: CAPM expected return
+</Formula>
 </Example>
 
 <QuestionRef id="q_quiz_capm_calc_v1" />
@@ -404,8 +417,8 @@ $$E(R_i) = 3\% + 1.5 \times (10\% - 3\%) = 13.5\%$$
 
 <Definition title="SML的含义">
 - 所有资产都应落在SML上
-- 落在**上方**：$\alpha > 0$，资产被**低估**（好机会）
-- 落在**下方**：$\alpha < 0$，资产被**高估**
+- 落在**上方**：<InlineFormula latex="\alpha > 0" />，资产被**低估**（好机会）
+- 落在**下方**：<InlineFormula latex="\alpha < 0" />，资产被**高估**
 </Definition>
 
 <Figure src="images/96d5ce21d4e6290212b334ce5e32404d24de56dfc38c8f5b7db3dbcd88b29b71.jpg" alt="证券市场线示意图，显示贝塔与期望收益的线性关系">
@@ -437,7 +450,9 @@ $$E(R_i) = 3\% + 1.5 \times (10\% - 3\%) = 13.5\%$$
 
 <Example title="计算夏普比率">
 某基金年化收益12%，无风险利率2%，标准差15%：
-$$SR = \frac{12\% - 2\%}{15\%} = 0.67$$
+<Formula latex="SR = \frac{12\% - 2\%}{15\%} = 0.67">
+Worked example: Sharpe ratio
+</Formula>
 </Example>
 
 <QuestionFamily familyId="qf_long_sharpe" />
@@ -445,7 +460,7 @@ $$SR = \frac{12\% - 2\%}{15\%} = 0.67$$
 ### 索提诺比率
 
 <Definition title="索提诺比率">
-与夏普比率类似，但只考虑**下行风险**（下行标准差 $\sigma_d$）：
+与夏普比率类似，但只考虑**下行风险**（下行标准差 <InlineFormula latex="\sigma_d" />）：
 <Formula latex="Sortino = \frac{E(R_p) - R_f}{\sigma_d}" en="Sortino Ratio">
 索提诺比率公式
 </Formula>
@@ -467,13 +482,18 @@ $$SR = \frac{12\% - 2\%}{15\%} = 0.67$$
 <Formula latex="\alpha_p = E(R_p) - [R_f + \beta_p (E(R_M) - R_f)]" en="Jensen's Alpha">
 詹森阿尔法公式
 </Formula>
-直接衡量基金经理有没有创造超额价值。$\alpha > 0$ 表示跑赢市场。
+直接衡量基金经理有没有创造超额价值。<InlineFormula latex="\alpha > 0" /> 表示跑赢市场。
 </Definition>
 
 <Example title="计算詹森阿尔法">
-无风险利率2%，市场收益8%，组合 $\beta=1.5$，实际收益12%：
-$$\text{CAPM预期收益} = 2\% + 1.5 \times (8\% - 2\%) = 11\%$$
-$$\alpha = 12\% - 11\% = 1\% > 0 \quad \text{（跑赢市场）}$$
+无风险利率2%，市场收益8%，组合 <InlineFormula latex="\beta=1.5" />，实际收益12%：
+<Formula latex="\text{CAPM预期收益} = 2\% + 1.5 \times (8\% - 2\%) = 11\%">
+Worked example: CAPM benchmark return
+</Formula>
+
+<Formula latex="\alpha = 12\% - 11\% = 1\% > 0 \quad \text{（跑赢市场）}">
+Worked example: Jensen's alpha
+</Formula>
 </Example>
 
 <QuestionFamily familyId="qf_long_jensen" />
@@ -503,7 +523,9 @@ $$\alpha = 12\% - 11\% = 1\% > 0 \quad \text{（跑赢市场）}$$
 
 <Example title="计算最大回撤">
 净值从100涨到150，然后跌到80：
-$$MDD = \frac{150 - 80}{150} = 46.67\%$$
+<Formula latex="MDD = \frac{150 - 80}{150} = 46.67\%">
+Worked example: maximum drawdown
+</Formula>
 </Example>
 
 ### 卡尔玛比率
@@ -543,7 +565,7 @@ $$MDD = \frac{150 - 80}{150} = 46.67\%$$
 </Definition>
 
 <Example title="移动止损">
-设5%移动止损，价格从100涨到110，止损线上移到 $110 \times (1-5\%) = 104.5$。
+设5%移动止损，价格从100涨到110，止损线上移到 <InlineFormula latex="110 \times (1-5\%) = 104.5" />。
 </Example>
 
 <QuestionFamily familyId="qf_long_trailing_sl_mechanism" />
@@ -569,11 +591,11 @@ $$MDD = \frac{150 - 80}{150} = 46.67\%$$
 </Pitfall>
 
 <Pitfall title="忽视相关系数的影响">
-$\rho=1$ 时分散**无效**，$\rho=-1$ 时理论上可降至零。实际中 $\rho$ 通常在-1到1之间，分散效果也介于两者之间。
+<InlineFormula latex="\rho=1" /> 时分散**无效**，<InlineFormula latex="\rho=-1" /> 时理论上可降至零。实际中 <InlineFormula latex="\rho" /> 通常在-1到1之间，分散效果也介于两者之间。
 </Pitfall>
 
 <Pitfall title="最小方差组合不一定存在">
-只有当 $\rho \leq \min(\sigma_A/\sigma_B, \sigma_B/\sigma_A)$ 时，最小方差组合的权重才在0到1之间。
+只有当 <InlineFormula latex="\rho \leq \min(\sigma_A/\sigma_B, \sigma_B/\sigma_A)" /> 时，最小方差组合的权重才在0到1之间。
 </Pitfall>
 
 <Pitfall title="有效前沿 vs. 机会集">

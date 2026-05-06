@@ -156,6 +156,44 @@ function FormulaBlock({ latex, en, children }: { latex?: string; en?: string; ch
   );
 }
 
+function InlineFormula({ latex }: { latex?: string }) {
+  const result = React.useMemo(() => {
+    if (!latex) {
+      return {
+        html: null,
+        error: "Inline formula is missing the required `latex` attribute."
+      };
+    }
+
+    try {
+      return {
+        html: katex.renderToString(latex, {
+          displayMode: false,
+          output: "html",
+          throwOnError: true,
+          strict: "warn"
+        }),
+        error: null
+      };
+    } catch (error) {
+      return {
+        html: null,
+        error: error instanceof Error ? error.message : String(error)
+      };
+    }
+  }, [latex]);
+
+  if (result.html) {
+    return <span className="textbook-inline-formula" dangerouslySetInnerHTML={{ __html: result.html }} />;
+  }
+
+  return (
+    <span className="textbook-inline-formula textbook-inline-formula--error" role="alert" title={result.error ?? undefined}>
+      {latex ?? "inline formula"}
+    </span>
+  );
+}
+
 function TextbookCard({
   tone,
   label,
@@ -468,6 +506,7 @@ export function buildTextbookMdxComponents({
         </figure>
       );
     },
+    InlineFormula: ({ latex }: { latex?: string }) => <InlineFormula latex={latex} />,
     Formula: ({ latex, en, children }: { latex?: string; en?: string; children?: React.ReactNode }) => (
       <FormulaBlock en={en} latex={latex}>
         {children}

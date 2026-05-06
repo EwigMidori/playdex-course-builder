@@ -243,7 +243,7 @@ coverageTrace:
 大多数金融价格序列本身并不平稳，它们会随机游走。但两只不平稳的股票，它们的某种组合却可能是平稳的。这种性质叫做**协整**。
 
 <Definition title="协整">
-<Term id="cointegration" en="Cointegration">协整</Term>描述的是两个或多个时间序列之间的长期均衡关系。如果序列Y和X是协整的，就存在一个常数β，使得组合 $z_t = y_t - \beta x_t$ 是<Term id="stationary" en="Stationary">平稳</Term>的。
+<Term id="cointegration" en="Cointegration">协整</Term>描述的是两个或多个时间序列之间的长期均衡关系。如果序列Y和X是协整的，就存在一个常数β，使得组合 <InlineFormula latex="z_t = y_t - \beta x_t" /> 是<Term id="stationary" en="Stationary">平稳</Term>的。
 </Definition>
 
 <Formula latex="z_t = y_t - \beta x_t \text{ is stationary}">
@@ -257,7 +257,7 @@ coverageTrace:
 </Definition>
 
 <Definition title="价差">
-<Term id="spread" en="Spread">价差</Term>是配对交易中，两只资产价格经过对冲比率调整后的差值，即 $z_t$。当价差偏离均值太远时，就出现了交易信号。
+<Term id="spread" en="Spread">价差</Term>是配对交易中，两只资产价格经过对冲比率调整后的差值，即 <InlineFormula latex="z_t" />。当价差偏离均值太远时，就出现了交易信号。
 </Definition>
 
 <Definition title="平稳性">
@@ -265,7 +265,7 @@ coverageTrace:
 </Definition>
 
 <Example title="协整的数学表达">
-假设股票Y和X的价格序列都是非平稳的，但存在一个β=1.5，使得 $z_t = Y_t - 1.5 \times X_t$ 是平稳的。这意味着Y和X是协整的，β=1.5就是对冲比率。
+假设股票Y和X的价格序列都是非平稳的，但存在一个β=1.5，使得 <InlineFormula latex="z_t = Y_t - 1.5 \times X_t" /> 是平稳的。这意味着Y和X是协整的，β=1.5就是对冲比率。
 </Example>
 
 <Checkpoint title="理解检查">
@@ -330,7 +330,7 @@ coverageTrace:
 CADF检验分为三步：
 
 1. **第一步**：对两只股票的价格做线性回归，得到对冲比率β。
-2. **第二步**：用β构建价差序列 $z_t = y_t - \beta x_t$。
+2. **第二步**：用β构建价差序列 <InlineFormula latex="z_t = y_t - \beta x_t" />。
 3. **第三步**：对价差序列进行ADF平稳性检验。如果p值小于0.05，就拒绝“不平稳”的原假设，认为序列协整。
 
 <Example title="CADF检验示例">

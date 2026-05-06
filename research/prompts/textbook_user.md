@@ -25,6 +25,7 @@ lesson_id：
 - 必须区分 `flashcard_families`、`quiz_families`、`longform_families` 的用途：闪卡用于主动检索，quiz 用于测验，longform 用于解释与应用
 - 不要把选择题称为 flashcard，也不要把 flashcard 放在考试题语境中
 - 术语与公式要可交互引用
+- 不要输出行内 `$...$` 或块级 `$$...$$` 数学语法；行内公式统一写成 `<InlineFormula latex="..." />`，块级公式统一写成 `<Formula latex="...">简短说明</Formula>`
 - 术语必须带英文备注，便于考试和交流
 - 不要依赖 `StepLink`
 - 必须使用适量可复用组件，例如 `Definition`、`Example`、`KeyPoint`、`Pitfall`、`Checkpoint`、`Figure`

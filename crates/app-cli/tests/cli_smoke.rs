@@ -99,6 +99,22 @@ impl TempRepo {
             "guided {{target_language}} {{plain_text}} {{related_important}}\n",
         );
         self.write(
+            "research/prompts/guided_story_planner_user.md",
+            "{{INPUT_DRAFT}}\n",
+        );
+        self.write(
+            "research/prompts/guided_story_contract_reviewer_user.md",
+            "{{INPUT_DRAFT}}\n{{PLANNER_OUTPUT}}\n",
+        );
+        self.write(
+            "research/prompts/guided_story_contract_executor_user.md",
+            "{{INPUT_DRAFT}}\n{{REVISED_OUTLINE}}\n{{PATCH_PLAN}}\n{{EXECUTION_CONTRACT}}\n{{RETRY_FEEDBACK}}\n{{PREVIOUS_OUTPUT}}\n",
+        );
+        self.write(
+            "research/prompts/guided_story_validator_user.md",
+            "{{REVISED_OUTLINE}}\n{{PATCH_PLAN}}\n{{EXECUTION_CONTRACT}}\n{{EXECUTOR_OUTPUT}}\n",
+        );
+        self.write(
             "research/prompts/question_bank_system.md",
             "question system\n",
         );
@@ -237,6 +253,120 @@ impl TestSupport {
             }
         })
         .to_string()
+    }
+
+    fn guided_story_planner_report() -> String {
+        serde_json::json!({
+            "lesson_goal": "Test lesson goal.",
+            "exam_forecast": {
+                "likely_question_types": ["concept_discrimination"],
+                "must_support_answers": ["Answer the core question."],
+                "common_traps": ["Do not drift into definitions."]
+            },
+            "route_checks": ["Keep the route coherent."],
+            "steps": [
+                {
+                    "step_id": "step1",
+                    "concept": "Test concept",
+                    "learner_start": "Student starts confused.",
+                    "tension": "A small tension appears.",
+                    "bridge_idea": "Bridge toward the concept.",
+                    "formal_terms_to_introduce": ["test_term"],
+                    "do_not_introduce_yet": [],
+                    "question_types_supported": ["concept_discrimination"],
+                    "representative_questions": ["What is the key distinction?"],
+                    "minimum_student_moves": ["Spot the distinction.", "Answer the distinction."],
+                    "exam_hooks": ["Use the key distinction."],
+                    "screen_plan": ["Setup", "Bridge", "Name", "Check"]
+                }
+            ],
+            "final_takeaways": ["One durable takeaway."]
+        })
+        .to_string()
+    }
+
+    fn guided_story_reviewer_report() -> String {
+        serde_json::json!({
+            "status": "pass",
+            "metrics": {
+                "question_chain": "pass",
+                "exam_coverage": "pass",
+                "definition_drift": "low",
+                "executor_risk": "low"
+            },
+            "diagnostics": [
+                {
+                    "id": "d1",
+                    "level": "low",
+                    "code": "other",
+                    "scope": { "step_id": "step1" },
+                    "reason": "Test harness reviewer output.",
+                    "evidence": ["Minimal test evidence."]
+                }
+            ],
+            "patch_plan": {
+                "ops": [
+                    {
+                        "id": "op1",
+                        "op": "add_exercise",
+                        "target": { "step_id": "step1" },
+                        "params": {}
+                    }
+                ]
+            },
+            "revised_outline": serde_json::from_str::<serde_json::Value>(&Self::guided_story_planner_report())
+                .expect("planner report should parse"),
+            "execution_contract": {
+                "global_rules": ["Keep the output as guided_story JSON."],
+                "required_question_types": ["concept_discrimination"],
+                "required_exercise_kinds": ["single_choice"],
+                "step_rules": [
+                    {
+                        "step_id": "step1",
+                        "must_include_question_types": ["concept_discrimination"],
+                        "must_include_student_moves": ["Spot the distinction."],
+                        "must_have_exercise_kinds": ["single_choice"],
+                        "must_delay_terms": [],
+                        "forbidden_patterns": ["parameter_table_drift"]
+                    }
+                ],
+                "acceptance_tests": ["Contains at least one exercise."]
+            }
+        })
+        .to_string()
+    }
+
+    fn guided_story_validator_pass_report() -> String {
+        serde_json::json!({
+            "pass": true,
+            "scores": {
+                "question_chain": 4,
+                "exam_coverage": 4,
+                "contract_compliance": 4,
+                "exercise_quality": 4,
+                "definition_drift": 4
+            },
+            "failed_checks": [],
+            "retry_feedback": {
+                "must_preserve": [],
+                "must_change": [],
+                "do_not_regress": [],
+                "priority_repairs": [],
+                "global_repairs": []
+            },
+            "summary": "pass"
+        })
+        .to_string()
+    }
+
+    fn guided_story_pipeline_responses(final_story: String) -> Vec<String> {
+        vec![
+            final_story.clone(),
+            Self::guided_story_planner_report(),
+            Self::guided_story_reviewer_report(),
+            final_story,
+            Self::guided_story_validator_pass_report(),
+        ]
     }
 }
 
@@ -705,7 +835,7 @@ fn score_relevance_uses_deepseek_provider_defaults_and_api_keys_file() {
     let request_json: serde_json::Value =
         serde_json::from_str(body).expect("request body should parse as JSON");
     assert_eq!(request_json["model"], "deepseek-chat");
-    assert_eq!(request_json["max_tokens"].as_u64(), Some(8192));
+    assert_eq!(request_json["max_tokens"].as_u64(), Some(393216));
 }
 
 #[test]
@@ -726,7 +856,9 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
     let gate_report = TestSupport::gate_pass_report(&["family_a"]);
     let textbook =
         r#"---\nlessonId: L2\n---\n# L2\n<QuestionFamily familyId="family_a" />\n<QuestionRef id="question_a" />\n"#.to_owned();
-    let server = StubLlmServer::start(vec![guided_story, question_bank, gate_report, textbook]);
+    let mut responses = TestSupport::guided_story_pipeline_responses(guided_story);
+    responses.extend([question_bank, gate_report, textbook]);
+    let server = StubLlmServer::start(responses);
 
     let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
@@ -768,7 +900,11 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
 
     let audit_root = repo.root().join("research/pipeline/meta/L2/mvp");
     for stage in [
-        "guided_story",
+        "guided_story/draft",
+        "guided_story/planner",
+        "guided_story/reviewer",
+        "guided_story/executor/round1",
+        "guided_story/validator/round1",
         "question_bank",
         "question_bank_gate",
         "textbook",
@@ -788,7 +924,7 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
     }
 
     assert!(
-        TestSupport::read_text(audit_root.join("guided_story/user.md")).contains("zh-CN"),
+        TestSupport::read_text(audit_root.join("guided_story/draft/user.md")).contains("zh-CN"),
         "rendered prompt should include target language"
     );
     assert!(
@@ -807,6 +943,65 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
         validate.status.success(),
         "stderr: {}",
         String::from_utf8_lossy(&validate.stderr)
+    );
+}
+
+#[test]
+fn run_recovers_guided_story_json_with_legacy_latex_backslashes() {
+    let repo = TempRepo::new();
+    repo.seed_prompts();
+    repo.write(
+        "research/pipeline/1-plain/L2/plain.txt",
+        "A lesson with inline math.\n",
+    );
+    repo.write(
+        "research/pipeline/2-related_important/course_desc.md",
+        "Related course note.\n",
+    );
+
+    let invalid_draft = r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[{"id":"s1","type":"narration","lines":["Equation \(Y\)."]}],"term_catalog":{}}"#.to_owned();
+    let final_story = r#"{"lesson_id":"L2","sequence_id":"step1","mode":"guided_story","screens":[{"id":"s1","type":"narration","lines":["Equation \\(Y\\)."]}],"term_catalog":{}}"#.to_owned();
+    let question_bank = r#"{"lesson_id":"L2","sequence_id":"step1","flashcard_families":[{"family_id":"family_a","linked_steps":["step1"],"variants":[{"question_id":"question_a","linked_steps":["step1"],"stem":"A?","answer":0}]}],"longform_families":[]}"#.to_owned();
+    let gate_report = TestSupport::gate_pass_report(&["family_a"]);
+    let textbook =
+        r#"---\nlessonId: L2\n---\n# L2\n<QuestionFamily familyId="family_a" />\n<QuestionRef id="question_a" />\n"#.to_owned();
+    let mut responses = vec![
+        invalid_draft,
+        TestSupport::guided_story_planner_report(),
+        TestSupport::guided_story_reviewer_report(),
+        final_story,
+        TestSupport::guided_story_validator_pass_report(),
+    ];
+    responses.extend([question_bank, gate_report, textbook]);
+    let server = StubLlmServer::start(responses);
+
+    let output = TestSupport::coursegen_command()
+        .current_dir(repo.root())
+        .env("COURSEGEN_LLM_API_KEY", "test-token")
+        .env("COURSEGEN_LLM_MODEL", "test-model")
+        .env("COURSEGEN_LLM_BASE_URL", server.base_url())
+        .args(["run", "L2", "--target-language", "zh-CN"])
+        .output()
+        .expect("coursegen should run");
+
+    server.finish();
+
+    assert!(
+        output.status.success(),
+        "stderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+
+    let recovered_path = repo
+        .root()
+        .join("research/pipeline/meta/L2/mvp/guided_story/draft/content.recovered.txt");
+    assert!(
+        recovered_path.is_file(),
+        "recovered guided story draft should be written"
+    );
+    assert!(
+        TestSupport::read_text(&recovered_path).contains(r#"\\(Y\\)"#),
+        "recovered content should escape inline math delimiters"
     );
 }
 
@@ -942,7 +1137,9 @@ fn run_filters_question_bank_with_gate_and_writes_rejected_artifact() {
     .to_string();
     let textbook =
         r#"---\nlessonId: L2\n---\n# L2\n<QuestionFamily familyId="family_keep" />\n<QuestionRef id="question_keep" />\n"#.to_owned();
-    let server = StubLlmServer::start(vec![guided_story, question_bank, gate_report, textbook]);
+    let mut responses = TestSupport::guided_story_pipeline_responses(guided_story);
+    responses.extend([question_bank, gate_report, textbook]);
+    let server = StubLlmServer::start(responses);
 
     let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
@@ -1042,14 +1239,15 @@ lessonId: L2
 <QuestionRef id="question_step2" />
 "#
     .to_owned();
-    let server = StubLlmServer::start(vec![
-        guided_story,
+    let mut responses = TestSupport::guided_story_pipeline_responses(guided_story);
+    responses.extend([
         question_bank_1,
         gate_report_1,
         question_bank_2,
         gate_report_2,
         textbook,
     ]);
+    let server = StubLlmServer::start(responses);
 
     let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
@@ -1130,7 +1328,9 @@ fn run_accepts_course_and_chapter_selectors_from_course_index() {
     let gate_report = TestSupport::gate_pass_report(&["family_a"]);
     let textbook =
         r#"---\nlessonId: L2\n---\n# L2\n<QuestionFamily familyId="family_a" />\n<QuestionRef id="question_a" />\n"#.to_owned();
-    let server = StubLlmServer::start(vec![guided_story, question_bank, gate_report, textbook]);
+    let mut responses = TestSupport::guided_story_pipeline_responses(guided_story);
+    responses.extend([question_bank, gate_report, textbook]);
+    let server = StubLlmServer::start(responses);
 
     let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
@@ -1263,7 +1463,7 @@ lessonId: L2
     assert!(
         !repo
             .root()
-            .join("research/pipeline/meta/L2/mvp/guided_story/request.json")
+            .join("research/pipeline/meta/L2/mvp/guided_story/draft/request.json")
             .exists(),
         "guided story should not be requested during resume"
     );

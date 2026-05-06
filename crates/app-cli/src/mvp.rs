@@ -20,6 +20,7 @@ use crate::{
 };
 
 pub struct MvpRunner;
+const GUIDED_STORY_VALIDATION_MAX_ROUNDS: usize = 3;
 
 impl MvpRunner {
     pub fn run(
@@ -156,32 +157,202 @@ impl MvpRunner {
         let course_title = lesson.course_title().unwrap_or("");
         let chapter_id = lesson.chapter_id().unwrap_or("");
         let chapter_title = lesson.chapter_title().unwrap_or("");
-        let system = Self::read_prompt(repo, "guided_story_system.md")?;
-        let user = Self::render_prompt(
-        &Self::read_prompt(repo, "guided_story_user.md")?,
-        &[
-            ("target_language", target_language),
-            ("course_id", course_id),
-            ("course_title", course_title),
-            ("chapter_id", chapter_id),
-            ("chapter_title", chapter_title),
-            ("lesson_id", lesson.lesson_id()),
-            (
-                "step_scope",
-                "full lecture; split into 4-8 natural learning steps unless the source is very short",
-            ),
-            ("related_important", related_important),
-            ("plain_text", plain_text),
-            ("image_hints", ""),
-        ],
-    );
-        let response = Self::call_chat_completion(lesson, llm, Stage::GuidedStory, &system, &user)?;
-        let content = Self::strip_code_fence(&response.content, Some("json"));
-        let story_json: Value =
-            serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
-                stage: Stage::GuidedStory.as_str(),
-                source,
-            })?;
+        let draft_system = Self::read_prompt(repo, "guided_story_system.md")?;
+        let draft_user = Self::render_prompt(
+            &Self::read_prompt(repo, "guided_story_user.md")?,
+            &[
+                ("target_language", target_language),
+                ("course_id", course_id),
+                ("course_title", course_title),
+                ("chapter_id", chapter_id),
+                ("chapter_title", chapter_title),
+                ("lesson_id", lesson.lesson_id()),
+                (
+                    "step_scope",
+                    "full lecture; split into 4-8 natural learning steps unless the source is very short",
+                ),
+                ("related_important", related_important),
+                ("plain_text", plain_text),
+                ("image_hints", ""),
+            ],
+        );
+        let draft_response = Self::call_chat_completion_with_audit(
+            lesson,
+            llm,
+            Stage::GuidedStoryDraft,
+            "guided_story/draft",
+            &draft_system,
+            &draft_user,
+        )?;
+        let draft_content = Self::strip_code_fence(&draft_response.content, Some("json"));
+        let draft_story_json = Self::parse_llm_json(
+            lesson,
+            Stage::GuidedStoryDraft,
+            "guided_story/draft",
+            &draft_content,
+        )?;
+        let input_draft = Self::to_pretty_json_string(
+            &lesson.audit_stage_dir("guided_story/draft"),
+            &draft_story_json,
+        )?;
+
+        let planner_user = Self::render_prompt(
+            &Self::read_prompt(repo, "guided_story_planner_user.md")?,
+            &[("INPUT_DRAFT", &input_draft)],
+        );
+        let planner_response = Self::call_chat_completion_with_audit(
+            lesson,
+            llm,
+            Stage::GuidedStoryPlanner,
+            "guided_story/planner",
+            "",
+            &planner_user,
+        )?;
+        let planner_content = Self::strip_code_fence(&planner_response.content, Some("json"));
+        let planner_json = Self::parse_llm_json(
+            lesson,
+            Stage::GuidedStoryPlanner,
+            "guided_story/planner",
+            &planner_content,
+        )?;
+        let planner_output = Self::to_pretty_json_string(
+            &lesson.audit_stage_dir("guided_story/planner"),
+            &planner_json,
+        )?;
+
+        let reviewer_user = Self::render_prompt(
+            &Self::read_prompt(repo, "guided_story_contract_reviewer_user.md")?,
+            &[
+                ("INPUT_DRAFT", &input_draft),
+                ("PLANNER_OUTPUT", &planner_output),
+            ],
+        );
+        let reviewer_response = Self::call_chat_completion_with_audit(
+            lesson,
+            llm,
+            Stage::GuidedStoryReviewer,
+            "guided_story/reviewer",
+            "",
+            &reviewer_user,
+        )?;
+        let reviewer_content = Self::strip_code_fence(&reviewer_response.content, Some("json"));
+        let reviewer_json = Self::parse_llm_json(
+            lesson,
+            Stage::GuidedStoryReviewer,
+            "guided_story/reviewer",
+            &reviewer_content,
+        )?;
+        let revised_outline = Self::to_pretty_json_string(
+            &lesson.audit_stage_dir("guided_story/reviewer"),
+            reviewer_json.get("revised_outline").unwrap_or(&Value::Null),
+        )?;
+        let patch_plan = Self::to_pretty_json_string(
+            &lesson.audit_stage_dir("guided_story/reviewer"),
+            reviewer_json.get("patch_plan").unwrap_or(&Value::Null),
+        )?;
+        let execution_contract = Self::to_pretty_json_string(
+            &lesson.audit_stage_dir("guided_story/reviewer"),
+            reviewer_json
+                .get("execution_contract")
+                .unwrap_or(&Value::Null),
+        )?;
+
+        let executor_prompt = Self::read_prompt(repo, "guided_story_contract_executor_user.md")?;
+        let validator_prompt = Self::read_prompt(repo, "guided_story_validator_user.md")?;
+        let mut previous_output = "无。第一轮没有上一版正文。".to_owned();
+        let mut retry_feedback = "无。第一轮直接按合同执行。".to_owned();
+        let mut final_story_json = draft_story_json;
+        let mut last_validator = None;
+        let mut validator_rounds = 0usize;
+
+        for round in 1..=GUIDED_STORY_VALIDATION_MAX_ROUNDS {
+            let executor_user = Self::render_prompt(
+                &executor_prompt,
+                &[
+                    ("INPUT_DRAFT", &input_draft),
+                    ("REVISED_OUTLINE", &revised_outline),
+                    ("PATCH_PLAN", &patch_plan),
+                    ("EXECUTION_CONTRACT", &execution_contract),
+                    ("RETRY_FEEDBACK", &retry_feedback),
+                    ("PREVIOUS_OUTPUT", &previous_output),
+                ],
+            );
+            let executor_audit_stage = format!("guided_story/executor/round{round}");
+            let executor_response = Self::call_chat_completion_with_audit(
+                lesson,
+                llm,
+                Stage::GuidedStoryExecutor,
+                &executor_audit_stage,
+                "",
+                &executor_user,
+            )?;
+            let executor_content = Self::strip_code_fence(&executor_response.content, Some("json"));
+            let executor_json = Self::parse_llm_json(
+                lesson,
+                Stage::GuidedStoryExecutor,
+                &executor_audit_stage,
+                &executor_content,
+            )?;
+            previous_output = Self::to_pretty_json_string(
+                &lesson.audit_stage_dir(&executor_audit_stage),
+                &executor_json,
+            )?;
+            final_story_json = executor_json;
+
+            let validator_user = Self::render_prompt(
+                &validator_prompt,
+                &[
+                    ("REVISED_OUTLINE", &revised_outline),
+                    ("PATCH_PLAN", &patch_plan),
+                    ("EXECUTION_CONTRACT", &execution_contract),
+                    ("EXECUTOR_OUTPUT", &previous_output),
+                ],
+            );
+            let validator_audit_stage = format!("guided_story/validator/round{round}");
+            let validator_response = Self::call_chat_completion_with_audit(
+                lesson,
+                llm,
+                Stage::GuidedStoryValidator,
+                &validator_audit_stage,
+                "",
+                &validator_user,
+            )?;
+            let validator_content =
+                Self::strip_code_fence(&validator_response.content, Some("json"));
+            let validator_json = Self::parse_llm_json(
+                lesson,
+                Stage::GuidedStoryValidator,
+                &validator_audit_stage,
+                &validator_content,
+            )?;
+            validator_rounds = round;
+            let passed = Self::guided_story_validator_pass(&validator_json);
+            retry_feedback = Self::to_pretty_json_string(
+                &lesson.audit_stage_dir(&validator_audit_stage),
+                validator_json.get("retry_feedback").unwrap_or(&Value::Null),
+            )?;
+            last_validator = Some(validator_json);
+            if passed {
+                break;
+            }
+        }
+
+        if let Some(validator_json) = last_validator.as_ref() {
+            let scores = validator_json.get("scores").cloned().unwrap_or(Value::Null);
+            if Self::guided_story_validator_pass(validator_json) {
+                eprintln!(
+                    "guided story validator passed after {} round(s): {}",
+                    validator_rounds,
+                    lesson.relative_display(&lesson.guided_story_manifest_path())
+                );
+            } else {
+                eprintln!(
+                    "guided story validator did not pass after {} round(s); using latest executor output with scores {}",
+                    validator_rounds,
+                    scores
+                );
+            }
+        }
 
         if lesson.guided_story_dir().is_dir() {
             fs::remove_dir_all(lesson.guided_story_dir()).map_err(|source| MvpError::Write {
@@ -194,7 +365,7 @@ impl MvpRunner {
             source,
         })?;
 
-        let manifest = Self::write_guided_story_steps(lesson, &story_json)?;
+        let manifest = Self::write_guided_story_steps(lesson, &final_story_json)?;
         Self::write_pretty_json(&lesson.guided_story_manifest_path(), &manifest)?;
         Ok(())
     }
@@ -300,11 +471,8 @@ impl MvpRunner {
                 &user,
             )?;
             let content = Self::strip_code_fence(&response.content, Some("json"));
-            let mut question_bank: Value =
-                serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
-                    stage: Stage::QuestionBank.as_str(),
-                    source,
-                })?;
+            let mut question_bank =
+                Self::parse_llm_json(lesson, Stage::QuestionBank, &audit_stage, &content)?;
             Self::normalize_question_bank_json(lesson, &step_ref.sequence_id, &mut question_bank);
 
             Self::gate_and_write_question_bank(
@@ -371,11 +539,16 @@ impl MvpRunner {
             &user,
         )?;
         let content = Self::strip_code_fence(&response.content, Some("json"));
-        let report: GateReport =
-            serde_json::from_str(&content).map_err(|source| MvpError::JsonParse {
-                stage: Stage::QuestionBankGate.as_str(),
-                source,
-            })?;
+        let report: GateReport = serde_json::from_value(Self::parse_llm_json(
+            lesson,
+            Stage::QuestionBankGate,
+            audit_stage,
+            &content,
+        )?)
+        .map_err(|source| MvpError::JsonParse {
+            stage: Stage::QuestionBankGate.as_str(),
+            source,
+        })?;
 
         Ok(QuestionBankGate::apply(question_bank, report))
     }
@@ -631,6 +804,11 @@ impl MvpRunner {
 #[derive(Clone, Copy)]
 enum Stage {
     GuidedStory,
+    GuidedStoryDraft,
+    GuidedStoryPlanner,
+    GuidedStoryReviewer,
+    GuidedStoryExecutor,
+    GuidedStoryValidator,
     QuestionBank,
     QuestionBankGate,
     Textbook,
@@ -640,10 +818,28 @@ impl Stage {
     fn as_str(self) -> &'static str {
         match self {
             Self::GuidedStory => "guided_story",
+            Self::GuidedStoryDraft => "guided_story_draft",
+            Self::GuidedStoryPlanner => "guided_story_planner",
+            Self::GuidedStoryReviewer => "guided_story_reviewer",
+            Self::GuidedStoryExecutor => "guided_story_executor",
+            Self::GuidedStoryValidator => "guided_story_validator",
             Self::QuestionBank => "question_bank",
             Self::QuestionBankGate => "question_bank_gate",
             Self::Textbook => "textbook",
         }
+    }
+
+    fn supports_json_latex_recovery(self) -> bool {
+        matches!(
+            self,
+            Self::GuidedStoryDraft
+                | Self::GuidedStoryPlanner
+                | Self::GuidedStoryReviewer
+                | Self::GuidedStoryExecutor
+                | Self::GuidedStoryValidator
+                | Self::QuestionBank
+                | Self::QuestionBankGate
+        )
     }
 }
 
@@ -711,7 +907,7 @@ impl MvpRunner {
                 Self::write_pretty_json(&step_path, &step_json)?;
                 manifest_steps.push(json!({
                     "sequence_id": sequence_id,
-                    "file": lesson.relative_display(&step_path),
+                    "file": format!("{sequence_id}/step.json"),
                     "concept": concept
                 }));
             }
@@ -723,7 +919,7 @@ impl MvpRunner {
             Self::write_pretty_json(&lesson.guided_story_step_path(1), &step_json)?;
             manifest_steps.push(json!({
                 "sequence_id": "step1",
-                "file": lesson.relative_display(&lesson.guided_story_step_path(1)),
+                "file": "step1/step.json",
                 "concept": "Guided story step"
             }));
         }
@@ -1097,6 +1293,150 @@ impl MvpRunner {
             .take(60)
             .collect::<Vec<_>>()
             .join("\n")
+    }
+
+    fn to_pretty_json_string(path: &Path, value: &Value) -> Result<String, MvpError> {
+        let mut payload =
+            serde_json::to_string_pretty(value).map_err(|source| MvpError::JsonWrite {
+                path: path.to_path_buf(),
+                source,
+            })?;
+        payload.push('\n');
+        Ok(payload)
+    }
+
+    fn guided_story_validator_pass(report: &Value) -> bool {
+        report.get("pass").and_then(Value::as_bool).unwrap_or(false)
+            || [
+                "question_chain",
+                "exam_coverage",
+                "contract_compliance",
+                "exercise_quality",
+                "definition_drift",
+            ]
+            .iter()
+            .all(|field| {
+                report
+                    .get("scores")
+                    .and_then(|scores| scores.get(*field))
+                    .and_then(Value::as_i64)
+                    .unwrap_or(0)
+                    >= 4
+            })
+    }
+
+    fn parse_llm_json(
+        lesson: &LessonPaths,
+        stage: Stage,
+        audit_stage: &str,
+        content: &str,
+    ) -> Result<Value, MvpError> {
+        match serde_json::from_str(content) {
+            Ok(value) => Ok(value),
+            Err(source) => {
+                if stage.supports_json_latex_recovery() {
+                    if let Some(recovered) = Self::recover_unescaped_latex_json(content) {
+                        match serde_json::from_str(&recovered) {
+                            Ok(value) => {
+                                let recovered_path = lesson
+                                    .audit_stage_dir(audit_stage)
+                                    .join("content.recovered.txt");
+                                fs::write(&recovered_path, &recovered).map_err(|write_source| {
+                                    MvpError::Write {
+                                        path: recovered_path.clone(),
+                                        source: write_source,
+                                    }
+                                })?;
+                                eprintln!(
+                                    "{} recovered JSON by escaping legacy LaTeX backslashes: {}",
+                                    stage.as_str(),
+                                    lesson.relative_display(&recovered_path)
+                                );
+                                return Ok(value);
+                            }
+                            Err(_) => {}
+                        }
+                    }
+                }
+
+                Err(MvpError::JsonParse {
+                    stage: stage.as_str(),
+                    source,
+                })
+            }
+        }
+    }
+
+    fn recover_unescaped_latex_json(content: &str) -> Option<String> {
+        let chars = content.chars().collect::<Vec<_>>();
+        let mut recovered = String::with_capacity(content.len() + 32);
+        let mut in_string = false;
+        let mut escaped = false;
+        let mut changed = false;
+        let mut index = 0usize;
+
+        while index < chars.len() {
+            let ch = chars[index];
+
+            if !in_string {
+                if ch == '"' {
+                    in_string = true;
+                }
+                recovered.push(ch);
+                index += 1;
+                continue;
+            }
+
+            if escaped {
+                recovered.push(ch);
+                escaped = false;
+                index += 1;
+                continue;
+            }
+
+            match ch {
+                '\\' => {
+                    let next = chars.get(index + 1).copied();
+                    if let Some(next) = next {
+                        if Self::should_escape_legacy_latex_backslash(
+                            next,
+                            chars.get(index + 2).copied(),
+                        ) {
+                            recovered.push('\\');
+                            recovered.push('\\');
+                            recovered.push(next);
+                            changed = true;
+                            index += 2;
+                            continue;
+                        }
+                    }
+                    recovered.push(ch);
+                    escaped = true;
+                    index += 1;
+                }
+                '"' => {
+                    in_string = false;
+                    recovered.push(ch);
+                    index += 1;
+                }
+                _ => {
+                    recovered.push(ch);
+                    index += 1;
+                }
+            }
+        }
+
+        changed.then_some(recovered)
+    }
+
+    fn should_escape_legacy_latex_backslash(next: char, after_next: Option<char>) -> bool {
+        match next {
+            '"' | '\\' | '/' => false,
+            'u' => !after_next.is_some_and(|ch| ch.is_ascii_hexdigit()),
+            'n' | 'r' | 't' | 'b' | 'f' => after_next.is_some_and(|ch| ch.is_ascii_alphabetic()),
+            '(' | ')' | '[' | ']' => true,
+            _ => true,
+        }
     }
 
     fn strip_code_fence(content: &str, language: Option<&str>) -> String {

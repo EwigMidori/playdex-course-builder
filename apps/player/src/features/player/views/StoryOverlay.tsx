@@ -42,6 +42,16 @@ function createRuntimeControllerState(scene: SceneModel): RuntimeControllerState
   };
 }
 
+function shouldIgnoreKeyboardNavigation(target: EventTarget | null) {
+  return (
+    target instanceof HTMLInputElement ||
+    target instanceof HTMLTextAreaElement ||
+    target instanceof HTMLSelectElement ||
+    target instanceof HTMLButtonElement ||
+    (target instanceof HTMLElement && target.isContentEditable)
+  );
+}
+
 export function StoryOverlay({
   course,
   chapter,
@@ -266,26 +276,32 @@ export function StoryOverlay({
 
   React.useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.code !== "Space") {
-        return;
-      }
       if (event.metaKey || event.ctrlKey || event.altKey) {
         return;
       }
 
-      const target = event.target;
-      if (
-        target instanceof HTMLInputElement ||
-        target instanceof HTMLTextAreaElement ||
-        target instanceof HTMLSelectElement ||
-        target instanceof HTMLButtonElement ||
-        (target instanceof HTMLElement && target.isContentEditable)
-      ) {
+      if (shouldIgnoreKeyboardNavigation(event.target)) {
+        return;
+      }
+
+      if (event.code === "ArrowLeft") {
+        event.preventDefault();
+        debugStoryRuntime("arrow-back", {
+          sceneId: runtimeScene.sceneId,
+          cursor: runtimeState.cursor,
+          historySize: runtimeState.history.length,
+          currentNodeId: currentNode?.id ?? null
+        });
+        handlePrev();
+        return;
+      }
+
+      if (event.code !== "Space" && event.code !== "ArrowRight") {
         return;
       }
 
       event.preventDefault();
-      debugStoryRuntime("space-advance", {
+      debugStoryRuntime(event.code === "Space" ? "space-advance" : "arrow-advance", {
         sceneId: runtimeScene.sceneId,
         cursor: runtimeState.cursor,
         historySize: runtimeState.history.length,
@@ -298,7 +314,7 @@ export function StoryOverlay({
     return () => {
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [currentNode?.id, handleNext, runtimeScene.sceneId, runtimeState.cursor, runtimeState.history.length]);
+  }, [currentNode?.id, handleNext, handlePrev, runtimeScene.sceneId, runtimeState.cursor, runtimeState.history.length]);
 
   if (sceneState.loading || !sceneState.data) {
     return (

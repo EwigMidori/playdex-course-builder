@@ -1,115 +1,198 @@
 {
+  "chapter_id": "lecture-4",
+  "course_id": "comp7415a",
   "lesson_id": "L4",
   "mode": "guided_story",
   "screens": [
     {
       "focus_terms": [],
-      "id": "s024",
+      "id": "s032",
       "introduced_terms": [],
       "lines": [
-        "只用时间做预测太简单了。",
-        "如果能加入更多信息，预测会更准。"
+        "线性回归假设数据点之间相互独立。",
+        "但金融数据往往前后有关联——今天的价格，可能和昨天的价格有关。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "如果数据前后相关，就不能用普通回归。",
+        "需要专门处理这种自相关结构的工具。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "multiple_linear_regression"
+        "arima"
       ],
-      "id": "s025",
+      "id": "s034",
       "introduced_terms": [
-        "multiple_linear_regression"
+        "arima"
       ],
       "lines": [
-        "这就是<term id=\"multiple_linear_regression\">多元线性回归</term>。",
-        "Y = β₀ + β₁X₁ + β₂X₂ + ... + βₚXₚ + ε"
+        "<term id=\"arima\">ARIMA模型</term>就是专门处理自相关结构的工具。",
+        "名字里的三个字母代表了三个核心组件。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "multiple_linear_regression"
+        "arima"
       ],
-      "id": "s026",
+      "id": "s035",
       "introduced_terms": [],
       "lines": [
-        "比如预测电力公司的股价，",
-        "可以考虑GDP、利率、煤价、气温等因素。"
+        "AR：自回归，用过去的价格预测现在的价格。",
+        "I：差分，让数据变得平稳。",
+        "MA：移动平均，用过去的预测误差来修正当前预测。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "multicollinearity"
+        "arima"
       ],
-      "id": "s027",
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "ARIMA模型有三个参数：\\(p\\)、\\(d\\)、\\(q\\)。",
+        "\\(p\\)是自回归的阶数，\\(d\\)是差分的次数，\\(q\\)是移动平均的阶数。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "stationarity"
+      ],
+      "id": "s037",
       "introduced_terms": [
-        "multicollinearity"
+        "stationarity"
       ],
       "lines": [
-        "但要注意：不能什么因素都往里塞。",
-        "如果两个因素高度相关，就会出现<term id=\"multicollinearity\">多重共线性</term>。"
+        "使用ARIMA前，数据需要满足<term id=\"stationarity\">平稳性</term>。",
+        "平稳意味着均值和方差不随时间变化。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "multicollinearity"
+        "adf_test"
       ],
-      "id": "s028",
+      "id": "s038",
+      "introduced_terms": [
+        "adf_test"
+      ],
+      "lines": [
+        "如何判断数据是否平稳？",
+        "可以用<term id=\"adf_test\">ADF检验</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "adf_test"
+      ],
+      "id": "s039",
       "introduced_terms": [],
       "lines": [
-        "多重共线性会让模型系数变得不可靠。",
-        "比如GDP和利率如果高度相关，你很难分清谁在起作用。"
+        "ADF检验的p值小于0.05，说明数据平稳。",
+        "否则就需要差分，直到数据变平稳。"
       ],
       "type": "narration"
     },
     {
       "exercise": {
-        "answer": 1,
-        "explanation": "因素要有逻辑关联，同时要避免多重共线性。",
+        "answer": 0,
+        "explanation": "第二个参数d=0表示原始数据已经平稳，不需要差分。",
         "kind": "single_choice",
         "options": [
-          "因素越多越好",
-          "确保因素之间有逻辑关联，且避免高度相关",
-          "只选一个因素"
+          "不需要差分",
+          "需要一次差分",
+          "没有自回归项"
         ],
-        "prompt": "以下哪个是选择因素时的正确做法？"
+        "prompt": "ARIMA(1,0,1) 中的 '0' 表示什么？"
       },
       "focus_terms": [
-        "multicollinearity"
+        "arima"
       ],
-      "id": "s029",
+      "id": "s040",
       "introduced_terms": [],
       "lines": [
-        "以下哪个是选择因素时的正确做法？"
+        "ARIMA(1,0,1) 中的 '0' 表示什么？"
       ],
       "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "ADF检验p值0.08 > 0.05，说明数据不平稳，需要差分后才能使用ARIMA。",
+        "kind": "single_choice",
+        "options": [
+          "数据平稳，可以直接使用ARIMA",
+          "数据不平稳，需要先差分",
+          "数据平稳，但应该使用线性回归"
+        ],
+        "prompt": "对某股票价格序列进行ADF检验，得到p值为0.08。以下哪个判断正确？"
+      },
+      "focus_terms": [
+        "adf_test",
+        "stationarity"
+      ],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "对某股票价格序列进行ADF检验，得到p值为0.08。",
+        "以下哪个判断正确？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "arima"
+      ],
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "确定\\(p\\)和\\(q\\)需要看ACF和PACF图。",
+        "ACF图帮助确定MA的阶数，PACF图帮助确定AR的阶数。"
+      ],
+      "type": "narration"
     }
   ],
   "sequence_id": "step4",
   "source": {
-    "plain_text": "Multiple Linear Regression Model",
-    "related": []
+    "plain_text": "ARIMA Model",
+    "related": [
+      "COMP7415A Lecture 4"
+    ]
   },
   "target_language": "zh-CN",
   "term_catalog": {
-    "multicollinearity": {
+    "adf_test": {
       "aliases": [
-        "Multicollinearity"
+        "Augmented Dickey-Fuller Test",
+        "ADF Test"
       ],
-      "display": "多重共线性",
-      "gloss": "自变量之间高度相关，导致模型估计不稳定。"
+      "display": "ADF检验",
+      "gloss": "检验时间序列是否平稳的统计方法。"
     },
-    "multiple_linear_regression": {
+    "arima": {
       "aliases": [
-        "Multiple Linear Regression",
-        "MLR"
+        "ARIMA",
+        "AutoRegressive Integrated Moving Average"
       ],
-      "display": "多元线性回归",
-      "gloss": "用多个自变量预测一个因变量的线性模型。"
+      "display": "ARIMA模型",
+      "gloss": "结合自回归、差分和移动平均的时间序列预测模型。"
+    },
+    "stationarity": {
+      "aliases": [
+        "Stationarity"
+      ],
+      "display": "平稳性",
+      "gloss": "时间序列的统计性质（均值、方差）不随时间变化。"
     }
-  },
-  "course_id": "comp7415a",
-  "chapter_id": "lecture-4"
+  }
 }

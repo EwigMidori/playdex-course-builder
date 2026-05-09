@@ -1,4 +1,6 @@
 {
+  "chapter_id": "lecture-4",
+  "course_id": "comp7415a",
   "lesson_id": "L4",
   "mode": "guided_story",
   "screens": [
@@ -7,22 +9,75 @@
       "id": "s001",
       "introduced_terms": [],
       "lines": [
-        "金融市场并非只有一种面孔。",
-        "它至少会呈现出三种截然不同的状态。"
+        "小李是一位刚入门的交易者。他听说趋势跟踪策略很赚钱，于是看到一只股票连续上涨了三天，就全仓买入。",
+        "结果第二天价格突然回落，第三天继续下跌，一周后他亏损了15%。",
+        "他以为是策略出了问题，但其实——他用错了市场。"
       ],
       "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "同样的策略，在不同的市场里，结果可能完全相反。",
+        "所以，设计交易策略的第一步，不是学模型，而是先判断市场类型。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "小李的亏损是因为策略不好，还是因为他用错了市场？市场到底有哪几种性格？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "先看两张图：",
+        "图A：价格持续上涨，像有惯性一样。",
+        "图B：价格围绕一个平均值上下波动，涨多了就跌，跌多了就涨。",
+        "你觉得哪个是趋势市场，哪个是均值回归市场？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "图A价格持续上涨，是趋势市场的典型特征。",
+        "kind": "single_choice",
+        "options": [
+          "图A是趋势市场，图B是均值回归市场",
+          "图A是均值回归市场，图B是趋势市场",
+          "两者都是随机游走"
+        ],
+        "prompt": "图A价格持续上涨，图B价格围绕均值波动。以下哪个判断正确？"
+      },
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "图A价格持续上涨，图B价格围绕均值波动。",
+        "以下哪个判断正确？"
+      ],
+      "type": "exercise"
     },
     {
       "focus_terms": [
         "trending_market"
       ],
-      "id": "s002",
+      "id": "s006",
       "introduced_terms": [
         "trending_market"
       ],
       "lines": [
         "第一种：<term id=\"trending_market\">趋势市场</term>。",
-        "价格像有惯性一样，持续朝一个方向移动。"
+        "价格像有惯性一样，持续上涨或持续下跌。"
       ],
       "type": "narration"
     },
@@ -30,13 +85,13 @@
       "focus_terms": [
         "mean_reversion"
       ],
-      "id": "s003",
+      "id": "s007",
       "introduced_terms": [
         "mean_reversion"
       ],
       "lines": [
         "第二种：<term id=\"mean_reversion\">均值回归</term>。",
-        "价格涨得过高会跌回来，跌得过深会弹回去。"
+        "价格涨多了会跌回来，跌多了会涨回去。"
       ],
       "type": "narration"
     },
@@ -44,7 +99,7 @@
       "focus_terms": [
         "random_walk"
       ],
-      "id": "s004",
+      "id": "s008",
       "introduced_terms": [
         "random_walk"
       ],
@@ -57,35 +112,33 @@
     {
       "exercise": {
         "answer": 1,
-        "explanation": "价格回到之前的水平，正是均值回归的典型表现。",
+        "explanation": "价格围绕均值上下波动，是均值回归的典型特征，应该用反转策略而不是趋势跟踪。",
         "kind": "single_choice",
         "options": [
-          "趋势市场",
-          "均值回归",
-          "随机游走"
+          "趋势跟踪策略",
+          "均值回归（反转）策略",
+          "随机买入并持有"
         ],
-        "prompt": "价格今天涨了，明天又跌回原价，这最接近哪种市场？"
+        "prompt": "如果一只股票的价格总是围绕一个平均值上下波动，它属于哪种市场类型？应该使用什么策略？"
       },
       "focus_terms": [
         "mean_reversion"
       ],
-      "id": "s005",
+      "id": "s009",
       "introduced_terms": [],
       "lines": [
-        "如果价格今天涨了，明天又跌回原价，这最接近哪种市场？"
+        "如果一只股票的价格总是围绕一个平均值上下波动，",
+        "它最可能属于哪种市场类型？应该用什么策略？"
       ],
       "type": "exercise"
     },
     {
-      "focus_terms": [
-        "trending_market",
-        "mean_reversion"
-      ],
-      "id": "s006",
+      "focus_terms": [],
+      "id": "s010",
       "introduced_terms": [],
       "lines": [
-        "有趣的是，趋势和均值回归可以同时存在。",
-        "短时间看是趋势，长时间看可能是在回归。"
+        "有趣的是，趋势和均值回归可以在同一时间发生。",
+        "不同时间尺度下，市场可能表现出不同的性格。"
       ],
       "type": "narration"
     },
@@ -93,11 +146,11 @@
       "focus_terms": [
         "random_walk"
       ],
-      "id": "s007",
+      "id": "s011",
       "introduced_terms": [],
       "lines": [
-        "如果市场是随机游走，任何技术分析都无效。",
-        "但有一种策略反而能赚钱——我们后面会讲到。"
+        "如果市场是随机游走，",
+        "那还有没有可能设计出赚钱的策略？"
       ],
       "type": "narration"
     }
@@ -105,7 +158,9 @@
   "sequence_id": "step1",
   "source": {
     "plain_text": "Market Classification: Trending, Mean Reversion, Random Walk",
-    "related": []
+    "related": [
+      "COMP7415A Lecture 4"
+    ]
   },
   "target_language": "zh-CN",
   "term_catalog": {
@@ -114,24 +169,22 @@
         "Mean Reversion"
       ],
       "display": "均值回归",
-      "gloss": "价格在极端波动后倾向于回到长期平均水平的现象。"
+      "gloss": "价格偏离长期均值后会回归到均值附近的现象。"
     },
     "random_walk": {
       "aliases": [
         "Random Walk"
       ],
       "display": "随机游走",
-      "gloss": "价格变化不可预测，未来走势与过去无关。"
+      "gloss": "价格变化完全随机，无法根据过去预测未来。"
     },
     "trending_market": {
       "aliases": [
         "Trending Market",
-        "Momentum"
+        "Momentum Market"
       ],
       "display": "趋势市场",
       "gloss": "价格朝一个方向持续移动的市场状态。"
     }
-  },
-  "course_id": "comp7415a",
-  "chapter_id": "lecture-4"
+  }
 }

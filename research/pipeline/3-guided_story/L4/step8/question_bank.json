@@ -1,163 +1,208 @@
 {
+  "chapter_id": "lecture-4",
+  "course_id": "comp7415a",
   "coverage_map": [
     {
-      "coverage_tag": "market_classification_summary",
+      "coverage_tag": "backtesting",
       "covered_by": [
-        "qf_flash_market_state_tool",
-        "qf_quiz_market_state_tool",
-        "qf_long_model_mismatch"
+        "qf_flash_backtesting_def",
+        "qf_quiz_backtesting_purpose"
       ],
-      "description": "金融市场三种状态（趋势、均值回归、随机游走）的总结与对应分析工具"
+      "description": "回测的概念与目的：用历史数据模拟交易，验证策略有效性"
     },
     {
-      "coverage_tag": "model_market_mapping",
+      "coverage_tag": "lr_strategy_backtest",
       "covered_by": [
-        "qf_flash_market_state_tool",
-        "qf_quiz_market_state_tool",
-        "qf_long_model_mismatch"
+        "qf_flash_lr_strategy",
+        "qf_quiz_lr_strategy_rule"
       ],
-      "description": "每种市场状态对应的统计模型/策略：趋势→线性回归/ARIMA，均值回归→Hurst指数/半衰期，随机游走→Martingale"
+      "description": "线性回归策略回测：用回归预测公平价格，比较当前价格决定买卖"
     },
     {
-      "coverage_tag": "model_selection_principle",
+      "coverage_tag": "arima_strategy_backtest",
       "covered_by": [
-        "qf_flash_model_selection_risk",
-        "qf_quiz_model_selection_risk",
-        "qf_long_model_mismatch"
+        "qf_flash_arima_strategy",
+        "qf_quiz_arima_strategy_rule"
       ],
-      "description": "先判断市场状态再选择模型，用错模型比不用模型更危险"
+      "description": "ARIMA策略回测：用ARIMA预测未来价格，比较当前价格决定买卖"
     },
     {
-      "coverage_tag": "key_takeaway_workflow",
+      "coverage_tag": "mean_reversion_strategy_backtest",
       "covered_by": [
-        "qf_flash_workflow",
-        "qf_quiz_workflow"
+        "qf_flash_mr_strategy",
+        "qf_quiz_mr_strategy_rule"
       ],
-      "description": "核心工作流：先分类，再建模，最后交易"
+      "description": "均值回归策略回测：用OU过程估计半衰期，半衰期在1-10天时执行交易"
+    },
+    {
+      "coverage_tag": "strategy_limitation",
+      "covered_by": [
+        "qf_quiz_no_perfect_strategy"
+      ],
+      "description": "没有完美的策略，每种策略都有适用的市场环境和局限性"
+    },
+    {
+      "coverage_tag": "market_classification_value",
+      "covered_by": [
+        "qf_long_market_strategy_matching"
+      ],
+      "description": "先判断市场类型，再选择匹配的策略，是时间序列分析在交易中的核心价值"
     }
   ],
   "flashcard_families": [
     {
-      "concept_key": "market_state_tool_mapping",
+      "concept_key": "backtesting",
       "coverage_tags": [
-        "market_classification_summary",
-        "model_market_mapping"
+        "backtesting"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_market_state_tool",
-      "learning_goal": "学生能准确说出每种市场状态对应的主要分析工具或策略。",
+      "family_id": "qf_flash_backtesting_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出回测的定义和目的。",
       "linked_steps": [
         "step8"
       ],
+      "practice_target": "学生答对后证明掌握了回测的基本概念：用历史数据模拟交易来验证策略有效性。",
       "question_type": "short_answer",
-      "retrieval_focus": "市场状态与对应分析工具的配对关系。",
+      "retrieval_focus": "回测的定义和目的",
       "term_refs": [
         {
-          "display": "趋势市场",
-          "en": "Trending Market"
-        },
-        {
-          "display": "均值回归",
-          "en": "Mean Reversion"
-        },
-        {
-          "display": "随机游走",
-          "en": "Random Walk"
+          "display": "回测",
+          "en": "Backtesting"
         }
       ],
       "variants": [
         {
-          "back": "线性回归 和 ARIMA",
+          "back": "用历史数据模拟交易，检验策略是否有效。",
           "estimated_seconds": 8,
-          "explanation": "趋势市场具有可预测的方向性，线性回归和ARIMA都能捕捉这种趋势。",
-          "front": "趋势市场通常使用哪两种统计模型进行分析？",
-          "question_id": "q_flash_market_state_tool_v1"
+          "explanation": "回测（Backtesting）是用过去的数据模拟执行交易策略，评估其表现的过程。",
+          "front": "在交易策略开发中，'回测'指的是什么？",
+          "question_id": "q_flash_backtesting_def_v1"
         },
         {
-          "back": "Hurst指数 和 半衰期",
+          "back": "验证交易策略在历史数据上是否有效。",
           "estimated_seconds": 8,
-          "explanation": "Hurst指数判断市场是否均值回归，半衰期衡量回归速度。",
-          "front": "均值回归市场通常使用哪两个指标来量化分析？",
-          "question_id": "q_flash_market_state_tool_v2"
-        },
-        {
-          "back": "Martingale策略",
-          "estimated_seconds": 6,
-          "explanation": "Martingale策略通过加倍下注，在随机市场中利用概率优势获利。",
-          "front": "随机游走市场适合使用哪种交易策略？",
-          "question_id": "q_flash_market_state_tool_v3"
+          "explanation": "通过回测，可以在投入真实资金之前了解策略的潜在表现和风险。",
+          "front": "回测的主要目的是什么？",
+          "question_id": "q_flash_backtesting_def_v2"
         }
       ]
     },
     {
-      "concept_key": "model_selection_risk",
+      "concept_key": "lr_strategy_backtest",
       "coverage_tags": [
-        "model_selection_principle"
+        "lr_strategy_backtest"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_model_selection_risk",
-      "learning_goal": "学生能理解用错模型的风险。",
+      "family_id": "qf_flash_lr_strategy",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述线性回归策略的交易规则。",
       "linked_steps": [
         "step8"
       ],
+      "practice_target": "学生答对后证明掌握了线性回归策略的核心交易逻辑：比较公平价格与当前价格。",
       "question_type": "short_answer",
-      "retrieval_focus": "用错模型的具体后果。",
+      "retrieval_focus": "线性回归策略的交易信号",
       "term_refs": [
         {
-          "display": "模型选择",
-          "en": "Model Selection"
+          "display": "线性回归策略",
+          "en": "Linear Regression Strategy"
         }
       ],
       "variants": [
         {
-          "back": "会亏得很惨",
-          "estimated_seconds": 6,
-          "explanation": "趋势市场中价格持续朝一个方向移动，均值回归策略会逆势操作，导致持续亏损。",
-          "front": "在趋势市场中使用均值回归策略，通常会导致什么结果？",
-          "question_id": "q_flash_model_selection_risk_v1"
+          "back": "当前价格低于回归预测的公平价格时。",
+          "estimated_seconds": 10,
+          "explanation": "策略认为回归预测的价格是公平价值，当前价低于它则被低估，应买入。",
+          "front": "线性回归策略中，什么情况下会开多仓（LONG）？",
+          "question_id": "q_flash_lr_strategy_v1"
         },
         {
-          "back": "错误模型会导致系统性亏损，比不交易更糟糕",
-          "estimated_seconds": 8,
-          "explanation": "不交易至少不会亏损，而用错模型会持续做出错误的交易决策。",
-          "front": "用错模型比不用模型更危险，这句话的核心含义是什么？",
-          "question_id": "q_flash_model_selection_risk_v2"
+          "back": "当前价格高于回归预测的公平价格时。",
+          "estimated_seconds": 10,
+          "explanation": "当前价高于公平价值则被高估，应卖出。",
+          "front": "线性回归策略中，什么情况下会开空仓（SHORT）？",
+          "question_id": "q_flash_lr_strategy_v2"
         }
       ]
     },
     {
-      "concept_key": "workflow",
+      "concept_key": "arima_strategy_backtest",
       "coverage_tags": [
-        "key_takeaway_workflow"
+        "arima_strategy_backtest"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_workflow",
-      "learning_goal": "学生能记住核心工作流的三个步骤。",
+      "family_id": "qf_flash_arima_strategy",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述ARIMA策略的交易规则。",
       "linked_steps": [
         "step8"
       ],
+      "practice_target": "学生答对后证明掌握了ARIMA策略的核心交易逻辑：比较预测价格与当前价格。",
       "question_type": "short_answer",
-      "retrieval_focus": "核心工作流的顺序。",
+      "retrieval_focus": "ARIMA策略的交易信号",
       "term_refs": [
         {
-          "display": "工作流",
-          "en": "Workflow"
+          "display": "ARIMA策略",
+          "en": "ARIMA Strategy"
         }
       ],
       "variants": [
         {
-          "back": "先分类，再建模，最后交易",
-          "estimated_seconds": 6,
-          "explanation": "这是整个课程的核心方法论：先判断市场状态，再选择对应模型，最后执行交易。",
-          "front": "本课总结的核心工作流是哪三个步骤？",
-          "question_id": "q_flash_workflow_v1"
+          "back": "ARIMA预测的未来价格高于当前价格时。",
+          "estimated_seconds": 10,
+          "explanation": "如果模型预测价格将上涨，则买入。",
+          "front": "ARIMA策略中，什么情况下会开多仓（LONG）？",
+          "question_id": "q_flash_arima_strategy_v1"
         },
         {
-          "back": "先分类（判断市场状态）",
-          "estimated_seconds": 5,
-          "explanation": "分类是基础，只有知道市场处于哪种状态，才能选择合适的模型。",
-          "front": "在核心工作流中，第一步应该做什么？",
-          "question_id": "q_flash_workflow_v2"
+          "back": "ARIMA预测的未来价格低于当前价格时。",
+          "estimated_seconds": 10,
+          "explanation": "如果模型预测价格将下跌，则卖出。",
+          "front": "ARIMA策略中，什么情况下会开空仓（SHORT）？",
+          "question_id": "q_flash_arima_strategy_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "mean_reversion_strategy_backtest",
+      "coverage_tags": [
+        "mean_reversion_strategy_backtest"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_mr_strategy",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出均值回归策略执行交易的条件。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了均值回归策略的入场条件：半衰期在1到10天之间。",
+      "question_type": "short_answer",
+      "retrieval_focus": "均值回归策略的执行条件",
+      "term_refs": [
+        {
+          "display": "均值回归策略",
+          "en": "Mean Reversion Strategy"
+        },
+        {
+          "display": "半衰期",
+          "en": "Half-Life"
+        }
+      ],
+      "variants": [
+        {
+          "back": "估计的半衰期在1到10天之间。",
+          "estimated_seconds": 10,
+          "explanation": "半衰期太短（<1天）可能噪音太多，太长（>10天）则回归太慢，策略可能不赚钱。",
+          "front": "均值回归策略中，什么条件下才会执行交易？",
+          "question_id": "q_flash_mr_strategy_v1"
+        },
+        {
+          "back": "不应该，因为半衰期太长（超过10天）。",
+          "estimated_seconds": 10,
+          "explanation": "半衰期20天意味着价格回归速度很慢，策略可能无法在合理时间内获利。",
+          "front": "均值回归策略中，如果估计的半衰期是20天，应该交易吗？",
+          "question_id": "q_flash_mr_strategy_v2"
         }
       ]
     }
@@ -165,248 +210,317 @@
   "lesson_id": "L4",
   "longform_families": [
     {
-      "concept_key": "model_selection_principle",
+      "concept_key": "market_classification_value",
       "coverage_tags": [
-        "market_classification_summary",
-        "model_market_mapping",
-        "model_selection_principle"
+        "market_classification_value"
       ],
       "difficulty": "medium",
-      "family_id": "qf_long_model_mismatch",
-      "learning_goal": "学生能解释为什么用错模型比不用模型更危险，并能举例说明。",
+      "family_id": "qf_long_market_strategy_matching",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么先判断市场类型是设计交易策略的关键步骤。",
       "linked_steps": [
         "step8"
       ],
+      "practice_target": "学生答对后证明能综合理解市场分类与策略选择的关系，并能用回测结果支持论点。",
       "question_type": "short_explain",
       "term_refs": [
         {
-          "display": "趋势市场",
-          "en": "Trending Market"
+          "display": "市场分类",
+          "en": "Market Classification"
         },
         {
-          "display": "均值回归",
-          "en": "Mean Reversion"
-        },
-        {
-          "display": "随机游走",
-          "en": "Random Walk"
-        },
-        {
-          "display": "Hurst指数",
-          "en": "Hurst Exponent"
+          "display": "回测",
+          "en": "Backtesting"
         }
       ],
       "variants": [
         {
           "estimated_seconds": 120,
           "prompt_blocks": [
-            "趋势市场的特征",
-            "均值回归策略的假设",
-            "两者冲突的后果",
-            "避免方法"
+            "三种市场类型及其特征",
+            "三种策略分别适用于哪种市场",
+            "回测结果如何支持这一观点"
           ],
-          "question_id": "q_long_model_mismatch_v1",
+          "question_id": "q_long_market_strategy_matching_v1",
           "reference_answer": [
-            "趋势市场的特征是价格像有惯性一样持续朝一个方向移动，无论是上涨还是下跌。",
-            "均值回归策略基于一个假设：价格在极端波动后会回到长期平均水平，因此在价格偏离时反向操作。",
-            "在趋势市场中，价格不会回归均值，而是继续朝原方向移动。使用均值回归策略会不断逆势操作，导致持续亏损。",
-            "要避免这种错误，应该先使用Hurst指数等工具判断市场状态：H>0.5是趋势市场，H<0.5是均值回归市场，H=0.5是随机游走。根据判断结果选择对应的模型。"
+            "市场分为趋势、均值回归和随机游走三种类型。",
+            "趋势市场适合趋势跟踪策略（如线性回归预测上涨时买入），均值回归市场适合反转策略（如价格偏离均值时反向操作），随机游走市场则可以考虑Martingale等策略。",
+            "回测结果显示，每种策略都有盈利和亏损的时期，没有一种策略在所有市场都表现优异。",
+            "因此，核心价值在于先识别当前市场的类型，再选择与之匹配的策略，而不是盲目使用单一策略。"
           ],
           "rubric_points": [
-            "正确描述趋势市场：价格持续朝一个方向移动",
-            "正确描述均值回归策略：认为价格会回到均值",
-            "解释冲突：趋势市场中价格不会回归，逆势操作导致亏损",
-            "提出避免方法：先用Hurst指数等工具判断市场状态"
+            "正确描述三种市场类型（趋势、均值回归、随机游走）",
+            "正确匹配策略与市场类型（趋势→趋势跟踪，均值回归→反转策略）",
+            "引用回测结果说明没有完美策略，策略表现取决于市场环境"
           ],
-          "stem": "请解释为什么在趋势市场中使用均值回归策略会导致亏损，并说明如何避免这种错误。"
+          "stem": "课程中回测了线性回归策略、ARIMA策略和均值回归策略。请解释为什么'先判断市场类型，再选择匹配的策略'是时间序列分析在交易中的核心价值。"
         },
         {
-          "estimated_seconds": 120,
+          "estimated_seconds": 150,
           "prompt_blocks": [
-            "Hurst指数0.3的含义",
-            "ARIMA模型的适用场景",
-            "模型与市场不匹配的后果",
-            "正确的模型选择建议"
+            "根据Hurst指数和半衰期判断市场类型",
+            "选择匹配的交易策略并说明交易规则",
+            "描述回测的具体步骤和评估指标"
           ],
-          "question_id": "q_long_model_mismatch_v2",
+          "question_id": "q_long_market_strategy_matching_v2",
           "reference_answer": [
-            "Hurst指数0.3小于0.5，说明该股票处于均值回归状态，价格倾向于回到长期平均水平。",
-            "ARIMA模型（自回归积分滑动平均模型）主要用于捕捉时间序列的趋势和自相关结构，更适合趋势市场。",
-            "在均值回归市场中使用ARIMA模型，模型会错误地认为价格趋势会持续，导致预测方向与实际情况相反，造成亏损。",
-            "正确的做法是：使用Hurst指数确认均值回归状态，计算半衰期（ln(2)/κ）了解回归速度，然后设计均值回归交易策略，例如在价格偏离均值时反向开仓。"
+            "Hurst指数0.3 < 0.5，表明市场是均值回归；半衰期5天在1-10天范围内，适合执行均值回归策略。",
+            "策略：使用OU过程拟合价格序列，估计回归速度κ和半衰期。当价格偏离模型预测的公平价格时，反向开仓（低于公平价买入，高于卖出），持有期设为半衰期5天。",
+            "回测步骤：1) 获取过去N天的价格数据；2) 拟合OU模型，计算半衰期；3) 如果半衰期在1-10天，根据当前价与公平价的比较开仓；4) 记录每笔交易的盈亏；5) 计算总收益、夏普比率、最大回撤等指标评估策略表现。"
           ],
           "rubric_points": [
-            "正确解释H=0.3：均值回归市场",
-            "正确说明ARIMA适用场景：趋势市场",
-            "分析不匹配后果：ARIMA在均值回归市场中预测不准",
-            "给出正确建议：使用Hurst指数和半衰期来设计均值回归策略"
+            "正确判断H=0.3为均值回归市场",
+            "选择均值回归策略，并正确描述交易规则（用OU过程估计半衰期，半衰期在1-10天时执行交易）",
+            "描述回测步骤：获取历史数据、拟合模型、模拟交易、计算收益和风险指标"
           ],
-          "stem": "假设你发现某只股票的Hurst指数为0.3，但你的同事却用ARIMA模型进行交易。请分析可能的问题，并给出正确的建议。"
+          "stem": "假设你是一个交易员，你发现某只股票的Hurst指数为0.3，半衰期为5天。请设计一个适合该股票的交易策略，并说明你会如何通过回测来验证它。"
         }
       ]
     }
   ],
   "quiz_families": [
     {
-      "concept_key": "market_state_tool_mapping",
+      "concept_key": "backtesting",
       "coverage_tags": [
-        "market_classification_summary",
-        "model_market_mapping"
+        "backtesting"
       ],
-      "difficulty": "medium",
-      "family_id": "qf_quiz_market_state_tool",
-      "learning_goal": "学生能在测验中正确匹配市场状态与对应的分析工具。",
+      "difficulty": "easy",
+      "family_id": "qf_quiz_backtesting_purpose",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确识别回测的目的。",
       "linked_steps": [
         "step8"
       ],
+      "practice_target": "学生答对后证明能区分回测与其他概念（如实时交易、数据清洗）。",
       "question_type": "single_choice",
       "term_refs": [
         {
-          "display": "Hurst指数",
-          "en": "Hurst Exponent"
+          "display": "回测",
+          "en": "Backtesting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "回测就是用过去的数据模拟执行策略，评估其表现。",
+          "options": [
+            "用历史数据模拟交易，检验策略是否有效",
+            "用实时数据训练机器学习模型",
+            "清洗和整理历史价格数据",
+            "计算股票的基本面价值"
+          ],
+          "question_id": "q_quiz_backtesting_purpose_v1",
+          "stem": "以下哪个选项最准确地描述了交易策略回测的目的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "在实盘交易前，应先通过回测用历史数据检验策略的有效性。",
+          "options": [
+            "立即用真实资金测试",
+            "进行回测，用历史数据验证策略",
+            "在社交媒体上分享策略",
+            "向朋友借钱扩大资金"
+          ],
+          "question_id": "q_quiz_backtesting_purpose_v2",
+          "stem": "一个交易员设计了一个新策略，在投入真实资金之前，他应该先做什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "lr_strategy_backtest",
+      "coverage_tags": [
+        "lr_strategy_backtest"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_lr_strategy_rule",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确应用线性回归策略的交易规则。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能根据线性回归的公平价格与当前价格的关系判断交易方向。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "线性回归策略",
+          "en": "Linear Regression Strategy"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "当前价（145）低于公平价（150），说明被低估，应买入。",
+          "options": [
+            "开多仓（买入），因为当前价低于公平价",
+            "开空仓（卖出），因为当前价低于公平价",
+            "不交易，等待价格回归",
+            "开多仓，因为当前价高于公平价"
+          ],
+          "question_id": "q_quiz_lr_strategy_rule_v1",
+          "stem": "线性回归模型预测某股票的公平价格为150元，当前市场价格为145元。根据线性回归策略，应该怎么做？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "当前价（108）高于公平价（100），说明被高估，应卖出。",
+          "options": [
+            "开多仓（买入），因为当前价高于公平价",
+            "开空仓（卖出），因为当前价高于公平价",
+            "不交易，因为价格已经很高",
+            "开空仓，因为当前价低于公平价"
+          ],
+          "question_id": "q_quiz_lr_strategy_rule_v2",
+          "stem": "线性回归模型预测某股票的公平价格为100元，当前市场价格为108元。根据线性回归策略，应该怎么做？"
+        }
+      ]
+    },
+    {
+      "concept_key": "arima_strategy_backtest",
+      "coverage_tags": [
+        "arima_strategy_backtest"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_arima_strategy_rule",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确应用ARIMA策略的交易规则。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能根据ARIMA预测价格与当前价格的关系判断交易方向。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "ARIMA策略",
+          "en": "ARIMA Strategy"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "预测价（105）高于当前价（100），预期价格上涨，应买入。",
+          "options": [
+            "开多仓（买入），因为预测价高于当前价",
+            "开空仓（卖出），因为预测价高于当前价",
+            "不交易，因为预测不一定准确",
+            "开多仓，因为预测价低于当前价"
+          ],
+          "question_id": "q_quiz_arima_strategy_rule_v1",
+          "stem": "ARIMA模型预测某股票明天价格为105元，当前价格为100元。根据ARIMA策略，应该怎么做？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "预测价（95）低于当前价（100），预期价格下跌，应卖出。",
+          "options": [
+            "开多仓（买入），因为预测价低于当前价",
+            "开空仓（卖出），因为预测价低于当前价",
+            "不交易，因为价格会波动",
+            "开空仓，因为预测价高于当前价"
+          ],
+          "question_id": "q_quiz_arima_strategy_rule_v2",
+          "stem": "ARIMA模型预测某股票明天价格为95元，当前价格为100元。根据ARIMA策略，应该怎么做？"
+        }
+      ]
+    },
+    {
+      "concept_key": "mean_reversion_strategy_backtest",
+      "coverage_tags": [
+        "mean_reversion_strategy_backtest"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_mr_strategy_rule",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确判断均值回归策略是否应该执行交易。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能根据半衰期数值判断均值回归策略的适用性。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "均值回归策略",
+          "en": "Mean Reversion Strategy"
         },
         {
           "display": "半衰期",
-          "en": "Half Life"
+          "en": "Half-Life"
         }
       ],
       "variants": [
         {
-          "answer": 2,
+          "answer": 0,
           "estimated_seconds": 20,
-          "explanation": "Hurst指数（H<0.5）和半衰期是专门用于量化均值回归的工具。线性回归和ARIMA更适合趋势市场，Martingale适合随机游走市场。",
+          "explanation": "半衰期3天在1到10天的范围内，适合执行均值回归交易。",
           "options": [
-            "简单线性回归",
-            "ARIMA模型",
-            "Hurst指数",
-            "Martingale策略"
+            "应该，因为半衰期在1到10天之间",
+            "不应该，因为半衰期太短",
+            "不应该，因为半衰期太长",
+            "应该，因为半衰期小于1天"
           ],
-          "question_id": "q_quiz_market_state_tool_v1",
-          "stem": "以下哪个工具最适合用于分析均值回归市场？"
+          "question_id": "q_quiz_mr_strategy_rule_v1",
+          "stem": "通过OU过程估计某股票价格序列的半衰期为3天。根据均值回归策略，是否应该执行交易？"
         },
         {
-          "answer": 2,
+          "answer": 1,
           "estimated_seconds": 20,
-          "explanation": "Martingale策略通过加倍下注利用概率优势，在随机市场中理论上可以获利。其他策略都依赖价格的可预测性。",
+          "explanation": "半衰期15天超过10天，回归速度太慢，策略可能不赚钱。",
           "options": [
-            "线性回归交易策略",
-            "均值回归策略",
-            "Martingale策略",
-            "ARIMA预测策略"
+            "应该，因为半衰期大于10天",
+            "不应该，因为半衰期超过10天，回归太慢",
+            "应该，因为半衰期越长越稳定",
+            "不应该，因为半衰期小于1天"
           ],
-          "question_id": "q_quiz_market_state_tool_v2",
-          "stem": "如果市场处于随机游走状态，以下哪种策略理论上可以获利？"
+          "question_id": "q_quiz_mr_strategy_rule_v2",
+          "stem": "通过OU过程估计某股票价格序列的半衰期为15天。根据均值回归策略，是否应该执行交易？"
+        }
+      ]
+    },
+    {
+      "concept_key": "strategy_limitation",
+      "coverage_tags": [
+        "strategy_limitation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_no_perfect_strategy",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确理解策略的局限性。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明理解了没有完美的交易策略，每种策略都有适用条件和局限性。",
+      "question_type": "true_false",
+      "term_refs": [],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "没有完美的策略，每种策略都有适用的市场环境和局限性。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_no_perfect_strategy_v1",
+          "stem": "回测结果证明，存在一种交易策略在所有市场环境下都能稳定盈利。"
         },
         {
           "answer": 0,
-          "estimated_seconds": 25,
-          "explanation": "趋势市场用线性回归和ARIMA捕捉方向；均值回归用Hurst指数和半衰期量化回归特性；随机游走用Martingale策略利用概率优势。",
+          "estimated_seconds": 10,
+          "explanation": "课程强调先判断市场类型（趋势、均值回归、随机游走），再选择对应的策略。",
           "options": [
-            "线性回归/ARIMA、Hurst指数/半衰期、Martingale",
-            "Hurst指数/半衰期、线性回归/ARIMA、Martingale",
-            "Martingale、线性回归/ARIMA、Hurst指数/半衰期",
-            "线性回归/ARIMA、Martingale、Hurst指数/半衰期"
+            "正确",
+            "错误"
           ],
-          "question_id": "q_quiz_market_state_tool_v3",
-          "stem": "趋势市场、均值回归市场、随机游走市场分别对应的分析工具组合是？"
-        }
-      ]
-    },
-    {
-      "concept_key": "model_selection_risk",
-      "coverage_tags": [
-        "model_selection_principle"
-      ],
-      "difficulty": "medium",
-      "family_id": "qf_quiz_model_selection_risk",
-      "learning_goal": "学生能识别用错模型的后果。",
-      "linked_steps": [
-        "step8"
-      ],
-      "question_type": "single_choice",
-      "term_refs": [
-        {
-          "display": "模型选择",
-          "en": "Model Selection"
-        }
-      ],
-      "variants": [
-        {
-          "answer": 1,
-          "estimated_seconds": 20,
-          "explanation": "在趋势市场做均值回归会持续逆势操作，导致系统性亏损，比不交易更糟糕。",
-          "options": [
-            "用错模型只是效率低一些，总比不用好",
-            "用错模型会导致系统性亏损，比不交易更危险",
-            "用错模型只会影响短期收益，长期会自动修正",
-            "用错模型没有风险，因为市场总会回归均值"
-          ],
-          "question_id": "q_quiz_model_selection_risk_v1",
-          "stem": "以下哪种说法最准确地描述了用错模型的风险？"
-        },
-        {
-          "answer": 1,
-          "estimated_seconds": 20,
-          "explanation": "上升趋势中价格持续上涨，均值回归策略会认为价格过高而做空，导致持续亏损。",
-          "options": [
-            "获得稳定收益",
-            "持续亏损",
-            "收益与风险平衡",
-            "无法判断"
-          ],
-          "question_id": "q_quiz_model_selection_risk_v2",
-          "stem": "一个交易员在明显的上升趋势市场中使用了均值回归策略，最可能的结果是？"
-        }
-      ]
-    },
-    {
-      "concept_key": "workflow",
-      "coverage_tags": [
-        "key_takeaway_workflow"
-      ],
-      "difficulty": "easy",
-      "family_id": "qf_quiz_workflow",
-      "learning_goal": "学生能正确排序核心工作流。",
-      "linked_steps": [
-        "step8"
-      ],
-      "question_type": "single_choice",
-      "term_refs": [
-        {
-          "display": "工作流",
-          "en": "Workflow"
-        }
-      ],
-      "variants": [
-        {
-          "answer": 2,
-          "estimated_seconds": 15,
-          "explanation": "核心工作流是：先分类（判断市场状态），再建模（选择对应模型），最后交易（执行策略）。",
-          "options": [
-            "先交易，再分类，最后建模",
-            "先建模，再分类，最后交易",
-            "先分类，再建模，最后交易",
-            "先交易，再建模，最后分类"
-          ],
-          "question_id": "q_quiz_workflow_v1",
-          "stem": "本课总结的核心工作流正确顺序是？"
-        },
-        {
-          "answer": 1,
-          "estimated_seconds": 15,
-          "explanation": "关键不是哪个模型更高级，而是先判断当前市场属于哪种状态，再选择对应的工具。",
-          "options": [
-            "模型越复杂越好",
-            "先判断市场状态，再选择对应模型",
-            "所有市场都适用同一种策略",
-            "交易频率越高收益越高"
-          ],
-          "question_id": "q_quiz_workflow_v2",
-          "stem": "以下哪个选项最符合本课的核心方法论？"
+          "question_id": "q_quiz_no_perfect_strategy_v2",
+          "stem": "根据课程内容，交易策略的关键是先判断市场类型，再选择匹配的策略。"
         }
       ]
     }
   ],
+  "sequence_id": "step8",
   "source": {
     "coverage_checklist": "L4: Statistical time series analysis for market classification",
     "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
@@ -417,8 +531,5 @@
     ],
     "source_outline": "L4: Statistical time series analysis for market classification"
   },
-  "target_language": "zh-CN",
-  "course_id": "comp7415a",
-  "chapter_id": "lecture-4",
-  "sequence_id": "step8"
+  "target_language": "zh-CN"
 }

@@ -1,66 +1,100 @@
 {
+  "chapter_id": "lecture-4",
+  "course_id": "comp7415a",
   "lesson_id": "L4",
   "mode": "guided_story",
   "screens": [
     {
-      "focus_terms": [],
-      "id": "s051",
-      "introduced_terms": [],
+      "focus_terms": [
+        "backtesting"
+      ],
+      "id": "s069",
+      "introduced_terms": [
+        "backtesting"
+      ],
       "lines": [
-        "回顾一下：市场有三种状态。",
-        "每种状态都有对应的分析工具。"
+        "所有策略都需要经过<term id=\"backtesting\">回测</term>验证。",
+        "用历史数据模拟交易，看看策略是否真的有效。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [],
-      "id": "s052",
+      "id": "s070",
       "introduced_terms": [],
       "lines": [
-        "趋势市场 → 线性回归、ARIMA",
-        "均值回归 → Hurst指数、半衰期",
-        "随机游走 → Martingale策略"
+        "线性回归策略：用回归预测的公平价格与当前价格比较。",
+        "当前价低于公平价就买入，高于就卖出。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [],
-      "id": "s053",
+      "id": "s071",
       "introduced_terms": [],
       "lines": [
-        "关键不是哪个模型更高级，",
-        "而是先判断当前市场属于哪种状态。"
+        "ARIMA策略：用ARIMA预测未来价格。",
+        "预测价高于当前价就买入，低于就卖出。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [],
-      "id": "s054",
+      "id": "s072",
       "introduced_terms": [],
       "lines": [
-        "用错模型比不用模型更危险。",
-        "在趋势市场做均值回归，会亏得很惨。"
+        "均值回归策略：用OU过程估计半衰期。",
+        "半衰期在1到10天之间时，才执行交易。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [],
-      "id": "s055",
+      "id": "s073",
+      "introduced_terms": [],
+      "lines": [
+        "回测结果告诉我们：没有完美的策略。",
+        "每种策略都有适用的市场环境和局限性。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s074",
+      "introduced_terms": [],
+      "lines": [
+        "关键是要先判断市场类型，再选择匹配的策略。",
+        "这就是时间序列分析在交易中的核心价值。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s075",
       "introduced_terms": [],
       "lines": [
         "一句话带走：",
-        "先分类，再建模，最后交易。"
+        "市场有三种性格，用对工具才能和它做朋友。"
       ],
       "type": "narration"
     }
   ],
   "sequence_id": "step8",
   "source": {
-    "plain_text": "Key Takeaways",
-    "related": []
+    "plain_text": "Backtest LR Strategy, Backtest ARIMA Strategy, Backtest Mean Reversion Strategy",
+    "related": [
+      "COMP7415A Lecture 4"
+    ]
   },
   "target_language": "zh-CN",
-  "term_catalog": {},
-  "course_id": "comp7415a",
-  "chapter_id": "lecture-4"
+  "term_catalog": {
+    "backtesting": {
+      "aliases": [
+        "Backtesting",
+        "Backtest"
+      ],
+      "display": "回测",
+      "gloss": "用历史数据测试交易策略表现的过程。"
+    }
+  }
 }

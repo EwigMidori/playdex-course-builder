@@ -1,130 +1,162 @@
 {
+  "chapter_id": "lecture-4",
+  "course_id": "comp7415a",
   "lesson_id": "L4",
   "mode": "guided_story",
   "screens": [
     {
-      "focus_terms": [
-        "hurst_exponent"
+      "focus_terms": [],
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "如果Hurst指数等于0.5，市场是随机游走。",
+        "那还有没有可能设计出赚钱的策略？"
       ],
-      "id": "s037",
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "martingale"
+      ],
+      "id": "s050",
       "introduced_terms": [
-        "hurst_exponent"
+        "martingale"
       ],
       "lines": [
-        "有没有一个数字，能直接告诉我们市场是什么状态？",
-        "有——<term id=\"hurst_exponent\">Hurst指数</term>。"
+        "有一种古老的策略叫<term id=\"martingale\">Martingale策略</term>。",
+        "它的逻辑很简单：每次亏损后，加倍下注。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "hurst_exponent"
+        "martingale"
       ],
-      "id": "s038",
+      "id": "s051",
       "introduced_terms": [],
       "lines": [
-        "H = 0.5 → 随机游走",
-        "H < 0.5 → 均值回归",
-        "H > 0.5 → 趋势"
+        "赌场里的经典例子：",
+        "第一次押1元，输了押2元，再输押4元……直到赢。",
+        "只要赢一次，就能收回所有亏损并赚取初始赌注的利润。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "hurst_exponent"
+        "martingale"
       ],
-      "id": "s039",
+      "id": "s052",
       "introduced_terms": [],
       "lines": [
-        "H越接近0，均值回归越强；",
-        "H越接近1，趋势越强。"
+        "连续输10次的概率只有约0.1%。",
+        "看起来胜率很高，但有一个致命问题。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "half_life"
+        "martingale"
       ],
-      "id": "s040",
-      "introduced_terms": [
-        "half_life"
-      ],
-      "lines": [
-        "对于均值回归策略，还需要知道一个关键数字：",
-        "<term id=\"half_life\">半衰期</term>。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "half_life"
-      ],
-      "id": "s041",
+      "id": "s053",
       "introduced_terms": [],
       "lines": [
-        "半衰期 = ln(2) / κ",
-        "κ是均值回归的速度。κ越大，回归越快。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "half_life"
-      ],
-      "id": "s042",
-      "introduced_terms": [],
-      "lines": [
-        "如果半衰期是20天，",
-        "那么用5天的均线来做均值回归就不太合适。"
+        "连续输10次后，第11次需要押1024元。",
+        "如果本金不够，就会爆仓。"
       ],
       "type": "narration"
     },
     {
       "exercise": {
-        "answer": 1,
-        "explanation": "H < 0.5 表示均值回归，越接近0回归越强。",
+        "answer": 0,
+        "explanation": "连续亏损时赌注指数增长，可能耗尽所有资金。",
         "kind": "single_choice",
         "options": [
-          "强趋势",
-          "均值回归",
-          "随机游走"
+          "连续亏损导致本金不足",
+          "市场趋势太强",
+          "交易手续费太高"
         ],
-        "prompt": "Hurst指数为0.3，说明市场处于什么状态？"
+        "prompt": "Martingale策略最大的风险是什么？"
       },
       "focus_terms": [
-        "hurst_exponent"
+        "martingale"
       ],
-      "id": "s043",
+      "id": "s054",
       "introduced_terms": [],
       "lines": [
-        "Hurst指数为0.3，说明市场处于什么状态？"
+        "Martingale策略最大的风险是什么？"
       ],
       "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "32"
+        ],
+        "explanation": "第1次1元，第2次2元，第3次4元，第4次8元，第5次16元，第6次32元。",
+        "kind": "fill_in_blank",
+        "prompt": "假设初始赌注为1元，连续亏损5次后，第6次需要下注 ______ 元。"
+      },
+      "focus_terms": [
+        "martingale"
+      ],
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "假设初始赌注为1元，连续亏损5次后，第6次需要下注多少元？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "Martingale策略假设市场是随机游走，如果市场有趋势，连续亏损的概率会大大增加。",
+        "kind": "single_choice",
+        "options": [
+          "适用",
+          "不适用"
+        ],
+        "prompt": "如果市场表现出明显的上涨趋势（Hurst指数0.8），Martingale策略是否适用？"
+      },
+      "focus_terms": [
+        "martingale"
+      ],
+      "id": "s056",
+      "introduced_terms": [],
+      "lines": [
+        "如果市场表现出明显的上涨趋势（Hurst指数0.8），",
+        "Martingale策略是否适用？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "martingale"
+      ],
+      "id": "s057",
+      "introduced_terms": [],
+      "lines": [
+        "改进思路：只在检测到随机市场时使用。",
+        "结合趋势判断，决定做多还是做空。"
+      ],
+      "type": "narration"
     }
   ],
   "sequence_id": "step6",
   "source": {
-    "plain_text": "Hurst Exponent, Half Life of Mean Reversion",
-    "related": []
+    "plain_text": "Martingale Strategy",
+    "related": [
+      "COMP7415A Lecture 4"
+    ]
   },
   "target_language": "zh-CN",
   "term_catalog": {
-    "half_life": {
+    "martingale": {
       "aliases": [
-        "Half Life"
+        "Martingale Strategy",
+        "Martingale"
       ],
-      "display": "半衰期",
-      "gloss": "价格偏离均值后恢复到一半所需的时间。"
-    },
-    "hurst_exponent": {
-      "aliases": [
-        "Hurst Exponent",
-        "H"
-      ],
-      "display": "Hurst指数",
-      "gloss": "衡量时间序列趋势或均值回归强度的指标，范围0到1。"
+      "display": "Martingale策略",
+      "gloss": "每次亏损后加倍下注，直到盈利后回到初始赌注的策略。"
     }
-  },
-  "course_id": "comp7415a",
-  "chapter_id": "lecture-4"
+  }
 }

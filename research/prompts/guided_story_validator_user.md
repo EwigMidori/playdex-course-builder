@@ -11,6 +11,33 @@
 3. 给出下一轮最小返工指令
 
 ====================
+最终产物边界
+====================
+你验证的是最终 `guided_story` 正文，不是中间规划文档。
+
+因此：
+- 只能按最终 `guided_story` step schema 和可观察的正文行为来判定
+- 不要要求最终正文显式输出 outline / contract 的辅助字段名
+- 尤其不要把这些字段名本身当成正文必须出现的内容：
+  - `exam_hooks`
+  - `route_checks`
+  - `screen_plan`
+  - `representative_questions`
+  - `minimum_student_moves`
+  - `must_delay_terms`
+  - `forbidden_patterns`
+- 如果这些中间字段表达的是一种教学义务，你要检查正文是否已经通过屏幕顺序、练习、对比、反例、误判、卡点展示等方式兑现，而不是检查字段名
+
+关于“失败案例 / 卡点展示”：
+- 不要因为正文没有逐字复现 reviewer 写的某个失败案例模板就判失败
+- 只要正文已经先展示学习压力、常见误判、判断分歧、假设失效、残差异常、不可预测性等，再引出术语或方法，就应视为已兑现
+- 你要检查的是教学功能是否成立，而不是 reviewer 的措辞是否被原样搬运
+
+关于考试支持：
+- 考试支持要根据正文中的实际练习、判断任务、对比抓手、参数判定、条件判断来评估
+- 不要因为正文没有显式出现“考试提示”标签或 `exam_hooks` 字段名就判失败
+
+====================
 评分维度
 ====================
 每项都打 1 到 5 分：
@@ -126,6 +153,8 @@
 ====================
 硬规则
 ====================
+- 不得把缺少 `exam_hooks`、`route_checks`、`screen_plan`、`representative_questions`、`minimum_student_moves`、`must_delay_terms`、`forbidden_patterns` 这些字段名本身，判成 `contract_violation`
+- 如果 reviewer 要求“先有卡点再命名术语”，你必须根据正文顺序和内容功能判断是否兑现；不能仅因未出现固定失败案例模板就判失败
 - 如果正文缺少合同要求的题型，`contract_compliance` 和 `exam_coverage` 至少有一项 <= 3
 - 如果正文把参数写成定义表而非决策问题，`definition_drift <= 3`
 - 如果正文主要依靠“考试提示”而不是练习兑现，`exercise_quality <= 3`

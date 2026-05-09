@@ -1,119 +1,186 @@
 {
+  "chapter_id": "lecture-4",
+  "course_id": "comp7415a",
   "lesson_id": "L4",
   "mode": "guided_story",
   "screens": [
     {
-      "focus_terms": [
-        "martingale_strategy"
+      "focus_terms": [],
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [
+        "小李这次学聪明了，他先用Hurst指数判断市场是均值回归。",
+        "于是他设计了一个反转策略：价格偏离均值就反向操作。",
+        "但他用了5天的窗口——结果半衰期是20天，窗口太短，策略连续亏损。"
       ],
-      "id": "s044",
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s059",
+      "introduced_terms": [],
+      "lines": [
+        "小李知道是均值回归，但为什么还是亏了？他缺少什么关键信息？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s060",
+      "introduced_terms": [],
+      "lines": [
+        "价格偏离均值后，需要多久才能回来？",
+        "这个时间决定了交易窗口应该设多长。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "ornstein_uhlenbeck"
+      ],
+      "id": "s061",
       "introduced_terms": [
-        "martingale_strategy"
+        "ornstein_uhlenbeck"
       ],
       "lines": [
-        "如果市场真的是随机游走，还能赚钱吗？",
-        "有一种古老的策略可以——<term id=\"martingale_strategy\">Martingale策略</term>。"
+        "<term id=\"ornstein_uhlenbeck\">Ornstein-Uhlenbeck过程</term>是描述均值回归的经典模型。",
+        "它包含一个关键参数：回归速度 \\(\\kappa\\)。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "\\Delta y_t = \\kappa \\theta - \\kappa y_{t-1} + \\varepsilon_t",
+        "spoken": "Delta y_t 等于 kappa theta 减去 kappa 乘 y_{t-1} 再加 epsilon_t"
+      },
+      "id": "s062",
+      "introduced_terms": [],
+      "lines": [
+        "离散形式可以写成：",
+        "价格变化 = 常数 + 回归速度 × 上一期偏离 + 随机噪声"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "half_life"
+      ],
+      "id": "s063",
+      "introduced_terms": [
+        "half_life"
+      ],
+      "lines": [
+        "从回归速度 \\(\\kappa\\) 可以算出<term id=\"half_life\">半衰期</term>：",
+        "半衰期 = \\(\\log(2) / \\kappa\\)"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "martingale_strategy"
+        "half_life"
       ],
-      "id": "s045",
+      "id": "s064",
       "introduced_terms": [],
       "lines": [
-        "原理很简单：每次输了就加倍下注。",
-        "只要赢一次，就能把之前所有亏损赚回来，还多赚一点。"
+        "半衰期告诉你：价格偏离均值后，",
+        "需要多少天才能回到一半的偏离程度。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "martingale_strategy"
+        "half_life"
       ],
-      "id": "s046",
+      "id": "s065",
       "introduced_terms": [],
       "lines": [
-        "赌场例子：第一局押1元，输了押2元，再输押4元……",
-        "直到赢了，净赚1元。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "martingale_strategy"
-      ],
-      "id": "s047",
-      "introduced_terms": [],
-      "lines": [
-        "数学上，连续输n次的概率是0.5ⁿ。",
-        "连续输10次的概率只有0.1%，看起来几乎不可能。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "martingale_strategy"
-      ],
-      "id": "s048",
-      "introduced_terms": [],
-      "lines": [
-        "但风险在于：你需要无限的资金。",
-        "如果连续输10次，第11次需要押1024元。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "martingale_strategy"
-      ],
-      "id": "s049",
-      "introduced_terms": [],
-      "lines": [
-        "所以Martingale策略在理论上可行，",
-        "但实践中必须严格控制仓位和资金管理。"
+        "如果半衰期是20天，",
+        "就不应该用5天的窗口来做均值回归策略。"
       ],
       "type": "narration"
     },
     {
       "exercise": {
-        "answer": 1,
-        "explanation": "连续亏损时赌注指数增长，资金不足就会爆仓。",
-        "kind": "single_choice",
-        "options": [
-          "胜率太低",
-          "需要无限资金，可能爆仓",
-          "交易成本太高"
+        "answers": [
+          "6.93",
+          "6.9",
+          "7"
         ],
-        "prompt": "Martingale策略的核心风险是什么？"
+        "explanation": "半衰期 = log(2) / 0.1 ≈ 6.93天。",
+        "kind": "fill_in_blank",
+        "prompt": "半衰期 ≈ ______ 天"
       },
       "focus_terms": [
-        "martingale_strategy"
+        "half_life"
       ],
-      "id": "s050",
+      "id": "s066",
       "introduced_terms": [],
       "lines": [
-        "Martingale策略的核心风险是什么？"
+        "如果 \\(\\kappa = 0.1\\)，半衰期大约是多少天？",
+        "（提示：\\(\\log(2) \\approx 0.693\\)）"
       ],
       "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "半衰期20天意味着价格回归速度很慢，5天窗口太短，无法捕捉到有效的回归信号。",
+        "kind": "single_choice",
+        "options": [
+          "5天",
+          "20天",
+          "50天"
+        ],
+        "prompt": "如果半衰期是20天，应该使用多长的交易窗口？"
+      },
+      "focus_terms": [
+        "half_life"
+      ],
+      "id": "s067",
+      "introduced_terms": [],
+      "lines": [
+        "如果半衰期是20天，",
+        "应该使用多长的交易窗口？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "half_life"
+      ],
+      "id": "s068",
+      "introduced_terms": [],
+      "lines": [
+        "如果 \\(\\kappa\\) 为负，说明不是均值回归。",
+        "如果 \\(\\kappa\\) 接近0，半衰期太长，策略可能不赚钱。"
+      ],
+      "type": "narration"
     }
   ],
   "sequence_id": "step7",
   "source": {
-    "plain_text": "Martingale Strategy for random walk market",
-    "related": []
+    "plain_text": "Mean Reversion Process and Half Life",
+    "related": [
+      "COMP7415A Lecture 4"
+    ]
   },
   "target_language": "zh-CN",
   "term_catalog": {
-    "martingale_strategy": {
+    "half_life": {
       "aliases": [
-        "Martingale Strategy"
+        "Half-Life"
       ],
-      "display": "Martingale策略",
-      "gloss": "每次亏损后加倍下注，直到盈利后回到初始赌注的策略。"
+      "display": "半衰期",
+      "gloss": "价格偏离均值后，回到一半偏离程度所需的时间。"
+    },
+    "ornstein_uhlenbeck": {
+      "aliases": [
+        "OU Process",
+        "Mean-Reverting Process"
+      ],
+      "display": "Ornstein-Uhlenbeck过程",
+      "gloss": "描述均值回归行为的随机过程模型。"
     }
-  },
-  "course_id": "comp7415a",
-  "chapter_id": "lecture-4"
+  }
 }

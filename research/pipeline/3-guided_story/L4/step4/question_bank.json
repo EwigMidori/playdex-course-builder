@@ -1,125 +1,270 @@
 {
+  "chapter_id": "lecture-4",
+  "course_id": "comp7415a",
   "coverage_map": [
     {
-      "coverage_tag": "multiple_linear_regression_model",
+      "coverage_tag": "arima_model_intro",
       "covered_by": [
-        "qf_flash_mlr_model",
-        "qf_quiz_mlr_interpret",
-        "qf_long_mlr_application"
+        "qf_flash_arima_components",
+        "qf_quiz_arima_components"
       ],
-      "description": "多元线性回归模型的定义、公式 Y = β₀ + β₁X₁ + β₂X₂ + ... + βₚXₚ + ε，以及各组成部分的含义（因变量、自变量、系数、误差项）。"
+      "description": "ARIMA模型的定义、三个核心组件（AR、I、MA）及其作用"
     },
     {
-      "coverage_tag": "multicollinearity",
+      "coverage_tag": "arima_parameters",
       "covered_by": [
-        "qf_flash_multicollinearity",
-        "qf_quiz_multicollinearity_risk",
-        "qf_long_mlr_application"
+        "qf_flash_arima_params",
+        "qf_quiz_arima_params"
       ],
-      "description": "多重共线性的概念：自变量之间高度相关导致模型系数不可靠，以及选择因素时应避免多重共线性。"
+      "description": "ARIMA(p,d,q)三个参数的含义：p自回归阶数、d差分次数、q移动平均阶数"
     },
     {
-      "coverage_tag": "factor_selection_guidelines",
+      "coverage_tag": "stationarity",
       "covered_by": [
-        "qf_quiz_factor_selection",
-        "qf_long_mlr_application"
+        "qf_flash_stationarity",
+        "qf_quiz_stationarity"
       ],
-      "description": "选择预测因素的原则：逻辑关联、统计显著性检验（p值）、避免多重共线性、数据可用性、简洁性与可解释性。"
+      "description": "平稳性的定义：均值和方差不随时间变化"
+    },
+    {
+      "coverage_tag": "adf_test",
+      "covered_by": [
+        "qf_flash_adf_test",
+        "qf_quiz_adf_test"
+      ],
+      "description": "ADF检验用于判断时间序列是否平稳，p值<0.05表示平稳"
+    },
+    {
+      "coverage_tag": "acf_pacf",
+      "covered_by": [
+        "qf_flash_acf_pacf"
+      ],
+      "description": "ACF和PACF图用于确定ARIMA模型的p和q阶数"
     }
   ],
   "flashcard_families": [
     {
-      "concept_key": "multiple_linear_regression_model",
+      "concept_key": "arima_model_intro",
       "coverage_tags": [
-        "multiple_linear_regression_model"
+        "arima_model_intro"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_mlr_model",
-      "learning_goal": "学生能准确回忆多元线性回归模型的标准公式，并说出每个符号代表的含义。",
+      "family_id": "qf_flash_arima_components",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆ARIMA三个核心组件的名称和各自功能。",
       "linked_steps": [
         "step4"
       ],
+      "practice_target": "学生答对后证明掌握了ARIMA模型中AR、I、MA三个组件的定义与作用。",
       "question_type": "short_answer",
-      "retrieval_focus": "多元线性回归模型的公式结构及其组成部分。",
+      "retrieval_focus": "ARIMA三个字母分别代表什么，以及每个组件的核心功能。",
       "term_refs": [
         {
-          "display": "多元线性回归",
-          "en": "Multiple Linear Regression (MLR)"
+          "display": "ARIMA模型",
+          "en": "ARIMA Model"
         },
         {
-          "display": "因变量",
-          "en": "Dependent Variable (Y)"
+          "display": "自回归",
+          "en": "AutoRegressive (AR)"
         },
         {
-          "display": "自变量",
-          "en": "Independent Variable (X)"
+          "display": "差分",
+          "en": "Integrated (I)"
         },
         {
-          "display": "系数",
-          "en": "Coefficient (β)"
-        },
-        {
-          "display": "误差项",
-          "en": "Error term (ε)"
+          "display": "移动平均",
+          "en": "Moving Average (MA)"
         }
       ],
       "variants": [
         {
-          "back": "Y = β₀ + β₁X₁ + β₂X₂ + ... + βₚXₚ + ε。Y是因变量（要预测的变量），X₁到Xₚ是自变量（预测因子），β₀是截距，β₁到βₚ是各自变量的系数，ε是误差项。",
-          "estimated_seconds": 15,
-          "explanation": "多元线性回归是简单线性回归的扩展，允许使用多个自变量来预测一个因变量。",
-          "front": "写出多元线性回归模型的标准公式，并说明每个符号代表什么。",
-          "question_id": "q_flash_mlr_model_v1"
-        },
-        {
-          "back": "β₁表示在其他自变量保持不变的情况下，X₁每变化一个单位，Y的平均变化量。",
-          "estimated_seconds": 10,
-          "explanation": "系数衡量了每个自变量对因变量的边际影响，这是模型可解释性的关键。",
-          "front": "在多元线性回归中，β₁（系数）的含义是什么？",
-          "question_id": "q_flash_mlr_model_v2"
-        },
-        {
-          "back": "简单线性回归只有一个自变量（X），而多元线性回归有多个自变量（X₁, X₂, ..., Xₚ）。",
+          "back": "自回归（AutoRegressive），用过去的价格预测现在的价格。",
           "estimated_seconds": 8,
-          "explanation": "多元线性回归可以纳入更多信息，从而可能做出更准确的预测。",
-          "front": "多元线性回归与简单线性回归的主要区别是什么？",
-          "question_id": "q_flash_mlr_model_v3"
+          "explanation": "AR部分利用时间序列自身的滞后值作为预测变量。",
+          "front": "ARIMA模型中的 'AR' 代表什么？它的核心功能是什么？",
+          "question_id": "q_flash_arima_components_v1"
+        },
+        {
+          "back": "差分（Integrated），让数据变得平稳。",
+          "estimated_seconds": 8,
+          "explanation": "通过对原始序列进行差分，消除趋势和季节性，使序列满足平稳性要求。",
+          "front": "ARIMA模型中的 'I' 代表什么？它的核心功能是什么？",
+          "question_id": "q_flash_arima_components_v2"
+        },
+        {
+          "back": "移动平均（Moving Average），用过去的预测误差来修正当前预测。",
+          "estimated_seconds": 8,
+          "explanation": "MA部分将过去的预测误差纳入模型，以调整当前预测。",
+          "front": "ARIMA模型中的 'MA' 代表什么？它的核心功能是什么？",
+          "question_id": "q_flash_arima_components_v3"
         }
       ]
     },
     {
-      "concept_key": "multicollinearity",
+      "concept_key": "arima_parameters",
       "coverage_tags": [
-        "multicollinearity"
+        "arima_parameters"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_multicollinearity",
-      "learning_goal": "学生能定义多重共线性，并说出它为什么是问题。",
+      "family_id": "qf_flash_arima_params",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆ARIMA(p,d,q)中每个参数的含义。",
       "linked_steps": [
         "step4"
       ],
+      "practice_target": "学生答对后证明掌握了ARIMA模型三个参数p、d、q各自代表的含义。",
       "question_type": "short_answer",
-      "retrieval_focus": "多重共线性的定义及其对模型的影响。",
+      "retrieval_focus": "ARIMA(p,d,q)中p、d、q分别代表什么。",
       "term_refs": [
         {
-          "display": "多重共线性",
-          "en": "Multicollinearity"
+          "display": "ARIMA(p,d,q)",
+          "en": "ARIMA(p,d,q)"
+        },
+        {
+          "display": "自回归阶数",
+          "en": "Autoregressive order (p)"
+        },
+        {
+          "display": "差分次数",
+          "en": "Differencing order (d)"
+        },
+        {
+          "display": "移动平均阶数",
+          "en": "Moving average order (q)"
         }
       ],
       "variants": [
         {
-          "back": "多重共线性是指多元线性回归中，两个或多个自变量之间高度相关。",
-          "estimated_seconds": 8,
-          "explanation": "例如，GDP和利率如果高度相关，就存在多重共线性。",
-          "front": "什么是多重共线性？",
-          "question_id": "q_flash_multicollinearity_v1"
+          "back": "自回归的阶数，即模型中使用的滞后观测值的数量。",
+          "estimated_seconds": 6,
+          "explanation": "p决定了模型使用多少个过去的时间点来预测当前值。",
+          "front": "ARIMA(p,d,q)中，参数 'p' 代表什么？",
+          "question_id": "q_flash_arima_params_v1"
         },
         {
-          "back": "它会使模型的系数估计变得不可靠，难以分清每个自变量的独立影响。",
-          "estimated_seconds": 10,
-          "explanation": "当自变量高度相关时，系数的标准误变大，导致系数不稳定且难以解释。",
-          "front": "多重共线性会导致什么问题？",
-          "question_id": "q_flash_multicollinearity_v2"
+          "back": "差分的次数，即对原始序列进行差分的阶数。",
+          "estimated_seconds": 6,
+          "explanation": "d表示为了使序列平稳需要进行几次差分操作。",
+          "front": "ARIMA(p,d,q)中，参数 'd' 代表什么？",
+          "question_id": "q_flash_arima_params_v2"
+        },
+        {
+          "back": "移动平均的阶数，即模型中使用的滞后预测误差的数量。",
+          "estimated_seconds": 6,
+          "explanation": "q决定了模型使用多少个过去的预测误差来修正当前预测。",
+          "front": "ARIMA(p,d,q)中，参数 'q' 代表什么？",
+          "question_id": "q_flash_arima_params_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "stationarity",
+      "coverage_tags": [
+        "stationarity"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_stationarity",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆平稳性的定义。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了时间序列平稳性的核心定义：均值和方差不随时间变化。",
+      "question_type": "short_answer",
+      "retrieval_focus": "平稳时间序列的两个关键统计性质。",
+      "term_refs": [
+        {
+          "display": "平稳性",
+          "en": "Stationarity"
+        }
+      ],
+      "variants": [
+        {
+          "back": "时间序列的均值和方差不随时间变化。",
+          "estimated_seconds": 6,
+          "explanation": "平稳性是许多时间序列模型（如ARIMA）的基本前提假设。",
+          "front": "什么是时间序列的平稳性？",
+          "question_id": "q_flash_stationarity_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "adf_test",
+      "coverage_tags": [
+        "adf_test"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_adf_test",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆ADF检验的用途和判断标准。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了ADF检验用于判断平稳性以及p值的判断阈值。",
+      "question_type": "short_answer",
+      "retrieval_focus": "ADF检验的用途和p值判断标准。",
+      "term_refs": [
+        {
+          "display": "ADF检验",
+          "en": "Augmented Dickey-Fuller Test"
+        }
+      ],
+      "variants": [
+        {
+          "back": "0.05",
+          "estimated_seconds": 5,
+          "explanation": "p值 < 0.05 拒绝原假设（存在单位根），认为序列平稳。",
+          "front": "ADF检验的p值小于多少时，可以认为时间序列是平稳的？",
+          "question_id": "q_flash_adf_test_v1"
+        },
+        {
+          "back": "判断时间序列是否平稳。",
+          "estimated_seconds": 5,
+          "explanation": "ADF检验通过检验是否存在单位根来判断序列的平稳性。",
+          "front": "ADF检验的主要用途是什么？",
+          "question_id": "q_flash_adf_test_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "acf_pacf",
+      "coverage_tags": [
+        "acf_pacf"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_acf_pacf",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆ACF和PACF图在ARIMA建模中的作用。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了ACF图用于确定MA阶数q、PACF图用于确定AR阶数p。",
+      "question_type": "short_answer",
+      "retrieval_focus": "ACF和PACF图分别用于确定ARIMA的哪个参数。",
+      "term_refs": [
+        {
+          "display": "ACF图",
+          "en": "Autocorrelation Function (ACF) plot"
+        },
+        {
+          "display": "PACF图",
+          "en": "Partial Autocorrelation Function (PACF) plot"
+        }
+      ],
+      "variants": [
+        {
+          "back": "MA的阶数 q。",
+          "estimated_seconds": 8,
+          "explanation": "ACF图显示自相关函数随滞后阶数的变化，用于识别移动平均部分的阶数。",
+          "front": "在ARIMA建模中，ACF图主要用于帮助确定哪个参数？",
+          "question_id": "q_flash_acf_pacf_v1"
+        },
+        {
+          "back": "AR的阶数 p。",
+          "estimated_seconds": 8,
+          "explanation": "PACF图显示偏自相关函数随滞后阶数的变化，用于识别自回归部分的阶数。",
+          "front": "在ARIMA建模中，PACF图主要用于帮助确定哪个参数？",
+          "question_id": "q_flash_acf_pacf_v2"
         }
       ]
     }
@@ -127,230 +272,257 @@
   "lesson_id": "L4",
   "longform_families": [
     {
-      "concept_key": "multiple_linear_regression_model",
+      "concept_key": "arima_model_intro",
       "coverage_tags": [
-        "multiple_linear_regression_model",
-        "multicollinearity",
-        "factor_selection_guidelines"
+        "arima_model_intro",
+        "stationarity",
+        "adf_test"
       ],
-      "difficulty": "hard",
-      "family_id": "qf_long_mlr_application",
-      "learning_goal": "学生能综合运用多元线性回归的知识，为一个实际问题选择合适的自变量，并解释如何避免多重共线性。",
+      "difficulty": "medium",
+      "family_id": "qf_long_arima_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释使用ARIMA模型进行时间序列预测的完整流程。",
       "linked_steps": [
         "step4"
       ],
-      "question_type": "short_explain",
+      "practice_target": "学生答对后证明能连贯解释ARIMA建模的关键步骤：平稳性检验、差分、参数确定、模型拟合与预测。",
+      "question_type": "mechanism_trace",
       "term_refs": [
         {
-          "display": "多元线性回归",
-          "en": "Multiple Linear Regression (MLR)"
+          "display": "ARIMA模型",
+          "en": "ARIMA Model"
         },
         {
-          "display": "多重共线性",
-          "en": "Multicollinearity"
+          "display": "平稳性",
+          "en": "Stationarity"
+        },
+        {
+          "display": "ADF检验",
+          "en": "Augmented Dickey-Fuller Test"
         }
       ],
       "variants": [
         {
           "estimated_seconds": 120,
           "prompt_blocks": [
-            "列出3个自变量并解释逻辑关系",
-            "解释如何避免多重共线性"
+            "第一步：数据准备与平稳性检验",
+            "第二步：差分处理（如果需要）",
+            "第三步：确定p和q的阶数",
+            "第四步：模型拟合与预测"
           ],
-          "question_id": "q_long_mlr_application_v1",
+          "question_id": "q_long_arima_process_v1",
           "reference_answer": [
-            "合理的自变量可以包括：\n  - X₁: 煤价（煤炭是发电的主要燃料，煤价上涨会增加成本，压低利润，从而对股价产生负面影响）\n  - X₂: GDP增长率（经济增长带动电力需求，GDP增长越快，用电量越大，利好电力公司收入和股价）\n  - X₃: 平均气温（极端天气（酷热或严寒）会增加空调或取暖用电，从而提升电力需求和股价）",
-            "避免多重共线性的方法：\n  - 在建模前，先计算自变量之间的相关系数矩阵。如果发现两个自变量的相关系数很高（例如|r| > 0.8），则考虑只保留其中一个，或者使用主成分分析等方法降维。\n  - 例如，如果发现'煤价'和'天然气价格'高度相关，可以只选择其中一个作为代表。\n  - 也可以使用方差膨胀因子（VIF）来检测多重共线性，通常VIF > 10表示存在严重的多重共线性。"
+            "第一步：对收盘价序列进行ADF检验，检查p值是否小于0.05。如果p值<0.05，数据平稳，d=0；否则进入第二步。",
+            "第二步：对序列进行一阶差分，再次进行ADF检验。重复差分直到序列平稳，差分的次数即为d。",
+            "第三步：绘制平稳序列的ACF图和PACF图。ACF图在滞后q后截尾，则q为该滞后阶数；PACF图在滞后p后截尾，则p为该滞后阶数。",
+            "第四步：使用确定的(p,d,q)拟合ARIMA模型，然后使用拟合好的模型对未来若干期进行预测。"
           ],
           "rubric_points": [
-            "正确识别至少3个与电力公司股价有逻辑关联的因素（如：煤价、GDP、气温、利率等）",
-            "对每个因素与股价的关系给出合理的解释（如：煤价是成本，上涨会压低利润和股价）",
-            "正确解释多重共线性的概念",
-            "提出具体的避免多重共线性的方法（如：检查相关系数矩阵、避免同时使用高度相关的变量、使用VIF等）"
+            "提到使用ADF检验判断平稳性，p值<0.05为平稳",
+            "如果数据不平稳，进行差分直到平稳，d为差分次数",
+            "通过ACF图确定MA阶数q，通过PACF图确定AR阶数p",
+            "拟合ARIMA(p,d,q)模型，利用模型进行未来价格预测"
           ],
-          "stem": "假设你要用多元线性回归模型预测一家电力公司（如中电控股，0002.HK）的股价。请列出至少三个你认为合理的自变量（X₁, X₂, X₃），并解释：\n1. 每个自变量与股价之间的逻辑关系。\n2. 在选择这些自变量时，你会如何避免多重共线性问题？"
-        },
-        {
-          "estimated_seconds": 150,
-          "prompt_blocks": [
-            "解释每个系数的含义",
-            "列出实际应用中的风险"
-          ],
-          "question_id": "q_long_mlr_application_v2",
-          "reference_answer": [
-            "系数解释：\n  - 截距 (6.42): 当GDP、利率和通胀率都为0时，股票的预测价格为6.42。\n  - GDP系数 (25.82): 在其他条件不变的情况下，GDP每增加1单位，股价平均增加25.82单位。\n  - 利率系数 (12.73): 在其他条件不变的情况下，利率每增加1单位，股价平均增加12.73单位。\n  - 通胀率系数 (-13.19): 在其他条件不变的情况下，通胀率每增加1单位，股价平均减少13.19单位。",
-            "实际应用中的风险：\n  1. 过拟合风险：模型基于仅8个观测值（8个季度）和3个自变量，R²高达0.995，这强烈暗示模型可能过度拟合了历史数据，在新数据上表现可能很差。\n  2. 数据滞后性：GDP和通胀率等宏观经济指标通常有发布延迟（例如季度数据在季度结束后数周才公布），这意味着模型使用的'最新'数据可能已经是几周前的，不适合用于短期交易决策。\n  3. 多重共线性风险：输出中提示'条件数很大，可能存在强多重共线性问题'，这意味着系数估计可能不稳定。"
-          ],
-          "rubric_points": [
-            "正确解释截距和每个系数的含义",
-            "识别出过拟合的风险（R²过高，样本量小）",
-            "识别出数据可用性和时间滞后的问题（GDP和通胀率是季度数据，不适合短期交易）",
-            "识别出可能的多重共线性或模型稳定性问题"
-          ],
-          "stem": "你收集了某股票过去8个季度的数据，并建立了以下多元线性回归模型来预测其价格：\n\nŶ = 6.42 + 25.82*GDP + 12.73*利率 - 13.19*通胀率\n\n模型的R² = 0.995，所有系数的p值都小于0.05。\n\n请回答：\n1. 解释每个系数的经济含义。\n2. 尽管模型统计上很显著，但在实际交易中使用这个模型可能存在哪些风险？请至少列出两点。"
+          "stem": "你获得了一只股票过去一年的日收盘价数据，打算使用ARIMA模型进行预测。请描述从数据准备到模型预测的完整步骤，并解释每一步的目的。"
         }
       ]
     }
   ],
   "quiz_families": [
     {
-      "concept_key": "multiple_linear_regression_model",
+      "concept_key": "arima_model_intro",
       "coverage_tags": [
-        "multiple_linear_regression_model"
+        "arima_model_intro"
       ],
       "difficulty": "medium",
-      "family_id": "qf_quiz_mlr_interpret",
-      "learning_goal": "学生能在具体情境中正确解释多元线性回归模型的应用和系数含义。",
+      "family_id": "qf_quiz_arima_components",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析ARIMA各组件的作用。",
       "linked_steps": [
         "step4"
       ],
+      "practice_target": "学生答对后证明能区分ARIMA中AR、I、MA三个组件的功能。",
       "question_type": "single_choice",
       "term_refs": [
         {
-          "display": "多元线性回归",
-          "en": "Multiple Linear Regression (MLR)"
+          "display": "ARIMA模型",
+          "en": "ARIMA Model"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "AR（自回归）部分利用时间序列自身的滞后值作为预测变量，处理数据的前后依赖关系。",
+          "options": [
+            "自回归（AR）",
+            "差分（I）",
+            "移动平均（MA）",
+            "误差项（ε）"
+          ],
+          "question_id": "q_quiz_arima_components_v1",
+          "stem": "ARIMA模型中，负责处理数据自相关结构、利用过去价格预测当前价格的组件是哪一个？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "I（差分）部分通过对原始序列进行差分，消除趋势，使序列满足平稳性要求。",
+          "options": [
+            "自回归（AR）",
+            "差分（I）",
+            "移动平均（MA）",
+            "常数项"
+          ],
+          "question_id": "q_quiz_arima_components_v2",
+          "stem": "ARIMA模型中，负责通过差分操作使非平稳序列变得平稳的组件是哪一个？"
+        }
+      ]
+    },
+    {
+      "concept_key": "arima_parameters",
+      "coverage_tags": [
+        "arima_parameters"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_arima_params",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下解释ARIMA(p,d,q)中参数的含义。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能根据ARIMA参数判断模型特性，如d=0表示无需差分。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "ARIMA(p,d,q)",
+          "en": "ARIMA(p,d,q)"
         }
       ],
       "variants": [
         {
           "answer": 1,
-          "estimated_seconds": 30,
-          "explanation": "系数β₁=2表示在其他条件（煤价）不变的情况下，GDP每增加1单位，股价平均增加2单位。选项A错误，因为煤价的系数是负的；选项C错误，截距是50；选项D错误，煤价有系数-0.5。",
+          "estimated_seconds": 15,
+          "explanation": "ARIMA(p,d,q)中第二个参数d表示差分次数，d=1表示对原始序列进行一次差分。",
           "options": [
-            "煤价每上涨1单位，股价平均上涨0.5单位",
-            "GDP每增加1单位，股价平均增加2单位，假设煤价不变",
-            "当GDP和煤价都为0时，股价为-50",
-            "煤价对股价没有影响"
+            "自回归阶数为1",
+            "差分次数为1",
+            "移动平均阶数为1",
+            "模型包含1个常数项"
           ],
-          "question_id": "q_quiz_mlr_interpret_v1",
-          "stem": "假设你建立了一个多元线性回归模型来预测某电力公司的股价，自变量包括GDP（X₁）和煤价（X₂）。模型结果为：Ŷ = 50 + 2*X₁ - 0.5*X₂。以下哪个解释是正确的？"
+          "question_id": "q_quiz_arima_params_v1",
+          "stem": "ARIMA(2,1,3) 中的 '1' 表示什么？"
         },
         {
-          "answer": 2,
-          "estimated_seconds": 25,
-          "explanation": "当自变量高度相关时，存在多重共线性问题，这会导致系数估计的标准误变大，系数不稳定，难以分清每个自变量的独立贡献。",
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "p=0表示无自回归项，d=1表示一次差分，q=1表示一个移动平均项，因此包含差分和移动平均。",
           "options": [
-            "模型无法拟合数据",
-            "β₁和β₂的估计值会变得非常可靠",
-            "β₁和β₂的估计值可能不稳定，难以解释各自的影响",
-            "R²会变得非常低"
+            "自回归和差分",
+            "差分和移动平均",
+            "自回归和移动平均",
+            "只有差分"
           ],
-          "question_id": "q_quiz_mlr_interpret_v2",
-          "stem": "在多元线性回归模型 Y = β₀ + β₁X₁ + β₂X₂ + ε 中，如果X₁和X₂高度相关（相关系数为0.95），最可能发生什么问题？"
+          "question_id": "q_quiz_arima_params_v2",
+          "stem": "ARIMA(0,1,1) 模型包含以下哪些组件？"
         }
       ]
     },
     {
-      "concept_key": "multicollinearity",
+      "concept_key": "stationarity",
       "coverage_tags": [
-        "multicollinearity"
+        "stationarity"
       ],
       "difficulty": "medium",
-      "family_id": "qf_quiz_multicollinearity_risk",
-      "learning_goal": "学生能识别多重共线性的风险，并选择正确的应对策略。",
+      "family_id": "qf_quiz_stationarity",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下判断时间序列是否满足平稳性。",
       "linked_steps": [
         "step4"
       ],
+      "practice_target": "学生答对后证明能根据平稳性的定义判断给定序列是否平稳。",
       "question_type": "single_choice",
       "term_refs": [
         {
-          "display": "多重共线性",
-          "en": "Multicollinearity"
+          "display": "平稳性",
+          "en": "Stationarity"
         }
       ],
       "variants": [
         {
           "answer": 1,
           "estimated_seconds": 20,
-          "explanation": "选择因素时，既要确保它们与预测目标有逻辑关联，又要避免多重共线性（即避免因素之间高度相关）。选项A和D可能导致多重共线性；选项C过于保守，失去了多元回归的优势。",
+          "explanation": "平稳性要求均值和方差不随时间变化。方差随时间增大是典型的非平稳特征。",
           "options": [
-            "因素越多越好，可以捕捉更多信息",
-            "确保因素之间有逻辑关联，且避免高度相关",
-            "只选一个因素，避免任何相关性",
-            "选择所有可用的经济指标"
+            "序列的均值长期保持不变",
+            "序列的方差随时间逐渐增大",
+            "序列围绕一个固定均值随机波动",
+            "序列的自相关函数快速衰减到零"
           ],
-          "question_id": "q_quiz_multicollinearity_risk_v1",
-          "stem": "以下哪个是选择预测因素时的正确做法？"
-        },
-        {
-          "answer": 3,
-          "estimated_seconds": 25,
-          "explanation": "煤价和天然气价格都是能源价格，通常高度相关，因此最可能引起多重共线性。其他选项中的因素虽然也可能相关，但不如煤价和天然气价格的相关性那么直接和强烈。",
-          "options": [
-            "GDP和人口规模",
-            "煤价和气温",
-            "GDP和利率",
-            "煤价和天然气价格"
-          ],
-          "question_id": "q_quiz_multicollinearity_risk_v2",
-          "stem": "在预测电力公司股价时，以下哪组因素最可能引起多重共线性问题？"
+          "question_id": "q_quiz_stationarity_v1",
+          "stem": "以下哪个特征表明一个时间序列可能是非平稳的？"
         }
       ]
     },
     {
-      "concept_key": "factor_selection_guidelines",
+      "concept_key": "adf_test",
       "coverage_tags": [
-        "factor_selection_guidelines"
+        "adf_test"
       ],
       "difficulty": "medium",
-      "family_id": "qf_quiz_factor_selection",
-      "learning_goal": "学生能应用因素选择指南，判断哪些因素适合纳入多元线性回归模型。",
+      "family_id": "qf_quiz_adf_test",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下根据ADF检验结果判断数据是否平稳。",
       "linked_steps": [
         "step4"
       ],
+      "practice_target": "学生答对后证明能根据ADF检验的p值正确判断时间序列的平稳性。",
       "question_type": "single_choice",
       "term_refs": [
         {
-          "display": "因素选择",
-          "en": "Factor Selection"
-        },
-        {
-          "display": "p值",
-          "en": "p-value"
+          "display": "ADF检验",
+          "en": "Augmented Dickey-Fuller Test"
         }
       ],
       "variants": [
         {
-          "answer": 2,
+          "answer": 0,
           "estimated_seconds": 20,
-          "explanation": "因素并非越多越好。过多的因素可能导致过拟合、多重共线性以及模型复杂度增加，降低模型的泛化能力和可解释性。",
+          "explanation": "p值0.03 < 0.05，拒绝原假设（存在单位根），说明数据平稳，可以直接用于ARIMA建模。",
           "options": [
-            "因素与预测目标有逻辑关联",
-            "使用p值检验因素的统计显著性",
-            "因素的数量越多，模型一定越好",
-            "避免因素之间的多重共线性"
+            "数据平稳，可以直接使用ARIMA",
+            "数据不平稳，需要先差分",
+            "数据平稳，但应该使用线性回归",
+            "ADF检验结果无效，需要重新采样"
           ],
-          "question_id": "q_quiz_factor_selection_v1",
-          "stem": "在构建多元线性回归模型时，以下哪个不是选择因素时应考虑的原则？"
+          "question_id": "q_quiz_adf_test_v1",
+          "stem": "对某股票价格序列进行ADF检验，得到p值为0.03。以下哪个判断正确？"
         },
         {
-          "answer": 2,
-          "estimated_seconds": 25,
-          "explanation": "前一天的道琼斯指数收盘价与航空公司的股价之间缺乏直接的逻辑关联。相比之下，航空燃油价格（成本）、乘客数量（需求）和GDP增长率（经济环境）都与航空公司的业绩有更直接的关系。",
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "ADF检验的原假设是时间序列存在单位根，即序列是非平稳的。p值小于0.05时拒绝原假设，认为序列平稳。",
           "options": [
-            "航空燃油价格",
-            "乘客数量",
-            "前一天的道琼斯指数收盘价",
-            "GDP增长率"
+            "时间序列是平稳的",
+            "时间序列存在单位根（非平稳）",
+            "时间序列是白噪声",
+            "时间序列具有季节性"
           ],
-          "question_id": "q_quiz_factor_selection_v2",
-          "stem": "假设你想预测一家航空公司的股价，以下哪个因素最不适合作为自变量？"
+          "question_id": "q_quiz_adf_test_v2",
+          "stem": "ADF检验的原假设（H₀）是什么？"
         }
       ]
     }
   ],
+  "sequence_id": "step4",
   "source": {
-    "coverage_checklist": "L4: Statistical time series analysis for market classification - Multiple Linear Regression",
-    "guided_story_manifest": "pipeline/3-guided_story/L4/step4/step.json",
-    "lesson_map": "L4 step4: 多元线性回归：用多个因素预测价格",
+    "coverage_checklist": "L4: Statistical time series analysis for market classification",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "L4 lesson map",
     "plain_text": "pipeline/1-plain/L4/plain.txt",
     "related": [
       "pipeline/2-related_important/course_desc.md"
     ],
-    "source_outline": "L4: Statistical time series analysis for market classification - Multiple Linear Regression Model"
+    "source_outline": "L4: Statistical time series analysis for market classification"
   },
-  "target_language": "zh-CN",
-  "course_id": "comp7415a",
-  "chapter_id": "lecture-4",
-  "sequence_id": "step4"
+  "target_language": "zh-CN"
 }

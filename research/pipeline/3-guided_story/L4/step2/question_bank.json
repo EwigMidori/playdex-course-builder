@@ -1,45 +1,40 @@
 {
+  "chapter_id": "lecture-4",
+  "course_id": "comp7415a",
   "coverage_map": [
     {
       "coverage_tag": "simple_linear_regression_model",
       "covered_by": [
-        "qf_flash_slr_model",
-        "qf_quiz_slr_model"
+        "qf_flash_slr_components",
+        "qf_flash_slr_formula",
+        "qf_quiz_slr_interpretation",
+        "qf_long_slr_explain"
       ],
-      "description": "简单线性回归模型的定义、公式、变量含义（Y, X, β₀, β₁, ε）"
+      "description": "简单线性回归模型的定义、公式 Y = β₀ + β₁X + ε，以及因变量、自变量、截距、斜率、误差项的含义。"
     },
     {
-      "coverage_tag": "slr_slope_interpretation",
+      "coverage_tag": "slr_trend_identification",
       "covered_by": [
-        "qf_flash_slr_slope",
-        "qf_quiz_slr_slope"
+        "qf_flash_slr_slope_trend",
+        "qf_quiz_slr_trend_interpretation"
       ],
-      "description": "斜率β₁的正负与价格趋势方向的关系"
+      "description": "使用简单线性回归识别市场趋势：斜率正负与趋势方向的关系。"
     },
     {
-      "coverage_tag": "residual_definition",
+      "coverage_tag": "residual_analysis",
       "covered_by": [
-        "qf_flash_residual",
-        "qf_quiz_residual"
+        "qf_flash_residual_definition",
+        "qf_quiz_residual_plot"
       ],
-      "description": "残差的定义：实际值与预测值之差"
+      "description": "残差的定义、残差图解读与模型拟合评估。"
     },
     {
-      "coverage_tag": "r_squared_interpretation",
+      "coverage_tag": "r_squared",
       "covered_by": [
         "qf_flash_r_squared",
-        "qf_quiz_r_squared",
-        "qf_long_r_squared"
+        "qf_quiz_r_squared_interpretation"
       ],
-      "description": "R²的含义：模型解释的价格变动比例，范围0到1"
-    },
-    {
-      "coverage_tag": "slr_for_trend_identification",
-      "covered_by": [
-        "qf_flash_slr_trend",
-        "qf_long_slr_trend"
-      ],
-      "description": "用简单线性回归识别市场趋势的基本思路"
+      "description": "R²的定义、取值范围与解释力。"
     }
   ],
   "flashcard_families": [
@@ -49,13 +44,15 @@
         "simple_linear_regression_model"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_slr_model",
-      "learning_goal": "学生能准确回忆简单线性回归模型的公式及各符号的含义。",
+      "family_id": "qf_flash_slr_components",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出简单线性回归模型中因变量和自变量的角色。",
       "linked_steps": [
         "step2"
       ],
+      "practice_target": "学生能区分简单线性回归中因变量（要预测的）和自变量（用来预测的）。",
       "question_type": "short_answer",
-      "retrieval_focus": "模型公式 Y = β₀ + β₁X + ε 中每个符号的角色。",
+      "retrieval_focus": "简单线性回归中因变量与自变量的定义。",
       "term_refs": [
         {
           "display": "简单线性回归",
@@ -72,39 +69,87 @@
       ],
       "variants": [
         {
-          "back": "Y = β₀ + β₁X + ε",
+          "back": "因变量（Y）。",
           "estimated_seconds": 8,
-          "explanation": "Y是因变量（价格），X是自变量（时间），β₀是截距，β₁是斜率，ε是误差项。",
-          "front": "简单线性回归的公式是什么？请写出完整表达式。",
-          "question_id": "q_flash_slr_model_v1"
+          "explanation": "因变量（Y）是模型试图预测或解释的变量；自变量（X）是用来做预测的变量。",
+          "front": "在简单线性回归模型 Y = β₀ + β₁X + ε 中，哪个变量代表我们试图预测或解释的对象？",
+          "question_id": "q_flash_slr_components_v1"
         },
         {
-          "back": "斜率（Slope），表示X每变化一个单位时Y的平均变化量。",
-          "estimated_seconds": 6,
-          "explanation": "在价格预测中，β₁为正表示价格上涨趋势，为负表示下跌趋势。",
-          "front": "在简单线性回归公式 Y = β₀ + β₁X + ε 中，β₁ 代表什么？",
-          "question_id": "q_flash_slr_model_v2"
-        },
-        {
-          "back": "误差项（Error term），表示模型无法解释的随机波动。",
-          "estimated_seconds": 6,
-          "explanation": "误差项包含了所有未被模型捕捉的因素。",
-          "front": "在简单线性回归公式 Y = β₀ + β₁X + ε 中，ε 代表什么？",
-          "question_id": "q_flash_slr_model_v3"
+          "back": "自变量（X）。",
+          "estimated_seconds": 8,
+          "explanation": "自变量（X）是用来预测因变量（Y）的变量。",
+          "front": "在简单线性回归模型 Y = β₀ + β₁X + ε 中，哪个变量代表用来做预测的变量？",
+          "question_id": "q_flash_slr_components_v2"
         }
       ]
     },
     {
-      "concept_key": "slr_slope_interpretation",
+      "concept_key": "simple_linear_regression_model",
       "coverage_tags": [
-        "slr_slope_interpretation"
+        "simple_linear_regression_model"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_slr_slope",
-      "learning_goal": "学生能根据斜率β₁的正负判断价格趋势方向。",
+      "family_id": "qf_flash_slr_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆简单线性回归公式中每个符号的含义。",
       "linked_steps": [
         "step2"
       ],
+      "practice_target": "学生能识别简单线性回归公式 Y = β₀ + β₁X + ε 中 β₀、β₁、ε 分别代表什么。",
+      "question_type": "short_answer",
+      "retrieval_focus": "简单线性回归公式中各参数的含义。",
+      "term_refs": [
+        {
+          "display": "截距",
+          "en": "Intercept"
+        },
+        {
+          "display": "斜率",
+          "en": "Slope"
+        },
+        {
+          "display": "误差项",
+          "en": "Error term"
+        }
+      ],
+      "variants": [
+        {
+          "back": "截距（Intercept）。",
+          "estimated_seconds": 6,
+          "explanation": "β₀ 是截距，表示当 X=0 时 Y 的期望值。",
+          "front": "在简单线性回归公式 Y = β₀ + β₁X + ε 中，β₀ 代表什么？",
+          "question_id": "q_flash_slr_formula_v1"
+        },
+        {
+          "back": "斜率（Slope）。",
+          "estimated_seconds": 6,
+          "explanation": "β₁ 是斜率，表示 X 每变化一个单位，Y 的平均变化量。",
+          "front": "在简单线性回归公式 Y = β₀ + β₁X + ε 中，β₁ 代表什么？",
+          "question_id": "q_flash_slr_formula_v2"
+        },
+        {
+          "back": "误差项（Error term）。",
+          "estimated_seconds": 6,
+          "explanation": "ε 是误差项，代表模型无法解释的随机变异。",
+          "front": "在简单线性回归公式 Y = β₀ + β₁X + ε 中，ε 代表什么？",
+          "question_id": "q_flash_slr_formula_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "slr_trend_identification",
+      "coverage_tags": [
+        "slr_trend_identification"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_slr_slope_trend",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据简单线性回归斜率的正负判断市场趋势方向。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能说出正斜率表示上涨趋势，负斜率表示下跌趋势。",
       "question_type": "short_answer",
       "retrieval_focus": "斜率符号与趋势方向的对应关系。",
       "term_refs": [
@@ -115,34 +160,36 @@
       ],
       "variants": [
         {
-          "back": "上涨趋势（价格随时间上升）。",
-          "estimated_seconds": 5,
-          "explanation": "β₁ > 0 表示X（时间）增加时Y（价格）也增加。",
+          "back": "上涨趋势。",
+          "estimated_seconds": 6,
+          "explanation": "正斜率表示随着时间（X）增加，价格（Y）呈上升趋势。",
           "front": "在简单线性回归中，如果斜率 β₁ 为正，说明价格呈现什么趋势？",
-          "question_id": "q_flash_slr_slope_v1"
+          "question_id": "q_flash_slr_slope_trend_v1"
         },
         {
-          "back": "下跌趋势（价格随时间下降）。",
-          "estimated_seconds": 5,
-          "explanation": "β₁ < 0 表示X（时间）增加时Y（价格）减少。",
+          "back": "下跌趋势。",
+          "estimated_seconds": 6,
+          "explanation": "负斜率表示随着时间（X）增加，价格（Y）呈下降趋势。",
           "front": "在简单线性回归中，如果斜率 β₁ 为负，说明价格呈现什么趋势？",
-          "question_id": "q_flash_slr_slope_v2"
+          "question_id": "q_flash_slr_slope_trend_v2"
         }
       ]
     },
     {
-      "concept_key": "residual_definition",
+      "concept_key": "residual_analysis",
       "coverage_tags": [
-        "residual_definition"
+        "residual_analysis"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_residual",
-      "learning_goal": "学生能定义残差并理解其与拟合质量的关系。",
+      "family_id": "qf_flash_residual_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出残差的定义。",
       "linked_steps": [
         "step2"
       ],
+      "practice_target": "学生能说出残差是实际值与模型预测值之间的差异。",
       "question_type": "short_answer",
-      "retrieval_focus": "残差的计算公式及其含义。",
+      "retrieval_focus": "残差的定义。",
       "term_refs": [
         {
           "display": "残差",
@@ -151,34 +198,29 @@
       ],
       "variants": [
         {
-          "back": "残差 = 实际价格 - 模型预测价格",
-          "estimated_seconds": 5,
-          "explanation": "残差衡量了模型预测值与真实值之间的偏差。",
-          "front": "在简单线性回归中，残差是如何计算的？",
-          "question_id": "q_flash_residual_v1"
-        },
-        {
-          "back": "拟合效果越好（直线越接近实际数据点）。",
-          "estimated_seconds": 5,
-          "explanation": "残差小意味着预测值与实际值差异小，模型解释力强。",
-          "front": "残差越小，说明线性回归模型的拟合效果如何？",
-          "question_id": "q_flash_residual_v2"
+          "back": "实际值与模型预测值之间的差异。",
+          "estimated_seconds": 8,
+          "explanation": "残差 eᵢ = yᵢ - ŷᵢ，衡量模型预测的误差。",
+          "front": "在简单线性回归中，什么是残差？",
+          "question_id": "q_flash_residual_definition_v1"
         }
       ]
     },
     {
-      "concept_key": "r_squared_interpretation",
+      "concept_key": "r_squared",
       "coverage_tags": [
-        "r_squared_interpretation"
+        "r_squared"
       ],
       "difficulty": "easy",
       "family_id": "qf_flash_r_squared",
-      "learning_goal": "学生能解释R²的含义、取值范围及极端值的意义。",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出R²的取值范围及其含义。",
       "linked_steps": [
         "step2"
       ],
+      "practice_target": "学生能说出R²越接近1，模型解释力越强。",
       "question_type": "short_answer",
-      "retrieval_focus": "R²的定义、范围及边界含义。",
+      "retrieval_focus": "R²的取值范围与解释力。",
       "term_refs": [
         {
           "display": "R²",
@@ -187,61 +229,18 @@
       ],
       "variants": [
         {
-          "back": "0 到 1",
-          "estimated_seconds": 4,
-          "explanation": "R²是决定系数，衡量模型能解释的数据变动比例。",
+          "back": "0 到 1。",
+          "estimated_seconds": 5,
+          "explanation": "R² 介于 0 和 1 之间，越接近 1 说明模型解释力越强。",
           "front": "R² 的取值范围是多少？",
           "question_id": "q_flash_r_squared_v1"
         },
         {
-          "back": "完美拟合：模型解释了所有价格变动，数据点完全落在直线上。",
+          "back": "模型解释力越强，拟合效果越好。",
           "estimated_seconds": 6,
-          "explanation": "R² = 1 意味着残差为零，预测值与实际值完全一致。",
-          "front": "R² = 1 表示什么？",
+          "explanation": "R² 衡量模型解释了因变量变异的比例，越接近 1 表示模型拟合越好。",
+          "front": "R² 越接近 1 说明什么？",
           "question_id": "q_flash_r_squared_v2"
-        },
-        {
-          "back": "模型毫无解释力：直线不能解释任何价格变动。",
-          "estimated_seconds": 6,
-          "explanation": "R² = 0 意味着模型预测值等于所有数据点的均值，没有提供有用信息。",
-          "front": "R² = 0 表示什么？",
-          "question_id": "q_flash_r_squared_v3"
-        }
-      ]
-    },
-    {
-      "concept_key": "slr_for_trend_identification",
-      "coverage_tags": [
-        "slr_for_trend_identification"
-      ],
-      "difficulty": "medium",
-      "family_id": "qf_flash_slr_trend",
-      "learning_goal": "学生能说明简单线性回归如何用于判断市场趋势。",
-      "linked_steps": [
-        "step2"
-      ],
-      "question_type": "short_answer",
-      "retrieval_focus": "用直线拟合价格判断趋势的核心逻辑。",
-      "term_refs": [
-        {
-          "display": "趋势识别",
-          "en": "Trend Identification"
-        }
-      ],
-      "variants": [
-        {
-          "back": "X = 时间，Y = 价格",
-          "estimated_seconds": 5,
-          "explanation": "通过拟合价格与时间的关系，观察斜率方向来判断趋势。",
-          "front": "用简单线性回归判断市场趋势时，X 和 Y 分别代表什么？",
-          "question_id": "q_flash_slr_trend_v1"
-        },
-        {
-          "back": "用一条直线拟合价格与时间的关系，通过斜率和R²判断是否存在可识别的趋势。",
-          "estimated_seconds": 10,
-          "explanation": "如果R²较高且斜率显著，说明存在趋势；如果R²接近0，说明价格随机波动。",
-          "front": "简单线性回归如何帮助判断市场是趋势还是随机？",
-          "question_id": "q_flash_slr_trend_v2"
         }
       ]
     }
@@ -249,137 +248,79 @@
   "lesson_id": "L4",
   "longform_families": [
     {
-      "concept_key": "r_squared_interpretation",
+      "concept_key": "simple_linear_regression_model",
       "coverage_tags": [
-        "r_squared_interpretation"
+        "simple_linear_regression_model",
+        "slr_trend_identification",
+        "residual_analysis",
+        "r_squared"
       ],
       "difficulty": "medium",
-      "family_id": "qf_long_r_squared",
-      "learning_goal": "学生能用自己的语言解释R²的含义，并举例说明不同R²值对应的市场含义。",
+      "family_id": "qf_long_slr_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整解释简单线性回归如何用于市场趋势识别，包括模型公式、趋势判断、残差分析和R²的作用。",
       "linked_steps": [
         "step2"
       ],
+      "practice_target": "学生能用自己的语言解释简单线性回归在量化交易中识别市场趋势的原理，并说明如何评估模型质量。",
       "question_type": "short_explain",
-      "term_refs": [
-        {
-          "display": "R²",
-          "en": "R-squared"
-        },
-        {
-          "display": "决定系数",
-          "en": "Coefficient of Determination"
-        }
-      ],
-      "variants": [
-        {
-          "estimated_seconds": 90,
-          "prompt_blocks": [
-            "R²的定义",
-            "R²的取值范围",
-            "R²=0.85的含义",
-            "R²=0.15的含义"
-          ],
-          "question_id": "q_long_r_squared_v1",
-          "reference_answer": [
-            "R²（决定系数）衡量回归模型能解释因变量变动的比例，取值范围从0到1。",
-            "R²=0.85意味着模型能解释85%的价格变动，说明该股票存在明显的线性趋势，适合用趋势跟踪策略。",
-            "R²=0.15意味着模型只能解释15%的价格变动，说明价格走势接近随机游走，线性趋势很弱，不适合用简单线性回归进行预测。"
-          ],
-          "rubric_points": [
-            "正确解释R²是模型解释的数据变动比例",
-            "指出R²范围0到1",
-            "R²=0.85说明趋势明显，模型解释力强",
-            "R²=0.15说明趋势很弱，接近随机游走"
-          ],
-          "stem": "请解释R²在简单线性回归中的含义。如果对某只股票做回归得到R²=0.85，而另一只股票得到R²=0.15，分别说明什么？"
-        },
-        {
-          "estimated_seconds": 100,
-          "prompt_blocks": [
-            "R²_A=0.92的解释",
-            "R²_B=0.03的解释",
-            "针对股票A的策略建议",
-            "针对股票B的策略建议"
-          ],
-          "question_id": "q_long_r_squared_v2",
-          "reference_answer": [
-            "R²_A=0.92说明模型能解释92%的价格变动，股票A存在非常明显的线性趋势，价格沿着一条直线稳定移动。",
-            "R²_B=0.03说明模型几乎无法解释价格变动，股票B的价格走势接近随机游走，没有可识别的线性趋势。",
-            "对于股票A，建议采用趋势跟踪策略，如基于线性回归预测的顺势交易。",
-            "对于股票B，简单线性回归不适用，应考虑其他模型（如ARIMA）或采用适合随机市场的策略（如Martingale）。"
-          ],
-          "rubric_points": [
-            "正确解释R²_A=0.92表示强趋势",
-            "正确解释R²_B=0.03表示接近随机游走",
-            "对股票A建议趋势跟踪策略",
-            "对股票B不建议使用线性回归策略"
-          ],
-          "stem": "假设你分别对两只股票A和B做简单线性回归，得到R²_A=0.92，R²_B=0.03。请解释这两个R²值的含义，并说明你会分别建议采用什么交易策略？"
-        }
-      ]
-    },
-    {
-      "concept_key": "slr_for_trend_identification",
-      "coverage_tags": [
-        "slr_for_trend_identification"
-      ],
-      "difficulty": "medium",
-      "family_id": "qf_long_slr_trend",
-      "learning_goal": "学生能完整解释如何用简单线性回归识别市场趋势，包括模型设定、参数解读和评估指标。",
-      "linked_steps": [
-        "step2"
-      ],
-      "question_type": "mechanism_trace",
       "term_refs": [
         {
           "display": "简单线性回归",
           "en": "Simple Linear Regression"
         },
         {
-          "display": "趋势识别",
-          "en": "Trend Identification"
+          "display": "残差",
+          "en": "Residual"
+        },
+        {
+          "display": "R²",
+          "en": "R-squared"
         }
       ],
       "variants": [
         {
-          "estimated_seconds": 90,
+          "estimated_seconds": 120,
           "prompt_blocks": [
-            "模型设定：Y和X分别代表什么",
-            "斜率β₁的含义及趋势判断",
-            "R²的作用和解读"
+            "模型公式解释",
+            "趋势判断方法",
+            "残差与模型评估",
+            "R²的作用"
           ],
-          "question_id": "q_long_slr_trend_v1",
+          "question_id": "q_long_slr_explain_v1",
           "reference_answer": [
-            "模型设定：以价格作为因变量Y，时间作为自变量X，建立简单线性回归模型 Y = β₀ + β₁X + ε。",
-            "斜率β₁：如果β₁显著为正，说明价格随时间上涨，存在上升趋势；如果β₁显著为负，说明价格随时间下跌，存在下降趋势。",
-            "R²评估：R²衡量模型能解释的价格变动比例。R²越接近1，说明价格越紧密地沿着直线移动，趋势越强；R²接近0则说明价格随机波动，没有明显趋势。"
+            "简单线性回归模型 Y = β₀ + β₁X + ε 中，Y是因变量（如价格），X是自变量（如时间），β₀是截距，β₁是斜率，ε是误差项。",
+            "斜率β₁的正负决定趋势方向：β₁ > 0 表示上涨趋势，β₁ < 0 表示下跌趋势。斜率绝对值越大，趋势越强。",
+            "残差是实际值与模型预测值的差异：eᵢ = yᵢ - ŷᵢ。如果残差图显示残差随机分布在0附近且无明显模式，说明模型拟合良好；如果存在明显模式，说明模型可能遗漏了重要信息。",
+            "R²（决定系数）衡量模型解释了多少因变量的变异，取值范围0到1。R²越接近1，说明模型对数据的拟合越好，解释力越强。"
           ],
           "rubric_points": [
-            "正确设定Y=价格，X=时间",
-            "解释β₁>0为上涨趋势，β₁<0为下跌趋势",
-            "解释R²衡量趋势强度，越接近1趋势越明显"
+            "正确解释因变量Y、自变量X、截距β₀、斜率β₁、误差项ε的含义",
+            "说明正斜率表示上涨趋势，负斜率表示下跌趋势",
+            "定义残差为实际值与预测值之差，说明残差随机分布在0附近表示拟合良好",
+            "说明R²衡量模型解释力，范围0到1，越接近1解释力越强"
           ],
-          "stem": "请解释如何用简单线性回归来判断一个金融市场是否处于趋势状态。你的回答应包括：模型设定、关键参数的含义、以及如何用R²评估趋势强度。"
+          "stem": "请解释简单线性回归如何用于识别市场趋势。在你的回答中，请包括：\n1. 模型公式 Y = β₀ + β₁X + ε 中各部分的含义\n2. 如何根据斜率判断趋势方向\n3. 什么是残差，以及如何通过残差图评估模型\n4. R² 的作用和含义"
         },
         {
-          "estimated_seconds": 100,
+          "estimated_seconds": 120,
           "prompt_blocks": [
-            "β₁=0.15的含义",
-            "R²=0.55的含义",
-            "综合判断市场状态"
+            "模型构建",
+            "结果解读",
+            "可靠性检查"
           ],
-          "question_id": "q_long_slr_trend_v2",
+          "question_id": "q_long_slr_explain_v2",
           "reference_answer": [
-            "β₁=0.15表示价格每天平均上涨0.15个单位，存在正向的上涨趋势，但上涨速度较慢。",
-            "R²=0.55表示模型能解释55%的价格变动，说明存在一定程度的线性趋势，但还有45%的波动无法被解释。",
-            "综合来看，该股票在2023年呈现温和的上涨趋势，趋势强度中等。可以尝试趋势跟踪策略，但需要结合其他指标或模型来提高预测准确性。"
+            "我会将股票价格设为因变量Y，时间（如交易日序号）设为自变量X，构建简单线性回归模型。",
+            "斜率β₁=0.25 > 0，说明价格呈上涨趋势，每过一个时间单位价格平均上涨0.25个单位。R²=0.6说明模型解释了60%的价格变异，有一定的解释力，但还有40%的变异未被解释。",
+            "我会绘制残差图：如果残差随机分布在0附近且无明显模式，说明模型基本可靠；如果残差呈现某种模式（如喇叭形或趋势性），说明模型可能存在问题，需要进一步改进。"
           ],
           "rubric_points": [
-            "正确解读β₁=0.15为缓慢上涨趋势",
-            "正确解读R²=0.55为中等程度的趋势",
-            "综合判断存在一定趋势但不够强"
+            "正确设定因变量为股票价格，自变量为时间",
+            "正确解读β₁=0.25表示上涨趋势，R²=0.6表示模型解释了60%的价格变异",
+            "说明通过残差图检查模型可靠性，残差应随机分布在0附近"
           ],
-          "stem": "你得到某股票2023年的日线数据，用简单线性回归拟合价格与时间的关系，得到β₁=0.15，R²=0.55。请分析该股票的市场状态，并说明你的分析依据。"
+          "stem": "假设你是一名量化交易员，想用简单线性回归判断某只股票是否处于上涨趋势。请说明：\n1. 你会如何构建这个模型（因变量和自变量分别是什么）\n2. 如果回归结果显示斜率 β₁ = 0.25，R² = 0.6，你如何解读这些结果\n3. 你会如何检查模型是否可靠（提示：考虑残差分析）"
         }
       ]
     }
@@ -391,60 +332,19 @@
         "simple_linear_regression_model"
       ],
       "difficulty": "easy",
-      "family_id": "qf_quiz_slr_model",
-      "learning_goal": "学生能在选择题中识别简单线性回归模型的基本要素。",
+      "family_id": "qf_quiz_slr_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的回归系数解释趋势方向。",
       "linked_steps": [
         "step2"
       ],
+      "practice_target": "学生能根据简单线性回归的斜率系数判断价格趋势方向。",
       "question_type": "single_choice",
       "term_refs": [
         {
           "display": "简单线性回归",
           "en": "Simple Linear Regression"
-        }
-      ],
-      "variants": [
-        {
-          "answer": 1,
-          "estimated_seconds": 15,
-          "explanation": "Y 是因变量，即我们试图预测或解释的价格。X 是自变量（时间），β₁ 是斜率，ε 是误差项。",
-          "options": [
-            "X",
-            "Y",
-            "β₁",
-            "ε"
-          ],
-          "question_id": "q_quiz_slr_model_v1",
-          "stem": "在简单线性回归模型 Y = β₀ + β₁X + ε 中，哪个符号代表因变量（我们试图预测的变量）？"
         },
-        {
-          "answer": 2,
-          "estimated_seconds": 10,
-          "explanation": "在用于市场趋势识别的简单线性回归中，X 通常代表时间（如一年中的第几天）。",
-          "options": [
-            "价格",
-            "误差项",
-            "时间",
-            "截距"
-          ],
-          "question_id": "q_quiz_slr_model_v2",
-          "stem": "在简单线性回归中，自变量 X 通常代表什么？"
-        }
-      ]
-    },
-    {
-      "concept_key": "slr_slope_interpretation",
-      "coverage_tags": [
-        "slr_slope_interpretation"
-      ],
-      "difficulty": "easy",
-      "family_id": "qf_quiz_slr_slope",
-      "learning_goal": "学生能根据斜率值判断价格趋势。",
-      "linked_steps": [
-        "step2"
-      ],
-      "question_type": "single_choice",
-      "term_refs": [
         {
           "display": "斜率",
           "en": "Slope"
@@ -454,42 +354,44 @@
         {
           "answer": 1,
           "estimated_seconds": 15,
-          "explanation": "β₁ 为负表示价格随时间呈下降趋势。",
+          "explanation": "正斜率 0.36 表示随着时间增加，价格呈上升趋势。",
           "options": [
-            "价格随时间上涨",
-            "价格随时间下跌",
-            "价格完全随机",
-            "模型拟合完美"
+            "价格在下跌",
+            "价格在上涨",
+            "价格没有趋势",
+            "价格波动加剧"
           ],
-          "question_id": "q_quiz_slr_slope_v1",
-          "stem": "对某股票价格做简单线性回归，得到斜率 β₁ = -0.35。这说明什么？"
+          "question_id": "q_quiz_slr_interpretation_v1",
+          "stem": "对某股票价格进行简单线性回归，得到斜率 β₁ = 0.36。以下哪个判断正确？"
         },
         {
           "answer": 1,
           "estimated_seconds": 15,
-          "explanation": "β₁ 为正表示价格随时间呈上升趋势。",
+          "explanation": "负斜率 -0.52 表示随着时间增加，价格呈下降趋势。",
           "options": [
-            "价格随时间下跌",
-            "价格随时间上涨",
-            "模型没有解释力",
-            "误差项很大"
+            "价格在上涨",
+            "价格在下跌",
+            "价格没有趋势",
+            "模型无效"
           ],
-          "question_id": "q_quiz_slr_slope_v2",
-          "stem": "对某股票价格做简单线性回归，得到斜率 β₁ = 0.52。这说明什么？"
+          "question_id": "q_quiz_slr_interpretation_v2",
+          "stem": "对某股票价格进行简单线性回归，得到斜率 β₁ = -0.52。以下哪个判断正确？"
         }
       ]
     },
     {
-      "concept_key": "residual_definition",
+      "concept_key": "residual_analysis",
       "coverage_tags": [
-        "residual_definition"
+        "residual_analysis"
       ],
       "difficulty": "medium",
-      "family_id": "qf_quiz_residual",
-      "learning_goal": "学生能理解残差的概念及其与拟合质量的关系。",
+      "family_id": "qf_quiz_residual_plot",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据残差图的特征判断模型拟合质量。",
       "linked_steps": [
         "step2"
       ],
+      "practice_target": "学生能判断残差随机分布在0附近表示模型拟合良好。",
       "question_type": "single_choice",
       "term_refs": [
         {
@@ -500,43 +402,45 @@
       "variants": [
         {
           "answer": 0,
-          "estimated_seconds": 15,
-          "explanation": "残差 = 实际值 - 预测值 = 150 - 145 = 5元。",
+          "estimated_seconds": 20,
+          "explanation": "残差随机分布在0附近且无明显模式，说明模型已经捕捉到了主要趋势，拟合良好。",
           "options": [
-            "5元",
-            "-5元",
-            "145元",
-            "150元"
+            "模型拟合良好",
+            "模型存在趋势遗漏",
+            "模型存在异方差",
+            "模型过拟合"
           ],
-          "question_id": "q_quiz_residual_v1",
-          "stem": "某股票的实际收盘价为150元，简单线性回归模型的预测值为145元。残差是多少？"
+          "question_id": "q_quiz_residual_plot_v1",
+          "stem": "如果残差图显示残差随机分布在0附近，没有明显模式，这说明什么？"
         },
         {
           "answer": 1,
-          "estimated_seconds": 12,
-          "explanation": "残差小意味着预测值与实际值非常接近，说明直线拟合效果好。",
+          "estimated_seconds": 20,
+          "explanation": "残差随预测值增大而扩散，表明误差方差不恒定，存在异方差问题。",
           "options": [
-            "模型拟合效果很差",
-            "模型拟合效果很好",
-            "数据是随机游走",
-            "斜率一定为负"
+            "模型拟合良好",
+            "模型存在异方差问题",
+            "模型存在多重共线性",
+            "模型欠拟合"
           ],
-          "question_id": "q_quiz_residual_v2",
-          "stem": "如果一组数据的残差都非常小，说明什么？"
+          "question_id": "q_quiz_residual_plot_v2",
+          "stem": "如果残差图显示残差随着预测值增大而呈现喇叭形扩散，这说明什么？"
         }
       ]
     },
     {
-      "concept_key": "r_squared_interpretation",
+      "concept_key": "r_squared",
       "coverage_tags": [
-        "r_squared_interpretation"
+        "r_squared"
       ],
       "difficulty": "medium",
-      "family_id": "qf_quiz_r_squared",
-      "learning_goal": "学生能正确解读R²数值的含义。",
+      "family_id": "qf_quiz_r_squared_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确解释R²值的含义。",
       "linked_steps": [
         "step2"
       ],
+      "practice_target": "学生能根据R²值判断模型的解释力。",
       "question_type": "single_choice",
       "term_refs": [
         {
@@ -546,46 +450,80 @@
       ],
       "variants": [
         {
-          "answer": 1,
-          "estimated_seconds": 15,
-          "explanation": "R²越接近1，模型拟合越好，趋势越明显。R²=0.96表示模型能解释96%的价格变动。",
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "R² = 0.85 表示模型解释了因变量85%的变异，而不是预测准确率或概率。",
           "options": [
-            "模型完全没用",
-            "模型解释了96%的价格变动",
-            "价格是随机游走",
-            "斜率一定为负"
+            "模型解释了85%的价格变异",
+            "模型预测准确率为85%",
+            "85%的数据点落在回归线上",
+            "模型有85%的概率正确"
           ],
-          "question_id": "q_quiz_r_squared_v1",
-          "stem": "如果R² = 0.96，说明什么？"
+          "question_id": "q_quiz_r_squared_interpretation_v1",
+          "stem": "某简单线性回归模型的 R² = 0.85。以下哪个解释正确？"
         },
         {
-          "answer": 1,
-          "estimated_seconds": 15,
-          "explanation": "R²接近0表示直线对价格变动的解释力很弱，市场可能接近随机游走。",
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "R² 越接近1，模型解释力越强。R²=0.9 的模型解释了更多因变量的变异。",
           "options": [
-            "模型完美拟合数据",
-            "模型只能解释12%的价格变动，趋势不明显",
-            "价格完全沿着直线走",
-            "斜率一定为正"
+            "R²=0.9的模型解释力更强",
+            "R²=0.3的模型拟合更好",
+            "两个模型解释力相同",
+            "R²=0.9的模型一定更复杂"
           ],
-          "question_id": "q_quiz_r_squared_v2",
-          "stem": "如果R² = 0.12，以下哪个说法最合理？"
+          "question_id": "q_quiz_r_squared_interpretation_v2",
+          "stem": "两个简单线性回归模型分别得到 R² = 0.3 和 R² = 0.9。以下哪个判断正确？"
+        }
+      ]
+    },
+    {
+      "concept_key": "slr_trend_identification",
+      "coverage_tags": [
+        "slr_trend_identification"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_slr_trend_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解简单线性回归在趋势识别中的用途。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能说出简单线性回归用于客观判断市场趋势。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "简单线性回归",
+          "en": "Simple Linear Regression"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "简单线性回归通过斜率量化趋势方向和强度，提供客观判断，避免肉眼观察的主观性。",
+          "options": [
+            "客观量化趋势方向和强度",
+            "预测未来每一天的精确价格",
+            "消除所有市场风险",
+            "替代基本面分析"
+          ],
+          "question_id": "q_quiz_slr_trend_interpretation_v1",
+          "stem": "在量化交易中，使用简单线性回归判断市场趋势的主要目的是什么？"
         }
       ]
     }
   ],
+  "sequence_id": "step2",
   "source": {
-    "coverage_checklist": "L4: Statistical time series analysis for market classification - Simple Linear Regression",
-    "guided_story_manifest": "pipeline/3-guided_story/L4/step2/step.json",
-    "lesson_map": "L4 step2: 用简单线性回归识别趋势",
+    "coverage_checklist": "L4: Statistical time series analysis for market classification",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "L4 lesson map",
     "plain_text": "pipeline/1-plain/L4/plain.txt",
     "related": [
       "pipeline/2-related_important/course_desc.md"
     ],
-    "source_outline": "L4: Statistical time series analysis for market classification - Simple Linear Regression"
+    "source_outline": "L4: Statistical time series analysis for market classification"
   },
-  "target_language": "zh-CN",
-  "course_id": "comp7415a",
-  "chapter_id": "lecture-4",
-  "sequence_id": "step2"
+  "target_language": "zh-CN"
 }

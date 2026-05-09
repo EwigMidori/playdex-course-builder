@@ -1,79 +1,71 @@
 {
+  "chapter_id": "lecture-4",
+  "course_id": "comp7415a",
   "coverage_map": [
     {
-      "coverage_tag": "market_classification_three_types",
+      "coverage_tag": "market_classification",
       "covered_by": [
         "qf_flash_market_types",
-        "qf_quiz_market_classify",
-        "qf_long_market_compare"
+        "qf_quiz_market_classification",
+        "qf_long_market_implication"
       ],
-      "description": "金融市场三种基本分类：趋势市场、均值回归、随机游走"
+      "description": "金融市场分为趋势市场、均值回归市场、随机游走三种类型"
     },
     {
-      "coverage_tag": "trending_market_definition",
+      "coverage_tag": "trending_market",
+      "covered_by": [
+        "qf_flash_market_types"
+      ],
+      "description": "趋势市场：价格朝一个方向持续移动"
+    },
+    {
+      "coverage_tag": "mean_reversion",
       "covered_by": [
         "qf_flash_market_types",
-        "qf_quiz_market_classify"
+        "qf_quiz_market_classification"
       ],
-      "description": "趋势市场（动量）的定义与特征：价格朝一个方向持续移动"
+      "description": "均值回归：价格偏离长期均值后会回归"
     },
     {
-      "coverage_tag": "mean_reversion_definition",
+      "coverage_tag": "random_walk",
       "covered_by": [
         "qf_flash_market_types",
-        "qf_quiz_market_classify",
-        "qf_long_market_compare"
+        "qf_quiz_market_classification"
       ],
-      "description": "均值回归的定义与特征：价格极端波动后倾向于回到长期平均水平"
+      "description": "随机游走：价格变化完全随机，无法预测"
     },
     {
-      "coverage_tag": "random_walk_definition",
+      "coverage_tag": "strategy_market_matching",
       "covered_by": [
-        "qf_flash_market_types",
-        "qf_quiz_market_classify",
-        "qf_long_market_compare"
+        "qf_quiz_market_classification",
+        "qf_long_market_implication"
       ],
-      "description": "随机游走的定义与特征：价格变化完全随机，无规律可循，与有效市场假说相关"
-    },
-    {
-      "coverage_tag": "trending_and_mean_reversion_coexistence",
-      "covered_by": [
-        "qf_quiz_coexistence",
-        "qf_long_market_compare"
-      ],
-      "description": "趋势和均值回归可以同时存在：短时间看是趋势，长时间看可能是在回归"
-    },
-    {
-      "coverage_tag": "random_walk_implication",
-      "covered_by": [
-        "qf_flash_market_types",
-        "qf_quiz_market_classify"
-      ],
-      "description": "随机游走意味着技术分析无效，但存在特殊策略（如Martingale）可能盈利"
+      "description": "不同市场类型需要匹配不同的交易策略"
     }
   ],
   "flashcard_families": [
     {
-      "concept_key": "market_classification_three_types",
+      "concept_key": "market_classification",
       "coverage_tags": [
-        "market_classification_three_types",
-        "trending_market_definition",
-        "mean_reversion_definition",
-        "random_walk_definition",
-        "random_walk_implication"
+        "market_classification",
+        "trending_market",
+        "mean_reversion",
+        "random_walk"
       ],
       "difficulty": "easy",
       "family_id": "qf_flash_market_types",
-      "learning_goal": "学生能准确回忆三种市场状态的核心定义和关键特征。",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出金融市场的三种分类及其核心特征。",
       "linked_steps": [
         "step1"
       ],
+      "practice_target": "学生答对后证明掌握了三种市场类型的基本定义和关键区别。",
       "question_type": "short_answer",
-      "retrieval_focus": "三种市场状态的名称、核心定义和关键特征。",
+      "retrieval_focus": "三种市场类型的名称与核心特征",
       "term_refs": [
         {
           "display": "趋势市场",
-          "en": "Trending Market / Momentum"
+          "en": "Trending Market"
         },
         {
           "display": "均值回归",
@@ -86,31 +78,31 @@
       ],
       "variants": [
         {
-          "back": "趋势市场（Trending Market / Momentum）",
+          "back": "趋势市场、均值回归、随机游走。",
           "estimated_seconds": 8,
-          "explanation": "趋势市场的核心特征是价格持续朝一个方向移动，具有惯性。",
-          "front": "金融市场中，价格像有惯性一样持续朝一个方向移动，这种状态叫什么？",
+          "explanation": "趋势市场有持续方向，均值回归围绕均值波动，随机游走完全随机。",
+          "front": "金融市场按价格行为可分为哪三种类型？",
           "question_id": "q_flash_market_types_v1"
         },
         {
-          "back": "均值回归（Mean Reversion）",
-          "estimated_seconds": 8,
-          "explanation": "均值回归基于价格极端波动后倾向于回到长期平均水平的理念。",
-          "front": "哪种市场状态认为价格涨得过高会跌回来，跌得过深会弹回去？",
+          "back": "随机游走。",
+          "estimated_seconds": 6,
+          "explanation": "随机游走假设价格变化独立且不可预测。",
+          "front": "哪种市场类型的价格变化完全随机，无法根据过去预测未来？",
           "question_id": "q_flash_market_types_v2"
         },
         {
-          "back": "随机游走（Random Walk）",
-          "estimated_seconds": 8,
-          "explanation": "随机游走意味着未来价格变化不可预测，与过去无关。",
-          "front": "哪种市场状态意味着价格变化完全随机，没有规律可循？",
+          "back": "均值回归。",
+          "estimated_seconds": 6,
+          "explanation": "均值回归认为价格会回归长期均值。",
+          "front": "哪种市场类型的价格涨多了会跌回来，跌多了会涨回去？",
           "question_id": "q_flash_market_types_v3"
         },
         {
-          "back": "无效",
+          "back": "趋势市场。",
           "estimated_seconds": 6,
-          "explanation": "随机游走意味着价格变化无规律，任何基于历史模式的技术分析都无效。",
-          "front": "如果市场是随机游走，技术分析是否有效？",
+          "explanation": "趋势市场有持续的方向性移动。",
+          "front": "哪种市场类型的价格像有惯性一样持续上涨或持续下跌？",
           "question_id": "q_flash_market_types_v4"
         }
       ]
@@ -119,21 +111,20 @@
   "lesson_id": "L4",
   "longform_families": [
     {
-      "concept_key": "market_classification_three_types",
+      "concept_key": "market_classification",
       "coverage_tags": [
-        "market_classification_three_types",
-        "trending_market_definition",
-        "mean_reversion_definition",
-        "random_walk_definition",
-        "trending_and_mean_reversion_coexistence"
+        "market_classification",
+        "strategy_market_matching"
       ],
       "difficulty": "medium",
-      "family_id": "qf_long_market_compare",
-      "learning_goal": "学生能比较三种市场状态的核心特征、交易含义以及它们之间的关系。",
+      "family_id": "qf_long_market_implication",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么设计交易策略前必须先判断市场类型。",
       "linked_steps": [
         "step1"
       ],
-      "question_type": "compare_and_contrast",
+      "practice_target": "学生答对后证明理解市场类型对策略选择的关键影响。",
+      "question_type": "short_explain",
       "term_refs": [
         {
           "display": "趋势市场",
@@ -150,187 +141,116 @@
       ],
       "variants": [
         {
-          "estimated_seconds": 120,
+          "estimated_seconds": 90,
           "prompt_blocks": [
-            "三种市场状态的定义与特征",
-            "趋势与均值回归的共存关系",
-            "随机游走对交易策略的含义"
+            "三种市场类型的特点",
+            "策略与市场的匹配关系",
+            "用错市场的后果"
           ],
-          "question_id": "q_long_market_compare_v1",
+          "question_id": "q_long_market_implication_v1",
           "reference_answer": [
-            "趋势市场（Trending Market）：价格像有惯性一样持续朝一个方向移动。交易者可以利用动量策略，买入上涨趋势的资产，卖出下跌趋势的资产。",
-            "均值回归（Mean Reversion）：价格在极端波动后倾向于回到长期平均水平。基于极端价格变动是暂时的理念，交易者可以在价格过高时卖出、过低时买入。",
-            "随机游走（Random Walk）：价格变化完全随机，没有规律可循。有效市场假说（EMH）支持这一观点，认为所有已知信息已反映在价格中，未来价格不可预测。",
-            "趋势和均值回归可以同时存在：例如，一只股票在日内呈现明显的上涨趋势（短时间尺度），但从月度数据看，价格在围绕一个长期均值波动（长时间尺度）。这取决于观察的时间窗口。",
-            "如果市场是随机游走，任何基于历史模式的技术分析都无效。但有一种策略——Martingale策略（加倍下注）——理论上可以在随机市场中盈利，尽管它需要无限的资金支持。"
+            "金融市场分为趋势市场、均值回归和随机游走三种类型。",
+            "趋势市场适合趋势跟踪策略，均值回归适合反转策略，随机游走则难以预测。",
+            "如果策略与市场不匹配，例如在均值回归市场使用趋势跟踪，会导致亏损。",
+            "因此必须先判断市场类型，再选择匹配的策略。"
           ],
           "rubric_points": [
-            "趋势市场：价格朝一个方向持续移动，具有惯性",
-            "均值回归：价格极端波动后倾向于回到长期平均水平",
-            "随机游走：价格变化完全随机，无规律可循，与有效市场假说一致",
-            "趋势和均值回归可以同时存在：短时间看是趋势，长时间看可能是在回归",
-            "例子：一只股票日内上涨（趋势），但月度数据围绕均值波动（均值回归）",
-            "随机游走意味着技术分析无效，但存在特殊策略（如Martingale）可能盈利"
+            "正确描述三种市场类型（趋势、均值回归、随机游走）",
+            "说明趋势市场适合趋势跟踪，均值回归适合反转策略",
+            "指出用错市场会导致策略失效甚至亏损"
           ],
-          "stem": "请比较趋势市场、均值回归和随机游走三种市场状态。要求：\n1. 分别说明每种状态的核心定义和关键特征。\n2. 说明趋势和均值回归为什么可以同时存在，并给出一个具体例子。\n3. 如果市场是随机游走，这对交易策略意味着什么？"
+          "stem": "请解释为什么设计交易策略的第一步是判断市场类型，而不是直接学模型。"
         },
         {
-          "estimated_seconds": 120,
+          "estimated_seconds": 90,
           "prompt_blocks": [
-            "短期与长期市场状态的识别",
-            "两种状态共存的原因解释",
-            "转为随机游走后的策略调整"
+            "均值回归市场的特征",
+            "趋势跟踪策略的适用条件",
+            "正确的策略选择"
           ],
-          "question_id": "q_long_market_compare_v2",
+          "question_id": "q_long_market_implication_v2",
           "reference_answer": [
-            "短期（5天）：这只股票表现出趋势市场（Trending Market）的特征，价格从100元持续上涨到110元，呈现明显的上升趋势。",
-            "长期（6个月）：这只股票表现出均值回归（Mean Reversion）的特征，价格在90元到110元的区间内来回波动，没有突破长期范围。",
-            "这两种状态可以同时存在，因为市场行为在不同时间尺度上可能不同。短期的上涨趋势可能是长期均值回归过程中的一个波动阶段。例如，价格从均值（100元）向上偏离，在短期内形成趋势，但长期来看仍会回归均值。",
-            "如果该股票转为随机游走，意味着价格变化完全随机，无法基于历史数据预测未来走势。此时，基于趋势或均值回归的传统技术分析策略将失效。",
-            "在随机游走市场中，可以考虑Martingale策略（每次亏损后加倍下注），但必须严格控制资金管理，因为连续亏损会导致赌注指数增长，存在爆仓风险。"
+            "均值回归市场的特征是价格涨多了会跌回来，跌多了会涨回去。",
+            "趋势跟踪策略假设价格有持续方向，适用于趋势市场。",
+            "在均值回归市场使用趋势跟踪，会在价格即将反转时入场，导致亏损。",
+            "正确的做法是使用反转策略，在价格偏离均值时反向操作。"
           ],
           "rubric_points": [
-            "短期（5天）：趋势市场，价格持续上涨",
-            "长期（6个月）：均值回归，价格在区间内波动",
-            "共存原因：不同时间尺度下市场行为不同，短期的趋势可能是长期均值回归的一部分",
-            "转为随机游走：技术分析无效，需考虑Martingale等特殊策略",
-            "随机游走下需注意资金管理，因为Martingale策略有爆仓风险"
+            "指出均值回归市场价格围绕均值波动",
+            "说明趋势跟踪策略适用于趋势市场",
+            "建议在均值回归市场使用反转策略"
           ],
-          "stem": "假设你观察到某只股票的价格行为如下：\n- 在过去5个交易日内，价格从100元持续上涨到110元。\n- 但回顾过去6个月，价格一直在90元到110元之间来回波动。\n请分析：\n1. 这只股票在短期（5天）和长期（6个月）分别表现出哪种市场状态？\n2. 解释为什么这两种状态可以同时存在。\n3. 如果该股票未来转为随机游走，你的交易策略应该如何调整？"
+          "stem": "小李在均值回归市场使用了趋势跟踪策略导致亏损。请分析他犯了什么错误，以及正确的做法是什么。"
         }
       ]
     }
   ],
   "quiz_families": [
     {
-      "concept_key": "market_classification_three_types",
+      "concept_key": "market_classification",
       "coverage_tags": [
-        "market_classification_three_types",
-        "trending_market_definition",
-        "mean_reversion_definition",
-        "random_walk_definition",
-        "random_walk_implication"
+        "market_classification",
+        "mean_reversion",
+        "random_walk",
+        "strategy_market_matching"
       ],
-      "difficulty": "easy",
-      "family_id": "qf_quiz_market_classify",
-      "learning_goal": "学生能在具体价格行为场景中正确识别对应的市场状态。",
+      "difficulty": "medium",
+      "family_id": "qf_quiz_market_classification",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中判断市场类型并选择匹配策略。",
       "linked_steps": [
         "step1"
       ],
+      "practice_target": "学生答对后证明能根据价格行为特征识别市场类型并关联正确策略。",
       "question_type": "single_choice",
       "term_refs": [
         {
-          "display": "趋势市场",
-          "en": "Trending Market"
-        },
-        {
           "display": "均值回归",
           "en": "Mean Reversion"
         },
         {
-          "display": "随机游走",
-          "en": "Random Walk"
+          "display": "趋势市场",
+          "en": "Trending Market"
         }
       ],
       "variants": [
         {
           "answer": 1,
-          "estimated_seconds": 15,
-          "explanation": "价格回到之前的水平，正是均值回归的典型表现。",
-          "options": [
-            "趋势市场",
-            "均值回归",
-            "随机游走"
-          ],
-          "question_id": "q_quiz_market_classify_v1",
-          "stem": "价格今天涨了，明天又跌回原价，这最接近哪种市场？"
-        },
-        {
-          "answer": 0,
-          "estimated_seconds": 15,
-          "explanation": "价格持续朝一个方向移动，是趋势市场的典型特征。",
-          "options": [
-            "趋势市场",
-            "均值回归",
-            "随机游走"
-          ],
-          "question_id": "q_quiz_market_classify_v2",
-          "stem": "某股票连续10天上涨，每天收盘价都高于前一天，这最符合哪种市场状态？"
-        },
-        {
-          "answer": 2,
           "estimated_seconds": 20,
-          "explanation": "有效市场假说认为所有已知信息已反映在价格中，未来价格变化不可预测，与随机游走一致。",
+          "explanation": "价格围绕均值波动是均值回归的典型特征，应该用反转策略。",
           "options": [
-            "趋势市场",
-            "均值回归",
-            "随机游走"
+            "趋势市场，使用趋势跟踪策略",
+            "均值回归，使用反转策略",
+            "随机游走，使用买入并持有策略"
           ],
-          "question_id": "q_quiz_market_classify_v3",
-          "stem": "以下哪种市场状态与有效市场假说（EMH）最为一致？"
-        }
-      ]
-    },
-    {
-      "concept_key": "trending_and_mean_reversion_coexistence",
-      "coverage_tags": [
-        "trending_and_mean_reversion_coexistence"
-      ],
-      "difficulty": "medium",
-      "family_id": "qf_quiz_coexistence",
-      "learning_goal": "学生能理解趋势和均值回归可以同时存在于不同时间尺度。",
-      "linked_steps": [
-        "step1"
-      ],
-      "question_type": "true_false",
-      "term_refs": [
-        {
-          "display": "趋势市场",
-          "en": "Trending Market"
+          "question_id": "q_quiz_market_classification_v1",
+          "stem": "一只股票的价格总是围绕一个平均值上下波动，它最可能属于哪种市场类型？应该使用什么策略？"
         },
-        {
-          "display": "均值回归",
-          "en": "Mean Reversion"
-        }
-      ],
-      "variants": [
         {
           "answer": 1,
-          "estimated_seconds": 15,
-          "explanation": "趋势和均值回归可以同时存在：短时间看是趋势，长时间看可能是在回归。",
+          "estimated_seconds": 20,
+          "explanation": "同样的策略在不同市场结果可能相反，应先判断市场类型。",
           "options": [
-            "正确",
-            "错误"
+            "趋势跟踪策略在任何市场都有效",
+            "小李可能用错了市场，该股票可能是均值回归或随机游走",
+            "小李应该加倍下注"
           ],
-          "question_id": "q_quiz_coexistence_v1",
-          "stem": "趋势市场和均值回归不能同时存在，因为它们是互斥的市场状态。"
-        },
-        {
-          "answer": 0,
-          "estimated_seconds": 15,
-          "explanation": "这正是趋势和均值回归同时存在的例子：短时间尺度是趋势，长时间尺度是均值回归。",
-          "options": [
-            "正确",
-            "错误"
-          ],
-          "question_id": "q_quiz_coexistence_v2",
-          "stem": "一只股票在日内呈现上涨趋势，但从月度数据看价格在围绕一个均值波动。这种情况是可能的。"
+          "question_id": "q_quiz_market_classification_v2",
+          "stem": "小李看到一只股票连续上涨了三天，全仓买入后价格突然回落。以下哪个说法最准确？"
         }
       ]
     }
   ],
+  "sequence_id": "step1",
   "source": {
-    "coverage_checklist": "L4: Statistical time series analysis for market classification - Market Classification: Trending, Mean Reversion, Random Walk",
-    "guided_story_manifest": "pipeline/3-guided_story/L4/step1/step.json",
-    "lesson_map": "L4 step1: 三种市场状态：趋势、均值回归、随机游走",
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
     "plain_text": "pipeline/1-plain/L4/plain.txt",
     "related": [
       "pipeline/2-related_important/course_desc.md"
     ],
-    "source_outline": "L4: Statistical time series analysis for market classification - Market Classification: Trending, Mean Reversion, Random Walk"
+    "source_outline": "input source outline"
   },
-  "target_language": "zh-CN",
-  "course_id": "comp7415a",
-  "chapter_id": "lecture-4",
-  "sequence_id": "step1"
+  "target_language": "zh-CN"
 }

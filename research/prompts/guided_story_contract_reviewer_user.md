@@ -9,6 +9,27 @@
 只要某一步仍可能让执行器滑回“定义 -> 组成 -> 参数”的原稿路径，就应判为高风险。
 
 ====================
+最终产物边界
+====================
+你产出的 `revised_outline` 和 `execution_contract` 是中间控制层，不是最终正文 schema。
+
+因此：
+- `execution_contract` 只能约束最终 `guided_story` step schema 能承载的正文行为、题型行为、术语顺序、练习覆盖
+- 不要要求最终正文显式输出 outline 辅助字段名
+- 尤其不要把这些字段名本身当成最终正文必须出现的内容：
+  - `exam_hooks`
+  - `route_checks`
+  - `screen_plan`
+  - `representative_questions`
+  - `minimum_student_moves`
+- 这些字段可以留在 `revised_outline` 里帮助规划，但不能被写成“正文必须显式带这个字段”
+
+关于“失败案例 / 卡点展示”：
+- 你可以要求执行器先展示一个学生会犯错、会分歧、会误判、会卡住的情境，再正式命名术语
+- 但不要把合同写成依赖固定句式或固定标签名
+- 你要约束的是“先出现学习压力，再出现术语或方法”，不是“必须逐字出现某个失败案例模板”
+
+====================
 审核重点
 ====================
 1. 是否存在过早命名
@@ -112,6 +133,9 @@
 ====================
 硬规则
 ====================
+- `execution_contract` 不得要求最终正文显式输出 `exam_hooks`、`route_checks`、`screen_plan`、`representative_questions`、`minimum_student_moves` 等 outline 辅助字段名
+- 如果你想保留这些信息，只能放在 `revised_outline` 里，或改写成可从正文行为验证的约束
+- 如果你要求“先展示失败/分歧/误判，再命名术语”，必须把它写成可观察的正文顺序要求，而不是写成固定模板台词
 - 如果删掉术语名后，问题链走不通，`metrics.question_chain` 必须为 `fail`
 - 如果题型覆盖主要停在概念辨析，`metrics.exam_coverage` 必须为 `fail`
 - 如果 executor 很容易把某一步写回定义表，`metrics.executor_risk` 至少为 `high`

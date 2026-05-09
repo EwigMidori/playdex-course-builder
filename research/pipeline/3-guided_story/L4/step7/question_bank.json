@@ -1,189 +1,126 @@
 {
+  "chapter_id": "lecture-4",
+  "course_id": "comp7415a",
   "coverage_map": [
     {
-      "coverage_tag": "martingale_strategy_definition",
+      "coverage_tag": "mean_reversion_process",
       "covered_by": [
-        "qf_flash_martingale_def",
-        "qf_quiz_martingale_def"
+        "qf_flash_hl01",
+        "qf_flash_hl02",
+        "qf_quiz_hl01",
+        "qf_long_hl01"
       ],
-      "description": "Martingale策略的定义：每次亏损后加倍下注，直到盈利后回到初始赌注。"
+      "description": "均值回归过程的定义与Ornstein-Uhlenbeck模型"
     },
     {
-      "coverage_tag": "martingale_strategy_mechanism",
+      "coverage_tag": "half_life_calculation",
       "covered_by": [
-        "qf_flash_martingale_mechanism",
-        "qf_quiz_martingale_mechanism"
+        "qf_flash_hl01",
+        "qf_flash_hl02",
+        "qf_quiz_hl01",
+        "qf_quiz_hl02",
+        "qf_long_hl01"
       ],
-      "description": "Martingale策略的运作机制：赌场例子，下注序列与盈亏计算。"
+      "description": "半衰期的计算公式与含义"
     },
     {
-      "coverage_tag": "martingale_strategy_probability",
+      "coverage_tag": "kappa_interpretation",
       "covered_by": [
-        "qf_flash_martingale_prob",
-        "qf_quiz_martingale_prob"
+        "qf_flash_hl02",
+        "qf_quiz_hl02",
+        "qf_long_hl01"
       ],
-      "description": "Martingale策略的概率基础：连续输n次的概率为0.5^n。"
+      "description": "回归速度κ的含义与正负判断"
     },
     {
-      "coverage_tag": "martingale_strategy_risk",
+      "coverage_tag": "trading_window_implication",
       "covered_by": [
-        "qf_flash_martingale_risk",
-        "qf_quiz_martingale_risk",
-        "qf_long_martingale_risk"
+        "qf_quiz_hl01",
+        "qf_long_hl01"
       ],
-      "description": "Martingale策略的核心风险：需要无限资金，可能爆仓。"
-    },
-    {
-      "coverage_tag": "martingale_strategy_practice",
-      "covered_by": [
-        "qf_quiz_martingale_practice",
-        "qf_long_martingale_risk"
-      ],
-      "description": "Martingale策略的实践注意事项：严格控制仓位和资金管理。"
+      "description": "半衰期对交易窗口设计的指导意义"
     }
   ],
   "flashcard_families": [
     {
-      "concept_key": "martingale_strategy_definition",
+      "concept_key": "half_life",
       "coverage_tags": [
-        "martingale_strategy_definition"
+        "half_life_calculation",
+        "mean_reversion_process"
       ],
       "difficulty": "easy",
-      "family_id": "qf_flash_martingale_def",
-      "learning_goal": "学生能准确说出Martingale策略的核心定义。",
+      "family_id": "qf_flash_hl01",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆半衰期的定义和计算公式。",
       "linked_steps": [
         "step7"
       ],
+      "practice_target": "学生能说出半衰期的定义，并能用回归速度κ计算半衰期。",
       "question_type": "short_answer",
-      "retrieval_focus": "Martingale策略的核心操作规则。",
+      "retrieval_focus": "半衰期的定义与计算公式",
       "term_refs": [
         {
-          "display": "Martingale策略",
-          "en": "Martingale Strategy"
+          "display": "半衰期",
+          "en": "Half-Life"
+        },
+        {
+          "display": "Ornstein-Uhlenbeck过程",
+          "en": "Ornstein-Uhlenbeck Process"
         }
       ],
       "variants": [
         {
-          "back": "每次亏损后加倍下注，直到盈利后回到初始赌注。",
+          "back": "价格偏离长期均值后，回到一半偏离程度所需的时间。",
           "estimated_seconds": 8,
-          "explanation": "这是Martingale策略最基本的定义，通过加倍下注来弥补之前的亏损。",
-          "front": "Martingale策略的核心操作规则是什么？",
-          "question_id": "q_flash_martingale_def_v1"
+          "explanation": "半衰期衡量均值回归的速度，半衰期越短，回归越快。",
+          "front": "在均值回归的Ornstein-Uhlenbeck过程中，半衰期（half-life）的定义是什么？",
+          "question_id": "q_flash_hl01_v1"
         },
         {
-          "back": "回到初始赌注。",
-          "estimated_seconds": 6,
-          "explanation": "策略规定盈利后重置赌注，重新开始。",
-          "front": "在Martingale策略中，如果连续亏损后终于盈利，下一次下注金额是多少？",
-          "question_id": "q_flash_martingale_def_v2"
+          "back": "13.86 天（0.693 / 0.05 = 13.86）",
+          "estimated_seconds": 12,
+          "explanation": "半衰期 = log(2) / κ = 0.693 / 0.05 = 13.86 天。",
+          "front": "已知回归速度 κ = 0.05，半衰期是多少天？（log(2) ≈ 0.693）",
+          "question_id": "q_flash_hl01_v2"
         }
       ]
     },
     {
-      "concept_key": "martingale_strategy_mechanism",
+      "concept_key": "kappa_interpretation",
       "coverage_tags": [
-        "martingale_strategy_mechanism"
+        "kappa_interpretation",
+        "mean_reversion_process"
       ],
-      "difficulty": "easy",
-      "family_id": "qf_flash_martingale_mechanism",
-      "learning_goal": "学生能复述Martingale策略在赌场例子中的下注序列和盈亏结果。",
+      "difficulty": "medium",
+      "family_id": "qf_flash_hl02",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释回归速度κ的不同取值对市场行为的含义。",
       "linked_steps": [
         "step7"
       ],
+      "practice_target": "学生能根据κ的正负和大小判断市场是否适合均值回归策略。",
       "question_type": "short_answer",
-      "retrieval_focus": "赌场例子中连续亏损后的下注金额和最终盈利。",
+      "retrieval_focus": "κ值的含义与策略适用性",
       "term_refs": [
         {
-          "display": "Martingale策略",
-          "en": "Martingale Strategy"
+          "display": "回归速度",
+          "en": "Mean Reversion Rate (κ)"
         }
       ],
       "variants": [
         {
-          "back": "8元。",
+          "back": "该时间序列不是均值回归的，不应使用均值回归策略。",
           "estimated_seconds": 8,
-          "explanation": "下注序列为1, 2, 4, 8，每次翻倍。",
-          "front": "在Martingale策略的赌场例子中，如果初始赌注为1元，连续输3次后第4次应下注多少？",
-          "question_id": "q_flash_martingale_mechanism_v1"
+          "explanation": "κ > 0 表示均值回归；κ 为负表示价格发散，不是均值回归。",
+          "front": "在OU过程中，如果估计出的 κ 为负值，说明什么？",
+          "question_id": "q_flash_hl02_v1"
         },
         {
-          "back": "1元。",
+          "back": "半衰期很长，策略可能不赚钱，因为无法在给定时间内完成足够多的交易回合。",
           "estimated_seconds": 10,
-          "explanation": "前3次共输1+2+4=7元，第4次赢8元，净赚1元。",
-          "front": "在Martingale策略的赌场例子中，如果初始赌注为1元，连续输3次后第4次赢了，净赚多少？",
-          "question_id": "q_flash_martingale_mechanism_v2"
-        }
-      ]
-    },
-    {
-      "concept_key": "martingale_strategy_probability",
-      "coverage_tags": [
-        "martingale_strategy_probability"
-      ],
-      "difficulty": "easy",
-      "family_id": "qf_flash_martingale_prob",
-      "learning_goal": "学生能说出Martingale策略中连续亏损的概率公式。",
-      "linked_steps": [
-        "step7"
-      ],
-      "question_type": "short_answer",
-      "retrieval_focus": "连续输n次的概率公式。",
-      "term_refs": [
-        {
-          "display": "Martingale策略",
-          "en": "Martingale Strategy"
-        }
-      ],
-      "variants": [
-        {
-          "back": "0.5ⁿ",
-          "estimated_seconds": 6,
-          "explanation": "每次输赢概率各半，且独立，所以连续输n次的概率是0.5的n次方。",
-          "front": "在Martingale策略中，连续输n次的概率是多少？",
-          "question_id": "q_flash_martingale_prob_v1"
-        },
-        {
-          "back": "0.1%（0.000976）",
-          "estimated_seconds": 8,
-          "explanation": "0.5^10 ≈ 0.000976，约0.1%。",
-          "front": "在Martingale策略中，连续输10次的概率大约是多少？",
-          "question_id": "q_flash_martingale_prob_v2"
-        }
-      ]
-    },
-    {
-      "concept_key": "martingale_strategy_risk",
-      "coverage_tags": [
-        "martingale_strategy_risk"
-      ],
-      "difficulty": "easy",
-      "family_id": "qf_flash_martingale_risk",
-      "learning_goal": "学生能指出Martingale策略的核心风险。",
-      "linked_steps": [
-        "step7"
-      ],
-      "question_type": "short_answer",
-      "retrieval_focus": "Martingale策略的主要风险。",
-      "term_refs": [
-        {
-          "display": "Martingale策略",
-          "en": "Martingale Strategy"
-        }
-      ],
-      "variants": [
-        {
-          "back": "需要无限的资金，可能爆仓。",
-          "estimated_seconds": 6,
-          "explanation": "连续亏损时赌注指数增长，资金不足就会爆仓。",
-          "front": "Martingale策略的核心风险是什么？",
-          "question_id": "q_flash_martingale_risk_v1"
-        },
-        {
-          "back": "1024元。",
-          "estimated_seconds": 8,
-          "explanation": "下注序列为2^0, 2^1, ..., 2^10，第11次下注2^10=1024元。",
-          "front": "如果初始赌注为1元，连续输10次后第11次需要下注多少？",
-          "question_id": "q_flash_martingale_risk_v2"
+          "explanation": "κ 接近0 → 半衰期很长 → 回归极慢 → 交易机会少，利润薄。",
+          "front": "如果 κ 非常接近0，对均值回归策略意味着什么？",
+          "question_id": "q_flash_hl02_v2"
         }
       ]
     }
@@ -191,315 +128,197 @@
   "lesson_id": "L4",
   "longform_families": [
     {
-      "concept_key": "martingale_strategy_risk",
+      "concept_key": "mean_reversion_process",
       "coverage_tags": [
-        "martingale_strategy_risk",
-        "martingale_strategy_practice"
+        "mean_reversion_process",
+        "half_life_calculation",
+        "kappa_interpretation",
+        "trading_window_implication"
       ],
-      "difficulty": "medium",
-      "family_id": "qf_long_martingale_risk",
-      "learning_goal": "学生能解释Martingale策略的理论可行性与其在实践中面临的核心风险。",
+      "difficulty": "hard",
+      "family_id": "qf_long_hl01",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整解释OU过程、半衰期计算及其对交易策略设计的指导意义。",
       "linked_steps": [
         "step7"
       ],
-      "question_type": "short_explain",
+      "practice_target": "学生能描述OU过程的离散形式，解释κ的含义，计算半衰期，并说明半衰期如何指导交易窗口选择。",
+      "question_type": "mechanism_trace",
       "term_refs": [
         {
-          "display": "Martingale策略",
-          "en": "Martingale Strategy"
+          "display": "Ornstein-Uhlenbeck过程",
+          "en": "Ornstein-Uhlenbeck Process"
+        },
+        {
+          "display": "半衰期",
+          "en": "Half-Life"
+        },
+        {
+          "display": "回归速度",
+          "en": "Mean Reversion Rate (κ)"
         }
       ],
       "variants": [
         {
           "estimated_seconds": 120,
           "prompt_blocks": [
-            "理论可行性：概率角度",
-            "实践风险：资金角度"
+            "OU过程离散形式",
+            "κ的含义与半衰期计算",
+            "半衰期对交易窗口的指导"
           ],
-          "question_id": "q_long_martingale_risk_v1",
+          "question_id": "q_long_hl01_v1",
           "reference_answer": [
-            "理论上，在公平赌局中，连续亏损n次的概率为0.5^n，指数下降。例如连续输10次的概率仅约0.1%，看起来几乎不可能。只要赢一次就能弥补所有亏损并赚取初始赌注的利润。",
-            "但实践中，连续亏损时赌注指数增长（1, 2, 4, 8, ...）。如果初始赌注为1元，连续输10次后第11次需要下注1024元。交易者的资金是有限的，一旦资金不足以支持下一次加倍，就会爆仓。因此必须严格控制仓位和资金管理。"
+            "OU过程离散形式：Δy_t = κθ - κy_{t-1} + ε_t，其中κ是回归速度，θ是长期均值，y_{t-1}是上一期价格，ε_t是随机噪声。",
+            "κ > 0表示均值回归，κ越大回归越快；κ为负表示价格发散。半衰期 = log(2)/κ。",
+            "半衰期20天意味着价格偏离均值后需要约20天才能回到一半的偏离程度。5天窗口太短，无法捕捉到有效的回归信号，导致频繁错误入场。通常应将交易窗口设为半衰期的倍数（如20天或更长）。"
           ],
           "rubric_points": [
-            "指出连续亏损概率指数下降（0.5^n），短期看似几乎不可能",
-            "指出连续亏损时赌注指数增长（2^n），需要无限资金",
-            "指出有限资金下必然爆仓",
-            "指出实践中必须严格控制仓位和资金管理"
+            "正确写出 Δy_t = κθ - κy_{t-1} + ε_t 并解释各符号",
+            "正确说明κ > 0表示均值回归，κ为负则不是均值回归",
+            "正确写出半衰期公式 t = log(2)/κ",
+            "正确解释半衰期20天意味着价格回归很慢",
+            "正确指出5天窗口太短，无法捕捉有效回归信号",
+            "建议窗口应设为半衰期的倍数（如20天或更长）"
           ],
-          "stem": "解释为什么Martingale策略在理论上可行，但在实践中存在巨大风险。请从概率和资金两个角度分析。"
+          "stem": "小李用Hurst指数判断某股票是均值回归市场，于是设计了一个反转策略：价格偏离5日均线就反向操作。结果连续亏损。请分析：\n\n(1) 描述Ornstein-Uhlenbeck过程的离散形式，并解释每个符号的含义。\n(2) 解释回归速度 κ 的含义，以及如何从 κ 计算半衰期。\n(3) 如果该股票的半衰期是20天，小李用5天窗口为什么可能亏损？应该使用多长的窗口？"
         },
         {
-          "estimated_seconds": 150,
+          "estimated_seconds": 120,
           "prompt_blocks": [
-            "计算爆仓前的最大连续亏损次数",
-            "讨论资金管理策略"
+            "半衰期计算",
+            "κ含义与策略适用性",
+            "交易窗口建议",
+            "κ为负时的策略调整"
           ],
-          "question_id": "q_long_martingale_risk_v2",
+          "question_id": "q_long_hl01_v2",
           "reference_answer": [
-            "下注序列为100, 200, 400, 800, 1600, 3200, 6400。第1次输100，累计-100；第2次输200，累计-300；第3次输400，累计-700；第4次输800，累计-1500；第5次输1600，累计-3100；第6次输3200，累计-6300；第7次下注6400，账户余额仅3700元，不足以支付，爆仓。因此最多连续亏损6次。",
-            "为降低风险，可以：1) 降低初始赌注，例如从10元开始；2) 设置最大连续亏损次数限制，达到后停止交易；3) 结合其他市场判断，只在随机游走市场使用；4) 分散资金到多个不相关的策略中。"
+            "半衰期 = log(2)/0.1 ≈ 6.93天。",
+            "κ = 0.1 > 0，说明序列是均值回归的，回归速度中等，适合均值回归策略。R² = 0.6说明模型拟合尚可。",
+            "建议使用7-14天的交易窗口（半衰期的1-2倍），这样能有效捕捉回归信号。",
+            "如果κ = -0.05，说明序列不是均值回归的，不应使用均值回归策略，应考虑趋势跟踪或其他策略。"
           ],
           "rubric_points": [
-            "正确计算下注序列：100, 200, 400, 800, 1600, 3200, 6400",
-            "指出第7次下注6400元时，累计亏损6300元，账户剩余3700元，不足以支付第8次下注12800元",
-            "指出最大连续亏损次数为6次（第7次下注后爆仓）",
-            "提出降低初始赌注、设置止损、分散投资等资金管理策略"
+            "正确计算半衰期 = 0.693/0.1 = 6.93天",
+            "正确解释κ = 0.1表示中等回归速度，适合均值回归策略",
+            "建议窗口设为半衰期的倍数（如7-14天）",
+            "正确指出κ为负时不是均值回归，不应使用反转策略"
           ],
-          "stem": "假设你有一个10000元的账户，想用Martingale策略交易，初始赌注为100元。请分析：连续亏损多少次后你会爆仓？并讨论如何通过资金管理来降低风险。"
+          "stem": "假设你通过OU过程拟合某股票价格序列，得到以下结果：κ = 0.1，θ = 100，R² = 0.6。\n\n(1) 计算该序列的半衰期。\n(2) 解释κ = 0.1的含义，并说明这个序列是否适合均值回归策略。\n(3) 基于半衰期，你建议使用多长的交易窗口？为什么？\n(4) 如果κ估计值为-0.05，你的建议会如何改变？"
         }
       ]
     }
   ],
   "quiz_families": [
     {
-      "concept_key": "martingale_strategy_definition",
+      "concept_key": "half_life",
       "coverage_tags": [
-        "martingale_strategy_definition"
+        "half_life_calculation",
+        "trading_window_implication"
       ],
-      "difficulty": "easy",
-      "family_id": "qf_quiz_martingale_def",
-      "learning_goal": "学生能在多个选项中识别Martingale策略的正确描述。",
+      "difficulty": "medium",
+      "family_id": "qf_quiz_hl01",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在给定κ时计算半衰期，并理解半衰期对交易窗口的指导意义。",
       "linked_steps": [
         "step7"
       ],
+      "practice_target": "学生能正确计算半衰期，并选择与半衰期匹配的交易窗口。",
       "question_type": "single_choice",
       "term_refs": [
         {
-          "display": "Martingale策略",
-          "en": "Martingale Strategy"
+          "display": "半衰期",
+          "en": "Half-Life"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "半衰期 = log(2) / κ = 0.693 / 0.2 = 3.465 天，约3.47天。",
+          "options": [
+            "1.39 天",
+            "3.47 天",
+            "6.93 天",
+            "13.86 天"
+          ],
+          "question_id": "q_quiz_hl01_v1",
+          "stem": "某股票价格序列的OU过程回归速度 κ = 0.2，半衰期约为多少天？（log(2) ≈ 0.693）"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "半衰期20天意味着价格回归很慢，5天窗口太短，无法捕捉到有效的回归信号。通常窗口应设为半衰期的倍数。",
+          "options": [
+            "5天",
+            "20天",
+            "40天",
+            "60天"
+          ],
+          "question_id": "q_quiz_hl01_v2",
+          "stem": "如果半衰期是20天，以下哪个交易窗口最不合适？"
+        }
+      ]
+    },
+    {
+      "concept_key": "kappa_interpretation",
+      "coverage_tags": [
+        "kappa_interpretation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_hl02",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据κ的估计值判断市场是否适合均值回归策略。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能识别κ为负或接近0时不应使用均值回归策略。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "回归速度",
+          "en": "Mean Reversion Rate (κ)"
         }
       ],
       "variants": [
         {
           "answer": 1,
           "estimated_seconds": 15,
-          "explanation": "Martingale策略的核心是每次亏损后加倍下注，盈利后重置赌注。",
+          "explanation": "κ为负说明价格发散而非回归，不是均值回归序列，不应使用均值回归策略。",
           "options": [
-            "每次盈利后加倍下注",
-            "每次亏损后加倍下注，直到盈利后回到初始赌注",
-            "每次亏损后减半下注",
-            "每次盈利后减半下注"
+            "该序列是均值回归的，可以使用反转策略",
+            "该序列不是均值回归的，不应使用反转策略",
+            "该序列半衰期很长，策略利润有限",
+            "该序列是趋势市场，应使用趋势跟踪策略"
           ],
-          "question_id": "q_quiz_martingale_def_v1",
-          "stem": "以下哪一项最准确地描述了Martingale策略？"
-        },
-        {
-          "answer": 0,
-          "estimated_seconds": 10,
-          "explanation": "Martingale策略起源于18世纪法国的赌场。",
-          "options": [
-            "18世纪法国的赌场",
-            "19世纪英国的证券交易所",
-            "20世纪美国的对冲基金",
-            "17世纪荷兰的金融市场"
-          ],
-          "question_id": "q_quiz_martingale_def_v2",
-          "stem": "Martingale策略最初起源于哪里？"
-        }
-      ]
-    },
-    {
-      "concept_key": "martingale_strategy_mechanism",
-      "coverage_tags": [
-        "martingale_strategy_mechanism"
-      ],
-      "difficulty": "medium",
-      "family_id": "qf_quiz_martingale_mechanism",
-      "learning_goal": "学生能计算Martingale策略在给定场景下的盈亏。",
-      "linked_steps": [
-        "step7"
-      ],
-      "question_type": "single_choice",
-      "term_refs": [
-        {
-          "display": "Martingale策略",
-          "en": "Martingale Strategy"
-        }
-      ],
-      "variants": [
-        {
-          "answer": 0,
-          "estimated_seconds": 25,
-          "explanation": "第1次输5元，第2次输10元，共输15元。第3次下注20元并获胜，净赚20-15=5元。",
-          "options": [
-            "5元",
-            "10元",
-            "15元",
-            "20元"
-          ],
-          "question_id": "q_quiz_martingale_mechanism_v1",
-          "stem": "假设你使用Martingale策略，初始赌注为5元。你连续输了2次，第3次赢了。你的净收益是多少？"
-        },
-        {
-          "answer": 0,
-          "estimated_seconds": 25,
-          "explanation": "前4次共输2+4+8+16=30元，第5次下注32元并获胜，净赚32-30=2元。",
-          "options": [
-            "2元",
-            "4元",
-            "6元",
-            "8元"
-          ],
-          "question_id": "q_quiz_martingale_mechanism_v2",
-          "stem": "使用Martingale策略，初始赌注为2元。如果连续输4次后第5次赢了，总盈利是多少？"
-        }
-      ]
-    },
-    {
-      "concept_key": "martingale_strategy_probability",
-      "coverage_tags": [
-        "martingale_strategy_probability"
-      ],
-      "difficulty": "medium",
-      "family_id": "qf_quiz_martingale_prob",
-      "learning_goal": "学生能理解并应用Martingale策略的概率基础。",
-      "linked_steps": [
-        "step7"
-      ],
-      "question_type": "single_choice",
-      "term_refs": [
-        {
-          "display": "Martingale策略",
-          "en": "Martingale Strategy"
-        }
-      ],
-      "variants": [
-        {
-          "answer": 0,
-          "estimated_seconds": 15,
-          "explanation": "连续输5次的概率为0.5^5 = 1/32。",
-          "options": [
-            "1/32",
-            "1/16",
-            "1/8",
-            "1/4"
-          ],
-          "question_id": "q_quiz_martingale_prob_v1",
-          "stem": "在公平的赌局中（胜率50%），使用Martingale策略连续输5次的概率是多少？"
-        },
-        {
-          "answer": 0,
-          "estimated_seconds": 15,
-          "explanation": "连续亏损的概率为0.5^n，指数下降，所以短期看起来很难连续亏损。",
-          "options": [
-            "连续亏损的概率随着次数增加而指数下降",
-            "策略本身能改变赌局的胜率",
-            "赌场会限制下注金额",
-            "每次下注的期望收益为正"
-          ],
-          "question_id": "q_quiz_martingale_prob_v2",
-          "stem": "Martingale策略在短期看起来几乎必胜，这是因为："
-        }
-      ]
-    },
-    {
-      "concept_key": "martingale_strategy_risk",
-      "coverage_tags": [
-        "martingale_strategy_risk"
-      ],
-      "difficulty": "medium",
-      "family_id": "qf_quiz_martingale_risk",
-      "learning_goal": "学生能识别Martingale策略的主要风险。",
-      "linked_steps": [
-        "step7"
-      ],
-      "question_type": "single_choice",
-      "term_refs": [
-        {
-          "display": "Martingale策略",
-          "en": "Martingale Strategy"
-        }
-      ],
-      "variants": [
-        {
-          "answer": 1,
-          "estimated_seconds": 15,
-          "explanation": "连续亏损时赌注指数增长，资金不足就会爆仓。",
-          "options": [
-            "胜率太低",
-            "需要无限的资金，可能爆仓",
-            "交易成本太高",
-            "市场流动性不足"
-          ],
-          "question_id": "q_quiz_martingale_risk_v1",
-          "stem": "Martingale策略在长期实践中面临的最大挑战是什么？"
+          "question_id": "q_quiz_hl02_v1",
+          "stem": "通过OU过程拟合某价格序列，得到 κ = -0.03。以下哪个判断正确？"
         },
         {
           "answer": 1,
-          "estimated_seconds": 20,
-          "explanation": "第9次下注为10 * 2^8 = 2560元。",
-          "options": [
-            "1280元",
-            "2560元",
-            "5120元",
-            "10240元"
-          ],
-          "question_id": "q_quiz_martingale_risk_v2",
-          "stem": "初始赌注为10元，使用Martingale策略。如果连续亏损8次，第9次需要下注多少？"
-        }
-      ]
-    },
-    {
-      "concept_key": "martingale_strategy_practice",
-      "coverage_tags": [
-        "martingale_strategy_practice"
-      ],
-      "difficulty": "medium",
-      "family_id": "qf_quiz_martingale_practice",
-      "learning_goal": "学生能理解Martingale策略在实践中的应用注意事项。",
-      "linked_steps": [
-        "step7"
-      ],
-      "question_type": "single_choice",
-      "term_refs": [
-        {
-          "display": "Martingale策略",
-          "en": "Martingale Strategy"
-        }
-      ],
-      "variants": [
-        {
-          "answer": 1,
           "estimated_seconds": 15,
-          "explanation": "由于存在爆仓风险，必须严格控制仓位和资金管理。",
+          "explanation": "κ = 0.002 非常接近0，半衰期 = 0.693/0.002 = 346.5天，回归极慢，交易机会少，利润薄。",
           "options": [
-            "选择高杠杆产品",
-            "严格控制仓位和资金管理",
-            "每次盈利后加倍下注",
-            "忽略交易成本"
+            "半衰期很短，适合高频均值回归交易",
+            "半衰期很长，均值回归策略可能不赚钱",
+            "该序列是完美的均值回归",
+            "κ为正，说明序列是趋势市场"
           ],
-          "question_id": "q_quiz_martingale_practice_v1",
-          "stem": "在实践中应用Martingale策略时，以下哪项措施最重要？"
-        },
-        {
-          "answer": 2,
-          "estimated_seconds": 15,
-          "explanation": "Martingale策略适用于随机游走市场，因为价格变化独立且不可预测。",
-          "options": [
-            "强趋势市场",
-            "均值回归市场",
-            "随机游走市场",
-            "高波动市场"
-          ],
-          "question_id": "q_quiz_martingale_practice_v2",
-          "stem": "以下哪种市场环境最适合应用Martingale策略？"
+          "question_id": "q_quiz_hl02_v2",
+          "stem": "某序列的OU过程拟合结果显示 κ = 0.002。以下哪个判断最合理？"
         }
       ]
     }
   ],
+  "sequence_id": "step7",
   "source": {
-    "coverage_checklist": "L4: Statistical time series analysis for market classification - Martingale Strategy",
+    "coverage_checklist": "L4: Statistical time series analysis for market classification",
     "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
-    "lesson_map": "L4 step7: Martingale策略：在随机市场中赚钱",
+    "lesson_map": "L4 lesson map",
     "plain_text": "pipeline/1-plain/L4/plain.txt",
     "related": [
       "pipeline/2-related_important/course_desc.md"
     ],
-    "source_outline": "L4: Statistical time series analysis for market classification - Martingale Strategy"
+    "source_outline": "L4: Statistical time series analysis for market classification"
   },
-  "target_language": "zh-CN",
-  "course_id": "comp7415a",
-  "chapter_id": "lecture-4",
-  "sequence_id": "step7"
+  "target_language": "zh-CN"
 }

@@ -1,113 +1,161 @@
 {
+  "chapter_id": "lecture-4",
+  "course_id": "comp7415a",
   "lesson_id": "L4",
   "mode": "guided_story",
   "screens": [
     {
       "focus_terms": [],
-      "id": "s017",
+      "id": "s023",
       "introduced_terms": [],
       "lines": [
-        "理论讲完了，来实战。",
-        "我们用 Python 对微软股票跑一个线性回归。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [],
-      "id": "s018",
-      "introduced_terms": [],
-      "lines": [
-        "先获取数据：用 yfinance 下载 MSFT 2023年的日线数据。",
-        "然后构造特征：用“一年中的第几天”作为 X。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [],
-      "id": "s019",
-      "introduced_terms": [],
-      "lines": [
-        "用 sklearn 的 LinearRegression 拟合模型。",
-        "得到截距和斜率。"
+        "只用时间预测价格，有时不够。",
+        "如果能加入更多信息，预测会更准。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "r_squared"
+        "multiple_linear_regression"
       ],
-      "id": "s020",
-      "introduced_terms": [],
-      "lines": [
-        "然后评估：R² = 0.46。",
-        "说明直线只能解释不到一半的价格变动。"
-      ],
-      "type": "narration"
-    },
-    {
-      "focus_terms": [
-        "linear_regression_strategy"
-      ],
-      "id": "s021",
+      "id": "s024",
       "introduced_terms": [
-        "linear_regression_strategy"
+        "multiple_linear_regression"
       ],
       "lines": [
-        "但这不妨碍我们用它来交易。",
-        "策略很简单：如果预测未来价格高于当前，就买入。"
+        "这就是<term id=\"multiple_linear_regression\">多元线性回归</term>。",
+        "它用多个自变量来预测一个因变量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "Y = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\dots + \\beta_p X_p + \\epsilon",
+        "spoken": "Y等于beta_0加beta_1乘X_1加beta_2乘X_2一直加到beta_p乘X_p再加epsilon"
+      },
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "公式扩展为：",
+        "价格 = 截距 + 系数₁×因子₁ + 系数₂×因子₂ + ... + 误差"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "比如预测电力公司的股价，",
+        "可以考虑GDP、利率、煤价、气温等因素。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "煤炭是发电的主要原料，煤价直接影响运营成本。",
+        "kind": "single_choice",
+        "options": [
+          "煤炭价格",
+          "学校放假日期",
+          "某明星的社交媒体粉丝数"
+        ],
+        "prompt": "以下哪个因素最可能影响电力公司股价？"
+      },
+      "focus_terms": [
+        "multiple_linear_regression"
+      ],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个因素最可能影响电力公司的股价？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "multicollinearity"
+      ],
+      "id": "s028",
+      "introduced_terms": [
+        "multicollinearity"
+      ],
+      "lines": [
+        "选择因子时要注意：",
+        "因子之间不能高度相关，否则会产生<term id=\"multicollinearity\">多重共线性</term>。"
       ],
       "type": "narration"
     },
     {
       "focus_terms": [
-        "linear_regression_strategy"
+        "multicollinearity"
       ],
-      "id": "s022",
+      "id": "s029",
       "introduced_terms": [],
       "lines": [
-        "回测结果显示：年化收益约3.6%，胜率58.8%。",
-        "不算惊艳，但证明了线性模型确实能捕捉到一些趋势。"
+        "多重共线性会让系数估计不稳定，",
+        "甚至导致模型无法计算。"
       ],
       "type": "narration"
     },
     {
       "exercise": {
         "answer": 1,
-        "explanation": "线性回归假设价格与时间存在线性关系，即趋势。",
+        "explanation": "GDP增长率和工业用电量高度相关，同时放入模型会导致多重共线性。",
         "kind": "single_choice",
         "options": [
-          "价格会随机波动",
-          "价格存在可预测的线性趋势",
-          "价格永远回归均值"
+          "应该同时放入",
+          "不应该同时放入"
         ],
-        "prompt": "线性回归策略的核心假设是什么？"
+        "prompt": "在预测电力公司股价时，如果同时放入'GDP增长率'和'工业用电量'作为自变量，是否合适？"
       },
       "focus_terms": [
-        "linear_regression_strategy"
+        "multicollinearity"
       ],
-      "id": "s023",
+      "id": "s030",
       "introduced_terms": [],
       "lines": [
-        "线性回归策略的核心假设是什么？"
+        "在预测电力公司股价时，如果同时放入'GDP增长率'和'工业用电量'作为自变量，",
+        "是否合适？"
       ],
       "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "好的因子选择原则：",
+        "逻辑相关、统计显著、数据可得、避免冗余。"
+      ],
+      "type": "narration"
     }
   ],
   "sequence_id": "step3",
   "source": {
-    "plain_text": "Python Example: fit LR model, backtest LR strategy",
-    "related": []
+    "plain_text": "Multiple Linear Regression Model",
+    "related": [
+      "COMP7415A Lecture 4"
+    ]
   },
   "target_language": "zh-CN",
   "term_catalog": {
-    "linear_regression_strategy": {
+    "multicollinearity": {
       "aliases": [
-        "LR Trading Strategy"
+        "Multicollinearity"
       ],
-      "display": "线性回归交易策略",
-      "gloss": "利用线性回归模型预测价格，当实际价格偏离预测值时进行交易。"
+      "display": "多重共线性",
+      "gloss": "自变量之间高度相关，导致模型估计不稳定。"
+    },
+    "multiple_linear_regression": {
+      "aliases": [
+        "Multiple Linear Regression",
+        "MLR"
+      ],
+      "display": "多元线性回归",
+      "gloss": "用多个自变量预测一个因变量的线性模型。"
     }
-  },
-  "course_id": "comp7415a",
-  "chapter_id": "lecture-4"
+  }
 }

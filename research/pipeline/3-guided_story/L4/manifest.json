@@ -1,50 +1,50 @@
 {
+  "chapter_id": "lecture-4",
+  "chapter_title": "Time Series Analysis for Market Classification",
+  "course_id": "comp7415a",
+  "course_title": "COMP7415A Algorithmic Trading",
   "lesson_id": "L4",
   "mode": "guided_story",
   "steps": [
     {
-      "concept": "三种市场状态：趋势、均值回归、随机游走",
-      "file": "research/pipeline/3-guided_story/L4/step1/step.json",
+      "concept": "为什么需要区分市场类型",
+      "file": "step1/step.json",
       "sequence_id": "step1"
     },
     {
-      "concept": "用简单线性回归识别趋势",
-      "file": "research/pipeline/3-guided_story/L4/step2/step.json",
+      "concept": "如何量化趋势：简单线性回归",
+      "file": "step2/step.json",
       "sequence_id": "step2"
     },
     {
-      "concept": "用Python实现线性回归交易策略",
-      "file": "research/pipeline/3-guided_story/L4/step3/step.json",
+      "concept": "加入更多信息：多元线性回归",
+      "file": "step3/step.json",
       "sequence_id": "step3"
     },
     {
-      "concept": "多元线性回归：用多个因素预测价格",
-      "file": "research/pipeline/3-guided_story/L4/step4/step.json",
+      "concept": "处理数据依赖：ARIMA 模型",
+      "file": "step4/step.json",
       "sequence_id": "step4"
     },
     {
-      "concept": "ARIMA模型：处理时间序列的依赖关系",
-      "file": "research/pipeline/3-guided_story/L4/step5/step.json",
+      "concept": "用一个数字判断市场类型：Hurst 指数",
+      "file": "step5/step.json",
       "sequence_id": "step5"
     },
     {
-      "concept": "Hurst指数：量化市场状态",
-      "file": "research/pipeline/3-guided_story/L4/step6/step.json",
+      "concept": "随机市场下的尝试：Martingale 策略",
+      "file": "step6/step.json",
       "sequence_id": "step6"
     },
     {
-      "concept": "Martingale策略：在随机市场中赚钱",
-      "file": "research/pipeline/3-guided_story/L4/step7/step.json",
+      "concept": "均值回归有多快：半衰期与 OU 过程",
+      "file": "step7/step.json",
       "sequence_id": "step7"
     },
     {
-      "concept": "总结：选择正确的模型匹配市场状态",
-      "file": "research/pipeline/3-guided_story/L4/step8/step.json",
+      "concept": "策略回测与总结",
+      "file": "step8/step.json",
       "sequence_id": "step8"
     }
-  ],
-  "course_id": "comp7415a",
-  "chapter_id": "lecture-4",
-  "course_title": "COMP7415A Algorithmic Trading",
-  "chapter_title": "Time Series Analysis for Market Classification"
+  ]
 }

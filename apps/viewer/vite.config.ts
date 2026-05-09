@@ -7,7 +7,7 @@ import { defineConfig, type Plugin } from "vite";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "../..");
-const pipelineRoot = path.join(repoRoot, "research", "pipeline");
+const assetUrlPrefixes = ["/research/", "/users/"] as const;
 
 const contentTypes: Record<string, string> = {
   ".json": "application/json; charset=utf-8",
@@ -22,15 +22,16 @@ const contentTypes: Record<string, string> = {
 
 function pipelineMiddleware(): Plugin {
   const servePipelineFile = (url: string | undefined, res: ServerResponse) => {
-    if (!url?.startsWith("/research/pipeline/")) {
+    const requestPath = decodeURIComponent(url?.split("?")[0] ?? "");
+
+    if (!assetUrlPrefixes.some((prefix) => requestPath.startsWith(prefix))) {
       return false;
     }
 
-    const requestPath = decodeURIComponent(url.split("?")[0] ?? "");
-    const relativePath = requestPath.replace(/^\/research\/pipeline\/?/, "");
-    const filePath = path.resolve(pipelineRoot, relativePath);
+    const relativePath = requestPath.replace(/^\/+/, "");
+    const filePath = path.resolve(repoRoot, relativePath);
 
-    if (!filePath.startsWith(`${pipelineRoot}${path.sep}`) && filePath !== pipelineRoot) {
+    if (!filePath.startsWith(`${repoRoot}${path.sep}`) && filePath !== repoRoot) {
       res.statusCode = 403;
       res.end("Forbidden");
       return true;

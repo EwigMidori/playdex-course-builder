@@ -9,6 +9,9 @@ use serde_json::Value;
 
 use crate::paths::LessonPaths;
 
+const SUPPORTED_GUIDED_STORY_EXERCISE_KINDS: &[&str] =
+    &["single_choice", "fill_in_blank", "short_reflection"];
+
 pub struct OutputValidator<'a> {
     lesson: &'a LessonPaths,
 }
@@ -40,6 +43,7 @@ impl<'a> OutputValidator<'a> {
                 });
             }
             Self::validate_step_identity(lesson, &manifest, step_file, &step)?;
+            Self::validate_guided_story_step_exercise_kinds(step_file, &step)?;
             let question_bank = Self::read_json(&question_bank_path, "step question bank")?;
             Self::validate_question_bank_identity(
                 lesson,
@@ -73,6 +77,37 @@ impl<'a> OutputValidator<'a> {
         for family_id in MdxComponentRefs::component_refs(&textbook, "QuestionFamily", "familyId") {
             if !family_ids.contains(&family_id) {
                 return Err(ValidationError::BrokenQuestionFamilyRef { family_id });
+            }
+        }
+
+        Ok(())
+    }
+
+    pub(crate) fn validate_guided_story_step_exercise_kinds(
+        step_path: &Path,
+        step: &Value,
+    ) -> Result<(), ValidationError> {
+        let Some(screens) = step.get("screens").and_then(Value::as_array) else {
+            return Ok(());
+        };
+
+        for (index, screen) in screens.iter().enumerate() {
+            let Some(exercise) = screen.get("exercise") else {
+                continue;
+            };
+            let Some(kind) = exercise.get("kind").and_then(Value::as_str) else {
+                return Err(ValidationError::UnsupportedGuidedStoryExerciseKind {
+                    path: step_path.to_path_buf(),
+                    screen_id: Self::screen_id(screen, index),
+                    kind: "<missing>".to_owned(),
+                });
+            };
+            if !SUPPORTED_GUIDED_STORY_EXERCISE_KINDS.contains(&kind) {
+                return Err(ValidationError::UnsupportedGuidedStoryExerciseKind {
+                    path: step_path.to_path_buf(),
+                    screen_id: Self::screen_id(screen, index),
+                    kind: kind.to_owned(),
+                });
             }
         }
 
@@ -376,6 +411,12 @@ impl<'a> OutputValidator<'a> {
     fn string_field<'b>(value: &'b Value, field: &str) -> Option<&'b str> {
         value.get(field).and_then(Value::as_str)
     }
+
+    fn screen_id(screen: &Value, index: usize) -> String {
+        Self::string_field(screen, "id")
+            .map(ToOwned::to_owned)
+            .unwrap_or_else(|| format!("screen{}", index + 1))
+    }
 }
 
 struct MdxComponentRefs;
@@ -465,6 +506,11 @@ pub enum ValidationError {
     UnsupportedTextbookHeadingAnchor {
         line: String,
     },
+    UnsupportedGuidedStoryExerciseKind {
+        path: PathBuf,
+        screen_id: String,
+        kind: String,
+    },
 }
 
 impl fmt::Display for ValidationError {
@@ -526,6 +572,17 @@ impl fmt::Display for ValidationError {
                 f,
                 "textbook uses unsupported MDX heading anchor syntax: '{line}'"
             ),
+            Self::UnsupportedGuidedStoryExerciseKind {
+                path,
+                screen_id,
+                kind,
+            } => write!(
+                f,
+                "guided story step {} screen '{}' uses unsupported exercise kind '{}'; expected single_choice, fill_in_blank, or short_reflection",
+                path.display(),
+                screen_id,
+                kind
+            ),
         }
     }
 }
@@ -542,7 +599,8 @@ impl Error for ValidationError {
             | Self::IdentityMismatch { .. }
             | Self::BrokenQuestionRef { .. }
             | Self::BrokenQuestionFamilyRef { .. }
-            | Self::UnsupportedTextbookHeadingAnchor { .. } => None,
+            | Self::UnsupportedTextbookHeadingAnchor { .. }
+            | Self::UnsupportedGuidedStoryExerciseKind { .. } => None,
         }
     }
 }

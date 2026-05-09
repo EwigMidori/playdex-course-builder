@@ -521,6 +521,42 @@ fn validate_fails_clearly_outside_the_repository_root() {
 }
 
 #[test]
+fn validate_reports_unsupported_guided_story_exercise_kind() {
+    let repo = TempRepo::new();
+    repo.write(
+        "research/pipeline/3-guided_story/L2/manifest.json",
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","mode":"guided_story","steps":[{"sequence_id":"step1","file":"research/pipeline/3-guided_story/L2/step1/step.json","concept":"Clustering"}]}"#,
+    );
+    repo.write(
+        "research/pipeline/3-guided_story/L2/step1/step.json",
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","mode":"guided_story","screens":[{"id":"s1","type":"exercise","lines":["Try this."],"exercise":{"kind":"manual_simulation","prompt":"Pick the right move."}}],"term_catalog":{}}"#,
+    );
+    repo.write(
+        "research/pipeline/3-guided_story/L2/step1/question_bank.json",
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","flashcard_families":[],"quiz_families":[],"longform_families":[]}"#,
+    );
+
+    let output = TestSupport::coursegen_command()
+        .current_dir(repo.root())
+        .args(["validate", "L2"])
+        .output()
+        .expect("coursegen should validate");
+
+    assert!(
+        !output.status.success(),
+        "stdout: {}",
+        String::from_utf8_lossy(&output.stdout)
+    );
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    assert!(stderr.contains("manual_simulation"), "stderr: {stderr}");
+    assert!(
+        stderr.contains("research/pipeline/3-guided_story/L2/step1/step.json"),
+        "stderr: {stderr}"
+    );
+    assert!(stderr.contains("s1"), "stderr: {stderr}");
+}
+
+#[test]
 fn run_reports_missing_raw_pdf_when_plain_text_is_missing() {
     let repo = TempRepo::new();
 
@@ -972,6 +1008,74 @@ fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
         validate.status.success(),
         "stderr: {}",
         String::from_utf8_lossy(&validate.stderr)
+    );
+}
+
+#[test]
+fn run_rejects_unsupported_guided_story_exercise_kind_before_writing() {
+    let repo = TempRepo::new();
+    repo.seed_prompts();
+    repo.write(
+        "research/pipeline/1-plain/L2/plain.txt",
+        "A lesson about execution, questions, and review.\n",
+    );
+    repo.write(
+        "research/pipeline/2-related_important/course_desc.md",
+        "Related course note.\n",
+    );
+
+    let guided_story = r#"{
+      "lesson_id": "L2",
+      "sequence_id": "step1",
+      "mode": "guided_story",
+      "screens": [
+        {
+          "id": "s1",
+          "type": "exercise",
+          "lines": ["Try this."],
+          "exercise": {
+            "kind": "manual_simulation",
+            "prompt": "Pick the right move."
+          }
+        }
+      ],
+      "term_catalog": {}
+    }"#
+    .to_owned();
+    let responses = TestSupport::guided_story_pipeline_responses(guided_story);
+    let server = StubLlmServer::start(responses);
+
+    let output = TestSupport::coursegen_command()
+        .current_dir(repo.root())
+        .env("COURSEGEN_LLM_API_KEY", "test-token")
+        .env("COURSEGEN_LLM_MODEL", "test-model")
+        .env("COURSEGEN_LLM_BASE_URL", server.base_url())
+        .args(["run", "L2", "--target-language", "zh-CN"])
+        .output()
+        .expect("coursegen should run");
+
+    server.finish();
+
+    assert!(!output.status.success(), "run should fail");
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    assert!(stderr.contains("manual_simulation"), "stderr: {stderr}");
+    assert!(
+        stderr.contains("research/pipeline/3-guided_story/L2/step1/step.json"),
+        "stderr: {stderr}"
+    );
+    assert!(
+        !repo
+            .root()
+            .join("research/pipeline/3-guided_story/L2/step1/step.json")
+            .exists(),
+        "bad guided story step should not be written"
+    );
+    assert!(
+        !repo
+            .root()
+            .join("research/pipeline/3-guided_story/L2/manifest.json")
+            .exists(),
+        "manifest should not be written after validation failure"
     );
 }
 

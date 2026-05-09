@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 var __dirname = path.dirname(fileURLToPath(import.meta.url));
 var repoRoot = path.resolve(__dirname, "../..");
-var pipelineRoot = path.join(repoRoot, "research", "pipeline");
+var assetUrlPrefixes = ["/research/", "/users/"];
 var contentTypes = {
     ".json": "application/json; charset=utf-8",
     ".md": "text/markdown; charset=utf-8",
@@ -19,13 +19,13 @@ var contentTypes = {
 function pipelineMiddleware() {
     var servePipelineFile = function (url, res) {
         var _a, _b;
-        if (!(url === null || url === void 0 ? void 0 : url.startsWith("/research/pipeline/"))) {
+        var requestPath = decodeURIComponent((_a = url === null || url === void 0 ? void 0 : url.split("?")[0]) !== null && _a !== void 0 ? _a : "");
+        if (!assetUrlPrefixes.some(function (prefix) { return requestPath.startsWith(prefix); })) {
             return false;
         }
-        var requestPath = decodeURIComponent((_a = url.split("?")[0]) !== null && _a !== void 0 ? _a : "");
-        var relativePath = requestPath.replace(/^\/research\/pipeline\/?/, "");
-        var filePath = path.resolve(pipelineRoot, relativePath);
-        if (!filePath.startsWith("".concat(pipelineRoot).concat(path.sep)) && filePath !== pipelineRoot) {
+        var relativePath = requestPath.replace(/^\/+/, "");
+        var filePath = path.resolve(repoRoot, relativePath);
+        if (!filePath.startsWith("".concat(repoRoot).concat(path.sep)) && filePath !== repoRoot) {
             res.statusCode = 403;
             res.end("Forbidden");
             return true;

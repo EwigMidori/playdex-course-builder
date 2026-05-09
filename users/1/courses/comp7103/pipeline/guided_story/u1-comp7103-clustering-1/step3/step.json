@@ -105,18 +105,21 @@
     },
     {
       "exercise": {
-        "answer": 0,
         "expected_fields": [
           "cluster1",
           "cluster2"
         ],
         "explanation": "A和B离C1(0,0)更近，C和D离C2(5,5)更近。所以簇1包含A和B，簇2包含C和D。",
-        "kind": "manual_simulation",
+        "kind": "fill_in_blank",
         "prompt": "第一步分配：每个点分配给最近的质心。结果是什么？",
         "sample_answer": {
           "cluster1": "A, B",
           "cluster2": "C, D"
-        }
+        },
+        "answers": [
+          "簇1：A, B；簇2：C, D",
+          "A, B；C, D"
+        ]
       },
       "focus_terms": [],
       "id": "s025",
@@ -128,18 +131,21 @@
     },
     {
       "exercise": {
-        "answer": 1,
         "expected_fields": [
           "centroid1",
           "centroid2"
         ],
         "explanation": "簇1的新质心 = ((0+1)/2, (0+0)/2) = (0.5, 0)。簇2的新质心 = ((5+6)/2, (5+5)/2) = (5.5, 5)。",
-        "kind": "manual_simulation",
+        "kind": "fill_in_blank",
         "prompt": "第二步更新：重新计算每个簇的质心。新质心是什么？",
         "sample_answer": {
           "centroid1": "(0.5, 0)",
           "centroid2": "(5.5, 5)"
-        }
+        },
+        "answers": [
+          "簇1： (0.5, 0)；簇2： (5.5, 5)",
+          "C1=(0.5, 0), C2=(5.5, 5)"
+        ]
       },
       "focus_terms": [],
       "id": "s026",

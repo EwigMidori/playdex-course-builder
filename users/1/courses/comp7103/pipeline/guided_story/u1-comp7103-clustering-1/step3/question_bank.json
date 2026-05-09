@@ -34,11 +34,11 @@
       "description": "K-means 迭代直到质心不再变化时收敛"
     },
     {
-      "coverage_tag": "k_means_manual_simulation",
+      "coverage_tag": "k_means_worked_example",
       "covered_by": [
         "qf_long_kmeans_iteration"
       ],
-      "description": "手动模拟 K-means 一次迭代：分配点与更新质心"
+      "description": "手动推演 K-means 一次迭代：分配点与更新质心"
     }
   ],
   "flashcard_families": [
@@ -191,7 +191,7 @@
       "concept_key": "k_means_algorithm",
       "coverage_tags": [
         "k_means_algorithm",
-        "k_means_manual_simulation"
+        "k_means_worked_example"
       ],
       "difficulty": "medium",
       "family_id": "qf_long_kmeans_iteration",

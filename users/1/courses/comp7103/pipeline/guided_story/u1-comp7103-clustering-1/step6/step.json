@@ -164,16 +164,18 @@
     },
     {
       "exercise": {
-        "answer": 1,
         "expected_fields": [
           "first_merge"
         ],
         "explanation": "A和B的距离是1，C和D的距离是1，其他点对的距离都大于1。所以最近的两个簇是A和B（距离1），以及C和D（距离1）。但A和B的距离最小（1），所以第一步合并A和B。",
-        "kind": "manual_simulation",
+        "kind": "fill_in_blank",
         "prompt": "第一步：所有点都是独立的簇。最近的两个簇是？",
         "sample_answer": {
           "first_merge": "A和B"
-        }
+        },
+        "answers": [
+          "A和B"
+        ]
       },
       "focus_terms": [],
       "id": "s061",
@@ -185,16 +187,18 @@
     },
     {
       "exercise": {
-        "answer": 2,
         "expected_fields": [
           "second_merge"
         ],
         "explanation": "合并A和B后，新簇AB与C的距离 = min(距离(A,C), 距离(B,C)) = min(√50, √41) ≈ 6.4。新簇AB与D的距离 = min(距离(A,D), 距离(B,D)) = min(√61, √50) ≈ 7.07。C和D的距离是1。所以最近的是C和D。",
-        "kind": "manual_simulation",
+        "kind": "fill_in_blank",
         "prompt": "第二步：现在有3个簇：AB, C, D。最近的两个簇是？",
         "sample_answer": {
           "second_merge": "C和D"
-        }
+        },
+        "answers": [
+          "C和D"
+        ]
       },
       "focus_terms": [],
       "id": "s062",

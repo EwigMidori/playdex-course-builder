@@ -77,6 +77,7 @@
    - `single_choice`
    - `fill_in_blank`
    - `short_reflection`
+   - 只允许这三种 `kind`，不要生成 `manual_simulation` 或其他新值
 20. 解释要短。练习解析一般 1 到 2 句即可。
 21. `fill_in_blank` 的答案格式必须和题面语言一致。
     - 不要把不同语言版本混在同一个 `answers` 列表里

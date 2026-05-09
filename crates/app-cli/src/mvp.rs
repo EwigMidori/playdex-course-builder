@@ -124,9 +124,16 @@ impl MvpRunner {
         if step_refs.is_empty() {
             return false;
         }
-        step_refs
-            .iter()
-            .all(|step_ref| Self::read_json(&step_ref.path, Stage::GuidedStory).is_ok())
+        step_refs.iter().all(|step_ref| {
+            matches!(
+                Self::read_json(&step_ref.path, Stage::GuidedStory),
+                Ok(step) if OutputValidator::validate_guided_story_step_exercise_kinds(
+                    &step_ref.path,
+                    &step,
+                )
+                .is_ok()
+            )
+        })
     }
 
     fn question_bank_ready(path: &Path) -> bool {
@@ -904,6 +911,7 @@ impl MvpRunner {
                     .guided_story_dir()
                     .join(&sequence_id)
                     .join("step.json");
+                OutputValidator::validate_guided_story_step_exercise_kinds(&step_path, &step_json)?;
                 Self::write_pretty_json(&step_path, &step_json)?;
                 manifest_steps.push(json!({
                     "sequence_id": sequence_id,
@@ -916,6 +924,10 @@ impl MvpRunner {
         if manifest_steps.is_empty() {
             let mut step_json = story_json.clone();
             Self::normalize_step_json(lesson, "step1", &mut step_json);
+            OutputValidator::validate_guided_story_step_exercise_kinds(
+                &lesson.guided_story_step_path(1),
+                &step_json,
+            )?;
             Self::write_pretty_json(&lesson.guided_story_step_path(1), &step_json)?;
             manifest_steps.push(json!({
                 "sequence_id": "step1",

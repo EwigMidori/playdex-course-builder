@@ -92,6 +92,7 @@
 }
 - `scenario_derivation` 题型不能使用 `options`
 - 若正文把推导题写成选择题，按 `contract_violation` 和 `exam_gap` 处理
+- 若正文出现未列入支持清单的 `exercise.kind`，例如 `manual_simulation`，按 `contract_violation` 处理，不要猜测兼容或自动归类
 
 ====================
 通过规则

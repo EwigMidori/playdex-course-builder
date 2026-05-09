@@ -1,0 +1,205 @@
+{
+  "version": 1,
+  "userId": "1",
+  "courseKey": "comp7404",
+  "courseId": "user-1-comp7404",
+  "courseCode": "COMP7404",
+  "title": "COMP7404",
+  "status": "draft",
+  "structureVersion": "user-owned-course-v1",
+  "orderingStrategy": "manual",
+  "inputs": {
+    "slidesDir": "users/1/courses/comp7404/inputs/uploads/original/slides",
+    "examsDir": "users/1/courses/comp7404/inputs/uploads/original/exams"
+  },
+  "pipeline": {
+    "plainRoot": "users/1/courses/comp7404/pipeline/plain",
+    "guidedStoryRoot": "users/1/courses/comp7404/pipeline/guided_story",
+    "textbookRoot": "users/1/courses/comp7404/pipeline/textbook",
+    "metaRoot": "users/1/courses/comp7404/pipeline/meta"
+  },
+  "publish": {
+    "courseIndexEntryPath": "users/1/courses/comp7404/publish/course-index-entry.json",
+    "chaptersRoot": "users/1/courses/comp7404/publish/chapters"
+  },
+  "chapters": [
+    {
+      "chapterId": "lecture-00-introduction",
+      "title": "Introduction",
+      "order": 0,
+      "lessonId": "u1-comp7404-introduction",
+      "sourceFileName": "Lec0 Introduction (3).pdf",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/slides/Lec0 Introduction (3).pdf",
+      "plainOutputDir": "users/1/courses/comp7404/pipeline/plain/u1-comp7404-introduction",
+      "guidedStoryDir": "users/1/courses/comp7404/pipeline/guided_story/u1-comp7404-introduction",
+      "textbookPath": "users/1/courses/comp7404/pipeline/textbook/u1-comp7404-introduction.mdx",
+      "metaDir": "users/1/courses/comp7404/pipeline/meta/u1-comp7404-introduction"
+    },
+    {
+      "chapterId": "lecture-01-knn",
+      "title": "KNN",
+      "order": 1,
+      "lessonId": "u1-comp7404-knn",
+      "sourceFileName": "Lec1 KNN (2).pdf",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/slides/Lec1 KNN (2).pdf",
+      "plainOutputDir": "users/1/courses/comp7404/pipeline/plain/u1-comp7404-knn",
+      "guidedStoryDir": "users/1/courses/comp7404/pipeline/guided_story/u1-comp7404-knn",
+      "textbookPath": "users/1/courses/comp7404/pipeline/textbook/u1-comp7404-knn.mdx",
+      "metaDir": "users/1/courses/comp7404/pipeline/meta/u1-comp7404-knn"
+    },
+    {
+      "chapterId": "lecture-02-regression-and-svm",
+      "title": "Regression and SVM",
+      "order": 2,
+      "lessonId": "u1-comp7404-regression-and-svm",
+      "sourceFileName": "Lec2 Regression and SVM (1).pdf",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/slides/Lec2 Regression and SVM (1).pdf",
+      "plainOutputDir": "users/1/courses/comp7404/pipeline/plain/u1-comp7404-regression-and-svm",
+      "guidedStoryDir": "users/1/courses/comp7404/pipeline/guided_story/u1-comp7404-regression-and-svm",
+      "textbookPath": "users/1/courses/comp7404/pipeline/textbook/u1-comp7404-regression-and-svm.mdx",
+      "metaDir": "users/1/courses/comp7404/pipeline/meta/u1-comp7404-regression-and-svm"
+    },
+    {
+      "chapterId": "lecture-03-performance-evaluation",
+      "title": "Performance Evaluation",
+      "order": 3,
+      "lessonId": "u1-comp7404-performance-evaluation",
+      "sourceFileName": "Lec3 Performance Evaluation.pdf",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/slides/Lec3 Performance Evaluation.pdf",
+      "plainOutputDir": "users/1/courses/comp7404/pipeline/plain/u1-comp7404-performance-evaluation",
+      "guidedStoryDir": "users/1/courses/comp7404/pipeline/guided_story/u1-comp7404-performance-evaluation",
+      "textbookPath": "users/1/courses/comp7404/pipeline/textbook/u1-comp7404-performance-evaluation.mdx",
+      "metaDir": "users/1/courses/comp7404/pipeline/meta/u1-comp7404-performance-evaluation"
+    },
+    {
+      "chapterId": "lecture-04-clustering",
+      "title": "Clustering",
+      "order": 4,
+      "lessonId": "u1-comp7404-clustering",
+      "sourceFileName": "Lec4 Clustering.pdf",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/slides/Lec4 Clustering.pdf",
+      "plainOutputDir": "users/1/courses/comp7404/pipeline/plain/u1-comp7404-clustering",
+      "guidedStoryDir": "users/1/courses/comp7404/pipeline/guided_story/u1-comp7404-clustering",
+      "textbookPath": "users/1/courses/comp7404/pipeline/textbook/u1-comp7404-clustering.mdx",
+      "metaDir": "users/1/courses/comp7404/pipeline/meta/u1-comp7404-clustering"
+    },
+    {
+      "chapterId": "lecture-05-application",
+      "title": "Application",
+      "order": 5,
+      "lessonId": "u1-comp7404-application",
+      "sourceFileName": "Lec5 Application.pdf",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/slides/Lec5 Application.pdf",
+      "plainOutputDir": "users/1/courses/comp7404/pipeline/plain/u1-comp7404-application",
+      "guidedStoryDir": "users/1/courses/comp7404/pipeline/guided_story/u1-comp7404-application",
+      "textbookPath": "users/1/courses/comp7404/pipeline/textbook/u1-comp7404-application.mdx",
+      "metaDir": "users/1/courses/comp7404/pipeline/meta/u1-comp7404-application"
+    },
+    {
+      "chapterId": "lecture-06-graph-clustering",
+      "title": "Graph Clustering",
+      "order": 6,
+      "lessonId": "u1-comp7404-graph-clustering",
+      "sourceFileName": "Lec6 GraphClustering.pdf",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/slides/Lec6 GraphClustering.pdf",
+      "plainOutputDir": "users/1/courses/comp7404/pipeline/plain/u1-comp7404-graph-clustering",
+      "guidedStoryDir": "users/1/courses/comp7404/pipeline/guided_story/u1-comp7404-graph-clustering",
+      "textbookPath": "users/1/courses/comp7404/pipeline/textbook/u1-comp7404-graph-clustering.mdx",
+      "metaDir": "users/1/courses/comp7404/pipeline/meta/u1-comp7404-graph-clustering"
+    },
+    {
+      "chapterId": "lecture-07-pca-and-lda",
+      "title": "PCA and LDA",
+      "order": 7,
+      "lessonId": "u1-comp7404-pca-and-lda",
+      "sourceFileName": "Lec7 PCA and LDA.pdf",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/slides/Lec7 PCA and LDA.pdf",
+      "plainOutputDir": "users/1/courses/comp7404/pipeline/plain/u1-comp7404-pca-and-lda",
+      "guidedStoryDir": "users/1/courses/comp7404/pipeline/guided_story/u1-comp7404-pca-and-lda",
+      "textbookPath": "users/1/courses/comp7404/pipeline/textbook/u1-comp7404-pca-and-lda.mdx",
+      "metaDir": "users/1/courses/comp7404/pipeline/meta/u1-comp7404-pca-and-lda"
+    },
+    {
+      "chapterId": "lecture-08-dimension-reduction",
+      "title": "Dimension Reduction",
+      "order": 8,
+      "lessonId": "u1-comp7404-dimension-reduction",
+      "sourceFileName": "Lec8 Dimension reduciton.pdf",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/slides/Lec8 Dimension reduciton.pdf",
+      "plainOutputDir": "users/1/courses/comp7404/pipeline/plain/u1-comp7404-dimension-reduction",
+      "guidedStoryDir": "users/1/courses/comp7404/pipeline/guided_story/u1-comp7404-dimension-reduction",
+      "textbookPath": "users/1/courses/comp7404/pipeline/textbook/u1-comp7404-dimension-reduction.mdx",
+      "metaDir": "users/1/courses/comp7404/pipeline/meta/u1-comp7404-dimension-reduction"
+    },
+    {
+      "chapterId": "lecture-09-ensemble-learning-boosting",
+      "title": "Ensemble Learning Boosting",
+      "order": 9,
+      "lessonId": "u1-comp7404-ensemble-learning-boosting",
+      "sourceFileName": "Lec9 Ensemble Learning  Boosting.pdf",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/slides/Lec9 Ensemble Learning  Boosting.pdf",
+      "plainOutputDir": "users/1/courses/comp7404/pipeline/plain/u1-comp7404-ensemble-learning-boosting",
+      "guidedStoryDir": "users/1/courses/comp7404/pipeline/guided_story/u1-comp7404-ensemble-learning-boosting",
+      "textbookPath": "users/1/courses/comp7404/pipeline/textbook/u1-comp7404-ensemble-learning-boosting.mdx",
+      "metaDir": "users/1/courses/comp7404/pipeline/meta/u1-comp7404-ensemble-learning-boosting"
+    },
+    {
+      "chapterId": "lecture-10-decision-trees",
+      "title": "Decision Trees",
+      "order": 10,
+      "lessonId": "u1-comp7404-decision-trees",
+      "sourceFileName": "Lec10 Decision Trees.pdf",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/slides/Lec10 Decision Trees.pdf",
+      "plainOutputDir": "users/1/courses/comp7404/pipeline/plain/u1-comp7404-decision-trees",
+      "guidedStoryDir": "users/1/courses/comp7404/pipeline/guided_story/u1-comp7404-decision-trees",
+      "textbookPath": "users/1/courses/comp7404/pipeline/textbook/u1-comp7404-decision-trees.mdx",
+      "metaDir": "users/1/courses/comp7404/pipeline/meta/u1-comp7404-decision-trees"
+    }
+  ],
+  "exams": [
+    {
+      "examId": "201605",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/exams/201605.pdf"
+    },
+    {
+      "examId": "201705",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/exams/201705.pdf"
+    },
+    {
+      "examId": "201805",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/exams/201805.pdf"
+    },
+    {
+      "examId": "201812",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/exams/201812.pdf"
+    },
+    {
+      "examId": "201905",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/exams/201905.pdf"
+    },
+    {
+      "examId": "202112",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/exams/202112.pdf"
+    },
+    {
+      "examId": "202208",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/exams/202208.pdf"
+    },
+    {
+      "examId": "202305",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/exams/202305.pdf"
+    },
+    {
+      "examId": "202308",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/exams/202308.pdf"
+    },
+    {
+      "examId": "202312",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/exams/202312.pdf"
+    },
+    {
+      "examId": "202505",
+      "rawPdfPath": "users/1/courses/comp7404/inputs/uploads/original/exams/202505.pdf"
+    }
+  ]
+}

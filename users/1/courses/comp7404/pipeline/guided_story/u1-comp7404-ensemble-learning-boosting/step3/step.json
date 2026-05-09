@@ -1,0 +1,263 @@
+{
+  "chapter_id": "lecture-09-ensemble-learning-boosting",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-ensemble-learning-boosting",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "多数投票和加权投票都假设我们已经有了一组分类器。",
+        "但如何生成这些分类器呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "如果直接用同一份训练数据训练多个模型，它们会高度相似。",
+        "高度相似的模型组合起来，效果提升有限。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "你需要让每个模型看到不同的数据，这样它们才能学到不同的模式。",
+        "但只有一个训练集，怎么办？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bagging"
+      ],
+      "id": "s029",
+      "introduced_terms": [
+        "bagging"
+      ],
+      "lines": [
+        "一种经典方法是 <term id=\"bagging\">Bagging</term>，全称是 Bootstrap Aggregating。",
+        "它通过改变训练数据来创造多样性。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bootstrap_sample"
+      ],
+      "id": "s030",
+      "introduced_terms": [
+        "bootstrap_sample"
+      ],
+      "lines": [
+        "具体做法是：从原始训练集中，有放回地随机抽取样本。",
+        "这样得到的新数据集称为一个 <term id=\"bootstrap_sample\">自助样本</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bootstrap_sample"
+      ],
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "想象一下，原始数据有 7 个样本。",
+        "每次抽取一个，记录后放回，再抽下一个，直到抽满 7 个。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bootstrap_sample"
+      ],
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "因为是有放回抽样，同一个样本可能被抽中多次，而有些样本可能一次都没被抽到。",
+        "每个自助样本都包含了一些重复和缺失。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0.63,
+        "explanation": "对于有放回抽样，一个样本在 n 次抽取中至少被抽中一次的概率为 1 - (1 - 1/n)^n。当 n=7 时，概率约为 0.63。",
+        "kind": "single_choice",
+        "options": [
+          "约 63%",
+          "约 50%",
+          "约 37%"
+        ],
+        "prompt": "在 7 个样本的数据集中，一个特定样本在 bootstrap 样本中至少出现一次的概率大约是多少？"
+      },
+      "focus_terms": [
+        "bootstrap_sample"
+      ],
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "在 7 个样本的数据集中，一个特定样本在 bootstrap 样本中至少出现一次的概率大约是多少？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": "约0.4096",
+        "expected_fields": [
+          "probability_exactly_once"
+        ],
+        "explanation": "一个特定样本在bootstrap样本中恰好出现一次的概率为 C(5,1) * (1/5) * (4/5)^4 = 5 * 0.2 * 0.4096 = 0.4096。",
+        "kind": "scenario_derivation",
+        "prompt": "假设原始数据集有 5 个样本。请计算一个特定样本在 bootstrap 样本中恰好出现一次的概率。",
+        "sample_answer": {
+          "probability_exactly_once": 0.4096
+        }
+      },
+      "focus_terms": [
+        "bootstrap_sample"
+      ],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "假设原始数据集有 5 个样本。请计算一个特定样本在 bootstrap 样本中恰好出现一次的概率。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0.651,
+        "expected_fields": [
+          "probability_at_least_once"
+        ],
+        "explanation": "概率 = 1 - (1 - 1/10)^10 ≈ 1 - 0.9^10 ≈ 1 - 0.349 = 0.651。",
+        "kind": "calculation",
+        "prompt": "假设原始数据集有 10 个样本。请计算一个特定样本在 bootstrap 样本中至少出现一次的概率。",
+        "sample_answer": {
+          "probability_at_least_once": 0.651
+        }
+      },
+      "focus_terms": [
+        "bootstrap_sample"
+      ],
+      "id": "s035",
+      "introduced_terms": [],
+      "lines": [
+        "假设原始数据集有 10 个样本。请计算一个特定样本在 bootstrap 样本中至少出现一次的概率。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "bagging"
+      ],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "然后，我们用每个自助样本训练一个独立的分类器。",
+        "最后，用多数投票的方式将这些分类器的预测结果组合起来。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "variance"
+      ],
+      "id": "s037",
+      "introduced_terms": [
+        "variance"
+      ],
+      "lines": [
+        "Bagging 的主要作用是降低模型的 <term id=\"variance\">方差</term>。",
+        "高方差的模型（比如未剪枝的决策树）对数据变化非常敏感，容易过拟合。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bias"
+      ],
+      "id": "s038",
+      "introduced_terms": [
+        "bias"
+      ],
+      "lines": [
+        "通过在不同数据子集上训练多个模型并取平均，Bagging 能有效平滑这些波动。",
+        "但它对降低 <term id=\"bias\">偏差</term> 帮助不大。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "Bagging 擅长降低方差，因此最适合用于那些容易过拟合、方差较高的模型，如未剪枝的决策树。",
+        "kind": "single_choice",
+        "options": [
+          "偏差高、方差低的简单模型",
+          "偏差低、方差高的复杂模型",
+          "偏差和方差都适中的模型"
+        ],
+        "prompt": "Bagging 最适合用来改进哪种类型的模型？"
+      },
+      "focus_terms": [
+        "bagging",
+        "variance"
+      ],
+      "id": "s039",
+      "introduced_terms": [],
+      "lines": [
+        "Bagging 最适合用来改进哪种类型的模型？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Bagging is an ensemble learning technique that is closely related to the MajorityVoteClassifier. Instead of using the same training set to fit the individual classifiers, we draw bootstrap samples (random samples with replacement) from the initial training set. Bagging can improve the accuracy of unstable models and decrease the degree of overfitting. Bagging is ineffective in reducing model bias.",
+    "related": [
+      "bootstrap sampling",
+      "variance reduction",
+      "overfitting"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "bagging": {
+      "aliases": [
+        "Bootstrap Aggregating",
+        "Bagging"
+      ],
+      "display": "Bagging",
+      "gloss": "一种集成学习技术，通过对训练集进行有放回抽样来训练多个模型，然后组合它们的预测。"
+    },
+    "bias": {
+      "aliases": [
+        "Bias"
+      ],
+      "display": "偏差",
+      "gloss": "模型预测值与真实值之间的系统性差异。高偏差意味着模型过于简单，无法捕捉数据的真实模式。"
+    },
+    "bootstrap_sample": {
+      "aliases": [
+        "Bootstrap Sample",
+        "Bootstrap"
+      ],
+      "display": "自助样本",
+      "gloss": "从原始数据集中有放回地随机抽取样本，形成一个新的、大小与原数据集相同的训练子集。"
+    },
+    "variance": {
+      "aliases": [
+        "Variance"
+      ],
+      "display": "方差",
+      "gloss": "模型预测结果的波动程度。高方差意味着模型对训练数据的细微变化非常敏感，容易过拟合。"
+    }
+  }
+}

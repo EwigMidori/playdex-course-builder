@@ -1,0 +1,396 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "supervised_learning",
+      "covered_by": [
+        "qf_flash_supervised_learning",
+        "qf_quiz_supervised_learning"
+      ],
+      "description": "监督学习的概念：使用有标签数据训练模型"
+    },
+    {
+      "coverage_tag": "decision_tree_structure",
+      "covered_by": [
+        "qf_flash_decision_tree_structure",
+        "qf_quiz_decision_tree_structure"
+      ],
+      "description": "决策树的结构：内部节点、分支、叶子节点"
+    },
+    {
+      "coverage_tag": "training_set_test_set",
+      "covered_by": [
+        "qf_flash_training_test_set",
+        "qf_quiz_training_test_set"
+      ],
+      "description": "训练集与测试集的划分与用途"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "supervised_learning",
+      "coverage_tags": [
+        "supervised_learning"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_supervised_learning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出监督学习的核心特征：使用有标签数据训练模型。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了监督学习的定义及其与有标签数据的关系。",
+      "question_type": "short_answer",
+      "retrieval_focus": "监督学习的定义：使用有标签数据训练模型",
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "Supervised Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "监督学习",
+          "estimated_seconds": 5,
+          "explanation": "监督学习使用有标签的训练数据，让模型学习从特征到标签的映射。",
+          "front": "在机器学习中，使用带有标签的数据来训练模型，这种学习方式叫什么？",
+          "question_id": "q_flash_supervised_learning_v1"
+        },
+        {
+          "back": "训练数据已经标好了答案（标签）",
+          "estimated_seconds": 6,
+          "explanation": "因为训练数据中每条记录都有已知的类别标签，相当于老师在旁边监督指导。",
+          "front": "监督学习中的“监督”指的是什么？",
+          "question_id": "q_flash_supervised_learning_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "decision_tree",
+      "coverage_tags": [
+        "decision_tree_structure"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_decision_tree_structure",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述决策树三个组成部分（内部节点、分支、叶子节点）各自的作用。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了决策树的基本结构：内部节点测试特征，分支对应结果，叶子节点给出类别。",
+      "question_type": "short_answer",
+      "retrieval_focus": "决策树的结构：内部节点、分支、叶子节点的功能",
+      "term_refs": [
+        {
+          "display": "决策树",
+          "en": "Decision Tree"
+        }
+      ],
+      "variants": [
+        {
+          "back": "对某个特征进行测试（问一个问题）",
+          "estimated_seconds": 6,
+          "explanation": "每个内部节点对应一个关于特征的问题，比如“年龄<30吗？”。",
+          "front": "在决策树中，内部节点（非叶子节点）的作用是什么？",
+          "question_id": "q_flash_decision_tree_structure_v1"
+        },
+        {
+          "back": "最终的分类结果（类别标签）",
+          "estimated_seconds": 5,
+          "explanation": "叶子节点给出预测的类别，比如“是电脑拥有者”或“不是电脑拥有者”。",
+          "front": "在决策树中，叶子节点代表什么？",
+          "question_id": "q_flash_decision_tree_structure_v2"
+        },
+        {
+          "back": "该特征测试的一个可能结果（答案）",
+          "estimated_seconds": 6,
+          "explanation": "比如“年龄<30”这个测试有两个分支：是（<30）和否（>=30）。",
+          "front": "在决策树中，从一个内部节点出发的每个分支代表什么？",
+          "question_id": "q_flash_decision_tree_structure_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "training_set_test_set",
+      "coverage_tags": [
+        "training_set_test_set"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_training_test_set",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分训练集和测试集在监督学习流程中的不同用途。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了训练集用于训练模型、测试集用于评估模型的基本分工。",
+      "question_type": "short_answer",
+      "retrieval_focus": "训练集与测试集的区别：训练集用于学习规律，测试集用于评估",
+      "term_refs": [
+        {
+          "display": "训练集",
+          "en": "Training Set"
+        },
+        {
+          "display": "测试集",
+          "en": "Test Set"
+        }
+      ],
+      "variants": [
+        {
+          "back": "训练集",
+          "estimated_seconds": 4,
+          "explanation": "训练集是带有标签、用于让模型学习规律的数据子集。",
+          "front": "在监督学习中，用于训练模型的那部分有标签数据叫什么？",
+          "question_id": "q_flash_training_test_set_v1"
+        },
+        {
+          "back": "测试集",
+          "estimated_seconds": 5,
+          "explanation": "测试集是模型在训练过程中没有见过的有标签数据，用于评估模型的泛化能力。",
+          "front": "在监督学习中，模型训练完成后，用来评估模型性能的那部分数据叫什么？",
+          "question_id": "q_flash_training_test_set_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-1",
+  "longform_families": [
+    {
+      "concept_key": "supervised_learning",
+      "coverage_tags": [
+        "supervised_learning",
+        "training_set_test_set"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_supervised_learning_flow",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自然语言描述监督学习的完整流程，包括数据划分、模型训练和评估。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能连贯地解释监督学习从数据准备到模型评估的完整步骤。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "Supervised Learning"
+        },
+        {
+          "display": "训练集",
+          "en": "Training Set"
+        },
+        {
+          "display": "测试集",
+          "en": "Test Set"
+        },
+        {
+          "display": "决策树",
+          "en": "Decision Tree"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "第一步：数据准备",
+            "第二步：模型训练",
+            "第三步：模型评估"
+          ],
+          "question_id": "q_long_supervised_learning_flow_v1",
+          "reference_answer": [
+            "第一步，我们准备一批有标签的数据，比如14个人的信息，每个人都知道是否拥有电脑。",
+            "第二步，我们把大部分数据（比如80%）作为训练集，用来训练一个决策树模型。决策树会学习从特征（年龄、收入等）到标签（是否有电脑）的规律。",
+            "第三步，我们把剩下的20%数据作为测试集，这些数据模型在训练时没有见过。我们用测试集来评估模型的准确率，看它对新数据的预测能力如何。"
+          ],
+          "rubric_points": [
+            "提到将带标签的数据分为训练集和测试集",
+            "提到用训练集训练决策树模型",
+            "提到用测试集评估模型的性能",
+            "逻辑连贯，步骤清晰"
+          ],
+          "stem": "请用你自己的话，描述监督学习的完整流程。在你的描述中，请明确提到训练集、测试集和决策树的作用。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "数据划分",
+            "模型训练",
+            "模型评估"
+          ],
+          "question_id": "q_long_supervised_learning_flow_v2",
+          "reference_answer": [
+            "首先，我会把10万条客户数据随机分成两部分：80%（8万条）作为训练集，20%（2万条）作为测试集。",
+            "然后，我用训练集来训练一个决策树分类器。决策树会学习客户的年龄、收入、职业等特征与是否违约之间的关系，生成一棵由一系列“是/否”问题组成的树。",
+            "最后，我用测试集来评估这个决策树的性能。我会把测试集中每条客户的特征输入决策树，得到预测结果，然后与真实的违约标签对比，计算准确率等指标，看模型对新客户的预测能力如何。"
+          ],
+          "rubric_points": [
+            "明确将数据分为训练集和测试集",
+            "说明用训练集训练决策树模型",
+            "说明用测试集评估模型性能",
+            "提到评估指标（如准确率）",
+            "场景应用合理"
+          ],
+          "stem": "假设你是一家银行的数据科学家，手头有10万条客户数据，每条数据包含客户的年龄、收入、职业等信息，以及一个标签表示该客户是否曾经违约。你想用决策树来预测新客户是否会违约。请描述你将如何按照监督学习的流程来完成这个任务。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "supervised_learning",
+      "coverage_tags": [
+        "supervised_learning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_supervised_learning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在不同场景中识别监督学习，并理解其与有标签数据的关系。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能区分监督学习与其他学习范式，并理解监督学习依赖有标签数据。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "Supervised Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "选项B使用了有标签的数据（邮件已被标记为垃圾/非垃圾），属于监督学习。选项A是无监督学习（聚类），选项C是强化学习。",
+          "options": [
+            "给出一堆新闻文章，让模型自动将它们分成体育、政治、娱乐等类别，但不告诉模型任何文章的类别",
+            "给出一堆带有“是垃圾邮件”或“不是垃圾邮件”标签的邮件，让模型学习如何判断新邮件是否为垃圾邮件",
+            "让模型玩一个游戏，通过不断尝试和获得奖励来学习最佳策略"
+          ],
+          "question_id": "q_quiz_supervised_learning_v1",
+          "stem": "以下哪种情况属于监督学习？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "监督学习的核心是使用有标签的数据进行训练，标签告诉模型每个样本的正确输出是什么。",
+          "options": [
+            "数据必须非常大，至少包含100万条记录",
+            "每条记录都必须有对应的标签（类别）",
+            "所有特征必须是数值型的"
+          ],
+          "question_id": "q_quiz_supervised_learning_v2",
+          "stem": "在监督学习中，训练数据必须具备什么特征？"
+        }
+      ]
+    },
+    {
+      "concept_key": "decision_tree",
+      "coverage_tags": [
+        "decision_tree_structure"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_decision_tree_structure",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确识别决策树各组成部分的功能，并理解其作为分类模型的工作方式。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了决策树的结构及其分类逻辑。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "决策树",
+          "en": "Decision Tree"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "决策树中，内部节点测试特征，分支对应测试结果，叶子节点给出最终的类别标签。",
+          "options": [
+            "内部节点给出最终的分类结果",
+            "叶子节点对特征进行测试",
+            "每个分支对应一个测试结果，每个叶子节点对应一个类别标签"
+          ],
+          "question_id": "q_quiz_decision_tree_structure_v1",
+          "stem": "关于决策树的结构，以下哪个说法是正确的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "决策树的预测过程是从根节点开始，依次回答每个内部节点的问题，沿着对应的分支向下，最终到达叶子节点得到分类结果。",
+          "options": [
+            "一次性计算所有特征，然后输出类别",
+            "从根节点开始，根据每个内部节点的测试结果沿着分支向下走，直到到达叶子节点，叶子节点的标签就是预测结果",
+            "随机选择一个特征进行判断"
+          ],
+          "question_id": "q_quiz_decision_tree_structure_v2",
+          "stem": "一个决策树模型对新人进行预测时，预测过程是怎样的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "training_set_test_set",
+      "coverage_tags": [
+        "training_set_test_set"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_training_test_set",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解训练集和测试集在监督学习流程中的角色，以及为什么测试集不能参与训练。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了训练集和测试集的划分目的与正确使用方法。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "训练集",
+          "en": "Training Set"
+        },
+        {
+          "display": "测试集",
+          "en": "Test Set"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "训练集用于训练模型，测试集用于评估模型的泛化能力，即模型对从未见过的新数据的预测能力。",
+          "options": [
+            "因为数据太多，一次处理不完",
+            "为了用训练集训练模型，然后用测试集评估模型在未见过的数据上的表现",
+            "为了减少数据存储空间"
+          ],
+          "question_id": "q_quiz_training_test_set_v1",
+          "stem": "在监督学习中，为什么需要将数据分成训练集和测试集？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "测试集必须完全独立于训练过程。如果在训练过程中让模型看到测试集，评估结果就会过于乐观，无法反映模型在真正新数据上的表现。",
+          "options": [
+            "用80%的数据作为训练集训练模型，20%作为测试集评估模型",
+            "在模型训练完成后，用测试集来评估模型的准确率",
+            "在模型训练过程中，让模型也看到测试集的数据，以提高最终准确率"
+          ],
+          "question_id": "q_quiz_training_test_set_v2",
+          "stem": "以下哪种做法是错误的？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

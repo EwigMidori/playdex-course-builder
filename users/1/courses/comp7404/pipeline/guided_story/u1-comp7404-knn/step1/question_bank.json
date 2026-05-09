@@ -1,0 +1,322 @@
+{
+  "chapter_id": "lecture-01-knn",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "face_recognition_intro",
+      "covered_by": [
+        "qf_flash_face_recognition_def",
+        "qf_quiz_face_recognition_vs_pixel"
+      ],
+      "description": "人脸识别的定义与基本思路：从图像中提取对光照、角度不敏感的特征，而非简单像素比较。"
+    },
+    {
+      "coverage_tag": "pixel_comparison_limitation",
+      "covered_by": [
+        "qf_flash_pixel_limitation",
+        "qf_quiz_pixel_limitation"
+      ],
+      "description": "直接像素比较的局限性：光照变化导致同一人脸在不同照片中的像素值差异巨大，不可靠。"
+    },
+    {
+      "coverage_tag": "face_as_vector",
+      "covered_by": [
+        "qf_flash_face_as_vector"
+      ],
+      "description": "将人脸图像视为向量（如100x100像素拉直为10000维向量），作为后续相似度比较的基础。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "face_recognition",
+      "coverage_tags": [
+        "face_recognition_intro"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_face_recognition_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出人脸识别的核心目标：从图像中识别或验证人脸身份，而非简单比较像素。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了人脸识别的基本定义和目的。",
+      "question_type": "short_answer",
+      "retrieval_focus": "人脸识别的核心目标是什么？",
+      "term_refs": [
+        {
+          "display": "人脸识别",
+          "en": "Face Recognition"
+        }
+      ],
+      "variants": [
+        {
+          "back": "从图像或视频中识别或验证人脸身份。",
+          "estimated_seconds": 8,
+          "explanation": "人脸识别不只是简单比较像素，而是从图像中提取出对光照、角度不敏感的特征，以识别或验证身份。",
+          "front": "人脸识别的核心目标是什么？",
+          "question_id": "q_flash_face_recognition_def_v1"
+        },
+        {
+          "back": "人脸识别提取对光照、角度不敏感的特征，而直接像素比较受光照变化影响大。",
+          "estimated_seconds": 10,
+          "explanation": "直接像素比较在光照变化时数值差异巨大，不可靠；人脸识别通过提取鲁棒特征来解决这一问题。",
+          "front": "人脸识别与直接像素比较的主要区别是什么？",
+          "question_id": "q_flash_face_recognition_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "pixel_comparison_limitation",
+      "coverage_tags": [
+        "pixel_comparison_limitation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_pixel_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别出直接像素比较在光照变化下的不可靠性。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明理解了光照变化对像素值的影响，以及为什么直接像素比较不可靠。",
+      "question_type": "short_answer",
+      "retrieval_focus": "光照变化对同一人脸像素值的影响是什么？",
+      "term_refs": [
+        {
+          "display": "像素比较",
+          "en": "Pixel Comparison"
+        }
+      ],
+      "variants": [
+        {
+          "back": "差异巨大，例如鼻尖像素值可能相差超过100。",
+          "estimated_seconds": 8,
+          "explanation": "光照变化会导致同一人脸在不同照片中的像素值差异巨大，直接像素比对不可靠。",
+          "front": "同一人脸在正常光照和侧光下，同一像素位置的数值差异通常如何？",
+          "question_id": "q_flash_pixel_limitation_v1"
+        },
+        {
+          "back": "因为光照、角度等变化会导致同一位置的像素值差异很大。",
+          "estimated_seconds": 8,
+          "explanation": "直接像素比较受光照、角度等外部因素影响大，同一人脸在不同条件下像素值可能完全不同。",
+          "front": "为什么直接比较两张照片的像素值来判断是否为同一人不可靠？",
+          "question_id": "q_flash_pixel_limitation_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "face_as_vector",
+      "coverage_tags": [
+        "face_as_vector"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_face_as_vector",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出将人脸图像视为向量的基本思路。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了将人脸图像表示为向量的方法。",
+      "question_type": "short_answer",
+      "retrieval_focus": "如何将一张人脸图像表示为一个向量？",
+      "term_refs": [
+        {
+          "display": "图像向量化",
+          "en": "Image Vectorization"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将每个像素的强度值按顺序排列，得到一个10000维的向量。",
+          "estimated_seconds": 8,
+          "explanation": "将图像拉直成一个长向量，每个维度对应一个像素的强度值，是后续相似度比较的基础。",
+          "front": "如何将一张100x100像素的人脸图像表示为一个向量？",
+          "question_id": "q_flash_face_as_vector_v1"
+        },
+        {
+          "back": "为了能够计算不同人脸之间的相似度（例如通过距离度量）。",
+          "estimated_seconds": 8,
+          "explanation": "将图像转化为向量后，就可以用数学方法（如欧氏距离）来衡量两张脸的相似程度。",
+          "front": "将人脸图像视为向量的目的是什么？",
+          "question_id": "q_flash_face_as_vector_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-knn",
+  "longform_families": [
+    {
+      "concept_key": "pixel_comparison_limitation",
+      "coverage_tags": [
+        "pixel_comparison_limitation",
+        "face_recognition_intro"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_pixel_limitation_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么直接像素比较不可靠，并说明人脸识别如何解决这个问题。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能用自己的语言阐述像素比较的局限性以及人脸识别的改进思路。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "像素比较",
+          "en": "Pixel Comparison"
+        },
+        {
+          "display": "人脸识别",
+          "en": "Face Recognition"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "直接像素比较的局限性",
+            "人脸识别的改进方法"
+          ],
+          "question_id": "q_long_pixel_limitation_explain_v1",
+          "reference_answer": [
+            "直接像素比较的局限性：光照变化（如正常光照 vs 侧光）会导致同一人脸在不同照片中的同一像素位置数值差异巨大（例如鼻尖像素值可能相差超过100），因此直接比较像素值不可靠。",
+            "人脸识别的改进方法：人脸识别不只是简单比较像素，而是从图像中提取出对光照、角度不敏感的特征，从而更鲁棒地识别或验证人脸身份。"
+          ],
+          "rubric_points": [
+            "指出光照变化导致像素值差异巨大",
+            "说明直接比较不可靠",
+            "说明人脸识别提取对光照、角度不敏感的特征",
+            "说明人脸识别不只是简单比较像素"
+          ],
+          "stem": "请解释为什么直接比较两张照片的像素值不适合用于人脸识别，并说明人脸识别是如何解决这个问题的。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "分析直接像素比较的缺点",
+            "提出更好的思路"
+          ],
+          "question_id": "q_long_pixel_limitation_explain_v2",
+          "reference_answer": [
+            "缺点：直接像素比较受光照、角度、遮挡等因素影响大，同一人脸在不同条件下像素值可能完全不同，因此不可靠。",
+            "更好的思路：应该从图像中提取对光照、角度不敏感的特征，例如将人脸图像视为向量，然后通过距离度量（如欧氏距离）来比较相似度，或者使用更高级的特征提取方法。"
+          ],
+          "rubric_points": [
+            "指出光照、角度等变化会导致像素值差异",
+            "说明直接比较不可靠",
+            "提出提取鲁棒特征的思路",
+            "提到将图像视为向量进行相似度比较"
+          ],
+          "stem": "假设你正在设计一个人脸识别系统，有人建议直接比较两张照片的像素值来判断是否为同一人。请分析这个方案的缺点，并提出一个更好的思路。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "face_recognition",
+      "coverage_tags": [
+        "face_recognition_intro"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_face_recognition_vs_pixel",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下区分人脸识别与直接像素比较。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能辨析人脸识别的核心思想，而非简单像素匹配。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "人脸识别",
+          "en": "Face Recognition"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "人脸识别不只是简单比较像素，而是提取对光照、角度等变化鲁棒的特征，从而更可靠地识别身份。",
+          "options": [
+            "直接比较两张照片中每个像素的数值是否相同",
+            "从图像中提取对光照、角度不敏感的特征来识别身份",
+            "将照片缩小到相同尺寸后再比较像素",
+            "只比较照片中眼睛和鼻子的位置"
+          ],
+          "question_id": "q_quiz_face_recognition_vs_pixel_v1",
+          "stem": "以下哪一项最准确地描述了人脸识别的核心思想？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "光照变化会导致同一人脸在不同照片中的像素值差异巨大，直接像素比对不可靠。",
+          "options": [
+            "因为照片的像素数量太多，计算太慢",
+            "因为光照变化会导致同一人脸在不同照片中的像素值差异巨大",
+            "因为不同人的照片像素值总是相同的",
+            "因为像素比较只能用于黑白照片"
+          ],
+          "question_id": "q_quiz_face_recognition_vs_pixel_v2",
+          "stem": "为什么直接比较两张照片的像素值不适合用于人脸识别？"
+        }
+      ]
+    },
+    {
+      "concept_key": "pixel_comparison_limitation",
+      "coverage_tags": [
+        "pixel_comparison_limitation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_pixel_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断关于像素比较局限性的陈述是否正确。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能识别直接像素比较的不可靠性及其原因。",
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "像素比较",
+          "en": "Pixel Comparison"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "光照变化会导致同一人脸在不同照片中的像素值差异巨大，例如鼻尖像素值可能相差超过100。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_pixel_limitation_v1",
+          "stem": "同一人脸在正常光照和侧光下，同一像素位置的数值通常非常接近。"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "直接像素比较受光照、角度等变化影响大，不可靠，因此不是鲁棒的方法。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_pixel_limitation_v2",
+          "stem": "直接比较两张照片的像素值是一种鲁棒的人脸识别方法。"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-knn/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

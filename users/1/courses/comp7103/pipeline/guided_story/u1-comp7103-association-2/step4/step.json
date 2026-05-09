@@ -1,0 +1,121 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "lines": [
+        "频繁项集找到了，关联规则也生成了。",
+        "但所有规则都有用吗？"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "confidence"
+      ],
+      "lines": [
+        "看这个例子：规则 茶 → 咖啡。",
+        "<term id=\"confidence\">置信度</term> = P(咖啡|茶) = 0.75，看起来很高。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "lines": [
+        "但是，P(咖啡) = 0.9。",
+        "也就是说，不喝茶的人喝咖啡的概率反而更高？"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "lines": [
+        "置信度高，不代表规则有意义。",
+        "它可能只是反映了商品本身就很流行。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "introduced_terms": [
+        "lift"
+      ],
+      "lines": [
+        "这时需要另一个指标：<term id=\"lift\">提升度</term>。",
+        "提升度 = 置信度 / P(Y)。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "lines": [
+        "对于 茶 → 咖啡，提升度 = 0.75 / 0.9 = 0.833。",
+        "提升度 < 1，说明茶和咖啡实际上是负相关的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s007",
+      "lines": [
+        "提升度 > 1：正相关，买 X 会增加买 Y 的概率。",
+        "提升度 = 1：独立，买 X 对买 Y 没影响。",
+        "提升度 < 1：负相关，买 X 反而会降低买 Y 的概率。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "1.6"
+        ],
+        "explanation": "提升度 = 0.8 / 0.5 = 1.6，大于 1，说明是正相关。",
+        "kind": "fill_in_blank",
+        "prompt": "一条规则的置信度是 0.8，而结论项的概率是 0.5。这条规则的提升度是多少？"
+      },
+      "id": "s008",
+      "lines": [
+        "一条规则的置信度是 0.8，而结论项的概率是 0.5。",
+        "这条规则的提升度是多少？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s009",
+      "lines": [
+        "所以，别只看置信度。",
+        "提升度能帮你发现真正有趣的规则。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Association rule algorithms tend to produce too many rules. Many of them are uninteresting or redundant. Confidence can be misleading. Lift is a measure that considers statistical dependency.",
+    "related": [
+      "Pattern Evaluation",
+      "Drawback of Confidence",
+      "Lift"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "confidence": {
+      "aliases": [
+        "Confidence"
+      ],
+      "display": "置信度",
+      "gloss": "规则 X → Y 的置信度是包含 X 和 Y 的事务数与包含 X 的事务数之比。"
+    },
+    "lift": {
+      "aliases": [
+        "Lift"
+      ],
+      "display": "提升度",
+      "gloss": "衡量规则 X → Y 中 X 和 Y 的统计依赖程度，即置信度与 Y 的普遍概率之比。"
+    }
+  }
+}

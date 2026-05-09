@@ -1,0 +1,295 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "manifold_learning_assumption",
+      "covered_by": [
+        "qf_flash_manifold_assumption",
+        "qf_quiz_manifold_vs_projection",
+        "qf_long_manifold_goal"
+      ],
+      "description": "流形学习的基本假设：高维数据位于一个低维流形上。"
+    },
+    {
+      "coverage_tag": "manifold_learning_vs_projection",
+      "covered_by": [
+        "qf_quiz_manifold_vs_projection",
+        "qf_long_manifold_goal"
+      ],
+      "description": "流形学习与投影的根本区别：目标是恢复内在坐标，而非简单投影。"
+    },
+    {
+      "coverage_tag": "linear_method_failure",
+      "covered_by": [
+        "qf_flash_linear_failure_reason",
+        "qf_quiz_linear_failure"
+      ],
+      "description": "线性方法（如PCA）对非线性结构（如瑞士卷）无效的原因。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "manifold_learning_assumption",
+      "coverage_tags": [
+        "manifold_learning_assumption"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_manifold_assumption",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确复述流形学习的核心假设。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能说出流形学习关于高维数据空间结构的基本假设。",
+      "question_type": "short_answer",
+      "retrieval_focus": "流形学习对高维数据空间结构的基本假设。",
+      "term_refs": [
+        {
+          "display": "流形学习",
+          "en": "Manifold Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "高维数据实际上位于一个低维流形（曲面）上。",
+          "estimated_seconds": 8,
+          "explanation": "这是流形学习的出发点，认为数据的本质结构是低维的，只是被嵌入在高维空间中。",
+          "front": "流形学习对高维数据的空间结构做出了什么基本假设？",
+          "question_id": "q_flash_manifold_assumption_v1"
+        },
+        {
+          "back": "它是一个二维曲面卷曲而成的。",
+          "estimated_seconds": 8,
+          "explanation": "瑞士卷虽然看起来是三维的，但其内在结构是二维的，这符合流形学习的基本假设。",
+          "front": "根据流形学习假设，瑞士卷数据在三维空间中的本质是什么？",
+          "question_id": "q_flash_manifold_assumption_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "linear_method_failure",
+      "coverage_tags": [
+        "linear_method_failure"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_linear_failure_reason",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释线性方法（如PCA）对非线性结构无效的根本原因。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能说出线性方法对瑞士卷数据无效的根本原因。",
+      "question_type": "short_answer",
+      "retrieval_focus": "线性方法对非线性结构无效的根本原因。",
+      "term_refs": [
+        {
+          "display": "线性方法",
+          "en": "Linear Method"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为数据在低维空间中的结构不是线性的（是卷曲的）。",
+          "estimated_seconds": 10,
+          "explanation": "线性方法假设数据是线性结构，但瑞士卷是卷曲的非线性结构，线性方法无法处理。",
+          "front": "为什么线性方法（如PCA）对瑞士卷数据无效？",
+          "question_id": "q_flash_linear_failure_reason_v1"
+        },
+        {
+          "back": "线性方法假设数据是线性结构，无法处理非线性结构。",
+          "estimated_seconds": 8,
+          "explanation": "这是线性方法的固有局限，它们只能捕捉数据中的线性关系。",
+          "front": "线性方法（如PCA）对非线性结构数据无效的根本原因是什么？",
+          "question_id": "q_flash_linear_failure_reason_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "longform_families": [
+    {
+      "concept_key": "manifold_learning_vs_projection",
+      "coverage_tags": [
+        "manifold_learning_assumption",
+        "manifold_learning_vs_projection"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_manifold_goal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用简洁的语言解释流形学习的目标及其与投影的区别。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能用自己的话解释流形学习的目标，并说明其与简单投影的不同。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "流形学习",
+          "en": "Manifold Learning"
+        },
+        {
+          "display": "内在坐标",
+          "en": "Intrinsic Coordinates"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "流形学习的基本假设",
+            "降维的目标",
+            "与投影的区别"
+          ],
+          "question_id": "q_long_manifold_goal_v1",
+          "reference_answer": [
+            "流形学习假设高维数据实际上位于一个低维流形（曲面）上。",
+            "它的目标不是简单地将数据投影到低维平面，而是恢复这个曲面的内在坐标，即找到数据在低维流形上的真实表示。",
+            "与投影的根本区别在于：投影是线性操作，会破坏非线性结构（如瑞士卷的不同层会被压在一起）；而流形学习旨在保持数据的非线性结构，将其“展开”到低维空间。"
+          ],
+          "rubric_points": [
+            "提到流形学习假设高维数据位于低维流形上",
+            "提到目标是恢复这个流形的内在坐标",
+            "提到投影是直接压到低维平面，而流形学习是恢复曲面结构"
+          ],
+          "stem": "请用自己的话解释：流形学习的目标是什么？它与简单的投影有什么根本不同？"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "瑞士卷数据的结构特点",
+            "线性投影失败的原因",
+            "流形学习的解决思路"
+          ],
+          "question_id": "q_long_manifold_goal_v2",
+          "reference_answer": [
+            "瑞士卷数据虽然看起来是三维的，但其本质是一个二维曲面卷曲而成的。",
+            "线性投影（如PCA）会直接将数据压到二维平面上，导致不同卷层的点被压在一起，无法区分。",
+            "流形学习假设数据位于一个低维流形上，降维的目标是恢复这个曲面的内在坐标，从而将卷曲的瑞士卷“展开”成平坦的二维结构。"
+          ],
+          "rubric_points": [
+            "提到瑞士卷是卷曲的二维曲面",
+            "提到线性投影会压扁不同层",
+            "提到流形学习假设数据在低维流形上，目标是恢复内在坐标"
+          ],
+          "stem": "以瑞士卷数据为例，说明为什么线性投影会失败，以及流形学习是如何解决这个问题的。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "manifold_learning_vs_projection",
+      "coverage_tags": [
+        "manifold_learning_assumption",
+        "manifold_learning_vs_projection"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_manifold_vs_projection",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能辨析流形学习与投影的根本区别。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能区分流形学习和投影在降维目标上的根本不同。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "流形学习",
+          "en": "Manifold Learning"
+        },
+        {
+          "display": "投影",
+          "en": "Projection"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "流形学习假设高维数据位于一个低维流形上，降维的目标是恢复这个曲面的内在坐标；而投影是直接将数据压到低维平面上。",
+          "options": [
+            "它们是一样的",
+            "流形学习假设数据在低维曲面上，目标是恢复内在坐标",
+            "投影假设数据在低维曲面上",
+            "流形学习不需要任何假设"
+          ],
+          "question_id": "q_quiz_manifold_vs_projection_v1",
+          "stem": "流形学习和投影的根本区别是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "流形学习的目标是恢复数据在低维流形上的内在坐标，而投影只是简单地将数据压到低维平面上。",
+          "options": [
+            "投影的目标是恢复数据的低维内在坐标",
+            "流形学习的目标是恢复数据的低维内在坐标",
+            "流形学习和投影的目标完全相同",
+            "投影假设数据位于低维曲面上"
+          ],
+          "question_id": "q_quiz_manifold_vs_projection_v2",
+          "stem": "关于流形学习和投影，以下哪种说法是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "linear_method_failure",
+      "coverage_tags": [
+        "linear_method_failure"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_linear_failure",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别线性方法对非线性结构无效的原因。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能选出线性方法（如PCA）对瑞士卷数据无效的正确原因。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "PCA",
+          "en": "Principal Component Analysis"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "线性方法假设数据是线性结构，但瑞士卷是卷曲的，线性方法无法处理这种非线性。",
+          "options": [
+            "因为数据量太大",
+            "因为数据在低维空间中的结构不是线性的",
+            "因为计算资源不够",
+            "因为瑞士卷数据有噪声"
+          ],
+          "question_id": "q_quiz_linear_failure_v1",
+          "stem": "为什么线性方法（如 PCA）对瑞士卷数据无效？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "线性方法适用于数据近似位于一个线性子空间（如平面）上的情况。对于非线性结构的数据，线性方法会失效。",
+          "options": [
+            "瑞士卷数据",
+            "近似位于一个平面上的数据",
+            "螺旋形数据",
+            "卷曲的流形数据"
+          ],
+          "question_id": "q_quiz_linear_failure_v2",
+          "stem": "以下哪种数据最适合用线性方法（如PCA）进行降维？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-dimension-reduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

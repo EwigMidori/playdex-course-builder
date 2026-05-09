@@ -1,0 +1,417 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "naive_bayes_example",
+      "covered_by": [
+        "qf_flash_step4_cat_prob",
+        "qf_quiz_step4_example_calc",
+        "qf_long_step4_example_trace"
+      ],
+      "description": "朴素贝叶斯分类的完整计算示例：给定记录 X (年龄<30, 收入中等, 是学生, 信用差)，判断是否拥有电脑。"
+    },
+    {
+      "coverage_tag": "numerical_attribute_handling",
+      "covered_by": [
+        "qf_flash_step4_num_method",
+        "qf_quiz_step4_num_dist",
+        "qf_long_step4_num_estimation"
+      ],
+      "description": "数值型属性的概率估计方法：离散化 vs 概率密度估计（假设正态分布）。"
+    },
+    {
+      "coverage_tag": "categorical_attribute_estimation",
+      "covered_by": [
+        "qf_flash_step4_cat_prob",
+        "qf_quiz_step4_example_calc"
+      ],
+      "description": "类别型属性的条件概率估计：通过计数 n_ik / n_i。"
+    },
+    {
+      "coverage_tag": "probability_density_estimation",
+      "covered_by": [
+        "qf_flash_step4_num_method",
+        "qf_quiz_step4_num_dist",
+        "qf_long_step4_num_estimation"
+      ],
+      "description": "概率密度估计：假设数值属性服从正态分布，用均值和方差计算概率密度。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "categorical_attribute_estimation",
+      "coverage_tags": [
+        "naive_bayes_example",
+        "categorical_attribute_estimation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step4_cat_prob",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆并计算朴素贝叶斯中类别型属性的条件概率估计方法。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了如何从训练数据中通过计数估计 P(x_k|C_i) 对于类别型属性。",
+      "question_type": "short_answer",
+      "retrieval_focus": "朴素贝叶斯中类别型属性条件概率的计数估计公式。",
+      "term_refs": [
+        {
+          "display": "类别型属性",
+          "en": "Categorical Attribute"
+        },
+        {
+          "display": "条件概率",
+          "en": "Conditional Probability"
+        }
+      ],
+      "variants": [
+        {
+          "back": "n_ik / n_i，其中 n_ik 是类别为 C_i 且属性 k 取值为 x_k 的记录数，n_i 是类别为 C_i 的记录总数。",
+          "estimated_seconds": 10,
+          "explanation": "这是通过频率计数来估计条件概率，是朴素贝叶斯处理类别型属性的标准方法。",
+          "front": "在朴素贝叶斯中，对于类别型属性 k，条件概率 P(x_k | C_i) 如何从训练数据中估计？",
+          "question_id": "q_flash_step4_cat_prob_v1"
+        },
+        {
+          "back": "2/9。因为在 9 个拥有电脑的记录中，有 2 个年龄<30。",
+          "estimated_seconds": 8,
+          "explanation": "这是计数估计的直接应用：n_ik = 2 (拥有电脑且年龄<30), n_i = 9 (拥有电脑)。",
+          "front": "在电脑购买的朴素贝叶斯例子中，P(年龄<30 | 拥有电脑=是) 的值是多少？",
+          "question_id": "q_flash_step4_cat_prob_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "numerical_attribute_handling",
+      "coverage_tags": [
+        "numerical_attribute_handling",
+        "probability_density_estimation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step4_num_method",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆处理数值型属性的两种方法及其核心思想。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了朴素贝叶斯中数值型属性概率估计的两种主要方法。",
+      "question_type": "short_answer",
+      "retrieval_focus": "朴素贝叶斯处理数值型属性的两种方法。",
+      "term_refs": [
+        {
+          "display": "数值型属性",
+          "en": "Numerical Attribute"
+        },
+        {
+          "display": "概率密度估计",
+          "en": "Probability Density Estimation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "概率密度估计，通常假设数值属性服从正态分布，用数据估计均值和方差。",
+          "estimated_seconds": 10,
+          "explanation": "概率密度估计避免了离散化对区间划分的敏感性，通过假设分布来估计概率密度。",
+          "front": "朴素贝叶斯处理数值型属性时，除了离散化，另一种更推荐的方法是什么？",
+          "question_id": "q_flash_step4_num_method_v1"
+        },
+        {
+          "back": "结果对区间的划分方式很敏感。",
+          "estimated_seconds": 8,
+          "explanation": "不同的分箱方式可能导致不同的概率估计，从而影响分类结果。",
+          "front": "离散化作为处理数值型属性的方法，其主要缺点是什么？",
+          "question_id": "q_flash_step4_num_method_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-2",
+  "longform_families": [
+    {
+      "concept_key": "naive_bayes_example",
+      "coverage_tags": [
+        "naive_bayes_example",
+        "categorical_attribute_estimation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_step4_example_trace",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整地解释并逐步计算朴素贝叶斯分类的完整过程。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能从头到尾复现朴素贝叶斯分类的完整计算流程，包括先验概率、条件概率、似然和后验概率的计算与比较。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "朴素贝叶斯",
+          "en": "Naïve Bayes"
+        },
+        {
+          "display": "后验概率",
+          "en": "Posterior Probability"
+        },
+        {
+          "display": "似然",
+          "en": "Likelihood"
+        },
+        {
+          "display": "先验概率",
+          "en": "Prior Probability"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "步骤1：确定类别和先验概率",
+            "步骤2：计算每个类别下各属性值的条件概率",
+            "步骤3：计算每个类别的似然 P(X|C_i)",
+            "步骤4：计算每个类别的后验概率（未归一化）并比较"
+          ],
+          "question_id": "q_long_step4_example_trace_v1",
+          "reference_answer": [
+            "步骤1：类别 C1='是'(拥有电脑), C2='否'(未拥有电脑)。P(C1)=9/14, P(C2)=5/14。",
+            "步骤2：对于C1: P(年龄<30|C1)=2/9, P(收入中等|C1)=4/9, P(学生=是|C1)=6/9, P(信用差|C1)=6/9。对于C2: P(年龄<30|C2)=2/5, P(收入中等|C2)=2/5, P(学生=是|C2)=1/5, P(信用差|C2)=2/5。",
+            "步骤3：P(X|C1) = (2/9)*(4/9)*(6/9)*(6/9) = 288/6561 ≈ 0.044。P(X|C2) = (2/5)*(2/5)*(1/5)*(2/5) = 8/625 = 0.0128。",
+            "步骤4：P(C1|X) ∝ P(X|C1)*P(C1) = 0.044 * (9/14) ≈ 0.028。P(C2|X) ∝ P(X|C2)*P(C2) = 0.0128 * (5/14) ≈ 0.0046。因为 0.028 > 0.0046，所以 X 被分类为“拥有电脑=是”。"
+          ],
+          "rubric_points": [
+            "正确计算先验概率 P(是)=9/14, P(否)=5/14",
+            "正确计算 P(年龄<30|是)=2/9, P(收入中等|是)=4/9, P(学生=是|是)=6/9, P(信用差|是)=6/9",
+            "正确计算 P(年龄<30|否)=2/5, P(收入中等|否)=2/5, P(学生=是|否)=1/5, P(信用差|否)=2/5",
+            "正确计算 P(X|是) = (2/9)*(4/9)*(6/9)*(6/9) ≈ 0.044",
+            "正确计算 P(X|否) = (2/5)*(2/5)*(1/5)*(2/5) = 8/625 = 0.0128",
+            "正确计算并比较 P(X|是)P(是) ≈ 0.028 和 P(X|否)P(否) ≈ 0.0046，得出分类为“是”"
+          ],
+          "stem": "请逐步解释如何使用朴素贝叶斯分类器对以下新记录进行分类：X = (年龄<30, 收入中等, 是学生, 信用评级差)。你需要说明每一步的计算过程和最终分类结果。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "步骤1：确定类别和先验概率",
+            "步骤2：计算每个类别下各属性值的条件概率",
+            "步骤3：计算每个类别的似然 P(Y|C_i)",
+            "步骤4：计算每个类别的后验概率（未归一化）并比较"
+          ],
+          "question_id": "q_long_step4_example_trace_v2",
+          "reference_answer": [
+            "步骤1：类别 C1='是'(拥有电脑), C2='否'(未拥有电脑)。P(C1)=9/14, P(C2)=5/14。",
+            "步骤2：对于C1: P(年龄>40|C1)=3/9, P(收入低|C1)=3/9, P(学生=否|C1)=3/9, P(信用好|C1)=3/9。对于C2: P(年龄>40|C2)=2/5, P(收入低|C2)=1/5, P(学生=否|C2)=4/5, P(信用好|C2)=3/5。",
+            "步骤3：P(Y|C1) = (3/9)*(3/9)*(3/9)*(3/9) = 81/6561 ≈ 0.0123。P(Y|C2) = (2/5)*(1/5)*(4/5)*(3/5) = 24/625 = 0.0384。",
+            "步骤4：P(C1|Y) ∝ P(Y|C1)*P(C1) = 0.0123 * (9/14) ≈ 0.0079。P(C2|Y) ∝ P(Y|C2)*P(C2) = 0.0384 * (5/14) ≈ 0.0137。因为 0.0137 > 0.0079，所以 Y 被分类为“拥有电脑=否”。"
+          ],
+          "rubric_points": [
+            "正确计算先验概率 P(是)=9/14, P(否)=5/14",
+            "正确计算 P(年龄>40|是)=3/9, P(收入低|是)=3/9, P(学生=否|是)=3/9, P(信用好|是)=3/9",
+            "正确计算 P(年龄>40|否)=2/5, P(收入低|否)=1/5, P(学生=否|否)=4/5, P(信用好|否)=3/5",
+            "正确计算 P(Y|是) = (3/9)*(3/9)*(3/9)*(3/9) = 81/6561 ≈ 0.0123",
+            "正确计算 P(Y|否) = (2/5)*(1/5)*(4/5)*(3/5) = 24/625 = 0.0384",
+            "正确计算并比较 P(Y|是)P(是) ≈ 0.0079 和 P(Y|否)P(否) ≈ 0.0137，得出分类为“否”"
+          ],
+          "stem": "请逐步解释如何使用朴素贝叶斯分类器对以下新记录进行分类：Y = (年龄>40, 收入低, 不是学生, 信用评级好)。你需要说明每一步的计算过程和最终分类结果。"
+        }
+      ]
+    },
+    {
+      "concept_key": "numerical_attribute_handling",
+      "coverage_tags": [
+        "numerical_attribute_handling",
+        "probability_density_estimation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_step4_num_estimation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较并对比处理数值型属性的两种方法，理解各自的优缺点。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能理解离散化和概率密度估计两种方法的原理、优缺点及适用场景。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "离散化",
+          "en": "Discretization"
+        },
+        {
+          "display": "概率密度估计",
+          "en": "Probability Density Estimation"
+        },
+        {
+          "display": "正态分布",
+          "en": "Normal Distribution"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "离散化的基本原理",
+            "离散化的一个优点",
+            "离散化的一个缺点",
+            "概率密度估计的基本原理",
+            "概率密度估计的一个优点",
+            "概率密度估计的一个缺点"
+          ],
+          "question_id": "q_long_step4_num_estimation_v1",
+          "reference_answer": [
+            "离散化：将连续数值范围划分为多个离散区间（如将收入分为低、中、高三档），然后像处理类别型属性一样通过计数来估计概率。优点是简单直观。缺点是结果对区间划分方式非常敏感，不同的分箱策略可能导致完全不同的分类结果。",
+            "概率密度估计：假设数值属性服从某个已知的概率分布（通常是正态分布），然后从训练数据中估计该分布的参数（如均值和方差），最后用概率密度函数来计算条件概率。优点是不需要人为划分区间，避免了离散化的敏感性问题，能更平滑地估计概率。缺点是依赖于分布假设的正确性，如果数据的真实分布与假设的分布（如正态分布）相差很大，估计结果可能不准确。"
+          ],
+          "rubric_points": [
+            "离散化：将连续数值范围分成多个区间（bins），将数值属性转换为类别型属性",
+            "离散化优点：简单直观，易于实现",
+            "离散化缺点：结果对区间划分方式敏感，不同的分箱方式可能导致不同的分类结果",
+            "概率密度估计：假设数值属性服从某个已知分布（通常是正态分布），用数据估计分布参数",
+            "概率密度估计优点：避免了离散化的敏感性，利用数据的统计特性进行更平滑的估计",
+            "概率密度估计缺点：依赖于分布假设的正确性，如果真实分布与假设不符，估计可能不准确"
+          ],
+          "stem": "比较并对比朴素贝叶斯中处理数值型属性的两种方法：离散化和概率密度估计。请说明每种方法的基本原理、一个主要优点和一个主要缺点。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "为什么直接计数不可行",
+            "概率密度估计的核心思想",
+            "正态分布假设的具体应用",
+            "如何从数据中估计参数"
+          ],
+          "question_id": "q_long_step4_num_estimation_v2",
+          "reference_answer": [
+            "直接计数不可行：对于连续数值型属性如“年收入”，每个具体的数值（如 120K、120.1K）在训练数据中出现的次数可能非常少，甚至只出现一次。如果直接计数，P(收入=120K|类别) 会非常小且不可靠，无法反映真实的概率分布。",
+            "概率密度估计通过假设数据服从某个已知分布来解决这个问题。朴素贝叶斯通常假设数值型属性在给定类别下服从正态分布（高斯分布）。",
+            "具体应用时，对于每个类别 C_j 和每个数值属性 x_i，我们从训练数据中计算该类别下该属性的样本均值 μ_ij 和样本方差 σ²_ij。然后，对于新记录中的数值 x，代入正态分布的概率密度函数：P(x_i|C_j) = (1/√(2πσ²_ij)) * e^(-(x_i - μ_ij)²/(2σ²_ij))。这个函数值不是概率，而是概率密度，用于在比较不同类别时作为似然的替代。"
+          ],
+          "rubric_points": [
+            "直接计数不可行：因为数值型属性的取值是连续的，理论上每个值出现的次数可能很少甚至唯一，无法得到可靠的频率估计",
+            "概率密度估计核心思想：不直接计数，而是假设数据服从某个已知分布，用分布函数来估计概率密度",
+            "正态分布假设：假设给定类别下，数值属性服从正态分布，用概率密度函数 f(x) = (1/√(2πσ²)) * e^(-(x-μ)²/(2σ²)) 来估计",
+            "参数估计：从训练数据中计算该类别下该属性的样本均值 μ 和样本方差 σ²"
+          ],
+          "stem": "假设你正在使用朴素贝叶斯对一个包含数值型属性“年收入”的数据集进行分类。请解释为什么直接使用原始收入值（如 120K）进行计数估计是不可行的，并详细说明概率密度估计方法是如何解决这个问题的。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "naive_bayes_example",
+      "coverage_tags": [
+        "naive_bayes_example",
+        "categorical_attribute_estimation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step4_example_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能应用朴素贝叶斯公式，对给定的类别型属性记录进行分类计算。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能理解并应用朴素贝叶斯分类的完整计算流程，包括先验概率、似然和后验概率的比较。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "朴素贝叶斯",
+          "en": "Naïve Bayes"
+        },
+        {
+          "display": "后验概率",
+          "en": "Posterior Probability"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 30,
+          "explanation": "比较 P(X|是)*P(是) = 0.044 * (9/14) ≈ 0.028 和 P(X|否)*P(否) = 0.019 * (5/14) ≈ 0.007。0.028 > 0.007，所以 X 被分类为“拥有电脑=是”。",
+          "options": [
+            "拥有电脑 = 是",
+            "拥有电脑 = 否",
+            "无法判断，因为概率相等",
+            "需要更多数据才能决定"
+          ],
+          "question_id": "q_quiz_step4_example_calc_v1",
+          "stem": "在电脑购买的例子中，给定新记录 X: (年龄<30, 收入中等, 是学生, 信用差)。已知 P(拥有电脑=是) = 9/14，P(拥有电脑=否) = 5/14。并且 P(X|是) ≈ 0.044，P(X|否) ≈ 0.019。根据朴素贝叶斯，X 应被分类为？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 45,
+          "explanation": "P(Y|是) = (3/9)*(3/9)*(6/9)*(3/9) = 162/6561 ≈ 0.0247。P(Y|否) = (2/5)*(1/5)*(1/5)*(3/5) = 6/625 = 0.0096。P(是|Y) ∝ 0.0247*(9/14) ≈ 0.0159，P(否|Y) ∝ 0.0096*(5/14) ≈ 0.0034。0.0159 > 0.0034，所以分类为“是”。",
+          "options": [
+            "拥有电脑 = 是",
+            "拥有电脑 = 否",
+            "无法判断，因为概率相等",
+            "需要更多数据才能决定"
+          ],
+          "question_id": "q_quiz_step4_example_calc_v2",
+          "stem": "在电脑购买的例子中，假设我们有一个新记录 Y: (年龄>40, 收入低, 是学生, 信用好)。已知 P(拥有电脑=是) = 9/14，P(拥有电脑=否) = 5/14。在拥有电脑的记录中，年龄>40 有 3 个，收入低有 3 个，是学生有 6 个，信用好有 3 个。在未拥有电脑的记录中，年龄>40 有 2 个，收入低有 1 个，是学生有 1 个，信用好有 3 个。根据朴素贝叶斯，Y 应被分类为？"
+        }
+      ]
+    },
+    {
+      "concept_key": "numerical_attribute_handling",
+      "coverage_tags": [
+        "numerical_attribute_handling",
+        "probability_density_estimation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_step4_num_dist",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别朴素贝叶斯中数值型属性常用的概率分布假设。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了概率密度估计中关于数值属性分布的标准假设。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "正态分布",
+          "en": "Normal Distribution"
+        },
+        {
+          "display": "概率密度函数",
+          "en": "Probability Density Function"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "朴素贝叶斯通常假设数值型属性服从正态分布（高斯分布），然后用训练数据估计均值和方差。",
+          "options": [
+            "均匀分布",
+            "正态分布（高斯分布）",
+            "泊松分布",
+            "指数分布"
+          ],
+          "question_id": "q_quiz_step4_num_dist_v1",
+          "stem": "在朴素贝叶斯的概率密度估计方法中，通常假设数值型属性服从什么分布？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "正态分布由均值和方差完全决定，因此需要从数据中估计这两个参数。",
+          "options": [
+            "中位数和众数",
+            "均值和方差",
+            "最大值和最小值",
+            "偏度和峰度"
+          ],
+          "question_id": "q_quiz_step4_num_dist_v2",
+          "stem": "在概率密度估计中，对于数值型属性，我们需要从训练数据中估计哪两个参数来计算概率密度？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-2/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,537 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "deep_learning_rise",
+      "covered_by": [
+        "qf_flash_deep_learning_rise",
+        "qf_quiz_deep_learning_rise",
+        "qf_long_deep_learning_rise"
+      ],
+      "description": "深度学习重新崛起的关键因素：大数据、GPU、更好的训练策略"
+    },
+    {
+      "coverage_tag": "backpropagation",
+      "covered_by": [
+        "qf_flash_backpropagation",
+        "qf_quiz_backpropagation"
+      ],
+      "description": "反向传播算法及其在神经网络训练中的作用"
+    },
+    {
+      "coverage_tag": "deep_learning_definition",
+      "covered_by": [
+        "qf_flash_deep_learning_definition"
+      ],
+      "description": "深度学习的定义：使用多层神经网络进行学习"
+    },
+    {
+      "coverage_tag": "neural_network_history",
+      "covered_by": [
+        "qf_flash_neural_network_history",
+        "qf_quiz_neural_network_history"
+      ],
+      "description": "神经网络的历史：1980年代出现，经历低谷，2006年重新崛起"
+    },
+    {
+      "coverage_tag": "imagenet_2012",
+      "covered_by": [
+        "qf_flash_imagenet_2012",
+        "qf_quiz_imagenet_2012"
+      ],
+      "description": "2012年ImageNet竞赛中深度卷积神经网络将错误率几乎减半"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "deep_learning_rise",
+      "coverage_tags": [
+        "deep_learning_rise"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_deep_learning_rise",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出深度学习重新崛起的三个关键因素。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能主动回忆并列举出推动深度学习复兴的核心驱动力。",
+      "question_type": "short_answer",
+      "retrieval_focus": "深度学习复兴的三大关键因素",
+      "term_refs": [
+        {
+          "display": "深度学习",
+          "en": "deep learning"
+        },
+        {
+          "display": "GPU",
+          "en": "GPU"
+        }
+      ],
+      "variants": [
+        {
+          "back": "大数据、强大的计算能力（如GPU）、更好的训练策略（如无监督逐层预训练）。",
+          "estimated_seconds": 10,
+          "explanation": "材料明确指出：以前数据少、计算弱、训练难。大数据和GPU的出现，以及更好的训练策略，让深度学习真正爆发。",
+          "front": "深度学习在2012年之前未能成功，之后重新崛起。请列举三个关键因素。",
+          "question_id": "q_flash_deep_learning_rise_v1"
+        },
+        {
+          "back": "更好的训练策略，例如无监督逐层预训练。",
+          "estimated_seconds": 8,
+          "explanation": "材料中提到Hinton在2006年提出的深度信念网络和无监督逐层预训练方法，是深度学习重新崛起的关键。",
+          "front": "除了大数据和GPU，还有什么因素推动了深度学习的复兴？",
+          "question_id": "q_flash_deep_learning_rise_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "backpropagation",
+      "coverage_tags": [
+        "backpropagation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_backpropagation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出反向传播算法的作用和提出者。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能主动回忆反向传播算法的核心功能和关键人物。",
+      "question_type": "short_answer",
+      "retrieval_focus": "反向传播算法的核心作用",
+      "term_refs": [
+        {
+          "display": "反向传播",
+          "en": "backpropagation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "让神经网络能够自己学习数据的内部表示。",
+          "estimated_seconds": 8,
+          "explanation": "材料中提到：1986年，Hinton等人提出了反向传播算法，让神经网络能够自己学习数据的内部表示。",
+          "front": "1986年，Hinton等人提出的反向传播算法，让神经网络能够做什么？",
+          "question_id": "q_flash_backpropagation_v1"
+        },
+        {
+          "back": "Geoffrey Hinton（与David Rumelhart和Ronald Williams合作）。",
+          "estimated_seconds": 6,
+          "explanation": "材料中明确指出Hinton在1986年与Rumelhart和Williams共同提出了反向传播算法。",
+          "front": "反向传播算法的主要提出者是谁？",
+          "question_id": "q_flash_backpropagation_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "deep_learning_definition",
+      "coverage_tags": [
+        "deep_learning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_deep_learning_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的话定义深度学习。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能主动回忆并表述深度学习的核心定义。",
+      "question_type": "definition_with_example",
+      "retrieval_focus": "深度学习的定义",
+      "term_refs": [
+        {
+          "display": "深度学习",
+          "en": "deep learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "使用多层神经网络进行学习的方法。",
+          "estimated_seconds": 5,
+          "explanation": "材料中术语表定义：深度学习是使用多层神经网络进行学习的方法。",
+          "front": "什么是深度学习？",
+          "question_id": "q_flash_deep_learning_definition_v1"
+        },
+        {
+          "back": "深度学习使用多层（深层）神经网络。",
+          "estimated_seconds": 6,
+          "explanation": "深度学习的“深度”体现在其网络层数较多，能够学习更复杂的特征表示。",
+          "front": "深度学习与普通神经网络的主要区别是什么？",
+          "question_id": "q_flash_deep_learning_definition_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "neural_network_history",
+      "coverage_tags": [
+        "neural_network_history"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_neural_network_history",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出神经网络发展的关键时间点和事件。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能主动回忆神经网络从出现到低谷再到复兴的关键历史节点。",
+      "question_type": "short_answer",
+      "retrieval_focus": "神经网络发展的关键历史节点",
+      "term_refs": [
+        {
+          "display": "神经网络",
+          "en": "neural network"
+        }
+      ],
+      "variants": [
+        {
+          "back": "1980年代。",
+          "estimated_seconds": 5,
+          "explanation": "材料中提到：神经网络早在1980年代就出现了。",
+          "front": "神经网络最早在哪个年代出现？",
+          "question_id": "q_flash_neural_network_history_v1"
+        },
+        {
+          "back": "低谷期，原因是训练困难、计算资源不足、数据太少。",
+          "estimated_seconds": 8,
+          "explanation": "材料中提到：随后神经网络进入了低谷期，训练困难、计算资源不足、数据太少。",
+          "front": "神经网络在1980年代出现后，经历了什么阶段？",
+          "question_id": "q_flash_neural_network_history_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "imagenet_2012",
+      "coverage_tags": [
+        "imagenet_2012"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_imagenet_2012",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出2012年ImageNet竞赛中深度学习的突破性成果。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能主动回忆2012年ImageNet竞赛的关键结果。",
+      "question_type": "short_answer",
+      "retrieval_focus": "2012年ImageNet竞赛的突破",
+      "term_refs": [
+        {
+          "display": "ImageNet",
+          "en": "ImageNet"
+        }
+      ],
+      "variants": [
+        {
+          "back": "用深度卷积神经网络将错误率几乎减半。",
+          "estimated_seconds": 8,
+          "explanation": "材料中提到：2012年，Hinton的学生在ImageNet竞赛中，用深度卷积神经网络将错误率几乎减半。",
+          "front": "2012年，Hinton的学生在ImageNet竞赛中取得了什么成果？",
+          "question_id": "q_flash_imagenet_2012_v1"
+        },
+        {
+          "back": "0.15315（15.315%），远低于第二名（26.172%）。",
+          "estimated_seconds": 10,
+          "explanation": "材料中的表格显示，多伦多大学（深度学习）的错误率为0.15315，而第二名东京大学为0.26172。",
+          "front": "2012年ImageNet竞赛中，使用深度学习的团队错误率是多少？",
+          "question_id": "q_flash_imagenet_2012_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-introduction",
+  "longform_families": [
+    {
+      "concept_key": "deep_learning_rise",
+      "coverage_tags": [
+        "deep_learning_rise",
+        "backpropagation",
+        "neural_network_history",
+        "imagenet_2012"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_deep_learning_rise",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能连贯地解释深度学习从出现、低谷到重新崛起的完整历程，并指出关键因素。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能综合运用本step中的多个知识点，构建一个关于深度学习发展历史的完整叙述。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "深度学习",
+          "en": "deep learning"
+        },
+        {
+          "display": "反向传播",
+          "en": "backpropagation"
+        },
+        {
+          "display": "神经网络",
+          "en": "neural network"
+        },
+        {
+          "display": "ImageNet",
+          "en": "ImageNet"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "1980年代：神经网络出现与反向传播",
+            "低谷期：原因分析",
+            "重新崛起：关键因素",
+            "2012年ImageNet竞赛：结果与意义"
+          ],
+          "question_id": "q_long_deep_learning_rise_v1",
+          "reference_answer": [
+            "神经网络早在1980年代就出现了。1986年，Hinton等人提出了反向传播算法，让神经网络能够自己学习数据的内部表示。",
+            "但随后神经网络进入了低谷期，原因是训练困难、计算资源不足、数据太少。",
+            "直到2006年，Hinton提出了深度信念网络和无监督逐层预训练的方法，深度学习才重新崛起。此外，大数据和GPU等强大计算能力的出现也是关键因素。",
+            "2012年，Hinton的学生在ImageNet竞赛中，用深度卷积神经网络将错误率几乎减半，这证明了深度学习的巨大潜力，并重塑了计算机视觉领域。"
+          ],
+          "rubric_points": [
+            "正确指出神经网络在1980年代出现，反向传播算法让神经网络能学习内部表示。",
+            "正确指出低谷期原因是训练困难、计算资源不足、数据太少。",
+            "正确指出至少两个关键因素：大数据、GPU、更好的训练策略（如无监督逐层预训练）。",
+            "正确指出2012年ImageNet竞赛中深度卷积神经网络将错误率几乎减半，重塑了计算机视觉领域。"
+          ],
+          "stem": "请解释深度学习从1980年代出现到2012年重新崛起的完整历程。在回答中，请包含以下要点：\n1. 神经网络在1980年代的出现和反向传播算法的作用。\n2. 神经网络进入低谷期的原因。\n3. 深度学习重新崛起的关键因素（至少两个）。\n4. 2012年ImageNet竞赛的结果及其意义。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "深度学习的定义",
+            "早期失败的原因",
+            "重新成功的驱动力",
+            "2012年的标志性事件"
+          ],
+          "question_id": "q_long_deep_learning_rise_v2",
+          "reference_answer": [
+            "深度学习就是一种使用很多层的人工神经网络来学习的方法，就像给计算机一个有很多层的大脑。",
+            "在2012年之前，这个'大脑'很难训练，因为数据太少、计算机不够快、训练方法也不够好。",
+            "后来，互联网产生了海量数据（大数据），游戏显卡（GPU）变得非常强大，而且科学家发明了更好的训练技巧，比如无监督逐层预训练。",
+            "2012年，Hinton的学生用深度学习参加了一个叫ImageNet的图像识别比赛，把错误率降低了一半多，震惊了整个科学界，从此深度学习就爆发了。"
+          ],
+          "rubric_points": [
+            "用通俗语言解释深度学习是使用多层神经网络的学习方法。",
+            "解释早期失败是因为数据少、计算弱、训练难。",
+            "解释重新成功是因为大数据、GPU和更好的训练策略。",
+            "解释2012年ImageNet竞赛中深度学习大幅降低错误率，引起广泛关注。"
+          ],
+          "stem": "假设你是一位AI历史学家，请向一位对机器学习完全不了解的朋友解释：为什么深度学习在2012年之前默默无闻，之后却突然爆发？请用通俗的语言解释，并包含以下要点：\n1. 深度学习是什么。\n2. 它早期为什么失败。\n3. 是什么让它重新成功。\n4. 2012年发生了什么标志性事件。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "deep_learning_rise",
+      "coverage_tags": [
+        "deep_learning_rise"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_deep_learning_rise",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析深度学习重新崛起的关键因素。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能正确识别出推动深度学习复兴的核心因素，并排除干扰项。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "深度学习",
+          "en": "deep learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "材料明确指出：大数据和GPU的出现，让深度学习真正爆发。更简单的算法、更少的模型参数和放弃反向传播都不是原因。",
+          "options": [
+            "更简单的算法",
+            "更大的数据和更强的计算能力",
+            "更少的模型参数",
+            "放弃了反向传播"
+          ],
+          "question_id": "q_quiz_deep_learning_rise_v1",
+          "stem": "以下哪个是深度学习重新崛起的关键因素？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "材料中提到的失败原因是数据少、计算弱、训练难。算法太复杂不是主要原因，实际上深度学习算法本身就很复杂。",
+          "options": [
+            "数据太少",
+            "计算能力弱",
+            "算法太复杂",
+            "训练困难"
+          ],
+          "question_id": "q_quiz_deep_learning_rise_v2",
+          "stem": "以下哪个条件不是深度学习在2012年之前失败的原因？"
+        }
+      ]
+    },
+    {
+      "concept_key": "backpropagation",
+      "coverage_tags": [
+        "backpropagation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_backpropagation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解反向传播算法在神经网络训练中的作用。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能正确识别反向传播算法的核心功能。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "反向传播",
+          "en": "backpropagation"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "材料中提到：反向传播算法让神经网络能够自己学习数据的内部表示。",
+          "options": [
+            "增加神经网络的层数",
+            "让神经网络能够学习数据的内部表示",
+            "减少训练数据的需求",
+            "自动生成特征"
+          ],
+          "question_id": "q_quiz_backpropagation_v1",
+          "stem": "反向传播算法的主要作用是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "材料中提到：1986年，Hinton等人提出了反向传播算法。",
+          "options": [
+            "Yann LeCun",
+            "Yoshua Bengio",
+            "Geoffrey Hinton",
+            "Marvin Minsky"
+          ],
+          "question_id": "q_quiz_backpropagation_v2",
+          "stem": "以下哪位科学家与反向传播算法的提出密切相关？"
+        }
+      ]
+    },
+    {
+      "concept_key": "neural_network_history",
+      "coverage_tags": [
+        "neural_network_history"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_neural_network_history",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解神经网络发展的历史脉络。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能正确识别神经网络发展的关键时间点和事件。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "神经网络",
+          "en": "neural network"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "材料中提到：随后神经网络进入了低谷期，训练困难、计算资源不足、数据太少。",
+          "options": [
+            "因为反向传播算法被发现是错误的",
+            "因为训练困难、计算资源不足、数据太少",
+            "因为人们发现神经网络不如决策树有效",
+            "因为政府禁止了相关研究"
+          ],
+          "question_id": "q_quiz_neural_network_history_v1",
+          "stem": "神经网络在1980年代出现后，为什么进入了低谷期？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "材料中提到：直到2006年，Hinton提出了深度信念网络，以及无监督逐层预训练的方法，深度学习才重新崛起。",
+          "options": [
+            "1986年反向传播算法的提出",
+            "2006年Hinton提出深度信念网络和无监督逐层预训练",
+            "2012年ImageNet竞赛的突破",
+            "AlphaGo战胜李世石"
+          ],
+          "question_id": "q_quiz_neural_network_history_v2",
+          "stem": "深度学习重新崛起的标志性事件是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "imagenet_2012",
+      "coverage_tags": [
+        "imagenet_2012"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_imagenet_2012",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解2012年ImageNet竞赛对深度学习发展的意义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能正确识别2012年ImageNet竞赛的关键结果及其影响。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "ImageNet",
+          "en": "ImageNet"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "材料中的表格显示，多伦多大学（深度学习）的错误率为0.15315，远低于第二名。",
+          "options": [
+            "0.26172",
+            "0.15315",
+            "0.06656",
+            "0.11197"
+          ],
+          "question_id": "q_quiz_imagenet_2012_v1",
+          "stem": "2012年ImageNet竞赛中，使用深度学习的团队（多伦多大学）的错误率是多少？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "材料中提到：Hinton和他的学生几乎将错误率减半，重塑了计算机视觉领域。",
+          "options": [
+            "证明了深度学习在图像识别上不如传统方法",
+            "几乎将错误率减半，重塑了计算机视觉领域",
+            "导致深度学习被学术界放弃",
+            "证明了大数据对深度学习不重要"
+          ],
+          "question_id": "q_quiz_imagenet_2012_v2",
+          "stem": "2012年ImageNet竞赛的结果对深度学习领域产生了什么影响？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-introduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

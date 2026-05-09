@@ -1,0 +1,256 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "classification_definition",
+      "covered_by": [
+        "qf_flash_classification_def",
+        "qf_quiz_classification_example"
+      ],
+      "description": "分类问题的定义：根据已知数据预测新数据属于哪个类别。"
+    },
+    {
+      "coverage_tag": "label_and_feature",
+      "covered_by": [
+        "qf_flash_label_feature",
+        "qf_quiz_label_feature_identify"
+      ],
+      "description": "标签（要预测的属性）与特征（用于预测的输入属性）的概念。"
+    },
+    {
+      "coverage_tag": "classification_goal",
+      "covered_by": [
+        "qf_flash_classification_goal"
+      ],
+      "description": "分类的目标：从已知数据学习规律，预测新数据的标签。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "classification_definition",
+      "coverage_tags": [
+        "classification_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_classification_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的话准确说出分类问题的定义。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了分类问题的核心定义：根据已知标签数据预测新数据类别。",
+      "question_type": "short_answer",
+      "retrieval_focus": "分类问题的定义",
+      "term_refs": [
+        {
+          "display": "分类",
+          "en": "Classification"
+        }
+      ],
+      "variants": [
+        {
+          "back": "根据已有标签的数据，预测新数据属于哪个类别的任务。",
+          "estimated_seconds": 8,
+          "explanation": "分类的核心是利用已知数据学习规律，然后对未知数据进行类别预测。",
+          "front": "什么是分类问题？",
+          "question_id": "q_flash_classification_def_v1"
+        },
+        {
+          "back": "输入是带有特征和标签的历史数据，输出是对新数据标签的预测。",
+          "estimated_seconds": 10,
+          "explanation": "分类模型从历史数据中学习特征与标签之间的关系，然后应用到新数据上。",
+          "front": "分类问题的输入和输出分别是什么？",
+          "question_id": "q_flash_classification_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "label_and_feature",
+      "coverage_tags": [
+        "label_and_feature"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_label_feature",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分分类问题中的标签和特征。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了标签（要预测的属性）和特征（用于预测的属性）的基本概念。",
+      "question_type": "short_answer",
+      "retrieval_focus": "标签与特征的定义",
+      "term_refs": [
+        {
+          "display": "标签",
+          "en": "Label"
+        },
+        {
+          "display": "特征",
+          "en": "Feature"
+        }
+      ],
+      "variants": [
+        {
+          "back": "标签（Label）。",
+          "estimated_seconds": 5,
+          "explanation": "标签是数据记录中我们关心的、想要预测的属性，例如“是否拥有电脑”。",
+          "front": "在分类问题中，我们想要预测的那个属性叫什么？",
+          "question_id": "q_flash_label_feature_v1"
+        },
+        {
+          "back": "特征（Feature）。",
+          "estimated_seconds": 5,
+          "explanation": "特征是用于预测标签的输入属性，例如年龄、收入、是否学生等。",
+          "front": "在分类问题中，用来做判断的其他属性叫什么？",
+          "question_id": "q_flash_label_feature_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "classification_goal",
+      "coverage_tags": [
+        "classification_goal"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_classification_goal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出分类问题的最终目标。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了分类的目标：从已知数据学习规律，预测新数据的标签。",
+      "question_type": "short_answer",
+      "retrieval_focus": "分类问题的目标",
+      "term_refs": [
+        {
+          "display": "分类",
+          "en": "Classification"
+        }
+      ],
+      "variants": [
+        {
+          "back": "从已知数据中学习规律，然后用这个规律去预测新数据的标签。",
+          "estimated_seconds": 8,
+          "explanation": "分类模型通过分析历史数据中的模式，来对未知数据进行类别归属的判断。",
+          "front": "分类问题的最终目标是什么？",
+          "question_id": "q_flash_classification_goal_v1"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-1",
+  "longform_families": [],
+  "quiz_families": [
+    {
+      "concept_key": "classification_definition",
+      "coverage_tags": [
+        "classification_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_classification_example",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体例子中识别出分类问题。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能区分分类问题与其他类型的问题（如回归、聚类）。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "分类",
+          "en": "Classification"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "判断是否为垃圾邮件，就是预测一个离散的类别（垃圾/非垃圾），这是分类问题。预测房价是回归问题，将客户分组是聚类问题。",
+          "options": [
+            "根据历史房价预测未来房价",
+            "根据邮件内容判断是否为垃圾邮件",
+            "将客户按消费金额分成高、中、低三组"
+          ],
+          "question_id": "q_quiz_classification_example_v1",
+          "stem": "下面哪个是分类问题的例子？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "判断是否患病是预测一个离散的类别（患病/不患病），属于分类问题。预测股票价格是回归，新闻分组是聚类。",
+          "options": [
+            "预测明天股票的价格",
+            "根据病人的症状判断是否患有某种疾病",
+            "将新闻文章按主题自动分组"
+          ],
+          "question_id": "q_quiz_classification_example_v2",
+          "stem": "以下哪个场景最适合用分类方法解决？"
+        }
+      ]
+    },
+    {
+      "concept_key": "label_and_feature",
+      "coverage_tags": [
+        "label_and_feature"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_label_feature_identify",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体数据集中识别出标签和特征。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能区分分类数据集中的标签（目标属性）和特征（输入属性）。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "标签",
+          "en": "Label"
+        },
+        {
+          "display": "特征",
+          "en": "Feature"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 3,
+          "estimated_seconds": 15,
+          "explanation": "标签是我们想要预测的属性，在这个例子中就是“是否拥有电脑”。其他属性是用于预测的特征。",
+          "options": [
+            "年龄",
+            "收入",
+            "是否学生",
+            "是否拥有电脑"
+          ],
+          "question_id": "q_quiz_label_feature_identify_v1",
+          "stem": "在“是否拥有电脑”的数据集中，有年龄、收入、是否学生、信用评级和是否拥有电脑这几个属性。其中哪个是标签？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "这些是用来做判断的其他属性，称为特征（Features），用于预测标签的值。",
+          "options": [
+            "标签",
+            "特征",
+            "类别",
+            "记录"
+          ],
+          "question_id": "q_quiz_label_feature_identify_v2",
+          "stem": "在“是否拥有电脑”的数据集中，年龄、收入、是否学生、信用评级这些属性被称为什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

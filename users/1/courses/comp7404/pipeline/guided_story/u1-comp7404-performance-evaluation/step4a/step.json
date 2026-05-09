@@ -1,0 +1,169 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "前面我们只在一个固定的阈值下计算了精确率和召回率。",
+        "但如果阈值变了，结果也会变。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "3/5",
+          "3/5",
+          "1",
+          "2/5"
+        ],
+        "explanation": "阈值0.7时，TP=3, FP=2, FN=2, Precision=3/5, Recall=3/5；阈值0.9时，TP=2, FP=0, FN=3, Precision=1, Recall=2/5。",
+        "kind": "fill_in_blank",
+        "prompt": "分别计算两个阈值下的精确率和召回率。"
+      },
+      "focus_terms": [],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "假设有10个样本，分数和真实标签为：0.95(+), 0.92(+), 0.85(-), 0.80(+), 0.75(-), 0.70(+), 0.65(-), 0.60(+), 0.55(-), 0.50(+)。",
+        "分别取阈值=0.7 和 0.9，计算精确率和召回率。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s035",
+      "introduced_terms": [],
+      "lines": [
+        "同一个模型，不同阈值下精确率和召回率完全不同。",
+        "有没有一种方法，能综合评估模型在所有阈值下的表现？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "average_precision"
+      ],
+      "id": "s036",
+      "introduced_terms": [
+        "average_precision"
+      ],
+      "lines": [
+        "有——<term id=\"average_precision\">平均精确率</term>（AP）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "average_precision"
+      ],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "AP 的思路是：",
+        "在每个召回率水平上，看当时的精确率是多少，然后取平均。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "average_precision"
+      ],
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "具体来说，对于每个正类样本被正确召回的时刻，",
+        "记录下当前的精确率。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "average_precision"
+      ],
+      "id": "s039",
+      "introduced_terms": [],
+      "lines": [
+        "然后把这些精确率加起来，除以正类样本的总数。",
+        "这就是 AP。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.7"
+        ],
+        "explanation": "AP = (1 + 1 + 0.5 + 0.5 + 0.5) / 5 = 3.5 / 5 = 0.7。",
+        "kind": "fill_in_blank",
+        "prompt": "AP 是多少？"
+      },
+      "focus_terms": [
+        "average_precision"
+      ],
+      "id": "s040",
+      "introduced_terms": [],
+      "lines": [
+        "假设有5个正类样本，按模型打分从高到低排序。",
+        "在每个正类被召回的位置，精确率分别为：1, 1, 0.5, 0.5, 0.5。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "average_precision"
+      ],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "AP 越高，说明模型在排序时越能把正类排在前面。",
+        "它不依赖某个特定的阈值，因此更客观。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.7"
+        ],
+        "explanation": "AP = (1 + 1 + 0.5 + 0.5 + 0.5) / 5 = 0.7。",
+        "kind": "fill_in_blank",
+        "prompt": "手动计算 AP（用小数表示）。"
+      },
+      "focus_terms": [
+        "average_precision"
+      ],
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "现在，给你5个正类样本，在每个正类被召回的位置，精确率分别为：1, 1, 0.5, 0.5, 0.5。",
+        "请手动计算 AP。"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4a",
+  "source": {
+    "plain_text": "Average Precision (1), (2) from lecture material.",
+    "related": [
+      "Average Precision (1)",
+      "Average Precision (2)"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "average_precision": {
+      "aliases": [
+        "Average Precision",
+        "AP"
+      ],
+      "display": "平均精确率",
+      "gloss": "在不同召回率水平上计算精确率，然后取平均值，综合反映模型的排序质量。"
+    }
+  }
+}

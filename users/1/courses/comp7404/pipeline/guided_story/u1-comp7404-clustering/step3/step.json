@@ -1,0 +1,223 @@
+{
+  "chapter_id": "lecture-04-clustering",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-clustering",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "假设你有一堆二维平面上的点，你想把它们分成3个簇。",
+        "你会怎么画线？一个直观的想法是：先选3个中心点，然后把每个点分配给最近的中心。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "请你在心里尝试一下：如果你随机选3个点作为初始中心，然后分配所有点。",
+        "你会发现：不同的初始中心点，会导致完全不同的分组结果。",
+        "而且，你无法确定哪个结果是最好的。",
+        "请写出你观察到的结果。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "手动选择中心点时，不同的初始中心点会导致不同的分组结果，且无法自动优化。",
+        "kind": "single_choice",
+        "options": [
+          "手动选择中心点总能得到最优分组",
+          "不同的初始中心点会导致不同的分组结果",
+          "手动选择中心点不需要迭代",
+          "初始中心点不影响最终结果"
+        ],
+        "prompt": "尝试手动选择中心点后，你发现什么问题？"
+      },
+      "id": "s019",
+      "lines": [
+        "你刚才的尝试说明了什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "我们需要一种自动的方法，通过迭代来优化中心点的位置。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s021",
+      "introduced_terms": [
+        "k_means"
+      ],
+      "lines": [
+        "最经典的划分式聚类算法是 <term id=\"k_means\">K-means</term>。",
+        "它的思路非常直观：通过反复迭代，让中心点自动移动到最佳位置。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s022",
+      "introduced_terms": [
+        "centroid"
+      ],
+      "lines": [
+        "首先，你需要告诉它你想分成几个簇，这个数字叫 K。",
+        "然后，它会为每个簇随机选一个初始中心点，也就是 <term id=\"centroid\">质心</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "算法开始迭代：",
+        "第一步，把每个数据点分配给离它最近的质心，形成 K 个簇。",
+        "第二步，重新计算每个簇的新质心，新质心就是当前簇里所有点的平均值。",
+        "重复这两步，直到质心的位置不再变化。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s023b",
+      "introduced_terms": [],
+      "lines": [
+        "请用你自己的话描述 K-means 的迭代过程。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "K-means 的迭代过程包含两个主要步骤：分配点给最近的质心，然后更新质心为簇内点的平均值。",
+        "kind": "single_choice",
+        "options": [
+          "随机选择质心，然后固定不变",
+          "分配点给最近的质心，然后更新质心为平均值",
+          "计算所有点的平均值作为质心",
+          "随机分配点，然后计算质心"
+        ],
+        "prompt": "K-means 的迭代过程包含哪两个主要步骤？"
+      },
+      "id": "s024",
+      "lines": [
+        "K-means 算法中，迭代的两个主要步骤是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "K 值代表簇的数量，是用户必须事先指定的参数。",
+        "kind": "single_choice",
+        "options": [
+          "簇的数量",
+          "质心的维度",
+          "迭代的次数",
+          "数据点的数量"
+        ],
+        "prompt": "K-means 算法中，K 值代表什么？"
+      },
+      "id": "s025",
+      "lines": [
+        "K-means 算法中，K 值代表什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s026",
+      "introduced_terms": [
+        "sse"
+      ],
+      "lines": [
+        "如何评价聚类的好坏呢？",
+        "一个常用指标是 <term id=\"sse\">误差平方和</term>。",
+        "SSE 计算每个点到其簇质心的距离，然后平方求和。",
+        "SSE 越小，说明簇内点越紧凑。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "SSE 衡量簇内点的紧凑程度，SSE 越小，簇内点越紧凑。",
+        "kind": "single_choice",
+        "options": [
+          "簇内点的紧凑程度",
+          "簇间点的距离",
+          "数据点的总数",
+          "质心的数量"
+        ],
+        "prompt": "SSE 在 K-means 中用来衡量什么？"
+      },
+      "id": "s027",
+      "lines": [
+        "SSE 在 K-means 中用来衡量什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": [
+          1
+        ],
+        "explanation": "K-means 假设簇是球形的，对于长条形或大小差异很大的簇，效果可能很差。",
+        "kind": "multiple_choice",
+        "options": [
+          "簇是球形的且大小相近",
+          "簇是长条形的且大小差异很大",
+          "数据点分布均匀",
+          "K 值已知"
+        ],
+        "prompt": "以下哪些情况 K-means 可能效果很差？（多选）"
+      },
+      "id": "s028",
+      "lines": [
+        "K-means 也有缺点。它对初始质心敏感，且 K 值需要事先指定。",
+        "对于形状复杂、大小不一的簇，K-means 效果可能不好。"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "K-means Clustering: Partitional clustering approach. Each cluster is associated with a centroid (center point). Each point is assigned to the cluster with the closest centroid. Number of clusters, K, must be specified.",
+    "related": [
+      "Algorithm 1 Basic K-means Algorithm",
+      "Evaluating K-means Clusters"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "centroid": {
+      "aliases": [
+        "Centroid",
+        "Center Point"
+      ],
+      "display": "质心",
+      "gloss": "一个簇的中心点，通常是簇内所有数据点的均值。"
+    },
+    "k_means": {
+      "aliases": [
+        "K-means Clustering",
+        "K均值"
+      ],
+      "display": "K-means",
+      "gloss": "一种最常用的划分式聚类算法，通过迭代更新簇中心来最小化簇内误差平方和。"
+    },
+    "sse": {
+      "aliases": [
+        "SSE",
+        "Sum of Squared Errors"
+      ],
+      "display": "误差平方和",
+      "gloss": "衡量聚类效果的一种内部指标，计算所有点到其所属簇质心的距离平方和。"
+    }
+  }
+}

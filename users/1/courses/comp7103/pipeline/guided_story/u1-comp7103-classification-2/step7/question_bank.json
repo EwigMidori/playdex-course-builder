@@ -1,0 +1,481 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "ensemble_methods",
+      "covered_by": [
+        "qf_flash_ensemble_idea",
+        "qf_quiz_ensemble_idea"
+      ],
+      "description": "集成方法的基本思想：组合多个分类器提升性能"
+    },
+    {
+      "coverage_tag": "bagging",
+      "covered_by": [
+        "qf_flash_bagging",
+        "qf_quiz_bagging",
+        "qf_long_bagging_vs_boosting"
+      ],
+      "description": "Bagging：自助采样 + 并行训练 + 投票"
+    },
+    {
+      "coverage_tag": "boosting",
+      "covered_by": [
+        "qf_flash_boosting",
+        "qf_quiz_boosting",
+        "qf_long_bagging_vs_boosting"
+      ],
+      "description": "Boosting：迭代训练，关注错分样本"
+    },
+    {
+      "coverage_tag": "random_forest",
+      "covered_by": [
+        "qf_flash_random_forest",
+        "qf_quiz_random_forest"
+      ],
+      "description": "随机森林：Bagging + 随机特征选择"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "ensemble_methods",
+      "coverage_tags": [
+        "ensemble_methods"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ensemble_idea",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出集成方法的核心思想。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能用自己的话解释集成方法为什么能提升分类性能。",
+      "question_type": "short_answer",
+      "retrieval_focus": "集成方法的基本原理",
+      "term_refs": [
+        {
+          "display": "集成方法",
+          "en": "Ensemble Methods"
+        }
+      ],
+      "variants": [
+        {
+          "back": "训练多个分类器，然后让它们一起投票（或聚合预测结果），从而提升整体性能。",
+          "estimated_seconds": 10,
+          "explanation": "单个分类器可能不可靠，组合多个分类器可以降低风险，提高准确性和鲁棒性。",
+          "front": "集成方法（Ensemble Methods）的核心思想是什么？",
+          "question_id": "q_flash_ensemble_idea_v1"
+        },
+        {
+          "back": "因为多个分类器的投票或平均可以抵消单个分类器的偏差和方差，降低过拟合风险。",
+          "estimated_seconds": 12,
+          "explanation": "集成方法通过组合多个弱学习器来构建一个强学习器。",
+          "front": "为什么集成方法通常比单个分类器更可靠？",
+          "question_id": "q_flash_ensemble_idea_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "bagging",
+      "coverage_tags": [
+        "bagging"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bagging",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 Bagging 的两个关键步骤：自助采样和投票。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能说出 Bagging 如何生成多个训练集以及如何做最终决策。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Bagging 的流程",
+      "term_refs": [
+        {
+          "display": "Bagging",
+          "en": "Bootstrap Aggregating"
+        },
+        {
+          "display": "自助采样",
+          "en": "Bootstrap Sampling"
+        }
+      ],
+      "variants": [
+        {
+          "back": "通过自助采样（Bootstrap Sampling），即有放回地从原始数据集中抽取样本，每个新训练集大小与原数据集相同。",
+          "estimated_seconds": 10,
+          "explanation": "有放回抽样意味着同一个样本可能被多次抽到，也可能从未被抽到。",
+          "front": "Bagging 中，如何生成多个不同的训练集？",
+          "question_id": "q_flash_bagging_v1"
+        },
+        {
+          "back": "所有分类器投票决定新样本的类别（分类任务）或取平均值（回归任务）。",
+          "estimated_seconds": 8,
+          "explanation": "投票是多数表决，每个分类器有平等的一票。",
+          "front": "Bagging 中，多个分类器训练完成后，如何对新样本进行分类？",
+          "question_id": "q_flash_bagging_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "boosting",
+      "coverage_tags": [
+        "boosting"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_boosting",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出 Boosting 与 Bagging 的关键区别：迭代关注错分样本。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能解释 Boosting 如何通过调整样本权重来提升模型性能。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Boosting 的迭代机制",
+      "term_refs": [
+        {
+          "display": "Boosting",
+          "en": "Boosting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "增加上一轮被错误分类样本的权重，减少被正确分类样本的权重。",
+          "estimated_seconds": 10,
+          "explanation": "这样后续的分类器会更关注那些难以分类的样本。",
+          "front": "Boosting 中，每一轮训练后，如何调整样本的权重？",
+          "question_id": "q_flash_boosting_v1"
+        },
+        {
+          "back": "迭代的（串行的），每一轮训练依赖于上一轮的结果。",
+          "estimated_seconds": 6,
+          "explanation": "这与 Bagging 的并行训练不同。",
+          "front": "Boosting 的训练过程是并行的还是迭代的？",
+          "question_id": "q_flash_boosting_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "random_forest",
+      "coverage_tags": [
+        "random_forest"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_random_forest",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出随机森林的两个核心机制：Bagging 和随机特征选择。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能解释随机森林如何增加树的多样性。",
+      "question_type": "short_answer",
+      "retrieval_focus": "随机森林的独特之处",
+      "term_refs": [
+        {
+          "display": "随机森林",
+          "en": "Random Forest"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在每个节点分裂时，只随机选择一部分特征来考虑，而不是全部特征。",
+          "estimated_seconds": 10,
+          "explanation": "这增加了每棵树的多样性，使整体模型更强大。",
+          "front": "随机森林在 Bagging 的基础上，额外增加了什么操作？",
+          "question_id": "q_flash_random_forest_v1"
+        },
+        {
+          "back": "每棵树都用自助采样（Bootstrap）得到的训练集来训练。",
+          "estimated_seconds": 8,
+          "explanation": "这是继承了 Bagging 的思想。",
+          "front": "随机森林中，每棵树是如何训练的？",
+          "question_id": "q_flash_random_forest_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-2",
+  "longform_families": [
+    {
+      "concept_key": "ensemble_methods",
+      "coverage_tags": [
+        "bagging",
+        "boosting"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_bagging_vs_boosting",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能系统地比较 Bagging 和 Boosting 在训练方式、样本使用和最终决策上的异同。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能用自己的话解释 Bagging 和 Boosting 的核心区别，并说明各自适用的场景。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "Bagging",
+          "en": "Bootstrap Aggregating"
+        },
+        {
+          "display": "Boosting",
+          "en": "Boosting"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "训练方式",
+            "数据处理",
+            "预测方式"
+          ],
+          "question_id": "q_long_bagging_vs_boosting_v1",
+          "reference_answer": [
+            "1. 训练方式：Bagging 并行训练多个分类器，互不依赖；Boosting 串行迭代训练，每一轮依赖上一轮的结果。",
+            "2. 数据处理：Bagging 通过自助采样（有放回抽样）生成多个不同的训练集，每个样本被选中的概率相同；Boosting 初始时所有样本权重相等，之后每轮增加被错分样本的权重，减少正确分类样本的权重。",
+            "3. 预测方式：Bagging 中所有分类器投票（或取平均值），每个分类器权重相同；Boosting 中每个分类器根据其准确率被赋予不同权重，最终进行加权投票。"
+          ],
+          "rubric_points": [
+            "正确指出 Bagging 是并行训练，Boosting 是串行迭代训练",
+            "正确指出 Bagging 使用自助采样（有放回），Boosting 迭代调整样本权重",
+            "正确指出 Bagging 使用多数投票（或平均），Boosting 使用加权投票"
+          ],
+          "stem": "请比较 Bagging 和 Boosting 这两种集成方法。从以下三个方面进行阐述：\n1. 训练方式（并行还是串行）\n2. 如何处理训练数据（样本权重或采样方式）\n3. 最终如何做出预测"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "选择哪个方法",
+            "理由：对噪声的敏感性",
+            "理由：训练过程的特点"
+          ],
+          "question_id": "q_long_bagging_vs_boosting_v2",
+          "reference_answer": [
+            "选择 Bagging 更适合。",
+            "理由：Boosting 会迭代地增加被错分样本的权重，如果数据中存在噪声点，这些噪声点很可能被反复错分，导致 Boosting 过度关注噪声，从而过拟合。",
+            "理由：Bagging 通过自助采样和并行训练多个分类器，然后进行投票或平均，可以有效地降低单个分类器对噪声的敏感性，提高模型的鲁棒性。"
+          ],
+          "rubric_points": [
+            "能正确选择 Bagging 更适合噪声数据",
+            "能解释 Boosting 可能过度关注噪声点（因为噪声点常被错分，权重会增加）",
+            "能解释 Bagging 通过平均/投票可以降低噪声的影响"
+          ],
+          "stem": "假设你有一个分类任务，数据中存在一些噪声点。你认为 Bagging 和 Boosting 哪个更适合？请解释你的理由。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "ensemble_methods",
+      "coverage_tags": [
+        "ensemble_methods"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_ensemble_idea",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在不同选项中识别出集成方法的核心思想。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能区分集成方法与单一分类器的区别。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "集成方法",
+          "en": "Ensemble Methods"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "集成方法通过组合多个分类器（通常是弱分类器）来提升整体性能，而不是依赖单个最优分类器。",
+          "options": [
+            "找到一个最优的单一分类器",
+            "训练多个分类器并组合它们的预测结果",
+            "使用更复杂的单一模型来拟合数据",
+            "减少训练数据量以提高速度"
+          ],
+          "question_id": "q_quiz_ensemble_idea_v1",
+          "stem": "以下哪个选项最准确地描述了集成方法（Ensemble Methods）的核心思想？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "通过组合多个模型，集成方法可以降低偏差和方差，从而在大多数情况下提升泛化能力。",
+          "options": [
+            "总是比任何单一分类器训练更快",
+            "可以完全消除过拟合",
+            "通常能比单一分类器获得更好的泛化性能",
+            "不需要训练数据"
+          ],
+          "question_id": "q_quiz_ensemble_idea_v2",
+          "stem": "集成方法的主要优势是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "bagging",
+      "coverage_tags": [
+        "bagging"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_bagging",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别 Bagging 的关键特征：自助采样和并行训练。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能区分 Bagging 与其他集成方法（如 Boosting）的不同。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Bagging",
+          "en": "Bootstrap Aggregating"
+        },
+        {
+          "display": "自助采样",
+          "en": "Bootstrap Sampling"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "Bagging 的核心是自助采样（有放回）和并行训练多个分类器，最后通过投票或平均进行聚合。",
+          "options": [
+            "它迭代地调整样本权重，关注错分样本",
+            "它使用有放回抽样生成多个训练集，并并行训练多个分类器",
+            "它只使用全部数据的一个子集来训练一个分类器",
+            "它在每个节点分裂时随机选择特征"
+          ],
+          "question_id": "q_quiz_bagging_v1",
+          "stem": "关于 Bagging 的描述，以下哪项是正确的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "当 N 很大时，每个样本被抽到的概率约为 0.632，因此新训练集中大约包含 63.2% 的不同原始样本。",
+          "options": [
+            "N 个",
+            "约 63.2% 的原始样本",
+            "约 36.8% 的原始样本",
+            "100% 的原始样本，但顺序不同"
+          ],
+          "question_id": "q_quiz_bagging_v2",
+          "stem": "在 Bagging 中，一个大小为 N 的原始数据集经过自助采样后，新训练集中大约包含多少不同的原始样本？"
+        }
+      ]
+    },
+    {
+      "concept_key": "boosting",
+      "coverage_tags": [
+        "boosting"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_boosting",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别 Boosting 的迭代特性和权重调整机制。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能区分 Boosting 与 Bagging 在训练方式上的不同。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Boosting",
+          "en": "Boosting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Boosting 的核心机制就是迭代地调整样本权重，让后续的分类器更关注之前被分错的样本。",
+          "options": [
+            "Bagging",
+            "Boosting",
+            "随机森林",
+            "k-NN"
+          ],
+          "question_id": "q_quiz_boosting_v1",
+          "stem": "以下哪个方法会迭代地增加错误分类样本的权重，使得后续模型更关注这些样本？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Boosting 是迭代进行的，每一轮训练依赖于上一轮的结果，而 Bagging 可以并行训练所有分类器。",
+          "options": [
+            "并行的",
+            "迭代的（串行的）",
+            "随机采样的",
+            "无需训练的"
+          ],
+          "question_id": "q_quiz_boosting_v2",
+          "stem": "与 Bagging 相比，Boosting 的训练过程是："
+        }
+      ]
+    },
+    {
+      "concept_key": "random_forest",
+      "coverage_tags": [
+        "random_forest"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_random_forest",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别随机森林的两个核心组成部分：Bagging 和随机特征选择。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能区分随机森林与普通 Bagging 的区别。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "随机森林",
+          "en": "Random Forest"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "随机森林在每棵决策树的每个节点分裂时，只随机选择一部分特征来考虑，这增加了树的多样性。",
+          "options": [
+            "迭代调整样本权重",
+            "在每个节点分裂时随机选择一部分特征",
+            "使用线性模型作为基分类器",
+            "对特征进行归一化处理"
+          ],
+          "question_id": "q_quiz_random_forest_v1",
+          "stem": "随机森林算法在 Bagging 的基础上，额外引入了什么机制？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "随机森林继承了 Bagging 的思想，每棵树都使用自助采样得到的训练集进行训练。",
+          "options": [
+            "使用原始数据集的全部数据",
+            "通过有放回抽样（自助采样）得到",
+            "通过无放回抽样得到",
+            "只使用被错误分类的样本"
+          ],
+          "question_id": "q_quiz_random_forest_v2",
+          "stem": "随机森林中，每棵树的训练数据是如何得到的？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-2/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

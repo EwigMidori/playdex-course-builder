@@ -1,0 +1,213 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "训练好一个分类模型后，",
+        "怎么知道它到底好不好？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "最朴素的想法：看它猜对了多少。",
+        "也就是准确率。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "但准确率真的可靠吗？",
+        "我们来看一个例子。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "95%"
+        ],
+        "explanation": "模型把100个样本全判为负类，其中95个确实是负类，所以准确率 = 95/100 = 95%。",
+        "kind": "fill_in_blank",
+        "prompt": "这个模型的准确率是多少？"
+      },
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "假设有100个癌症筛查样本，其中5个是病人（正类），95个是健康人（负类）。",
+        "模型为了省事，把所有样本都判为负类（健康）。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "95% 的准确率看起来很高，",
+        "但模型实际上漏掉了所有5个病人！"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "在癌症筛查中，漏掉一个病人比误报一次严重得多。",
+        "所以只看准确率远远不够。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "我们需要区分两种不同的错误：",
+        "误报（把健康人判为病人）和漏报（把病人判为健康人）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "漏报"
+        ],
+        "explanation": "模型把病人判为健康人，属于漏报。",
+        "kind": "fill_in_blank",
+        "prompt": "在上面的例子中，模型犯的是哪种错误？"
+      },
+      "focus_terms": [],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "true_positive",
+        "false_positive"
+      ],
+      "id": "s009",
+      "introduced_terms": [
+        "true_positive",
+        "false_positive"
+      ],
+      "lines": [
+        "为了精确描述这两种错误，我们引入四个基本计数。",
+        "模型预测为正类，实际也是正类 → <term id=\"true_positive\">真正例</term>（TP）。",
+        "模型预测为正类，实际是负类 → <term id=\"false_positive\">假正例</term>（FP）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "true_negative",
+        "false_negative"
+      ],
+      "id": "s010",
+      "introduced_terms": [
+        "true_negative",
+        "false_negative"
+      ],
+      "lines": [
+        "模型预测为负类，实际也是负类 → <term id=\"true_negative\">真负例</term>（TN）。",
+        "模型预测为负类，实际是正类 → <term id=\"false_negative\">假负例</term>（FN）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0",
+          "5",
+          "95",
+          "0"
+        ],
+        "explanation": "模型全判为负类，所以 TP=0, FP=0, TN=95, FN=5。",
+        "kind": "fill_in_blank",
+        "prompt": "回到癌症筛查的例子，TP、FP、TN、FN 分别是多少？"
+      },
+      "focus_terms": [
+        "true_positive",
+        "false_positive",
+        "true_negative",
+        "false_negative"
+      ],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "用四个计数重新审视刚才的例子。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "有了 TP、FP、TN、FN，",
+        "就可以构建各种评价指标了。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Performance Evaluation lecture material covering precision, recall, F-measure, average precision, ROC curve, EER, and AUC.",
+    "related": [
+      "Precision, Recall, and F-measure (1)",
+      "Precision, Recall, and F-measure (2)",
+      "Precision, Recall, and F-measure (3)"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "false_negative": {
+      "aliases": [
+        "False Negative",
+        "FN"
+      ],
+      "display": "假负例",
+      "gloss": "实际为正类，模型却预测为负类的样本。"
+    },
+    "false_positive": {
+      "aliases": [
+        "False Positive",
+        "FP"
+      ],
+      "display": "假正例",
+      "gloss": "实际为负类，模型却预测为正类的样本。"
+    },
+    "true_negative": {
+      "aliases": [
+        "True Negative",
+        "TN"
+      ],
+      "display": "真负例",
+      "gloss": "实际为负类，模型也预测为负类的样本。"
+    },
+    "true_positive": {
+      "aliases": [
+        "True Positive",
+        "TP"
+      ],
+      "display": "真正例",
+      "gloss": "实际为正类，模型也预测为正类的样本。"
+    }
+  }
+}

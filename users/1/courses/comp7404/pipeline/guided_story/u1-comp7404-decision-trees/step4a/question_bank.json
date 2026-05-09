@@ -1,0 +1,541 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "entropy_definition_and_formula",
+      "covered_by": [
+        "qf_flash_entropy_formula",
+        "qf_quiz_entropy_interpretation"
+      ],
+      "description": "熵的定义、计算公式及其在决策树中作为纯度度量的角色"
+    },
+    {
+      "coverage_tag": "entropy_calculation",
+      "covered_by": [
+        "qf_flash_entropy_calc",
+        "qf_quiz_entropy_calc"
+      ],
+      "description": "给定节点类别分布，计算熵的值"
+    },
+    {
+      "coverage_tag": "classification_error_definition_and_formula",
+      "covered_by": [
+        "qf_flash_class_error_def",
+        "qf_quiz_class_error_usage"
+      ],
+      "description": "分类误差的定义、计算公式及其在决策树中的用途"
+    },
+    {
+      "coverage_tag": "classification_error_calculation",
+      "covered_by": [
+        "qf_flash_class_error_calc",
+        "qf_quiz_class_error_calc"
+      ],
+      "description": "给定节点类别分布，计算分类误差的值"
+    },
+    {
+      "coverage_tag": "comparison_of_impurity_measures",
+      "covered_by": [
+        "qf_quiz_compare_sensitivity",
+        "qf_long_compare_measures"
+      ],
+      "description": "比较 Gini 不纯度、熵和分类误差三种纯度度量的特点、敏感度和适用场景"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "entropy",
+      "coverage_tags": [
+        "entropy_definition_and_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_entropy_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆熵的计算公式。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生能写出熵的数学表达式，并理解其中符号的含义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "熵的公式及其符号含义",
+      "term_refs": [
+        {
+          "display": "熵",
+          "en": "Entropy"
+        }
+      ],
+      "variants": [
+        {
+          "back": "$I_H(t) = -\\sum_{i=1}^{c} p(i|t) \\log_2 p(i|t)$",
+          "estimated_seconds": 10,
+          "explanation": "其中 $p(i|t)$ 是节点 $t$ 中属于类别 $i$ 的样本比例，$c$ 是类别总数。",
+          "front": "写出决策树中衡量节点不纯度的熵（Entropy）的计算公式。",
+          "question_id": "q_flash_entropy_formula_v1"
+        },
+        {
+          "back": "节点 $t$ 中属于类别 $i$ 的样本比例。",
+          "estimated_seconds": 8,
+          "explanation": "这是计算熵的基础，反映了节点内各类别的分布情况。",
+          "front": "在熵的公式 $I_H(t) = -\\sum_{i=1}^{c} p(i|t) \\log_2 p(i|t)$ 中，$p(i|t)$ 代表什么？",
+          "question_id": "q_flash_entropy_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "entropy",
+      "coverage_tags": [
+        "entropy_calculation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_entropy_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的类别分布计算熵的值。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生能应用熵公式进行简单计算。",
+      "question_type": "micro_calc",
+      "retrieval_focus": "给定分布计算熵",
+      "term_refs": [
+        {
+          "display": "熵",
+          "en": "Entropy"
+        }
+      ],
+      "variants": [
+        {
+          "back": "0.469",
+          "estimated_seconds": 15,
+          "explanation": "$I_H = - (0.9 \\log_2 0.9 + 0.1 \\log_2 0.1) \\approx 0.469$",
+          "front": "一个节点有 9 个苹果和 1 个橘子，计算该节点的熵（保留三位小数）。",
+          "question_id": "q_flash_entropy_calc_v1"
+        },
+        {
+          "back": "1.0",
+          "estimated_seconds": 15,
+          "explanation": "$I_H = - (0.5 \\log_2 0.5 + 0.5 \\log_2 0.5) = - (0.5 \\times (-1) + 0.5 \\times (-1)) = 1.0$",
+          "front": "一个节点有 5 个苹果和 5 个橘子，计算该节点的熵。",
+          "question_id": "q_flash_entropy_calc_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "classification_error",
+      "coverage_tags": [
+        "classification_error_definition_and_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_class_error_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆分类误差的定义和计算公式。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生能写出分类误差的公式，并理解其含义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "分类误差的定义和公式",
+      "term_refs": [
+        {
+          "display": "分类误差",
+          "en": "Classification Error"
+        }
+      ],
+      "variants": [
+        {
+          "back": "$I_E = 1 - \\max\\{p(i|t)\\}$",
+          "estimated_seconds": 8,
+          "explanation": "其中 $\\max\\{p(i|t)\\}$ 是节点 $t$ 中占比最大的类别的比例。",
+          "front": "写出分类误差（Classification Error）的计算公式。",
+          "question_id": "q_flash_class_error_def_v1"
+        },
+        {
+          "back": "如果根据节点中占比最大的类别来预测，预测错误的概率。",
+          "estimated_seconds": 8,
+          "explanation": "它直接反映了节点中最常见类别的支配程度。",
+          "front": "分类误差衡量的是什么？",
+          "question_id": "q_flash_class_error_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "classification_error",
+      "coverage_tags": [
+        "classification_error_calculation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_class_error_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的类别分布计算分类误差。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生能应用分类误差公式进行简单计算。",
+      "question_type": "micro_calc",
+      "retrieval_focus": "给定分布计算分类误差",
+      "term_refs": [
+        {
+          "display": "分类误差",
+          "en": "Classification Error"
+        }
+      ],
+      "variants": [
+        {
+          "back": "0.1",
+          "estimated_seconds": 8,
+          "explanation": "占比最大的类别是苹果，比例为 0.9，所以分类误差 = 1 - 0.9 = 0.1。",
+          "front": "一个节点有 9 个苹果和 1 个橘子，计算该节点的分类误差。",
+          "question_id": "q_flash_class_error_calc_v1"
+        },
+        {
+          "back": "0.5",
+          "estimated_seconds": 8,
+          "explanation": "占比最大的类别是苹果或橘子，比例为 0.5，所以分类误差 = 1 - 0.5 = 0.5。",
+          "front": "一个节点有 5 个苹果和 5 个橘子，计算该节点的分类误差。",
+          "question_id": "q_flash_class_error_calc_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-decision-trees",
+  "longform_families": [
+    {
+      "concept_key": "impurity_measures_comparison",
+      "coverage_tags": [
+        "comparison_of_impurity_measures"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_compare_measures",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较和对比 Gini 不纯度、熵和分类误差三种纯度度量。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生能解释三种度量的定义、计算公式、特点、敏感度差异及在决策树中的不同用途。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "Gini 不纯度",
+          "en": "Gini Impurity"
+        },
+        {
+          "display": "熵",
+          "en": "Entropy"
+        },
+        {
+          "display": "分类误差",
+          "en": "Classification Error"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "定义与公式",
+            "敏感度比较",
+            "用途与原因"
+          ],
+          "question_id": "q_long_compare_measures_v1",
+          "reference_answer": [
+            "1. **定义与公式**: Gini 不纯度衡量随机分类错误的概率，公式为 $I_G = 1 - \\sum p(i|t)^2$。熵源于信息论，衡量不确定性，公式为 $I_H = -\\sum p(i|t) \\log_2 p(i|t)$。分类误差直接看最大类别的比例，公式为 $I_E = 1 - \\max\\{p(i|t)\\}$。",
+            "2. **敏感度比较**: 分类误差对纯度变化最不敏感，因为它只关注最大类别的比例变化，忽略了其他类别的分布变化。例如，从 50%-50% 到 90%-10%，分类误差从 0.5 降到 0.1，而 Gini 和熵的变化更显著。Gini 和熵的敏感度相似，在大多数情况下它们对分裂的排序一致。",
+            "3. **用途与原因**: Gini 和熵常用于构建决策树，因为它们能更细致地反映节点纯度的变化，有助于选择更好的分裂。分类误差由于敏感度低，不推荐用于构建树，但因其计算简单且能反映整体错误率，常用于树生长后的剪枝过程。"
+          ],
+          "rubric_points": [
+            "正确写出 Gini 不纯度、熵和分类误差的公式",
+            "指出分类误差对纯度变化最不敏感，并解释原因（只关注最大类别）",
+            "指出 Gini 和熵在大多数情况下表现相似，都可用于构建树",
+            "指出分类误差通常用于剪枝，而非构建树"
+          ],
+          "stem": "请比较 Gini 不纯度、熵和分类误差这三种纯度度量。在你的回答中，请包括以下要点：\n1. 各自的定义和计算公式。\n2. 它们对节点纯度变化的敏感度有何不同？\n3. 在决策树学习中，它们各自的主要用途是什么（例如，用于构建树还是剪枝）？为什么？"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "Gini 与熵的计算逻辑",
+            "分类误差不敏感的例子",
+            "选择 Gini 或熵的考虑"
+          ],
+          "question_id": "q_long_compare_measures_v2",
+          "reference_answer": [
+            "1. **Gini 与熵的计算逻辑**: Gini 不纯度计算的是 1 减去所有类别概率的平方和，它衡量随机分类的错误概率。熵计算的是负的各类别概率乘以对数概率之和，它衡量系统的不确定性。两者在节点纯时都趋向于 0，在不纯时增大。",
+            "2. **分类误差不敏感的例子**: 考虑一个二分类节点。情况 A: 60% 苹果，40% 橘子。情况 B: 80% 苹果，20% 橘子。分类误差从 $1-0.6=0.4$ 变为 $1-0.8=0.2$，变化了 0.2。而 Gini 从 $1-(0.6^2+0.4^2)=0.48$ 变为 $1-(0.8^2+0.2^2)=0.32$，变化了 0.16。熵从 $-(0.6\\log_2 0.6 + 0.4\\log_2 0.4) \\approx 0.971$ 变为 $-(0.8\\log_2 0.8 + 0.2\\log_2 0.2) \\approx 0.722$，变化了 0.249。虽然变化幅度不同，但分类误差的变化只反映了最大类别的变化，而 Gini 和熵反映了整体分布的变化。在更极端的例子中，比如从 51%-49% 变为 99%-1%，分类误差从 0.49 变为 0.01，变化很大，但 Gini 和熵的变化更大。关键在于，分类误差在分布变化初期（如从 50%-50% 变为 51%-49%）几乎不变，而 Gini 和熵会有明显变化，因此分类误差对小的纯度改善不敏感。",
+            "3. **选择 Gini 或熵的考虑**: 在大多数实际应用中，选择 Gini 还是熵对最终决策树的结构影响不大，因为它们对分裂的排序通常一致。Gini 计算稍快（无需对数运算），而熵有更深厚的信息论背景。通常，可以任选其一，或根据具体库的默认值来决定。"
+          ],
+          "rubric_points": [
+            "正确解释 Gini 和熵的计算逻辑",
+            "通过计算例子展示分类误差的变化幅度小于 Gini 或熵",
+            "指出分类误差不敏感的原因是只考虑最大类别",
+            "说明 Gini 和熵在大多数情况下选择相似，选择哪个通常影响不大"
+          ],
+          "stem": "假设你正在构建一个决策树分类器，并需要选择一种纯度度量作为分裂标准。请比较 Gini 不纯度和熵，并解释为什么分类误差通常不被推荐用于此目的。在你的回答中，请包括以下要点：\n1. 分别简述 Gini 不纯度和熵的计算逻辑。\n2. 用一个具体的二分类例子（例如，节点从 60%-40% 变为 80%-20%）说明分类误差为何对纯度变化不敏感。\n3. 总结在构建树时选择 Gini 或熵的考虑因素。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "entropy",
+      "coverage_tags": [
+        "entropy_definition_and_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_entropy_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解熵作为纯度度量的含义和极端情况。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生能判断熵在节点纯与不纯时的取值。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "熵",
+          "en": "Entropy"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "熵为 0 表示节点完全纯（所有样本属于同一类）。当类别均匀分布时，熵最大。",
+          "options": [
+            "当节点中所有样本都属于同一类别时，熵达到最大值",
+            "当节点中各类别样本均匀分布时，熵为 0",
+            "当节点中所有样本都属于同一类别时，熵为 0",
+            "熵的值与节点中样本总数无关，只与类别数量有关"
+          ],
+          "question_id": "q_quiz_entropy_interpretation_v1",
+          "stem": "关于决策树中熵（Entropy）的描述，以下哪项是正确的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "在二分类中，当两个类别均匀分布（各占 50%）时，熵达到最大值 1。",
+          "options": [
+            "该节点中所有样本都属于同一类",
+            "该节点中两个类别的样本数量相等",
+            "该节点中一个类别的样本数量是另一个的两倍",
+            "该节点中样本数量为 0"
+          ],
+          "question_id": "q_quiz_entropy_interpretation_v2",
+          "stem": "在一个二分类问题中，一个节点的熵为 1。这最可能意味着什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "entropy",
+      "coverage_tags": [
+        "entropy_calculation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_entropy_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能计算给定分布的熵，并与其他度量比较。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生能准确计算熵的值。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "熵",
+          "en": "Entropy"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 30,
+          "explanation": "$I_H = - (0.8 \\times (-0.322) + 0.2 \\times (-2.322)) = -(-0.2576 - 0.4644) = 0.722$",
+          "options": [
+            "0.500",
+            "0.722",
+            "0.918",
+            "1.000"
+          ],
+          "question_id": "q_quiz_entropy_calc_v1",
+          "stem": "一个节点包含 8 个苹果和 2 个橘子。该节点的熵最接近以下哪个值？（已知 $\\log_2 0.8 \\approx -0.322$, $\\log_2 0.2 \\approx -2.322$）"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 30,
+          "explanation": "$I_H = - (0.6 \\times (-0.737) + 0.4 \\times (-1.322)) = -(-0.4422 - 0.5288) = 0.971$",
+          "options": [
+            "0.600",
+            "0.722",
+            "0.971",
+            "1.000"
+          ],
+          "question_id": "q_quiz_entropy_calc_v2",
+          "stem": "一个节点包含 6 个苹果和 4 个橘子。该节点的熵最接近以下哪个值？（已知 $\\log_2 0.6 \\approx -0.737$, $\\log_2 0.4 \\approx -1.322$）"
+        }
+      ]
+    },
+    {
+      "concept_key": "classification_error",
+      "coverage_tags": [
+        "classification_error_definition_and_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_class_error_usage",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解分类误差的用途和局限性。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生能判断分类误差在决策树中的适用场景。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "分类误差",
+          "en": "Classification Error"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "分类误差对纯度变化不敏感，因此不推荐用于构建树，但常用于剪枝。",
+          "options": [
+            "作为构建树时的分裂标准",
+            "用于树生长后的剪枝",
+            "用于计算信息增益",
+            "用于初始化树的根节点"
+          ],
+          "question_id": "q_quiz_class_error_usage_v1",
+          "stem": "在决策树学习中，分类误差（Classification Error）通常被推荐用于什么目的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "分类误差只关注最大类别的比例，忽略了其他类别的分布变化，因此对纯度改善不敏感。",
+          "options": [
+            "因为它计算过于复杂",
+            "因为它对节点中类别概率的变化不够敏感",
+            "因为它只适用于多分类问题",
+            "因为它总是给出与 Gini 和熵相同的结果"
+          ],
+          "question_id": "q_quiz_class_error_usage_v2",
+          "stem": "为什么分类误差（Classification Error）不推荐作为决策树生长的分裂标准？"
+        }
+      ]
+    },
+    {
+      "concept_key": "classification_error",
+      "coverage_tags": [
+        "classification_error_calculation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_class_error_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能计算给定分布的分类误差。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生能准确计算分类误差的值。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "分类误差",
+          "en": "Classification Error"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "占比最大的类别是苹果，比例为 0.7，所以分类误差 = 1 - 0.7 = 0.3。",
+          "options": [
+            "0.1",
+            "0.3",
+            "0.7",
+            "0.9"
+          ],
+          "question_id": "q_quiz_class_error_calc_v1",
+          "stem": "一个节点包含 7 个苹果、2 个橘子和 1 个柠檬。该节点的分类误差是多少？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "占比最大的类别是苹果，比例为 0.4，所以分类误差 = 1 - 0.4 = 0.6。",
+          "options": [
+            "0.4",
+            "0.6",
+            "0.7",
+            "0.3"
+          ],
+          "question_id": "q_quiz_class_error_calc_v2",
+          "stem": "一个节点包含 4 个苹果、3 个橘子和 3 个柠檬。该节点的分类误差是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "impurity_measures_comparison",
+      "coverage_tags": [
+        "comparison_of_impurity_measures"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_compare_sensitivity",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较三种纯度度量对纯度变化的敏感度。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生能识别出对纯度变化最不敏感的度量。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Gini 不纯度",
+          "en": "Gini Impurity"
+        },
+        {
+          "display": "熵",
+          "en": "Entropy"
+        },
+        {
+          "display": "分类误差",
+          "en": "Classification Error"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 25,
+          "explanation": "分类误差从 0.5 降到 0.1，变化幅度为 0.4；而 Gini 从 0.5 降到 0.18，熵从 1.0 降到 0.469。分类误差的变化幅度相对较小，且只关注最大类别的变化。",
+          "options": [
+            "Gini 不纯度",
+            "熵",
+            "分类误差",
+            "三者敏感度相同"
+          ],
+          "question_id": "q_quiz_compare_sensitivity_v1",
+          "stem": "如果一个节点从“50% 苹果 + 50% 橘子”变成“90% 苹果 + 10% 橘子”，哪一种纯度度量对这种改善最不敏感？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "尽管 Gini 和熵的数值不同，但它们在评估分裂质量时通常给出相似的排序，因此选择的分裂也相似。",
+          "options": [
+            "Gini 和熵的计算结果总是完全相同",
+            "Gini 总是比熵更敏感",
+            "在大多数情况下，Gini 和熵选择的分裂非常相似",
+            "熵只适用于二分类问题"
+          ],
+          "question_id": "q_quiz_compare_sensitivity_v2",
+          "stem": "在决策树学习中，Gini 不纯度和熵在大多数情况下表现相似。以下哪项描述最准确？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4a",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-decision-trees/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

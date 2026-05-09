@@ -1,0 +1,314 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "fp_growth_mining_divide_conquer",
+      "covered_by": [
+        "qf_flash_conditional_pattern_base",
+        "qf_flash_conditional_fp_tree",
+        "qf_flash_mining_process_p",
+        "qf_quiz_conditional_fp_tree_construction",
+        "qf_long_mining_process_trace"
+      ],
+      "description": "FP-Growth 使用分治策略从 FP-tree 中挖掘频繁项集"
+    },
+    {
+      "coverage_tag": "conditional_pattern_base",
+      "covered_by": [
+        "qf_flash_conditional_pattern_base",
+        "qf_quiz_conditional_fp_tree_construction",
+        "qf_long_mining_process_trace"
+      ],
+      "description": "条件模式基的定义与构建"
+    },
+    {
+      "coverage_tag": "conditional_fp_tree",
+      "covered_by": [
+        "qf_flash_conditional_fp_tree",
+        "qf_quiz_conditional_fp_tree_construction",
+        "qf_long_mining_process_trace"
+      ],
+      "description": "条件 FP-tree 的构建与作用"
+    },
+    {
+      "coverage_tag": "mining_process_example_p",
+      "covered_by": [
+        "qf_flash_mining_process_p",
+        "qf_quiz_conditional_fp_tree_construction",
+        "qf_long_mining_process_trace"
+      ],
+      "description": "以项 p 为例的完整挖掘过程"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "conditional_pattern_base",
+      "coverage_tags": [
+        "fp_growth_mining_divide_conquer",
+        "conditional_pattern_base"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_conditional_pattern_base",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能定义条件模式基，并理解其构建方式。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能准确说出条件模式基的定义，并能根据给定项和 FP-tree 描述其条件模式基的组成。",
+      "question_type": "short_answer",
+      "retrieval_focus": "条件模式基的定义与构建方法",
+      "term_refs": [
+        {
+          "display": "条件模式基",
+          "en": "Conditional Pattern Base"
+        }
+      ],
+      "variants": [
+        {
+          "back": "沿着头表中该项的链表，收集所有包含该项的前缀路径。",
+          "estimated_seconds": 10,
+          "explanation": "条件模式基是 FP-Growth 分治策略的第一步，它收集了所有包含目标项的前缀路径。",
+          "front": "在 FP-Growth 算法中，对于一个项，它的“条件模式基”是如何构建的？",
+          "question_id": "q_flash_conditional_pattern_base_v1"
+        },
+        {
+          "back": "有两条前缀路径以 fcam 结尾并包含 p，一条前缀路径以 cb 结尾并包含 p。",
+          "estimated_seconds": 12,
+          "explanation": "条件模式基中的每个元素是一个前缀路径及其计数。",
+          "front": "在 FP-Growth 算法中，项 p 的条件模式基是 {(fcam:2), (cb:1)}。这表示什么？",
+          "question_id": "q_flash_conditional_pattern_base_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "conditional_fp_tree",
+      "coverage_tags": [
+        "fp_growth_mining_divide_conquer",
+        "conditional_fp_tree"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_conditional_fp_tree",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解条件 FP-tree 的构建规则和作用。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能说出条件 FP-tree 的构建规则（保留支持度 >= min_support 的项），并能解释其作用。",
+      "question_type": "short_answer",
+      "retrieval_focus": "条件 FP-tree 的构建规则",
+      "term_refs": [
+        {
+          "display": "条件 FP-tree",
+          "en": "Conditional FP-tree"
+        }
+      ],
+      "variants": [
+        {
+          "back": "只保留出现次数（支持度计数）大于等于最小支持度阈值的项。",
+          "estimated_seconds": 8,
+          "explanation": "条件 FP-tree 只包含频繁项，用于进一步挖掘。",
+          "front": "基于条件模式基构建条件 FP-tree 时，保留哪些项？",
+          "question_id": "q_flash_conditional_fp_tree_v1"
+        },
+        {
+          "back": "在更小的、只与目标项相关的数据结构上递归地挖掘频繁项集。",
+          "estimated_seconds": 10,
+          "explanation": "条件 FP-tree 是分治策略的体现，它将问题分解为更小的子问题。",
+          "front": "在 FP-Growth 中，构建条件 FP-tree 的目的是什么？",
+          "question_id": "q_flash_conditional_fp_tree_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "mining_process_example_p",
+      "coverage_tags": [
+        "fp_growth_mining_divide_conquer",
+        "mining_process_example_p"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_mining_process_p",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能复述以项 p 为例的完整挖掘过程。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能准确说出以 p 结尾的频繁项集及其支持度。",
+      "question_type": "short_answer",
+      "retrieval_focus": "以 p 结尾的频繁项集挖掘结果",
+      "term_refs": [
+        {
+          "display": "条件模式基",
+          "en": "Conditional Pattern Base"
+        },
+        {
+          "display": "条件 FP-tree",
+          "en": "Conditional FP-tree"
+        }
+      ],
+      "variants": [
+        {
+          "back": "{p} 支持度 3，{c, p} 支持度 3。",
+          "estimated_seconds": 10,
+          "explanation": "p 的条件 FP-tree 只有一条路径 {c:3}，因此只能生成包含 c 和 p 的频繁项集。",
+          "front": "在 FP-Growth 示例中，以项 p 结尾的频繁项集有哪些？它们的支持度是多少？",
+          "question_id": "q_flash_mining_process_p_v1"
+        },
+        {
+          "back": "条件 FP-tree 是 {c:3}。说明所有包含 p 的频繁项集只能由 c 和 p 组成。",
+          "estimated_seconds": 12,
+          "explanation": "条件 FP-tree 的结构决定了能挖掘出的频繁项集。",
+          "front": "在 FP-Growth 示例中，项 p 的条件 FP-tree 是什么？它说明了什么？",
+          "question_id": "q_flash_mining_process_p_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-2",
+  "longform_families": [
+    {
+      "concept_key": "mining_process_example_p",
+      "coverage_tags": [
+        "fp_growth_mining_divide_conquer",
+        "conditional_pattern_base",
+        "conditional_fp_tree",
+        "mining_process_example_p"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_mining_process_trace",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整描述 FP-Growth 算法中，从一个特定项出发挖掘所有以其结尾的频繁项集的步骤。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能清晰、有条理地解释从构建条件模式基到生成条件 FP-tree，再到推导出频繁项集的完整过程。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "条件模式基",
+          "en": "Conditional Pattern Base"
+        },
+        {
+          "display": "条件 FP-tree",
+          "en": "Conditional FP-tree"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "第一步：构建条件模式基",
+            "第二步：构建条件 FP-tree",
+            "第三步：从条件 FP-tree 中提取频繁项集"
+          ],
+          "question_id": "q_long_mining_process_trace_v1",
+          "reference_answer": [
+            "1. 构建条件模式基：从头表中项 p 的节点开始，沿着链表遍历所有包含 p 的路径。对于每条路径，取从根节点到 p 的父节点的部分（即前缀路径），并记录该路径出现的次数。对于示例数据，得到条件模式基 {(fcam:2), (cb:1)}。这表示有 2 条事务包含路径 f-c-a-m-p，1 条事务包含路径 c-b-p。",
+            "2. 构建条件 FP-tree：将条件模式基视为一个“小数据库”，再次应用 FP-tree 的构建逻辑。统计其中每个项的总出现次数：f 出现 2 次，c 出现 3 次，a 出现 2 次，m 出现 2 次，b 出现 1 次。由于最小支持度为 3，只保留 c。因此，条件 FP-tree 只有一条路径 {c:3}。",
+            "3. 提取频繁项集：由于条件 FP-tree 只有一条路径，这是一个基本情况。该路径上的所有项（这里是 c）与目标项 p 组合，形成频繁项集。枚举该路径的所有子集（包括空集），并与 p 拼接，得到频繁项集：{p}（空集与 p 拼接）和 {c, p}（{c} 与 p 拼接）。它们的支持度均为 3。"
+          ],
+          "rubric_points": [
+            "正确描述如何沿着头表中 p 的链表收集前缀路径，形成条件模式基 {(fcam:2), (cb:1)}。",
+            "正确解释条件模式基中每个元素（前缀路径和计数）的含义。",
+            "正确描述如何基于条件模式基构建条件 FP-tree，并说明只保留支持度 >= 3 的项。",
+            "正确得出 p 的条件 FP-tree 为 {c:3}。",
+            "正确解释如何从单一路径的条件 FP-tree 中枚举所有可能的子集，并与 p 拼接，得到频繁项集 {p} 和 {c, p}。",
+            "正确说明这两个频繁项集的支持度均为 3。"
+          ],
+          "stem": "请详细描述 FP-Growth 算法中，如何从已构建好的 FP-tree 中挖掘出所有以项 'p' 结尾的频繁项集。请按步骤说明，并解释每一步的目的。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "第一步：构建条件模式基",
+            "第二步：构建条件 FP-tree",
+            "第三步：从条件 FP-tree 中提取频繁项集"
+          ],
+          "question_id": "q_long_mining_process_trace_v2",
+          "reference_answer": [
+            "1. 构建条件模式基：从头表中项 m 的节点开始，沿着链表遍历所有包含 m 的路径。对于每条路径，取从根节点到 m 的父节点的部分（即前缀路径），并记录该路径出现的次数。对于示例数据，得到条件模式基 {(fca:2), (fcab:1)}。这表示有 2 条事务包含路径 f-c-a-m，1 条事务包含路径 f-c-a-b-m。",
+            "2. 构建条件 FP-tree：将条件模式基视为一个“小数据库”，再次应用 FP-tree 的构建逻辑。统计其中每个项的总出现次数：f 出现 3 次，c 出现 3 次，a 出现 3 次，b 出现 1 次。由于最小支持度为 3，只保留 f, c, a。因此，条件 FP-tree 有一条路径 {f:3, c:3, a:3}。",
+            "3. 提取频繁项集：由于条件 FP-tree 只有一条路径，这是一个基本情况。该路径上的所有项（f, c, a）与目标项 m 组合，形成频繁项集。枚举该路径的所有子集（共 2^3 = 8 个，包括空集），并与 m 拼接，得到所有包含 m 的频繁项集：{m}, {f,m}, {c,m}, {a,m}, {f,c,m}, {f,a,m}, {c,a,m}, {f,c,a,m}。它们的支持度均为 3。"
+          ],
+          "rubric_points": [
+            "正确描述如何沿着头表中 m 的链表收集前缀路径，形成条件模式基 {(fca:2), (fcab:1)}。",
+            "正确解释条件模式基中每个元素（前缀路径和计数）的含义。",
+            "正确描述如何基于条件模式基构建条件 FP-tree，并说明只保留支持度 >= 3 的项。",
+            "正确得出 m 的条件 FP-tree 为 {f:3, c:3, a:3}。",
+            "正确解释如何从单一路径的条件 FP-tree 中枚举所有可能的子集，并与 m 拼接，得到所有包含 m 的频繁项集。",
+            "正确列出所有包含 m 的频繁项集：{m}, {f,m}, {c,m}, {a,m}, {f,c,m}, {f,a,m}, {c,a,m}, {f,c,a,m}。"
+          ],
+          "stem": "请详细描述 FP-Growth 算法中，如何从已构建好的 FP-tree 中挖掘出所有以项 'm' 结尾的频繁项集。请按步骤说明，并解释每一步的目的。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "conditional_fp_tree",
+      "coverage_tags": [
+        "fp_growth_mining_divide_conquer",
+        "conditional_pattern_base",
+        "conditional_fp_tree",
+        "mining_process_example_p"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_conditional_fp_tree_construction",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的条件模式基，正确推导出条件 FP-tree 的结构。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能根据条件模式基和最小支持度，判断哪些项会被保留在条件 FP-tree 中，并识别出正确的树结构。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "条件模式基",
+          "en": "Conditional Pattern Base"
+        },
+        {
+          "display": "条件 FP-tree",
+          "en": "Conditional FP-tree"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 30,
+          "explanation": "因为 f, c, a 都出现了 3 次，满足最小支持度，所以它们会形成一条路径 {f:3, c:3, a:3}。",
+          "options": [
+            "一条路径 {f:3, c:3, a:3}",
+            "两条路径 {f:3} 和 {c:3}",
+            "空树",
+            "一条路径 {f:2, c:2, a:2}"
+          ],
+          "question_id": "q_quiz_conditional_fp_tree_construction_v1",
+          "stem": "在 FP-Growth 算法中，对于项 m，其条件模式基为 {(fca:2), (fcab:1)}，最小支持度为 3。构建条件 FP-tree 后，会得到什么结果？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 30,
+          "explanation": "因为 f, c, a 的出现次数都小于 3，没有项满足最小支持度，所以条件 FP-tree 为空。",
+          "options": [
+            "一条路径 {f:2, c:2, a:1}",
+            "一条路径 {f:2, c:2}",
+            "空树",
+            "一条路径 {f:1, c:1, a:1}"
+          ],
+          "question_id": "q_quiz_conditional_fp_tree_construction_v2",
+          "stem": "在 FP-Growth 算法中，对于项 b，其条件模式基为 {(fca:1), (f:1), (c:1)}，最小支持度为 3。构建条件 FP-tree 后，会得到什么结果？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-2/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

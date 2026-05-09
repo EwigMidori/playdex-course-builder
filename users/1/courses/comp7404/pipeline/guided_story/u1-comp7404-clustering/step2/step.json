@@ -1,0 +1,209 @@
+{
+  "chapter_id": "lecture-04-clustering",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-clustering",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "现在，假设你有一组动物数据：包括猫、狗、狼、狮子、老虎、大象、长颈鹿。",
+        "如果让你一刀切，把它们分成互不重叠的几组，你会怎么分？",
+        "请画出一个一刀切的分组方案。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "你可能按食性分：食肉动物（猫、狗、狼、狮子、老虎）和食草动物（大象、长颈鹿）。",
+        "但这样，猫和狮子虽然都是食肉动物，它们之间还有更细的差别。",
+        "一刀切的方式丢失了这种层次信息。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "一刀切分组将每个数据点只分到一个组，无法体现大组内还有小组的层次结构。",
+        "kind": "single_choice",
+        "options": [
+          "一刀切分组可以很好地处理层次数据",
+          "一刀切分组无法体现数据中的层次结构",
+          "一刀切分组总是比层次分组好",
+          "一刀切分组不需要指定组数"
+        ],
+        "prompt": "对于具有层次结构的数据（如动物分类），一刀切分组存在什么问题？"
+      },
+      "id": "s011",
+      "lines": [
+        "你刚才的判断说明了什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "有时我们需要不同粒度下的分组：比如先分食肉/食草，再在食肉下分猫科/犬科。",
+        "一刀切不够灵活，我们需要两种不同的策略。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "层次聚类可以构建层次树，在不同高度切割得到不同粒度的簇，适合处理层次数据。",
+        "kind": "single_choice",
+        "options": [
+          "划分式聚类",
+          "层次聚类",
+          "两种都可以",
+          "两种都不行"
+        ],
+        "prompt": "如果数据具有明显的层次结构（如生物分类），以下哪种聚类方式更合适？"
+      },
+      "id": "s012b",
+      "lines": [
+        "如果数据具有明显的层次结构，哪种聚类方式更合适？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s013",
+      "introduced_terms": [
+        "partitional_clustering"
+      ],
+      "lines": [
+        "第一种策略是 <term id=\"partitional_clustering\">划分式聚类</term>：一刀切，每个数据点只属于一个簇，簇之间互不重叠。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s014",
+      "introduced_terms": [
+        "hierarchical_clustering"
+      ],
+      "lines": [
+        "第二种策略是 <term id=\"hierarchical_clustering\">层次聚类</term>：构建一棵层次树，你可以在不同高度切割，得到不同粒度的簇。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "划分式聚类将数据划分为互不重叠的子集，每个数据点只属于一个簇。",
+        "kind": "single_choice",
+        "options": [
+          "划分式聚类",
+          "层次聚类",
+          "两种都可以",
+          "两种都不行"
+        ],
+        "prompt": "如果希望每个数据点只属于一个簇，应该用哪种聚类？"
+      },
+      "id": "s015",
+      "lines": [
+        "下面哪种聚类方式满足“每个数据点只属于一个簇”？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "层次聚类构建层次树，可以在不同高度切割，得到不同粒度的簇。",
+        "kind": "single_choice",
+        "options": [
+          "划分式聚类",
+          "层次聚类",
+          "两种都可以",
+          "两种都不行"
+        ],
+        "prompt": "如果希望看到不同粒度下的分组，应该用哪种聚类？"
+      },
+      "id": "s016",
+      "lines": [
+        "下面哪种聚类方式可以让你看到不同粒度下的分组？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s016b",
+      "introduced_terms": [],
+      "lines": [
+        "请判断以下说法是否正确：",
+        "划分式聚类产生的簇是互不重叠的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "划分式聚类将数据划分为互不重叠的子集，每个数据点只属于一个簇。",
+        "kind": "single_choice",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "prompt": "划分式聚类产生的簇是互不重叠的。"
+      },
+      "id": "s016c",
+      "lines": [
+        "请判断："
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s016d",
+      "introduced_terms": [],
+      "lines": [
+        "请判断以下说法是否正确：",
+        "层次聚类产生的簇是嵌套的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "层次聚类生成嵌套的簇结构，可以在不同粒度下查看。",
+        "kind": "single_choice",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "prompt": "层次聚类产生的簇是嵌套的。"
+      },
+      "id": "s016e",
+      "lines": [
+        "请判断："
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Types of Clusterings: Partitional Clustering - A division data objects into non-overlapping subsets (clusters) such that each data object is in exactly one subset. Hierarchical clustering - A set of nested clusters organized as a hierarchical tree.",
+    "related": [
+      "Notion of a Cluster can be Ambiguous"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "hierarchical_clustering": {
+      "aliases": [
+        "Hierarchical Clustering"
+      ],
+      "display": "层次聚类",
+      "gloss": "生成一个嵌套的簇层次结构，可以可视化为树状图。"
+    },
+    "partitional_clustering": {
+      "aliases": [
+        "Partitional Clustering"
+      ],
+      "display": "划分式聚类",
+      "gloss": "将数据划分为互不重叠的子集，每个数据点只属于一个簇。"
+    }
+  }
+}

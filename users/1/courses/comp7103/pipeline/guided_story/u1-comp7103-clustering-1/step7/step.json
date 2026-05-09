@@ -1,0 +1,159 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-clustering-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s063",
+      "introduced_terms": [],
+      "lines": [
+        "层次聚类有两种实现方式：自底向上和自顶向下。",
+        "先看自底向上：一开始，每个点都是一个独立的簇。",
+        "然后，每一步合并距离最近的两个簇。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "agglomerative_clustering"
+      ],
+      "id": "s064",
+      "introduced_terms": [
+        "agglomerative_clustering"
+      ],
+      "lines": [
+        "这叫做 <term id=\"agglomerative_clustering\">凝聚式聚类</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "divisive_clustering"
+      ],
+      "id": "s065",
+      "introduced_terms": [
+        "divisive_clustering"
+      ],
+      "lines": [
+        "另一种是自顶向下：所有点一开始是一个簇，然后逐步分裂。",
+        "这叫做 <term id=\"divisive_clustering\">分裂式聚类</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "proximity_matrix"
+      ],
+      "id": "s066",
+      "introduced_terms": [
+        "proximity_matrix"
+      ],
+      "lines": [
+        "凝聚式聚类需要知道哪些簇离得最近。",
+        "算法维护一个 <term id=\"proximity_matrix\">邻近度矩阵</term>，记录所有簇两两之间的距离。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s067",
+      "introduced_terms": [],
+      "lines": [
+        "现在，请你手动模拟一次凝聚式聚类过程。",
+        "假设有4个点：A(0,0), B(1,0), C(5,5), D(6,5)。",
+        "使用单链（MIN）作为簇间距离。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "expected_fields": [
+          "first_merge"
+        ],
+        "explanation": "A和B的距离是1，C和D的距离是1，其他点对的距离都大于1。所以最近的两个簇是A和B（距离1），以及C和D（距离1）。但A和B的距离最小（1），所以第一步合并A和B。",
+        "kind": "manual_simulation",
+        "prompt": "第一步：所有点都是独立的簇。最近的两个簇是？",
+        "sample_answer": {
+          "first_merge": "A和B"
+        }
+      },
+      "focus_terms": [],
+      "id": "s068",
+      "introduced_terms": [],
+      "lines": [
+        "第一步：所有点都是独立的簇。最近的两个簇是？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "expected_fields": [
+          "second_merge"
+        ],
+        "explanation": "合并A和B后，新簇AB与C的距离 = min(距离(A,C), 距离(B,C)) = min(√50, √41) ≈ 6.4。新簇AB与D的距离 = min(距离(A,D), 距离(B,D)) = min(√61, √50) ≈ 7.07。C和D的距离是1。所以最近的是C和D。",
+        "kind": "manual_simulation",
+        "prompt": "第二步：现在有3个簇：AB, C, D。最近的两个簇是？",
+        "sample_answer": {
+          "second_merge": "C和D"
+        }
+      },
+      "focus_terms": [],
+      "id": "s069",
+      "introduced_terms": [],
+      "lines": [
+        "第二步：现在有3个簇：AB, C, D。最近的两个簇是？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s070",
+      "introduced_terms": [],
+      "lines": [
+        "层次聚类的一个优势：不需要事先指定簇数。",
+        "你可以在树状图的任意高度“切一刀”，得到想要的簇数。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "Hierarchical Clustering: Agglomerative - start with points as individual clusters, merge the closest pair. Divisive - start with one all-inclusive cluster, split. Traditional algorithms use a proximity matrix.",
+    "related": [
+      "agglomerative_clustering",
+      "divisive_clustering",
+      "proximity_matrix"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "agglomerative_clustering": {
+      "aliases": [
+        "Agglomerative Clustering",
+        "自底向上"
+      ],
+      "display": "凝聚式聚类",
+      "gloss": "从每个点作为一个簇开始，逐步合并最近的簇。"
+    },
+    "divisive_clustering": {
+      "aliases": [
+        "Divisive Clustering",
+        "自顶向下"
+      ],
+      "display": "分裂式聚类",
+      "gloss": "从所有点作为一个簇开始，逐步分裂。"
+    },
+    "proximity_matrix": {
+      "aliases": [
+        "Proximity Matrix",
+        "距离矩阵"
+      ],
+      "display": "邻近度矩阵",
+      "gloss": "记录每对数据点或簇之间距离的矩阵。"
+    }
+  }
+}

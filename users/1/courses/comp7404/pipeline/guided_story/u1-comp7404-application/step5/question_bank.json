@@ -1,0 +1,409 @@
+{
+  "chapter_id": "lecture-05-application",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "spatial_pyramid_matching_intro",
+      "covered_by": [
+        "qf_flash_spm_idea",
+        "qf_quiz_spm_improvement",
+        "qf_long_spm_mechanism"
+      ],
+      "description": "空间金字塔匹配的基本思想：将图像分成多级网格，在每个格子内分别统计直方图，以保留空间信息。"
+    },
+    {
+      "coverage_tag": "spatial_pyramid_matching_construction",
+      "covered_by": [
+        "qf_flash_spm_levels",
+        "qf_quiz_spm_construction",
+        "qf_long_spm_mechanism"
+      ],
+      "description": "空间金字塔匹配的构建过程：多级网格划分（如1x1, 2x2, 4x4）、每格统计直方图、加权组合。"
+    },
+    {
+      "coverage_tag": "spatial_pyramid_matching_vs_bow",
+      "covered_by": [
+        "qf_flash_spm_vs_bow",
+        "qf_quiz_spm_improvement"
+      ],
+      "description": "空间金字塔匹配相比词袋模型的主要改进：从无序到有序，从全局到局部，引入空间布局信息。"
+    },
+    {
+      "coverage_tag": "spatial_pyramid_matching_failure_case",
+      "covered_by": [
+        "qf_flash_spm_vs_bow",
+        "qf_quiz_spm_failure_case",
+        "qf_long_spm_mechanism"
+      ],
+      "description": "词袋模型在蓝天草地互换案例中失败的原因，以及SPM如何解决。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "spatial_pyramid_matching",
+      "coverage_tags": [
+        "spatial_pyramid_matching_intro"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_spm_idea",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆空间金字塔匹配的核心思想。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能说出SPM通过多级网格划分和分块统计直方图来保留空间信息。",
+      "question_type": "short_answer",
+      "retrieval_focus": "SPM的核心操作：多级网格 + 分块直方图",
+      "term_refs": [
+        {
+          "display": "空间金字塔匹配",
+          "en": "Spatial Pyramid Matching (SPM)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将图像分成越来越细的多级网格，在每个格子内分别统计视觉单词的直方图。",
+          "estimated_seconds": 10,
+          "explanation": "SPM的核心改进就是引入空间划分，从全局直方图变为局部直方图的组合。",
+          "front": "空间金字塔匹配（SPM）通过什么方式在词袋模型的基础上保留图像的空间布局信息？",
+          "question_id": "q_flash_spm_idea_v1"
+        },
+        {
+          "back": "第一层是整个图像（1×1），第二层是2×2四个格子，第三层是4×4十六个格子。",
+          "estimated_seconds": 12,
+          "explanation": "这是SPM的标准三级金字塔划分方式，分辨率逐层变细。",
+          "front": "空间金字塔匹配中，不同分辨率级别的网格是如何划分的？请以三级金字塔为例说明。",
+          "question_id": "q_flash_spm_idea_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "spatial_pyramid_matching",
+      "coverage_tags": [
+        "spatial_pyramid_matching_construction"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_spm_levels",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆SPM多级金字塔的具体层数和格子数。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能准确说出三级金字塔各层的格子数量。",
+      "question_type": "short_answer",
+      "retrieval_focus": "SPM三级金字塔的格子数",
+      "term_refs": [
+        {
+          "display": "空间金字塔匹配",
+          "en": "Spatial Pyramid Matching (SPM)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "4个格子（2×2）。",
+          "estimated_seconds": 6,
+          "explanation": "第二层是2×2划分，共4个格子。",
+          "front": "在空间金字塔匹配的三级金字塔中，第二层（中间分辨率）将图像分成多少个格子？",
+          "question_id": "q_flash_spm_levels_v1"
+        },
+        {
+          "back": "16个格子（4×4）。",
+          "estimated_seconds": 6,
+          "explanation": "第三层是4×4划分，共16个格子。",
+          "front": "在空间金字塔匹配的三级金字塔中，第三层（最高分辨率）将图像分成多少个格子？",
+          "question_id": "q_flash_spm_levels_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "spatial_pyramid_matching",
+      "coverage_tags": [
+        "spatial_pyramid_matching_vs_bow",
+        "spatial_pyramid_matching_failure_case"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_spm_vs_bow",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出SPM相比词袋模型的核心差异。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能指出词袋模型忽略空间信息，而SPM通过分块统计保留了空间布局。",
+      "question_type": "core_difference",
+      "retrieval_focus": "SPM与BoW的核心差异：空间信息的有无",
+      "term_refs": [
+        {
+          "display": "空间金字塔匹配",
+          "en": "Spatial Pyramid Matching (SPM)"
+        },
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-Words (BoW)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为词袋模型只统计视觉单词的频率，完全忽略空间位置，所以两张图的词袋向量相同。",
+          "estimated_seconds": 10,
+          "explanation": "词袋模型是无序的，不关心单词出现在图像的哪个位置。",
+          "front": "词袋模型在“蓝天在上、草地在下”和“草地在上、蓝天在下”两张图上为什么会失败？",
+          "question_id": "q_flash_spm_vs_bow_v1"
+        },
+        {
+          "back": "引入空间（或分块统计）。",
+          "estimated_seconds": 6,
+          "explanation": "SPM通过多级网格划分，在每个格子内分别统计直方图，从而保留了空间布局信息。",
+          "front": "空间金字塔匹配相比词袋模型，核心改进用四个字概括是什么？",
+          "question_id": "q_flash_spm_vs_bow_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-application",
+  "longform_families": [
+    {
+      "concept_key": "spatial_pyramid_matching",
+      "coverage_tags": [
+        "spatial_pyramid_matching_intro",
+        "spatial_pyramid_matching_construction",
+        "spatial_pyramid_matching_failure_case"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_spm_mechanism",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整解释词袋模型的失败原因，并说明SPM如何通过多级网格划分和分块直方图来解决。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能结合蓝天草地互换案例，分析词袋模型的缺陷，并阐述SPM的改进机制。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "空间金字塔匹配",
+          "en": "Spatial Pyramid Matching (SPM)"
+        },
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-Words (BoW)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "词袋模型失败的原因",
+            "SPM的核心思想",
+            "SPM的三级金字塔构建过程（各层格子数）",
+            "每格子的操作",
+            "最终表示的形成方式"
+          ],
+          "question_id": "q_long_spm_mechanism_v1",
+          "reference_answer": [
+            "词袋模型只统计视觉单词出现的频率，完全忽略它们的位置信息。在蓝天草地互换的案例中，两张图的视觉单词分布完全相同（蓝天单词和草地单词的数量一样），因此词袋向量相同，导致误判为相似。",
+            "SPM通过将图像分成越来越细的多级网格来保留空间信息。以三级金字塔为例：第一层是整个图像（1×1），第二层是2×2四个格子，第三层是4×4十六个格子。",
+            "在每个格子内，分别统计视觉单词的直方图，记录该区域的视觉单词分布。这样，不同区域的分布差异就被记录下来了。",
+            "最后，将所有层次的直方图加权组合起来，形成一个更丰富的图像表示。这个表示既包含了全局信息（第一层），也包含了局部空间信息（第二、三层）。"
+          ],
+          "rubric_points": [
+            "指出词袋模型只统计频率、忽略位置（1分）",
+            "说明两张图词袋向量相同导致误判（1分）",
+            "说明SPM通过多级网格划分保留空间信息（1分）",
+            "正确描述三级金字塔：1×1, 2×2, 4×4（1分）",
+            "说明每格子内统计直方图（1分）",
+            "说明各层直方图加权组合成最终表示（1分）"
+          ],
+          "stem": "请分析词袋模型在“蓝天在上、草地在下”和“草地在上、蓝天在下”的案例中为什么会失败？空间金字塔匹配（SPM）如何解决这个问题？请详细说明SPM的构建过程。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "词袋模型的表示方式及缺陷",
+            "SPM的表示方式（三级金字塔为例）",
+            "SPM区分不同空间布局的能力"
+          ],
+          "question_id": "q_long_spm_mechanism_v2",
+          "reference_answer": [
+            "词袋模型会统计整张图中“天空”和“草地”视觉单词的总次数，形成一个全局直方图。缺陷是完全忽略空间位置，无法区分天空在上还是草地在上。",
+            "SPM会先将图像分成三级网格：第一层1×1统计全局直方图；第二层2×2将图像分成左上、右上、左下、右下四个格子，分别统计每个格子内的直方图；第三层4×4分成16个格子，分别统计。",
+            "SPM可以区分。因为天空在上的图片中，上半部分的格子（如第二层的左上、右上）会有更多“天空”单词，而下半部分的格子有更多“草地”单词。草地在上的图片则相反。因此，即使全局直方图相同，SPM的局部直方图分布完全不同，从而能区分。"
+          ],
+          "rubric_points": [
+            "正确描述词袋模型只统计全局频率（1分）",
+            "指出词袋模型无法区分空间布局（1分）",
+            "正确描述SPM的三级金字塔划分（1分）",
+            "说明SPM在每个格子内分别统计直方图（1分）",
+            "说明SPM能区分不同空间布局（1分）",
+            "解释原因：不同格子内的直方图不同（1分）"
+          ],
+          "stem": "假设你有一张图片，上半部分是天空（包含大量“天空”视觉单词），下半部分是草地（包含大量“草地”视觉单词）。请分析：\n(1) 词袋模型会如何表示这张图？有什么缺陷？\n(2) 空间金字塔匹配会如何表示这张图？\n(3) 如果另一张图是草地在上、天空在下，SPM能否区分？为什么？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "spatial_pyramid_matching",
+      "coverage_tags": [
+        "spatial_pyramid_matching_intro",
+        "spatial_pyramid_matching_vs_bow"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_spm_improvement",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中辨析SPM相比词袋模型的主要改进。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能正确选择SPM的核心改进是引入空间布局信息。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "空间金字塔匹配",
+          "en": "Spatial Pyramid Matching (SPM)"
+        },
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-Words (BoW)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "词袋模型忽略空间信息，而SPM通过多级网格划分和分块统计直方图，保留了空间布局。",
+          "options": [
+            "使用了更复杂的特征描述子（如SIFT）",
+            "引入了图像的空间布局信息",
+            "使用了更多的视觉单词",
+            "提高了特征提取的计算速度"
+          ],
+          "question_id": "q_quiz_spm_improvement_v1",
+          "stem": "空间金字塔匹配（SPM）相比词袋模型（BoW），最主要的改进是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "SPM将全局直方图分解为多个局部子区域的直方图，并保留了空间顺序信息。",
+          "options": [
+            "从有监督到无监督",
+            "从全局到局部，从无序到有序",
+            "从稀疏特征到稠密特征",
+            "从线性分类器到非线性分类器"
+          ],
+          "question_id": "q_quiz_spm_improvement_v2",
+          "stem": "以下哪个说法最能概括从词袋模型到空间金字塔匹配的演进思路？"
+        }
+      ]
+    },
+    {
+      "concept_key": "spatial_pyramid_matching",
+      "coverage_tags": [
+        "spatial_pyramid_matching_construction"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_spm_construction",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解SPM的构建流程和最终表示的形成方式。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能正确回答SPM如何组合多级直方图形成最终表示。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "空间金字塔匹配",
+          "en": "Spatial Pyramid Matching (SPM)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "SPM将各层直方图加权组合，形成更丰富的图像表示。",
+          "options": [
+            "只保留最高分辨率级别的直方图",
+            "将所有级别的直方图直接拼接",
+            "将所有级别的直方图加权组合",
+            "取所有级别直方图的平均值"
+          ],
+          "question_id": "q_quiz_spm_construction_v1",
+          "stem": "在空间金字塔匹配中，不同分辨率级别的直方图是如何组合成最终图像表示的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "在每个格子内分别统计视觉单词的直方图，记录该区域的视觉单词分布。",
+          "options": [
+            "提取一个全局特征向量",
+            "统计该格子内视觉单词的直方图",
+            "计算该格子与相邻格子的差异",
+            "对该格子进行边缘检测"
+          ],
+          "question_id": "q_quiz_spm_construction_v2",
+          "stem": "空间金字塔匹配中，对每个网格格子执行的操作是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "spatial_pyramid_matching",
+      "coverage_tags": [
+        "spatial_pyramid_matching_failure_case"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_spm_failure_case",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别词袋模型在空间布局不同时的失败场景。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能判断词袋模型在蓝天草地互换场景下的行为。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-Words (BoW)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "词袋模型只统计视觉单词的频率，不关心位置，因此两张图的词袋向量相同，会被认为很相似。",
+          "options": [
+            "完全不同，因为像素值不同",
+            "非常相似，因为词袋向量相同",
+            "无法比较，因为缺少空间信息",
+            "完全相同，因为视觉单词相同"
+          ],
+          "question_id": "q_quiz_spm_failure_case_v1",
+          "stem": "词袋模型会将“蓝天在上、草地在下”和“草地在上、蓝天在下”这两张图判断为："
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "当视觉单词分布相同但空间布局不同时，词袋模型会误判为相似，这正是其缺陷所在。",
+          "options": [
+            "两张光照不同的猫的图片",
+            "两张视觉单词分布相同但空间布局不同的图片",
+            "两张不同物体的图片",
+            "两张分辨率不同的图片"
+          ],
+          "question_id": "q_quiz_spm_failure_case_v2",
+          "stem": "以下哪种场景最能暴露词袋模型忽略空间信息的缺陷？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-application/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,514 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "pca_core_idea",
+      "covered_by": [
+        "qf_flash_pca_idea",
+        "qf_quiz_pca_goal",
+        "qf_long_pca_derivation"
+      ],
+      "description": "PCA 的核心思想：找到使投影后方差最大的方向"
+    },
+    {
+      "coverage_tag": "pca_variance_maximization",
+      "covered_by": [
+        "qf_flash_pca_idea",
+        "qf_quiz_pca_goal",
+        "qf_long_pca_derivation"
+      ],
+      "description": "PCA 的优化目标：最大化投影方差 u^T Σ u"
+    },
+    {
+      "coverage_tag": "pca_covariance_matrix",
+      "covered_by": [
+        "qf_flash_covariance",
+        "qf_quiz_covariance"
+      ],
+      "description": "协方差矩阵 Σ 的定义与在 PCA 中的作用"
+    },
+    {
+      "coverage_tag": "pca_eigen_decomposition",
+      "covered_by": [
+        "qf_flash_eigen_role",
+        "qf_quiz_eigen_role",
+        "qf_long_pca_derivation"
+      ],
+      "description": "PCA 的解是协方差矩阵的特征向量与特征值"
+    },
+    {
+      "coverage_tag": "pca_procedure",
+      "covered_by": [
+        "qf_flash_pca_steps",
+        "qf_quiz_pca_steps"
+      ],
+      "description": "PCA 的步骤：计算协方差矩阵 → 求特征向量 → 按特征值排序 → 取前 k 个"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "pca_core_idea",
+      "coverage_tags": [
+        "pca_core_idea",
+        "pca_variance_maximization"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_pca_idea",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用一句话说出 PCA 的核心目标。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了 PCA 的核心优化目标：最大化投影后方差。",
+      "question_type": "short_answer",
+      "retrieval_focus": "PCA 要找什么样的投影方向？",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "使数据投影后方差最大的方向。",
+          "estimated_seconds": 8,
+          "explanation": "PCA 的核心是最大化投影方差，从而保留尽可能多的数据信息。",
+          "front": "PCA 要找什么样的投影方向？",
+          "question_id": "q_flash_pca_idea_v1"
+        },
+        {
+          "back": "最大化 u^T Σ u，其中 u 是单位向量，Σ 是协方差矩阵。",
+          "estimated_seconds": 10,
+          "explanation": "投影方差可以写成 u^T Σ u，PCA 的目标就是找到使这个值最大的单位向量 u。",
+          "front": "PCA 的优化目标用数学表达式怎么写？",
+          "question_id": "q_flash_pca_idea_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca_covariance_matrix",
+      "coverage_tags": [
+        "pca_covariance_matrix"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_covariance",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能写出协方差矩阵的公式并理解其含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了协方差矩阵的定义公式及其在 PCA 中的作用。",
+      "question_type": "short_answer",
+      "retrieval_focus": "协方差矩阵的公式",
+      "term_refs": [
+        {
+          "display": "协方差矩阵",
+          "en": "Covariance Matrix"
+        }
+      ],
+      "variants": [
+        {
+          "back": "Σ = (1/N) Σ_{i=1}^{N} (x_i - μ)(x_i - μ)^T",
+          "estimated_seconds": 12,
+          "explanation": "协方差矩阵衡量数据各维度之间的相关性和方差。",
+          "front": "写出协方差矩阵 Σ 的公式（用数据点 x_i 和均值 μ 表示）。",
+          "question_id": "q_flash_covariance_v1"
+        },
+        {
+          "back": "它的特征向量给出了方差最大的投影方向，特征值给出了该方向上的方差大小。",
+          "estimated_seconds": 10,
+          "explanation": "PCA 的优化问题最终归结为对协方差矩阵进行特征分解。",
+          "front": "在 PCA 中，协方差矩阵 Σ 的作用是什么？",
+          "question_id": "q_flash_covariance_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca_eigen_decomposition",
+      "coverage_tags": [
+        "pca_eigen_decomposition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_eigen_role",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分特征向量和特征值在 PCA 中的角色。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了特征向量对应方向、特征值对应方差大小的关系。",
+      "question_type": "short_answer",
+      "retrieval_focus": "特征向量和特征值在 PCA 中分别代表什么？",
+      "term_refs": [
+        {
+          "display": "特征向量",
+          "en": "Eigenvector"
+        },
+        {
+          "display": "特征值",
+          "en": "Eigenvalue"
+        }
+      ],
+      "variants": [
+        {
+          "back": "主成分的方向（投影方向）。",
+          "estimated_seconds": 6,
+          "explanation": "协方差矩阵的特征向量就是 PCA 要找的投影方向。",
+          "front": "在 PCA 中，特征向量对应什么？",
+          "question_id": "q_flash_eigen_role_v1"
+        },
+        {
+          "back": "该特征向量方向上的方差大小。",
+          "estimated_seconds": 6,
+          "explanation": "特征值越大，说明数据在该方向上的方差越大，信息量越多。",
+          "front": "在 PCA 中，特征值对应什么？",
+          "question_id": "q_flash_eigen_role_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca_procedure",
+      "coverage_tags": [
+        "pca_procedure"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_pca_steps",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能按顺序说出 PCA 的主要步骤。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了 PCA 的标准执行流程。",
+      "question_type": "short_answer",
+      "retrieval_focus": "PCA 的步骤顺序",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "计算数据的协方差矩阵。",
+          "estimated_seconds": 6,
+          "explanation": "PCA 从计算协方差矩阵开始，然后对其进行特征分解。",
+          "front": "PCA 的第一步是什么？",
+          "question_id": "q_flash_pca_steps_v1"
+        },
+        {
+          "back": "按特征值从大到小排序，取前 k 个最大的特征值对应的特征向量。",
+          "estimated_seconds": 10,
+          "explanation": "特征值越大表示该方向方差越大，因此保留前 k 个最大的。",
+          "front": "得到协方差矩阵的特征向量和特征值后，PCA 的下一步是什么？",
+          "question_id": "q_flash_pca_steps_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "longform_families": [
+    {
+      "concept_key": "pca_eigen_decomposition",
+      "coverage_tags": [
+        "pca_core_idea",
+        "pca_variance_maximization",
+        "pca_eigen_decomposition"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_pca_derivation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释 PCA 从优化目标到特征分解的推导逻辑。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能理解 PCA 的数学原理：为什么最大化 u^T Σ u 的解是特征向量。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        },
+        {
+          "display": "协方差矩阵",
+          "en": "Covariance Matrix"
+        },
+        {
+          "display": "特征向量",
+          "en": "Eigenvector"
+        },
+        {
+          "display": "特征值",
+          "en": "Eigenvalue"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "写出 PCA 的优化目标（最大化投影方差）",
+            "引入约束条件（u 是单位向量）",
+            "使用拉格朗日乘子法或说明为什么解是特征向量",
+            "解释特征值如何反映方差大小"
+          ],
+          "question_id": "q_long_pca_derivation_v1",
+          "reference_answer": [
+            "PCA 的目标是找到一个单位向量 u，使得数据投影到 u 方向后的方差最大。",
+            "投影方差可以写成 u^T Σ u，其中 Σ 是数据的协方差矩阵。",
+            "这是一个带约束的优化问题：max u^T Σ u，s.t. u^T u = 1。",
+            "使用拉格朗日乘子法，得到 Σ u = λ u。",
+            "这意味着 u 必须是 Σ 的特征向量，λ 是相应的特征值。",
+            "投影方差 u^T Σ u = u^T (λ u) = λ，所以特征值 λ 就是该方向上的方差。",
+            "因此，要最大化方差，就选最大特征值对应的特征向量。"
+          ],
+          "rubric_points": [
+            "正确写出最大化目标：max u^T Σ u",
+            "正确写出约束条件：u^T u = 1",
+            "说明该优化问题的解满足 Σ u = λ u，即 u 是特征向量",
+            "解释 λ 是特征值，对应投影后的方差大小"
+          ],
+          "stem": "请解释 PCA 的数学原理：为什么最大化投影方差 u^T Σ u 的解是协方差矩阵 Σ 的特征向量？请从优化目标开始，逐步推导到特征分解。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "写出特征方程并求解特征值",
+            "求解每个特征值对应的特征向量",
+            "解释哪个方向是第一主成分及其原因",
+            "说明特征值大小与方差的关系"
+          ],
+          "question_id": "q_long_pca_derivation_v2",
+          "reference_answer": [
+            "特征方程：|Σ - λI| = (6.25-λ)(3.5-λ) - 4.25² = 0",
+            "展开得：λ² - 9.75λ + 21.875 - 18.0625 = λ² - 9.75λ + 3.8125 = 0",
+            "求解得 λ₁ = 9.34, λ₂ = 0.41",
+            "对于 λ₁=9.34，解 (Σ - 9.34I)v = 0 得 v₁ = [0.81, 0.59]^T",
+            "对于 λ₂=0.41，解 (Σ - 0.41I)v = 0 得 v₂ = [-0.59, 0.81]^T",
+            "第一主成分是 v₁，因为它对应的特征值 9.34 最大，表示该方向方差最大。",
+            "第二主成分 v₂ 与 v₁ 正交，方差仅为 0.41。"
+          ],
+          "rubric_points": [
+            "正确写出特征方程 |Σ - λI| = 0",
+            "正确计算特征值 λ₁=9.34, λ₂=0.41",
+            "正确计算对应的特征向量 v₁=[0.81, 0.59]^T, v₂=[-0.59, 0.81]^T",
+            "指出第一主成分是 v₁，因为它对应最大特征值 9.34",
+            "解释特征值 9.34 表示投影到 v₁ 方向后的方差"
+          ],
+          "stem": "假设你有一组二维数据点，协方差矩阵为 Σ = [[6.25, 4.25], [4.25, 3.5]]。请计算 PCA 的主成分方向，并解释每个步骤的含义。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "pca_variance_maximization",
+      "coverage_tags": [
+        "pca_core_idea",
+        "pca_variance_maximization"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_pca_goal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在选择题中识别 PCA 的优化目标。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能区分 PCA 的目标与其他方法（如 LDA）的目标。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "PCA 的目标是找到使投影后方差最大的方向，从而保留尽可能多的数据信息。",
+          "options": [
+            "最小化投影后的方差",
+            "最大化投影后的方差",
+            "最小化类别间的距离",
+            "最大化类别内的距离"
+          ],
+          "question_id": "q_quiz_pca_goal_v1",
+          "stem": "PCA 的核心优化目标是什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "数据在 x 轴方向分布更宽，方差更大，PCA 会选择方差最大的方向，即 x 轴方向。",
+          "options": [
+            "x 轴方向",
+            "y 轴方向",
+            "45 度方向",
+            "所有方向方差相同"
+          ],
+          "question_id": "q_quiz_pca_goal_v2",
+          "stem": "对于一组沿 x 轴方向分布较宽、沿 y 轴方向分布较窄的二维数据，PCA 会优先选择哪个投影方向？"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca_covariance_matrix",
+      "coverage_tags": [
+        "pca_covariance_matrix"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_covariance",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解协方差矩阵在 PCA 中的作用。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了协方差矩阵是 PCA 计算的基础。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "协方差矩阵",
+          "en": "Covariance Matrix"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "PCA 通过对协方差矩阵进行特征分解，得到特征向量（方向）和特征值（方差大小）。",
+          "options": [
+            "直接给出降维后的数据",
+            "通过特征分解提供方差最大的方向",
+            "计算数据的均值",
+            "对数据进行归一化"
+          ],
+          "question_id": "q_quiz_covariance_v1",
+          "stem": "在 PCA 中，协方差矩阵的主要作用是什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "单位矩阵表示各维度方差相等且不相关，因此所有方向上的投影方差相同。",
+          "options": [
+            "所有方向上的方差相等",
+            "数据集中在原点",
+            "数据是线性相关的",
+            "PCA 无法工作"
+          ],
+          "question_id": "q_quiz_covariance_v2",
+          "stem": "如果数据的协方差矩阵是单位矩阵，这意味着什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca_eigen_decomposition",
+      "coverage_tags": [
+        "pca_eigen_decomposition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_eigen_role",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分特征向量和特征值在 PCA 中的不同角色。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能正确理解特征分解在 PCA 中的含义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征向量",
+          "en": "Eigenvector"
+        },
+        {
+          "display": "特征值",
+          "en": "Eigenvalue"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "特征向量给出主成分的方向，特征值给出该方向上的方差大小。",
+          "options": [
+            "特征向量对应方向，特征值对应方差大小",
+            "特征向量对应方差大小，特征值对应方向",
+            "两者含义相同",
+            "两者都与方差无关"
+          ],
+          "question_id": "q_quiz_eigen_role_v1",
+          "stem": "在 PCA 中，特征向量和特征值的角色分别是什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "特征值小意味着该方向上的数据方差小，信息量少，降维时可以舍弃。",
+          "options": [
+            "该方向上的方差很小，可以忽略",
+            "该方向上的方差很大，必须保留",
+            "该方向是数据的主要变化方向",
+            "数据在该方向上完全不变"
+          ],
+          "question_id": "q_quiz_eigen_role_v2",
+          "stem": "在 PCA 中，如果某个特征值非常小（接近 0），这意味着什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca_procedure",
+      "coverage_tags": [
+        "pca_procedure"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_pca_steps",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确排列 PCA 的执行步骤。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了 PCA 的标准流程顺序。",
+      "question_type": "ordering",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "正确的顺序是：先计算协方差矩阵，再求特征向量和特征值，然后按特征值排序，最后取前 k 个。",
+          "options": [
+            "B → D → A → C",
+            "D → B → A → C",
+            "B → A → D → C",
+            "A → B → D → C"
+          ],
+          "question_id": "q_quiz_pca_steps_v1",
+          "stem": "请将以下 PCA 步骤按正确顺序排列：\nA. 按特征值从大到小排序\nB. 计算协方差矩阵\nC. 取前 k 个特征向量作为主成分\nD. 求协方差矩阵的特征向量和特征值"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "按特征值从大到小排序后，根据保留方差比例或指定 k 值来选择前 k 个主成分。",
+          "options": [
+            "计算协方差矩阵",
+            "求特征向量和特征值",
+            "按特征值排序并选择前 k 个",
+            "数据归一化"
+          ],
+          "question_id": "q_quiz_pca_steps_v2",
+          "stem": "在 PCA 流程中，哪一步决定了最终保留几个主成分？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-pca-and-lda/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

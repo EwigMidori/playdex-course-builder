@@ -1,0 +1,50 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "chapter_title": "Classification 2",
+  "course_id": "user-1-comp7103",
+  "course_title": "COMP7103",
+  "lesson_id": "u1-comp7103-classification-2",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "Nearest Neighbor Classifiers: 直觉与基本流程",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "k-NN 的细节：距离、权重与 k 的选择",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "贝叶斯分类器：从条件概率到朴素假设",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "朴素贝叶斯实战：分类与数值属性处理",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "支持向量机：最大间隔与核技巧",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "逻辑回归：用回归做分类",
+      "file": "step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "集成方法：Bagging、Boosting 与随机森林",
+      "file": "step7/step.json",
+      "sequence_id": "step7"
+    },
+    {
+      "concept": "总结与对比：选择正确的分类器",
+      "file": "step8/step.json",
+      "sequence_id": "step8"
+    }
+  ]
+}

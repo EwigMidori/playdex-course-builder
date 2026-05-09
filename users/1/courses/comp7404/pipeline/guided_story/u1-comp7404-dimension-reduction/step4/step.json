@@ -1,0 +1,145 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "LLE 用局部关系成功了。",
+        "那有没有办法改进全局方法呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "mds"
+      ],
+      "id": "s032",
+      "introduced_terms": [
+        "mds"
+      ],
+      "lines": [
+        "MDS 的问题是：它用直线距离。",
+        "直线距离会\"穿透\"卷曲的曲面。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "geodesic_distance"
+      ],
+      "id": "s033",
+      "introduced_terms": [
+        "geodesic_distance"
+      ],
+      "lines": [
+        "如果改用 <term id=\"geodesic_distance\">测地距离</term> 呢？",
+        "测地距离是沿着流形表面的最短路径。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "就像在瑞士卷表面爬行，而不是直接穿过去。",
+        "这样就不会\"穿透\"曲面了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "isomap"
+      ],
+      "id": "s035",
+      "introduced_terms": [
+        "isomap"
+      ],
+      "lines": [
+        "这就是 <term id=\"isomap\">等距映射</term> 的思路。",
+        "先计算测地距离，再对测地距离矩阵执行 MDS。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "Isomap 用测地距离代替欧氏距离，避免了直线距离穿透曲面。",
+        "kind": "method_comparison",
+        "options": [
+          "使用了核技巧",
+          "用测地距离代替欧氏距离",
+          "使用了线性投影",
+          "不需要计算距离"
+        ],
+        "prompt": "请比较 MDS 和 Isomap 在距离定义上的不同，并说明为什么这种不同对瑞士卷数据至关重要。"
+      },
+      "focus_terms": [],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "MDS 和 Isomap 在距离定义上有什么不同？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "测地距离沿着流形表面，欧氏距离是直线。对瑞士卷，欧氏距离会穿透曲面，测地距离沿着曲面走。",
+        "kind": "single_choice",
+        "options": [
+          "它们是一样的",
+          "测地距离沿着流形表面，欧氏距离是直线",
+          "测地距离更短",
+          "欧氏距离更准确"
+        ],
+        "prompt": "测地距离和欧氏距离有什么区别？"
+      },
+      "focus_terms": [],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "测地距离和欧氏距离有什么不同？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Isomap: a nonlinear generalization of classical MDS, perform MDS in the geodesic space.",
+    "related": [
+      "Tenenbaum et al. 1998"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "geodesic_distance": {
+      "aliases": [
+        "geodesic distance",
+        "shortest path distance"
+      ],
+      "display": "测地距离",
+      "gloss": "沿着流形表面的最短路径距离，而非直线欧氏距离。"
+    },
+    "isomap": {
+      "aliases": [
+        "Isomap"
+      ],
+      "display": "等距映射",
+      "gloss": "MDS 的非线性推广，在测地距离空间中进行多维缩放。"
+    },
+    "mds": {
+      "aliases": [
+        "MDS",
+        "Multidimensional Scaling"
+      ],
+      "display": "多维缩放",
+      "gloss": "一种降维方法，目标是保持高维空间中所有点对之间的距离。"
+    }
+  }
+}

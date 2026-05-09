@@ -1,0 +1,350 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "decision_tree_intuition",
+      "covered_by": [
+        "qf_flash_001",
+        "qf_quiz_001",
+        "qf_long_001"
+      ],
+      "description": "决策树通过一系列提问进行分类的核心思想"
+    },
+    {
+      "coverage_tag": "decision_tree_interpretability",
+      "covered_by": [
+        "qf_quiz_002"
+      ],
+      "description": "决策树的可解释性"
+    },
+    {
+      "coverage_tag": "feature_leaf_node",
+      "covered_by": [
+        "qf_flash_002",
+        "qf_quiz_003"
+      ],
+      "description": "特征与叶节点的基本概念"
+    },
+    {
+      "coverage_tag": "decision_tree_workflow",
+      "covered_by": [
+        "qf_quiz_001",
+        "qf_long_001"
+      ],
+      "description": "决策树的工作方式：顺序提问 vs 一次性公式"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "decision_tree_intuition",
+      "coverage_tags": [
+        "decision_tree_intuition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_001",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的话描述决策树的核心分类方式。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了决策树通过一系列提问进行分类的核心思想。",
+      "question_type": "short_answer",
+      "retrieval_focus": "决策树如何对数据进行分类",
+      "term_refs": [
+        {
+          "display": "决策树",
+          "en": "Decision Tree"
+        }
+      ],
+      "variants": [
+        {
+          "back": "通过一系列是/否提问，沿分支走到叶节点。",
+          "estimated_seconds": 8,
+          "explanation": "决策树不是一次性看所有特征，而是按顺序提问，逐步缩小范围。",
+          "front": "决策树通过什么方式对数据进行分类？",
+          "question_id": "q_flash_001_v1"
+        },
+        {
+          "back": "在叶节点上。",
+          "estimated_seconds": 5,
+          "explanation": "叶节点是决策树中不再继续分裂的节点，代表最终的分类结果。",
+          "front": "决策树中，最终的分类结果在哪里给出？",
+          "question_id": "q_flash_001_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_leaf_node",
+      "coverage_tags": [
+        "feature_leaf_node"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_002",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分特征和叶节点，并给出例子。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了特征和叶节点的基本概念。",
+      "question_type": "definition_with_example",
+      "retrieval_focus": "特征与叶节点的定义",
+      "term_refs": [
+        {
+          "display": "特征",
+          "en": "Feature"
+        },
+        {
+          "display": "叶节点",
+          "en": "Leaf Node"
+        }
+      ],
+      "variants": [
+        {
+          "back": "特征。",
+          "estimated_seconds": 5,
+          "explanation": "特征是用于描述数据样本的属性，例如颜色、直径。",
+          "front": "在水果分类的例子中，颜色和直径属于决策树的什么概念？",
+          "question_id": "q_flash_002_v1"
+        },
+        {
+          "back": "叶节点。",
+          "estimated_seconds": 5,
+          "explanation": "叶节点代表最终的分类结果。",
+          "front": "决策树中，不再继续分裂的节点叫什么？",
+          "question_id": "q_flash_002_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-decision-trees",
+  "longform_families": [
+    {
+      "concept_key": "decision_tree_intuition",
+      "coverage_tags": [
+        "decision_tree_intuition",
+        "decision_tree_workflow"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_001",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的话解释决策树的核心思想，并举例说明。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了决策树通过一系列提问进行分类的核心思想，并能用水果分类的例子进行说明。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "决策树",
+          "en": "Decision Tree"
+        },
+        {
+          "display": "特征",
+          "en": "Feature"
+        },
+        {
+          "display": "叶节点",
+          "en": "Leaf Node"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "决策树的核心思想是什么？",
+            "在水果分类的例子中，决策树是如何一步步区分苹果、葡萄和柠檬的？",
+            "为什么这种分类方式被称为“可解释”的？"
+          ],
+          "question_id": "q_long_001_v1",
+          "reference_answer": [
+            "决策树的核心思想是通过一系列是/否提问来对数据进行分类。",
+            "在水果分类的例子中，可以先问“直径大于 5 cm 吗？”，如果是则判断为苹果；如果不是，再问“是红色吗？”，如果是则判断为葡萄，否则判断为柠檬。",
+            "这种分类方式是可解释的，因为每一步的提问和分支都可以被理解和解释，不像一些黑箱模型那样难以理解。"
+          ],
+          "rubric_points": [
+            "提到决策树通过一系列是/否提问来分类",
+            "提到每个问题基于一个特征（如颜色、直径）",
+            "提到最终的分类结果在叶节点上",
+            "能用水果例子说明提问顺序（如先问直径再问颜色）",
+            "解释可解释性：每一步都可以解释为什么走这个分支"
+          ],
+          "stem": "请用自己的话解释决策树的核心思想，并结合水果分类的例子（苹果、葡萄、柠檬）说明决策树是如何工作的。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "你会选择哪些特征来提问？",
+            "你会先问哪个问题？为什么？",
+            "画出或描述你的决策树结构。"
+          ],
+          "question_id": "q_long_001_v2",
+          "reference_answer": [
+            "可以选择颜色和形状作为特征。",
+            "可以先问“是黄色的吗？”，如果是则判断为香蕉；如果不是（红色），再问“是长形的吗？”，如果是则判断为香蕉（假设有黄色长形和红色长形），否则判断为草莓。或者先问形状再问颜色。",
+            "决策树结构：根节点问颜色，左分支（黄色）到叶节点香蕉，右分支（红色）到内部节点问形状，左分支（长形）到叶节点香蕉，右分支（小）到叶节点草莓。"
+          ],
+          "rubric_points": [
+            "选择了合适的特征（如颜色、形状/大小）",
+            "设计了一个合理的提问顺序",
+            "描述了决策树的结构（根节点、内部节点、叶节点）",
+            "解释了为什么选择这个顺序"
+          ],
+          "stem": "假设你有一个新的水果数据集，包含香蕉（黄色，长形）和草莓（红色，小）。请设计一个简单的决策树来区分它们，并解释你的设计思路。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "decision_tree_workflow",
+      "coverage_tags": [
+        "decision_tree_intuition",
+        "decision_tree_workflow"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_001",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下识别决策树的工作方式。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了决策树通过顺序提问进行分类的工作方式。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "决策树",
+          "en": "Decision Tree"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "决策树的关键不是“有特征”，而是按顺序提出一连串问题，并沿分支一步步走到结论。",
+          "options": [
+            "把颜色和直径代入一个总分公式，一次性输出类别",
+            "先问“直径大于 5 cm 吗？”，再根据答案继续问下一个问题",
+            "随机猜一个类别，再逐步修正"
+          ],
+          "question_id": "q_quiz_001_v1",
+          "stem": "下面哪一种分类过程，最像决策树真正的工作方式？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "决策树通过一系列是/否提问，逐步缩小范围，而不是一次性综合所有特征。",
+          "options": [
+            "同时问“颜色是什么？”和“直径是多少？”，然后综合判断",
+            "先问“直径大于 5 cm 吗？”，如果是则判断为苹果，否则再问“是红色吗？”",
+            "先随机猜一个水果，再根据特征修正"
+          ],
+          "question_id": "q_quiz_001_v2",
+          "stem": "一个决策树要区分苹果、葡萄和柠檬。以下哪种提问顺序最符合决策树的思想？"
+        }
+      ]
+    },
+    {
+      "concept_key": "decision_tree_interpretability",
+      "coverage_tags": [
+        "decision_tree_interpretability"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_002",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解决策树被称为可解释模型的原因。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了决策树可解释性的来源。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "可解释性",
+          "en": "Interpretability"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "决策树通过一系列可解释的提问来分类，每一步都可以解释为什么走这个分支。",
+          "options": [
+            "因为它通过一系列可解释的提问来分类",
+            "因为它使用了复杂的数学公式",
+            "因为它需要大量数据训练"
+          ],
+          "question_id": "q_quiz_002_v1",
+          "stem": "为什么决策树被称为“可解释”模型？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "决策树通过一系列可解释的提问来分类，每一步都可以解释为什么走这个分支，因此更容易理解。",
+          "options": [
+            "训练速度更快",
+            "分类过程更容易理解和解释",
+            "对噪声数据更鲁棒"
+          ],
+          "question_id": "q_quiz_002_v2",
+          "stem": "与一次性使用所有特征的黑箱模型相比，决策树的主要优势是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_leaf_node",
+      "coverage_tags": [
+        "feature_leaf_node"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_003",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断关于叶节点的基本陈述是否正确。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了叶节点在决策树中的作用。",
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "叶节点",
+          "en": "Leaf Node"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "叶节点是决策树中不再继续分裂的节点，代表最终的分类结果，不再提问。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_003_v1",
+          "stem": "判断：决策树的叶节点上还可以继续提问。"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "决策树的每个内部节点都基于数据的某个特征（如颜色、直径）提出一个是/否问题。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_003_v2",
+          "stem": "判断：决策树中，每个内部节点都基于一个特征进行提问。"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-decision-trees/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

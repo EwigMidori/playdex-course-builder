@@ -1,0 +1,538 @@
+{
+  "chapter_id": "lecture-06-data-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "binary_attribute",
+      "covered_by": [
+        "qf_flash_binary",
+        "qf_quiz_binary"
+      ],
+      "description": "二元属性：只有两个取值（0或1），表示特征的有或无。"
+    },
+    {
+      "coverage_tag": "nominal_attribute",
+      "covered_by": [
+        "qf_flash_nominal",
+        "qf_quiz_nominal"
+      ],
+      "description": "名义属性：取值是离散的名称，没有顺序意义。"
+    },
+    {
+      "coverage_tag": "ordinal_attribute",
+      "covered_by": [
+        "qf_flash_ordinal",
+        "qf_quiz_ordinal"
+      ],
+      "description": "有序属性：取值是离散且有顺序的，但差值没有意义。"
+    },
+    {
+      "coverage_tag": "numerical_attribute",
+      "covered_by": [
+        "qf_flash_numerical",
+        "qf_quiz_numerical"
+      ],
+      "description": "数值属性：取值是数字，可以进行加减平均等运算。"
+    },
+    {
+      "coverage_tag": "attribute_type_classification",
+      "covered_by": [
+        "qf_quiz_classify",
+        "qf_long_classify"
+      ],
+      "description": "能够根据属性值的特征（取值个数、是否有顺序、能否计算差值）将属性正确归类。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "binary_attribute",
+      "coverage_tags": [
+        "binary_attribute"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_binary",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别二元属性的定义并给出典型例子。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能准确说出二元属性的核心特征（只有两个取值，表示有/无）并举例。",
+      "question_type": "definition_with_example",
+      "retrieval_focus": "二元属性的定义与典型例子",
+      "term_refs": [
+        {
+          "display": "二元属性",
+          "en": "binary attribute"
+        }
+      ],
+      "variants": [
+        {
+          "back": "只有两个取值（通常为0和1）的属性，表示特征的有或无。例如：是否已婚、是否吸烟。",
+          "estimated_seconds": 8,
+          "explanation": "二元属性是属性类型中最简单的一种，只有两个可能的值。",
+          "front": "什么是二元属性？请给出一个例子。",
+          "question_id": "q_flash_binary_v1"
+        },
+        {
+          "back": "二元属性。",
+          "estimated_seconds": 5,
+          "explanation": "“是否吸烟”只有两个取值：是或否，表示特征的有或无。",
+          "front": "属性“是否吸烟”属于哪种属性类型？",
+          "question_id": "q_flash_binary_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "nominal_attribute",
+      "coverage_tags": [
+        "nominal_attribute"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_nominal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别名义属性的定义并给出典型例子。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能准确说出名义属性的核心特征（离散名称，无顺序）并举例。",
+      "question_type": "definition_with_example",
+      "retrieval_focus": "名义属性的定义与典型例子",
+      "term_refs": [
+        {
+          "display": "名义属性",
+          "en": "nominal attribute"
+        }
+      ],
+      "variants": [
+        {
+          "back": "取值是离散的名称，没有顺序意义。例如：眼睛颜色、邮政编码。",
+          "estimated_seconds": 8,
+          "explanation": "名义属性的值只是标签，不能比较大小。",
+          "front": "什么是名义属性？请给出一个例子。",
+          "question_id": "q_flash_nominal_v1"
+        },
+        {
+          "back": "名义属性。因为邮政编码的数字大小不代表区域优劣，没有顺序意义。",
+          "estimated_seconds": 10,
+          "explanation": "邮政编码虽然是数字，但只是区域的标识符，不能进行数值运算。",
+          "front": "属性“邮政编码”属于哪种属性类型？为什么？",
+          "question_id": "q_flash_nominal_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "ordinal_attribute",
+      "coverage_tags": [
+        "ordinal_attribute"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ordinal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别有序属性的定义并给出典型例子。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能准确说出有序属性的核心特征（有顺序，但差值无意义）并举例。",
+      "question_type": "definition_with_example",
+      "retrieval_focus": "有序属性的定义与典型例子",
+      "term_refs": [
+        {
+          "display": "有序属性",
+          "en": "ordinal attribute"
+        }
+      ],
+      "variants": [
+        {
+          "back": "取值是离散且有顺序的，但差值没有意义。例如：成绩等级{A, B, C, D, F}、身高{高, 中, 矮}。",
+          "estimated_seconds": 8,
+          "explanation": "有序属性可以比较大小，但不能计算差值。",
+          "front": "什么是有序属性？请给出一个例子。",
+          "question_id": "q_flash_ordinal_v1"
+        },
+        {
+          "back": "有序属性。因为成绩等级有顺序（A > B > C > D > F），但A比B多多少分没有意义。",
+          "estimated_seconds": 10,
+          "explanation": "有序属性允许排序，但不支持加减运算。",
+          "front": "属性“成绩等级（A, B, C, D, F）”属于哪种属性类型？为什么？",
+          "question_id": "q_flash_ordinal_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "numerical_attribute",
+      "coverage_tags": [
+        "numerical_attribute"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_numerical",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别数值属性的定义并给出典型例子。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能准确说出数值属性的核心特征（数字，可进行算术运算）并举例。",
+      "question_type": "definition_with_example",
+      "retrieval_focus": "数值属性的定义与典型例子",
+      "term_refs": [
+        {
+          "display": "数值属性",
+          "en": "numerical attribute"
+        }
+      ],
+      "variants": [
+        {
+          "back": "取值是数字，可以进行加减平均等算术运算。例如：身高（米）、温度（℃）、销售额（元）。",
+          "estimated_seconds": 8,
+          "explanation": "数值属性支持所有算术运算。",
+          "front": "什么是数值属性？请给出一个例子。",
+          "question_id": "q_flash_numerical_v1"
+        },
+        {
+          "back": "数值属性。因为身高是数字，可以计算平均值和差值。",
+          "estimated_seconds": 8,
+          "explanation": "数值属性可以进行加减平均等运算。",
+          "front": "属性“身高（米）”属于哪种属性类型？为什么？",
+          "question_id": "q_flash_numerical_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-data-1",
+  "longform_families": [
+    {
+      "concept_key": "attribute_type_classification",
+      "coverage_tags": [
+        "attribute_type_classification"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_classify",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释不同属性类型的区别，并正确分类。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能根据属性值的特征（取值个数、是否有顺序、能否计算差值）解释为什么某个属性属于特定类型。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "属性类型",
+          "en": "attribute type"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "1. 邮政编码：",
+            "2. 温度（℃）：",
+            "3. 满意度：",
+            "4. 是否吸烟："
+          ],
+          "question_id": "q_long_classify_v1",
+          "reference_answer": [
+            "1. 邮政编码：名义属性。因为邮政编码是离散的名称，数字大小不代表区域优劣，没有顺序意义。",
+            "2. 温度（℃）：数值属性。因为温度是连续数值，可以计算平均值和差值。",
+            "3. 满意度：有序属性。因为满意度有顺序（非常满意 > 满意 > 一般 > 不满意），但差值没有意义。",
+            "4. 是否吸烟：二元属性。因为只有两个取值（是/否），表示特征的有或无。"
+          ],
+          "rubric_points": [
+            "正确识别每个属性的类型",
+            "给出合理的理由，理由需涉及取值个数、是否有顺序、能否计算差值"
+          ],
+          "stem": "请判断以下每个属性属于哪种类型（二元、名义、有序、数值），并简要说明理由。\n1. 邮政编码\n2. 温度（℃）\n3. 满意度（非常满意、满意、一般、不满意）\n4. 是否吸烟"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "1. 身高（米）：",
+            "2. 成绩等级：",
+            "3. 姓名：",
+            "4. 是否有车："
+          ],
+          "question_id": "q_long_classify_v2",
+          "reference_answer": [
+            "1. 身高（米）：数值属性。因为身高是连续数值，可以计算平均值和差值。",
+            "2. 成绩等级：有序属性。因为成绩等级有顺序（A > B > C > D > F），但差值没有意义。",
+            "3. 姓名：名义属性。因为姓名是离散的名称，没有顺序意义。",
+            "4. 是否有车：二元属性。因为只有两个取值（是/否），表示特征的有或无。"
+          ],
+          "rubric_points": [
+            "正确识别每个属性的类型",
+            "给出合理的理由，理由需涉及取值个数、是否有顺序、能否计算差值"
+          ],
+          "stem": "请判断以下每个属性属于哪种类型（二元、名义、有序、数值），并简要说明理由。\n1. 身高（米）\n2. 成绩等级（A, B, C, D, F）\n3. 姓名\n4. 是否有车"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "binary_attribute",
+      "coverage_tags": [
+        "binary_attribute"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_binary",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下识别二元属性。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能从多个选项中正确选出属于二元属性的例子。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "二元属性",
+          "en": "binary attribute"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "“是否吸烟”只有两个取值（是/否），表示特征的有或无，属于二元属性。",
+          "options": [
+            "身高（米）",
+            "是否吸烟",
+            "眼睛颜色",
+            "成绩等级（A, B, C）"
+          ],
+          "question_id": "q_quiz_binary_v1",
+          "stem": "以下哪个属性属于二元属性？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 15,
+          "explanation": "身高是连续数值，可以取多个值，不是二元属性。",
+          "options": [
+            "是否已婚",
+            "是否有车",
+            "性别（男/女）",
+            "身高（cm）"
+          ],
+          "question_id": "q_quiz_binary_v2",
+          "stem": "以下哪个不是二元属性？"
+        }
+      ]
+    },
+    {
+      "concept_key": "nominal_attribute",
+      "coverage_tags": [
+        "nominal_attribute"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_nominal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下识别名义属性。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能从多个选项中正确选出属于名义属性的例子。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "名义属性",
+          "en": "nominal attribute"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "眼睛颜色是离散的名称（如蓝色、棕色），没有顺序意义，属于名义属性。",
+          "options": [
+            "温度（℃）",
+            "身高排名（第1, 第2, 第3）",
+            "眼睛颜色",
+            "是否已婚"
+          ],
+          "question_id": "q_quiz_nominal_v1",
+          "stem": "以下哪个属性属于名义属性？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "成绩等级有顺序（A > B > C），属于有序属性，不是名义属性。",
+          "options": [
+            "邮政编码",
+            "身份证号",
+            "成绩等级（A, B, C）",
+            "姓名"
+          ],
+          "question_id": "q_quiz_nominal_v2",
+          "stem": "以下哪个不是名义属性？"
+        }
+      ]
+    },
+    {
+      "concept_key": "ordinal_attribute",
+      "coverage_tags": [
+        "ordinal_attribute"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_ordinal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下识别有序属性。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能从多个选项中正确选出属于有序属性的例子。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "有序属性",
+          "en": "ordinal attribute"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "评分有顺序（10分 > 1分），但差值不一定有实际意义，属于有序属性。",
+          "options": [
+            "身高（米）",
+            "是否已婚",
+            "薯片口味评分（1-10分）",
+            "姓名"
+          ],
+          "question_id": "q_quiz_ordinal_v1",
+          "stem": "以下哪个属性属于有序属性？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "温度是连续数值，可以计算差值，属于数值属性。",
+          "options": [
+            "身高（高、中、矮）",
+            "成绩等级（A, B, C, D, F）",
+            "温度（℃）",
+            "满意度（非常满意、满意、一般、不满意）"
+          ],
+          "question_id": "q_quiz_ordinal_v2",
+          "stem": "以下哪个不是有序属性？"
+        }
+      ]
+    },
+    {
+      "concept_key": "numerical_attribute",
+      "coverage_tags": [
+        "numerical_attribute"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_numerical",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下识别数值属性。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能从多个选项中正确选出属于数值属性的例子。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "数值属性",
+          "en": "numerical attribute"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "身高是连续数值，可以计算平均值和差值，属于数值属性。",
+          "options": [
+            "是否已婚",
+            "身高（米）",
+            "眼睛颜色",
+            "成绩等级（A, B, C）"
+          ],
+          "question_id": "q_quiz_numerical_v1",
+          "stem": "以下哪个属性属于数值属性？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 15,
+          "explanation": "“高、中、矮”是离散的有序类别，不能计算平均值，属于有序属性。",
+          "options": [
+            "温度（℃）",
+            "销售额（元）",
+            "速度（km/h）",
+            "身高（高、中、矮）"
+          ],
+          "question_id": "q_quiz_numerical_v2",
+          "stem": "以下哪个不是数值属性？"
+        }
+      ]
+    },
+    {
+      "concept_key": "attribute_type_classification",
+      "coverage_tags": [
+        "attribute_type_classification"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_classify",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据属性值的特征正确分类。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能根据属性值的特征（取值个数、是否有顺序、能否计算差值）正确判断属性类型。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "属性类型",
+          "en": "attribute type"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 3,
+          "estimated_seconds": 15,
+          "explanation": "年龄是连续数值，可以计算平均值和差值，属于数值属性。",
+          "options": [
+            "二元属性",
+            "名义属性",
+            "有序属性",
+            "数值属性"
+          ],
+          "question_id": "q_quiz_classify_v1",
+          "stem": "属性“年龄（岁）”属于哪种类型？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "年龄组有顺序（儿童 < 青少年 < 成人 < 老人），但差值没有意义，属于有序属性。",
+          "options": [
+            "二元属性",
+            "名义属性",
+            "有序属性",
+            "数值属性"
+          ],
+          "question_id": "q_quiz_classify_v2",
+          "stem": "属性“年龄组（儿童、青少年、成人、老人）”属于哪种类型？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "“是否成年”只有两个取值（是/否），表示特征的有或无，属于二元属性。",
+          "options": [
+            "二元属性",
+            "名义属性",
+            "有序属性",
+            "数值属性"
+          ],
+          "question_id": "q_quiz_classify_v3",
+          "stem": "属性“是否成年（是/否）”属于哪种类型？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "Chapter 2 Data. Types of Attributes: Binary, Nominal, Ordinal, Numerical.",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "step2: 属性的不同类型：二元、名义、有序、数值",
+    "plain_text": "pipeline/1-plain/u1-comp7103-data-1/plain.txt",
+    "related": [],
+    "source_outline": "Types of Attributes. Binary, Nominal, Ordinal, Numerical."
+  },
+  "target_language": "zh-CN"
+}

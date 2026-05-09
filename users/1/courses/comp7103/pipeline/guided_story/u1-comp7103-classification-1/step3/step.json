@@ -1,0 +1,168 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "决策树在构建时，需要决定先问哪个问题。",
+        "比如：先问年龄，还是先问收入？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "entropy"
+      ],
+      "id": "s017",
+      "introduced_terms": [
+        "entropy"
+      ],
+      "lines": [
+        "一个好的问题，应该能最大程度地降低不确定性。",
+        "如何量化“不确定性”？用<term id=\"entropy\">熵</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "entropy"
+      ],
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "想象一个信息源，只发送字母'a'和'b'。",
+        "如果两个字母出现概率各占一半，你猜下一个是什么？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "entropy"
+      ],
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "非常不确定，对吧？这时熵是1。",
+        "如果它总是发'a'，你完全确定，熵就是0。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "entropy"
+      ],
+      "formula": {
+        "latex": "H(S) = -\\sum_i p_i \\log_2(p_i)",
+        "spoken": "熵等于负的每个概率乘以以2为底该概率的对数之和。"
+      },
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "熵的公式是：",
+        "$$ H(S) = -\\sum_i p_i \\log_2(p_i) $$"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "entropy"
+      ],
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "回到我们的14条数据：9个有电脑，5个没有。",
+        "计算这个数据集的熵。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "entropy"
+      ],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "P(有电脑) = 9/14, P(无电脑) = 5/14。",
+        "熵 = -(9/14)*log₂(9/14) - (5/14)*log₂(5/14) ≈ 0.940"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "entropy"
+      ],
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "现在，如果我们用一个特征（比如年龄）来划分数据，",
+        "划分后每个子集的熵会降低。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "information_gain"
+      ],
+      "id": "s024",
+      "introduced_terms": [
+        "information_gain"
+      ],
+      "lines": [
+        "划分后熵的减少量，就是<term id=\"information_gain\">信息增益</term>。",
+        "决策树会优先选择信息增益最大的特征。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "所有样本属于同一类，不确定性为0，所以熵为0。",
+        "kind": "single_choice",
+        "options": [
+          "0",
+          "1",
+          "取决于类别数量"
+        ],
+        "prompt": "一个数据集中所有样本都属于同一类别，它的熵是多少？"
+      },
+      "focus_terms": [
+        "entropy"
+      ],
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Entropy measures uncertainty. Information gain is the reduction in entropy after a split.",
+    "related": [
+      "decision tree",
+      "impurity"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "entropy": {
+      "aliases": [
+        "Entropy",
+        "Shannon Entropy"
+      ],
+      "display": "熵",
+      "gloss": "衡量一个系统不确定性或混乱程度的指标。熵越大，越不确定。"
+    },
+    "information_gain": {
+      "aliases": [
+        "Information Gain"
+      ],
+      "display": "信息增益",
+      "gloss": "使用某个特征进行划分后，熵减少的量。增益越大，划分效果越好。"
+    }
+  }
+}

@@ -1,0 +1,427 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "accuracy_limitation",
+      "covered_by": [
+        "qf_flash_accuracy_limitation",
+        "qf_quiz_accuracy_limitation"
+      ],
+      "description": "为什么只看准确率不够：在类别不平衡场景下，高准确率可能掩盖模型完全失效的问题。"
+    },
+    {
+      "coverage_tag": "error_types",
+      "covered_by": [
+        "qf_flash_error_types",
+        "qf_quiz_error_types"
+      ],
+      "description": "误报（FP）和漏报（FN）的定义与区分。"
+    },
+    {
+      "coverage_tag": "confusion_matrix_basics",
+      "covered_by": [
+        "qf_flash_confusion_matrix",
+        "qf_quiz_confusion_matrix"
+      ],
+      "description": "TP、FP、TN、FN 四个基本计数的定义与计算。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "accuracy_limitation",
+      "coverage_tags": [
+        "accuracy_limitation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_accuracy_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么在类别不平衡时，高准确率不一定代表模型好。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能说出准确率失效的一个典型场景及其原因。",
+      "question_type": "short_answer",
+      "retrieval_focus": "准确率在类别不平衡场景下的局限性。",
+      "term_refs": [
+        {
+          "display": "准确率",
+          "en": "Accuracy"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为它漏掉了所有5个病人（正类），FN=5，完全没有检测能力。",
+          "estimated_seconds": 10,
+          "explanation": "准确率被大量负类样本（95个健康人）拉高，掩盖了模型对正类完全失效的事实。",
+          "front": "在癌症筛查中，模型把所有样本都判为健康，准确率高达95%，但为什么说这个模型很差？",
+          "question_id": "q_flash_accuracy_limitation_v1"
+        },
+        {
+          "back": "当类别严重不平衡，且模型倾向于把所有样本判为多数类时。",
+          "estimated_seconds": 10,
+          "explanation": "例如100个样本中只有1个正类，模型全判为负类也能得到99%的准确率，但完全没找出正类。",
+          "front": "什么情况下，一个模型准确率很高但仍然可能是一个糟糕的分类器？",
+          "question_id": "q_flash_accuracy_limitation_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "error_types",
+      "coverage_tags": [
+        "error_types"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_error_types",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分误报和漏报两种错误类型。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能根据场景描述判断属于误报还是漏报。",
+      "question_type": "short_answer",
+      "retrieval_focus": "误报与漏报的定义区分。",
+      "term_refs": [
+        {
+          "display": "误报",
+          "en": "False Positive"
+        },
+        {
+          "display": "漏报",
+          "en": "False Negative"
+        }
+      ],
+      "variants": [
+        {
+          "back": "误报（False Positive, FP）。",
+          "estimated_seconds": 6,
+          "explanation": "模型预测为正类，但实际是负类，所以是假正例（FP），即误报。",
+          "front": "模型把一个健康人（负类）判为病人（正类），这属于哪种错误？",
+          "question_id": "q_flash_error_types_v1"
+        },
+        {
+          "back": "漏报（False Negative, FN）。",
+          "estimated_seconds": 6,
+          "explanation": "模型预测为负类，但实际是正类，所以是假负例（FN），即漏报。",
+          "front": "模型把一个病人（正类）判为健康人（负类），这属于哪种错误？",
+          "question_id": "q_flash_error_types_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "confusion_matrix_basics",
+      "coverage_tags": [
+        "confusion_matrix_basics"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_confusion_matrix",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 TP、FP、TN、FN 四个基本计数的含义。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能根据预测结果和真实标签，正确分类每个样本到 TP/FP/TN/FN。",
+      "question_type": "short_answer",
+      "retrieval_focus": "混淆矩阵四个基本计数的定义。",
+      "term_refs": [
+        {
+          "display": "真正例",
+          "en": "True Positive"
+        },
+        {
+          "display": "假正例",
+          "en": "False Positive"
+        },
+        {
+          "display": "真负例",
+          "en": "True Negative"
+        },
+        {
+          "display": "假负例",
+          "en": "False Negative"
+        }
+      ],
+      "variants": [
+        {
+          "back": "真正例（True Positive, TP）。",
+          "estimated_seconds": 5,
+          "explanation": "预测和实际都是正类，所以是真正例。",
+          "front": "模型预测为正类，实际也是正类，这个样本叫什么？",
+          "question_id": "q_flash_confusion_matrix_v1"
+        },
+        {
+          "back": "真负例（True Negative, TN）。",
+          "estimated_seconds": 5,
+          "explanation": "预测和实际都是负类，所以是真负例。",
+          "front": "模型预测为负类，实际也是负类，这个样本叫什么？",
+          "question_id": "q_flash_confusion_matrix_v2"
+        },
+        {
+          "back": "假负例（False Negative, FN）。",
+          "estimated_seconds": 5,
+          "explanation": "预测为负但实际为正，所以是假负例。",
+          "front": "模型预测为负类，实际是正类，这个样本叫什么？",
+          "question_id": "q_flash_confusion_matrix_v3"
+        },
+        {
+          "back": "假正例（False Positive, FP）。",
+          "estimated_seconds": 5,
+          "explanation": "预测为正但实际为负，所以是假正例。",
+          "front": "模型预测为正类，实际是负类，这个样本叫什么？",
+          "question_id": "q_flash_confusion_matrix_v4"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "longform_families": [
+    {
+      "concept_key": "accuracy_limitation",
+      "coverage_tags": [
+        "accuracy_limitation",
+        "error_types",
+        "confusion_matrix_basics"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_accuracy_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能结合混淆矩阵，解释为什么只看准确率不够，并说明需要区分误报和漏报。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能用具体例子说明准确率的局限性，并引入 TP/FP/TN/FN 来精确描述模型行为。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "准确率",
+          "en": "Accuracy"
+        },
+        {
+          "display": "误报",
+          "en": "False Positive"
+        },
+        {
+          "display": "漏报",
+          "en": "False Negative"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "准确率计算",
+            "模型失败原因",
+            "混淆矩阵计数"
+          ],
+          "question_id": "q_long_accuracy_limitation_v1",
+          "reference_answer": [
+            "准确率 = (TP+TN)/(TP+FP+TN+FN) = (0+95)/(0+0+95+5) = 95/100 = 95%。因为负类样本（健康人）占绝大多数，模型全判为负类就能获得高准确率。",
+            "模型把所有病人（正类）都判为健康人（负类），漏掉了所有5个病人。在癌症筛查中，漏报（FN）的后果非常严重，病人会因此错过治疗。",
+            "TP=0（没有正确识别任何病人），FP=0（没有误报），TN=95（正确识别了所有健康人），FN=5（漏掉了所有病人）。模型完全没有预测正类的能力。"
+          ],
+          "rubric_points": [
+            "准确率 = (TP+TN)/(TP+FP+TN+FN) = 95/100 = 95%",
+            "模型漏掉了所有5个病人（FN=5），完全没有检测正类的能力",
+            "TP=0, FP=0, TN=95, FN=5"
+          ],
+          "stem": "假设你训练了一个癌症筛查模型，在100个样本（5个病人，95个健康人）上得到准确率95%。但进一步分析发现，模型把所有样本都判为健康。请解释：\n1) 为什么准确率高达95%？\n2) 这个模型在癌症筛查中为什么是失败的？\n3) 请用 TP、FP、TN、FN 四个计数来描述这个模型的行为。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "准确率计算",
+            "模型无效原因",
+            "混淆矩阵计数"
+          ],
+          "question_id": "q_long_accuracy_limitation_v2",
+          "reference_answer": [
+            "准确率 = (TP+TN)/(TP+FP+TN+FN) = (0+980)/(0+0+980+20) = 980/1000 = 98%。因为非垃圾邮件占绝大多数，模型全判为非垃圾邮件就能获得高准确率。",
+            "模型把所有垃圾邮件（正类）都判为非垃圾邮件（负类），漏掉了所有20封垃圾邮件。在垃圾邮件检测中，漏报（FN）意味着用户会收到大量垃圾邮件。",
+            "TP=0（没有正确识别任何垃圾邮件），FP=0（没有误报），TN=980（正确识别了所有非垃圾邮件），FN=20（漏掉了所有垃圾邮件）。模型完全没有检测垃圾邮件的能力。"
+          ],
+          "rubric_points": [
+            "准确率 = (TP+TN)/(TP+FP+TN+FN) = 980/1000 = 98%",
+            "模型漏掉了所有20封垃圾邮件（FN=20），完全没有检测垃圾邮件的能力",
+            "TP=0, FP=0, TN=980, FN=20"
+          ],
+          "stem": "一个垃圾邮件分类器在1000封邮件（其中20封是垃圾邮件）上得到准确率98%。但分析发现，模型把所有邮件都判为'非垃圾邮件'。请解释：\n1) 准确率是如何计算出来的？\n2) 这个模型在垃圾邮件检测中为什么是无效的？\n3) 请用 TP、FP、TN、FN 四个计数来描述这个模型的行为。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "accuracy_limitation",
+      "coverage_tags": [
+        "accuracy_limitation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_accuracy_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中识别准确率的局限性。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能判断在类别不平衡时，高准确率是否可信。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "准确率",
+          "en": "Accuracy"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "模型把所有邮件判为非垃圾邮件，虽然准确率高达98%，但漏掉了所有2%的垃圾邮件（正类），说明准确率在类别不平衡时具有欺骗性。",
+          "options": [
+            "模型表现很好，因为准确率很高",
+            "准确率被多数类（非垃圾邮件）拉高，模型实际上完全没检测出垃圾邮件",
+            "模型在垃圾邮件检测上表现优秀",
+            "准确率是衡量分类器性能的唯一可靠指标"
+          ],
+          "question_id": "q_quiz_accuracy_limitation_v1",
+          "stem": "一个垃圾邮件分类器在测试集上的准确率达到98%，但进一步分析发现它把所有邮件都判为'非垃圾邮件'。测试集中有2%是垃圾邮件。以下哪个说法最准确？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "模型全判为负类，TP=0，虽然准确率=95/100=95%，但漏掉了所有5个病人，说明准确率不能反映模型对正类的检测能力。",
+          "options": [
+            "模型很好，因为95%的准确率很高",
+            "模型漏掉了所有5%的病人，准确率不能反映模型对正类的检测能力",
+            "模型在健康人检测上表现很差",
+            "应该只看准确率，不需要其他指标"
+          ],
+          "question_id": "q_quiz_accuracy_limitation_v2",
+          "stem": "在癌症筛查场景中，一个模型把所有样本都判为健康，准确率高达95%。以下哪个说法正确？"
+        }
+      ]
+    },
+    {
+      "concept_key": "error_types",
+      "coverage_tags": [
+        "error_types"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_error_types",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体业务场景中区分误报和漏报的严重性。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能根据业务需求判断哪种错误更严重。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "误报",
+          "en": "False Positive"
+        },
+        {
+          "display": "漏报",
+          "en": "False Negative"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "漏报意味着病人没有得到及时治疗，可能危及生命；而误报通常可以通过后续检查纠正。所以漏报更严重。",
+          "options": [
+            "误报（把健康人判为病人）",
+            "漏报（把病人判为健康人）",
+            "两者一样严重",
+            "取决于具体数值"
+          ],
+          "question_id": "q_quiz_error_types_v1",
+          "stem": "在癌症筛查中，以下哪种错误后果更严重？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 10,
+          "explanation": "实际为正类（病人），模型预测为负类（健康人），所以是假负例（FN），即漏报。",
+          "options": [
+            "真正例（TP）",
+            "假正例（FP）",
+            "假负例（FN）",
+            "真负例（TN）"
+          ],
+          "question_id": "q_quiz_error_types_v2",
+          "stem": "一个模型把实际为病人的样本判为健康人，这属于什么错误？"
+        }
+      ]
+    },
+    {
+      "concept_key": "confusion_matrix_basics",
+      "coverage_tags": [
+        "confusion_matrix_basics"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_confusion_matrix",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据混淆矩阵的计数理解模型行为。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能根据 TP/FP/TN/FN 的值判断模型的主要问题。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "真正例",
+          "en": "True Positive"
+        },
+        {
+          "display": "假正例",
+          "en": "False Positive"
+        },
+        {
+          "display": "真负例",
+          "en": "True Negative"
+        },
+        {
+          "display": "假负例",
+          "en": "False Negative"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "TP=0且FP=0，说明模型没有预测任何正类；TN=95且FN=5，说明模型把所有样本都判为负类。",
+          "options": [
+            "模型把所有样本都判为正类",
+            "模型把所有样本都判为负类",
+            "模型完美分类了所有样本",
+            "模型把所有正类都正确识别了"
+          ],
+          "question_id": "q_quiz_confusion_matrix_v1",
+          "stem": "一个模型的混淆矩阵为：TP=0, FP=0, TN=95, FN=5。以下哪个说法正确？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "FP=10表示有10个实际为负类的样本被模型预测为正类，即误报。",
+          "options": [
+            "模型没有犯任何错误",
+            "模型把10个负类误报为正类",
+            "模型漏掉了10个正类",
+            "模型把所有样本都判为正类"
+          ],
+          "question_id": "q_quiz_confusion_matrix_v2",
+          "stem": "一个模型的混淆矩阵为：TP=5, FP=10, TN=80, FN=5。以下哪个说法正确？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-performance-evaluation/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,158 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "现实世界中的数据往往不是线性可分的。",
+        "比如，两类数据点可能像同心圆一样嵌套在一起。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s046",
+      "introduced_terms": [],
+      "lines": [
+        "让我们尝试用之前学过的线性SVM去分类这个同心圆数据。",
+        "结果会怎样？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s046b",
+      "introduced_terms": [],
+      "lines": [
+        "你很快会发现：不管直线怎么转、怎么平移，总会切到内圈，或者漏掉外圈。",
+        "这不是“你还没找到那条好线”，而是“根本不存在一条直线能把它们彻底分开”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "同心圆是典型的线性不可分数据。你可以尝试很多条直线，但每一种都会留下系统性错误，不是调一调位置就能解决的。",
+        "kind": "visual_selection",
+        "options": [
+          "完美分开",
+          "无法分开，会有很多错误",
+          "不确定"
+        ],
+        "prompt": "下面是一个同心圆数据集（内圈和外圈属于不同类别）。如果你真的动手反复去画不同的直线做线性 SVM 分类，最终最可能得到什么结论？"
+      },
+      "focus_terms": [],
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "线性分类器失败了。但我们不需要立刻放弃SVM。",
+        "问题出在表示方式上，而不是模型本身。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "kernel_trick",
+        "kernel_function"
+      ],
+      "id": "s049",
+      "introduced_terms": [
+        "kernel_trick",
+        "kernel_function"
+      ],
+      "lines": [
+        "一个巧妙的思路是：把数据映射到更高维的空间。",
+        "在高维空间里，原本非线性可分的数据可能变得线性可分。",
+        "SVM 通过 <term id=\"kernel_trick\">核技巧</term> 和 <term id=\"kernel_function\">核函数</term> 巧妙地实现了这一点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s050",
+      "introduced_terms": [],
+      "lines": [
+        "核函数能在低维空间直接计算出高维空间中的内积，避免了昂贵的显式映射。",
+        "我们只需要把SVM对偶问题中的内积替换成核函数即可。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "线性不可分时，首先应该考虑通过核函数将数据映射到更高维的空间，使其变得线性可分。",
+        "kind": "single_choice",
+        "options": [
+          "立刻换一个模型",
+          "考虑使用核函数，改变数据的表示空间",
+          "增加训练数据",
+          "减少模型复杂度"
+        ],
+        "prompt": "如果原空间线性不可分，第一反应应该是什么？"
+      },
+      "focus_terms": [],
+      "id": "s051",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "当数据在原空间线性不可分时，使用核函数将数据映射到高维空间，是处理这种情况的标准方法。",
+        "kind": "single_choice",
+        "options": [
+          "使用核函数将数据映射到高维空间",
+          "增加训练数据量",
+          "降低模型复杂度",
+          "使用更简单的分类器"
+        ],
+        "prompt": "以下哪种情况最适合使用核函数？"
+      },
+      "focus_terms": [],
+      "id": "s052",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "The power of SVMs resides in the fact that they represent a robust and efficient implementation of the principle in Cover's theorem on the separability of patterns. 'A complex pattern-classification problem cast in a high-dimensional space nonlinearly is more likely to be linearly separable than in a low-dimensional space'. Based on this principle, SVMs operate in two stages: Perform a non-linear mapping of the feature vector x onto a high-dimensional space that is hidden from the inputs or the outputs. Construct an optimal separating hyperplane in the high-dimensional space. Consider a classification problem in R^2. Assume we choose a kernel function K(x_i, x_j) = (x_i^T x_j)^2. Our goal is to find a non-linear projection phi(x) such that (x_i^T x_j)^2 = phi(x_i)^T phi(x_j). Performing the expansion of K(x_i, x_j) ... Notice that the inner product phi(x_i)^T phi(x_j) can be computed in R^2 (the original space) by means of the kernel (x_i^T x_j)^2 without ever having to project onto R^3! How do we compute the dual variables a_i in the implicit space? Very simple: we use the same optimization problem as before, except for now we replace the dot product phi(x_i)^T phi(x_j) by the kernel K(x_i, x_j). The Lagrangian dual problem for the non-linear SVM is simply L_D(a) = sum_{i=1}^N a_i - 1/2 sum_{i=1}^N sum_{j=1}^N a_i a_j y_i y_j K(x_i, x_j). Kernel functions: Polynomial kernels K(x, x') = (x^T x' + 1)^D. Radial basis function kernels K(x, x') = exp(-||x - x'||^2 / (2 sigma^2)).",
+    "related": [
+      "Kernel Trick",
+      "Kernel Function"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "kernel_function": {
+      "aliases": [
+        "Kernel Function",
+        "Kernel"
+      ],
+      "display": "核函数",
+      "gloss": "一个函数，它接收两个低维空间的向量，返回的结果等于它们在某个高维空间中的内积。"
+    },
+    "kernel_trick": {
+      "aliases": [
+        "Kernel Trick",
+        "Kernel Method"
+      ],
+      "display": "核技巧",
+      "gloss": "一种在不显式计算高维映射的情况下，通过核函数在低维空间计算高维空间内积的技术。"
+    }
+  }
+}

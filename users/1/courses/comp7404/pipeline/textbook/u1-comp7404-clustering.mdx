@@ -1,0 +1,456 @@
+---
+lessonId: u1-comp7404-clustering
+title: 聚类分析：基本概念与算法
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["what_is_cluster_analysis", "motivation_for_automatic_clustering", "clustering_as_unsupervised_learning"]
+    linkedSteps: ["step1"]
+  - sectionId: global-concept-map
+    title: 课程全景与关键问题
+    coverageTags: ["what_is_cluster_analysis", "cluster_definition", "clustering_vs_classification", "clustering_as_unsupervised_learning", "notion_of_cluster_ambiguity"]
+    linkedSteps: ["step1", "step2"]
+  - sectionId: two-clustering-strategies
+    title: 两种基本聚类策略：划分式与层次式
+    coverageTags: ["partitional_clustering_definition", "hierarchical_clustering_definition", "partitional_vs_hierarchical", "hierarchical_tree_cutting"]
+    linkedSteps: ["step2"]
+  - sectionId: k-means-algorithm
+    title: K-means：划分式聚类的经典算法
+    coverageTags: ["k_means_algorithm", "sse_evaluation", "kmeans_limitations"]
+    linkedSteps: ["step3"]
+  - sectionId: hierarchical-clustering-details
+    title: 层次聚类：构建分组树
+    coverageTags: ["hierarchical_clustering_concept", "agglomerative_vs_divisive", "dendrogram_interpretation", "inter_cluster_similarity", "single_link_effect", "complete_link_effect", "group_average_definition"]
+    linkedSteps: ["step4"]
+  - sectionId: cluster-validity
+    title: 聚类有效性评估
+    coverageTags: ["cluster_validity", "external_index", "internal_index", "entropy", "purity", "silhouette_coefficient", "sse_limitation"]
+    linkedSteps: ["step5"]
+  - sectionId: common-pitfalls
+    title: 易错点
+    coverageTags: ["kmeans_limitations", "sse_limitation", "single_link_effect", "complete_link_effect"]
+    linkedSteps: ["step3", "step4", "step5"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["what_is_cluster_analysis", "partitional_vs_hierarchical", "k_means_algorithm", "inter_cluster_similarity", "cluster_validity"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5"]
+
+coverageTrace:
+  - coverageTag: what_is_cluster_analysis
+    description: 聚类分析的定义：将对象分组，使得组内对象相似、组间对象不同。
+    sectionIds: ["why-this-lesson-matters", "global-concept-map", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: cluster_definition
+    description: 簇的定义：聚类分析中形成的一个数据对象组。
+    sectionIds: ["global-concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: clustering_vs_classification
+    description: 聚类分析与分类分析的根本区别：无标签 vs 有标签。
+    sectionIds: ["global-concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: clustering_as_unsupervised_learning
+    description: 聚类分析属于无监督学习。
+    sectionIds: ["why-this-lesson-matters", "global-concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: motivation_for_automatic_clustering
+    description: 为什么需要自动聚类：数据量大、特征多、人眼无法直接分组。
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: notion_of_cluster_ambiguity
+    description: 簇的概念具有模糊性，不同视角下同一数据集的簇数量可能不同。
+    sectionIds: ["global-concept-map"]
+    linkedSteps: ["step1", "step2"]
+  - coverageTag: partitional_clustering_definition
+    description: 划分式聚类的定义：将数据划分为互不重叠的子集，每个数据点只属于一个簇。
+    sectionIds: ["two-clustering-strategies"]
+    linkedSteps: ["step2"]
+  - coverageTag: hierarchical_clustering_definition
+    description: 层次聚类的定义：生成一组嵌套的簇，组织成层次树。
+    sectionIds: ["two-clustering-strategies"]
+    linkedSteps: ["step2"]
+  - coverageTag: partitional_vs_hierarchical
+    description: 划分式聚类与层次聚类的核心区别：互不重叠 vs 嵌套结构。
+    sectionIds: ["two-clustering-strategies", "review-and-self-test"]
+    linkedSteps: ["step2"]
+  - coverageTag: hierarchical_tree_cutting
+    description: 层次聚类可以通过切割树状图在不同高度得到不同粒度的簇。
+    sectionIds: ["two-clustering-strategies"]
+    linkedSteps: ["step2"]
+  - coverageTag: k_means_algorithm
+    description: K-means 算法的基本概念：划分式聚类、质心、K 值、迭代过程（分配与更新）。
+    sectionIds: ["k-means-algorithm", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: sse_evaluation
+    description: 误差平方和 (SSE) 的定义、计算方式及其在 K-means 中的作用。
+    sectionIds: ["k-means-algorithm"]
+    linkedSteps: ["step3"]
+  - coverageTag: kmeans_limitations
+    description: K-means 的局限性：对初始质心敏感、K 值需事先指定、对非球形簇效果差。
+    sectionIds: ["k-means-algorithm", "common-pitfalls"]
+    linkedSteps: ["step3"]
+  - coverageTag: hierarchical_clustering_concept
+    description: 层次聚类的基本概念：产生嵌套的簇，可组织为层次树。
+    sectionIds: ["hierarchical-clustering-details"]
+    linkedSteps: ["step4"]
+  - coverageTag: agglomerative_vs_divisive
+    description: 凝聚式（自底向上）与分裂式（自顶向下）两种主要类型。
+    sectionIds: ["hierarchical-clustering-details"]
+    linkedSteps: ["step4"]
+  - coverageTag: dendrogram_interpretation
+    description: 树状图记录合并/分裂顺序，可在不同高度切割得到不同数量的簇。
+    sectionIds: ["hierarchical-clustering-details"]
+    linkedSteps: ["step4"]
+  - coverageTag: inter_cluster_similarity
+    description: 簇间相似度的三种定义：单链、全链、平均链。
+    sectionIds: ["hierarchical-clustering-details", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: single_link_effect
+    description: 单链使用最近点距离，容易产生链状长簇。
+    sectionIds: ["hierarchical-clustering-details", "common-pitfalls"]
+    linkedSteps: ["step4"]
+  - coverageTag: complete_link_effect
+    description: 全链使用最远点距离，倾向于生成紧凑球形簇。
+    sectionIds: ["hierarchical-clustering-details", "common-pitfalls"]
+    linkedSteps: ["step4"]
+  - coverageTag: group_average_definition
+    description: 平均链使用所有点对距离的平均值，是单链和全链的折中。
+    sectionIds: ["hierarchical-clustering-details"]
+    linkedSteps: ["step4"]
+  - coverageTag: cluster_validity
+    description: 聚类有效性的概念，以及评估聚类结果质量的各种指标和方法。
+    sectionIds: ["cluster-validity", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: external_index
+    description: 外部指标：通过与外部提供的真实标签进行比较来评估聚类。
+    sectionIds: ["cluster-validity"]
+    linkedSteps: ["step5"]
+  - coverageTag: internal_index
+    description: 内部指标：仅基于数据本身的特征来评估聚类的好坏。
+    sectionIds: ["cluster-validity"]
+    linkedSteps: ["step5"]
+  - coverageTag: entropy
+    description: 熵：一种外部指标，衡量簇内类别分布的混乱程度，熵越低越好。
+    sectionIds: ["cluster-validity"]
+    linkedSteps: ["step5"]
+  - coverageTag: purity
+    description: 纯度：一种外部指标，衡量一个簇中属于同一类别的点的比例，纯度越高越好。
+    sectionIds: ["cluster-validity"]
+    linkedSteps: ["step5"]
+  - coverageTag: silhouette_coefficient
+    description: 轮廓系数：结合凝聚度和分离度，为每个点计算一个介于 -1 到 1 之间的得分。
+    sectionIds: ["cluster-validity"]
+    linkedSteps: ["step5"]
+  - coverageTag: sse_limitation
+    description: SSE 随 K 增加而单调递减，无法直接确定最佳 K 值。
+    sectionIds: ["cluster-validity", "common-pitfalls"]
+    linkedSteps: ["step5"]
+---
+
+# 聚类分析：基本概念与算法
+
+## 为什么这一课重要
+
+想象一下，你面前有100张照片，每张照片都有颜色、亮度、纹理等特征。你的任务是把它们分成几堆，每堆里的照片看起来差不多。如果你尝试手动完成这个任务，你会发现两个主要困难：
+
+1. **耗时巨大**：100张照片，每张有多个特征，手动比较非常耗时。
+2. **结果因人而异**：不同的人可能会得到完全不同的分组结果——有人按颜色分，有人按内容分，没有统一的标准。
+
+当数据太多、特征太多时，人眼无法直接看出分组。我们需要一种自动的方法，让计算机帮我们完成这个任务。这种自动发现数据中自然分组的方法，叫做<Definition title="聚类分析"><Term id="cluster_analysis" en="Cluster Analysis">聚类分析</Term>。</Definition>
+
+<KeyPoint>聚类分析属于**无监督学习**——它不需要事先知道数据的类别标签，而是自动发现数据中的自然结构。</KeyPoint>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_cluster_def_v1" />
+<QuestionRef id="q_quiz_cluster_vs_classification_v1" />
+<QuestionRef id="q_quiz_unsupervised_v1" />
+</Checkpoint>
+
+## 课程全景与关键问题
+
+### 什么是聚类分析？
+
+<Definition title="聚类分析">
+<Term id="cluster_analysis" en="Cluster Analysis">聚类分析</Term>的目标是：将数据对象分组，使得**同一个组（簇）内的对象彼此相似**，**不同组（簇）的对象差异较大**。
+</Definition>
+
+每个自动找到的分组，叫做一个<Term id="cluster" en="Cluster">簇</Term>。
+
+### 聚类 vs 分类
+
+聚类分析与分类分析的根本区别在于：
+
+| 特性 | 聚类分析 | 分类分析 |
+|------|----------|----------|
+| 学习类型 | 无监督学习 | 有监督学习 |
+| 是否需要标签 | 不需要 | 需要 |
+| 目标 | 发现自然分组 | 预测类别 |
+
+### 簇的概念具有模糊性
+
+同一个数据集，从不同视角看，可能有完全不同的合理分组方式。例如，一组二维点可以合理地分成2个、4个或6个簇，取决于你观察的粒度。
+
+<Figure src="images/c95e0397faa637b148b2494f6c979b60df153a3a94f3ea3412908e67c154242f.jpg" alt="一组二维点，展示簇的模糊性：不同的人可能看到不同数量的簇">
+一组二维点，不同的人可能看到不同数量的簇。
+</Figure>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_cluster_def_v2" />
+</Checkpoint>
+
+## 两种基本聚类策略：划分式与层次式
+
+聚类分析有两种基本策略，它们的核心区别在于簇的组织方式。
+
+### 划分式聚类
+
+<Definition title="划分式聚类">
+<Term id="partitional_clustering" en="Partitional Clustering">划分式聚类</Term>将数据划分为**互不重叠**的子集，每个数据点**只属于一个簇**。
+</Definition>
+
+<Figure src="images/31c70e7fd3278113d61d94bb7ece60dcf162005f7bf2a56f737f84355dd2fc62.jpg" alt="划分式聚类示例：原始点被划分为互不重叠的簇">
+划分式聚类：每个点只属于一个簇，簇之间互不重叠。
+</Figure>
+
+### 层次聚类
+
+<Definition title="层次聚类">
+<Term id="hierarchical_clustering" en="Hierarchical Clustering">层次聚类</Term>生成一组**嵌套的簇**，组织成一棵层次树。你可以在不同高度切割，得到不同粒度的簇。
+</Definition>
+
+层次聚类的结果可以用<Term id="dendrogram" en="Dendrogram">树状图</Term>来记录合并或分裂的顺序。
+
+<KeyPoint>**核心区别**：划分式聚类的簇互不重叠，每个数据点只属于一个簇；层次聚类的簇是嵌套的，形成层次树，一个数据点可以同时属于不同层次的簇。</KeyPoint>
+
+<Example title="动物分类的例子">
+假设你有一组动物数据：猫、狗、狼、狮子、老虎、大象、长颈鹿。
+
+- **划分式聚类**：可以按食性分为食肉动物（猫、狗、狼、狮子、老虎）和食草动物（大象、长颈鹿）。但这种分组丢失了食肉动物内部（如猫科与犬科）的层次信息。
+- **层次聚类**：可以构建层次树——先分食肉/食草，再在食肉下分猫科/犬科。这样可以在不同粒度下查看分组。
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_partitional_property_v1" />
+<QuestionRef id="q_quiz_hierarchical_property_v1" />
+<QuestionRef id="q_quiz_partitional_vs_hierarchical_v1" />
+<QuestionRef id="q_quiz_dendrogram_cut_v1" />
+</Checkpoint>
+
+## K-means：划分式聚类的经典算法
+
+### 算法核心思想
+
+<Term id="k_means" en="K-means">K-means</Term>是最经典的划分式聚类算法。它的思路非常直观：通过反复迭代，让中心点自动移动到最佳位置。
+
+<Definition title="K-means 算法">
+1. **初始化**：选择 K 个数据点作为初始<Term id="centroid" en="Centroid">质心</Term>。
+2. **迭代**：
+   - **分配步骤**：将每个数据点分配给离它最近的质心，形成 K 个簇。
+   - **更新步骤**：重新计算每个簇的新质心（簇内所有数据点的平均值）。
+3. **停止**：重复直到质心的位置不再变化。
+</Definition>
+
+<KeyPoint>K 值代表你想要分成的**簇的数量**，必须由用户事先指定。</KeyPoint>
+
+### 误差平方和 (SSE)
+
+<Definition title="误差平方和">
+<Term id="sse" en="Sum of Squared Errors">误差平方和</Term>（SSE）衡量聚类效果的常用内部指标。它计算每个数据点到其簇质心的距离，然后平方求和。
+
+<Formula latex="SSE = \sum_{i=1}^{K} \sum_{x \in C_i} dist^2(m_i, x)">
+SSE 公式：K 是簇的数量，C_i 是第 i 个簇，m_i 是第 i 个簇的质心，x 是数据点。
+</Formula>
+
+SSE 越小，说明簇内点越紧凑。
+</Definition>
+
+### K-means 的局限性
+
+1. **对初始质心敏感**：不同的初始选择可能导致不同的结果。
+2. **K 值需事先指定**：算法不会自动确定最佳 K 值。
+3. **对非球形簇效果差**：K-means 假设簇是球形的，对于长条形或大小差异很大的簇，效果可能很差。
+
+<Example title="K-means 迭代示例">
+假设你有一堆二维平面上的点，K=3：
+
+1. 随机选择3个点作为初始质心。
+2. 计算每个点到3个质心的距离，分配给最近的质心。
+3. 重新计算每个簇的质心（簇内点的平均值）。
+4. 重复步骤2-3，直到质心不再变化。
+
+最终得到3个稳定的簇。
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_kmeans_steps_v1" />
+<QuestionRef id="q_quiz_kmeans_k_v1" />
+<QuestionRef id="q_quiz_sse_meaning_v1" />
+<QuestionRef id="q_quiz_kmeans_lim_v2" />
+</Checkpoint>
+
+## 层次聚类：构建分组树
+
+### 两种主要类型
+
+层次聚类有两种主要策略：
+
+| 类型 | 方向 | 起始状态 | 过程 |
+|------|------|----------|------|
+| <Term id="agglomerative_clustering" en="Agglomerative Clustering">凝聚式</Term> | 自底向上 | 每个点是一个簇 | 逐步合并最近的簇 |
+| <Term id="divisive_clustering" en="Divisive Clustering">分裂式</Term> | 自顶向下 | 所有点是一个簇 | 逐步分裂 |
+
+### 凝聚式层次聚类算法
+
+1. 计算相似度矩阵。
+2. 每个数据点作为一个簇。
+3. 重复：
+   - 合并最近的两个簇。
+   - 更新相似度矩阵。
+4. 直到只剩下一个簇。
+
+### 簇间距离的三种定义
+
+合并的顺序取决于如何定义两个簇之间的距离。不同的定义会导致完全不同的簇形状。
+
+| 链接方式 | 定义 | 倾向的簇形状 |
+|----------|------|--------------|
+| <Term id="single_link" en="Single Link">单链</Term> | 两个簇中**最近**的两个点之间的距离 | 链状长簇 |
+| <Term id="complete_link" en="Complete Link">全链</Term> | 两个簇中**最远**的两个点之间的距离 | 紧凑球形簇 |
+| <Term id="group_average" en="Group Average">平均链</Term> | 两个簇之间**所有点对距离的平均值** | 折中方案 |
+
+<KeyPoint>**单链**容易产生链状长簇，因为只要两个簇之间有一对点很近就会合并。**全链**倾向于生成紧凑的球形簇，因为只有当两个簇的所有点都足够近时才会合并。</KeyPoint>
+
+### 树状图与切割
+
+<Term id="dendrogram" en="Dendrogram">树状图</Term>记录了合并或分裂的顺序。你可以在树的任意高度"切割"，得到你想要的簇数量。
+
+<Example title="树状图切割">
+在树状图中：
+- 在**较高位置**（靠近根部）切割 → 得到**较少**的簇。
+- 在**较低位置**（靠近叶子）切割 → 得到**较多**的簇。
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_hc_type_v1" />
+<QuestionRef id="q_quiz_hc_direction_v1" />
+<QuestionRef id="q_quiz_linkage_shape_v1" />
+<QuestionRef id="q_quiz_dendrogram_cut_v1" />
+</Checkpoint>
+
+## 聚类有效性评估
+
+聚类做完了，怎么知道结果好不好？这就引出了<Term id="cluster_validity" en="Cluster Validity">聚类有效性</Term>的概念。
+
+### 外部指标 vs 内部指标
+
+| 指标类型 | 是否需要真实标签 | 示例 |
+|----------|------------------|------|
+| <Term id="external_index" en="External Index">外部指标</Term> | 需要 | <Term id="entropy" en="Entropy">熵</Term>、<Term id="purity" en="Purity">纯度</Term> |
+| <Term id="internal_index" en="Internal Index">内部指标</Term> | 不需要 | SSE、<Term id="silhouette_coefficient" en="Silhouette Coefficient">轮廓系数</Term> |
+
+### 外部指标：熵与纯度
+
+- **熵**：衡量簇内类别分布的混乱程度，**熵越低越好**。
+- **纯度**：衡量一个簇中属于同一类别的点的比例，**纯度越高越好**。
+
+### 内部指标：轮廓系数
+
+<Term id="silhouette_coefficient" en="Silhouette Coefficient">轮廓系数</Term>同时考虑了簇内的凝聚度和簇间的分离度，为每个点计算一个介于 -1 到 1 之间的得分。
+
+- **接近 1**：该点被很好地聚类（与自己的簇紧密，与相邻簇疏远）。
+- **接近 0**：该点位于两个簇的边界。
+- **接近 -1**：该点可能被分到了错误的簇。
+
+### SSE 的局限性
+
+<KeyPoint>SSE 随 K 增加而**单调递减**，当 K 等于数据点数量时 SSE 为 0。因此，不能直接通过最小化 SSE 来选择最佳 K 值。</KeyPoint>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_cluster_validity_v1" />
+<QuestionRef id="q_quiz_external_internal_v1" />
+<QuestionRef id="q_quiz_entropy_purity_v1" />
+<QuestionRef id="q_quiz_silhouette_v1" />
+<QuestionRef id="q_quiz_sse_limitation_v1" />
+</Checkpoint>
+
+## 易错点
+
+### 1. 混淆聚类与分类
+
+<Pitfall title="聚类 ≠ 分类">
+聚类分析是**无监督学习**，不需要标签；分类分析是**有监督学习**，需要标签。不要将两者混为一谈。
+</Pitfall>
+
+### 2. 误用 SSE 选择 K 值
+
+<Pitfall title="SSE 单调递减">
+SSE 总是随着 K 增加而减小，所以不能直接通过最小化 SSE 来选择 K 值。需要使用肘部法则或轮廓系数等其他方法。
+</Pitfall>
+
+### 3. 忽略链接方式对簇形状的影响
+
+<Pitfall title="链接方式决定簇形状">
+- 使用**单链**时，如果发现结果呈现链状长簇，这是正常现象，不是算法出错了。
+- 使用**全链**时，如果发现结果都是紧凑的球形簇，这也是正常现象。
+- 选择链接方式时，要考虑数据的实际形状。
+</Pitfall>
+
+### 4. 忽略 K-means 的假设
+
+<Pitfall title="K-means 假设簇是球形的">
+K-means 对非球形簇（如长条形、环形）效果很差。在使用 K-means 之前，应该先检查数据是否满足球形簇的假设。
+</Pitfall>
+
+## 复习与自测
+
+### 主动回忆
+
+使用以下闪卡族进行主动检索：
+
+- <QuestionFamily familyId="qf_flash_cluster_def" />
+- <QuestionFamily familyId="qf_flash_partitional_def" />
+- <QuestionFamily familyId="qf_flash_hierarchical_def" />
+- <QuestionFamily familyId="qf_flash_core_difference" />
+- <QuestionFamily familyId="qf_flash_kmeans_iteration" />
+- <QuestionFamily familyId="qf_flash_kmeans_centroid" />
+- <QuestionFamily familyId="qf_flash_sse_definition" />
+- <QuestionFamily familyId="qf_flash_linkage_def" />
+- <QuestionFamily familyId="qf_flash_single_link" />
+- <QuestionFamily familyId="qf_flash_complete_link" />
+- <QuestionFamily familyId="qf_flash_cluster_validity" />
+- <QuestionFamily familyId="qf_flash_external_index" />
+- <QuestionFamily familyId="qf_flash_internal_index" />
+- <QuestionFamily familyId="qf_flash_entropy_purity" />
+- <QuestionFamily familyId="qf_flash_silhouette" />
+- <QuestionFamily familyId="qf_flash_sse_limitation" />
+
+### 章节测验
+
+- <QuestionFamily familyId="qf_quiz_cluster_def" />
+- <QuestionFamily familyId="qf_quiz_cluster_vs_classification" />
+- <QuestionFamily familyId="qf_quiz_unsupervised" />
+- <QuestionFamily familyId="qf_quiz_partitional_property" />
+- <QuestionFamily familyId="qf_quiz_hierarchical_property" />
+- <QuestionFamily familyId="qf_quiz_partitional_vs_hierarchical" />
+- <QuestionFamily familyId="qf_quiz_kmeans_steps" />
+- <QuestionFamily familyId="qf_quiz_kmeans_k_value" />
+- <QuestionFamily familyId="qf_quiz_sse_meaning" />
+- <QuestionFamily familyId="qf_quiz_kmeans_limitations" />
+- <QuestionFamily familyId="qf_quiz_hc_type" />
+- <QuestionFamily familyId="qf_quiz_hc_direction" />
+- <QuestionFamily familyId="qf_quiz_linkage_shape" />
+- <QuestionFamily familyId="qf_quiz_cluster_validity" />
+- <QuestionFamily familyId="qf_quiz_external_internal" />
+- <QuestionFamily familyId="qf_quiz_entropy_purity" />
+- <QuestionFamily familyId="qf_quiz_silhouette" />
+- <QuestionFamily familyId="qf_quiz_sse_limitation" />
+
+### 深入理解
+
+- <QuestionFamily familyId="qf_long_cluster_analysis" />
+- <QuestionFamily familyId="qf_long_compare_strategies" />
+- <QuestionFamily familyId="qf_long_kmeans_process" />
+- <QuestionFamily familyId="qf_long_sse_calculation" />
+- <QuestionFamily familyId="qf_long_linkage_compare" />
+- <QuestionFamily familyId="qf_long_silhouette" />

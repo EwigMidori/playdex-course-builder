@@ -1,0 +1,396 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "projection_limitation",
+      "covered_by": [
+        "qf_flash_proj_fail",
+        "qf_quiz_proj_fail",
+        "qf_long_proj_fail"
+      ],
+      "description": "投影（线性降维）在处理非线性结构（如瑞士卷）时的局限性"
+    },
+    {
+      "coverage_tag": "swiss_roll_example",
+      "covered_by": [
+        "qf_flash_swiss_roll",
+        "qf_quiz_swiss_roll"
+      ],
+      "description": "瑞士卷数据集作为投影失败的反例"
+    },
+    {
+      "coverage_tag": "pca_linear_limitation",
+      "covered_by": [
+        "qf_flash_pca_fail",
+        "qf_quiz_pca_fail"
+      ],
+      "description": "PCA作为线性方法对非线性结构无效"
+    },
+    {
+      "coverage_tag": "need_for_nonlinear_methods",
+      "covered_by": [
+        "qf_long_proj_fail"
+      ],
+      "description": "需要能展开曲面的非线性降维方法"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "swiss_roll",
+      "coverage_tags": [
+        "swiss_roll_example"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_swiss_roll",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆瑞士卷数据集的结构特征及其在降维教学中的角色。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能准确说出瑞士卷数据集的形状特征（卷曲的曲面）以及它为什么被用作反例。",
+      "question_type": "short_answer",
+      "retrieval_focus": "瑞士卷数据集的形状特征及其作为反例的原因。",
+      "term_refs": [
+        {
+          "display": "瑞士卷",
+          "en": "Swiss roll"
+        }
+      ],
+      "variants": [
+        {
+          "back": "数据点沿着一个卷曲的曲面分布。",
+          "estimated_seconds": 5,
+          "explanation": "瑞士卷是一个经典的合成数据集，形状像卷起的蛋糕，用于测试非线性降维方法。",
+          "front": "瑞士卷（Swiss roll）数据集在形状上有什么特征？",
+          "question_id": "q_flash_swiss_roll_v1"
+        },
+        {
+          "back": "演示投影（线性降维）的失败。",
+          "estimated_seconds": 5,
+          "explanation": "瑞士卷的非线性结构使得简单的线性投影无法有效降维。",
+          "front": "在降维课程中，瑞士卷数据集被用来演示什么？",
+          "question_id": "q_flash_swiss_roll_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "projection_limitation",
+      "coverage_tags": [
+        "projection_limitation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_proj_fail",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆投影在处理非线性结构数据时失败的根本原因。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能说出投影失败的根本原因：数据在低维空间中的结构不是线性的。",
+      "question_type": "short_answer",
+      "retrieval_focus": "投影失败的根本原因。",
+      "term_refs": [
+        {
+          "display": "投影",
+          "en": "projection"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为数据在低维空间中的结构不是线性的。",
+          "estimated_seconds": 6,
+          "explanation": "瑞士卷的曲面是卷曲的，线性投影会破坏这种非线性结构，导致不同层的点被压在一起。",
+          "front": "投影为什么不适合处理瑞士卷这样的数据集？",
+          "question_id": "q_flash_proj_fail_v1"
+        },
+        {
+          "back": "不同层的点会被压在一起，完全分不开。",
+          "estimated_seconds": 5,
+          "explanation": "因为投影是线性操作，无法处理卷曲的非线性结构。",
+          "front": "对瑞士卷进行简单投影（如丢弃x3坐标）会导致什么后果？",
+          "question_id": "q_flash_proj_fail_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca_linear_limitation",
+      "coverage_tags": [
+        "pca_linear_limitation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_pca_fail",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆PCA作为线性方法在处理非线性结构时的局限性。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能准确说出PCA对瑞士卷无效的原因：PCA也是线性投影。",
+      "question_type": "short_answer",
+      "retrieval_focus": "PCA对瑞士卷无效的原因。",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "不能，因为PCA也是线性投影。",
+          "estimated_seconds": 5,
+          "explanation": "PCA是一种线性降维方法，对非线性结构无效。",
+          "front": "PCA能展开瑞士卷吗？为什么？",
+          "question_id": "q_flash_pca_fail_v1"
+        },
+        {
+          "back": "不同层的点还是混在一起。",
+          "estimated_seconds": 5,
+          "explanation": "PCA和简单投影一样，都是线性方法，无法处理卷曲的非线性结构。",
+          "front": "用PCA处理瑞士卷，结果会怎样？",
+          "question_id": "q_flash_pca_fail_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "longform_families": [
+    {
+      "concept_key": "need_for_nonlinear_methods",
+      "coverage_tags": [
+        "projection_limitation",
+        "need_for_nonlinear_methods"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_proj_fail",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么线性降维方法（投影和PCA）对瑞士卷无效，并引出对非线性降维方法的需求。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能用自己的语言解释投影和PCA失败的根本原因，并说明为什么需要非线性方法。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "投影",
+          "en": "projection"
+        },
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        },
+        {
+          "display": "瑞士卷",
+          "en": "Swiss roll"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "描述瑞士卷数据集的结构特征",
+            "解释简单投影为什么失败",
+            "解释PCA为什么也失败",
+            "总结并引出需求"
+          ],
+          "question_id": "q_long_proj_fail_v1",
+          "reference_answer": [
+            "瑞士卷数据集的数据点沿着一个卷曲的曲面分布，其内在结构是非线性的。",
+            "简单的投影（如丢弃一个坐标）是线性操作，会将不同层的点压在一起，无法区分。",
+            "PCA也是一种线性降维方法，它寻找的是数据方差最大的线性方向，因此同样无法处理卷曲的非线性结构，结果也是不同层的点混在一起。",
+            "投影和PCA的失败表明，对于非线性结构的数据，我们需要能够'展开'曲面的非线性降维方法。"
+          ],
+          "rubric_points": [
+            "正确描述瑞士卷是卷曲的非线性结构",
+            "正确指出投影是线性操作，会压扁不同层",
+            "正确指出PCA也是线性方法，因此同样无效",
+            "正确引出需要能展开曲面的非线性降维方法"
+          ],
+          "stem": "请解释为什么简单的投影和PCA都无法有效处理瑞士卷（Swiss roll）数据集，并说明这引出了什么样的需求。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "描述螺旋形数据集的结构",
+            "分析投影为什么失败",
+            "与瑞士卷案例对比",
+            "总结共通结论"
+          ],
+          "question_id": "q_long_proj_fail_v2",
+          "reference_answer": [
+            "螺旋形数据集的数据点沿着螺旋线分布，不同圈层之间是分离的，其结构是非线性的。",
+            "简单的投影是线性操作，会将不同圈层的点压在一起，导致无法区分。",
+            "这与瑞士卷案例的共通之处在于，两者都是非线性结构，线性投影都会破坏其内在结构。",
+            "结论是：投影对任何非线性结构的数据都无效，我们需要非线性降维方法。"
+          ],
+          "rubric_points": [
+            "正确描述螺旋形是非线性结构",
+            "正确指出投影会压扁不同圈层",
+            "正确指出与瑞士卷的共通点：都是非线性结构",
+            "正确总结：投影对所有非线性结构都无效"
+          ],
+          "stem": "假设你有一个螺旋形（spiral）数据集，请分析为什么简单的投影方法不适合它，并说明这与瑞士卷案例的共通之处。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "swiss_roll",
+      "coverage_tags": [
+        "swiss_roll_example"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_swiss_roll",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下识别瑞士卷数据集的特性及其与投影失败的关系。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能正确选择投影对瑞士卷无效的原因。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "瑞士卷",
+          "en": "Swiss roll"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "瑞士卷的曲面是卷曲的，不是平坦的。线性投影会破坏这种非线性结构。",
+          "options": [
+            "数据点太少",
+            "数据在低维空间中的结构不是线性的",
+            "投影计算太慢",
+            "瑞士卷数据有噪声"
+          ],
+          "question_id": "q_quiz_swiss_roll_v1",
+          "stem": "投影为什么不适合处理瑞士卷（Swiss roll）数据集？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "螺旋形和瑞士卷一样是非线性结构，投影同样会压扁不同圈层。",
+          "options": [
+            "有效，因为螺旋形是二维的",
+            "无效，因为螺旋形也是非线性结构",
+            "有效，因为螺旋形是规则的",
+            "无效，因为螺旋形数据点太少"
+          ],
+          "question_id": "q_quiz_swiss_roll_v2",
+          "stem": "如果数据是螺旋形（spiral）而不是卷曲形（Swiss roll），投影是否有效？"
+        }
+      ]
+    },
+    {
+      "concept_key": "projection_limitation",
+      "coverage_tags": [
+        "projection_limitation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_proj_fail",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能辨析投影失败的根本原因，并能推广到其他非线性结构。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能正确识别投影失败的根本原因，并能判断投影对其他非线性结构的适用性。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "投影",
+          "en": "projection"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "投影是线性操作，当数据在低维空间中的结构是非线性时，投影会破坏这种结构。",
+          "options": [
+            "数据维度太高",
+            "数据在低维空间中的结构不是线性的",
+            "投影矩阵无法计算",
+            "数据分布不均匀"
+          ],
+          "question_id": "q_quiz_proj_fail_v1",
+          "stem": "投影失败的根本原因是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "只有当数据在低维空间中的结构近似线性时，投影才有效。近似位于平面上的数据是线性结构。",
+          "options": [
+            "瑞士卷形状的数据",
+            "螺旋形数据",
+            "近似位于一个平面上的数据",
+            "球面上的数据"
+          ],
+          "question_id": "q_quiz_proj_fail_v2",
+          "stem": "以下哪种数据分布最适合使用简单的投影进行降维？"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca_linear_limitation",
+      "coverage_tags": [
+        "pca_linear_limitation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_pca_fail",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断PCA对非线性结构的适用性。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能正确选择PCA对瑞士卷无效的原因。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "PCA 是线性方法，对非线性结构无效。",
+          "options": [
+            "有效，因为 PCA 能找到主方向",
+            "无效，因为 PCA 也是线性投影",
+            "有效，因为 PCA 能降噪",
+            "无效，因为 PCA 需要标准化"
+          ],
+          "question_id": "q_quiz_pca_fail_v1",
+          "stem": "PCA 能展开瑞士卷吗？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 20,
+          "explanation": "PCA和简单投影都是线性方法，对瑞士卷这样的非线性结构都无效。",
+          "options": [
+            "PCA有效，简单投影无效",
+            "简单投影有效，PCA无效",
+            "两者都有效",
+            "两者都无效，因为它们都是线性方法"
+          ],
+          "question_id": "q_quiz_pca_fail_v2",
+          "stem": "以下哪种说法正确描述了PCA和简单投影在处理瑞士卷数据时的关系？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-dimension-reduction/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

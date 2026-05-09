@@ -1,0 +1,169 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "线性回归预测的是连续数值。",
+        "但如果我们要预测的是“是”或“否”呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "logistic_regression"
+      ],
+      "id": "s055",
+      "introduced_terms": [
+        "logistic_regression"
+      ],
+      "lines": [
+        "这就是 <term id=\"logistic_regression\">逻辑回归</term> 的用武之地。",
+        "它用回归分析来做分类。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s056",
+      "introduced_terms": [],
+      "lines": [
+        "逻辑回归不直接输出类别，而是输出一个概率。",
+        "比如：这个邮件是垃圾邮件的概率是 0.8。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "sigmoid_function"
+      ],
+      "id": "s057",
+      "introduced_terms": [
+        "sigmoid_function"
+      ],
+      "lines": [
+        "它用一条 S 形曲线来拟合数据。",
+        "这条曲线就是 <term id=\"sigmoid_function\">Sigmoid 函数</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [
+        "Sigmoid 函数能把任何实数映射到 0 到 1 之间。",
+        "非常适合表示概率。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "log_odds"
+      ],
+      "id": "s059",
+      "introduced_terms": [
+        "log_odds"
+      ],
+      "lines": [
+        "逻辑回归假设 <term id=\"log_odds\">对数几率</term> 与自变量之间存在线性关系。",
+        "对数几率就是 ln(p/(1-p))。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "likelihood_maximization"
+      ],
+      "id": "s060",
+      "introduced_terms": [
+        "likelihood_maximization"
+      ],
+      "lines": [
+        "如何找到这条最佳拟合曲线？",
+        "通过 <term id=\"likelihood_maximization\">极大似然估计</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s061",
+      "introduced_terms": [],
+      "lines": [
+        "简单说，就是找到一组参数，",
+        "使得模型预测出正确标签的概率最大。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "逻辑回归输出样本属于正类的概率，通常用 Sigmoid 函数映射到 0-1 之间。",
+        "kind": "single_choice",
+        "options": [
+          "一个类别标签",
+          "一个概率值",
+          "一个距离值",
+          "一个决策边界"
+        ],
+        "prompt": "逻辑回归的输出是？"
+      },
+      "focus_terms": [],
+      "id": "s062",
+      "introduced_terms": [],
+      "lines": [
+        "逻辑回归的输出是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Logistic Regression. Use regression analysis to perform classification. Logistic regression: predict the probability of positive class from an independent variable x. Fit a logistic regression curve to the examples. Assume a linear relation between log-odds(l) and independent variables. Fit curve by maximizing likelihood.",
+    "related": [
+      "Logistic Regression",
+      "sigmoid",
+      "log-odds"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "likelihood_maximization": {
+      "aliases": [
+        "Maximum Likelihood Estimation",
+        "MLE"
+      ],
+      "display": "极大似然估计",
+      "gloss": "一种参数估计方法，寻找使观测数据出现概率最大的模型参数。"
+    },
+    "log_odds": {
+      "aliases": [
+        "Log-odds",
+        "Logit"
+      ],
+      "display": "对数几率",
+      "gloss": "事件发生概率与不发生概率之比的自然对数。"
+    },
+    "logistic_regression": {
+      "aliases": [
+        "Logistic Regression",
+        "Logit Regression"
+      ],
+      "display": "逻辑回归",
+      "gloss": "一种用于二分类的回归模型，输出样本属于正类的概率。"
+    },
+    "sigmoid_function": {
+      "aliases": [
+        "Sigmoid Function",
+        "Logistic Function"
+      ],
+      "display": "Sigmoid 函数",
+      "gloss": "一种 S 形函数，能将任意实数映射到 0 到 1 之间，常用于表示概率。"
+    }
+  }
+}

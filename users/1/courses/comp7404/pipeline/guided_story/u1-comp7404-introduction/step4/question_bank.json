@@ -1,0 +1,371 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "classification_workflow",
+      "covered_by": [
+        "qf_flash_step4_training_set",
+        "qf_flash_step4_test_set",
+        "qf_flash_step4_classifier",
+        "qf_quiz_step4_train_test_distinction",
+        "qf_quiz_step4_test_set_requirement",
+        "qf_long_step4_classification_pipeline"
+      ],
+      "description": "分类的具体流程：训练集、测试集、分类器"
+    },
+    {
+      "coverage_tag": "training_set_definition",
+      "covered_by": [
+        "qf_flash_step4_training_set",
+        "qf_quiz_step4_train_test_distinction"
+      ],
+      "description": "训练集的定义与用途"
+    },
+    {
+      "coverage_tag": "test_set_definition",
+      "covered_by": [
+        "qf_flash_step4_test_set",
+        "qf_quiz_step4_train_test_distinction",
+        "qf_quiz_step4_test_set_requirement"
+      ],
+      "description": "测试集的定义与用途"
+    },
+    {
+      "coverage_tag": "classifier_definition",
+      "covered_by": [
+        "qf_flash_step4_classifier",
+        "qf_long_step4_classification_pipeline"
+      ],
+      "description": "分类器的定义：从特征到类别的映射函数"
+    },
+    {
+      "coverage_tag": "classification_example_tax",
+      "covered_by": [
+        "qf_quiz_step4_test_set_requirement",
+        "qf_long_step4_classification_pipeline"
+      ],
+      "description": "分类示例：基于退税、婚姻状况、收入预测逃税"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "training_set",
+      "coverage_tags": [
+        "classification_workflow",
+        "training_set_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step4_training_set",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出训练集的定义和用途。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了训练集是用于训练模型的有标签数据这一核心概念。",
+      "question_type": "short_answer",
+      "retrieval_focus": "训练集在分类流程中的角色",
+      "term_refs": [
+        {
+          "display": "训练集",
+          "en": "training set"
+        }
+      ],
+      "variants": [
+        {
+          "back": "训练集",
+          "estimated_seconds": 5,
+          "explanation": "训练集是带有标签的数据，模型通过学习训练集中的输入-输出对应关系来调整自身参数。",
+          "front": "在分类任务中，用来训练模型的那部分有标签数据叫什么？",
+          "question_id": "q_flash_step4_training_set_v1"
+        },
+        {
+          "back": "让模型从有标签数据中学习规律",
+          "estimated_seconds": 6,
+          "explanation": "模型通过训练集中的特征和对应标签来学习从输入到输出的映射函数。",
+          "front": "训练集的主要作用是什么？",
+          "question_id": "q_flash_step4_training_set_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "test_set",
+      "coverage_tags": [
+        "classification_workflow",
+        "test_set_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step4_test_set",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出测试集的定义和用途。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了测试集是用于评估模型性能的未见过的有标签数据这一核心概念。",
+      "question_type": "short_answer",
+      "retrieval_focus": "测试集在分类流程中的角色",
+      "term_refs": [
+        {
+          "display": "测试集",
+          "en": "test set"
+        }
+      ],
+      "variants": [
+        {
+          "back": "测试集",
+          "estimated_seconds": 5,
+          "explanation": "测试集在训练过程中从未被模型看到，用于模拟模型在真实世界中的表现。",
+          "front": "在分类任务中，用来评估模型性能的那部分有标签数据叫什么？",
+          "question_id": "q_flash_step4_test_set_v1"
+        },
+        {
+          "back": "评估模型在未见过的数据上的表现",
+          "estimated_seconds": 6,
+          "explanation": "通过测试集可以判断模型是否学到了真正的规律，而不是死记硬背训练数据。",
+          "front": "测试集的主要作用是什么？",
+          "question_id": "q_flash_step4_test_set_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "classifier",
+      "coverage_tags": [
+        "classification_workflow",
+        "classifier_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step4_classifier",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出分类器的定义。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了分类器是从特征到类别的映射函数这一核心概念。",
+      "question_type": "short_answer",
+      "retrieval_focus": "分类器的本质",
+      "term_refs": [
+        {
+          "display": "分类器",
+          "en": "classifier"
+        }
+      ],
+      "variants": [
+        {
+          "back": "分类器",
+          "estimated_seconds": 5,
+          "explanation": "分类器是一个函数，它接收样本的特征向量作为输入，输出预测的类别。",
+          "front": "训练完成后得到的、能将输入特征映射到类别标签的模型叫什么？",
+          "question_id": "q_flash_step4_classifier_v1"
+        },
+        {
+          "back": "一个从特征到类别的映射函数",
+          "estimated_seconds": 6,
+          "explanation": "分类器学习到的就是输入特征空间到输出类别空间的映射关系。",
+          "front": "分类器的本质是什么？",
+          "question_id": "q_flash_step4_classifier_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-introduction",
+  "longform_families": [
+    {
+      "concept_key": "classification_pipeline",
+      "coverage_tags": [
+        "classification_workflow",
+        "classifier_definition",
+        "classification_example_tax"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_step4_classification_pipeline",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整描述分类任务的基本流程，包括训练集、测试集和分类器的角色。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了从数据划分到模型训练再到评估的完整分类流程。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "训练集",
+          "en": "training set"
+        },
+        {
+          "display": "测试集",
+          "en": "test set"
+        },
+        {
+          "display": "分类器",
+          "en": "classifier"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "数据划分",
+            "训练过程",
+            "评估过程"
+          ],
+          "question_id": "q_long_step4_classification_pipeline_v1",
+          "reference_answer": [
+            "首先，将1000条已标记记录分成两部分：一部分作为训练集（例如800条），另一部分作为测试集（例如200条）。",
+            "然后，使用训练集来训练分类器。分类器会学习训练集中特征（退税情况、婚姻状况、收入）与标签（是否逃税）之间的映射关系。",
+            "训练完成后，使用测试集来评估分类器的性能。测试集在训练过程中从未被模型看到，因此可以模拟真实世界中的新数据。",
+            "如果分类器在测试集上表现良好（例如准确率高），说明它学到了真正的规律；如果表现差，说明模型可能过拟合或欠拟合。"
+          ],
+          "rubric_points": [
+            "正确说明训练集用于训练模型",
+            "正确说明测试集用于评估模型",
+            "正确说明测试集在训练时不可见",
+            "正确说明分类器是从特征到类别的映射",
+            "正确说明如何判断模型好坏"
+          ],
+          "stem": "假设你有一个税务数据集，包含1000条已标记记录（每条记录有退税情况、婚姻状况、收入以及是否逃税的标签）。请描述你将如何构建一个分类器来预测一个人是否会逃税。请说明训练集、测试集和分类器各自的作用。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "数据划分策略",
+            "训练集的作用",
+            "测试集的作用",
+            "分类器的本质"
+          ],
+          "question_id": "q_long_step4_classification_pipeline_v2",
+          "reference_answer": [
+            "首先，将2000条已标记记录分成训练集（例如1600条）和测试集（例如400条）。",
+            "训练集用于训练分类器，让模型学习收入、信用评分、负债率等特征与是否违约标签之间的映射关系。",
+            "测试集用于评估训练好的分类器在未见过的数据上的表现。测试集在训练过程中绝对不能使用，否则评估结果会过于乐观。",
+            "分类器本质上是一个从特征空间到类别标签的映射函数。如果它在测试集上表现好，说明它学到了真正的规律，可以用于预测新申请者是否会违约。"
+          ],
+          "rubric_points": [
+            "正确说明训练集用于训练模型",
+            "正确说明测试集用于评估模型",
+            "正确说明测试集在训练时不可见",
+            "正确说明分类器是从特征到类别的映射",
+            "正确解释为什么需要分开训练集和测试集"
+          ],
+          "stem": "你被要求为一个银行构建一个分类器，用于预测贷款申请者是否会违约。你有2000条历史记录，每条记录包含申请者的收入、信用评分、负债率以及是否违约的标签。请详细说明你将如何设计这个分类流程，并解释为什么需要将数据分成训练集和测试集。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "training_set_vs_test_set",
+      "coverage_tags": [
+        "classification_workflow",
+        "training_set_definition",
+        "test_set_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step4_train_test_distinction",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分训练集和测试集的核心区别。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了训练集用于训练、测试集用于评估且训练时不可见这一关键区别。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "训练集",
+          "en": "training set"
+        },
+        {
+          "display": "测试集",
+          "en": "test set"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "测试集用于模拟模型在真实世界中的表现，所以模型在训练时不能接触它。训练集和测试集都需要有标签。",
+          "options": [
+            "训练集更大",
+            "测试集在训练过程中从未被模型看到",
+            "测试集包含更多特征",
+            "训练集没有标签"
+          ],
+          "question_id": "q_quiz_step4_train_test_distinction_v1",
+          "stem": "训练集和测试集的主要区别是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "训练集用于让模型学习规律，测试集用于检验模型在未见数据上的表现。两者必须分开，且测试集也需要标签才能评估。",
+          "options": [
+            "训练集和测试集可以完全重叠",
+            "测试集用于训练模型参数",
+            "训练集用于训练模型，测试集用于评估模型",
+            "测试集不需要标签"
+          ],
+          "question_id": "q_quiz_step4_train_test_distinction_v2",
+          "stem": "以下关于训练集和测试集的描述，哪一个是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "test_set_requirement",
+      "coverage_tags": [
+        "classification_workflow",
+        "test_set_definition",
+        "classification_example_tax"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step4_test_set_requirement",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断哪些数据可以作为测试集。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了测试集必须有标签且与训练集不重叠这一关键要求。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "测试集",
+          "en": "test set"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "测试集必须包含真实标签才能评估模型，所以只能从已标记记录中划分。未标记的记录无法用作测试集。",
+          "options": [
+            "所有记录都可以作为测试集",
+            "未标记记录可以作为测试集",
+            "已标记记录的一部分可以作为测试集",
+            "训练集和测试集可以重叠"
+          ],
+          "question_id": "q_quiz_step4_test_set_requirement_v1",
+          "stem": "给定一个税务数据集，包含1000条已标记记录和500条未标记记录。以下哪个说法正确？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "测试集需要标签来评估模型，所以只能从已标记记录中划分。未标记记录不能用于评估。",
+          "options": [
+            "用全部1500条记录训练模型，然后用其中一部分评估",
+            "将已标记的1000条记录分成训练集和测试集，未标记的500条不用",
+            "用500条未标记记录作为测试集",
+            "用全部1500条记录训练，然后找新的数据测试"
+          ],
+          "question_id": "q_quiz_step4_test_set_requirement_v2",
+          "stem": "在预测逃税的分类任务中，你有一个包含1500条记录的数据集。以下哪种做法是正确的？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-introduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

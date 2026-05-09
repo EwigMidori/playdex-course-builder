@@ -1,0 +1,176 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "高维数据问题已经暴露，但如何解决？",
+        "是扔掉一些特征，还是组合特征？两种思路各有优劣。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "dimensionality_reduction"
+      ],
+      "id": "s009",
+      "introduced_terms": [
+        "dimensionality_reduction"
+      ],
+      "lines": [
+        "所以我们需要<term id=\"dimensionality_reduction\">降维</term>——",
+        "把数据从高维压缩到低维，同时保留关键结构。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "feature_selection"
+      ],
+      "id": "s010",
+      "introduced_terms": [
+        "feature_selection"
+      ],
+      "lines": [
+        "降维有两种主流思路。",
+        "第一种：<term id=\"feature_selection\">特征选择</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "直接从原始特征里挑出最有用的几个，",
+        "丢掉剩下的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "feature_extraction"
+      ],
+      "id": "s012",
+      "introduced_terms": [
+        "feature_extraction"
+      ],
+      "lines": [
+        "第二种：<term id=\"feature_extraction\">特征提取</term>。",
+        "把原始特征组合成全新的、维度更少的特征。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "特征提取是通过组合原始特征来创造新特征，而不是简单挑选。",
+        "kind": "single_choice",
+        "options": [
+          "从 100 个里挑出方差最大的 10 个",
+          "用 100 个特征的线性组合生成 10 个新特征",
+          "随机扔掉 90 个特征",
+          "把所有特征取平均值"
+        ],
+        "prompt": "哪种做法属于特征提取？"
+      },
+      "focus_terms": [],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "假设你有 100 个原始特征，",
+        "想压缩到 10 个。哪种做法属于特征提取？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "特征选择是直接挑选原始特征，适合需要保留原始特征物理意义的场景。",
+        "kind": "single_choice",
+        "options": [
+          "特征选择",
+          "特征提取",
+          "两者都可以",
+          "都不行"
+        ],
+        "prompt": "在人脸识别场景中，如果希望保留原始像素中最重要的那些像素，应该用哪种思路？"
+      },
+      "focus_terms": [],
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "在人脸识别场景中，如果希望保留原始像素中最重要的那些像素，应该用哪种思路？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "特征提取通过组合生成新特征，适合需要捕捉特征间交互的场景。",
+        "kind": "single_choice",
+        "options": [
+          "特征选择",
+          "特征提取",
+          "两者都可以",
+          "都不行"
+        ],
+        "prompt": "在语音识别场景中，如果希望捕捉不同频率之间的组合关系，应该用哪种思路？"
+      },
+      "focus_terms": [],
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [
+        "在语音识别场景中，如果希望捕捉不同频率之间的组合关系，应该用哪种思路？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "这节课我们重点看特征提取，",
+        "而且只关注一种简单又强大的情况——线性变换。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "PCA and LDA lecture material",
+    "related": [
+      "dimensionality reduction",
+      "face images"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "dimensionality_reduction": {
+      "aliases": [
+        "Dimensionality Reduction"
+      ],
+      "display": "降维",
+      "gloss": "将高维数据映射到低维空间，同时尽量保留有用信息。"
+    },
+    "feature_extraction": {
+      "aliases": [
+        "Feature Extraction"
+      ],
+      "display": "特征提取",
+      "gloss": "通过组合原始特征创建新特征，实现降维。"
+    },
+    "feature_selection": {
+      "aliases": [
+        "Feature Selection"
+      ],
+      "display": "特征选择",
+      "gloss": "从原始特征中挑选出最有信息量的子集。"
+    }
+  }
+}

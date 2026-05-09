@@ -1,0 +1,64 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "现在，我们知道了线性回归是用一条直线来预测。",
+        "但是，通过同一组数据点，可以画出无数条不同的直线。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "比如下面这两条线，看起来都“大致”穿过了数据点。",
+        "你觉得哪一条更好？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 3,
+        "explanation": "没有衡量标准时，我们无法判断哪条线更好。我们需要一个标准来量化“好坏”。",
+        "kind": "visual_selection",
+        "options": [
+          "直线A",
+          "直线B",
+          "两者一样好",
+          "无法判断"
+        ],
+        "prompt": "下面有两条直线（A和B），都试图拟合同一组数据点。你认为哪一条更好？"
+      },
+      "focus_terms": [],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "你看，没有标准，我们甚至无法比较两条线的好坏。",
+        "所以，我们需要一个数学标准，来告诉我们哪条线才是“最佳”的。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step2a",
+  "source": {
+    "plain_text": "The goal is to predict responses/outputs for inputs. We need to define 1. function class, the type of predictions we consider 2. fitting criterion (loss) that measures the degree of function to the data.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

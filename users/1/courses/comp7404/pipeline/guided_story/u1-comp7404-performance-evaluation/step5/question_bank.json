@@ -1,0 +1,505 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "equal_error_rate_definition",
+      "covered_by": [
+        "qf_flash_eer_def",
+        "qf_quiz_eer_def"
+      ],
+      "description": "等错误率（EER）的定义：FPR = FNR 时的错误率"
+    },
+    {
+      "coverage_tag": "eer_computation_from_roc",
+      "covered_by": [
+        "qf_flash_eer_calc",
+        "qf_quiz_eer_calc",
+        "qf_long_eer_roc"
+      ],
+      "description": "从 ROC 曲线数据点计算 EER 的方法"
+    },
+    {
+      "coverage_tag": "eer_interpretation",
+      "covered_by": [
+        "qf_flash_eer_interp",
+        "qf_quiz_eer_interp"
+      ],
+      "description": "EER 越低越好，用于对称评估场景"
+    },
+    {
+      "coverage_tag": "eer_vs_auc",
+      "covered_by": [
+        "qf_long_eer_auc_compare"
+      ],
+      "description": "EER 与 AUC 的区别：单点 vs 整体面积"
+    },
+    {
+      "coverage_tag": "fnr_definition",
+      "covered_by": [
+        "qf_flash_fnr"
+      ],
+      "description": "假负率（FNR）= 1 - TPR"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "equal_error_rate",
+      "coverage_tags": [
+        "equal_error_rate_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_eer_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 EER 的定义：FPR 等于 FNR 时的错误率。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了 EER 的核心定义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "EER 的定义条件：哪两个率相等时的错误率。",
+      "term_refs": [
+        {
+          "display": "等错误率",
+          "en": "Equal Error Rate (EER)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "假正率（FPR）和假负率（FNR）相等时。",
+          "estimated_seconds": 8,
+          "explanation": "EER 是 ROC 曲线上 FPR = FNR 的点对应的错误率。",
+          "front": "等错误率（EER）是在哪两个率相等时对应的错误率？",
+          "question_id": "q_flash_eer_def_v1"
+        },
+        {
+          "back": "Equal Error Rate（等错误率）；假正（FP）和假负（FN）的数量相等时的准确度。",
+          "estimated_seconds": 10,
+          "explanation": "EER 衡量的是 FP 和 FN 数量相等时的准确度。",
+          "front": "EER 的全称是什么？它衡量的是哪两类错误相等时的准确度？",
+          "question_id": "q_flash_eer_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "equal_error_rate",
+      "coverage_tags": [
+        "eer_computation_from_roc"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_eer_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能从给定的 (FPR, TPR) 数据点中计算 FNR 并找出 EER。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了从 ROC 数据点计算 EER 的方法。",
+      "question_type": "micro_calc",
+      "retrieval_focus": "从 TPR 计算 FNR，再找 FPR 与 FNR 最接近的点。",
+      "term_refs": [
+        {
+          "display": "假负率",
+          "en": "False Negative Rate (FNR)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "FNR = 1 - TPR = 1 - 0.6 = 0.4",
+          "estimated_seconds": 6,
+          "explanation": "FNR = 1 - TPR。",
+          "front": "给定 ROC 数据点：(FPR=0.2, TPR=0.6)，该点的 FNR 是多少？",
+          "question_id": "q_flash_eer_calc_v1"
+        },
+        {
+          "back": "FNR = 1 - 0.8 = 0.2",
+          "estimated_seconds": 6,
+          "explanation": "FNR = 1 - TPR。",
+          "front": "给定 ROC 数据点：(FPR=0.4, TPR=0.8)，该点的 FNR 是多少？",
+          "question_id": "q_flash_eer_calc_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "equal_error_rate",
+      "coverage_tags": [
+        "eer_interpretation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_eer_interp",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释 EER 值的高低含义。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了 EER 的数值解释。",
+      "question_type": "short_answer",
+      "retrieval_focus": "EER 值越低表示什么。",
+      "term_refs": [
+        {
+          "display": "等错误率",
+          "en": "Equal Error Rate (EER)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "假正（FP）和假负（FN）两类错误。",
+          "estimated_seconds": 8,
+          "explanation": "EER 越低，模型在对称评估场景下表现越好。",
+          "front": "EER 值越低，说明模型在平衡哪两类错误方面做得越好？",
+          "question_id": "q_flash_eer_interp_v1"
+        },
+        {
+          "back": "生物识别等场景。",
+          "estimated_seconds": 6,
+          "explanation": "EER 常用于生物识别等需要对称评估的场景。",
+          "front": "EER 常用于哪类需要对称评估的场景？",
+          "question_id": "q_flash_eer_interp_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "false_negative_rate",
+      "coverage_tags": [
+        "fnr_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_fnr",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 FNR 的定义和公式。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了 FNR 的定义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "FNR 与 TPR 的关系。",
+      "term_refs": [
+        {
+          "display": "假负率",
+          "en": "False Negative Rate (FNR)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "FNR = 1 - TPR",
+          "estimated_seconds": 5,
+          "explanation": "FNR 是 1 减去 TPR。",
+          "front": "假负率（FNR）与真正率（TPR）的关系是什么？",
+          "question_id": "q_flash_fnr_v1"
+        },
+        {
+          "back": "FNR = FN / (TP + FN) = 1 - TPR",
+          "estimated_seconds": 6,
+          "explanation": "FNR 是假负例数除以所有正类样本数。",
+          "front": "FNR 的公式是什么？",
+          "question_id": "q_flash_fnr_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "longform_families": [
+    {
+      "concept_key": "equal_error_rate",
+      "coverage_tags": [
+        "eer_computation_from_roc",
+        "eer_interpretation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_eer_roc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释如何从 ROC 曲线数据点计算 EER，并说明其含义。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了 EER 的计算过程和解释。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "等错误率",
+          "en": "Equal Error Rate (EER)"
+        },
+        {
+          "display": "假负率",
+          "en": "False Negative Rate (FNR)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "计算每个点的 FNR",
+            "找出 FPR 最接近 FNR 的点",
+            "确定 EER 值",
+            "解释 EER 的含义"
+          ],
+          "question_id": "q_long_eer_roc_v1",
+          "reference_answer": [
+            "计算每个点的 FNR：FPR=0.0时FNR=1.0，FPR=0.2时FNR=0.4，FPR=0.4时FNR=0.2，FPR=0.6时FNR=0.0，FPR=1.0时FNR=0.0。",
+            "FPR=0.2时FNR=0.4，FPR=0.4时FNR=0.2，FPR=0.3时FNR=0.3，所以FPR=0.3时最接近FPR=FNR的条件。",
+            "EER = 0.3。",
+            "EER 是假正率等于假负率时的错误率，值越低表示模型在平衡两类错误方面做得越好。"
+          ],
+          "rubric_points": [
+            "正确计算每个点的 FNR（FNR = 1 - TPR）",
+            "正确找出 FPR 最接近 FNR 的点",
+            "正确得出 EER 值",
+            "正确解释 EER 的含义"
+          ],
+          "stem": "给定一组 ROC 数据点：(FPR=0.0, TPR=0.0), (FPR=0.2, TPR=0.6), (FPR=0.4, TPR=0.8), (FPR=0.6, TPR=1.0), (FPR=1.0, TPR=1.0)。请解释如何从这些数据点中计算 EER，并说明 EER 的含义。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "计算每个点的 FNR",
+            "找出 FPR 最接近 FNR 的点",
+            "确定 EER 值",
+            "解释 EER 作为单点指标的优势"
+          ],
+          "question_id": "q_long_eer_roc_v2",
+          "reference_answer": [
+            "计算每个点的 FNR：FPR=0.1时FNR=0.5，FPR=0.3时FNR=0.3，FPR=0.5时FNR=0.1，FPR=0.7时FNR=0.0，FPR=1.0时FNR=0.0。",
+            "FPR=0.3时FNR=0.3，FPR=FNR，所以EER=0.3。",
+            "EER = 0.3。",
+            "EER 是一个单点指标，它提供了一个对称的误差参考点，特别适用于需要平衡假正和假负的场景，如生物识别。"
+          ],
+          "rubric_points": [
+            "正确计算每个点的 FNR",
+            "正确找出 FPR 最接近 FNR 的点",
+            "正确得出 EER 值",
+            "正确解释 EER 的优势"
+          ],
+          "stem": "假设你有一个分类模型，其 ROC 数据点为：(FPR=0.1, TPR=0.5), (FPR=0.3, TPR=0.7), (FPR=0.5, TPR=0.9), (FPR=0.7, TPR=1.0), (FPR=1.0, TPR=1.0)。请计算 EER，并解释为什么 EER 是一个有用的单点指标。"
+        }
+      ]
+    },
+    {
+      "concept_key": "equal_error_rate",
+      "coverage_tags": [
+        "eer_vs_auc"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_eer_auc_compare",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较 EER 和 AUC 的区别，并说明各自的适用场景。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能区分 EER 和 AUC 的用途。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "等错误率",
+          "en": "Equal Error Rate (EER)"
+        },
+        {
+          "display": "AUC",
+          "en": "Area Under the Curve (AUC)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "定义对比",
+            "计算方式对比",
+            "适用场景对比"
+          ],
+          "question_id": "q_long_eer_auc_compare_v1",
+          "reference_answer": [
+            "EER 是 ROC 曲线上 FPR = FNR 时的错误率，是一个单点指标；AUC 是 ROC 曲线下的总面积，是一个整体指标。",
+            "EER 通过找 FPR 最接近 FNR 的点来计算；AUC 通过积分 ROC 曲线下的面积来计算。",
+            "EER 适用于需要对称评估的场景，如生物识别；AUC 适用于评估模型在不同阈值下的整体排序能力。"
+          ],
+          "rubric_points": [
+            "正确说明 EER 的定义：FPR = FNR 时的错误率",
+            "正确说明 AUC 的定义：ROC 曲线下的面积",
+            "正确说明 EER 的计算方式：从 ROC 数据点中找 FPR=FNR 的点",
+            "正确说明 AUC 的计算方式：积分 ROC 曲线下的面积",
+            "正确说明 EER 的适用场景：需要对称评估的场景",
+            "正确说明 AUC 的适用场景：评估模型整体排序能力"
+          ],
+          "stem": "比较等错误率（EER）和 AUC 的区别。请从定义、计算方式、适用场景三个方面进行对比。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "解释 EER=0.2 的含义",
+            "解释 AUC=0.9 的含义",
+            "分析为什么两个指标可能给出不同结论"
+          ],
+          "question_id": "q_long_eer_auc_compare_v2",
+          "reference_answer": [
+            "EER=0.2 表示在假正率等于假负率时，错误率为 20%，说明模型在平衡两类错误方面表现较好。",
+            "AUC=0.9 表示 ROC 曲线下的面积为 0.9，说明模型整体排序能力很强。",
+            "EER 只关注 FPR=FNR 这一个点，而 AUC 关注整个 ROC 曲线。一个模型可能在某个点表现好（EER 低），但在其他点表现差（AUC 低），反之亦然。"
+          ],
+          "rubric_points": [
+            "正确解释 EER=0.2 的含义",
+            "正确解释 AUC=0.9 的含义",
+            "正确分析两个指标的不同侧重点"
+          ],
+          "stem": "假设你有一个分类模型，其 EER=0.2，AUC=0.9。请解释这两个指标分别告诉你什么信息，并说明为什么它们可能给出不同的结论。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "equal_error_rate",
+      "coverage_tags": [
+        "equal_error_rate_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_eer_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在选择题中正确识别 EER 的定义。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能区分 EER 与其他指标的定义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "等错误率",
+          "en": "Equal Error Rate (EER)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "EER 是 ROC 曲线上 FPR = FNR 的点对应的错误率。",
+          "options": [
+            "精确率和召回率相等时的准确率",
+            "假正率（FPR）等于假负率（FNR）时的错误率",
+            "ROC 曲线下的总面积",
+            "真正率（TPR）等于 1 时的准确率"
+          ],
+          "question_id": "q_quiz_eer_def_v1",
+          "stem": "等错误率（EER）的定义是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "EER 衡量的是假正和假负数量相等时的准确度。",
+          "options": [
+            "EER 越高，模型性能越好",
+            "EER 衡量的是 FP 和 FN 数量相等时的准确度",
+            "EER 等于 AUC 值",
+            "EER 只适用于多分类问题"
+          ],
+          "question_id": "q_quiz_eer_def_v2",
+          "stem": "以下关于 EER 的说法，哪一个是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "equal_error_rate",
+      "coverage_tags": [
+        "eer_computation_from_roc"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_eer_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能从给定的 ROC 数据点中正确计算 EER。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能应用 EER 的计算方法。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "等错误率",
+          "en": "Equal Error Rate (EER)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "FPR=0.2时FNR=0.4，FPR=0.4时FNR=0.2，FPR=0.6时FNR=0.0。FPR=0.4时FNR=0.2，最接近FPR=0.4。",
+          "options": [
+            "(FPR=0.2, TPR=0.6)",
+            "(FPR=0.4, TPR=0.8)",
+            "(FPR=0.6, TPR=1.0)",
+            "无法确定"
+          ],
+          "question_id": "q_quiz_eer_calc_v1",
+          "stem": "给定 ROC 数据点：(FPR=0.2, TPR=0.6), (FPR=0.4, TPR=0.8), (FPR=0.6, TPR=1.0)。哪个点最接近 FPR = FNR 的条件？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 30,
+          "explanation": "FPR=0.2时FNR=0.4，FPR=0.4时FNR=0.2，FPR=0.3时FNR=0.3，所以EER=0.3。",
+          "options": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.6"
+          ],
+          "question_id": "q_quiz_eer_calc_v2",
+          "stem": "根据 step5 中的例子，给定 (FPR, TPR) 数据点：(0.0, 0.0), (0.2, 0.6), (0.4, 0.8), (0.6, 1.0), (1.0, 1.0)，EER 的值是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "equal_error_rate",
+      "coverage_tags": [
+        "eer_interpretation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_eer_interp",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确解释 EER 值的实际含义。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能应用 EER 的数值解释。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "等错误率",
+          "en": "Equal Error Rate (EER)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "EER 越低，模型在平衡假正和假负方面做得越好。",
+          "options": [
+            "EER=0.1 的模型",
+            "EER=0.3 的模型",
+            "两者一样好",
+            "无法比较"
+          ],
+          "question_id": "q_quiz_eer_interp_v1",
+          "stem": "两个模型的 EER 分别为 0.1 和 0.3，哪个模型在平衡两类错误方面表现更好？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "生物识别等场景需要对称评估，EER 正是用于此目的。",
+          "options": [
+            "只关注假正",
+            "只关注假负",
+            "对称地关注假正和假负",
+            "只关注真正"
+          ],
+          "question_id": "q_quiz_eer_interp_v2",
+          "stem": "在生物识别系统中，通常更关注哪类错误？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-performance-evaluation/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,476 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "multi_class_lda_extension",
+      "covered_by": [
+        "qf_flash_multi_lda_directions",
+        "qf_quiz_multi_lda_directions"
+      ],
+      "description": "多类 LDA 的推广：类间散度矩阵变为所有类均值与全局均值的加权和，最多可找到 c-1 个投影方向。"
+    },
+    {
+      "coverage_tag": "sw_singularity_problem",
+      "covered_by": [
+        "qf_flash_sw_singularity",
+        "qf_quiz_sw_singularity"
+      ],
+      "description": "当数据维度远大于样本数时，S_W 不可逆，直接计算 LDA 会失败。"
+    },
+    {
+      "coverage_tag": "fisherface_method",
+      "covered_by": [
+        "qf_flash_fisherface_purpose",
+        "qf_quiz_fisherface_purpose",
+        "qf_long_fisherface_workflow"
+      ],
+      "description": "Fisherface：先用 PCA 降维到 N-c，再在低维空间做 LDA，解决 S_W 不可逆问题。"
+    },
+    {
+      "coverage_tag": "pseudoinverse_alternative",
+      "covered_by": [
+        "qf_flash_pseudoinverse",
+        "qf_quiz_pseudoinverse"
+      ],
+      "description": "处理 S_W 不可逆的另一种方法：使用 Moore-Penrose 伪逆，忽略零特征值对应的维度。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "multi_class_lda_extension",
+      "coverage_tags": [
+        "multi_class_lda_extension"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_multi_lda_directions",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能记住多类 LDA 最多可找到的投影方向数量。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了多类 LDA 投影方向数量的上限公式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "多类 LDA 最多可找到的投影方向数量与类别数的关系。",
+      "term_refs": [
+        {
+          "display": "多类 LDA",
+          "en": "Multi-class LDA"
+        }
+      ],
+      "variants": [
+        {
+          "back": "c-1 个，其中 c 是类别数。",
+          "estimated_seconds": 8,
+          "explanation": "类间散度矩阵 S_B 的秩最多为 c-1，因此最多有 c-1 个非零广义特征值，对应 c-1 个投影方向。",
+          "front": "多类 LDA 最多可以找到几个投影方向？",
+          "question_id": "q_flash_multi_lda_directions_v1"
+        },
+        {
+          "back": "4 维（c-1 = 5-1 = 4）。",
+          "estimated_seconds": 8,
+          "explanation": "多类 LDA 最多能找到 c-1 个投影方向，因此最多投影到 c-1 维空间。",
+          "front": "如果数据有 5 个类别，多类 LDA 最多能投影到几维空间？",
+          "question_id": "q_flash_multi_lda_directions_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "sw_singularity_problem",
+      "coverage_tags": [
+        "sw_singularity_problem"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sw_singularity",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别导致 S_W 不可逆的条件。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了 S_W 不可逆的根本原因。",
+      "question_type": "short_answer",
+      "retrieval_focus": "导致 S_W 不可逆的数据条件。",
+      "term_refs": [
+        {
+          "display": "类内散度矩阵",
+          "en": "Within-class Scatter Matrix (S_W)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "当数据维度远大于样本数时。",
+          "estimated_seconds": 8,
+          "explanation": "S_W 是 d×d 矩阵，但有效秩受限于样本数 N。当 d >> N 时，S_W 是奇异的，不可逆。",
+          "front": "在什么条件下，直接计算 LDA 时 S_W 矩阵会不可逆？",
+          "question_id": "q_flash_sw_singularity_v1"
+        },
+        {
+          "back": "S_W 不可逆（奇异矩阵）。",
+          "estimated_seconds": 6,
+          "explanation": "10000 维 >> 100 样本，S_W 的秩最多为 100，因此不可逆。",
+          "front": "10000 维的人脸数据，只有 100 个样本，直接做 LDA 时 S_W 会怎样？",
+          "question_id": "q_flash_sw_singularity_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "fisherface_method",
+      "coverage_tags": [
+        "fisherface_method"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_fisherface_purpose",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出 Fisherface 方法中先做 PCA 的目的。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了 Fisherface 解决 S_W 不可逆问题的核心思路。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Fisherface 中先 PCA 再 LDA 的原因。",
+      "term_refs": [
+        {
+          "display": "Fisherface",
+          "en": "Fisherface"
+        }
+      ],
+      "variants": [
+        {
+          "back": "为了降低维度，使 S_W 可逆。",
+          "estimated_seconds": 8,
+          "explanation": "先用 PCA 把维度降到 N-c，此时 S_W 变为可逆，再在该低维空间做 LDA。",
+          "front": "Fisherface 方法为什么先做 PCA？",
+          "question_id": "q_flash_fisherface_purpose_v1"
+        },
+        {
+          "back": "降到 N-c（N 是样本总数，c 是类别数）。",
+          "estimated_seconds": 10,
+          "explanation": "降到 N-c 后，S_W 的秩足够使其可逆，从而可以继续做 LDA。",
+          "front": "Fisherface 先用 PCA 把维度降到多少？",
+          "question_id": "q_flash_fisherface_purpose_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "pseudoinverse_alternative",
+      "coverage_tags": [
+        "pseudoinverse_alternative"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_pseudoinverse",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能记住处理 S_W 不可逆的另一种方法及其核心思想。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了伪逆方法的基本原理。",
+      "question_type": "short_answer",
+      "retrieval_focus": "伪逆方法如何处理零特征值。",
+      "term_refs": [
+        {
+          "display": "伪逆",
+          "en": "Pseudoinverse"
+        }
+      ],
+      "variants": [
+        {
+          "back": "使用 Moore-Penrose 伪逆。",
+          "estimated_seconds": 8,
+          "explanation": "对 S_W 做特征分解，将零特征值对应的维度忽略，用非零特征值的倒数构造伪逆。",
+          "front": "除了 Fisherface，处理 S_W 不可逆的另一种方法是什么？",
+          "question_id": "q_flash_pseudoinverse_v1"
+        },
+        {
+          "back": "直接忽略（将对应的 λ⁺ 设为 0）。",
+          "estimated_seconds": 8,
+          "explanation": "伪逆中，零特征值对应的 λ⁺ = 0，即忽略该维度。",
+          "front": "使用伪逆时，对 S_W 的零特征值如何处理？",
+          "question_id": "q_flash_pseudoinverse_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "longform_families": [
+    {
+      "concept_key": "fisherface_method",
+      "coverage_tags": [
+        "fisherface_method",
+        "sw_singularity_problem"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_fisherface_workflow",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整解释 Fisherface 方法的流程、动机和数学原理。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能串联 Fisherface 中 PCA 和 LDA 两个步骤的因果关系。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "Fisherface",
+          "en": "Fisherface"
+        },
+        {
+          "display": "类内散度矩阵",
+          "en": "Within-class Scatter Matrix (S_W)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "指出直接 LDA 的问题",
+            "解释 Fisherface 的两步流程",
+            "说明 PCA 降维的目标维度",
+            "解释为什么降维后 S_W 可逆"
+          ],
+          "question_id": "q_long_fisherface_workflow_v1",
+          "reference_answer": [
+            "直接 LDA 的问题：S_W 是 10000×10000 矩阵，但只有 200 个样本，秩最多 200，因此 S_W 奇异不可逆，无法计算 S_W^{-1}。",
+            "Fisherface 流程：第一步，用 PCA 将数据从 10000 维降到 N-c = 200-10 = 190 维。第二步，在 190 维空间中计算 S_W 和 S_B，此时 S_W 可逆，求解广义特征值问题，得到最多 c-1 = 9 个投影方向。",
+            "降维后 S_W 可逆的原因：190 维空间中，样本数 200 大于维度 190，S_W 满秩。"
+          ],
+          "rubric_points": [
+            "正确指出维度（10000）远大于样本数（200），导致 S_W 不可逆",
+            "正确说明 Fisherface 先用 PCA 降维到 N-c = 190 维",
+            "正确说明降维后 S_W 变为可逆，再在该低维空间做 LDA",
+            "正确说明 LDA 最终投影到 c-1 = 9 维"
+          ],
+          "stem": "假设你有一个 10000 维的人脸数据集，共 200 个样本，分属 10 个人。请解释为什么不能直接使用 LDA，并详细说明 Fisherface 方法如何解决这个问题。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "描述 Fisherface 的核心思路",
+            "描述伪逆方法的核心思路",
+            "比较两者的优缺点",
+            "给出适用场景"
+          ],
+          "question_id": "q_long_fisherface_workflow_v2",
+          "reference_answer": [
+            "Fisherface：先用 PCA 将数据降到 N-c 维，使 S_W 可逆，再在该低维空间做 LDA。优点是计算稳定，PCA 降维还能去噪；缺点是需要额外确定 PCA 保留的维度。",
+            "伪逆方法：对 S_W 做特征分解 S_W = EΛE^T，将零特征值对应的 λ⁺ 设为 0，非零特征值的 λ⁺ = 1/λ，构造 S_W⁺ = EΛ⁺E^T。优点是不需要降维步骤；缺点是可能保留噪声维度。",
+            "场景：Fisherface 适合人脸识别（10000 维，少量样本）；伪逆适合中等维度（如 500 维）但样本略少于维度的情况。"
+          ],
+          "rubric_points": [
+            "正确描述 Fisherface：先用 PCA 降维使 S_W 可逆，再做 LDA",
+            "正确描述伪逆：对 S_W 做特征分解，忽略零特征值，用非零特征值的倒数构造伪逆",
+            "正确比较：Fisherface 需要额外确定 PCA 保留的维度，但计算更稳定；伪逆不需要降维，但可能保留噪声维度",
+            "给出合理场景：Fisherface 适合人脸识别等维度极高的情况；伪逆适合维度不是特别高但样本不足的情况"
+          ],
+          "stem": "比较 Fisherface 和直接使用伪逆这两种处理 S_W 不可逆的方法。请说明它们的核心思路、优缺点，并给出一个适合使用 Fisherface 的场景和一个适合使用伪逆的场景。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "multi_class_lda_extension",
+      "coverage_tags": [
+        "multi_class_lda_extension"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_multi_lda_directions",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在多类场景下正确判断 LDA 的投影方向数量。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能应用多类 LDA 方向数量的上限规则。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "多类 LDA",
+          "en": "Multi-class LDA"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "多类 LDA 最多能找到 c-1 个投影方向，c=8 时最多 7 个。",
+          "options": [
+            "8",
+            "7",
+            "6",
+            "取决于样本数"
+          ],
+          "question_id": "q_quiz_multi_lda_directions_v1",
+          "stem": "一个数据集有 8 个类别，使用多类 LDA 进行降维，最多能得到几个投影方向？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "S_B 是 c 个类均值与全局均值的加权和，其秩最多为 c-1，因此非零广义特征值最多 c-1 个。",
+          "options": [
+            "类内散度矩阵 S_W 的秩为 c-1",
+            "类间散度矩阵 S_B 的秩最多为 c-1",
+            "样本数 N 必须大于 c",
+            "投影矩阵 W 必须是方阵"
+          ],
+          "question_id": "q_quiz_multi_lda_directions_v2",
+          "stem": "多类 LDA 最多能找到 c-1 个投影方向，根本原因是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "sw_singularity_problem",
+      "coverage_tags": [
+        "sw_singularity_problem"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_sw_singularity",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断在给定数据条件下 S_W 是否可逆。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能识别 S_W 不可逆的典型场景。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "类内散度矩阵",
+          "en": "Within-class Scatter Matrix (S_W)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "5000 维 >> 200 样本，S_W 是奇异矩阵，不可逆。",
+          "options": [
+            "计算速度太快，无法充分利用 CPU",
+            "S_W 矩阵不可逆",
+            "类别数太多，无法计算",
+            "S_B 矩阵为零矩阵"
+          ],
+          "question_id": "q_quiz_sw_singularity_v1",
+          "stem": "你有一个数据集：200 个样本，每个样本 5000 维，分属 5 个类别。直接计算 LDA 时，最可能遇到什么问题？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "1000 个样本 >> 50 维，S_W 的秩足够使其可逆。",
+          "options": [
+            "100 个样本，10000 维",
+            "1000 个样本，50 维",
+            "50 个样本，500 维",
+            "20 个样本，1000 维"
+          ],
+          "question_id": "q_quiz_sw_singularity_v2",
+          "stem": "以下哪种情况，直接使用 LDA 时 S_W 最可能是可逆的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "fisherface_method",
+      "coverage_tags": [
+        "fisherface_method"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_fisherface_purpose",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解 Fisherface 方法的设计动机和适用场景。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能判断何时应使用 Fisherface 而非直接 LDA。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Fisherface",
+          "en": "Fisherface"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "当维度远大于样本数时，S_W 不可逆。先用 PCA 降到 N-c 维，使 S_W 可逆，才能继续做 LDA。",
+          "options": [
+            "可视化数据分布",
+            "使 S_W 可逆",
+            "增加数据量",
+            "消除所有噪声"
+          ],
+          "question_id": "q_quiz_fisherface_purpose_v1",
+          "stem": "Fisherface 方法中，先用 PCA 将数据降到 N-c 维，主要目的是什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 12,
+          "explanation": "当维度远大于样本数时，S_W 不可逆，Fisherface 通过先 PCA 降维来解决此问题。",
+          "options": [
+            "数据维度远大于样本数",
+            "数据维度远小于样本数",
+            "只有两个类别",
+            "数据已经归一化"
+          ],
+          "question_id": "q_quiz_fisherface_purpose_v2",
+          "stem": "以下哪种场景最适合使用 Fisherface 而不是直接使用 LDA？"
+        }
+      ]
+    },
+    {
+      "concept_key": "pseudoinverse_alternative",
+      "coverage_tags": [
+        "pseudoinverse_alternative"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_pseudoinverse",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解伪逆方法的基本原理。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了伪逆如何处理奇异矩阵。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "伪逆",
+          "en": "Pseudoinverse"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "伪逆中，零特征值对应的 λ⁺ = 0，即忽略该维度。",
+          "options": [
+            "取该特征值的倒数",
+            "设为 0",
+            "设为 1",
+            "随机赋值"
+          ],
+          "question_id": "q_quiz_pseudoinverse_v1",
+          "stem": "使用 Moore-Penrose 伪逆处理 S_W 不可逆时，对零特征值对应的维度如何处理？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "伪逆直接在原始高维空间中对 S_W 求伪逆，不需要先用 PCA 降维。",
+          "options": [
+            "伪逆不需要 PCA 降维",
+            "Fisherface 不需要特征分解",
+            "伪逆只能用于二分类",
+            "Fisherface 只能用于二分类"
+          ],
+          "question_id": "q_quiz_pseudoinverse_v2",
+          "stem": "伪逆方法与 Fisherface 方法相比，一个关键区别是什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-pca-and-lda/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

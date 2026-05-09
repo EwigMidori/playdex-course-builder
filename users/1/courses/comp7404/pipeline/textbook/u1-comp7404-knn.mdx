@@ -1,0 +1,458 @@
+---
+lessonId: u1-comp7404-knn
+title: K近邻分类器与人脸识别
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["face_recognition_intro", "pixel_comparison_limitation"]
+    linkedSteps: ["step1"]
+  - sectionId: global-concept-map
+    title: 课程全景与关键问题
+    coverageTags: ["face_recognition_intro", "face_as_vector", "k_nearest_neighbor_classifier"]
+    linkedSteps: ["step1", "step2"]
+  - sectionId: core-concept-knn
+    title: 核心概念：K近邻分类器
+    coverageTags: ["k_nearest_neighbor_classifier", "euclidean_distance", "knn_voting_mechanism", "training_data_role"]
+    linkedSteps: ["step2"]
+  - sectionId: lazy-vs-eager
+    title: 懒惰学习与急切学习
+    coverageTags: ["lazy_learning_definition", "eager_learning_definition", "lazy_vs_eager_tradeoffs", "knn_training_phase"]
+    linkedSteps: ["step3"]
+  - sectionId: k-value-effect
+    title: k值大小对分类的影响
+    coverageTags: ["k值大小对分类的影响", "决策边界与k值的关系", "kNN超参数调优", "kNN概率信息", "kNN局部性"]
+    linkedSteps: ["step4"]
+  - sectionId: curse-of-dimensionality
+    title: 维度灾难：kNN的致命弱点
+    coverageTags: ["curse_of_dimensionality", "high_dimensional_distance", "knn_high_dim_limitation", "mitigation_strategies"]
+    linkedSteps: ["step5"]
+  - sectionId: optimization-strategies
+    title: 优化kNN的存储与计算
+    coverageTags: ["optimizing_storage_requirements", "edited_knn", "prototype", "decision_boundary_relevance"]
+    linkedSteps: ["step6"]
+  - sectionId: pitfalls
+    title: 易错点
+    coverageTags: ["k值大小对分类的影响", "curse_of_dimensionality", "lazy_vs_eager_tradeoffs"]
+    linkedSteps: ["step3", "step4", "step5"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["face_recognition_intro", "pixel_comparison_limitation", "k_nearest_neighbor_classifier", "euclidean_distance", "knn_voting_mechanism", "lazy_learning_definition", "eager_learning_definition", "lazy_vs_eager_tradeoffs", "k值大小对分类的影响", "curse_of_dimensionality", "optimizing_storage_requirements"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6"]
+
+coverageTrace:
+  - coverageTag: face_recognition_intro
+    description: 人脸识别的定义与基本思路：从图像中提取对光照、角度不敏感的特征，而非简单像素比较。
+    sectionIds: ["why-this-lesson-matters", "global-concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: pixel_comparison_limitation
+    description: 直接像素比较的局限性：光照变化导致同一人脸在不同照片中的像素值差异巨大，不可靠。
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: face_as_vector
+    description: 将人脸图像视为向量（如100x100像素拉直为10000维向量），作为后续相似度比较的基础。
+    sectionIds: ["global-concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: k_nearest_neighbor_classifier
+    description: K近邻分类器的核心思想、三要素（k、训练数据、距离度量）。
+    sectionIds: ["global-concept-map", "core-concept-knn"]
+    linkedSteps: ["step2"]
+  - coverageTag: euclidean_distance
+    description: 欧氏距离作为衡量向量相似度的度量。
+    sectionIds: ["core-concept-knn"]
+    linkedSteps: ["step2"]
+  - coverageTag: knn_voting_mechanism
+    description: k个最近邻投票决定未知样本类别的机制。
+    sectionIds: ["core-concept-knn"]
+    linkedSteps: ["step2"]
+  - coverageTag: training_data_role
+    description: 训练数据在kNN中的作用：带标签的样本集合。
+    sectionIds: ["core-concept-knn"]
+    linkedSteps: ["step2"]
+  - coverageTag: lazy_learning_definition
+    description: 懒惰学习的定义：训练阶段只存储数据，不构建模型。
+    sectionIds: ["lazy-vs-eager"]
+    linkedSteps: ["step3"]
+  - coverageTag: eager_learning_definition
+    description: 急切学习的定义：训练阶段构建压缩模型，丢弃原始数据。
+    sectionIds: ["lazy-vs-eager"]
+    linkedSteps: ["step3"]
+  - coverageTag: lazy_vs_eager_tradeoffs
+    description: 懒惰学习与急切学习在训练时间、存储、预测速度上的权衡。
+    sectionIds: ["lazy-vs-eager"]
+    linkedSteps: ["step3"]
+  - coverageTag: knn_training_phase
+    description: kNN 训练阶段的具体行为：仅存储训练数据。
+    sectionIds: ["lazy-vs-eager"]
+    linkedSteps: ["step3"]
+  - coverageTag: k值大小对分类的影响
+    description: 来自 lesson_map step4 概念：k 值大小对分类的影响。包括 k=1 与更大 k 值的对比，决策边界复杂度，过拟合与欠拟合，以及 k 值过大破坏局部性的问题。
+    sectionIds: ["k-value-effect"]
+    linkedSteps: ["step4"]
+  - coverageTag: 决策边界与k值的关系
+    description: 来自 guided_story step4 内容：1-NN 决策边界复杂，增大 k 值决策边界变平滑。
+    sectionIds: ["k-value-effect"]
+    linkedSteps: ["step4"]
+  - coverageTag: kNN超参数调优
+    description: 来自 guided_story step4 内容：k 是超参数，太小过拟合，太大欠拟合。
+    sectionIds: ["k-value-effect"]
+    linkedSteps: ["step4"]
+  - coverageTag: kNN概率信息
+    description: 来自 guided_story step4 内容：增大 k 值可提供概率信息（如置信度）。
+    sectionIds: ["k-value-effect"]
+    linkedSteps: ["step4"]
+  - coverageTag: kNN局部性
+    description: 来自 guided_story step4 内容：k 值过大破坏局部性，远处样本参与投票。
+    sectionIds: ["k-value-effect"]
+    linkedSteps: ["step4"]
+  - coverageTag: curse_of_dimensionality
+    description: 维度灾难的概念、成因及其对kNN的影响。
+    sectionIds: ["curse-of-dimensionality"]
+    linkedSteps: ["step5"]
+  - coverageTag: high_dimensional_distance
+    description: 高维空间中距离度量失效的现象：所有点对距离趋于相等。
+    sectionIds: ["curse-of-dimensionality"]
+    linkedSteps: ["step5"]
+  - coverageTag: knn_high_dim_limitation
+    description: kNN在高维数据下的性能急剧下降及其原因。
+    sectionIds: ["curse-of-dimensionality"]
+    linkedSteps: ["step5"]
+  - coverageTag: mitigation_strategies
+    description: 应对维度灾难的常见策略：降维（如PCA）或使用其他算法。
+    sectionIds: ["curse-of-dimensionality"]
+    linkedSteps: ["step5"]
+  - coverageTag: optimizing_storage_requirements
+    description: 优化kNN存储和计算开销的方法，包括编辑式K近邻和原型方法。
+    sectionIds: ["optimization-strategies"]
+    linkedSteps: ["step6"]
+  - coverageTag: edited_knn
+    description: 编辑式K近邻：自动识别并移除冗余或错误样本以减少存储和计算开销。
+    sectionIds: ["optimization-strategies"]
+    linkedSteps: ["step6"]
+  - coverageTag: prototype
+    description: 原型方法：用少量代表性样本（如类中心）代替大量原始数据。
+    sectionIds: ["optimization-strategies"]
+    linkedSteps: ["step6"]
+  - coverageTag: decision_boundary_relevance
+    description: 分类有用的信息集中在决策边界附近，远离边界的内部样本冗余。
+    sectionIds: ["optimization-strategies"]
+    linkedSteps: ["step6"]
+
+---
+
+# K近邻分类器与人脸识别
+
+## 为什么这一课重要
+
+人脸识别技术已经深入我们的日常生活：从手机解锁、安防监控到自动相册整理。但你是否想过，计算机是如何从一张照片中认出一个人的？直接比较两张照片的像素值是否可行？
+
+<Figure src="images/39cebe3ebb5c16fad55f11a92fce190129a5fbbfe5c9331482e5917b5034202a.jpg" alt="将人脸图像视为向量示意图">
+将人脸图像视为一个向量，每个像素的强度值构成向量的一个维度。
+</Figure>
+
+<KeyPoint>
+直接像素比较不可靠。光照变化会导致同一人脸在不同照片中的同一像素位置数值差异巨大（例如鼻尖像素值可能相差超过100）。人脸识别的核心是从图像中提取对光照、角度不敏感的特征。
+</KeyPoint>
+
+<QuestionRef id="q_quiz_face_recognition_vs_pixel_v1" />
+<QuestionRef id="q_quiz_face_recognition_vs_pixel_v2" />
+
+## 课程全景与关键问题
+
+本课的核心问题：**如何让计算机自动识别一张人脸属于谁？**
+
+我们将沿着以下思路展开：
+
+1. **人脸识别的基本挑战**：光照、角度、遮挡、表情等变化使得同一人的不同照片看起来差异很大。
+2. **将人脸转化为向量**：把一张 <InlineFormula latex="100 \times 100" /> 像素的图像拉直成一个 10000 维的向量。
+3. **K近邻（kNN）分类器**：一种直观的基于相似度的分类方法——找到最像的 k 个已知样本，让它们投票决定身份。
+4. **kNN 的特性与局限**：懒惰学习、k 值选择、维度灾难、存储优化。
+
+<Definition title="人脸识别" en="Face Recognition">
+从图像或视频中识别或验证人脸身份的技术。它不只是简单比较像素，而是从图像中提取出对光照、角度不敏感的特征。
+</Definition>
+
+<Definition title="图像向量化" en="Image Vectorization">
+将图像中每个像素的强度值按顺序排列，形成一个高维向量。例如，一张 <InlineFormula latex="100 \times 100" /> 像素的图像可以表示为一个 10000 维的向量。
+</Definition>
+
+## 核心概念：K近邻分类器
+
+### kNN 的核心思想
+
+<Definition title="K近邻" en="K-Nearest Neighbor (kNN)">
+一种基于样本相似度进行分类的算法。对于一个未知样本，找到训练集中最像它的 k 个样本（邻居），然后让这 k 个邻居投票决定它的类别。
+</Definition>
+
+kNN 只需要三样东西：
+
+1. 一个整数 k（选几个邻居）
+2. 一组带标签的训练数据
+3. 一个距离度量（比如欧氏距离）
+
+<QuestionRef id="q_quiz_knn_elements_v1" />
+
+### 欧氏距离：衡量相似度的标尺
+
+<Definition title="欧氏距离" en="Euclidean Distance">
+两点之间的直线距离，是最常用的距离度量之一。对于两个 n 维向量 <InlineFormula latex="\mathbf{x} = (x_1, x_2, \dots, x_n)" /> 和 <InlineFormula latex="\mathbf{y} = (y_1, y_2, \dots, y_n)" />，欧氏距离定义为：
+</Definition>
+
+<Formula latex="d(\mathbf{x}, \mathbf{y}) = \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2 + \dots + (x_n - y_n)^2}">
+欧氏距离公式
+</Formula>
+
+<Example title="计算欧氏距离">
+计算向量 <InlineFormula latex="\mathbf{a} = (1, 2)" /> 和 <InlineFormula latex="\mathbf{b} = (4, 6)" /> 之间的欧氏距离：
+
+<Formula latex="d = \sqrt{(4-1)^2 + (6-2)^2} = \sqrt{9 + 16} = \sqrt{25} = 5">
+计算结果
+</Formula>
+</Example>
+
+<QuestionRef id="q_quiz_euclidean_v1" />
+<QuestionRef id="q_quiz_euclidean_v2" />
+
+### 投票机制：邻居决定类别
+
+<Definition title="kNN投票机制" en="kNN Voting Mechanism">
+k个最近邻中，出现次数最多的类别（多数投票）决定未知样本的最终类别。
+</Definition>
+
+<Example title="kNN手动执行示例">
+**问题**：给定训练样本 A(1,2) 标签"张三"，B(3,4) 标签"李四"，C(5,1) 标签"张三"，D(7,6) 标签"王五"，E(2,3) 标签"李四"。未知样本 <InlineFormula latex="\mathbf{x}_u" /> 的坐标是 (4,3)。使用 k=3 的 kNN 进行分类。
+
+**步骤1：计算距离**
+- 到A: <InlineFormula latex="\sqrt{(4-1)^2 + (3-2)^2} = \sqrt{10} \approx 3.16" />
+- 到B: <InlineFormula latex="\sqrt{(4-3)^2 + (3-4)^2} = \sqrt{2} \approx 1.41" />
+- 到C: <InlineFormula latex="\sqrt{(4-5)^2 + (3-1)^2} = \sqrt{5} \approx 2.24" />
+- 到D: <InlineFormula latex="\sqrt{(4-7)^2 + (3-6)^2} = \sqrt{18} \approx 4.24" />
+- 到E: <InlineFormula latex="\sqrt{(4-2)^2 + (3-3)^2} = 2" />
+
+**步骤2：找出最近邻**
+距离从小到大排序：B(1.41), E(2.00), C(2.24), A(3.16), D(4.24)
+最近的3个邻居是：B, E, C
+
+**步骤3：投票**
+- B: 李四
+- E: 李四
+- C: 张三
+
+**结果**：李四（2票）> 张三（1票），预测为"李四"。
+</Example>
+
+<QuestionRef id="q_quiz_knn_voting_v1" />
+<QuestionRef id="q_quiz_knn_voting_v2" />
+
+<Checkpoint title="理解检查">
+你能用自己的话解释kNN的三个核心要素吗？如果 k=1，分类结果会有什么不同？
+</Checkpoint>
+
+## 懒惰学习与急切学习
+
+### kNN 是懒惰学习
+
+<Definition title="懒惰学习" en="Lazy Learning">
+一种学习策略，训练阶段只存储数据，不构建显式模型，直到收到预测请求时才进行处理。kNN 是懒惰学习的典型代表。
+</Definition>
+
+<KeyPoint>
+kNN 的"训练"就是存储数据。训练几乎不花时间，但每次预测都要遍历所有数据，存储和计算开销都很大。
+</KeyPoint>
+
+### 与急切学习的对比
+
+<Definition title="急切学习" en="Eager Learning">
+一种学习策略，训练阶段从数据中构建一个压缩的模型（如神经网络权重），之后丢弃原始数据。预测时直接使用模型。
+</Definition>
+
+<Example title="懒惰学习 vs 急切学习">
+假设你有 1000 张带标签的人脸图像：
+
+- **kNN（懒惰学习）**：训练阶段只是把这 1000 张图像存起来。预测时，计算新图像与所有 1000 张图像的距离，找出最近的邻居。
+- **神经网络（急切学习）**：训练阶段花费大量时间学习一个模型（权重参数）。训练完成后，可以丢弃原始图像。预测时，只需用模型计算一次，速度极快。
+</Example>
+
+<QuestionRef id="q_quiz_lazy_char_v1" />
+<QuestionRef id="q_quiz_tradeoff_v1" />
+<QuestionRef id="q_quiz_tradeoff_v2" />
+
+<Checkpoint title="理解检查">
+为什么说 kNN 是"懒惰"的？这种"懒惰"带来了哪些优点和缺点？
+</Checkpoint>
+
+## k值大小对分类的影响
+
+### k=1 与更大 k 值的对比
+
+<Definition title="决策边界" en="Decision Boundary">
+分类模型中，不同类别之间的分界线或分界面。
+</Definition>
+
+<KeyPoint>
+- **k=1（1-NN）**：决策边界非常复杂，紧贴训练数据。容易受噪声影响，一个异常点就可能改变分类结果。
+- **增大 k 值**：决策边界变得更平滑，对噪声更鲁棒。同时还能得到概率信息——比如 5 个邻居中有 4 个属于 A 类，置信度就是 80%。
+- **k 值过大**：远处的样本也被拉进来投票，破坏了"局部性"。如果 k 等于整个训练集的大小，所有未知样本都会被分到样本最多的那个类别，毫无意义。
+</KeyPoint>
+
+<Figure src="images/7ad72bbd6e29606d063c84542d86e8c43f5704d6f8581f30af0edecb544e5824.jpg" alt="1-NN 决策边界示例">
+k=1 时的决策边界非常复杂
+</Figure>
+
+<Figure src="images/e2af8021ee3134d03261bccb666c03ab2e3fb7fa9b496cd3c4858c6d3e17557f.jpg" alt="5-NN 决策边界示例">
+k=5 时的决策边界更平滑
+</Figure>
+
+<Figure src="images/034eaae21bd4ee93fd012996e4c57d4eb5727d627f98512984cd4f8745b49a25.jpg" alt="20-NN 决策边界示例">
+k=20 时的决策边界过于平滑
+</Figure>
+
+### k 是超参数
+
+<KeyPoint>
+k 是一个需要调优的超参数：
+- **太小（如 k=1）**：容易过拟合，对噪声敏感。
+- **太大（如 k=训练集大小）**：容易欠拟合，破坏局部性。
+</KeyPoint>
+
+<Example title="k值选择不当的后果">
+假设一个二分类问题，类别 A 有 60 个样本，类别 B 有 40 个样本。如果 k=100（等于训练集大小），所有未知样本都会被分到类别 A，无论它实际上离类别 B 有多近。
+</Example>
+
+<QuestionRef id="q_quiz_k_effect_v1" />
+<QuestionRef id="q_quiz_k_effect_v2" />
+<QuestionRef id="q_quiz_k_effect_v3" />
+
+<Checkpoint title="理解检查">
+为什么说 k 值太小会导致过拟合？为什么 k 值太大会破坏局部性？
+</Checkpoint>
+
+## 维度灾难：kNN的致命弱点
+
+### 高维空间中的距离失效
+
+<Definition title="维度灾难" en="Curse of Dimensionality">
+随着特征维度增加，数据变得稀疏，距离度量失效，导致模型性能下降的现象。
+</Definition>
+
+<KeyPoint>
+人脸图像通常是 100x100 像素，也就是 10000 维。在这样的高维空间中，所有点对之间的欧氏距离都集中在某个狭窄范围内，最大值和最小值相差很小。这意味着最近邻和最远邻的距离几乎没有区别，kNN 无法有效找到真正的近邻。
+</KeyPoint>
+
+<Example title="高维空间距离分布">
+假设你随机生成了 100 个 10000 维的向量，并计算了它们两两之间的欧氏距离。你会发现所有距离都集中在某个范围内，例如最大值约 200，最小值约 180，相对差异不到 10%。这意味着没有明显的近邻和远邻之分。
+</Example>
+
+### 应对策略
+
+<KeyPoint>
+维度灾难是 kNN 的一个致命弱点。在实际应用中，通常需要：
+1. **降维**：使用 PCA 等降维技术，将 10000 维的特征压缩到更低的维度（如 100 维），保留主要信息的同时缓解稀疏性。
+2. **使用其他算法**：使用对高维数据更鲁棒的算法（如 SVM 或神经网络）。
+</KeyPoint>
+
+<QuestionRef id="q_quiz_curse_dim_v1" />
+<QuestionRef id="q_quiz_curse_dim_v2" />
+
+<Checkpoint title="理解检查">
+为什么高维空间会导致距离度量失效？你能用自己的话解释维度灾难吗？
+</Checkpoint>
+
+## 优化kNN的存储与计算
+
+### 问题：存储和计算开销巨大
+
+基本 kNN 存储所有训练样本，这在数据量很大时非常慢。比如，人脸识别系统可能有数百万张照片，每次预测都要遍历所有数据，显然不可行。
+
+### 优化策略一：编辑式K近邻
+
+<Definition title="编辑式K近邻" en="Edited kNN">
+一种优化方法，通过自动识别并移除冗余或错误的样本，减少存储需求并提高效率。
+</Definition>
+
+<KeyPoint>
+真正对分类有用的信息大多集中在决策边界附近。远离边界的内部样本，其实可有可无。编辑式K近邻就是利用这一特点，自动移除冗余样本。
+</KeyPoint>
+
+<QuestionRef id="q_quiz_edited_knn_v1" />
+<QuestionRef id="q_quiz_edited_knn_v2" />
+
+### 优化策略二：原型方法
+
+<Definition title="原型" en="Prototype">
+代表原始数据集中一类样本的典型或压缩后的样本。例如，可以用每个类别的"中心点"来代表整个类别。
+</Definition>
+
+<KeyPoint>
+原型方法用少量代表性样本代替大量原始数据，大幅压缩存储空间，使预测速度更快。但可能丢失边界附近的细节信息，导致分类精度下降。
+</KeyPoint>
+
+<Checkpoint title="理解检查">
+编辑式K近邻和原型方法分别如何减少存储和计算开销？它们各自有什么潜在风险？
+</Checkpoint>
+
+## 易错点
+
+<Pitfall>
+**混淆懒惰学习和急切学习的训练/预测速度**：懒惰学习（如kNN）训练快、预测慢；急切学习（如神经网络）训练慢、预测快。不要记反。
+</Pitfall>
+
+<Pitfall>
+**认为k值越大越好**：k值过大（如等于训练集大小）会破坏局部性，导致所有未知样本都被分到样本最多的类别，完全失去分类意义。
+</Pitfall>
+
+<Pitfall>
+**忽略维度灾难对kNN的影响**：在高维数据（如图像）上直接使用kNN，由于距离度量失效，性能会急剧下降。必须先进行降维或使用其他算法。
+</Pitfall>
+
+<Pitfall>
+**认为kNN训练阶段会构建模型**：kNN是懒惰学习，训练阶段只存储数据，不构建任何模型。决策边界是在预测时隐式形成的。
+</Pitfall>
+
+## 复习与自测
+
+### 主动回忆（闪卡）
+
+使用以下闪卡族进行主动检索，巩固核心概念：
+
+- <QuestionFamily familyId="qf_flash_face_recognition_def" />：人脸识别的定义
+- <QuestionFamily familyId="qf_flash_pixel_limitation" />：像素比较的局限性
+- <QuestionFamily familyId="qf_flash_face_as_vector" />：图像向量化
+- <QuestionFamily familyId="qf_flash_knn_core" />：kNN核心思想
+- <QuestionFamily familyId="qf_flash_knn_three_elements" />：kNN三要素
+- <QuestionFamily familyId="qf_flash_euclidean_definition" />：欧氏距离
+- <QuestionFamily familyId="qf_flash_knn_voting" />：投票机制
+- <QuestionFamily familyId="qf_flash_training_data_definition" />：训练数据
+- <QuestionFamily familyId="qf_flash_lazy_def" />：懒惰学习
+- <QuestionFamily familyId="qf_flash_eager_def" />：急切学习
+- <QuestionFamily familyId="qf_flash_tradeoff" />：懒惰 vs 急切权衡
+- <QuestionFamily familyId="qf_flash_knn_train" />：kNN训练阶段
+- <QuestionFamily familyId="qf_flash_k_effect" />：k值影响
+- <QuestionFamily familyId="qf_flash_curse_dim" />：维度灾难
+- <QuestionFamily familyId="qf_flash_edited_knn" />：编辑式K近邻
+- <QuestionFamily familyId="qf_flash_prototype" />：原型方法
+- <QuestionFamily familyId="qf_flash_decision_boundary_redundancy" />：决策边界冗余
+
+### 章节自测（选择题）
+
+- <QuestionFamily familyId="qf_quiz_face_recognition_vs_pixel" />
+- <QuestionFamily familyId="qf_quiz_pixel_limitation" />
+- <QuestionFamily familyId="qf_quiz_knn_three_elements" />
+- <QuestionFamily familyId="qf_quiz_euclidean_calculation" />
+- <QuestionFamily familyId="qf_quiz_knn_voting_scenario" />
+- <QuestionFamily familyId="qf_quiz_lazy_char" />
+- <QuestionFamily familyId="qf_quiz_tradeoff" />
+- <QuestionFamily familyId="qf_quiz_knn_train" />
+- <QuestionFamily familyId="qf_quiz_k_effect" />
+- <QuestionFamily familyId="qf_quiz_curse_dim" />
+- <QuestionFamily familyId="qf_quiz_edited_knn" />
+
+### 深入理解与应用（简答/推导）
+
+- <QuestionFamily familyId="qf_long_pixel_limitation_explain" />：解释像素比较的局限性
+- <QuestionFamily familyId="qf_long_knn_manual_execution" />：手动执行kNN分类
+- <QuestionFamily familyId="qf_long_tradeoff" />：比较懒惰学习与急切学习
+- <QuestionFamily familyId="qf_long_k_effect" />：分析k值影响
+- <QuestionFamily familyId="qf_long_curse_dim" />：解释维度灾难
+- <QuestionFamily familyId="qf_long_optimization_comparison" />：比较优化策略

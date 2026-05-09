@@ -1,0 +1,138 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-introduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "在监督学习中，预测的结果可以是两种形式。",
+        "一种是离散的类别，一种是连续的数值。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "比如，判断一封邮件是“垃圾邮件”还是“正常邮件”，",
+        "结果是类别。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "而预测明天的气温是25.3度还是26.1度，",
+        "结果是数值。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "classification"
+      ],
+      "id": "s032",
+      "introduced_terms": [
+        "classification"
+      ],
+      "lines": [
+        "预测离散类别的任务，叫 <term id=\"classification\">分类</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "regression"
+      ],
+      "id": "s033",
+      "introduced_terms": [
+        "regression"
+      ],
+      "lines": [
+        "预测连续数值的任务，叫 <term id=\"regression\">回归</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "气温是一个连续的数值，所以是回归问题。",
+        "kind": "single_choice",
+        "options": [
+          "分类",
+          "回归",
+          "聚类",
+          "无监督学习"
+        ],
+        "prompt": "预测明天的气温是多少度，属于哪种学习问题？"
+      },
+      "focus_terms": [],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "预测明天的气温是多少度，属于哪种学习问题？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "识别图片中的动物是预测离散类别，属于分类。",
+        "kind": "single_choice",
+        "options": [
+          "分类",
+          "回归",
+          "聚类",
+          "无监督学习"
+        ],
+        "prompt": "判断以下任务属于分类还是回归：识别图片中的动物。"
+      },
+      "focus_terms": [],
+      "id": "s035",
+      "introduced_terms": [],
+      "lines": [
+        "判断以下任务属于分类还是回归：识别图片中的动物。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "分类和回归是监督学习的两个基本任务。",
+        "接下来，我们看看无监督学习能做什么。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step3b",
+  "source": {
+    "plain_text": "Classification vs regression.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "classification": {
+      "aliases": [
+        "classification"
+      ],
+      "display": "分类",
+      "gloss": "将输入数据分配到预定义的类别中。"
+    },
+    "regression": {
+      "aliases": [
+        "regression"
+      ],
+      "display": "回归",
+      "gloss": "预测一个连续的数值输出。"
+    }
+  }
+}

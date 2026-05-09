@@ -1,0 +1,157 @@
+{
+  "chapter_id": "lecture-06-data-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-data-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "现在看下面几个属性值列表：",
+        "A. 颜色：红、蓝、绿",
+        "B. 成绩等级：A、B、C、D、F",
+        "C. 身高（米）：1.65、1.80、1.72",
+        "D. 是否已婚：是、否",
+        "问题：对每个列表，你能做什么操作？",
+        "比如，能计算平均值吗？能排序吗？",
+        "请先自己思考。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "有些同学可能会说：颜色可以计算平均值，因为红=1, 蓝=2, 绿=3。",
+        "但这样对吗？颜色本身没有数值意义，不能这样计算。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "binary_attribute"
+      ],
+      "id": "s008",
+      "introduced_terms": [
+        "binary_attribute"
+      ],
+      "lines": [
+        "先看 D：只有两个值，表示“有”或“无”。",
+        "这种属性叫 <term id=\"binary_attribute\">二元属性</term>。",
+        "比如“是否已婚”、“是否吸烟”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "nominal_attribute"
+      ],
+      "id": "s009",
+      "introduced_terms": [
+        "nominal_attribute"
+      ],
+      "lines": [
+        "再看 A：颜色是离散的名称，但你能说“红 > 蓝”吗？不能。",
+        "这种没有顺序的离散属性叫 <term id=\"nominal_attribute\">名义属性</term>。",
+        "比如：眼睛颜色、邮政编码。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "ordinal_attribute"
+      ],
+      "id": "s010",
+      "introduced_terms": [
+        "ordinal_attribute"
+      ],
+      "lines": [
+        "B 呢？成绩等级有顺序：A > B > C > D > F。",
+        "但你能说 A 比 B 多多少分吗？不能，差值没有意义。",
+        "这种有顺序但不能计算差值的属性叫 <term id=\"ordinal_attribute\">有序属性</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "numerical_attribute"
+      ],
+      "id": "s011",
+      "introduced_terms": [
+        "numerical_attribute"
+      ],
+      "lines": [
+        "C 是身高，可以计算平均值、差值。",
+        "这种可以加减平均的属性叫 <term id=\"numerical_attribute\">数值属性</term>。",
+        "比如：身高、温度、销售额。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "邮政编码是离散的名称，数字大小不代表区域优劣，属于名义属性。",
+        "kind": "single_choice",
+        "options": [
+          "二元属性",
+          "有序属性",
+          "名义属性",
+          "数值属性"
+        ],
+        "prompt": "“邮政编码”属于哪种属性类型？"
+      },
+      "focus_terms": [
+        "nominal_attribute"
+      ],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "“邮政编码”属于哪种属性类型？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Types of Attributes. Binary, Nominal, Ordinal, Numerical.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "binary_attribute": {
+      "aliases": [
+        "binary attribute",
+        "binary"
+      ],
+      "display": "二元属性",
+      "gloss": "只有两个取值（0或1）的属性，表示特征的有或无。"
+    },
+    "nominal_attribute": {
+      "aliases": [
+        "nominal attribute",
+        "nominal"
+      ],
+      "display": "名义属性",
+      "gloss": "取值是离散的名称，没有顺序意义。"
+    },
+    "numerical_attribute": {
+      "aliases": [
+        "numerical attribute",
+        "numeric"
+      ],
+      "display": "数值属性",
+      "gloss": "取值是数字，可以进行加减平均等运算。"
+    },
+    "ordinal_attribute": {
+      "aliases": [
+        "ordinal attribute",
+        "ordinal"
+      ],
+      "display": "有序属性",
+      "gloss": "取值是离散且有顺序的，但差值没有意义。"
+    }
+  }
+}

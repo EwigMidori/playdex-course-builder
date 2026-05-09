@@ -1,0 +1,159 @@
+{
+  "chapter_id": "lecture-04-clustering",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-clustering",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "想象一下，你面前有100张照片，每张照片都有颜色、亮度、纹理等特征。",
+        "你的任务：把它们分成几堆，每堆里的照片看起来差不多。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "请你在心里尝试一下：如果让你手动完成这个分组，你会怎么做？",
+        "你会一张一张地比较，然后决定它们属于哪一堆吗？",
+        "请你在心里尝试，并记录下你遇到的主要困难。",
+        "请写出你遇到的至少两个困难。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "你可能很快就会发现：100张照片，每张有多个特征，手动比较非常耗时。",
+        "而且，不同的人可能会得到完全不同的分组结果。",
+        "比如，有人按颜色分，有人按内容分，没有统一的标准。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "手动分组大量数据时，人眼无法同时处理多个特征，且不同人的标准不同，导致结果不一致。",
+        "kind": "single_choice",
+        "options": [
+          "手动分组大量数据非常耗时且结果因人而异",
+          "手动分组总是又快又准",
+          "手动分组只需要看一个特征就够了",
+          "手动分组的结果永远一致"
+        ],
+        "prompt": "尝试手动分组100张照片后，你发现最大的困难是什么？"
+      },
+      "id": "s004",
+      "lines": [
+        "你刚才的体验说明了什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "数据太多、特征太多时，人眼无法直接看出分组。",
+        "我们需要一种自动的方法，让计算机帮我们完成这个任务。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "introduced_terms": [
+        "cluster_analysis"
+      ],
+      "lines": [
+        "这种自动发现数据中自然分组的方法，叫做 <term id=\"cluster_analysis\">聚类分析</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s007",
+      "introduced_terms": [
+        "cluster"
+      ],
+      "lines": [
+        "每个自动找到的分组，叫做一个 <term id=\"cluster\">簇</term>。",
+        "同一个簇里的对象彼此相似，不同簇里的对象差异较大。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "聚类分析是在没有标签的情况下发现数据中的自然分组，而分类分析是根据已有标签对数据进行预测。",
+        "kind": "single_choice",
+        "options": [
+          "聚类分析需要事先知道每个数据的类别",
+          "聚类分析是在没有标签的情况下发现自然分组",
+          "聚类分析和分类分析是一回事",
+          "聚类分析只能用于图像数据"
+        ],
+        "prompt": "聚类分析和分类分析的根本区别是什么？"
+      },
+      "id": "s008",
+      "lines": [
+        "下面哪个描述最符合聚类分析的特点？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s008b",
+      "introduced_terms": [],
+      "lines": [
+        "现在，请判断以下场景属于有监督学习还是无监督学习：",
+        "给定一组图片，没有标签，要求自动分组。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "没有标签，要求自动发现分组，这是无监督学习。",
+        "kind": "single_choice",
+        "options": [
+          "有监督学习",
+          "无监督学习",
+          "半监督学习",
+          "强化学习"
+        ],
+        "prompt": "给定一组图片，没有标签，要求自动分组。这是哪种学习方式？"
+      },
+      "id": "s008c",
+      "lines": [
+        "请判断："
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "What is Cluster Analysis? Finding groups of objects such that the objects in a group will be similar (or related) to one another and different from (or unrelated to) the objects in other groups.",
+    "related": [
+      "Clustering in Image Segmentation"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "cluster": {
+      "aliases": [
+        "Cluster"
+      ],
+      "display": "簇",
+      "gloss": "聚类分析中形成的一个数据对象组。"
+    },
+    "cluster_analysis": {
+      "aliases": [
+        "Clustering",
+        "Cluster Analysis"
+      ],
+      "display": "聚类分析",
+      "gloss": "将数据对象分组，使得组内对象相似、组间对象不同的过程。"
+    }
+  }
+}

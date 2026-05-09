@@ -1,0 +1,283 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "semi_supervised_learning",
+      "covered_by": [
+        "qf_flash_semi_supervised_learning",
+        "qf_quiz_semi_supervised_learning"
+      ],
+      "description": "半监督学习：结合少量有标签数据和大量无标签数据进行学习。来自 coverage checklist / source outline 中的 'Semi-supervised learning' 以及 lesson map 中 step3d 的概念。"
+    },
+    {
+      "coverage_tag": "transfer_learning",
+      "covered_by": [
+        "qf_flash_transfer_learning",
+        "qf_quiz_transfer_learning"
+      ],
+      "description": "迁移学习：将一个领域学到的知识应用到另一个相关但不同的领域。来自 coverage checklist / source outline 中的 'Transfer learning' 以及 lesson map 中 step3d 的概念。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "semi_supervised_learning",
+      "coverage_tags": [
+        "semi_supervised_learning"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_semi_supervised_learning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆半监督学习的定义及其典型数据场景。",
+      "linked_steps": [
+        "step3d"
+      ],
+      "practice_target": "学生答对后证明能准确回忆半监督学习的核心定义和典型数据构成。",
+      "question_type": "short_answer",
+      "retrieval_focus": "半监督学习的定义和典型数据构成。",
+      "term_refs": [
+        {
+          "display": "半监督学习",
+          "en": "semi-supervised learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "结合少量有标签数据和大量无标签数据。",
+          "estimated_seconds": 8,
+          "explanation": "半监督学习的典型场景是只有部分数据有标签，其余数据没有标签。",
+          "front": "半监督学习使用的训练数据有什么特点？",
+          "question_id": "q_flash_semi_supervised_learning_v1"
+        },
+        {
+          "back": "半监督学习。",
+          "estimated_seconds": 8,
+          "explanation": "少量有标签数据 + 大量无标签数据，正是半监督学习的典型场景。",
+          "front": "给定1000张照片，其中100张标记了类别，900张未标记。最适合用什么学习方法？",
+          "question_id": "q_flash_semi_supervised_learning_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "transfer_learning",
+      "coverage_tags": [
+        "transfer_learning"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_transfer_learning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆迁移学习的定义及其核心思想。",
+      "linked_steps": [
+        "step3d"
+      ],
+      "practice_target": "学生答对后证明能准确回忆迁移学习的核心定义：将一个领域学到的知识应用到另一个相关领域。",
+      "question_type": "short_answer",
+      "retrieval_focus": "迁移学习的定义和核心思想。",
+      "term_refs": [
+        {
+          "display": "迁移学习",
+          "en": "transfer learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将一个领域学到的知识应用到另一个相关但不同的领域。",
+          "estimated_seconds": 8,
+          "explanation": "迁移学习的关键是知识在不同但相关的任务或领域之间的复用。",
+          "front": "迁移学习的核心思想是什么？",
+          "question_id": "q_flash_transfer_learning_v1"
+        },
+        {
+          "back": "迁移学习。",
+          "estimated_seconds": 8,
+          "explanation": "从识别猫（源领域）学到的知识迁移到识别老虎（目标领域），是迁移学习的典型例子。",
+          "front": "学会了识别猫，想用来帮助识别老虎，这属于哪种学习？",
+          "question_id": "q_flash_transfer_learning_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-introduction",
+  "longform_families": [
+    {
+      "concept_key": "semi_supervised_learning_vs_transfer_learning",
+      "coverage_tags": [
+        "semi_supervised_learning",
+        "transfer_learning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_semi_supervised_vs_transfer",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能清晰解释半监督学习和迁移学习的核心区别，并分别给出一个应用场景。",
+      "linked_steps": [
+        "step3d"
+      ],
+      "practice_target": "学生答对后证明能区分半监督学习和迁移学习在数据需求、核心思想和应用场景上的差异。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "半监督学习",
+          "en": "semi-supervised learning"
+        },
+        {
+          "display": "迁移学习",
+          "en": "transfer learning"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "半监督学习解决什么问题？",
+            "迁移学习解决什么问题？",
+            "它们的核心区别是什么？",
+            "各举一个例子。"
+          ],
+          "question_id": "q_long_semi_supervised_vs_transfer_v1",
+          "reference_answer": [
+            "半监督学习解决的是标签数据稀缺的问题，它结合少量有标签数据和大量无标签数据进行学习。例如，有100张标记了猫或狗的照片和900张未标记的照片。",
+            "迁移学习解决的是目标任务数据不足的问题，它将从一个相关任务（源领域）学到的知识应用到目标任务（目标领域）。例如，学会了识别猫，用这个知识来帮助识别老虎。",
+            "核心区别：半监督学习关注的是数据本身的标签缺失，而迁移学习关注的是任务或领域之间的知识转移。"
+          ],
+          "rubric_points": [
+            "正确解释半监督学习：利用少量有标签数据 + 大量无标签数据。",
+            "正确解释迁移学习：将一个领域知识应用到另一个相关领域。",
+            "指出核心区别：半监督学习关注数据标签的稀缺性，迁移学习关注任务/领域的相关性。",
+            "给出合理的例子，如半监督学习：100张有标签+900张无标签照片；迁移学习：用猫识别知识帮助老虎识别。"
+          ],
+          "stem": "请比较半监督学习和迁移学习，说明它们各自解决什么问题，并各举一个例子。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "如何用半监督学习解决任务B？",
+            "如何用迁移学习解决任务B？",
+            "两种方法的思路有何不同？"
+          ],
+          "question_id": "q_long_semi_supervised_vs_transfer_v2",
+          "reference_answer": [
+            "半监督学习：直接使用任务B中少量有标签的字母数据和大量无标签的字母数据来训练模型。",
+            "迁移学习：先使用任务A的大量有标签数字数据训练一个模型，然后将这个模型的知识（如特征提取能力）迁移到任务B，再用任务B的少量有标签字母数据进行微调。",
+            "思路不同：半监督学习只依赖目标任务自身的数据（有标签+无标签），而迁移学习依赖源任务的知识来帮助目标任务。"
+          ],
+          "rubric_points": [
+            "半监督学习方案：利用任务B中少量有标签字母 + 大量无标签字母。",
+            "迁移学习方案：利用任务A中学到的识别手写形状的知识，帮助任务B。",
+            "指出区别：半监督学习只使用任务B的数据（有标签+无标签），迁移学习使用任务A的知识。"
+          ],
+          "stem": "假设你有一个任务A：识别手写数字（有大量标签数据），和一个任务B：识别手写字母（只有少量标签数据）。请分别说明如何用半监督学习和迁移学习来解决任务B，并比较两种方法的思路有何不同。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "semi_supervised_learning",
+      "coverage_tags": [
+        "semi_supervised_learning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_semi_supervised_learning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析半监督学习与其他学习类型的区别。",
+      "linked_steps": [
+        "step3d"
+      ],
+      "practice_target": "学生答对后证明能根据数据标签情况正确识别半监督学习场景。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "半监督学习",
+          "en": "semi-supervised learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "半监督学习适用于少量有标签数据和大量无标签数据的情况。",
+          "options": [
+            "100张有标签照片 + 900张无标签照片",
+            "1000张全部有标签的照片",
+            "1000张全部无标签的照片",
+            "先学会识别猫，再用这个知识识别老虎"
+          ],
+          "question_id": "q_quiz_semi_supervised_learning_v1",
+          "stem": "以下哪个场景最适合用半监督学习？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "少量有标签数据 + 大量无标签数据，是半监督学习的典型场景。",
+          "options": [
+            "监督学习",
+            "无监督学习",
+            "半监督学习",
+            "迁移学习"
+          ],
+          "question_id": "q_quiz_semi_supervised_learning_v2",
+          "stem": "一个数据集包含5000条已标记的客户评论和20000条未标记的评论。最适合采用哪种学习方法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "transfer_learning",
+      "coverage_tags": [
+        "transfer_learning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_transfer_learning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析迁移学习与其他学习类型的区别。",
+      "linked_steps": [
+        "step3d"
+      ],
+      "practice_target": "学生答对后证明能根据任务关系正确识别迁移学习场景。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "迁移学习",
+          "en": "transfer learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "迁移学习是将一个任务上学到的知识应用到另一个相关任务。",
+          "options": [
+            "有100张标记了猫或狗的照片，其余900张未标记",
+            "学会了识别猫，想用来帮助识别老虎",
+            "有1000张全部标记了猫或狗的照片",
+            "有1000张全部未标记的照片，想自动分组"
+          ],
+          "question_id": "q_quiz_transfer_learning_v1",
+          "stem": "以下哪个场景最适合用迁移学习？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 20,
+          "explanation": "将英文情感分析（源领域）学到的知识应用到中文情感分析（目标领域），是迁移学习。",
+          "options": [
+            "监督学习",
+            "无监督学习",
+            "半监督学习",
+            "迁移学习"
+          ],
+          "question_id": "q_quiz_transfer_learning_v2",
+          "stem": "一个模型已经在英文情感分析任务上训练得很好，现在想用它来帮助训练中文情感分析模型。这属于哪种学习？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3d",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-introduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,679 @@
+{
+  "chapter_id": "lecture-05-application",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "feature_detection_and_representation",
+      "covered_by": [
+        "qf_flash_step3_featdet",
+        "qf_quiz_step3_featdet",
+        "qf_long_step3_flow"
+      ],
+      "description": "特征检测与表示：规则网格、兴趣点检测器等方法"
+    },
+    {
+      "coverage_tag": "feature_descriptor",
+      "covered_by": [
+        "qf_flash_step3_descriptor",
+        "qf_quiz_step3_descriptor"
+      ],
+      "description": "特征描述子：用数值向量描述局部区域外观，如SIFT"
+    },
+    {
+      "coverage_tag": "codeword_dictionary_formation",
+      "covered_by": [
+        "qf_flash_step3_codebook",
+        "qf_quiz_step3_codebook"
+      ],
+      "description": "码本构建：K均值聚类生成视觉单词集合"
+    },
+    {
+      "coverage_tag": "visual_word_quantization",
+      "covered_by": [
+        "qf_flash_step3_quantize",
+        "qf_quiz_step3_quantize"
+      ],
+      "description": "视觉单词量化：将描述子映射到最近的聚类中心"
+    },
+    {
+      "coverage_tag": "bag_of_words_histogram",
+      "covered_by": [
+        "qf_flash_step3_histogram",
+        "qf_quiz_step3_histogram"
+      ],
+      "description": "词袋直方图：统计每个视觉单词出现次数形成图像表示"
+    },
+    {
+      "coverage_tag": "bow_construction_flow",
+      "covered_by": [
+        "qf_quiz_step3_ordering",
+        "qf_long_step3_flow"
+      ],
+      "description": "词袋模型构建流程：特征检测→描述→聚类→量化→直方图"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "feature_detection",
+      "coverage_tags": [
+        "feature_detection_and_representation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step3_featdet",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出图像词袋模型中特征检测的两种常见方法及其区别。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了特征检测的两种主要方式：规则网格和兴趣点检测器。",
+      "question_type": "short_answer",
+      "retrieval_focus": "特征检测的两种方法",
+      "term_refs": [
+        {
+          "display": "特征检测",
+          "en": "Feature Detection"
+        }
+      ],
+      "variants": [
+        {
+          "back": "规则网格（Regular grid）和兴趣点检测器（Interest point detector）。",
+          "estimated_seconds": 10,
+          "explanation": "规则网格均匀采样，兴趣点检测器找到角点、斑点等变化剧烈的区域。",
+          "front": "在图像词袋模型中，特征检测的两种常见方法是什么？",
+          "question_id": "q_flash_step3_featdet_v1"
+        },
+        {
+          "back": "变化剧烈的区域，例如角点（corners）和斑点（blobs）。",
+          "estimated_seconds": 8,
+          "explanation": "兴趣点检测器关注图像中梯度或亮度变化显著的位置。",
+          "front": "兴趣点检测器在图像中主要寻找什么样的区域？",
+          "question_id": "q_flash_step3_featdet_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_descriptor",
+      "coverage_tags": [
+        "feature_descriptor"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step3_descriptor",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出特征描述子的作用和一个经典例子。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了特征描述子将局部区域外观编码为数值向量的功能。",
+      "question_type": "short_answer",
+      "retrieval_focus": "特征描述子的定义与经典实例",
+      "term_refs": [
+        {
+          "display": "特征描述子",
+          "en": "Feature Descriptor"
+        },
+        {
+          "display": "SIFT",
+          "en": "SIFT"
+        }
+      ],
+      "variants": [
+        {
+          "back": "用一个数值向量描述局部区域的外观。经典例子是SIFT描述子。",
+          "estimated_seconds": 10,
+          "explanation": "SIFT描述子将局部梯度信息编码成向量，对旋转和尺度有一定不变性。",
+          "front": "特征描述子的作用是什么？请举一个经典例子。",
+          "question_id": "q_flash_step3_descriptor_v1"
+        },
+        {
+          "back": "一个数值向量。",
+          "estimated_seconds": 6,
+          "explanation": "SIFT描述子通过统计局部梯度方向直方图生成一个128维的向量。",
+          "front": "SIFT描述子将局部区域的外观编码成什么形式？",
+          "question_id": "q_flash_step3_descriptor_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "codeword_dictionary",
+      "coverage_tags": [
+        "codeword_dictionary_formation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step3_codebook",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出码本是如何构建的以及视觉单词的含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了码本由K均值聚类生成的聚类中心组成，每个中心是一个视觉单词。",
+      "question_type": "short_answer",
+      "retrieval_focus": "码本构建与视觉单词",
+      "term_refs": [
+        {
+          "display": "码本",
+          "en": "Codebook / Codewords Dictionary"
+        },
+        {
+          "display": "K均值聚类",
+          "en": "K-means Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "对所有局部描述子进行K均值聚类，每个聚类中心就是一个视觉单词，所有聚类中心的集合就是码本。",
+          "estimated_seconds": 12,
+          "explanation": "K均值将相似的描述子聚在一起，聚类中心代表了一类局部模式。",
+          "front": "在图像词袋模型中，码本（Codebook）是如何生成的？",
+          "question_id": "q_flash_step3_codebook_v1"
+        },
+        {
+          "back": "K均值聚类后得到的聚类中心，代表一种局部图像模式。",
+          "estimated_seconds": 8,
+          "explanation": "视觉单词不是图像中的真实物体，而是对局部特征量化后的代表性模式。",
+          "front": "视觉单词（Visual Word）在图像词袋模型中对应什么？",
+          "question_id": "q_flash_step3_codebook_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "visual_word",
+      "coverage_tags": [
+        "visual_word_quantization"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step3_quantize",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出如何将新图像的局部描述子量化为视觉单词。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了量化过程：找到描述子在码本中最近的视觉单词。",
+      "question_type": "short_answer",
+      "retrieval_focus": "描述子到视觉单词的映射",
+      "term_refs": [
+        {
+          "display": "视觉单词",
+          "en": "Visual Word"
+        }
+      ],
+      "variants": [
+        {
+          "back": "找到每个描述子在码本中距离最近的视觉单词（聚类中心）。",
+          "estimated_seconds": 8,
+          "explanation": "通过最近邻搜索，将每个描述子分配给最相似的视觉单词。",
+          "front": "对于一张新图像，如何将它的局部描述子映射到视觉单词？",
+          "question_id": "q_flash_step3_quantize_v1"
+        },
+        {
+          "back": "码本中距离该描述子最近的聚类中心。",
+          "estimated_seconds": 6,
+          "explanation": "量化将连续的特征空间离散化为有限的视觉单词。",
+          "front": "量化（Quantization）步骤中，描述子被分配到的视觉单词是什么？",
+          "question_id": "q_flash_step3_quantize_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "histogram",
+      "coverage_tags": [
+        "bag_of_words_histogram"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step3_histogram",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出词袋直方图的生成方式及其含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了词袋向量是统计每个视觉单词出现次数的直方图。",
+      "question_type": "short_answer",
+      "retrieval_focus": "词袋直方图的生成",
+      "term_refs": [
+        {
+          "display": "直方图",
+          "en": "Histogram"
+        }
+      ],
+      "variants": [
+        {
+          "back": "统计每个视觉单词被分配到的次数，形成一个直方图向量。",
+          "estimated_seconds": 8,
+          "explanation": "直方图的每个桶对应一个视觉单词，桶的值是该单词在图像中出现的频次。",
+          "front": "图像的词袋向量（Bag-of-words vector）是如何从视觉单词分配结果得到的？",
+          "question_id": "q_flash_step3_histogram_v1"
+        },
+        {
+          "back": "一个统计每个视觉单词出现次数的直方图向量。",
+          "estimated_seconds": 6,
+          "explanation": "这个向量就是图像的词袋表示，可用于训练分类器。",
+          "front": "词袋模型最终用什么来表示一张图像？",
+          "question_id": "q_flash_step3_histogram_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-application",
+  "longform_families": [
+    {
+      "concept_key": "bag_of_words",
+      "coverage_tags": [
+        "bow_construction_flow",
+        "feature_detection_and_representation",
+        "feature_descriptor",
+        "codeword_dictionary_formation",
+        "visual_word_quantization",
+        "bag_of_words_histogram"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_step3_flow",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整描述图像词袋模型的构建流程，并解释每个步骤的作用。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了从像素到词袋向量的完整转换过程及每个环节的必要性。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-words Model"
+        },
+        {
+          "display": "特征检测",
+          "en": "Feature Detection"
+        },
+        {
+          "display": "特征描述子",
+          "en": "Feature Descriptor"
+        },
+        {
+          "display": "码本",
+          "en": "Codebook"
+        },
+        {
+          "display": "视觉单词",
+          "en": "Visual Word"
+        },
+        {
+          "display": "直方图",
+          "en": "Histogram"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "第一步：特征检测",
+            "第二步：特征描述",
+            "第三步：码本构建",
+            "第四步：量化与直方图统计"
+          ],
+          "question_id": "q_long_step3_flow_v1",
+          "reference_answer": [
+            "第一步，特征检测：在图像上找到有代表性的局部区域。可以使用规则网格均匀采样，也可以使用兴趣点检测器（如Harris-Laplace）寻找角点、斑点等变化剧烈的区域。",
+            "第二步，特征描述：对每个检测到的局部区域，使用特征描述子（如SIFT）将其外观编码成一个数值向量。",
+            "第三步，码本构建：将所有训练图像的局部描述子收集起来，用K均值聚类算法进行聚类。每个聚类中心就是一个视觉单词，所有聚类中心的集合构成码本。",
+            "第四步，量化与直方图统计：对于一张新图像，提取其所有局部描述子，将每个描述子分配到码本中距离最近的视觉单词。最后统计每个视觉单词被分配到的次数，形成直方图向量，即图像的词袋表示。"
+          ],
+          "rubric_points": [
+            "正确描述特征检测的两种方法（规则网格和兴趣点检测器）及其目的",
+            "正确说明特征描述子（如SIFT）将局部区域编码为数值向量",
+            "正确解释K均值聚类生成码本，聚类中心即视觉单词",
+            "正确说明量化过程：将描述子映射到最近的视觉单词",
+            "正确说明最终得到视觉单词频次直方图作为图像表示"
+          ],
+          "stem": "请详细描述图像词袋模型（Bag-of-words Model）的构建流程，包括每个步骤的具体操作和目的。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "特征检测阶段",
+            "特征描述阶段",
+            "码本构建阶段（假设已有训练数据）",
+            "量化与表示阶段"
+          ],
+          "question_id": "q_long_step3_flow_v2",
+          "reference_answer": [
+            "首先，在图片上进行特征检测。可以使用规则网格在图片上均匀采样局部区域，或者使用兴趣点检测器找到角点（如车轮边缘）和斑点（如车灯）等关键区域。",
+            "然后，对每个检测到的局部区域，使用SIFT等特征描述子将其外观编码成一个数值向量，例如128维的梯度直方图向量。",
+            "假设我们已经从大量训练图片中提取了所有描述子，并通过K均值聚类生成了一个包含K个视觉单词的码本。每个视觉单词代表一种局部模式，例如“水平边缘”、“纹理斑块”等。",
+            "对于这张新图片，将它的每个局部描述子与码本中的视觉单词进行最近邻匹配，分配到最相似的视觉单词。最后统计每个视觉单词出现的次数，得到一个K维的直方图向量，这就是该图片的词袋表示。"
+          ],
+          "rubric_points": [
+            "正确描述特征检测如何从图片中提取局部区域",
+            "正确说明特征描述子如何描述每个区域",
+            "正确解释码本的作用和生成方式",
+            "正确说明量化过程及最终直方图的含义"
+          ],
+          "stem": "假设你有一张包含汽车和道路的图片，请逐步说明如何使用词袋模型将其转换为一个数值向量表示。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "feature_detection",
+      "coverage_tags": [
+        "feature_detection_and_representation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step3_featdet",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中区分特征检测的不同方法及其特点。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能辨析规则网格与兴趣点检测器的区别。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征检测",
+          "en": "Feature Detection"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "兴趣点检测器（如Harris-Laplace）专门寻找角点、斑点等变化剧烈的区域，而规则网格是均匀采样。",
+          "options": [
+            "规则网格采样",
+            "兴趣点检测器",
+            "随机采样",
+            "全图像素扫描"
+          ],
+          "question_id": "q_quiz_step3_featdet_v1",
+          "stem": "在图像词袋模型中，以下哪种特征检测方法会优先选择图像中变化剧烈的区域（如角点）？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "规则网格在图像上按固定间隔均匀采样，不关心局部是否变化剧烈。",
+          "options": [
+            "只检测角点",
+            "在图像上均匀采样，不依赖局部变化",
+            "计算速度更慢",
+            "只能用于灰度图像"
+          ],
+          "question_id": "q_quiz_step3_featdet_v2",
+          "stem": "规则网格（Regular grid）采样与兴趣点检测器相比，主要特点是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_descriptor",
+      "coverage_tags": [
+        "feature_descriptor"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_step3_descriptor",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中识别特征描述子的作用。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能正确理解特征描述子将局部区域外观编码为向量的功能。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征描述子",
+          "en": "Feature Descriptor"
+        },
+        {
+          "display": "SIFT",
+          "en": "SIFT"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "特征描述子将局部区域的外观（如梯度分布）编码成一个数值向量，方便后续聚类和匹配。",
+          "options": [
+            "找到图像中的物体边界",
+            "用一个数值向量描述局部区域的外观",
+            "对整张图像进行分类",
+            "减少图像的文件大小"
+          ],
+          "question_id": "q_quiz_step3_descriptor_v1",
+          "stem": "特征描述子（Feature Descriptor）的主要功能是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "SIFT（尺度不变特征变换）是最经典的特征描述子之一，将局部区域外观编码为向量。",
+          "options": [
+            "PCA",
+            "SIFT",
+            "SVM",
+            "K-means"
+          ],
+          "question_id": "q_quiz_step3_descriptor_v2",
+          "stem": "以下哪个是图像词袋模型中常用的特征描述子？"
+        }
+      ]
+    },
+    {
+      "concept_key": "codeword_dictionary",
+      "coverage_tags": [
+        "codeword_dictionary_formation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step3_codebook",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中理解码本构建与视觉单词的关系。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了码本由K均值聚类生成，视觉单词是聚类中心。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "码本",
+          "en": "Codebook"
+        },
+        {
+          "display": "K均值聚类",
+          "en": "K-means Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "将所有局部描述子用K均值聚类，聚类中心构成码本，每个中心是一个视觉单词。",
+          "options": [
+            "对原始像素值进行主成分分析",
+            "对所有局部描述子进行K均值聚类",
+            "对图像进行傅里叶变换",
+            "随机选择图像块"
+          ],
+          "question_id": "q_quiz_step3_codebook_v1",
+          "stem": "在构建图像词袋模型时，码本（Codebook）是通过什么方法生成的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "视觉单词是对局部特征量化后的代表性模式，即聚类中心，不是真实物体。",
+          "options": [
+            "图像中的真实物体",
+            "K均值聚类得到的聚类中心",
+            "原始图像的像素值",
+            "图像的边缘检测结果"
+          ],
+          "question_id": "q_quiz_step3_codebook_v2",
+          "stem": "视觉单词（Visual Word）在图像词袋模型中对应什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "visual_word",
+      "coverage_tags": [
+        "visual_word_quantization"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step3_quantize",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中理解量化步骤的输入输出。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了量化是将描述子映射到最近视觉单词的过程。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "视觉单词",
+          "en": "Visual Word"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "量化步骤将每个局部描述子映射到码本中最近的视觉单词，输出分配结果。",
+          "options": [
+            "输入：图像像素；输出：视觉单词直方图",
+            "输入：局部描述子；输出：每个描述子对应的视觉单词编号",
+            "输入：视觉单词；输出：聚类中心",
+            "输入：直方图；输出：分类结果"
+          ],
+          "question_id": "q_quiz_step3_quantize_v1",
+          "stem": "在图像词袋模型中，量化（Quantization）步骤的输入和输出分别是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "通过计算描述子与所有聚类中心的距离，选择最近的视觉单词。",
+          "options": [
+            "描述子的颜色",
+            "描述子在码本中的最近邻",
+            "描述子的空间位置",
+            "描述子的尺寸"
+          ],
+          "question_id": "q_quiz_step3_quantize_v2",
+          "stem": "量化步骤中，一个局部描述子被分配到的视觉单词取决于什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "histogram",
+      "coverage_tags": [
+        "bag_of_words_histogram"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_step3_histogram",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中理解词袋直方图的含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了词袋向量是视觉单词频次的统计直方图。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "直方图",
+          "en": "Histogram"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "词袋向量统计每个视觉单词在图像中出现的次数，形成一个直方图。",
+          "options": [
+            "原始像素矩阵",
+            "视觉单词出现次数的直方图",
+            "图像的空间坐标列表",
+            "特征描述子的集合"
+          ],
+          "question_id": "q_quiz_step3_histogram_v1",
+          "stem": "图像的词袋向量（Bag-of-words vector）本质上是一个什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "每个桶对应一个视觉单词，桶的值是该单词在图像中出现的频次。",
+          "options": [
+            "对应视觉单词在图像中出现的次数",
+            "对应像素的亮度值",
+            "对应图像块的空间位置",
+            "对应描述子的维度"
+          ],
+          "question_id": "q_quiz_step3_histogram_v2",
+          "stem": "词袋直方图中，每个桶（bin）的值代表什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "bag_of_words",
+      "coverage_tags": [
+        "bow_construction_flow"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step3_ordering",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确排列图像词袋模型的构建步骤。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了词袋模型构建的完整流程顺序。",
+      "question_type": "ordering",
+      "term_refs": [
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-words Model"
+        }
+      ],
+      "variants": [
+        {
+          "answer_order": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "estimated_seconds": 20,
+          "explanation": "正确的流程是：先检测特征区域，然后用描述子描述，接着聚类生成码本，最后量化并统计直方图。",
+          "items": [
+            "A. 特征检测：找到有代表性的局部区域",
+            "B. 特征描述：用向量描述每个区域",
+            "C. K均值聚类：生成码本（视觉单词集合）",
+            "D. 量化与统计直方图：得到图像的词袋向量"
+          ],
+          "question_id": "q_quiz_step3_ordering_v1",
+          "stem": "请将图像词袋模型构建流程的步骤按正确顺序排列。"
+        },
+        {
+          "answer_order": [
+            3,
+            1,
+            0,
+            2
+          ],
+          "estimated_seconds": 20,
+          "explanation": "先检测特征区域（D），然后提取描述子（B），接着聚类生成码本（A），最后量化并统计直方图（C）。",
+          "items": [
+            "A. 对描述子进行K均值聚类生成码本",
+            "B. 提取局部区域并计算特征描述子",
+            "C. 将描述子量化为视觉单词并统计直方图",
+            "D. 在图像上检测特征区域"
+          ],
+          "question_id": "q_quiz_step3_ordering_v2",
+          "stem": "以下哪个是图像词袋模型构建流程的正确顺序？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-application/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

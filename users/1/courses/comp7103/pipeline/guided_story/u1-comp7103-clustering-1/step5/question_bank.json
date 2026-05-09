@@ -1,0 +1,329 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "limitations_of_k_means",
+      "covered_by": [
+        "qf_flash_limitations_kmeans",
+        "qf_quiz_limitations_kmeans"
+      ],
+      "description": "K-means的局限性：不同大小、不同密度、非球形形状、对噪声和异常值敏感"
+    },
+    {
+      "coverage_tag": "k_medoids_definition",
+      "covered_by": [
+        "qf_flash_medoid_definition",
+        "qf_quiz_kmedoids_vs_kmeans"
+      ],
+      "description": "K-medoids的定义：使用中心点(medoid)代替均值作为簇代表"
+    },
+    {
+      "coverage_tag": "medoid_definition",
+      "covered_by": [
+        "qf_flash_medoid_definition"
+      ],
+      "description": "中心点(medoid)的定义：簇中到其他所有点距离之和最小的实际数据点"
+    },
+    {
+      "coverage_tag": "k_medoids_robustness",
+      "covered_by": [
+        "qf_quiz_kmedoids_vs_kmeans",
+        "qf_long_kmedoids_tradeoff"
+      ],
+      "description": "K-medoids对噪声和异常值更鲁棒，但计算量更大"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "limitations_of_k_means",
+      "coverage_tags": [
+        "limitations_of_k_means"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_limitations_kmeans",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能列举K-means的主要局限性场景。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能主动回忆K-means在哪些数据分布下效果不佳。",
+      "question_type": "short_answer",
+      "retrieval_focus": "K-means失效的三种数据分布类型",
+      "term_refs": [
+        {
+          "display": "K-means",
+          "en": "K-means"
+        }
+      ],
+      "variants": [
+        {
+          "back": "非球形（如月牙形）数据。",
+          "estimated_seconds": 8,
+          "explanation": "K-means假设簇是球形的，对于月牙形等非球形数据，会强行分成不合理的球形簇。",
+          "front": "K-means 在哪些形状的数据上效果不好？",
+          "question_id": "q_flash_limitations_kmeans_v1"
+        },
+        {
+          "back": "噪声和异常值。",
+          "estimated_seconds": 6,
+          "explanation": "一个异常点就能把质心拉偏，严重影响聚类结果。",
+          "front": "K-means 对数据集的什么特性敏感？",
+          "question_id": "q_flash_limitations_kmeans_v2"
+        },
+        {
+          "back": "可能把大簇切碎。",
+          "estimated_seconds": 8,
+          "explanation": "K-means倾向于生成大小相近的簇，当簇的大小差异很大时，它可能错误地将大簇分割成多个小簇。",
+          "front": "当簇的大小差异很大时，K-means 可能产生什么问题？",
+          "question_id": "q_flash_limitations_kmeans_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "medoid_definition",
+      "coverage_tags": [
+        "medoid_definition",
+        "k_medoids_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_medoid_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能定义中心点并理解其与质心的区别。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能主动回忆中心点的定义及其与质心的关键区别。",
+      "question_type": "definition_with_example",
+      "retrieval_focus": "中心点的定义和性质",
+      "term_refs": [
+        {
+          "display": "中心点",
+          "en": "Medoid"
+        }
+      ],
+      "variants": [
+        {
+          "back": "中心点（medoid），是簇中一个实际存在的点，到簇内其他所有点的距离之和最小。",
+          "estimated_seconds": 10,
+          "explanation": "与K-means使用平均值（可能不是实际数据点）不同，K-medoids使用簇中实际存在的一个点作为代表。",
+          "front": "K-medoids 中，簇的代表点是什么？它有什么特点？",
+          "question_id": "q_flash_medoid_definition_v1"
+        },
+        {
+          "back": "中心点是簇中实际存在的数据点；质心是簇内所有点的平均值，可能不是实际数据点。",
+          "estimated_seconds": 8,
+          "explanation": "这是K-medoids与K-means最核心的区别。",
+          "front": "中心点（medoid）与质心（centroid）的关键区别是什么？",
+          "question_id": "q_flash_medoid_definition_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-clustering-1",
+  "longform_families": [
+    {
+      "concept_key": "k_medoids_robustness",
+      "coverage_tags": [
+        "k_medoids_robustness",
+        "limitations_of_k_means"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_kmedoids_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释K-medoids为何对噪声更鲁棒，以及其计算代价。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能比较K-means和K-medoids的优缺点，并解释其背后的原因。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "K-means",
+          "en": "K-means"
+        },
+        {
+          "display": "K-medoids",
+          "en": "K-medoids"
+        },
+        {
+          "display": "中心点",
+          "en": "Medoid"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "解释K-means为什么对异常值敏感",
+            "解释K-medoids如何解决这个问题",
+            "说明K-medoids的代价"
+          ],
+          "question_id": "q_long_kmedoids_tradeoff_v1",
+          "reference_answer": [
+            "K-means使用簇内所有点的平均值作为质心，一个异常值会显著改变均值，从而拉偏质心，导致聚类结果失真。",
+            "K-medoids使用中心点（medoid）作为簇的代表，中心点是簇中实际存在的一个数据点，它到簇内其他所有点的距离之和最小。由于中心点是实际数据点，异常值不会成为中心点，因此聚类结果对噪声和异常值更鲁棒。",
+            "这种鲁棒性的代价是计算量更大。K-medoids需要计算所有点对之间的距离来寻找中心点，因此比K-means更慢，不适合处理大规模数据集。"
+          ],
+          "rubric_points": [
+            "K-means使用均值作为质心，异常值会显著拉偏均值",
+            "K-medoids使用中心点（medoid），即簇中实际存在的点，到其他点的距离之和最小",
+            "中心点是实际数据点，不会被异常值拉偏",
+            "K-medoids需要计算所有点对之间的距离来寻找中心点，计算量更大",
+            "K-medoids比K-means更慢"
+          ],
+          "stem": "请解释为什么K-medoids对噪声和异常值比K-means更鲁棒，并说明这种鲁棒性带来的代价是什么。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "描述K-means可能产生的结果",
+            "描述K-medoids可能产生的结果",
+            "解释两者差异的原因"
+          ],
+          "question_id": "q_long_kmedoids_tradeoff_v2",
+          "reference_answer": [
+            "使用K-means时，异常值会显著拉偏其所在簇的质心，可能导致该簇的边界不准确，甚至将正常点错误地分配到其他簇。",
+            "使用K-medoids时，中心点是簇中实际存在的点，异常值通常不会成为中心点，因此聚类结果更稳定，能更好地反映数据的真实结构。",
+            "两者差异的根本原因在于：K-means使用均值（对异常值敏感），K-medoids使用中心点（对异常值鲁棒）。但K-medoids的计算复杂度更高。"
+          ],
+          "rubric_points": [
+            "K-means的质心会被异常值拉偏，导致簇的边界不准确",
+            "K-medoids的中心点是实际数据点，不受异常值影响",
+            "K-medoids的结果更稳定、更合理",
+            "但K-medoids的计算时间更长"
+          ],
+          "stem": "假设你有一个包含大量异常值的数据集，需要将其分成3个簇。请比较使用K-means和K-medoids的预期结果，并解释为什么。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "limitations_of_k_means",
+      "coverage_tags": [
+        "limitations_of_k_means"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_limitations_kmeans",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中识别K-means的局限性。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能判断K-means在给定数据分布下的表现。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "K-means",
+          "en": "K-means"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "K-means假设簇是球形的，对于月牙形等非球形数据，它会强行分成不合理的球形簇，无法识别真实的形状。",
+          "options": [
+            "K-means 能完美识别两个月牙形簇",
+            "K-means 会强行将数据分成两个不合理的球形簇",
+            "K-means 会报错，因为数据不是球形的",
+            "K-means 会将所有点归为一个簇"
+          ],
+          "question_id": "q_quiz_limitations_kmeans_v1",
+          "stem": "给定一个月牙形分布的数据集，使用K-means（k=2）进行聚类，最可能的结果是什么？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 20,
+          "explanation": "K-means不能自动处理不同密度的簇，这是它的局限性之一。其他三项都是K-means的已知局限性。",
+          "options": [
+            "对噪声和异常值敏感",
+            "假设簇是球形的",
+            "需要预先指定簇数k",
+            "能自动处理不同密度的簇"
+          ],
+          "question_id": "q_quiz_limitations_kmeans_v2",
+          "stem": "以下哪个不是K-means的局限性？"
+        }
+      ]
+    },
+    {
+      "concept_key": "k_medoids_definition",
+      "coverage_tags": [
+        "k_medoids_definition",
+        "k_medoids_robustness"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_kmedoids_vs_kmeans",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分K-medoids与K-means的核心差异及适用场景。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能判断K-medoids相对于K-means的优势和劣势。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "K-medoids",
+          "en": "K-medoids"
+        },
+        {
+          "display": "K-means",
+          "en": "K-means"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "K-medoids使用中心点（medoid）而非平均值（mean）作为簇的代表，这是两者的核心区别。",
+          "options": [
+            "K-medoids 不需要指定簇数 k",
+            "K-medoids 使用簇中实际存在的点（中心点）作为代表",
+            "K-medoids 只能用于球形簇",
+            "K-medoids 的计算量比 K-means 小"
+          ],
+          "question_id": "q_quiz_kmedoids_vs_kmeans_v1",
+          "stem": "K-medoids 与 K-means 的主要区别是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "K-medoids使用实际数据点作为代表，不会被异常值拉偏，因此对噪声和异常值更鲁棒。",
+          "options": [
+            "数据是球形且大小相近",
+            "数据包含大量噪声和异常值",
+            "数据量非常大，需要快速聚类",
+            "数据是均匀分布的"
+          ],
+          "question_id": "q_quiz_kmedoids_vs_kmeans_v2",
+          "stem": "在什么场景下，K-medoids 比 K-means 更合适？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "K-medoids的计算量比K-means更大，因为它需要计算所有点对之间的距离来寻找中心点。",
+          "options": [
+            "对噪声更敏感",
+            "计算量更大，速度更慢",
+            "需要指定更多的参数",
+            "只能处理数值型数据"
+          ],
+          "question_id": "q_quiz_kmedoids_vs_kmeans_v3",
+          "stem": "K-medoids 相对于 K-means 的主要缺点是什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-clustering-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

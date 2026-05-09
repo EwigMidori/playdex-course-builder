@@ -1,0 +1,195 @@
+{
+  "chapter_id": "lecture-06-graph-clustering",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-graph-clustering",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "现在，把前面的步骤串起来，看看完整的算法流程。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s046",
+      "introduced_terms": [],
+      "lines": [
+        "第一步：定义两个节点之间的相似度函数。",
+        "第二步：计算亲和矩阵 W 和度矩阵 D。",
+        "第三步：求解广义特征值问题 (D-W)y = λDy。",
+        "第四步：取出第二小的特征值对应的特征向量。",
+        "第五步：根据这个特征向量的正负号，将图一分为二。",
+        "然后，对每一部分递归地重复这个过程。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "正确的顺序是：定义相似度 -> 计算矩阵 -> 求解特征值 -> 取第二小特征向量 -> 二分。",
+        "kind": "single_choice",
+        "options": [
+          "计算矩阵 -> 定义相似度 -> 求解特征值 -> 二分 -> 取第二小特征向量",
+          "定义相似度 -> 求解特征值 -> 计算矩阵 -> 取第二小特征向量 -> 二分",
+          "定义相似度 -> 计算矩阵 -> 求解特征值 -> 取第二小特征向量 -> 二分",
+          "求解特征值 -> 定义相似度 -> 计算矩阵 -> 二分 -> 取第二小特征向量"
+        ],
+        "prompt": "请选出归一化割算法的正确步骤顺序。"
+      },
+      "focus_terms": [],
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [
+        "检查一下你的记忆："
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "递归二分虽然有效，但速度慢。",
+        "每次只分两类，对于大型图需要多次迭代。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "有没有办法一次性分成多个簇？",
+        "有！我们可以使用多个特征向量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "k_way_normalized_cut"
+      ],
+      "id": "s050",
+      "introduced_terms": [
+        "k_way_normalized_cut"
+      ],
+      "lines": [
+        "这就是 <term id=\"k_way_normalized_cut\">k路归一化割</term> 的基本思想。",
+        "它比递归二分更高效。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "affinity_matrix",
+        "degree_matrix"
+      ],
+      "id": "s051",
+      "introduced_terms": [
+        "affinity_matrix",
+        "degree_matrix"
+      ],
+      "lines": [
+        "在算法中，<term id=\"affinity_matrix\">亲和矩阵</term> W 记录了所有点对之间的相似度。",
+        "<term id=\"degree_matrix\">度矩阵</term> D 的对角线元素是 W 的行和。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "递归二分和使用多个特征向量是文中提到的两种方式。随机初始化并迭代优化不是归一化割的标准扩展方法。",
+        "kind": "single_choice",
+        "options": [
+          "随机初始化并迭代优化",
+          "递归二分",
+          "使用多个特征向量进行 k-means",
+          "直接求解一个多类目标函数"
+        ],
+        "prompt": "以下哪种方法不是将归一化割扩展到多类分割的方式？"
+      },
+      "focus_terms": [],
+      "id": "s052",
+      "introduced_terms": [],
+      "lines": [
+        "最后一个小练习："
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "第二小"
+        ],
+        "explanation": "在归一化割算法中，用于二分图的特征向量是第二小的特征值对应的特征向量。",
+        "kind": "fill_in_blank",
+        "prompt": "在归一化割算法中，用于二分图的特征向量是第______小的特征向量。"
+      },
+      "focus_terms": [],
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "再填一个关键点："
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "递归二分每次只分两类，需要多次迭代；使用多个特征向量可以一次性分成多类，更高效。",
+        "kind": "single_choice",
+        "options": [
+          "递归二分更高效",
+          "使用多个特征向量更高效",
+          "两者效率相同",
+          "两者都不高效"
+        ],
+        "prompt": "递归二分和使用多个特征向量的多类扩展方法，哪个更高效？"
+      },
+      "focus_terms": [],
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "区分一下两种方法："
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Use k-eigenvectors: Recursive 2-way Ncut is slow. We can use more eigenvectors to re-partition the graph, however: Not all eigenvectors are useful for partition. Procedure: compute k-means with a high k. Then follow one of these procedures: a) Merge segments that minimize k-way Ncut criterion. b) Use the k segments and find the partitions there using exhaustive search. Experiments: Define similarity: for point sets. F(i)=1; for brightness images. F(i)=I(i); for HSV images. F(i)=[v,v.s.sin(h),v.s.cos(h)]; in case of texture. F(i)=[|I*f1|,...,|I*fn|].",
+    "related": [
+      "lecture-06-graph-clustering"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "affinity_matrix": {
+      "aliases": [
+        "Affinity Matrix",
+        "Similarity Matrix",
+        "W"
+      ],
+      "display": "亲和矩阵",
+      "gloss": "一个矩阵，其中每个元素表示两个数据点之间的相似度。"
+    },
+    "degree_matrix": {
+      "aliases": [
+        "Degree Matrix",
+        "D"
+      ],
+      "display": "度矩阵",
+      "gloss": "一个对角矩阵，对角线上的元素是亲和矩阵中对应行的元素之和。"
+    },
+    "k_way_normalized_cut": {
+      "aliases": [
+        "k-way Ncut"
+      ],
+      "display": "k路归一化割",
+      "gloss": "使用多个特征向量，一次性将图分割成 k 个部分的方法。"
+    }
+  }
+}

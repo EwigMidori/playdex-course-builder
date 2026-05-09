@@ -1,0 +1,213 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-decision-trees",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "单棵决策树容易过拟合，不够稳定。",
+        "那如果我们种一片森林呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "random_forest",
+        "ensemble"
+      ],
+      "id": "s002",
+      "introduced_terms": [
+        "random_forest",
+        "ensemble"
+      ],
+      "lines": [
+        "这就是 <term id=\"random_forest\">随机森林</term> 的核心思想。",
+        "它不是一个模型，而是一群决策树的 <term id=\"ensemble\">集成</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "random_forest"
+      ],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "每棵树都单独进行预测，然后大家投票。",
+        "得票最多的类别，就是最终结果。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "random_forest"
+      ],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "但如何保证每棵树都不一样呢？",
+        "随机森林用了两个技巧。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bootstrap_sampling"
+      ],
+      "id": "s005",
+      "introduced_terms": [
+        "bootstrap_sampling"
+      ],
+      "lines": [
+        "第一，<term id=\"bootstrap_sampling\">自助采样</term>。",
+        "从原始数据中随机抽取样本（有放回），每棵树用的数据都略有不同。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "random_forest"
+      ],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "第二，在每个节点分裂时，不是考虑所有特征，而是随机选择一部分特征。",
+        "然后从这些特征中挑出最好的那个进行分裂。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "`max_features` 控制的是“每个节点分裂时，随机抽多少个特征参与竞争”。这正是随机森林制造树间差异的重要旋钮。",
+        "kind": "single_choice",
+        "options": [
+          "max_features",
+          "max_depth",
+          "n_estimators",
+          "min_samples_leaf"
+        ],
+        "prompt": "如果考试问你：随机森林里哪个参数直接控制“每个节点分裂时随机抽多少个特征来比较”？你应该选哪一个？"
+      },
+      "focus_terms": [
+        "random_forest"
+      ],
+      "id": "s006b",
+      "introduced_terms": [],
+      "lines": [
+        "如果考试问你：随机森林里哪个参数直接控制“每个节点分裂时随机抽多少个特征来比较”？你应该选哪一个？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "random_forest"
+      ],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "这两招保证了树与树之间的“多样性”。",
+        "每棵树都看到了数据的不同侧面，也使用了不同的特征。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "random_forest"
+      ],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "虽然单棵树可能过拟合，但把它们的结果平均后，",
+        "整体的方差会降低，模型变得更稳健，泛化能力也更强。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "随机森林中的所有树都是决策树，只是训练数据和特征选择不同。",
+        "kind": "single_choice",
+        "options": [
+          "使用不同的训练数据子集",
+          "在每个节点随机选择特征子集",
+          "使用不同的分类算法"
+        ],
+        "prompt": "以下哪一项不是随机森林增加多样性的方法？"
+      },
+      "focus_terms": [
+        "random_forest",
+        "bootstrap_sampling"
+      ],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "随机森林通过什么方式来增加树之间的多样性？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "增加树的数量通常能降低方差，提升稳定性，但收益递减。",
+        "kind": "single_choice",
+        "options": [
+          "方差降低，模型更稳定",
+          "方差增加，模型更不稳定",
+          "偏差降低，模型更准确",
+          "没有影响"
+        ],
+        "prompt": "随机森林中，树的数量从 10 增加到 100，通常会导致什么？"
+      },
+      "focus_terms": [
+        "random_forest"
+      ],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "思考一下：树的数量对随机森林的性能有什么影响？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "A random forest can be considered as an ensemble of decision trees. The idea behind a random forest is to average multiple (deep) decision trees that individually suffer from high variance, to build a more robust model.",
+    "related": [
+      "Random Forests",
+      "Random Forests Creation",
+      "Random Forests Intuition"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "bootstrap_sampling": {
+      "aliases": [
+        "Bootstrap Sampling",
+        "Bootstrap"
+      ],
+      "display": "自助采样",
+      "gloss": "从原始数据集中有放回地随机抽取样本，用于训练不同的模型。"
+    },
+    "ensemble": {
+      "aliases": [
+        "Ensemble",
+        "Ensemble Learning"
+      ],
+      "display": "集成",
+      "gloss": "将多个学习器的预测结果结合起来，以获得比单个学习器更好的性能。"
+    },
+    "random_forest": {
+      "aliases": [
+        "Random Forest",
+        "Random Forests"
+      ],
+      "display": "随机森林",
+      "gloss": "一种集成学习方法，通过构建多棵决策树并综合它们的预测结果来提高准确性和稳定性。"
+    }
+  }
+}

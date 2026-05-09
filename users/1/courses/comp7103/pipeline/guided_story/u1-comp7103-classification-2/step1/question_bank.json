@@ -1,0 +1,484 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "nearest_neighbor_basic_idea",
+      "covered_by": [
+        "qf_flash_nn_idea",
+        "qf_quiz_nn_idea"
+      ],
+      "description": "最近邻分类器的基本思想：通过寻找训练集中最相似的记录来预测新样本的标签。"
+    },
+    {
+      "coverage_tag": "knn_three_requirements",
+      "covered_by": [
+        "qf_flash_nn_requirements",
+        "qf_quiz_nn_requirements"
+      ],
+      "description": "k-NN 需要的三样东西：带标签的记录集、距离度量、k 值。"
+    },
+    {
+      "coverage_tag": "knn_classification_process",
+      "covered_by": [
+        "qf_flash_nn_process",
+        "qf_quiz_nn_process",
+        "qf_long_nn_process"
+      ],
+      "description": "k-NN 分类流程：计算距离、找出 k 个最近邻、多数投票决定类别。"
+    },
+    {
+      "coverage_tag": "majority_vote",
+      "covered_by": [
+        "qf_flash_majority_vote",
+        "qf_quiz_majority_vote"
+      ],
+      "description": "多数投票：用 k 个邻居中出现次数最多的类别来决定新样本的类别。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "nearest_neighbor_classifier",
+      "coverage_tags": [
+        "nearest_neighbor_basic_idea"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_nn_idea",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用一句话概括最近邻分类器的核心思路。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能准确复述最近邻分类器的基本思想：通过寻找训练集中最相似的记录来推断新样本的标签。",
+      "question_type": "short_answer",
+      "retrieval_focus": "最近邻分类器的核心思路",
+      "term_refs": [
+        {
+          "display": "最近邻分类器",
+          "en": "Nearest Neighbor Classifier"
+        }
+      ],
+      "variants": [
+        {
+          "back": "对于一个没有标签的新数据点，在训练集中找到与它最相似的几个点（最近邻），然后用这些邻居的标签来推断新点的标签。",
+          "estimated_seconds": 10,
+          "explanation": "核心是“物以类聚”：相似的样本通常属于同一类别。",
+          "front": "最近邻分类器的核心思路是什么？",
+          "question_id": "q_flash_nn_idea_v1"
+        },
+        {
+          "back": "在训练集中找到与新样本最相似的 k 个记录，用这些邻居的标签来推断新样本的标签。",
+          "estimated_seconds": 8,
+          "explanation": "不需要预先训练模型，直接基于相似度进行预测。",
+          "front": "用一句话解释最近邻分类器如何预测一个新样本的标签。",
+          "question_id": "q_flash_nn_idea_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "nearest_neighbor_classifier",
+      "coverage_tags": [
+        "knn_three_requirements"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_nn_requirements",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能列出实现最近邻分类器所需的三个要素。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能准确说出 k-NN 需要的三样东西：带标签的记录集、距离度量、k 的值。",
+      "question_type": "short_answer",
+      "retrieval_focus": "k-NN 的三个基本要素",
+      "term_refs": [
+        {
+          "display": "距离度量",
+          "en": "Distance Measure"
+        },
+        {
+          "display": "k 个最近邻",
+          "en": "k-nearest neighbors"
+        }
+      ],
+      "variants": [
+        {
+          "back": "一组带标签的记录、一个距离度量、以及 k 的值（最近邻的数量）。",
+          "estimated_seconds": 10,
+          "explanation": "这三者缺一不可：记录提供参考，距离度量衡量相似度，k 决定邻居数量。",
+          "front": "实现最近邻分类器需要哪三样东西？",
+          "question_id": "q_flash_nn_requirements_v1"
+        },
+        {
+          "back": "一个距离度量，用来计算记录之间的相似程度。",
+          "estimated_seconds": 8,
+          "explanation": "距离度量是 k-NN 的核心，决定了哪些记录是“最近”的。",
+          "front": "除了带标签的记录集和 k 值，k-NN 还需要什么？",
+          "question_id": "q_flash_nn_requirements_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "nearest_neighbor_classifier",
+      "coverage_tags": [
+        "knn_classification_process"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_nn_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能描述 k-NN 分类一个未知记录的基本步骤。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能准确说出 k-NN 分类的三个步骤：计算距离、找出 k 个最近邻、用多数投票决定类别。",
+      "question_type": "short_answer",
+      "retrieval_focus": "k-NN 分类未知记录的步骤",
+      "term_refs": [
+        {
+          "display": "多数投票",
+          "en": "Majority Vote"
+        }
+      ],
+      "variants": [
+        {
+          "back": "计算该记录与其他所有已知记录之间的距离。",
+          "estimated_seconds": 6,
+          "explanation": "距离计算是后续找邻居的基础。",
+          "front": "用 k-NN 分类一个未知记录时，第一步要做什么？",
+          "question_id": "q_flash_nn_process_v1"
+        },
+        {
+          "back": "用多数投票：取 k 个邻居中出现次数最多的类别作为新记录的类别。",
+          "estimated_seconds": 8,
+          "explanation": "多数投票是最常见的决策方式，简单有效。",
+          "front": "在 k-NN 中，找到 k 个最近邻之后，如何决定新记录的类别？",
+          "question_id": "q_flash_nn_process_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "majority_vote",
+      "coverage_tags": [
+        "majority_vote"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_majority_vote",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解多数投票在 k-NN 中的具体应用方式。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能根据给定的邻居类别列表，正确应用多数投票规则确定新样本的类别。",
+      "question_type": "short_answer",
+      "retrieval_focus": "多数投票规则的应用",
+      "term_refs": [
+        {
+          "display": "多数投票",
+          "en": "Majority Vote"
+        }
+      ],
+      "variants": [
+        {
+          "back": "猫（猫出现 3 次，狗出现 2 次）。",
+          "estimated_seconds": 5,
+          "explanation": "多数投票：取出现次数最多的类别。",
+          "front": "如果 k=5，5 个邻居的类别分别是：猫、狗、猫、猫、狗。新样本应该被分类为什么？",
+          "question_id": "q_flash_majority_vote_v1"
+        },
+        {
+          "back": "B（B 出现 2 次，A 出现 1 次）。",
+          "estimated_seconds": 5,
+          "explanation": "多数投票：B 是多数类别。",
+          "front": "如果 k=3，3 个邻居的类别分别是：A、B、B。新样本应该被分类为什么？",
+          "question_id": "q_flash_majority_vote_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-2",
+  "longform_families": [
+    {
+      "concept_key": "nearest_neighbor_classifier",
+      "coverage_tags": [
+        "knn_classification_process",
+        "nearest_neighbor_basic_idea"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_nn_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的语言完整解释 k-NN 分类器的原理和分类过程。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能清晰描述 k-NN 的基本思想、所需要素以及分类一个未知记录的具体步骤。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "最近邻分类器",
+          "en": "Nearest Neighbor Classifier"
+        },
+        {
+          "display": "距离度量",
+          "en": "Distance Measure"
+        },
+        {
+          "display": "多数投票",
+          "en": "Majority Vote"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "基本思想是什么？",
+            "需要哪些要素？",
+            "分类一个未知记录的具体步骤是什么？"
+          ],
+          "question_id": "q_long_nn_process_v1",
+          "reference_answer": [
+            "最近邻分类器的基本思想是“物以类聚”：对于一个没有标签的新数据点，我们在训练集中找到与它最相似的几个点（最近邻），然后用这些邻居的标签来推断新点的标签。",
+            "实现这个想法需要三样东西：一组带标签的记录作为参考、一个距离度量来计算记录之间的相似程度、以及 k 的值（即要问多少个邻居）。",
+            "分类一个未知记录时，首先计算该记录与其他所有已知记录的距离；然后找出距离最近的 k 个邻居；最后用多数投票的方式，取 k 个邻居中出现次数最多的类别作为新记录的类别。"
+          ],
+          "rubric_points": [
+            "正确描述基本思想：通过寻找训练集中最相似的记录来推断新样本的标签",
+            "正确列出三个要素：带标签的记录集、距离度量、k 值",
+            "正确描述三个步骤：计算距离、找出 k 个最近邻、多数投票决定类别",
+            "解释清晰、逻辑连贯"
+          ],
+          "stem": "请解释最近邻分类器（k-NN）的基本原理，并详细描述用它分类一个未知记录的具体步骤。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "你需要哪些准备工作？",
+            "具体如何操作？",
+            "如何做出最终决定？"
+          ],
+          "question_id": "q_long_nn_process_v2",
+          "reference_answer": [
+            "首先，我需要一个距离度量（比如欧几里得距离）来计算新样本与每个已知样本之间的相似程度。",
+            "然后，我计算新样本与所有 100 个已知样本的距离。",
+            "接着，我找出距离最小的 3 个样本，它们就是新样本的 3 个最近邻。",
+            "最后，我查看这 3 个邻居的类别标签，采用多数投票：出现次数最多的类别就是新样本的预测类别。例如，如果 3 个邻居中有 2 个是“猫”、1 个是“狗”，那么新样本就被分类为“猫”。"
+          ],
+          "rubric_points": [
+            "指出需要距离度量来计算相似度",
+            "描述计算新样本与所有 100 个已知样本的距离",
+            "描述找出距离最小的 3 个样本",
+            "描述对这 3 个邻居的标签进行多数投票",
+            "给出最终分类结果"
+          ],
+          "stem": "假设你有一个包含 100 个已知标签样本的数据集，现在来了一个新样本。请用最近邻分类器（k=3）解释你将如何确定这个新样本的类别。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "nearest_neighbor_classifier",
+      "coverage_tags": [
+        "nearest_neighbor_basic_idea"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_nn_idea",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在多个选项中识别出最近邻分类器的核心思想。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能正确区分最近邻分类器的基本思想与其他分类方法的核心思想。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "最近邻分类器",
+          "en": "Nearest Neighbor Classifier"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "最近邻分类器的核心是“物以类聚”：找到最相似的邻居，用它们的标签来预测。",
+          "options": [
+            "通过寻找训练集中最相似的记录来推断新样本的标签",
+            "通过建立一个概率模型来预测新样本的类别",
+            "通过寻找一个最优的决策边界来分隔不同类别的数据",
+            "通过组合多个弱分类器来提升预测性能"
+          ],
+          "question_id": "q_quiz_nn_idea_v1",
+          "stem": "以下哪一项最准确地描述了最近邻分类器的基本思想？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "最近邻分类器依赖与新样本最相似的 k 个邻居的标签来做预测。",
+          "options": [
+            "训练集中所有样本的平均标签",
+            "训练集中与新样本最相似的几个样本的标签",
+            "一个预先训练好的全局模型",
+            "新样本自身的属性分布"
+          ],
+          "question_id": "q_quiz_nn_idea_v2",
+          "stem": "最近邻分类器预测新样本标签的主要依据是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "nearest_neighbor_classifier",
+      "coverage_tags": [
+        "knn_three_requirements"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_nn_requirements",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别出实现 k-NN 分类器所必需的要素。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能正确判断哪些是 k-NN 必需的，哪些不是。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "距离度量",
+          "en": "Distance Measure"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "k-NN 是懒惰学习器，不需要预先训练模型，它直接使用训练数据进行预测。",
+          "options": [
+            "一组带标签的记录",
+            "一个距离度量",
+            "一个预先训练好的模型",
+            "k 的值"
+          ],
+          "question_id": "q_quiz_nn_requirements_v1",
+          "stem": "以下哪一项不是实现最近邻分类器所必需的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "k 是最近邻的数量，即我们要问多少个邻居来投票决定新样本的类别。",
+          "options": [
+            "训练集中记录的总数",
+            "要检索的最近邻的数量",
+            "属性的数量",
+            "类别的数量"
+          ],
+          "question_id": "q_quiz_nn_requirements_v2",
+          "stem": "在最近邻分类器中，k 代表什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "nearest_neighbor_classifier",
+      "coverage_tags": [
+        "knn_classification_process"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_nn_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确排列 k-NN 分类一个未知记录的步骤顺序。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能按正确顺序排列 k-NN 分类流程的三个主要步骤。",
+      "question_type": "ordering",
+      "term_refs": [
+        {
+          "display": "多数投票",
+          "en": "Majority Vote"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "正确的顺序是：先计算距离，再找出 k 个最近邻，最后用多数投票决定类别。",
+          "options": [
+            "C → B → A",
+            "A → B → C",
+            "B → C → A",
+            "C → A → B"
+          ],
+          "question_id": "q_quiz_nn_process_v1",
+          "stem": "请将以下 k-NN 分类一个未知记录的步骤按正确顺序排列：\nA. 使用多数投票决定新记录的类别\nB. 找出距离最近的 k 个邻居\nC. 计算新记录与其他所有已知记录的距离"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "必须先计算距离，才能知道哪些记录是最近的。",
+          "options": [
+            "计算新记录与其他所有已知记录的距离",
+            "使用多数投票决定类别",
+            "归一化所有属性",
+            "选择距离度量"
+          ],
+          "question_id": "q_quiz_nn_process_v2",
+          "stem": "在 k-NN 分类流程中，找出 k 个最近邻之前必须先完成哪一步？"
+        }
+      ]
+    },
+    {
+      "concept_key": "majority_vote",
+      "coverage_tags": [
+        "majority_vote"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_majority_vote",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能应用多数投票规则解决简单的分类问题。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能根据给定的邻居类别列表，正确计算多数投票的结果。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "多数投票",
+          "en": "Majority Vote"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "多数投票：猫出现 2 次，狗出现 1 次，所以新样本被分类为猫。",
+          "options": [
+            "猫",
+            "狗",
+            "无法判断",
+            "需要更多信息"
+          ],
+          "question_id": "q_quiz_majority_vote_v1",
+          "stem": "如果 k=3，三个邻居的类别分别是：猫、猫、狗。新样本应该被分类为什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "多数投票：A 出现 3 次，B 出现 1 次，C 出现 1 次，所以新样本被分类为 A。",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "无法判断"
+          ],
+          "question_id": "q_quiz_majority_vote_v2",
+          "stem": "如果 k=5，五个邻居的类别分别是：A、B、A、C、A。新样本应该被分类为什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-2/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,230 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "流形学习假设有了。",
+        "但具体怎么展开曲面呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "一个自然的想法是：保持所有点对之间的距离。",
+        "这就是 <term id=\"mds\">多维缩放</term> 的思路。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "试试用 MDS 展开瑞士卷。",
+        "结果：卷曲结构被破坏了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "MDS 用直线距离，但瑞士卷是卷曲的，直线距离会穿透曲面，导致结构破坏。",
+        "kind": "single_choice",
+        "options": [
+          "因为 MDS 计算太慢",
+          "因为 MDS 保持的是直线距离，会穿透曲面",
+          "因为 MDS 需要太多数据",
+          "因为 MDS 是线性方法"
+        ],
+        "prompt": "为什么 MDS 展开瑞士卷会失败？"
+      },
+      "focus_terms": [],
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "MDS 为什么失败？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "全局距离不行，那局部关系呢？",
+        "每个点只和它的近邻有关系。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "lle",
+        "neighbors",
+        "reconstruction_weights"
+      ],
+      "id": "s023",
+      "introduced_terms": [
+        "lle",
+        "neighbors",
+        "reconstruction_weights"
+      ],
+      "lines": [
+        "这就是 <term id=\"lle\">局部线性嵌入</term> 的思路。",
+        "每个点可以用它的 <term id=\"neighbors\">近邻</term> 来线性表示。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "\\min_{\\mathbf{w}} \\sum_{i=1}^{N} \\left\\| \\mathbf{x}_i - \\sum_{j=1}^{k} w_{ij} \\mathbf{x}_{N_i(j)} \\right\\|^2",
+        "spoken": "最小化每个点与其近邻加权平均之间的平方误差"
+      },
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "先计算一组 <term id=\"reconstruction_weights\">重构权重</term>："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [],
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "关键一步：在低维空间中，保持这些权重不变。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "\\min_{Y} \\sum_{i=1}^{N} \\| \\mathbf{y}_i - \\sum_{j=1}^{k} w_{ij} \\mathbf{y}_{N_i(j)} \\|^2",
+        "spoken": "在低维空间中，用同样的权重重构每个点，误差最小"
+      },
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "找到低维坐标，使得同样的权重也能很好地重构它："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "这样，瑞士卷就被\"展开\"了。",
+        "原本卷曲的结构在二维平面上清晰可见。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "LLE 的核心是保持每个点与近邻之间的线性重构关系不变。",
+        "kind": "single_choice",
+        "options": [
+          "全局的欧氏距离",
+          "每个点与近邻之间的线性重构关系",
+          "数据的方差",
+          "类别标签"
+        ],
+        "prompt": "LLE 在降维时主要保持什么？"
+      },
+      "focus_terms": [],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "LLE 的核心思想是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "k 太小，局部信息不足；k 太大，局部性丧失，LLE 退化为全局方法。",
+        "kind": "single_choice",
+        "options": [
+          "结果更好",
+          "结果可能变差",
+          "结果不变",
+          "LLE 无法运行"
+        ],
+        "prompt": "如果近邻数 k 太大，LLE 的结果会怎样？"
+      },
+      "focus_terms": [],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "近邻数 k 的选择会影响结果。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "LLE 保持局部线性重构关系，MDS 保持全局直线距离。LLE 适合非线性流形，MDS 适合线性结构。",
+        "kind": "comparison_synthesis",
+        "options": [
+          "它们都保持全局距离",
+          "LLE 保持局部关系，MDS 保持全局距离",
+          "它们都保持局部关系",
+          "LLE 保持全局距离，MDS 保持局部关系"
+        ],
+        "prompt": "对比 LLE 和 MDS 在保持关系上的不同。"
+      },
+      "focus_terms": [],
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "LLE 和 MDS 有什么不同？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "LLE measures how each training instance linearly relates to its closest neighbors. Then looks for a low-dimensional representation where these local relationships are best preserved.",
+    "related": [
+      "LLE algorithm",
+      "Roweis & Saul, Science 2000"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "lle": {
+      "aliases": [
+        "LLE",
+        "Locally Linear Embedding"
+      ],
+      "display": "局部线性嵌入",
+      "gloss": "一种流形学习方法，通过保持每个点与其邻居之间的线性重构关系来降维。"
+    },
+    "neighbors": {
+      "aliases": [
+        "neighbors",
+        "k-nearest neighbors"
+      ],
+      "display": "近邻",
+      "gloss": "在特征空间中与目标点距离最近的若干个数据点。"
+    },
+    "reconstruction_weights": {
+      "aliases": [
+        "reconstruction weights",
+        "linear coefficients"
+      ],
+      "display": "重构权重",
+      "gloss": "用近邻线性组合表示目标点时，每个近邻对应的系数。"
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "我们手上有14条已知标签的数据。",
+        "这就像一本“答案书”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "training_set"
+      ],
+      "id": "s009",
+      "introduced_terms": [
+        "training_set"
+      ],
+      "lines": [
+        "我们把大部分数据（比如80%）拿出来教机器学规律。",
+        "这部分叫<term id=\"training_set\">训练集</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "test_set"
+      ],
+      "id": "s010",
+      "introduced_terms": [
+        "test_set"
+      ],
+      "lines": [
+        "剩下的20%先藏起来，等模型学好了再用来考试。",
+        "这部分叫<term id=\"test_set\">测试集</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "supervised_learning"
+      ],
+      "id": "s011",
+      "introduced_terms": [
+        "supervised_learning"
+      ],
+      "lines": [
+        "因为训练数据已经标好了答案，机器是在“监督”下学习。",
+        "这种学习方式叫<term id=\"supervised_learning\">监督学习</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "decision_tree"
+      ],
+      "id": "s012",
+      "introduced_terms": [
+        "decision_tree"
+      ],
+      "lines": [
+        "一种直观的分类模型是<term id=\"decision_tree\">决策树</term>。",
+        "它像一连串的“是/否”问题。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "decision_tree"
+      ],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "每个内部节点问一个关于特征的问题。",
+        "每个分支对应一个答案。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "decision_tree"
+      ],
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "每个叶子节点给出最终的分类结果。",
+        "比如：是电脑拥有者，或者不是。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "训练集"
+        ],
+        "explanation": "训练集是带有标签、用于训练模型的数据子集。",
+        "kind": "fill_in_blank",
+        "prompt": "在监督学习中，用于训练模型的那部分有标签数据叫做______。"
+      },
+      "focus_terms": [
+        "decision_tree"
+      ],
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Supervised learning uses labeled data to train a model. A decision tree is a tree structure where each internal node tests a feature, each branch is an outcome, and each leaf is a class label.",
+    "related": [
+      "classification",
+      "training set",
+      "test set"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "decision_tree": {
+      "aliases": [
+        "Decision Tree",
+        "DT"
+      ],
+      "display": "决策树",
+      "gloss": "一种树形结构的分类模型，内部节点是特征测试，叶子节点是类别。"
+    },
+    "supervised_learning": {
+      "aliases": [
+        "Supervised Learning"
+      ],
+      "display": "监督学习",
+      "gloss": "使用带有标签的训练数据来训练模型的学习方式。"
+    },
+    "test_set": {
+      "aliases": [
+        "Test Set"
+      ],
+      "display": "测试集",
+      "gloss": "用于评估模型性能的、模型未见过的有标签数据子集。"
+    },
+    "training_set": {
+      "aliases": [
+        "Training Set"
+      ],
+      "display": "训练集",
+      "gloss": "用于训练模型的有标签数据子集。"
+    }
+  }
+}

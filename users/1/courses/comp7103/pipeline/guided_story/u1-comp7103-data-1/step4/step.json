@@ -1,0 +1,385 @@
+{
+  "chapter_id": "lecture-06-data-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-data-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "看下面这个数据集：",
+        "| 姓名 | 年龄 | 年薪(万) | 备注 |",
+        "|------|------|----------|------|",
+        "| 张三 | 25   | 12       | 正常 |",
+        "| 李四 | 30   | 15       | 正常 |",
+        "| 王五 | 200  | 10       | 正常 |",
+        "| 赵六 | 28   | 1000     | 正常 |",
+        "| 孙七 | ?    | 8        | 正常 |",
+        "问题：这个数据集有哪些问题？哪些是错误？哪些可能是真实但罕见的情况？",
+        "请先自己分析。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "noise",
+        "outlier"
+      ],
+      "id": "s021",
+      "introduced_terms": [
+        "noise",
+        "outlier"
+      ],
+      "lines": [
+        "王五的年龄200岁，明显是录入错误——这是 <term id=\"noise\">噪声</term>。",
+        "赵六的年薪1000万，虽然罕见但可能真实——这是 <term id=\"outlier\">异常值</term>。",
+        "注意：异常值不一定是噪声，它可能是有用信号（如欺诈检测）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "missing_value"
+      ],
+      "id": "s022",
+      "introduced_terms": [
+        "missing_value"
+      ],
+      "lines": [
+        "孙七的年龄是“？”，这就是 <term id=\"missing_value\">缺失值</term>。",
+        "缺失值可能因为客户拒绝提供、数据库变更等原因产生。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "data_cleaning",
+        "data_imputation"
+      ],
+      "id": "s023",
+      "introduced_terms": [
+        "data_cleaning",
+        "data_imputation"
+      ],
+      "lines": [
+        "处理这些问题的过程叫 <term id=\"data_cleaning\">数据清洗</term>。",
+        "对于缺失值，可以忽略、重新查找，或者用估计值填充——即 <term id=\"data_imputation\">数据插补</term>。",
+        "常用插补方法：用该列的平均值填充，或用最相似邻居的值填充。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "现在，假设你有一个包含100万条股票交易记录的数据集，每条记录精确到毫秒。",
+        "你想分析整体趋势，但数据量太大、粒度太细、属性太多。",
+        "问题：除了清洗，你还需要对数据做什么处理？请列出你能想到的方法。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "aggregation"
+      ],
+      "id": "s025",
+      "introduced_terms": [
+        "aggregation"
+      ],
+      "lines": [
+        "如果数据粒度太细，可以 <term id=\"aggregation\">聚合</term>：",
+        "比如把每秒的交易数据汇总成每10秒的总交易额。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "generalization"
+      ],
+      "id": "s026",
+      "introduced_terms": [
+        "generalization"
+      ],
+      "lines": [
+        "如果具体值太细，可以 <term id=\"generalization\">泛化</term>：",
+        "比如把年龄值映射为“青少年、中年、老年”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "sampling"
+      ],
+      "id": "s027",
+      "introduced_terms": [
+        "sampling"
+      ],
+      "lines": [
+        "如果数据量太大，可以 <term id=\"sampling\">采样</term>：",
+        "用一小部分有代表性的数据代替整体。",
+        "如果类别不平衡（如欺诈交易只占1%），需要用分层采样。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "dimensionality_reduction"
+      ],
+      "id": "s028",
+      "introduced_terms": [
+        "dimensionality_reduction"
+      ],
+      "lines": [
+        "如果属性太多，可以 <term id=\"dimensionality_reduction\">降维</term>：",
+        "减少属性数量，同时尽量保留重要信息，避免“维度灾难”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "将具体年龄映射到更高层次的概念（年龄组），就是泛化。",
+        "kind": "single_choice",
+        "options": [
+          "用平均值填充缺失值",
+          "将年龄值映射为“儿童、成人、老人”",
+          "从100万条记录中随机抽取1万条",
+          "计算每10秒的交易总额"
+        ],
+        "prompt": "以下哪种方法属于“泛化”？"
+      },
+      "focus_terms": [
+        "generalization"
+      ],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪种方法属于“泛化”？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "现在，假设你有一个包含100个属性的数据集，你想减少到20个。",
+        "问题：减少属性有哪两种思路？请先自己思考。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "feature_creation",
+        "feature_selection"
+      ],
+      "id": "s031",
+      "introduced_terms": [
+        "feature_creation",
+        "feature_selection"
+      ],
+      "lines": [
+        "第一种思路：<term id=\"feature_creation\">特征创建</term>——从现有属性推导出新的、更少的属性。",
+        "比如，用体重除以身高的平方得到BMI，用这一个新属性代替两个旧属性。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "feature_selection"
+      ],
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "第二种思路：<term id=\"feature_selection\">特征选择</term>——直接从原始属性中挑选最有用的子集。",
+        "去掉冗余属性（如“商品价格”和“销售税额”高度相关，保留一个）",
+        "去掉不相关属性（如预测购买习惯时，客户ID通常没用）"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "correlation"
+      ],
+      "id": "s033",
+      "introduced_terms": [
+        "correlation"
+      ],
+      "lines": [
+        "判断属性是否冗余，可以用 <term id=\"correlation\">相关性</term> 分析。",
+        "如果两个属性高度相关，它们携带的信息就非常相似。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "pca"
+      ],
+      "id": "s034",
+      "introduced_terms": [
+        "pca"
+      ],
+      "lines": [
+        "最经典的特征创建技术是 <term id=\"pca\">主成分分析</term>。",
+        "它不直接选择属性，而是把数据旋转到新的坐标轴上。",
+        "第一个新轴（第一主成分）捕捉数据中最大的变异方向。",
+        "如果前几个主成分解释了85%以上的总变异，就可以丢弃后面的成分。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "PCA 通过旋转坐标轴创建新的维度（主成分），这些维度彼此不相关，并按捕捉数据变异的大小排序。",
+        "kind": "single_choice",
+        "options": [
+          "选择最有用的原始属性子集",
+          "创建新的不相关维度来捕捉数据变异",
+          "用平均值填充缺失值",
+          "将数据映射到更高层次的概念"
+        ],
+        "prompt": "PCA 的主要目标是什么？"
+      },
+      "focus_terms": [
+        "pca"
+      ],
+      "id": "s035",
+      "introduced_terms": [],
+      "lines": [
+        "PCA 的主要目标是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "当属性之间高度相关时，PCA 能有效捕捉主要变异方向，而特征选择可能丢失信息。",
+        "kind": "single_choice",
+        "options": [
+          "属性之间高度相关",
+          "属性都是名义属性",
+          "数据量很小",
+          "需要保留原始属性含义"
+        ],
+        "prompt": "以下哪种情况适合使用 PCA 而不是特征选择？"
+      },
+      "focus_terms": [
+        "pca",
+        "feature_selection"
+      ],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪种情况适合使用 PCA 而不是特征选择？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Data Quality. Noise and Outliers. Missing Values. Data Preprocessing. Aggregation. Generalization. Sampling. Dimensionality Reduction. Feature creation. Correlation. PCA. Feature Selection.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "aggregation": {
+      "aliases": [
+        "aggregation"
+      ],
+      "display": "聚合",
+      "gloss": "通过汇总统计量来降低数据的分辨率或粒度。"
+    },
+    "correlation": {
+      "aliases": [
+        "correlation",
+        "Pearson correlation"
+      ],
+      "display": "相关性",
+      "gloss": "衡量两个属性之间线性关系强度和方向的统计量。"
+    },
+    "data_cleaning": {
+      "aliases": [
+        "data cleaning",
+        "data cleansing"
+      ],
+      "display": "数据清洗",
+      "gloss": "检测并修正数据中错误、不一致和缺失值的过程。"
+    },
+    "data_imputation": {
+      "aliases": [
+        "data imputation"
+      ],
+      "display": "数据插补",
+      "gloss": "用估计值填充缺失值的方法。"
+    },
+    "dimensionality_reduction": {
+      "aliases": [
+        "dimensionality reduction"
+      ],
+      "display": "降维",
+      "gloss": "减少数据中属性（维度）的数量，同时尽量保留重要信息。"
+    },
+    "feature_creation": {
+      "aliases": [
+        "feature creation",
+        "feature engineering"
+      ],
+      "display": "特征创建",
+      "gloss": "从现有属性推导出新的、更有意义的属性。"
+    },
+    "feature_selection": {
+      "aliases": [
+        "feature selection"
+      ],
+      "display": "特征选择",
+      "gloss": "从原始属性中挑选出最有用的子集。"
+    },
+    "generalization": {
+      "aliases": [
+        "generalization"
+      ],
+      "display": "泛化",
+      "gloss": "将属性的具体值映射到更高层次的概念。"
+    },
+    "missing_value": {
+      "aliases": [
+        "missing value"
+      ],
+      "display": "缺失值",
+      "gloss": "数据对象中某个属性值不存在的情况。"
+    },
+    "noise": {
+      "aliases": [
+        "noise"
+      ],
+      "display": "噪声",
+      "gloss": "数据中由错误引入的随机偏差或错误值。"
+    },
+    "outlier": {
+      "aliases": [
+        "outlier",
+        "anomaly"
+      ],
+      "display": "异常值",
+      "gloss": "显著偏离数据集中其他对象的数据点，可能是有用信息也可能是噪声。"
+    },
+    "pca": {
+      "aliases": [
+        "PCA",
+        "Principal Components Analysis"
+      ],
+      "display": "主成分分析",
+      "gloss": "一种降维技术，通过旋转坐标轴找到数据方差最大的方向。"
+    },
+    "sampling": {
+      "aliases": [
+        "sampling"
+      ],
+      "display": "采样",
+      "gloss": "从数据集中选取一部分有代表性的子集进行分析。"
+    }
+  }
+}

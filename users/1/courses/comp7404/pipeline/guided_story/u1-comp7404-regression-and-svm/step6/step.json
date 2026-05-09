@@ -1,0 +1,127 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s039",
+      "introduced_terms": [],
+      "lines": [
+        "我们已经知道，要找到具有最大间隔的超平面。",
+        "那么，是哪些点在真正决定这个间隔的大小呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s040",
+      "introduced_terms": [],
+      "lines": [
+        "直觉上，远离边界的点，即使移动它们，边界也不会改变。",
+        "只有那些靠近边界的点，才是关键。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "远离边界的点不影响间隔，因此移除它们不会改变决策边界。只有支持向量（靠近边界的点）才决定边界。",
+        "kind": "boundary_impact_analysis",
+        "options": [
+          "会改变",
+          "不会改变",
+          "不确定"
+        ],
+        "prompt": "假设有一个已经训练好的SVM分类器。现在，我们移除一个远离决策边界的点。你认为决策边界会改变吗？"
+      },
+      "focus_terms": [],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "support_vectors",
+        "support_vector_machine"
+      ],
+      "id": "s042",
+      "introduced_terms": [
+        "support_vectors",
+        "support_vector_machine"
+      ],
+      "lines": [
+        "这些真正决定边界的点，被称为 <term id=\"support_vectors\">支持向量</term>。",
+        "它们就像是撑起这个“最大间隔”的支柱。",
+        "这就是 <term id=\"support_vector_machine\">支持向量机</term> 名字的由来。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "支持向量是那些最靠近决策边界的点，它们决定了最大间隔的位置。",
+        "kind": "single_choice",
+        "options": [
+          "因为只有靠近边界的点才真正限制间隔的大小",
+          "因为所有点都同样重要",
+          "因为支持向量是随机选择的",
+          "因为支持向量是距离边界最远的点"
+        ],
+        "prompt": "为什么支持向量不是任意样本点？"
+      },
+      "focus_terms": [],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "支持向量的角色是“边界守卫者”，它们决定了最大间隔的位置。",
+        "kind": "single_choice",
+        "options": [
+          "边界守卫者，决定间隔大小",
+          "所有样本的代表",
+          "随机选择的样本",
+          "距离边界最远的样本"
+        ],
+        "prompt": "以下哪个选项最准确地描述了支持向量的角色？"
+      },
+      "focus_terms": [],
+      "id": "s044",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Consider the problem of finding a separating hyperplane for a linearly separable dataset {(x1, y1), (x2, y2), ..., (xN, yN)}, x in R^D, y in {-1, +1}. Which of the infinite hyperplanes should we choose? Intuitively, a hyperplane that passes too close to the training examples will be sensitive to noise and, therefore, less likely to generalize well for data outside the training set. Instead, it seems reasonable to expect that a hyperplane that is farthest from all training examples will have better generalization capabilities. Therefore, the optimal separating hyperplane will be the one with the largest margin, which is defined as the minimum distance of an example to the decision surface. A larger margin necessarily results in lower capacity. We normally think of complexity as being a function of the number of parameters. Instead, Statistical Learning Theory tells us that if the margin is sufficiently large, the complexity of the function will be low even if the dimensionality is very high!",
+    "related": [
+      "Support Vector Machine",
+      "Support Vectors"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "support_vector_machine": {
+      "aliases": [
+        "SVM",
+        "Support Vector Machine"
+      ],
+      "display": "支持向量机",
+      "gloss": "一种强大的分类算法，核心思想是找到一个能将不同类别数据分开且间隔最大的超平面。"
+    },
+    "support_vectors": {
+      "aliases": [
+        "Support Vectors"
+      ],
+      "display": "支持向量",
+      "gloss": "那些距离决策边界最近的点，它们决定了最大间隔超平面的位置。"
+    }
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "PCA、LDA、LLE、Isomap……",
+        "这么多降维方法，有没有统一的视角？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s050",
+      "introduced_terms": [],
+      "lines": [
+        "先看看 LLE 和 Isomap。",
+        "它们都在保持某种关系。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "LLE 保持局部线性重构关系，Isomap 保持测地距离。共同点是都保持某种局部或全局的相似关系。",
+        "kind": "single_choice",
+        "options": [
+          "它们没有共同点",
+          "它们都在保持某种相似关系",
+          "它们都使用线性投影",
+          "它们都使用核技巧"
+        ],
+        "prompt": "LLE 和 Isomap 有什么共同点？"
+      },
+      "focus_terms": [],
+      "id": "s051",
+      "introduced_terms": [],
+      "lines": [
+        "LLE 和 Isomap 有什么共同点？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "graph_embedding",
+        "intrinsic_graph",
+        "penalty_graph"
+      ],
+      "id": "s052",
+      "introduced_terms": [
+        "graph_embedding",
+        "intrinsic_graph",
+        "penalty_graph"
+      ],
+      "lines": [
+        "答案是 <term id=\"graph_embedding\">图嵌入</term> 框架。",
+        "它把降维问题归结为图的构建和优化。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "首先构建一个 <term id=\"intrinsic_graph\">内在图</term>。",
+        "图中的边表示我们希望保持的相似关系。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "再构建一个 <term id=\"penalty_graph\">惩罚图</term>。",
+        "图中的边表示我们希望拉远的关系。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "laplacian_matrix"
+      ],
+      "id": "s055",
+      "introduced_terms": [
+        "laplacian_matrix"
+      ],
+      "lines": [
+        "然后定义 <term id=\"laplacian_matrix\">拉普拉斯矩阵</term>。",
+        "\\(L = D - S\\)，其中 \\(D\\) 是度矩阵。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "y^{*} = \\arg\\min_{y^T y = 1 \\text{ or } y^T B y = 1} y^T L y",
+        "spoken": "最小化拉普拉斯二次型，同时满足归一化约束"
+      },
+      "id": "s056",
+      "introduced_terms": [],
+      "lines": [
+        "降维的目标是：在低维空间中保持内在图的相似性。"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [],
+      "id": "s057",
+      "introduced_terms": [],
+      "lines": [
+        "不同的降维方法，只是内在图和惩罚图定义不同。",
+        "PCA、LDA、LLE、Isomap 都可以纳入这个框架。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "不同方法只是内在图和惩罚图的定义不同，优化框架是统一的。",
+        "kind": "single_choice",
+        "options": [
+          "使用相同的优化算法",
+          "通过定义不同的内在图和惩罚图",
+          "都使用线性投影",
+          "都使用核技巧"
+        ],
+        "prompt": "图嵌入框架通过什么来统一不同的降维方法？"
+      },
+      "focus_terms": [],
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [
+        "图嵌入框架的核心是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s059",
+      "introduced_terms": [],
+      "lines": [
+        "这个框架还可以进一步扩展。",
+        "三种主要的扩展方向：线性化、核化、张量化。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "linearization"
+      ],
+      "id": "s060",
+      "introduced_terms": [
+        "linearization"
+      ],
+      "lines": [
+        "第一种是 <term id=\"linearization\">线性化</term>。",
+        "假设低维表示是原始数据的线性组合：\\(y = X^T w\\)。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "kernelization"
+      ],
+      "id": "s061",
+      "introduced_terms": [
+        "kernelization"
+      ],
+      "lines": [
+        "第二种是 <term id=\"kernelization\">核化</term>。",
+        "通过核函数把数据映射到更高维的空间。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "tensorization"
+      ],
+      "id": "s062",
+      "introduced_terms": [
+        "tensorization"
+      ],
+      "lines": [
+        "第三种是 <term id=\"tensorization\">张量化</term>。",
+        "把框架扩展到张量数据。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s063",
+      "introduced_terms": [],
+      "lines": [
+        "这样，PCA、LDA、LLE 等算法都有了张量版本。",
+        "比如 DATER（张量化的 LDA）和 TMFA（张量化的 MFA）。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Direct Graph Embedding: Intrinsic Graph G = [x_i, S_ij], Penalty Graph G^P = [x_i, S_ij^P]. Criterion to Preserve Graph Similarity: y* = argmin y^T L y. Linearization, Kernelization, Tensorization.",
+    "related": [
+      "Yan, Xu, Zhang et al. CVPR 2005, T-PAMI 2007"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "graph_embedding": {
+      "aliases": [
+        "Graph Embedding"
+      ],
+      "display": "图嵌入",
+      "gloss": "一种统一的降维框架，通过构建内在图和惩罚图来定义目标函数。"
+    },
+    "intrinsic_graph": {
+      "aliases": [
+        "intrinsic graph"
+      ],
+      "display": "内在图",
+      "gloss": "描述数据点之间希望保持的相似关系。"
+    },
+    "kernelization": {
+      "aliases": [
+        "Kernelization",
+        "kernel trick"
+      ],
+      "display": "核化",
+      "gloss": "通过核函数将数据映射到高维空间，在高维空间中做线性降维。"
+    },
+    "laplacian_matrix": {
+      "aliases": [
+        "Laplacian matrix",
+        "graph Laplacian"
+      ],
+      "display": "拉普拉斯矩阵",
+      "gloss": "由图的邻接矩阵和度矩阵定义的矩阵，用于度量图的平滑性。"
+    },
+    "linearization": {
+      "aliases": [
+        "Linearization"
+      ],
+      "display": "线性化",
+      "gloss": "假设低维表示是原始数据的线性投影，即 y = X^T w。"
+    },
+    "penalty_graph": {
+      "aliases": [
+        "penalty graph"
+      ],
+      "display": "惩罚图",
+      "gloss": "描述数据点之间希望拉远的相似关系。"
+    },
+    "tensorization": {
+      "aliases": [
+        "Tensorization"
+      ],
+      "display": "张量化",
+      "gloss": "将图嵌入框架扩展到张量数据，在每个维度上分别学习投影方向。"
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "recursive_partitioning"
+      ],
+      "id": "s026",
+      "introduced_terms": [
+        "recursive_partitioning"
+      ],
+      "lines": [
+        "构建决策树是一个递归过程。",
+        "核心思想：每次选一个最佳特征来划分数据。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "information_gain"
+      ],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "我们计算了每个特征的信息增益。",
+        "年龄的信息增益最大，所以根节点问：“年龄是多少？”"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "年龄有三个分支：<30, 30-40, >40。",
+        "30-40这一组全是“有电脑”，熵为0，直接变成叶子节点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "recursive_partitioning"
+      ],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "对于<30和>40这两组，数据还不纯。",
+        "我们需要继续在每组内部找最佳特征。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "在<30的组里，“是否学生”的信息增益最大。",
+        "所以下一个问题是：“是学生吗？”"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "在>40的组里，“信用评级”的信息增益最大。",
+        "所以问题是：“信用评级好吗？”"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "decision_tree"
+      ],
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "最终，我们得到一棵完整的决策树。",
+        "从根到每个叶子，都是一条分类规则。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "比如：如果年龄<30且是学生 → 有电脑。",
+        "如果年龄>40且信用评级好 → 没有电脑。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "递归划分"
+        ],
+        "explanation": "递归划分是决策树构建的核心思想。",
+        "kind": "fill_in_blank",
+        "prompt": "决策树构建过程中，不断选择最佳特征划分数据，并对每个子集重复此过程，这种方法叫做______。"
+      },
+      "focus_terms": [
+        "decision_tree"
+      ],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "The decision tree is built recursively: pick the best test, split the data, and repeat on each subset until a stopping condition is met.",
+    "related": [
+      "decision tree",
+      "information gain",
+      "entropy"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "recursive_partitioning": {
+      "aliases": [
+        "Recursive Partitioning"
+      ],
+      "display": "递归划分",
+      "gloss": "决策树构建的核心思想：不断选择最佳特征将数据分成更纯的子集，并对每个子集重复此过程。"
+    }
+  }
+}

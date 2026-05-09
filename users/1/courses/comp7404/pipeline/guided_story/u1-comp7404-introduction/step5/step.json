@@ -1,0 +1,141 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-introduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s059",
+      "introduced_terms": [],
+      "lines": [
+        "现在，你训练了一个非常复杂的模型。",
+        "它在训练集上准确率100%，完美！"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s060",
+      "introduced_terms": [],
+      "lines": [
+        "但当你用新数据测试时，准确率只有60%。",
+        "发生了什么？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s061",
+      "introduced_terms": [],
+      "lines": [
+        "试着调整模型的复杂度：",
+        "如果模型太简单，训练集和测试集表现都差。",
+        "如果模型太复杂，训练集好但测试集差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "overfitting"
+      ],
+      "id": "s062",
+      "introduced_terms": [
+        "overfitting"
+      ],
+      "lines": [
+        "模型太复杂，记住了训练数据中的噪声，",
+        "这叫 <term id=\"overfitting\">过拟合</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "underfitting"
+      ],
+      "id": "s063",
+      "introduced_terms": [
+        "underfitting"
+      ],
+      "lines": [
+        "模型太简单，学不到数据中的基本模式，",
+        "这叫 <term id=\"underfitting\">欠拟合</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "训练集表现极好但测试集表现差，是过拟合的典型症状。",
+        "kind": "single_choice",
+        "options": [
+          "欠拟合",
+          "过拟合",
+          "数据不够多",
+          "特征太少"
+        ],
+        "prompt": "一个模型在训练集上准确率 99%，但在测试集上只有 60%，这很可能是什么问题？"
+      },
+      "focus_terms": [],
+      "id": "s064",
+      "introduced_terms": [],
+      "lines": [
+        "一个模型在训练集上准确率 99%，但在测试集上只有 60%，这很可能是什么问题？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "训练集60%测试集55%，两者都差，是欠拟合的典型症状。",
+        "kind": "single_choice",
+        "options": [
+          "欠拟合",
+          "过拟合",
+          "数据不够多",
+          "特征太多"
+        ],
+        "prompt": "一个模型在训练集上准确率60%，测试集上55%，这可能是欠拟合还是过拟合？"
+      },
+      "focus_terms": [],
+      "id": "s065",
+      "introduced_terms": [],
+      "lines": [
+        "一个模型在训练集上准确率60%，测试集上55%，这可能是欠拟合还是过拟合？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s066",
+      "introduced_terms": [],
+      "lines": [
+        "面对这些挑战，我们需要更强大的模型。",
+        "这引出了现代 AI 的核心：深度学习。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Challenges in face recognition: expression, lighting, occlusion, viewpoint. Challenges in object recognition: viewpoint, illumination, occlusion, scale, deformation, background clutter, intra-class variation.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "overfitting": {
+      "aliases": [
+        "overfitting"
+      ],
+      "display": "过拟合",
+      "gloss": "模型在训练数据上表现太好，以至于记住了噪声，在新数据上表现差。"
+    },
+    "underfitting": {
+      "aliases": [
+        "underfitting"
+      ],
+      "display": "欠拟合",
+      "gloss": "模型过于简单，无法捕捉数据中的基本模式。"
+    }
+  }
+}

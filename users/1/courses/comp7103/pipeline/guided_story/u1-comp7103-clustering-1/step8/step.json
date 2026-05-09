@@ -1,0 +1,202 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-clustering-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s071",
+      "introduced_terms": [],
+      "lines": [
+        "聚类结果好不好，需要量化评估。",
+        "我们已经知道 SSE 可以衡量簇内紧凑度。",
+        "但一个好的聚类应该同时满足：簇内紧密，簇间疏远。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "cohesion",
+        "separation"
+      ],
+      "id": "s072",
+      "introduced_terms": [
+        "cohesion",
+        "separation"
+      ],
+      "lines": [
+        "更全面的视角有两个维度：",
+        "<term id=\"cohesion\">凝聚度</term> 和 <term id=\"separation\">分离度</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s073",
+      "introduced_terms": [],
+      "lines": [
+        "凝聚度衡量簇内点有多近，",
+        "分离度衡量不同簇之间有多远。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s074",
+      "introduced_terms": [],
+      "lines": [
+        "如何把这两个维度结合成一个数值？",
+        "轮廓系数可以做到。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "silhouette_coefficient"
+      ],
+      "id": "s075",
+      "introduced_terms": [
+        "silhouette_coefficient"
+      ],
+      "lines": [
+        "<term id=\"silhouette_coefficient\">轮廓系数</term> 对每个点 \\(i\\)，计算两个值。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "s = 1 - \\frac{a}{b} \\quad (\\text{如果 } a < b)",
+        "spoken": "轮廓系数 s 等于 1 减去 a 除以 b，前提是 a 小于 b。"
+      },
+      "id": "s076",
+      "introduced_terms": [],
+      "lines": [
+        "\\(a\\) 是点 \\(i\\) 到同簇其他点的平均距离。",
+        "\\(b\\) 是点 \\(i\\) 到另一个簇的最小平均距离。"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [],
+      "id": "s077",
+      "introduced_terms": [],
+      "lines": [
+        "轮廓系数的值在 -1 到 1 之间。",
+        "越接近 1，说明聚类效果越好。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "轮廓系数接近 1 表示 a 远小于 b，即点在自己的簇内很紧凑，与其他簇距离很远。",
+        "kind": "single_choice",
+        "options": [
+          "它离自己的簇很远",
+          "它离另一个簇很近",
+          "它离自己的簇很近，且离其他簇很远"
+        ],
+        "prompt": "一个点的轮廓系数接近 1，说明什么？"
+      },
+      "focus_terms": [],
+      "id": "s078",
+      "introduced_terms": [],
+      "lines": [
+        "一个点的轮廓系数接近 1，说明什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s079",
+      "introduced_terms": [],
+      "lines": [
+        "现在，请你计算一个简单数据集的轮廓系数，并比较两个聚类结果。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "expected_fields": [
+          "avg_silhouette_A",
+          "avg_silhouette_B",
+          "better_result"
+        ],
+        "explanation": "结果A：点A的a=1, b=√50≈7.07, s=1-1/7.07≈0.86。点B的a=1, b=√41≈6.4, s≈0.84。点C的a=1, b=√41≈6.4, s≈0.84。点D的a=1, b=√50≈7.07, s≈0.86。平均轮廓系数≈0.85。结果B：所有点在一个簇，a=平均距离≈3.54, b不存在，轮廓系数为0。结果A的轮廓系数更大，所以结果A更好。",
+        "kind": "calculation",
+        "prompt": "给定数据集：A(0,0), B(1,0), C(5,5), D(6,5)。结果A：簇1={A,B}, 簇2={C,D}。结果B：所有点在一个簇。哪个结果更好？",
+        "sample_answer": {
+          "avg_silhouette_A": 0.85,
+          "avg_silhouette_B": 0,
+          "better_result": "结果A"
+        }
+      },
+      "focus_terms": [],
+      "id": "s080",
+      "introduced_terms": [],
+      "lines": [
+        "给定数据集：A(0,0), B(1,0), C(5,5), D(6,5)。",
+        "结果A：簇1={A,B}, 簇2={C,D}。",
+        "结果B：所有点在一个簇。",
+        "哪个结果更好？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s081",
+      "introduced_terms": [],
+      "lines": [
+        "还有一种直观的验证方法：",
+        "把相似度矩阵按簇标签排序，观察颜色块是否清晰。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s082",
+      "introduced_terms": [],
+      "lines": [
+        "清晰的块状结构说明聚类效果好。",
+        "如果颜色均匀分布，说明数据可能没有天然簇。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "plain_text": "Evaluating K-means Clusters: SSE. Cohesion and Separation. Silhouette Coefficient: combines both. For a point i, a = average distance to points in its cluster, b = min(average distance to points in another cluster). s = 1 - a/b if a < b.",
+    "related": [
+      "cohesion",
+      "separation",
+      "silhouette_coefficient"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "cohesion": {
+      "aliases": [
+        "Cohesion"
+      ],
+      "display": "凝聚度",
+      "gloss": "衡量簇内点之间紧密程度的指标。"
+    },
+    "separation": {
+      "aliases": [
+        "Separation"
+      ],
+      "display": "分离度",
+      "gloss": "衡量不同簇之间分离程度的指标。"
+    },
+    "silhouette_coefficient": {
+      "aliases": [
+        "Silhouette Coefficient"
+      ],
+      "display": "轮廓系数",
+      "gloss": "结合凝聚度和分离度的单个指标，值越接近1越好。"
+    }
+  }
+}

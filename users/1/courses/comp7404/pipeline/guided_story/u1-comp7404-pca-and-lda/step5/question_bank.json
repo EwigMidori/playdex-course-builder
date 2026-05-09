@@ -1,0 +1,462 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "pca_limitation_ignores_class",
+      "covered_by": [
+        "qf_flash_pca_limitation_v1",
+        "qf_flash_pca_limitation_v2",
+        "qf_quiz_pca_limitation_v1",
+        "qf_quiz_pca_limitation_v2",
+        "qf_long_pca_limitation_v1"
+      ],
+      "description": "PCA 只管方差最大，不管类别信息，因此当方差最大方向与分类方向不一致时，PCA 降维会损害分类性能。"
+    },
+    {
+      "coverage_tag": "lda_motivation_class_separation",
+      "covered_by": [
+        "qf_flash_lda_goal_v1",
+        "qf_flash_lda_goal_v2",
+        "qf_quiz_lda_goal_v1",
+        "qf_quiz_lda_goal_v2",
+        "qf_long_pca_limitation_v1"
+      ],
+      "description": "LDA 的动机是找到一个投影方向，使得不同类别的点尽量分开，同类点尽量集中，从而弥补 PCA 的不足。"
+    },
+    {
+      "coverage_tag": "fisher_criterion_ratio",
+      "covered_by": [
+        "qf_flash_fisher_criterion_v1",
+        "qf_flash_fisher_criterion_v2",
+        "qf_quiz_fisher_criterion_v1"
+      ],
+      "description": "Fisher 准则用类间距离平方与类内散度之和的比值来量化投影方向的可分性。"
+    },
+    {
+      "coverage_tag": "pca_vs_lda_supervised_unsupervised",
+      "covered_by": [
+        "qf_flash_pca_vs_lda_v1",
+        "qf_flash_pca_vs_lda_v2",
+        "qf_quiz_pca_vs_lda_v1",
+        "qf_quiz_pca_vs_lda_v2"
+      ],
+      "description": "PCA 是无监督的，LDA 是有监督的，这是两者的核心区别。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "pca_limitation_ignores_class",
+      "coverage_tags": [
+        "pca_limitation_ignores_class"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_pca_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 PCA 在分类场景下的核心局限。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了 PCA 只最大化方差、不考虑类别信息这一关键局限。",
+      "question_type": "short_answer",
+      "retrieval_focus": "PCA 在分类任务中的主要缺点。",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "只关心方差（最大化），完全忽略类别标签信息。",
+          "estimated_seconds": 8,
+          "explanation": "PCA 是无监督方法，其目标函数只与数据方差有关，不涉及任何类别信息。",
+          "front": "PCA 在降维时只关心什么统计量，而完全忽略什么信息？",
+          "question_id": "q_flash_pca_limitation_v1"
+        },
+        {
+          "back": "PCA 仍然会选择这个方向，因为它只看方差大小，不管类别是否可分。",
+          "estimated_seconds": 10,
+          "explanation": "PCA 的优化目标只有方差最大化，不会因为类别重叠而自动放弃该方向。",
+          "front": "如果两类数据沿着方差最大的方向投影后严重重叠，PCA 会怎么做？",
+          "question_id": "q_flash_pca_limitation_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "lda_motivation_class_separation",
+      "coverage_tags": [
+        "lda_motivation_class_separation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_lda_goal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 LDA 的优化目标。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了 LDA 的核心目标：最大化类间分离、最小化类内分散。",
+      "question_type": "short_answer",
+      "retrieval_focus": "LDA 寻找投影方向时的两个子目标。",
+      "term_refs": [
+        {
+          "display": "线性判别分析",
+          "en": "Linear Discriminant Analysis (LDA)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "让不同类别的点尽量分开（类间距离大），同类点尽量集中（类内分散小）。",
+          "estimated_seconds": 8,
+          "explanation": "LDA 的目标是找到一个投影，使得投影后不同类别的数据点尽可能分离，同一类别的数据点尽可能聚集。",
+          "front": "LDA 寻找投影方向时，对类间距离和类内分散分别有什么要求？",
+          "question_id": "q_flash_lda_goal_v1"
+        },
+        {
+          "back": "类间距离的平方与类内散度之和的比值。",
+          "estimated_seconds": 10,
+          "explanation": "这就是 Fisher 准则：J(w) = (m2 - m1)^2 / (s1^2 + s2^2)。",
+          "front": "LDA 的优化目标可以用哪两个量的比值来量化？",
+          "question_id": "q_flash_lda_goal_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "fisher_criterion_ratio",
+      "coverage_tags": [
+        "fisher_criterion_ratio"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_fisher_criterion",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 Fisher 准则的数学形式及其含义。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了 Fisher 准则的分子和分母分别代表什么。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Fisher 准则的分子和分母。",
+      "term_refs": [
+        {
+          "display": "Fisher 准则",
+          "en": "Fisher's Criterion"
+        }
+      ],
+      "variants": [
+        {
+          "back": "类间距离的平方 (m2 - m1)^2。",
+          "estimated_seconds": 6,
+          "explanation": "分子衡量投影后两个类别均值之间的距离。",
+          "front": "Fisher 准则 J(w) 的分子是什么？",
+          "question_id": "q_flash_fisher_criterion_v1"
+        },
+        {
+          "back": "类内散度之和 s1^2 + s2^2。",
+          "estimated_seconds": 6,
+          "explanation": "分母衡量投影后每个类别内部点的分散程度之和。",
+          "front": "Fisher 准则 J(w) 的分母是什么？",
+          "question_id": "q_flash_fisher_criterion_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca_vs_lda_supervised_unsupervised",
+      "coverage_tags": [
+        "pca_vs_lda_supervised_unsupervised"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_pca_vs_lda",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确区分 PCA 和 LDA 在监督/无监督方面的核心差异。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了 PCA 是无监督的、LDA 是有监督的这一核心区别。",
+      "question_type": "core_difference",
+      "retrieval_focus": "PCA 和 LDA 在是否需要标签上的区别。",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "PCA"
+        },
+        {
+          "display": "线性判别分析",
+          "en": "LDA"
+        }
+      ],
+      "variants": [
+        {
+          "back": "PCA 不需要标签（无监督），LDA 需要标签（有监督）。",
+          "estimated_seconds": 6,
+          "explanation": "PCA 只利用数据本身的方差信息，LDA 利用类别标签来最大化类间可分性。",
+          "front": "PCA 和 LDA 在是否需要类别标签上有什么核心区别？",
+          "question_id": "q_flash_pca_vs_lda_v1"
+        },
+        {
+          "back": "PCA。",
+          "estimated_seconds": 5,
+          "explanation": "LDA 需要类别标签，无标签数据无法使用 LDA。",
+          "front": "如果有一批无标签的高维数据，想降维可视化，应该用 PCA 还是 LDA？",
+          "question_id": "q_flash_pca_vs_lda_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "longform_families": [
+    {
+      "concept_key": "pca_limitation_ignores_class",
+      "coverage_tags": [
+        "pca_limitation_ignores_class",
+        "lda_motivation_class_separation"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_pca_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的语言解释 PCA 的局限性，并说明 LDA 如何弥补这一局限。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能深入理解 PCA 和 LDA 在分类场景下的本质差异。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "PCA"
+        },
+        {
+          "display": "线性判别分析",
+          "en": "LDA"
+        },
+        {
+          "display": "Fisher 准则",
+          "en": "Fisher's Criterion"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "PCA 的优化目标是什么？它使用什么信息？",
+            "在什么情况下 PCA 的降维结果会对分类不利？请举例说明。",
+            "LDA 的优化目标是什么？它使用什么额外信息？",
+            "Fisher 准则如何量化 LDA 的目标？"
+          ],
+          "question_id": "q_long_pca_limitation_v1",
+          "reference_answer": [
+            "PCA 的优化目标是最大化投影后的方差，它是一个无监督方法，完全不使用类别标签信息。",
+            "当数据中方差最大的方向与类别区分方向不一致时，PCA 会选择一个对分类无益甚至有害的投影方向。例如，两类数据在方差最大方向上投影后严重重叠，导致分类困难。",
+            "LDA 是有监督方法，它使用类别标签，目标是找到一个投影方向，使得不同类别的点尽量分开，同类点尽量集中。",
+            "Fisher 准则 J(w) = (m2 - m1)^2 / (s1^2 + s2^2) 量化了这一目标：分子是类间距离的平方，分母是类内散度之和。LDA 通过最大化这个比值来找到最优投影方向。"
+          ],
+          "rubric_points": [
+            "正确指出 PCA 只最大化方差，不使用类别标签。",
+            "能举例说明方差最大方向与分类方向不一致的情况（如两类数据沿方差最大方向投影后重叠）。",
+            "正确指出 LDA 使用类别标签，目标是最大化类间可分性。",
+            "正确描述 Fisher 准则：最大化类间距离平方与类内散度之和的比值。"
+          ],
+          "stem": "请解释为什么 PCA 在分类任务中可能存在局限性，并说明 LDA 如何通过其优化目标来弥补这一局限。请结合 Fisher 准则进行说明。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "pca_limitation_ignores_class",
+      "coverage_tags": [
+        "pca_limitation_ignores_class"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_pca_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中判断 PCA 降维对分类任务的影响。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能应用 PCA 的局限性知识分析具体案例。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "PCA"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "从投影坐标可以看出，两类数据在一维上大量重叠（-1、0、1 等值同时出现在两类中）。PCA 只管方差最大，不保证投影后类别能分开。",
+          "options": [
+            "PCA 成功将两类数据分开",
+            "PCA 投影后两类数据大量重叠，不利于分类",
+            "PCA 会自动放弃这个方向，改选最能分类的方向",
+            "PCA 会报错，因为数据不可分"
+          ],
+          "question_id": "q_quiz_pca_limitation_v1",
+          "stem": "有两类数据，一类在左上角，一类在右下角。PCA 将它们投影到方差最大的方向后，A 类坐标大致是 -2、-1、0、1，B 类坐标大致是 -1、0、1、2。以下哪个说法最准确？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "当方差最大的方向与分类方向不一致时，PCA 会损失分类所需的信息，这是其核心局限。",
+          "options": [
+            "对无标签的客户数据进行降维可视化",
+            "对高维图像数据进行去噪",
+            "对两类数据降维，其中方差最大的方向恰好使两类完全重叠",
+            "对语音信号进行特征提取"
+          ],
+          "question_id": "q_quiz_pca_limitation_v2",
+          "stem": "以下哪个场景最能体现 PCA 的局限性？"
+        }
+      ]
+    },
+    {
+      "concept_key": "lda_motivation_class_separation",
+      "coverage_tags": [
+        "lda_motivation_class_separation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_lda_goal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断 LDA 的适用场景并理解其目标。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能区分 LDA 和 PCA 的适用场景，并理解 LDA 的目标。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "线性判别分析",
+          "en": "LDA"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "LDA 是有监督的，适合有标签的分类任务。PCA 是无监督的，适合无标签的可视化和探索。",
+          "options": [
+            "对无标签的高维数据进行可视化",
+            "有标签的人脸识别任务",
+            "数据去噪",
+            "探索数据整体结构"
+          ],
+          "question_id": "q_quiz_lda_goal_v1",
+          "stem": "以下哪种场景更适合用 LDA 而不是 PCA？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "LDA 的目标是让不同类别的点尽量分开（类间距离大），同类点尽量集中（类内分散小），即同时优化这两个目标。",
+          "options": [
+            "只最大化类间距离",
+            "只最小化类内分散",
+            "同时最大化类间距离并最小化类内分散",
+            "最大化数据的总方差"
+          ],
+          "question_id": "q_quiz_lda_goal_v2",
+          "stem": "LDA 寻找投影方向时，以下哪个说法最准确？"
+        }
+      ]
+    },
+    {
+      "concept_key": "fisher_criterion_ratio",
+      "coverage_tags": [
+        "fisher_criterion_ratio"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_fisher_criterion",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解 Fisher 准则的数学含义。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了 Fisher 准则的分子和分母分别代表什么。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Fisher 准则",
+          "en": "Fisher's Criterion"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "s1^2 和 s2^2 分别表示第一类和第二类投影后的类内散度（方差），分母是它们的和。",
+          "options": [
+            "类间距离的平方",
+            "类内散度之和",
+            "数据总方差",
+            "类别数量"
+          ],
+          "question_id": "q_quiz_fisher_criterion_v1",
+          "stem": "Fisher 准则 J(w) = (m2 - m1)^2 / (s1^2 + s2^2) 中，分母 (s1^2 + s2^2) 代表什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca_vs_lda_supervised_unsupervised",
+      "coverage_tags": [
+        "pca_vs_lda_supervised_unsupervised"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_pca_vs_lda",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确区分 PCA 和 LDA 的核心区别。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了 PCA 和 LDA 在监督/无监督方面的核心区别。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "PCA"
+        },
+        {
+          "display": "线性判别分析",
+          "en": "LDA"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "PCA 不需要标签，只最大化方差；LDA 需要标签，目标是最大化类间可分性。",
+          "options": [
+            "PCA 是无监督的，LDA 是有监督的",
+            "PCA 是有监督的，LDA 是无监督的",
+            "两者没有区别",
+            "PCA 用于分类，LDA 用于可视化"
+          ],
+          "question_id": "q_quiz_pca_vs_lda_v1",
+          "stem": "PCA 和 LDA 的核心区别是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "PCA 的目标是最大化投影后方差；LDA 的目标是最大化 Fisher 准则，即类间距离平方与类内散度之和的比值。",
+          "options": [
+            "PCA 最大化类间距离，LDA 最大化方差",
+            "PCA 最大化方差，LDA 最大化类间距离与类内散度的比值",
+            "两者都最大化方差",
+            "两者都最大化类间距离"
+          ],
+          "question_id": "q_quiz_pca_vs_lda_v2",
+          "stem": "以下哪个说法正确描述了 PCA 和 LDA 的优化目标？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-pca-and-lda/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

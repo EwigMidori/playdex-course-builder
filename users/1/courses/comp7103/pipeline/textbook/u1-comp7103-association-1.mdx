@@ -1,0 +1,590 @@
+---
+lessonId: u1-comp7103-association-1
+title: 关联规则挖掘（一）：从购物篮到高效用项集
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["market_basket_analysis", "association_rule_definition"]
+    linkedSteps: ["step1"]
+  - sectionId: core-concepts-data-model
+    title: 核心概念与数据模型
+    coverageTags: ["transaction_and_itemset", "k_itemset", "support_count", "association_rule_definition"]
+    linkedSteps: ["step1"]
+  - sectionId: rule-quality-support-confidence
+    title: 规则的质量：支持度与置信度
+    coverageTags: ["support_definition", "confidence_definition", "support_confidence_threshold", "example_rule_evaluation"]
+    linkedSteps: ["step2"]
+  - sectionId: two-step-mining-process
+    title: 挖掘关联规则的两步法
+    coverageTags: ["two_step_mining_process", "frequent_itemset_definition", "rule_generation_from_frequent_itemsets", "max_candidate_rules_formula", "confidence_check_example"]
+    linkedSteps: ["step3"]
+  - sectionId: apriori-property
+    title: Apriori 原理：剪枝的核心思想
+    coverageTags: ["apriori_property", "pruning"]
+    linkedSteps: ["step4"]
+  - sectionId: apriori-algorithm
+    title: Apriori 算法：逐层生成与计数
+    coverageTags: ["apriori_algorithm_iterative_process", "apriori_gen_function", "candidate_generation_and_pruning", "example_illustration"]
+    linkedSteps: ["step5"]
+  - sectionId: compact-representations
+    title: 紧凑表示：最大频繁项集与闭项集
+    coverageTags: ["compact_representation", "maximal_frequent_itemset", "closed_frequent_itemset"]
+    linkedSteps: ["step6"]
+  - sectionId: high-utility-itemsets
+    title: 从支持度到效用：高效用项集
+    coverageTags: ["high_utility_itemset", "utility_formula", "utility_vs_support", "min_utility_threshold"]
+    linkedSteps: ["step7"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["market_basket_analysis", "association_rule_definition", "transaction_and_itemset", "k_itemset", "support_count", "support_definition", "confidence_definition", "support_confidence_threshold", "example_rule_evaluation", "two_step_mining_process", "frequent_itemset_definition", "rule_generation_from_frequent_itemsets", "max_candidate_rules_formula", "confidence_check_example", "apriori_property", "pruning", "apriori_algorithm_iterative_process", "apriori_gen_function", "candidate_generation_and_pruning", "example_illustration", "compact_representation", "maximal_frequent_itemset", "closed_frequent_itemset", "high_utility_itemset", "utility_formula", "utility_vs_support", "min_utility_threshold"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6", "step7"]
+coverageTrace:
+  - coverageTag: market_basket_analysis
+    description: 购物篮分析：关联规则的主要应用场景，发现商品之间的关联。
+    sectionIds: ["why-this-lesson-matters", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: association_rule_definition
+    description: 关联规则的定义：形式为 X ⇒ Y，表示买 X 的人也倾向于买 Y。
+    sectionIds: ["why-this-lesson-matters", "core-concepts-data-model", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: transaction_and_itemset
+    description: 交易记录与项集的概念：每条小票是一条交易记录，交易记录中的商品集合称为项集。
+    sectionIds: ["core-concepts-data-model", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: k_itemset
+    description: k-项集：包含 k 个商品的项集。
+    sectionIds: ["core-concepts-data-model", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: support_count
+    description: 支持度计数 sup(X)：包含项集 X 的交易记录数量。
+    sectionIds: ["core-concepts-data-model", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: support_definition
+    description: 支持度的定义与计算公式：sup(X ∪ Y) / N
+    sectionIds: ["rule-quality-support-confidence", "review-and-self-test"]
+    linkedSteps: ["step2"]
+  - coverageTag: confidence_definition
+    description: 置信度的定义与计算公式：sup(X ∪ Y) / sup(X)
+    sectionIds: ["rule-quality-support-confidence", "review-and-self-test"]
+    linkedSteps: ["step2"]
+  - coverageTag: support_confidence_threshold
+    description: 支持度阈值 ρₛ 和置信度阈值 ρ_c 的作用
+    sectionIds: ["rule-quality-support-confidence", "review-and-self-test"]
+    linkedSteps: ["step2"]
+  - coverageTag: example_rule_evaluation
+    description: 用具体例子（{f} ⇒ {a,b}）判断规则是否满足支持度和置信度条件
+    sectionIds: ["rule-quality-support-confidence", "review-and-self-test"]
+    linkedSteps: ["step2"]
+  - coverageTag: two_step_mining_process
+    description: 关联规则挖掘的两步法：第一步找出所有频繁项集，第二步从频繁项集生成规则
+    sectionIds: ["two-step-mining-process", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: frequent_itemset_definition
+    description: 频繁项集的定义：支持度 ≥ ρₛ × N 的项集
+    sectionIds: ["two-step-mining-process", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: rule_generation_from_frequent_itemsets
+    description: 从频繁项集生成规则：将频繁项集 S 划分为两个非空不相交子集 X 和 Y，检查置信度
+    sectionIds: ["two-step-mining-process", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: max_candidate_rules_formula
+    description: 一个 k-项集最多生成 2ᵏ - 2 条候选规则
+    sectionIds: ["two-step-mining-process", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: confidence_check_example
+    description: 通过 {c, d, e} 的例子展示如何计算置信度并判断规则是否合格
+    sectionIds: ["two-step-mining-process", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: apriori_property
+    description: Apriori 性质：频繁项集的所有非空子集也频繁；不频繁项集的超集一定不频繁。
+    sectionIds: ["apriori-property", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: pruning
+    description: 利用 Apriori 性质剪枝，避免检查所有超集。
+    sectionIds: ["apriori-property", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: apriori_algorithm_iterative_process
+    description: Apriori 算法的逐层迭代过程：C_k 生成、扫描计数、L_k 提取
+    sectionIds: ["apriori-algorithm", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: apriori_gen_function
+    description: Apriori-Gen 函数：从 L_{k-1} 生成 C_k 的合并与剪枝规则
+    sectionIds: ["apriori-algorithm", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: candidate_generation_and_pruning
+    description: 候选集生成中的合并条件（共享 k-2 个商品）与剪枝条件（所有子集在 L_{k-1} 中）
+    sectionIds: ["apriori-algorithm", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: example_illustration
+    description: 使用示例数据集展示 Apriori 的逐层执行过程
+    sectionIds: ["apriori-algorithm", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: compact_representation
+    description: 紧凑表示：最大频繁项集与闭项集
+    sectionIds: ["compact-representations", "review-and-self-test"]
+    linkedSteps: ["step6"]
+  - coverageTag: maximal_frequent_itemset
+    description: 最大频繁项集的定义与性质
+    sectionIds: ["compact-representations", "review-and-self-test"]
+    linkedSteps: ["step6"]
+  - coverageTag: closed_frequent_itemset
+    description: 闭频繁项集的定义与性质
+    sectionIds: ["compact-representations", "review-and-self-test"]
+    linkedSteps: ["step6"]
+  - coverageTag: high_utility_itemset
+    description: 高效用项集的定义、动机和计算方式
+    sectionIds: ["high-utility-itemsets", "review-and-self-test"]
+    linkedSteps: ["step7"]
+  - coverageTag: utility_formula
+    description: 交易内效用 σ(X,T) 和总效用 π(X,D) 的公式
+    sectionIds: ["high-utility-itemsets", "review-and-self-test"]
+    linkedSteps: ["step7"]
+  - coverageTag: utility_vs_support
+    description: 效用与支持度的区别：支持度只关心出现与否，效用考虑数量和利润
+    sectionIds: ["high-utility-itemsets", "review-and-self-test"]
+    linkedSteps: ["step7"]
+  - coverageTag: min_utility_threshold
+    description: 最小效用阈值 min_u 的概念
+    sectionIds: ["high-utility-itemsets", "review-and-self-test"]
+    linkedSteps: ["step7"]
+---
+
+# 关联规则挖掘（一）：从购物篮到高效用项集
+
+## 为什么这一课重要
+
+走进一家超市，收银台的小票上记录着你买的所有东西。如果把几千张小票放在一起看，会发现什么？买面包的人，常常也买了牛奶；买尿布的人，居然也买了啤酒。
+
+这种“买 A 的人也倾向于买 B”的关系，就是**<Term id="association_rule" en="Association Rule">关联规则</Term>**。它帮我们发现商品之间隐藏的联系。关联规则挖掘是数据挖掘中最经典、应用最广泛的技术之一，其核心应用场景是**<Term id="market_basket_analysis" en="Market Basket Analysis">购物篮分析</Term>**。
+
+<KeyPoint>
+关联规则挖掘的目标是从大量交易数据中自动发现形如“如果买了 X，那么很可能也会买 Y”的有趣模式。
+</KeyPoint>
+
+<QuestionRef id="q_quiz_assoc_rule_v1" />
+<QuestionRef id="q_quiz_assoc_rule_v2" />
+
+## 核心概念与数据模型
+
+### 交易记录与项集
+
+在购物篮分析中，每条小票就是一条**<Term id="transaction" en="Transaction">交易记录</Term>**。交易记录里所有商品的集合，叫做一个**<Term id="itemset" en="Itemset">项集</Term>**。
+
+<Definition title="交易记录 (Transaction)">
+数据集中的一条记录，代表一次购物篮中的全部商品集合。
+</Definition>
+
+<Definition title="项集 (Itemset)">
+一个或多个商品的集合，例如 {牛奶, 面包, 洗衣粉}。
+</Definition>
+
+包含 k 个商品的项集，就叫**<Term id="k_itemset" en="k-itemset">k-项集</Term>**。例如 {牛奶, 面包, 洗衣粉} 就是一个 3-项集。
+
+<QuestionRef id="q_quiz_itemset_v1" />
+<QuestionRef id="q_quiz_itemset_v2" />
+
+### 支持度计数
+
+怎么知道一个项集受欢迎？数一数有多少条交易记录包含了它。这个数字叫做**<Term id="support_count" en="Support Count">支持度计数</Term>**，记作 sup(X)。
+
+<Definition title="支持度计数 (Support Count)">
+给定一个非空项集 X，支持度计数 sup(X) 是数据集中包含 X 的交易记录数量。
+</Definition>
+
+<Example title="计算支持度计数">
+考虑一个包含 25 笔交易的数据集 D，商品集合 I = {a, b, c, d, e, f}。
+
+- sup({a, b, e}) = 3（交易 4, 18, 20 包含了这三个商品）
+- sup({c, d}) = 9
+
+{c, d} 是一个 2-项集。
+</Example>
+
+<QuestionRef id="q_quiz_support_count_v1" />
+<QuestionRef id="q_quiz_support_count_v2" />
+
+### 关联规则的定义
+
+一条规则写成 X ⇒ Y。X 是前提（antecedent），Y 是结论（consequence）。
+
+<Definition title="关联规则 (Association Rule)">
+一条关联规则是形如 X ⇒ Y 的归纳规则，表示如果 X 发生，那么 Y 很可能也发生。其中 X 和 Y 必须是非空、不相交的项集（X ≠ ∅, Y ≠ ∅, X ∩ Y = ∅）。
+</Definition>
+
+例如：
+- {面包} ⇒ {牛奶}
+- {尿布} ⇒ {啤酒}
+- {洋葱蘸酱, 莎莎酱} ⇒ {玉米片}
+
+<Checkpoint title="概念检查">
+你能说出关联规则 {尿布} ⇒ {啤酒} 的含义吗？
+</Checkpoint>
+
+<QuestionFamily familyId="qf_flash_assoc_rule" />
+<QuestionFamily familyId="qf_flash_itemset" />
+<QuestionFamily familyId="qf_flash_k_itemset" />
+<QuestionFamily familyId="qf_flash_support_count" />
+<QuestionFamily familyId="qf_long_support_count" />
+
+## 规则的质量：支持度与置信度
+
+一条规则好不好，需要两个指标来衡量：**<Term id="support" en="Support">支持度</Term>**和**<Term id="confidence" en="Confidence">置信度</Term>**。
+
+### 支持度
+
+<Definition title="支持度 (Support)">
+关联规则 X ⇒ Y 的支持度 = sup(X ∪ Y) / N，其中 N 是总交易数。它衡量规则的普遍性，即规则覆盖了多少交易。
+</Definition>
+
+支持度太低，说明规则只适用于极少数情况，没什么用。所以我们会设一个最低支持度阈值 ρₛ。
+
+<Formula latex="\frac{\sup(X \cup Y)}{N} \geq \rho_s">
+支持度条件：规则必须覆盖足够多的交易
+</Formula>
+
+### 置信度
+
+<Definition title="置信度 (Confidence)">
+关联规则 X ⇒ Y 的置信度 = sup(X ∪ Y) / sup(X)。它衡量规则的可靠性，即买了 X 的人里，有多少也买了 Y。
+</Definition>
+
+置信度越高，规则越可靠。我们也会设一个最低置信度阈值 ρ_c。
+
+<Formula latex="\frac{\sup(X \cup Y)}{\sup(X)} \geq \rho_c">
+置信度条件：规则必须足够可靠
+</Formula>
+
+<KeyPoint>
+支持度确保规则有足够的普遍性，置信度确保规则有足够的可靠性。两者缺一不可。
+</KeyPoint>
+
+### 具体例子
+
+<Example title="评估规则 {f} ⇒ {a, b}">
+数据集有 25 笔交易，ρₛ = 20%，ρ_c = 65%。
+
+- sup({a, b, f}) = 2，sup({f}) = 3
+- 支持度 = 2/25 = 8% < 20% → **不满足**支持度条件
+- 置信度 = 2/3 ≈ 67% > 65% → **满足**置信度条件
+
+这条规则置信度达标，但支持度太低。它只在少数交易中成立，不够普遍，所以不会被采纳。
+</Example>
+
+<Pitfall>
+不要只看置信度！一条规则可能置信度很高（例如 100%），但如果支持度极低（例如只有 1 笔交易），它可能只是偶然现象，没有实际价值。
+</Pitfall>
+
+<QuestionRef id="q_quiz_support_calc_v1" />
+<QuestionRef id="q_quiz_support_calc_v2" />
+<QuestionRef id="q_quiz_confidence_calc_v1" />
+<QuestionRef id="q_quiz_confidence_calc_v2" />
+<QuestionRef id="q_quiz_threshold_judge_v1" />
+<QuestionRef id="q_quiz_threshold_judge_v2" />
+<QuestionRef id="q_quiz_rule_eval_example_v1" />
+<QuestionRef id="q_quiz_rule_eval_example_v2" />
+
+<QuestionFamily familyId="qf_flash_support_def" />
+<QuestionFamily familyId="qf_flash_confidence_def" />
+<QuestionFamily familyId="qf_flash_threshold_role" />
+<QuestionFamily familyId="qf_long_support_confidence_compare" />
+
+## 挖掘关联规则的两步法
+
+挖掘关联规则分两步。
+
+### 第一步：找出所有频繁项集
+
+<Definition title="频繁项集 (Frequent Itemset)">
+一个非空项集 S 是频繁的，当且仅当 sup(S) ≥ ρₛ × N。
+</Definition>
+
+<Example title="频繁项集的判定">
+给定 ρₛ = 20%，N = 25，那么支持度 ≥ 5 的项集才是频繁的。
+
+从示例数据集中，我们得到以下频繁项集（部分）：
+- {a}: 11, {b}: 18, {c}: 11, {d}: 14, {e}: 11
+- {a, b}: 8, {b, c}: 8, {b, d}: 10, {c, d}: 9, {c, e}: 6, {d, e}: 7
+- {b, c, d}: 6, {c, d, e}: 5, {b, d, e}: 5
+</Example>
+
+### 第二步：从频繁项集生成规则
+
+对于每个频繁项集 S：
+1. 将 S 分成两个非空不相交子集 X 和 Y（X ∪ Y = S, X ∩ Y = ∅）
+2. 检查规则 X ⇒ Y 的置信度是否 ≥ ρ_c
+
+<KeyPoint>
+一个 k-项集最多生成 2ᵏ - 2 条候选规则。例如，一个 3-项集最多生成 2³ - 2 = 6 条规则。
+</KeyPoint>
+
+<Example title="从 {c, d, e} 生成规则">
+频繁项集 {c, d, e} 的支持度为 5，sup({c, e}) = 6，sup({c, d}) = 9，sup({d, e}) = 7。
+
+生成的 6 条候选规则及其置信度：
+- {c} ⇒ {d, e}: 5/11 ≈ 45%
+- {d} ⇒ {c, e}: 5/14 ≈ 36%
+- {e} ⇒ {c, d}: 5/11 ≈ 45%
+- {d, e} ⇒ {c}: 5/7 ≈ 71%
+- {c, e} ⇒ {d}: 5/6 ≈ 83%
+- {c, d} ⇒ {e}: 5/9 ≈ 56%
+
+若 ρ_c = 65%，只有 {d, e} ⇒ {c}（71%）和 {c, e} ⇒ {d}（83%）合格。
+</Example>
+
+<QuestionRef id="q_quiz_step3_two_step_v1" />
+<QuestionRef id="q_quiz_step3_two_step_v2" />
+<QuestionRef id="q_quiz_step3_max_rules_v1" />
+<QuestionRef id="q_quiz_step3_max_rules_v2" />
+<QuestionRef id="q_quiz_step3_confidence_example_v1" />
+<QuestionRef id="q_quiz_step3_confidence_example_v2" />
+
+<QuestionFamily familyId="qf_flash_step3_two_step" />
+<QuestionFamily familyId="qf_flash_step3_frequent_itemset_def" />
+<QuestionFamily familyId="qf_flash_step3_rule_generation" />
+<QuestionFamily familyId="qf_flash_step3_max_rules" />
+<QuestionFamily familyId="qf_long_step3_rule_generation" />
+
+## Apriori 原理：剪枝的核心思想
+
+第一步——找频繁项集——其实是最难的。如果有 m 种商品，可能的项集数量是 2ᵐ - 1。超市有 10000 种商品，可能的项集数量比宇宙中的原子还多。暴力枚举是不可能的。
+
+Apriori 算法用一个关键性质来剪枝。这就是**<Term id="apriori_property" en="Apriori Property">Apriori 性质</Term>**。
+
+<Definition title="Apriori 性质 (Apriori Property)">
+- 正向：如果一个项集是频繁的，那么它的所有非空子集也是频繁的。
+- 反向：如果一个项集不频繁，它的所有超集也一定不频繁。
+</Definition>
+
+<KeyPoint>
+Apriori 性质的反向表述是剪枝的关键：如果我们知道某个项集不频繁，那么所有包含它的超集都不用检查了。
+</KeyPoint>
+
+<Example title="Apriori 性质的应用">
+在示例数据集中，{f} 的支持度计数为 3，小于阈值 5，因此 {f} 不频繁。
+
+根据 Apriori 性质，{f, a}、{f, b}、{f, a, b} 等所有包含 f 的项集都不需要再检查，从而减少了大量候选。
+</Example>
+
+<Figure src="images/20a93710136e7fce615cececd3a411e0c0e8eef96df70a9b05e792e3b70f6de7.jpg" alt="Apriori 性质示意图：频繁项集的子集也频繁，不频繁项集的超集也不频繁">
+Apriori 性质的可视化：频繁项集（绿色）的所有子集都是频繁的；不频繁项集（红色）的所有超集都是不频繁的。
+</Figure>
+
+<QuestionRef id="q_quiz_apriori_property_v1" />
+<QuestionRef id="q_quiz_apriori_property_v2" />
+
+<QuestionFamily familyId="qf_flash_apriori_property" />
+<QuestionFamily familyId="qf_long_apriori_property" />
+
+## Apriori 算法：逐层生成与计数
+
+Apriori 算法是逐层迭代的。第 k 轮，先生成候选集 C_k，再扫描数据集找出频繁项集 L_k。
+
+### 算法流程
+
+<Definition title="候选集 (Candidate Itemset, C_k)">
+第 k 轮生成的候选 k-项集集合，可能成为频繁项集，需要扫描数据集来验证。
+</Definition>
+
+<Definition title="频繁项集 (Frequent Itemset, L_k)">
+第 k 轮确认的频繁 k-项集集合。
+</Definition>
+
+1. **第一轮**：C₁ 包含所有单个商品。扫描数据集，统计每个商品的支持度，得到 L₁。
+2. **第二轮**：用 L₁ 生成 C₂。C₂ 中的每个 2-项集，它的所有 1-项子集都必须在 L₁ 中。扫描数据集，统计 C₂ 中每个项集的支持度，得到 L₂。
+3. **如此反复**，直到 C_k 为空。
+
+<Figure src="images/41b5f2aa6e610d265e539aaa1aac1e5d25d6cc40f67a992fab116fdb700db31c.jpg" alt="Apriori 原理示意图：逐层生成候选集并剪枝">
+Apriori 算法的逐层迭代过程：从 1-项集开始，逐层生成更大的候选集，利用 Apriori 性质剪枝。
+</Figure>
+
+### Apriori-Gen 函数
+
+生成 C_k 的函数叫做**<Term id="apriori_gen" en="apriori-gen">Apriori-Gen</Term>**。
+
+<Definition title="Apriori-Gen 函数 (apriori-gen)">
+从 L_{k-1} 生成 C_k 的函数，包含两个步骤：
+1. **合并**：将 L_{k-1} 中共享 k-2 个商品的两个项集合并，得到候选 k-项集。
+2. **剪枝**：检查候选 k-项集的所有 (k-1)-项子集是否都在 L_{k-1} 中。如果不在，则剪掉该候选。
+</Definition>
+
+<Example title="从 L₂ 生成 C₃">
+假设 L₂ = {{b, d}, {c, d}, {b, c}, {b, e}, {d, e}}。
+
+**合并步骤**（共享 1 个商品）：
+- {b, d} 和 {c, d} → {b, c, d}
+- {b, d} 和 {b, e} → {b, d, e}
+- {c, d} 和 {d, e} → {c, d, e}
+- {b, c} 和 {b, e} → {b, c, e}
+
+**剪枝步骤**（检查所有 2-项子集是否在 L₂ 中）：
+- {b, c, d}: 子集 {b, c}, {b, d}, {c, d} 都在 L₂ 中 → **保留**
+- {b, d, e}: 子集 {b, d}, {b, e}, {d, e} 都在 L₂ 中 → **保留**
+- {c, d, e}: 子集 {c, d}, {c, e}, {d, e}，但 {c, e} 不在 L₂ 中 → **剪枝**
+- {b, c, e}: 子集 {b, c}, {b, e}, {c, e}，但 {c, e} 不在 L₂ 中 → **剪枝**
+
+最终 C₃ = {{b, c, d}, {b, d, e}}
+</Example>
+
+<KeyPoint>
+在我们的例子中，Apriori 只扫描了 20 个项集，而全部可能的项集有 63 个。剪枝效果显著。在实际应用中，剪枝效果更加惊人。
+</KeyPoint>
+
+<QuestionRef id="q_quiz_apriori_process_v1" />
+<QuestionRef id="q_quiz_apriori_process_v2" />
+<QuestionRef id="q_quiz_apriori_gen_prune_v1" />
+<QuestionRef id="q_quiz_apriori_gen_prune_v2" />
+
+<QuestionFamily familyId="qf_flash_apriori_iteration" />
+<QuestionFamily familyId="qf_flash_apriori_gen_merge" />
+<QuestionFamily familyId="qf_long_apriori_trace" />
+
+## 紧凑表示：最大频繁项集与闭项集
+
+频繁项集的数量可能仍然很大。我们需要更紧凑的表示方式。
+
+### 最大频繁项集
+
+<Definition title="最大频繁项集 (Maximal Frequent Itemset)">
+一个频繁项集，并且它的所有直接超集都不频繁。
+</Definition>
+
+<KeyPoint>
+所有频繁项集都是某个最大频繁项集的子集。所以只要存储最大频繁项集，就能推导出所有频繁项集。
+</KeyPoint>
+
+<Figure src="images/4c58c2b3147d7766a80576a5abe5bd31e4ba7e137fce7ef8d008b57690006075.jpg" alt="最大频繁项集示意图：边界上的频繁项集">
+最大频繁项集是频繁项集的边界：再往上加任何一项都会变成不频繁。
+</Figure>
+
+### 闭频繁项集
+
+<Definition title="闭频繁项集 (Closed Frequent Itemset)">
+一个频繁项集，并且它的所有直接超集的支持度都严格小于它。
+</Definition>
+
+<KeyPoint>
+闭频繁项集不仅能推导出所有频繁项集，还能推导出它们的支持度。比最大频繁项集保留了更多信息。
+</KeyPoint>
+
+<Figure src="images/972b6f747f0413674745f50c9de6b32bb7c0e9bad91bc788f56e2f6a99fc90f4.jpg" alt="最大频繁项集与闭频繁项集的关系对比图">
+最大频繁项集可以推导出所有频繁项集；闭频繁项集可以推导出所有频繁项集及其支持度。
+</Figure>
+
+<QuestionRef id="q_quiz_maximal_vs_closed_v1" />
+<QuestionRef id="q_quiz_maximal_vs_closed_v2" />
+
+<QuestionFamily familyId="qf_flash_maximal_def" />
+<QuestionFamily familyId="qf_flash_closed_def" />
+<QuestionFamily familyId="qf_flash_maximal_vs_closed" />
+<QuestionFamily familyId="qf_long_compare_compact" />
+
+## 从支持度到效用：高效用项集
+
+支持度只关心"是否出现"，不关心"卖了多少"。但超市更关心利润。
+
+### 效用定义
+
+高效用项集挖掘引入了**<Term id="utility" en="Utility">效用</Term>**的概念。
+
+<Definition title="效用 (Utility)">
+项集在数据集中产生的总利润，综合考虑了购买数量和单位利润。
+</Definition>
+
+每个商品有单位利润 p(a)，每笔交易有购买数量 q(a, T)。
+
+<Formula latex="\sigma(X, T) = \sum_{a \in X} p(a) \times q(a, T)">
+交易内效用：项集 X 在一笔交易 T 中的效用
+</Formula>
+
+<Formula latex="\pi(X, D) = \sum_{T \in D} \sigma(X, T)">
+总效用：项集 X 在整个数据集 D 中的总效用
+</Formula>
+
+<Example title="计算交易内效用">
+商品 a 的利润是 3 元，商品 b 的利润是 1 元。一笔交易买了 2 个 a 和 5 个 b。
+
+σ({a, b}, T) = 3 × 2 + 1 × 5 = 6 + 5 = 11 元。
+</Example>
+
+### 效用 vs 支持度
+
+<KeyPoint>
+支持度只关心商品是否出现在交易中，而效用额外考虑了购买数量和单位利润。一个商品可能经常被买但利润很低，另一个商品可能不常被买但利润很高。
+</KeyPoint>
+
+目标：找出所有总效用 ≥ 最小效用阈值 min_u 的项集。这比单纯找频繁项集更有商业价值。
+
+<QuestionRef id="q_quiz_utility_calculation_v1" />
+<QuestionRef id="q_quiz_utility_calculation_v2" />
+<QuestionRef id="q_quiz_utility_vs_support_v1" />
+<QuestionRef id="q_quiz_utility_vs_support_v2" />
+
+<QuestionFamily familyId="qf_flash_utility_definition" />
+<QuestionFamily familyId="qf_flash_utility_vs_support" />
+<QuestionFamily familyId="qf_long_utility_interpretation" />
+
+## 复习与自测
+
+### 核心概念回顾
+
+1. **关联规则**：形式为 X ⇒ Y，表示买 X 的人也倾向于买 Y。
+2. **支持度**：sup(X ∪ Y) / N，衡量规则的普遍性。
+3. **置信度**：sup(X ∪ Y) / sup(X)，衡量规则的可靠性。
+4. **Apriori 性质**：频繁项集的子集也频繁；不频繁项集的超集也不频繁。
+5. **两步法**：先找频繁项集，再生成规则。
+6. **紧凑表示**：最大频繁项集（推导所有频繁项集）和闭频繁项集（推导所有频繁项集及其支持度）。
+7. **高效用项集**：考虑数量和利润，比支持度更有商业价值。
+
+### 主动回忆练习
+
+使用以下闪卡族进行主动检索，巩固记忆：
+
+<QuestionFamily familyId="qf_flash_assoc_rule" />
+<QuestionFamily familyId="qf_flash_itemset" />
+<QuestionFamily familyId="qf_flash_support_count" />
+<QuestionFamily familyId="qf_flash_support_def" />
+<QuestionFamily familyId="qf_flash_confidence_def" />
+<QuestionFamily familyId="qf_flash_threshold_role" />
+<QuestionFamily familyId="qf_flash_apriori_property" />
+<QuestionFamily familyId="qf_flash_apriori_iteration" />
+<QuestionFamily familyId="qf_flash_apriori_gen_merge" />
+<QuestionFamily familyId="qf_flash_maximal_def" />
+<QuestionFamily familyId="qf_flash_closed_def" />
+<QuestionFamily familyId="qf_flash_maximal_vs_closed" />
+<QuestionFamily familyId="qf_flash_utility_definition" />
+<QuestionFamily familyId="qf_flash_utility_vs_support" />
+
+### 章节自测
+
+以下测验题帮助你检查对关键概念的理解：
+
+<QuestionFamily familyId="qf_quiz_assoc_rule" />
+<QuestionFamily familyId="qf_quiz_itemset" />
+<QuestionFamily familyId="qf_quiz_support_count" />
+<QuestionFamily familyId="qf_quiz_support_calc" />
+<QuestionFamily familyId="qf_quiz_confidence_calc" />
+<QuestionFamily familyId="qf_quiz_threshold_judge" />
+<QuestionFamily familyId="qf_quiz_rule_eval_example" />
+<QuestionFamily familyId="qf_quiz_step3_two_step" />
+<QuestionFamily familyId="qf_quiz_step3_max_rules" />
+<QuestionFamily familyId="qf_quiz_step3_confidence_example" />
+<QuestionFamily familyId="qf_quiz_apriori_property" />
+<QuestionFamily familyId="qf_quiz_apriori_process" />
+<QuestionFamily familyId="qf_quiz_apriori_gen_prune" />
+<QuestionFamily familyId="qf_quiz_maximal_vs_closed" />
+<QuestionFamily familyId="qf_quiz_utility_calculation" />
+<QuestionFamily familyId="qf_quiz_utility_vs_support" />
+
+### 深入理解练习
+
+以下长问题帮助你深入理解核心机制：
+
+<QuestionFamily familyId="qf_long_support_count" />
+<QuestionFamily familyId="qf_long_support_confidence_compare" />
+<QuestionFamily familyId="qf_long_step3_rule_generation" />
+<QuestionFamily familyId="qf_long_apriori_property" />
+<QuestionFamily familyId="qf_long_apriori_trace" />
+<QuestionFamily familyId="qf_long_compare_compact" />
+<QuestionFamily familyId="qf_long_utility_interpretation" />

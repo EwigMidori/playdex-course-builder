@@ -1,0 +1,383 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "polynomial_regression",
+      "covered_by": [
+        "qf_flash_poly_reg",
+        "qf_quiz_poly_reg"
+      ],
+      "description": "多项式回归：线性回归的扩展，使用多项式函数拟合数据，阶数越高模型越灵活。"
+    },
+    {
+      "coverage_tag": "overfitting",
+      "covered_by": [
+        "qf_flash_overfitting",
+        "qf_quiz_overfitting",
+        "qf_long_overfitting"
+      ],
+      "description": "过拟合：模型过度学习训练数据中的噪声和细节，导致在新数据上表现很差。"
+    },
+    {
+      "coverage_tag": "generalization",
+      "covered_by": [
+        "qf_flash_generalization",
+        "qf_quiz_generalization",
+        "qf_long_overfitting"
+      ],
+      "description": "泛化：模型对未见过的数据做出正确预测的能力。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "polynomial_regression",
+      "coverage_tags": [
+        "polynomial_regression"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_poly_reg",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆多项式回归的定义和模型阶数的含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能准确说出多项式回归是什么，以及阶数对模型灵活性的影响。",
+      "question_type": "short_answer",
+      "retrieval_focus": "多项式回归的定义和阶数的作用。",
+      "term_refs": [
+        {
+          "display": "多项式回归",
+          "en": "Polynomial Regression"
+        }
+      ],
+      "variants": [
+        {
+          "back": "线性回归的扩展，使用多项式函数（如 $f(x; w) = w_0 + w_1 x + \\dots + w_m x^m$）来拟合数据，可以捕捉更复杂的关系。",
+          "estimated_seconds": 10,
+          "explanation": "多项式回归通过增加输入变量的高次项来拟合曲线，是线性回归的推广。",
+          "front": "什么是多项式回归？",
+          "question_id": "q_flash_poly_reg_v1"
+        },
+        {
+          "back": "阶数越高，模型越灵活，能拟合更复杂的形状。",
+          "estimated_seconds": 8,
+          "explanation": "更高的阶数意味着模型有更多的参数，可以适应更复杂的曲线模式。",
+          "front": "多项式回归中，阶数 m 越大，模型的灵活性会怎样变化？",
+          "question_id": "q_flash_poly_reg_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "overfitting",
+      "coverage_tags": [
+        "overfitting"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_overfitting",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆过拟合的定义和典型表现。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能准确说出过拟合是什么，以及它的典型表现（训练误差低，测试误差高）。",
+      "question_type": "short_answer",
+      "retrieval_focus": "过拟合的定义和核心特征。",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "模型过度学习了训练数据中的噪声和细节，导致在新数据上表现很差。",
+          "estimated_seconds": 8,
+          "explanation": "过拟合的模型记住了训练数据中的随机波动，而不是真正的潜在规律。",
+          "front": "什么是过拟合？",
+          "question_id": "q_flash_overfitting_v1"
+        },
+        {
+          "back": "训练误差很低，但测试误差（泛化误差）很高。",
+          "estimated_seconds": 8,
+          "explanation": "这是过拟合最核心的标志：模型在训练集上表现完美，但在新数据上表现糟糕。",
+          "front": "过拟合的典型表现是什么？",
+          "question_id": "q_flash_overfitting_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "generalization",
+      "coverage_tags": [
+        "generalization"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_generalization",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆泛化的定义及其与过拟合的关系。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能准确说出泛化是什么，以及过拟合对泛化能力的影响。",
+      "question_type": "short_answer",
+      "retrieval_focus": "泛化的定义。",
+      "term_refs": [
+        {
+          "display": "泛化",
+          "en": "Generalization"
+        }
+      ],
+      "variants": [
+        {
+          "back": "模型对未见过的数据做出正确预测的能力。",
+          "estimated_seconds": 6,
+          "explanation": "泛化能力是机器学习模型最重要的评价指标之一。",
+          "front": "什么是泛化？",
+          "question_id": "q_flash_generalization_v1"
+        },
+        {
+          "back": "很差。",
+          "estimated_seconds": 5,
+          "explanation": "过拟合的模型记住了训练数据的噪声，因此无法很好地泛化到新数据。",
+          "front": "过拟合的模型泛化能力如何？",
+          "question_id": "q_flash_generalization_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "longform_families": [
+    {
+      "concept_key": "overfitting_vs_generalization",
+      "coverage_tags": [
+        "overfitting",
+        "generalization"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_overfitting",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释过拟合与泛化能力之间的关系，并能举例说明。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能用自己的语言解释过拟合如何损害泛化能力，并能给出一个具体的例子。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        },
+        {
+          "display": "泛化",
+          "en": "Generalization"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "定义过拟合和泛化",
+            "解释过拟合如何导致泛化能力差",
+            "用高阶多项式回归的例子说明"
+          ],
+          "question_id": "q_long_overfitting_v1",
+          "reference_answer": [
+            "过拟合是指模型过度学习了训练数据中的噪声和细节，导致它在新数据上表现很差。",
+            "泛化能力是指模型对未见过的数据做出正确预测的能力。",
+            "过拟合的模型泛化能力差，因为它学到的是训练数据中的随机波动，而不是真正的潜在规律。",
+            "例如，一个高阶多项式回归模型可以完美穿过所有训练点，训练误差几乎为零。但是，如果加入一个新的数据点，它的预测可能完全错误，因为模型被训练数据中的噪声带偏了。"
+          ],
+          "rubric_points": [
+            "正确解释过拟合：模型过度学习训练数据中的噪声和细节",
+            "正确解释泛化：模型对未见数据的预测能力",
+            "说明过拟合的模型在训练集上表现好，但在新数据上表现差",
+            "举例：高阶多项式回归完美穿过所有训练点，但对新数据点预测错误"
+          ],
+          "stem": "请解释过拟合与泛化能力之间的关系。为什么过拟合的模型泛化能力差？请结合高阶多项式回归的例子进行说明。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "描述训练误差随阶数增加的变化趋势",
+            "描述测试误差随阶数增加的变化趋势",
+            "解释过拟合发生的原因"
+          ],
+          "question_id": "q_long_overfitting_v2",
+          "reference_answer": [
+            "随着多项式阶数增加，训练误差通常会持续下降，因为模型越来越灵活，可以更好地拟合训练数据。对于高阶模型，训练误差甚至可以接近零。",
+            "测试误差的变化则不同：开始时，随着阶数增加，模型表达能力增强，测试误差会下降。但达到某个点后，继续增加阶数会导致测试误差上升。",
+            "这是因为低阶模型可能欠拟合，无法捕捉数据的真实模式。而高阶模型则开始过拟合：它为了完美拟合训练数据，也拟合了数据中的随机噪声。",
+            "过拟合的模型虽然训练误差很低，但由于它学到的规律不真实，所以在新的测试数据上表现很差，导致测试误差升高。"
+          ],
+          "rubric_points": [
+            "正确指出训练误差会持续下降，甚至趋于零",
+            "正确指出测试误差先下降后上升",
+            "解释低阶模型可能欠拟合（训练和测试误差都高）",
+            "解释高阶模型过拟合（训练误差低，测试误差高）",
+            "说明过拟合是因为模型过于复杂，记住了噪声"
+          ],
+          "stem": "假设你有一个包含少量数据点的回归问题。你尝试了从1阶到10阶的多项式回归模型。请描述随着阶数增加，训练误差和测试误差可能如何变化，并解释为什么会出现过拟合。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "polynomial_regression",
+      "coverage_tags": [
+        "polynomial_regression"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_poly_reg",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析多项式回归的特点。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能正确识别多项式回归的模型形式及其与线性回归的关系。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "多项式回归",
+          "en": "Polynomial Regression"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "m 阶多项式回归模型包含从 0 次到 m 次的所有幂次项。",
+          "options": [
+            "$f(x; w) = w_0 + w_1 x$",
+            "$f(x; w) = w_0 + w_1 x + \\dots + w_m x^m$",
+            "$f(x; w) = w_0 + w_1 x^2$",
+            "$f(x; w) = w_0 + w_1 \\sin(x)$"
+          ],
+          "question_id": "q_quiz_poly_reg_v1",
+          "stem": "以下哪个是 m 阶多项式回归模型的正确形式？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "多项式回归通过引入高次项，可以拟合曲线等非线性关系，而简单线性回归只能拟合直线。",
+          "options": [
+            "计算速度更快",
+            "需要的训练数据更少",
+            "能拟合更复杂的非线性关系",
+            "永远不会过拟合"
+          ],
+          "question_id": "q_quiz_poly_reg_v2",
+          "stem": "与简单线性回归相比，多项式回归的主要优势是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "overfitting",
+      "coverage_tags": [
+        "overfitting"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_overfitting",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下判断过拟合的表现和原因。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能正确识别过拟合的典型表现，并能区分过拟合与欠拟合。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "训练误差极低而测试误差很高，是过拟合的典型表现。模型记住了训练数据中的噪声。",
+          "options": [
+            "欠拟合",
+            "过拟合",
+            "数据泄露",
+            "模型偏差过大"
+          ],
+          "question_id": "q_quiz_overfitting_v1",
+          "stem": "一个高阶多项式回归模型在训练集上取得了几乎为零的误差，但在测试集上误差很大。这最可能是什么问题？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "当训练数据量小且模型复杂（如高阶多项式）时，模型很容易记住训练数据中的噪声，导致过拟合。",
+          "options": [
+            "训练数据量很大，模型很简单",
+            "训练数据量很小，模型很复杂",
+            "训练数据和测试数据来自同一分布",
+            "使用了正则化技术"
+          ],
+          "question_id": "q_quiz_overfitting_v2",
+          "stem": "以下哪种情况最可能导致过拟合？"
+        }
+      ]
+    },
+    {
+      "concept_key": "generalization",
+      "coverage_tags": [
+        "generalization"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_generalization",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下理解泛化能力的重要性。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能正确理解泛化能力的含义，以及过拟合对泛化能力的影响。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "泛化",
+          "en": "Generalization"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 10,
+          "explanation": "我们真正关心的是模型在未见过的数据（测试集）上的表现，即泛化能力。",
+          "options": [
+            "训练集",
+            "验证集",
+            "测试集（未知数据）",
+            "所有数据集"
+          ],
+          "question_id": "q_quiz_generalization_v1",
+          "stem": "机器学习模型最关心的是在哪个数据集上的表现？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "过拟合的模型记住了训练数据的噪声，因此在新数据上表现很差，即泛化能力差。",
+          "options": [
+            "很好",
+            "很差",
+            "与训练集表现一样好",
+            "无法判断"
+          ],
+          "question_id": "q_quiz_generalization_v2",
+          "stem": "一个过拟合的模型，其泛化能力通常如何？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-regression-and-svm/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

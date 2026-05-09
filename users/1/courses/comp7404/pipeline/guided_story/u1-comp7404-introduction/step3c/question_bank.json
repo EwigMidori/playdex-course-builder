@@ -1,0 +1,180 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "unsupervised_learning_clustering",
+      "covered_by": [
+        "qf_flash_clustering_definition",
+        "qf_quiz_clustering_application",
+        "qf_long_clustering_explain"
+      ],
+      "description": "无监督学习的典型任务：聚类（Clustering）"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "clustering",
+      "coverage_tags": [
+        "unsupervised_learning_clustering"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_clustering_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆聚类的定义和核心目标。",
+      "linked_steps": [
+        "step3c"
+      ],
+      "practice_target": "学生能用自己的话复述聚类是什么，以及它的输出是什么。",
+      "question_type": "short_answer",
+      "retrieval_focus": "聚类的定义：将数据点分组，使得组内点相似，组间点不同。",
+      "term_refs": [
+        {
+          "display": "聚类",
+          "en": "Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将数据点自动分组，使得同一组内的数据点彼此相似，不同组之间的数据点差异较大。",
+          "estimated_seconds": 10,
+          "explanation": "聚类是无监督学习的典型任务，它不依赖标签，只根据数据本身的相似性进行分组。",
+          "front": "在无监督学习中，聚类（Clustering）的核心目标是什么？",
+          "question_id": "q_flash_clustering_def_v1"
+        },
+        {
+          "back": "无监督学习（Unsupervised Learning）。",
+          "estimated_seconds": 5,
+          "explanation": "聚类不需要标签，它从数据本身的结构中发现分组。",
+          "front": "聚类（Clustering）属于哪种学习类型？",
+          "question_id": "q_flash_clustering_def_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-introduction",
+  "longform_families": [
+    {
+      "concept_key": "clustering",
+      "coverage_tags": [
+        "unsupervised_learning_clustering"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_clustering_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的语言解释聚类是什么，并给出一个具体的应用例子。",
+      "linked_steps": [
+        "step3c"
+      ],
+      "practice_target": "学生能阐述聚类的定义、它属于哪种学习类型，以及为什么适合该场景。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "聚类",
+          "en": "Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "聚类的定义",
+            "所属学习类型",
+            "一个具体应用例子"
+          ],
+          "question_id": "q_long_clustering_explain_v1",
+          "reference_answer": [
+            "聚类是一种无监督学习方法，它的目标是将数据点自动分成若干组，使得同一组内的数据点彼此相似，不同组之间的数据点差异较大。",
+            "它属于无监督学习，因为不需要标签，只利用数据本身的特征进行分组。",
+            "例如，有一堆新闻文章但没有分类标签，可以用聚类算法将它们按主题自动分组，如体育、科技、财经等。"
+          ],
+          "rubric_points": [
+            "正确给出聚类的定义：将数据点分组，组内相似，组间不同。",
+            "正确指出聚类属于无监督学习。",
+            "举出一个合理的应用例子（如新闻文章分组、客户分群、图像分割等）。"
+          ],
+          "stem": "请用自己的话解释什么是聚类（Clustering），并说明它属于哪种学习类型。然后举一个具体的应用例子。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "为什么聚类适合这个任务",
+            "聚类在这个场景下的工作目标"
+          ],
+          "question_id": "q_long_clustering_explain_v2",
+          "reference_answer": [
+            "因为数据没有用户画像标签，无法使用分类等监督学习方法。聚类可以在无标签数据中发现隐藏的结构。",
+            "在这个场景下，聚类的工作目标是根据用户的购买记录，将购买行为相似的用户自动归为一组，例如高消费用户、低频用户、特定品类偏好用户等，从而为不同群体制定不同的营销策略。"
+          ],
+          "rubric_points": [
+            "指出因为没有标签，所以不能使用监督学习。",
+            "指出聚类可以发现数据中的自然分组结构。",
+            "正确描述聚类的工作目标：将相似的用户归为一组，组内用户购买行为相似，组间用户差异大。"
+          ],
+          "stem": "假设你是一家电商公司的数据分析师，你有一份包含10000名用户购买记录的数据集，但没有用户画像标签。你想自动发现用户群体，以便进行精准营销。请解释为什么聚类适合这个任务，并描述聚类在这个场景下的工作目标。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "clustering",
+      "coverage_tags": [
+        "unsupervised_learning_clustering"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_clustering_application",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中识别出适合用聚类解决的问题。",
+      "linked_steps": [
+        "step3c"
+      ],
+      "practice_target": "学生能区分聚类与分类、回归等监督学习任务的应用场景。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "聚类",
+          "en": "Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "聚类将相似的数据点自动归为一组，适合没有标签的新闻文章按主题分组。预测气温是回归，判断垃圾邮件和识别猫是分类，它们都属于监督学习。",
+          "options": [
+            "预测明天的气温是多少度",
+            "判断一封邮件是否为垃圾邮件",
+            "将新闻文章按主题自动分组",
+            "识别图片中是否有猫"
+          ],
+          "question_id": "q_quiz_clustering_app_v1",
+          "stem": "以下哪个任务最适合用聚类（Clustering）解决？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 25,
+          "explanation": "因为没有标签，所以不能使用监督学习（分类、回归）。聚类可以在无标签数据中发现自然的分组结构，适合发现客户群体。",
+          "options": [
+            "分类（Classification）",
+            "回归（Regression）",
+            "聚类（Clustering）",
+            "迁移学习（Transfer Learning）"
+          ],
+          "question_id": "q_quiz_clustering_app_v2",
+          "stem": "你有一批客户数据，包含购买记录和浏览行为，但没有客户分类标签。你想自动发现不同类型的客户群体。以下哪种方法最合适？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3c",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-introduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,331 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "support_vectors_definition",
+      "covered_by": [
+        "qf_flash_support_vectors_def",
+        "qf_quiz_support_vectors_role"
+      ],
+      "description": "支持向量的定义：那些距离决策边界最近的点，它们决定了最大间隔超平面的位置。"
+    },
+    {
+      "coverage_tag": "support_vectors_role_in_margin",
+      "covered_by": [
+        "qf_flash_support_vectors_role",
+        "qf_quiz_support_vectors_impact"
+      ],
+      "description": "支持向量在决定最大间隔中的作用：只有靠近边界的点才真正限制间隔的大小，远离边界的点不影响决策边界。"
+    },
+    {
+      "coverage_tag": "svm_name_origin",
+      "covered_by": [
+        "qf_flash_svm_name_origin"
+      ],
+      "description": "支持向量机名字的由来：因为支持向量是撑起最大间隔的支柱。"
+    },
+    {
+      "coverage_tag": "support_vectors_impact_on_boundary",
+      "covered_by": [
+        "qf_quiz_support_vectors_impact"
+      ],
+      "description": "移除远离边界的点不会改变决策边界，只有支持向量才决定边界。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "support_vectors",
+      "coverage_tags": [
+        "support_vectors_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_support_vectors_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出支持向量的定义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了支持向量的基本定义：哪些点是支持向量。",
+      "question_type": "short_answer",
+      "retrieval_focus": "支持向量的定义：距离决策边界最近的点。",
+      "term_refs": [
+        {
+          "display": "支持向量",
+          "en": "Support Vectors"
+        }
+      ],
+      "variants": [
+        {
+          "back": "距离决策边界（最大间隔超平面）最近的那些训练样本点。",
+          "estimated_seconds": 8,
+          "explanation": "支持向量是那些最靠近决策边界的点，它们决定了最大间隔的位置。",
+          "front": "在SVM中，哪些点被称为“支持向量”？",
+          "question_id": "q_flash_support_vectors_def_v1"
+        },
+        {
+          "back": "最近的点。",
+          "estimated_seconds": 5,
+          "explanation": "支持向量是距离决策边界最近的点，它们约束了间隔的大小。",
+          "front": "支持向量是距离决策边界最远的点还是最近的点？",
+          "question_id": "q_flash_support_vectors_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "support_vectors",
+      "coverage_tags": [
+        "support_vectors_role_in_margin"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_support_vectors_role",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解支持向量在决定最大间隔中的关键作用。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了支持向量是唯一决定最大间隔超平面的点。",
+      "question_type": "short_answer",
+      "retrieval_focus": "支持向量的作用：决定间隔大小。",
+      "term_refs": [
+        {
+          "display": "支持向量",
+          "en": "Support Vectors"
+        }
+      ],
+      "variants": [
+        {
+          "back": "不会改变。",
+          "estimated_seconds": 6,
+          "explanation": "只有支持向量（靠近边界的点）才决定决策边界，远离边界的点不影响边界。",
+          "front": "在SVM中，如果移除一个远离决策边界的训练样本点，决策边界会改变吗？",
+          "question_id": "q_flash_support_vectors_role_v1"
+        },
+        {
+          "back": "只有支持向量。",
+          "estimated_seconds": 5,
+          "explanation": "支持向量是唯一决定最大间隔超平面的点，其他点对边界没有影响。",
+          "front": "在SVM中，是所有的训练样本点还是只有支持向量决定了最大间隔超平面？",
+          "question_id": "q_flash_support_vectors_role_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "support_vector_machine",
+      "coverage_tags": [
+        "svm_name_origin"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_svm_name_origin",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释支持向量机名字的由来。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了SVM名称与支持向量之间的关系。",
+      "question_type": "short_answer",
+      "retrieval_focus": "SVM名称的由来：支持向量是撑起最大间隔的支柱。",
+      "term_refs": [
+        {
+          "display": "支持向量机",
+          "en": "Support Vector Machine"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为只有支持向量（距离决策边界最近的点）决定了最大间隔超平面的位置，它们像支柱一样撑起了这个间隔。",
+          "estimated_seconds": 10,
+          "explanation": "SVM的核心是找到最大间隔超平面，而支持向量是唯一决定这个超平面的点，因此得名。",
+          "front": "支持向量机（SVM）的名字来源于什么？",
+          "question_id": "q_flash_svm_name_origin_v1"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "longform_families": [
+    {
+      "concept_key": "support_vectors",
+      "coverage_tags": [
+        "support_vectors_definition",
+        "support_vectors_role_in_margin",
+        "svm_name_origin"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_support_vectors_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的语言解释支持向量的概念、作用以及SVM名称的由来。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了支持向量的定义、其在决定最大间隔中的关键作用，并能解释SVM名称的由来。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "支持向量",
+          "en": "Support Vectors"
+        },
+        {
+          "display": "支持向量机",
+          "en": "Support Vector Machine"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "定义支持向量",
+            "解释支持向量在决定最大间隔中的作用",
+            "说明SVM名称的由来"
+          ],
+          "question_id": "q_long_support_vectors_explain_v1",
+          "reference_answer": [
+            "支持向量是那些距离决策边界（最大间隔超平面）最近的训练样本点。",
+            "它们对SVM至关重要，因为只有这些点才真正决定了最大间隔超平面的位置和方向。远离边界的点即使被移除，也不会改变决策边界。",
+            "支持向量机这个名字正是来源于此：这些支持向量像支柱一样撑起了最大间隔，因此模型被称为支持向量机。"
+          ],
+          "rubric_points": [
+            "正确指出支持向量是距离决策边界最近的点（1分）",
+            "正确解释只有支持向量决定最大间隔超平面的位置，移除其他点不影响边界（2分）",
+            "正确说明SVM的名字来源于支持向量是撑起最大间隔的支柱（1分）"
+          ],
+          "stem": "请用自己的语言解释：什么是支持向量？为什么它们对SVM如此重要？并说明支持向量机这个名字的由来。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "给出是否同意的结论",
+            "引用支持向量的定义",
+            "解释支持向量的作用",
+            "说明删除非支持向量的影响"
+          ],
+          "question_id": "q_long_support_vectors_explain_v2",
+          "reference_answer": [
+            "我会同意。",
+            "支持向量是距离决策边界最近的点，它们决定了最大间隔超平面的位置。",
+            "非支持向量（远离边界的点）对决策边界没有影响，即使删除它们，最大间隔超平面也不会改变。",
+            "因此，只保留支持向量可以节省存储空间，同时不会影响模型的预测能力。"
+          ],
+          "rubric_points": [
+            "给出明确结论：同意（1分）",
+            "正确引用支持向量的定义：距离决策边界最近的点（1分）",
+            "正确解释只有支持向量决定最大间隔超平面（2分）",
+            "正确说明删除非支持向量不会改变决策边界（1分）"
+          ],
+          "stem": "假设你训练了一个线性SVM模型。现在，你的同事建议你删除所有非支持向量的训练样本以节省存储空间。你会同意吗？请从支持向量的定义和作用角度解释你的理由。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "support_vectors",
+      "coverage_tags": [
+        "support_vectors_definition",
+        "support_vectors_role_in_margin"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_support_vectors_role",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析支持向量的定义和角色。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了支持向量的定义及其在决定最大间隔中的关键作用。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "支持向量",
+          "en": "Support Vectors"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "支持向量是距离决策边界最近的点，它们约束了间隔的大小，是唯一决定最大间隔超平面的点。",
+          "options": [
+            "它们是距离决策边界最远的点，代表了最可靠的样本",
+            "它们是距离决策边界最近的点，决定了最大间隔的位置",
+            "它们是所有训练样本点的平均值",
+            "它们是随机选择的样本点，用于初始化模型"
+          ],
+          "question_id": "q_quiz_support_vectors_role_v1",
+          "stem": "以下哪个选项最准确地描述了支持向量在SVM中的角色？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "只有靠近边界的点（支持向量）才真正限制间隔的大小，远离边界的点不影响决策边界。",
+          "options": [
+            "因为只有靠近边界的点才真正限制间隔的大小",
+            "因为所有点都同样重要",
+            "因为支持向量是随机选择的",
+            "因为支持向量是距离边界最远的点"
+          ],
+          "question_id": "q_quiz_support_vectors_role_v2",
+          "stem": "为什么支持向量不是任意样本点？"
+        }
+      ]
+    },
+    {
+      "concept_key": "support_vectors",
+      "coverage_tags": [
+        "support_vectors_impact_on_boundary"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_support_vectors_impact",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断移除不同位置的样本点对决策边界的影响。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了只有支持向量影响决策边界，非支持向量不影响。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "支持向量",
+          "en": "Support Vectors"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "远离边界的点不影响间隔，因此移除它们不会改变决策边界。只有支持向量（靠近边界的点）才决定边界。",
+          "options": [
+            "会改变",
+            "不会改变",
+            "不确定",
+            "会消失"
+          ],
+          "question_id": "q_quiz_support_vectors_impact_v1",
+          "stem": "假设有一个已经训练好的SVM分类器。现在，我们移除一个远离决策边界的点。决策边界会如何变化？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "支持向量是决定最大间隔的关键点。移除一个支持向量后，最大间隔超平面可能会重新计算，导致边界改变。",
+          "options": [
+            "不会改变",
+            "可能会改变，因为间隔的大小和方向可能重新计算",
+            "一定会消失",
+            "会变得更复杂"
+          ],
+          "question_id": "q_quiz_support_vectors_impact_v2",
+          "stem": "在SVM中，如果移除一个支持向量，决策边界最可能发生什么变化？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-regression-and-svm/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

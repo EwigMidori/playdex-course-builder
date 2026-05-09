@@ -1,0 +1,45 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "chapter_title": "Decision Trees",
+  "course_id": "user-1-comp7404",
+  "course_title": "COMP7404",
+  "lesson_id": "u1-comp7404-decision-trees",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "为什么朴素分类不够用",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "如何衡量一个问题的好坏",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "如何选择最佳分裂",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "其他纯度度量：熵与分类误差",
+      "file": "step4a/step.json",
+      "sequence_id": "step4a"
+    },
+    {
+      "concept": "树太深会怎样：过拟合与剪枝",
+      "file": "step4b/step.json",
+      "sequence_id": "step4b"
+    },
+    {
+      "concept": "从单棵树到随机森林",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "随机森林中多样性的来源与权衡",
+      "file": "step6/step.json",
+      "sequence_id": "step6"
+    }
+  ]
+}

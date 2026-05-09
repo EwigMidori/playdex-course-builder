@@ -1,0 +1,125 @@
+{
+  "chapter_id": "lecture-01-knn",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-knn",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "现在，请你尝试“训练”一个 kNN 模型。",
+        "给你一堆带标签的数据，请告诉我：训练完成后，模型是什么？"
+      ],
+      "type": "question"
+    },
+    {
+      "exercise": {
+        "expected_fields": [
+          "model_description"
+        ],
+        "explanation": "kNN 在训练阶段只存储数据，不构建任何模型，因此无法给出一个压缩的模型表示。",
+        "kind": "scenario_derivation",
+        "prompt": "假设你有1000张带标签的人脸图像。你使用kNN算法进行训练。训练完成后，请描述这个“模型”是什么？你能像神经网络那样得到一个参数文件吗？",
+        "sample_answer": {
+          "model_description": "kNN的“模型”就是这1000张图像本身，没有额外的参数文件。训练阶段只是把数据存储起来。"
+        }
+      },
+      "focus_terms": [],
+      "id": "s015",
+      "lines": [
+        "假设你有1000张带标签的人脸图像。你使用kNN算法进行训练。训练完成后，请描述这个“模型”是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "lazy_learning"
+      ],
+      "id": "s016",
+      "introduced_terms": [
+        "lazy_learning"
+      ],
+      "lines": [
+        "这种策略被称为 <term id=\"lazy_learning\">懒惰学习</term>。",
+        "训练时只存储数据，不构建模型；直到收到预测请求时，才开始计算距离、找邻居。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "eager_learning"
+      ],
+      "id": "s017",
+      "introduced_terms": [
+        "eager_learning"
+      ],
+      "lines": [
+        "与之相反的是 <term id=\"eager_learning\">急切学习</term>。",
+        "比如神经网络，训练时构建一个模型，之后就可以扔掉原始数据，预测时直接使用模型。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "lazy_learning",
+        "eager_learning"
+      ],
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "懒惰学习的好处：训练几乎不花时间。",
+        "坏处：每次预测都要遍历所有数据，存储和计算开销都很大。",
+        "急切学习则相反：训练慢，预测快。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "懒惰学习在训练阶段只存储数据，不构建模型，直到预测时才进行计算。",
+        "kind": "single_choice",
+        "options": [
+          "训练阶段构建复杂模型",
+          "训练阶段只存储数据",
+          "预测阶段不需要原始数据"
+        ],
+        "prompt": "以下哪个是懒惰学习的典型特征？"
+      },
+      "focus_terms": [
+        "lazy_learning"
+      ],
+      "id": "s019",
+      "lines": [
+        "以下哪个是懒惰学习的典型特征？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "kNN: A Lazy Algorithm, Tradeoffs, Characteristics",
+    "related": [
+      "lecture-01-knn"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "eager_learning": {
+      "aliases": [
+        "Eager Learning"
+      ],
+      "display": "急切学习",
+      "gloss": "一种学习策略，训练阶段从数据中构建一个压缩的模型，之后丢弃原始数据。"
+    },
+    "lazy_learning": {
+      "aliases": [
+        "Lazy Learning",
+        "Instance-based Learning"
+      ],
+      "display": "懒惰学习",
+      "gloss": "一种学习策略，训练阶段只存储数据，不构建显式模型，直到收到预测请求时才进行处理。"
+    }
+  }
+}

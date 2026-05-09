@@ -1,0 +1,216 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "bayes_theorem"
+      ],
+      "id": "s019",
+      "introduced_terms": [
+        "bayes_theorem"
+      ],
+      "lines": [
+        "现在换一种思路：用概率来做分类。",
+        "这就是 <term id=\"bayes_theorem\">贝叶斯定理</term> 的用武之地。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "想象一下：你看到一个又红又圆的物体。",
+        "它有多大概率是一个苹果？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "我们用 H 表示“它是苹果”这个假设，",
+        "用 X 表示“它是红且圆的”这个观察。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "posterior_probability"
+      ],
+      "id": "s022",
+      "introduced_terms": [
+        "posterior_probability"
+      ],
+      "lines": [
+        "我们想求的是 P(H|X)，也就是 <term id=\"posterior_probability\">后验概率</term>。",
+        "即：看到 X 之后，H 为真的概率。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "贝叶斯定理告诉我们：",
+        "P(H|X) = P(X|H) * P(H) / P(X)"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "prior_probability",
+        "likelihood"
+      ],
+      "id": "s024",
+      "introduced_terms": [
+        "prior_probability",
+        "likelihood"
+      ],
+      "lines": [
+        "P(H) 是 <term id=\"prior_probability\">先验概率</term>：随便拿个东西，它是苹果的概率。",
+        "P(X|H) 是 <term id=\"likelihood\">似然</term>：如果它是苹果，它是红且圆的概率。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "应用到分类上：对于每个可能的类别 Cᵢ，",
+        "我们计算 P(Cᵢ|X)，然后选最大的那个。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "但直接计算 P(X|Cᵢ) 非常困难，",
+        "因为 X 包含多个属性，组合情况太多。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "naive_bayes"
+      ],
+      "id": "s027",
+      "introduced_terms": [
+        "conditional_independence",
+        "naive_bayes"
+      ],
+      "lines": [
+        "于是有了一个大胆的假设：<term id=\"conditional_independence\">条件独立</term>。",
+        "也就是 <term id=\"naive_bayes\">朴素贝叶斯</term> 的核心。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "它假设：在给定类别的情况下，所有属性之间相互独立。",
+        "也就是说，知道“年龄”不会影响你对“收入”的判断。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "P(X|C_i) = \\prod_{k=1}^{m} P(x_k|C_i)",
+        "spoken": "给定类别 Cᵢ 时，观察到 X 的概率等于每个属性值概率的乘积。"
+      },
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "这样，P(X|Cᵢ) 就可以分解为所有属性概率的乘积："
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "朴素贝叶斯假设在给定类别的情况下，所有属性条件独立。",
+        "kind": "single_choice",
+        "options": [
+          "所有属性相互独立",
+          "所有属性服从正态分布",
+          "所有类别的先验概率相等",
+          "所有属性都是数值型"
+        ],
+        "prompt": "朴素贝叶斯的核心假设是？"
+      },
+      "focus_terms": [],
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "朴素贝叶斯的核心假设是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Bayesian Classifier. Based on Bayes' Theorem. Naïve Bayesian Classification assumes that the values of the attributes are conditionally independent of one another.",
+    "related": [
+      "Bayes' Theorem",
+      "Naïve Bayes"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "bayes_theorem": {
+      "aliases": [
+        "Bayes' Theorem",
+        "Bayes' Rule"
+      ],
+      "display": "贝叶斯定理",
+      "gloss": "描述在已知某些条件下，一个事件发生的概率如何更新的数学公式。"
+    },
+    "conditional_independence": {
+      "aliases": [
+        "Conditional Independence"
+      ],
+      "display": "条件独立",
+      "gloss": "在给定某个类别的情况下，一个属性的取值不影响另一个属性的取值。"
+    },
+    "likelihood": {
+      "aliases": [
+        "Likelihood"
+      ],
+      "display": "似然",
+      "gloss": "在假设为真的条件下，观察到特定数据的概率。"
+    },
+    "naive_bayes": {
+      "aliases": [
+        "Naïve Bayes",
+        "Naive Bayesian Classifier"
+      ],
+      "display": "朴素贝叶斯",
+      "gloss": "基于贝叶斯定理，并假设所有特征相互独立的分类方法。"
+    },
+    "posterior_probability": {
+      "aliases": [
+        "Posterior Probability"
+      ],
+      "display": "后验概率",
+      "gloss": "在观察到数据后，对假设为真的概率的更新估计。"
+    },
+    "prior_probability": {
+      "aliases": [
+        "Prior Probability"
+      ],
+      "display": "先验概率",
+      "gloss": "在观察到任何数据之前，对假设为真的概率的初始估计。"
+    }
+  }
+}

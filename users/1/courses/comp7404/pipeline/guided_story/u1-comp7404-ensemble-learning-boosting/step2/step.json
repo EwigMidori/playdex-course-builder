@@ -1,0 +1,304 @@
+{
+  "chapter_id": "lecture-09-ensemble-learning-boosting",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-ensemble-learning-boosting",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "假设现在有三个分类器：C1、C2、C3。",
+        "它们对一封邮件的预测分别是：C1 预测“垃圾”，C2 预测“垃圾”，C3 预测“正常”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "majority_voting"
+      ],
+      "id": "s010",
+      "introduced_terms": [
+        "majority_voting"
+      ],
+      "lines": [
+        "最简单的组合方式就是 <term id=\"majority_voting\">多数投票</term>。",
+        "每个分类器一票，得票多的类别胜出。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "majority_voting"
+      ],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "在这个例子中，两票“垃圾”对一票“正常”，最终预测为“垃圾”。",
+        "看起来不错，但问题来了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "假设 C1 和 C2 的准确率只有 60%，而 C3 的准确率高达 95%。",
+        "如果简单多数投票，C3 的优质判断被 C1 和 C2 的平庸意见淹没了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "你作为工程师，会怎么解决这个问题？",
+        "也许应该给更可靠的分类器更大的发言权。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "weighted_majority_vote"
+      ],
+      "id": "s014",
+      "introduced_terms": [
+        "weighted_majority_vote"
+      ],
+      "lines": [
+        "这就是 <term id=\"weighted_majority_vote\">加权多数投票</term>。",
+        "给每个分类器分配一个权重，权重越大，它的投票越重要。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "weighted_majority_vote"
+      ],
+      "formula": {
+        "latex": "\\hat{y} = \\arg \\max_i \\sum_{j=1}^{m} w_j \\chi_A(C_j(\\boldsymbol{x}) = i)",
+        "spoken": "最终预测的类别标签，是使得所有分类器加权投票总和最大的那个类别。"
+      },
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [
+        "加权投票的公式如下：",
+        "最终预测 = 选择加权票数总和最大的那个类别。"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "weighted_majority_vote"
+      ],
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "回到刚才的例子。给 C3 权重 0.6，C1 和 C2 各 0.2。",
+        "加权后，“垃圾”的总权重 = 0.2 + 0.2 = 0.4，“正常”的总权重 = 0.6。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "类别“正常”的加权票数（0.6）超过了类别“垃圾”的加权票数（0.4），所以最终预测为“正常”。",
+        "kind": "single_choice",
+        "options": [
+          "垃圾",
+          "正常"
+        ],
+        "prompt": "加权后，最终预测结果会变成哪个类别？"
+      },
+      "focus_terms": [
+        "weighted_majority_vote"
+      ],
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "加权后，最终预测结果会变成哪个类别？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "predict_proba"
+      ],
+      "id": "s018",
+      "introduced_terms": [
+        "predict_proba"
+      ],
+      "lines": [
+        "除了用硬标签投票，我们还可以利用分类器输出的 <term id=\"predict_proba\">预测概率</term>。",
+        "如果分类器校准得很好，概率信息比硬标签更丰富。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "predict_proba"
+      ],
+      "formula": {
+        "latex": "\\hat{y} = \\arg \\max_i \\sum_{j=1}^{m} w_j p_{ij}",
+        "spoken": "最终预测的类别，是所有分类器对该类别预测概率的加权和最大的那个。"
+      },
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "基于概率的加权投票公式变为：",
+        "对每个类别，计算所有分类器预测概率的加权平均。"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "predict_proba"
+      ],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "例如，三个分类器对某个样本的预测概率分别是：",
+        "C1: [0.9, 0.1], C2: [0.8, 0.2], C3: [0.4, 0.6]"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "predict_proba"
+      ],
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "使用相同的权重 0.2, 0.2, 0.6。",
+        "类别0的加权概率 = 0.2*0.9 + 0.2*0.8 + 0.6*0.4 = 0.58"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "predict_proba"
+      ],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "类别1的加权概率 = 0.2*0.1 + 0.2*0.2 + 0.6*0.6 = 0.42",
+        "最终预测为类别0，因为它的加权概率更高。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "类别0的加权概率0.58大于类别1的0.42，所以最终预测为类别0。",
+        "kind": "single_choice",
+        "options": [
+          "类别0",
+          "类别1"
+        ],
+        "prompt": "基于概率加权后，最终预测结果是什么？"
+      },
+      "focus_terms": [
+        "predict_proba"
+      ],
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "基于概率加权后，最终预测结果是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": "类别2",
+        "expected_fields": [
+          "category_1_weighted_vote",
+          "category_2_weighted_vote",
+          "final_prediction"
+        ],
+        "explanation": "类别1的加权票数 = 0.1*0.5 + 0.8*0.3 + 0.3*0.2 = 0.05 + 0.24 + 0.06 = 0.35；类别2的加权票数 = 0.9*0.5 + 0.2*0.3 + 0.7*0.2 = 0.45 + 0.06 + 0.14 = 0.65。类别2的加权票数更高，所以最终预测为类别2。",
+        "kind": "scenario_derivation",
+        "prompt": "三个分类器对某样本的预测概率分别为：C1: [0.1, 0.9], C2: [0.8, 0.2], C3: [0.3, 0.7]。权重分别为 w1=0.5, w2=0.3, w3=0.2。请计算每个类别的加权概率，并给出最终预测结果。",
+        "sample_answer": {
+          "category_1_weighted_vote": 0.35,
+          "category_2_weighted_vote": 0.65,
+          "final_prediction": "类别2"
+        }
+      },
+      "focus_terms": [
+        "predict_proba"
+      ],
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "三个分类器对某样本的预测概率分别为：C1: [0.1, 0.9], C2: [0.8, 0.2], C3: [0.3, 0.7]。权重分别为 w1=0.5, w2=0.3, w3=0.2。请计算每个类别的加权概率，并给出最终预测结果。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0.29,
+        "expected_fields": [
+          "category_0_weighted",
+          "category_1_weighted",
+          "final_prediction"
+        ],
+        "explanation": "类别0的加权概率 = 0.2*0.4 + 0.6*0.3 + 0.1*0.3 = 0.08 + 0.18 + 0.03 = 0.29；类别1的加权概率 = 0.8*0.4 + 0.4*0.3 + 0.9*0.3 = 0.32 + 0.12 + 0.27 = 0.71。类别1的加权概率更高，所以最终预测为类别1。",
+        "kind": "calculation",
+        "prompt": "三个分类器对某样本的预测概率分别为：C1: [0.2, 0.8], C2: [0.6, 0.4], C3: [0.1, 0.9]。权重分别为 w1=0.4, w2=0.3, w3=0.3。请计算每个类别的加权概率，并给出最终预测结果。",
+        "sample_answer": {
+          "category_0_weighted": 0.29,
+          "category_1_weighted": 0.71,
+          "final_prediction": "类别1"
+        }
+      },
+      "focus_terms": [
+        "predict_proba"
+      ],
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "三个分类器对某样本的预测概率分别为：C1: [0.2, 0.8], C2: [0.6, 0.4], C3: [0.1, 0.9]。权重分别为 w1=0.4, w2=0.3, w3=0.3。请计算每个类别的加权概率，并给出最终预测结果。"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Majority voting: select the class label that has been predicted by the majority of classifiers. Weighted majority vote: assign a weight to each base classifier. Using predicted class probabilities instead of class labels for majority voting.",
+    "related": [
+      "majority voting formula",
+      "weighted voting formula",
+      "probability averaging"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "majority_voting": {
+      "aliases": [
+        "Majority Voting",
+        "Plurality Voting"
+      ],
+      "display": "多数投票",
+      "gloss": "选择被大多数分类器预测的类别标签作为最终输出。"
+    },
+    "predict_proba": {
+      "aliases": [
+        "predict_proba",
+        "class probabilities"
+      ],
+      "display": "预测概率",
+      "gloss": "分类器输出样本属于每个类别的概率，而非仅输出一个硬标签。"
+    },
+    "weighted_majority_vote": {
+      "aliases": [
+        "Weighted Majority Vote",
+        "Weighted Voting"
+      ],
+      "display": "加权多数投票",
+      "gloss": "给每个分类器分配一个权重，最终预测由加权后的投票结果决定。"
+    }
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-decision-trees",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "random_forest",
+        "bootstrap_sampling"
+      ],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "在随机森林中，有两个重要的多样性来源：自助采样和特征随机选择。",
+        "但还有一个参数会影响多样性：Bootstrap 样本的大小。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bootstrap_sampling"
+      ],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "如果 Bootstrap 样本太小，每棵树使用的数据就更少。",
+        "这会增加树之间的多样性，有助于减少过拟合。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "但代价是，每棵树学到的信息有限，整体性能可能会下降。",
+        "训练和测试的差距会变小，但测试的绝对性能也变低了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "反之，如果 Bootstrap 样本太大，每棵树都更接近原始数据。",
+        "树之间的相似度增加，多样性降低，过拟合的风险又会上升。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bootstrap_sampling"
+      ],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "所以，Bootstrap 样本大小是一个需要权衡的“甜点”。",
+        "它控制着模型的偏差和方差之间的平衡。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "如果你想直接控制“每棵树到底拿多少 bootstrap 样本”，就该调 bootstrap 样本大小，很多实现里对应 `max_samples` 这一类设置。",
+        "kind": "single_choice",
+        "options": [
+          "Bootstrap 样本大小（如 `max_samples`）",
+          "树的最大深度",
+          "类别总数",
+          "损失函数类型"
+        ],
+        "prompt": "如果你想直接调节“每棵树拿到多少 bootstrap 样本”，最该关注哪个参数或设置？"
+      },
+      "focus_terms": [
+        "bootstrap_sampling",
+        "random_forest"
+      ],
+      "id": "s005b",
+      "introduced_terms": [],
+      "lines": [
+        "如果你想直接调节“每棵树拿到多少 bootstrap 样本”，最该关注哪个参数或设置？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "样本小增加多样性，但每棵树学到的信息有限，整体性能下降。",
+        "kind": "single_choice",
+        "options": [
+          "多样性增加，但整体性能可能下降",
+          "多样性增加，整体性能也提升",
+          "多样性和性能都不变"
+        ],
+        "prompt": "Bootstrap 样本太小会有什么影响？"
+      },
+      "focus_terms": [
+        "bootstrap_sampling"
+      ],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "Bootstrap 样本太小会怎样？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "如果所有树都用相同数据训练，多样性降低，过拟合风险增加。",
+        "kind": "single_choice",
+        "options": [
+          "多样性增加",
+          "多样性降低，过拟合风险增加",
+          "没有影响"
+        ],
+        "prompt": "如果所有树都用相同数据训练，会怎样？"
+      },
+      "focus_terms": [
+        "random_forest"
+      ],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "如果所有树都用相同数据训练，会怎样？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "Bootstrap 样本大小控制每棵树使用的数据量，直接影响树之间的差异程度。",
+        "kind": "single_choice",
+        "options": [
+          "Bootstrap 样本大小",
+          "树的数量",
+          "特征总数",
+          "叶节点最大数量"
+        ],
+        "prompt": "以下哪个参数直接影响随机森林中树与树之间的多样性？"
+      },
+      "focus_terms": [
+        "bootstrap_sampling",
+        "random_forest"
+      ],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "识别一下：哪个参数控制着随机森林中多样性的程度？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "样本小增加多样性但降低性能，样本大降低多样性但可能过拟合，需要在两者之间找到平衡。",
+        "kind": "single_choice",
+        "options": [
+          "样本小增加多样性但降低性能，样本大降低多样性但可能过拟合",
+          "样本小降低多样性，样本大增加多样性",
+          "样本大小对多样性和性能没有影响",
+          "样本越大，多样性和性能都越好"
+        ],
+        "prompt": "关于 Bootstrap 样本大小对随机森林的影响，以下哪项描述最准确？"
+      },
+      "focus_terms": [
+        "bootstrap_sampling",
+        "random_forest"
+      ],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "总结一下：Bootstrap 样本大小如何影响多样性和性能的权衡？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "decision_tree",
+        "random_forest"
+      ],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "从一棵可解释的决策树，到一片强大的随机森林。",
+        "你不仅学会了“如何提问”，还学会了“如何让一群提问者合作得更好”。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Decreasing the size of the bootstrap samples increases the diversity among the individual trees. However, smaller bootstrap samples typically result in a lower overall performance.",
+    "related": [
+      "Bootstrap Sample Size"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

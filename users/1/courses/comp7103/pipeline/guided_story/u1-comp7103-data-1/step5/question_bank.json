@@ -1,0 +1,386 @@
+{
+  "chapter_id": "lecture-06-data-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "data_transformation",
+      "covered_by": [
+        "qf_flash_discretization",
+        "qf_flash_binarization",
+        "qf_flash_normalization",
+        "qf_quiz_discretization_application",
+        "qf_quiz_normalization_application",
+        "qf_long_normalization_compare"
+      ],
+      "description": "数据变换：离散化、二值化与归一化"
+    },
+    {
+      "coverage_tag": "discretization",
+      "covered_by": [
+        "qf_flash_discretization",
+        "qf_quiz_discretization_application"
+      ],
+      "description": "离散化：将连续数值属性转换为离散的序数属性"
+    },
+    {
+      "coverage_tag": "binarization",
+      "covered_by": [
+        "qf_flash_binarization"
+      ],
+      "description": "二值化：将属性转换为只有0和1的二元属性"
+    },
+    {
+      "coverage_tag": "normalization",
+      "covered_by": [
+        "qf_flash_normalization",
+        "qf_quiz_normalization_application",
+        "qf_long_normalization_compare"
+      ],
+      "description": "归一化：将数值缩放到共同范围，消除量纲影响"
+    },
+    {
+      "coverage_tag": "min_max_normalization",
+      "covered_by": [
+        "qf_flash_normalization",
+        "qf_long_normalization_compare"
+      ],
+      "description": "min-max 归一化：缩放到[0,1]"
+    },
+    {
+      "coverage_tag": "z_score_normalization",
+      "covered_by": [
+        "qf_flash_normalization",
+        "qf_long_normalization_compare"
+      ],
+      "description": "z-score 归一化：均值为0，标准差为1"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "discretization",
+      "coverage_tags": [
+        "data_transformation",
+        "discretization"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_discretization",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆离散化的定义和常见方法。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能说出离散化的定义，并列举至少一种常见离散化方法。",
+      "question_type": "short_answer",
+      "retrieval_focus": "离散化的核心定义和常见方法名称。",
+      "term_refs": [
+        {
+          "display": "离散化",
+          "en": "discretization"
+        }
+      ],
+      "variants": [
+        {
+          "back": "离散化",
+          "estimated_seconds": 5,
+          "explanation": "离散化把连续值分成离散的区间，例如将身高值映射为'矮、中、高'。",
+          "front": "将连续数值属性转换为离散的序数属性，这种数据变换叫什么？",
+          "question_id": "q_flash_discretization_v1"
+        },
+        {
+          "back": "等宽、等频（或基于聚类）",
+          "estimated_seconds": 8,
+          "explanation": "等宽：区间宽度相同；等频：每个区间包含相同数量的对象；基于聚类：用聚类算法确定区间边界。",
+          "front": "列举两种常见的离散化方法。",
+          "question_id": "q_flash_discretization_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "binarization",
+      "coverage_tags": [
+        "data_transformation",
+        "binarization"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_binarization",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆二值化的定义，并理解它与离散化的关系。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能说出二值化的定义，并给出一个例子。",
+      "question_type": "short_answer",
+      "retrieval_focus": "二值化的定义及其与离散化的关系。",
+      "term_refs": [
+        {
+          "display": "二值化",
+          "en": "binarization"
+        }
+      ],
+      "variants": [
+        {
+          "back": "二值化",
+          "estimated_seconds": 5,
+          "explanation": "二值化是离散化的一种特例，将属性值映射为0或1。",
+          "front": "如果离散化后只有两个区间，这种特殊的离散化叫什么？",
+          "question_id": "q_flash_binarization_v1"
+        },
+        {
+          "back": "将“年龄>18”映射为1，否则为0",
+          "estimated_seconds": 6,
+          "explanation": "二值化将连续值或分类值转换为二元属性（0/1）。",
+          "front": "给出一个二值化的例子。",
+          "question_id": "q_flash_binarization_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "normalization",
+      "coverage_tags": [
+        "data_transformation",
+        "normalization",
+        "min_max_normalization",
+        "z_score_normalization"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_normalization",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆归一化的目的和两种常用方法。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能说出归一化的目的，并写出 min-max 和 z-score 归一化的公式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "归一化的目的和两种归一化公式。",
+      "term_refs": [
+        {
+          "display": "归一化",
+          "en": "normalization"
+        },
+        {
+          "display": "min-max 归一化",
+          "en": "min-max normalization"
+        },
+        {
+          "display": "z-score 归一化",
+          "en": "z-score normalization"
+        }
+      ],
+      "variants": [
+        {
+          "back": "消除不同属性之间量纲差异的影响",
+          "estimated_seconds": 6,
+          "explanation": "例如身高（米）和年薪（元）量纲差异巨大，不归一化会导致数值大的属性主导距离计算。",
+          "front": "归一化的主要目的是什么？",
+          "question_id": "q_flash_normalization_v1"
+        },
+        {
+          "back": "x' = (x - min) / (max - min)",
+          "estimated_seconds": 8,
+          "explanation": "该公式将数据缩放到[0,1]区间。",
+          "front": "写出 min-max 归一化的公式。",
+          "question_id": "q_flash_normalization_v2"
+        },
+        {
+          "back": "x' = (x - μ) / σ",
+          "estimated_seconds": 8,
+          "explanation": "其中 μ 是均值，σ 是标准差，归一化后数据均值为0，标准差为1。",
+          "front": "写出 z-score 归一化的公式。",
+          "question_id": "q_flash_normalization_v3"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-data-1",
+  "longform_families": [
+    {
+      "concept_key": "normalization",
+      "coverage_tags": [
+        "data_transformation",
+        "normalization",
+        "min_max_normalization",
+        "z_score_normalization"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_normalization_compare",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较 min-max 和 z-score 两种归一化方法的异同，并说明各自的适用场景。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能解释两种归一化方法的公式、输出范围、对异常值的敏感性，并给出各自适合的应用场景。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "min-max 归一化",
+          "en": "min-max normalization"
+        },
+        {
+          "display": "z-score 归一化",
+          "en": "z-score normalization"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "min-max 归一化的输出范围",
+            "z-score 归一化的输出范围",
+            "min-max 归一化对异常值的敏感性",
+            "z-score 归一化对异常值的敏感性",
+            "min-max 归一化的适用场景",
+            "z-score 归一化的适用场景"
+          ],
+          "question_id": "q_long_normalization_compare_v1",
+          "reference_answer": [
+            "min-max 归一化输出范围是[0,1]；z-score 归一化输出范围不固定，均值为0，标准差为1。",
+            "min-max 归一化对异常值敏感，因为异常值会极大拉伸 max 和 min；z-score 归一化相对稳健，因为异常值对均值和标准差影响较小。",
+            "min-max 归一化适合数据分布已知、无极端异常值、需要将数据约束到特定区间（如图像像素值）的场景。",
+            "z-score 归一化适合数据分布近似正态、或算法假设数据服从正态分布（如线性回归、PCA）的场景。"
+          ],
+          "rubric_points": [
+            "min-max 归一化将数据缩放到[0,1]区间",
+            "z-score 归一化将数据转换为均值为0、标准差为1的分布，输出范围不固定",
+            "min-max 归一化对异常值敏感，因为异常值会拉伸 max 和 min，导致大多数数据被压缩到很小的区间",
+            "z-score 归一化对异常值相对稳健，因为异常值对均值和标准差的影响较小",
+            "min-max 归一化适合数据分布已知且无极端异常值的情况，或需要将数据约束到特定区间时",
+            "z-score 归一化适合数据分布近似正态的情况，或当算法假设数据服从正态分布时"
+          ],
+          "stem": "比较 min-max 归一化和 z-score 归一化。请从以下三个方面进行对比：\n1. 输出值的范围\n2. 对异常值的敏感性\n3. 各自适合的应用场景"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "min-max 归一化受异常值影响的分析",
+            "z-score 归一化受异常值影响的分析",
+            "选择哪种方法及理由"
+          ],
+          "question_id": "q_long_normalization_compare_v2",
+          "reference_answer": [
+            "min-max 归一化受异常值影响更大。因为 min-max 使用实际的最大最小值，一个极端大的异常值会使 max 变得极大，导致大多数正常数据被压缩到接近0的区间，失去区分度。",
+            "z-score 归一化受异常值影响较小。因为 z-score 使用均值和标准差，异常值对均值和标准差的影响相对有限，大多数数据的归一化值仍能保持较好的分布。",
+            "我会选择 z-score 归一化。因为收入属性存在极端异常值，min-max 归一化会被异常值严重扭曲，而 z-score 归一化更稳健，能更好地保留数据的相对关系。"
+          ],
+          "rubric_points": [
+            "min-max 归一化受异常值影响更大，因为异常值会极大拉伸 max 值，导致大多数正常数据被压缩到接近0的极小区间",
+            "z-score 归一化受异常值影响较小，因为异常值对均值和标准差的影响相对有限",
+            "在这种情况下，z-score 归一化更合适，因为它对异常值更稳健，不会因为少数极端值而破坏大多数数据的分布"
+          ],
+          "stem": "假设你有一个包含'年龄'（0-100）和'收入'（0-1000000）的数据集，其中收入属性存在几个极端异常值（如收入为10^9）。\n1. 分别用 min-max 和 z-score 对收入属性进行归一化，哪个方法受异常值影响更大？为什么？\n2. 在这种情况下，你会选择哪种归一化方法？请说明理由。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "discretization",
+      "coverage_tags": [
+        "data_transformation",
+        "discretization"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_discretization_application",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中判断何时需要离散化。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能根据算法要求和数据类型，选择正确的数据变换方法。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "离散化",
+          "en": "discretization"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "年龄是连续值，算法只能处理分类数据，所以需要离散化将连续值转换为离散的类别。",
+          "options": [
+            "离散化",
+            "二值化",
+            "归一化",
+            "特征选择"
+          ],
+          "question_id": "q_quiz_discretization_application_v1",
+          "stem": "给定一个包含年龄（连续值）和性别（二元值）的数据集，算法只能处理分类数据，应该使用哪种变换？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "离散化可以将连续的温度值映射为有序的类别，如'低温、常温、高温'。",
+          "options": [
+            "归一化",
+            "离散化",
+            "二值化",
+            "特征选择"
+          ],
+          "question_id": "q_quiz_discretization_application_v2",
+          "stem": "某算法要求输入属性为有序类别（如'低、中、高'），而你的数据是连续的温度值（如36.5°C）。你应该使用哪种数据变换？"
+        }
+      ]
+    },
+    {
+      "concept_key": "normalization",
+      "coverage_tags": [
+        "data_transformation",
+        "normalization"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_normalization_application",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断何时需要归一化，并理解不归一化的后果。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能识别需要归一化的场景，并解释原因。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "归一化",
+          "en": "normalization"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "身高和年薪的量纲和数值范围差异巨大，不归一化会导致数值大的属性（年薪）主导距离计算。",
+          "options": [
+            "所有属性都是二元属性",
+            "一个属性是'身高（米）'，另一个是'年薪（元）'",
+            "数据集中没有缺失值",
+            "所有属性都是名义属性"
+          ],
+          "question_id": "q_quiz_normalization_application_v1",
+          "stem": "以下哪种情况最需要归一化？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "体重的范围（50-100）比考试分数的范围（0-100）更集中，但实际数值上体重（如70）和分数（如85）量级相似，但这里体重范围50-100（跨度50）和分数0-100（跨度100），实际上分数跨度更大。更准确地说，如果不归一化，数值范围更大的属性（分数0-100，跨度100）会主导距离。但体重50-100跨度50，分数0-100跨度100，所以分数会主导。正确答案是考试分数会主导。",
+          "options": [
+            "两个属性对距离的贡献大致相等，没有问题",
+            "体重属性会主导距离计算，因为其数值范围更大",
+            "考试分数会主导距离计算，因为其数值范围更大",
+            "欧氏距离无法计算不同量纲的属性"
+          ],
+          "question_id": "q_quiz_normalization_application_v2",
+          "stem": "假设你要用欧氏距离计算两个学生的相似度，一个属性是'体重（kg）'范围50-100，另一个是'考试分数'范围0-100。如果不做归一化，会有什么问题？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-data-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,321 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "summary_association_analysis",
+      "covered_by": [
+        "qf_flash_step7_v1",
+        "qf_flash_step7_v2",
+        "qf_quiz_step7_v1",
+        "qf_quiz_step7_v2",
+        "qf_long_step7_v1"
+      ],
+      "description": "关联分析总结：从 Apriori 到 FP-Growth，从置信度到提升度，定量关联规则与序列模式"
+    },
+    {
+      "coverage_tag": "fp_growth_advantage",
+      "covered_by": [
+        "qf_flash_step7_v1",
+        "qf_quiz_step7_v1"
+      ],
+      "description": "FP-Growth 用树结构解决候选集爆炸问题"
+    },
+    {
+      "coverage_tag": "lift_interestingness",
+      "covered_by": [
+        "qf_flash_step7_v2",
+        "qf_quiz_step7_v2"
+      ],
+      "description": "提升度过滤虚假关联"
+    },
+    {
+      "coverage_tag": "qar_sequential_patterns",
+      "covered_by": [
+        "qf_long_step7_v1"
+      ],
+      "description": "定量关联规则与序列模式引入新维度"
+    },
+    {
+      "coverage_tag": "core_idea_support_pruning",
+      "covered_by": [
+        "qf_long_step7_v1"
+      ],
+      "description": "核心思想：利用支持度剪枝在巨大搜索空间中高效找到有价值模式"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "fp_growth_advantage",
+      "coverage_tags": [
+        "summary_association_analysis",
+        "fp_growth_advantage"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step7_v1",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 FP-Growth 相对于 Apriori 的核心改进点。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了 FP-Growth 用树结构避免候选集生成这一关键优势。",
+      "question_type": "short_answer",
+      "retrieval_focus": "FP-Growth 解决 Apriori 哪个主要问题的方法",
+      "term_refs": [
+        {
+          "display": "FP-Growth",
+          "en": "FP-Growth"
+        },
+        {
+          "display": "候选集爆炸",
+          "en": "candidate explosion"
+        }
+      ],
+      "variants": [
+        {
+          "back": "FP-tree（频繁模式树）",
+          "estimated_seconds": 8,
+          "explanation": "FP-Growth 将事务数据库压缩成 FP-tree，直接在树上挖掘频繁项集，无需生成候选集。",
+          "front": "FP-Growth 通过什么结构解决了 Apriori 的候选集爆炸问题？",
+          "question_id": "q_flash_step7_v1_1"
+        },
+        {
+          "back": "避免候选集生成和子集测试",
+          "estimated_seconds": 10,
+          "explanation": "Apriori 需要生成大量候选集并测试其子集是否频繁，FP-Growth 通过分治策略在 FP-tree 上直接挖掘，跳过了这一步。",
+          "front": "FP-Growth 相比 Apriori 在 CPU 效率上的核心改进是什么？",
+          "question_id": "q_flash_step7_v1_2"
+        }
+      ]
+    },
+    {
+      "concept_key": "lift_interestingness",
+      "coverage_tags": [
+        "summary_association_analysis",
+        "lift_interestingness"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step7_v2",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出提升度用于解决置信度的什么问题。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了提升度用于过滤置信度高但实际虚假的关联规则这一关键作用。",
+      "question_type": "short_answer",
+      "retrieval_focus": "提升度解决置信度的哪个缺陷",
+      "term_refs": [
+        {
+          "display": "提升度",
+          "en": "Lift"
+        },
+        {
+          "display": "置信度",
+          "en": "Confidence"
+        }
+      ],
+      "variants": [
+        {
+          "back": "置信度高但规则可能虚假（例如商品本身就很流行）",
+          "estimated_seconds": 10,
+          "explanation": "置信度只衡量条件概率，可能因结论项本身的高概率而产生误导。提升度通过比较置信度与结论项的独立概率，能识别真正的正/负相关。",
+          "front": "提升度（Lift）主要用来解决置信度（Confidence）的什么问题？",
+          "question_id": "q_flash_step7_v2_1"
+        },
+        {
+          "back": "规则的前项和后项是负相关的",
+          "estimated_seconds": 8,
+          "explanation": "Lift < 1 表示购买前项会降低购买后项的概率，两者呈负相关。",
+          "front": "一条规则的提升度小于 1 说明什么？",
+          "question_id": "q_flash_step7_v2_2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-2",
+  "longform_families": [
+    {
+      "concept_key": "summary_association_analysis",
+      "coverage_tags": [
+        "summary_association_analysis",
+        "qar_sequential_patterns",
+        "core_idea_support_pruning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_step7_v1",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能综合阐述关联分析中几种关键技术如何扩展了基本 Apriori 框架的能力。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能理解并解释 FP-Growth、提升度、定量关联规则和序列模式各自解决了什么问题，以及它们共享的核心思想。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "关联分析",
+          "en": "Association Analysis"
+        },
+        {
+          "display": "支持度剪枝",
+          "en": "Support Pruning"
+        },
+        {
+          "display": "定量关联规则",
+          "en": "Quantitative Association Rules"
+        },
+        {
+          "display": "序列模式",
+          "en": "Sequential Patterns"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "FP-Growth 解决的问题",
+            "提升度解决的问题",
+            "定量关联规则解决的问题",
+            "序列模式解决的问题",
+            "共同的核心思想"
+          ],
+          "question_id": "q_long_step7_v1_1",
+          "reference_answer": [
+            "FP-Growth 通过构建 FP-tree 压缩事务数据库，避免了 Apriori 的候选集生成和多次数据库扫描，提高了效率。",
+            "提升度通过比较置信度与结论项的独立概率，识别出置信度高但实际虚假的规则，帮助发现真正有趣的关联。",
+            "定量关联规则通过离散化将年龄、收入等数值属性转换为区间二元属性，使关联分析能处理数值型数据。",
+            "序列模式通过考虑事务的时间顺序，发现如“先买手机后买手机壳”这类带时序的频繁模式。",
+            "这些方法都利用了支持度剪枝这一核心思想：只保留满足最小支持度阈值的项集，从而在巨大的搜索空间中高效地找到有价值的模式。"
+          ],
+          "rubric_points": [
+            "FP-Growth：解决 Apriori 候选集爆炸和多次数据库扫描的问题，通过 FP-tree 压缩数据并采用分治策略。",
+            "提升度：解决置信度可能因结论项高概率而产生误导的问题，通过衡量统计依赖关系过滤虚假规则。",
+            "定量关联规则：解决基本关联分析只能处理二元属性的局限，通过离散化将数值属性转换为二元属性。",
+            "序列模式：解决关联分析不考虑顺序的局限，通过引入时间顺序发现序列中的频繁模式。",
+            "共同核心思想：利用支持度剪枝，在巨大的搜索空间中高效地找到有价值的模式。"
+          ],
+          "stem": "请简要解释关联分析中以下四种技术分别解决了什么问题，并指出它们共同依赖的核心思想是什么：\n1. FP-Growth\n2. 提升度（Lift）\n3. 定量关联规则\n4. 序列模式"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "fp_growth_advantage",
+      "coverage_tags": [
+        "summary_association_analysis",
+        "fp_growth_advantage"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step7_v1",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中识别 FP-Growth 相对于 Apriori 的关键优势。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能区分 FP-Growth 与 Apriori 在算法策略上的本质差异。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "FP-Growth",
+          "en": "FP-Growth"
+        },
+        {
+          "display": "Apriori",
+          "en": "Apriori"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "FP-Growth 的核心改进是避免候选集生成和子集测试，这是它 CPU 高效的主要原因。选项 A 是 I/O 方面的改进，但并非最主要优势；C 和 D 是其他扩展技术。",
+          "options": [
+            "需要更少的数据库扫描次数",
+            "不需要生成候选集",
+            "能处理数值型数据",
+            "能发现序列模式"
+          ],
+          "question_id": "q_quiz_step7_v1_1",
+          "stem": "在关联分析中，FP-Growth 算法相比 Apriori 算法最主要的优势是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "FP-Growth 将事务数据库压缩成 FP-tree 并存储在内存中，后续挖掘只需在树上操作，避免了 Apriori 多次扫描数据库的开销。",
+          "options": [
+            "使用哈希树加速计数",
+            "将数据库压缩成 FP-tree 存储在内存中，避免多次扫描",
+            "只扫描一次数据库",
+            "使用并行计算"
+          ],
+          "question_id": "q_quiz_step7_v1_2",
+          "stem": "以下哪个是 FP-Growth 算法在 I/O 效率方面的主要改进？"
+        }
+      ]
+    },
+    {
+      "concept_key": "lift_interestingness",
+      "coverage_tags": [
+        "summary_association_analysis",
+        "lift_interestingness"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step7_v2",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下判断提升度如何帮助评估规则的有趣性。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能应用提升度概念判断规则是否真正有意义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "提升度",
+          "en": "Lift"
+        },
+        {
+          "display": "置信度",
+          "en": "Confidence"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "提升度 = 置信度 / P(咖啡) = 0.75 / 0.9 = 0.833。提升度小于 1，说明茶和咖啡是负相关的，即买茶反而会降低买咖啡的概率。",
+          "options": [
+            "提升度 = 0.833，茶和咖啡负相关",
+            "提升度 = 1.2，茶和咖啡正相关",
+            "提升度 = 0.75，规则有效",
+            "提升度 = 0.9，规则无效"
+          ],
+          "question_id": "q_quiz_step7_v2_1",
+          "stem": "一条关联规则“茶 → 咖啡”的置信度为 0.75，而咖啡的整体购买概率为 0.9。这条规则的提升度是多少？它说明了什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "置信度只衡量条件概率 P(Y|X)，如果 Y 本身就很流行（高概率），即使 X 和 Y 无关，置信度也可能很高，从而产生虚假规则。",
+          "options": [
+            "置信度计算太复杂",
+            "置信度可能因为结论项本身的高概率而产生误导",
+            "置信度不支持数值型数据",
+            "置信度总是小于支持度"
+          ],
+          "question_id": "q_quiz_step7_v2_2",
+          "stem": "在评估关联规则时，为什么不能仅依赖置信度？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "coverage_checklist": "# Chapter 6\n# Association Analysis (Part 2)\n# Overview\n- The FP-growth algorithm\n• Interestingness (association rule evaluation)\n- Mining quantitative association rules\nMining sequential patterns\n- Reading assignment:\nPages 451-473\n# FP-Growth\n- An efficient algorithm for mining frequent itemsets, alternative to Apriori algorithm\n(a) Compress a large database of transactional records into a compact Frequent-Pattern Tree (FP-tree) structure\n- Store the structure in memory to avoid costly database scans ← I/O efficient\n(b) Run an efficient algorithm to extract frequent itemsets from the FP-tree.\nA divide-and-conquer recursive strategy\n- Avoid candidate generation and subset testing $\\leftarrow$ CPU efficient\n# FP-tree Construction\n...",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "{\n  \"chapter_id\": \"lecture-02-association-2\",\n  \"chapter_title\": \"Association 2\",\n  \"course_id\": \"user-1-comp7103\",\n  \"course_title\": \"COMP7103\",\n  \"lesson_id\": \"u1-comp7103-association-2\",\n  \"mode\": \"guided_story\",\n  \"steps\": [\n    {\n      \"concept\": \"FP-Growth 的核心思想：用树结构代替候选集生成\",\n      \"file\": \"step1/step.json\",\n      \"sequence_id\": \"step1\"\n    },\n    {\n      \"concept\": \"FP-tree 的构建过程\",\n      \"file\": \"step2/step.json\",\n      \"sequence_id\": \"step2\"\n    },\n    {\n      \"concept\": \"从 FP-tree 中挖掘频繁项集\",\n      \"file\": \"step3/step.json\",\n      \"sequence_id\": \"step3\"\n    },\n    {\n      \"concept\": \"关联规则的评估：为什么置信度会骗人\",\n      \"file\": \"step4/step.json\",\n      \"sequence_id\": \"step4\"\n    },\n    {\n      \"concept\": \"处理数值型属性：定量关联规则\",\n      \"file\": \"step5/step.json\",\n      \"sequence_id\": \"step5\"\n    },\n    {\n      \"concept\": \"序列模式挖掘：发现时间上的规律\",\n      \"file\": \"step6/step.json\",\n      \"sequence_id\": \"step6\"\n    },\n    {\n      \"concept\": \"总结：关联分析的全景图\",\n      \"file\": \"step7/step.json\",\n      \"sequence_id\": \"step7\"\n    }\n  ]\n}\n",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-2/plain.txt",
+    "related": [],
+    "source_outline": "# Chapter 6\n# Association Analysis (Part 2)\n# Overview\n- The FP-growth algorithm\n• Interestingness (association rule evaluation)\n- Mining quantitative association rules\nMining sequential patterns\n- Reading assignment:\nPages 451-473\n# FP-Growth\n- An efficient algorithm for mining frequent itemsets, alternative to Apriori algorithm\n(a) Compress a large database of transactional records into a compact Frequent-Pattern Tree (FP-tree) structure\n- Store the structure in memory to avoid costly database scans ← I/O efficient\n(b) Run an efficient algorithm to extract frequent itemsets from the FP-tree.\nA divide-and-conquer recursive strategy\n- Avoid candidate generation and subset testing $\\leftarrow$ CPU efficient\n# FP-tree Construction\n..."
+  },
+  "target_language": "zh-CN"
+}

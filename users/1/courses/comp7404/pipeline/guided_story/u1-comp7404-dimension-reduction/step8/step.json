@@ -1,0 +1,71 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s073",
+      "introduced_terms": [],
+      "lines": [
+        "回顾一下我们走过的路。",
+        "从投影失败开始，到流形学习，再到张量表示。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s074",
+      "introduced_terms": [],
+      "lines": [
+        "最后，图嵌入框架把这一切统一起来。",
+        "PCA、LDA、LLE、Isomap……都是它的特例。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s075",
+      "introduced_terms": [],
+      "lines": [
+        "这个框架还可以线性化、核化、张量化。",
+        "衍生出更多强大的算法。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s076",
+      "introduced_terms": [],
+      "lines": [
+        "一句话总结：",
+        "降维的本质，是在低维空间中保持高维空间中的某种关系。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "explanation": "通过构建内在图和惩罚图，在低维空间中保持高维空间中的相似关系。",
+        "kind": "short_reflection",
+        "prompt": "用一句话概括图嵌入框架的核心思想。"
+      },
+      "focus_terms": [],
+      "id": "s077",
+      "introduced_terms": [],
+      "lines": [
+        "图嵌入框架的核心思想是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "plain_text": "Optimization framework that unifies previous dimensionality reduction algorithms as special cases. A new dimensionality reduction algorithm: Marginal Fisher Analysis.",
+    "related": [
+      "Summary of dimension reduction"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

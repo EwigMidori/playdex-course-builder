@@ -1,0 +1,309 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "compact_representation",
+      "covered_by": [
+        "qf_flash_maximal_def",
+        "qf_flash_closed_def",
+        "qf_flash_maximal_vs_closed",
+        "qf_quiz_maximal_vs_closed",
+        "qf_long_compare_compact"
+      ],
+      "description": "紧凑表示：最大频繁项集与闭项集"
+    },
+    {
+      "coverage_tag": "maximal_frequent_itemset",
+      "covered_by": [
+        "qf_flash_maximal_def",
+        "qf_flash_maximal_vs_closed",
+        "qf_quiz_maximal_vs_closed",
+        "qf_long_compare_compact"
+      ],
+      "description": "最大频繁项集的定义与性质"
+    },
+    {
+      "coverage_tag": "closed_frequent_itemset",
+      "covered_by": [
+        "qf_flash_closed_def",
+        "qf_flash_maximal_vs_closed",
+        "qf_quiz_maximal_vs_closed",
+        "qf_long_compare_compact"
+      ],
+      "description": "闭频繁项集的定义与性质"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "maximal_frequent_itemset",
+      "coverage_tags": [
+        "compact_representation",
+        "maximal_frequent_itemset"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_maximal_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出最大频繁项集的定义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能复述最大频繁项集的两个条件：自身频繁且所有直接超集都不频繁。",
+      "question_type": "short_answer",
+      "retrieval_focus": "最大频繁项集的定义条件",
+      "term_refs": [
+        {
+          "display": "最大频繁项集",
+          "en": "Maximal Frequent Itemset"
+        }
+      ],
+      "variants": [
+        {
+          "back": "(1) 自身是频繁项集；(2) 它的所有直接超集都不频繁。",
+          "estimated_seconds": 10,
+          "explanation": "最大频繁项集是频繁项集的边界：再往上加任何一项都会变成不频繁。",
+          "front": "最大频繁项集需要满足哪两个条件？",
+          "question_id": "q_flash_maximal_def_v1"
+        },
+        {
+          "back": "最大频繁项集（Maximal Frequent Itemset）。",
+          "estimated_seconds": 8,
+          "explanation": "这是最大频繁项集的定义。",
+          "front": "如果一个频繁项集 X 的所有直接超集都不频繁，X 被称为什么？",
+          "question_id": "q_flash_maximal_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "closed_frequent_itemset",
+      "coverage_tags": [
+        "compact_representation",
+        "closed_frequent_itemset"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_closed_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出闭频繁项集的定义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能复述闭频繁项集的条件：自身频繁且所有直接超集的支持度都严格小于它。",
+      "question_type": "short_answer",
+      "retrieval_focus": "闭频繁项集的定义条件",
+      "term_refs": [
+        {
+          "display": "闭频繁项集",
+          "en": "Closed Frequent Itemset"
+        }
+      ],
+      "variants": [
+        {
+          "back": "(1) 自身是频繁项集；(2) 它的所有直接超集的支持度都严格小于它。",
+          "estimated_seconds": 10,
+          "explanation": "闭频繁项集保留了支持度信息，因为它的超集支持度都更低。",
+          "front": "闭频繁项集需要满足哪两个条件？",
+          "question_id": "q_flash_closed_def_v1"
+        },
+        {
+          "back": "闭频繁项集（Closed Frequent Itemset）。",
+          "estimated_seconds": 8,
+          "explanation": "这是闭频繁项集的定义。",
+          "front": "如果一个频繁项集 X 的所有直接超集的支持度都严格小于 X 的支持度，X 被称为什么？",
+          "question_id": "q_flash_closed_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "compact_representation",
+      "coverage_tags": [
+        "compact_representation",
+        "maximal_frequent_itemset",
+        "closed_frequent_itemset"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_maximal_vs_closed",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分最大频繁项集和闭频繁项集在信息保留上的差异。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能指出闭频繁项集可以推导出支持度，而最大频繁项集不能。",
+      "question_type": "core_difference",
+      "retrieval_focus": "两种紧凑表示的信息保留能力差异",
+      "term_refs": [
+        {
+          "display": "最大频繁项集",
+          "en": "Maximal Frequent Itemset"
+        },
+        {
+          "display": "闭频繁项集",
+          "en": "Closed Frequent Itemset"
+        }
+      ],
+      "variants": [
+        {
+          "back": "闭频繁项集。",
+          "estimated_seconds": 10,
+          "explanation": "最大频繁项集只能推导出哪些项集是频繁的，但无法知道它们的支持度。闭频繁项集可以同时推导出项集和支持度。",
+          "front": "最大频繁项集和闭频繁项集，哪一种可以推导出所有频繁项集及其支持度？",
+          "question_id": "q_flash_maximal_vs_closed_v1"
+        },
+        {
+          "back": "最大频繁项集。",
+          "estimated_seconds": 10,
+          "explanation": "所有频繁项集都是某个最大频繁项集的子集，所以存储最大频繁项集就能推导出所有频繁项集。",
+          "front": "如果只需要知道所有频繁项集（不需要支持度），存储哪种紧凑表示就够了？",
+          "question_id": "q_flash_maximal_vs_closed_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-1",
+  "longform_families": [
+    {
+      "concept_key": "compact_representation",
+      "coverage_tags": [
+        "compact_representation",
+        "maximal_frequent_itemset",
+        "closed_frequent_itemset"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_compare_compact",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较最大频繁项集和闭频繁项集的定义、性质和信息保留能力。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能用自己的话解释两种紧凑表示的区别，并说明各自能推导出什么信息。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "最大频繁项集",
+          "en": "Maximal Frequent Itemset"
+        },
+        {
+          "display": "闭频繁项集",
+          "en": "Closed Frequent Itemset"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "最大频繁项集的定义",
+            "闭频繁项集的定义",
+            "各自能推导出的信息",
+            "信息保留能力的差异"
+          ],
+          "question_id": "q_long_compare_compact_v1",
+          "reference_answer": [
+            "最大频繁项集：一个频繁项集，它的所有直接超集都不频繁。",
+            "闭频繁项集：一个频繁项集，它的所有直接超集的支持度都严格小于它。",
+            "最大频繁项集可以推导出所有频繁项集，因为每个频繁项集都是某个最大频繁项集的子集。",
+            "闭频繁项集可以推导出所有频繁项集及其支持度，因为闭频繁项集保留了支持度信息。",
+            "闭频繁项集比最大频繁项集保留更多信息，因为最大频繁项集只告诉我们哪些项集是频繁的，而闭频繁项集还告诉我们每个频繁项集的支持度是多少。"
+          ],
+          "rubric_points": [
+            "正确给出最大频繁项集的定义：自身频繁且所有直接超集都不频繁",
+            "正确给出闭频繁项集的定义：自身频繁且所有直接超集的支持度都严格小于它",
+            "指出最大频繁项集可以推导出所有频繁项集（作为子集）",
+            "指出闭频繁项集可以推导出所有频繁项集及其支持度",
+            "解释闭频繁项集保留支持度信息是因为它记录了支持度下降的边界"
+          ],
+          "stem": "请比较最大频繁项集和闭频繁项集。在回答中请说明：(1) 各自的定义；(2) 各自能推导出哪些信息；(3) 为什么闭频繁项集比最大频繁项集保留了更多信息。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "识别最大频繁项集",
+            "识别闭频繁项集",
+            "解释判断依据"
+          ],
+          "question_id": "q_long_compare_compact_v2",
+          "reference_answer": [
+            "最大频繁项集：{a, b, c} 和 {a, b, d}。因为它们的直接超集（如 {a, b, c, e}）都不频繁。",
+            "闭频繁项集：{a, b, c} 和 {a, b}。",
+            "判断依据：{a, b} 不是最大频繁项集，因为它的超集 {a, b, c} 是频繁的。但 {a, b} 是闭频繁项集，因为它的超集 {a, b, c} 支持度相同（5），而 {a, b, d} 支持度更低（3），所以 {a, b} 满足闭条件。{a, b, c} 既是最大频繁项集也是闭频繁项集。"
+          ],
+          "rubric_points": [
+            "正确识别最大频繁项集：{a, b, c} 和 {a, b, d}",
+            "正确识别闭频繁项集：{a, b, c} 和 {a, b}",
+            "解释 {a, b, c} 是最大频繁项集因为它的超集 {a, b, c, ?} 都不频繁",
+            "解释 {a, b, d} 是最大频繁项集因为它的超集都不频繁",
+            "解释 {a, b} 不是最大频繁项集因为它的超集 {a, b, c} 是频繁的",
+            "解释 {a, b} 是闭频繁项集因为它的超集 {a, b, c} 支持度相同（5），但 {a, b, d} 支持度更低（3），所以 {a, b} 满足闭条件",
+            "解释 {a, b, c} 是闭频繁项集因为它的超集支持度都小于 5"
+          ],
+          "stem": "假设你有一个频繁项集集合，其中包含 {a, b}（支持度 5）、{a, b, c}（支持度 5）、{a, b, d}（支持度 3）。请判断：(1) 哪些是最大频繁项集？(2) 哪些是闭频繁项集？(3) 解释你的判断依据。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "compact_representation",
+      "coverage_tags": [
+        "compact_representation",
+        "maximal_frequent_itemset",
+        "closed_frequent_itemset"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_maximal_vs_closed",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下区分两种紧凑表示的能力。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能正确判断哪种表示可以推导出支持度。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "最大频繁项集",
+          "en": "Maximal Frequent Itemset"
+        },
+        {
+          "display": "闭频繁项集",
+          "en": "Closed Frequent Itemset"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "闭频繁项集不仅能推导出所有频繁项集，还能推导出它们的支持度。最大频繁项集只能推导出哪些项集是频繁的，但无法知道支持度。",
+          "options": [
+            "最大频繁项集",
+            "闭频繁项集",
+            "两者都可以",
+            "两者都不可以"
+          ],
+          "question_id": "q_quiz_maximal_vs_closed_v1",
+          "stem": "以下哪种紧凑表示可以推导出所有频繁项集及其支持度？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 30,
+          "explanation": "闭频繁项集要求所有直接超集的支持度都严格小于它。这里 {a, b, c, d} 的支持度等于 {a, b, c}，所以 {a, b, c} 不是闭频繁项集。",
+          "options": [
+            "是",
+            "不是",
+            "无法判断",
+            "取决于是否频繁"
+          ],
+          "question_id": "q_quiz_maximal_vs_closed_v2",
+          "stem": "假设一个频繁项集 {a, b, c} 的支持度为 10，它的直接超集 {a, b, c, d} 的支持度也为 10。根据定义，{a, b, c} 是闭频繁项集吗？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

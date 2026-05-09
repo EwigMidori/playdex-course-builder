@@ -1,0 +1,183 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-clustering-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "K-means 有一个关键弱点：初始质心的选择很重要。",
+        "选得不好，结果可能很差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "比如，初始质心选得太近，",
+        "可能导致两个簇被错误地合并成一个。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "如何比较两个不同初始质心产生的聚类结果的好坏？",
+        "你需要一个量化指标。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "sse"
+      ],
+      "id": "s030",
+      "introduced_terms": [
+        "sse"
+      ],
+      "lines": [
+        "常用指标是 <term id=\"sse\">误差平方和</term>。",
+        "它计算每个点到其簇质心的距离，然后平方求和。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "\\text{SSE} = \\sum_{i=1}^{K} \\sum_{x \\in C_i} \\text{dist}(x, m_i)^2",
+        "spoken": "SSE 等于所有簇内点到其质心距离的平方和。"
+      },
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "SSE 越小，说明簇内越紧凑。"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [],
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "现在，请你计算两个不同初始质心产生的聚类结果的SSE，并判断哪个更好。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "expected_fields": [
+          "sse_A",
+          "sse_B",
+          "better_result"
+        ],
+        "explanation": "结果A的SSE = (0^2+0^2)+(1^2+0^2)+(0^2+0^2)+(1^2+0^2) = 2。结果B的SSE = (0^2+0^2)+(0^2+0^2)+(0^2+0^2)+(0^2+0^2) = 0。结果B的SSE更小，所以结果B更好。",
+        "kind": "calculation",
+        "prompt": "给定数据集：A(0,0), B(1,0), C(5,5), D(6,5)。结果A：簇1={A,B}, 簇2={C,D}，质心分别为(0.5,0)和(5.5,5)。结果B：簇1={A,B,C,D}，质心为(3,2.5)。哪个结果更好？",
+        "sample_answer": {
+          "better_result": "结果B",
+          "sse_A": 2,
+          "sse_B": 0
+        }
+      },
+      "focus_terms": [],
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "给定数据集：A(0,0), B(1,0), C(5,5), D(6,5)。",
+        "结果A：簇1={A,B}, 簇2={C,D}，质心分别为(0.5,0)和(5.5,5)。",
+        "结果B：簇1={A,B,C,D}，质心为(3,2.5)。",
+        "哪个结果更好？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "针对初始质心问题，有几种解决办法。",
+        "方法一：多次运行，选 SSE 最小的结果。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bisecting_k_means"
+      ],
+      "id": "s035",
+      "introduced_terms": [
+        "bisecting_k_means"
+      ],
+      "lines": [
+        "方法二：选择彼此距离最远的点作为初始质心。",
+        "方法三：使用 <term id=\"bisecting_k_means\">二分 K-means</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "二分 K-means 的思路是：",
+        "一开始所有点是一个簇，然后反复选择某个簇一分为二。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "虽然理论上可行，但这不是材料中提到的标准方法。标准方法包括多次运行、选最远点、二分 K-means。",
+        "kind": "single_choice",
+        "options": [
+          "多次运行，选 SSE 最小的",
+          "选择彼此距离最远的点作为初始质心",
+          "使用层次聚类的结果作为初始质心",
+          "二分 K-means"
+        ],
+        "prompt": "以下哪个不是解决 K-means 初始质心问题的方法？"
+      },
+      "focus_terms": [],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个不是解决 K-means 初始质心问题的方法？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Importance of Choosing Initial Centroids. K-means will converge, but the result depends on the initial centroids. Solutions: Multiple runs, pick the one with smallest SSE. Bisecting K-means.",
+    "related": [
+      "sse",
+      "bisecting_k_means"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "bisecting_k_means": {
+      "aliases": [
+        "Bisecting K-means"
+      ],
+      "display": "二分 K-means",
+      "gloss": "K-means 的变体，通过反复二分一个簇来得到最终结果。"
+    },
+    "sse": {
+      "aliases": [
+        "SSE",
+        "Sum of Squared Error"
+      ],
+      "display": "误差平方和",
+      "gloss": "衡量聚类质量的指标，计算每个点到其簇代表点的距离平方和。"
+    }
+  }
+}

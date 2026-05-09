@@ -1,0 +1,50 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "chapter_title": "Classification 1",
+  "course_id": "user-1-comp7103",
+  "course_title": "COMP7103",
+  "lesson_id": "u1-comp7103-classification-1",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "什么是分类问题",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "监督学习与决策树",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "用熵来度量不确定性",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "构建决策树：递归划分",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "其他不纯度度量与过拟合",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "评估分类器",
+      "file": "step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "处理数值特征与决策边界",
+      "file": "step7/step.json",
+      "sequence_id": "step7"
+    },
+    {
+      "concept": "总结：分类与决策树的核心思想",
+      "file": "step8/step.json",
+      "sequence_id": "step8"
+    }
+  ]
+}

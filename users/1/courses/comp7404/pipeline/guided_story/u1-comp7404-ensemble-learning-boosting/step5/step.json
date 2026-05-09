@@ -1,0 +1,400 @@
+{
+  "chapter_id": "lecture-09-ensemble-learning-boosting",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-ensemble-learning-boosting",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "ada_boost"
+      ],
+      "id": "s050",
+      "introduced_terms": [
+        "ada_boost"
+      ],
+      "lines": [
+        "最经典的Boosting算法是 <term id=\"ada_boost\">AdaBoost</term>。",
+        "它的全称是 Adaptive Boosting，意为“自适应增强”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "ada_boost"
+      ],
+      "id": "s051",
+      "introduced_terms": [],
+      "lines": [
+        "AdaBoost 的流程很清晰。",
+        "第一步：初始化所有训练样本的权重，让它们都相等。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "ada_boost"
+      ],
+      "id": "s052",
+      "introduced_terms": [],
+      "lines": [
+        "然后，开始循环，每一轮 t 做以下几件事。",
+        "首先，归一化权重，使其总和为1，形成一个概率分布。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "ada_boost"
+      ],
+      "formula": {
+        "latex": "w_{t,i} \\leftarrow \\frac{w_{t,i}}{\\sum_{j=1}^{n} w_{t,j}}",
+        "spoken": "将第t轮的第i个样本的权重，除以该轮所有样本权重的总和。"
+      },
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "权重归一化的公式：",
+        "每个样本的权重除以所有样本权重的总和。"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "ada_boost"
+      ],
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "接着，基于当前权重分布，训练一个弱分类器。",
+        "这个分类器会尽力最小化加权错误率。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "ada_boost"
+      ],
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "然后，计算这个弱分类器的加权错误率 ε。",
+        "错误率越高，说明这个分类器越“弱”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s056",
+      "introduced_terms": [],
+      "lines": [
+        "现在，思考一个问题：如果两个分类器的错误率分别是 0.4 和 0.2，哪个应该在最终投票中拥有更大的权重？",
+        "显然，错误率更低的分类器应该权重更大。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "alpha"
+      ],
+      "id": "s057",
+      "introduced_terms": [
+        "alpha"
+      ],
+      "lines": [
+        "根据错误率，计算这个分类器的 <term id=\"alpha\">分类器权重</term> α。",
+        "错误率越低，α 越大，意味着它在最终投票中更有分量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "alpha"
+      ],
+      "formula": {
+        "latex": "\\alpha_t = \\log \\frac{1 - \\epsilon_t}{\\epsilon_t}",
+        "spoken": "第t个分类器的权重α，等于以e为底，(1减去其错误率)除以错误率的对数。"
+      },
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [
+        "分类器权重 α 的计算公式：",
+        "α 与错误率 ε 成反比。"
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answer": "ε=0.3 时 α=ln(0.7/0.3)≈0.847；ε=0.1 时 α=ln(0.9/0.1)≈2.197",
+        "expected_fields": [
+          "alpha_0.3",
+          "alpha_0.1"
+        ],
+        "explanation": "α = ln((1-ε)/ε)。当 ε=0.3 时，α = ln(0.7/0.3) ≈ 0.847；当 ε=0.1 时，α = ln(0.9/0.1) ≈ 2.197。错误率越低，α 越大。",
+        "kind": "calculation",
+        "prompt": "假设 AdaBoost 第 t 轮训练得到一个弱分类器，其加权错误率 ε=0.3。计算该分类器的权重 α。如果 ε=0.1，α 是多少？",
+        "sample_answer": {
+          "alpha_0.1": 2.197,
+          "alpha_0.3": 0.847
+        }
+      },
+      "focus_terms": [
+        "alpha"
+      ],
+      "id": "s059",
+      "introduced_terms": [],
+      "lines": [
+        "假设 AdaBoost 第 t 轮训练得到一个弱分类器，其加权错误率 ε=0.3。计算该分类器的权重 α。如果 ε=0.1，α 是多少？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "ada_boost"
+      ],
+      "id": "s060",
+      "introduced_terms": [],
+      "lines": [
+        "最后，更新每个样本的权重。",
+        "被当前分类器正确分类的样本，权重降低；被错误分类的样本，权重升高。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "ada_boost"
+      ],
+      "formula": {
+        "latex": "w_{t+1,i} = w_{t,i} \\beta_t^{1 - e_i}",
+        "spoken": "下一轮的第i个样本权重，等于当前权重乘以β的(1-e_i)次方。其中e_i为0表示分类正确，为1表示分类错误。"
+      },
+      "id": "s061",
+      "introduced_terms": [],
+      "lines": [
+        "权重更新公式：",
+        "正确分类的样本权重乘以一个小于1的因子，错误分类的样本权重乘以一个大于1的因子。"
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "如果样本权重增加，说明它被错误分类了。因为权重更新公式中，错误分类的样本权重会乘以一个大于1的因子，导致权重增加。",
+        "kind": "single_choice",
+        "options": [
+          "错误分类",
+          "正确分类"
+        ],
+        "prompt": "在 AdaBoost 中，如果某样本的权重增加，说明它被正确分类还是错误分类？"
+      },
+      "focus_terms": [
+        "ada_boost"
+      ],
+      "id": "s062",
+      "introduced_terms": [],
+      "lines": [
+        "在 AdaBoost 中，如果某样本的权重增加，说明它被正确分类还是错误分类？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "如果样本权重增加，说明它被错误分类了。因为权重更新公式中，错误分类的样本权重会乘以一个大于1的因子，导致权重增加。",
+        "kind": "true_false",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "prompt": "判断：在 AdaBoost 中，如果某样本的权重增加，说明它被正确分类。"
+      },
+      "focus_terms": [
+        "ada_boost"
+      ],
+      "id": "s063",
+      "introduced_terms": [],
+      "lines": [
+        "判断：在 AdaBoost 中，如果某样本的权重增加，说明它被正确分类。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": "错误分类",
+        "explanation": "在 AdaBoost 的权重更新中，如果样本被正确分类，其权重会降低（乘以小于1的因子）；如果被错误分类，其权重会增加（乘以大于1的因子）。因此，如果某样本的权重从 0.2 增加到 0.5，说明它被错误分类了。",
+        "kind": "condition_judgment",
+        "options": [
+          "正确分类",
+          "错误分类"
+        ],
+        "prompt": "在 AdaBoost 中，某样本在第 t 轮的权重为 0.2，经过第 t 轮训练后，其权重更新为 0.5。根据权重变化，判断该样本在第 t 轮是被正确分类还是错误分类？"
+      },
+      "focus_terms": [
+        "ada_boost"
+      ],
+      "id": "s064",
+      "introduced_terms": [],
+      "lines": [
+        "在 AdaBoost 中，某样本在第 t 轮的权重为 0.2，经过第 t 轮训练后，其权重更新为 0.5。根据权重变化，判断该样本在第 t 轮是被正确分类还是错误分类？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "strong_learner"
+      ],
+      "id": "s065",
+      "introduced_terms": [],
+      "lines": [
+        "重复这个过程 T 轮后，我们就得到了 T 个弱分类器。",
+        "最终的强分类器，就是这 T 个弱分类器的加权组合。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "strong_learner"
+      ],
+      "formula": {
+        "latex": "h(x) = \\begin{cases} 1 & \\sum_{t=1}^{T} \\alpha_t h_t(x) \\geq \\frac{1}{2} \\sum_{t=1}^{T} \\alpha_t \\\\ 0 & \\text{otherwise} \\end{cases}",
+        "spoken": "如果所有弱分类器的加权和大于或等于总权重的一半，则预测为正类，否则为负类。"
+      },
+      "id": "s066",
+      "introduced_terms": [],
+      "lines": [
+        "最终强分类器的决策规则：",
+        "所有弱分类器的加权投票结果超过总权重的一半，则预测为正类。"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "cascade_classifier"
+      ],
+      "id": "s067",
+      "introduced_terms": [
+        "cascade_classifier"
+      ],
+      "lines": [
+        "AdaBoost 在实际应用中取得了巨大成功，比如人脸检测。",
+        "经典的 Viola-Jones 人脸检测器就使用了 AdaBoost 来训练一个 <term id=\"cascade_classifier\">级联分类器</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "cascade_classifier"
+      ],
+      "id": "s068",
+      "introduced_terms": [],
+      "lines": [
+        "级联结构的思想是：先用一个非常快速、简单的分类器扫描图像。",
+        "这个分类器可以快速排除掉大部分明显不是人脸的区域。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "cascade_classifier"
+      ],
+      "id": "s069",
+      "introduced_terms": [],
+      "lines": [
+        "只有通过了第一关的区域，才会被送到下一个更复杂的分类器。",
+        "这样层层筛选，既保证了速度，又保证了准确性。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "haar_like_features"
+      ],
+      "id": "s070",
+      "introduced_terms": [
+        "haar_like_features"
+      ],
+      "lines": [
+        "每个弱分类器都基于一个简单的 <term id=\"haar_like_features\">Haar-like特征</term>。",
+        "比如，眼睛区域通常比脸颊区域暗，这个特征就可以用一个简单的矩形特征来捕捉。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "ada_boost"
+      ],
+      "id": "s071",
+      "introduced_terms": [],
+      "lines": [
+        "AdaBoost 从成千上万个这样的简单特征中，挑选出最有区分力的几个。",
+        "然后，将它们组合成一个强大的级联检测器。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "级联结构通过在前几层使用快速分类器排除大量非目标区域，从而显著提高整体检测速度。",
+        "kind": "single_choice",
+        "options": [
+          "总是比单个分类器更准确。",
+          "通过早期快速排除负样本，实现高效检测。",
+          "不需要训练数据。"
+        ],
+        "prompt": "级联分类器的主要优势是什么？"
+      },
+      "focus_terms": [
+        "cascade_classifier"
+      ],
+      "id": "s072",
+      "introduced_terms": [],
+      "lines": [
+        "级联分类器的主要优势是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "AdaBoost algorithm: Initialize weights. For t = 1,...,T: Normalize weights, train a weak classifier, evaluate error, update weights. Final strong classifier is a weighted combination of weak classifiers.",
+    "related": [
+      "AdaBoost algorithm steps",
+      "weight update formula",
+      "final classifier"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "ada_boost": {
+      "aliases": [
+        "Adaptive Boosting",
+        "AdaBoost"
+      ],
+      "display": "AdaBoost",
+      "gloss": "一种最流行的Boosting算法，它自适应地调整样本权重，使后续分类器专注于难分类的样本。"
+    },
+    "alpha": {
+      "aliases": [
+        "Alpha",
+        "Classifier Weight"
+      ],
+      "display": "分类器权重",
+      "gloss": "在AdaBoost中，每个弱分类器都被赋予一个权重α，该权重基于其错误率计算，用于在最终强分类器中进行加权投票。"
+    },
+    "cascade_classifier": {
+      "aliases": [
+        "Cascade Classifier",
+        "Cascading"
+      ],
+      "display": "级联分类器",
+      "gloss": "一种分层结构，将多个分类器串联起来，早期的快速分类器可以快速排除大量负样本，只有通过所有层的样本才会被最终判定为正类。"
+    },
+    "haar_like_features": {
+      "aliases": [
+        "Haar-like Features",
+        "Haar Wavelets"
+      ],
+      "display": "Haar-like特征",
+      "gloss": "一种用于图像识别的特征，通过计算图像中相邻矩形区域的像素和之差来捕捉纹理和边缘信息。"
+    }
+  }
+}

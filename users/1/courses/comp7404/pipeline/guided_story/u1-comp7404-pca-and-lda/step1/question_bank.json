@@ -1,0 +1,318 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "high_dimensional_face_images",
+      "covered_by": [
+        "qf_flash_high_dim_face",
+        "qf_quiz_high_dim_problem"
+      ],
+      "description": "人脸图像作为像素向量是高维的（100x100=10000维）"
+    },
+    {
+      "coverage_tag": "curse_of_dimensionality",
+      "covered_by": [
+        "qf_flash_high_dim_problems",
+        "qf_quiz_high_dim_problem",
+        "qf_quiz_high_dim_judgment"
+      ],
+      "description": "高维数据带来的问题：计算慢、存储大、过拟合、数据稀疏"
+    },
+    {
+      "coverage_tag": "face_subspace",
+      "covered_by": [
+        "qf_flash_face_subspace"
+      ],
+      "description": "真正的人脸只占高维空间的一个小子空间"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "high_dimensional_face_images",
+      "coverage_tags": [
+        "high_dimensional_face_images"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_high_dim_face",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出人脸图像作为像素向量的维度数量级。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了人脸图像在计算机中的高维表示方式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "人脸图像作为像素向量的典型维度",
+      "term_refs": [
+        {
+          "display": "像素值向量",
+          "en": "pixel value vector"
+        }
+      ],
+      "variants": [
+        {
+          "back": "10,000 维",
+          "estimated_seconds": 5,
+          "explanation": "100×100 = 10,000，每个像素是一个维度。",
+          "front": "一张 100×100 像素的人脸图像，如果看成像素值的向量，是多少维？",
+          "question_id": "q_flash_high_dim_face_v1"
+        },
+        {
+          "back": "2,500 维",
+          "estimated_seconds": 5,
+          "explanation": "50×50 = 2,500。",
+          "front": "一张 50×50 像素的人脸图像，作为像素值向量是多少维？",
+          "question_id": "q_flash_high_dim_face_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "curse_of_dimensionality",
+      "coverage_tags": [
+        "curse_of_dimensionality"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_high_dim_problems",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能列举高维数据带来的主要问题。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了高维数据的主要缺点。",
+      "question_type": "short_answer",
+      "retrieval_focus": "高维数据带来的三个主要问题",
+      "term_refs": [
+        {
+          "display": "高维数据问题",
+          "en": "curse of dimensionality"
+        }
+      ],
+      "variants": [
+        {
+          "back": "速度慢、存储大、容易过拟合",
+          "estimated_seconds": 8,
+          "explanation": "高维数据计算量大，存储需求高，且容易导致模型过拟合。",
+          "front": "直接在高维空间里做计算，会带来哪三个主要问题？",
+          "question_id": "q_flash_high_dim_problems_v1"
+        },
+        {
+          "back": "数据稀疏",
+          "estimated_seconds": 6,
+          "explanation": "随着维度增加，数据点在空间中变得越来越稀疏，距离度量失效。",
+          "front": "高维空间中，数据点之间的分布通常有什么特点？",
+          "question_id": "q_flash_high_dim_problems_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "face_subspace",
+      "coverage_tags": [
+        "face_subspace"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_face_subspace",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解真正的人脸只占据高维空间的一个小子空间。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了人脸数据在空间中的分布特性。",
+      "question_type": "short_answer",
+      "retrieval_focus": "高维空间中有效人脸向量的分布特点",
+      "term_refs": [
+        {
+          "display": "人脸子空间",
+          "en": "face subspace"
+        }
+      ],
+      "variants": [
+        {
+          "back": "不是人脸",
+          "estimated_seconds": 5,
+          "explanation": "只有极少数 10,000 维向量对应有效的人脸图像。",
+          "front": "在 10,000 维空间中，绝大多数向量是什么？",
+          "question_id": "q_flash_face_subspace_v1"
+        },
+        {
+          "back": "只蜷缩在一个很小的子空间里",
+          "estimated_seconds": 6,
+          "explanation": "有效人脸只占据高维空间的一个低维子空间。",
+          "front": "真正的人脸图像在高维空间中分布有什么特点？",
+          "question_id": "q_flash_face_subspace_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "longform_families": [
+    {
+      "concept_key": "curse_of_dimensionality",
+      "coverage_tags": [
+        "curse_of_dimensionality",
+        "high_dimensional_face_images",
+        "face_subspace"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_high_dim_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释高维数据带来的问题以及人脸子空间的概念。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能综合阐述高维数据的挑战和有效数据分布的特性。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "维度灾难",
+          "en": "curse of dimensionality"
+        },
+        {
+          "display": "人脸子空间",
+          "en": "face subspace"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "高维空间计算的三个主要问题",
+            "有效人脸向量的空间分布特性"
+          ],
+          "question_id": "q_long_high_dim_explain_v1",
+          "reference_answer": [
+            "直接在高维空间（如 10000 维）中做计算会遇到三个主要问题：计算速度慢（如欧氏距离需要大量运算）、存储需求大、容易过拟合。此外，高维空间中的数据点分布稀疏，距离度量的有效性下降。",
+            "真正的人脸图像在 10000 维空间中只占据一个很小的子空间，绝大多数 10000 维向量并不对应有效人脸。"
+          ],
+          "rubric_points": [
+            "提到计算速度慢、存储需求大、容易过拟合",
+            "提到数据稀疏性",
+            "提到真正的人脸只占据一个小子空间"
+          ],
+          "stem": "请解释为什么直接在高维空间（如 10000 维的人脸图像空间）中做计算会遇到问题，并说明真正的人脸图像在空间中的分布特点。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "计算 200×200 像素图像的维度",
+            "高维计算的具体问题",
+            "降维的必要性"
+          ],
+          "question_id": "q_long_high_dim_explain_v2",
+          "reference_answer": [
+            "200×200 像素的人脸图像作为像素向量是 40000 维。",
+            "直接在高维空间计算会遇到：计算量大（如欧氏距离需要 40000 次操作）、存储需求高、容易过拟合、数据稀疏。",
+            "降维可以将数据压缩到低维空间，同时保留关键结构，从而缓解这些问题。"
+          ],
+          "rubric_points": [
+            "正确计算维度（40000 维）",
+            "提到计算慢、存储大、过拟合、稀疏性",
+            "提到降维可以缓解这些问题"
+          ],
+          "stem": "假设你有一批 200×200 像素的人脸图像，请分析直接在这些图像上计算会遇到哪些问题，并解释为什么需要降维。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "curse_of_dimensionality",
+      "coverage_tags": [
+        "curse_of_dimensionality",
+        "high_dimensional_face_images"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_high_dim_problem",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别高维数据计算中的主要问题。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能判断高维欧氏距离计算的主要困难。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "欧氏距离",
+          "en": "Euclidean distance"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "10000 维的欧氏距离涉及 10000 次减法、平方和一次开方，计算量大，而且高维空间数据稀疏，距离的有效性下降。",
+          "options": [
+            "计算量太大，速度慢",
+            "结果一定很准确",
+            "不需要存储所有像素",
+            "距离值总是 0"
+          ],
+          "question_id": "q_quiz_high_dim_problem_v1",
+          "stem": "计算两个 10000 维向量的欧氏距离，主要问题是什么？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 15,
+          "explanation": "高维数据往往更稀疏、计算更慢、更容易过拟合，但并不意味着数据更准确。",
+          "options": [
+            "数据稀疏",
+            "计算速度慢",
+            "更容易过拟合",
+            "数据一定更准确"
+          ],
+          "question_id": "q_quiz_high_dim_problem_v2",
+          "stem": "高维数据带来的问题不包括以下哪一项？"
+        }
+      ]
+    },
+    {
+      "concept_key": "curse_of_dimensionality",
+      "coverage_tags": [
+        "curse_of_dimensionality"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_high_dim_judgment",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确判断关于高维数据价值的常见误解。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能辨别高维数据是否一定优于低维数据。",
+      "question_type": "true_false",
+      "term_refs": [],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "高维数据往往更稀疏、计算更慢、更容易过拟合，因此高维数据不一定比低维数据更好。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_high_dim_judgment_v1",
+          "stem": "判断：高维数据一定比低维数据更好，因为包含更多信息。"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "随着维度增加，数据点在高维空间中变得越来越稀疏，这是维度灾难的表现之一。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_high_dim_judgment_v2",
+          "stem": "判断：高维空间中的数据点通常比低维空间中的数据点更稀疏。"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-pca-and-lda/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

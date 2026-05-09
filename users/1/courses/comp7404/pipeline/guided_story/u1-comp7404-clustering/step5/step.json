@@ -1,0 +1,251 @@
+{
+  "chapter_id": "lecture-04-clustering",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-clustering",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "聚类做完了，怎么知道结果好不好？",
+        "一个直观的想法是：用 SSE 来评估，SSE 越小越好。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "请你在心里尝试一下：用 SSE 来选择 K 值。",
+        "你会发现：随着 K 的增加，SSE 总是单调递减。",
+        "K=数据点数量时，SSE=0，但这显然不是我们想要的。",
+        "请写出你发现的问题。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "SSE 随 K 增加而单调递减，无法直接确定最佳 K 值。",
+        "kind": "single_choice",
+        "options": [
+          "SSE 随 K 增加而增加",
+          "SSE 随 K 增加而单调递减",
+          "SSE 与 K 无关",
+          "SSE 在某个 K 值达到最小后不再变化"
+        ],
+        "prompt": "用 SSE 选择 K 时，你发现什么问题？"
+      },
+      "id": "s044",
+      "lines": [
+        "你刚才的尝试说明了什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "没有标准答案，我们只能靠指标来评估。",
+        "根据是否有真实标签，评估方法分为两类。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s046",
+      "introduced_terms": [
+        "cluster_validity"
+      ],
+      "lines": [
+        "这就引出了 <term id=\"cluster_validity\">聚类有效性</term> 的概念。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s047",
+      "introduced_terms": [
+        "external_index"
+      ],
+      "lines": [
+        "如果你有真实标签（比如已知每张图片是什么），可以用 <term id=\"external_index\">外部指标</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s048",
+      "introduced_terms": [
+        "entropy",
+        "purity"
+      ],
+      "lines": [
+        "比如 <term id=\"entropy\">熵</term> 和 <term id=\"purity\">纯度</term>。",
+        "熵越低，纯度越高，说明聚类结果与真实标签越吻合。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s049",
+      "introduced_terms": [
+        "internal_index"
+      ],
+      "lines": [
+        "如果没有真实标签，就只能用 <term id=\"internal_index\">内部指标</term>。",
+        "比如我们之前提到的 SSE。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s050",
+      "introduced_terms": [
+        "silhouette_coefficient"
+      ],
+      "lines": [
+        "一个更综合的内部指标是 <term id=\"silhouette_coefficient\">轮廓系数</term>。",
+        "它同时考虑了簇内的凝聚度和簇间的分离度。",
+        "轮廓系数的值在 -1 到 1 之间。",
+        "越接近 1，说明这个点被分到了非常合适的簇。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "轮廓系数接近 1 表示该点与自己的簇非常紧密，与相邻簇非常疏远，是理想的聚类结果。",
+        "kind": "single_choice",
+        "options": [
+          "该点被很好地聚类",
+          "该点可能被分到了错误的簇",
+          "该点是离群点",
+          "该点位于两个簇的边界"
+        ],
+        "prompt": "一个点的轮廓系数接近 1，意味着什么？"
+      },
+      "id": "s051",
+      "lines": [
+        "一个点的轮廓系数接近 1，说明什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "轮廓系数接近 -1 表示该点可能被分到了错误的簇。",
+        "kind": "single_choice",
+        "options": [
+          "该点被很好地聚类",
+          "该点可能被分到了错误的簇",
+          "该点是离群点",
+          "该点位于两个簇的边界"
+        ],
+        "prompt": "一个点的轮廓系数为 -0.3，这意味着什么？"
+      },
+      "id": "s052",
+      "lines": [
+        "一个点的轮廓系数为 -0.3，这意味着什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s052b",
+      "introduced_terms": [],
+      "lines": [
+        "请判断以下指标是外部指标还是内部指标：",
+        "熵、纯度、SSE、轮廓系数"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": [
+          0,
+          1
+        ],
+        "explanation": "熵和纯度都是外部指标，需要真实标签才能计算。",
+        "kind": "multiple_choice",
+        "options": [
+          "熵",
+          "纯度",
+          "SSE",
+          "轮廓系数"
+        ],
+        "prompt": "以下哪些是外部指标？（多选）"
+      },
+      "id": "s053",
+      "lines": [
+        "以下哪些是外部指标？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "如果没有真实标签，只能使用内部指标，如 SSE 或轮廓系数。",
+        "kind": "single_choice",
+        "options": [
+          "熵",
+          "纯度",
+          "轮廓系数",
+          "以上都可以"
+        ],
+        "prompt": "如果没有真实标签，应该用什么指标评估聚类？"
+      },
+      "id": "s054",
+      "lines": [
+        "如果没有真实标签，应该用什么指标评估聚类？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Measures of Cluster Validity: External Index, Internal Index, Relative Index. Internal Measures: SSE, Cohesion and Separation, Silhouette Coefficient. External Measures: Entropy and Purity.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "cluster_validity": {
+      "aliases": [
+        "Cluster Validity"
+      ],
+      "display": "聚类有效性",
+      "gloss": "评估聚类结果质量的各种指标和方法。"
+    },
+    "entropy": {
+      "aliases": [
+        "Entropy"
+      ],
+      "display": "熵",
+      "gloss": "一种外部指标，衡量簇内类别分布的混乱程度，熵越低越好。"
+    },
+    "external_index": {
+      "aliases": [
+        "External Index"
+      ],
+      "display": "外部指标",
+      "gloss": "通过与外部提供的真实标签进行比较来评估聚类。"
+    },
+    "internal_index": {
+      "aliases": [
+        "Internal Index"
+      ],
+      "display": "内部指标",
+      "gloss": "仅基于数据本身的特征来评估聚类的好坏。"
+    },
+    "purity": {
+      "aliases": [
+        "Purity"
+      ],
+      "display": "纯度",
+      "gloss": "一种外部指标，衡量一个簇中属于同一类别的点的比例，纯度越高越好。"
+    },
+    "silhouette_coefficient": {
+      "aliases": [
+        "Silhouette Coefficient",
+        "Silhouette Score"
+      ],
+      "display": "轮廓系数",
+      "gloss": "结合凝聚度和分离度，为每个点计算一个介于 -1 到 1 之间的得分，衡量其聚类效果。"
+    }
+  }
+}

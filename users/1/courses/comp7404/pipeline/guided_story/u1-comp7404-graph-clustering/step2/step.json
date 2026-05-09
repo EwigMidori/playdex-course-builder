@@ -1,0 +1,217 @@
+{
+  "chapter_id": "lecture-06-graph-clustering",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-graph-clustering",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "现在，用最小割来切一个包含离群点的图。",
+        "假设主团有10个点，彼此之间权重为1；离群点只有一条权重0.1的边连到主团。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "切掉那条0.1的边，割的权重是0.1；如果从主团中间切，至少会切掉多条权重为1的边，总权重大于0.1。所以最小割会选择切掉离群点。",
+        "kind": "single_choice",
+        "options": [
+          "切掉离群点那条边，割的权重为0.1",
+          "从主团中间切，割的权重为5",
+          "不切割",
+          "切掉所有边"
+        ],
+        "prompt": "最小割会怎么切这个图？"
+      },
+      "focus_terms": [],
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "动手算一算："
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [
+        "结果确实不合理：离群点被单独切出来，但主团内部没有被分开。",
+        "我们需要一种更聪明的切割方法。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "想一想：怎么改进？",
+        "如果切出来的子图很小，是不是应该惩罚这种切割？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "如果子图很小，它的总连接度也小，除以这个小的分母会让切割代价变大，从而避免切出小孤立块。",
+        "kind": "single_choice",
+        "options": [
+          "直接给切割代价加一个常数惩罚",
+          "把切割代价除以子图的总连接度",
+          "强制两个子图大小相等",
+          "只允许切割权重最大的边"
+        ],
+        "prompt": "你觉得哪种改进思路最合理？"
+      },
+      "focus_terms": [],
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "你的改进方案是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "normalized_cuts"
+      ],
+      "id": "s018",
+      "introduced_terms": [
+        "normalized_cuts"
+      ],
+      "lines": [
+        "这个思路就是 <term id=\"normalized_cuts\">归一化割</term> 的核心。",
+        "它不再只看切割边的总权重，还要看切割后每一块内部的紧密程度。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "\\text{Ncuts}(A, B) = \\frac{\\text{cut}(A, B)}{\\text{assoc}(A, V)} + \\frac{\\text{cut}(A, B)}{\\text{assoc}(B, V)}",
+        "spoken": "归一化割等于割的权重除以子图A与全图的总连接度，再加上割的权重除以子图B与全图的总连接度。"
+      },
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "归一化割的公式："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "这里的 assoc(A, V) 表示子图A中所有节点与全图所有节点的连接权重之和。",
+        "它衡量了子图A的‘总连接度’。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "通过除以 assoc(A, V) 和 assoc(B, V)，如果切出的子图A很小，它的总连接度 assoc(A, V) 也会很小，导致 Ncuts 值变大，从而避免这种不合理的切割。",
+        "kind": "single_choice",
+        "options": [
+          "只考虑切割边的数量",
+          "将切割代价除以子图的总连接度",
+          "强制两个子图大小完全相等",
+          "只允许切割权重最大的边"
+        ],
+        "prompt": "归一化割通过什么方式来避免切出孤立的小点？"
+      },
+      "focus_terms": [],
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "来检验一下你的直觉："
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "归一化割的分母 assoc 衡量的是连接度，不是节点个数。平衡连接度不等于平衡大小。",
+        "kind": "single_choice",
+        "options": [
+          "平衡连接度",
+          "平衡节点个数",
+          "平衡边的数量",
+          "平衡特征值"
+        ],
+        "prompt": "归一化割的分母 assoc 是在平衡什么？"
+      },
+      "focus_terms": [],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "注意区分："
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "归一化割的分母 assoc 衡量的是连接度，不是节点个数。平衡连接度不等于强制大小相等。",
+        "kind": "judgment",
+        "options": [
+          "错误",
+          "正确"
+        ],
+        "prompt": "判断以下说法是否正确：归一化割的分母 assoc 强制两个子图大小相等。"
+      },
+      "focus_terms": [],
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "再判断一个说法："
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "最小割会切掉离群点那条边，因为代价最小；归一化割会考虑子图连接度，可能选择从主团内部切，因为离群点单独成组会导致分母很小，Ncuts 值变大。",
+        "kind": "single_choice",
+        "options": [
+          "最小割和归一化割都会切掉离群点",
+          "最小割切离群点，归一化割可能切主团内部",
+          "最小割切主团内部，归一化割切离群点",
+          "两者都不切"
+        ],
+        "prompt": "给定一个图：主团有10个点，彼此权重为1；离群点只有一条权重0.1的边连到主团。最小割和归一化割分别会怎么切？"
+      },
+      "focus_terms": [],
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "综合判断："
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Method #1: Graph cut. A graph G = (V, W, E) can be partitioned into two disjoint sets A, B, with A ∩ B = ∅. The degree of dissimilarity between these two sets can be computed as total weight of the edges that connect these two sets. In graph theoretic language, it is called the cut: Cut(A, B) = ∑_{u∈A, v∈B} w(u, v). Minimum cut is the cut of minimum weight. Drawbacks of Minimum Cut: Weight of cut is directly proportional to the number of edges in the cut. Normalized Cuts: The normalized graph cuts algorithm (Shi & Malik, PAMI' 00) balances the sizes of the two clusters. Computes the cut cost as a fraction of the total edge connections to all the nodes in the graph. We call this the normalized cuts (Ncuts): Ncuts(A, B) = cut(A,B)/assoc(A,V) + cut(A,B)/assoc(B,V). assoc(A,V) = ∑_{u∈A, t∈V} w(u,t).",
+    "related": [
+      "lecture-06-graph-clustering"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "normalized_cuts": {
+      "aliases": [
+        "Normalized Cuts",
+        "Ncuts"
+      ],
+      "display": "归一化割",
+      "gloss": "一种改进的图切割方法，通过将割的代价归一化到子图的总连接度上，来避免分割出孤立的小点集。"
+    }
+  }
+}

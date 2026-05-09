@@ -1,0 +1,195 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s063",
+      "introduced_terms": [],
+      "lines": [
+        "一个分类器可能不够可靠。",
+        "那如果问一群分类器呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "ensemble_methods"
+      ],
+      "id": "s064",
+      "introduced_terms": [
+        "ensemble_methods"
+      ],
+      "lines": [
+        "这就是 <term id=\"ensemble_methods\">集成方法</term> 的思想。",
+        "训练多个分类器，然后让它们一起投票。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bagging"
+      ],
+      "id": "s065",
+      "introduced_terms": [
+        "bagging",
+        "bootstrap_sampling"
+      ],
+      "lines": [
+        "第一个经典方法是 <term id=\"bagging\">Bagging</term>。",
+        "它用 <term id=\"bootstrap_sampling\">自助采样</term> 生成多个不同的训练集。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s066",
+      "introduced_terms": [],
+      "lines": [
+        "自助采样就是有放回地抽样。",
+        "每个新训练集都和原始数据集一样大，但内容不同。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s067",
+      "introduced_terms": [],
+      "lines": [
+        "在每个采样集上训练一个分类器。",
+        "最终，所有分类器投票决定新样本的类别。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "boosting"
+      ],
+      "id": "s068",
+      "introduced_terms": [
+        "boosting"
+      ],
+      "lines": [
+        "第二个方法是 <term id=\"boosting\">Boosting</term>。",
+        "它和 Bagging 不同，是迭代进行的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s069",
+      "introduced_terms": [],
+      "lines": [
+        "每一轮，它会更关注上一轮被分错的样本。",
+        "给这些样本更高的权重，让下一个分类器重点学习它们。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "random_forest"
+      ],
+      "id": "s070",
+      "introduced_terms": [
+        "random_forest"
+      ],
+      "lines": [
+        "第三个是 <term id=\"random_forest\">随机森林</term>。",
+        "它结合了 Bagging 和随机特征选择。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s071",
+      "introduced_terms": [],
+      "lines": [
+        "每棵树都用自助采样训练。",
+        "但在每个节点分裂时，只随机选择一部分特征来考虑。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s072",
+      "introduced_terms": [],
+      "lines": [
+        "这增加了树的多样性，让整体模型更强大。",
+        "随机森林是实践中非常有效的算法。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "Boosting 会迭代地调整样本权重，让后续模型更关注之前被分错的样本。",
+        "kind": "single_choice",
+        "options": [
+          "Bagging",
+          "Boosting",
+          "随机森林",
+          "k-NN"
+        ],
+        "prompt": "哪个方法会迭代地增加错误分类样本的权重？"
+      },
+      "focus_terms": [],
+      "id": "s073",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个方法会迭代地增加错误分类样本的权重？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "Ensemble Methods. Construct a set of classifiers from the training data. Bagging: Bootstrap sampling: sampling with replacement. Boosting: An iterative procedure to adaptively change distribution of training data by focusing more on previously misclassified records. Random Forest Algorithm: Construct an ensemble of decision trees by manipulating training set as well as features.",
+    "related": [
+      "Ensemble",
+      "Bagging",
+      "Boosting",
+      "Random Forest"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "bagging": {
+      "aliases": [
+        "Bootstrap Aggregating"
+      ],
+      "display": "Bagging",
+      "gloss": "通过对训练数据进行有放回抽样，训练多个模型，然后投票或平均。"
+    },
+    "boosting": {
+      "aliases": [
+        "Boosting"
+      ],
+      "display": "Boosting",
+      "gloss": "迭代地训练模型，每次更关注之前被错误分类的样本。"
+    },
+    "bootstrap_sampling": {
+      "aliases": [
+        "Bootstrap Sampling"
+      ],
+      "display": "自助采样",
+      "gloss": "从原始数据集中有放回地随机抽取样本，每次抽取的样本数与原数据集相同。"
+    },
+    "ensemble_methods": {
+      "aliases": [
+        "Ensemble Methods",
+        "Ensemble Learning"
+      ],
+      "display": "集成方法",
+      "gloss": "通过组合多个分类器的预测结果来提升整体性能的方法。"
+    },
+    "random_forest": {
+      "aliases": [
+        "Random Forest"
+      ],
+      "display": "随机森林",
+      "gloss": "一种集成方法，通过构建多棵决策树并随机选择特征来提升准确性和鲁棒性。"
+    }
+  }
+}

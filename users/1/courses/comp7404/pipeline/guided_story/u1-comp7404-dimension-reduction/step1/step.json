@@ -1,0 +1,163 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "降维最直接的想法是投影。",
+        "把高维数据直接压到低维平面上。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "但投影并不总是好办法。",
+        "来看一个经典的反例。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "swiss_roll"
+      ],
+      "id": "s003",
+      "introduced_terms": [
+        "swiss_roll"
+      ],
+      "lines": [
+        "这个数据集叫 <term id=\"swiss_roll\">瑞士卷</term>。",
+        "数据点沿着一个卷曲的曲面分布。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "如果直接投影到平面上，",
+        "不同层的点会被压在一起，完全分不开。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "瑞士卷的曲面是卷曲的，不是平坦的。线性投影会破坏这种非线性结构。",
+        "kind": "single_choice",
+        "options": [
+          "数据点太少",
+          "数据在低维空间中的结构不是线性的",
+          "投影计算太慢",
+          "瑞士卷数据有噪声"
+        ],
+        "prompt": "投影为什么不适合瑞士卷？"
+      },
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "投影失败的根本原因是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "螺旋形和瑞士卷一样是非线性结构，投影同样会压扁不同圈层。",
+        "kind": "single_choice",
+        "options": [
+          "有效，因为螺旋形是二维的",
+          "无效，因为螺旋形也是非线性结构",
+          "有效，因为螺旋形是规则的",
+          "无效，因为螺旋形数据点太少"
+        ],
+        "prompt": "如果数据是螺旋形（spiral）而不是卷曲形（Swiss roll），投影是否有效？为什么？"
+      },
+      "focus_terms": [],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "换个形状试试：螺旋形数据。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "看来，投影对非线性结构都无效。",
+        "那 PCA 呢？PCA 也是线性方法。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "试试用 PCA 处理瑞士卷。",
+        "结果一样：不同层的点还是混在一起。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "PCA 是线性方法，对非线性结构无效。",
+        "kind": "single_choice",
+        "options": [
+          "有效，因为 PCA 能找到主方向",
+          "无效，因为 PCA 也是线性投影",
+          "有效，因为 PCA 能降噪",
+          "无效，因为 PCA 需要标准化"
+        ],
+        "prompt": "PCA 能展开瑞士卷吗？"
+      },
+      "focus_terms": [],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "PCA 能解决这个问题吗？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "投影和 PCA 都失败了。",
+        "我们需要一种能\"展开\"曲面的方法。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Projection is not always the best approach. Consider the Swiss roll. Simply projecting onto a plane would squash different layers. PCA also fails because it is linear.",
+    "related": [
+      "Swiss roll dataset",
+      "manifold hypothesis"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "swiss_roll": {
+      "aliases": [
+        "Swiss roll"
+      ],
+      "display": "瑞士卷",
+      "gloss": "一种经典的合成数据集，形状像卷起的蛋糕，用于测试非线性降维方法。"
+    }
+  }
+}

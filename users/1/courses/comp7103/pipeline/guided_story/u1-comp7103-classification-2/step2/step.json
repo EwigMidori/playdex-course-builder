@@ -1,0 +1,160 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "euclidean_distance"
+      ],
+      "id": "s010",
+      "introduced_terms": [
+        "euclidean_distance"
+      ],
+      "lines": [
+        "如何计算两个点之间的距离？",
+        "最常用的方法是 <term id=\"euclidean_distance\">欧几里得距离</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "d(p, q) = \\sqrt{\\sum_i (p_i - q_i)^2}",
+        "spoken": "p 和 q 的距离等于它们各个属性差值的平方和，再开平方根。"
+      },
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "对于两个点 p 和 q，距离公式是："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "注意：不同属性的尺度可能差别很大。",
+        "比如“年龄”是 0-100，“收入”是 0-100000。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "normalization"
+      ],
+      "id": "s013",
+      "introduced_terms": [
+        "normalization"
+      ],
+      "lines": [
+        "如果不处理，收入会主导距离计算，年龄几乎没影响。",
+        "所以，所有属性必须先做 <term id=\"normalization\">归一化</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "k 值的选择很关键。",
+        "k 太小，模型容易受噪声影响，导致过拟合。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [
+        "k 太大，邻居可能包含其他类别的点，边界变得模糊。",
+        "需要找到一个平衡点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "lazy_learner"
+      ],
+      "id": "s016",
+      "introduced_terms": [
+        "lazy_learner"
+      ],
+      "lines": [
+        "k-NN 是一种 <term id=\"lazy_learner\">懒惰学习器</term>。",
+        "它不会预先建立一个模型，而是把所有训练数据都存起来。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "好处是避免了昂贵的模型训练过程。",
+        "坏处是每次预测都要搜索整个数据集，计算成本高。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "k-NN 是懒惰学习器，不需要预先训练模型，这是它的特点，不是缺点。",
+        "kind": "single_choice",
+        "options": [
+          "对噪声敏感（k 很小时）",
+          "需要预先训练模型",
+          "在高维空间表现不佳",
+          "预测时计算量大"
+        ],
+        "prompt": "哪个不是 k-NN 的缺点？"
+      },
+      "focus_terms": [],
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个不是 k-NN 的缺点？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Compute distance between two points: Euclidean distance. Attributes must be normalized. k-NN classifiers are lazy learners. Choosing the value of k: If k is too small: sensitive to noise points; overfitting. If k is too large, neighborhood may include points from other classes.",
+    "related": [
+      "Euclidean distance",
+      "normalization",
+      "lazy learner"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "euclidean_distance": {
+      "aliases": [
+        "Euclidean Distance",
+        "L2 distance"
+      ],
+      "display": "欧几里得距离",
+      "gloss": "两点之间直线距离的度量方式。"
+    },
+    "lazy_learner": {
+      "aliases": [
+        "Lazy Learner",
+        "Instance-based Learning"
+      ],
+      "display": "懒惰学习器",
+      "gloss": "不预先建立模型，而是在预测时才进行计算的学习方法。"
+    },
+    "normalization": {
+      "aliases": [
+        "Normalization",
+        "Feature Scaling"
+      ],
+      "display": "归一化",
+      "gloss": "将不同尺度的属性值缩放到同一范围，避免某些属性主导距离计算。"
+    }
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-clustering-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "K-means 虽然简单，但有不少局限。",
+        "它假设簇是球形且大小相近的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s039",
+      "introduced_terms": [],
+      "lines": [
+        "看下面这个例子：数据点呈月牙形分布。",
+        "K-means 会强行把它们分成两个不合理的球形簇。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "K-means 假设簇是球形的，月牙形数据不是球形，所以 K-means 会强行分成不合理的球形簇。",
+        "kind": "single_choice",
+        "options": [
+          "K-means 会强行分成两个不合理的球形簇",
+          "K-means 能完美识别月牙形",
+          "K-means 会分成三个簇"
+        ],
+        "prompt": "对于月牙形分布的数据，K-means 会如何分组？"
+      },
+      "focus_terms": [],
+      "id": "s040",
+      "introduced_terms": [],
+      "lines": [
+        "对于月牙形分布的数据，K-means 会如何分组？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "如果簇的大小差异很大，K-means 可能把大簇切碎。",
+        "如果簇的密度不同，它也会出错。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "它还会被噪声和异常值严重影响。",
+        "一个异常点就能把质心拉偏。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "如何改进？如果不用平均值，而是用簇中一个实际存在的点作为代表，会不会更鲁棒？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "k_medoids",
+        "medoid"
+      ],
+      "id": "s044",
+      "introduced_terms": [
+        "k_medoids",
+        "medoid"
+      ],
+      "lines": [
+        "一个改进方案是 <term id=\"k_medoids\">K-medoids</term>。",
+        "它用 <term id=\"medoid\">中心点</term> 代替平均值作为簇的代表。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "中心点是簇中一个实际存在的点，",
+        "它到簇内其他所有点的距离之和最小。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s046",
+      "introduced_terms": [],
+      "lines": [
+        "因为用的是真实数据点，而不是平均值，",
+        "K-medoids 对噪声和异常值更鲁棒。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [
+        "代价是计算量更大。",
+        "K-medoids 比 K-means 更慢。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "K-medoids 使用中心点（medoid）而非平均值（mean）作为簇的代表。",
+        "kind": "single_choice",
+        "options": [
+          "K-medoids 不需要指定簇数 k",
+          "K-medoids 使用簇中实际存在的点作为代表",
+          "K-medoids 只能用于球形簇"
+        ],
+        "prompt": "K-medoids 与 K-means 的主要区别是什么？"
+      },
+      "focus_terms": [],
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "K-medoids 与 K-means 的主要区别是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "当数据包含噪声和异常值时，K-medoids 更鲁棒，因为它使用实际数据点作为代表，不会被异常值拉偏。",
+        "kind": "single_choice",
+        "options": [
+          "数据是球形且大小相近",
+          "数据包含大量噪声和异常值",
+          "数据量非常大，需要快速聚类"
+        ],
+        "prompt": "什么场景下 K-medoids 比 K-means 更合适？"
+      },
+      "focus_terms": [],
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "什么场景下 K-medoids 比 K-means 更合适？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Limitations of K-means: not effective when clusters are of different sizes, different densities, non-globular shapes. Susceptible to noise and outliers. K-medoids: uses medoid instead of mean, more robust but more computationally demanding.",
+    "related": [
+      "k_medoids",
+      "medoid"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "k_medoids": {
+      "aliases": [
+        "K-medoids Clustering"
+      ],
+      "display": "K-medoids",
+      "gloss": "K-means 的变体，使用簇中实际存在的点（中心点）作为代表，而非平均值。"
+    },
+    "medoid": {
+      "aliases": [
+        "Medoid"
+      ],
+      "display": "中心点",
+      "gloss": "簇中到其他所有点距离之和最小的实际数据点。"
+    }
+  }
+}

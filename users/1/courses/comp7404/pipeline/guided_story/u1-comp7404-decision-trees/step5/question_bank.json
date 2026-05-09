@@ -1,0 +1,688 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "random_forest_definition",
+      "covered_by": [
+        "qf_flash_rf_def",
+        "qf_quiz_rf_def"
+      ],
+      "description": "随机森林的定义：决策树的集成"
+    },
+    {
+      "coverage_tag": "ensemble_voting",
+      "covered_by": [
+        "qf_flash_voting",
+        "qf_quiz_voting"
+      ],
+      "description": "集成与投票机制：每棵树单独预测，多数投票决定最终类别"
+    },
+    {
+      "coverage_tag": "bootstrap_sampling",
+      "covered_by": [
+        "qf_flash_bootstrap",
+        "qf_quiz_bootstrap"
+      ],
+      "description": "自助采样：有放回地随机抽取样本，增加树间多样性"
+    },
+    {
+      "coverage_tag": "feature_random_selection",
+      "covered_by": [
+        "qf_flash_feature_sel",
+        "qf_quiz_feature_sel"
+      ],
+      "description": "特征随机选择：每个节点分裂时随机选择部分特征"
+    },
+    {
+      "coverage_tag": "max_features_parameter",
+      "covered_by": [
+        "qf_flash_max_features",
+        "qf_quiz_max_features"
+      ],
+      "description": "max_features 参数：控制每个节点分裂时随机抽取的特征数"
+    },
+    {
+      "coverage_tag": "variance_reduction",
+      "covered_by": [
+        "qf_flash_variance",
+        "qf_quiz_variance"
+      ],
+      "description": "方差降低：集成多棵树的结果降低整体方差，提高稳健性"
+    },
+    {
+      "coverage_tag": "random_forest_creation_process",
+      "covered_by": [
+        "qf_long_rf_process"
+      ],
+      "description": "随机森林创建过程：自助采样、生长决策树、重复、投票"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "random_forest",
+      "coverage_tags": [
+        "random_forest_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_rf_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出随机森林的基本定义：它是决策树的集成。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了随机森林的核心定义——它不是一个单一模型，而是一群决策树的集成。",
+      "question_type": "short_answer",
+      "retrieval_focus": "随机森林的本质结构：一群决策树的集成。",
+      "term_refs": [
+        {
+          "display": "随机森林",
+          "en": "Random Forest"
+        },
+        {
+          "display": "集成",
+          "en": "Ensemble"
+        }
+      ],
+      "variants": [
+        {
+          "back": "决策树的集成（ensemble）。",
+          "estimated_seconds": 5,
+          "explanation": "随机森林不是单个模型，而是将多棵决策树组合起来，通过投票或平均来提升性能。",
+          "front": "随机森林本质上是一个什么类型的模型？",
+          "question_id": "q_flash_rf_def_v1"
+        },
+        {
+          "back": "决策树。",
+          "estimated_seconds": 5,
+          "explanation": "随机森林中的所有树都是决策树，只是训练数据和特征选择不同。",
+          "front": "随机森林中的每棵基础模型是什么？",
+          "question_id": "q_flash_rf_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "ensemble",
+      "coverage_tags": [
+        "ensemble_voting"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_voting",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出随机森林中多棵树如何做出最终预测。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了随机森林的投票机制：每棵树单独预测，多数投票决定最终类别。",
+      "question_type": "short_answer",
+      "retrieval_focus": "随机森林的最终预测方式：多数投票。",
+      "term_refs": [
+        {
+          "display": "集成",
+          "en": "Ensemble"
+        }
+      ],
+      "variants": [
+        {
+          "back": "每棵树单独预测，得票最多的类别作为最终结果（多数投票）。",
+          "estimated_seconds": 8,
+          "explanation": "每棵树给出自己的预测，然后统计所有树的预测结果，选择出现次数最多的类别。",
+          "front": "随机森林中，多棵决策树如何决定最终的预测类别？",
+          "question_id": "q_flash_voting_v1"
+        },
+        {
+          "back": "苹果。",
+          "estimated_seconds": 5,
+          "explanation": "因为多数投票原则，得票最多的类别胜出。",
+          "front": "随机森林的预测机制中，如果 100 棵树里有 60 棵预测“苹果”，40 棵预测“橘子”，最终结果是什么？",
+          "question_id": "q_flash_voting_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "bootstrap_sampling",
+      "coverage_tags": [
+        "bootstrap_sampling"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bootstrap",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出自助采样的定义及其在随机森林中的作用。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了自助采样的核心概念：有放回地随机抽取样本，用于增加树间多样性。",
+      "question_type": "short_answer",
+      "retrieval_focus": "自助采样的操作方式：有放回地随机抽取。",
+      "term_refs": [
+        {
+          "display": "自助采样",
+          "en": "Bootstrap Sampling"
+        }
+      ],
+      "variants": [
+        {
+          "back": "有放回地随机抽取。",
+          "estimated_seconds": 5,
+          "explanation": "每次抽取一个样本后，将其放回，使得同一个样本可能被多次抽到。",
+          "front": "随机森林中，自助采样（Bootstrap Sampling）是如何从原始数据中抽取样本的？",
+          "question_id": "q_flash_bootstrap_v1"
+        },
+        {
+          "back": "让每棵树使用不同的训练数据子集，增加树间的多样性。",
+          "estimated_seconds": 8,
+          "explanation": "不同的数据子集使得每棵树学到不同的模式，从而在集成时获得更稳健的结果。",
+          "front": "随机森林使用自助采样的主要目的是什么？",
+          "question_id": "q_flash_bootstrap_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "random_forest",
+      "coverage_tags": [
+        "feature_random_selection"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_feature_sel",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出随机森林中第二个增加多样性的技巧：在每个节点随机选择特征子集。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了随机森林中特征随机选择这一关键技巧。",
+      "question_type": "short_answer",
+      "retrieval_focus": "随机森林中第二个多样性来源：在每个节点随机选择部分特征。",
+      "term_refs": [
+        {
+          "display": "随机森林",
+          "en": "Random Forest"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在每个节点分裂时，随机选择一部分特征，而不是考虑所有特征。",
+          "estimated_seconds": 8,
+          "explanation": "这保证了即使使用相同的数据，不同的树也可能选择不同的特征进行分裂。",
+          "front": "除了自助采样，随机森林还用了什么技巧来增加树之间的多样性？",
+          "question_id": "q_flash_feature_sel_v1"
+        },
+        {
+          "back": "从随机子集中选最好的。",
+          "estimated_seconds": 5,
+          "explanation": "先随机选择一部分特征，然后只从这些特征中找出最佳分裂特征。",
+          "front": "在随机森林的节点分裂中，是从所有特征中选最好的，还是从随机子集中选最好的？",
+          "question_id": "q_flash_feature_sel_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "random_forest",
+      "coverage_tags": [
+        "max_features_parameter"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_max_features",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出控制随机森林中特征随机选择数量的参数名称。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了 max_features 参数的作用：控制每个节点分裂时随机抽取的特征数量。",
+      "question_type": "short_answer",
+      "retrieval_focus": "控制特征随机选择数量的参数名：max_features。",
+      "term_refs": [
+        {
+          "display": "max_features",
+          "en": "max_features"
+        }
+      ],
+      "variants": [
+        {
+          "back": "max_features。",
+          "estimated_seconds": 5,
+          "explanation": "max_features 决定了每次分裂时考虑的特征子集大小，是控制树间多样性的重要参数。",
+          "front": "随机森林中，哪个参数直接控制每个节点分裂时随机抽取多少个特征来比较？",
+          "question_id": "q_flash_max_features_v1"
+        },
+        {
+          "back": "每个节点会考虑所有特征，失去了特征随机选择带来的多样性。",
+          "estimated_seconds": 8,
+          "explanation": "当 max_features 等于总特征数时，特征随机选择退化为普通决策树的分裂方式。",
+          "front": "如果随机森林的 max_features 等于总特征数，会发生什么？",
+          "question_id": "q_flash_max_features_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "random_forest",
+      "coverage_tags": [
+        "variance_reduction"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_variance",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出随机森林如何通过集成降低方差。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了随机森林降低方差的基本原理：平均多棵高方差树的结果，使整体更稳健。",
+      "question_type": "short_answer",
+      "retrieval_focus": "随机森林降低方差的方式：平均多棵树的预测结果。",
+      "term_refs": [
+        {
+          "display": "方差",
+          "en": "Variance"
+        }
+      ],
+      "variants": [
+        {
+          "back": "平均多棵（高方差）决策树的预测结果。",
+          "estimated_seconds": 8,
+          "explanation": "单棵决策树可能过拟合、方差高，但平均多棵树的结果后，整体方差降低，模型更稳健。",
+          "front": "随机森林通过什么方式降低模型的方差？",
+          "question_id": "q_flash_variance_v1"
+        },
+        {
+          "back": "方差降低，模型更稳定。",
+          "estimated_seconds": 5,
+          "explanation": "更多的树意味着更充分的平均，方差通常会降低，但收益递减。",
+          "front": "随机森林中，增加树的数量（从 10 到 100）通常对模型的方差有什么影响？",
+          "question_id": "q_flash_variance_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-decision-trees",
+  "longform_families": [
+    {
+      "concept_key": "random_forest",
+      "coverage_tags": [
+        "random_forest_creation_process"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_rf_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整描述随机森林的创建过程，包括自助采样、特征随机选择、重复生长和投票聚合。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了随机森林从数据准备到最终预测的完整流程，并能解释每个步骤的目的。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "随机森林",
+          "en": "Random Forest"
+        },
+        {
+          "display": "自助采样",
+          "en": "Bootstrap Sampling"
+        },
+        {
+          "display": "集成",
+          "en": "Ensemble"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "数据准备方式",
+            "节点分裂时的特征选择",
+            "最终预测的聚合方式",
+            "降低过拟合的原因"
+          ],
+          "question_id": "q_long_rf_process_v1",
+          "reference_answer": [
+            "1. 数据准备：使用自助采样（Bootstrap Sampling），从原始数据中有放回地随机抽取 n 个样本，每棵树使用不同的数据子集。",
+            "2. 节点分裂：在每个节点，先随机选择 d 个特征（不重复），然后从这些特征中选出信息增益最大的特征进行分裂。",
+            "3. 重复：重复步骤 1 和 2 k 次，生成 k 棵决策树。",
+            "4. 预测：每棵树单独预测，通过多数投票（分类任务）或平均（回归任务）得到最终结果。",
+            "5. 降低过拟合：单棵决策树容易过拟合（高方差），但平均多棵树的结果后，整体方差降低，模型更稳健；同时，自助采样和特征随机选择增加了树间多样性，进一步防止过拟合。"
+          ],
+          "rubric_points": [
+            "正确描述自助采样：有放回地随机抽取样本，每棵树使用不同的数据子集",
+            "正确描述特征随机选择：在每个节点随机选择一部分特征，从中选最佳分裂",
+            "正确描述重复步骤：重复自助采样和生长决策树 k 次",
+            "正确描述投票机制：每棵树单独预测，多数投票决定最终类别",
+            "正确解释降低过拟合的原因：平均多棵树的结果降低方差，多样性防止过拟合"
+          ],
+          "stem": "请描述随机森林的创建过程，包括以下关键步骤：\n1. 如何为每棵树准备训练数据？\n2. 每棵树在节点分裂时如何选择特征？\n3. 如何得到最终的预测结果？\n4. 为什么这个过程能降低过拟合风险？"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "第一棵树的数据准备",
+            "根节点分裂时的特征选择步骤",
+            "500 棵树的预测聚合",
+            "相比单棵树的优势"
+          ],
+          "question_id": "q_long_rf_process_v2",
+          "reference_answer": [
+            "1. 数据准备：从 1000 个样本中有放回地随机抽取 1000 个样本（自助采样），作为第一棵树的训练数据。由于有放回，有些样本可能被多次抽到，有些可能没被抽到。",
+            "2. 根节点分裂：从 20 个特征中随机选择一部分（例如 max_features 设置为 sqrt(20) ≈ 4 或 5 个），然后计算这些特征的信息增益，选择增益最大的特征进行分裂。",
+            "3. 预测聚合：500 棵树各自独立预测，统计每个类别的得票数，得票最多的类别作为最终预测结果。",
+            "4. 优势：单棵决策树容易过拟合（高方差），随机森林通过平均多棵树的结果降低方差；同时，自助采样和特征随机选择增加了树间多样性，使集成模型更稳健、泛化能力更强。"
+          ],
+          "rubric_points": [
+            "正确描述自助采样的具体操作：有放回地抽取 1000 个样本",
+            "正确描述特征随机选择：从 20 个特征中随机选一部分（如 sqrt(20) ≈ 4 或 5 个）",
+            "正确描述从随机子集中选最佳分裂特征",
+            "正确描述多数投票机制",
+            "正确解释方差降低和多样性带来的优势"
+          ],
+          "stem": "假设你有一个包含 1000 个样本、20 个特征的数据集，你想训练一个随机森林分类器。请详细说明：\n1. 你会如何为第一棵树准备训练数据？\n2. 在树的根节点分裂时，特征选择的具体步骤是什么？\n3. 如果最终有 500 棵树，如何得到对新样本的预测结果？\n4. 为什么随机森林通常比单棵决策树表现更好？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "random_forest",
+      "coverage_tags": [
+        "random_forest_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_rf_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中准确识别随机森林的本质特征。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能在多个选项中正确识别随机森林的核心定义——它是决策树的集成。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "随机森林",
+          "en": "Random Forest"
+        },
+        {
+          "display": "集成",
+          "en": "Ensemble"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "随机森林的核心是集成多棵决策树，而不是单个树。",
+          "options": [
+            "一个单一的、经过深度优化的决策树",
+            "一群决策树的集成，通过投票或平均做出预测",
+            "一种使用所有特征同时进行分裂的算法",
+            "一种只使用一个特征进行分类的模型"
+          ],
+          "question_id": "q_quiz_rf_def_v1",
+          "stem": "以下哪一项最准确地描述了随机森林？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 10,
+          "explanation": "随机森林由多棵决策树组成，每棵树都是一个基础学习器。",
+          "options": [
+            "线性回归模型",
+            "支持向量机",
+            "决策树",
+            "神经网络"
+          ],
+          "question_id": "q_quiz_rf_def_v2",
+          "stem": "随机森林中的基础学习器是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "ensemble",
+      "coverage_tags": [
+        "ensemble_voting"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_voting",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中正确应用随机森林的投票机制。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了随机森林的多数投票预测机制。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "集成",
+          "en": "Ensemble"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "随机森林使用多数投票，得票最多的类别胜出。猫有 120 票，多于狗的 80 票。",
+          "options": [
+            "猫",
+            "狗",
+            "无法确定",
+            "需要计算概率"
+          ],
+          "question_id": "q_quiz_voting_v1",
+          "stem": "一个随机森林有 200 棵树，对某个新样本的预测结果如下：120 棵树预测“猫”，80 棵树预测“狗”。最终预测结果是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 10,
+          "explanation": "对于分类任务，随机森林使用多数投票（majority vote）来确定最终类别。",
+          "options": [
+            "取所有树预测结果的平均值",
+            "取所有树预测结果的中位数",
+            "通过多数投票决定",
+            "随机选择一棵树的预测结果"
+          ],
+          "question_id": "q_quiz_voting_v2",
+          "stem": "随机森林中，每棵树做出预测后，最终结果是如何确定的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "bootstrap_sampling",
+      "coverage_tags": [
+        "bootstrap_sampling"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_bootstrap",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中正确理解自助采样的操作和目的。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了自助采样的有放回抽取方式及其在随机森林中的作用。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "自助采样",
+          "en": "Bootstrap Sampling"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "自助采样是有放回地随机抽取，使得同一个样本可能被多次选中。",
+          "options": [
+            "从原始数据中无放回地随机抽取样本",
+            "从原始数据中有放回地随机抽取样本",
+            "从原始数据中按顺序依次选取样本",
+            "从原始数据中只选取最难分类的样本"
+          ],
+          "question_id": "q_quiz_bootstrap_v1",
+          "stem": "关于随机森林中的自助采样（Bootstrap Sampling），以下哪项描述是正确的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "自助采样使得每棵树的训练数据略有不同，从而增加树之间的多样性，这是随机森林成功的关键。",
+          "options": [
+            "减少训练数据量以加快训练速度",
+            "让每棵树使用不同的数据子集，增加树间多样性",
+            "确保每棵树使用完全相同的数据",
+            "消除数据中的噪声"
+          ],
+          "question_id": "q_quiz_bootstrap_v2",
+          "stem": "随机森林使用自助采样的主要目的是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "random_forest",
+      "coverage_tags": [
+        "feature_random_selection"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_feature_sel",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中识别随机森林中特征随机选择的具体做法。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了特征随机选择的具体操作：在每个节点从随机子集中选最佳特征。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "随机森林",
+          "en": "Random Forest"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "随机森林在每个节点先随机选择一部分特征，然后只从这些特征中找出最佳分裂特征。",
+          "options": [
+            "考虑所有特征，选择信息增益最大的特征",
+            "随机选择一个特征进行分裂",
+            "先随机选择一部分特征，再从这些特征中选信息增益最大的",
+            "使用所有特征的平均值进行分裂"
+          ],
+          "question_id": "q_quiz_feature_sel_v1",
+          "stem": "在随机森林的节点分裂过程中，以下哪项描述是正确的？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "随机森林中的所有树都是决策树，不会混合使用其他分类算法。",
+          "options": [
+            "使用不同的训练数据子集（自助采样）",
+            "在每个节点随机选择特征子集",
+            "使用不同的分类算法（如 SVM、KNN）",
+            "以上都是增加多样性的方法"
+          ],
+          "question_id": "q_quiz_feature_sel_v2",
+          "stem": "以下哪一项不是随机森林增加树间多样性的方法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "random_forest",
+      "coverage_tags": [
+        "max_features_parameter"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_max_features",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中正确识别 max_features 参数的作用。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了 max_features 参数控制每个节点分裂时随机抽取的特征数量。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "max_features",
+          "en": "max_features"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "max_features 控制每个节点分裂时随机抽取的特征数量，是制造树间差异的重要参数。",
+          "options": [
+            "max_depth",
+            "max_features",
+            "n_estimators",
+            "min_samples_leaf"
+          ],
+          "question_id": "q_quiz_max_features_v1",
+          "stem": "随机森林中，哪个参数直接控制“每个节点分裂时随机抽取多少个特征来比较”？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "当 max_features 等于总特征数时，每个节点会考虑所有特征，失去了特征随机选择带来的多样性。",
+          "options": [
+            "效果不变，仍然随机选择",
+            "失去效果，每个节点会考虑所有特征",
+            "效果增强，多样性更大",
+            "训练速度变慢但效果更好"
+          ],
+          "question_id": "q_quiz_max_features_v2",
+          "stem": "如果随机森林的 max_features 设置为总特征数，那么特征随机选择的效果会如何？"
+        }
+      ]
+    },
+    {
+      "concept_key": "random_forest",
+      "coverage_tags": [
+        "variance_reduction"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_variance",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中理解随机森林如何通过集成降低方差。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了随机森林降低方差的基本原理及其对模型稳健性的影响。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "方差",
+          "en": "Variance"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "增加树的数量通常能降低方差，提升稳定性，但收益递减。",
+          "options": [
+            "方差降低，模型更稳定",
+            "方差增加，模型更不稳定",
+            "偏差降低，模型更准确",
+            "没有影响"
+          ],
+          "question_id": "q_quiz_variance_v1",
+          "stem": "随机森林中，增加树的数量（例如从 10 增加到 100）通常会导致什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "随机森林通过平均多棵（高方差）决策树的结果，使整体方差降低，模型变得更稳健。",
+          "options": [
+            "通过使用更简单的决策树",
+            "通过平均多棵决策树的结果来降低方差",
+            "通过减少训练数据",
+            "通过使用更少的特征"
+          ],
+          "question_id": "q_quiz_variance_v2",
+          "stem": "单棵决策树容易过拟合、方差高，随机森林如何解决这个问题？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-decision-trees/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

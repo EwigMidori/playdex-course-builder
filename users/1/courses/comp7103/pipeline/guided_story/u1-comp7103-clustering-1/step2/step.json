@@ -1,0 +1,165 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-clustering-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "假设你要对生物进行分类：猫、狗、狼、虎。",
+        "如果只允许不重叠的分组，猫和狗是一类，狼和虎是另一类。",
+        "但狼和狗其实都属于犬科，虎和猫都属于猫科。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "不重叠的分组无法表达这种嵌套关系。",
+        "你需要一种能嵌套的分组方式。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "如果只能不重叠分组，猫和狗被分到不同组，就无法表达它们都属于哺乳动物这一事实。",
+        "kind": "single_choice",
+        "options": [
+          "不能，因为猫和狗被分到不同组，无法表达它们都属于哺乳动物",
+          "能，因为可以把猫和狗分到同一个组",
+          "能，因为可以创建多个不重叠的组来表达嵌套关系"
+        ],
+        "prompt": "如果只能把每个动物分到一个不重叠的组，你能表达猫和狗都属于哺乳动物吗？"
+      },
+      "focus_terms": [],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "如果只能把每个动物分到一个不重叠的组，你能表达猫和狗都属于哺乳动物吗？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "partitional_clustering"
+      ],
+      "id": "s012",
+      "introduced_terms": [
+        "partitional_clustering"
+      ],
+      "lines": [
+        "第一种风格：每个对象只属于一个组，组与组之间不重叠。",
+        "这叫做 <term id=\"partitional_clustering\">划分式聚类</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "hierarchical_clustering"
+      ],
+      "id": "s013",
+      "introduced_terms": [
+        "hierarchical_clustering"
+      ],
+      "lines": [
+        "第二种风格：组与组之间可以嵌套。",
+        "小组合成大组，大组再合成更大的组。",
+        "这叫做 <term id=\"hierarchical_clustering\">层次聚类</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "dendrogram"
+      ],
+      "id": "s014",
+      "introduced_terms": [
+        "dendrogram"
+      ],
+      "lines": [
+        "层次聚类的结果可以用一棵树来表示，这棵树叫做 <term id=\"dendrogram\">树状图</term>。",
+        "它记录了每一步合并或分裂的顺序。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "划分式聚类中，每个数据对象只被分配到一个簇，簇之间没有重叠。",
+        "kind": "single_choice",
+        "options": [
+          "一个对象可以同时属于多个簇",
+          "每个对象只属于一个簇，簇之间不重叠",
+          "簇之间形成嵌套的树状结构"
+        ],
+        "prompt": "下面哪个描述符合划分式聚类？"
+      },
+      "focus_terms": [],
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [
+        "下面哪个描述符合划分式聚类？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "生物分类需要嵌套结构（如科、属、种），层次聚类可以表达这种关系。",
+        "kind": "single_choice",
+        "options": [
+          "将客户按购买行为分成互不重叠的几类",
+          "对生物进行界门纲目科属种的分类",
+          "将新闻文章按主题分成几个独立类别"
+        ],
+        "prompt": "以下哪个场景更适合使用层次聚类而不是划分式聚类？"
+      },
+      "focus_terms": [],
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个场景更适合使用层次聚类而不是划分式聚类？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Types of Clusterings: Partitional Clustering - a division of data objects into non-overlapping subsets. Hierarchical clustering - a set of nested clusters organized as a hierarchical tree.",
+    "related": [
+      "partitional_clustering",
+      "hierarchical_clustering",
+      "dendrogram"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "dendrogram": {
+      "aliases": [
+        "Dendrogram"
+      ],
+      "display": "树状图",
+      "gloss": "记录簇的合并或分裂顺序的树形图。"
+    },
+    "hierarchical_clustering": {
+      "aliases": [
+        "Hierarchical Clustering"
+      ],
+      "display": "层次聚类",
+      "gloss": "生成一组嵌套的簇，组织成树状结构。"
+    },
+    "partitional_clustering": {
+      "aliases": [
+        "Partitional Clustering"
+      ],
+      "display": "划分式聚类",
+      "gloss": "将数据分成互不重叠的子集，每个对象只属于一个簇。"
+    }
+  }
+}

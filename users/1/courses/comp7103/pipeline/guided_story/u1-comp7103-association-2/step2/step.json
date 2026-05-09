@@ -1,0 +1,114 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "lines": [
+        "建树分四步走。",
+        "第一步：扫描数据库，找出所有频繁的单个项。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "min_support"
+      ],
+      "lines": [
+        "假设 <term id=\"min_support\">最小支持度</term> 设为 3。",
+        "那么像 {f:4}, {c:4}, {a:3} 这些项就是频繁的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "lines": [
+        "第二步：把每条事务中不频繁的项直接删掉。",
+        "第三步：把剩下的项按频率从高到低排序。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "lines": [
+        "比如事务 {f, a, c, d, g, i, m, p} 经过处理后变成 {f, c, a, m, p}。",
+        "不频繁的项 d, g, i 被移除了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "lines": [
+        "第四步：再次扫描数据库，用这些处理好的事务构建 FP-tree。",
+        "树的根节点是 null，每条事务变成一条从根出发的路径。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "introduced_terms": [
+        "header_table"
+      ],
+      "lines": [
+        "同时维护一个 <term id=\"header_table\">头表</term>，记录每个频繁项的出现次数。",
+        "相同项的节点之间用链表连接起来。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "降序排列使得高频项更靠近根节点，不同事务的高频前缀更容易共享，从而让树更紧凑。",
+        "kind": "single_choice",
+        "options": [
+          "为了让树更紧凑，提高共享前缀的概率",
+          "为了让树更美观",
+          "为了减少内存占用",
+          "为了加快排序速度"
+        ],
+        "prompt": "构建 FP-tree 时，事务中的项为什么要按频率降序排列？"
+      },
+      "id": "s007",
+      "lines": [
+        "构建 FP-tree 时，事务中的项为什么要按频率降序排列？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s008",
+      "lines": [
+        "最终，整个数据库被压缩成一棵小得多的树。",
+        "接下来，频繁项集的挖掘就在这棵树上进行。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Steps: 1. Scan DB once, find frequent 1-itemsets. 2. Remove infrequent items from transactions. 3. Order frequent items in each transaction in descending order of their frequency. 4. Scan the reduced DB again, construct FP-tree.",
+    "related": [
+      "FP-tree Construction"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "header_table": {
+      "aliases": [
+        "Header Table"
+      ],
+      "display": "头表",
+      "gloss": "FP-tree 中用于记录每个频繁项及其出现次数的索引表。"
+    },
+    "min_support": {
+      "aliases": [
+        "min_support",
+        "minsup"
+      ],
+      "display": "最小支持度",
+      "gloss": "用户指定的阈值，用于判断一个项集是否频繁。"
+    }
+  }
+}

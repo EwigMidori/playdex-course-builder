@@ -1,0 +1,230 @@
+{
+  "chapter_id": "lecture-05-application",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-application",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "先做一个实验：给你两张图片，一张是蓝天草地，另一张是草地蓝天（上下颠倒）。",
+        "如果直接比较它们的像素值，结果会怎样？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "像素值直接比较会得到差异很大的结果，因为像素位置完全变了。",
+        "kind": "single_choice",
+        "options": [
+          "差异很大，计算机认为它们完全不同",
+          "差异很小，计算机认为它们很相似",
+          "无法比较，因为图片大小不同",
+          "结果取决于图片格式"
+        ],
+        "prompt": "直接比较这两张图片的像素值，计算机最可能认为它们："
+      },
+      "focus_terms": [],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "直接比较这两张图片的像素值，计算机最可能认为它们："
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "像素值比较太脆弱了。有没有更聪明的表示方法？",
+        "先看看文档分析是怎么做的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s014",
+      "introduced_terms": [
+        "bag_of_words"
+      ],
+      "lines": [
+        "如何判断一本书的主题？一个简单的方法：统计关键词出现的次数。",
+        "比如“微分方程”出现很多次，那这本书很可能和数学有关。",
+        "这种方法忽略单词的顺序和语法，只看“有哪些词”和“出现了多少次”。",
+        "这就是 <term id=\"bag_of_words\">词袋模型</term> 的核心思想。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "词袋模型忽略顺序和语法，只关心单词的种类和出现次数。",
+        "kind": "single_choice",
+        "options": [
+          "单词的顺序很重要",
+          "单词的语法结构很重要",
+          "单词的出现频率和种类很重要",
+          "句子的长度很重要"
+        ],
+        "prompt": "词袋模型最核心的假设是什么？"
+      },
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [
+        "词袋模型最核心的假设是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words",
+        "visual_word"
+      ],
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "现在，把这个想法搬到图像识别上。",
+        "图像里有什么可以充当“单词”呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "visual_word"
+      ],
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "答案是：图像的局部区域。",
+        "比如一个角、一块纹理、一个斑点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "visual_word"
+      ],
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "我们把图像分成很多小块，",
+        "每一块都用一个特征向量来描述它的外观。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "visual_word"
+      ],
+      "id": "s019",
+      "introduced_terms": [
+        "visual_word"
+      ],
+      "lines": [
+        "然后，把这些特征向量聚类，",
+        "每个聚类中心就是一个 <term id=\"visual_word\">视觉单词</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "histogram"
+      ],
+      "id": "s020",
+      "introduced_terms": [
+        "histogram"
+      ],
+      "lines": [
+        "最后，统计每个视觉单词在图像中出现的次数，",
+        "形成一张 <term id=\"histogram\">直方图</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words",
+        "histogram"
+      ],
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "这张直方图，就是图像的“词袋”表示。",
+        "接下来，就可以用它来训练分类器了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": "直接使用像素值比较会失败，因为像素值对光照、视角等变化非常敏感。词袋模型通过统计局部视觉单词的频率，忽略位置和顺序，从而获得更鲁棒的表示。",
+        "kind": "short_answer",
+        "prompt": "请分析为什么直接使用像素值比较两张图片会失败？词袋模型如何解决这个问题？"
+      },
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "请分析为什么直接使用像素值比较两张图片会失败？词袋模型如何解决这个问题？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": "视觉单词是通过对局部图像块的特征向量进行聚类得到的聚类中心，代表一种局部模式（如角点、纹理），而不是图像中的真实物体。",
+        "kind": "short_answer",
+        "prompt": "请解释为什么视觉单词不是图像中的真实物体，而是局部模式的代表。"
+      },
+      "focus_terms": [
+        "visual_word"
+      ],
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "请解释为什么视觉单词不是图像中的真实物体，而是局部模式的代表。"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Bag-of-words model in Document Analysis. Term-document matrix. Object -> Bag of 'words'. A clarification: definition of 'BoW'. 'Bag of words' Methods: Local regions are extracted, described, quantized into visual words, image represented as histogram, classifier trained.",
+    "related": [
+      "lecture-05-application"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "bag_of_words": {
+      "aliases": [
+        "Bag-of-words model",
+        "BoW"
+      ],
+      "display": "词袋模型",
+      "gloss": "将文本或图像表示为一组无序特征的集合，忽略顺序，只关心出现频率。"
+    },
+    "histogram": {
+      "aliases": [
+        "Histogram"
+      ],
+      "display": "直方图",
+      "gloss": "统计每个视觉单词在图像中出现的次数，形成向量表示。"
+    },
+    "visual_word": {
+      "aliases": [
+        "Visual Word"
+      ],
+      "display": "视觉单词",
+      "gloss": "对图像局部特征进行量化后得到的代表性模式，类似于文档中的单词。"
+    }
+  }
+}

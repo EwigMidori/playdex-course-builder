@@ -1,0 +1,45 @@
+{
+  "chapter_id": "lecture-05-application",
+  "chapter_title": "Application",
+  "course_id": "user-1-comp7404",
+  "course_title": "COMP7404",
+  "lesson_id": "u1-comp7404-application",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "图像识别为什么难：从失败案例开始",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "从文档词袋到图像词袋：类比与迁移",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "词袋模型的构建流程：从像素到单词",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "直方图距离与词袋模型的缺陷",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "空间金字塔匹配：补上空间信息",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "空间对齐金字塔匹配：处理近重复图像",
+      "file": "step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "从图像到视频：时间金字塔匹配",
+      "file": "step7/step.json",
+      "sequence_id": "step7"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s070",
+      "introduced_terms": [],
+      "lines": [
+        "PCA 和 LDA 都是线性降维工具，",
+        "但它们的“价值观”完全不同。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s071",
+      "introduced_terms": [],
+      "lines": [
+        "PCA 是无监督的，只关心方差。",
+        "适合探索数据整体结构、去噪、可视化。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s072",
+      "introduced_terms": [],
+      "lines": [
+        "LDA 是有监督的，关心类别可分性。",
+        "适合分类任务，尤其是当均值差异比方差更重要时。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s073",
+      "introduced_terms": [],
+      "lines": [
+        "一个经典对比：",
+        "在人脸识别中，Eigenface（PCA）对光照敏感，Fisherface（LDA）更鲁棒。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s074",
+      "introduced_terms": [],
+      "lines": [
+        "但 LDA 也有弱点：",
+        "每类需要足够多样本，否则 \\(S_W\\) 估计不准。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "PCA 不需要标签，适合无监督的可视化和探索性分析。",
+        "kind": "single_choice",
+        "options": [
+          "将猫和狗的图像分开",
+          "对无标签的高维数据进行可视化",
+          "识别手写数字 0-9",
+          "在少量样本下做情感分类"
+        ],
+        "prompt": "哪种场景更适合用 PCA？"
+      },
+      "focus_terms": [],
+      "id": "s075",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪种场景更适合用 PCA 而不是 LDA？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "这是有标签的分类任务，但又存在“维度远大于样本数”的问题。直接 PCA 不看类别，直接 LDA 又会遇到 \\(S_W\\) 不可逆，因此最合适的是先 PCA 再 LDA 的 Fisherface。",
+        "kind": "single_choice",
+        "options": [
+          "PCA",
+          "LDA",
+          "Fisherface（先 PCA 再 LDA）",
+          "都不需要降维"
+        ],
+        "prompt": "给定一个具体任务：你有 500 张人脸图像，每张图像 10000 维，分属 50 个人（每人 10 张），目标是识别新的人脸属于谁。下面哪种方法最合适？"
+      },
+      "focus_terms": [],
+      "id": "s076",
+      "introduced_terms": [],
+      "lines": [
+        "给定一个具体任务：你有 500 张人脸图像，每张图像 10000 维，分属 50 个人（每人 10 张），目标是识别新的人脸属于谁。你应该选哪种方法？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "LDA 需要每类有足够多样本，否则 S_W 估计不准。",
+        "kind": "single_choice",
+        "options": [
+          "每类需要足够多样本",
+          "不需要标签",
+          "对光照不敏感",
+          "可以处理任意高维数据"
+        ],
+        "prompt": "以下哪一项是 LDA 的弱点？"
+      },
+      "focus_terms": [],
+      "id": "s077",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪一项是 LDA 的弱点？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s078",
+      "introduced_terms": [],
+      "lines": [
+        "一句话带走：",
+        "PCA 找“最散”的方向，LDA 找“最可分”的方向。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "plain_text": "PCA and LDA lecture material",
+    "related": [
+      "comparison",
+      "summary"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

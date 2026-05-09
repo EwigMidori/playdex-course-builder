@@ -1,0 +1,473 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "f1_definition_and_formula",
+      "covered_by": [
+        "qf_flash_f1_formula",
+        "qf_quiz_f1_definition",
+        "qf_long_f1_meaning"
+      ],
+      "description": "F1 分数的定义：精确率和召回率的调和平均数，以及其数学公式"
+    },
+    {
+      "coverage_tag": "f1_calculation_from_confusion_matrix",
+      "covered_by": [
+        "qf_flash_f1_calc",
+        "qf_quiz_f1_calc",
+        "qf_long_f1_meaning"
+      ],
+      "description": "从混淆矩阵或给定的精确率和召回率计算 F1 分数"
+    },
+    {
+      "coverage_tag": "f1_vs_arithmetic_mean",
+      "covered_by": [
+        "qf_flash_f1_harmonic_mean",
+        "qf_quiz_f1_harmonic_mean"
+      ],
+      "description": "F1 使用调和平均而非算术平均的原因：对低值更敏感"
+    },
+    {
+      "coverage_tag": "f1_interpretation",
+      "covered_by": [
+        "qf_flash_f1_interpretation",
+        "qf_quiz_f1_interpretation",
+        "qf_long_f1_meaning"
+      ],
+      "description": "F1 分数越高表示精确率和召回率之间平衡越好"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "f1_score",
+      "coverage_tags": [
+        "f1_definition_and_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_f1_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 F1 分数的计算公式。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能写出 F1 分数的标准公式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "F1 分数的数学表达式",
+      "term_refs": [
+        {
+          "display": "F1 分数",
+          "en": "F1 Score"
+        }
+      ],
+      "variants": [
+        {
+          "back": "$F_1 = 2 \\times \\frac{\\text{Precision} \\times \\text{Recall}}{\\text{Precision} + \\text{Recall}}$",
+          "estimated_seconds": 10,
+          "explanation": "F1 是精确率和召回率的调和平均数。",
+          "front": "写出 F1 分数的计算公式（用 Precision 和 Recall 表示）。",
+          "question_id": "q_flash_f1_formula_v1"
+        },
+        {
+          "back": "调和平均数",
+          "estimated_seconds": 5,
+          "explanation": "调和平均对低值更敏感，只有当精确率和召回率都高时，F1 才会高。",
+          "front": "F1 分数是精确率和召回率的什么平均数？",
+          "question_id": "q_flash_f1_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "f1_score",
+      "coverage_tags": [
+        "f1_calculation_from_confusion_matrix"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_f1_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的精确率和召回率快速计算 F1 分数。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能运用 F1 公式进行数值计算。",
+      "question_type": "micro_calc",
+      "retrieval_focus": "给定精确率和召回率，计算 F1 分数",
+      "term_refs": [
+        {
+          "display": "F1 分数",
+          "en": "F1 Score"
+        }
+      ],
+      "variants": [
+        {
+          "back": "6/11",
+          "estimated_seconds": 15,
+          "explanation": "F1 = 2 × (3/5 × 3/4) / (3/5 + 3/4) = (6/20) / (27/20) = 6/11。",
+          "front": "Precision = 3/5, Recall = 3/4，F1 分数是多少？（用分数表示）",
+          "question_id": "q_flash_f1_calc_v1"
+        },
+        {
+          "back": "0.545",
+          "estimated_seconds": 15,
+          "explanation": "F1 = 2 × (0.6 × 0.75) / (0.6 + 0.75) = 0.9 / 1.35 ≈ 0.545。",
+          "front": "Precision = 0.6, Recall = 0.75，F1 分数是多少？（保留三位小数）",
+          "question_id": "q_flash_f1_calc_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "f1_score",
+      "coverage_tags": [
+        "f1_vs_arithmetic_mean"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_f1_harmonic_mean",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么 F1 使用调和平均而不是算术平均。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明理解调和平均对低值更敏感的特性。",
+      "question_type": "core_difference",
+      "retrieval_focus": "调和平均相比算术平均的关键特性",
+      "term_refs": [
+        {
+          "display": "调和平均",
+          "en": "Harmonic Mean"
+        }
+      ],
+      "variants": [
+        {
+          "back": "调和平均对低值更敏感，不会让一个高值掩盖另一个低值。",
+          "estimated_seconds": 10,
+          "explanation": "只有当精确率和召回率都高时，调和平均才会高，这使 F1 能更真实地反映两者都差的情况。",
+          "front": "当 Precision=0.9, Recall=0.1 时，算术平均是 0.5，调和平均约是 0.18。这说明了调和平均的什么特性？",
+          "question_id": "q_flash_f1_harmonic_mean_v1"
+        },
+        {
+          "back": "让低值（精确率或召回率中较低的那个）对结果有更大影响，避免高值掩盖低值。",
+          "estimated_seconds": 10,
+          "explanation": "调和平均对较小值更敏感，因此 F1 只有在精确率和召回率都较高时才会高。",
+          "front": "F1 分数使用调和平均而不是算术平均，主要目的是什么？",
+          "question_id": "q_flash_f1_harmonic_mean_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "f1_score",
+      "coverage_tags": [
+        "f1_interpretation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_f1_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释 F1 分数高低的含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明理解 F1 分数作为综合指标的意义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "F1 分数高低的含义",
+      "term_refs": [
+        {
+          "display": "F1 分数",
+          "en": "F1 Score"
+        }
+      ],
+      "variants": [
+        {
+          "back": "精确率和召回率之间",
+          "estimated_seconds": 5,
+          "explanation": "F1 是精确率和召回率的调和平均数，值越高表示两者都较高且平衡。",
+          "front": "F1 分数越高，说明模型在什么方面取得了更好的平衡？",
+          "question_id": "q_flash_f1_interpretation_v1"
+        },
+        {
+          "back": "精确率和召回率中至少有一个很低，或者两者都低。",
+          "estimated_seconds": 8,
+          "explanation": "由于调和平均对低值敏感，F1 低说明精确率或召回率（或两者）表现不佳。",
+          "front": "如果一个模型的 F1 分数很低，这意味着什么？",
+          "question_id": "q_flash_f1_interpretation_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "longform_families": [
+    {
+      "concept_key": "f1_score",
+      "coverage_tags": [
+        "f1_definition_and_formula",
+        "f1_calculation_from_confusion_matrix",
+        "f1_interpretation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_f1_meaning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释 F1 分数的定义、计算公式及其作为综合指标的意义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能完整阐述 F1 分数的概念、计算方法和使用场景。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "F1 分数",
+          "en": "F1 Score"
+        },
+        {
+          "display": "调和平均",
+          "en": "Harmonic Mean"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "F1 分数的定义和公式",
+            "调和平均 vs 算术平均",
+            "F1 分数高低的含义"
+          ],
+          "question_id": "q_long_f1_meaning_v1",
+          "reference_answer": [
+            "F1 分数是精确率和召回率的调和平均数，公式为 $F_1 = 2 \\times \\frac{\\text{Precision} \\times \\text{Recall}}{\\text{Precision} + \\text{Recall}}$。",
+            "它使用调和平均而不是算术平均，因为调和平均对低值更敏感。例如，当 Precision=0.9、Recall=0.1 时，算术平均为 0.5，而调和平均约为 0.18，更能反映 Recall 很低的事实。",
+            "F1 分数越高，说明模型在精确率和召回率之间取得了更好的平衡。只有当两者都较高时，F1 才会高。因此 F1 是很多分类任务的首选综合指标。"
+          ],
+          "rubric_points": [
+            "正确写出 F1 公式：$F_1 = 2 \\times \\frac{\\text{Precision} \\times \\text{Recall}}{\\text{Precision} + \\text{Recall}}$",
+            "指出 F1 是精确率和召回率的调和平均数",
+            "解释调和平均对低值更敏感，不会让高值掩盖低值",
+            "说明 F1 分数越高表示精确率和召回率之间的平衡越好"
+          ],
+          "stem": "请解释什么是 F1 分数，包括它的计算公式、为什么使用调和平均而不是算术平均，以及 F1 分数高低的含义。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "计算 F1 分数",
+            "解释结果含义",
+            "讨论可能的改进方向"
+          ],
+          "question_id": "q_long_f1_meaning_v2",
+          "reference_answer": [
+            "F1 = 2 × (0.95 × 0.3) / (0.95 + 0.3) = 0.57 / 1.25 ≈ 0.456。",
+            "F1 分数约为 0.456，这个值较低。虽然精确率很高（0.95），意味着模型预测为阳性的样本中 95% 确实是病人，但召回率只有 0.3，意味着模型只找出了 30% 的真正病人，漏掉了 70%。",
+            "在疾病诊断中，漏诊的后果通常比误诊更严重，因此这个模型在实际应用中可能不够安全。改进方向包括降低分类阈值以提高召回率，或使用更复杂的模型来同时提升精确率和召回率。"
+          ],
+          "rubric_points": [
+            "正确计算 F1 = 2 × (0.95 × 0.3) / (0.95 + 0.3) = 0.57 / 1.25 ≈ 0.456",
+            "指出 F1 较低（约 0.456），主要受 Recall 低的影响",
+            "解释这意味着模型虽然预测为正类的样本很可靠（高精确率），但漏掉了大量真正的病人（低召回率）",
+            "在疾病诊断中，漏诊（低召回率）可能比误诊更严重，因此需要改进模型以提高召回率"
+          ],
+          "stem": "假设你训练了一个疾病诊断模型，在测试集上得到 Precision=0.95, Recall=0.3。请计算 F1 分数，并解释这个结果对实际应用意味着什么。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "f1_score",
+      "coverage_tags": [
+        "f1_definition_and_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_f1_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在选择题中正确识别 F1 分数的定义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能区分 F1 分数与其他平均数的概念。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "F1 分数",
+          "en": "F1 Score"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "F1 分数是精确率和召回率的调和平均数，对低值更敏感。",
+          "options": [
+            "算术平均数",
+            "几何平均数",
+            "调和平均数",
+            "加权平均数"
+          ],
+          "question_id": "q_quiz_f1_definition_v1",
+          "stem": "F1 分数是精确率和召回率的什么平均数？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "F1 是精确率和召回率的调和平均数，公式为 $F_1 = 2 \\times \\frac{\\text{Precision} \\times \\text{Recall}}{\\text{Precision} + \\text{Recall}}$。",
+          "options": [
+            "$F_1 = \\frac{\\text{Precision} + \\text{Recall}}{2}$",
+            "$F_1 = 2 \\times \\frac{\\text{Precision} \\times \\text{Recall}}{\\text{Precision} + \\text{Recall}}$",
+            "$F_1 = \\frac{\\text{Precision} \\times \\text{Recall}}{\\text{Precision} + \\text{Recall}}$",
+            "$F_1 = \\sqrt{\\text{Precision} \\times \\text{Recall}}$"
+          ],
+          "question_id": "q_quiz_f1_definition_v2",
+          "stem": "以下哪个公式正确表示了 F1 分数？"
+        }
+      ]
+    },
+    {
+      "concept_key": "f1_score",
+      "coverage_tags": [
+        "f1_calculation_from_confusion_matrix"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_f1_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据混淆矩阵或给定指标计算 F1 分数。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能正确应用 F1 公式进行计算。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "F1 分数",
+          "en": "F1 Score"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 30,
+          "explanation": "Precision = 3/(3+3) = 0.5, Recall = 3/(3+2) = 0.6, F1 = 2 × (0.5 × 0.6) / (0.5 + 0.6) = 0.6 / 1.1 ≈ 0.545。最接近的选项是 0.55。",
+          "options": [
+            "0.50",
+            "0.55",
+            "0.60",
+            "0.67"
+          ],
+          "question_id": "q_quiz_f1_calc_v1",
+          "stem": "一个分类模型的混淆矩阵显示：TP=3, FP=3, FN=2, TN=2。该模型的 F1 分数是多少？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "F1 = 2 × (0.8 × 0.4) / (0.8 + 0.4) = 0.64 / 1.2 ≈ 0.533。最接近 0.53。",
+          "options": [
+            "0.53",
+            "0.60",
+            "0.67",
+            "0.73"
+          ],
+          "question_id": "q_quiz_f1_calc_v2",
+          "stem": "已知 Precision = 0.8, Recall = 0.4，F1 分数最接近以下哪个值？"
+        }
+      ]
+    },
+    {
+      "concept_key": "f1_score",
+      "coverage_tags": [
+        "f1_vs_arithmetic_mean"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_f1_harmonic_mean",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断关于 F1 使用调和平均的陈述是否正确。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明理解调和平均在 F1 中的作用。",
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "调和平均",
+          "en": "Harmonic Mean"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "错误。调和平均对低值更敏感，因此比算术平均更能惩罚较低的那个值。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_f1_harmonic_mean_v1",
+          "stem": "F1 分数使用算术平均比使用调和平均更能惩罚精确率和召回率中较低的那个值。"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "正确。当 Precision = Recall = x 时，F1 = 2 × (x × x) / (x + x) = 2x² / 2x = x。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_f1_harmonic_mean_v2",
+          "stem": "当精确率和召回率相等时，F1 分数等于精确率（或召回率）。"
+        }
+      ]
+    },
+    {
+      "concept_key": "f1_score",
+      "coverage_tags": [
+        "f1_interpretation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_f1_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据 F1 分数判断模型性能。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能正确解释 F1 分数的实际含义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "F1 分数",
+          "en": "F1 Score"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "F1 分数综合衡量精确率和召回率的平衡，值越高表示两者都较高且平衡更好。",
+          "options": [
+            "模型 A 的精确率一定比模型 B 高",
+            "模型 A 的召回率一定比模型 B 高",
+            "模型 A 在精确率和召回率之间的平衡优于模型 B",
+            "模型 A 的准确率一定比模型 B 高"
+          ],
+          "question_id": "q_quiz_f1_interpretation_v1",
+          "stem": "模型 A 的 F1 分数为 0.9，模型 B 的 F1 分数为 0.6。以下哪个说法最准确？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "F1 分数高意味着精确率和召回率都较高，模型在两者之间取得了很好的平衡。",
+          "options": [
+            "模型几乎不会把正常邮件误判为垃圾邮件",
+            "模型几乎能找出所有垃圾邮件",
+            "模型在精确率和召回率上都表现很好",
+            "模型的准确率是 95%"
+          ],
+          "question_id": "q_quiz_f1_interpretation_v2",
+          "stem": "一个垃圾邮件分类器的 F1 分数为 0.95。这意味着什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-performance-evaluation/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

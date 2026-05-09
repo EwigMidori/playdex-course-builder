@@ -1,0 +1,121 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "投影和 PCA 都失败了。",
+        "为什么线性方法都不行？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "线性方法假设数据是线性结构，但瑞士卷是卷曲的，线性方法无法处理这种非线性。",
+        "kind": "single_choice",
+        "options": [
+          "因为数据量太大",
+          "因为数据在低维空间中的结构不是线性的",
+          "因为计算资源不够",
+          "因为瑞士卷数据有噪声"
+        ],
+        "prompt": "为什么线性方法（如 PCA）对瑞士卷无效？"
+      },
+      "focus_terms": [],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "线性方法为什么不行？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "换个角度想：",
+        "也许高维数据其实位于一个低维曲面上。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "瑞士卷虽然看起来是三维的，",
+        "但它的本质是一个二维曲面卷起来的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "manifold_learning"
+      ],
+      "id": "s015",
+      "introduced_terms": [
+        "manifold_learning"
+      ],
+      "lines": [
+        "这个假设就是 <term id=\"manifold_learning\">流形学习</term> 的出发点。",
+        "高维数据位于一个低维流形上。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "降维的目标不是简单投影，",
+        "而是恢复这个曲面的内在坐标。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "流形学习假设数据位于低维曲面上，目标是恢复内在坐标；投影是直接压到平面上。",
+        "kind": "single_choice",
+        "options": [
+          "它们是一样的",
+          "流形学习假设数据在低维曲面上，目标是恢复内在坐标",
+          "投影假设数据在低维曲面上",
+          "流形学习不需要假设"
+        ],
+        "prompt": "流形学习和投影的根本区别是什么？"
+      },
+      "focus_terms": [],
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "流形学习和投影有什么不同？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Manifold learning assumes that high-dimensional data lies on a low-dimensional manifold. The goal is to recover the intrinsic coordinates.",
+    "related": [
+      "manifold hypothesis"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "manifold_learning": {
+      "aliases": [
+        "Manifold Learning"
+      ],
+      "display": "流形学习",
+      "gloss": "假设高维数据位于一个低维流形上，并试图恢复其内在结构。"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "lines": [
+        "回顾一下，我们走过了关联分析的几个关键节点。",
+        "从 Apriori 到 FP-Growth，从置信度到提升度。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "lines": [
+        "FP-Growth 用树结构解决了候选集爆炸的问题。",
+        "提升度帮我们过滤掉虚假的关联。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "lines": [
+        "定量关联规则让数值属性也能参与分析。",
+        "序列模式则引入了时间的维度。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "lines": [
+        "这些方法的核心思想是相通的：",
+        "利用支持度剪枝，在巨大的搜索空间中高效地找到有价值的模式。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "lines": [
+        "关联分析不只是找规则，更是找洞察。",
+        "从数据中发现那些出人意料的、有价值的联系。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "Association rule mining is an important data mining task. Frequent itemset mining is the main component. FP-growth algorithm, Lift, Quantitative association rules, and Sequential patterns are all important extensions.",
+    "related": [
+      "Summary"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

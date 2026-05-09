@@ -1,0 +1,182 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "除了 AUC，还有一个常用的单点指标。",
+        "它回答的是：两类错误相等时，错误率是多少？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s056",
+      "introduced_terms": [],
+      "lines": [
+        "假负率（FNR）= 1 - TPR。",
+        "我们想找到 FPR = FNR 的那个点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.3"
+        ],
+        "explanation": "FPR=0.2时FNR=0.4，FPR=0.4时FNR=0.2，FPR=0.3时FNR=0.3，所以EER=0.3。",
+        "kind": "fill_in_blank",
+        "prompt": "根据以下数据，找出 EER 的值。"
+      },
+      "focus_terms": [],
+      "id": "s057",
+      "introduced_terms": [],
+      "lines": [
+        "给定一组 (FPR, TPR) 数据点：",
+        "(0.0, 0.0), (0.2, 0.6), (0.4, 0.8), (0.6, 1.0), (1.0, 1.0)。",
+        "计算每个点的 FNR，找出 FPR 最接近 FNR 的点。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "equal_error_rate"
+      ],
+      "id": "s058",
+      "introduced_terms": [
+        "equal_error_rate"
+      ],
+      "lines": [
+        "这个点对应的错误率就是 <term id=\"equal_error_rate\">等错误率</term>（EER）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "equal_error_rate"
+      ],
+      "id": "s059",
+      "introduced_terms": [],
+      "lines": [
+        "EER 越低，说明模型在平衡两类错误方面做得越好。",
+        "它常用于生物识别等需要对称评估的场景。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 3,
+        "explanation": "AUC 就是 ROC 曲线下的面积，衡量模型的整体排序能力。",
+        "kind": "single_choice",
+        "options": [
+          "精确率",
+          "召回率",
+          "F1 分数",
+          "AUC"
+        ],
+        "prompt": "哪个指标衡量的是 ROC 曲线下的面积？"
+      },
+      "focus_terms": [
+        "auc"
+      ],
+      "id": "s060",
+      "introduced_terms": [],
+      "lines": [
+        "回顾一下今天学到的指标。",
+        "哪个指标最适合评估模型在不同阈值下的整体排序能力？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s061",
+      "introduced_terms": [],
+      "lines": [
+        "总结一下：",
+        "TP、FP、TN、FN 是一切的基础。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "precision",
+        "recall",
+        "f1_score"
+      ],
+      "id": "s062",
+      "introduced_terms": [],
+      "lines": [
+        "精确率和召回率帮你理解模型在固定阈值下的表现。",
+        "F1 分数帮你平衡两者。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "average_precision",
+        "auc",
+        "equal_error_rate"
+      ],
+      "id": "s063",
+      "introduced_terms": [],
+      "lines": [
+        "AP 和 AUC 帮你评估模型在所有阈值下的整体表现。",
+        "EER 则提供了一个对称的误差参考点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s064",
+      "introduced_terms": [],
+      "lines": [
+        "选择哪个指标，取决于你的业务场景。",
+        "但理解它们背后的逻辑，能让你更自信地评价任何模型。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.3"
+        ],
+        "explanation": "从曲线中读出 FPR=FNR 的点对应的错误率约为 0.3。",
+        "kind": "fill_in_blank",
+        "prompt": "从你绘制的 ROC 曲线中，找出 EER 的值。"
+      },
+      "focus_terms": [
+        "equal_error_rate"
+      ],
+      "id": "s065",
+      "introduced_terms": [],
+      "lines": [
+        "现在，请根据你之前绘制的 ROC 曲线，",
+        "找到 FPR 最接近 FNR 的点，并读出 EER 值。"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "EER and AUC from lecture material.",
+    "related": [
+      "EER and AUC"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "equal_error_rate": {
+      "aliases": [
+        "Equal Error Rate",
+        "EER"
+      ],
+      "display": "等错误率",
+      "gloss": "ROC 曲线上假正率（FPR）等于假负率（FNR）时的错误率，值越低越好。"
+    }
+  }
+}

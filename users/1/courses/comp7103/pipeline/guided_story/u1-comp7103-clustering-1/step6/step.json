@@ -1,0 +1,252 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-clustering-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s050",
+      "introduced_terms": [],
+      "lines": [
+        "在层次聚类中，合并簇时，怎么定义“两个簇之间的距离”？",
+        "不同的定义会导致完全不同的聚类形状。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "这是一个开放性问题，没有标准答案。但常见的思路包括：取最近的两个点、取最远的两个点、取所有点对的平均距离、取质心之间的距离。",
+        "kind": "single_choice",
+        "options": [
+          "取两个簇中所有点的平均值",
+          "取两个簇中距离最近的两个点",
+          "这是一个开放性问题，需要你自己思考"
+        ],
+        "prompt": "如果是你，你会怎么定义两个簇之间的距离？"
+      },
+      "focus_terms": [],
+      "id": "s051",
+      "introduced_terms": [],
+      "lines": [
+        "如果是你，你会怎么定义两个簇之间的距离？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "single_linkage"
+      ],
+      "id": "s052",
+      "introduced_terms": [
+        "single_linkage"
+      ],
+      "lines": [
+        "方法一：<term id=\"single_linkage\">单链</term>。",
+        "取两个簇中最近的两个点之间的距离。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "单链容易产生长条形的簇，",
+        "因为只要有一个点靠近，两个簇就会被合并。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "complete_linkage"
+      ],
+      "id": "s054",
+      "introduced_terms": [
+        "complete_linkage"
+      ],
+      "lines": [
+        "方法二：<term id=\"complete_linkage\">全链</term>。",
+        "取两个簇中最远的两个点之间的距离。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "全链倾向于生成紧凑的球形簇。",
+        "因为它要求所有点都“够近”才能合并。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "group_average"
+      ],
+      "id": "s056",
+      "introduced_terms": [
+        "group_average"
+      ],
+      "lines": [
+        "方法三：<term id=\"group_average\">组平均</term>。",
+        "取两个簇中所有点对之间的平均距离。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "centroid_distance"
+      ],
+      "id": "s057",
+      "introduced_terms": [
+        "centroid_distance"
+      ],
+      "lines": [
+        "方法四：<term id=\"centroid_distance\">质心距离</term>。",
+        "取两个簇的质心之间的距离。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "单链只考虑最近的两个点，容易把点串成长条形。",
+        "kind": "single_choice",
+        "options": [
+          "单链 (MIN)",
+          "全链 (MAX)",
+          "组平均",
+          "质心距离"
+        ],
+        "prompt": "哪种簇间距离定义最容易产生长条形的簇？"
+      },
+      "focus_terms": [],
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [
+        "哪种簇间距离定义最容易产生长条形的簇？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "全链要求所有点都够近才能合并，因此倾向于生成紧凑的球形簇。",
+        "kind": "single_choice",
+        "options": [
+          "单链",
+          "全链",
+          "组平均"
+        ],
+        "prompt": "如果数据是紧凑的球形簇，哪种簇间距离定义最合适？"
+      },
+      "focus_terms": [],
+      "id": "s059",
+      "introduced_terms": [],
+      "lines": [
+        "如果数据是紧凑的球形簇，哪种簇间距离定义最合适？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s060",
+      "introduced_terms": [],
+      "lines": [
+        "现在，请你手动模拟一次单链合并过程。",
+        "假设有4个点：A(0,0), B(1,0), C(5,5), D(6,5)。",
+        "使用单链（MIN）作为簇间距离。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "expected_fields": [
+          "first_merge"
+        ],
+        "explanation": "A和B的距离是1，C和D的距离是1，其他点对的距离都大于1。所以最近的两个簇是A和B（距离1），以及C和D（距离1）。但A和B的距离最小（1），所以第一步合并A和B。",
+        "kind": "manual_simulation",
+        "prompt": "第一步：所有点都是独立的簇。最近的两个簇是？",
+        "sample_answer": {
+          "first_merge": "A和B"
+        }
+      },
+      "focus_terms": [],
+      "id": "s061",
+      "introduced_terms": [],
+      "lines": [
+        "第一步：所有点都是独立的簇。最近的两个簇是？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "expected_fields": [
+          "second_merge"
+        ],
+        "explanation": "合并A和B后，新簇AB与C的距离 = min(距离(A,C), 距离(B,C)) = min(√50, √41) ≈ 6.4。新簇AB与D的距离 = min(距离(A,D), 距离(B,D)) = min(√61, √50) ≈ 7.07。C和D的距离是1。所以最近的是C和D。",
+        "kind": "manual_simulation",
+        "prompt": "第二步：现在有3个簇：AB, C, D。最近的两个簇是？",
+        "sample_answer": {
+          "second_merge": "C和D"
+        }
+      },
+      "focus_terms": [],
+      "id": "s062",
+      "introduced_terms": [],
+      "lines": [
+        "第二步：现在有3个簇：AB, C, D。最近的两个簇是？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "How to Define Inter-Cluster Similarity? MIN (single-linkage), MAX (complete-linkage), Group Average, Distance Between Centroids.",
+    "related": [
+      "single_linkage",
+      "complete_linkage",
+      "group_average",
+      "centroid_distance"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "centroid_distance": {
+      "aliases": [
+        "Centroid Distance"
+      ],
+      "display": "质心距离",
+      "gloss": "用两个簇的质心之间的距离作为簇间距离。"
+    },
+    "complete_linkage": {
+      "aliases": [
+        "Complete-linkage",
+        "MAX"
+      ],
+      "display": "全链",
+      "gloss": "用两个簇中最远的两个点之间的距离作为簇间距离。"
+    },
+    "group_average": {
+      "aliases": [
+        "Group Average",
+        "Average Linkage"
+      ],
+      "display": "组平均",
+      "gloss": "用两个簇中所有点对之间的平均距离作为簇间距离。"
+    },
+    "single_linkage": {
+      "aliases": [
+        "Single-linkage",
+        "MIN"
+      ],
+      "display": "单链",
+      "gloss": "用两个簇中最近的两个点之间的距离作为簇间距离。"
+    }
+  }
+}

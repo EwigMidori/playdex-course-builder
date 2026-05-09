@@ -1,0 +1,430 @@
+{
+  "chapter_id": "lecture-01-knn",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "lazy_learning_definition",
+      "covered_by": [
+        "qf_flash_lazy_def",
+        "qf_quiz_lazy_char"
+      ],
+      "description": "懒惰学习的定义：训练阶段只存储数据，不构建模型。"
+    },
+    {
+      "coverage_tag": "eager_learning_definition",
+      "covered_by": [
+        "qf_flash_eager_def"
+      ],
+      "description": "急切学习的定义：训练阶段构建压缩模型，丢弃原始数据。"
+    },
+    {
+      "coverage_tag": "lazy_vs_eager_tradeoffs",
+      "covered_by": [
+        "qf_flash_tradeoff",
+        "qf_quiz_tradeoff",
+        "qf_long_tradeoff"
+      ],
+      "description": "懒惰学习与急切学习在训练时间、存储、预测速度上的权衡。"
+    },
+    {
+      "coverage_tag": "knn_training_phase",
+      "covered_by": [
+        "qf_flash_knn_train",
+        "qf_quiz_knn_train"
+      ],
+      "description": "kNN 训练阶段的具体行为：仅存储训练数据。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "lazy_learning",
+      "coverage_tags": [
+        "lazy_learning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_lazy_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出懒惰学习的核心定义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能主动回忆懒惰学习在训练阶段的行为：只存储数据，不构建模型。",
+      "question_type": "short_answer",
+      "retrieval_focus": "懒惰学习在训练阶段做什么？",
+      "term_refs": [
+        {
+          "display": "懒惰学习",
+          "en": "Lazy Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "只存储训练数据，不构建或学习任何模型。",
+          "estimated_seconds": 8,
+          "explanation": "懒惰学习直到收到预测请求时才开始处理数据。",
+          "front": "懒惰学习（Lazy Learning）在训练阶段的核心行为是什么？",
+          "question_id": "q_flash_lazy_def_v1"
+        },
+        {
+          "back": "就是存储下来的所有训练数据本身，没有额外的参数或压缩模型。",
+          "estimated_seconds": 8,
+          "explanation": "kNN 是懒惰学习的典型代表，训练阶段只做数据存储。",
+          "front": "kNN 的训练阶段结束后，得到的“模型”是什么？",
+          "question_id": "q_flash_lazy_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "eager_learning",
+      "coverage_tags": [
+        "eager_learning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_eager_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出急切学习的核心定义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能主动回忆急切学习在训练阶段的行为：构建压缩模型，丢弃原始数据。",
+      "question_type": "short_answer",
+      "retrieval_focus": "急切学习在训练阶段做什么？",
+      "term_refs": [
+        {
+          "display": "急切学习",
+          "en": "Eager Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "从训练数据中构建一个压缩的模型（如神经网络权重），然后丢弃原始数据。",
+          "estimated_seconds": 8,
+          "explanation": "急切学习在训练阶段完成模型构建，预测时直接使用模型。",
+          "front": "急切学习（Eager Learning）在训练阶段的核心行为是什么？",
+          "question_id": "q_flash_eager_def_v1"
+        },
+        {
+          "back": "丢弃原始数据，只保留训练得到的模型。",
+          "estimated_seconds": 6,
+          "explanation": "急切学习（如神经网络）训练后，原始数据不再需要。",
+          "front": "与懒惰学习相反，急切学习在训练完成后如何处理原始数据？",
+          "question_id": "q_flash_eager_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "lazy_vs_eager_tradeoffs",
+      "coverage_tags": [
+        "lazy_vs_eager_tradeoffs"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出懒惰学习和急切学习在训练时间和预测时间上的权衡。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能主动回忆懒惰学习训练快、预测慢，急切学习训练慢、预测快这一核心权衡。",
+      "question_type": "short_answer",
+      "retrieval_focus": "懒惰学习和急切学习在训练/预测速度上的对比。",
+      "term_refs": [
+        {
+          "display": "懒惰学习",
+          "en": "Lazy Learning"
+        },
+        {
+          "display": "急切学习",
+          "en": "Eager Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "训练快（几乎不花时间），预测慢（每次都要遍历所有数据）。",
+          "estimated_seconds": 8,
+          "explanation": "因为懒惰学习训练阶段只存储数据，预测阶段才进行计算。",
+          "front": "懒惰学习在训练时间和预测时间上的特点是什么？",
+          "question_id": "q_flash_tradeoff_v1"
+        },
+        {
+          "back": "训练慢（需要构建模型），预测快（直接使用模型）。",
+          "estimated_seconds": 8,
+          "explanation": "急切学习在训练阶段完成所有计算，预测时只需简单计算。",
+          "front": "急切学习在训练时间和预测时间上的特点是什么？",
+          "question_id": "q_flash_tradeoff_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "knn_training_phase",
+      "coverage_tags": [
+        "knn_training_phase"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_knn_train",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述 kNN 训练阶段的具体操作。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能主动回忆 kNN 训练阶段只做数据存储，不进行任何模型学习。",
+      "question_type": "short_answer",
+      "retrieval_focus": "kNN 训练阶段的具体操作。",
+      "term_refs": [
+        {
+          "display": "K近邻",
+          "en": "k-Nearest Neighbor"
+        }
+      ],
+      "variants": [
+        {
+          "back": "就是这 1000 张图像本身，没有额外的参数文件。",
+          "estimated_seconds": 8,
+          "explanation": "kNN 是懒惰学习，训练阶段只存储数据。",
+          "front": "使用 kNN 算法训练 1000 张带标签的人脸图像后，得到的“模型”是什么？",
+          "question_id": "q_flash_knn_train_v1"
+        },
+        {
+          "back": "不构建，只存储训练数据。",
+          "estimated_seconds": 6,
+          "explanation": "kNN 的训练阶段没有任何模型学习过程。",
+          "front": "kNN 在训练阶段是否构建任何形式的模型（如决策树、权重矩阵）？",
+          "question_id": "q_flash_knn_train_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-knn",
+  "longform_families": [
+    {
+      "concept_key": "lazy_vs_eager_tradeoffs",
+      "coverage_tags": [
+        "lazy_vs_eager_tradeoffs"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能系统地比较懒惰学习和急切学习在训练、存储、预测三个维度的差异。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能解释懒惰学习和急切学习在不同场景下的适用性，并说明原因。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "懒惰学习",
+          "en": "Lazy Learning"
+        },
+        {
+          "display": "急切学习",
+          "en": "Eager Learning"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "懒惰学习的三个特点",
+            "急切学习的三个特点",
+            "懒惰学习的优势场景及原因",
+            "急切学习的优势场景及原因"
+          ],
+          "question_id": "q_long_tradeoff_v1",
+          "reference_answer": [
+            "懒惰学习：训练快（只存储数据），存储需求大（需保存所有数据），预测慢（每次需遍历所有数据计算距离）。",
+            "急切学习：训练慢（需构建模型），存储需求小（只保存模型参数），预测快（直接使用模型计算）。",
+            "懒惰学习优势场景：训练数据频繁更新，需要快速适应新数据，且预测速度要求不高。",
+            "急切学习优势场景：预测速度要求极高，且训练数据相对稳定，可以接受较长的训练时间。"
+          ],
+          "rubric_points": [
+            "正确指出懒惰学习训练快、存储大、预测慢",
+            "正确指出急切学习训练慢、存储小、预测快",
+            "能给出合理的优势场景分析"
+          ],
+          "stem": "请从训练时间、存储需求、预测速度三个方面，比较懒惰学习（如 kNN）和急切学习（如神经网络）的差异。并说明在什么场景下懒惰学习更有优势，什么场景下急切学习更有优势。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "kNN 在此场景下的优缺点",
+            "神经网络在此场景下的优缺点",
+            "你的选择及理由"
+          ],
+          "question_id": "q_long_tradeoff_v2",
+          "reference_answer": [
+            "kNN 优点：新用户注册只需添加数据，无需重新训练，适应性强。",
+            "kNN 缺点：用户数量大时，每次预测需遍历所有用户，延迟高。",
+            "神经网络优点：训练完成后预测极快，适合大规模实时识别。",
+            "神经网络缺点：新用户注册需要重新训练模型，耗时较长。",
+            "建议：如果用户量不大（如公司门禁），kNN 更灵活；如果用户量巨大（如城市监控），神经网络更合适。"
+          ],
+          "rubric_points": [
+            "能分析 kNN 对新用户注册的快速适应性",
+            "能分析 kNN 在大规模数据下的预测延迟问题",
+            "能分析神经网络训练时间长但预测快的特点",
+            "能给出合理的选择建议并解释"
+          ],
+          "stem": "假设你有一个实时人脸识别系统，每天都有新的用户注册。请分析使用 kNN（懒惰学习）和神经网络（急切学习）各自的优缺点，并给出你的选择建议。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "lazy_learning",
+      "coverage_tags": [
+        "lazy_learning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_lazy_char",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在多个选项中识别懒惰学习的典型特征。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能区分懒惰学习与急切学习的核心特征。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "懒惰学习",
+          "en": "Lazy Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "懒惰学习在训练阶段只存储数据，不构建模型，直到预测时才进行计算。",
+          "options": [
+            "训练阶段构建复杂模型",
+            "训练阶段只存储数据",
+            "预测阶段不需要原始数据",
+            "训练完成后丢弃所有训练数据"
+          ],
+          "question_id": "q_quiz_lazy_char_v1",
+          "stem": "以下哪个是懒惰学习的典型特征？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "懒惰学习在训练阶段只存储数据，不进行模型构建或参数计算。",
+          "options": [
+            "训练时计算所有样本的均值作为模型",
+            "训练时只保存样本，不进行任何计算",
+            "训练时构建一个决策树",
+            "训练时计算所有样本的协方差矩阵"
+          ],
+          "question_id": "q_quiz_lazy_char_v2",
+          "stem": "以下哪种行为最符合懒惰学习的特点？"
+        }
+      ]
+    },
+    {
+      "concept_key": "lazy_vs_eager_tradeoffs",
+      "coverage_tags": [
+        "lazy_vs_eager_tradeoffs"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确判断懒惰学习和急切学习在存储和计算开销上的差异。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能应用懒惰学习和急切学习的权衡知识，判断不同场景下的优劣。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "懒惰学习",
+          "en": "Lazy Learning"
+        },
+        {
+          "display": "急切学习",
+          "en": "Eager Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "懒惰学习需要存储所有训练数据，且每次预测都要遍历所有数据，因此存储和计算开销都很大。",
+          "options": [
+            "训练时间更长",
+            "存储需求和预测计算开销更大",
+            "无法处理非线性问题",
+            "需要更多的训练数据"
+          ],
+          "question_id": "q_quiz_tradeoff_v1",
+          "stem": "与急切学习相比，懒惰学习的主要缺点是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "急切学习（如神经网络）训练慢但预测快，适合需要快速预测的场景。kNN 预测时需要遍历所有数据，速度慢。",
+          "options": [
+            "kNN（懒惰学习）",
+            "神经网络（急切学习）",
+            "两种都合适",
+            "两种都不合适"
+          ],
+          "question_id": "q_quiz_tradeoff_v2",
+          "stem": "如果一个应用场景需要极快的预测速度，且训练数据量很大，以下哪种算法更合适？"
+        }
+      ]
+    },
+    {
+      "concept_key": "knn_training_phase",
+      "coverage_tags": [
+        "knn_training_phase"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_knn_train",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确判断关于 kNN 训练阶段的陈述的真假。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能准确识别 kNN 训练阶段的行为。",
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "K近邻",
+          "en": "k-Nearest Neighbor"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "kNN 是懒惰学习，训练阶段只存储数据，不构建任何模型或决策边界。决策边界是在预测时隐式形成的。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_knn_train_v1",
+          "stem": "kNN 算法在训练阶段会构建一个决策边界模型。"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "kNN 的训练阶段只存储数据，没有构建压缩模型。丢弃原始数据后，kNN 将无法进行预测。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_knn_train_v2",
+          "stem": "kNN 的训练阶段完成后，可以丢弃原始训练数据，只保留一个压缩的模型。"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-knn/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

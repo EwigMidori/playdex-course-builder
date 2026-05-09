@@ -1,0 +1,883 @@
+{
+  "chapter_id": "lecture-06-data-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "data_quality_noise_outlier",
+      "covered_by": [
+        "qf_flash_noise_outlier",
+        "qf_quiz_noise_outlier"
+      ],
+      "description": "数据质量问题：噪声与异常值的定义、区别与处理"
+    },
+    {
+      "coverage_tag": "missing_value",
+      "covered_by": [
+        "qf_flash_missing_value",
+        "qf_quiz_missing_value"
+      ],
+      "description": "缺失值的概念与处理方式（忽略、查找、插补）"
+    },
+    {
+      "coverage_tag": "aggregation",
+      "covered_by": [
+        "qf_flash_aggregation"
+      ],
+      "description": "聚合：降低数据粒度，如汇总统计量"
+    },
+    {
+      "coverage_tag": "generalization",
+      "covered_by": [
+        "qf_flash_generalization",
+        "qf_quiz_generalization"
+      ],
+      "description": "泛化：将具体值映射到更高层次概念"
+    },
+    {
+      "coverage_tag": "sampling",
+      "covered_by": [
+        "qf_flash_sampling",
+        "qf_quiz_sampling"
+      ],
+      "description": "采样：用代表性样本代替整体，包括分层采样"
+    },
+    {
+      "coverage_tag": "dimensionality_reduction",
+      "covered_by": [
+        "qf_flash_dimensionality_reduction"
+      ],
+      "description": "降维：减少属性数量，避免维度灾难"
+    },
+    {
+      "coverage_tag": "feature_creation",
+      "covered_by": [
+        "qf_flash_feature_creation",
+        "qf_quiz_feature_creation"
+      ],
+      "description": "特征创建：从现有属性推导新属性"
+    },
+    {
+      "coverage_tag": "feature_selection",
+      "covered_by": [
+        "qf_flash_feature_selection",
+        "qf_quiz_feature_selection"
+      ],
+      "description": "特征选择：挑选有用属性子集，去除冗余和不相关属性"
+    },
+    {
+      "coverage_tag": "correlation",
+      "covered_by": [
+        "qf_flash_correlation"
+      ],
+      "description": "相关性：衡量属性间线性关系，用于判断冗余"
+    },
+    {
+      "coverage_tag": "pca",
+      "covered_by": [
+        "qf_flash_pca",
+        "qf_quiz_pca",
+        "qf_long_pca"
+      ],
+      "description": "主成分分析：旋转坐标轴，创建不相关的主成分，捕捉最大变异"
+    },
+    {
+      "coverage_tag": "data_cleaning_imputation",
+      "covered_by": [
+        "qf_flash_data_cleaning",
+        "qf_quiz_data_cleaning"
+      ],
+      "description": "数据清洗与插补：处理缺失值、噪声、不一致"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "noise_vs_outlier",
+      "coverage_tags": [
+        "data_quality_noise_outlier"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_noise_outlier",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分噪声和异常值的核心差异：噪声由错误引入，异常值可能真实但罕见。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能准确说出噪声和异常值在来源和用途上的关键区别。",
+      "question_type": "core_difference",
+      "retrieval_focus": "噪声与异常值的定义差异",
+      "term_refs": [
+        {
+          "display": "噪声",
+          "en": "noise"
+        },
+        {
+          "display": "异常值",
+          "en": "outlier"
+        }
+      ],
+      "variants": [
+        {
+          "back": "噪声由数据采集错误引入，通常是错误值；异常值虽然显著偏离大多数数据，但可能真实且有用（如欺诈检测）。",
+          "estimated_seconds": 10,
+          "explanation": "噪声是错误，异常值可能是信号。",
+          "front": "在数据质量中，噪声和异常值的核心区别是什么？",
+          "question_id": "q_flash_noise_outlier_v1"
+        },
+        {
+          "back": "属于噪声，因为200岁明显是录入错误，不可能是真实年龄。",
+          "estimated_seconds": 8,
+          "explanation": "噪声由错误产生，异常值虽罕见但可能真实。",
+          "front": "一个数据集中，年龄为200岁属于噪声还是异常值？为什么？",
+          "question_id": "q_flash_noise_outlier_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "missing_value_handling",
+      "coverage_tags": [
+        "missing_value"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_missing_value",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能列举处理缺失值的三种主要方式。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆出处理缺失值的三种常见策略。",
+      "question_type": "short_answer",
+      "retrieval_focus": "缺失值的处理方式",
+      "term_refs": [
+        {
+          "display": "缺失值",
+          "en": "missing value"
+        },
+        {
+          "display": "数据插补",
+          "en": "data imputation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "1. 忽略含缺失值的记录；2. 重新查找缺失数据；3. 数据插补（如用平均值填充）。",
+          "estimated_seconds": 10,
+          "explanation": "忽略、查找、插补是三种主要策略。",
+          "front": "处理缺失值的三种常见方式是什么？",
+          "question_id": "q_flash_missing_value_v1"
+        },
+        {
+          "back": "用估计值填充缺失值。例如，用该列的平均值填充缺失的年龄。",
+          "estimated_seconds": 8,
+          "explanation": "插补是处理缺失值的常用方法。",
+          "front": "什么是数据插补？请举一个例子。",
+          "question_id": "q_flash_missing_value_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "aggregation",
+      "coverage_tags": [
+        "aggregation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_aggregation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出聚合的定义和目的。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆出聚合是降低数据粒度的方法。",
+      "question_type": "short_answer",
+      "retrieval_focus": "聚合的定义",
+      "term_refs": [
+        {
+          "display": "聚合",
+          "en": "aggregation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "降低数据的分辨率或粒度，例如将每秒的交易数据汇总为每10秒的总交易额。",
+          "estimated_seconds": 8,
+          "explanation": "聚合通过汇总统计量减少数据细节。",
+          "front": "在数据预处理中，聚合的目的是什么？",
+          "question_id": "q_flash_aggregation_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "generalization",
+      "coverage_tags": [
+        "generalization"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_generalization",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出泛化的定义和例子。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆出泛化是将具体值映射到更高层次概念。",
+      "question_type": "short_answer",
+      "retrieval_focus": "泛化的定义",
+      "term_refs": [
+        {
+          "display": "泛化",
+          "en": "generalization"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将属性的具体值映射到更高层次的概念。例如，将年龄值映射为“青少年、中年、老年”。",
+          "estimated_seconds": 8,
+          "explanation": "泛化降低属性值域的基数。",
+          "front": "什么是泛化？请举一个例子。",
+          "question_id": "q_flash_generalization_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "sampling",
+      "coverage_tags": [
+        "sampling"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sampling",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出采样的目的和分层采样的适用场景。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆出采样用于数据量太大时，以及分层采样用于类别不平衡时。",
+      "question_type": "short_answer",
+      "retrieval_focus": "采样的目的与分层采样",
+      "term_refs": [
+        {
+          "display": "采样",
+          "en": "sampling"
+        },
+        {
+          "display": "分层采样",
+          "en": "stratified sampling"
+        }
+      ],
+      "variants": [
+        {
+          "back": "当数据类别高度不平衡时（如欺诈交易只占1%），分层采样能确保样本中各类别比例与整体一致。",
+          "estimated_seconds": 10,
+          "explanation": "分层采样用于处理类别不平衡问题。",
+          "front": "在数据预处理中，什么时候需要使用分层采样？",
+          "question_id": "q_flash_sampling_v1"
+        },
+        {
+          "back": "用一小部分有代表性的数据代替整体，降低处理成本。",
+          "estimated_seconds": 6,
+          "explanation": "采样是数据选择/缩减的主要技术。",
+          "front": "采样的主要目的是什么？",
+          "question_id": "q_flash_sampling_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "dimensionality_reduction",
+      "coverage_tags": [
+        "dimensionality_reduction"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_dimensionality_reduction",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出降维的目的和原因。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆出降维是为了避免维度灾难并提高算法效率。",
+      "question_type": "short_answer",
+      "retrieval_focus": "降维的目的",
+      "term_refs": [
+        {
+          "display": "降维",
+          "en": "dimensionality reduction"
+        },
+        {
+          "display": "维度灾难",
+          "en": "curse of dimensionality"
+        }
+      ],
+      "variants": [
+        {
+          "back": "避免维度灾难（高维空间数据稀疏、距离度量失效），减少算法时间和内存消耗，使模型更简洁可解释。",
+          "estimated_seconds": 10,
+          "explanation": "降维解决高维数据带来的问题。",
+          "front": "为什么要进行降维？",
+          "question_id": "q_flash_dimensionality_reduction_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_creation",
+      "coverage_tags": [
+        "feature_creation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_feature_creation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出特征创建的定义和例子。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆出特征创建是从现有属性推导新属性。",
+      "question_type": "short_answer",
+      "retrieval_focus": "特征创建的定义",
+      "term_refs": [
+        {
+          "display": "特征创建",
+          "en": "feature creation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "从现有属性推导出新的、更少的属性。例如，用体重除以身高的平方得到BMI，用一个新属性代替两个旧属性。",
+          "estimated_seconds": 10,
+          "explanation": "特征创建是降维的一种方式。",
+          "front": "什么是特征创建？请举一个例子。",
+          "question_id": "q_flash_feature_creation_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_selection",
+      "coverage_tags": [
+        "feature_selection"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_feature_selection",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出特征选择的定义和两种去除目标。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆出特征选择是挑选有用子集，去除冗余和不相关属性。",
+      "question_type": "short_answer",
+      "retrieval_focus": "特征选择的两种去除目标",
+      "term_refs": [
+        {
+          "display": "特征选择",
+          "en": "feature selection"
+        }
+      ],
+      "variants": [
+        {
+          "back": "冗余属性（如高度相关的属性）和不相关属性（如对预测任务无用的属性）。",
+          "estimated_seconds": 8,
+          "explanation": "冗余属性携带相似信息，不相关属性无助于分析。",
+          "front": "特征选择主要去除哪两类属性？",
+          "question_id": "q_flash_feature_selection_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "correlation",
+      "coverage_tags": [
+        "correlation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_correlation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出相关性在降维中的作用。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆出相关性用于判断属性是否冗余。",
+      "question_type": "short_answer",
+      "retrieval_focus": "相关性的用途",
+      "term_refs": [
+        {
+          "display": "相关性",
+          "en": "correlation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "判断两个属性是否高度相关，如果高度相关则说明它们携带的信息相似，可以只保留一个。",
+          "estimated_seconds": 8,
+          "explanation": "相关性帮助识别冗余属性。",
+          "front": "在特征选择中，相关性分析用来做什么？",
+          "question_id": "q_flash_correlation_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca",
+      "coverage_tags": [
+        "pca"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_pca",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出PCA的核心机制：旋转坐标轴，创建不相关的主成分。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆出PCA不直接选择属性，而是创建新维度。",
+      "question_type": "short_answer",
+      "retrieval_focus": "PCA的核心机制",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Components Analysis (PCA)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将数据旋转到新的坐标轴上，新轴（主成分）按捕捉数据变异的大小排序，保留前几个主成分即可。",
+          "estimated_seconds": 12,
+          "explanation": "PCA创建不相关的新维度，而非选择原始属性。",
+          "front": "PCA（主成分分析）是如何实现降维的？",
+          "question_id": "q_flash_pca_v1"
+        },
+        {
+          "back": "第一主成分捕捉数据中最大的变异方向。",
+          "estimated_seconds": 6,
+          "explanation": "主成分按方差大小排序。",
+          "front": "PCA中，第一主成分有什么特点？",
+          "question_id": "q_flash_pca_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "data_cleaning",
+      "coverage_tags": [
+        "data_cleaning_imputation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_data_cleaning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出数据清洗的主要任务。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆出数据清洗包括填充缺失值、解决不一致、去除噪声。",
+      "question_type": "short_answer",
+      "retrieval_focus": "数据清洗的主要任务",
+      "term_refs": [
+        {
+          "display": "数据清洗",
+          "en": "data cleaning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "1. 填充缺失值；2. 解决数据不一致；3. 去除噪声数据。",
+          "estimated_seconds": 8,
+          "explanation": "数据清洗是预处理的第一步。",
+          "front": "数据清洗主要解决哪三类问题？",
+          "question_id": "q_flash_data_cleaning_v1"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-data-1",
+  "longform_families": [
+    {
+      "concept_key": "pca_mechanism",
+      "coverage_tags": [
+        "pca",
+        "dimensionality_reduction"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_pca",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释PCA的工作原理，并与特征选择进行对比。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能说明PCA如何通过旋转坐标轴创建主成分，以及何时选择PCA而非特征选择。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Components Analysis (PCA)"
+        },
+        {
+          "display": "特征选择",
+          "en": "feature selection"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "PCA如何实现降维？",
+            "第一主成分有什么特点？",
+            "PCA与特征选择的主要区别是什么？",
+            "什么情况下PCA比特征选择更合适？"
+          ],
+          "question_id": "q_long_pca_v1",
+          "reference_answer": [
+            "PCA通过将数据旋转到新的坐标轴上来实现降维。新轴称为主成分，它们彼此不相关，并按捕捉数据变异的大小排序。第一主成分捕捉最大的变异方向。",
+            "与特征选择不同，PCA不直接选择原始属性，而是创建新的维度。特征选择保留原始属性的含义，而PCA会改变属性含义。",
+            "当属性之间高度相关时，PCA能有效捕捉主要变异方向，而特征选择可能丢失信息。如果需要保留原始属性的可解释性，则应使用特征选择。"
+          ],
+          "rubric_points": [
+            "PCA通过旋转坐标轴创建新的不相关维度（主成分）",
+            "第一主成分捕捉数据最大变异方向",
+            "特征选择保留原始属性含义，PCA创建新维度",
+            "当属性高度相关时，PCA更有效"
+          ],
+          "stem": "请解释PCA（主成分分析）的工作原理，并说明在什么情况下应该使用PCA而不是特征选择。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "noise_vs_outlier",
+      "coverage_tags": [
+        "data_quality_noise_outlier"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_noise_outlier",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体例子中区分噪声和异常值。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能判断给定数据点是噪声还是异常值，并说明理由。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "噪声",
+          "en": "noise"
+        },
+        {
+          "display": "异常值",
+          "en": "outlier"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "年龄为负数明显是录入错误，属于噪声。",
+          "options": [
+            "噪声",
+            "异常值",
+            "缺失值",
+            "正常值"
+          ],
+          "question_id": "q_quiz_noise_outlier_v1",
+          "stem": "在一个客户数据集中，某客户的年龄为-5岁。这属于什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "虽然金额异常高，但可能是欺诈信号，属于异常值而非噪声。",
+          "options": [
+            "噪声",
+            "异常值",
+            "缺失值",
+            "正常值"
+          ],
+          "question_id": "q_quiz_noise_outlier_v2",
+          "stem": "在信用卡欺诈检测中，一笔金额为100万元的交易（该用户历史平均交易额为500元）属于什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "missing_value_handling",
+      "coverage_tags": [
+        "missing_value"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_missing_value",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能选择处理缺失值的合适方法。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能根据场景选择忽略、查找或插补。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "缺失值",
+          "en": "missing value"
+        },
+        {
+          "display": "数据插补",
+          "en": "data imputation"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "缺失值比例很小，忽略这些记录对整体分析影响不大，且最简单。",
+          "options": [
+            "忽略含缺失值的记录",
+            "用平均值填充所有缺失值",
+            "用kNN插补",
+            "删除整个数据集"
+          ],
+          "question_id": "q_quiz_missing_value_v1",
+          "stem": "一个包含100万条记录的数据集中，只有0.1%的记录有缺失值。最合适的处理方式是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "用平均值填充是常见的数据插补方法。",
+          "options": [
+            "删除含缺失值的行",
+            "用该列的平均值填充缺失值",
+            "将缺失值替换为特殊符号null",
+            "重新采集数据"
+          ],
+          "question_id": "q_quiz_missing_value_v2",
+          "stem": "以下哪种方法属于数据插补？"
+        }
+      ]
+    },
+    {
+      "concept_key": "generalization",
+      "coverage_tags": [
+        "generalization"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_generalization",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别泛化操作。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能从多个选项中选出属于泛化的操作。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "泛化",
+          "en": "generalization"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "将具体年龄映射到更高层次的概念（年龄组）就是泛化。",
+          "options": [
+            "将每秒的交易数据汇总为每10秒的总交易额",
+            "将年龄值映射为“儿童、成人、老人”",
+            "从100万条记录中随机抽取1万条",
+            "用PCA将100个属性减少到20个"
+          ],
+          "question_id": "q_quiz_generalization_v1",
+          "stem": "以下哪种操作属于泛化？"
+        }
+      ]
+    },
+    {
+      "concept_key": "sampling",
+      "coverage_tags": [
+        "sampling"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_sampling",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断何时使用分层采样。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能根据类别不平衡的场景选择分层采样。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "采样",
+          "en": "sampling"
+        },
+        {
+          "display": "分层采样",
+          "en": "stratified sampling"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "类别高度不平衡时，分层采样能确保各类别在样本中的比例与整体一致。",
+          "options": [
+            "简单随机采样",
+            "分层采样",
+            "有放回采样",
+            "系统采样"
+          ],
+          "question_id": "q_quiz_sampling_v1",
+          "stem": "一个数据集中，正类样本占99%，负类样本占1%。要保证采样后样本能代表原始分布，应该使用哪种采样方法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_creation",
+      "coverage_tags": [
+        "feature_creation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_feature_creation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别特征创建的例子。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能从多个选项中选出属于特征创建的操作。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征创建",
+          "en": "feature creation"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "BMI是从现有属性推导出的新属性，属于特征创建。",
+          "options": [
+            "从100个原始属性中挑选20个",
+            "用体重除以身高的平方得到BMI",
+            "将年龄值映射为“儿童、成人、老人”",
+            "删除含缺失值的记录"
+          ],
+          "question_id": "q_quiz_feature_creation_v1",
+          "stem": "以下哪种做法属于特征创建？"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_selection",
+      "coverage_tags": [
+        "feature_selection"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_feature_selection",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断特征选择的适用场景。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能根据场景选择特征选择而非特征创建。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征选择",
+          "en": "feature selection"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "特征选择直接挑选原始属性的子集，保留了原始含义；PCA会改变属性含义。",
+          "options": [
+            "需要保留原始属性的含义",
+            "属性之间高度相关",
+            "数据量太大需要减少记录数",
+            "需要创建新的不相关维度"
+          ],
+          "question_id": "q_quiz_feature_selection_v1",
+          "stem": "以下哪种情况最适合使用特征选择？"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca",
+      "coverage_tags": [
+        "pca"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_pca",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解PCA的适用条件和目标。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能判断何时使用PCA以及PCA的主要目标。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Components Analysis (PCA)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "当属性高度相关时，PCA能有效捕捉主要变异方向，而特征选择可能丢失信息。",
+          "options": [
+            "属性之间高度相关",
+            "属性都是名义属性",
+            "数据量很小",
+            "需要保留原始属性含义"
+          ],
+          "question_id": "q_quiz_pca_v1",
+          "stem": "以下哪种情况适合使用PCA而不是特征选择？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "PCA通过旋转坐标轴创建新的维度（主成分），这些维度彼此不相关，并按捕捉数据变异的大小排序。",
+          "options": [
+            "选择最有用的原始属性子集",
+            "创建新的不相关维度来捕捉数据变异",
+            "用平均值填充缺失值",
+            "将数据映射到更高层次的概念"
+          ],
+          "question_id": "q_quiz_pca_v2",
+          "stem": "PCA的主要目标是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "data_cleaning",
+      "coverage_tags": [
+        "data_cleaning_imputation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_data_cleaning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别数据清洗的任务。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能从多个选项中选出属于数据清洗的操作。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "数据清洗",
+          "en": "data cleaning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "用平均值填充缺失值是数据清洗中处理缺失值的一种方式。",
+          "options": [
+            "将年龄值映射为“儿童、成人、老人”",
+            "用平均值填充缺失的年龄值",
+            "从100万条记录中随机抽取1万条",
+            "用PCA将100个属性减少到20个"
+          ],
+          "question_id": "q_quiz_data_cleaning_v1",
+          "stem": "以下哪项属于数据清洗的任务？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "Data Quality. Noise and Outliers. Missing Values. Data Preprocessing. Aggregation. Generalization. Sampling. Dimensionality Reduction. Feature creation. Correlation. PCA. Feature Selection.",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "step4: 数据质量与预处理：噪声、异常值、缺失值、聚合、泛化、采样、降维",
+    "plain_text": "pipeline/1-plain/u1-comp7103-data-1/plain.txt",
+    "related": [],
+    "source_outline": "Data Quality. Noise and Outliers. Missing Values. Data Preprocessing. Aggregation. Generalization. Sampling. Dimensionality Reduction. Feature creation. Correlation. PCA. Feature Selection."
+  },
+  "target_language": "zh-CN"
+}

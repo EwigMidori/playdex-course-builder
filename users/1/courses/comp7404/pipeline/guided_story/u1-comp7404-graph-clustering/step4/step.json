@@ -1,0 +1,161 @@
+{
+  "chapter_id": "lecture-06-graph-clustering",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-graph-clustering",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "求解广义特征值系统后，我们会得到一组特征向量。",
+        "每个特征向量都对应一个特征值。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "先观察第一个特征向量：它的所有元素都相等（常数向量）。",
+        "这意味着所有节点都被分到同一组，没有分割信息。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "第一个特征向量是常数向量，所有元素相等，无法区分节点。",
+        "kind": "single_choice",
+        "options": [
+          "不能，因为所有元素相等",
+          "能，因为它是第一个",
+          "能，因为特征值最小",
+          "不能，因为特征值太大"
+        ],
+        "prompt": "第一个特征向量能用来分割图吗？"
+      },
+      "focus_terms": [],
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "检查一下："
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s039",
+      "introduced_terms": [],
+      "lines": [
+        "那么第二个特征向量呢？它的元素有正有负。",
+        "正号表示节点属于一组，负号表示属于另一组。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s040",
+      "introduced_terms": [],
+      "lines": [
+        "第二个最小的特征向量，就包含了图的最优二分切割信息！"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "第一个特征向量是常数，没有分割信息；第二个最小的特征向量包含了最优的二分信息。",
+        "kind": "single_choice",
+        "options": [
+          "第一个",
+          "第二个",
+          "第三个",
+          "最后一个"
+        ],
+        "prompt": "归一化割算法中，用于二分图的特征向量是第几个？"
+      },
+      "focus_terms": [],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "所以，关键问题是："
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "第一个特征向量是常数，没有分割信息；第二小的特征向量元素有正有负，可以用于二分。",
+        "kind": "single_choice",
+        "options": [
+          "特征向量2",
+          "特征向量1",
+          "特征向量3",
+          "特征向量4"
+        ],
+        "prompt": "给定特征向量序列：v1=[1,1,1,1], v2=[0.5, 0.5, -0.5, -0.5], v3=[0.3, -0.3, 0.3, -0.3], v4=[0.1, 0.1, 0.1, -0.3]。哪个可用于二分？"
+      },
+      "focus_terms": [],
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "实际判断一下："
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "第一个特征向量是常数，没有分割信息；第二小的特征向量才包含二分信息。",
+        "kind": "judgment",
+        "options": [
+          "错误",
+          "正确"
+        ],
+        "prompt": "判断以下说法是否正确：所有特征向量都包含分割信息。"
+      },
+      "focus_terms": [],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "再判断一个说法："
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "根据特征向量的正负号，将节点分为两组：正号一组，负号一组"
+        ],
+        "expected_fields": [
+          "二分规则"
+        ],
+        "explanation": "第二小特征向量的元素有正有负，正号表示节点属于一组，负号表示属于另一组。",
+        "kind": "scenario_derivation",
+        "prompt": "请描述如何使用第二小特征向量对图进行二分。",
+        "sample_answer": {
+          "二分规则": "根据特征向量的正负号，将节点分为两组：正号一组，负号一组"
+        }
+      },
+      "focus_terms": [],
+      "id": "s044",
+      "introduced_terms": [],
+      "lines": [
+        "描述一下二分过程："
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Simplification of the criterion: Write a vector y whose elements are 1 if the item is in A, -b if it's in B. Write the matrix of the graph as W, and the matrix which has the row sums of W on its diagonal as D, 1 is the vector with all ones. Criterion becomes min_y (y^T (D-W) y) / (y^T D y). Laplacian Matrix: L=D-W. Constraint y^T D 1 = 0. NP-complete. Instead, relax into the continuous domain by solving generalized eigenvalue system: (D-W)y = λDy. Note that (D-W)1 = 0, so the first eigenvector is y0 = 1 with eigenvalue 0. The second smallest eigenvector is the real valued solution to this problem!!",
+    "related": [
+      "lecture-06-graph-clustering"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

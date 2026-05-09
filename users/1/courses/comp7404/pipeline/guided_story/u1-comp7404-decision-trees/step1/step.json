@@ -1,0 +1,175 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-decision-trees",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "想象你面前有 6 个水果：",
+        "3 个苹果（红色，直径 7 cm），2 个葡萄（红色，直径 1 cm），1 个柠檬（黄色，直径 3 cm）。",
+        "你想让电脑学会区分它们。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "最朴素的想法：直接看特征。",
+        "比如“如果是红色就是苹果”——但葡萄也是红色。",
+        "或者“直径大于 5 cm 就是苹果”——但柠檬直径 3 cm，葡萄 1 cm，苹果 7 cm，这个规则能区分吗？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "红色水果可能是苹果或葡萄，仅凭颜色无法区分。",
+        "kind": "single_choice",
+        "options": [
+          "苹果",
+          "葡萄",
+          "无法确定"
+        ],
+        "prompt": "一个水果是红色，直径 1 cm。只靠颜色判断，它最可能是什么？"
+      },
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "试试看：只靠颜色，你能区分吗？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "你发现了：只靠一个特征不够。",
+        "需要多个特征组合，而且顺序很重要——先问颜色，再问大小，还是先问大小再问颜色？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "如果先问“直径大于 5 cm？”，是→苹果，否→再问“是红色吗？”，是→葡萄，否→柠檬。",
+        "这样就能区分所有水果了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "这种通过一系列“是/否”问题来做出判断的方式，比一次性看所有特征更灵活、更可解释。",
+        "这就是决策树的核心思想。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "决策树的关键不是“有特征”，而是按顺序提出一连串问题，并沿分支一步步走到结论。",
+        "kind": "single_choice",
+        "options": [
+          "把颜色和直径代入一个总分公式，一次性输出类别",
+          "先问“直径大于 5 cm 吗？”，再根据答案继续问下一个问题",
+          "随机猜一个类别，再逐步修正"
+        ],
+        "prompt": "下面哪一种分类过程，最像决策树真正的工作方式？"
+      },
+      "focus_terms": [],
+      "id": "s006b",
+      "introduced_terms": [],
+      "lines": [
+        "下面哪一种分类过程，最像决策树真正的工作方式？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "decision_tree",
+        "feature",
+        "leaf_node"
+      ],
+      "id": "s007",
+      "introduced_terms": [
+        "decision_tree",
+        "feature",
+        "leaf_node"
+      ],
+      "lines": [
+        "我们把这种模型叫做 <term id=\"decision_tree\">决策树</term>。",
+        "每个问题都基于数据的某个 <term id=\"feature\">特征</term>（比如颜色、直径）。",
+        "最终的答案，就在树的 <term id=\"leaf_node\">叶节点</term> 上。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "决策树通过一系列可解释的提问来分类，每一步都可以解释为什么走这个分支。",
+        "kind": "single_choice",
+        "options": [
+          "因为它通过一系列可解释的提问来分类",
+          "因为它使用了复杂的数学公式",
+          "因为它需要大量数据训练"
+        ],
+        "prompt": "为什么决策树被称为“可解释”模型？"
+      },
+      "focus_terms": [
+        "decision_tree"
+      ],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "现在，比较一下：朴素做法和提问链，哪个更可解释？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Decision tree classifiers are attractive models if we care about interpretability. This model breaks down our data by making a decision based on asking a series of questions.",
+    "related": [
+      "Decision Tree Learning - Intuition"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "decision_tree": {
+      "aliases": [
+        "Decision Tree",
+        "Decision Tree Classifier"
+      ],
+      "display": "决策树",
+      "gloss": "通过一系列提问来对数据进行分类的模型。"
+    },
+    "feature": {
+      "aliases": [
+        "Feature",
+        "Attribute"
+      ],
+      "display": "特征",
+      "gloss": "用于描述数据样本的属性，例如颜色、直径。"
+    },
+    "leaf_node": {
+      "aliases": [
+        "Leaf Node",
+        "Leaf"
+      ],
+      "display": "叶节点",
+      "gloss": "决策树中不再继续分裂的节点，代表最终的分类结果。"
+    }
+  }
+}

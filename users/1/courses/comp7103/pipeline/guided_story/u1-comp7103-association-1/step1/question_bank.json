@@ -1,0 +1,423 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "association_rule_definition",
+      "covered_by": [
+        "qf_flash_assoc_rule",
+        "qf_quiz_assoc_rule"
+      ],
+      "description": "关联规则的定义：形式为 X ⇒ Y，表示买 X 的人也倾向于买 Y。"
+    },
+    {
+      "coverage_tag": "transaction_and_itemset",
+      "covered_by": [
+        "qf_flash_itemset",
+        "qf_quiz_itemset"
+      ],
+      "description": "交易记录与项集的概念：每条小票是一条交易记录，交易记录中的商品集合称为项集。"
+    },
+    {
+      "coverage_tag": "k_itemset",
+      "covered_by": [
+        "qf_flash_k_itemset"
+      ],
+      "description": "k-项集：包含 k 个商品的项集。"
+    },
+    {
+      "coverage_tag": "support_count",
+      "covered_by": [
+        "qf_flash_support_count",
+        "qf_quiz_support_count",
+        "qf_long_support_count"
+      ],
+      "description": "支持度计数 sup(X)：包含项集 X 的交易记录数量。"
+    },
+    {
+      "coverage_tag": "market_basket_analysis",
+      "covered_by": [
+        "qf_flash_assoc_rule"
+      ],
+      "description": "购物篮分析：关联规则的主要应用场景，发现商品之间的关联。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "association_rule_definition",
+      "coverage_tags": [
+        "association_rule_definition",
+        "market_basket_analysis"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_assoc_rule",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆关联规则的定义和基本形式。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能说出关联规则的形式 X ⇒ Y 及其含义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "关联规则的形式和含义。",
+      "term_refs": [
+        {
+          "display": "关联规则",
+          "en": "Association Rule"
+        }
+      ],
+      "variants": [
+        {
+          "back": "X ⇒ Y，其中 X 是前提，Y 是结论。",
+          "estimated_seconds": 5,
+          "explanation": "关联规则的形式为 X ⇒ Y，表示如果买了 X，很可能也会买 Y。",
+          "front": "关联规则的标准形式是什么？",
+          "question_id": "q_flash_assoc_rule_v1"
+        },
+        {
+          "back": "如果买了面包，很可能也会买牛奶。",
+          "estimated_seconds": 5,
+          "explanation": "这是购物篮分析中的一个典型例子，表示面包和牛奶经常被一起购买。",
+          "front": "关联规则 {面包} ⇒ {牛奶} 的含义是什么？",
+          "question_id": "q_flash_assoc_rule_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "transaction_and_itemset",
+      "coverage_tags": [
+        "transaction_and_itemset"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_itemset",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分交易记录和项集的概念。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能说出交易记录和项集的定义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "交易记录和项集的定义。",
+      "term_refs": [
+        {
+          "display": "交易记录",
+          "en": "Transaction"
+        },
+        {
+          "display": "项集",
+          "en": "Itemset"
+        }
+      ],
+      "variants": [
+        {
+          "back": "交易记录（Transaction）。",
+          "estimated_seconds": 5,
+          "explanation": "每条小票就是一条交易记录，记录了这次购买的所有商品。",
+          "front": "在购物篮分析中，一条小票（一次购物记录）被称为什么？",
+          "question_id": "q_flash_itemset_v1"
+        },
+        {
+          "back": "项集（Itemset）。",
+          "estimated_seconds": 5,
+          "explanation": "例如 {牛奶, 面包, 洗衣粉} 就是一个项集。",
+          "front": "交易记录中所有商品的集合被称为什么？",
+          "question_id": "q_flash_itemset_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "k_itemset",
+      "coverage_tags": [
+        "k_itemset"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_k_itemset",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据项集中商品的数量说出对应的 k-项集名称。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能说出 k-项集的定义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "k-项集的定义。",
+      "term_refs": [
+        {
+          "display": "k-项集",
+          "en": "k-itemset"
+        }
+      ],
+      "variants": [
+        {
+          "back": "3-项集。",
+          "estimated_seconds": 5,
+          "explanation": "包含 k 个商品的项集称为 k-项集。",
+          "front": "包含 3 个商品的项集叫什么？",
+          "question_id": "q_flash_k_itemset_v1"
+        },
+        {
+          "back": "2-项集。",
+          "estimated_seconds": 5,
+          "explanation": "因为它包含 a 和 b 两个商品。",
+          "front": "项集 {a, b} 是几-项集？",
+          "question_id": "q_flash_k_itemset_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "support_count",
+      "coverage_tags": [
+        "support_count"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_support_count",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据描述计算支持度计数。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能说出支持度计数的定义并计算简单例子的支持度计数。",
+      "question_type": "micro_calc",
+      "retrieval_focus": "支持度计数的定义和计算。",
+      "term_refs": [
+        {
+          "display": "支持度计数",
+          "en": "Support Count"
+        }
+      ],
+      "variants": [
+        {
+          "back": "包含项集 X 的交易记录数量。",
+          "estimated_seconds": 5,
+          "explanation": "sup(X) 统计了数据集中有多少条交易包含了项集 X。",
+          "front": "支持度计数 sup(X) 的定义是什么？",
+          "question_id": "q_flash_support_count_v1"
+        },
+        {
+          "back": "4。",
+          "estimated_seconds": 8,
+          "explanation": "支持度计数就是包含该项集的交易数量，这里是 4。",
+          "front": "有 10 笔交易，其中 4 笔包含了 {啤酒, 尿布}。sup({啤酒, 尿布}) 是多少？",
+          "question_id": "q_flash_support_count_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-1",
+  "longform_families": [
+    {
+      "concept_key": "support_count",
+      "coverage_tags": [
+        "support_count"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_support_count",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的话解释支持度计数的含义并举例。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能解释支持度计数的定义，并给出一个计算例子。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "支持度计数",
+          "en": "Support Count"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 60,
+          "prompt_blocks": [
+            "定义",
+            "例子"
+          ],
+          "question_id": "q_long_support_count_v1",
+          "reference_answer": [
+            "支持度计数 sup(X) 是指数据集中包含项集 X 的交易记录数量。",
+            "例如，在 25 笔交易的示例数据中，sup({a,b,e}) = 3，表示有 3 笔交易同时包含了 a、b 和 e。"
+          ],
+          "rubric_points": [
+            "正确说出支持度计数的定义：包含某个项集的交易数量",
+            "给出一个正确的计算例子，如 sup({a,b}) = 3"
+          ],
+          "stem": "请解释什么是支持度计数（support count），并给出一个例子。"
+        },
+        {
+          "estimated_seconds": 60,
+          "prompt_blocks": [
+            "计算结果",
+            "解释"
+          ],
+          "question_id": "q_long_support_count_v2",
+          "reference_answer": [
+            "sup({啤酒, 尿布}) = 4。",
+            "因为支持度计数定义为包含该项集的交易数量，而题目明确说有 4 笔交易包含了 {啤酒, 尿布}。"
+          ],
+          "rubric_points": [
+            "正确计算结果：4",
+            "解释：支持度计数就是包含该项集的交易数量"
+          ],
+          "stem": "假设有 10 笔交易，其中 4 笔包含了 {啤酒, 尿布}。请计算 sup({啤酒, 尿布}) 并解释你的计算过程。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "association_rule_definition",
+      "coverage_tags": [
+        "association_rule_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_assoc_rule",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在不同场景中识别关联规则的正确形式。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能判断一个给定的规则是否符合关联规则的形式。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "关联规则",
+          "en": "Association Rule"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "关联规则的形式为 X ⇒ Y，表示如果 X 发生，则 Y 很可能发生。",
+          "options": [
+            "X ⇒ Y",
+            "X ∪ Y",
+            "X ∩ Y",
+            "X ⊆ Y"
+          ],
+          "question_id": "q_quiz_assoc_rule_v1",
+          "stem": "以下哪个是关联规则的正确形式？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "关联规则表示一种倾向性，即买尿布的人也更可能买啤酒。",
+          "options": [
+            "买了尿布的人很可能也买了啤酒",
+            "买了啤酒的人一定买了尿布",
+            "尿布和啤酒是同一个商品",
+            "尿布和啤酒不能同时购买"
+          ],
+          "question_id": "q_quiz_assoc_rule_v2",
+          "stem": "关联规则 {尿布} ⇒ {啤酒} 的含义是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "transaction_and_itemset",
+      "coverage_tags": [
+        "transaction_and_itemset"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_itemset",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别项集和交易记录的关系。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能判断一个集合是否为项集。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "项集",
+          "en": "Itemset"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "项集是商品的集合，用花括号表示，如 {牛奶, 面包, 洗衣粉}。",
+          "options": [
+            "{牛奶, 面包, 洗衣粉}",
+            "牛奶 + 面包 + 洗衣粉",
+            "3 个牛奶",
+            "面包的价格"
+          ],
+          "question_id": "q_quiz_itemset_v1",
+          "stem": "在购物篮分析中，以下哪个是项集？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "交易记录里所有商品的集合就是一个项集。",
+          "options": [
+            "每条交易记录本身就是一个项集",
+            "交易记录是项集的子集",
+            "项集是交易记录的子集",
+            "两者没有关系"
+          ],
+          "question_id": "q_quiz_itemset_v2",
+          "stem": "一条交易记录和项集的关系是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "support_count",
+      "coverage_tags": [
+        "support_count"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_support_count",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定数据计算支持度计数。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能计算给定项集的支持度计数。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "支持度计数",
+          "en": "Support Count"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "包含 {a,b} 的交易是 T1 和 T4，共 2 笔。",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "question_id": "q_quiz_support_count_v1",
+          "stem": "假设有 5 笔交易：T1={a,b}, T2={a,c}, T3={b,c}, T4={a,b,c}, T5={a}。sup({a,b}) 是多少？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "sup({c,d}) = 9 表示有 9 笔交易同时包含了商品 c 和 d。",
+          "options": [
+            "有 9 笔交易同时包含了 c 和 d",
+            "c 和 d 各出现了 9 次",
+            "有 9 笔交易包含了 c 或 d",
+            "c 和 d 的总支持度是 9"
+          ],
+          "question_id": "q_quiz_support_count_v2",
+          "stem": "在 25 笔交易的示例数据集中，sup({c,d}) = 9。这意味着什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

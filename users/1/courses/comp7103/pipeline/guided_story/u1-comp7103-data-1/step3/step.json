@@ -1,0 +1,134 @@
+{
+  "chapter_id": "lecture-06-data-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-data-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "假设有两个购物篮：",
+        "顾客A买了面包和牛奶，没买鸡蛋和黄油。",
+        "顾客B买了面包和鸡蛋，没买牛奶和黄油。",
+        "问题：比较这两个购物篮时，双方都没买的商品（比如黄油）重要吗？",
+        "请先思考。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "asymmetric_attribute"
+      ],
+      "id": "s014",
+      "introduced_terms": [
+        "asymmetric_attribute"
+      ],
+      "lines": [
+        "在购物篮数据中，只有“买了”（1）才重要，“没买”（0）几乎没意义。",
+        "这种特殊的二元属性叫 <term id=\"asymmetric_attribute\">非对称属性</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [
+        "现在考虑另一个问题：如果我们要比较两篇文档，",
+        "文档中的词有出现和不出现，这和非对称属性有什么相似之处？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s016",
+      "introduced_terms": [
+        "bag_of_words"
+      ],
+      "lines": [
+        "文档数据中，每个词的出现与否也可以看作一个二元属性。",
+        "但更常用的表示方法是 <term id=\"bag_of_words\">词袋模型</term>：",
+        "把文档看作一个袋子，里面装着所有词及其出现次数。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "例如：“A cat sits on a mat”",
+        "变成：{“a”:2, “cat”:1, “sits”:1, “on”:1, “mat”:1}",
+        "注意：顺序被忽略了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "tf_idf"
+      ],
+      "id": "s018",
+      "introduced_terms": [
+        "tf_idf"
+      ],
+      "lines": [
+        "但像“a”、“the”这种高频词，对区分文档没什么帮助。",
+        "所以引入 <term id=\"tf_idf\">TF-IDF</term> 来降低常见词的权重，突出有区分度的词。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "explanation": "因为购物篮数据是非对称的，双方都没买的商品（0-0匹配）数量巨大且无意义，Jaccard 系数忽略了这些0-0匹配。",
+        "kind": "short_reflection",
+        "prompt": "在比较两个购物篮时，为什么通常用 Jaccard 系数而不是简单匹配系数？"
+      },
+      "focus_terms": [
+        "asymmetric_attribute"
+      ],
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "在比较两个购物篮时，为什么通常用 Jaccard 系数而不是简单匹配系数？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Asymmetric attributes. Document data. Bag-of-Words. TF-IDF.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "asymmetric_attribute": {
+      "aliases": [
+        "asymmetric attribute",
+        "asymmetric binary"
+      ],
+      "display": "非对称属性",
+      "gloss": "只有非零值（通常为1）才重要的二元属性。"
+    },
+    "bag_of_words": {
+      "aliases": [
+        "Bag-of-Words",
+        "BoW"
+      ],
+      "display": "词袋模型",
+      "gloss": "将文档表示为词语及其出现次数的集合，忽略词语顺序。"
+    },
+    "tf_idf": {
+      "aliases": [
+        "Term Frequency-Inverse Document Frequency"
+      ],
+      "display": "TF-IDF",
+      "gloss": "一种加权技术，降低常见词的影响，突出对文档有区分度的词。"
+    }
+  }
+}

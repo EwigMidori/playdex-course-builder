@@ -1,0 +1,432 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "roc_curve_construction",
+      "covered_by": [
+        "qf_flash_roc_definition",
+        "qf_flash_fpr_tpr_formula",
+        "qf_quiz_roc_interpretation",
+        "qf_long_roc_construction"
+      ],
+      "description": "ROC 曲线的构建方法：按后验概率排序，在每个唯一阈值处计算 TPR 和 FPR 并连线"
+    },
+    {
+      "coverage_tag": "fpr_definition",
+      "covered_by": [
+        "qf_flash_fpr_tpr_formula",
+        "qf_quiz_fpr_calculation"
+      ],
+      "description": "假正率（FPR）的定义与公式：FP/(FP+TN)"
+    },
+    {
+      "coverage_tag": "tpr_definition",
+      "covered_by": [
+        "qf_flash_fpr_tpr_formula",
+        "qf_quiz_fpr_calculation"
+      ],
+      "description": "真正率（TPR）的定义与公式：TP/(TP+FN)，即召回率"
+    },
+    {
+      "coverage_tag": "auc_definition",
+      "covered_by": [
+        "qf_flash_auc_meaning",
+        "qf_quiz_auc_interpretation"
+      ],
+      "description": "AUC 是 ROC 曲线下的面积，衡量模型整体排序能力，取值范围 0~1"
+    },
+    {
+      "coverage_tag": "auc_interpretation",
+      "covered_by": [
+        "qf_flash_auc_meaning",
+        "qf_quiz_auc_interpretation"
+      ],
+      "description": "AUC=1 完美分类器，AUC=0.5 随机猜测，AUC 不依赖具体阈值"
+    },
+    {
+      "coverage_tag": "roc_curve_interpretation",
+      "covered_by": [
+        "qf_quiz_roc_interpretation",
+        "qf_long_roc_construction"
+      ],
+      "description": "ROC 曲线越靠近左上角模型性能越好，横轴 FPR 纵轴 TPR"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "roc_curve",
+      "coverage_tags": [
+        "roc_curve_construction"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_roc_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 ROC 曲线的定义和坐标轴含义。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生能主动回忆 ROC 曲线的横轴和纵轴分别是什么。",
+      "question_type": "short_answer",
+      "retrieval_focus": "ROC 曲线的两个坐标轴名称",
+      "term_refs": [
+        {
+          "display": "ROC 曲线",
+          "en": "Receiver Operating Characteristic curve"
+        }
+      ],
+      "variants": [
+        {
+          "back": "横轴是假正率（FPR），纵轴是真正率（TPR）。",
+          "estimated_seconds": 8,
+          "explanation": "FPR = FP/(FP+TN)，TPR = TP/(TP+FN)。",
+          "front": "ROC 曲线的横轴和纵轴分别是什么？",
+          "question_id": "q_flash_roc_def_v1"
+        },
+        {
+          "back": "在某个阈值下，负类样本有 20% 被误判为正类，同时正类样本有 80% 被正确识别。",
+          "estimated_seconds": 12,
+          "explanation": "FPR 越低越好，TPR 越高越好，该点靠近左上角说明模型在该阈值下表现较好。",
+          "front": "ROC 曲线上的一个点 (FPR=0.2, TPR=0.8) 表示什么含义？",
+          "question_id": "q_flash_roc_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "false_positive_rate",
+      "coverage_tags": [
+        "fpr_definition",
+        "tpr_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_fpr_tpr_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确写出 FPR 和 TPR 的公式。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生能主动回忆 FPR 和 TPR 的数学表达式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "FPR 和 TPR 的公式",
+      "term_refs": [
+        {
+          "display": "假正率",
+          "en": "False Positive Rate"
+        },
+        {
+          "display": "真正率",
+          "en": "True Positive Rate"
+        }
+      ],
+      "variants": [
+        {
+          "back": "FPR = FP / (FP + TN)",
+          "estimated_seconds": 6,
+          "explanation": "FPR 表示负类样本中被误判为正类的比例。",
+          "front": "假正率（FPR）的公式是什么？",
+          "question_id": "q_flash_fpr_tpr_v1"
+        },
+        {
+          "back": "TPR = TP / (TP + FN)，与召回率（Recall）相同。",
+          "estimated_seconds": 8,
+          "explanation": "TPR 就是召回率，表示所有正类样本中被正确找出的比例。",
+          "front": "真正率（TPR）的公式是什么？它与哪个已学指标相同？",
+          "question_id": "q_flash_fpr_tpr_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "auc",
+      "coverage_tags": [
+        "auc_definition",
+        "auc_interpretation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_auc_meaning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 AUC 的定义和两个关键参考值。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生能主动回忆 AUC 的含义和 AUC=1、AUC=0.5 分别代表什么。",
+      "question_type": "short_answer",
+      "retrieval_focus": "AUC 的定义与参考值",
+      "term_refs": [
+        {
+          "display": "AUC",
+          "en": "Area Under the Curve"
+        }
+      ],
+      "variants": [
+        {
+          "back": "Area Under the Curve，即 ROC 曲线下的面积。",
+          "estimated_seconds": 6,
+          "explanation": "AUC 衡量模型对正负样本的整体排序能力。",
+          "front": "AUC 的全称和定义是什么？",
+          "question_id": "q_flash_auc_v1"
+        },
+        {
+          "back": "AUC = 1 表示完美分类器；AUC = 0.5 表示随机猜测，毫无预测能力。",
+          "estimated_seconds": 8,
+          "explanation": "AUC 取值范围在 0 到 1 之间，越接近 1 模型性能越好。",
+          "front": "AUC = 1 和 AUC = 0.5 分别代表什么？",
+          "question_id": "q_flash_auc_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "longform_families": [
+    {
+      "concept_key": "roc_curve",
+      "coverage_tags": [
+        "roc_curve_construction",
+        "roc_curve_interpretation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_roc_construction",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整描述 ROC 曲线的构建步骤，并解释每个步骤的意义。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生能按顺序说明如何从样本后验概率构建 ROC 曲线，并解释为什么这样构建。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "ROC 曲线",
+          "en": "Receiver Operating Characteristic curve"
+        },
+        {
+          "display": "假正率",
+          "en": "False Positive Rate"
+        },
+        {
+          "display": "真正率",
+          "en": "True Positive Rate"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "第一步：对样本做什么操作？",
+            "第二步：如何选择阈值？",
+            "第三步：在每个阈值下计算什么？",
+            "第四步：如何绘制曲线？",
+            "解释为什么 ROC 曲线能综合评估所有阈值下的表现。"
+          ],
+          "question_id": "q_long_roc_construct_v1",
+          "reference_answer": [
+            "1. 将所有测试样本按模型输出的后验概率从高到低排序。",
+            "2. 在每个唯一的后验概率值处设置一个阈值，大于等于该阈值的预测为正类，否则为负类。",
+            "3. 在每个阈值下，统计 TP、FP、TN、FN，然后计算 TPR = TP/(TP+FN) 和 FPR = FP/(FP+TN)。",
+            "4. 以 FPR 为横坐标、TPR 为纵坐标，将每个阈值对应的点描在图上，并按阈值从大到小的顺序连接这些点，得到 ROC 曲线。",
+            "ROC 曲线之所以不依赖单一阈值，是因为它展示了所有可能阈值下的 (FPR, TPR) 组合，从而全面反映模型在不同操作点下的性能。"
+          ],
+          "rubric_points": [
+            "按后验概率从高到低排序",
+            "在每个唯一后验概率值处设置阈值",
+            "计算每个阈值下的 TPR 和 FPR",
+            "以 FPR 为横轴、TPR 为纵轴描点连线",
+            "因为曲线包含了所有可能的阈值对应的 (FPR, TPR) 点，所以不依赖单一阈值"
+          ],
+          "stem": "请描述构建 ROC 曲线的完整步骤，并解释为什么 ROC 曲线不依赖单一阈值。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "对每个阈值，先确定哪些样本被预测为正类",
+            "统计每个阈值下的 TP、FP、TN、FN",
+            "计算 TPR 和 FPR",
+            "描述这些点在 ROC 空间中的位置和连线后的形状"
+          ],
+          "question_id": "q_long_roc_construct_v2",
+          "reference_answer": [
+            "阈值 0.95：只有实例1被预测为正类，TP=1, FP=0, TN=5, FN=4 → TPR=0.2, FPR=0。",
+            "阈值 0.85：实例1,2,4被预测为正类，TP=3, FP=1, TN=4, FN=2 → TPR=0.6, FPR=0.2。",
+            "阈值 0.76：实例1,2,4,8被预测为正类，TP=4, FP=2, TN=3, FN=1 → TPR=0.8, FPR=0.4。",
+            "阈值 0.53：实例1,2,4,8,10被预测为正类，TP=5, FP=3, TN=2, FN=0 → TPR=1.0, FPR=0.6。",
+            "阈值 0.25：所有实例被预测为正类，TP=5, FP=5, TN=0, FN=0 → TPR=1.0, FPR=1.0。",
+            "将这些点 (0,0.2), (0.2,0.6), (0.4,0.8), (0.6,1.0), (1.0,1.0) 依次连线，得到一条从 (0,0.2) 到 (1,1) 的曲线，曲线明显凸向左上角，说明模型有一定预测能力。"
+          ],
+          "rubric_points": [
+            "阈值 0.95: TP=1, FP=0, TN=5, FN=4 → TPR=0.2, FPR=0",
+            "阈值 0.85: TP=3, FP=1, TN=4, FN=2 → TPR=0.6, FPR=0.2",
+            "阈值 0.76: TP=4, FP=2, TN=3, FN=1 → TPR=0.8, FPR=0.4",
+            "阈值 0.53: TP=5, FP=3, TN=2, FN=0 → TPR=1.0, FPR=0.6",
+            "阈值 0.25: TP=5, FP=5, TN=0, FN=0 → TPR=1.0, FPR=1.0",
+            "这些点从 (0,0.2) 开始，逐步向右上移动，最终到达 (1,1)，连线形成一条凸向左上角的曲线"
+          ],
+          "stem": "给定以下 10 个样本（按后验概率从高到低排序）：0.95(+), 0.93(+), 0.87(-), 0.85(+), 0.85(-), 0.85(-), 0.76(-), 0.53(+), 0.43(-), 0.25(+)。请计算阈值分别为 0.95、0.85、0.76、0.53、0.25 时的 FPR 和 TPR，并说明这些点如何构成 ROC 曲线。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "false_positive_rate",
+      "coverage_tags": [
+        "fpr_definition",
+        "tpr_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_fpr_calculation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在给定混淆矩阵或样本列表时正确计算 FPR 和 TPR。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生能根据阈值和样本数据正确计算 FPR 和 TPR 的值。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "假正率",
+          "en": "False Positive Rate"
+        },
+        {
+          "display": "真正率",
+          "en": "True Positive Rate"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 30,
+          "explanation": "阈值 0.85 时，FP=1（实例4），TN=4，TP=3（实例1,2,6），FN=2。FPR=1/5=0.2，TPR=3/5=0.6。",
+          "options": [
+            "FPR=0.2, TPR=0.6",
+            "FPR=0.4, TPR=0.6",
+            "FPR=0.2, TPR=0.8",
+            "FPR=0.6, TPR=0.6"
+          ],
+          "question_id": "q_quiz_fpr_calc_v1",
+          "stem": "给定 10 个样本，按后验概率从高到低排序：0.95(+), 0.93(+), 0.87(-), 0.85(+), 0.85(-), 0.85(-), 0.76(-), 0.53(+), 0.43(-), 0.25(+)。当阈值设为 0.85 时，FPR 和 TPR 分别是多少？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 30,
+          "explanation": "阈值 0.76 时，FP=2（实例4,5），TN=3，TP=4（实例1,2,6,8），FN=1。FPR=2/5=0.4，TPR=4/5=0.8。",
+          "options": [
+            "FPR=0.4, TPR=0.8",
+            "FPR=0.6, TPR=0.8",
+            "FPR=0.4, TPR=0.6",
+            "FPR=0.2, TPR=0.8"
+          ],
+          "question_id": "q_quiz_fpr_calc_v2",
+          "stem": "使用同样的 10 个样本，当阈值设为 0.76 时，FPR 和 TPR 分别是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "roc_curve",
+      "coverage_tags": [
+        "roc_curve_construction",
+        "roc_curve_interpretation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_roc_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确解释 ROC 曲线的形状和理想位置。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生能判断 ROC 曲线中哪个位置代表更好的模型性能。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "ROC 曲线",
+          "en": "Receiver Operating Characteristic curve"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "左上角对应 FPR 低、TPR 高，是理想位置。",
+          "options": [
+            "左上角",
+            "右上角",
+            "左下角",
+            "右下角"
+          ],
+          "question_id": "q_quiz_roc_interp_v1",
+          "stem": "ROC 曲线越靠近哪个角，表示模型性能越好？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "对角线对应 AUC=0.5，表示模型预测结果与随机猜测无异。",
+          "options": [
+            "模型是随机猜测，没有预测能力",
+            "模型完美分类所有样本",
+            "模型在所有阈值下精确率都为 1",
+            "模型在所有阈值下召回率都为 0"
+          ],
+          "question_id": "q_quiz_roc_interp_v2",
+          "stem": "如果一个模型的 ROC 曲线完全落在对角线（从 (0,0) 到 (1,1) 的直线）上，这意味着什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "auc",
+      "coverage_tags": [
+        "auc_definition",
+        "auc_interpretation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_auc_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确理解 AUC 的含义和适用场景。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生能判断 AUC 值的高低代表什么，以及 AUC 的优点。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "AUC",
+          "en": "Area Under the Curve"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "AUC 不依赖具体阈值，衡量的是模型将正类排在负类前面的能力。",
+          "options": [
+            "AUC 衡量模型对正负样本的整体排序能力",
+            "AUC 依赖于某个特定的分类阈值",
+            "AUC 的取值范围是 0 到 100",
+            "AUC 只适用于二分类问题中的精确率评估"
+          ],
+          "question_id": "q_quiz_auc_interp_v1",
+          "stem": "以下关于 AUC 的说法，哪一个是正确的？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "AUC 越高表示模型整体排序能力越强，但 AUC 不直接等于精确率。",
+          "options": [
+            "模型 A 的整体排序能力优于模型 B",
+            "模型 A 的精确率一定高于模型 B",
+            "模型 B 在所有阈值下都优于模型 A",
+            "两个模型的性能没有显著差异"
+          ],
+          "question_id": "q_quiz_auc_interp_v2",
+          "stem": "模型 A 的 AUC=0.9，模型 B 的 AUC=0.6。以下哪个结论最合理？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4b",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-performance-evaluation/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

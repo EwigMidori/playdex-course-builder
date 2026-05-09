@@ -1,0 +1,100 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "支持度只关心“是否出现”，不关心“卖了多少”。",
+        "但超市更关心利润。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s054",
+      "introduced_terms": [
+        "utility"
+      ],
+      "lines": [
+        "高效用项集挖掘引入了<term id=\"utility\">效用</term>的概念。",
+        "每个商品有单位利润 p(a)，每笔交易有购买数量 q(a, T)。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "一个项集 X 在一笔交易 T 中的效用是：",
+        "σ(X, T) = Σ p(a) × q(a, T)，对所有 a ∈ X。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s056",
+      "introduced_terms": [],
+      "lines": [
+        "项集 X 在整个数据集中的总效用是：",
+        "π(X, D) = Σ σ(X, T)，对所有包含 X 的交易 T。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s057",
+      "introduced_terms": [],
+      "lines": [
+        "目标：找出所有总效用 ≥ 最小效用阈值 min_u 的项集。",
+        "这比单纯找频繁项集更有商业价值。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [
+        "从关联规则到高效用项集，核心思想一脉相承：",
+        "从数据中发现有意义的模式，只是“意义”的定义不同。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "11"
+        ],
+        "explanation": "σ({a, b}, T) = 3×2 + 1×5 = 6 + 5 = 11。",
+        "kind": "fill_in_blank",
+        "prompt": "效用 = ?"
+      },
+      "id": "s059",
+      "lines": [
+        "商品 a 的利润是 3 元，商品 b 的利润是 1 元。",
+        "一笔交易买了 2 个 a 和 5 个 b，项集 {a, b} 在这笔交易中的效用是多少？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "High-utility itemset",
+    "related": [
+      "utility",
+      "profit",
+      "quantity"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "utility": {
+      "aliases": [
+        "Utility",
+        "π(X, D)"
+      ],
+      "display": "效用",
+      "gloss": "项集在数据集中产生的总利润。"
+    }
+  }
+}

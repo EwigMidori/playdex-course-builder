@@ -1,0 +1,482 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "information_gain_definition",
+      "covered_by": [
+        "qf_flash_ig_definition",
+        "qf_quiz_ig_definition"
+      ],
+      "description": "信息增益的定义：衡量一个特征分裂后不纯度降低的程度。"
+    },
+    {
+      "coverage_tag": "information_gain_formula",
+      "covered_by": [
+        "qf_flash_ig_formula",
+        "qf_quiz_ig_formula_interpret",
+        "qf_long_ig_calculation"
+      ],
+      "description": "信息增益的计算公式：IG = I(parent) - (N_left/N_p)*I(left) - (N_right/N_p)*I(right)。"
+    },
+    {
+      "coverage_tag": "information_gain_weighted_average",
+      "covered_by": [
+        "qf_flash_ig_weighted",
+        "qf_quiz_ig_weighted"
+      ],
+      "description": "信息增益使用子节点样本数的加权平均，而非直接比较子节点纯度。"
+    },
+    {
+      "coverage_tag": "maximize_information_gain",
+      "covered_by": [
+        "qf_flash_ig_maximize",
+        "qf_quiz_ig_maximize"
+      ],
+      "description": "决策树学习算法的核心：每一步选择能带来最大信息增益的特征进行分裂。"
+    },
+    {
+      "coverage_tag": "information_gain_example_calculation",
+      "covered_by": [
+        "qf_long_ig_calculation"
+      ],
+      "description": "使用水果数据集计算信息增益的具体例子。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "information_gain",
+      "coverage_tags": [
+        "information_gain_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ig_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的话准确描述信息增益的定义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了信息增益的核心定义：衡量特征分裂后不纯度降低的程度。",
+      "question_type": "short_answer",
+      "retrieval_focus": "信息增益的定义",
+      "term_refs": [
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "back": "衡量一个特征分裂后，不纯度降低的程度。",
+          "estimated_seconds": 8,
+          "explanation": "信息增益越大，说明这个特征分裂后数据变得更纯，分裂效果越好。",
+          "front": "信息增益（Information Gain）衡量的是什么？",
+          "question_id": "q_flash_ig_definition_v1"
+        },
+        {
+          "back": "最大程度地降低节点的不纯度，把数据分开。",
+          "estimated_seconds": 8,
+          "explanation": "信息增益越大，分裂后子节点越纯，分类效果越好。",
+          "front": "在决策树中，我们选择信息增益最大的特征进行分裂，目的是什么？",
+          "question_id": "q_flash_ig_definition_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "information_gain",
+      "coverage_tags": [
+        "information_gain_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_ig_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆信息增益公式的结构和关键组成部分。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了信息增益公式的结构：父节点纯度减去子节点纯度的加权平均。",
+      "question_type": "short_answer",
+      "retrieval_focus": "信息增益公式的结构",
+      "term_refs": [
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "back": "按子节点样本数占父节点样本数的比例加权。",
+          "estimated_seconds": 10,
+          "explanation": "公式为 IG = I(parent) - (N_left/N_p)*I(left) - (N_right/N_p)*I(right)。子节点样本越多，其纯度对结果影响越大。",
+          "front": "信息增益公式中，子节点的纯度是如何被加权的？",
+          "question_id": "q_flash_ig_formula_v1"
+        },
+        {
+          "back": "IG(D_p, f) = I(D_p) - (N_left/N_p)*I(D_left) - (N_right/N_p)*I(D_right)",
+          "estimated_seconds": 12,
+          "explanation": "其中 I 是纯度度量（如 Gini 不纯度），N 是样本数量。",
+          "front": "信息增益 IG(D_p, f) 的计算公式是什么？",
+          "question_id": "q_flash_ig_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "information_gain",
+      "coverage_tags": [
+        "information_gain_weighted_average"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_ig_weighted",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解为什么信息增益使用加权平均而不是直接比较子节点纯度。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了信息增益使用加权平均的原因：子节点大小不同，大子节点的纯度更重要。",
+      "question_type": "short_answer",
+      "retrieval_focus": "信息增益使用加权平均的原因",
+      "term_refs": [
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为子节点的大小（样本数）可能不同，大子节点的纯度对整体影响更大。",
+          "estimated_seconds": 10,
+          "explanation": "直接比较子节点纯度会忽略样本数量，导致错误判断。例如，一个只有1个样本的纯节点，其重要性远低于一个有99个样本的节点。",
+          "front": "为什么信息增益不直接比较子节点的纯度，而是使用加权平均？",
+          "question_id": "q_flash_ig_weighted_v1"
+        },
+        {
+          "back": "子节点样本数占父节点样本数的比例（N_child / N_parent）。",
+          "estimated_seconds": 8,
+          "explanation": "这个权重确保了样本数多的子节点对信息增益的影响更大。",
+          "front": "信息增益公式中，子节点纯度的权重是什么？",
+          "question_id": "q_flash_ig_weighted_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "information_gain",
+      "coverage_tags": [
+        "maximize_information_gain"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ig_maximize",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能记住决策树学习算法的核心分裂策略。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了决策树每一步分裂的核心原则：选择信息增益最大的特征。",
+      "question_type": "short_answer",
+      "retrieval_focus": "决策树的分裂策略",
+      "term_refs": [
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "back": "选择能带来最大信息增益（Information Gain）的特征。",
+          "estimated_seconds": 8,
+          "explanation": "这是决策树学习算法的核心：每一步都选择最优特征进行分裂。",
+          "front": "决策树学习算法在每一步分裂时，如何选择使用哪个特征？",
+          "question_id": "q_flash_ig_maximize_v1"
+        },
+        {
+          "back": "每一步都选择能带来最大信息增益的特征进行分裂。",
+          "estimated_seconds": 8,
+          "explanation": "通过最大化信息增益，算法能最快地降低节点不纯度，构建出高效的决策树。",
+          "front": "决策树学习算法的核心目标是什么？",
+          "question_id": "q_flash_ig_maximize_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-decision-trees",
+  "longform_families": [
+    {
+      "concept_key": "information_gain",
+      "coverage_tags": [
+        "information_gain_formula",
+        "information_gain_example_calculation"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_ig_calculation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的数据集和分裂规则，完整计算信息增益。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能独立应用信息增益公式，包括计算子节点Gini不纯度和加权平均。",
+      "question_type": "worked_example",
+      "term_refs": [
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        },
+        {
+          "display": "Gini 不纯度",
+          "en": "Gini Impurity"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "步骤1：计算非绿色子节点的Gini不纯度。",
+            "步骤2：计算信息增益。"
+          ],
+          "question_id": "q_long_ig_calculation_v1",
+          "reference_answer": [
+            "非绿色子节点有4个样本：1个苹果，2个葡萄，1个柠檬。",
+            "p(苹果|t) = 1/4 = 0.25",
+            "p(葡萄|t) = 2/4 = 0.5",
+            "p(柠檬|t) = 1/4 = 0.25",
+            "Gini = 1 - (0.25² + 0.5² + 0.25²) = 1 - (0.0625 + 0.25 + 0.0625) = 1 - 0.375 = 0.625",
+            "信息增益 IG = 0.64 - (1/5)*0 - (4/5)*0.625 = 0.64 - 0.5 = 0.14"
+          ],
+          "rubric_points": [
+            "正确计算非绿色子节点的Gini不纯度（0.625）。",
+            "正确应用信息增益公式：IG = 0.64 - (1/5)*0 - (4/5)*0.625。",
+            "正确计算出信息增益为0.14。"
+          ],
+          "stem": "给定以下水果数据集，父节点包含5个样本：2个苹果（Apple），2个葡萄（Grape），1个柠檬（Lemon）。父节点的Gini不纯度为0.64。现在考虑一个问题：“颜色是绿色吗？”（Color == green?）。\n\n- 如果“是”（绿色），得到1个苹果（纯节点，Gini=0）。\n- 如果“否”（非绿色），得到1个苹果、2个葡萄、1个柠檬。\n\n请计算非绿色子节点的Gini不纯度，然后计算这个问题的信息增益。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "步骤1：计算“是”子节点（直径=3）的Gini不纯度。",
+            "步骤2：计算信息增益。"
+          ],
+          "question_id": "q_long_ig_calculation_v2",
+          "reference_answer": [
+            "“是”子节点有3个样本：2个苹果，1个柠檬。",
+            "p(苹果|t) = 2/3 ≈ 0.667",
+            "p(柠檬|t) = 1/3 ≈ 0.333",
+            "Gini = 1 - ((2/3)² + (1/3)²) = 1 - (4/9 + 1/9) = 1 - 5/9 = 4/9 ≈ 0.444",
+            "信息增益 IG = 0.64 - (3/5)*(4/9) - (2/5)*0 = 0.64 - (3/5)*(4/9) = 0.64 - 12/45 = 0.64 - 0.267 = 0.373"
+          ],
+          "rubric_points": [
+            "正确计算“是”子节点的Gini不纯度（0.444...或4/9）。",
+            "正确应用信息增益公式：IG = 0.64 - (3/5)*(4/9) - (2/5)*0。",
+            "正确计算出信息增益约为0.373。"
+          ],
+          "stem": "给定以下水果数据集，父节点包含5个样本：2个苹果（Apple），2个葡萄（Grape），1个柠檬（Lemon）。父节点的Gini不纯度为0.64。现在考虑另一个问题：“直径是3吗？”（Diameter == 3?）。\n\n- 如果“是”（直径=3），得到2个苹果、1个柠檬（共3个样本）。\n- 如果“否”（直径≠3），得到2个葡萄（共2个样本，纯节点，Gini=0）。\n\n请计算“是”子节点的Gini不纯度，然后计算这个问题的信息增益。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "information_gain",
+      "coverage_tags": [
+        "information_gain_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_ig_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在选择题中准确识别信息增益的定义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能区分信息增益与其他相关概念（如节点纯度、Gini不纯度）。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "信息增益衡量的是分裂前后不纯度的降低量。节点本身的混乱程度由Gini不纯度或熵来衡量。",
+          "options": [
+            "一个节点中样本的混乱程度",
+            "一个特征分裂后，不纯度降低的程度",
+            "一个特征的重要性",
+            "一个节点的样本数量"
+          ],
+          "question_id": "q_quiz_ig_definition_v1",
+          "stem": "信息增益（Information Gain）衡量的是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "信息增益越大，说明分裂后不纯度降低得越多，子节点越纯，分裂效果越好。",
+          "options": [
+            "这个特征越不重要",
+            "分裂后子节点越纯",
+            "父节点越纯",
+            "子节点样本数越多"
+          ],
+          "question_id": "q_quiz_ig_definition_v2",
+          "stem": "在决策树中，信息增益越大，说明什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "information_gain",
+      "coverage_tags": [
+        "information_gain_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ig_formula_interpret",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释信息增益公式中各个部分的意义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能理解信息增益公式的组成和计算逻辑。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "(N_left/N_p) 是左子节点样本数占父节点样本数的比例，用作左子节点纯度的权重。",
+          "options": [
+            "左子节点的Gini不纯度",
+            "左子节点样本数占父节点样本数的比例",
+            "左子节点的信息增益",
+            "左子节点的样本数"
+          ],
+          "question_id": "q_quiz_ig_formula_interpret_v1",
+          "stem": "信息增益公式 IG = I(parent) - (N_left/N_p)*I(left) - (N_right/N_p)*I(right) 中，(N_left/N_p) 代表什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "加权平均 = (N_left/N_p)*I(left) + (N_right/N_p)*I(right)。样本数多的子节点权重更大。",
+          "options": [
+            "直接取子节点纯度的平均值",
+            "按子节点样本数占父节点样本数的比例加权求和",
+            "按子节点深度加权求和",
+            "取子节点纯度的最大值"
+          ],
+          "question_id": "q_quiz_ig_formula_interpret_v2",
+          "stem": "信息增益公式中，子节点纯度的加权平均是如何计算的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "information_gain",
+      "coverage_tags": [
+        "information_gain_weighted_average"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ig_weighted",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解为什么信息增益使用加权平均而不是直接比较子节点纯度。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能识别直接比较子节点纯度的陷阱，并理解加权平均的必要性。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 30,
+          "explanation": "仅看纯度，问题A的子节点纯度（0.2和0.3）看起来比问题B（0.1和0.4）更接近。但问题A的右子节点有99个样本，其纯度0.3对整体影响巨大，而左子节点只有1个样本，纯度0.2几乎可以忽略。信息增益通过加权平均考虑了样本数，因此问题B可能更好。",
+          "options": [
+            "仅看纯度：问题A更好；实际信息增益：问题B可能更大",
+            "仅看纯度：问题B更好；实际信息增益：问题A可能更大",
+            "仅看纯度：问题A更好；实际信息增益：问题A也更大",
+            "仅看纯度：问题B更好；实际信息增益：问题B也更大"
+          ],
+          "question_id": "q_quiz_ig_weighted_v1",
+          "stem": "问题A分裂后，左子节点Gini=0.2（1个样本），右子节点Gini=0.3（99个样本）。问题B分裂后，左子节点Gini=0.1（50个样本），右子节点Gini=0.4（50个样本）。仅看子节点纯度，哪个问题更好？但实际哪个问题信息增益可能更大？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "直接比较子节点纯度忽略了样本数量。一个只有1个样本的纯节点，其重要性远低于一个有99个样本的节点。信息增益通过加权平均解决了这个问题。",
+          "options": [
+            "因为子节点纯度总是相同的",
+            "因为子节点的大小（样本数）可能不同，大子节点的纯度更重要",
+            "因为纯度指标本身不可靠",
+            "因为父节点纯度不重要"
+          ],
+          "question_id": "q_quiz_ig_weighted_v2",
+          "stem": "为什么直接比较子节点纯度来评价分裂好坏是不充分的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "information_gain",
+      "coverage_tags": [
+        "maximize_information_gain"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ig_maximize",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能应用最大化信息增益的原则到具体场景。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能理解并应用决策树的分裂策略。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "决策树算法每一步都选择能带来最大信息增益的特征进行分裂，因此应选择特征A。",
+          "options": [
+            "特征A",
+            "特征B",
+            "两个都选",
+            "随机选一个"
+          ],
+          "question_id": "q_quiz_ig_maximize_v1",
+          "stem": "在构建决策树时，如果有两个候选特征A和B，特征A的信息增益为0.3，特征B的信息增益为0.1，应该选择哪个特征进行分裂？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "决策树通过迭代地选择信息增益最大的特征来分裂节点，这是算法的核心。",
+          "options": [
+            "尽可能让树长得更深",
+            "每一步都选择能带来最大信息增益的特征进行分裂",
+            "使用所有特征同时进行分裂",
+            "随机选择特征进行分裂"
+          ],
+          "question_id": "q_quiz_ig_maximize_v2",
+          "stem": "决策树学习算法的核心是："
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-decision-trees/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

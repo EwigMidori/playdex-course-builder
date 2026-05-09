@@ -1,0 +1,481 @@
+{
+  "chapter_id": "lecture-05-application",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "near_duplicate_image_definition",
+      "covered_by": [
+        "qf_flash_near_dup_def",
+        "qf_quiz_near_dup_recog"
+      ],
+      "description": "近重复图像的定义：内容几乎相同，但在拍摄条件、编辑或渲染上略有不同的图像。"
+    },
+    {
+      "coverage_tag": "spm_failure_on_near_duplicate",
+      "covered_by": [
+        "qf_flash_spm_failure",
+        "qf_quiz_spm_failure",
+        "qf_long_spm_vs_sapm"
+      ],
+      "description": "标准空间金字塔匹配（SPM）在近重复图像上失败的原因：要求块严格对齐，无法处理平移或缩放。"
+    },
+    {
+      "coverage_tag": "sapm_definition_and_advantage",
+      "covered_by": [
+        "qf_flash_sapm_def",
+        "qf_quiz_sapm_advantage",
+        "qf_long_spm_vs_sapm"
+      ],
+      "description": "空间对齐金字塔匹配（SAPM）的定义：允许图像块在匹配时发生位置和尺度的偏移，使用整数流推土机距离。"
+    },
+    {
+      "coverage_tag": "sapm_application",
+      "covered_by": [
+        "qf_flash_sapm_app",
+        "qf_quiz_sapm_app"
+      ],
+      "description": "SAPM的应用：版权检测、过滤搜索引擎结果中的重复图片。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "near_duplicate_image",
+      "coverage_tags": [
+        "near_duplicate_image_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_near_dup_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆近重复图像的定义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出近重复图像的核心特征：内容几乎相同，但像素级别不同。",
+      "question_type": "short_answer",
+      "retrieval_focus": "近重复图像的定义：内容几乎相同，但在拍摄条件、编辑或渲染上略有不同。",
+      "term_refs": [
+        {
+          "display": "近重复图像",
+          "en": "Near Duplicate Image"
+        }
+      ],
+      "variants": [
+        {
+          "back": "内容几乎相同，但在拍摄条件、编辑或渲染上略有不同的图像。",
+          "estimated_seconds": 8,
+          "explanation": "近重复图像不是完全相同的副本，而是经过裁剪、调色、加水印等操作后，内容几乎一样但像素级别不同的图像。",
+          "front": "什么是近重复图像？请给出其核心定义。",
+          "question_id": "q_flash_near_dup_def_v1"
+        },
+        {
+          "back": "它们是近重复图像。",
+          "estimated_seconds": 6,
+          "explanation": "裁剪和调色改变了像素值，但内容几乎相同，因此属于近重复图像。",
+          "front": "一张照片被裁剪并调色后，与原图的关系是什么？",
+          "question_id": "q_flash_near_dup_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "spatial_pyramid_matching",
+      "coverage_tags": [
+        "spm_failure_on_near_duplicate"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_spm_failure",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆标准SPM在近重复图像上失败的根本原因。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出标准SPM要求块严格对齐，无法处理平移或缩放。",
+      "question_type": "short_answer",
+      "retrieval_focus": "标准SPM失败的原因：要求块与块严格对齐，无法处理位置偏移和尺度变化。",
+      "term_refs": [
+        {
+          "display": "空间金字塔匹配",
+          "en": "Spatial Pyramid Matching (SPM)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "要求块与块严格对齐，无法处理物体平移或缩放。",
+          "estimated_seconds": 8,
+          "explanation": "当物体在图像中位置发生变化时，每个格子里的内容变化很大，导致匹配失败。",
+          "front": "标准空间金字塔匹配在近重复图像上失败的主要原因是什么？",
+          "question_id": "q_flash_spm_failure_v1"
+        },
+        {
+          "back": "不会，因为每个格子里的内容都变了，SPM要求严格对齐。",
+          "estimated_seconds": 10,
+          "explanation": "标准SPM将图像分成固定网格，猫的位置变化导致每个网格内的视觉单词分布完全不同。",
+          "front": "一张猫在左边的图片和一张猫在右边的图片，标准SPM会认为它们相似吗？为什么？",
+          "question_id": "q_flash_spm_failure_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "spatially_aligned_pyramid_matching",
+      "coverage_tags": [
+        "sapm_definition_and_advantage"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_sapm_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆SAPM的核心机制。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出SAPM允许块匹配时发生位置和尺度的偏移，并使用整数流推土机距离。",
+      "question_type": "short_answer",
+      "retrieval_focus": "SAPM的核心机制：允许块匹配时发生位置和尺度的偏移，使用整数流EMD。",
+      "term_refs": [
+        {
+          "display": "空间对齐金字塔匹配",
+          "en": "Spatially Aligned Pyramid Matching (SAPM)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "允许一个图像块匹配到另一个图像中不同位置或不同尺度的块。",
+          "estimated_seconds": 8,
+          "explanation": "SAPM通过整数流推土机距离找到块与块之间的最佳匹配关系，从而处理平移和缩放。",
+          "front": "空间对齐金字塔匹配（SAPM）相比标准SPM，允许什么？",
+          "question_id": "q_flash_sapm_def_v1"
+        },
+        {
+          "back": "整数流推土机距离。",
+          "estimated_seconds": 6,
+          "explanation": "整数流EMD可以灵活地将一个图像块匹配到另一个图像中不同位置的块。",
+          "front": "SAPM使用什么距离来找到块与块之间的最佳匹配关系？",
+          "question_id": "q_flash_sapm_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "spatially_aligned_pyramid_matching",
+      "coverage_tags": [
+        "sapm_application"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sapm_app",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆SAPM的两个主要应用场景。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出SAPM用于版权检测和过滤搜索引擎结果中的重复图片。",
+      "question_type": "short_answer",
+      "retrieval_focus": "SAPM的应用：版权检测和过滤重复图片。",
+      "term_refs": [
+        {
+          "display": "空间对齐金字塔匹配",
+          "en": "Spatially Aligned Pyramid Matching (SAPM)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "版权检测和过滤搜索引擎结果中的重复图片。",
+          "estimated_seconds": 8,
+          "explanation": "SAPM能有效识别近重复图像，因此可用于检测版权侵权和清理搜索结果。",
+          "front": "SAPM的两个主要应用是什么？",
+          "question_id": "q_flash_sapm_app_v1"
+        },
+        {
+          "back": "过滤掉冗余的近重复图片。",
+          "estimated_seconds": 6,
+          "explanation": "文本关键词搜索可能返回大量近重复图片，SAPM可以识别并过滤它们。",
+          "front": "在搜索引擎中，SAPM可以用来做什么？",
+          "question_id": "q_flash_sapm_app_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-application",
+  "longform_families": [
+    {
+      "concept_key": "spatially_aligned_pyramid_matching",
+      "coverage_tags": [
+        "spm_failure_on_near_duplicate",
+        "sapm_definition_and_advantage"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_spm_vs_sapm",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较标准SPM和SAPM，解释SAPM如何解决SPM在近重复图像上的失败。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能分析SPM失败的原因，并解释SAPM通过允许块匹配时发生位置和尺度偏移来解决该问题。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "空间金字塔匹配",
+          "en": "Spatial Pyramid Matching (SPM)"
+        },
+        {
+          "display": "空间对齐金字塔匹配",
+          "en": "Spatially Aligned Pyramid Matching (SAPM)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "SPM的基本原理",
+            "SPM在近重复图像上失败的原因",
+            "SAPM的核心改进",
+            "SAPM使用的关键技术（整数流推土机距离）"
+          ],
+          "question_id": "q_long_spm_vs_sapm_v1",
+          "reference_answer": [
+            "标准SPM将图像分成多级网格（如1x1、2x2、4x4），在每个格子内分别统计视觉单词直方图，然后加权组合。",
+            "在近重复图像上，物体可能发生平移或缩放。由于SPM要求块与块严格对齐，物体位置变化会导致每个格子里的内容发生很大变化，从而错误地认为两张图差异很大。",
+            "SAPM的核心改进是允许一个图像块匹配到另一个图像中不同位置或不同尺度的块，而不是固定的一一对应。",
+            "SAPM使用整数流推土机距离（EMD）来找到块与块之间的最佳匹配关系，该距离可以灵活处理位置偏移和尺度变化。"
+          ],
+          "rubric_points": [
+            "正确描述SPM将图像分成多级网格并分别统计直方图",
+            "指出SPM要求块严格对齐，无法处理平移或缩放",
+            "说明SAPM允许块匹配时发生位置和尺度的偏移",
+            "解释SAPM使用整数流推土机距离找到最佳匹配关系"
+          ],
+          "stem": "请比较标准空间金字塔匹配（SPM）和空间对齐金字塔匹配（SAPM），并解释SAPM如何解决SPM在近重复图像识别中的缺陷。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "任务特点：近重复图像、平移/缩放",
+            "SPM的局限性",
+            "SAPM的解决方案",
+            "SAPM的应用价值"
+          ],
+          "question_id": "q_long_spm_vs_sapm_v2",
+          "reference_answer": [
+            "近重复图像内容几乎相同，但可能存在平移（如物体位置移动）或缩放（如裁剪后放大）。",
+            "标准SPM将图像分成固定网格，要求块与块严格对齐。当物体平移或缩放时，每个网格内的视觉单词分布发生很大变化，导致SPM错误地认为两张图不相似。",
+            "SAPM允许一个图像块匹配到另一个图像中不同位置或不同尺度的块，通过整数流推土机距离找到最佳匹配关系。",
+            "SAPM的这种灵活性使其能够鲁棒地处理近重复图像中的几何变换，适用于版权检测和搜索结果去重等实际应用。"
+          ],
+          "rubric_points": [
+            "正确识别任务特点：内容几乎相同但存在几何变换",
+            "指出SPM的固定网格对齐要求导致失败",
+            "说明SAPM允许块匹配时发生位置和尺度偏移",
+            "提及SAPM使用整数流EMD实现灵活匹配"
+          ],
+          "stem": "假设你有一个近重复图像识别任务，需要判断两张图片是否内容几乎相同但存在平移或缩放。请分析为什么标准SPM不适合这个任务，并解释SAPM如何解决这个问题。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "near_duplicate_image",
+      "coverage_tags": [
+        "near_duplicate_image_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_near_dup_recog",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体例子中识别近重复图像。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能区分近重复图像与完全相同的副本或完全不同的图像。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "近重复图像",
+          "en": "Near Duplicate Image"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "彩色转黑白并加水印改变了像素值，但内容几乎相同，属于近重复图像。选项C是完全相同的副本，不是近重复。",
+          "options": [
+            "一张猫的照片和一张狗的照片",
+            "同一张照片，一张是彩色，另一张被转为黑白并加了水印",
+            "两张完全相同的数字图片文件",
+            "一张风景照和一张人物照"
+          ],
+          "question_id": "q_quiz_near_dup_recog_v1",
+          "stem": "以下哪一组图片最可能被视为近重复图像？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "裁剪和亮度调整改变了像素值，但内容几乎相同，因此是近重复图像。",
+          "options": [
+            "完全相同的副本",
+            "近重复图像",
+            "完全不相关的图像",
+            "不同类别的图像"
+          ],
+          "question_id": "q_quiz_near_dup_recog_v2",
+          "stem": "一张原始照片被裁剪掉边缘10%的区域并调整了亮度，新图片与原始图片的关系是？"
+        }
+      ]
+    },
+    {
+      "concept_key": "spatial_pyramid_matching",
+      "coverage_tags": [
+        "spm_failure_on_near_duplicate"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_spm_failure",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解标准SPM在近重复图像上失败的原因。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能选择标准SPM失败的根本原因：要求块严格对齐。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "空间金字塔匹配",
+          "en": "Spatial Pyramid Matching (SPM)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "标准SPM将图像分成固定网格，要求块严格对齐。当物体发生平移或缩放时，每个格子里的内容变化很大，导致匹配失败。",
+          "options": [
+            "计算速度太慢",
+            "要求块与块严格对齐，无法处理位置偏移",
+            "无法处理彩色图像",
+            "需要大量训练数据"
+          ],
+          "question_id": "q_quiz_spm_failure_v1",
+          "stem": "标准空间金字塔匹配（SPM）在处理近重复图像时的主要缺陷是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "标准SPM要求块严格对齐，猫的位置变化导致每个网格内的视觉单词分布完全不同，因此会认为差异很大。",
+          "options": [
+            "认为它们非常相似，因为视觉单词相同",
+            "认为它们差异很大，因为每个格子里的内容都变了",
+            "无法进行比较",
+            "认为它们完全相同"
+          ],
+          "question_id": "q_quiz_spm_failure_v2",
+          "stem": "假设有一张猫在左边的图片和一张猫在右边的图片（其他内容相同），标准SPM会如何判断？"
+        }
+      ]
+    },
+    {
+      "concept_key": "spatially_aligned_pyramid_matching",
+      "coverage_tags": [
+        "sapm_definition_and_advantage"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_sapm_advantage",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解SAPM相比标准SPM的主要优势。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能选择SAPM的核心优势：处理图像块的位置偏移和尺度变化。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "空间对齐金字塔匹配",
+          "en": "Spatially Aligned Pyramid Matching (SAPM)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "标准SPM要求块严格对齐，而SAPM允许块在匹配时发生位置和尺度的变化，更鲁棒。",
+          "options": [
+            "计算速度更快",
+            "可以处理图像块的位置偏移和尺度变化",
+            "不需要特征描述子",
+            "可以处理彩色图像"
+          ],
+          "question_id": "q_quiz_sapm_advantage_v1",
+          "stem": "空间对齐金字塔匹配（SAPM）相比标准空间金字塔匹配（SPM），主要优势是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "SAPM使用整数流推土机距离来找到块与块之间的最佳匹配关系，允许一个块匹配到不同位置或尺度的块。",
+          "options": [
+            "使用更复杂的特征描述子",
+            "使用整数流推土机距离找到块之间的最佳匹配",
+            "增加金字塔的层数",
+            "使用更多的视觉单词"
+          ],
+          "question_id": "q_quiz_sapm_advantage_v2",
+          "stem": "SAPM通过什么机制实现了对位置偏移和尺度变化的鲁棒性？"
+        }
+      ]
+    },
+    {
+      "concept_key": "spatially_aligned_pyramid_matching",
+      "coverage_tags": [
+        "sapm_application"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_sapm_app",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别SAPM的实际应用场景。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能选择SAPM的正确应用：版权检测和过滤重复图片。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "空间对齐金字塔匹配",
+          "en": "Spatially Aligned Pyramid Matching (SAPM)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "SAPM能有效识别近重复图像，因此可用于版权侵权检测和过滤搜索引擎结果中的重复图片。",
+          "options": [
+            "人脸识别",
+            "版权侵权检测",
+            "语音识别",
+            "自然语言翻译"
+          ],
+          "question_id": "q_quiz_sapm_app_v1",
+          "stem": "以下哪个是空间对齐金字塔匹配（SAPM）的实际应用？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "SAPM可以识别并过滤掉内容几乎相同的近重复图片，提升搜索结果的质量。",
+          "options": [
+            "对图片进行分类",
+            "过滤掉冗余的近重复图片",
+            "识别图片中的文字",
+            "压缩图片文件大小"
+          ],
+          "question_id": "q_quiz_sapm_app_v2",
+          "stem": "在文本关键词搜索返回大量图片结果时，SAPM可以用来做什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-application/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,406 @@
+---
+lessonId: u1-comp7404-graph-clustering
+title: 图聚类与归一化割
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["graph_based_clustering_idea"]
+    linkedSteps: ["step1"]
+  - sectionId: global-concept-map
+    title: 课程全景与关键问题
+    coverageTags: ["graph_based_clustering_idea", "cut_definition", "minimum_cut_definition", "minimum_cut_drawback", "normalized_cuts_motivation", "normalized_cuts_formula", "assoc_definition", "discrete_optimization_np_complete", "relaxation_to_continuous", "generalized_eigenvalue_system", "laplacian_matrix", "first_eigenvector_constant", "second_smallest_eigenvector", "sign_based_bipartition", "algorithm_flow", "recursive_vs_kway"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5"]
+  - sectionId: graph-based-clustering-idea
+    title: 基于图的聚类思想
+    coverageTags: ["graph_based_clustering_idea"]
+    linkedSteps: ["step1"]
+  - sectionId: cut-and-minimum-cut
+    title: 割与最小割
+    coverageTags: ["cut_definition", "minimum_cut_definition", "minimum_cut_drawback"]
+    linkedSteps: ["step1"]
+  - sectionId: normalized-cuts
+    title: 归一化割
+    coverageTags: ["normalized_cuts_motivation", "normalized_cuts_formula", "assoc_definition", "min_cut_vs_ncut_behavior"]
+    linkedSteps: ["step2"]
+  - sectionId: from-discrete-to-continuous
+    title: 从离散优化到连续特征分解
+    coverageTags: ["discrete_optimization_np_complete", "relaxation_to_continuous", "generalized_eigenvalue_system", "laplacian_matrix"]
+    linkedSteps: ["step3"]
+  - sectionId: second-smallest-eigenvector
+    title: 为什么用第二小特征向量做二分
+    coverageTags: ["first_eigenvector_constant", "second_smallest_eigenvector", "sign_based_bipartition"]
+    linkedSteps: ["step4"]
+  - sectionId: algorithm-flow-and-extension
+    title: 算法完整流程与多类扩展
+    coverageTags: ["algorithm_flow", "recursive_vs_kway", "affinity_and_degree_matrix"]
+    linkedSteps: ["step5"]
+  - sectionId: pitfalls
+    title: 易错点
+    coverageTags: ["minimum_cut_drawback", "normalized_cuts_motivation", "first_eigenvector_constant", "second_smallest_eigenvector"]
+    linkedSteps: ["step1", "step2", "step4"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["graph_based_clustering_idea", "cut_definition", "minimum_cut_definition", "minimum_cut_drawback", "normalized_cuts_motivation", "normalized_cuts_formula", "assoc_definition", "discrete_optimization_np_complete", "relaxation_to_continuous", "generalized_eigenvalue_system", "laplacian_matrix", "first_eigenvector_constant", "second_smallest_eigenvector", "sign_based_bipartition", "algorithm_flow", "recursive_vs_kway", "affinity_and_degree_matrix"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5"]
+coverageTrace:
+  - coverageTag: graph_based_clustering_idea
+    description: 基于图的聚类基本思想：将数据项关联到加权图的顶点，通过切割低权重边得到内部权重大的连通分量。
+    sectionIds: ["why-this-lesson-matters", "global-concept-map", "graph-based-clustering-idea", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: cut_definition
+    description: 割(Cut)的数学定义：Cut(A,B) = Σ w(u,v)，表示两个子集之间所有连接边的权重之和。
+    sectionIds: ["global-concept-map", "cut-and-minimum-cut", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: minimum_cut_definition
+    description: 最小割(Minimum Cut)的定义：使得割的权重之和最小的划分方式。
+    sectionIds: ["global-concept-map", "cut-and-minimum-cut", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: minimum_cut_drawback
+    description: 最小割的缺陷：倾向于切出孤立点（离群点），而不是产生有意义的团块划分。
+    sectionIds: ["global-concept-map", "cut-and-minimum-cut", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: normalized_cuts_motivation
+    description: 归一化割的设计动机：通过除以子图总连接度来避免切出孤立小点集。
+    sectionIds: ["global-concept-map", "normalized-cuts", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step2"]
+  - coverageTag: normalized_cuts_formula
+    description: 归一化割的数学定义：Ncuts(A,B) = cut(A,B)/assoc(A,V) + cut(A,B)/assoc(B,V)
+    sectionIds: ["global-concept-map", "normalized-cuts", "review-and-self-test"]
+    linkedSteps: ["step2"]
+  - coverageTag: assoc_definition
+    description: assoc(A,V) 的定义：子图A中所有节点与全图所有节点的连接权重之和。
+    sectionIds: ["global-concept-map", "normalized-cuts", "review-and-self-test"]
+    linkedSteps: ["step2"]
+  - coverageTag: min_cut_vs_ncut_behavior
+    description: 最小割与归一化割在离群点场景下的不同切割行为。
+    sectionIds: ["normalized-cuts", "review-and-self-test"]
+    linkedSteps: ["step2"]
+  - coverageTag: discrete_optimization_np_complete
+    description: 归一化割的离散优化问题是NP完全的，无法直接枚举求解。
+    sectionIds: ["global-concept-map", "from-discrete-to-continuous", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: relaxation_to_continuous
+    description: 将离散的二分向量y放松为连续值，从而将问题转化为广义特征值系统。
+    sectionIds: ["global-concept-map", "from-discrete-to-continuous", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: generalized_eigenvalue_system
+    description: 放松后的优化问题转化为求解广义特征值系统 (D-W)y = λDy。
+    sectionIds: ["global-concept-map", "from-discrete-to-continuous", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: laplacian_matrix
+    description: 拉普拉斯矩阵 L = D - W 的定义及其在广义特征值系统中的作用。
+    sectionIds: ["global-concept-map", "from-discrete-to-continuous", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: first_eigenvector_constant
+    description: 第一个特征向量为常数向量，对应特征值0，不包含分割信息。
+    sectionIds: ["global-concept-map", "second-smallest-eigenvector", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: second_smallest_eigenvector
+    description: 为什么用第二小特征向量做二分：第一个特征向量是常数，无分割信息；第二小特征向量包含最优二分信息。
+    sectionIds: ["global-concept-map", "second-smallest-eigenvector", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: sign_based_bipartition
+    description: 根据第二小特征向量的正负号将节点分为两组。
+    sectionIds: ["global-concept-map", "second-smallest-eigenvector", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: algorithm_flow
+    description: 归一化割算法的完整流程：定义相似度、计算亲和矩阵和度矩阵、求解广义特征值、取第二小特征向量二分、递归或使用多特征向量扩展。
+    sectionIds: ["global-concept-map", "algorithm-flow-and-extension", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: recursive_vs_kway
+    description: 递归二分与k路归一化割的对比：递归二分慢，k路使用多个特征向量更高效。
+    sectionIds: ["global-concept-map", "algorithm-flow-and-extension", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: affinity_and_degree_matrix
+    description: 亲和矩阵W和度矩阵D的定义与作用。
+    sectionIds: ["algorithm-flow-and-extension", "review-and-self-test"]
+    linkedSteps: ["step5"]
+---
+
+# 图聚类与归一化割
+
+## 为什么这一课重要
+
+在现实世界中，我们经常需要将数据点分成有意义的组——例如在图像分割中，将一张图片中的像素分成不同的物体区域。传统的聚类方法（如 k-means）在处理复杂形状或非凸数据时效果不佳。基于图的聚类方法提供了一种强大的替代方案：它将每个数据点视为图中的一个节点，通过分析节点之间的连接关系来发现数据的自然结构。本课将介绍从经典的最小割到归一化割的演进过程，这是现代谱聚类的基础，也是图像分割等应用中的核心技术。
+
+<KeyPoint>基于图的聚类将聚类问题转化为图切割问题，而归一化割通过引入归一化项解决了最小割倾向于切出孤立点的缺陷。</KeyPoint>
+
+## 课程全景与关键问题
+
+本课围绕以下核心问题展开：
+
+1. **如何将聚类问题转化为图切割问题？** —— 将数据点视为图的节点，相似度作为边的权重，聚类就变成了如何切割图的问题。
+2. **为什么最小割不适合聚类？** —— 最小割倾向于切出孤立点，而不是产生有意义的团块。
+3. **归一化割如何改进最小割？** —— 通过将切割代价除以子图的总连接度，避免切出小孤立块。
+4. **如何高效求解归一化割？** —— 将离散优化问题放松为连续问题，转化为求解广义特征值系统。
+5. **为什么使用第二小特征向量进行二分？** —— 第一个特征向量是常数，没有分割信息；第二小特征向量包含最优二分信息。
+6. **如何扩展到多类分割？** —— 递归二分或使用多个特征向量进行 k 路分割。
+
+<Figure src="images/e90d2fe93dc8ae2d6dfd842af0f576e1a7f5bf8a5c136c55ec69f3b7dc786db0.jpg" alt="课程标题幻灯片：Graph based Clustering for Image Segmentation">本课的主题：基于图的图像分割聚类。</Figure>
+
+## 基于图的聚类思想
+
+<Definition title="基于图的聚类">
+将每个数据项与加权图中的一个顶点关联，其中边的权重表示两个数据项之间的相似度：相似度高则权重大，相似度低则权重小。通过切割权重较低的边，将图分割成内部权重较大的连通分量。这样，聚类问题就变成了一个图切割问题。
+</Definition>
+
+<Figure src="images/6e61294c72a6fa43bcb9101b72ef731f25964bc8fba529557cdc1d21d52061fe.jpg" alt="基于图聚类的示例图：展示数据点如何被表示为图中的节点，并通过边的权重表示相似度">基于图聚类的示例：数据点被表示为图中的节点，边的粗细表示相似度大小。</Figure>
+
+## 割与最小割
+
+### 割的定义
+
+<Definition title="割 (Cut)">
+将图 <InlineFormula latex="G = (V, W, E)" /> 分成两个不相交的集合 <InlineFormula latex="A" /> 和 <InlineFormula latex="B" />（满足 <InlineFormula latex="A \cap B = \emptyset" />），这两个集合之间的不相似度可以用连接它们的边的总权重来衡量，称为割：
+
+<Formula latex="\text{Cut}(A, B) = \sum_{u \in A, v \in B} w(u, v)">
+割的权重等于所有连接 A 和 B 的边的权重之和。
+</Formula>
+</Definition>
+
+<Figure src="images/2bd24a0227481c7295c3e9bacb476473d6dcbdd016d8bf0023397ab06a85af0e.jpg" alt="割的示意图：展示图被分成两个集合A和B，连接它们的边被高亮">割的示意图：红色虚线表示被切断的边，其权重之和即为 Cut(A, B)。</Figure>
+
+### 最小割
+
+<Definition title="最小割 (Minimum Cut)">
+最小割是使得割的权重之和最小的划分方式。即找到一种将图分成两部分的方法，使得被切断的边的总权重最小。
+
+<Formula latex="w(\langle A, B \rangle) = \sum_{x \in A, y \in B} w(x, y)">
+最小割的权重公式。
+</Formula>
+</Definition>
+
+<Figure src="images/f2053dff2887da2249cc19c4b04e362c9704c7e7a4ebf9f30068a4307a6e7eef.jpg" alt="最小割的示意图：展示一个图及其最小割">最小割的示意图：找到总权重最小的切割方式。</Figure>
+
+### 最小割的缺陷
+
+<KeyPoint>最小割的致命缺陷：它倾向于切出孤立点（离群点），而不是将图分成有意义的团块。</KeyPoint>
+
+<Figure src="images/ccb25e1a85fe5c81df46085e67346dfc93d251f857d5c73fe5b4f6672a78e9f9.jpg" alt="最小割缺陷的示意图：展示最小割如何倾向于切出孤立点而非有意义的团块">最小割缺陷示意图：离群点只有一条细边连接主团，切掉它的代价最小，因此最小割会优先切掉它。</Figure>
+
+<Example title="最小割的缺陷示例">
+考虑一个图：主团有10个点，彼此之间边的权重为1；离群点只有一条权重为0.1的边连接到主团。
+
+- **最小割的选择**：切掉那条权重为0.1的边，将离群点单独分为一组。割的权重为0.1。
+- **为什么？** 如果从主团中间切，至少会切掉多条权重为1的边，总权重大于0.1。
+- **为什么不合理？** 离群点单独成组没有实际意义，我们期望的聚类结果是内部紧密、外部稀疏的团块。
+</Example>
+
+<QuestionRef id="q_quiz_cut_behavior_v1" />
+<QuestionRef id="q_quiz_drawback_v1" />
+
+## 归一化割
+
+### 设计动机
+
+最小割的缺陷在于它只考虑被切断边的总权重，而忽略了划分后子图内部的紧密程度。归一化割通过引入归一化项来解决这个问题。
+
+<KeyPoint>归一化割的核心思想：如果切出来的子图很小，它的总连接度也小，除以这个小的分母会让切割代价变大，从而避免切出小孤立块。</KeyPoint>
+
+### 数学定义
+
+<Definition title="归一化割 (Normalized Cuts, Ncuts)">
+归一化割将切割代价归一化到子图的总连接度上：
+
+<Formula latex="\text{Ncuts}(A, B) = \frac{\text{cut}(A, B)}{\text{assoc}(A, V)} + \frac{\text{cut}(A, B)}{\text{assoc}(B, V)}">
+归一化割的公式：两项之和，每项都是 cut 除以 assoc。
+</Formula>
+
+其中 <InlineFormula latex="\text{assoc}(A, V)" /> 表示子图 A 中所有节点与全图所有节点的连接权重之和：
+
+<Formula latex="\text{assoc}(A, V) = \sum_{u \in A, t \in V} w(u, t)">
+assoc(A, V) 衡量子图 A 的总连接度。
+</Formula>
+</Definition>
+
+<Figure src="images/cbd3b64955568c68bd750ab5768429465e528862523de0e0d1ce7c9a76145e07.jpg" alt="归一化割的数值示例：展示一个5节点图的割和assoc计算">归一化割的数值示例：图中展示了 Cut(A,B)、Assoc(A,V) 和 Assoc(B,V) 的具体计算。</Figure>
+
+<Example title="归一化割如何避免切出孤立点">
+回到之前的例子：主团有10个点，彼此权重为1；离群点只有一条权重0.1的边连到主团。
+
+- **方案一（切离群点）**：分子 cut=0.1，但 assoc(离群点, V) 只有 0.1（只连到主团的一个点），导致 Ncuts 值很大。
+- **方案二（从主团内部切）**：分子 cut 较大（如切掉多条权重为1的边），但 assoc(子团, V) 也很大（包含内部密集连接），Ncuts 值相对较小。
+
+归一化割会选择方案二，因为它更平衡：切出的两个子图都有较高的内部连接度。
+</Example>
+
+<QuestionRef id="q_quiz_ncuts_mechanism_v1" />
+<QuestionRef id="q_quiz_ncuts_mechanism_v2" />
+
+## 从离散优化到连续特征分解
+
+### 离散优化问题的 NP 完全性
+
+归一化割的离散优化问题可以表示为：找到一个向量 y，其元素为 1（属于 A）或 -b（属于 B），使得 Ncuts 最小化。
+
+<KeyPoint>直接枚举所有二分方案是指数级的：对于 n 个节点，方案数约为 2^(n-1)-1。当 n 较大时，这是一个天文数字。因此该离散优化问题是 NP 完全的，无法直接求解。</KeyPoint>
+
+<QuestionRef id="q_quiz_np_complete_v1" />
+
+### 放松为连续问题
+
+关键技巧是将离散的二分向量 y（元素只能取 1 或 -b）放松为连续值向量，从而将问题转化为连续优化问题。
+
+放松后的优化问题为：
+
+<Formula latex="\min_y \frac{y^T (D - W) y}{y^T D y}">
+放松后的归一化割优化问题。
+</Formula>
+
+### 广义特征值系统
+
+这个放松后的优化问题等价于求解广义特征值系统：
+
+<Formula latex="(D - W)y = \lambda D y">
+归一化割放松后对应的广义特征值系统。
+</Formula>
+
+<Definition title="拉普拉斯矩阵 (Laplacian Matrix)">
+拉普拉斯矩阵定义为度矩阵减去相似度矩阵：
+
+<Formula latex="L = D - W">
+拉普拉斯矩阵的定义。
+</Formula>
+
+拉普拉斯矩阵是谱聚类中的核心工具，出现在广义特征值系统的左侧。
+</Definition>
+
+<QuestionRef id="q_quiz_generalized_eigenvalue_v1" />
+<QuestionRef id="q_quiz_laplacian_v1" />
+
+## 为什么用第二小特征向量做二分
+
+### 第一个特征向量：常数向量
+
+<KeyPoint>第一个特征向量 y0 = 1（全1向量），对应的特征值为 0。因为 (D-W)1 = 0，所以全1向量是特征值为0的特征向量。所有元素相等，意味着所有节点被分到同一组，没有提供任何分割信息。</KeyPoint>
+
+<QuestionRef id="q_quiz_first_eigenvector_v1" />
+
+### 第二小特征向量：包含二分信息
+
+<KeyPoint>第二小的特征向量是放松连续优化后的实值解，其元素有正有负，包含了图的最优二分切割信息。</KeyPoint>
+
+<Definition title="符号二分 (Sign-based Bipartition)">
+根据第二小特征向量的正负号将节点分为两组：元素值为正的节点归为一组（A组），元素值为负的节点归为另一组（B组）。
+</Definition>
+
+<Example title="符号二分示例">
+给定特征向量序列：
+- v1 = [1, 1, 1, 1]（常数向量，无分割信息）
+- v2 = [0.5, 0.5, -0.5, -0.5]（元素有正有负，可用于二分）
+
+根据符号二分规则：
+- 节点1（0.5）和节点2（0.5）为正，归为一组
+- 节点3（-0.5）和节点4（-0.5）为负，归为另一组
+</Example>
+
+<QuestionRef id="q_quiz_second_eigenvector_v1" />
+<QuestionRef id="q_quiz_second_eigenvector_v2" />
+
+## 算法完整流程与多类扩展
+
+### 归一化割算法流程
+
+<Definition title="归一化割算法 (Normalized Cuts Algorithm)">
+完整的算法流程包含以下五个步骤：
+
+1. **定义相似度函数**：用于衡量两个节点之间的相似度，是构建亲和矩阵的基础。
+2. **计算亲和矩阵 W 和度矩阵 D**：W 记录所有点对相似度，D 的对角线元素是 W 的行和，表示节点的总连接度。
+3. **求解广义特征值系统** <InlineFormula latex="(D-W)y = \lambda Dy" />：将离散优化问题放松为连续问题，得到特征向量。
+4. **取出第二小的特征值对应的特征向量**：第一小特征向量是常数，没有分割信息；第二小特征向量包含最优二分信息。
+5. **根据特征向量的正负号将图一分为二**，然后对每一部分递归地重复这个过程，或者使用多个特征向量进行 k 路分割。
+</Definition>
+
+<Definition title="亲和矩阵与度矩阵">
+- **亲和矩阵 (Affinity Matrix, W)**：一个矩阵，其中每个元素 w(i,j) 表示节点 i 和 j 之间的相似度。
+- **度矩阵 (Degree Matrix, D)**：一个对角矩阵，对角线上的元素 D(i,i) = sum_j w(i,j)，表示节点 i 的总连接度。
+</Definition>
+
+<QuestionRef id="q_quiz_flow_v1" />
+
+### 多类扩展：递归二分 vs k 路归一化割
+
+<KeyPoint>递归二分每次只分两类，需要多次迭代，速度慢。k 路归一化割使用多个特征向量，一次性将图分割成多个部分，更高效。</KeyPoint>
+
+<Definition title="k 路归一化割 (k-way Normalized Cut)">
+使用多个特征向量，一次性将图分割成 k 个部分的方法。具体步骤包括：计算 k-means 聚类，然后通过合并最小化 k-way Ncut 准则的片段，或使用穷举搜索找到最优划分。
+</Definition>
+
+<QuestionRef id="q_quiz_kway_v1" />
+<QuestionRef id="q_quiz_kway_v2" />
+
+## 易错点
+
+<Pitfall title="最小割总是产生合理分组？">
+**错误。** 最小割倾向于切出孤立点，而不是产生有意义的团块。例如，当图中存在离群点时，最小割会优先切掉离群点，导致产生无意义的孤立点组。
+</Pitfall>
+
+<Pitfall title="归一化割的分母 assoc 强制子图大小相等？">
+**错误。** 归一化割的分母 assoc 衡量的是连接度，不是节点个数。平衡连接度不等于强制大小相等。连接度高的子图即使节点数较少，也可能有较大的 assoc 值。
+</Pitfall>
+
+<Pitfall title="所有特征向量都包含分割信息？">
+**错误。** 第一个特征向量是常数向量，所有元素相等，没有分割信息。只有第二小及之后的特征向量才包含分割信息。
+</Pitfall>
+
+<Pitfall title="直接枚举所有二分方案是求解归一化割的高效方法？">
+**错误。** 直接枚举所有二分方案是指数级的，对于大规模图不可行。归一化割的离散优化问题是 NP 完全的，需要通过放松为连续问题来近似求解。
+</Pitfall>
+
+## 复习与自测
+
+### 核心概念回顾
+
+1. **基于图的聚类**：将数据点视为图的节点，相似度作为边的权重，聚类变成图切割问题。
+2. **最小割**：找到总权重最小的切割方式，但倾向于切出孤立点。
+3. **归一化割**：通过除以子图的总连接度来避免切出小孤立块。
+4. **广义特征值系统**：将离散优化问题放松为连续问题后，转化为求解 (D-W)y = λDy。
+5. **第二小特征向量**：第一个特征向量是常数，无分割信息；第二小特征向量包含最优二分信息。
+6. **符号二分**：根据第二小特征向量的正负号将节点分为两组。
+
+### 主动回忆练习
+
+使用以下闪卡进行主动检索，巩固记忆：
+
+<QuestionFamily familyId="qf_flash_cut_def" />
+<QuestionFamily familyId="qf_flash_drawback" />
+<QuestionFamily familyId="qf_flash_ncuts_formula" />
+<QuestionFamily familyId="qf_flash_ncuts_motivation" />
+<QuestionFamily familyId="qf_flash_np_complete" />
+<QuestionFamily familyId="qf_flash_relaxation" />
+<QuestionFamily familyId="qf_flash_generalized_eigenvalue" />
+<QuestionFamily familyId="qf_flash_laplacian" />
+<QuestionFamily familyId="qf_flash_first_eigenvector" />
+<QuestionFamily familyId="qf_flash_second_eigenvector" />
+<QuestionFamily familyId="qf_flash_sign_bipartition" />
+<QuestionFamily familyId="qf_flash_flow" />
+<QuestionFamily familyId="qf_flash_kway" />
+<QuestionFamily familyId="qf_flash_matrix" />
+
+### 章节自测
+
+完成以下测验题，检验你的理解：
+
+<QuestionFamily familyId="qf_quiz_cut_behavior" />
+<QuestionFamily familyId="qf_quiz_drawback" />
+<QuestionFamily familyId="qf_quiz_ncuts_mechanism" />
+<QuestionFamily familyId="qf_quiz_np_complete" />
+<QuestionFamily familyId="qf_quiz_relaxation" />
+<QuestionFamily familyId="qf_quiz_generalized_eigenvalue" />
+<QuestionFamily familyId="qf_quiz_laplacian" />
+<QuestionFamily familyId="qf_quiz_first_eigenvector" />
+<QuestionFamily familyId="qf_quiz_second_eigenvector" />
+<QuestionFamily familyId="qf_quiz_sign_bipartition" />
+<QuestionFamily familyId="qf_quiz_flow" />
+<QuestionFamily familyId="qf_quiz_kway" />
+
+### 深入理解练习
+
+完成以下长形式问题，深入理解算法原理：
+
+<QuestionFamily familyId="qf_long_drawback" />
+<QuestionFamily familyId="qf_long_ncuts_compare" />
+<QuestionFamily familyId="qf_long_algorithm_flow" />
+<QuestionFamily familyId="qf_long_second_eigenvector" />

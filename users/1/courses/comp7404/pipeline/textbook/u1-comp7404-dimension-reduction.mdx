@@ -1,0 +1,506 @@
+---
+lessonId: u1-comp7404-dimension-reduction
+title: 降维：流形学习、张量表示与统一框架
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["projection_limitation", "swiss_roll_example", "pca_linear_limitation", "need_for_nonlinear_methods"]
+    linkedSteps: ["step1"]
+  - sectionId: manifold-learning-basics
+    title: 流形学习的基本假设
+    coverageTags: ["manifold_learning_assumption", "manifold_learning_vs_projection", "linear_method_failure"]
+    linkedSteps: ["step2"]
+  - sectionId: lle-local-linear-embedding
+    title: LLE：局部线性嵌入
+    coverageTags: ["lle_how_it_works", "lle_procedure", "lle_formula_step2", "lle_formula_step3", "lle_vs_mds", "lle_parameter_k", "lle_swiss_roll"]
+    linkedSteps: ["step3"]
+  - sectionId: isomap-geodesic-distance
+    title: Isomap：测地距离与全局流形展开
+    coverageTags: ["isomap_definition", "geodesic_distance", "isomap_procedure", "mds_limitation"]
+    linkedSteps: ["step4"]
+  - sectionId: tensor-representation
+    title: 张量表示：避免维度灾难
+    coverageTags: ["tensor_definition", "vectorization_problem", "tensor_advantage", "mode_k_product"]
+    linkedSteps: ["step5"]
+  - sectionId: graph-embedding-framework
+    title: 图嵌入框架：统一视角
+    coverageTags: ["graph_embedding_framework", "intrinsic_graph_penalty_graph", "laplacian_matrix", "graph_embedding_criterion", "linearization_kernelization_tensorization", "unified_framework_special_cases", "framework_extensions", "essence_of_dimension_reduction"]
+    linkedSteps: ["step6", "step8"]
+  - sectionId: mfa-marginal-fisher-analysis
+    title: MFA：用框架设计新算法
+    coverageTags: ["mfa_intrinsic_graph_definition", "mfa_penalty_graph_definition", "mfa_vs_lda_gaussian_assumption", "mfa_design_using_graph_embedding"]
+    linkedSteps: ["step7"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["graph_embedding_framework", "essence_of_dimension_reduction", "lle_how_it_works", "isomap_definition", "tensor_advantage", "mfa_design_using_graph_embedding"]
+    linkedSteps: ["step3", "step4", "step5", "step6", "step7", "step8"]
+coverageTrace:
+  - coverageTag: projection_limitation
+    description: 投影（线性降维）在处理非线性结构（如瑞士卷）时的局限性
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: swiss_roll_example
+    description: 瑞士卷数据集作为投影失败的反例
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: pca_linear_limitation
+    description: PCA作为线性方法对非线性结构无效
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: need_for_nonlinear_methods
+    description: 需要能展开曲面的非线性降维方法
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: manifold_learning_assumption
+    description: 流形学习的基本假设：高维数据位于一个低维流形上
+    sectionIds: ["manifold-learning-basics"]
+    linkedSteps: ["step2"]
+  - coverageTag: manifold_learning_vs_projection
+    description: 流形学习与投影的根本区别：目标是恢复内在坐标，而非简单投影
+    sectionIds: ["manifold-learning-basics"]
+    linkedSteps: ["step2"]
+  - coverageTag: linear_method_failure
+    description: 线性方法（如PCA）对非线性结构（如瑞士卷）无效的原因
+    sectionIds: ["manifold-learning-basics"]
+    linkedSteps: ["step2"]
+  - coverageTag: lle_how_it_works
+    description: LLE的工作原理：测量每个训练实例与其最近邻的线性关系，然后寻找保持这些局部关系的低维表示
+    sectionIds: ["lle-local-linear-embedding"]
+    linkedSteps: ["step3"]
+  - coverageTag: lle_procedure
+    description: LLE的三步流程：1) 识别每个数据点的邻居；2) 计算从邻居线性重构该点的权重；3) 寻找由步骤2确定的权重最佳重构的低维嵌入向量
+    sectionIds: ["lle-local-linear-embedding"]
+    linkedSteps: ["step3"]
+  - coverageTag: lle_formula_step2
+    description: LLE第二步的优化公式：最小化每个点与其k个近邻加权平均之间的平方误差
+    sectionIds: ["lle-local-linear-embedding"]
+    linkedSteps: ["step3"]
+  - coverageTag: lle_formula_step3
+    description: LLE第三步的优化公式：在低维空间中，用同样的权重重构每个点，最小化误差
+    sectionIds: ["lle-local-linear-embedding"]
+    linkedSteps: ["step3"]
+  - coverageTag: lle_vs_mds
+    description: LLE与MDS的对比：LLE保持局部线性重构关系，MDS保持全局直线距离
+    sectionIds: ["lle-local-linear-embedding"]
+    linkedSteps: ["step3"]
+  - coverageTag: lle_parameter_k
+    description: 近邻数k对LLE结果的影响：k太小局部信息不足，k太大局部性丧失
+    sectionIds: ["lle-local-linear-embedding"]
+    linkedSteps: ["step3"]
+  - coverageTag: lle_swiss_roll
+    description: LLE能够展开瑞士卷，因为它保持局部关系，而不是全局直线距离
+    sectionIds: ["lle-local-linear-embedding"]
+    linkedSteps: ["step3"]
+  - coverageTag: isomap_definition
+    description: Isomap 的定义：MDS 的非线性推广，在测地距离空间中进行多维缩放
+    sectionIds: ["isomap-geodesic-distance"]
+    linkedSteps: ["step4"]
+  - coverageTag: geodesic_distance
+    description: 测地距离：沿着流形表面的最短路径距离，而非直线欧氏距离
+    sectionIds: ["isomap-geodesic-distance"]
+    linkedSteps: ["step4"]
+  - coverageTag: isomap_procedure
+    description: Isomap 的步骤：找近邻、计算测地距离矩阵、执行 MDS
+    sectionIds: ["isomap-geodesic-distance"]
+    linkedSteps: ["step4"]
+  - coverageTag: mds_limitation
+    description: MDS 使用直线距离，对非线性流形（如瑞士卷）无效
+    sectionIds: ["isomap-geodesic-distance"]
+    linkedSteps: ["step4"]
+  - coverageTag: tensor_definition
+    description: 张量的定义：多维数组，向量是1阶，矩阵是2阶，更高维的是n阶张量
+    sectionIds: ["tensor-representation"]
+    linkedSteps: ["step5"]
+  - coverageTag: vectorization_problem
+    description: 将张量拉直成向量会导致维度灾难，例如100×100×40的Gabor特征拉直成40万维向量
+    sectionIds: ["tensor-representation"]
+    linkedSteps: ["step5"]
+  - coverageTag: tensor_advantage
+    description: 保持张量结构可以避免维度灾难，保留多维结构信息，降低计算成本
+    sectionIds: ["tensor-representation"]
+    linkedSteps: ["step5"]
+  - coverageTag: mode_k_product
+    description: 模-k乘积：张量与矩阵在特定维度上的乘积运算，用于在张量的某个维度上进行投影
+    sectionIds: ["tensor-representation"]
+    linkedSteps: ["step5"]
+  - coverageTag: graph_embedding_framework
+    description: 图嵌入框架：通过内在图和惩罚图统一降维方法
+    sectionIds: ["graph-embedding-framework", "review-and-self-test"]
+    linkedSteps: ["step6", "step8"]
+  - coverageTag: intrinsic_graph_penalty_graph
+    description: 内在图和惩罚图的定义与作用
+    sectionIds: ["graph-embedding-framework"]
+    linkedSteps: ["step6"]
+  - coverageTag: laplacian_matrix
+    description: 拉普拉斯矩阵 L = D - S 的定义
+    sectionIds: ["graph-embedding-framework"]
+    linkedSteps: ["step6"]
+  - coverageTag: graph_embedding_criterion
+    description: 图嵌入的优化准则：最小化 y^T L y
+    sectionIds: ["graph-embedding-framework"]
+    linkedSteps: ["step6"]
+  - coverageTag: linearization_kernelization_tensorization
+    description: 图嵌入框架的三种扩展：线性化、核化、张量化
+    sectionIds: ["graph-embedding-framework"]
+    linkedSteps: ["step6"]
+  - coverageTag: unified_framework_special_cases
+    description: 统一框架的特例：PCA、LDA、LLE、Isomap等算法均可纳入该框架
+    sectionIds: ["graph-embedding-framework"]
+    linkedSteps: ["step6", "step8"]
+  - coverageTag: framework_extensions
+    description: 框架扩展：线性化、核化、张量化三种扩展方向
+    sectionIds: ["graph-embedding-framework"]
+    linkedSteps: ["step6", "step8"]
+  - coverageTag: essence_of_dimension_reduction
+    description: 降维本质：在低维空间中保持高维空间中的某种关系
+    sectionIds: ["graph-embedding-framework", "review-and-self-test"]
+    linkedSteps: ["step8"]
+  - coverageTag: mfa_intrinsic_graph_definition
+    description: MFA 内在图的定义：同类中互为 k1 近邻的点相连
+    sectionIds: ["mfa-marginal-fisher-analysis"]
+    linkedSteps: ["step7"]
+  - coverageTag: mfa_penalty_graph_definition
+    description: MFA 惩罚图的定义：不同类之间选择 k2 个最近的边际点对
+    sectionIds: ["mfa-marginal-fisher-analysis"]
+    linkedSteps: ["step7"]
+  - coverageTag: mfa_vs_lda_gaussian_assumption
+    description: MFA 不需要高斯分布假设，比 LDA 更灵活
+    sectionIds: ["mfa-marginal-fisher-analysis"]
+    linkedSteps: ["step7"]
+  - coverageTag: mfa_design_using_graph_embedding
+    description: MFA 是利用图嵌入框架设计新算法的例子
+    sectionIds: ["mfa-marginal-fisher-analysis", "review-and-self-test"]
+    linkedSteps: ["step7"]
+---
+
+# 降维：流形学习、张量表示与统一框架
+
+## 为什么这一课重要
+
+降维是机器学习的核心问题之一。高维数据不仅计算代价高，而且容易导致维度灾难——当特征维度远大于样本数量时，模型几乎无法有效学习。
+
+最直接的降维思路是**投影**：把高维数据直接压到低维平面上。但投影并不总是好办法。
+
+<Figure src="images/4ef69e49ca0a5b69faaf8867771bb5e6a79e8e647c8640ab88a7fd1d68d3bba7.jpg" alt="瑞士卷数据集的三维可视化，数据点沿着一个卷曲的曲面分布">
+瑞士卷（Swiss roll）数据集：数据点沿着一个卷曲的曲面分布
+</Figure>
+
+<Figure src="images/76f6f6461ebd6cedbe3438db77ae971dc3e50c2a8d93882af6da020dd194348b.jpg" alt="对瑞士卷进行简单投影后的结果，不同层的点被压在一起">
+简单投影的结果：不同层的点被压在一起，完全分不开
+</Figure>
+
+<KeyPoint>
+投影失败的根本原因：数据在低维空间中的结构不是线性的。瑞士卷的曲面是卷曲的，线性投影会破坏这种非线性结构。
+</KeyPoint>
+
+<Example title="投影与PCA对瑞士卷都无效">
+- 简单投影（如丢弃 x3 坐标）：不同层的点被压在一起
+- PCA：同样是线性方法，结果也一样——不同层的点混在一起
+- 结论：对于非线性结构的数据，我们需要能"展开"曲面的非线性降维方法
+</Example>
+
+<QuestionRef id="q_quiz_swiss_roll_v1" />
+<QuestionRef id="q_quiz_pca_fail_v1" />
+
+## 流形学习的基本假设
+
+投影和 PCA 都失败了，因为线性方法假设数据是线性结构。但瑞士卷虽然看起来是三维的，它的本质是一个二维曲面卷曲而成的。
+
+<Definition title="流形学习（Manifold Learning）" en="Manifold Learning">
+假设高维数据实际上位于一个低维流形（曲面）上。降维的目标不是简单投影，而是恢复这个曲面的内在坐标。
+</Definition>
+
+<KeyPoint>
+流形学习与投影的根本区别：
+- 投影：直接压到低维平面，会破坏非线性结构
+- 流形学习：假设数据在低维曲面上，目标是恢复内在坐标
+</KeyPoint>
+
+<QuestionRef id="q_quiz_manifold_vs_projection_v1" />
+<QuestionRef id="q_flash_manifold_assumption_v1" />
+
+## LLE：局部线性嵌入
+
+### 核心思想
+
+LLE 的思路是：不关心全局距离，只关心每个点与其近邻之间的局部关系。
+
+<Definition title="局部线性嵌入（LLE）" en="Locally Linear Embedding">
+一种流形学习方法，通过保持每个点与其邻居之间的线性重构关系来降维。特别擅长展开扭曲的流形，尤其是噪声不太大的情况。
+</Definition>
+
+### 算法三步流程
+
+LLE 算法分为三个步骤：
+
+1. **识别邻居**：找到每个数据点的 k 个最近邻
+2. **计算重构权重**：最小化每个点被其近邻线性重构的误差
+3. **寻找低维嵌入**：在低维空间中，保持第二步计算出的权重不变，寻找最优的低维坐标
+
+### 第二步：计算重构权重
+
+<Formula latex="\min_{\mathbf{w}} \sum_{i=1}^{N} \left\| \mathbf{x}_i - \sum_{j=1}^{k} w_{ij} \mathbf{x}_{N_i(j)} \right\|^2">
+最小化每个点与其 k 个近邻加权平均之间的平方误差
+</Formula>
+
+其中：
+- <InlineFormula latex="\mathbf{x}_i" /> 是第 i 个数据点
+- <InlineFormula latex="N_i(j)" /> 是第 i 个点的第 j 个近邻的索引
+- <InlineFormula latex="w_{ij}" /> 是对应的重构权重
+- k 是近邻数量
+
+### 第三步：寻找低维嵌入
+
+<Formula latex="\min_{Y} \sum_{i=1}^{N} \| \mathbf{y}_i - \sum_{j=1}^{k} w_{ij} \mathbf{y}_{N_i(j)} \|^2">
+在低维空间中，用同样的权重重构每个点，最小化误差
+</Formula>
+
+<KeyPoint>
+LLE 的关键思想：将在高维空间中学到的局部线性关系（权重）迁移到低维空间中。因此在第三步中，权重 <InlineFormula latex="w_{ij}" /> 是固定的。
+</KeyPoint>
+
+<Figure src="images/acdc777e84bae4538beaf1bb8d4475e96b8ea0296a8374a7c4272f41bde358dd.jpg" alt="LLE展开瑞士卷的结果，卷曲的结构被展开成二维平面">
+LLE 成功展开瑞士卷
+</Figure>
+
+<Figure src="images/81f42e3075b720faee6832ff003a6e91809a17f04ba82d9658143f14c81b9c1c.jpg" alt="LLE展开瑞士卷的另一个视角">
+LLE 展开瑞士卷的另一个视角
+</Figure>
+
+<Example title="LLE 的 Python 实现">
+```python
+from sklearn.manifold import LocallyLinearEmbedding
+lle = LocallyLinearEmbedding(n_components=2, n_neighbors=10)
+X_reduced = lle.fit_transform(X)
+```
+</Example>
+
+### 近邻数 k 的影响
+
+<Pitfall>
+- k 太小：每个点的近邻太少，无法准确捕捉局部结构，重构误差大
+- k 太大：近邻可能包含流形上较远的点，局部性丧失，LLE 退化为全局方法
+</Pitfall>
+
+<QuestionRef id="q_quiz_lle_core_v1" />
+<QuestionRef id="q_quiz_lle_parameter_k_v1" />
+<QuestionRef id="q_quiz_lle_vs_mds_v1" />
+
+## Isomap：测地距离与全局流形展开
+
+### MDS 的局限性
+
+MDS 试图保持所有点对之间的欧氏距离。但对于瑞士卷这种卷曲的流形，直线距离会"穿透"曲面，导致结构破坏。
+
+<Definition title="多维缩放（MDS）" en="Multidimensional Scaling">
+一种降维方法，目标是保持高维空间中所有点对之间的欧氏距离。
+</Definition>
+
+### Isomap 的解决方案
+
+<Definition title="等距映射（Isomap）" en="Isomap">
+MDS 的非线性推广，在测地距离空间中进行多维缩放。
+</Definition>
+
+<Definition title="测地距离（Geodesic Distance）" en="geodesic distance">
+沿着流形表面的最短路径距离，而非直线欧氏距离。
+</Definition>
+
+<KeyPoint>
+Isomap 的核心创新：用测地距离代替欧氏距离。测地距离沿着流形表面走，不会穿透曲面。
+</KeyPoint>
+
+### Isomap 的三步流程
+
+1. **找近邻**：找到每个数据点的近邻
+2. **计算测地距离矩阵**：计算所有点对之间的测地距离（例如通过最短路径算法）
+3. **执行 MDS**：对测地距离矩阵应用经典 MDS 进行嵌入
+
+<Figure src="images/378f4905410b64e94389bfe5e152bef4b4c6aa78cec527b1dc8d85435a5c1a7a.jpg" alt="Isomap展开瑞士卷的结果示例">
+Isomap 展开瑞士卷的结果
+</Figure>
+
+<QuestionRef id="q_quiz_isomap_mds_diff_v1" />
+<QuestionRef id="q_quiz_geodesic_vs_euclidean_v1" />
+<QuestionRef id="q_quiz_isomap_procedure_v1" />
+
+## 张量表示：避免维度灾难
+
+### 什么是张量
+
+<Definition title="张量（Tensor）" en="Tensor">
+多维数组的泛称。标量是0阶张量，向量是1阶，矩阵是2阶，更高维的数组是n阶张量。
+</Definition>
+
+<Example title="常见数据的张量表示">
+- 灰度图像：2阶张量（矩阵），如 100×100
+- 视频：3阶张量，如 时间×高度×宽度
+- Gabor 滤波后的图像：3阶张量，如 100×100×40
+</Example>
+
+### 拉直成向量的问题
+
+传统做法是把张量拉直成向量。例如，一张 100×100×40 的 Gabor 特征图像拉直后变成 400,000 维的向量。
+
+<Pitfall>
+拉直成向量会导致维度灾难：
+- 特征维度：100×100×40 = 400,000
+- 样本数量：通常只有几千
+- 结果：特征维度远大于样本数量，数据在高维空间中极度稀疏，学习效果很差
+</Pitfall>
+
+### 保持张量结构的优势
+
+<KeyPoint>
+保持张量结构进行降维的主要优势：
+1. **避免维度灾难**：特征维度是各维度大小的和（如 100+100+40=240），而非乘积
+2. **保留多维结构信息**：如图像的二维空间结构、视频的时空结构
+3. **降低计算成本**
+</KeyPoint>
+
+### 模-k 乘积
+
+<Definition title="模-k 乘积（Mode-k Product）" en="Mode-k Product">
+张量与矩阵在特定维度上的乘积运算，允许我们在张量的某个维度上进行投影。
+</Definition>
+
+<QuestionRef id="q_quiz_tensor_def_v1" />
+<QuestionRef id="q_quiz_vectorization_problem_v1" />
+<QuestionRef id="q_quiz_tensor_advantage_v1" />
+
+## 图嵌入框架：统一视角
+
+PCA、LDA、LLE、Isomap……这么多降维方法，有没有统一的视角？
+
+<Definition title="图嵌入（Graph Embedding）" en="Graph Embedding">
+一种统一的降维框架，通过构建内在图和惩罚图来定义目标函数。
+</Definition>
+
+### 核心构成
+
+<Definition title="内在图（Intrinsic Graph）" en="Intrinsic Graph">
+描述数据点之间希望保持的相似关系。图中的边表示我们希望在高维空间中保持的关系。
+</Definition>
+
+<Definition title="惩罚图（Penalty Graph）" en="Penalty Graph">
+描述数据点之间希望拉远的关系。图中的边表示我们希望在高维空间中拉远的关系。
+</Definition>
+
+### 拉普拉斯矩阵
+
+<Definition title="拉普拉斯矩阵（Laplacian Matrix）" en="Laplacian Matrix">
+由图的邻接矩阵和度矩阵定义的矩阵：<InlineFormula latex="L = D - S" />，其中 <InlineFormula latex="D_{ii} = \sum_j S_{ij}" />。
+</Definition>
+
+### 优化目标
+
+<Formula latex="y^{*} = \arg\min_{y^T y = 1 \text{ or } y^T B y = 1} y^T L y">
+最小化拉普拉斯二次型，在低维空间中保持内在图的相似性
+</Formula>
+
+### 统一不同算法
+
+<KeyPoint>
+不同的降维方法只是内在图和惩罚图的定义不同，优化框架是统一的。
+</KeyPoint>
+
+| 算法 | S 定义 | B 定义 |
+|------|--------|--------|
+| PCA | <InlineFormula latex="S_{ij} = 1/N, i \neq j" /> | I |
+| LDA | <InlineFormula latex="S_{ij} = \delta_{l_i,l_j} / n_{l_i}" /> | <InlineFormula latex="I - \frac{1}{N} ee^T" /> |
+| ISOMAP | <InlineFormula latex="S_{ij} = \tau(D_G)_{ij}, i \neq j" /> | I |
+| LLE | <InlineFormula latex="S = M + M^T - M^T M" /> | I |
+| LE/LPP | <InlineFormula latex="S_{ij} = \exp\{-\|x_i - x_j\|^2/t\}" /> | D |
+
+### 三种扩展方向
+
+<Definition title="线性化（Linearization）" en="Linearization">
+假设低维表示是原始数据的线性组合：<InlineFormula latex="y = X^T w" />。解决新样本的泛化问题。
+</Definition>
+
+<Definition title="核化（Kernelization）" en="Kernelization">
+通过核函数将数据映射到更高维的希尔伯特空间，在高维空间中做线性降维。处理原始空间中的非线性结构。
+</Definition>
+
+<Definition title="张量化（Tensorization）" en="Tensorization">
+将图嵌入框架扩展到张量数据，在每个维度上分别学习投影方向。保持数据的多维结构。
+</Definition>
+
+<KeyPoint>
+降维的本质：在低维空间中保持高维空间中的某种关系。不同的降维方法区别在于它们选择保持的关系不同。
+</KeyPoint>
+
+<QuestionRef id="q_quiz_ge_1_v1" />
+<QuestionRef id="q_quiz_ge_2_v1" />
+<QuestionRef id="q_quiz_ge_3_v1" />
+<QuestionRef id="q_quiz_ge_unify_v1" />
+
+## MFA：用框架设计新算法
+
+有了图嵌入框架，我们可以设计新的降维算法。
+
+<Definition title="边际费舍尔分析（MFA）" en="Marginal Fisher Analysis">
+一种基于图嵌入框架的监督降维方法，同时利用标签信息和局部流形结构。
+</Definition>
+
+### MFA 的图定义
+
+**内在图**：连接同类中互为 k1 近邻的点
+- <InlineFormula latex="S_{ij} = 1" /> 如果 <InlineFormula latex="x_i" /> 是 <InlineFormula latex="x_j" /> 在同类中的 k1 近邻之一
+- 目的：保持同类数据的局部结构
+
+**惩罚图**：连接不同类之间距离最近的 k2 个点对
+- <InlineFormula latex="S_{ij}^P = 1" /> 如果点对 (i,j) 是数据集中距离最近的 k2 个点对之一
+- 目的：拉远不同类边际点的距离，增强类间可分性
+
+### MFA vs LDA
+
+<KeyPoint>
+MFA 相对于 LDA 的关键优势：不需要高斯分布假设。LDA 假设每类数据服从高斯分布，MFA 通过局部近邻定义图结构，无需此假设，因此更灵活。
+</KeyPoint>
+
+<Example title="人脸识别实验中的表现">
+在 ORL 和 CMU PIE 人脸数据库上，MFA 及其张量化版本 TMFA 的表现优于 PCA+LDA：
+- ORL 数据库：PCA+LDA 88.3% vs TMFA 96.3%
+- PIE-1 数据库：PCA+LDA 80.2% vs TMFA 85.2%
+</Example>
+
+<QuestionRef id="q_quiz_mfa_intrinsic_v1" />
+<QuestionRef id="q_quiz_mfa_penalty_v1" />
+<QuestionRef id="q_quiz_mfa_vs_lda_v1" />
+
+## 复习与自测
+
+### 核心概念回顾
+
+1. **流形学习假设**：高维数据位于一个低维流形上，降维目标是恢复内在坐标
+2. **LLE**：保持每个点与近邻之间的线性重构关系，三步流程：找邻居→算权重→找嵌入
+3. **Isomap**：用测地距离代替欧氏距离，在测地距离空间中执行 MDS
+4. **张量表示**：保持数据的多维结构，避免拉直成向量带来的维度灾难
+5. **图嵌入框架**：通过内在图和惩罚图统一降维方法，可线性化、核化、张量化
+6. **MFA**：利用图嵌入框架设计监督降维算法，不需要高斯分布假设
+
+### 自测题
+
+<QuestionFamily familyId="qf_quiz_lle_core" />
+<QuestionFamily familyId="qf_quiz_isomap_mds_diff" />
+<QuestionFamily familyId="qf_quiz_tensor_advantage" />
+<QuestionFamily familyId="qf_quiz_ge_unify" />
+<QuestionFamily familyId="qf_quiz_mfa_vs_lda" />
+
+### 主动回忆练习
+
+<QuestionFamily familyId="qf_flash_lle_core" />
+<QuestionFamily familyId="qf_flash_isomap_def" />
+<QuestionFamily familyId="qf_flash_tensor_def" />
+<QuestionFamily familyId="qf_flash_ge_core" />
+<QuestionFamily familyId="qf_flash_mfa_intrinsic" />
+
+### 综合理解题
+
+<QuestionFamily familyId="qf_long_lle_mechanism" />
+<QuestionFamily familyId="qf_long_isomap_explain" />
+<QuestionFamily familyId="qf_long_ge_summary" />
+<QuestionFamily familyId="qf_long_mfa_design" />

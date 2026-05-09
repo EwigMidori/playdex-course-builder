@@ -1,0 +1,479 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "recursive_partitioning",
+      "covered_by": [
+        "qf_flash_recursive_partitioning",
+        "qf_quiz_recursive_partitioning",
+        "qf_long_recursive_partitioning"
+      ],
+      "description": "决策树构建的核心思想：递归划分"
+    },
+    {
+      "coverage_tag": "information_gain_based_split",
+      "covered_by": [
+        "qf_flash_information_gain_split",
+        "qf_quiz_information_gain_split"
+      ],
+      "description": "每次选择信息增益最大的特征进行分裂"
+    },
+    {
+      "coverage_tag": "decision_tree_construction_example",
+      "covered_by": [
+        "qf_flash_tree_construction_example",
+        "qf_quiz_tree_construction_example",
+        "qf_long_recursive_partitioning"
+      ],
+      "description": "使用年龄、是否学生、信用评级等特征构建决策树的具体过程"
+    },
+    {
+      "coverage_tag": "decision_tree_rules",
+      "covered_by": [
+        "qf_flash_tree_rules",
+        "qf_quiz_tree_rules"
+      ],
+      "description": "从决策树中提取分类规则"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "recursive_partitioning",
+      "coverage_tags": [
+        "recursive_partitioning"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_recursive_partitioning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出决策树构建的核心方法名称及其基本含义。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆起决策树是通过不断选择最佳特征划分数据，并对每个子集重复此过程来构建的。",
+      "question_type": "short_answer",
+      "retrieval_focus": "决策树构建的核心方法名称",
+      "term_refs": [
+        {
+          "display": "递归划分",
+          "en": "Recursive Partitioning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "递归划分",
+          "estimated_seconds": 5,
+          "explanation": "递归划分是决策树构建的核心思想。",
+          "front": "决策树构建过程中，不断选择最佳特征划分数据，并对每个子集重复此过程，这种方法叫什么？",
+          "question_id": "q_flash_recursive_partitioning_v1"
+        },
+        {
+          "back": "在每个子集内部继续递归地选择最佳特征进行划分",
+          "estimated_seconds": 8,
+          "explanation": "递归划分意味着对每个不纯的子集重复相同的划分过程。",
+          "front": "构建决策树时，在根节点用年龄划分数据后，对于年龄<30和>40的不纯子集，下一步要做什么？",
+          "question_id": "q_flash_recursive_partitioning_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "information_gain_based_split",
+      "coverage_tags": [
+        "information_gain_based_split"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_information_gain_split",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出决策树选择分裂特征的依据。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆起决策树在每一步都选择信息增益最大的特征来分裂数据。",
+      "question_type": "short_answer",
+      "retrieval_focus": "选择分裂特征的依据",
+      "term_refs": [
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "back": "信息增益最大的特征",
+          "estimated_seconds": 5,
+          "explanation": "信息增益衡量了划分后不确定性的减少量，增益越大，划分效果越好。",
+          "front": "决策树在每一步选择哪个特征来划分数据？",
+          "question_id": "q_flash_information_gain_split_v1"
+        },
+        {
+          "back": "年龄",
+          "estimated_seconds": 8,
+          "explanation": "决策树总是选择信息增益最大的特征作为当前节点的测试。",
+          "front": "在构建决策树时，如果年龄特征的信息增益是0.246，学生特征的信息增益是0.152，应该先选择哪个特征作为测试？",
+          "question_id": "q_flash_information_gain_split_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "decision_tree_construction_example",
+      "coverage_tags": [
+        "decision_tree_construction_example"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_tree_construction_example",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆起构建决策树的具体步骤和关键节点选择。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆起在年龄为30-40的子集上，由于所有样本标签一致，该节点成为叶子节点。",
+      "question_type": "short_answer",
+      "retrieval_focus": "递归划分过程中的一个具体结果",
+      "term_refs": [
+        {
+          "display": "决策树",
+          "en": "Decision Tree"
+        }
+      ],
+      "variants": [
+        {
+          "back": "一个叶子节点，标签为“有电脑”",
+          "estimated_seconds": 8,
+          "explanation": "因为该子集已经纯了（熵为0），所以不需要再划分，直接成为叶子节点。",
+          "front": "在构建电脑拥有者决策树时，年龄为30-40的那一组数据（全部有电脑），在树中变成了什么？",
+          "question_id": "q_flash_tree_construction_example_v1"
+        },
+        {
+          "back": "是否学生",
+          "estimated_seconds": 8,
+          "explanation": "在年龄<30的5条记录中，'是否学生'特征的信息增益最大，所以下一个问题是'是学生吗？'",
+          "front": "在年龄<30的子集中，哪个特征被选为下一个测试？",
+          "question_id": "q_flash_tree_construction_example_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "decision_tree_rules",
+      "coverage_tags": [
+        "decision_tree_rules"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_tree_rules",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆起从决策树中提取的具体分类规则。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能回忆起从根节点到叶子节点的路径对应一条分类规则。",
+      "question_type": "short_answer",
+      "retrieval_focus": "从决策树中提取的一条具体规则",
+      "term_refs": [
+        {
+          "display": "分类规则",
+          "en": "Classification Rule"
+        }
+      ],
+      "variants": [
+        {
+          "back": "没有电脑",
+          "estimated_seconds": 8,
+          "explanation": "规则是：如果年龄>40且信用评级好，则不是电脑拥有者。",
+          "front": "根据构建的决策树，如果一个人年龄>40且信用评级好，他是否拥有电脑？",
+          "question_id": "q_flash_tree_rules_v1"
+        },
+        {
+          "back": "有电脑",
+          "estimated_seconds": 8,
+          "explanation": "规则是：如果年龄<30且是学生，则是电脑拥有者。",
+          "front": "根据构建的决策树，如果一个人年龄<30且是学生，他是否拥有电脑？",
+          "question_id": "q_flash_tree_rules_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-1",
+  "longform_families": [
+    {
+      "concept_key": "recursive_partitioning",
+      "coverage_tags": [
+        "recursive_partitioning",
+        "decision_tree_construction_example"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_recursive_partitioning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整描述决策树的递归构建过程，并用具体例子说明。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能用自己的话解释递归划分的步骤，并举例说明如何选择特征和何时停止。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "递归划分",
+          "en": "Recursive Partitioning"
+        },
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "选择根节点特征的方法",
+            "对子集的递归处理",
+            "停止条件",
+            "具体例子"
+          ],
+          "question_id": "q_long_recursive_partitioning_v1",
+          "reference_answer": [
+            "决策树的构建是一个递归过程。首先，计算每个特征的信息增益，选择信息增益最大的特征作为根节点的测试。例如，在电脑拥有者数据集中，年龄的信息增益最大，所以根节点问“年龄是多少？”。",
+            "然后，根据年龄的值将数据分成三个子集：<30、30-40、>40。对于每个子集，递归地应用相同的过程。",
+            "递归停止的条件包括：1）子集中所有记录都属于同一类别（如30-40的子集全是“有电脑”），此时创建叶子节点；2）没有更多属性可用；3）所有记录属性值相同。",
+            "对于不纯的子集，如年龄<30的子集，继续计算剩余特征（收入、是否学生、信用评级）的信息增益，选择增益最大的“是否学生”进行下一步划分。这个过程一直持续，直到所有分支都到达叶子节点。"
+          ],
+          "rubric_points": [
+            "正确指出选择信息增益最大的特征作为根节点测试",
+            "正确说明对每个不纯的子集递归调用相同过程",
+            "正确列出至少两个停止条件：子集纯、属性列表为空、所有记录属性值相同",
+            "能用年龄作为根节点、30-40子集变纯成为叶子、<30子集用学生特征继续划分等具体例子说明"
+          ],
+          "stem": "请描述决策树的递归构建过程。在描述中，请包含以下要点：\n1. 如何选择根节点的测试特征？\n2. 划分后对每个子集做什么？\n3. 什么情况下停止递归并创建叶子节点？\n4. 请用“电脑拥有者”数据集中的具体例子说明上述过程。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "第一步做什么",
+            "如何选择特征",
+            "递归过程",
+            "停止条件"
+          ],
+          "question_id": "q_long_recursive_partitioning_v2",
+          "reference_answer": [
+            "首先，我会计算数据集的初始熵。然后，分别计算使用年龄、收入和地区作为测试特征后的期望熵，从而得到每个特征的信息增益。",
+            "选择信息增益最大的特征作为根节点的测试。假设年龄的信息增益最大，根节点就是“年龄是多少？”。",
+            "根据年龄的三个值将数据分成三个子集。对于每个子集，如果子集中的所有记录都属于同一类别（比如都购买产品），则创建一个叶子节点。否则，在剩余的特征（收入和地区）中，再次计算信息增益，选择最好的特征继续划分。",
+            "这个过程递归进行，直到所有子集都变成纯的，或者没有更多特征可用，或者所有记录的特征值都相同。最终，从根节点到每个叶子节点的路径就形成了一条分类规则。"
+          ],
+          "rubric_points": [
+            "正确说明首先计算每个特征的信息增益",
+            "正确说明选择信息增益最大的特征作为根节点",
+            "正确说明对每个子集递归调用相同过程",
+            "正确说明停止条件：子集纯、属性用完等"
+          ],
+          "stem": "假设你有一个新的数据集，用于预测一个人是否会购买某款产品。数据集包含三个特征：年龄（<30, 30-50, >50）、收入（低、中、高）和地区（城市、郊区、农村）。请描述你将如何用递归划分的方法构建一个决策树。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "recursive_partitioning",
+      "coverage_tags": [
+        "recursive_partitioning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_recursive_partitioning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在不同场景下识别递归划分的过程。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能判断一个描述是否准确反映了递归划分的思想。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "递归划分",
+          "en": "Recursive Partitioning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "递归划分的核心是：在根节点选择最佳特征划分后，对每个不纯的子集再次应用相同的选择最佳特征并划分的过程。",
+          "options": [
+            "一次性选择所有特征，然后同时划分数据",
+            "先选择最佳特征划分数据，然后对每个子集重复此过程",
+            "随机选择一个特征进行划分，直到所有数据被分完",
+            "只对第一个子集进行划分，其他子集保持不变"
+          ],
+          "question_id": "q_quiz_recursive_partitioning_v1",
+          "stem": "以下哪个选项最准确地描述了决策树构建中的“递归划分”过程？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "递归划分要求对每个不纯的子集重复划分过程，直到满足停止条件。",
+          "options": [
+            "停止构建，因为已经有一个叶子节点了",
+            "只对<30的子集继续划分，>40的子集不再处理",
+            "对<30和>40这两个不纯的子集分别继续递归地选择最佳特征进行划分",
+            "重新选择另一个特征作为根节点"
+          ],
+          "question_id": "q_quiz_recursive_partitioning_v2",
+          "stem": "在构建决策树时，如果根节点用“年龄”划分后，年龄30-40的子集已经纯了，而<30和>40的子集还不纯。接下来应该怎么做？"
+        }
+      ]
+    },
+    {
+      "concept_key": "information_gain_based_split",
+      "coverage_tags": [
+        "information_gain_based_split"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_information_gain_split",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解信息增益在决策树构建中的作用。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能根据信息增益的大小判断应该优先选择哪个特征进行分裂。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "决策树总是选择信息增益最大的特征，这里年龄的信息增益最大（0.246）。",
+          "options": [
+            "收入",
+            "年龄",
+            "是否学生",
+            "信用评级"
+          ],
+          "question_id": "q_quiz_information_gain_split_v1",
+          "stem": "在构建决策树时，计算得到四个特征的信息增益如下：年龄=0.246，收入=0.029，是否学生=0.151，信用评级=0.048。应该选择哪个特征作为根节点的测试？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "信息增益衡量的是划分前后熵的减少量，即不确定性的降低程度。增益越大，说明该特征划分效果越好。",
+          "options": [
+            "用于计算树的深度",
+            "用于评估一个特征划分数据后，不确定性减少的程度",
+            "用于决定叶子节点的标签",
+            "用于防止过拟合"
+          ],
+          "question_id": "q_quiz_information_gain_split_v2",
+          "stem": "信息增益在决策树构建中扮演什么角色？"
+        }
+      ]
+    },
+    {
+      "concept_key": "decision_tree_construction_example",
+      "coverage_tags": [
+        "decision_tree_construction_example"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_tree_construction_example",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的数据情况，推断决策树的构建过程。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能根据子集的数据分布，判断该子集是否应该成为叶子节点。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "决策树",
+          "en": "Decision Tree"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "当子集中所有记录都属于同一类别时，该子集已经纯了，算法会停止划分，创建一个叶子节点，标签为该类别。",
+          "options": [
+            "继续寻找最佳特征进行划分",
+            "创建一个叶子节点，标签为“有电脑”",
+            "将该子集的数据合并到父节点",
+            "创建一个叶子节点，标签为“无电脑”"
+          ],
+          "question_id": "q_quiz_tree_construction_example_v1",
+          "stem": "在构建电脑拥有者决策树时，年龄为30-40的子集包含4条记录，全部是“有电脑”。对于这个子集，决策树算法会怎么做？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "该子集不纯（包含两种标签），所以需要继续递归地选择最佳特征进行划分，直到子集变纯或满足其他停止条件。",
+          "options": [
+            "直接创建叶子节点，标签为“有电脑”",
+            "直接创建叶子节点，标签为“无电脑”",
+            "继续在该子集中寻找最佳特征进行划分",
+            "停止构建整个决策树"
+          ],
+          "question_id": "q_quiz_tree_construction_example_v2",
+          "stem": "在年龄>40的子集中，有3条记录是“有电脑”，2条是“无电脑”。算法接下来会怎么做？"
+        }
+      ]
+    },
+    {
+      "concept_key": "decision_tree_rules",
+      "coverage_tags": [
+        "decision_tree_rules"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_tree_rules",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据决策树的结构推导出分类规则。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能根据给定的决策树路径，正确判断新样本的类别。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "分类规则",
+          "en": "Classification Rule"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "正确的规则是：如果年龄>40且信用评级好，则不是电脑拥有者。",
+          "options": [
+            "如果年龄<30且不是学生，则是电脑拥有者",
+            "如果年龄在30-40之间，则不是电脑拥有者",
+            "如果年龄>40且信用评级好，则不是电脑拥有者",
+            "如果年龄>40且信用评级差，则不是电脑拥有者"
+          ],
+          "question_id": "q_quiz_tree_rules_v1",
+          "stem": "根据构建的决策树，以下哪条规则是正确的？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "规则是：如果年龄<30且是学生，则是电脑拥有者。",
+          "options": [
+            "是",
+            "否",
+            "无法判断",
+            "取决于他的收入"
+          ],
+          "question_id": "q_quiz_tree_rules_v2",
+          "stem": "一个新朋友，年龄25岁，是学生。根据构建的决策树，他是否拥有电脑？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

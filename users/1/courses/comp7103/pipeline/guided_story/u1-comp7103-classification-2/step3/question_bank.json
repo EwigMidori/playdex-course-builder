@@ -1,0 +1,503 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "bayes_theorem",
+      "covered_by": [
+        "qf_flash_bayes_components",
+        "qf_quiz_bayes_formula",
+        "qf_long_bayes_classification"
+      ],
+      "description": "贝叶斯定理：P(H|X) = P(X|H) * P(H) / P(X)，以及先验概率、似然、后验概率的概念"
+    },
+    {
+      "coverage_tag": "naive_bayes_assumption",
+      "covered_by": [
+        "qf_flash_naive_assumption",
+        "qf_quiz_naive_assumption"
+      ],
+      "description": "朴素贝叶斯的核心假设：在给定类别的情况下，所有属性条件独立"
+    },
+    {
+      "coverage_tag": "naive_bayes_formula",
+      "covered_by": [
+        "qf_flash_naive_formula",
+        "qf_quiz_naive_formula"
+      ],
+      "description": "朴素贝叶斯公式：P(X|C_i) = ∏ P(x_k|C_i)"
+    },
+    {
+      "coverage_tag": "bayesian_classification_decision",
+      "covered_by": [
+        "qf_flash_bayes_decision",
+        "qf_quiz_bayes_decision",
+        "qf_long_bayes_classification"
+      ],
+      "description": "贝叶斯分类决策：选择使 P(X|C_i)P(C_i) 最大的类别"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "bayes_theorem",
+      "coverage_tags": [
+        "bayes_theorem"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bayes_components",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出贝叶斯定理中三个关键概率的名称和含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能区分先验概率、似然和后验概率在贝叶斯公式中的角色。",
+      "question_type": "short_answer",
+      "retrieval_focus": "贝叶斯定理中三个概率成分的名称与定义。",
+      "term_refs": [
+        {
+          "display": "先验概率",
+          "en": "Prior Probability"
+        },
+        {
+          "display": "似然",
+          "en": "Likelihood"
+        },
+        {
+          "display": "后验概率",
+          "en": "Posterior Probability"
+        }
+      ],
+      "variants": [
+        {
+          "back": "先验概率",
+          "estimated_seconds": 8,
+          "explanation": "P(H) 是在观察到任何数据之前，对假设 H 为真的概率的初始估计。",
+          "front": "在贝叶斯定理 P(H|X) = P(X|H) * P(H) / P(X) 中，P(H) 叫什么？",
+          "question_id": "q_flash_bayes_components_v1"
+        },
+        {
+          "back": "似然",
+          "estimated_seconds": 8,
+          "explanation": "P(X|H) 是在假设 H 为真的条件下，观察到数据 X 的概率。",
+          "front": "在贝叶斯定理 P(H|X) = P(X|H) * P(H) / P(X) 中，P(X|H) 叫什么？",
+          "question_id": "q_flash_bayes_components_v2"
+        },
+        {
+          "back": "后验概率",
+          "estimated_seconds": 8,
+          "explanation": "P(H|X) 是在观察到数据 X 之后，对假设 H 为真的概率的更新估计。",
+          "front": "在贝叶斯定理 P(H|X) = P(X|H) * P(H) / P(X) 中，P(H|X) 叫什么？",
+          "question_id": "q_flash_bayes_components_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "naive_bayes",
+      "coverage_tags": [
+        "naive_bayes_assumption"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_naive_assumption",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出朴素贝叶斯的核心假设。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了朴素贝叶斯区别于普通贝叶斯分类器的关键假设。",
+      "question_type": "short_answer",
+      "retrieval_focus": "朴素贝叶斯的核心假设。",
+      "term_refs": [
+        {
+          "display": "条件独立",
+          "en": "Conditional Independence"
+        },
+        {
+          "display": "朴素贝叶斯",
+          "en": "Naïve Bayes"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在给定类别的情况下，所有属性条件独立。",
+          "estimated_seconds": 10,
+          "explanation": "这意味着知道一个属性的取值不会影响对另一个属性取值的判断，前提是已知类别。",
+          "front": "朴素贝叶斯分类器对属性之间的关系做了哪个关键假设？",
+          "question_id": "q_flash_naive_assumption_v1"
+        },
+        {
+          "back": "它假设所有属性在给定类别时条件独立。",
+          "estimated_seconds": 10,
+          "explanation": "这个假设虽然“朴素”（简单、可能不真实），但大大简化了计算。",
+          "front": "朴素贝叶斯中的“朴素”指的是什么？",
+          "question_id": "q_flash_naive_assumption_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "naive_bayes",
+      "coverage_tags": [
+        "naive_bayes_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_naive_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能写出朴素贝叶斯中计算 P(X|C_i) 的公式。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了条件独立假设如何转化为概率乘积公式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "朴素贝叶斯中 P(X|C_i) 的分解公式。",
+      "term_refs": [
+        {
+          "display": "朴素贝叶斯公式",
+          "en": "Naïve Bayes Formula"
+        }
+      ],
+      "variants": [
+        {
+          "back": "P(X|C_i) = ∏_{k=1}^{m} P(x_k|C_i)",
+          "estimated_seconds": 12,
+          "explanation": "由于条件独立假设，联合概率可以分解为每个属性条件概率的乘积。",
+          "front": "在朴素贝叶斯中，给定类别 C_i，如何计算观察到属性向量 X = (x₁, x₂, ..., xₘ) 的概率 P(X|C_i)？",
+          "question_id": "q_flash_naive_formula_v1"
+        },
+        {
+          "back": "P(x₁|C_i) × P(x₂|C_i) × ... × P(xₘ|C_i)",
+          "estimated_seconds": 10,
+          "explanation": "即所有属性条件概率的乘积。",
+          "front": "朴素贝叶斯利用条件独立假设，将 P(X|C_i) 简化为哪个表达式？",
+          "question_id": "q_flash_naive_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "bayesian_classification",
+      "coverage_tags": [
+        "bayesian_classification_decision"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_bayes_decision",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出贝叶斯分类器如何选择类别。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了贝叶斯分类的决策规则。",
+      "question_type": "short_answer",
+      "retrieval_focus": "贝叶斯分类器的决策规则。",
+      "term_refs": [
+        {
+          "display": "贝叶斯分类决策",
+          "en": "Bayesian Classification Decision"
+        }
+      ],
+      "variants": [
+        {
+          "back": "选择使 P(X|C_i) * P(C_i) 最大的那个类别 C_i。",
+          "estimated_seconds": 12,
+          "explanation": "因为 P(X) 对所有类别相同，所以比较后验概率等价于比较 P(X|C_i)P(C_i)。",
+          "front": "贝叶斯分类器如何从多个类别 C₁, C₂, ..., Cₘ 中为新样本 X 选择最终类别？",
+          "question_id": "q_flash_bayes_decision_v1"
+        },
+        {
+          "back": "因为 P(X) 对所有类别 C_i 都是相同的常数，不影响比较结果。",
+          "estimated_seconds": 10,
+          "explanation": "所以我们只需比较 P(X|C_i) * P(C_i) 的大小。",
+          "front": "在贝叶斯分类中，为什么比较 P(C_i|X) 时可以忽略分母 P(X)？",
+          "question_id": "q_flash_bayes_decision_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-2",
+  "longform_families": [
+    {
+      "concept_key": "bayesian_classification",
+      "coverage_tags": [
+        "bayes_theorem",
+        "bayesian_classification_decision"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_bayes_classification",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整解释贝叶斯分类器的工作原理，包括公式、各成分含义和决策规则。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能系统性地阐述贝叶斯分类的完整流程。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "贝叶斯定理",
+          "en": "Bayes' Theorem"
+        },
+        {
+          "display": "后验概率",
+          "en": "Posterior Probability"
+        },
+        {
+          "display": "先验概率",
+          "en": "Prior Probability"
+        },
+        {
+          "display": "似然",
+          "en": "Likelihood"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "写出贝叶斯定理公式并解释每个符号",
+            "说明分类决策规则",
+            "解释忽略分母的原因"
+          ],
+          "question_id": "q_long_bayes_classification_v1",
+          "reference_answer": [
+            "贝叶斯定理公式为 P(H|X) = P(X|H) * P(H) / P(X)。其中 P(H) 是先验概率，表示在观察数据前假设 H 为真的概率；P(X|H) 是似然，表示在 H 为真的条件下观察到 X 的概率；P(H|X) 是后验概率，表示观察到 X 后 H 为真的概率。",
+            "对于分类，对每个可能的类别 C_i，计算 P(C_i|X) = P(X|C_i) * P(C_i) / P(X)，然后选择使后验概率最大的类别。",
+            "由于分母 P(X) 对所有类别都是相同的常数，比较后验概率等价于比较 P(X|C_i) * P(C_i)，因此实际决策规则为选择使 P(X|C_i)P(C_i) 最大的类别 C_i。"
+          ],
+          "rubric_points": [
+            "正确写出 P(H|X) = P(X|H) * P(H) / P(X)",
+            "正确解释 P(H) 为先验概率，P(X|H) 为似然，P(H|X) 为后验概率",
+            "说明分类器选择使 P(X|C_i)P(C_i) 最大的类别",
+            "解释 P(X) 对所有类别相同，因此不影响比较"
+          ],
+          "stem": "请解释贝叶斯分类器如何利用贝叶斯定理对一个新的未标记样本进行分类。请在你的解释中明确说明：\n1. 贝叶斯定理的公式及其各部分的含义（先验概率、似然、后验概率）。\n2. 分类器如何利用这些概率做出最终决策。\n3. 为什么在比较不同类别时可以忽略分母 P(X)。"
+        },
+        {
+          "estimated_seconds": 100,
+          "prompt_blocks": [
+            "将概率成分映射到具体场景",
+            "写出公式并代入",
+            "解释条件独立假设的作用"
+          ],
+          "question_id": "q_long_bayes_classification_v2",
+          "reference_answer": [
+            "先验概率 P(垃圾邮件) 是历史上所有邮件中垃圾邮件的比例；似然 P(包含'免费','中奖' | 垃圾邮件) 是垃圾邮件中包含这两个词的概率；后验概率 P(垃圾邮件 | 包含'免费','中奖') 是看到这两个词后该邮件是垃圾邮件的概率。",
+            "贝叶斯定理：P(垃圾邮件|X) = P(X|垃圾邮件) * P(垃圾邮件) / P(X)。同样计算 P(正常邮件|X)，比较两者大小。",
+            "直接计算 P(X|垃圾邮件) 很困难，因为单词组合太多。朴素贝叶斯假设在给定类别下，单词的出现是条件独立的，即 P('免费','中奖'|垃圾邮件) = P('免费'|垃圾邮件) * P('中奖'|垃圾邮件)，大大简化了计算。"
+          ],
+          "rubric_points": [
+            "正确将 P(垃圾邮件) 定义为先验概率",
+            "正确将 P(包含'免费','中奖' | 垃圾邮件) 定义为似然",
+            "正确写出贝叶斯公式并代入场景",
+            "解释条件独立假设使 P(X|C) = P('免费'|C) * P('中奖'|C)",
+            "说明该假设简化了计算但可能不准确"
+          ],
+          "stem": "假设你有一个二分类问题，类别为“垃圾邮件”和“正常邮件”。一个新邮件 X 包含单词“免费”和“中奖”。请用贝叶斯分类器的思路解释如何判断它是否为垃圾邮件。在你的回答中：\n1. 定义先验概率、似然和后验概率在这个场景中的具体含义。\n2. 写出贝叶斯定理公式并代入这些含义。\n3. 解释为什么朴素贝叶斯会引入条件独立假设，以及这个假设如何简化计算。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "bayes_theorem",
+      "coverage_tags": [
+        "bayes_theorem"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_bayes_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在选择题中正确识别贝叶斯定理的公式。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能准确回忆贝叶斯定理的数学表达式。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "贝叶斯定理",
+          "en": "Bayes' Theorem"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "贝叶斯定理为 P(H|X) = P(X|H) * P(H) / P(X)。",
+          "options": [
+            "P(H|X) = P(X|H) * P(H) / P(X)",
+            "P(H|X) = P(H) * P(X) / P(X|H)",
+            "P(X|H) = P(H|X) * P(X) / P(H)",
+            "P(H|X) = P(H) + P(X) - P(H∩X)"
+          ],
+          "question_id": "q_quiz_bayes_formula_v1",
+          "stem": "以下哪个是贝叶斯定理的正确表达式？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "P(H) 是先验概率，即在观察到任何数据之前对假设 H 为真的初始估计。",
+          "options": [
+            "观察到数据 X 的概率",
+            "假设 H 为真的先验概率",
+            "假设 H 为真的后验概率",
+            "在 H 为真时观察到 X 的概率"
+          ],
+          "question_id": "q_quiz_bayes_formula_v2",
+          "stem": "在贝叶斯定理 P(H|X) = P(X|H) * P(H) / P(X) 中，P(H) 代表什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "naive_bayes",
+      "coverage_tags": [
+        "naive_bayes_assumption"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_naive_assumption",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能辨析朴素贝叶斯假设的含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能正确理解条件独立假设在朴素贝叶斯中的作用。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "条件独立",
+          "en": "Conditional Independence"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "朴素贝叶斯假设在给定类别 C_i 时，属性之间条件独立，即 P(X|C_i) = ∏ P(x_k|C_i)。",
+          "options": [
+            "所有属性在全局范围内相互独立",
+            "在给定类别的情况下，所有属性条件独立",
+            "所有属性服从正态分布",
+            "所有类别的先验概率相等"
+          ],
+          "question_id": "q_quiz_naive_assumption_v1",
+          "stem": "朴素贝叶斯分类器的核心假设是："
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "条件独立是指在给定类别（如“学生”）后，朴素贝叶斯假设属性之间独立，即使现实中可能相关。",
+          "options": [
+            "已知某人是学生，他的年龄和收入完全无关",
+            "已知某人是学生，他的年龄和收入可能相关，但朴素贝叶斯假设它们无关",
+            "所有学生的年龄都相同",
+            "收入和年龄在所有人中都是独立的"
+          ],
+          "question_id": "q_quiz_naive_assumption_v2",
+          "stem": "以下哪个场景最符合朴素贝叶斯的条件独立假设？"
+        }
+      ]
+    },
+    {
+      "concept_key": "naive_bayes",
+      "coverage_tags": [
+        "naive_bayes_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_naive_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能应用朴素贝叶斯公式进行简单计算。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能理解条件独立假设如何简化 P(X|C_i) 的计算。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "朴素贝叶斯公式",
+          "en": "Naïve Bayes Formula"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "根据条件独立假设，P(X|C₁) = P(x₁|C₁) × P(x₂|C₁) = 0.5 × 0.4 = 0.2。",
+          "options": [
+            "0.9",
+            "0.2",
+            "0.5",
+            "0.4"
+          ],
+          "question_id": "q_quiz_naive_formula_v1",
+          "stem": "假设有两个属性，P(x₁|C₁)=0.5，P(x₂|C₁)=0.4，且朴素贝叶斯假设成立，那么 P(X|C₁) 是多少？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "条件独立意味着联合概率等于各条件概率的乘积。",
+          "options": [
+            "P(x₁|C) + P(x₂|C)",
+            "P(x₁|C) × P(x₂|C)",
+            "P(x₁) × P(x₂)",
+            "P(x₁|C) / P(x₂|C)"
+          ],
+          "question_id": "q_quiz_naive_formula_v2",
+          "stem": "在朴素贝叶斯中，如果属性 x₁ 和 x₂ 在给定类别 C 时条件独立，那么 P(x₁, x₂|C) 等于："
+        }
+      ]
+    },
+    {
+      "concept_key": "bayesian_classification",
+      "coverage_tags": [
+        "bayesian_classification_decision"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_bayes_decision",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能应用贝叶斯决策规则选择类别。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能正确应用贝叶斯分类的决策规则。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "贝叶斯分类决策",
+          "en": "Bayesian Classification Decision"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "贝叶斯分类器选择使 P(X|C_i)P(C_i) 最大的类别，这里 C₁ 的值最大。",
+          "options": [
+            "C₁",
+            "C₂",
+            "C₃",
+            "无法确定"
+          ],
+          "question_id": "q_quiz_bayes_decision_v1",
+          "stem": "对于新样本 X，已知 P(X|C₁)P(C₁)=0.06，P(X|C₂)P(C₂)=0.02，P(X|C₃)P(C₃)=0.04。贝叶斯分类器会将 X 分类为："
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "P(X|C₁)P(C₁)=0.1×0.6=0.06，P(X|C₂)P(C₂)=0.2×0.4=0.08，0.08 > 0.06，所以应选 C₂。",
+          "options": [
+            "C₁",
+            "C₂",
+            "两者概率相等",
+            "无法判断"
+          ],
+          "question_id": "q_quiz_bayes_decision_v2",
+          "stem": "在二分类问题中，P(X|C₁)=0.1，P(C₁)=0.6，P(X|C₂)=0.2，P(C₂)=0.4。贝叶斯分类器会将 X 分类为："
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-2/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

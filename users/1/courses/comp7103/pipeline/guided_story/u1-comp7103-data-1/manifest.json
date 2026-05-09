@@ -1,0 +1,40 @@
+{
+  "chapter_id": "lecture-06-data-1",
+  "chapter_title": "Data 1",
+  "course_id": "user-1-comp7103",
+  "course_title": "COMP7103",
+  "lesson_id": "u1-comp7103-data-1",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "表格数据的基本结构：对象与属性",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "属性的不同类型：二元、名义、有序、数值",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "非对称属性与文档数据的表示",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "数据质量与预处理：噪声、异常值、缺失值、聚合、泛化、采样、降维",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "数据变换：离散化、二值化与归一化",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "相似性与距离度量：从欧氏距离到余弦相似度",
+      "file": "step6/step.json",
+      "sequence_id": "step6"
+    }
+  ]
+}

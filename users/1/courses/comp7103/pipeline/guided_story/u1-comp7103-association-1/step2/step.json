@@ -1,0 +1,136 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s011",
+      "introduced_terms": [
+        "support",
+        "confidence"
+      ],
+      "lines": [
+        "一条规则好不好，需要两个指标来衡量。",
+        "一个是<term id=\"support\">支持度</term>，一个是<term id=\"confidence\">置信度</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "支持度 = sup(X ∪ Y) / 总交易数 N。",
+        "它告诉我们这条规则覆盖了多少交易。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "支持度太低，说明规则只适用于极少数情况，没什么用。",
+        "所以我们会设一个最低支持度阈值 ρₛ。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "置信度 = sup(X ∪ Y) / sup(X)。",
+        "它衡量的是：买了 X 的人里，有多少也买了 Y。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [
+        "置信度越高，规则越可靠。",
+        "我们也会设一个最低置信度阈值 ρ_c。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "来看一个例子。",
+        "数据集有 25 笔交易，ρₛ = 20%，ρ_c = 65%。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "考虑规则 {f} ⇒ {a, b}。",
+        "sup({a, b, f}) = 2，sup({f}) = 3。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "支持度 = 2/25 = 8%，小于 20%。",
+        "置信度 = 2/3 ≈ 67%，大于 65%。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "这条规则置信度达标，但支持度太低。",
+        "它只在少数交易中成立，不够普遍，所以不会被采纳。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.4",
+          "40%"
+        ],
+        "explanation": "支持度 = 4 / 10 = 0.4，即 40%。",
+        "kind": "fill_in_blank",
+        "prompt": "支持度 = ?"
+      },
+      "id": "s020",
+      "lines": [
+        "如果 sup({面包, 牛奶}) = 4，总交易数 N = 10。",
+        "规则 {面包} ⇒ {牛奶} 的支持度是多少？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Association Rules, Usefulness and Certainty, Example",
+    "related": [
+      "support condition",
+      "confidence condition"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "confidence": {
+      "aliases": [
+        "Confidence",
+        "ρ_c"
+      ],
+      "display": "置信度",
+      "gloss": "在包含前提的交易中，结论也出现的比例，衡量规则的可靠性。"
+    },
+    "support": {
+      "aliases": [
+        "Support",
+        "ρ_s"
+      ],
+      "display": "支持度",
+      "gloss": "规则在所有交易中出现的比例，衡量规则的普遍性。"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "chapter_id": "lecture-04-clustering",
+  "chapter_title": "Clustering",
+  "course_id": "user-1-comp7404",
+  "course_title": "COMP7404",
+  "lesson_id": "u1-comp7404-clustering",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "为什么需要自动分组",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "两种基本分组策略：一刀切 vs 层次树",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "K-means：如何自动一刀切",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "层次聚类：如何构建分组树",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "如何判断聚类好不好",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    }
+  ]
+}

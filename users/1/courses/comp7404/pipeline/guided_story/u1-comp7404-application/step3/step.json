@@ -1,0 +1,252 @@
+{
+  "chapter_id": "lecture-05-application",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-application",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "先看一个失败案例：直接使用整张图片的像素值作为特征。",
+        "比如，两张内容相似但光照不同的图片，它们的像素值向量差异很大。",
+        "这说明像素值太脆弱，需要更鲁棒的局部特征。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": "像素值对光照、视角等变化非常敏感，导致内容相似的图片在像素空间距离很远，无法有效区分。局部特征更鲁棒，能捕捉到图像中的关键模式。",
+        "kind": "short_answer",
+        "prompt": "直接使用像素值作为特征会导致什么问题？为什么需要局部特征？"
+      },
+      "focus_terms": [],
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "直接使用像素值作为特征会导致什么问题？为什么需要局部特征？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "feature_detection"
+      ],
+      "id": "s026",
+      "introduced_terms": [
+        "feature_detection"
+      ],
+      "lines": [
+        "构建图像词袋模型，主要有三步。",
+        "第一步：找到图像中有代表性的局部区域。",
+        "这叫做 <term id=\"feature_detection\">特征检测</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "feature_detection"
+      ],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "可以用规则网格均匀采样，也可以用兴趣点检测器。",
+        "兴趣点检测器会找到图像中变化剧烈的点，比如角点、斑点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "feature_descriptor"
+      ],
+      "id": "s028",
+      "introduced_terms": [
+        "feature_descriptor"
+      ],
+      "lines": [
+        "第二步：用 <term id=\"feature_descriptor\">特征描述子</term> 来描述每个区域。",
+        "最经典的是 SIFT 描述子，它把区域外观变成一个向量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "特征描述子将局部区域的外观编码成一个数值向量，方便后续处理。",
+        "kind": "single_choice",
+        "options": [
+          "找到图像中的物体",
+          "用一个数值向量描述局部区域的外观",
+          "对图像进行分类",
+          "减少图像的文件大小"
+        ],
+        "prompt": "特征描述子的作用是什么？"
+      },
+      "focus_terms": [
+        "feature_descriptor"
+      ],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "特征描述子的作用是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "codeword_dictionary",
+        "k_means"
+      ],
+      "id": "s030",
+      "introduced_terms": [
+        "codeword_dictionary",
+        "k_means"
+      ],
+      "lines": [
+        "第三步：构建 <term id=\"codeword_dictionary\">码本</term>。",
+        "把所有描述子用 <term id=\"k_means\">K均值聚类</term> 算法进行聚类。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "codeword_dictionary",
+        "visual_word"
+      ],
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "每个聚类中心就是一个视觉单词。",
+        "所有视觉单词的集合，就是码本。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "visual_word",
+        "codeword_dictionary"
+      ],
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "对于一张新图像，提取它的所有局部描述子，",
+        "然后找到每个描述子在码本中最近的视觉单词。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words",
+        "histogram"
+      ],
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "统计每个视觉单词被分配到的次数，",
+        "就得到了这张图像的词袋向量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer_order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "explanation": "正确的流程是：先检测特征区域，然后用描述子描述每个区域，接着用K均值聚类生成码本，最后统计直方图得到词袋向量。",
+        "items": [
+          "A. 特征检测：找到有代表性的局部区域",
+          "B. 特征描述：用向量描述每个区域",
+          "C. K均值聚类：生成码本（视觉单词集合）",
+          "D. 统计直方图：得到图像的词袋向量"
+        ],
+        "kind": "ordering",
+        "prompt": "请将词袋模型构建流程的步骤按正确顺序排列。"
+      },
+      "focus_terms": [
+        "feature_detection",
+        "feature_descriptor",
+        "k_means",
+        "histogram"
+      ],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "请将词袋模型构建流程的步骤按正确顺序排列。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s035",
+      "introduced_terms": [],
+      "lines": [
+        "这个向量，就是图像的数字指纹。",
+        "可以用它来训练分类器，比如判断图像里有没有汽车。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": "直接使用像素值作为特征会导致失败，因为像素值对光照、视角等变化敏感。局部特征通过检测和描述局部区域，提取更鲁棒的模式，从而解决这个问题。",
+        "kind": "short_answer",
+        "prompt": "请分析为什么直接使用像素值作为特征会导致失败？局部特征如何解决这个问题？"
+      },
+      "focus_terms": [
+        "feature_detection",
+        "feature_descriptor"
+      ],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "请分析为什么直接使用像素值作为特征会导致失败？局部特征如何解决这个问题？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Basic flow: Detect or sample features, Describe features, Index each one into pool of descriptors, Quantize to form bag of words vector. 1. Feature detection and representation: Regular grid, Interest point detector, Other methods. 2. Codewords dictionary formation. Visual words: main idea. Image patch examples of codewords.",
+    "related": [
+      "lecture-05-application"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "codeword_dictionary": {
+      "aliases": [
+        "Codebook",
+        "Codewords Dictionary"
+      ],
+      "display": "码本",
+      "gloss": "由所有视觉单词（聚类中心）组成的集合，相当于视觉词典。"
+    },
+    "feature_descriptor": {
+      "aliases": [
+        "Feature Descriptor",
+        "SIFT"
+      ],
+      "display": "特征描述子",
+      "gloss": "用一个数值向量来描述一个局部区域的外观。"
+    },
+    "feature_detection": {
+      "aliases": [
+        "Feature Detection"
+      ],
+      "display": "特征检测",
+      "gloss": "在图像中找出有代表性的局部区域，如角点、斑点。"
+    },
+    "k_means": {
+      "aliases": [
+        "K-means Clustering"
+      ],
+      "display": "K均值聚类",
+      "gloss": "一种将数据点分成K个组（簇）的算法，每个组由其中心点代表。"
+    }
+  }
+}

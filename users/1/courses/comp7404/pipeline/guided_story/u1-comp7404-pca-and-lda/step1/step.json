@@ -1,0 +1,119 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "一张 100×100 像素的人脸图像，",
+        "如果看成像素值的向量，就是 10,000 维。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "现在请你计算两张这样的人脸图像之间的欧氏距离。",
+        "你需要做：把两张图的每个对应像素相减，平方，求和，再开方。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "10000 维的欧氏距离涉及 10000 次减法、平方和一次开方，计算量大，而且高维空间数据稀疏，距离的有效性下降。",
+        "kind": "single_choice",
+        "options": [
+          "计算量太大，速度慢",
+          "结果一定很准确",
+          "不需要存储所有像素",
+          "距离值总是 0"
+        ],
+        "prompt": "计算两个 10000 维向量的欧氏距离，你觉得主要问题是什么？"
+      },
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "计算两个 10000 维向量的欧氏距离，你觉得主要问题是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "10,000 维空间里，绝大多数点根本不是人脸。",
+        "真正的人脸只蜷缩在一个很小的子空间里。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "直接在高维空间里做计算，",
+        "速度慢、存储大、还容易过拟合。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 3,
+        "explanation": "高维数据往往更稀疏、计算更慢、更容易过拟合，但并不意味着数据更准确。",
+        "kind": "single_choice",
+        "options": [
+          "数据稀疏",
+          "计算速度慢",
+          "更容易过拟合",
+          "数据一定更准确"
+        ],
+        "prompt": "高维数据带来的问题不包括以下哪一项？"
+      },
+      "focus_terms": [],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "高维数据带来的问题不包括以下哪一项？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "高维数据往往更稀疏、计算更慢、更容易过拟合，因此高维数据不一定比低维数据更好。",
+        "kind": "single_choice",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "prompt": "判断：高维数据一定比低维数据更好，因为包含更多信息。"
+      },
+      "focus_terms": [],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "判断：高维数据一定比低维数据更好，因为包含更多信息。"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "PCA and LDA lecture material",
+    "related": [
+      "dimensionality reduction",
+      "face images"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

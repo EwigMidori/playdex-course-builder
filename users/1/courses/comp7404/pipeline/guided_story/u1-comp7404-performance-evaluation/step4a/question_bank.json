@@ -1,0 +1,425 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "average_precision_definition",
+      "covered_by": [
+        "qf_flash_ap_definition",
+        "qf_quiz_ap_definition"
+      ],
+      "description": "平均精确率（AP）的定义：在所有召回率水平上对精确率取平均，综合反映模型的排序质量。"
+    },
+    {
+      "coverage_tag": "average_precision_computation",
+      "covered_by": [
+        "qf_flash_ap_computation",
+        "qf_quiz_ap_computation",
+        "qf_long_ap_computation"
+      ],
+      "description": "AP 的计算方法：对每个正类样本被正确召回的时刻记录当前精确率，求和后除以正类样本总数。"
+    },
+    {
+      "coverage_tag": "average_precision_interpretation",
+      "covered_by": [
+        "qf_flash_ap_interpretation",
+        "qf_quiz_ap_interpretation"
+      ],
+      "description": "AP 的意义：AP 越高，模型越能把正类排在前面；不依赖特定阈值，更客观。"
+    },
+    {
+      "coverage_tag": "threshold_dependence",
+      "covered_by": [
+        "qf_quiz_threshold_dependence"
+      ],
+      "description": "不同阈值下精确率和召回率会变化，因此需要 AP 这种跨阈值的综合指标。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "average_precision",
+      "coverage_tags": [
+        "average_precision_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ap_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的话复述平均精确率（AP）的定义。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生答对后证明掌握了 AP 的核心定义：在所有召回率水平上对精确率取平均。",
+      "question_type": "short_answer",
+      "retrieval_focus": "AP 的定义：它是在什么范围上对什么指标取平均？",
+      "term_refs": [
+        {
+          "display": "平均精确率",
+          "en": "Average Precision (AP)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在所有召回率水平上对精确率取平均。",
+          "estimated_seconds": 8,
+          "explanation": "AP 综合评估模型在不同召回率下的精确率表现。",
+          "front": "平均精确率（AP）是在什么范围上对什么指标取平均？",
+          "question_id": "q_flash_ap_def_v1"
+        },
+        {
+          "back": "Average Precision（平均精确率），衡量模型在不同召回率下的平均精确率表现，反映排序质量。",
+          "estimated_seconds": 10,
+          "explanation": "AP 越高，说明模型越能把正类样本排在前面。",
+          "front": "AP 的全称是什么？它衡量模型的什么能力？",
+          "question_id": "q_flash_ap_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "average_precision",
+      "coverage_tags": [
+        "average_precision_computation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_ap_computation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的每个正类被召回时的精确率，计算 AP 值。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生答对后证明掌握了 AP 的计算步骤：对每个正类被召回时的精确率求和，除以正类总数。",
+      "question_type": "micro_calc",
+      "retrieval_focus": "AP 的计算公式：精确率之和除以正类样本总数。",
+      "term_refs": [
+        {
+          "display": "平均精确率",
+          "en": "Average Precision (AP)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "0.7",
+          "estimated_seconds": 15,
+          "explanation": "AP = (1 + 1 + 0.5 + 0.5 + 0.5) / 5 = 3.5 / 5 = 0.7。",
+          "front": "有 5 个正类样本，在每个正类被召回的位置，精确率分别为：1, 1, 0.5, 0.5, 0.5。AP 是多少？",
+          "question_id": "q_flash_ap_calc_v1"
+        },
+        {
+          "back": "0.64",
+          "estimated_seconds": 20,
+          "explanation": "AP = (1 + 0.67 + 0.5 + 0.4) / 4 = 2.57 / 4 ≈ 0.64。",
+          "front": "有 4 个正类样本，在每个正类被召回的位置，精确率分别为：1, 0.67, 0.5, 0.4。AP 是多少？（保留两位小数）",
+          "question_id": "q_flash_ap_calc_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "average_precision",
+      "coverage_tags": [
+        "average_precision_interpretation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ap_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释 AP 值高或低的含义。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生答对后证明理解了 AP 的实践意义：AP 越高，模型排序质量越好。",
+      "question_type": "short_answer",
+      "retrieval_focus": "AP 值高意味着什么？",
+      "term_refs": [
+        {
+          "display": "平均精确率",
+          "en": "Average Precision (AP)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "AP 越高，说明模型越能把正类样本排在负类样本前面，排序质量越好。",
+          "estimated_seconds": 10,
+          "explanation": "AP 不依赖特定阈值，因此能更客观地反映模型的排序能力。",
+          "front": "AP 值高说明模型在排序方面表现如何？",
+          "question_id": "q_flash_ap_int_v1"
+        },
+        {
+          "back": "AP 不依赖某个特定的阈值，能综合评估模型在所有阈值下的表现，因此更客观。",
+          "estimated_seconds": 12,
+          "explanation": "同一个模型在不同阈值下精确率和召回率可能完全不同，AP 解决了这个问题。",
+          "front": "AP 与固定阈值下的精确率/召回率相比，有什么优势？",
+          "question_id": "q_flash_ap_int_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "longform_families": [
+    {
+      "concept_key": "average_precision",
+      "coverage_tags": [
+        "average_precision_computation"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_ap_computation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的排序列表和真实标签，完整计算 AP 值。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生答对后证明能独立完成 AP 的完整计算流程：确定正类样本、找出每个正类被召回时的精确率、求和并除以正类总数。",
+      "question_type": "worked_example",
+      "term_refs": [
+        {
+          "display": "平均精确率",
+          "en": "Average Precision (AP)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "找出所有正类样本及其排名",
+            "对于每个正类样本被召回的时刻，计算当前的精确率",
+            "将所有精确率求和，除以正类样本总数"
+          ],
+          "question_id": "q_long_ap_calc_v1",
+          "reference_answer": [
+            "正类样本共 5 个，排名分别为 1, 3, 4, 6, 8。",
+            "在每个正类被召回的时刻，精确率分别为：",
+            "  - 排名1（第1个正类）：精确率 = 1/1 = 1",
+            "  - 排名3（第2个正类）：精确率 = 2/3 ≈ 0.667",
+            "  - 排名4（第3个正类）：精确率 = 3/4 = 0.75",
+            "  - 排名6（第4个正类）：精确率 = 4/6 ≈ 0.667",
+            "  - 排名8（第5个正类）：精确率 = 5/8 = 0.625",
+            "AP = (1 + 0.667 + 0.75 + 0.667 + 0.625) / 5 = 3.709 / 5 ≈ 0.742"
+          ],
+          "rubric_points": [
+            "正确识别出 5 个正类样本（排名 1, 3, 4, 6, 8）",
+            "正确计算每个正类被召回时的精确率：排名1时精确率=1/1=1；排名3时精确率=2/3≈0.667；排名4时精确率=3/4=0.75；排名6时精确率=4/6≈0.667；排名8时精确率=5/8=0.625",
+            "正确计算 AP = (1 + 0.667 + 0.75 + 0.667 + 0.625) / 5 = 3.709 / 5 ≈ 0.742"
+          ],
+          "stem": "一个模型对 8 个样本的打分（从高到低）和真实标签如下：\n\n| 排名 | 分数 | 真实标签 |\n|------|------|----------|\n| 1    | 0.98 | +        |\n| 2    | 0.92 | -        |\n| 3    | 0.88 | +        |\n| 4    | 0.85 | +        |\n| 5    | 0.80 | -        |\n| 6    | 0.75 | +        |\n| 7    | 0.60 | -        |\n| 8    | 0.50 | +        |\n\n请计算该模型的平均精确率（AP），并写出计算步骤。"
+        },
+        {
+          "estimated_seconds": 100,
+          "prompt_blocks": [
+            "找出所有正类样本及其排名",
+            "对于每个正类样本被召回的时刻，计算当前的精确率",
+            "将所有精确率求和，除以正类样本总数"
+          ],
+          "question_id": "q_long_ap_calc_v2",
+          "reference_answer": [
+            "正类样本共 4 个，排名分别为 1, 2, 4, 6。",
+            "在每个正类被召回的时刻，精确率分别为：",
+            "  - 排名1（第1个正类）：精确率 = 1/1 = 1",
+            "  - 排名2（第2个正类）：精确率 = 2/2 = 1",
+            "  - 排名4（第3个正类）：精确率 = 3/4 = 0.75",
+            "  - 排名6（第4个正类）：精确率 = 4/6 ≈ 0.667",
+            "AP = (1 + 1 + 0.75 + 0.667) / 4 = 3.417 / 4 ≈ 0.854"
+          ],
+          "rubric_points": [
+            "正确识别出 4 个正类样本（排名 1, 2, 4, 6）",
+            "正确计算每个正类被召回时的精确率：排名1时精确率=1/1=1；排名2时精确率=2/2=1；排名4时精确率=3/4=0.75；排名6时精确率=4/6≈0.667",
+            "正确计算 AP = (1 + 1 + 0.75 + 0.667) / 4 = 3.417 / 4 ≈ 0.854"
+          ],
+          "stem": "一个模型对 6 个样本的打分（从高到低）和真实标签如下：\n\n| 排名 | 分数 | 真实标签 |\n|------|------|----------|\n| 1    | 0.95 | +        |\n| 2    | 0.90 | +        |\n| 3    | 0.85 | -        |\n| 4    | 0.80 | +        |\n| 5    | 0.70 | -        |\n| 6    | 0.60 | +        |\n\n请计算该模型的平均精确率（AP），并写出计算步骤。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "average_precision",
+      "coverage_tags": [
+        "average_precision_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_ap_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在选择题中正确识别 AP 的定义。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生答对后证明能区分 AP 与其他指标（如 F1、AUC）的定义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "平均精确率",
+          "en": "Average Precision (AP)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "AP 是在所有召回率水平上对精确率取平均，综合反映模型的排序质量。选项 3 是 F1 分数，选项 4 是 AUC。",
+          "options": [
+            "在所有阈值下对召回率取平均",
+            "在所有召回率水平上对精确率取平均",
+            "精确率和召回率的调和平均数",
+            "ROC 曲线下的面积"
+          ],
+          "question_id": "q_quiz_ap_def_v1",
+          "stem": "平均精确率（AP）的定义是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "AP 是在所有召回率水平上对精确率取平均，而不是固定阈值下的指标。",
+          "options": [
+            "AP 衡量模型在固定阈值下的精确率",
+            "AP 是精确率和召回率的算术平均数",
+            "AP 在所有召回率水平上对精确率取平均",
+            "AP 等于 ROC 曲线下的面积"
+          ],
+          "question_id": "q_quiz_ap_def_v2",
+          "stem": "以下哪个说法最准确地描述了平均精确率（AP）？"
+        }
+      ]
+    },
+    {
+      "concept_key": "average_precision",
+      "coverage_tags": [
+        "average_precision_computation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ap_computation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的精确率序列计算 AP 值。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生答对后证明能正确应用 AP 的计算公式。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "平均精确率",
+          "en": "Average Precision (AP)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "AP = (1 + 1 + 0.5 + 0.5 + 0.5) / 5 = 3.5 / 5 = 0.7。",
+          "options": [
+            "0.5",
+            "0.6",
+            "0.7",
+            "0.8"
+          ],
+          "question_id": "q_quiz_ap_calc_v1",
+          "stem": "假设有 5 个正类样本，按模型打分从高到低排序。在每个正类被召回的位置，精确率分别为：1, 1, 0.5, 0.5, 0.5。AP 是多少？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "AP = (1 + 0.75 + 0.67 + 0.5) / 4 = 2.92 / 4 = 0.73。",
+          "options": [
+            "0.67",
+            "0.73",
+            "0.75",
+            "0.80"
+          ],
+          "question_id": "q_quiz_ap_calc_v2",
+          "stem": "假设有 4 个正类样本，在每个正类被召回的位置，精确率分别为：1, 0.75, 0.67, 0.5。AP 是多少？（保留两位小数）"
+        }
+      ]
+    },
+    {
+      "concept_key": "average_precision",
+      "coverage_tags": [
+        "average_precision_interpretation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ap_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解 AP 值高低的实际含义。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生答对后证明能解释 AP 值对模型排序质量的指示作用。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "平均精确率",
+          "en": "Average Precision (AP)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "AP 越高，说明模型越能把正类样本排在负类样本前面，整体排序质量越好。",
+          "options": [
+            "AP=0.9 的模型在固定阈值下精确率一定更高",
+            "AP=0.9 的模型整体排序质量更好，更擅长把正类排在前面",
+            "AP=0.6 的模型召回率一定更低",
+            "AP 值不能比较不同模型的性能"
+          ],
+          "question_id": "q_quiz_ap_int_v1",
+          "stem": "两个模型在相同数据集上的 AP 分别为 0.9 和 0.6。以下哪个说法正确？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "同一个模型在不同阈值下精确率和召回率可能完全不同，AP 通过在所有召回率水平上取平均，避免了阈值选择的主观性。",
+          "options": [
+            "AP 计算更简单",
+            "AP 不依赖某个特定阈值，能综合评估所有阈值下的表现",
+            "AP 只关注召回率",
+            "AP 不受正负样本比例影响"
+          ],
+          "question_id": "q_quiz_ap_int_v2",
+          "stem": "为什么 AP 比固定阈值下的精确率更能客观反映模型性能？"
+        }
+      ]
+    },
+    {
+      "concept_key": "threshold_dependence",
+      "coverage_tags": [
+        "threshold_dependence"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_threshold_dependence",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解阈值变化对精确率和召回率的影响。",
+      "linked_steps": [
+        "step4a"
+      ],
+      "practice_target": "学生答对后证明认识到不同阈值下精确率和召回率会变化，因此需要 AP 这样的综合指标。",
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "阈值",
+          "en": "threshold"
+        }
+      ],
+      "variants": [
+        {
+          "answer": true,
+          "estimated_seconds": 10,
+          "explanation": "阈值变化会改变预测为正类的样本集合，从而影响 TP、FP、FN 的计数，导致精确率和召回率变化。这正是 AP 存在的意义。",
+          "question_id": "q_quiz_thresh_v1",
+          "stem": "同一个模型，在不同阈值下计算得到的精确率和召回率可能完全不同。"
+        },
+        {
+          "answer": false,
+          "estimated_seconds": 12,
+          "explanation": "AP 恰恰相反，它不依赖某个特定阈值，而是在所有召回率水平上对精确率取平均，从而综合评估模型表现。",
+          "question_id": "q_quiz_thresh_v2",
+          "stem": "AP 之所以比固定阈值下的精确率更客观，是因为它只在一个最优阈值下计算精确率。"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4a",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-performance-evaluation/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

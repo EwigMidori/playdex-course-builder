@@ -1,0 +1,55 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "chapter_title": "Regression and SVM",
+  "course_id": "user-1-comp7404",
+  "course_title": "COMP7404",
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "为什么需要一条线来预测",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "为什么有无数条线",
+      "file": "step2a/step.json",
+      "sequence_id": "step2a"
+    },
+    {
+      "concept": "怎么判断哪条直线最好",
+      "file": "step2b/step.json",
+      "sequence_id": "step2b"
+    },
+    {
+      "concept": "模型太复杂会出什么问题",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "如何评估模型好不好（解决过拟合问题）",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "为什么‘能分开’还不够",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "谁在真正决定边界",
+      "file": "step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "线性分不开时怎么办",
+      "file": "step7/step.json",
+      "sequence_id": "step7"
+    },
+    {
+      "concept": "参数C在权衡什么",
+      "file": "step8/step.json",
+      "sequence_id": "step8"
+    }
+  ]
+}

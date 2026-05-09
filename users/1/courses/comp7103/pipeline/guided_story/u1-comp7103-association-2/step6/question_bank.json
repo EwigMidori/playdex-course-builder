@@ -1,0 +1,302 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "sequential_pattern_mining",
+      "covered_by": [
+        "qf_flash_seq_def",
+        "qf_flash_seq_contain",
+        "qf_quiz_seq_contain",
+        "qf_long_gsp_process"
+      ],
+      "description": "序列模式挖掘的定义与目标：发现时间顺序上的频繁模式"
+    },
+    {
+      "coverage_tag": "sequence_definition",
+      "covered_by": [
+        "qf_flash_seq_def",
+        "qf_flash_seq_contain"
+      ],
+      "description": "序列的定义：有序的事务列表，以及序列长度的概念"
+    },
+    {
+      "coverage_tag": "sequence_containment",
+      "covered_by": [
+        "qf_flash_seq_contain",
+        "qf_quiz_seq_contain"
+      ],
+      "description": "序列包含关系的定义：子序列的事务按顺序在超序列中找到"
+    },
+    {
+      "coverage_tag": "gsp_algorithm",
+      "covered_by": [
+        "qf_flash_gsp_candidate",
+        "qf_long_gsp_process"
+      ],
+      "description": "GSP算法：基于Apriori思想的序列模式挖掘算法，包括候选生成、剪枝、支持度计数"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "sequence_definition",
+      "coverage_tags": [
+        "sequential_pattern_mining",
+        "sequence_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_seq_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆序列和序列模式的核心定义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能用自己的话定义序列，并说明序列模式与序列的关系。",
+      "question_type": "short_answer",
+      "retrieval_focus": "序列的定义及其与序列模式的关系。",
+      "term_refs": [
+        {
+          "display": "序列",
+          "en": "Sequence"
+        },
+        {
+          "display": "序列模式",
+          "en": "Sequential Pattern"
+        }
+      ],
+      "variants": [
+        {
+          "back": "一个按时间排序的事务列表，每个事务是一个项集。",
+          "estimated_seconds": 8,
+          "explanation": "序列是有序的事务列表，例如 <{手机}, {手机壳}> 就是一个长度为2的序列。",
+          "front": "在序列模式挖掘中，什么是“序列”？",
+          "question_id": "q_flash_seq_def_v1"
+        },
+        {
+          "back": "在序列数据库中频繁出现的子序列（支持度 ≥ 最小支持度阈值）。",
+          "estimated_seconds": 8,
+          "explanation": "序列模式是频繁的子序列，例如 <{手机}, {手机壳}> 如果出现次数足够多，就是一个序列模式。",
+          "front": "什么是“序列模式”？",
+          "question_id": "q_flash_seq_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "sequence_containment",
+      "coverage_tags": [
+        "sequential_pattern_mining",
+        "sequence_containment"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_seq_contain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断一个序列是否包含另一个序列。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能应用序列包含的定义，判断子序列与超序列的关系。",
+      "question_type": "short_answer",
+      "retrieval_focus": "序列包含关系的判定条件。",
+      "term_refs": [
+        {
+          "display": "序列包含",
+          "en": "Sequence Containment"
+        }
+      ],
+      "variants": [
+        {
+          "back": "是。",
+          "estimated_seconds": 10,
+          "explanation": "第一个事务 {2} 可以在 {2,4} 中找到，第二个事务 {3,5} 可以在 {3,5,6} 中找到，且顺序一致。",
+          "front": "序列 <{2}, {3,5}> 是否包含在序列 <{2,4}, {3,5,6}, {8}> 中？",
+          "question_id": "q_flash_seq_contain_v1"
+        },
+        {
+          "back": "否。",
+          "estimated_seconds": 10,
+          "explanation": "虽然第一个事务 {1} 可以在 {1,2} 中找到，但第二个事务 {2,3} 无法在 {3,4} 中找到，因为 {3,4} 不包含 2。",
+          "front": "序列 <{1}, {2,3}> 是否包含在序列 <{1,2}, {3,4}> 中？",
+          "question_id": "q_flash_seq_contain_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "gsp_algorithm",
+      "coverage_tags": [
+        "gsp_algorithm"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_gsp_candidate",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆GSP算法的核心步骤和候选生成规则。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出GSP算法中候选序列的生成方式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "GSP算法中候选k-序列的生成方法。",
+      "term_refs": [
+        {
+          "display": "GSP",
+          "en": "Generalized Sequential Pattern"
+        }
+      ],
+      "variants": [
+        {
+          "back": "移除w1的第一个项得到的子序列必须等于移除w2的最后一个项得到的子序列。",
+          "estimated_seconds": 12,
+          "explanation": "例如，合并 <{1}{23}{4}> 和 <{23}{45}> 时，移除第一个项得到 <{23}{4}>，移除最后一个项得到 <{23}{4}>，两者相等，可以合并。",
+          "front": "GSP算法中，合并两个频繁(k-1)-序列生成候选k-序列时，需要满足什么条件？",
+          "question_id": "q_flash_gsp_candidate_v1"
+        },
+        {
+          "back": "如果w2的最后两个项属于同一个事务，则最后一个项加入w1的最后一个事务；否则，成为单独的新事务。",
+          "estimated_seconds": 12,
+          "explanation": "例如，合并 <{1}{23}{4}> 和 <{23}{45}> 时，4和5属于同一事务，所以结果中5加入最后一个事务，得到 <{1}{23}{45}>。",
+          "front": "GSP算法中，合并两个频繁(k-1)-序列后，如何决定最后一个项是加入最后一个事务还是成为新事务？",
+          "question_id": "q_flash_gsp_candidate_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-2",
+  "longform_families": [
+    {
+      "concept_key": "gsp_algorithm",
+      "coverage_tags": [
+        "sequential_pattern_mining",
+        "gsp_algorithm"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_gsp_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释GSP算法的完整流程，包括候选生成、剪枝和支持度计数。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能描述GSP算法如何从频繁1-序列开始，逐步生成候选序列并计算支持度，最终得到所有频繁序列。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "GSP",
+          "en": "Generalized Sequential Pattern"
+        },
+        {
+          "display": "候选生成",
+          "en": "Candidate Generation"
+        },
+        {
+          "display": "候选剪枝",
+          "en": "Candidate Pruning"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "第一步做什么？",
+            "如何生成候选k-序列？",
+            "如何进行剪枝？",
+            "如何计算支持度？"
+          ],
+          "question_id": "q_long_gsp_process_v1",
+          "reference_answer": [
+            "第一步：扫描序列数据库，找出所有频繁的1-项序列（单个项的序列）。",
+            "然后进入迭代过程：在第k次迭代中，首先通过合并两个频繁(k-1)-序列来生成候选k-序列。合并的条件是：移除w1的第一个项得到的子序列必须等于移除w2的最后一个项得到的子序列。",
+            "生成候选后，进行剪枝：删除那些包含非频繁(k-1)-子序列的候选序列。",
+            "最后，扫描数据库，计算每个候选序列的支持度，保留支持度≥最小支持度阈值的序列作为频繁k-序列。",
+            "重复这个过程，直到没有新的频繁序列生成。"
+          ],
+          "rubric_points": [
+            "第一步：扫描数据库，找出所有频繁1-序列。",
+            "候选生成：合并两个频繁(k-1)-序列，要求移除w1第一个项等于移除w2最后一个项。",
+            "候选剪枝：删除包含非频繁(k-1)-子序列的候选。",
+            "支持度计数：扫描数据库，计算每个候选序列的支持度，保留频繁的。",
+            "重复直到没有新的频繁序列生成。"
+          ],
+          "stem": "请描述GSP算法挖掘序列模式的主要步骤。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "检查合并条件是否满足",
+            "说明合并后的序列是什么",
+            "解释为什么最后一个项的处理方式是这样"
+          ],
+          "question_id": "q_long_gsp_process_v2",
+          "reference_answer": [
+            "首先检查合并条件：移除w1的第一个项{1}，得到子序列<{23}{4}>；移除w2的最后一个项5，得到子序列<{23}{4}>。两者相等，满足合并条件。",
+            "由于w2的最后两个项4和5属于同一个事务{45}，所以最后一个项5应该加入w1的最后一个事务{4}中，形成{45}。",
+            "因此，合并后的候选4-序列为<{1}{23}{45}>。"
+          ],
+          "rubric_points": [
+            "移除w1的第一个项{1}，得到<{23}{4}>。",
+            "移除w2的最后一个项5，得到<{23}{4}>。",
+            "两者相等，满足合并条件。",
+            "由于w2的最后两个项4和5属于同一个事务，所以5应加入w1的最后一个事务。",
+            "合并结果为<{1}{23}{45}>。"
+          ],
+          "stem": "假设有两个频繁3-序列：w1 = <{1}{23}{4}> 和 w2 = <{23}{45}>。请说明如何将它们合并生成候选4-序列，并解释合并后的结果。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "sequence_containment",
+      "coverage_tags": [
+        "sequential_pattern_mining",
+        "sequence_containment"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_seq_contain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中准确判断序列包含关系。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能应用序列包含的定义，正确判断子序列与超序列的关系。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "序列包含",
+          "en": "Sequence Containment"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "第一个事务 {2} 可以在第一个 {2,4} 中找到，第二个事务 {4} 可以在第二个 {2,4} 中找到，且顺序一致。",
+          "options": [
+            "是",
+            "否"
+          ],
+          "question_id": "q_quiz_seq_contain_v1",
+          "stem": "序列 <{2}, {4}> 是否包含在序列 <{2,4}, {2,4}, {2,5}> 中？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "虽然第一个事务 {1} 可以在 {1,2} 中找到，但第二个事务 {2} 无法在 {3,4} 中找到，因为 {3,4} 不包含 2。",
+          "options": [
+            "是",
+            "否"
+          ],
+          "question_id": "q_quiz_seq_contain_v2",
+          "stem": "序列 <{1}, {2}> 是否包含在序列 <{1,2}, {3,4}> 中？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "Chapter 6: Association Analysis (Part 2) - Mining sequential patterns",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "step6: 序列模式挖掘：发现时间上的规律",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-2/plain.txt",
+    "related": [],
+    "source_outline": "Chapter 6: Association Analysis (Part 2) - Mining sequential patterns"
+  },
+  "target_language": "zh-CN"
+}

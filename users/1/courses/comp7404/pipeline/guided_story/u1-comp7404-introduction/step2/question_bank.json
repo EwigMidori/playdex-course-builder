@@ -1,0 +1,577 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "data_representation_feature",
+      "covered_by": [
+        "qf_flash_feature_def",
+        "qf_quiz_feature_identification"
+      ],
+      "description": "数据如何变成计算机能理解的形式：特征（feature）的概念"
+    },
+    {
+      "coverage_tag": "data_representation_feature_vector",
+      "covered_by": [
+        "qf_flash_feature_vector_def",
+        "qf_quiz_feature_vector_construction"
+      ],
+      "description": "特征向量（feature vector）的概念与构造"
+    },
+    {
+      "coverage_tag": "data_representation_feature_space",
+      "covered_by": [
+        "qf_flash_feature_space_def",
+        "qf_quiz_feature_space_dimension"
+      ],
+      "description": "特征空间（feature space）的概念"
+    },
+    {
+      "coverage_tag": "image_representation_grayscale",
+      "covered_by": [
+        "qf_flash_grayscale_dimension",
+        "qf_quiz_grayscale_dimension_calc"
+      ],
+      "description": "灰度图像表示为特征向量：每个像素是一个特征"
+    },
+    {
+      "coverage_tag": "image_representation_color",
+      "covered_by": [
+        "qf_flash_color_image_feature",
+        "qf_quiz_color_vs_grayscale"
+      ],
+      "description": "彩色图像表示为特征向量：每个像素有RGB三个特征"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "feature",
+      "coverage_tags": [
+        "data_representation_feature"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_feature_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆特征（feature）的定义及其在数据表示中的作用。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了特征作为数据可测量属性的核心概念。",
+      "question_type": "short_answer",
+      "retrieval_focus": "特征的定义及其在机器学习数据表示中的角色。",
+      "term_refs": [
+        {
+          "display": "特征",
+          "en": "feature"
+        }
+      ],
+      "variants": [
+        {
+          "back": "特征（feature）",
+          "estimated_seconds": 6,
+          "explanation": "特征是将原始数据转化为计算机可处理形式的可测量属性。例如，一本书的标题中是否包含'微分方程'这个词就是一个特征。",
+          "front": "在机器学习中，描述数据某个方面的可测量属性叫什么？",
+          "question_id": "q_flash_feature_def_v1"
+        },
+        {
+          "back": "特征（feature）",
+          "estimated_seconds": 8,
+          "explanation": "特征是描述数据某个方面的可测量属性。在文档分类中，关键词的出现与否就是常用的特征。",
+          "front": "将一本书的标题转化为计算机能理解的形式时，提取关键词（如'算法'、'积分'）作为判断依据，这些关键词在机器学习中称为什么？",
+          "question_id": "q_flash_feature_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_vector",
+      "coverage_tags": [
+        "data_representation_feature_vector"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_feature_vector_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆特征向量（feature vector）的定义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了特征向量是将一个样本的所有特征值排列成的向量这一概念。",
+      "question_type": "short_answer",
+      "retrieval_focus": "特征向量的定义及其与样本的关系。",
+      "term_refs": [
+        {
+          "display": "特征向量",
+          "en": "feature vector"
+        }
+      ],
+      "variants": [
+        {
+          "back": "特征向量（feature vector）",
+          "estimated_seconds": 6,
+          "explanation": "特征向量是数据点在特征空间中的坐标表示。例如，一本书的特征向量可能是[1, 0, 0, 1, ...]，表示某些关键词的出现情况。",
+          "front": "将一个样本的所有特征值排列在一起，形成的向量叫什么？",
+          "question_id": "q_flash_feature_vector_def_v1"
+        },
+        {
+          "back": "特征向量（feature vector）",
+          "estimated_seconds": 5,
+          "explanation": "每个数据点都被转化为一个特征向量，该向量包含了该样本所有特征的值。",
+          "front": "在机器学习中，每个数据点（如一本书、一张图片）被表示为什么？",
+          "question_id": "q_flash_feature_vector_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_space",
+      "coverage_tags": [
+        "data_representation_feature_space"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_feature_space_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆特征空间（feature space）的定义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了特征空间是所有可能的特征向量构成的数学空间这一概念。",
+      "question_type": "short_answer",
+      "retrieval_focus": "特征空间的定义及其与特征向量的关系。",
+      "term_refs": [
+        {
+          "display": "特征空间",
+          "en": "feature space"
+        }
+      ],
+      "variants": [
+        {
+          "back": "特征空间（feature space）",
+          "estimated_seconds": 6,
+          "explanation": "特征空间是数据存在的数学空间，每个数据点（特征向量）都是该空间中的一个点。",
+          "front": "所有可能的特征向量放在一起，形成的数学空间叫什么？",
+          "question_id": "q_flash_feature_space_def_v1"
+        },
+        {
+          "back": "特征空间（feature space）",
+          "estimated_seconds": 5,
+          "explanation": "特征空间由所有可能的特征向量构成，每个数据点对应空间中的一个坐标点。",
+          "front": "在机器学习中，每个数据点都被视为哪个空间里的一个点？",
+          "question_id": "q_flash_feature_space_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "image_representation_grayscale",
+      "coverage_tags": [
+        "image_representation_grayscale"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_grayscale_dimension",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能快速计算灰度图像对应的特征向量维度。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了灰度图像中每个像素是一个特征，特征向量维度等于像素总数。",
+      "question_type": "micro_calc",
+      "retrieval_focus": "灰度图像特征向量维度的计算方法。",
+      "term_refs": [
+        {
+          "display": "灰度图像",
+          "en": "grayscale image"
+        }
+      ],
+      "variants": [
+        {
+          "back": "1500 维",
+          "estimated_seconds": 10,
+          "explanation": "50 行 × 30 列 = 1500 个像素，每个像素是一个特征，所以是 1500 维。",
+          "front": "一张 50x30 的灰度图片，它的特征向量有多少维？",
+          "question_id": "q_flash_grayscale_dimension_v1"
+        },
+        {
+          "back": "30000 维",
+          "estimated_seconds": 10,
+          "explanation": "200 行 × 150 列 = 30000 个像素，每个像素是一个特征，所以是 30000 维。",
+          "front": "一张 200x150 的灰度图片，它的特征向量有多少维？",
+          "question_id": "q_flash_grayscale_dimension_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "image_representation_color",
+      "coverage_tags": [
+        "image_representation_color"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_color_image_feature",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆彩色图像中每个像素的特征数量。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了彩色图像每个像素有红、绿、蓝三个特征值。",
+      "question_type": "short_answer",
+      "retrieval_focus": "彩色图像中每个像素的特征数量。",
+      "term_refs": [
+        {
+          "display": "彩色图像",
+          "en": "color image"
+        }
+      ],
+      "variants": [
+        {
+          "back": "3 个（红、绿、蓝）",
+          "estimated_seconds": 6,
+          "explanation": "彩色图片的每个像素由红（R）、绿（G）、蓝（B）三个通道的值组成，因此每个像素对应3个特征。",
+          "front": "一张彩色图片，每个像素有几个特征值？",
+          "question_id": "q_flash_color_image_feature_v1"
+        },
+        {
+          "back": "3 维",
+          "estimated_seconds": 6,
+          "explanation": "因为每个像素有红、绿、蓝三个特征值，所以彩色图片的特征空间是3维的。",
+          "front": "一张彩色图片的特征空间是几维的？",
+          "question_id": "q_flash_color_image_feature_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-introduction",
+  "longform_families": [
+    {
+      "concept_key": "data_representation",
+      "coverage_tags": [
+        "data_representation_feature",
+        "data_representation_feature_vector",
+        "data_representation_feature_space"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_data_representation_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用连贯的语言解释数据如何从原始形式转化为计算机可处理的特征表示。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了特征、特征向量、特征空间三个概念及其关系，并能用例子说明。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "特征",
+          "en": "feature"
+        },
+        {
+          "display": "特征向量",
+          "en": "feature vector"
+        },
+        {
+          "display": "特征空间",
+          "en": "feature space"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "解释如何选择特征",
+            "解释如何构造特征向量",
+            "解释特征空间是什么"
+          ],
+          "question_id": "q_long_data_representation_explain_v1",
+          "reference_answer": [
+            "首先，我们需要选择一些关键词作为特征，比如'算法'、'微分方程'、'积分'等。这些特征是可测量的属性，能帮助我们区分不同内容的书。",
+            "然后，对于每一本书，我们统计这些关键词是否出现在标题中，将结果排列成一个向量，这就是特征向量。例如，如果一本书标题包含'算法'和'积分'，但不包含'微分方程'，它的特征向量就是[1, 0, 1]。",
+            "所有可能的特征向量放在一起，就构成了特征空间。每个数据点（每本书）都是这个空间里的一个点。"
+          ],
+          "rubric_points": [
+            "正确解释特征：从标题中提取关键词作为可测量属性（1分）",
+            "正确解释特征向量：将所有特征值排列成一个向量（1分）",
+            "正确解释特征空间：所有可能的特征向量构成的数学空间（1分）",
+            "例子恰当且逻辑连贯（1分）"
+          ],
+          "stem": "请用自己的话解释：在机器学习中，如何将一本书的标题转化为计算机能理解的形式？请在你的解释中明确使用'特征'、'特征向量'和'特征空间'这三个概念。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "解释灰度图片中特征是什么",
+            "解释如何构造特征向量",
+            "解释特征空间的维度"
+          ],
+          "question_id": "q_long_data_representation_explain_v2",
+          "reference_answer": [
+            "对于一张灰度图片，每个像素的亮度值就是一个特征。这些特征描述了图片在不同位置上的明暗程度。",
+            "我们将所有像素的亮度值按顺序排列成一个长向量，这就是这张图片的特征向量。例如，一张100×100的灰度图片，其特征向量就是10000个亮度值组成的向量。",
+            "所有可能的特征向量构成了特征空间。对于一张N×M的灰度图片，特征空间是N×M维的，因为每个像素对应一个维度。"
+          ],
+          "rubric_points": [
+            "正确解释特征：每个像素的亮度是一个特征（1分）",
+            "正确解释特征向量：将所有像素的亮度值排列成一个向量（1分）",
+            "正确解释特征空间维度：特征空间维度等于像素总数（1分）",
+            "例子恰当且逻辑连贯（1分）"
+          ],
+          "stem": "请用自己的话解释：一张灰度图片在机器学习中是如何被表示的？请在你的解释中明确使用'特征'、'特征向量'和'特征空间'这三个概念。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "feature",
+      "coverage_tags": [
+        "data_representation_feature"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_feature_identification",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中识别出哪些是有效的特征。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能区分有效特征与无效特征，理解特征应能区分不同数据。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征",
+          "en": "feature"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "关键词特征能直接反映书籍的内容主题，而页数、出版年份和封面颜色与内容主题关联较弱，难以有效区分数学书和计算机书。",
+          "options": [
+            "书的页数",
+            "书的出版年份",
+            "标题中是否包含'算法'或'微分方程'等关键词",
+            "书的封面颜色"
+          ],
+          "question_id": "q_quiz_feature_identification_v1",
+          "stem": "你想用机器学习区分数学书和计算机书。以下哪个是最合适的特征？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "标题长度无法区分文档的内容主题，例如'微分方程'和'算法导论'长度相近但内容完全不同。关键词及其频率能更好地反映内容。",
+          "options": [
+            "文档中是否包含特定关键词",
+            "文档的标题长度",
+            "文档中特定关键词出现的频率",
+            "文档中是否包含特定短语"
+          ],
+          "question_id": "q_quiz_feature_identification_v2",
+          "stem": "在文档分类任务中，以下哪个不是合适的特征？"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_vector",
+      "coverage_tags": [
+        "data_representation_feature_vector"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_feature_vector_construction",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解特征向量的构造方式。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了特征向量由样本的所有特征值排列而成。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征向量",
+          "en": "feature vector"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "特征向量的每个位置对应一个特征。按顺序：'算法'出现为1，'微分方程'不出现为0，'积分'出现为1，所以特征向量是[1, 0, 1]。",
+          "options": [
+            "[1, 1, 1]",
+            "[1, 0, 1]",
+            "[0, 1, 1]",
+            "[1, 1, 0]"
+          ],
+          "question_id": "q_quiz_feature_vector_construction_v1",
+          "stem": "假设我们用3个关键词（'算法'、'微分方程'、'积分'）作为特征来分类书籍。一本书的标题包含'算法'和'积分'，但不包含'微分方程'。它的特征向量是什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "按顺序：'神经网络'出现为1，'回归'不出现为0，'聚类'不出现为0，'分类'出现为1，所以特征向量是[1, 0, 0, 1]。",
+          "options": [
+            "[1, 0, 0, 1]",
+            "[1, 1, 0, 0]",
+            "[0, 0, 1, 1]",
+            "[1, 0, 1, 0]"
+          ],
+          "question_id": "q_quiz_feature_vector_construction_v2",
+          "stem": "假设我们用4个关键词（'神经网络'、'回归'、'聚类'、'分类'）作为特征。一篇论文摘要包含'神经网络'和'分类'，但不包含'回归'和'聚类'。它的特征向量是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_space",
+      "coverage_tags": [
+        "data_representation_feature_space"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_feature_space_dimension",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据特征数量判断特征空间的维度。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了特征空间的维度等于特征的数量。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征空间",
+          "en": "feature space"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "特征空间的维度等于特征的数量。这里有10个关键词特征，所以特征空间是10维的。",
+          "options": [
+            "1维",
+            "10维",
+            "100维",
+            "取决于书的数量"
+          ],
+          "question_id": "q_quiz_feature_space_dimension_v1",
+          "stem": "如果一本书用10个关键词作为特征，那么这些书的特征空间是多少维的？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "灰度图片每个像素是一个特征，10行×10列=100个像素，所以特征空间是100维的。",
+          "options": [
+            "10维",
+            "20维",
+            "100维",
+            "1000维"
+          ],
+          "question_id": "q_quiz_feature_space_dimension_v2",
+          "stem": "一张 10x10 的灰度图片，其特征空间是多少维的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "image_representation_grayscale",
+      "coverage_tags": [
+        "image_representation_grayscale"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_grayscale_dimension_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能计算任意尺寸灰度图像的特征向量维度。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了灰度图像特征向量维度等于像素总数。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "灰度图像",
+          "en": "grayscale image"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "64行×64列=4096个像素，每个像素是一个特征，所以是4096维。",
+          "options": [
+            "64",
+            "128",
+            "4096",
+            "64×64×3"
+          ],
+          "question_id": "q_quiz_grayscale_dimension_calc_v1",
+          "stem": "一张 64x64 的灰度图片，它的特征向量有多少维？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "28行×28列=784个像素，每个像素是一个特征，所以是784维。",
+          "options": [
+            "28",
+            "56",
+            "784",
+            "28×28×3"
+          ],
+          "question_id": "q_quiz_grayscale_dimension_calc_v2",
+          "stem": "一张 28x28 的灰度图片（如MNIST手写数字），它的特征向量有多少维？"
+        }
+      ]
+    },
+    {
+      "concept_key": "image_representation_color",
+      "coverage_tags": [
+        "image_representation_color"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_color_vs_grayscale",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分彩色图像和灰度图像在特征表示上的差异。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了彩色图像每个像素有3个特征，灰度图像每个像素有1个特征。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "彩色图像",
+          "en": "color image"
+        },
+        {
+          "display": "灰度图像",
+          "en": "grayscale image"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "灰度图片：100×100=10000个像素，每个像素1个特征，共10000维。彩色图片：100×100=10000个像素，每个像素有RGB 3个特征，共30000维。",
+          "options": [
+            "彩色10000维，灰度10000维",
+            "彩色30000维，灰度10000维",
+            "彩色10000维，灰度30000维",
+            "彩色30000维，灰度30000维"
+          ],
+          "question_id": "q_quiz_color_vs_grayscale_v1",
+          "stem": "一张 100x100 的彩色图片和一张同样尺寸的灰度图片，它们的特征向量维度分别是多少？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "50行×50列=2500个像素，每个像素有红、绿、蓝3个特征，所以特征空间是2500×3=7500维。",
+          "options": [
+            "50维",
+            "2500维",
+            "7500维",
+            "2500×3维"
+          ],
+          "question_id": "q_quiz_color_vs_grayscale_v2",
+          "stem": "一张 50x50 的彩色图片，其特征空间是多少维的？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-introduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

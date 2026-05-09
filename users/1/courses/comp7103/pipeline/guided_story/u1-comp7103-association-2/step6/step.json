@@ -1,0 +1,123 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "lines": [
+        "关联规则不考虑顺序。",
+        "但很多场景下，顺序很重要。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "sequential_pattern"
+      ],
+      "lines": [
+        "比如：用户先买了手机，过了一段时间又买了手机壳。",
+        "这种带时间顺序的模式就是 <term id=\"sequential_pattern\">序列模式</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "sequence"
+      ],
+      "lines": [
+        "一个 <term id=\"sequence\">序列</term> 是一个有序的事务列表。",
+        "比如 <{手机}, {手机壳}> 就是一个长度为 2 的序列。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "lines": [
+        "序列 A 包含在序列 B 中，当且仅当 A 的每个事务都能按顺序在 B 中找到。",
+        "比如 <{2}, {3,5}> 包含在 <{2,4}, {3,5,6}, {8}> 中。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "introduced_terms": [
+        "gsp"
+      ],
+      "lines": [
+        "挖掘序列模式的经典算法是 <term id=\"gsp\">GSP</term>。",
+        "它的思想和 Apriori 非常相似。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "lines": [
+        "先找频繁的 1-项序列，然后通过合并生成候选 2-序列。",
+        "再扫描数据库计算支持度，保留频繁的，继续生成 3-序列。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "虽然第一个事务 {1} 可以在 {1,2} 中找到，但第二个事务 {2,3} 无法在 {3,4} 中找到，因为 {3,4} 不包含 2。",
+        "kind": "single_choice",
+        "options": [
+          "是",
+          "否"
+        ],
+        "prompt": "序列 <{1}, {2,3}> 是否包含在序列 <{1,2}, {3,4}> 中？"
+      },
+      "id": "s007",
+      "lines": [
+        "序列 <{1}, {2,3}> 是否包含在序列 <{1,2}, {3,4}> 中？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s008",
+      "lines": [
+        "序列模式能帮我们发现用户行为的时间规律。",
+        "比如：购买 A 之后，很可能在下一周购买 B。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "A sequence is an ordered list of transactions. A sequential pattern is a frequent subsequence. GSP (Generalized Sequential Pattern) is an algorithm that uses the Apriori property to mine sequential patterns.",
+    "related": [
+      "Sequence Data",
+      "Sequential Pattern Mining",
+      "GSP"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "gsp": {
+      "aliases": [
+        "Generalized Sequential Pattern"
+      ],
+      "display": "GSP",
+      "gloss": "一种基于 Apriori 思想的序列模式挖掘算法。"
+    },
+    "sequence": {
+      "aliases": [
+        "Sequence"
+      ],
+      "display": "序列",
+      "gloss": "一个按时间排序的事务列表。"
+    },
+    "sequential_pattern": {
+      "aliases": [
+        "Sequential Pattern"
+      ],
+      "display": "序列模式",
+      "gloss": "在序列数据库中频繁出现的子序列。"
+    }
+  }
+}

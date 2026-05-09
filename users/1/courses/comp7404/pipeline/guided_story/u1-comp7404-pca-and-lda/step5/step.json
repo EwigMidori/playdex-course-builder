@@ -1,0 +1,175 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "PCA 只管方差最大，不管类别。",
+        "如果两类数据沿着方差最大的方向混在一起，PCA 就无能为力了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "现在请你真的观察一个投影结果：",
+        "有两类数据，一类在左上角，一类在右下角。把它们投影到“方差最大”的方向后，A 类坐标大致是 -2、-1、0、1，B 类坐标大致是 -1、0、1、2。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "从这些投影坐标就能看出，两类样本在一维上大量重叠。PCA 只管方差最大，不保证投影后类别能分开。",
+        "kind": "single_choice",
+        "options": [
+          "两类数据在投影后明显分开",
+          "两类数据在投影后大量重叠，分类会很难",
+          "PCA 会自动放弃这个方向，改选最能分类的方向",
+          "PCA 会报错"
+        ],
+        "prompt": "如果使用 PCA 对上述两类数据进行降维，也就是投影到这个“方差最大”的方向上，结果最可能怎样？"
+      },
+      "focus_terms": [],
+      "id": "s039",
+      "introduced_terms": [],
+      "lines": [
+        "如果使用 PCA 对上述两类数据进行降维（投影到方差最大的方向），结果会怎样？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s040",
+      "introduced_terms": [],
+      "lines": [
+        "但如果改投影到另一条方向，A 类可能集中在 -3、-2、-2、-1，B 类集中在 1、2、2、3。",
+        "这条方向的总体方差也许没那么大，却明显更适合分类。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "PCA 还是会偏向第一个方向，因为它只看“方差大不大”。",
+        "可分类任务真正想要的，其实是第二个方向那种“可分性更好”的投影。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "linear_discriminant_analysis"
+      ],
+      "id": "s042",
+      "introduced_terms": [
+        "linear_discriminant_analysis"
+      ],
+      "lines": [
+        "这时就需要<term id=\"linear_discriminant_analysis\">线性判别分析</term>（LDA）出场了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "LDA 的目标很明确：",
+        "找到一个投影方向，让不同类别的点尽量分开，同类点尽量集中。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "fisher_criterion"
+      ],
+      "id": "s044",
+      "introduced_terms": [
+        "fisher_criterion"
+      ],
+      "lines": [
+        "它用<term id=\"fisher_criterion\">Fisher 准则</term>来量化这个目标：",
+        "最大化（类间距离²）/（类内散度之和）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "PCA 不需要标签，只最大化方差；LDA 需要标签，目标是最大化类间可分性。",
+        "kind": "single_choice",
+        "options": [
+          "PCA 是无监督的，LDA 是有监督的",
+          "PCA 是有监督的，LDA 是无监督的",
+          "两者没有区别",
+          "PCA 用于分类，LDA 用于可视化"
+        ],
+        "prompt": "PCA 和 LDA 的核心区别是什么？"
+      },
+      "focus_terms": [],
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "PCA 和 LDA 的核心区别是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "LDA 是有监督的，适合有标签的分类任务。",
+        "kind": "single_choice",
+        "options": [
+          "对无标签的高维数据进行可视化",
+          "有标签的人脸识别任务",
+          "数据去噪",
+          "探索数据整体结构"
+        ],
+        "prompt": "以下哪种场景更适合用 LDA 而不是 PCA？"
+      },
+      "focus_terms": [],
+      "id": "s046",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪种场景更适合用 LDA 而不是 PCA？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "PCA and LDA lecture material",
+    "related": [
+      "PCA limitations",
+      "LDA motivation"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "fisher_criterion": {
+      "aliases": [
+        "Fisher's Criterion"
+      ],
+      "display": "Fisher 准则",
+      "gloss": "LDA 的优化目标：最大化类间散度与类内散度的比值。"
+    },
+    "linear_discriminant_analysis": {
+      "aliases": [
+        "LDA",
+        "Linear Discriminant Analysis",
+        "Fisher Linear Discriminant"
+      ],
+      "display": "线性判别分析",
+      "gloss": "一种有监督的线性降维方法，目标是最大化类间距离与类内距离的比值。"
+    }
+  }
+}

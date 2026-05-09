@@ -1,0 +1,187 @@
+{
+  "chapter_id": "lecture-09-ensemble-learning-boosting",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-ensemble-learning-boosting",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s040",
+      "introduced_terms": [],
+      "lines": [
+        "Bagging 是并行地训练多个模型，每个模型平等对待所有样本。",
+        "但有些样本比其他样本更难分类。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "想象一个分类器，它在测试集上的准确率只有 55%。",
+        "这仅仅比随机猜测（50%）好一点点。这样的分类器几乎没什么用。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "weak_learner"
+      ],
+      "id": "s042",
+      "introduced_terms": [
+        "weak_learner"
+      ],
+      "lines": [
+        "这种分类器被称为 <term id=\"weak_learner\">弱学习器</term>。",
+        "单独看，它几乎没什么价值。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "boosting"
+      ],
+      "id": "s043",
+      "introduced_terms": [
+        "boosting"
+      ],
+      "lines": [
+        "但 <term id=\"boosting\">Boosting</term> 提供了一种方法，可以把这些弱学习器组合成一个强大的分类器。",
+        "它的核心思想是：从错误中学习。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "strong_learner"
+      ],
+      "id": "s044",
+      "introduced_terms": [
+        "strong_learner"
+      ],
+      "lines": [
+        "理论证明，通过 Boosting，可以将这些弱学习器组合成一个 <term id=\"strong_learner\">强学习器</term>。",
+        "关键在于动态调整训练数据的分布。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "boosting"
+      ],
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "Boosting 的训练过程是顺序的。",
+        "首先，用初始权重训练第一个弱学习器。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "sample_weight"
+      ],
+      "id": "s046",
+      "introduced_terms": [
+        "sample_weight"
+      ],
+      "lines": [
+        "然后，检查这个学习器在哪些样本上犯了错。",
+        "这些被错分的样本，在下一轮训练中会被赋予更高的 <term id=\"sample_weight\">样本权重</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "boosting"
+      ],
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [
+        "换句话说，后续的弱学习器会“重点关注”之前被搞错的困难样本。",
+        "这个过程会重复很多轮。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "Bagging 并行地训练多个模型，而 Boosting 顺序地训练模型，每个新模型都试图纠正前一个模型的错误。",
+        "kind": "single_choice",
+        "options": [
+          "Bagging 是顺序的，Boosting 是并行的。",
+          "Boosting 是顺序的，Bagging 是并行的。",
+          "两者都是并行的。"
+        ],
+        "prompt": "Boosting 和 Bagging 在训练方式上的主要区别是什么？"
+      },
+      "focus_terms": [
+        "boosting",
+        "bagging"
+      ],
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "Boosting 和 Bagging 在训练方式上的主要区别是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "strong_learner"
+      ],
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "最终，所有弱学习器会按照它们各自的性能（错误率）被赋予权重，组合成一个强分类器。",
+        "性能越好的弱学习器，在最终决策中的话语权越大。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Boosting takes a different resampling approach than bagging. In boosting, the probability of selecting each example is adapted over time based on performance. The component classifiers are built sequentially, and examples that are mislabeled by previous components are chosen more often. Boosting is based on the concept of a 'weak learner'.",
+    "related": [
+      "AdaBoost algorithm",
+      "weak learner",
+      "sequential training"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "boosting": {
+      "aliases": [
+        "Boosting",
+        "AdaBoost"
+      ],
+      "display": "Boosting",
+      "gloss": "一种集成学习技术，通过顺序地训练弱分类器，并让后续的分类器更关注之前被错分的样本，从而构建一个强分类器。"
+    },
+    "sample_weight": {
+      "aliases": [
+        "Sample Weight",
+        "Weight"
+      ],
+      "display": "样本权重",
+      "gloss": "在Boosting中，每个训练样本都被赋予一个权重，用于控制其在训练过程中的重要性。被错分的样本权重会增加。"
+    },
+    "strong_learner": {
+      "aliases": [
+        "Strong Learner",
+        "Strong Classifier"
+      ],
+      "display": "强学习器",
+      "gloss": "通过组合多个弱学习器而得到的、性能强大的最终分类器。"
+    },
+    "weak_learner": {
+      "aliases": [
+        "Weak Learner",
+        "Weak Classifier"
+      ],
+      "display": "弱学习器",
+      "gloss": "一个性能仅比随机猜测略好一点的分类器，例如在二分类任务中准确率略高于50%。"
+    }
+  }
+}

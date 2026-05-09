@@ -1,0 +1,126 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "假设你有一组数据点，每个点代表一个房子的面积（平方米）和它的价格（万元）。",
+        "你的朋友新买了一个房子，面积是120平方米，他想知道大概值多少钱。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "请你看着下面的散点图，试着用手比划一下，120平方米的房子大概多少钱？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "不同的人会画出不同的线，导致预测结果不一致。这说明我们需要一个统一的、精确的数学规则。",
+        "kind": "visual_selection",
+        "options": [
+          "约80万",
+          "约100万",
+          "约120万",
+          "约140万"
+        ],
+        "prompt": "观察下面的散点图（面积 vs 价格）。请你在脑海中画一条线，然后预测：当面积为120平方米时，价格大约是多少？"
+      },
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "假设这套历史数据里，120 平方米房子的真实成交价其实是 108 万。",
+        "甲同学画出的线预测 100 万，误差 8 万；乙同学预测 120 万，误差 12 万；丙同学预测 140 万，误差 32 万。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "同样一批点，只是画线方式不同，预测误差就会差很多。",
+        "问题不是“大家都差不多”，而是我们根本没有统一标准。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s005b",
+      "introduced_terms": [],
+      "lines": [
+        "当数据点少、关系明显时，人眼还能应付。",
+        "但如果数据有几百个点，或者关系不那么明显呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "linear_regression"
+      ],
+      "id": "s006",
+      "introduced_terms": [
+        "linear_regression"
+      ],
+      "lines": [
+        "所以我们需要一个精确的数学规则，来自动找到那条“整体误差尽量小”的线。",
+        "这就是 <term id=\"linear_regression\">线性回归</term> 要解决的问题：用一条直线来模拟输入和输出之间的关系。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "线性回归的核心就是用一条直线来近似表示输入和输出之间的关系。",
+        "kind": "single_choice",
+        "options": [
+          "用一条曲线穿过所有数据点",
+          "用一条直线来模拟输入和输出之间的关系",
+          "计算所有数据点的平均值",
+          "找到数据点的分布规律"
+        ],
+        "prompt": "线性回归的基本思想是什么？"
+      },
+      "focus_terms": [],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "The goal is to predict responses/outputs for inputs. We need to define 1. function class, the type of predictions we consider 2. fitting criterion (loss) that measures the degree of function to the data. Linear functions of one variable (two parameters) f(x; w) = w0 + w1 x; w = [w0 w1]^T and a squared loss: Loss(y, f(x; w)) = (y - f(x; w))^2 / 2. Estimation based on minimizing the empirical loss J_n(w) = sum_{i=1}^n Loss(y_i, f(x_i; w)) with respect to the parameters w. Can be understood as finding the best-fitting straight line through the training examples. This best-fitting line is also called the regression line, and the vertical lines from the regression line to the training examples are the so-called offsets or residuals—the errors of our prediction.",
+    "related": [
+      "Linear Regression"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "linear_regression": {
+      "aliases": [
+        "Linear Regression"
+      ],
+      "display": "线性回归",
+      "gloss": "一种用直线来模拟输入与输出之间关系的模型。"
+    }
+  }
+}

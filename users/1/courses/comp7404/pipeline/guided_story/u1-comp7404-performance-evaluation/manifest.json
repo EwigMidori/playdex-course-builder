@@ -1,0 +1,40 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "chapter_title": "Performance Evaluation",
+  "course_id": "user-1-comp7404",
+  "course_title": "COMP7404",
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "为什么只看准确率不够",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "精确率和召回率分别关注什么",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "F1 分数如何平衡两者",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "平均精确率（AP）——排序质量的综合评估",
+      "file": "step4a/step.json",
+      "sequence_id": "step4a"
+    },
+    {
+      "concept": "ROC 曲线与 AUC——另一种跨阈值视角",
+      "file": "step4b/step.json",
+      "sequence_id": "step4b"
+    },
+    {
+      "concept": "EER——对称误差参考点",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    }
+  ]
+}

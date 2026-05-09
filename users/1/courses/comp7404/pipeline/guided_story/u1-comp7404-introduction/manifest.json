@@ -1,0 +1,55 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "chapter_title": "Introduction",
+  "course_id": "user-1-comp7404",
+  "course_title": "COMP7404",
+  "lesson_id": "u1-comp7404-introduction",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "为什么需要机器学习",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "数据如何变成计算机能理解的形式",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "有标签 vs 无标签：学习问题的根本区别",
+      "file": "step3a/step.json",
+      "sequence_id": "step3a"
+    },
+    {
+      "concept": "监督学习的两种任务：分类和回归",
+      "file": "step3b/step.json",
+      "sequence_id": "step3b"
+    },
+    {
+      "concept": "无监督学习的典型任务：聚类",
+      "file": "step3c/step.json",
+      "sequence_id": "step3c"
+    },
+    {
+      "concept": "更复杂的场景：半监督学习和迁移学习",
+      "file": "step3d/step.json",
+      "sequence_id": "step3d"
+    },
+    {
+      "concept": "分类的具体流程：训练集、测试集、分类器",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "模型太简单或太复杂会怎样",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "深度学习为什么能崛起",
+      "file": "step6/step.json",
+      "sequence_id": "step6"
+    }
+  ]
+}

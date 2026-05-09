@@ -1,0 +1,394 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "cluster_analysis_definition",
+      "covered_by": [
+        "qf_flash_cluster_def",
+        "qf_quiz_cluster_def"
+      ],
+      "description": "聚类分析的定义：将数据对象分组，使得组内对象相似、组间对象不同。"
+    },
+    {
+      "coverage_tag": "unsupervised_learning",
+      "covered_by": [
+        "qf_flash_unsupervised",
+        "qf_quiz_unsupervised"
+      ],
+      "description": "无监督学习：没有预定义的类标签，算法自己发现数据中的结构。"
+    },
+    {
+      "coverage_tag": "why_clustering_summarization",
+      "covered_by": [
+        "qf_flash_clustering_uses"
+      ],
+      "description": "聚类的用途之一：数据摘要，通过选取代表点大幅缩小数据量。"
+    },
+    {
+      "coverage_tag": "why_clustering_outlier_detection",
+      "covered_by": [
+        "qf_flash_clustering_uses"
+      ],
+      "description": "聚类的用途之二：异常点检测，不属于任何簇的对象可能是异常值。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "cluster_analysis_definition",
+      "coverage_tags": [
+        "cluster_analysis_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_cluster_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的话复述聚类分析的核心目标。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了聚类分析的基本定义：组内相似、组间不同。",
+      "question_type": "short_answer",
+      "retrieval_focus": "聚类分析要达到的两个核心目标。",
+      "term_refs": [
+        {
+          "display": "聚类分析",
+          "en": "Cluster Analysis"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将数据对象分组，使得组内对象相似，组间对象不同。",
+          "estimated_seconds": 8,
+          "explanation": "这是聚类分析最核心的定义，也是所有聚类算法追求的目标。",
+          "front": "聚类分析的目标是什么？",
+          "question_id": "q_flash_cluster_def_v1"
+        },
+        {
+          "back": "簇内对象彼此相似，簇间对象彼此不同。",
+          "estimated_seconds": 10,
+          "explanation": "好的聚类同时追求高凝聚度（簇内相似）和高分离度（簇间不同）。",
+          "front": "聚类分析中，一个“好”的簇应该满足哪两个条件？",
+          "question_id": "q_flash_cluster_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "unsupervised_learning",
+      "coverage_tags": [
+        "unsupervised_learning"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_unsupervised",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分无监督学习与有监督学习的核心差异。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了无监督学习的关键特征：没有预定义的类标签。",
+      "question_type": "short_answer",
+      "retrieval_focus": "无监督学习与有监督学习的核心区别。",
+      "term_refs": [
+        {
+          "display": "无监督学习",
+          "en": "Unsupervised Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为它没有预定义的类标签，没有标准答案，算法自己发现数据中的结构。",
+          "estimated_seconds": 10,
+          "explanation": "无监督学习不需要人工标注的标签，聚类分析是典型的无监督学习方法。",
+          "front": "为什么聚类分析被称为“无监督学习”？",
+          "question_id": "q_flash_unsupervised_v1"
+        },
+        {
+          "back": "无监督学习没有预定义的类标签，有监督学习需要带标签的训练数据。",
+          "estimated_seconds": 8,
+          "explanation": "有监督学习（如分类）需要知道每个类别的标准答案，无监督学习则不需要。",
+          "front": "无监督学习与有监督学习的主要区别是什么？",
+          "question_id": "q_flash_unsupervised_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "clustering_applications",
+      "coverage_tags": [
+        "why_clustering_summarization",
+        "why_clustering_outlier_detection"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_clustering_uses",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能列举聚类分析的两个主要用途。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了聚类分析的两个实际应用场景：数据摘要和异常点检测。",
+      "question_type": "short_answer",
+      "retrieval_focus": "聚类分析的两个主要用途。",
+      "term_refs": [
+        {
+          "display": "数据摘要",
+          "en": "Summarization"
+        },
+        {
+          "display": "异常点检测",
+          "en": "Outlier Detection"
+        }
+      ],
+      "variants": [
+        {
+          "back": "数据摘要（从每个簇选代表缩小数据量）和异常点检测（发现不属于任何簇的对象）。",
+          "estimated_seconds": 10,
+          "explanation": "数据摘要可以大幅减少数据量，异常点检测可以发现数据中的异常值。",
+          "front": "聚类分析的两个主要用途是什么？",
+          "question_id": "q_flash_clustering_uses_v1"
+        },
+        {
+          "back": "从每个簇中选取一个代表点，只展示这些代表点，从而大幅缩小数据量。",
+          "estimated_seconds": 10,
+          "explanation": "每个簇的代表点可以概括该簇的特征，用少量代表点代替大量原始数据。",
+          "front": "聚类分析如何帮助实现数据摘要？",
+          "question_id": "q_flash_clustering_uses_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-clustering-1",
+  "longform_families": [
+    {
+      "concept_key": "cluster_analysis_definition",
+      "coverage_tags": [
+        "cluster_analysis_definition",
+        "unsupervised_learning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_cluster_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用连贯的语言解释聚类分析的核心思想、与分类的区别以及实际用途。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能综合理解聚类分析的定义、无监督学习属性以及应用场景。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "聚类分析",
+          "en": "Cluster Analysis"
+        },
+        {
+          "display": "无监督学习",
+          "en": "Unsupervised Learning"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "聚类分析的定义",
+            "与分类算法的区别",
+            "实际应用场景"
+          ],
+          "question_id": "q_long_cluster_explain_v1",
+          "reference_answer": [
+            "聚类分析是一种无监督学习方法，目标是将数据对象分组，使得同一组内的对象彼此相似，不同组之间的对象彼此不同。",
+            "与分类算法不同，分类算法需要预先知道每个类别的标签（即标准答案），属于有监督学习；而聚类分析没有预定义的类标签，算法自己发现数据中的结构。",
+            "一个实际应用是数据摘要：从每个簇中选取一个代表点，用少量代表点代替大量原始数据，从而大幅缩小数据量。另一个应用是异常点检测：不属于任何簇的对象可能是异常值。"
+          ],
+          "rubric_points": [
+            "正确描述聚类分析的目标：组内相似、组间不同",
+            "指出聚类分析属于无监督学习，不需要预定义的类标签",
+            "指出分类算法属于有监督学习，需要带标签的训练数据",
+            "至少正确列举一个应用场景（数据摘要或异常点检测）"
+          ],
+          "stem": "请用自己的话解释：什么是聚类分析？它与分类算法有什么不同？请至少举一个聚类分析的实际应用场景。"
+        },
+        {
+          "estimated_seconds": 100,
+          "prompt_blocks": [
+            "为什么分类算法不适用",
+            "聚类分析如何工作",
+            "聚类分析的好处"
+          ],
+          "question_id": "q_long_cluster_explain_v2",
+          "reference_answer": [
+            "分类算法需要预先知道每个类别的标签（如'摇滚''流行'），但用户没有给歌曲打标签，所以分类算法无法使用。",
+            "聚类分析属于无监督学习，不需要标签。它根据歌曲本身的特征（如节奏、音色、旋律等）计算相似性，自动将相似的歌曲分到同一组。",
+            "好处包括：数据摘要——从每个组选一首代表歌曲，就能快速了解整个曲库的概貌；异常点检测——那些不属于任何组的歌曲可能是特殊风格或录音异常，值得进一步关注。"
+          ],
+          "rubric_points": [
+            "指出分类算法需要标签，而这里没有标签",
+            "指出聚类分析属于无监督学习，不需要标签",
+            "正确描述聚类分析根据歌曲的相似性自动分组",
+            "至少列举一个好处（数据摘要或异常点检测）"
+          ],
+          "stem": "假设你是一家在线音乐平台的工程师，用户没有给歌曲打标签。请解释：为什么不能直接用分类算法来对歌曲分组？聚类分析如何解决这个问题？聚类分析能带来哪些好处？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "cluster_analysis_definition",
+      "coverage_tags": [
+        "cluster_analysis_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_cluster_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中判断是否适合使用聚类分析。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能区分聚类分析与分类算法的适用场景。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "聚类分析",
+          "en": "Cluster Analysis"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "客户分类没有标准答案，适合聚类分析。其他选项都需要预先知道类别标签（垃圾邮件/非垃圾邮件、涨/跌、有猫/无猫），属于分类问题。",
+          "options": [
+            "根据邮件标题判断是否为垃圾邮件",
+            "将客户按购买行为自动分成几类",
+            "预测明天股票是涨还是跌",
+            "识别图片中是否有猫"
+          ],
+          "question_id": "q_quiz_cluster_def_v1",
+          "stem": "以下哪个场景最适合使用聚类分析？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "分类算法属于有监督学习，需要带标签的训练数据来学习类别边界。没有标签时，分类算法无法知道应该分成哪些类别。",
+          "options": [
+            "因为分类算法需要预先知道每个类别的标签，而这里没有标签",
+            "因为数据量太大，分类算法处理不了",
+            "因为分类算法只能处理数字数据，不能处理图片",
+            "因为分类算法需要的数据维度更高"
+          ],
+          "question_id": "q_quiz_cluster_def_v2",
+          "stem": "为什么分类算法不能直接用于无标签数据？"
+        }
+      ]
+    },
+    {
+      "concept_key": "unsupervised_learning",
+      "coverage_tags": [
+        "unsupervised_learning"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_unsupervised",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别无监督学习的关键特征。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能正确识别无监督学习的核心特征：没有预定义的类标签。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "无监督学习",
+          "en": "Unsupervised Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "无监督学习的核心是没有预定义的类标签，算法依靠数据本身的相似性来发现结构。",
+          "options": [
+            "算法需要大量带标签的训练数据",
+            "算法没有预定义的类标签，自己发现数据中的结构",
+            "算法只能处理数值型数据",
+            "算法需要人工指定每个类别的名称"
+          ],
+          "question_id": "q_quiz_unsupervised_v1",
+          "stem": "以下哪个描述最准确地概括了无监督学习的特点？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "无监督学习的核心是没有预定义的类标签。聚类分析不需要知道每个数据点属于哪个类别，而是根据相似性自动分组。",
+          "options": [
+            "聚类结果不需要人工验证",
+            "聚类算法不需要预先知道数据应该分成几类",
+            "聚类算法不需要预先知道每个类别的标签",
+            "聚类算法可以自动确定最优的聚类数量"
+          ],
+          "question_id": "q_quiz_unsupervised_v2",
+          "stem": "聚类分析属于无监督学习，这意味着什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "clustering_applications",
+      "coverage_tags": [
+        "why_clustering_summarization",
+        "why_clustering_outlier_detection"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_clustering_uses",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分聚类分析的不同用途。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能识别聚类分析在数据摘要和异常点检测中的应用。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "数据摘要",
+          "en": "Summarization"
+        },
+        {
+          "display": "异常点检测",
+          "en": "Outlier Detection"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "从每个簇中选取代表点来概括大量数据，正是数据摘要（summarization）的应用。",
+          "options": [
+            "异常点检测",
+            "数据摘要",
+            "分类预测",
+            "降维"
+          ],
+          "question_id": "q_quiz_clustering_uses_v1",
+          "stem": "一家电商公司有100万条客户购买记录，想用聚类分析来生成一份简洁的客户画像报告。这主要利用了聚类的哪个功能？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "不属于任何簇的对象可能是异常值，这正是异常点检测（outlier detection）的应用。",
+          "options": [
+            "数据摘要",
+            "异常点检测",
+            "分类预测",
+            "数据压缩"
+          ],
+          "question_id": "q_quiz_clustering_uses_v2",
+          "stem": "在信用卡欺诈检测中，聚类分析发现某些交易不属于任何正常的交易簇。这主要利用了聚类的哪个功能？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-clustering-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

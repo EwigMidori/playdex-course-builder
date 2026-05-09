@@ -1,0 +1,220 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "想象你有一堆二维数据点，",
+        "想投影到一条直线上（降到一维）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "现在请你尝试：在脑海中想象几个不同的投影方向，",
+        "比如水平方向、垂直方向、45度方向。",
+        "哪个方向投影后，数据点看起来更分散？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "数据在 x 轴方向分布更宽，方差更大，投影到 x 轴后方差最大。",
+        "kind": "single_choice",
+        "options": [
+          "x 轴方向",
+          "y 轴方向",
+          "45 度方向",
+          "所有方向方差相同"
+        ],
+        "prompt": "对于一组沿 x 轴方向分布较宽、沿 y 轴方向分布较窄的二维数据，投影到哪个方向后方差最大？"
+      },
+      "focus_terms": [],
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "对于一组沿 x 轴方向分布较宽、沿 y 轴方向分布较窄的二维数据，投影到哪个方向后方差最大？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "这个“散开的程度”就是方差。",
+        "所以 PCA 的目标很直接：找到让投影后方差最大的方向。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "principal_component_analysis"
+      ],
+      "id": "s021",
+      "introduced_terms": [
+        "principal_component_analysis"
+      ],
+      "lines": [
+        "这就是<term id=\"principal_component_analysis\">主成分分析</term>（PCA）的核心思想。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "数学上，我们要找一个单位向量 \\(\\mathbf{u}\\)，",
+        "使得投影后的方差 \\(\\mathbf{u}^T \\Sigma \\mathbf{u}\\) 最大。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "covariance_matrix"
+      ],
+      "formula": {
+        "latex": "\\Sigma = \\frac{1}{N} \\sum_{i=1}^{N} (\\mathbf{x}_i - \\boldsymbol{\\mu})(\\mathbf{x}_i - \\boldsymbol{\\mu})^T",
+        "spoken": "协方差矩阵等于每个数据点减去均值后，乘以其转置，再取平均。"
+      },
+      "id": "s023",
+      "introduced_terms": [
+        "covariance_matrix"
+      ],
+      "lines": [
+        "这里的 \\(\\Sigma\\) 就是数据的<term id=\"covariance_matrix\">协方差矩阵</term>。"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "eigenvector"
+      ],
+      "id": "s024",
+      "introduced_terms": [
+        "eigenvector"
+      ],
+      "lines": [
+        "这个优化问题的答案很漂亮：",
+        "使方差最大的方向，就是协方差矩阵的<term id=\"eigenvector\">特征向量</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "eigenvalue"
+      ],
+      "id": "s025",
+      "introduced_terms": [
+        "eigenvalue"
+      ],
+      "lines": [
+        "对应的<term id=\"eigenvalue\">特征值</term>越大，",
+        "那个方向上的方差就越大。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "所以 PCA 的步骤很简单：",
+        "计算协方差矩阵 → 求特征向量 → 按特征值排序 → 取前 k 个。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "PCA 的目标是找到使投影后方差最大的方向，从而保留尽可能多的数据信息。",
+        "kind": "single_choice",
+        "options": [
+          "最小化投影后的方差",
+          "最大化投影后的方差",
+          "最小化类别间的距离",
+          "最大化类别内的距离"
+        ],
+        "prompt": "PCA 的核心优化目标是什么？"
+      },
+      "focus_terms": [],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "PCA 找投影方向时，核心优化目标是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "特征向量对应主成分方向，特征值对应该方向上的方差大小。",
+        "kind": "single_choice",
+        "options": [
+          "特征向量对应方向，特征值对应方差大小",
+          "特征向量对应方差大小，特征值对应方向",
+          "两者含义相同",
+          "两者都与方差无关"
+        ],
+        "prompt": "在 PCA 中，特征向量和特征值的角色分别是什么？"
+      },
+      "focus_terms": [],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "在 PCA 中，特征向量和特征值的角色分别是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "PCA and LDA lecture material",
+    "related": [
+      "PCA",
+      "variance maximization"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "covariance_matrix": {
+      "aliases": [
+        "Covariance Matrix"
+      ],
+      "display": "协方差矩阵",
+      "gloss": "衡量数据各维度之间相关性和方差的矩阵。"
+    },
+    "eigenvalue": {
+      "aliases": [
+        "Eigenvalue"
+      ],
+      "display": "特征值",
+      "gloss": "特征向量对应的缩放因子，PCA 中表示该方向上的方差大小。"
+    },
+    "eigenvector": {
+      "aliases": [
+        "Eigenvector"
+      ],
+      "display": "特征向量",
+      "gloss": "在线性变换下方向不变的向量，PCA 中对应方差最大的方向。"
+    },
+    "principal_component_analysis": {
+      "aliases": [
+        "PCA",
+        "Principal Component Analysis"
+      ],
+      "display": "主成分分析",
+      "gloss": "一种线性降维方法，通过寻找数据方差最大的方向来投影数据。"
+    }
+  }
+}

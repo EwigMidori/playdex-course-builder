@@ -1,0 +1,381 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "supervised_learning_definition",
+      "covered_by": [
+        "qf_flash_sl_def",
+        "qf_quiz_sl_identify"
+      ],
+      "description": "监督学习的定义：使用有标签的训练数据学习输入到输出的映射。"
+    },
+    {
+      "coverage_tag": "unsupervised_learning_definition",
+      "covered_by": [
+        "qf_flash_usl_def",
+        "qf_quiz_usl_identify"
+      ],
+      "description": "无监督学习的定义：从没有标签的数据中发现隐藏的结构或模式。"
+    },
+    {
+      "coverage_tag": "supervised_vs_unsupervised",
+      "covered_by": [
+        "qf_flash_sl_usl_diff",
+        "qf_quiz_sl_usl_scenario"
+      ],
+      "description": "有标签 vs 无标签：学习问题的根本区别。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "supervised_learning",
+      "coverage_tags": [
+        "supervised_learning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sl_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆监督学习的定义。",
+      "linked_steps": [
+        "step3a"
+      ],
+      "practice_target": "学生能说出监督学习的核心特征：使用有标签数据学习输入到输出的映射。",
+      "question_type": "short_answer",
+      "retrieval_focus": "监督学习的定义和关键条件（有标签数据）。",
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "supervised learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "使用有标签的训练数据来学习输入到输出的映射。",
+          "estimated_seconds": 8,
+          "explanation": "监督学习的核心是训练数据包含输入和对应的正确输出（标签）。",
+          "front": "什么是监督学习？",
+          "question_id": "q_flash_sl_def_v1"
+        },
+        {
+          "back": "训练数据必须包含标签（即输入对应的正确输出）。",
+          "estimated_seconds": 6,
+          "explanation": "没有标签，计算机就无法知道正确的输出是什么，也就无法学习映射关系。",
+          "front": "监督学习对训练数据有什么要求？",
+          "question_id": "q_flash_sl_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "unsupervised_learning",
+      "coverage_tags": [
+        "unsupervised_learning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_usl_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆无监督学习的定义。",
+      "linked_steps": [
+        "step3a"
+      ],
+      "practice_target": "学生能说出无监督学习的核心特征：从无标签数据中发现隐藏结构。",
+      "question_type": "short_answer",
+      "retrieval_focus": "无监督学习的定义和关键条件（无标签数据）。",
+      "term_refs": [
+        {
+          "display": "无监督学习",
+          "en": "unsupervised learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "从没有标签的数据中发现隐藏的结构或模式。",
+          "estimated_seconds": 8,
+          "explanation": "无监督学习不依赖正确答案，而是靠数据本身的结构来学习。",
+          "front": "什么是无监督学习？",
+          "question_id": "q_flash_usl_def_v1"
+        },
+        {
+          "back": "训练数据不需要标签。",
+          "estimated_seconds": 6,
+          "explanation": "无监督学习的目标就是发现数据中隐藏的模式，不需要事先知道正确答案。",
+          "front": "无监督学习对训练数据有什么要求？",
+          "question_id": "q_flash_usl_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "supervised_vs_unsupervised",
+      "coverage_tags": [
+        "supervised_vs_unsupervised"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sl_usl_diff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确指出监督学习和无监督学习的根本区别。",
+      "linked_steps": [
+        "step3a"
+      ],
+      "practice_target": "学生能说出两者的根本区别在于训练数据是否包含标签。",
+      "question_type": "core_difference",
+      "retrieval_focus": "监督学习和无监督学习的核心区别维度：标签的有无。",
+      "term_refs": [
+        {
+          "display": "监督学习 vs 无监督学习",
+          "en": "supervised vs unsupervised learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "训练数据是否包含标签。",
+          "estimated_seconds": 5,
+          "explanation": "有标签是监督学习，无标签是无监督学习。",
+          "front": "监督学习和无监督学习的根本区别是什么？",
+          "question_id": "q_flash_sl_usl_diff_v1"
+        },
+        {
+          "back": "无监督学习。",
+          "estimated_seconds": 5,
+          "explanation": "没有标签，只能靠数据本身的结构来学习，这就是无监督学习。",
+          "front": "如果训练数据只有输入，没有输出，应该用哪种学习方法？",
+          "question_id": "q_flash_sl_usl_diff_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-introduction",
+  "longform_families": [
+    {
+      "concept_key": "supervised_vs_unsupervised",
+      "coverage_tags": [
+        "supervised_vs_unsupervised",
+        "supervised_learning_definition",
+        "unsupervised_learning_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_sl_usl_compare",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的话解释监督学习和无监督学习的区别，并给出例子。",
+      "linked_steps": [
+        "step3a"
+      ],
+      "practice_target": "学生能比较监督学习和无监督学习在数据要求、学习目标和典型应用上的区别。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "supervised learning"
+        },
+        {
+          "display": "无监督学习",
+          "en": "unsupervised learning"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "对训练数据的要求",
+            "学习的目标",
+            "典型应用场景"
+          ],
+          "question_id": "q_long_sl_usl_compare_v1",
+          "reference_answer": [
+            "监督学习要求训练数据包含输入和对应的标签（正确输出）；无监督学习不需要标签。",
+            "监督学习的目标是学习从输入到输出的映射关系，以便对新数据进行预测；无监督学习的目标是发现数据中隐藏的结构或模式，如聚类。",
+            "监督学习例子：根据已标记的猫狗图片训练分类器。无监督学习例子：将新闻文章按主题自动分组。"
+          ],
+          "rubric_points": [
+            "正确指出监督学习需要标签，无监督学习不需要标签",
+            "正确指出监督学习的目标是学习输入到输出的映射，无监督学习的目标是发现数据中的隐藏结构",
+            "给出合理的监督学习例子（如垃圾邮件分类、房价预测）",
+            "给出合理的无监督学习例子（如客户分群、新闻聚类）"
+          ],
+          "stem": "请比较监督学习和无监督学习，从以下三个方面说明它们的区别：\n1. 对训练数据的要求\n2. 学习的目标\n3. 各举一个典型应用场景"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "数据A的学习方法选择及理由",
+            "数据A可以解决的问题",
+            "数据B的学习方法选择及理由",
+            "数据B可以解决的问题"
+          ],
+          "question_id": "q_long_sl_usl_compare_v2",
+          "reference_answer": [
+            "数据A有标签，应该使用监督学习，因为可以学习从购买记录到是否高价值用户的映射。",
+            "可以训练一个模型来预测新用户是否为高价值用户，从而进行精准营销。",
+            "数据B没有标签，应该使用无监督学习，因为只能靠数据本身的结构来学习。",
+            "可以对用户进行分群，发现不同的浏览模式，为产品推荐提供依据。"
+          ],
+          "rubric_points": [
+            "正确判断数据A使用监督学习，并给出理由（有标签）",
+            "给出合理的监督学习应用（如预测用户价值、识别高价值用户特征）",
+            "正确判断数据B使用无监督学习，并给出理由（无标签）",
+            "给出合理的无监督学习应用（如用户分群、发现浏览模式）"
+          ],
+          "stem": "假设你是一家电商公司的数据科学家，你手上有两类数据：\nA. 100万条用户购买记录，每条记录标记了用户是否'高价值用户'。\nB. 100万条用户浏览记录，没有任何标记。\n\n请分别说明：\n1. 对于数据A，你应该使用哪种学习方法？为什么？可以解决什么问题？\n2. 对于数据B，你应该使用哪种学习方法？为什么？可以解决什么问题？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "supervised_learning",
+      "coverage_tags": [
+        "supervised_learning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_sl_identify",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中识别出监督学习。",
+      "linked_steps": [
+        "step3a"
+      ],
+      "practice_target": "学生能根据场景中是否有标签，判断是否属于监督学习。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "监督学习",
+          "en": "supervised learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "已标记的垃圾邮件和正常邮件提供了标签，因此属于监督学习。",
+          "options": [
+            "根据用户的历史购买记录，将用户自动分组",
+            "根据已标记的垃圾邮件和正常邮件，训练一个自动过滤垃圾邮件的模型",
+            "将新闻文章按主题自动聚类",
+            "从大量无标签图片中找出相似的图片"
+          ],
+          "question_id": "q_quiz_sl_identify_v1",
+          "stem": "以下哪个场景属于监督学习？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "已标记的猫狗图片提供了标签，训练识别模型属于监督学习。",
+          "options": [
+            "将客户按消费习惯自动分成不同群体",
+            "从无标签的社交媒体数据中发现热门话题",
+            "根据已标记的猫狗图片训练一个识别模型",
+            "将文档按内容相似度自动归类"
+          ],
+          "question_id": "q_quiz_sl_identify_v2",
+          "stem": "以下哪个是监督学习的典型应用？"
+        }
+      ]
+    },
+    {
+      "concept_key": "unsupervised_learning",
+      "coverage_tags": [
+        "unsupervised_learning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_usl_identify",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中识别出无监督学习。",
+      "linked_steps": [
+        "step3a"
+      ],
+      "practice_target": "学生能根据场景中是否有标签，判断是否属于无监督学习。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "无监督学习",
+          "en": "unsupervised learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "无标签的新闻文章，靠内容相似度自动分组，属于无监督学习中的聚类。",
+          "options": [
+            "根据已标记的房价数据预测房价",
+            "根据已标记的猫狗图片训练一个识别模型",
+            "将大量无标签的新闻文章按主题自动分组",
+            "根据已标记的邮件判断是否为垃圾邮件"
+          ],
+          "question_id": "q_quiz_usl_identify_v1",
+          "stem": "以下哪个场景属于无监督学习？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "将客户自动分组不需要标签，属于无监督学习中的聚类。",
+          "options": [
+            "预测明天的气温",
+            "识别图片中的动物",
+            "将客户按购买行为自动分成不同群体",
+            "判断一封邮件是否为垃圾邮件"
+          ],
+          "question_id": "q_quiz_usl_identify_v2",
+          "stem": "以下哪个是无监督学习的典型应用？"
+        }
+      ]
+    },
+    {
+      "concept_key": "supervised_vs_unsupervised",
+      "coverage_tags": [
+        "supervised_vs_unsupervised"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_sl_usl_scenario",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定场景判断应该使用监督学习还是无监督学习。",
+      "linked_steps": [
+        "step3a"
+      ],
+      "practice_target": "学生能根据数据是否有标签，选择合适的学习方法。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "监督学习 vs 无监督学习",
+          "en": "supervised vs unsupervised learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "照片有标签（猫或狗），所以应该使用监督学习。",
+          "options": [
+            "监督学习",
+            "无监督学习",
+            "两者都可以",
+            "无法判断"
+          ],
+          "question_id": "q_quiz_sl_usl_scenario_v1",
+          "stem": "你有一堆照片，每张都标记了'猫'或'狗'。你想让计算机学会区分猫和狗。应该使用哪种学习方法？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "照片没有标签，需要靠数据本身的结构来分组，所以应该使用无监督学习。",
+          "options": [
+            "监督学习",
+            "无监督学习",
+            "两者都可以",
+            "无法判断"
+          ],
+          "question_id": "q_quiz_sl_usl_scenario_v2",
+          "stem": "你有一堆照片，没有任何标记。你想让计算机自动将相似的照片归为一组。应该使用哪种学习方法？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3a",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-introduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,245 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "why_ml_needed",
+      "covered_by": [
+        "qf_flash_ml_definition",
+        "qf_quiz_ml_definition"
+      ],
+      "description": "为什么需要机器学习：规则方法的局限性，机器学习的核心思想"
+    },
+    {
+      "coverage_tag": "ml_definition",
+      "covered_by": [
+        "qf_flash_ml_definition",
+        "qf_quiz_ml_definition"
+      ],
+      "description": "机器学习的定义：从经验中学习规律并做出预测"
+    },
+    {
+      "coverage_tag": "ml_applications",
+      "covered_by": [
+        "qf_quiz_ml_applications"
+      ],
+      "description": "机器学习的应用：语音识别、人脸识别、垃圾邮件过滤等"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "machine_learning_definition",
+      "coverage_tags": [
+        "why_ml_needed",
+        "ml_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ml_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的话准确说出机器学习的核心定义。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了机器学习的核心定义：让计算机从经验中学习规律并做出预测，而非靠硬编码规则。",
+      "question_type": "short_answer",
+      "retrieval_focus": "机器学习的核心思想与定义",
+      "term_refs": [
+        {
+          "display": "机器学习",
+          "en": "Machine Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "让计算机从经验中学习规律并做出预测，而不是靠人写死规则。",
+          "estimated_seconds": 8,
+          "explanation": "这是机器学习区别于传统编程的根本特征。",
+          "front": "机器学习的核心思想是什么？",
+          "question_id": "q_flash_ml_def_v1"
+        },
+        {
+          "back": "传统编程靠人写死规则（如“有尖耳朵就是猫”），机器学习让计算机从照片数据中自己学习规律。",
+          "estimated_seconds": 10,
+          "explanation": "规则方法无法覆盖所有姿势、光线、遮挡情况，机器学习则能从数据中自动学习。",
+          "front": "传统编程和机器学习在解决“识别照片中的猫”这个问题上的根本区别是什么？",
+          "question_id": "q_flash_ml_def_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-introduction",
+  "longform_families": [
+    {
+      "concept_key": "why_ml_needed",
+      "coverage_tags": [
+        "why_ml_needed"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_why_ml",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用具体例子解释为什么规则方法有局限性，以及机器学习如何解决这个问题。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能理解规则方法的根本局限，并能解释机器学习作为替代方案的优势。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "机器学习",
+          "en": "Machine Learning"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "规则方法的局限性",
+            "机器学习的解决方案"
+          ],
+          "question_id": "q_long_why_ml_v1",
+          "reference_answer": [
+            "规则方法需要人为编写所有可能的判断条件，但猫的姿势、光线、遮挡情况千变万化，不可能提前想到所有情况，规则永远写不完。",
+            "机器学习不依赖人工规则，而是让计算机从大量照片数据中自己学习猫的特征和规律，从而能够处理各种未见过的场景。"
+          ],
+          "rubric_points": [
+            "指出规则方法无法覆盖所有情况（不同姿势、光线、遮挡等）",
+            "指出规则数量会无限增长，不可能提前想到所有情况",
+            "说明机器学习让计算机从数据中自动学习规律",
+            "说明机器学习不需要人为编写所有规则"
+          ],
+          "stem": "请用你自己的话解释：为什么用“写规则”的方法来识别照片中的猫会遇到困难？机器学习是如何解决这个问题的？"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "规则方法的挑战",
+            "机器学习的优势"
+          ],
+          "question_id": "q_long_why_ml_v2",
+          "reference_answer": [
+            "每个人的手写风格千差万别，数字的大小、倾斜角度、笔画粗细都不同，用规则方法需要为每种变体编写条件，几乎不可能完成。",
+            "机器学习可以通过大量手写数字样本自动学习数字的特征，即使遇到从未见过的笔迹也能正确识别。"
+          ],
+          "rubric_points": [
+            "指出每个人的手写风格不同，规则难以覆盖所有变体",
+            "指出数字可能大小不同、倾斜角度不同",
+            "说明机器学习可以从大量手写样本中自动学习",
+            "说明机器学习模型可以泛化到未见过的笔迹"
+          ],
+          "stem": "假设你要开发一个程序来识别手写数字（0-9）。请解释为什么用传统规则方法很难实现，而机器学习更适合这个任务。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "machine_learning_definition",
+      "coverage_tags": [
+        "why_ml_needed",
+        "ml_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_ml_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在多个选项中准确识别机器学习的定义。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能区分机器学习的核心定义与其他概念（如硬编码规则、自动生成数据等）。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "机器学习",
+          "en": "Machine Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "机器学习的核心就是从数据或经验中学习，而不是靠硬编码规则。",
+          "options": [
+            "给程序写死所有规则",
+            "从经验中学习规律并做出预测",
+            "让程序自动生成数据",
+            "用数学公式计算所有结果"
+          ],
+          "question_id": "q_quiz_ml_def_v1",
+          "stem": "下面哪个最符合机器学习的定义？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "机器学习的关键是从数据中自动学习规律，而不是依赖人工规则。",
+          "options": [
+            "机器学习需要程序员为每种情况编写精确的规则",
+            "机器学习让计算机从数据中自动发现规律",
+            "机器学习只能处理数值型数据",
+            "机器学习不需要任何数据就能工作"
+          ],
+          "question_id": "q_quiz_ml_def_v2",
+          "stem": "以下关于机器学习的描述，哪一个是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "ml_applications",
+      "coverage_tags": [
+        "ml_applications"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_ml_applications",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别机器学习在日常生活中的典型应用场景。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能区分机器学习应用与非机器学习应用。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "机器学习",
+          "en": "Machine Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "语音识别是机器学习的典型应用，它从大量语音数据中学习规律。",
+          "options": [
+            "用计算器计算 2+2",
+            "语音识别系统将语音转换为文字",
+            "用文字处理器拼写检查",
+            "用电子表格排序数据"
+          ],
+          "question_id": "q_quiz_ml_app_v1",
+          "stem": "以下哪个是机器学习的典型应用？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "计算圆的面积是一个固定的数学公式，不需要从数据中学习。其他三个都是机器学习的典型应用。",
+          "options": [
+            "垃圾邮件过滤",
+            "人脸识别解锁手机",
+            "计算圆的面积",
+            "推荐系统推荐电影"
+          ],
+          "question_id": "q_quiz_ml_app_v2",
+          "stem": "以下哪个场景最不可能用到机器学习？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "COVERAGE_CHECKLIST from input",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "LESSON_MAP from input",
+    "plain_text": "pipeline/1-plain/u1-comp7404-introduction/plain.txt",
+    "related": [],
+    "source_outline": "SOURCE_OUTLINE from input"
+  },
+  "target_language": "zh-CN"
+}

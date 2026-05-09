@@ -1,0 +1,275 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "evaluating_clustering_quality",
+      "covered_by": [
+        "qf_flash_cohesion_separation",
+        "qf_flash_silhouette_def",
+        "qf_quiz_silhouette_interpret",
+        "qf_long_silhouette_calc"
+      ],
+      "description": "评估聚类质量：SSE、凝聚度与分离度、轮廓系数"
+    },
+    {
+      "coverage_tag": "cohesion_and_separation",
+      "covered_by": [
+        "qf_flash_cohesion_separation",
+        "qf_quiz_silhouette_interpret"
+      ],
+      "description": "凝聚度（簇内紧密）与分离度（簇间疏远）的概念"
+    },
+    {
+      "coverage_tag": "silhouette_coefficient",
+      "covered_by": [
+        "qf_flash_silhouette_def",
+        "qf_quiz_silhouette_interpret",
+        "qf_long_silhouette_calc"
+      ],
+      "description": "轮廓系数：结合凝聚度与分离度的单一指标，公式 s = 1 - a/b，值域[-1,1]"
+    },
+    {
+      "coverage_tag": "similarity_matrix_validation",
+      "covered_by": [],
+      "description": "使用相似度矩阵排序后视觉验证聚类质量"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "cohesion_and_separation",
+      "coverage_tags": [
+        "evaluating_clustering_quality",
+        "cohesion_and_separation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_cohesion_separation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出凝聚度和分离度的定义，并能用一句话解释它们分别衡量什么。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了凝聚度（簇内紧密程度）和分离度（簇间疏远程度）这两个基本评估维度的定义。",
+      "question_type": "definition_with_example",
+      "retrieval_focus": "凝聚度和分离度的核心定义",
+      "term_refs": [
+        {
+          "display": "凝聚度",
+          "en": "Cohesion"
+        },
+        {
+          "display": "分离度",
+          "en": "Separation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "簇内点之间的紧密程度（即簇内点有多近）。",
+          "estimated_seconds": 8,
+          "explanation": "凝聚度（Cohesion）衡量一个簇内部数据点的紧凑程度。",
+          "front": "在聚类评估中，“凝聚度”衡量的是什么？",
+          "question_id": "q_flash_cohesion_separation_v1"
+        },
+        {
+          "back": "不同簇之间的疏远程度（即不同簇之间有多远）。",
+          "estimated_seconds": 8,
+          "explanation": "分离度（Separation）衡量不同簇之间的分离程度。",
+          "front": "在聚类评估中，“分离度”衡量的是什么？",
+          "question_id": "q_flash_cohesion_separation_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "silhouette_coefficient",
+      "coverage_tags": [
+        "evaluating_clustering_quality",
+        "silhouette_coefficient"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_silhouette_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆轮廓系数的公式中 a 和 b 的含义，以及 s 值的理想范围。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了轮廓系数中 a（点到同簇其他点的平均距离）和 b（点到其他簇的最小平均距离）的定义，以及 s 越接近 1 越好的结论。",
+      "question_type": "short_answer",
+      "retrieval_focus": "轮廓系数公式中 a 和 b 的含义",
+      "term_refs": [
+        {
+          "display": "轮廓系数",
+          "en": "Silhouette Coefficient"
+        }
+      ],
+      "variants": [
+        {
+          "back": "点 i 到同簇其他点的平均距离。",
+          "estimated_seconds": 10,
+          "explanation": "a 衡量点 i 在其所在簇内的紧凑程度。",
+          "front": "在轮廓系数公式 s = 1 - a/b 中，a 代表什么？",
+          "question_id": "q_flash_silhouette_def_v1"
+        },
+        {
+          "back": "点 i 到另一个簇的最小平均距离。",
+          "estimated_seconds": 10,
+          "explanation": "b 衡量点 i 与最近的其他簇的分离程度。",
+          "front": "在轮廓系数公式 s = 1 - a/b 中，b 代表什么？",
+          "question_id": "q_flash_silhouette_def_v2"
+        },
+        {
+          "back": "1",
+          "estimated_seconds": 6,
+          "explanation": "轮廓系数值域为[-1, 1]，越接近 1 表示聚类效果越好。",
+          "front": "轮廓系数的值越接近多少，说明聚类效果越好？",
+          "question_id": "q_flash_silhouette_def_v3"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-clustering-1",
+  "longform_families": [
+    {
+      "concept_key": "silhouette_coefficient",
+      "coverage_tags": [
+        "evaluating_clustering_quality",
+        "silhouette_coefficient"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_silhouette_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的数据集和聚类结果，手动计算每个点的轮廓系数及平均轮廓系数，并据此判断聚类质量。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能应用轮廓系数公式进行数值计算，并能通过比较平均轮廓系数来评估不同聚类结果的好坏。",
+      "question_type": "worked_example",
+      "term_refs": [
+        {
+          "display": "轮廓系数",
+          "en": "Silhouette Coefficient"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "步骤1：计算每个点的 a 值（到同簇其他点的平均距离）。",
+            "步骤2：计算每个点的 b 值（到另一个簇的最小平均距离）。",
+            "步骤3：使用公式 s = 1 - a/b 计算每个点的轮廓系数。",
+            "步骤4：计算所有点的平均轮廓系数。",
+            "步骤5：根据平均轮廓系数评价聚类质量。"
+          ],
+          "question_id": "q_long_silhouette_calc_v1",
+          "reference_answer": [
+            "点 A: a = 距离(A,B) = 2; b = min(距离(A,C), 距离(A,D)) = min(6, 8) = 6; s = 1 - 2/6 ≈ 0.67",
+            "点 B: a = 距离(B,A) = 2; b = min(距离(B,C), 距离(B,D)) = min(4, 6) = 4; s = 1 - 2/4 = 0.5",
+            "点 C: a = 距离(C,D) = 2; b = min(距离(C,A), 距离(C,B)) = min(6, 4) = 4; s = 1 - 2/4 = 0.5",
+            "点 D: a = 距离(D,C) = 2; b = min(距离(D,A), 距离(D,B)) = min(8, 6) = 6; s = 1 - 2/6 ≈ 0.67",
+            "平均轮廓系数 = (0.67 + 0.5 + 0.5 + 0.67) / 4 ≈ 0.585",
+            "评价：平均轮廓系数为 0.585，大于 0.5，表明聚类结构是合理的，簇内较紧凑，簇间有较好的分离。但未达到 0.7 以上，说明还有改进空间。"
+          ],
+          "rubric_points": [
+            "正确计算每个点的 a 值（A: 2, B: 2, C: 2, D: 2）",
+            "正确计算每个点的 b 值（A: 6, B: 4, C: 4, D: 6）",
+            "正确计算每个点的 s 值（A: 1-2/6≈0.67, B: 1-2/4=0.5, C: 1-2/4=0.5, D: 1-2/6≈0.67）",
+            "正确计算平均轮廓系数（≈0.585）",
+            "正确评价：平均轮廓系数大于0.5，说明聚类结构合理，但不算非常优秀。"
+          ],
+          "stem": "给定数据集：点 A(0,0), B(2,0), C(6,0), D(8,0)。聚类结果：簇1 = {A, B}，簇2 = {C, D}。请计算该聚类结果的平均轮廓系数，并说明它是否是一个好的聚类。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "步骤1：计算结果A中每个点的 a、b 和 s。",
+            "步骤2：计算结果A的平均轮廓系数。",
+            "步骤3：分析结果B（所有点在一个簇）的轮廓系数。",
+            "步骤4：比较两个结果，得出结论。"
+          ],
+          "question_id": "q_long_silhouette_calc_v2",
+          "reference_answer": [
+            "结果A：",
+            "点 P: a = 距离(P,Q) = √2 ≈ 1.41; b = min(距离(P,R), 距离(P,S)) = min(√50≈7.07, √65≈8.06) = 7.07; s = 1 - 1.41/7.07 ≈ 0.80",
+            "点 Q: a = 距离(Q,P) = √2 ≈ 1.41; b = min(距离(Q,R), 距离(Q,S)) = min(√45≈6.71, √49=7) = 6.71; s = 1 - 1.41/6.71 ≈ 0.79",
+            "点 R: a = 距离(R,S) = √2 ≈ 1.41; b = min(距离(R,P), 距离(R,Q)) = min(√50≈7.07, √45≈6.71) = 6.71; s = 1 - 1.41/6.71 ≈ 0.79",
+            "点 S: a = 距离(S,R) = √2 ≈ 1.41; b = min(距离(S,P), 距离(S,Q)) = min(√65≈8.06, √49=7) = 7.07; s = 1 - 1.41/7.07 ≈ 0.80",
+            "平均轮廓系数A = (0.80 + 0.79 + 0.79 + 0.80) / 4 ≈ 0.795",
+            "结果B：所有点在一个簇，无法计算 b，轮廓系数通常定义为 0。",
+            "结论：结果A的平均轮廓系数（0.795）远大于结果B（0），说明结果A的聚类质量明显更好。"
+          ],
+          "rubric_points": [
+            "正确计算结果A中各点的 a 值（P: √2≈1.41, Q: √2≈1.41, R: √2≈1.41, S: √2≈1.41）",
+            "正确计算结果A中各点的 b 值（P: √50≈7.07, Q: √45≈6.71, R: √45≈6.71, S: √50≈7.07）",
+            "正确计算结果A中各点的 s 值（P: 1-1.41/7.07≈0.80, Q: 1-1.41/6.71≈0.79, R: 1-1.41/6.71≈0.79, S: 1-1.41/7.07≈0.80）",
+            "正确计算结果A的平均轮廓系数（≈0.795）",
+            "正确分析结果B：所有点在一个簇时，b 不存在，通常定义轮廓系数为 0。",
+            "正确结论：结果A的平均轮廓系数（0.795）远大于结果B（0），因此结果A更好。"
+          ],
+          "stem": "给定数据集：点 P(1,1), Q(2,2), R(8,1), S(9,2)。聚类结果A：簇1 = {P, Q}，簇2 = {R, S}。聚类结果B：所有点在一个簇。请分别计算两个结果的平均轮廓系数，并判断哪个聚类更好。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "silhouette_coefficient",
+      "coverage_tags": [
+        "evaluating_clustering_quality",
+        "cohesion_and_separation",
+        "silhouette_coefficient"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_silhouette_interpret",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下根据轮廓系数的值判断聚类质量，并理解其与凝聚度、分离度的关系。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能正确解释轮廓系数接近 1 或接近 0 的含义，并能将轮廓系数与凝聚度、分离度联系起来。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "轮廓系数",
+          "en": "Silhouette Coefficient"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "轮廓系数接近 1 表示 a（到同簇其他点的平均距离）远小于 b（到其他簇的最小平均距离），即该点在自己的簇内很紧凑（凝聚度高），且与其他簇距离很远（分离度高）。",
+          "options": [
+            "离自己簇的中心很远，且离另一个簇很近",
+            "离自己簇的其他点很近，且离其他簇很远",
+            "离所有其他点都很远，是一个孤立点",
+            "所在簇的凝聚度很低，但分离度很高"
+          ],
+          "question_id": "q_quiz_silhouette_interpret_v1",
+          "stem": "一个数据点的轮廓系数非常接近 1，这说明该点："
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "轮廓系数接近 0 表示 a ≈ b，即该点到自身簇的平均距离与到最近其他簇的平均距离相近，说明该点位于两个簇的边界上，归属不明确。",
+          "options": [
+            "该点是一个异常点",
+            "该点位于两个簇的边界附近，难以明确归属",
+            "该点所在的簇非常紧凑",
+            "该点离所有其他簇都非常远"
+          ],
+          "question_id": "q_quiz_silhouette_interpret_v2",
+          "stem": "如果一个数据点的轮廓系数接近 0，最可能的原因是："
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-clustering-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

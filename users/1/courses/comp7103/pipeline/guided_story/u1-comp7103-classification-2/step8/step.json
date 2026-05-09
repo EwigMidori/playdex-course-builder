@@ -1,0 +1,98 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s074",
+      "introduced_terms": [],
+      "lines": [
+        "我们走过了五种不同的分类方法。",
+        "每种都有自己的哲学。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s075",
+      "introduced_terms": [],
+      "lines": [
+        "k-NN 靠邻居投票，简单直观，但计算成本高。",
+        "朴素贝叶斯靠概率，快速且鲁棒，但假设太强。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s076",
+      "introduced_terms": [],
+      "lines": [
+        "SVM 找最大间隔，理论优美，适合高维数据。",
+        "逻辑回归输出概率，可解释性强。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s077",
+      "introduced_terms": [],
+      "lines": [
+        "集成方法把多个弱分类器组合成一个强分类器。",
+        "Bagging 减少方差，Boosting 减少偏差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s078",
+      "introduced_terms": [],
+      "lines": [
+        "没有绝对最好的分类器。",
+        "选择取决于你的数据、问题和需求。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s079",
+      "introduced_terms": [],
+      "lines": [
+        "关键是要理解每种方法的假设和权衡。",
+        "然后，让数据告诉你答案。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "k-NN 是懒惰学习器，它不预先训练模型，而是在预测时计算所有样本的距离。",
+        "kind": "single_choice",
+        "options": [
+          "SVM",
+          "k-NN",
+          "逻辑回归",
+          "随机森林"
+        ],
+        "prompt": "哪个是懒惰学习器？"
+      },
+      "focus_terms": [],
+      "id": "s080",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个分类器是“懒惰学习器”？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "plain_text": "Summary of classifiers: Nearest-neighbor, Bayesian, SVM, Logistic Regression, Ensemble methods.",
+    "related": [
+      "comparison"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

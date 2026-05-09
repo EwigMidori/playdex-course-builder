@@ -1,0 +1,40 @@
+{
+  "chapter_id": "lecture-09-ensemble-learning-boosting",
+  "chapter_title": "Ensemble Learning Boosting",
+  "course_id": "user-1-comp7404",
+  "course_title": "COMP7404",
+  "lesson_id": "u1-comp7404-ensemble-learning-boosting",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "为什么单个模型不够好",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "最简单的组合方式：多数投票",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "如何生成多样模型：Bagging",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "从错误中学习：Boosting",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "AdaBoost：Boosting的具体实现",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "Review and punchline: the power of combination",
+      "file": "step6/step.json",
+      "sequence_id": "step6"
+    }
+  ]
+}

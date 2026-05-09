@@ -1,0 +1,447 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "support_definition",
+      "covered_by": [
+        "qf_flash_support_def",
+        "qf_quiz_support_calc",
+        "qf_long_support_confidence_compare"
+      ],
+      "description": "支持度的定义与计算公式：sup(X ∪ Y) / N"
+    },
+    {
+      "coverage_tag": "confidence_definition",
+      "covered_by": [
+        "qf_flash_confidence_def",
+        "qf_quiz_confidence_calc",
+        "qf_long_support_confidence_compare"
+      ],
+      "description": "置信度的定义与计算公式：sup(X ∪ Y) / sup(X)"
+    },
+    {
+      "coverage_tag": "support_confidence_threshold",
+      "covered_by": [
+        "qf_flash_threshold_role",
+        "qf_quiz_threshold_judge"
+      ],
+      "description": "支持度阈值 ρₛ 和置信度阈值 ρ_c 的作用"
+    },
+    {
+      "coverage_tag": "example_rule_evaluation",
+      "covered_by": [
+        "qf_quiz_rule_eval_example",
+        "qf_long_support_confidence_compare"
+      ],
+      "description": "用具体例子（{f} ⇒ {a,b}）判断规则是否满足支持度和置信度条件"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "support",
+      "coverage_tags": [
+        "support_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_support_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆支持度的计算公式及其含义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能写出支持度的计算公式，并解释其衡量规则的普遍性。",
+      "question_type": "short_answer",
+      "retrieval_focus": "支持度的计算公式",
+      "term_refs": [
+        {
+          "display": "支持度",
+          "en": "Support"
+        }
+      ],
+      "variants": [
+        {
+          "back": "sup(X ∪ Y) / N",
+          "estimated_seconds": 8,
+          "explanation": "支持度 = 同时包含 X 和 Y 的交易数 / 总交易数。它衡量规则的普遍性。",
+          "front": "关联规则 X ⇒ Y 的支持度（Support）计算公式是什么？",
+          "question_id": "q_flash_support_def_v1"
+        },
+        {
+          "back": "规则的普遍性（覆盖了多少交易）。",
+          "estimated_seconds": 6,
+          "explanation": "支持度越高，说明规则适用的交易越多，越具有普遍意义。",
+          "front": "支持度衡量关联规则的哪个方面？",
+          "question_id": "q_flash_support_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "confidence",
+      "coverage_tags": [
+        "confidence_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_confidence_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆置信度的计算公式及其含义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能写出置信度的计算公式，并解释其衡量规则的可靠性。",
+      "question_type": "short_answer",
+      "retrieval_focus": "置信度的计算公式",
+      "term_refs": [
+        {
+          "display": "置信度",
+          "en": "Confidence"
+        }
+      ],
+      "variants": [
+        {
+          "back": "sup(X ∪ Y) / sup(X)",
+          "estimated_seconds": 8,
+          "explanation": "置信度 = 同时包含 X 和 Y 的交易数 / 包含 X 的交易数。它衡量规则的可靠性。",
+          "front": "关联规则 X ⇒ Y 的置信度（Confidence）计算公式是什么？",
+          "question_id": "q_flash_confidence_def_v1"
+        },
+        {
+          "back": "规则的可靠性（买了 X 的人中，有多少也买了 Y）。",
+          "estimated_seconds": 6,
+          "explanation": "置信度越高，说明规则越可靠，即前提出现时结论也出现的概率越大。",
+          "front": "置信度衡量关联规则的哪个方面？",
+          "question_id": "q_flash_confidence_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "support_confidence_threshold",
+      "coverage_tags": [
+        "support_confidence_threshold"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_threshold_role",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆支持度阈值和置信度阈值的作用。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能说出设置 ρₛ 和 ρ_c 的目的。",
+      "question_type": "short_answer",
+      "retrieval_focus": "阈值的作用",
+      "term_refs": [
+        {
+          "display": "支持度阈值 ρₛ",
+          "en": "Support threshold ρₛ"
+        },
+        {
+          "display": "置信度阈值 ρ_c",
+          "en": "Confidence threshold ρ_c"
+        }
+      ],
+      "variants": [
+        {
+          "back": "确保挖掘出的规则具有足够的普遍性，避免只适用于极少数交易的规则。",
+          "estimated_seconds": 8,
+          "explanation": "支持度太低的规则没有实际意义，ρₛ 过滤掉这些不重要的规则。",
+          "front": "设置最低支持度阈值 ρₛ 的目的是什么？",
+          "question_id": "q_flash_threshold_role_v1"
+        },
+        {
+          "back": "确保挖掘出的规则具有足够的可靠性。",
+          "estimated_seconds": 8,
+          "explanation": "置信度太低的规则不可靠，ρ_c 过滤掉这些可信度不高的规则。",
+          "front": "设置最低置信度阈值 ρ_c 的目的是什么？",
+          "question_id": "q_flash_threshold_role_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-1",
+  "longform_families": [
+    {
+      "concept_key": "support_confidence",
+      "coverage_tags": [
+        "support_definition",
+        "confidence_definition",
+        "example_rule_evaluation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_support_confidence_compare",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较支持度和置信度的区别，并用具体例子说明为什么一条规则可能满足一个条件而不满足另一个。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能解释支持度和置信度分别衡量规则的什么方面，并分析 {f} ⇒ {a, b} 的例子。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "支持度",
+          "en": "Support"
+        },
+        {
+          "display": "置信度",
+          "en": "Confidence"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "支持度的含义与公式",
+            "置信度的含义与公式",
+            "对 {f} ⇒ {a, b} 的分析"
+          ],
+          "question_id": "q_long_support_confidence_compare_v1",
+          "reference_answer": [
+            "支持度 = sup(X ∪ Y) / N，衡量规则的普遍性，即规则覆盖了多少交易。",
+            "置信度 = sup(X ∪ Y) / sup(X)，衡量规则的可靠性，即买了 X 的人中有多少也买了 Y。",
+            "对于 {f} ⇒ {a, b}：支持度 = 2/25 = 8% < 20%，不满足支持度条件；置信度 = 2/3 ≈ 67% > 65%，满足置信度条件。",
+            "该规则置信度达标但支持度太低，说明它只在少数交易中成立，不够普遍，因此不会被采纳。"
+          ],
+          "rubric_points": [
+            "正确写出支持度公式并解释其衡量普遍性",
+            "正确写出置信度公式并解释其衡量可靠性",
+            "正确计算支持度 8% 和置信度 67%",
+            "正确判断支持度不达标而置信度达标",
+            "解释为什么支持度太低导致规则不被采纳"
+          ],
+          "stem": "请比较关联规则的支持度和置信度，回答以下问题：\n1. 支持度和置信度分别衡量规则的什么方面？\n2. 它们的计算公式分别是什么？\n3. 以规则 {f} ⇒ {a, b} 为例（sup({a, b, f}) = 2, sup({f}) = 3, N = 25, ρₛ = 20%, ρ_c = 65%），说明为什么该规则满足一个条件但不满足另一个。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "两个指标的必要性",
+            "高支持度低置信度的情况",
+            "高置信度低支持度的情况"
+          ],
+          "question_id": "q_long_support_confidence_compare_v2",
+          "reference_answer": [
+            "支持度确保规则有足够的普遍性，置信度确保规则有足够的可靠性。两者缺一不可。",
+            "高支持度低置信度：规则涉及的项集很常见，但前提和结论之间的关联很弱，规则不可靠。",
+            "高置信度低支持度：规则很可靠，但只适用于极少数交易，规则不普遍，实际价值有限。"
+          ],
+          "rubric_points": [
+            "解释支持度过滤不普遍的规则，置信度过滤不可靠的规则",
+            "高支持度低置信度：规则常见但不可靠，例如买面包的人很多，但买面包的人也买鱼子酱的比例很低",
+            "高置信度低支持度：规则可靠但不普遍，例如买鱼子酱的人几乎都买香槟，但买鱼子酱的人很少"
+          ],
+          "stem": "请比较关联规则的支持度和置信度，回答以下问题：\n1. 为什么需要同时使用支持度和置信度两个指标？\n2. 如果一个规则支持度很高但置信度很低，说明什么？\n3. 如果一个规则置信度很高但支持度很低，说明什么？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "support",
+      "coverage_tags": [
+        "support_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_support_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在给定数据下计算关联规则的支持度。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能根据 sup(X ∪ Y) 和 N 计算支持度，并判断是否满足阈值。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "支持度",
+          "en": "Support"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "支持度 = sup({a, b, f}) / N = 2 / 25 = 0.08 = 8%。",
+          "options": [
+            "2%",
+            "8%",
+            "12%",
+            "25%"
+          ],
+          "question_id": "q_quiz_support_calc_v1",
+          "stem": "数据集有 25 笔交易，规则 {f} ⇒ {a, b} 的 sup({a, b, f}) = 2。该规则的支持度是多少？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "支持度 = sup({面包, 牛奶}) / N = 4 / 10 = 0.4。",
+          "options": [
+            "0.04",
+            "0.4",
+            "4",
+            "40"
+          ],
+          "question_id": "q_quiz_support_calc_v2",
+          "stem": "假设 sup({面包, 牛奶}) = 4，总交易数 N = 10。规则 {面包} ⇒ {牛奶} 的支持度是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "confidence",
+      "coverage_tags": [
+        "confidence_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_confidence_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在给定数据下计算关联规则的置信度。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能根据 sup(X ∪ Y) 和 sup(X) 计算置信度，并判断是否满足阈值。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "置信度",
+          "en": "Confidence"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "置信度 = sup({a, b, f}) / sup({f}) = 2 / 3 ≈ 0.67 = 67%。",
+          "options": [
+            "约 33%",
+            "约 50%",
+            "约 67%",
+            "约 75%"
+          ],
+          "question_id": "q_quiz_confidence_calc_v1",
+          "stem": "规则 {f} ⇒ {a, b} 的 sup({a, b, f}) = 2，sup({f}) = 3。该规则的置信度是多少？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "置信度 = sup({c, d, e}) / sup({c, e}) = 5 / 6 ≈ 0.83 = 83%。",
+          "options": [
+            "约 56%",
+            "约 67%",
+            "约 83%",
+            "约 91%"
+          ],
+          "question_id": "q_quiz_confidence_calc_v2",
+          "stem": "规则 {c, e} ⇒ {d} 的 sup({c, d, e}) = 5，sup({c, e}) = 6。该规则的置信度是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "support_confidence_threshold",
+      "coverage_tags": [
+        "support_confidence_threshold"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_threshold_judge",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据支持度和置信度阈值判断规则是否合格。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能综合运用支持度和置信度条件，判断一条规则是否被采纳。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "支持度阈值 ρₛ",
+          "en": "Support threshold ρₛ"
+        },
+        {
+          "display": "置信度阈值 ρ_c",
+          "en": "Confidence threshold ρ_c"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "支持度 8% < 20%，不满足支持度条件，因此规则不会被采纳，即使置信度达标。",
+          "options": [
+            "会，因为置信度达标",
+            "不会，因为支持度太低",
+            "会，因为两个条件都达标",
+            "不会，因为置信度太低"
+          ],
+          "question_id": "q_quiz_threshold_judge_v1",
+          "stem": "设 ρₛ = 20%，ρ_c = 65%。规则 {f} ⇒ {a, b} 的支持度为 8%，置信度为 67%。该规则是否会被采纳？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "支持度 20% ≥ 20%，置信度 83% ≥ 65%，两个条件都满足，因此规则会被采纳。",
+          "options": [
+            "会，因为两个条件都达标",
+            "不会，因为支持度刚好达标，但置信度不够",
+            "会，因为置信度很高",
+            "不会，因为支持度不够"
+          ],
+          "question_id": "q_quiz_threshold_judge_v2",
+          "stem": "设 ρₛ = 20%，ρ_c = 65%。规则 {c, e} ⇒ {d} 的支持度为 5/25 = 20%，置信度为 83%。该规则是否会被采纳？"
+        }
+      ]
+    },
+    {
+      "concept_key": "example_rule_evaluation",
+      "coverage_tags": [
+        "example_rule_evaluation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_rule_eval_example",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据具体例子判断规则是否满足支持度和置信度条件。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能根据给定的 sup 值和阈值，判断规则是否合格。",
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "支持度",
+          "en": "Support"
+        },
+        {
+          "display": "置信度",
+          "en": "Confidence"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "置信度 = 2/3 ≈ 67% > 65%，所以满足置信度条件。但支持度 8% < 20%，不满足支持度条件。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_rule_eval_example_v1",
+          "stem": "数据集有 25 笔交易，ρₛ = 20%，ρ_c = 65%。规则 {f} ⇒ {a, b} 的 sup({a, b, f}) = 2，sup({f}) = 3。该规则满足置信度条件。"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "支持度 = 2/25 = 8% < 20%，所以不满足支持度条件。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_rule_eval_example_v2",
+          "stem": "数据集有 25 笔交易，ρₛ = 20%，ρ_c = 65%。规则 {f} ⇒ {a, b} 的 sup({a, b, f}) = 2，sup({f}) = 3。该规则满足支持度条件。"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "Association rule definition, support condition, confidence condition, example with {f} => {a,b}",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "step2: 规则的质量：支持度与置信度",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-1/plain.txt",
+    "related": [],
+    "source_outline": "Association Rules, Usefulness and Certainty, Example"
+  },
+  "target_language": "zh-CN"
+}

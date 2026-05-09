@@ -1,0 +1,394 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "gini_impurity_definition",
+      "covered_by": [
+        "qf_flash_gini_def",
+        "qf_quiz_gini_def"
+      ],
+      "description": "Gini 不纯度的定义：从一个节点随机抽一个样本并随机猜类别，猜错的概率。"
+    },
+    {
+      "coverage_tag": "gini_impurity_formula",
+      "covered_by": [
+        "qf_flash_gini_formula",
+        "qf_quiz_gini_calc",
+        "qf_long_gini_calc"
+      ],
+      "description": "Gini 不纯度的计算公式：I_G(t) = 1 - Σ p(i|t)²"
+    },
+    {
+      "coverage_tag": "gini_impurity_interpretation",
+      "covered_by": [
+        "qf_flash_gini_interpret",
+        "qf_quiz_gini_interpret"
+      ],
+      "description": "Gini 不纯度值越小节点越纯，值为0时节点完全纯。"
+    },
+    {
+      "coverage_tag": "gini_impurity_calculation_example",
+      "covered_by": [
+        "qf_quiz_gini_calc",
+        "qf_long_gini_calc"
+      ],
+      "description": "能根据节点中各类别样本比例计算 Gini 不纯度。"
+    },
+    {
+      "coverage_tag": "purity_vs_impurity",
+      "covered_by": [
+        "qf_flash_gini_interpret",
+        "qf_quiz_gini_interpret"
+      ],
+      "description": "好问题使分裂后子节点更纯，Gini 不纯度是量化纯度的工具。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "gini_impurity",
+      "coverage_tags": [
+        "gini_impurity_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_gini_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用一句话解释 Gini 不纯度的直觉含义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了 Gini 不纯度的定义：从一个节点随机抽一个样本并随机猜类别，猜错的概率。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Gini 不纯度的概率解释",
+      "term_refs": [
+        {
+          "display": "Gini 不纯度",
+          "en": "Gini Impurity"
+        }
+      ],
+      "variants": [
+        {
+          "back": "从一个节点中随机抽一个样本，再随机猜它的类别，猜错的概率。",
+          "estimated_seconds": 8,
+          "explanation": "猜错的概率越高，节点越不纯。",
+          "front": "Gini 不纯度的直觉含义是什么？",
+          "question_id": "q_flash_gini_def_v1"
+        },
+        {
+          "back": "随机抽取一个样本并随机猜测其类别时，猜错的概率。",
+          "estimated_seconds": 8,
+          "explanation": "这个概率越大，说明节点越混乱。",
+          "front": "Gini 不纯度衡量的是什么概率？",
+          "question_id": "q_flash_gini_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "gini_impurity",
+      "coverage_tags": [
+        "gini_impurity_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_gini_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能写出 Gini 不纯度的计算公式。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了 Gini 不纯度的核心公式：I_G(t) = 1 - Σ p(i|t)²。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Gini 不纯度的数学表达式",
+      "term_refs": [
+        {
+          "display": "Gini 不纯度",
+          "en": "Gini Impurity"
+        }
+      ],
+      "variants": [
+        {
+          "back": "I_G(t) = 1 - Σ_{i=1}^{c} p(i|t)²",
+          "estimated_seconds": 10,
+          "explanation": "其中 p(i|t) 是节点 t 中类别 i 的样本比例。",
+          "front": "写出 Gini 不纯度 I_G(t) 的计算公式（用 p(i|t) 表示）。",
+          "question_id": "q_flash_gini_formula_v1"
+        },
+        {
+          "back": "在节点 t 中，属于类别 i 的样本比例。",
+          "estimated_seconds": 6,
+          "explanation": "所有类别的 p(i|t) 之和为 1。",
+          "front": "Gini 不纯度公式中，p(i|t) 代表什么？",
+          "question_id": "q_flash_gini_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "gini_impurity",
+      "coverage_tags": [
+        "gini_impurity_interpretation",
+        "purity_vs_impurity"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_gini_interpret",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释 Gini 不纯度数值大小与节点纯度的关系。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了 Gini 不纯度值越小节点越纯，值为0时节点完全纯。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Gini 不纯度数值与纯度的关系",
+      "term_refs": [
+        {
+          "display": "Gini 不纯度",
+          "en": "Gini Impurity"
+        }
+      ],
+      "variants": [
+        {
+          "back": "所有样本都属于同一类别。",
+          "estimated_seconds": 6,
+          "explanation": "此时节点完全纯，猜错的概率为 0。",
+          "front": "Gini 不纯度等于 0 时，节点中的样本有什么特点？",
+          "question_id": "q_flash_gini_interpret_v1"
+        },
+        {
+          "back": "越不纯（越混乱）。",
+          "estimated_seconds": 5,
+          "explanation": "猜错的概率越高，节点越混乱。",
+          "front": "Gini 不纯度越大，说明节点越怎样？",
+          "question_id": "q_flash_gini_interpret_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-decision-trees",
+  "longform_families": [
+    {
+      "concept_key": "gini_impurity",
+      "coverage_tags": [
+        "gini_impurity_formula",
+        "gini_impurity_calculation_example"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_gini_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整写出 Gini 不纯度的计算过程并解释结果。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能应用 Gini 不纯度公式进行完整计算，并解释数值含义。",
+      "question_type": "worked_example",
+      "term_refs": [
+        {
+          "display": "Gini 不纯度",
+          "en": "Gini Impurity"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "写出各类别的样本比例",
+            "写出 Gini 不纯度公式",
+            "代入数值计算",
+            "解释计算结果"
+          ],
+          "question_id": "q_long_gini_calc_v1",
+          "reference_answer": [
+            "p(苹果) = 7/10 = 0.7",
+            "p(橘子) = 3/10 = 0.3",
+            "I_G = 1 - (0.7² + 0.3²) = 1 - (0.49 + 0.09) = 1 - 0.58 = 0.42",
+            "该节点的 Gini 不纯度为 0.42，说明节点不是完全纯的（0.42 > 0），但比 50%-50% 的均匀分布（0.5）更纯一些。"
+          ],
+          "rubric_points": [
+            "正确写出 p(苹果)=0.7, p(橘子)=0.3",
+            "正确写出公式 I_G = 1 - Σ p(i)²",
+            "正确计算 1 - (0.7² + 0.3²) = 1 - 0.58 = 0.42",
+            "解释：Gini 不纯度为 0.42，说明节点有一定的不纯度，但比均匀分布（0.5）更纯一些"
+          ],
+          "stem": "一个节点中有 7 个苹果和 3 个橘子。请写出计算该节点 Gini 不纯度的完整步骤，并解释结果的含义。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "写出各类别的样本比例",
+            "写出 Gini 不纯度公式",
+            "代入数值计算",
+            "解释计算结果"
+          ],
+          "question_id": "q_long_gini_calc_v2",
+          "reference_answer": [
+            "p(苹果) = 8/10 = 0.8",
+            "p(橘子) = 2/10 = 0.2",
+            "I_G = 1 - (0.8² + 0.2²) = 1 - (0.64 + 0.04) = 1 - 0.68 = 0.32",
+            "该节点的 Gini 不纯度为 0.32，说明节点不是完全纯的（0.32 > 0），但比 50%-50% 的均匀分布（0.5）更纯一些。"
+          ],
+          "rubric_points": [
+            "正确写出 p(苹果)=0.8, p(橘子)=0.2",
+            "正确写出公式 I_G = 1 - Σ p(i)²",
+            "正确计算 1 - (0.8² + 0.2²) = 1 - 0.68 = 0.32",
+            "解释：Gini 不纯度为 0.32，说明节点有一定的不纯度，但比均匀分布（0.5）更纯一些"
+          ],
+          "stem": "一个节点中有 8 个苹果和 2 个橘子。请写出计算该节点 Gini 不纯度的完整步骤，并解释结果的含义。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "gini_impurity",
+      "coverage_tags": [
+        "gini_impurity_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_gini_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中正确判断 Gini 不纯度的定义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能区分 Gini 不纯度的正确与错误描述。",
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "Gini 不纯度",
+          "en": "Gini Impurity"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Gini 不纯度衡量的是猜错的概率，不是猜对的概率。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_gini_def_v1",
+          "stem": "判断：Gini 不纯度衡量的是从一个节点中随机抽一个样本，然后随机猜它的类别，猜对的概率。"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "Gini 不纯度越大，说明节点越不纯（越混乱）。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_gini_def_v2",
+          "stem": "判断：Gini 不纯度越大，说明节点越纯。"
+        }
+      ]
+    },
+    {
+      "concept_key": "gini_impurity",
+      "coverage_tags": [
+        "gini_impurity_formula",
+        "gini_impurity_calculation_example"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_gini_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据节点中各类别样本比例计算 Gini 不纯度。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能应用 Gini 不纯度公式进行数值计算。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Gini 不纯度",
+          "en": "Gini Impurity"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 30,
+          "explanation": "p(苹果)=0.9, p(橘子)=0.1。Gini = 1 - (0.9² + 0.1²) = 1 - 0.82 = 0.18。",
+          "options": [
+            "0.10",
+            "0.18",
+            "0.50",
+            "0.82"
+          ],
+          "question_id": "q_quiz_gini_calc_v1",
+          "stem": "一个节点中有 9 个苹果和 1 个橘子，该节点的 Gini 不纯度是多少？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 30,
+          "explanation": "p(苹果)=0.6, p(橘子)=0.4。Gini = 1 - (0.6² + 0.4²) = 1 - 0.52 = 0.48。",
+          "options": [
+            "0.24",
+            "0.40",
+            "0.48",
+            "0.52"
+          ],
+          "question_id": "q_quiz_gini_calc_v2",
+          "stem": "一个节点中有 6 个苹果和 4 个橘子，该节点的 Gini 不纯度是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "gini_impurity",
+      "coverage_tags": [
+        "gini_impurity_interpretation",
+        "purity_vs_impurity"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_gini_interpret",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据 Gini 不纯度数值判断节点纯度，并理解其在决策树中的作用。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能解释 Gini 不纯度数值的含义及其与节点纯度的关系。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Gini 不纯度",
+          "en": "Gini Impurity"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "Gini 不纯度越小，节点越纯。0.2 < 0.5，所以节点 A 更纯。",
+          "options": [
+            "节点 A 比节点 B 更纯",
+            "节点 B 比节点 A 更纯",
+            "两个节点纯度相同",
+            "无法比较"
+          ],
+          "question_id": "q_quiz_gini_interpret_v1",
+          "stem": "节点 A 的 Gini 不纯度为 0.2，节点 B 的 Gini 不纯度为 0.5。以下哪项描述正确？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "我们的目标是让分裂后的子节点尽可能纯，即 Gini 不纯度尽可能小。",
+          "options": [
+            "尽可能大",
+            "尽可能小",
+            "保持不变",
+            "先增大后减小"
+          ],
+          "question_id": "q_quiz_gini_interpret_v2",
+          "stem": "在决策树学习中，我们希望通过提问（分裂）使子节点的 Gini 不纯度如何变化？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-decision-trees/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

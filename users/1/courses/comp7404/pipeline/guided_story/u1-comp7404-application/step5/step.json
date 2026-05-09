@@ -1,0 +1,173 @@
+{
+  "chapter_id": "lecture-05-application",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-application",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s051",
+      "introduced_terms": [],
+      "lines": [
+        "还记得刚才的失败案例吗？",
+        "词袋模型把“蓝天在上，草地在下”和“草地在上，蓝天在下”当成同一张图。",
+        "因为它完全忽略了空间结构。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": "词袋模型只统计视觉单词出现的频率，不关心它们的位置，因此当空间布局不同但视觉单词分布相同时，会误判为相似。SPM通过分块统计，保留了空间布局信息。",
+        "kind": "short_answer",
+        "prompt": "词袋模型在什么场景下会失败？空间金字塔匹配如何解决这个问题？"
+      },
+      "focus_terms": [
+        "bag_of_words",
+        "spatial_pyramid_matching"
+      ],
+      "id": "s052",
+      "introduced_terms": [],
+      "lines": [
+        "词袋模型在什么场景下会失败？空间金字塔匹配如何解决这个问题？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "spatial_pyramid_matching"
+      ],
+      "id": "s053",
+      "introduced_terms": [
+        "spatial_pyramid_matching"
+      ],
+      "lines": [
+        "空间金字塔匹配的想法很简单：",
+        "把图像分成越来越细的网格，在每个格子里分别统计直方图。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "spatial_pyramid_matching"
+      ],
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "比如，第一层是整个图像一个格子，",
+        "第二层分成 2x2 四个格子，第三层分成 4x4 十六个格子。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "spatial_pyramid_matching",
+        "visual_word"
+      ],
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "在每个格子里，分别统计视觉单词的直方图。",
+        "这样，不同区域的视觉单词分布就被记录下来了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "spatial_pyramid_matching"
+      ],
+      "id": "s056",
+      "introduced_terms": [],
+      "lines": [
+        "最后，把所有层次的直方图加权组合起来，",
+        "形成一个更丰富的图像表示。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "词袋模型忽略空间信息，而空间金字塔匹配通过多分辨率网格保留了空间布局。",
+        "kind": "single_choice",
+        "options": [
+          "使用了更复杂的特征描述子",
+          "引入了图像的空间布局信息",
+          "使用了更多的视觉单词",
+          "提高了计算速度"
+        ],
+        "prompt": "空间金字塔匹配相比词袋模型，主要改进是什么？"
+      },
+      "focus_terms": [
+        "spatial_pyramid_matching",
+        "bag_of_words"
+      ],
+      "id": "s057",
+      "introduced_terms": [],
+      "lines": [
+        "空间金字塔匹配相比词袋模型，主要改进是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "spatial_pyramid_matching"
+      ],
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [
+        "这个改进效果显著，",
+        "在图像分类任务上取得了很大提升。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words",
+        "spatial_pyramid_matching"
+      ],
+      "id": "s059",
+      "introduced_terms": [],
+      "lines": [
+        "从词袋模型到空间金字塔匹配，",
+        "核心思路是：从无序到有序，从全局到局部。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": "词袋模型在蓝天草地互换的案例中失败，因为它忽略了空间布局。SPM通过将图像分成多级网格，在每个格子内分别统计直方图，从而保留了空间信息，解决了这个问题。",
+        "kind": "short_answer",
+        "prompt": "请分析词袋模型在蓝天草地互换的案例中为什么会失败？SPM如何解决？"
+      },
+      "focus_terms": [
+        "bag_of_words",
+        "spatial_pyramid_matching"
+      ],
+      "id": "s060",
+      "introduced_terms": [],
+      "lines": [
+        "请分析词袋模型在蓝天草地互换的案例中为什么会失败？SPM如何解决？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Beyond bag-of-words model: Spatial Pyramid Matching (1). Toy example of constructing a three-level pyramid. Lazebnik et al., CVPR 2006.",
+    "related": [
+      "lecture-05-application"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "spatial_pyramid_matching": {
+      "aliases": [
+        "Spatial Pyramid Matching",
+        "SPM"
+      ],
+      "display": "空间金字塔匹配",
+      "gloss": "在多个不同分辨率下划分图像，并分别统计每个子区域的直方图，从而保留空间信息。"
+    }
+  }
+}

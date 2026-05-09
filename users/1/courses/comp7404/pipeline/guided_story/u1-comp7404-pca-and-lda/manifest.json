@@ -1,0 +1,50 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "chapter_title": "PCA and LDA",
+  "course_id": "user-1-comp7404",
+  "course_title": "COMP7404",
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "高维数据有什么问题",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "降维的两种思路：特征选择 vs 特征提取",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "PCA 的核心：找方差最大的方向",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "PCA 的实战：特征脸与重构误差",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "PCA 的局限：不管类别",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "LDA 的数学：散度矩阵与广义特征值",
+      "file": "step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "多类 LDA 与 Fisherface",
+      "file": "step7/step.json",
+      "sequence_id": "step7"
+    },
+    {
+      "concept": "PCA vs LDA：何时用哪个",
+      "file": "step8/step.json",
+      "sequence_id": "step8"
+    }
+  ]
+}

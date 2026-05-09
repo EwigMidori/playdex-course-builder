@@ -1,0 +1,385 @@
+{
+  "chapter_id": "lecture-06-data-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "asymmetric_attribute",
+      "covered_by": [
+        "qf_flash_asymmetric_attr",
+        "qf_quiz_asymmetric_attr",
+        "qf_long_asymmetric_jaccard"
+      ],
+      "description": "非对称属性的定义、特征（只有非零值重要）及在购物篮数据中的应用"
+    },
+    {
+      "coverage_tag": "bag_of_words",
+      "covered_by": [
+        "qf_flash_bow",
+        "qf_quiz_bow"
+      ],
+      "description": "词袋模型：将文档表示为词语及其出现次数的集合，忽略顺序"
+    },
+    {
+      "coverage_tag": "tf_idf",
+      "covered_by": [
+        "qf_flash_tfidf",
+        "qf_quiz_tfidf"
+      ],
+      "description": "TF-IDF：降低常见词权重，突出有区分度的词"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "asymmetric_attribute",
+      "coverage_tags": [
+        "asymmetric_attribute"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_asymmetric_attr",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆非对称属性的定义和关键特征。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了非对称属性的核心概念：只有非零值（1）才重要。",
+      "question_type": "short_answer",
+      "retrieval_focus": "非对称属性的定义及其与普通二元属性的区别。",
+      "term_refs": [
+        {
+          "display": "非对称属性",
+          "en": "asymmetric attribute"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为购物篮数据是非对称的，只有“买了”（1）才重要，“没买”（0）几乎无意义。",
+          "estimated_seconds": 10,
+          "explanation": "非对称属性中，0-0匹配数量巨大且不携带有用信息，因此比较时只关注1-1匹配。",
+          "front": "在购物篮数据中，比较两个顾客的购买记录时，为什么双方都没买的商品（0-0匹配）通常被忽略？",
+          "question_id": "q_flash_asymmetric_attr_v1"
+        },
+        {
+          "back": "非对称属性中只有非零值（1）重要；普通二元属性中0和1同等重要。",
+          "estimated_seconds": 12,
+          "explanation": "例如，性别（男/女）是普通二元属性，两个值都重要；而购物篮中“是否购买某商品”是非对称的，只有“购买”重要。",
+          "front": "非对称属性与普通二元属性的核心区别是什么？",
+          "question_id": "q_flash_asymmetric_attr_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "bag_of_words",
+      "coverage_tags": [
+        "bag_of_words"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bow",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆词袋模型的核心思想：忽略顺序，只保留词频。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了词袋模型的基本表示方法。",
+      "question_type": "short_answer",
+      "retrieval_focus": "词袋模型如何处理文档中的词语顺序。",
+      "term_refs": [
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-Words (BoW)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "不会，词袋模型忽略词语顺序，只记录每个词语的出现次数。",
+          "estimated_seconds": 8,
+          "explanation": "例如，“A cat sits on a mat”和“A mat sits on a cat”在词袋模型中表示相同。",
+          "front": "词袋模型在表示文档时，会保留词语的出现顺序吗？",
+          "question_id": "q_flash_bow_v1"
+        },
+        {
+          "back": "2次。",
+          "estimated_seconds": 6,
+          "explanation": "句子中有两个“a”，所以“a”的计数为2。",
+          "front": "句子“A cat sits on a mat”用词袋模型表示，其中词语“a”的出现次数是多少？",
+          "question_id": "q_flash_bow_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "tf_idf",
+      "coverage_tags": [
+        "tf_idf"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_tfidf",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆TF-IDF的主要目的：降低常见词权重，突出有区分度的词。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了TF-IDF要解决的核心问题。",
+      "question_type": "short_answer",
+      "retrieval_focus": "TF-IDF解决什么问题。",
+      "term_refs": [
+        {
+          "display": "TF-IDF",
+          "en": "Term Frequency-Inverse Document Frequency"
+        }
+      ],
+      "variants": [
+        {
+          "back": "TF-IDF降低常见词的权重，突出有区分度的词。",
+          "estimated_seconds": 10,
+          "explanation": "TF-IDF通过IDF项降低在多数文档中都出现的词的权重，提高稀有但重要词的权重。",
+          "front": "在文档表示中，像“a”、“the”这样的高频词对区分文档帮助不大，TF-IDF如何解决这个问题？",
+          "question_id": "q_flash_tfidf_v1"
+        },
+        {
+          "back": "一个词在整个文档集合中的稀有程度或区分能力。",
+          "estimated_seconds": 10,
+          "explanation": "IDF = log(总文档数 / 包含该词的文档数)，词越稀有，IDF值越大。",
+          "front": "TF-IDF中的IDF（逆文档频率）主要衡量什么？",
+          "question_id": "q_flash_tfidf_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-data-1",
+  "longform_families": [
+    {
+      "concept_key": "asymmetric_attribute",
+      "coverage_tags": [
+        "asymmetric_attribute"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_asymmetric_jaccard",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释非对称属性的概念，并说明为什么在购物篮数据中Jaccard系数比简单匹配系数更合适。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能结合具体场景解释非对称属性的含义及其对相似度度量的影响。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "非对称属性",
+          "en": "asymmetric attribute"
+        },
+        {
+          "display": "Jaccard 系数",
+          "en": "Jaccard coefficient"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "非对称属性的定义",
+            "购物篮数据的特性",
+            "Jaccard系数与SMC的区别",
+            "为什么忽略0-0匹配是合理的"
+          ],
+          "question_id": "q_long_asymmetric_jaccard_v1",
+          "reference_answer": [
+            "非对称属性是一种特殊的二元属性，其中只有非零值（通常为1）才重要，零值（0）几乎不携带有用信息。",
+            "在购物篮数据中，每个商品用1表示购买、0表示未购买。由于商品种类很多，大多数商品对大多数顾客来说都是未购买的，因此0-0匹配的数量巨大。",
+            "简单匹配系数（SMC）将0-0匹配也计入相似度，这会导致两个购物篮即使购买的商品完全不同，也可能因为大量共同的未购买商品而获得较高的相似度，这显然不合理。",
+            "Jaccard系数只考虑双方都购买了（1-1匹配）的情况，忽略双方都没买的（0-0匹配），因此能更准确地反映购物篮的实际相似程度。"
+          ],
+          "rubric_points": [
+            "正确给出非对称属性的定义：只有非零值（1）重要的二元属性",
+            "指出购物篮数据中，未购买的商品（0）数量巨大且无意义",
+            "说明SMC将0-0匹配计入相似度，会导致结果虚高",
+            "说明Jaccard系数只考虑1-1匹配，忽略0-0匹配，更合理"
+          ],
+          "stem": "请解释什么是非对称属性，并以购物篮数据为例，说明为什么在比较两个购物篮时通常使用Jaccard系数而不是简单匹配系数（SMC）。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "计算M11, M00, M10, M01",
+            "计算SMC",
+            "计算Jaccard系数",
+            "解释差异原因",
+            "判断哪个更合理"
+          ],
+          "question_id": "q_long_asymmetric_jaccard_v2",
+          "reference_answer": [
+            "首先计算四个计数：M11（双方都买了）= 1（商品3），M00（双方都没买）= 7（商品4-10），M10（A买B没买）= 1（商品1），M01（A没买B买）= 1（商品2）。",
+            "SMC = (M11 + M00) / (M11 + M00 + M10 + M01) = (1+7)/(1+7+1+1) = 8/10 = 0.8",
+            "Jaccard系数 = M11 / (M11 + M10 + M01) = 1/(1+1+1) = 1/3 ≈ 0.333",
+            "两个结果差异很大，因为SMC把7个双方都没买的商品也算作匹配，导致相似度高达0.8；而Jaccard只考虑实际购买的商品，相似度只有0.333。",
+            "在购物篮场景中，商品种类远多于顾客实际购买的商品，大量0-0匹配是常态，不应计入相似度。因此Jaccard系数更合理，它反映了两个顾客实际购买行为的重叠程度。"
+          ],
+          "rubric_points": [
+            "正确计算M11=1, M00=7, M10=1, M01=1",
+            "正确计算SMC = (1+7)/(1+7+1+1) = 8/10 = 0.8",
+            "正确计算Jaccard = 1/(1+1+1) = 1/3 ≈ 0.333",
+            "指出差异源于SMC将大量0-0匹配计入相似度",
+            "指出购物篮数据是非对称的，Jaccard系数更合理"
+          ],
+          "stem": "假设有两个顾客的购物篮数据，用10个商品的二元向量表示：\n顾客A：[1, 0, 1, 0, 0, 0, 0, 0, 0, 0]\n顾客B：[0, 1, 1, 0, 0, 0, 0, 0, 0, 0]\n请计算SMC和Jaccard系数，并解释为什么两个结果差异很大，以及哪个更合理。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "asymmetric_attribute",
+      "coverage_tags": [
+        "asymmetric_attribute"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_asymmetric_attr",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中识别非对称属性，并理解其与普通二元属性的区别。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能区分非对称属性与普通二元属性，并理解其应用场景。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "非对称属性",
+          "en": "asymmetric attribute"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "超市购物篮数据中，只有“购买”（1）重要，“未购买”（0）几乎无意义，因此适合非对称属性。性别是普通二元属性，两个值同等重要。",
+          "options": [
+            "记录学生的性别（男/女）",
+            "记录超市顾客是否购买了某件商品（购买/未购买）",
+            "记录天气状况（晴/阴/雨）",
+            "记录考试成绩（0-100分）"
+          ],
+          "question_id": "q_quiz_asymmetric_attr_v1",
+          "stem": "以下哪个场景最适合将数据建模为非对称属性？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "购物篮数据中，双方都没买的商品（0-0匹配）数量巨大且无意义，SMC将其计入相似度会使结果虚高；Jaccard系数忽略0-0匹配，更合理。",
+          "options": [
+            "SMC会忽略1-1匹配",
+            "SMC会把大量无意义的0-0匹配计入相似度，导致结果偏高",
+            "SMC无法处理非二元数据",
+            "SMC计算更复杂"
+          ],
+          "question_id": "q_quiz_asymmetric_attr_v2",
+          "stem": "在比较两个购物篮时，如果使用简单匹配系数（SMC）而不是Jaccard系数，会有什么问题？"
+        }
+      ]
+    },
+    {
+      "concept_key": "bag_of_words",
+      "coverage_tags": [
+        "bag_of_words"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_bow",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解词袋模型的基本原理及其局限性。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了词袋模型的核心思想：忽略顺序，只保留词频。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-Words (BoW)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "词袋模型只记录词频，忽略顺序，因此语义不同的句子可能得到相同的向量表示。",
+          "options": [
+            "词袋模型无法处理中文文档",
+            "词袋模型忽略了词语的顺序，因此无法区分“猫追狗”和“狗追猫”",
+            "词袋模型需要大量训练数据",
+            "词袋模型只能处理短文本"
+          ],
+          "question_id": "q_quiz_bow_v1",
+          "stem": "以下哪句话最能说明词袋模型的一个主要局限性？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "词袋模型通常将词语统一为小写，并记录每个词的出现次数。\"the\"出现2次，其他词各1次。选项A区分了大小写，不正确；选项C计数错误；选项D是序列，不是词袋表示。",
+          "options": [
+            "{\"The\":2, \"dog\":1, \"chases\":1, \"the\":1, \"cat\":1}",
+            "{\"the\":2, \"dog\":1, \"chases\":1, \"cat\":1}",
+            "{\"The\":1, \"dog\":1, \"chases\":1, \"the\":1, \"cat\":1}",
+            "[\"The\", \"dog\", \"chases\", \"the\", \"cat\"]"
+          ],
+          "question_id": "q_quiz_bow_v2",
+          "stem": "句子“The dog chases the cat”用词袋模型表示，以下哪个表示是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "tf_idf",
+      "coverage_tags": [
+        "tf_idf"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_tfidf",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解TF-IDF的作用及其与词袋模型的关系。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了TF-IDF解决的核心问题及其基本思想。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "TF-IDF",
+          "en": "Term Frequency-Inverse Document Frequency"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "TF-IDF的IDF项会降低在多数文档中都出现的词的权重，从而提高稀有但重要词的区分能力。",
+          "options": [
+            "TF-IDF完全删除这些常见词",
+            "TF-IDF通过IDF降低常见词的权重，提高稀有词的权重",
+            "TF-IDF将文档按长度归一化",
+            "TF-IDF只保留名词"
+          ],
+          "question_id": "q_quiz_tfidf_v1",
+          "stem": "在文档检索中，词袋模型（TF）的一个主要问题是高频常见词（如“的”、“是”）会主导向量，TF-IDF如何改进？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "IDF = log(总文档数 / 包含该词的文档数)。如果词出现在所有文档中，则分母等于分子，log(1) = 0。",
+          "options": [
+            "IDF = 0",
+            "IDF = 1",
+            "IDF = 总文档数",
+            "IDF = 无穷大"
+          ],
+          "question_id": "q_quiz_tfidf_v2",
+          "stem": "假设一个词出现在所有文档中，它的IDF值会如何？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-data-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

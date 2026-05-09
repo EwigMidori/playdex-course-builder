@@ -1,0 +1,167 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "想象你刚搬到一个新街区，想找一家好吃的餐厅。",
+        "你会怎么做？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "nearest_neighbor_classifier"
+      ],
+      "id": "s002",
+      "introduced_terms": [
+        "nearest_neighbor_classifier"
+      ],
+      "lines": [
+        "你可能会问几个邻居，看看他们平时去哪家。",
+        "这就是 <term id=\"nearest_neighbor_classifier\">最近邻分类器</term> 的核心思路。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "对于一个没有标签的新数据点，",
+        "我们去找训练集中和它最相似的几个点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "然后，用这些“邻居”的标签来推断新点的标签。",
+        "就这么简单。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "distance_measure"
+      ],
+      "id": "s005",
+      "introduced_terms": [
+        "distance_measure"
+      ],
+      "lines": [
+        "要实现这个想法，我们需要三样东西：",
+        "一组带标签的记录、一个 <term id=\"distance_measure\">距离度量</term>、以及 k 的值。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "k_nearest_neighbors"
+      ],
+      "id": "s006",
+      "introduced_terms": [
+        "k_nearest_neighbors"
+      ],
+      "lines": [
+        "k 就是你想问多少个邻居。",
+        "这个 k 就是 <term id=\"k_nearest_neighbors\">k 个最近邻</term> 中的 k。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "分类一个未知记录时，先计算它与其他所有已知记录的距离。",
+        "然后找出距离最近的 k 个邻居。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "majority_vote"
+      ],
+      "id": "s008",
+      "introduced_terms": [
+        "majority_vote"
+      ],
+      "lines": [
+        "最后，用这些邻居的类别标签来决定新记录的类别。",
+        "最常见的方式是 <term id=\"majority_vote\">多数投票</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "多数投票：猫出现 2 次，狗出现 1 次，所以新样本被分类为猫。",
+        "kind": "single_choice",
+        "options": [
+          "猫",
+          "狗",
+          "无法判断"
+        ],
+        "prompt": "新样本的类别是？"
+      },
+      "focus_terms": [],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "如果 k=3，三个邻居的类别分别是：猫、猫、狗。",
+        "新样本应该被分类为什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Nearest-neighbor classifiers. Basic idea: Given an unlabeled record Y, find the records in the training set that are most similar to Y (the nearest neighbors) to infer the label of Y.",
+    "related": [
+      "k-NN",
+      "distance measure"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "distance_measure": {
+      "aliases": [
+        "Distance Measure",
+        "Similarity Measure"
+      ],
+      "display": "距离度量",
+      "gloss": "用于计算两个数据点之间相似程度或差异大小的函数。"
+    },
+    "k_nearest_neighbors": {
+      "aliases": [
+        "k-nearest neighbors",
+        "k-NN"
+      ],
+      "display": "k 个最近邻",
+      "gloss": "与待分类样本距离最近的 k 个已知标签的数据点。"
+    },
+    "majority_vote": {
+      "aliases": [
+        "Majority Vote"
+      ],
+      "display": "多数投票",
+      "gloss": "根据 k 个邻居中出现次数最多的类别来决定新样本的类别。"
+    },
+    "nearest_neighbor_classifier": {
+      "aliases": [
+        "Nearest Neighbor Classifier",
+        "k-NN"
+      ],
+      "display": "最近邻分类器",
+      "gloss": "通过寻找训练集中最相似的记录来预测新样本的标签。"
+    }
+  }
+}

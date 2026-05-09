@@ -1,0 +1,160 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "我们需要一个标准来衡量“预测误差”。",
+        "对于单个数据点，最简单的误差就是真实值和预测值之间的差距。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "squared_loss"
+      ],
+      "id": "s013",
+      "introduced_terms": [
+        "squared_loss"
+      ],
+      "lines": [
+        "一个常用的标准是 <term id=\"squared_loss\">平方损失</term>。",
+        "它计算的是预测值与真实值之间差距的平方。差距越大，惩罚越重。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "\\text{Loss}(y, f(x; w)) = \\frac{1}{2} (y - f(x; w))^2",
+        "spoken": "损失等于预测值减去真实值的平方的一半。"
+      },
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "对于单个数据点，平方损失可以写成："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "empirical_loss"
+      ],
+      "id": "s015",
+      "introduced_terms": [
+        "empirical_loss"
+      ],
+      "lines": [
+        "现在，我们把所有训练数据上的损失加起来。",
+        "这个总和被称为 <term id=\"empirical_loss\">经验损失</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "J_n(w) = \\sum_{i=1}^n \\text{Loss}(y_i, f(x_i; w))",
+        "spoken": "经验损失是所有训练样本损失的总和。"
+      },
+      "id": "s016",
+      "introduced_terms": [],
+      "lines": [
+        "我们的目标就是找到一组参数 \\(w\\)，让这个总损失最小。"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "least_squares"
+      ],
+      "id": "s017",
+      "introduced_terms": [
+        "least_squares"
+      ],
+      "lines": [
+        "这种通过最小化平方损失来求解的方法，就是 <term id=\"least_squares\">最小二乘法</term>。",
+        "它为我们找到那条“最佳”直线提供了数学依据。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "“二乘”指的是平方，即最小化平方损失。",
+        "kind": "single_choice",
+        "options": [
+          "两个参数",
+          "平方（二次方）",
+          "两个步骤",
+          "两种损失"
+        ],
+        "prompt": "最小二乘法中的“二乘”指的是什么？"
+      },
+      "focus_terms": [],
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "经验损失是所有训练样本损失的总和，用于衡量模型在整个训练集上的表现。",
+        "kind": "single_choice",
+        "options": [
+          "衡量单个点的预测误差",
+          "衡量所有训练样本的总预测误差",
+          "计算模型的复杂度",
+          "评估模型在测试集上的表现"
+        ],
+        "prompt": "经验损失函数的作用是什么？"
+      },
+      "focus_terms": [],
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2b",
+  "source": {
+    "plain_text": "We minimize the empirical squared loss J_n(w) = sum_{i=1}^n (y_i - w_0 - w_1 x_i)^2 / 2. Setting the derivatives with respect to w0 and w1 to zero we get necessary conditions for the 'optimal' parameter values. Solution via matrix inversion: Or w_hat = Phi^{-1}b. In a matrix notation, we minimize: 1/2 || y - X w ||^2. By setting the derivatives to zero, we get X^T y - X^T X w = 0 => w_hat = (X^T X)^{-1} X^T y. This is a convex function of the weights. Find the gradient w.r.t. w: nabla_w ||X w - Y||_2^2 = 2 X^T X w - 2 X^T Y. Set gradient to zero to get the minimizer: X^T X w = X^T Y; w = (X^T X)^{-1} X^T Y. Guaranteed to find the optimal solution analytically. But we are working with very large datasets - can be computationally too expensive to invert the matrix in this formula. Or the matrix containing the training examples may be singular (non-invertible).",
+    "related": [
+      "Squared Loss",
+      "Empirical Loss",
+      "Least Squares"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "empirical_loss": {
+      "aliases": [
+        "Empirical Loss",
+        "Empirical Risk"
+      ],
+      "display": "经验损失",
+      "gloss": "模型在已有训练数据上的平均损失。"
+    },
+    "least_squares": {
+      "aliases": [
+        "Least Squares",
+        "Ordinary Least Squares"
+      ],
+      "display": "最小二乘法",
+      "gloss": "通过最小化平方损失来找到最佳拟合参数的方法。"
+    },
+    "squared_loss": {
+      "aliases": [
+        "Squared Loss",
+        "L2 Loss"
+      ],
+      "display": "平方损失",
+      "gloss": "衡量预测值与真实值之间差距的一种方式，差距越大惩罚越重。"
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-introduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "假设你想写一个程序，让它识别照片里有没有猫。",
+        "你会怎么做？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "也许你会想：写几条规则就行了。",
+        "比如“如果有尖耳朵，就是猫”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "现在，请你试着写出几条规则，用来判断一张图片里有没有猫。",
+        "（在脑海中写，或者写下来）"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "你写了几条？",
+        "现在看看这张照片：猫侧躺着，只露出背影，光线很暗。",
+        "你的规则还能用吗？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "再试试这张：猫躲在沙发后面，只露出一只眼睛和半只耳朵。",
+        "你的规则又失效了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "你发现了吗？规则永远写不完。",
+        "不同姿势、光线、遮挡……你不可能提前想到所有情况。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "machine_learning"
+      ],
+      "id": "s007",
+      "introduced_terms": [
+        "machine_learning"
+      ],
+      "lines": [
+        "所以，我们换一种思路：",
+        "不给程序写死规则，而是让它自己从照片里学。",
+        "这就是 <term id=\"machine_learning\">机器学习</term> 的核心思想。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "机器学习不是靠人写规则，而是让计算机从经验中学习规律并做出预测。",
+        "它已经无处不在：语音识别、人脸识别、垃圾邮件过滤……"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "机器学习的核心就是从数据或经验中学习，而不是靠硬编码规则。",
+        "kind": "single_choice",
+        "options": [
+          "给程序写死所有规则",
+          "从经验中学习规律并做出预测",
+          "让程序自动生成数据",
+          "用数学公式计算所有结果"
+        ],
+        "prompt": "下面哪个最符合机器学习的定义？"
+      },
+      "focus_terms": [],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "下面哪个最符合机器学习的定义？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "所以，机器学习就是让计算机自己找到规律。",
+        "接下来，我们看看它具体是怎么做的。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Introduction to AI and ML, types of learning problems.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "machine_learning": {
+      "aliases": [
+        "ML",
+        "Machine Learning"
+      ],
+      "display": "机器学习",
+      "gloss": "让计算机从经验中学习规律并做出预测的方法。"
+    }
+  }
+}

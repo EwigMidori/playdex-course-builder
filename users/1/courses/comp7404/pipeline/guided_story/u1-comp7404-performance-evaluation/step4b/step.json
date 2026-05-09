@@ -1,0 +1,239 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "AP 关注的是精确率-召回率的关系。",
+        "但有时我们需要关注另一种关系：假正率和真正率。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s044",
+      "introduced_terms": [],
+      "lines": [
+        "假正率（FPR）表示负类样本中被误判的比例。",
+        "真正率（TPR）就是召回率。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.2",
+          "0.6"
+        ],
+        "explanation": "阈值0.85时，FP=1, TN=4, FPR=1/5=0.2, TP=3, FN=2, TPR=3/5=0.6。",
+        "kind": "fill_in_blank",
+        "prompt": "当阈值设为 0.85 时，FPR 和 TPR 分别是多少？"
+      },
+      "focus_terms": [],
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "假设有10个样本，分数从高到低为：",
+        "0.95(+), 0.93(+), 0.87(-), 0.85(+), 0.85(-), 0.85(-), 0.76(-), 0.53(+), 0.43(-), 0.25(+)。",
+        "计算阈值=0.85 时的 FPR 和 TPR。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "roc_curve"
+      ],
+      "id": "s046",
+      "introduced_terms": [
+        "roc_curve"
+      ],
+      "lines": [
+        "把每个阈值下的 (FPR, TPR) 点连起来，",
+        "就得到了 <term id=\"roc_curve\">ROC 曲线</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "false_positive_rate",
+        "true_positive_rate"
+      ],
+      "id": "s047",
+      "introduced_terms": [
+        "false_positive_rate",
+        "true_positive_rate"
+      ],
+      "lines": [
+        "ROC 曲线的横轴是 <term id=\"false_positive_rate\">假正率</term>（FPR），",
+        "纵轴是 <term id=\"true_positive_rate\">真正率</term>（TPR）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "false_positive_rate",
+        "true_positive_rate"
+      ],
+      "formula": {
+        "latex": "\\text{FPR} = \\frac{FP}{FP + TN}",
+        "spoken": "假正率等于 FP 除以 FP 加 TN。"
+      },
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "FPR 表示负类样本中被误判的比例。",
+        "我们希望 FPR 尽量低，TPR 尽量高。"
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.0,0.2",
+          "0.2,0.6",
+          "0.4,0.8",
+          "0.6,1.0",
+          "1.0,1.0"
+        ],
+        "explanation": "阈值0.95: FPR=0/5=0, TPR=1/5=0.2; 阈值0.85: FPR=1/5=0.2, TPR=3/5=0.6; 阈值0.76: FPR=2/5=0.4, TPR=4/5=0.8; 阈值0.53: FPR=3/5=0.6, TPR=5/5=1.0; 阈值0.25: FPR=5/5=1.0, TPR=5/5=1.0。",
+        "kind": "fill_in_blank",
+        "prompt": "请计算以下5个阈值下的 FPR 和 TPR，并描点绘制 ROC 曲线。"
+      },
+      "focus_terms": [
+        "false_positive_rate",
+        "true_positive_rate"
+      ],
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "使用上面的10个样本，取阈值分别为 0.95, 0.85, 0.76, 0.53, 0.25。",
+        "计算每个阈值下的 FPR 和 TPR。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "auc"
+      ],
+      "id": "s050",
+      "introduced_terms": [
+        "auc"
+      ],
+      "lines": [
+        "ROC 曲线越靠近左上角，模型性能越好。",
+        "为了量化这个“好”的程度，我们引入 <term id=\"auc\">AUC</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "auc"
+      ],
+      "id": "s051",
+      "introduced_terms": [],
+      "lines": [
+        "AUC 就是 ROC 曲线下的面积。",
+        "取值范围在 0 到 1 之间。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "auc"
+      ],
+      "id": "s052",
+      "introduced_terms": [],
+      "lines": [
+        "AUC = 1 表示完美分类器。",
+        "AUC = 0.5 表示随机猜测，毫无预测能力。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "auc"
+      ],
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "AUC 不依赖具体的阈值，",
+        "它衡量的是模型对正负样本的整体排序能力。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.0,0.2",
+          "0.2,0.6",
+          "0.4,0.8",
+          "0.6,1.0",
+          "1.0,1.0"
+        ],
+        "explanation": "同上。",
+        "kind": "fill_in_blank",
+        "prompt": "手动计算这5个阈值下的 FPR 和 TPR，并在坐标纸上描点连线。"
+      },
+      "focus_terms": [
+        "false_positive_rate",
+        "true_positive_rate"
+      ],
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "现在，请根据上面的计算结果，在坐标纸上描出 (FPR, TPR) 点，并连线形成 ROC 曲线。"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4b",
+  "source": {
+    "plain_text": "How to Construct an ROC curve, How to construct an ROC curve, EER and AUC from lecture material.",
+    "related": [
+      "How to Construct an ROC curve",
+      "How to construct an ROC curve",
+      "EER and AUC"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "auc": {
+      "aliases": [
+        "Area Under the Curve",
+        "Area Under the ROC Curve"
+      ],
+      "display": "AUC",
+      "gloss": "ROC 曲线下的面积，数值越大表示模型整体性能越好。"
+    },
+    "false_positive_rate": {
+      "aliases": [
+        "False Positive Rate",
+        "FPR"
+      ],
+      "display": "假正率",
+      "gloss": "FP / (FP + TN)，即负类样本中被误判为正类的比例。"
+    },
+    "roc_curve": {
+      "aliases": [
+        "Receiver Operating Characteristic curve",
+        "ROC"
+      ],
+      "display": "ROC 曲线",
+      "gloss": "以假正率（FPR）为横轴、真正率（TPR）为纵轴绘制的曲线，展示模型在不同阈值下的表现。"
+    },
+    "true_positive_rate": {
+      "aliases": [
+        "True Positive Rate",
+        "TPR",
+        "Recall"
+      ],
+      "display": "真正率",
+      "gloss": "TP / (TP + FN)，即召回率。"
+    }
+  }
+}

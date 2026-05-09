@@ -1,0 +1,374 @@
+{
+  "chapter_id": "lecture-05-application",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "visual_object_recognition_challenge",
+      "covered_by": [
+        "qf_flash_challenges",
+        "qf_quiz_challenges",
+        "qf_long_pixel_failure"
+      ],
+      "description": "物体识别面临的挑战：视角变化、光照变化、遮挡、类内差异等导致像素比较失效"
+    },
+    {
+      "coverage_tag": "levels_of_recognition",
+      "covered_by": [
+        "qf_flash_levels",
+        "qf_quiz_levels"
+      ],
+      "description": "物体识别的不同层次：图像分类、检测/定位、前景/背景分割"
+    },
+    {
+      "coverage_tag": "pixel_comparison_failure",
+      "covered_by": [
+        "qf_flash_challenges",
+        "qf_quiz_challenges",
+        "qf_long_pixel_failure"
+      ],
+      "description": "直接像素比较因光照、视角等变化而失败，需要更鲁棒的方法"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "visual_object_recognition_challenge",
+      "coverage_tags": [
+        "visual_object_recognition_challenge",
+        "pixel_comparison_failure"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_challenges",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能列举并解释物体识别面临的主要挑战。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能主动回忆物体识别中至少三个主要挑战及其对像素比较的影响。",
+      "question_type": "short_answer",
+      "retrieval_focus": "物体识别挑战的具体名称和含义",
+      "term_refs": [
+        {
+          "display": "视角变化",
+          "en": "Viewpoint Variation"
+        },
+        {
+          "display": "光照变化",
+          "en": "Illumination"
+        },
+        {
+          "display": "遮挡",
+          "en": "Occlusion"
+        },
+        {
+          "display": "类内差异",
+          "en": "Intra-class Variation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "视角变化（Viewpoint Variation）",
+          "estimated_seconds": 8,
+          "explanation": "视角变化是物体识别的主要挑战之一，同一物体从不同角度拍摄，像素值差异巨大。",
+          "front": "物体识别中，同一物体从不同角度拍摄导致外观差异很大的挑战叫什么？",
+          "question_id": "q_flash_challenges_v1"
+        },
+        {
+          "back": "类内差异（Intra-class Variation）",
+          "estimated_seconds": 8,
+          "explanation": "类内差异指同一类别物体在外观上可以有很大不同，增加了识别难度。",
+          "front": "物体识别中，同一类别的物体（如不同品种的猫）外观差异很大的挑战叫什么？",
+          "question_id": "q_flash_challenges_v2"
+        },
+        {
+          "back": "遮挡（Occlusion）",
+          "estimated_seconds": 6,
+          "explanation": "遮挡使计算机只能看到物体的部分信息，增加了识别难度。",
+          "front": "物体识别中，物体部分被其他物体挡住，只能看到一部分的挑战叫什么？",
+          "question_id": "q_flash_challenges_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "levels_of_recognition",
+      "coverage_tags": [
+        "levels_of_recognition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_levels",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分物体识别的三个层次。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能主动回忆物体识别的三个层次及其核心问题。",
+      "question_type": "short_answer",
+      "retrieval_focus": "物体识别三个层次的核心问题",
+      "term_refs": [
+        {
+          "display": "物体识别",
+          "en": "Object Recognition"
+        },
+        {
+          "display": "图像分类",
+          "en": "Image Classification"
+        },
+        {
+          "display": "检测/定位",
+          "en": "Detection/Localization"
+        },
+        {
+          "display": "分割",
+          "en": "Segmentation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "图像分类（Obj/Img categorization）",
+          "estimated_seconds": 6,
+          "explanation": "图像分类回答图像中是否存在某类物体。",
+          "front": "物体识别中，回答“这张图里有没有猫？”属于哪个层次？",
+          "question_id": "q_flash_levels_v1"
+        },
+        {
+          "back": "检测/定位（Detection/Localization）",
+          "estimated_seconds": 6,
+          "explanation": "检测/定位不仅判断物体是否存在，还给出其位置。",
+          "front": "物体识别中，回答“猫在图片的哪个位置？”属于哪个层次？",
+          "question_id": "q_flash_levels_v2"
+        },
+        {
+          "back": "前景/背景分割（F/G segmentation）",
+          "estimated_seconds": 6,
+          "explanation": "分割回答每个像素属于哪个物体。",
+          "front": "物体识别中，回答“哪些像素属于这只猫？”属于哪个层次？",
+          "question_id": "q_flash_levels_v3"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-application",
+  "longform_families": [
+    {
+      "concept_key": "pixel_comparison_failure",
+      "coverage_tags": [
+        "visual_object_recognition_challenge",
+        "pixel_comparison_failure"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_pixel_failure",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能综合运用物体识别挑战的知识，解释像素比较失败的原因。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能从视角、光照、遮挡、类内差异等角度分析为什么计算机无法通过直接像素比较来识别物体。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "视角变化",
+          "en": "Viewpoint Variation"
+        },
+        {
+          "display": "光照变化",
+          "en": "Illumination"
+        },
+        {
+          "display": "遮挡",
+          "en": "Occlusion"
+        },
+        {
+          "display": "类内差异",
+          "en": "Intra-class Variation"
+        },
+        {
+          "display": "物体识别",
+          "en": "Object Recognition"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "列举至少三个挑战",
+            "解释每个挑战如何影响像素值",
+            "总结为什么像素比较不可靠"
+          ],
+          "question_id": "q_long_pixel_failure_v1",
+          "reference_answer": [
+            "视角变化：同一物体从不同角度拍摄，像素排列和数值完全不同。",
+            "光照变化：光线强弱、方向不同，同一物体的亮度与阴影不同，像素值差异大。",
+            "遮挡：物体部分被挡住，只能看到一部分像素，与完整物体比较时差异很大。",
+            "类内差异：同一类物体（如不同品种的猫）外观差异大，像素值自然不同。",
+            "总结：这些挑战导致同一物体的像素值在不同条件下差异巨大，因此直接像素比较不可靠，需要更鲁棒的表示方法。"
+          ],
+          "rubric_points": [
+            "正确指出视角变化导致同一物体不同角度像素值不同",
+            "正确指出光照变化导致同一物体不同光照下像素值不同",
+            "正确指出遮挡导致物体部分像素缺失",
+            "正确指出类内差异导致同一类别物体像素值差异大",
+            "总结：这些变化使像素比较不可靠，需要更鲁棒的表示方法"
+          ],
+          "stem": "为什么计算机无法直接通过像素比较来识别物体？请从视角变化、光照变化、遮挡、类内差异等角度分析。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "描述两张图片的差异",
+            "解释像素比较的原理",
+            "分析为什么像素比较会失败",
+            "提出一个可能的解决思路"
+          ],
+          "question_id": "q_long_pixel_failure_v2",
+          "reference_answer": [
+            "阳光下和昏暗灯光下的猫，虽然内容相同，但像素值差异很大。",
+            "像素比较是逐像素比较数值，要求对应位置的像素值相近。",
+            "光照变化导致同一位置的像素值（亮度）差异巨大，因此计算机认为它们是不同的图片。",
+            "解决思路：不直接比较像素，而是提取更鲁棒的局部特征（如边缘、纹理），这些特征对光照变化更不敏感。"
+          ],
+          "rubric_points": [
+            "正确描述两张图片光照条件不同",
+            "正确解释像素比较是逐像素比较数值",
+            "正确指出光照变化导致对应像素值差异大",
+            "正确指出需要更鲁棒的表示方法（如局部特征）"
+          ],
+          "stem": "假设你有一张阳光下猫的图片和一张同一只猫在昏暗灯光下的图片。请分析为什么计算机直接比较这两张图片的像素值会失败？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "visual_object_recognition_challenge",
+      "coverage_tags": [
+        "visual_object_recognition_challenge",
+        "pixel_comparison_failure"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_challenges",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中识别物体识别挑战并判断像素比较的局限性。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能正确判断哪些是物体识别的典型挑战，并理解像素比较失败的原因。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "视角变化",
+          "en": "Viewpoint Variation"
+        },
+        {
+          "display": "光照变化",
+          "en": "Illumination"
+        },
+        {
+          "display": "遮挡",
+          "en": "Occlusion"
+        },
+        {
+          "display": "类内差异",
+          "en": "Intra-class Variation"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "文件格式是存储问题，不是视觉识别本身的挑战。视角变化、光照变化、遮挡都是典型挑战。",
+          "options": [
+            "视角变化",
+            "光照变化",
+            "文件格式",
+            "遮挡"
+          ],
+          "question_id": "q_quiz_challenges_v1",
+          "stem": "下面哪个不是物体识别面临的典型挑战？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "光照变化会导致同一物体的像素值产生巨大差异，因此计算机可能误判为不同物体。",
+          "options": [
+            "能准确认出是同一只猫，因为像素值完全一样",
+            "可能认不出是同一只猫，因为像素值差异很大",
+            "能认出，但需要更多时间",
+            "完全无法处理，因为图片格式不同"
+          ],
+          "question_id": "q_quiz_challenges_v2",
+          "stem": "计算机直接比较两张光照不同的猫的图片的像素值，最可能的结果是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "levels_of_recognition",
+      "coverage_tags": [
+        "levels_of_recognition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_levels",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中区分物体识别的不同层次。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能根据任务描述正确判断属于哪个识别层次。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "物体识别",
+          "en": "Object Recognition"
+        },
+        {
+          "display": "图像分类",
+          "en": "Image Classification"
+        },
+        {
+          "display": "检测/定位",
+          "en": "Detection/Localization"
+        },
+        {
+          "display": "分割",
+          "en": "Segmentation"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "检测/定位不仅判断物体是否存在，还给出其位置（边界框）。",
+          "options": [
+            "图像分类",
+            "检测/定位",
+            "前景/背景分割",
+            "实例分割"
+          ],
+          "question_id": "q_quiz_levels_v1",
+          "stem": "一个任务要求判断图像中是否有行人，并给出每个行人的边界框。这属于哪个识别层次？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 12,
+          "explanation": "图像分类只回答图像中是否有某类物体，不关心位置。",
+          "options": [
+            "图像分类",
+            "检测/定位",
+            "前景/背景分割",
+            "语义分割"
+          ],
+          "question_id": "q_quiz_levels_v2",
+          "stem": "一个任务要求判断一张图片是否包含汽车。这属于哪个识别层次？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-application/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

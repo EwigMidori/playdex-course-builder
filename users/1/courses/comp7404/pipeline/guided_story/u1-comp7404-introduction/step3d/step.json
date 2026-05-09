@@ -1,0 +1,130 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-introduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "现实中的情况往往不是非黑即白。",
+        "有时你只有部分数据有标签。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "semi_supervised_learning"
+      ],
+      "id": "s043",
+      "introduced_terms": [
+        "semi_supervised_learning"
+      ],
+      "lines": [
+        "比如，你有1000张照片，只有100张标记了“猫”或“狗”。",
+        "这就是 <term id=\"semi_supervised_learning\">半监督学习</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s044",
+      "introduced_terms": [],
+      "lines": [
+        "还有一种情况：你在A任务上学到的知识，",
+        "能不能用到B任务上？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "transfer_learning"
+      ],
+      "id": "s045",
+      "introduced_terms": [
+        "transfer_learning"
+      ],
+      "lines": [
+        "比如，你学会了识别猫，能不能用来识别老虎？",
+        "这就是 <term id=\"transfer_learning\">迁移学习</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "迁移学习是将一个任务上学到的知识应用到另一个相关任务。",
+        "kind": "single_choice",
+        "options": [
+          "半监督学习",
+          "迁移学习",
+          "监督学习",
+          "无监督学习"
+        ],
+        "prompt": "以下哪个场景最适合用迁移学习？"
+      },
+      "focus_terms": [],
+      "id": "s046",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个场景最适合用迁移学习？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "100张有标签+900张无标签照片，是半监督学习的典型场景。",
+        "kind": "single_choice",
+        "options": [
+          "半监督学习",
+          "迁移学习",
+          "监督学习",
+          "无监督学习"
+        ],
+        "prompt": "以下哪个场景最适合用半监督学习？"
+      },
+      "focus_terms": [],
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个场景最适合用半监督学习？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "不同的学习问题，对应不同的算法。",
+        "接下来，我们看看一个具体的监督学习例子：分类。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step3d",
+  "source": {
+    "plain_text": "Semi-supervised learning, transfer learning.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "semi_supervised_learning": {
+      "aliases": [
+        "semi-supervised learning"
+      ],
+      "display": "半监督学习",
+      "gloss": "结合少量有标签数据和大量无标签数据进行学习。"
+    },
+    "transfer_learning": {
+      "aliases": [
+        "transfer learning"
+      ],
+      "display": "迁移学习",
+      "gloss": "将一个领域学到的知识应用到另一个相关但不同的领域。"
+    }
+  }
+}

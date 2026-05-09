@@ -1,0 +1,106 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s021",
+      "introduced_terms": [
+        "frequent_itemset"
+      ],
+      "lines": [
+        "挖掘关联规则分两步。",
+        "第一步：找出所有<term id=\"frequent_itemset\">频繁项集</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "频繁项集就是支持度 ≥ ρₛ × N 的项集。",
+        "比如 ρₛ = 20%，N = 25，那么支持度 ≥ 5 的项集就是频繁的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "第二步：从每个频繁项集生成规则。",
+        "把频繁项集 S 分成两个非空子集 X 和 Y，检查置信度。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "比如频繁项集 {c, d, e}，支持度 = 5。",
+        "它可以生成 6 条候选规则。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "其中 {c, e} ⇒ {d} 的置信度 = 5/6 ≈ 83%。",
+        "如果 ρ_c = 65%，这条规则就合格了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "而 {c, d} ⇒ {e} 的置信度 = 5/9 ≈ 56%，低于 65%。",
+        "所以这条规则会被淘汰。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "第二步相对简单，因为 k 通常很小。",
+        "一个 k-项集最多生成 2ᵏ - 2 条规则。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "6"
+        ],
+        "explanation": "2³ - 2 = 8 - 2 = 6。",
+        "kind": "fill_in_blank",
+        "prompt": "候选规则数量 = ?"
+      },
+      "id": "s028",
+      "lines": [
+        "一个 3-项集最多能生成多少条候选规则？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "How to find rules?, Example, Generating Rules from Frequent Itemsets",
+    "related": [
+      "Step 1: find all frequent itemsets",
+      "Step 2: generate rules"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "frequent_itemset": {
+      "aliases": [
+        "Frequent Itemset"
+      ],
+      "display": "频繁项集",
+      "gloss": "支持度 ≥ 最小支持度阈值的项集。"
+    }
+  }
+}

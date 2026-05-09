@@ -1,0 +1,378 @@
+{
+  "chapter_id": "lecture-06-graph-clustering",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "second_smallest_eigenvector",
+      "covered_by": [
+        "qf_flash_second_eigenvector",
+        "qf_quiz_second_eigenvector",
+        "qf_long_second_eigenvector"
+      ],
+      "description": "为什么用第二小特征向量做二分：第一个特征向量是常数，无分割信息；第二小特征向量包含最优二分信息。"
+    },
+    {
+      "coverage_tag": "first_eigenvector_constant",
+      "covered_by": [
+        "qf_flash_first_eigenvector",
+        "qf_quiz_first_eigenvector"
+      ],
+      "description": "第一个特征向量为常数向量，对应特征值0，不包含分割信息。"
+    },
+    {
+      "coverage_tag": "sign_based_bipartition",
+      "covered_by": [
+        "qf_flash_sign_bipartition",
+        "qf_quiz_sign_bipartition",
+        "qf_long_second_eigenvector"
+      ],
+      "description": "根据第二小特征向量的正负号将节点分为两组。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "first_eigenvector_constant",
+      "coverage_tags": [
+        "first_eigenvector_constant"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_first_eigenvector",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别第一个特征向量的性质：常数向量，无分割信息。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能准确说出第一个特征向量的数学形式及其含义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "第一个特征向量的元素取值特点及其对应的特征值。",
+      "term_refs": [
+        {
+          "display": "第一个特征向量",
+          "en": "first eigenvector"
+        }
+      ],
+      "variants": [
+        {
+          "back": "y0 = 1（全1向量）",
+          "estimated_seconds": 8,
+          "explanation": "因为 (D-W)1 = 0，所以全1向量是特征值为0的特征向量。",
+          "front": "在归一化割的广义特征值系统 (D-W)y = λDy 中，第一个特征向量 y0 的所有元素都相等。y0 的具体形式是什么？",
+          "question_id": "q_flash_first_eigenvector_v1"
+        },
+        {
+          "back": "0",
+          "estimated_seconds": 6,
+          "explanation": "因为 (D-W)1 = 0 = 0 * D * 1，所以特征值为0。",
+          "front": "第一个特征向量 y0 = 1 对应的特征值是多少？",
+          "question_id": "q_flash_first_eigenvector_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "second_smallest_eigenvector",
+      "coverage_tags": [
+        "second_smallest_eigenvector"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_second_eigenvector",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能记住第二小特征向量是归一化割二分的关键。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能准确说出用于二分图的特征向量的序号。",
+      "question_type": "short_answer",
+      "retrieval_focus": "归一化割算法中用于二分图的特征向量的序号。",
+      "term_refs": [
+        {
+          "display": "第二小特征向量",
+          "en": "second smallest eigenvector"
+        }
+      ],
+      "variants": [
+        {
+          "back": "第二个（第二小的特征值对应的特征向量）",
+          "estimated_seconds": 6,
+          "explanation": "第一个特征向量是常数，无分割信息；第二小的特征向量包含最优二分信息。",
+          "front": "归一化割算法中，用于对图进行二分的特征向量是第几个？",
+          "question_id": "q_flash_second_eigenvector_v1"
+        },
+        {
+          "back": "因为它的所有元素都相等（常数向量），无法区分不同节点。",
+          "estimated_seconds": 8,
+          "explanation": "常数向量意味着所有节点被分到同一组，没有提供任何分割信息。",
+          "front": "为什么第一个特征向量不能用于图分割？",
+          "question_id": "q_flash_second_eigenvector_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "sign_based_bipartition",
+      "coverage_tags": [
+        "sign_based_bipartition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sign_bipartition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出如何利用第二小特征向量的正负号进行二分。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能准确描述从特征向量到二分结果的转换规则。",
+      "question_type": "short_answer",
+      "retrieval_focus": "第二小特征向量元素的正负号与节点分组的关系。",
+      "term_refs": [
+        {
+          "display": "符号二分",
+          "en": "sign-based bipartition"
+        }
+      ],
+      "variants": [
+        {
+          "back": "元素值为正号的节点归为一组，负号的节点归为另一组。",
+          "estimated_seconds": 8,
+          "explanation": "正号表示节点属于A组，负号表示属于B组。",
+          "front": "使用第二小特征向量进行二分时，如何根据特征向量的元素值决定节点归属？",
+          "question_id": "q_flash_sign_bipartition_v1"
+        },
+        {
+          "back": "正号组（通常称为A组）",
+          "estimated_seconds": 6,
+          "explanation": "正号表示节点属于一组，负号表示属于另一组。",
+          "front": "如果第二小特征向量的第i个元素是正数，节点i应该被分到哪一组？",
+          "question_id": "q_flash_sign_bipartition_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-graph-clustering",
+  "longform_families": [
+    {
+      "concept_key": "second_smallest_eigenvector",
+      "coverage_tags": [
+        "second_smallest_eigenvector",
+        "sign_based_bipartition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_second_eigenvector",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么用第二小特征向量做二分以及如何操作。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能完整解释从特征向量到二分结果的推理过程。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "第二小特征向量",
+          "en": "second smallest eigenvector"
+        },
+        {
+          "display": "符号二分",
+          "en": "sign-based bipartition"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "第一个特征向量的性质",
+            "第二小特征向量的性质",
+            "二分规则"
+          ],
+          "question_id": "q_long_second_eigenvector_v1",
+          "reference_answer": [
+            "第一个特征向量 y0 = 1 是常数向量，所有元素相等，意味着所有节点被分到同一组，没有提供任何分割信息。",
+            "第二小的特征向量是放松连续优化后的实值解，其元素有正有负，包含了图的最优二分切割信息。",
+            "二分规则：将特征向量中元素值为正的节点归为一组（A组），元素值为负的节点归为另一组（B组）。"
+          ],
+          "rubric_points": [
+            "指出第一个特征向量是常数向量，所有元素相等，无法区分节点",
+            "指出第二小特征向量的元素有正有负，包含分割信息",
+            "说明根据特征向量元素的正负号将节点分为两组"
+          ],
+          "stem": "请解释在归一化割算法中，为什么使用第二小的特征向量（而不是第一个）进行图二分，并说明如何利用该特征向量进行二分。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "比较v1和v2",
+            "选择v2的理由",
+            "应用符号二分规则"
+          ],
+          "question_id": "q_long_second_eigenvector_v2",
+          "reference_answer": [
+            "v1所有元素相等，是常数向量，对应第一个特征向量，不能用于分割。",
+            "v2元素有正有负，对应第二小特征向量，包含了最优二分信息。",
+            "根据符号二分规则：节点1（0.6）和节点2（0.4）为正，归为一组；节点3（-0.2）、节点4（-0.5）和节点5（-0.3）为负，归为另一组。"
+          ],
+          "rubric_points": [
+            "指出v1是常数向量，无分割信息",
+            "指出v2元素有正有负，包含分割信息",
+            "正确应用符号二分规则：正号节点（1,2）为一组，负号节点（3,4,5）为另一组"
+          ],
+          "stem": "假设你求解归一化割的广义特征值系统后，得到以下特征向量：v1=[1,1,1,1,1], v2=[0.6,0.4,-0.2,-0.5,-0.3]。请解释为什么选择v2而不是v1进行二分，并说明如何用v2将5个节点分成两组。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "first_eigenvector_constant",
+      "coverage_tags": [
+        "first_eigenvector_constant"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_first_eigenvector",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中判断第一个特征向量的性质及其是否可用于分割。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能正确判断第一个特征向量的分割能力。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "第一个特征向量",
+          "en": "first eigenvector"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "第一个特征向量是常数向量，所有元素相等，无法区分节点，因此不能用于分割。",
+          "options": [
+            "不能，因为所有元素相等",
+            "能，因为它是第一个",
+            "能，因为特征值最小",
+            "不能，因为特征值太大"
+          ],
+          "question_id": "q_quiz_first_eigenvector_v1",
+          "stem": "在归一化割算法中，第一个特征向量（对应最小特征值0）能否用于分割图？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "v1 所有元素相等，是常数向量，对应第一个特征向量，不能用于分割。",
+          "options": [
+            "v1 是第一个特征向量，不能用于分割",
+            "v1 是第二个特征向量，可以用于分割",
+            "v1 是第三个特征向量，可以用于分割",
+            "v1 是第一个特征向量，可以用于分割"
+          ],
+          "question_id": "q_quiz_first_eigenvector_v2",
+          "stem": "给定特征向量 v1 = [1, 1, 1, 1]，以下哪个说法正确？"
+        }
+      ]
+    },
+    {
+      "concept_key": "second_smallest_eigenvector",
+      "coverage_tags": [
+        "second_smallest_eigenvector"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_second_eigenvector",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中识别用于二分图的特征向量。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能正确选择用于二分的特征向量。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "第二小特征向量",
+          "en": "second smallest eigenvector"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "第一个特征向量是常数，没有分割信息；第二个最小的特征向量包含了最优的二分信息。",
+          "options": [
+            "第一个",
+            "第二个",
+            "第三个",
+            "最后一个"
+          ],
+          "question_id": "q_quiz_second_eigenvector_v1",
+          "stem": "归一化割算法中，用于二分图的特征向量是第几个？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "v1是常数向量，无分割信息；v2元素有正有负，可以用于二分。",
+          "options": [
+            "特征向量2",
+            "特征向量1",
+            "特征向量3",
+            "特征向量4"
+          ],
+          "question_id": "q_quiz_second_eigenvector_v2",
+          "stem": "给定特征向量序列：v1=[1,1,1,1], v2=[0.5, 0.5, -0.5, -0.5], v3=[0.3, -0.3, 0.3, -0.3], v4=[0.1, 0.1, 0.1, -0.3]。哪个可用于二分？"
+        }
+      ]
+    },
+    {
+      "concept_key": "sign_based_bipartition",
+      "coverage_tags": [
+        "sign_based_bipartition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_sign_bipartition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能应用符号二分规则判断节点归属。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能根据特征向量元素的正负号正确分配节点到组。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "符号二分",
+          "en": "sign-based bipartition"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "节点1的值为0.3（正），节点3的值为0.8（正），所以都分到正号组。",
+          "options": [
+            "节点1和节点3都分到正号组",
+            "节点1分到正号组，节点3分到负号组",
+            "节点1分到负号组，节点3分到正号组",
+            "节点1和节点3都分到负号组"
+          ],
+          "question_id": "q_quiz_sign_bipartition_v1",
+          "stem": "第二小特征向量为 y = [0.3, -0.1, 0.8, -0.5]。根据符号二分规则，节点1和节点3应分到哪一组？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "节点3的值为-0.6（负），属于负号组。节点1和节点2的值为正。",
+          "options": [
+            "节点1",
+            "节点2",
+            "节点3",
+            "节点1和节点2"
+          ],
+          "question_id": "q_quiz_sign_bipartition_v2",
+          "stem": "第二小特征向量为 y = [0.2, 0.1, -0.6, -0.3]。以下哪个节点属于负号组？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-graph-clustering/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

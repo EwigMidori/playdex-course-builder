@@ -1,0 +1,426 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "fp_growth_algorithm_intro",
+      "covered_by": [
+        "qf_flash_fp_growth_idea",
+        "qf_quiz_fp_growth_advantage"
+      ],
+      "description": "FP-Growth 作为 Apriori 的替代算法，核心思想是避免候选集生成"
+    },
+    {
+      "coverage_tag": "fp_tree_compression",
+      "covered_by": [
+        "qf_flash_fp_tree_definition",
+        "qf_quiz_fp_tree_purpose"
+      ],
+      "description": "FP-tree 将事务数据库压缩为紧凑树结构，可放入内存"
+    },
+    {
+      "coverage_tag": "two_scan_efficiency",
+      "covered_by": [
+        "qf_flash_two_scans",
+        "qf_quiz_two_scans"
+      ],
+      "description": "FP-Growth 只需两次数据库扫描，I/O 高效"
+    },
+    {
+      "coverage_tag": "divide_and_conquer_mining",
+      "covered_by": [
+        "qf_flash_mining_strategy",
+        "qf_long_mining_process"
+      ],
+      "description": "建树后用递归分治策略从 FP-tree 提取频繁项集"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "fp_growth_core_idea",
+      "coverage_tags": [
+        "fp_growth_algorithm_intro"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_fp_growth_idea",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 FP-Growth 相比 Apriori 的核心改进点。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了 FP-Growth 避免候选集生成这一关键设计思想。",
+      "question_type": "short_answer",
+      "retrieval_focus": "FP-Growth 相对于 Apriori 最根本的改进是什么",
+      "term_refs": [
+        {
+          "display": "FP-Growth",
+          "en": "FP-Growth (Frequent Pattern Growth)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "避免候选集生成（不再生成候选集和进行子集测试）。",
+          "estimated_seconds": 8,
+          "explanation": "Apriori 需要生成大量候选集并测试其子集是否频繁，FP-Growth 通过树结构直接压缩数据，跳过了这一步骤。",
+          "front": "FP-Growth 相比 Apriori 最根本的改进是什么？",
+          "question_id": "q_flash_fp_growth_idea_v1"
+        },
+        {
+          "back": "先将事务数据库压缩成一棵 FP-tree，再直接从树中递归提取频繁项集。",
+          "estimated_seconds": 10,
+          "explanation": "FP-Growth 的策略是“先压缩，再挖掘”，用 FP-tree 紧凑表示数据，避免了逐层生成候选集。",
+          "front": "FP-Growth 通过什么方式避免了 Apriori 中的候选集生成？",
+          "question_id": "q_flash_fp_growth_idea_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "fp_tree_definition",
+      "coverage_tags": [
+        "fp_tree_compression"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_fp_tree_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述 FP-tree 是什么以及它的作用。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了 FP-tree 作为压缩数据结构的基本定义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "FP-tree 的定义和用途",
+      "term_refs": [
+        {
+          "display": "FP-tree",
+          "en": "FP-tree (Frequent Pattern Tree)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "Frequent Pattern Tree（频繁模式树），用于将事务数据库压缩成紧凑的树结构，以便高效挖掘频繁项集。",
+          "estimated_seconds": 10,
+          "explanation": "FP-tree 是 FP-Growth 算法的核心数据结构，它将原始事务记录压缩存储，减少 I/O 开销。",
+          "front": "FP-tree 的全称是什么？它用来做什么？",
+          "question_id": "q_flash_fp_tree_definition_v1"
+        },
+        {
+          "back": "更紧凑，可以放入内存，避免多次扫描数据库。",
+          "estimated_seconds": 8,
+          "explanation": "当顾客购买的商品有较长公共前缀时，FP-tree 的压缩效果尤其明显，比原始数据库小得多。",
+          "front": "FP-tree 相比原始事务数据库有什么优势？",
+          "question_id": "q_flash_fp_tree_definition_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "two_scan_efficiency",
+      "coverage_tags": [
+        "two_scan_efficiency"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_two_scans",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 FP-Growth 需要几次数据库扫描。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了 FP-Growth 的 I/O 效率特征。",
+      "question_type": "short_answer",
+      "retrieval_focus": "FP-Growth 的数据库扫描次数",
+      "term_refs": [
+        {
+          "display": "数据库扫描",
+          "en": "database scan"
+        }
+      ],
+      "variants": [
+        {
+          "back": "两次。",
+          "estimated_seconds": 5,
+          "explanation": "第一次扫描找出频繁 1-项集，第二次扫描构建 FP-tree。后续挖掘直接在树上进行，无需再扫描数据库。",
+          "front": "FP-Growth 算法总共需要扫描数据库几次？",
+          "question_id": "q_flash_two_scans_v1"
+        },
+        {
+          "back": "第一次：找出所有频繁 1-项集；第二次：构建 FP-tree。",
+          "estimated_seconds": 8,
+          "explanation": "第一次扫描统计每个项的频率，第二次扫描用处理好的事务构建 FP-tree。",
+          "front": "FP-Growth 的两次数据库扫描分别用来做什么？",
+          "question_id": "q_flash_two_scans_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "divide_and_conquer_mining",
+      "coverage_tags": [
+        "divide_and_conquer_mining"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_mining_strategy",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出 FP-Growth 从 FP-tree 中提取频繁项集所用的策略。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了 FP-Growth 挖掘阶段的基本策略。",
+      "question_type": "short_answer",
+      "retrieval_focus": "FP-Growth 挖掘频繁项集使用的策略",
+      "term_refs": [
+        {
+          "display": "分治策略",
+          "en": "divide-and-conquer strategy"
+        }
+      ],
+      "variants": [
+        {
+          "back": "递归的分治策略（divide-and-conquer）。",
+          "estimated_seconds": 8,
+          "explanation": "对每个频繁项，构建条件模式基和条件 FP-tree，然后递归处理，直到条件 FP-tree 为空或只含单一路径。",
+          "front": "FP-Growth 从 FP-tree 中提取频繁项集时使用什么策略？",
+          "question_id": "q_flash_mining_strategy_v1"
+        },
+        {
+          "back": "CPU 高效，因为避免了候选集生成和子集测试。",
+          "estimated_seconds": 10,
+          "explanation": "FP-tree 已经将数据压缩在内存中，挖掘过程直接在树上递归进行，不需要反复扫描数据库或生成大量候选集。",
+          "front": "FP-Growth 的挖掘阶段是 CPU 高效还是 I/O 高效？为什么？",
+          "question_id": "q_flash_mining_strategy_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-2",
+  "longform_families": [
+    {
+      "concept_key": "fp_growth_overall_process",
+      "coverage_tags": [
+        "fp_growth_algorithm_intro",
+        "fp_tree_compression",
+        "two_scan_efficiency",
+        "divide_and_conquer_mining"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_mining_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整描述 FP-Growth 算法的两阶段流程及其效率优势。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了 FP-Growth 从数据压缩到频繁项集挖掘的完整过程。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "FP-Growth",
+          "en": "FP-Growth"
+        },
+        {
+          "display": "FP-tree",
+          "en": "FP-tree"
+        },
+        {
+          "display": "频繁项集",
+          "en": "frequent itemset"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "第一阶段：数据压缩",
+            "第二阶段：频繁项集挖掘",
+            "效率优势分析"
+          ],
+          "question_id": "q_long_mining_process_v1",
+          "reference_answer": [
+            "第一阶段（数据压缩）：第一次扫描数据库，找出所有频繁 1-项集及其支持度；第二次扫描数据库，将每条事务中的非频繁项移除，将剩余项按频率降序排列，然后插入 FP-tree，同时维护头表。FP-tree 通过共享公共前缀实现紧凑存储。",
+            "第二阶段（频繁项集挖掘）：从最后一个频繁项开始，沿着头表链表收集条件模式基，构建条件 FP-tree，递归处理直到条件 FP-tree 为空或只含单一路径，从而得到所有频繁项集。",
+            "效率优势：FP-Growth 不需要像 Apriori 那样生成大量候选集并进行子集测试（CPU 高效），而且只需两次数据库扫描，后续挖掘在内存中的 FP-tree 上进行（I/O 高效）。"
+          ],
+          "rubric_points": [
+            "正确描述第一阶段：扫描数据库两次，构建 FP-tree（第一次找频繁 1-项集，第二次建树）",
+            "正确描述 FP-tree 的紧凑性：共享公共前缀，可放入内存",
+            "正确描述第二阶段：使用递归分治策略，从 FP-tree 中提取频繁项集",
+            "正确解释效率优势：避免候选集生成（CPU 高效）和减少数据库扫描（I/O 高效）"
+          ],
+          "stem": "请描述 FP-Growth 算法的完整流程，包括两个主要阶段，并解释为什么它比 Apriori 更高效。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "Apriori 在这种场景下的问题",
+            "FP-Growth 的解决方案",
+            "具体处理步骤"
+          ],
+          "question_id": "q_long_mining_process_v2",
+          "reference_answer": [
+            "Apriori 的问题：当事务很长时，频繁项集的数量会爆炸式增长，Apriori 需要生成大量候选集并进行多次数据库扫描，效率极低。",
+            "FP-Growth 的解决方案：先将数据库压缩成 FP-tree，树结构通过共享公共前缀来紧凑表示长事务，然后直接在树上递归挖掘，无需生成候选集。",
+            "具体步骤：第一次扫描找出频繁项；第二次扫描构建 FP-tree（移除不频繁项，按频率降序排列后插入树中）；然后从最后一个频繁项开始，构建条件模式基和条件 FP-tree，递归挖掘所有频繁项集。整个过程只需两次数据库扫描。"
+          ],
+          "rubric_points": [
+            "指出 Apriori 在长事务下会产生大量候选集，导致性能下降",
+            "指出 FP-Growth 通过树结构避免候选集生成",
+            "描述 FP-tree 如何通过共享前缀压缩长事务",
+            "描述递归分治策略如何从树中提取频繁项集"
+          ],
+          "stem": "假设你有一个包含大量长事务的数据库，每个事务包含许多商品。请解释为什么 FP-Growth 在这种情况下比 Apriori 更合适，并描述 FP-Growth 是如何处理这种场景的。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "fp_growth_advantage",
+      "coverage_tags": [
+        "fp_growth_algorithm_intro"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_fp_growth_advantage",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在多个选项中准确识别 FP-Growth 相比 Apriori 的最大优势。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能区分 FP-Growth 和 Apriori 的核心差异。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "FP-Growth",
+          "en": "FP-Growth"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "FP-Growth 的核心改进就是避免候选集生成，从而大幅提升效率。",
+          "options": [
+            "需要更多次数据库扫描",
+            "不需要生成候选集",
+            "只能处理少量数据",
+            "必须使用更复杂的数学公式"
+          ],
+          "question_id": "q_quiz_fp_growth_advantage_v1",
+          "stem": "FP-Growth 相比 Apriori 最大的优势是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "FP-Growth 先将事务数据库压缩成 FP-tree，然后使用分治策略递归提取频繁项集，无需生成候选集。",
+          "options": [
+            "逐层生成候选集并测试子集",
+            "先压缩数据为树结构，再递归挖掘",
+            "需要多次扫描数据库来生成规则",
+            "只能处理二元属性数据"
+          ],
+          "question_id": "q_quiz_fp_growth_advantage_v2",
+          "stem": "以下哪一项是 FP-Growth 算法的主要特点？"
+        }
+      ]
+    },
+    {
+      "concept_key": "fp_tree_purpose",
+      "coverage_tags": [
+        "fp_tree_compression"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_fp_tree_purpose",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解 FP-tree 在 FP-Growth 中的作用。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了 FP-tree 作为压缩数据结构的目的。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "FP-tree",
+          "en": "FP-tree"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "FP-tree 将原始事务记录压缩成紧凑的树结构，可以放入内存，避免多次扫描数据库。",
+          "options": [
+            "让数据可视化更美观",
+            "将事务数据库压缩成紧凑结构，减少 I/O 开销",
+            "替代 Apriori 中的哈希树",
+            "用于生成候选 2-项集"
+          ],
+          "question_id": "q_quiz_fp_tree_purpose_v1",
+          "stem": "FP-Growth 算法中构建 FP-tree 的主要目的是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "当不同事务有相同的前缀项时，FP-tree 会共享这些前缀路径，从而比原始数据库更紧凑。",
+          "options": [
+            "每个事务单独存储为一条路径",
+            "不同事务的公共前缀可以共享路径",
+            "所有项都按字母顺序排列",
+            "树中只存储频繁 2-项集"
+          ],
+          "question_id": "q_quiz_fp_tree_purpose_v2",
+          "stem": "FP-tree 的紧凑性主要得益于什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "two_scan_efficiency",
+      "coverage_tags": [
+        "two_scan_efficiency"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_two_scans",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确判断 FP-Growth 的扫描次数。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了 FP-Growth 的 I/O 效率特征。",
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "数据库扫描",
+          "en": "database scan"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "第一次扫描找出频繁 1-项集，第二次扫描构建 FP-tree。后续挖掘直接在树上进行，无需再扫描数据库。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_two_scans_v1",
+          "stem": "FP-Growth 算法只需要两次数据库扫描即可完成频繁项集挖掘。"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "FP-tree 已经将数据压缩在内存中，后续的递归挖掘直接在树上进行，不需要再扫描数据库。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_two_scans_v2",
+          "stem": "FP-Growth 算法在构建 FP-tree 之后，每次递归挖掘都需要重新扫描数据库。"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "Chapter 6 Association Analysis (Part 2) - FP-Growth, FP-tree, Mining Frequent Patterns",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "step1: FP-Growth 的核心思想：用树结构代替候选集生成",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-2/plain.txt",
+    "related": [],
+    "source_outline": "FP-Growth: compress DB into FP-tree, then extract frequent itemsets; avoid candidate generation"
+  },
+  "target_language": "zh-CN"
+}

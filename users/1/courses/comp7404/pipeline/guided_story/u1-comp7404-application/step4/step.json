@@ -1,0 +1,247 @@
+{
+  "chapter_id": "lecture-05-application",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-application",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "histogram"
+      ],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "有了图像的词袋向量，如何比较两张图是否相似？",
+        "需要计算两个直方图之间的距离。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "histogram"
+      ],
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "最直接的是 L1 距离和 L2 距离（欧氏距离）。",
+        "但还有更专门针对直方图的距离。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "chi_square_distance"
+      ],
+      "formula": {
+        "latex": "D(S_1, S_2) = \\frac{1}{2} \\sum_{i=1}^{m} \\frac{(\\mu_i - \\nu_i)^2}{(\\mu_i + \\nu_i)}",
+        "spoken": "卡方距离等于所有桶上，两个直方图差值的平方除以它们之和，再求和的一半。"
+      },
+      "id": "s039",
+      "introduced_terms": [
+        "chi_square_distance"
+      ],
+      "lines": [
+        "比如 <term id=\"chi_square_distance\">卡方距离</term>，",
+        "它对直方图中每个桶的差异进行归一化。"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "histogram_intersection"
+      ],
+      "formula": {
+        "latex": "\\operatorname{Sim}(S_1, S_2) = \\sum_{i=1}^{m} \\min(\\mu_i, \\nu_i)",
+        "spoken": "直方图交等于两个直方图在每个桶上取最小值，然后求和。"
+      },
+      "id": "s040",
+      "introduced_terms": [
+        "histogram_intersection"
+      ],
+      "lines": [
+        "另一种是 <term id=\"histogram_intersection\">直方图交</term>，",
+        "它衡量两个直方图的重叠程度。"
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "直方图交衡量的是重叠程度，值越大说明重叠越多，图像越相似。",
+        "kind": "single_choice",
+        "options": [
+          "越相似",
+          "越不相似",
+          "没有关系",
+          "取决于直方图的大小"
+        ],
+        "prompt": "直方图交的值越大，表示两张图越相似还是越不相似？"
+      },
+      "focus_terms": [
+        "histogram_intersection"
+      ],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "直方图交的值越大，表示两张图越相似还是越不相似？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": "卡方距离会给出一个较大的差异值，因为两个直方图在每个桶上的差异都很大；直方图交会给出一个较小的相似度值，因为重叠部分很少。",
+        "kind": "short_answer",
+        "prompt": "给定两个直方图，一个表示蓝天草地，另一个表示草地蓝天（视觉单词分布相同但位置不同），使用卡方距离和直方图交分别会得到什么结果？请解释原因。"
+      },
+      "focus_terms": [
+        "chi_square_distance",
+        "histogram_intersection"
+      ],
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "给定两个直方图，一个表示蓝天草地，另一个表示草地蓝天（视觉单词分布相同但位置不同），使用卡方距离和直方图交分别会得到什么结果？请解释原因。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "词袋模型很直观，因为它和文档分析是类比关系。",
+        "图像里的视觉单词，就像文档里的文字单词。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s044",
+      "introduced_terms": [],
+      "lines": [
+        "它还可以和生成模型结合，方便进行弱监督或无监督学习。",
+        "而且，学习和识别的速度相对较快。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "不过，它有一个明显的缺点。",
+        "词袋模型完全忽略了图像的空间结构。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s046",
+      "introduced_terms": [],
+      "lines": [
+        "来看一个失败案例：",
+        "一张“蓝天在上，草地在下”的图片，和一张“草地在上，蓝天在下”的图片。",
+        "它们的词袋向量可能完全相同，但内容完全不同！"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "词袋模型只统计视觉单词出现的次数，不关心它们的位置，所以会认为这两张图相似。",
+        "kind": "single_choice",
+        "options": [
+          "会认为它们很相似，因为词袋向量相同",
+          "会认为它们不同，因为空间布局不同",
+          "无法判断，因为缺少空间信息",
+          "会认为它们完全相同"
+        ],
+        "prompt": "词袋模型会认为这两张空间布局不同的图片相似吗？"
+      },
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [
+        "词袋模型会认为这两张空间布局不同的图片相似吗？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": "词袋模型在空间布局不同但视觉单词分布相同的场景下会失败，例如蓝天草地互换。因为它只统计频率，忽略位置。",
+        "kind": "short_answer",
+        "prompt": "请分析词袋模型在什么场景下会失败？为什么？"
+      },
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "请分析词袋模型在什么场景下会失败？为什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": "因为词袋模型只统计视觉单词出现的频率，不关心它们的位置，所以当空间布局不同但视觉单词分布相同时，会误判为相似。",
+        "kind": "short_answer",
+        "prompt": "请解释为什么词袋模型会认为两张空间布局不同的图片相似？"
+      },
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "请解释为什么词袋模型会认为两张空间布局不同的图片相似？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s050",
+      "introduced_terms": [],
+      "lines": [
+        "为了弥补这个缺陷，人们提出了改进方法。",
+        "比如空间金字塔匹配。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "4. Histogram-based distances: L1 distance, L2 distance, χ² distance, Histogram intersection. Model properties: Intuitive, Analogy to documents, (Could use) generative models, Learning and recognition relatively fast.",
+    "related": [
+      "lecture-05-application"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "chi_square_distance": {
+      "aliases": [
+        "Chi-square Distance",
+        "χ² distance"
+      ],
+      "display": "卡方距离",
+      "gloss": "一种衡量两个直方图差异的统计距离。"
+    },
+    "histogram_intersection": {
+      "aliases": [
+        "Histogram Intersection"
+      ],
+      "display": "直方图交",
+      "gloss": "一种衡量两个直方图相似度的方法，取每个桶的最小值之和。"
+    }
+  }
+}

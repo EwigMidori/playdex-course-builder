@@ -1,0 +1,739 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "pca_vs_lda_comparison",
+      "covered_by": [
+        "qf_flash_pca_vs_lda",
+        "qf_quiz_pca_vs_lda",
+        "qf_long_pca_vs_lda"
+      ],
+      "description": "PCA 与 LDA 的核心区别：无监督 vs 有监督，方差最大化 vs 类别可分性最大化"
+    },
+    {
+      "coverage_tag": "pca_use_case",
+      "covered_by": [
+        "qf_flash_pca_use_case",
+        "qf_quiz_pca_use_case"
+      ],
+      "description": "PCA 的适用场景：无标签数据、探索性分析、可视化、去噪"
+    },
+    {
+      "coverage_tag": "lda_use_case",
+      "covered_by": [
+        "qf_flash_lda_use_case",
+        "qf_quiz_lda_use_case"
+      ],
+      "description": "LDA 的适用场景：有标签的分类任务，均值差异比方差更重要"
+    },
+    {
+      "coverage_tag": "lda_weakness",
+      "covered_by": [
+        "qf_flash_lda_weakness",
+        "qf_quiz_lda_weakness"
+      ],
+      "description": "LDA 的弱点：每类需要足够多样本，否则 S_W 估计不准"
+    },
+    {
+      "coverage_tag": "fisherface_vs_eigenface",
+      "covered_by": [
+        "qf_flash_fisherface_vs_eigenface",
+        "qf_quiz_fisherface_vs_eigenface"
+      ],
+      "description": "Fisherface（PCA+LDA）比 Eigenface（仅 PCA）在人脸识别中对光照更鲁棒"
+    },
+    {
+      "coverage_tag": "method_selection",
+      "covered_by": [
+        "qf_quiz_method_selection",
+        "qf_long_method_selection"
+      ],
+      "description": "根据任务特点选择 PCA、LDA 或 Fisherface"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "pca_vs_lda_comparison",
+      "coverage_tags": [
+        "pca_vs_lda_comparison"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_pca_vs_lda",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 PCA 和 LDA 在监督性、优化目标上的核心区别。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了 PCA 和 LDA 的根本差异：无监督 vs 有监督，方差最大化 vs 类别可分性最大化。",
+      "question_type": "core_difference",
+      "retrieval_focus": "PCA 和 LDA 在监督性和优化目标上的核心区别",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        },
+        {
+          "display": "线性判别分析",
+          "en": "Linear Discriminant Analysis (LDA)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "PCA 是无监督的，LDA 是有监督的。",
+          "estimated_seconds": 8,
+          "explanation": "PCA 不需要标签，只从数据本身找方差最大的方向；LDA 需要标签，目标是最大化类别可分性。",
+          "front": "PCA 和 LDA 在监督性上的核心区别是什么？",
+          "question_id": "q_flash_pca_vs_lda_v1"
+        },
+        {
+          "back": "PCA 最大化投影后方差；LDA 最大化类间散度与类内散度的比值。",
+          "estimated_seconds": 10,
+          "explanation": "PCA 找\"最散\"的方向，LDA 找\"最可分\"的方向。",
+          "front": "PCA 和 LDA 的优化目标分别是什么？",
+          "question_id": "q_flash_pca_vs_lda_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca_use_case",
+      "coverage_tags": [
+        "pca_use_case"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_pca_use_case",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能列举 PCA 的典型适用场景。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了 PCA 适合无监督任务（探索数据整体结构、去噪、可视化）这一知识点。",
+      "question_type": "short_answer",
+      "retrieval_focus": "PCA 的典型适用场景",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "无标签的数据。",
+          "estimated_seconds": 5,
+          "explanation": "PCA 是无监督方法，不需要标签信息。",
+          "front": "PCA 适合处理有标签的数据还是无标签的数据？",
+          "question_id": "q_flash_pca_use_case_v1"
+        },
+        {
+          "back": "探索数据整体结构、去噪、可视化（任选两个）。",
+          "estimated_seconds": 8,
+          "explanation": "PCA 适合无监督的探索性分析，如数据可视化、去噪、特征提取等。",
+          "front": "列举 PCA 的两种典型应用场景。",
+          "question_id": "q_flash_pca_use_case_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "lda_use_case",
+      "coverage_tags": [
+        "lda_use_case"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_lda_use_case",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出 LDA 适合的任务类型。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了 LDA 适合有标签的分类任务，尤其是均值差异比方差更重要时。",
+      "question_type": "short_answer",
+      "retrieval_focus": "LDA 的典型适用场景",
+      "term_refs": [
+        {
+          "display": "线性判别分析",
+          "en": "Linear Discriminant Analysis (LDA)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "有标签的数据。",
+          "estimated_seconds": 5,
+          "explanation": "LDA 是有监督方法，需要利用类别标签来最大化类别可分性。",
+          "front": "LDA 适合处理有标签的数据还是无标签的数据？",
+          "question_id": "q_flash_lda_use_case_v1"
+        },
+        {
+          "back": "分类任务。",
+          "estimated_seconds": 5,
+          "explanation": "LDA 的优化目标是最大化类别可分性，因此更适合分类任务。",
+          "front": "LDA 更适合分类任务还是可视化任务？",
+          "question_id": "q_flash_lda_use_case_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "lda_weakness",
+      "coverage_tags": [
+        "lda_weakness"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_lda_weakness",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出 LDA 的一个主要弱点。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了 LDA 需要每类足够多样本，否则 S_W 估计不准这一弱点。",
+      "question_type": "short_answer",
+      "retrieval_focus": "LDA 的主要弱点",
+      "term_refs": [
+        {
+          "display": "线性判别分析",
+          "en": "Linear Discriminant Analysis (LDA)"
+        },
+        {
+          "display": "类内散度矩阵",
+          "en": "Within-class Scatter Matrix (S_W)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "每类需要足够多样本，否则 S_W 估计不准。",
+          "estimated_seconds": 8,
+          "explanation": "当每类样本数不足时，类内散度矩阵 S_W 的估计不可靠，影响 LDA 的效果。",
+          "front": "LDA 的一个主要弱点是什么？",
+          "question_id": "q_flash_lda_weakness_v1"
+        },
+        {
+          "back": "每类需要足够多的样本。",
+          "estimated_seconds": 5,
+          "explanation": "LDA 需要足够的样本来可靠地估计类内散度矩阵 S_W。",
+          "front": "LDA 对样本数量有什么要求？",
+          "question_id": "q_flash_lda_weakness_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "fisherface_vs_eigenface",
+      "coverage_tags": [
+        "fisherface_vs_eigenface"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_fisherface_vs_eigenface",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出 Eigenface 和 Fisherface 在人脸识别中对光照的敏感度差异。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了 Eigenface（PCA）对光照敏感，Fisherface（PCA+LDA）更鲁棒这一经典对比。",
+      "question_type": "core_difference",
+      "retrieval_focus": "Eigenface 和 Fisherface 对光照的敏感度差异",
+      "term_refs": [
+        {
+          "display": "特征脸",
+          "en": "Eigenface"
+        },
+        {
+          "display": "Fisherface",
+          "en": "Fisherface"
+        }
+      ],
+      "variants": [
+        {
+          "back": "Eigenface（PCA）对光照更敏感。",
+          "estimated_seconds": 10,
+          "explanation": "Eigenface 只基于 PCA 最大化方差，光照变化会导致方差大的方向改变；Fisherface 结合了 LDA，更关注类别可分性，因此对光照更鲁棒。",
+          "front": "在人脸识别中，Eigenface 和 Fisherface 哪个对光照更敏感？",
+          "question_id": "q_flash_fisherface_vs_eigenface_v1"
+        },
+        {
+          "back": "Fisherface 更鲁棒。",
+          "estimated_seconds": 5,
+          "explanation": "Fisherface 结合 PCA 和 LDA，利用类别信息，对光照等变化更鲁棒。",
+          "front": "在人脸识别中，Eigenface 和 Fisherface 哪个更鲁棒？",
+          "question_id": "q_flash_fisherface_vs_eigenface_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "longform_families": [
+    {
+      "concept_key": "pca_vs_lda_comparison",
+      "coverage_tags": [
+        "pca_vs_lda_comparison"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_pca_vs_lda",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能系统地比较 PCA 和 LDA 的异同，并解释各自适用场景。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了 PCA 和 LDA 在监督性、优化目标、适用场景、优缺点等方面的全面对比。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        },
+        {
+          "display": "线性判别分析",
+          "en": "Linear Discriminant Analysis (LDA)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "PCA 的监督性",
+            "LDA 的监督性",
+            "PCA 的优化目标",
+            "LDA 的优化目标",
+            "PCA 的适用场景",
+            "LDA 的适用场景"
+          ],
+          "question_id": "q_long_pca_vs_lda_v1",
+          "reference_answer": [
+            "PCA 是无监督方法，不需要标签信息；LDA 是有监督方法，需要利用类别标签。",
+            "PCA 的优化目标是最大化投影后方差，即找\"最散\"的方向；LDA 的优化目标是最大化类间散度与类内散度的比值，即找\"最可分\"的方向。",
+            "PCA 适合无标签数据的探索性分析、可视化、去噪等任务；LDA 适合有标签的分类任务，尤其是当类别均值之间的差异比数据本身的方差更重要时。"
+          ],
+          "rubric_points": [
+            "PCA 是无监督的，不需要标签",
+            "LDA 是有监督的，需要标签",
+            "PCA 最大化投影后方差",
+            "LDA 最大化类间散度与类内散度的比值（Fisher 准则）",
+            "PCA 适合无标签数据的探索性分析、可视化、去噪",
+            "LDA 适合有标签的分类任务，尤其是均值差异比方差更重要时"
+          ],
+          "stem": "请从以下三个方面比较 PCA 和 LDA：\n1. 是否需要标签信息\n2. 优化目标\n3. 各自适合的应用场景"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "无标签时的选择",
+            "无标签时的理由",
+            "有标签时的选择",
+            "有标签时的理由"
+          ],
+          "question_id": "q_long_pca_vs_lda_v2",
+          "reference_answer": [
+            "如果数据没有标签，我会选择 PCA。因为 PCA 是无监督方法，不需要标签信息，可以用于探索数据的整体结构。",
+            "如果数据有标签，且均值差异大但类内方差也大，我会选择 LDA。因为 LDA 的优化目标是最大化类间散度与类内散度的比值，即使类内方差大，只要类间均值差异足够大，LDA 仍能找到使两类尽可能分开的投影方向。而 PCA 只关心方差，可能会选择类内方差大的方向而忽略类别可分性。"
+          ],
+          "rubric_points": [
+            "无标签时选择 PCA",
+            "PCA 不需要标签，适合无监督探索",
+            "有标签时选择 LDA",
+            "LDA 最大化类间散度与类内散度的比值，即使类内方差大，只要类间均值差异足够大，LDA 仍能找到好的投影方向"
+          ],
+          "stem": "假设你有一个高维数据集，包含两类数据，每类有充足的样本。请解释：\n1. 如果数据没有标签，你会选择 PCA 还是 LDA？为什么？\n2. 如果数据有标签，且你发现两类数据的均值差异很大但每类内部方差也很大，你会选择 PCA 还是 LDA？为什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "method_selection",
+      "coverage_tags": [
+        "method_selection",
+        "lda_weakness",
+        "fisherface_vs_eigenface"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_method_selection",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据具体任务条件（样本数、维度、标签）选择最合适的降维方法，并解释理由。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了根据任务特点（是否有标签、样本数量、维度等）选择 PCA、LDA 或 Fisherface 的能力，并能解释选择理由。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        },
+        {
+          "display": "线性判别分析",
+          "en": "Linear Discriminant Analysis (LDA)"
+        },
+        {
+          "display": "Fisherface",
+          "en": "Fisherface"
+        },
+        {
+          "display": "类内散度矩阵",
+          "en": "Within-class Scatter Matrix (S_W)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "不能直接使用 LDA 的原因",
+            "不能只使用 PCA 的原因",
+            "推荐的方法及步骤"
+          ],
+          "question_id": "q_long_method_selection_v1",
+          "reference_answer": [
+            "不能直接使用 LDA，因为维度（10000）远大于样本数（100），类内散度矩阵 S_W 是 10000×10000 的矩阵，但只有 100 个样本，S_W 不可逆，无法计算 S_W^{-1}。",
+            "不能只使用 PCA，因为 PCA 是无监督的，只最大化方差，不考虑类别信息。在人脸识别任务中，方差最大的方向不一定能很好地区分不同的人。",
+            "应该使用 Fisherface 方法。步骤：① 先用 PCA 将数据从 10000 维降到 N-c=90 维（N=100 个样本，c=10 个类别），使 S_W 可逆；② 在 90 维空间中使用 LDA 进一步降维到 c-1=9 维；③ 在 9 维空间中使用最近邻分类器进行识别。"
+          ],
+          "rubric_points": [
+            "维度（10000）远大于样本数（100），S_W 不可逆",
+            "PCA 是无监督的，不考虑类别信息，分类效果可能不好",
+            "使用 Fisherface：先用 PCA 降维到 N-c=90 维，使 S_W 可逆，再使用 LDA 进一步降维到 c-1=9 维，最后用最近邻分类"
+          ],
+          "stem": "你有一个高维人脸识别任务：10000 维的图像，只有 100 个训练样本，分属 10 个人（每人 10 张）。请解释：\n1. 为什么不能直接使用 LDA？\n2. 为什么不能只使用 PCA？\n3. 应该使用什么方法？请说明步骤。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "可以直接使用 LDA 的原因",
+            "使用 PCA 可能的问题",
+            "你的选择及理由"
+          ],
+          "question_id": "q_long_method_selection_v2",
+          "reference_answer": [
+            "可以直接使用 LDA，因为维度（10）远小于样本数（2000），类内散度矩阵 S_W 是 10×10 的矩阵，有充足的样本估计，S_W 可逆。",
+            "如果改用 PCA，可能的问题：PCA 是无监督的，只最大化方差，不考虑类别信息。它可能会选择方差大但两类数据重叠的方向，导致降维后分类效果变差。",
+            "我会选择 LDA。因为这是一个有标签的分类任务，且样本充足、维度低，LDA 可以直接使用。LDA 的优化目标是最大化类别可分性，更适合分类任务。"
+          ],
+          "rubric_points": [
+            "维度（10）远小于样本数（2000），S_W 可逆",
+            "PCA 不考虑类别信息，可能选择方差大但不利于分类的方向",
+            "选择 LDA，因为它有监督，能最大化类别可分性"
+          ],
+          "stem": "你有一个低维有标签的二分类任务：每个样本只有 10 维，每类有 1000 个样本。请解释：\n1. 为什么可以直接使用 LDA？\n2. 如果改用 PCA，可能有什么问题？\n3. 你会选择哪种方法？为什么？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "pca_vs_lda_comparison",
+      "coverage_tags": [
+        "pca_vs_lda_comparison"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_pca_vs_lda",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中区分 PCA 和 LDA 的适用性。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了 PCA 和 LDA 的核心区别，并能根据任务特点选择合适的方法。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        },
+        {
+          "display": "线性判别分析",
+          "en": "Linear Discriminant Analysis (LDA)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "PCA 是无监督的，最大化投影后方差；LDA 是有监督的，最大化类间散度与类内散度的比值。",
+          "options": [
+            "PCA 是有监督的，LDA 是无监督的",
+            "PCA 最大化方差，LDA 最大化类别可分性",
+            "PCA 和 LDA 的优化目标相同",
+            "LDA 不需要标签信息"
+          ],
+          "question_id": "q_quiz_pca_vs_lda_v1",
+          "stem": "以下关于 PCA 和 LDA 的说法，哪一项是正确的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "PCA 是无监督的，适合探索无标签数据的整体结构。LDA 和 Fisherface 都需要标签信息。",
+          "options": [
+            "LDA",
+            "PCA",
+            "Fisherface",
+            "先 LDA 再 PCA"
+          ],
+          "question_id": "q_quiz_pca_vs_lda_v2",
+          "stem": "你有一个无标签的高维数据集，想先探索数据的整体结构，应该使用哪种方法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "pca_use_case",
+      "coverage_tags": [
+        "pca_use_case"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_pca_use_case",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断 PCA 的适用场景。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了 PCA 适合无监督任务（探索数据整体结构、去噪、可视化）这一知识点。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "PCA 不需要标签，适合无监督的可视化和探索性分析。其他选项都是有监督的分类任务。",
+          "options": [
+            "将猫和狗的图像分开",
+            "对无标签的高维数据进行可视化",
+            "识别手写数字 0-9",
+            "在少量样本下做情感分类"
+          ],
+          "question_id": "q_quiz_pca_use_case_v1",
+          "stem": "以下哪种场景最适合使用 PCA？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "PCA 是无监督的，适合去噪和可视化。LDA 和 Fisherface 需要标签。",
+          "options": [
+            "LDA",
+            "PCA",
+            "Fisherface",
+            "无法进行降维"
+          ],
+          "question_id": "q_quiz_pca_use_case_v2",
+          "stem": "你有一个高维数据集，目标是去除噪声并可视化数据分布，但没有类别标签。应该选择哪种方法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "lda_use_case",
+      "coverage_tags": [
+        "lda_use_case"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_lda_use_case",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断 LDA 的适用场景。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了 LDA 适合有标签的分类任务，尤其是均值差异比方差更重要时。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "线性判别分析",
+          "en": "Linear Discriminant Analysis (LDA)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "LDA 是有监督的，适合有标签的分类任务，如人脸识别。",
+          "options": [
+            "对无标签数据进行可视化",
+            "有标签的人脸识别任务",
+            "数据去噪",
+            "探索数据整体结构"
+          ],
+          "question_id": "q_quiz_lda_use_case_v1",
+          "stem": "以下哪种场景最适合使用 LDA？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "LDA 的优化目标是最大化类间散度与类内散度的比值，当均值差异更重要时，LDA 比 PCA 更合适。",
+          "options": [
+            "PCA",
+            "LDA",
+            "随机投影",
+            "特征选择"
+          ],
+          "question_id": "q_quiz_lda_use_case_v2",
+          "stem": "你有一个有标签的分类任务，且你认为类别均值之间的差异比数据本身的方差更重要。应该选择哪种方法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "lda_weakness",
+      "coverage_tags": [
+        "lda_weakness"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_lda_weakness",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别 LDA 的弱点。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了 LDA 需要每类足够多样本，否则 S_W 估计不准这一弱点。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "线性判别分析",
+          "en": "Linear Discriminant Analysis (LDA)"
+        },
+        {
+          "display": "类内散度矩阵",
+          "en": "Within-class Scatter Matrix (S_W)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "LDA 需要每类有足够多样本，否则 S_W 估计不准。",
+          "options": [
+            "每类需要足够多样本",
+            "不需要标签",
+            "对光照不敏感",
+            "可以处理任意高维数据"
+          ],
+          "question_id": "q_quiz_lda_weakness_v1",
+          "stem": "以下哪一项是 LDA 的弱点？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "当每类样本数很少时，S_W 的估计不可靠，LDA 的效果会变差。",
+          "options": [
+            "每类样本数充足时",
+            "每类样本数很少时",
+            "数据维度很低时",
+            "类别数很多时"
+          ],
+          "question_id": "q_quiz_lda_weakness_v2",
+          "stem": "在什么情况下，直接使用 LDA 的效果可能会很差？"
+        }
+      ]
+    },
+    {
+      "concept_key": "fisherface_vs_eigenface",
+      "coverage_tags": [
+        "fisherface_vs_eigenface"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_fisherface_vs_eigenface",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较 Eigenface 和 Fisherface 在人脸识别中的表现。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了 Eigenface（PCA）对光照敏感，Fisherface（PCA+LDA）更鲁棒这一经典对比。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征脸",
+          "en": "Eigenface"
+        },
+        {
+          "display": "Fisherface",
+          "en": "Fisherface"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "Fisherface 结合了 LDA，更关注类别可分性，因此对光照变化比仅基于 PCA 的 Eigenface 更鲁棒。",
+          "options": [
+            "Eigenface 对光照更鲁棒",
+            "Fisherface 对光照更鲁棒",
+            "两者对光照的鲁棒性相同",
+            "Fisherface 不需要 PCA 预处理"
+          ],
+          "question_id": "q_quiz_fisherface_vs_eigenface_v1",
+          "stem": "在人脸识别中，Eigenface（PCA）和 Fisherface（PCA+LDA）相比，以下说法正确的是？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Eigenface 只基于 PCA 最大化方差，光照变化会导致方差大的方向改变，因此对光照更敏感。",
+          "options": [
+            "Fisherface",
+            "Eigenface",
+            "两者一样敏感",
+            "两者都不敏感"
+          ],
+          "question_id": "q_quiz_fisherface_vs_eigenface_v2",
+          "stem": "以下哪种方法在人脸识别中对光照变化更敏感？"
+        }
+      ]
+    },
+    {
+      "concept_key": "method_selection",
+      "coverage_tags": [
+        "method_selection"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_quiz_method_selection",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据具体任务选择最合适的降维方法。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了根据任务特点（是否有标签、样本数量、维度等）选择 PCA、LDA 或 Fisherface 的能力。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "主成分分析",
+          "en": "Principal Component Analysis (PCA)"
+        },
+        {
+          "display": "线性判别分析",
+          "en": "Linear Discriminant Analysis (LDA)"
+        },
+        {
+          "display": "Fisherface",
+          "en": "Fisherface"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 25,
+          "explanation": "这是有标签的分类任务，但又存在\"维度远大于样本数\"的问题。直接 PCA 不看类别，直接 LDA 又会遇到 S_W 不可逆，因此最合适的是先 PCA 再 LDA 的 Fisherface。",
+          "options": [
+            "PCA",
+            "LDA",
+            "Fisherface（先 PCA 再 LDA）",
+            "都不需要降维"
+          ],
+          "question_id": "q_quiz_method_selection_v1",
+          "stem": "给定一个具体任务：你有 500 张人脸图像，每张图像 10000 维，分属 50 个人（每人 10 张），目标是识别新的人脸属于谁。下面哪种方法最合适？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "这是有标签的分类任务，且每类样本数充足、维度不高，S_W 可逆，直接使用 LDA 即可。",
+          "options": [
+            "PCA",
+            "LDA",
+            "Fisherface",
+            "随机投影"
+          ],
+          "question_id": "q_quiz_method_selection_v2",
+          "stem": "你有一个有标签的数据集，每类样本数充足，且数据维度远小于样本数。目标是降维后进行二分类。哪种方法最合适？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-pca-and-lda/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

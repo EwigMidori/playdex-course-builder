@@ -1,0 +1,512 @@
+{
+  "chapter_id": "lecture-04-clustering",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "k_means_algorithm",
+      "covered_by": [
+        "qf_flash_kmeans_iteration",
+        "qf_flash_kmeans_centroid",
+        "qf_quiz_kmeans_steps",
+        "qf_quiz_kmeans_k_value",
+        "qf_long_kmeans_process"
+      ],
+      "description": "K-means 算法的基本概念：划分式聚类、质心、K 值、迭代过程（分配与更新）"
+    },
+    {
+      "coverage_tag": "sse_evaluation",
+      "covered_by": [
+        "qf_flash_sse_definition",
+        "qf_quiz_sse_meaning",
+        "qf_long_sse_calculation"
+      ],
+      "description": "误差平方和 (SSE) 的定义、计算方式及其在 K-means 中的作用"
+    },
+    {
+      "coverage_tag": "kmeans_limitations",
+      "covered_by": [
+        "qf_quiz_kmeans_limitations"
+      ],
+      "description": "K-means 的局限性：对初始质心敏感、K 值需事先指定、对非球形簇效果差"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "k_means_algorithm",
+      "coverage_tags": [
+        "k_means_algorithm"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_kmeans_iteration",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 K-means 迭代的两个核心步骤及其顺序。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能主动检索 K-means 算法中每次迭代的两个主要操作：分配点与更新质心。",
+      "question_type": "short_answer",
+      "retrieval_focus": "K-means 单次迭代的两个步骤",
+      "term_refs": [
+        {
+          "display": "K-means",
+          "en": "K-means"
+        },
+        {
+          "display": "质心",
+          "en": "Centroid"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将每个数据点分配给离它最近的质心，形成 K 个簇。",
+          "estimated_seconds": 8,
+          "explanation": "这是分配步骤，基于当前质心位置重新划分簇。",
+          "front": "K-means 每次迭代中，第一步做什么？",
+          "question_id": "q_flash_kmeans_iter_v1"
+        },
+        {
+          "back": "重新计算每个簇的新质心，即簇内所有数据点的平均值。",
+          "estimated_seconds": 8,
+          "explanation": "这是更新步骤，根据新划分的簇调整质心位置。",
+          "front": "K-means 每次迭代中，第二步做什么？",
+          "question_id": "q_flash_kmeans_iter_v2"
+        },
+        {
+          "back": "当质心的位置不再变化（或变化很小）时停止。",
+          "estimated_seconds": 6,
+          "explanation": "收敛条件，也可设为“只有很少的点改变簇”。",
+          "front": "K-means 算法何时停止迭代？",
+          "question_id": "q_flash_kmeans_iter_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "k_means_algorithm",
+      "coverage_tags": [
+        "k_means_algorithm"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_kmeans_centroid",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆质心的定义和计算方式。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能主动检索质心的数学定义：簇内所有数据点的均值。",
+      "question_type": "short_answer",
+      "retrieval_focus": "质心的计算方式",
+      "term_refs": [
+        {
+          "display": "质心",
+          "en": "Centroid"
+        }
+      ],
+      "variants": [
+        {
+          "back": "取该簇内所有数据点的平均值（均值）。",
+          "estimated_seconds": 6,
+          "explanation": "质心是簇内点的中心，通常用均值表示。",
+          "front": "K-means 中，一个簇的质心是如何计算的？",
+          "question_id": "q_flash_kmeans_centroid_v1"
+        },
+        {
+          "back": "用户指定的簇的数量。",
+          "estimated_seconds": 5,
+          "explanation": "K 是算法的一个超参数，必须事先给定。",
+          "front": "K-means 中，K 值代表什么？",
+          "question_id": "q_flash_kmeans_centroid_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "sse_evaluation",
+      "coverage_tags": [
+        "sse_evaluation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sse_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 SSE 的定义及其在 K-means 中的含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能主动检索 SSE 的计算方式：每个点到其质心距离的平方和。",
+      "question_type": "short_answer",
+      "retrieval_focus": "SSE 的计算公式",
+      "term_refs": [
+        {
+          "display": "误差平方和",
+          "en": "Sum of Squared Errors (SSE)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "误差平方和，即所有数据点到其所属簇质心的距离平方之和。",
+          "estimated_seconds": 8,
+          "explanation": "SSE 衡量簇内点的紧凑程度，值越小越紧凑。",
+          "front": "SSE 在 K-means 中代表什么？",
+          "question_id": "q_flash_sse_def_v1"
+        },
+        {
+          "back": "簇内点越紧凑，聚类效果越好。",
+          "estimated_seconds": 5,
+          "explanation": "SSE 越小，表示每个簇内的点越靠近其质心。",
+          "front": "SSE 的值越小，说明聚类结果如何？",
+          "question_id": "q_flash_sse_def_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-clustering",
+  "longform_families": [
+    {
+      "concept_key": "k_means_algorithm",
+      "coverage_tags": [
+        "k_means_algorithm"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_kmeans_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用连贯的语言描述 K-means 算法的完整迭代过程。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能解释 K-means 从初始化到收敛的完整流程，包括分配和更新步骤。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "K-means",
+          "en": "K-means"
+        },
+        {
+          "display": "质心",
+          "en": "Centroid"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "初始化阶段",
+            "迭代中的分配步骤",
+            "迭代中的更新步骤",
+            "停止条件"
+          ],
+          "question_id": "q_long_kmeans_process_v1",
+          "reference_answer": [
+            "1. 初始化：随机选择 K 个数据点作为初始质心。",
+            "2. 迭代开始：",
+            "   a. 分配步骤：计算每个数据点到所有质心的距离，将其分配给最近的质心，形成 K 个簇。",
+            "   b. 更新步骤：对每个簇，计算其所有数据点的平均值，作为新的质心。",
+            "3. 重复步骤 2，直到质心的位置不再发生变化（或变化小于阈值）。"
+          ],
+          "rubric_points": [
+            "正确描述初始化：随机选择 K 个点作为初始质心",
+            "正确描述分配步骤：每个点分配给最近的质心",
+            "正确描述更新步骤：重新计算质心为簇内点的均值",
+            "正确描述停止条件：质心不再变化或变化很小"
+          ],
+          "stem": "请描述 K-means 算法的完整迭代过程，包括初始化、每次迭代的两个步骤以及停止条件。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "初始质心的选择",
+            "第一次分配",
+            "第一次更新",
+            "后续迭代与收敛"
+          ],
+          "question_id": "q_long_kmeans_process_v2",
+          "reference_answer": [
+            "1. 随机选择两个点作为初始质心 C1 和 C2。",
+            "2. 计算每个点到 C1 和 C2 的距离，将点分配给距离更近的质心，形成两个簇。",
+            "3. 计算每个簇内所有点的平均值，得到新的质心 C1' 和 C2'。",
+            "4. 重复步骤 2 和 3，直到 C1' 和 C2' 的位置不再变化。最终得到两个稳定的簇。"
+          ],
+          "rubric_points": [
+            "提到随机选择两个初始质心",
+            "描述每个点根据距离分配到最近的质心",
+            "描述质心更新为簇内点的均值",
+            "描述迭代直到质心稳定"
+          ],
+          "stem": "假设你有一组二维数据点，K=2。请用文字描述 K-means 算法如何从随机初始质心开始，逐步找到最终的聚类结果。"
+        }
+      ]
+    },
+    {
+      "concept_key": "sse_evaluation",
+      "coverage_tags": [
+        "sse_evaluation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_sse_calculation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能应用 SSE 公式计算简单数据集的误差平方和。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能根据给定的数据点和质心，手动计算 SSE 值。",
+      "question_type": "formula_apply",
+      "term_refs": [
+        {
+          "display": "误差平方和",
+          "en": "Sum of Squared Errors (SSE)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "计算每个点到质心的距离",
+            "平方距离",
+            "求和"
+          ],
+          "question_id": "q_long_sse_calc_v1",
+          "reference_answer": [
+            "点 A(1,2) 到质心 (2,3) 的距离平方: (1-2)² + (2-3)² = 1 + 1 = 2",
+            "点 B(2,1) 到质心 (2,3) 的距离平方: (2-2)² + (1-3)² = 0 + 4 = 4",
+            "点 C(4,5) 到质心 (2,3) 的距离平方: (4-2)² + (5-3)² = 4 + 4 = 8",
+            "SSE = 2 + 4 + 8 = 14"
+          ],
+          "rubric_points": [
+            "正确计算 A 到质心的距离平方",
+            "正确计算 B 到质心的距离平方",
+            "正确计算 C 到质心的距离平方",
+            "正确求和得到 SSE"
+          ],
+          "stem": "给定三个数据点：A(1,2), B(2,1), C(4,5)，它们被分配到同一个簇，该簇的质心为 (2, 3)。请计算该簇的 SSE。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "计算簇1的 SSE",
+            "计算簇2的 SSE",
+            "求和得到总 SSE"
+          ],
+          "question_id": "q_long_sse_calc_v2",
+          "reference_answer": [
+            "簇1: 点 (0,0) 到 (1,0): (0-1)² + (0-0)² = 1; 点 (2,0) 到 (1,0): (2-1)² + (0-0)² = 1; SSE₁ = 1+1 = 2",
+            "簇2: 点 (5,5) 到 (6,5): (5-6)² + (5-5)² = 1; 点 (7,5) 到 (6,5): (7-6)² + (5-5)² = 1; SSE₂ = 1+1 = 2",
+            "总 SSE = SSE₁ + SSE₂ = 2 + 2 = 4"
+          ],
+          "rubric_points": [
+            "正确计算簇1内各点到其质心的距离平方",
+            "正确计算簇2内各点到其质心的距离平方",
+            "正确求和"
+          ],
+          "stem": "有两个簇：簇1包含点 (0,0) 和 (2,0)，质心为 (1,0)；簇2包含点 (5,5) 和 (7,5)，质心为 (6,5)。请计算总的 SSE。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "k_means_algorithm",
+      "coverage_tags": [
+        "k_means_algorithm"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_kmeans_steps",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确识别 K-means 迭代的两个主要步骤。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能辨析 K-means 迭代中分配与更新两个步骤的正确描述。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "K-means",
+          "en": "K-means"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "K-means 每次迭代先分配点给最近的质心，再更新质心为簇内点的平均值。",
+          "options": [
+            "随机选择质心，然后固定不变",
+            "分配点给最近的质心，然后更新质心为簇内点的平均值",
+            "计算所有点的平均值作为质心",
+            "随机分配点，然后计算质心"
+          ],
+          "question_id": "q_quiz_kmeans_steps_v1",
+          "stem": "K-means 算法的迭代过程包含哪两个主要步骤？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "新质心是当前簇内所有数据点的均值。",
+          "options": [
+            "随机选择簇内的一个点",
+            "计算簇内所有点的中位数",
+            "计算簇内所有点的平均值",
+            "选择距离其他簇最远的点"
+          ],
+          "question_id": "q_quiz_kmeans_steps_v2",
+          "stem": "在 K-means 的“更新质心”步骤中，新质心是如何确定的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "k_means_algorithm",
+      "coverage_tags": [
+        "k_means_algorithm"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_kmeans_k_value",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确理解 K 值的含义及其在 K-means 中的作用。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能识别 K 值是用户指定的簇数量，并理解其重要性。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "K 值",
+          "en": "K value"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "K 是用户必须事先指定的簇的数量。",
+          "options": [
+            "簇的数量",
+            "质心的维度",
+            "迭代的次数",
+            "数据点的数量"
+          ],
+          "question_id": "q_quiz_kmeans_k_v1",
+          "stem": "K-means 算法中，K 值代表什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "K 值是用户指定的超参数，算法不会自动确定。",
+          "options": [
+            "K 值由算法自动确定",
+            "K 值越大，SSE 一定越小",
+            "K 值必须由用户事先指定",
+            "K 值等于数据点的数量"
+          ],
+          "question_id": "q_quiz_kmeans_k_v2",
+          "stem": "关于 K-means 中的 K 值，以下哪项描述是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "sse_evaluation",
+      "coverage_tags": [
+        "sse_evaluation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_sse_meaning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确理解 SSE 在 K-means 中的作用和含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能辨析 SSE 衡量的是簇内紧凑程度，并理解其与 K 值的关系。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "误差平方和",
+          "en": "Sum of Squared Errors (SSE)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "SSE 计算每个点到其质心的距离平方和，值越小表示簇内点越紧凑。",
+          "options": [
+            "簇内点的紧凑程度",
+            "簇间点的距离",
+            "数据点的总数",
+            "质心的数量"
+          ],
+          "question_id": "q_quiz_sse_meaning_v1",
+          "stem": "SSE 在 K-means 中用来衡量什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "随着 K 增加，每个簇可以更小更紧凑，SSE 通常单调递减，K 等于数据点数时 SSE 为 0。",
+          "options": [
+            "单调递增",
+            "单调递减",
+            "保持不变",
+            "先增后减"
+          ],
+          "question_id": "q_quiz_sse_meaning_v2",
+          "stem": "当 K 值增加时，SSE 通常会如何变化？"
+        }
+      ]
+    },
+    {
+      "concept_key": "kmeans_limitations",
+      "coverage_tags": [
+        "kmeans_limitations"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_kmeans_limitations",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别 K-means 的主要局限性。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能辨析哪些情况下 K-means 效果可能很差。",
+      "question_type": "multiple_choice",
+      "term_refs": [
+        {
+          "display": "K-means",
+          "en": "K-means"
+        }
+      ],
+      "variants": [
+        {
+          "answer": [
+            1
+          ],
+          "estimated_seconds": 20,
+          "explanation": "K-means 假设簇是球形的，对于长条形或大小差异很大的簇，效果可能很差。",
+          "options": [
+            "簇是球形的且大小相近",
+            "簇是长条形的且大小差异很大",
+            "数据点分布均匀",
+            "K 值已知"
+          ],
+          "question_id": "q_quiz_kmeans_lim_v1",
+          "stem": "以下哪些情况 K-means 可能效果很差？（多选）"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "K-means 对初始质心敏感，不同的初始选择可能导致不同的结果。",
+          "options": [
+            "它总是能找到全局最优解",
+            "它对初始质心的选择很敏感",
+            "它不需要指定 K 值",
+            "它只能处理一维数据"
+          ],
+          "question_id": "q_quiz_kmeans_lim_v2",
+          "stem": "以下哪项是 K-means 的一个已知局限性？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-clustering/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

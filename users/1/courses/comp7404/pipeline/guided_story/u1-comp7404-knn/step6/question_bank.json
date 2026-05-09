@@ -1,0 +1,299 @@
+{
+  "chapter_id": "lecture-01-knn",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "optimizing_storage_requirements",
+      "covered_by": [
+        "qf_flash_edited_knn",
+        "qf_flash_prototype",
+        "qf_quiz_edited_knn",
+        "qf_long_optimization_comparison"
+      ],
+      "description": "优化kNN存储和计算开销的方法，包括编辑式K近邻和原型方法。"
+    },
+    {
+      "coverage_tag": "edited_knn",
+      "covered_by": [
+        "qf_flash_edited_knn",
+        "qf_quiz_edited_knn",
+        "qf_long_optimization_comparison"
+      ],
+      "description": "编辑式K近邻：自动识别并移除冗余或错误样本以减少存储和计算开销。"
+    },
+    {
+      "coverage_tag": "prototype",
+      "covered_by": [
+        "qf_flash_prototype",
+        "qf_long_optimization_comparison"
+      ],
+      "description": "原型方法：用少量代表性样本（如类中心）代替大量原始数据。"
+    },
+    {
+      "coverage_tag": "decision_boundary_relevance",
+      "covered_by": [
+        "qf_flash_decision_boundary_redundancy"
+      ],
+      "description": "分类有用的信息集中在决策边界附近，远离边界的内部样本冗余。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "edited_knn",
+      "coverage_tags": [
+        "optimizing_storage_requirements",
+        "edited_knn"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_edited_knn",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆编辑式K近邻的核心机制和目的。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了编辑式K近邻的定义、目的和基本工作原理。",
+      "question_type": "short_answer",
+      "retrieval_focus": "编辑式K近邻的核心操作和主要目标。",
+      "term_refs": [
+        {
+          "display": "编辑式K近邻",
+          "en": "Edited kNN"
+        }
+      ],
+      "variants": [
+        {
+          "back": "自动识别并移除冗余或错误的训练样本。",
+          "estimated_seconds": 8,
+          "explanation": "编辑式K近邻通过移除冗余和噪声样本，减少存储需求并提高预测效率。",
+          "front": "编辑式K近邻（Edited kNN）通过什么操作来优化kNN的存储和计算？",
+          "question_id": "q_flash_edited_knn_v1"
+        },
+        {
+          "back": "减少存储需求和计算成本。",
+          "estimated_seconds": 6,
+          "explanation": "通过移除冗余样本，编辑式K近邻在保持分类准确率的同时，降低了存储和计算开销。",
+          "front": "编辑式K近邻的主要目的是什么？",
+          "question_id": "q_flash_edited_knn_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "prototype",
+      "coverage_tags": [
+        "optimizing_storage_requirements",
+        "prototype"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_prototype",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆原型方法的核心思想和目的。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了原型方法的基本概念和用途。",
+      "question_type": "short_answer",
+      "retrieval_focus": "原型方法的核心思想和目的。",
+      "term_refs": [
+        {
+          "display": "原型",
+          "en": "Prototype"
+        }
+      ],
+      "variants": [
+        {
+          "back": "用少量代表性样本（如每个类别的中心点）代替大量原始数据。",
+          "estimated_seconds": 8,
+          "explanation": "原型方法通过生成代表性样本来压缩数据，从而大幅降低存储和计算开销。",
+          "front": "在kNN优化中，原型（Prototype）方法的核心思想是什么？",
+          "question_id": "q_flash_prototype_v1"
+        },
+        {
+          "back": "用少量代表性样本代替大量数据，大幅压缩存储，预测速度更快。",
+          "estimated_seconds": 6,
+          "explanation": "原型方法通过减少需要存储和比较的样本数量，显著提升了kNN的预测效率。",
+          "front": "原型方法的主要优点是什么？",
+          "question_id": "q_flash_prototype_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "decision_boundary",
+      "coverage_tags": [
+        "optimizing_storage_requirements",
+        "decision_boundary_relevance"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_decision_boundary_redundancy",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解为什么远离决策边界的样本是冗余的。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了决策边界附近信息的重要性以及内部样本的冗余性。",
+      "question_type": "short_answer",
+      "retrieval_focus": "分类任务中，哪部分样本是冗余的，哪部分样本是关键信息所在。",
+      "term_refs": [
+        {
+          "display": "决策边界",
+          "en": "Decision Boundary"
+        }
+      ],
+      "variants": [
+        {
+          "back": "远离决策边界的内部样本。",
+          "estimated_seconds": 8,
+          "explanation": "真正对分类有用的信息大多集中在决策边界附近，远离边界的内部样本对分类结果影响很小。",
+          "front": "在kNN分类中，哪类训练样本被认为是冗余的，可以安全移除？",
+          "question_id": "q_flash_decision_boundary_redundancy_v1"
+        },
+        {
+          "back": "因为移除它们通常不会改变分类结果。",
+          "estimated_seconds": 8,
+          "explanation": "远离决策边界的样本对决策边界的形成贡献很小，因此移除它们对分类准确率影响不大。",
+          "front": "为什么远离决策边界的训练样本被认为是冗余的？",
+          "question_id": "q_flash_decision_boundary_redundancy_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-knn",
+  "longform_families": [
+    {
+      "concept_key": "optimizing_storage_requirements",
+      "coverage_tags": [
+        "optimizing_storage_requirements",
+        "edited_knn",
+        "prototype"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_optimization_comparison",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较编辑式K近邻和原型方法两种优化策略，说明各自的优点和潜在缺点。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能理解并区分两种kNN优化策略的机制、优势和权衡。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "编辑式K近邻",
+          "en": "Edited kNN"
+        },
+        {
+          "display": "原型",
+          "en": "Prototype"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "编辑式K近邻的优点",
+            "编辑式K近邻的缺点",
+            "原型方法的优点",
+            "原型方法的缺点"
+          ],
+          "question_id": "q_long_optimization_comparison_v1",
+          "reference_answer": [
+            "编辑式K近邻的优点在于它能自动识别并移除冗余和噪声样本，从而减少存储和计算开销，有时甚至能提高分类准确率。",
+            "编辑式K近邻的缺点是它可能误删一些对分类有用的样本，特别是位于决策边界附近的样本，导致分类精度下降。",
+            "原型方法的优点是用少量代表性样本（如每个类别的中心点）代替大量原始数据，大幅压缩存储空间，使预测速度更快。",
+            "原型方法的缺点是它可能丢失边界附近的细节信息，因为用中心点代表整个类别会忽略类内的复杂分布，导致分类精度下降。"
+          ],
+          "rubric_points": [
+            "编辑式K近邻优点：自动移除冗余和噪声样本，减少存储和计算开销，可能提高准确率。",
+            "编辑式K近邻缺点：可能误删有用样本，导致分类精度下降。",
+            "原型方法优点：用少量代表性样本代替大量数据，大幅压缩存储，预测速度更快。",
+            "原型方法缺点：可能丢失边界附近的细节信息，导致分类精度下降。"
+          ],
+          "stem": "请比较编辑式K近邻（Edited kNN）和原型（Prototype）方法这两种优化kNN存储和计算开销的策略。分别说明它们的主要优点和可能的缺点（tradeoff）。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "编辑式K近邻的工作原理",
+            "编辑式K近邻对准确率的影响",
+            "原型方法的工作原理",
+            "原型方法对准确率的影响"
+          ],
+          "question_id": "q_long_optimization_comparison_v2",
+          "reference_answer": [
+            "编辑式K近邻通过分析训练样本，自动识别并移除那些冗余（远离决策边界）或错误（噪声）的样本。这样可以显著减少需要存储的样本数量，从而降低存储需求和预测时的计算开销。",
+            "编辑式K近邻对准确率的影响是双面的：移除噪声样本可能提高准确率，但误删有用的边界样本则可能降低准确率。",
+            "原型方法通过聚类等技术，为每个类别生成少量代表性样本（原型），然后用这些原型代替原始的大量数据。这可以大幅压缩存储空间，并使预测时只需计算与少量原型的距离，从而加快预测速度。",
+            "原型方法对准确率的影响通常是负面的，因为用少数原型代表整个类别会丢失类内的分布细节，特别是决策边界附近的细微差异，可能导致分类精度下降。"
+          ],
+          "rubric_points": [
+            "编辑式K近邻工作原理：自动识别并移除冗余或错误的样本。",
+            "编辑式K近邻对准确率的影响：可能提高（移除噪声）或降低（误删有用样本）。",
+            "原型方法工作原理：用少量代表性样本（如类中心）代替大量原始数据。",
+            "原型方法对准确率的影响：可能降低，因为丢失了边界附近的细节信息。"
+          ],
+          "stem": "假设你正在为一个拥有100万张人脸图像的kNN人脸识别系统进行优化。请分别解释编辑式K近邻和原型方法如何帮助减少存储和计算开销，并讨论每种方法可能带来的准确率变化。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "edited_knn",
+      "coverage_tags": [
+        "optimizing_storage_requirements",
+        "edited_knn"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_edited_knn",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析编辑式K近邻的主要目的和效果。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能正确识别编辑式K近邻的核心目标和预期效果。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "编辑式K近邻",
+          "en": "Edited kNN"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "编辑式K近邻通过自动识别并移除冗余或错误的样本，从而减少存储需求和计算成本。",
+          "options": [
+            "增加训练样本数量以提高准确率",
+            "减少存储需求和计算成本",
+            "让决策边界变得更复杂以拟合数据",
+            "改变距离度量方式"
+          ],
+          "question_id": "q_quiz_edited_knn_v1",
+          "stem": "编辑式K近邻（Edited kNN）的主要目的是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "编辑式K近邻在移除冗余样本时，可能会误删一些对分类有用的边界样本，从而影响分类精度。",
+          "options": [
+            "增加存储需求",
+            "误删对分类有用的样本",
+            "使预测速度变慢",
+            "需要更多的训练数据"
+          ],
+          "question_id": "q_quiz_edited_knn_v2",
+          "stem": "以下哪一项是编辑式K近邻（Edited kNN）可能带来的潜在风险？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-knn/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

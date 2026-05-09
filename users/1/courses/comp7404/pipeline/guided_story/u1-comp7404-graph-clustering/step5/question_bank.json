@@ -1,0 +1,408 @@
+{
+  "chapter_id": "lecture-06-graph-clustering",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "algorithm_flow",
+      "covered_by": [
+        "qf_flash_flow",
+        "qf_quiz_flow",
+        "qf_long_flow"
+      ],
+      "description": "归一化割算法的完整流程：定义相似度、计算亲和矩阵和度矩阵、求解广义特征值、取第二小特征向量二分、递归或使用多特征向量扩展。"
+    },
+    {
+      "coverage_tag": "recursive_vs_kway",
+      "covered_by": [
+        "qf_flash_kway",
+        "qf_quiz_kway"
+      ],
+      "description": "递归二分与k路归一化割的对比：递归二分慢，k路使用多个特征向量更高效。"
+    },
+    {
+      "coverage_tag": "affinity_and_degree_matrix",
+      "covered_by": [
+        "qf_flash_matrix"
+      ],
+      "description": "亲和矩阵W和度矩阵D的定义与作用。"
+    },
+    {
+      "coverage_tag": "second_smallest_eigenvector",
+      "covered_by": [
+        "qf_flash_eigenvector",
+        "qf_quiz_eigenvector"
+      ],
+      "description": "第二小特征向量用于二分图。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "algorithm_flow",
+      "coverage_tags": [
+        "algorithm_flow"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_flow",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能按顺序回忆归一化割算法的五个主要步骤。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能正确列出归一化割算法的步骤顺序。",
+      "question_type": "short_answer",
+      "retrieval_focus": "归一化割算法的步骤顺序",
+      "term_refs": [
+        {
+          "display": "归一化割算法",
+          "en": "Normalized Cuts Algorithm"
+        }
+      ],
+      "variants": [
+        {
+          "back": "定义两个节点之间的相似度函数。",
+          "estimated_seconds": 8,
+          "explanation": "算法从定义相似度函数开始，用于计算亲和矩阵。",
+          "front": "归一化割算法的第一步是什么？",
+          "question_id": "q_flash_flow_v1"
+        },
+        {
+          "back": "计算亲和矩阵 W 和度矩阵 D。",
+          "estimated_seconds": 8,
+          "explanation": "亲和矩阵记录所有点对相似度，度矩阵记录行和。",
+          "front": "在定义相似度函数之后，归一化割算法的下一步是什么？",
+          "question_id": "q_flash_flow_v2"
+        },
+        {
+          "back": "求解广义特征值问题 (D-W)y = λDy。",
+          "estimated_seconds": 8,
+          "explanation": "这是将离散优化放松为连续问题的关键步骤。",
+          "front": "在计算亲和矩阵和度矩阵之后，归一化割算法的下一步是什么？",
+          "question_id": "q_flash_flow_v3"
+        },
+        {
+          "back": "取出第二小的特征值对应的特征向量，根据其正负号将图一分为二。",
+          "estimated_seconds": 10,
+          "explanation": "第二小特征向量包含了最优二分信息。",
+          "front": "求解广义特征值系统后，归一化割算法如何决定二分？",
+          "question_id": "q_flash_flow_v4"
+        }
+      ]
+    },
+    {
+      "concept_key": "recursive_vs_kway",
+      "coverage_tags": [
+        "recursive_vs_kway"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_kway",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分递归二分和k路归一化割的核心差异。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能指出递归二分和k路归一化割在效率和方式上的主要区别。",
+      "question_type": "core_difference",
+      "retrieval_focus": "递归二分与k路归一化割的对比",
+      "term_refs": [
+        {
+          "display": "递归二分",
+          "en": "Recursive 2-way Ncut"
+        },
+        {
+          "display": "k路归一化割",
+          "en": "k-way Normalized Cut"
+        }
+      ],
+      "variants": [
+        {
+          "back": "速度慢，每次只分两类，对于大型图需要多次迭代。",
+          "estimated_seconds": 8,
+          "explanation": "递归二分每次只处理一个二分，效率较低。",
+          "front": "递归二分的主要缺点是什么？",
+          "question_id": "q_flash_kway_v1"
+        },
+        {
+          "back": "使用多个特征向量，一次性将图分割成多个部分。",
+          "estimated_seconds": 8,
+          "explanation": "通过利用多个特征向量，避免了多次递归。",
+          "front": "k路归一化割如何提高效率？",
+          "question_id": "q_flash_kway_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "affinity_and_degree_matrix",
+      "coverage_tags": [
+        "affinity_and_degree_matrix"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_matrix",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆亲和矩阵和度矩阵的定义。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能准确说出亲和矩阵和度矩阵分别记录什么信息。",
+      "question_type": "term_to_function",
+      "retrieval_focus": "亲和矩阵和度矩阵的定义",
+      "term_refs": [
+        {
+          "display": "亲和矩阵",
+          "en": "Affinity Matrix (W)"
+        },
+        {
+          "display": "度矩阵",
+          "en": "Degree Matrix (D)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "所有点对之间的相似度。",
+          "estimated_seconds": 6,
+          "explanation": "W 的每个元素 w(i,j) 表示节点 i 和 j 的相似度。",
+          "front": "亲和矩阵 W 记录了什么信息？",
+          "question_id": "q_flash_matrix_v1"
+        },
+        {
+          "back": "亲和矩阵 W 中对应行的元素之和。",
+          "estimated_seconds": 8,
+          "explanation": "D(i,i) = sum_j w(i,j)，表示节点 i 的总连接度。",
+          "front": "度矩阵 D 的对角线元素是什么？",
+          "question_id": "q_flash_matrix_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "second_smallest_eigenvector",
+      "coverage_tags": [
+        "second_smallest_eigenvector"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_eigenvector",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆用于二分图的特征向量是第几小的。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能准确说出用于二分的特征向量的序号。",
+      "question_type": "short_answer",
+      "retrieval_focus": "用于二分的特征向量",
+      "term_refs": [
+        {
+          "display": "第二小特征向量",
+          "en": "Second Smallest Eigenvector"
+        }
+      ],
+      "variants": [
+        {
+          "back": "第二小。",
+          "estimated_seconds": 6,
+          "explanation": "第一小特征向量是常数，没有分割信息。",
+          "front": "归一化割算法中，用于二分图的特征向量是第几小的？",
+          "question_id": "q_flash_eigenvector_v1"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-graph-clustering",
+  "longform_families": [
+    {
+      "concept_key": "algorithm_flow",
+      "coverage_tags": [
+        "algorithm_flow"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_flow",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整描述归一化割算法的流程，并解释每个步骤的目的。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能写出归一化割算法的五个步骤，并说明每一步的作用。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "归一化割算法",
+          "en": "Normalized Cuts Algorithm"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "步骤1：定义相似度函数",
+            "步骤2：计算亲和矩阵和度矩阵",
+            "步骤3：求解广义特征值系统",
+            "步骤4：取出第二小特征向量",
+            "步骤5：二分图并决定是否递归"
+          ],
+          "question_id": "q_long_flow_v1",
+          "reference_answer": [
+            "1. 定义相似度函数：用于衡量两个节点之间的相似度，是构建亲和矩阵的基础。",
+            "2. 计算亲和矩阵W和度矩阵D：W记录所有点对相似度，D的对角线元素是W的行和，表示节点的总连接度。",
+            "3. 求解广义特征值系统 (D-W)y = λDy：将离散优化问题放松为连续问题，得到特征向量。",
+            "4. 取出第二小的特征值对应的特征向量：第一小特征向量是常数，没有分割信息；第二小特征向量包含最优二分信息。",
+            "5. 根据特征向量的正负号将图一分为二，然后对每一部分递归地重复这个过程，或者使用多个特征向量进行k路分割。"
+          ],
+          "rubric_points": [
+            "正确列出所有5个步骤",
+            "每个步骤的目的解释正确",
+            "提到第二小特征向量用于二分",
+            "提到递归或使用多特征向量扩展"
+          ],
+          "stem": "请详细描述归一化割算法的完整流程，并简要说明每个步骤的目的。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "algorithm_flow",
+      "coverage_tags": [
+        "algorithm_flow"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_flow",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确排序归一化割算法的步骤。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能从多个选项中选出正确的算法步骤顺序。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "归一化割算法",
+          "en": "Normalized Cuts Algorithm"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "正确的顺序是：先定义相似度函数，然后计算亲和矩阵和度矩阵，接着求解广义特征值系统，取出第二小特征向量，最后根据其正负号二分。",
+          "options": [
+            "计算矩阵 -> 定义相似度 -> 求解特征值 -> 二分 -> 取第二小特征向量",
+            "定义相似度 -> 求解特征值 -> 计算矩阵 -> 取第二小特征向量 -> 二分",
+            "定义相似度 -> 计算矩阵 -> 求解特征值 -> 取第二小特征向量 -> 二分",
+            "求解特征值 -> 定义相似度 -> 计算矩阵 -> 二分 -> 取第二小特征向量"
+          ],
+          "question_id": "q_quiz_flow_v1",
+          "stem": "请选出归一化割算法的正确步骤顺序。"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "求解广义特征值系统后，下一步是取出第二小的特征值对应的特征向量，用于二分图。",
+          "options": [
+            "重新定义相似度函数",
+            "取出第二小的特征值对应的特征向量",
+            "直接对图进行k-means聚类",
+            "计算度矩阵"
+          ],
+          "question_id": "q_quiz_flow_v2",
+          "stem": "在归一化割算法中，求解广义特征值系统 (D-W)y = λDy 之后，下一步应该做什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "recursive_vs_kway",
+      "coverage_tags": [
+        "recursive_vs_kway"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_kway",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分递归二分和k路归一化割的适用场景和效率。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能判断哪种多类扩展方法更高效，并理解原因。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "递归二分",
+          "en": "Recursive 2-way Ncut"
+        },
+        {
+          "display": "k路归一化割",
+          "en": "k-way Normalized Cut"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "递归二分每次只分两类，需要多次迭代；使用多个特征向量可以一次性分成多类，更高效。",
+          "options": [
+            "递归二分更高效",
+            "使用多个特征向量更高效",
+            "两者效率相同",
+            "两者都不高效"
+          ],
+          "question_id": "q_quiz_kway_v1",
+          "stem": "递归二分和使用多个特征向量的多类扩展方法，哪个更高效？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "递归二分和使用多个特征向量是文中提到的两种方式。随机初始化并迭代优化不是归一化割的标准扩展方法。",
+          "options": [
+            "随机初始化并迭代优化",
+            "递归二分",
+            "使用多个特征向量进行k-means",
+            "直接求解一个多类目标函数"
+          ],
+          "question_id": "q_quiz_kway_v2",
+          "stem": "以下哪种方法不是将归一化割扩展到多类分割的方式？"
+        }
+      ]
+    },
+    {
+      "concept_key": "second_smallest_eigenvector",
+      "coverage_tags": [
+        "second_smallest_eigenvector"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_eigenvector",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解为什么使用第二小特征向量进行二分。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能解释为什么第一小特征向量不能用于二分。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "第二小特征向量",
+          "en": "Second Smallest Eigenvector"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "第一小特征向量是常数向量，所有元素相等，没有分割信息。",
+          "options": [
+            "因为第一小特征向量是常数向量，所有元素相等，无法区分节点",
+            "因为第一小特征向量对应的特征值太大",
+            "因为第一小特征向量包含太多噪声",
+            "因为第一小特征向量计算复杂"
+          ],
+          "question_id": "q_quiz_eigenvector_v1",
+          "stem": "为什么归一化割算法不使用第一小特征向量进行二分？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-graph-clustering/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

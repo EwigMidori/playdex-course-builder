@@ -1,0 +1,212 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "linear_regression_need_for_criterion",
+      "covered_by": [
+        "qf_flash_need_criterion",
+        "qf_quiz_need_criterion"
+      ],
+      "description": "线性回归需要统一标准来比较不同直线的好坏"
+    },
+    {
+      "coverage_tag": "linear_regression_many_lines",
+      "covered_by": [
+        "qf_flash_many_lines",
+        "qf_quiz_many_lines"
+      ],
+      "description": "同一组数据点可以画出无数条不同的直线"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "linear_regression_need_for_criterion",
+      "coverage_tags": [
+        "linear_regression_need_for_criterion"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_need_criterion",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解为什么线性回归需要一个数学标准来评价直线的好坏。",
+      "linked_steps": [
+        "step2a"
+      ],
+      "practice_target": "学生能说出没有统一标准时，面对多条候选直线无法判断优劣这一核心问题。",
+      "question_type": "short_answer",
+      "retrieval_focus": "线性回归中需要统一标准的原因",
+      "term_refs": [
+        {
+          "display": "线性回归",
+          "en": "Linear Regression"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为没有统一的数学标准来衡量直线的“好坏”。",
+          "estimated_seconds": 8,
+          "explanation": "不同的人会画出不同的线，导致预测结果不一致。这说明我们需要一个统一的、精确的数学规则。",
+          "front": "在 step2a 中，面对同一组数据点画出的两条不同直线，为什么我们无法判断哪一条更好？",
+          "question_id": "q_flash_need_criterion_v1"
+        },
+        {
+          "back": "因为缺乏客观的量化标准，不同观察者可能选出不同的线。",
+          "estimated_seconds": 8,
+          "explanation": "肉眼判断主观且不一致，需要数学标准来客观地定义“最佳”。",
+          "front": "线性回归中，为什么不能仅凭肉眼观察就确定哪条拟合直线最好？",
+          "question_id": "q_flash_need_criterion_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "linear_regression_many_lines",
+      "coverage_tags": [
+        "linear_regression_many_lines"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_many_lines",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能认识到通过同一组数据点可以拟合出无数条不同的直线。",
+      "linked_steps": [
+        "step2a"
+      ],
+      "practice_target": "学生能回忆起线性回归中“无数条线”这一基本事实。",
+      "question_type": "short_answer",
+      "retrieval_focus": "线性回归中候选直线的数量",
+      "term_refs": [
+        {
+          "display": "线性回归",
+          "en": "Linear Regression"
+        }
+      ],
+      "variants": [
+        {
+          "back": "无数条。",
+          "estimated_seconds": 5,
+          "explanation": "只要直线不完全重合，任何斜率和截距的组合都构成一条不同的直线，因此有无数种可能。",
+          "front": "通过同一组数据点，理论上可以画出多少条不同的直线？",
+          "question_id": "q_flash_many_lines_v1"
+        },
+        {
+          "back": "因为直线的斜率和截距可以取无穷多种不同的组合。",
+          "estimated_seconds": 8,
+          "explanation": "每条直线由斜率和截距两个参数决定，这两个参数可以连续变化，因此有无数条。",
+          "front": "在 step2a 中，为什么说通过同一组数据点可以画出无数条不同的直线？",
+          "question_id": "q_flash_many_lines_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "longform_families": [],
+  "quiz_families": [
+    {
+      "concept_key": "linear_regression_need_for_criterion",
+      "coverage_tags": [
+        "linear_regression_need_for_criterion"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_need_criterion",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下理解线性回归需要统一标准的原因。",
+      "linked_steps": [
+        "step2a"
+      ],
+      "practice_target": "学生能识别出没有统一标准时无法比较不同直线优劣这一核心问题。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "线性回归",
+          "en": "Linear Regression"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "没有衡量标准时，我们无法判断哪条线更好。我们需要一个标准来量化“好坏”。",
+          "options": [
+            "因为两条直线看起来差不多",
+            "因为没有统一的数学标准来衡量直线的“好坏”",
+            "因为数据点太少",
+            "因为直线都是正确的"
+          ],
+          "question_id": "q_quiz_need_criterion_v1",
+          "stem": "在 step2a 中，面对同一组数据点画出的两条不同直线，为什么我们无法判断哪一条更好？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "肉眼判断主观且不一致，需要数学标准来客观地定义“最佳”。",
+          "options": [
+            "因为肉眼无法看到所有直线",
+            "因为缺乏客观的量化标准，不同观察者可能选出不同的线",
+            "因为数据点总是有噪声",
+            "因为直线必须通过所有数据点"
+          ],
+          "question_id": "q_quiz_need_criterion_v2",
+          "stem": "线性回归中，为什么不能仅凭肉眼观察就确定哪条拟合直线最好？"
+        }
+      ]
+    },
+    {
+      "concept_key": "linear_regression_many_lines",
+      "coverage_tags": [
+        "linear_regression_many_lines"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_many_lines",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解线性回归中候选直线有无穷多条这一事实。",
+      "linked_steps": [
+        "step2a"
+      ],
+      "practice_target": "学生能识别出通过同一组数据点可以拟合出无数条不同的直线。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "线性回归",
+          "en": "Linear Regression"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 3,
+          "estimated_seconds": 10,
+          "explanation": "只要直线不完全重合，任何斜率和截距的组合都构成一条不同的直线，因此有无数种可能。",
+          "options": [
+            "1条",
+            "2条",
+            "有限条",
+            "无数条"
+          ],
+          "question_id": "q_quiz_many_lines_v1",
+          "stem": "通过同一组数据点，理论上可以画出多少条不同的直线？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "每条直线由斜率和截距两个参数决定，这两个参数可以连续变化，因此有无数条。",
+          "options": [
+            "因为数据点可以任意移动",
+            "因为直线的斜率和截距可以取无穷多种不同的组合",
+            "因为每条直线都必须穿过所有数据点",
+            "因为数据点数量是无限的"
+          ],
+          "question_id": "q_quiz_many_lines_v2",
+          "stem": "在 step2a 中，为什么说通过同一组数据点可以画出无数条不同的直线？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2a",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-regression-and-svm/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

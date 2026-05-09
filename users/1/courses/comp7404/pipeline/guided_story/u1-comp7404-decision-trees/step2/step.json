@@ -1,0 +1,226 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-decision-trees",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "但问题来了：这么多特征，先问哪个最好？",
+        "比如，对于上面的水果，先问颜色还是先问直径？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "凭直觉，你觉得哪个问题更好？",
+        "先问“是红色吗？”还是先问“直径大于 5 cm？”"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "实际上，先问直径能一步分出苹果，而先问颜色后还需要再问一次。",
+        "kind": "single_choice",
+        "options": [
+          "先问直径",
+          "先问颜色",
+          "都一样"
+        ],
+        "prompt": "凭直觉，哪个问题能更快地把水果分开？"
+      },
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "试试你的直觉。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "你可能选对了，但直觉不一定总是可靠。",
+        "我们需要一个标准，来衡量一个问题的“好坏”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "好问题的标准是：它能最大程度地把不同类别的数据分开。",
+        "也就是让每个分支里的数据“更纯”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "gini_impurity"
+      ],
+      "id": "s006",
+      "introduced_terms": [
+        "gini_impurity"
+      ],
+      "lines": [
+        "怎么量化“纯度”呢？",
+        "一个常用的指标是 <term id=\"gini_impurity\">Gini 不纯度</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "gini_impurity"
+      ],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "它的直觉是：从一个节点里随机抽一个样本，再随机猜它的类别，猜错的概率有多大。",
+        "猜错的概率越高，这个节点就越“不纯”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "gini_impurity"
+      ],
+      "formula": {
+        "latex": "I_{G}(t) = \\sum_{i=1}^{c} p(i|t) (1 - p(i|t)) = 1 - \\sum_{i=1}^{c} p(i|t)^{2}",
+        "spoken": "对于节点 t，Gini 不纯度等于 1 减去所有类别概率的平方和。"
+      },
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "Gini 不纯度的计算公式如下："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "gini_impurity"
+      ],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "其中，\\(p(i|t)\\) 表示在节点 \\(t\\) 中，属于类别 \\(i\\) 的样本比例。",
+        "如果所有样本都属于同一类，Gini 不纯度就是 0。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "gini_impurity"
+      ],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "想象一个节点里有 5 个苹果和 5 个橘子。",
+        "那么 \\(p(苹果|t) = 0.5\\)，\\(p(橘子|t) = 0.5\\)。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "gini_impurity"
+      ],
+      "formula": {
+        "latex": "I_{G}(t) = 1 - (0.5^{2} + 0.5^{2}) = 1 - 0.5 = 0.5",
+        "spoken": "1 减去 0.5 的平方加 0.5 的平方，等于 0.5。"
+      },
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "计算这个节点的 Gini 不纯度："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "gini_impurity"
+      ],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "Gini 不纯度为 0.5，说明这个节点非常“混乱”。",
+        "我们的目标，就是通过提问，让分裂后的子节点 Gini 不纯度尽可能低。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "Gini 不纯度越大，说明节点越混乱；越接近 0，节点才越纯。",
+        "kind": "true_false",
+        "options": [
+          "正确",
+          "错误"
+        ],
+        "prompt": "判断：一个节点的 Gini 不纯度越大，说明这个节点越纯。"
+      },
+      "focus_terms": [
+        "gini_impurity"
+      ],
+      "id": "s012b",
+      "introduced_terms": [],
+      "lines": [
+        "判断：一个节点的 Gini 不纯度越大，说明这个节点越纯。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.18"
+        ],
+        "explanation": "p(苹果)=0.9, p(橘子)=0.1。Gini = 1 - (0.9² + 0.1²) = 1 - 0.82 = 0.18。",
+        "kind": "fill_in_blank",
+        "prompt": "Gini 不纯度 = ? (保留一位小数)"
+      },
+      "focus_terms": [
+        "gini_impurity"
+      ],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "一个节点里有 9 个苹果和 1 个橘子。",
+        "它的 Gini 不纯度是多少？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Quantify how much a question helps to unmix the labels. 1. Quantify the amount of uncertainty at a single node. E.g. Gini Impurity.",
+    "related": [
+      "1. Gini Impurity"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "gini_impurity": {
+      "aliases": [
+        "Gini Impurity",
+        "Gini Index"
+      ],
+      "display": "Gini 不纯度",
+      "gloss": "衡量一个节点中数据“不纯”程度的指标，值越小，节点越纯。"
+    },
+    "node": {
+      "aliases": [
+        "Node"
+      ],
+      "display": "节点",
+      "gloss": "决策树中，进行判断或产生结果的位置。"
+    }
+  }
+}

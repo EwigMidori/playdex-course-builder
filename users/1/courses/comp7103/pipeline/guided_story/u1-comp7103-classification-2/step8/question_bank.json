@@ -1,0 +1,226 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "classifier_comparison",
+      "covered_by": [
+        "qf_flash_classifier_tradeoff",
+        "qf_quiz_lazy_learner",
+        "qf_long_choose_classifier"
+      ],
+      "description": "对五种分类器（k-NN、朴素贝叶斯、SVM、逻辑回归、集成方法）的核心特点、假设和适用场景进行总结与对比。"
+    },
+    {
+      "coverage_tag": "lazy_learner",
+      "covered_by": [
+        "qf_quiz_lazy_learner"
+      ],
+      "description": "k-NN 是懒惰学习器，不预先训练模型，预测时计算成本高。"
+    },
+    {
+      "coverage_tag": "bagging_boosting_diff",
+      "covered_by": [
+        "qf_flash_classifier_tradeoff"
+      ],
+      "description": "Bagging 减少方差，Boosting 减少偏差。"
+    },
+    {
+      "coverage_tag": "no_best_classifier",
+      "covered_by": [
+        "qf_long_choose_classifier"
+      ],
+      "description": "没有绝对最好的分类器，选择取决于数据、问题和需求。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "classifier_comparison",
+      "coverage_tags": [
+        "classifier_comparison",
+        "bagging_boosting_diff"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_classifier_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆每种分类器的核心特点以及 Bagging 和 Boosting 的主要区别。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生能准确说出 Bagging 和 Boosting 分别主要减少什么（方差 vs 偏差），以及 k-NN 和朴素贝叶斯的主要缺点。",
+      "question_type": "short_answer",
+      "retrieval_focus": "分类器核心特点与 Bagging/Boosting 的差异。",
+      "term_refs": [
+        {
+          "display": "Bagging",
+          "en": "Bagging"
+        },
+        {
+          "display": "Boosting",
+          "en": "Boosting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "方差",
+          "estimated_seconds": 8,
+          "explanation": "Bagging 通过对训练数据进行有放回抽样，训练多个模型后投票或平均，从而降低模型的方差。",
+          "front": "Bagging 主要减少模型的什么？",
+          "question_id": "q_flash_classifier_tradeoff_v1"
+        },
+        {
+          "back": "偏差",
+          "estimated_seconds": 8,
+          "explanation": "Boosting 通过迭代地训练模型，每次更关注之前被错误分类的样本，从而降低模型的偏差。",
+          "front": "Boosting 主要减少模型的什么？",
+          "question_id": "q_flash_classifier_tradeoff_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-2",
+  "longform_families": [
+    {
+      "concept_key": "classifier_comparison",
+      "coverage_tags": [
+        "classifier_comparison",
+        "no_best_classifier"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_choose_classifier",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据具体场景，解释选择某种分类器的理由，并说明其优缺点。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生能结合分类器的特点（如计算成本、可解释性、对高维数据的适应性等），为给定场景推荐合适的分类器并给出理由。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "k-NN",
+          "en": "k-Nearest Neighbors"
+        },
+        {
+          "display": "朴素贝叶斯",
+          "en": "Naïve Bayes"
+        },
+        {
+          "display": "SVM",
+          "en": "Support Vector Machine"
+        },
+        {
+          "display": "逻辑回归",
+          "en": "Logistic Regression"
+        },
+        {
+          "display": "集成方法",
+          "en": "Ensemble Methods"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "选择的分类器",
+            "选择理由",
+            "潜在缺点"
+          ],
+          "question_id": "q_long_choose_classifier_v1",
+          "reference_answer": [
+            "我会选择逻辑回归。",
+            "理由：逻辑回归输出的是概率，并且每个特征都有一个对应的权重系数，这些系数的正负和大小可以直接解释该特征对预测结果的影响，可解释性很强。",
+            "潜在缺点：逻辑回归假设特征与对数几率之间存在线性关系，如果数据是非线性的，可能需要手动进行特征变换或使用核方法，否则效果可能不佳。"
+          ],
+          "rubric_points": [
+            "正确选择逻辑回归或朴素贝叶斯（可解释性强）。",
+            "理由合理：逻辑回归的系数可以直接解释特征影响；朴素贝叶斯的概率计算透明。",
+            "指出一个合理缺点：逻辑回归假设线性关系；朴素贝叶斯假设特征独立。"
+          ],
+          "stem": "假设你有一个高维数据集（例如，每个样本有 1000 个特征），并且你非常关心模型的可解释性，希望知道每个特征对预测结果的贡献。你会选择哪种分类器？请解释你的选择，并指出该分类器的一个潜在缺点。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "选择的分类器",
+            "选择理由",
+            "潜在缺点"
+          ],
+          "question_id": "q_long_choose_classifier_v2",
+          "reference_answer": [
+            "我会选择随机森林。",
+            "理由：随机森林是一种集成方法，通过构建多棵决策树并投票，能够很好地处理特征之间的复杂交互关系。同时，由于它基于 Bagging，对噪声点有较好的鲁棒性，不容易过拟合。",
+            "潜在缺点：随机森林的模型可解释性较差，我们很难像逻辑回归那样直观地理解每个特征是如何影响最终预测的。"
+          ],
+          "rubric_points": [
+            "正确选择随机森林或 SVM（带核技巧）。",
+            "理由合理：随机森林通过集成多棵树能处理复杂交互且对噪声鲁棒；SVM 通过核技巧能处理非线性关系。",
+            "指出一个合理缺点：随机森林可解释性较差；SVM 对参数和核函数的选择敏感。"
+          ],
+          "stem": "你有一个中等规模的数据集，特征数量不多（例如 20 个），但数据中存在一些噪声点。你希望模型有较高的准确率，并且能够处理特征之间的复杂交互关系。你会选择哪种分类器？请解释你的选择，并指出该分类器的一个潜在缺点。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "lazy_learner",
+      "coverage_tags": [
+        "lazy_learner",
+        "classifier_comparison"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_lazy_learner",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下识别出哪个分类器是懒惰学习器。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生能正确识别 k-NN 是懒惰学习器，并理解其含义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "懒惰学习器",
+          "en": "Lazy Learner"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "k-NN 是懒惰学习器，它不预先训练模型，而是在预测时计算所有样本的距离。",
+          "options": [
+            "SVM",
+            "k-NN",
+            "逻辑回归",
+            "随机森林"
+          ],
+          "question_id": "q_quiz_lazy_learner_v1",
+          "stem": "以下哪个分类器被称为“懒惰学习器”？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "懒惰学习器（如 k-NN）不预先建立模型，而是在预测时才进行计算，因此预测时的计算成本很高。",
+          "options": [
+            "训练过程非常耗时",
+            "预测时计算成本高",
+            "需要大量特征工程",
+            "对噪声数据不敏感"
+          ],
+          "question_id": "q_quiz_lazy_learner_v2",
+          "stem": "懒惰学习器的主要特点是什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-2/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

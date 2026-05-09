@@ -1,0 +1,111 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "过拟合的问题在于，我们无法用训练数据来评估模型的泛化能力。",
+        "因为模型已经“记住”了训练数据。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "那该怎么办？我们需要模拟“未知数据”。",
+        "一个简单的方法：把数据分成两部分，一部分用来训练，一部分用来测试。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "cross_validation"
+      ],
+      "id": "s030",
+      "introduced_terms": [
+        "cross_validation"
+      ],
+      "lines": [
+        "但这样只做一次测试，结果可能不稳定。",
+        "更可靠的方法是 <term id=\"cross_validation\">交叉验证</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "k_fold_cross_validation"
+      ],
+      "id": "s031",
+      "introduced_terms": [
+        "k_fold_cross_validation"
+      ],
+      "lines": [
+        "最常用的是 <term id=\"k_fold_cross_validation\">K折交叉验证</term>。",
+        "它将数据集分成K份，轮流用K-1份训练，1份测试。重复K次，取平均结果。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "这样，每个数据点都被用于训练和测试，评估结果更可靠。",
+        "K通常取5或10。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "在K折交叉验证的每一轮中，我们使用K-1份数据来训练模型，用剩下的1份数据来测试。",
+        "kind": "single_choice",
+        "options": [
+          "全部K份数据训练，0份测试",
+          "K-1份训练，1份测试",
+          "1份训练，K-1份测试",
+          "随机抽取一半训练，一半测试"
+        ],
+        "prompt": "K折交叉验证中，每一轮实验用多少数据训练？多少数据测试？"
+      },
+      "focus_terms": [],
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Cross-validation: Almost invariably, all the pattern recognition techniques that we introduced have one or more free parameters. The bandwidth parameter and C in SVM. Two issues arise at this point: Model Selection: How do we select the 'optimal' parameter(s) for a given classification problem? Validation: Once we have chosen a model, how do we estimate its true error rate? K-Fold Cross-validation: Create a K-fold partition of the dataset. For each of K experiments, use K-1 folds for training and a different fold for testing. The advantage of K-Fold Cross validation is that all the examples in the dataset are eventually used for both training and testing. The true error is estimated as the average error rate on test examples.",
+    "related": [
+      "Cross-validation",
+      "K-Fold Cross-validation"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "cross_validation": {
+      "aliases": [
+        "Cross-validation",
+        "CV"
+      ],
+      "display": "交叉验证",
+      "gloss": "一种评估模型泛化性能的统计方法，通过将数据集分成多份，轮流用其中一份做测试，其余做训练。"
+    },
+    "k_fold_cross_validation": {
+      "aliases": [
+        "K-Fold Cross-validation"
+      ],
+      "display": "K折交叉验证",
+      "gloss": "将数据分成K份，进行K次训练和测试，每次用不同的K-1份训练，1份测试。"
+    }
+  }
+}

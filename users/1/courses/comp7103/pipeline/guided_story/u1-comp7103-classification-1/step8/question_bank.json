@@ -1,0 +1,758 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "classification_definition",
+      "covered_by": [
+        "qf_flash_classification_def",
+        "qf_quiz_classification_example"
+      ],
+      "description": "分类的定义：用已知标签的数据预测新数据的标签。"
+    },
+    {
+      "coverage_tag": "decision_tree_construction",
+      "covered_by": [
+        "qf_flash_dt_recursive_partitioning",
+        "qf_quiz_dt_split_criterion"
+      ],
+      "description": "决策树通过递归划分构建，每次选择信息增益最大的特征。"
+    },
+    {
+      "coverage_tag": "impurity_measures",
+      "covered_by": [
+        "qf_flash_entropy_definition",
+        "qf_flash_gini_definition",
+        "qf_quiz_impurity_comparison"
+      ],
+      "description": "熵和基尼指数用于量化不纯度。"
+    },
+    {
+      "coverage_tag": "overfitting_and_pruning",
+      "covered_by": [
+        "qf_flash_overfitting_definition",
+        "qf_quiz_overfitting_identification",
+        "qf_long_overfitting_explanation"
+      ],
+      "description": "过拟合是决策树的主要风险，剪枝是防止过拟合的有效手段。"
+    },
+    {
+      "coverage_tag": "evaluation_metrics",
+      "covered_by": [
+        "qf_flash_precision_recall",
+        "qf_quiz_accuracy_limitation",
+        "qf_long_evaluation_metrics_application"
+      ],
+      "description": "评估分类器不能只看准确率，混淆矩阵、精确率、召回率、F1分数、ROC曲线都是重要工具。"
+    },
+    {
+      "coverage_tag": "dt_advantages_disadvantages",
+      "covered_by": [
+        "qf_quiz_dt_pros_cons"
+      ],
+      "description": "决策树简单、可解释、速度快，但容易过拟合且决策边界是矩形的。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "classification_definition",
+      "coverage_tags": [
+        "classification_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_classification_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确复述分类问题的核心定义。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了分类问题的基本定义：用已知标签的数据预测新数据的标签。",
+      "question_type": "short_answer",
+      "retrieval_focus": "分类问题的核心定义",
+      "term_refs": [
+        {
+          "display": "分类",
+          "en": "Classification"
+        }
+      ],
+      "variants": [
+        {
+          "back": "用已知标签的数据，预测新数据的标签。",
+          "estimated_seconds": 8,
+          "explanation": "分类是监督学习的核心任务，目标是从有标签的训练数据中学习规律，然后对未标记的数据进行预测。",
+          "front": "分类问题要解决的核心任务是什么？",
+          "question_id": "q_flash_classification_def_v1"
+        },
+        {
+          "back": "根据已知标签的数据（训练数据）学习到的规律。",
+          "estimated_seconds": 8,
+          "explanation": "分类模型从有标签的训练数据中学习特征与标签之间的关系，然后用这个关系去预测新数据的标签。",
+          "front": "在分类问题中，我们根据什么来预测新数据的标签？",
+          "question_id": "q_flash_classification_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "decision_tree_construction",
+      "coverage_tags": [
+        "decision_tree_construction"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_dt_recursive_partitioning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述决策树的构建核心思想。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了决策树通过递归划分构建，并每次选择信息增益最大的特征来分裂。",
+      "question_type": "short_answer",
+      "retrieval_focus": "决策树的构建核心思想",
+      "term_refs": [
+        {
+          "display": "递归划分",
+          "en": "Recursive Partitioning"
+        },
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "back": "递归划分：每次选择信息增益最大的特征来分裂数据，并对每个子集重复此过程。",
+          "estimated_seconds": 10,
+          "explanation": "决策树通过递归地选择最佳特征来划分数据，直到满足停止条件，从而构建出一棵能够分类新数据的树。",
+          "front": "决策树构建的核心思想是什么？",
+          "question_id": "q_flash_dt_recursive_partitioning_v1"
+        },
+        {
+          "back": "选择信息增益最大的特征。",
+          "estimated_seconds": 8,
+          "explanation": "信息增益衡量了使用某个特征进行分裂后，数据不纯度（熵）的减少量。增益越大，说明该特征的分裂效果越好。",
+          "front": "决策树在每次分裂时，如何选择使用哪个特征？",
+          "question_id": "q_flash_dt_recursive_partitioning_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "impurity_measures",
+      "coverage_tags": [
+        "impurity_measures"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_entropy_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出熵的定义和用途。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了熵是量化不纯度的指标，用于决策树分裂。",
+      "question_type": "short_answer",
+      "retrieval_focus": "熵的定义和用途",
+      "term_refs": [
+        {
+          "display": "熵",
+          "en": "Entropy"
+        }
+      ],
+      "variants": [
+        {
+          "back": "数据集的纯度或不纯度（不确定性）。",
+          "estimated_seconds": 8,
+          "explanation": "熵越大，数据越混乱、越不纯；熵越小，数据越纯。决策树通过选择使熵降低最多的特征来分裂。",
+          "front": "在决策树中，熵用来衡量什么？",
+          "question_id": "q_flash_entropy_definition_v1"
+        },
+        {
+          "back": "使用某个特征分裂后，熵的减少量。",
+          "estimated_seconds": 8,
+          "explanation": "信息增益 = 分裂前的熵 - 分裂后的期望熵。增益越大，说明该特征的分裂效果越好。",
+          "front": "信息增益衡量的是什么？",
+          "question_id": "q_flash_entropy_definition_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "impurity_measures",
+      "coverage_tags": [
+        "impurity_measures"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_gini_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出基尼指数的定义和用途。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了基尼指数是另一种量化不纯度的指标。",
+      "question_type": "short_answer",
+      "retrieval_focus": "基尼指数的定义和用途",
+      "term_refs": [
+        {
+          "display": "基尼指数",
+          "en": "Gini Index"
+        }
+      ],
+      "variants": [
+        {
+          "back": "基尼指数（Gini Index）。",
+          "estimated_seconds": 8,
+          "explanation": "基尼指数是另一种常用的不纯度度量，值越小表示数据集越纯。当所有样本属于同一类时，基尼指数为0。",
+          "front": "除了熵，决策树还可以用什么指标来量化不纯度？",
+          "question_id": "q_flash_gini_definition_v1"
+        },
+        {
+          "back": "数据集中的所有样本都属于同一类别（完全纯）。",
+          "estimated_seconds": 6,
+          "explanation": "基尼指数的最小值为0，表示数据集是纯的，没有任何不确定性。",
+          "front": "基尼指数为0表示什么？",
+          "question_id": "q_flash_gini_definition_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "overfitting_and_pruning",
+      "coverage_tags": [
+        "overfitting_and_pruning"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_overfitting_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出过拟合的定义和剪枝的作用。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了过拟合是决策树的主要风险，剪枝是防止过拟合的有效手段。",
+      "question_type": "short_answer",
+      "retrieval_focus": "过拟合的定义和剪枝的作用",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        },
+        {
+          "display": "剪枝",
+          "en": "Pruning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "过拟合（Overfitting）。",
+          "estimated_seconds": 6,
+          "explanation": "决策树可以长得很深直到每个叶子都纯，但这会导致模型记住训练数据的细节和噪声，在新数据上表现差。",
+          "front": "决策树的主要风险是什么？",
+          "question_id": "q_flash_overfitting_definition_v1"
+        },
+        {
+          "back": "剪枝（Pruning）。",
+          "estimated_seconds": 6,
+          "explanation": "剪枝通过移除决策树中不必要的分支来降低模型复杂度，从而提高泛化能力。",
+          "front": "防止决策树过拟合的有效手段是什么？",
+          "question_id": "q_flash_overfitting_definition_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "evaluation_metrics",
+      "coverage_tags": [
+        "evaluation_metrics"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_precision_recall",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确区分精确率和召回率的含义。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了精确率和召回率的定义和区别。",
+      "question_type": "short_answer",
+      "retrieval_focus": "精确率和召回率的定义",
+      "term_refs": [
+        {
+          "display": "精确率",
+          "en": "Precision"
+        },
+        {
+          "display": "召回率",
+          "en": "Recall"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在所有被预测为正类的样本中，有多少是真正的正类？",
+          "estimated_seconds": 10,
+          "explanation": "精确率 = TP / (TP + FP)。它衡量了模型预测为正类的准确性。",
+          "front": "精确率（Precision）回答的是什么问题？",
+          "question_id": "q_flash_precision_recall_v1"
+        },
+        {
+          "back": "在所有真正的正类样本中，模型找出了多少？",
+          "estimated_seconds": 10,
+          "explanation": "召回率 = TP / (TP + FN)。它衡量了模型对正类样本的覆盖能力。",
+          "front": "召回率（Recall）回答的是什么问题？",
+          "question_id": "q_flash_precision_recall_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-1",
+  "longform_families": [
+    {
+      "concept_key": "overfitting_and_pruning",
+      "coverage_tags": [
+        "overfitting_and_pruning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_overfitting_explanation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释过拟合的原因、表现和解决方法。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能完整解释过拟合的概念、原因、表现以及剪枝作为解决方法的原理。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        },
+        {
+          "display": "剪枝",
+          "en": "Pruning"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "过拟合的定义",
+            "过拟合产生的原因",
+            "过拟合的表现（训练误差 vs 测试误差）",
+            "剪枝的原理和作用"
+          ],
+          "question_id": "q_long_overfitting_explanation_v1",
+          "reference_answer": [
+            "过拟合是指决策树模型在训练数据上表现极好（训练误差很低），但由于模型过于复杂，学到了训练数据中的噪声和细节，导致在新数据上表现很差（测试误差很高）。",
+            "产生过拟合的主要原因是决策树可以生长得很深，直到每个叶子节点都纯，这使得模型过于复杂，过度适应了训练数据的特定模式。",
+            "剪枝是解决过拟合的有效方法。它通过移除决策树中不必要的分支（例如，用一个叶子节点替代一个子树），降低模型的复杂度，从而提高模型在未见数据上的泛化能力。"
+          ],
+          "rubric_points": [
+            "正确解释过拟合是模型在训练数据上表现太好，但对新数据表现差的现象",
+            "指出过拟合的原因是模型过于复杂，学到了训练数据中的噪声和细节",
+            "说明过拟合时训练误差很低但测试误差很高",
+            "解释剪枝通过移除不必要的分支来降低模型复杂度，从而提高泛化能力"
+          ],
+          "stem": "请解释什么是决策树的过拟合，它产生的原因是什么，以及剪枝是如何帮助解决这个问题的。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "分析当前情况属于什么问题",
+            "解释为什么会出现这种情况",
+            "提出改进方法（至少两种）"
+          ],
+          "question_id": "q_long_overfitting_explanation_v2",
+          "reference_answer": [
+            "这种情况是典型的过拟合。训练集准确率100%而测试集准确率只有55%，说明模型记住了训练数据的细节和噪声，无法泛化到新数据。",
+            "原因是决策树深度达到20层，模型过于复杂，每个叶子节点可能只包含很少的样本，甚至只包含一个样本，导致模型过度适应了训练数据。",
+            "改进方法包括：1）剪枝：先让树完全生长，然后从底部剪掉一些分支，如果剪掉后模型在验证集上表现更好就保留剪枝；2）限制树的最大深度，比如设置为5或10层；3）设置叶子节点的最小样本数，比如每个叶子节点至少包含5个样本。"
+          ],
+          "rubric_points": [
+            "正确识别出这是过拟合问题",
+            "解释过拟合的原因：树太深，模型过于复杂",
+            "提出至少两种合理的改进方法，如：剪枝、限制树的最大深度、设置叶子节点的最小样本数、使用交叉验证等"
+          ],
+          "stem": "假设你训练了一棵深度为20的决策树，它在训练集上的准确率是100%，但在测试集上的准确率只有55%。请分析可能的原因，并提出至少两种改进方法。"
+        }
+      ]
+    },
+    {
+      "concept_key": "evaluation_metrics",
+      "coverage_tags": [
+        "evaluation_metrics"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_evaluation_metrics_application",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么在类别不平衡时不能只看准确率，并说明精确率、召回率和F1分数的作用。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能解释准确率的局限性，并说明精确率、召回率和F1分数如何提供更全面的评估。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "精确率",
+          "en": "Precision"
+        },
+        {
+          "display": "召回率",
+          "en": "Recall"
+        },
+        {
+          "display": "F1分数",
+          "en": "F1 Score"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "分析准确率为什么具有误导性",
+            "解释应该使用哪些其他指标",
+            "说明这些指标各自衡量什么"
+          ],
+          "question_id": "q_long_evaluation_metrics_application_v1",
+          "reference_answer": [
+            "这个准确率具有误导性，因为模型实际上没有检测出任何欺诈交易，对于欺诈检测这个任务来说是完全无用的。在类别极度不平衡的情况下，一个总是预测多数类的模型也能获得很高的准确率。",
+            "应该使用混淆矩阵来查看TP、FP、TN、FN的详细分布，以及精确率、召回率和F1分数。",
+            "精确率回答：在所有被预测为欺诈的交易中，有多少是真正的欺诈？召回率回答：在所有真正的欺诈交易中，模型找出了多少？F1分数是精确率和召回率的调和平均，综合衡量模型性能。对于欺诈检测，召回率通常比精确率更重要，因为漏掉欺诈交易的代价很高。"
+          ],
+          "rubric_points": [
+            "正确指出准确率在类别极度不平衡时的局限性",
+            "提出至少两个其他评估指标（如精确率、召回率、F1分数、混淆矩阵）",
+            "正确解释每个指标的含义和用途"
+          ],
+          "stem": "在一个信用卡欺诈检测系统中，只有0.1%的交易是欺诈。一个模型将所有交易都判为“正常”，获得了99.9%的准确率。请解释为什么这个准确率具有误导性，并说明应该使用哪些指标来更全面地评估这个模型。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "计算准确率",
+            "计算精确率",
+            "计算召回率",
+            "分析哪个指标最重要"
+          ],
+          "question_id": "q_long_evaluation_metrics_application_v2",
+          "reference_answer": [
+            "准确率 = (TP + TN) / (TP + FP + TN + FN) = (90 + 800) / 1000 = 89%。",
+            "精确率 = TP / (TP + FP) = 90 / 100 = 90%。这意味着在所有被标记为垃圾邮件的邮件中，90%确实是垃圾邮件。",
+            "召回率 = TP / (TP + FN) = 90 / 190 ≈ 47.4%。这意味着在所有真正的垃圾邮件中，模型只找出了47.4%。",
+            "如果需求是“不要误判正常邮件”，那么假正例（将正常邮件误判为垃圾邮件）的代价很高。精确率衡量的是被预测为垃圾邮件的样本中真正是垃圾邮件的比例，精确率越高，误判正常邮件的风险越低。因此，精确率是最能反映这个需求的指标。"
+          ],
+          "rubric_points": [
+            "正确计算准确率：(90+800)/(90+10+800+100) = 890/1000 = 89%",
+            "正确计算精确率：90/(90+10) = 90%",
+            "正确计算召回率：90/(90+100) ≈ 47.4%",
+            "正确分析：如果需求是“不要误判正常邮件”，那么假正例(FP)的代价很高，精确率（90%）是最能反映这个需求的指标"
+          ],
+          "stem": "一个垃圾邮件分类器在测试集上的混淆矩阵如下：真正例(TP)=90，假正例(FP)=10，真负例(TN)=800，假负例(FN)=100。请计算该模型的准确率、精确率和召回率，并分析哪个指标最能反映模型在“不要误判正常邮件”这个需求上的表现。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "classification_definition",
+      "coverage_tags": [
+        "classification_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_classification_example",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在实际场景中识别出分类问题。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能区分分类问题与其他类型的问题（如回归）。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "分类",
+          "en": "Classification"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "判断是否为垃圾邮件是预测一个离散的类别（垃圾/非垃圾），这是分类问题。其他选项预测的是连续数值，属于回归问题。",
+          "options": [
+            "根据历史房价预测未来房价的具体数值",
+            "根据邮件内容判断是否为垃圾邮件",
+            "根据过去一周的气温预测明天的气温",
+            "根据用户历史购买记录预测下个月的消费金额"
+          ],
+          "question_id": "q_quiz_classification_example_v1",
+          "stem": "以下哪个是分类问题的例子？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 15,
+          "explanation": "判断图中是猫还是狗是典型的二分类问题。将客户分成高、中、低三组虽然也是离散类别，但通常是有序的，可能更适合用有序分类或聚类。",
+          "options": [
+            "预测明天股票的价格",
+            "将客户按消费金额分成高、中、低三组",
+            "根据房屋面积和位置预测房价",
+            "根据照片判断图中是猫还是狗"
+          ],
+          "question_id": "q_quiz_classification_example_v2",
+          "stem": "以下哪个场景最适合用分类模型来解决？"
+        }
+      ]
+    },
+    {
+      "concept_key": "decision_tree_construction",
+      "coverage_tags": [
+        "decision_tree_construction"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_dt_split_criterion",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解决策树选择分裂特征的标准。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了决策树优先选择信息增益最大的特征进行分裂。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "信息增益",
+          "en": "Information Gain"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "决策树算法会计算每个特征的信息增益，并选择信息增益最大的特征作为当前节点的分裂特征，因为这样能最大程度地降低数据的不确定性。",
+          "options": [
+            "随机选择一个特征",
+            "选择取值最多的特征",
+            "选择信息增益最大的特征",
+            "选择与标签相关性最低的特征"
+          ],
+          "question_id": "q_quiz_dt_split_criterion_v1",
+          "stem": "在构建决策树时，算法如何决定在根节点使用哪个特征进行分裂？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "信息增益 = 分裂前的熵 - 分裂后的期望熵。分裂后熵降低得越多，信息增益就越大，说明该特征的分裂效果越好。",
+          "options": [
+            "该特征的信息增益很小",
+            "该特征的信息增益很大",
+            "该特征不适合用来分裂",
+            "该特征取值太少"
+          ],
+          "question_id": "q_quiz_dt_split_criterion_v2",
+          "stem": "如果一个特征分裂后，子集的熵之和比分裂前小了很多，这说明什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "impurity_measures",
+      "coverage_tags": [
+        "impurity_measures"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_impurity_comparison",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解熵和基尼指数都是衡量不纯度的指标。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了熵和基尼指数的作用和共同点。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "熵",
+          "en": "Entropy"
+        },
+        {
+          "display": "基尼指数",
+          "en": "Gini Index"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "熵和基尼指数都是用来量化数据集不纯度的指标。值越小，数据集越纯。决策树通过选择使这些指标降低最多的特征来进行分裂。",
+          "options": [
+            "衡量树的深度",
+            "量化数据集的不纯度",
+            "计算模型的训练时间",
+            "决定树的叶子节点数量"
+          ],
+          "question_id": "q_quiz_impurity_comparison_v1",
+          "stem": "熵和基尼指数在决策树中的共同作用是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "当所有样本属于同一类别时，数据完全纯，没有任何不确定性。熵为0（因为 -1*log₂(1) = 0），基尼指数也为0（因为 1 - 1² = 0）。",
+          "options": [
+            "熵为1，基尼指数为1",
+            "熵为0，基尼指数为0",
+            "熵为1，基尼指数为0",
+            "熵为0，基尼指数为1"
+          ],
+          "question_id": "q_quiz_impurity_comparison_v2",
+          "stem": "当一个数据集的所有样本都属于同一类别时，它的熵和基尼指数分别是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "overfitting_and_pruning",
+      "coverage_tags": [
+        "overfitting_and_pruning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_overfitting_identification",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别过拟合的表现。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能根据训练误差和测试误差的关系判断过拟合。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "过拟合时，模型在训练数据上表现极好（训练误差低），但由于学到了噪声和细节，在新数据上表现差（测试误差高）。",
+          "options": [
+            "训练误差和测试误差都很高",
+            "训练误差很低，但测试误差很高",
+            "训练误差和测试误差都很低",
+            "训练误差很高，但测试误差很低"
+          ],
+          "question_id": "q_quiz_overfitting_identification_v1",
+          "stem": "以下哪种情况最可能是过拟合的表现？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "训练集准确率远高于测试集准确率，是过拟合的典型表现。模型过于复杂，记住了训练数据的细节，导致泛化能力差。",
+          "options": [
+            "欠拟合",
+            "过拟合",
+            "数据泄露",
+            "特征不足"
+          ],
+          "question_id": "q_quiz_overfitting_identification_v2",
+          "stem": "一棵决策树在训练集上的准确率是100%，但在测试集上的准确率只有60%。这最可能是什么问题？"
+        }
+      ]
+    },
+    {
+      "concept_key": "evaluation_metrics",
+      "coverage_tags": [
+        "evaluation_metrics"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_accuracy_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解准确率的局限性以及为什么需要其他评估指标。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了准确率在类别不平衡时可能具有误导性。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "准确率",
+          "en": "Accuracy"
+        },
+        {
+          "display": "混淆矩阵",
+          "en": "Confusion Matrix"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "准确率是99%，看起来很高，但模型实际上没有检测出任何癌症患者，对于癌症检测这个任务来说是完全无用的。这说明在类别不平衡时，准确率可能具有误导性，需要结合精确率、召回率等指标来评估。",
+          "options": [
+            "99%，准确率很高，模型很好",
+            "1%，准确率很低，模型很差",
+            "99%，准确率很高，但模型实际上没有检测出任何癌症患者，具有误导性",
+            "50%，准确率中等，模型一般"
+          ],
+          "question_id": "q_quiz_accuracy_limitation_v1",
+          "stem": "在一个癌症检测数据集中，只有1%的人真正患有癌症。一个模型将所有样本都预测为“无癌症”，它的准确率是多少？这个准确率是否有误导性？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "当类别严重不平衡时，一个总是预测多数类的模型也能获得很高的准确率，但实际上它可能对少数类完全没有预测能力。因此需要结合混淆矩阵、精确率、召回率等指标进行全面评估。",
+          "options": [
+            "因为准确率计算太复杂",
+            "因为准确率在类别不平衡时可能具有误导性",
+            "因为准确率只适用于二分类问题",
+            "因为准确率总是低于其他指标"
+          ],
+          "question_id": "q_quiz_accuracy_limitation_v2",
+          "stem": "为什么在评估分类器时不能只看准确率？"
+        }
+      ]
+    },
+    {
+      "concept_key": "dt_advantages_disadvantages",
+      "coverage_tags": [
+        "dt_advantages_disadvantages"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_dt_pros_cons",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出决策树的主要优点和缺点。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了决策树简单、可解释、速度快，但容易过拟合且决策边界是矩形的。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "决策树",
+          "en": "Decision Tree"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "决策树的一个主要优点是模型可解释性强。从根节点到叶子节点的路径可以转化为易于理解的if-then规则。",
+          "options": [
+            "决策边界可以是任意形状",
+            "模型可解释性强",
+            "永远不会过拟合",
+            "不需要训练数据"
+          ],
+          "question_id": "q_quiz_dt_pros_cons_v1",
+          "stem": "以下哪项是决策树分类器的优点？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "决策树容易过拟合，特别是当树生长得很深时。它可能会记住训练数据中的噪声，导致在新数据上表现不佳。剪枝是缓解这个问题的一种方法。",
+          "options": [
+            "训练速度非常慢",
+            "无法处理离散特征",
+            "容易过拟合",
+            "无法生成分类规则"
+          ],
+          "question_id": "q_quiz_dt_pros_cons_v2",
+          "stem": "以下哪项是决策树分类器的缺点？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

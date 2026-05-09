@@ -1,0 +1,88 @@
+{
+  "chapter_id": "lecture-01-knn",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-knn",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "看看这两张照片：左边是正常光照，右边是侧光。",
+        "你能看出它们是同一个人吗？"
+      ],
+      "type": "question"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "现在，请你观察：这两张照片中，同一个像素位置（比如鼻尖）的数值差异有多大？"
+      ],
+      "type": "question"
+    },
+    {
+      "exercise": {
+        "expected_fields": [
+          "observation",
+          "conclusion"
+        ],
+        "explanation": "光照变化会导致同一人脸在不同照片中的像素值差异巨大，直接像素比对不可靠。",
+        "kind": "scenario_derivation",
+        "prompt": "请描述你观察到的像素差异（例如：鼻尖位置的像素值在两张照片中分别是多少？相差多少？），并据此判断直接比较像素值是否可靠。",
+        "sample_answer": {
+          "conclusion": "直接比较像素值不可靠，因为光照变化会导致同一位置的像素值差异很大。",
+          "observation": "正常光照下鼻尖像素值为 (200, 180, 160)，侧光下为 (80, 70, 60)，差异超过100。"
+        }
+      },
+      "focus_terms": [],
+      "id": "s003",
+      "lines": [
+        "请描述你观察到的像素差异，并判断直接比较像素值是否可靠。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "所以，我们需要一种更鲁棒的方法——<term id=\"face_recognition\">人脸识别</term>。",
+        "它不只是简单比较像素，而是从图像中提取出对光照、角度不敏感的特征。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "face_recognition"
+      ],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "那么，如何设计这样的方法呢？",
+        "一个关键思路是：把每张人脸图像看作一个向量，然后找最像的那张。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Face recognition: applications, challenges and systems",
+    "related": [
+      "lecture-01-knn"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "face_recognition": {
+      "aliases": [
+        "Face Recognition",
+        "FR"
+      ],
+      "display": "人脸识别",
+      "gloss": "从图像或视频中识别或验证人脸身份的技术。"
+    }
+  }
+}

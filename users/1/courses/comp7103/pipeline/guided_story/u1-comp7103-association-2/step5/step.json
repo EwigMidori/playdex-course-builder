@@ -1,0 +1,115 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "lines": [
+        "到目前为止，我们处理的都是二元属性（买/没买）。",
+        "但现实中的数据往往是数值型的，比如年龄、收入。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "quantitative_association_rule"
+      ],
+      "lines": [
+        "这就需要 <term id=\"quantitative_association_rule\">定量关联规则</term>。",
+        "比如：年龄在 30-35 之间 → 收入在 500K-1M 之间。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "discretization"
+      ],
+      "lines": [
+        "处理思路很简单：把数值属性转成二元属性。",
+        "方法就是 <term id=\"discretization\">离散化</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "lines": [
+        "比如，把年龄分成 [20-24], [25-29], [30-34] 等区间。",
+        "每个区间变成一个二元属性：属于这个区间就是 1，否则是 0。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "lines": [
+        "转换之后，就可以直接用 Apriori 来挖掘了。",
+        "但这里有个问题：区间怎么划分才合适？"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "lines": [
+        "区间太细，每个区间支持度太低，找不到规则。",
+        "区间太粗，规则太泛，没有信息量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "区间太细，落在每个区间内的记录太少，支持度不足，就找不到频繁项集。",
+        "kind": "single_choice",
+        "options": [
+          "规则会变得不准确",
+          "每个区间的支持度可能太低，无法形成频繁项集",
+          "计算速度会变快",
+          "规则会变得过于通用"
+        ],
+        "prompt": "离散化时，如果区间划分得太细，会导致什么问题？"
+      },
+      "id": "s007",
+      "lines": [
+        "离散化时，如果区间划分得太细，会导致什么问题？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s008",
+      "lines": [
+        "一种解决办法是设置最大支持度，允许相邻区间合并。",
+        "这样既能保证支持度，又能避免区间过细。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "In binary association rule mining, attributes are assumed to be binary. In practice, many datasets contain quantitative attributes. Quantitative association rules deal with quantitative attributes. Our approach is to map the dataset with quantitative attributes to one with binary attributes, then apply Apriori.",
+    "related": [
+      "Quantitative Association Rules (QAR)",
+      "Mapping QAR to the binary model"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "discretization": {
+      "aliases": [
+        "Discretization"
+      ],
+      "display": "离散化",
+      "gloss": "将连续的数值属性划分为若干个区间。"
+    },
+    "quantitative_association_rule": {
+      "aliases": [
+        "QAR",
+        "Quantitative Association Rule"
+      ],
+      "display": "定量关联规则",
+      "gloss": "处理数值型属性的关联规则，如年龄、收入等。"
+    }
+  }
+}

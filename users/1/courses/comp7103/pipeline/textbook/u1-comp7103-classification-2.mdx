@@ -1,0 +1,591 @@
+---
+lessonId: u1-comp7103-classification-2
+title: Classification 2
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["core_theme"]
+    linkedSteps: ["step1", "step8"]
+  - sectionId: global-concept-map
+    title: 课程全景与关键问题
+    coverageTags: ["core_theme", "classifier_comparison", "no_best_classifier"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6", "step7", "step8"]
+  - sectionId: nearest-neighbor-classifiers
+    title: 最近邻分类器 (k-NN)
+    coverageTags: ["nearest_neighbor_basic_idea", "knn_three_requirements", "knn_classification_process", "majority_vote", "euclidean_distance_formula", "normalization_importance", "k_selection_tradeoff", "lazy_learner_characteristics"]
+    linkedSteps: ["step1", "step2"]
+  - sectionId: bayesian-classifiers
+    title: 贝叶斯分类器与朴素贝叶斯
+    coverageTags: ["bayes_theorem", "naive_bayes_assumption", "naive_bayes_formula", "bayesian_classification_decision", "naive_bayes_example", "numerical_attribute_handling", "categorical_attribute_estimation", "probability_density_estimation"]
+    linkedSteps: ["step3", "step4"]
+  - sectionId: support-vector-machines
+    title: 支持向量机 (SVM)
+    coverageTags: ["svm_max_margin", "svm_support_vectors", "svm_slack_variable", "svm_kernel_trick"]
+    linkedSteps: ["step5"]
+  - sectionId: logistic-regression
+    title: 逻辑回归
+    coverageTags: ["logistic_regression_idea", "sigmoid_function", "log_odds_linear_relation", "maximum_likelihood_estimation"]
+    linkedSteps: ["step6"]
+  - sectionId: ensemble-methods
+    title: 集成方法：Bagging、Boosting 与随机森林
+    coverageTags: ["ensemble_methods", "bagging", "boosting", "random_forest", "bagging_boosting_diff"]
+    linkedSteps: ["step7"]
+  - sectionId: pitfalls
+    title: 易错点
+    coverageTags: ["core_theme", "classifier_comparison"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6", "step7", "step8"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["core_theme", "classifier_comparison", "no_best_classifier"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6", "step7", "step8"]
+coverageTrace:
+  - coverageTag: core_theme
+    description: 本课的核心主题：多种分类方法的原理、比较与选择
+    sectionIds: ["why-this-lesson-matters", "global-concept-map", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step1", "step8"]
+  - coverageTag: nearest_neighbor_basic_idea
+    description: 最近邻分类器的基本思想：通过寻找训练集中最相似的记录来预测新样本的标签
+    sectionIds: ["nearest-neighbor-classifiers"]
+    linkedSteps: ["step1"]
+  - coverageTag: knn_three_requirements
+    description: k-NN 需要的三样东西：带标签的记录集、距离度量、k 值
+    sectionIds: ["nearest-neighbor-classifiers"]
+    linkedSteps: ["step1"]
+  - coverageTag: knn_classification_process
+    description: k-NN 分类流程：计算距离、找出 k 个最近邻、多数投票决定类别
+    sectionIds: ["nearest-neighbor-classifiers"]
+    linkedSteps: ["step1"]
+  - coverageTag: majority_vote
+    description: 多数投票：用 k 个邻居中出现次数最多的类别来决定新样本的类别
+    sectionIds: ["nearest-neighbor-classifiers"]
+    linkedSteps: ["step1"]
+  - coverageTag: euclidean_distance_formula
+    description: 欧几里得距离公式及其在k-NN中的应用
+    sectionIds: ["nearest-neighbor-classifiers"]
+    linkedSteps: ["step2"]
+  - coverageTag: normalization_importance
+    description: 属性归一化的必要性：避免尺度大的属性主导距离计算
+    sectionIds: ["nearest-neighbor-classifiers"]
+    linkedSteps: ["step2"]
+  - coverageTag: k_selection_tradeoff
+    description: k值选择的权衡：k太小导致过拟合/对噪声敏感，k太大导致边界模糊
+    sectionIds: ["nearest-neighbor-classifiers"]
+    linkedSteps: ["step2"]
+  - coverageTag: lazy_learner_characteristics
+    description: k-NN作为懒惰学习器的特点：不预先建模，预测时计算成本高
+    sectionIds: ["nearest-neighbor-classifiers"]
+    linkedSteps: ["step2"]
+  - coverageTag: bayes_theorem
+    description: 贝叶斯定理：P(H|X) = P(X|H) * P(H) / P(X)，以及先验概率、似然、后验概率的概念
+    sectionIds: ["bayesian-classifiers"]
+    linkedSteps: ["step3"]
+  - coverageTag: naive_bayes_assumption
+    description: 朴素贝叶斯的核心假设：在给定类别的情况下，所有属性条件独立
+    sectionIds: ["bayesian-classifiers"]
+    linkedSteps: ["step3"]
+  - coverageTag: naive_bayes_formula
+    description: 朴素贝叶斯公式：P(X|C_i) = ∏ P(x_k|C_i)
+    sectionIds: ["bayesian-classifiers"]
+    linkedSteps: ["step3"]
+  - coverageTag: bayesian_classification_decision
+    description: 贝叶斯分类决策：选择使 P(X|C_i)P(C_i) 最大的类别
+    sectionIds: ["bayesian-classifiers"]
+    linkedSteps: ["step3"]
+  - coverageTag: naive_bayes_example
+    description: 朴素贝叶斯分类的完整计算示例：给定记录 X (年龄<30, 收入中等, 是学生, 信用差)，判断是否拥有电脑
+    sectionIds: ["bayesian-classifiers"]
+    linkedSteps: ["step4"]
+  - coverageTag: numerical_attribute_handling
+    description: 数值型属性的概率估计方法：离散化 vs 概率密度估计（假设正态分布）
+    sectionIds: ["bayesian-classifiers"]
+    linkedSteps: ["step4"]
+  - coverageTag: categorical_attribute_estimation
+    description: 类别型属性的条件概率估计：通过计数 n_ik / n_i
+    sectionIds: ["bayesian-classifiers"]
+    linkedSteps: ["step4"]
+  - coverageTag: probability_density_estimation
+    description: 概率密度估计：假设数值属性服从正态分布，用均值和方差计算概率密度
+    sectionIds: ["bayesian-classifiers"]
+    linkedSteps: ["step4"]
+  - coverageTag: svm_max_margin
+    description: SVM 的核心思想：寻找最大化间隔的超平面
+    sectionIds: ["support-vector-machines"]
+    linkedSteps: ["step5"]
+  - coverageTag: svm_support_vectors
+    description: 支持向量的定义与作用：决定间隔的最近数据点
+    sectionIds: ["support-vector-machines"]
+    linkedSteps: ["step5"]
+  - coverageTag: svm_slack_variable
+    description: 松弛变量：处理线性不可分问题，允许部分误分类并惩罚
+    sectionIds: ["support-vector-machines"]
+    linkedSteps: ["step5"]
+  - coverageTag: svm_kernel_trick
+    description: 核技巧：将数据映射到高维空间使其线性可分，计算仍在原空间
+    sectionIds: ["support-vector-machines"]
+    linkedSteps: ["step5"]
+  - coverageTag: logistic_regression_idea
+    description: 逻辑回归的基本思想：用回归分析做分类，输出概率而非类别标签
+    sectionIds: ["logistic-regression"]
+    linkedSteps: ["step6"]
+  - coverageTag: sigmoid_function
+    description: Sigmoid 函数：将任意实数映射到 0-1 之间，用于表示概率
+    sectionIds: ["logistic-regression"]
+    linkedSteps: ["step6"]
+  - coverageTag: log_odds_linear_relation
+    description: 对数几率与自变量的线性关系假设
+    sectionIds: ["logistic-regression"]
+    linkedSteps: ["step6"]
+  - coverageTag: maximum_likelihood_estimation
+    description: 极大似然估计：通过最大化正确标签的概率来拟合逻辑回归曲线
+    sectionIds: ["logistic-regression"]
+    linkedSteps: ["step6"]
+  - coverageTag: ensemble_methods
+    description: 集成方法的基本思想：组合多个分类器提升性能
+    sectionIds: ["ensemble-methods"]
+    linkedSteps: ["step7"]
+  - coverageTag: bagging
+    description: Bagging：自助采样 + 并行训练 + 投票
+    sectionIds: ["ensemble-methods"]
+    linkedSteps: ["step7"]
+  - coverageTag: boosting
+    description: Boosting：迭代训练，关注错分样本
+    sectionIds: ["ensemble-methods"]
+    linkedSteps: ["step7"]
+  - coverageTag: random_forest
+    description: 随机森林：Bagging + 随机特征选择
+    sectionIds: ["ensemble-methods"]
+    linkedSteps: ["step7"]
+  - coverageTag: bagging_boosting_diff
+    description: Bagging 减少方差，Boosting 减少偏差
+    sectionIds: ["ensemble-methods"]
+    linkedSteps: ["step7"]
+  - coverageTag: classifier_comparison
+    description: 对五种分类器（k-NN、朴素贝叶斯、SVM、逻辑回归、集成方法）的核心特点、假设和适用场景进行总结与对比
+    sectionIds: ["global-concept-map", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step8"]
+  - coverageTag: no_best_classifier
+    description: 没有绝对最好的分类器，选择取决于数据、问题和需求
+    sectionIds: ["global-concept-map", "review-and-self-test"]
+    linkedSteps: ["step8"]
+---
+
+# Classification 2
+
+## 为什么这一课重要
+
+分类是数据挖掘与机器学习中最核心的任务之一。从垃圾邮件过滤到医疗诊断，从信用风险评估到图像识别，几乎所有需要“根据已知信息判断类别”的场景都离不开分类算法。
+
+本课将系统介绍五种重要的分类方法：**最近邻分类器 (k-NN)**、**朴素贝叶斯**、**支持向量机 (SVM)**、**逻辑回归**以及**集成方法 (Bagging、Boosting、随机森林)**。理解这些方法各自的原理、假设、优缺点和适用场景，是成为一名合格的数据科学家的必备能力。
+
+<KeyPoint>
+本课的核心问题：面对一个具体的分类任务，我应该选择哪种分类器？为什么？
+</KeyPoint>
+
+## 课程全景与关键问题
+
+本课覆盖的五种分类方法，各有其独特的“哲学”：
+
+- **k-NN**：靠邻居投票，简单直观，但计算成本高。
+- **朴素贝叶斯**：靠概率计算，快速鲁棒，但假设太强。
+- **SVM**：找最大间隔，理论优美，适合高维数据。
+- **逻辑回归**：输出概率，可解释性强。
+- **集成方法**：组合多个弱分类器，性能强大。
+
+<KeyPoint>
+没有绝对“最好”的分类器。选择取决于你的数据特性、问题需求和计算资源。关键是要理解每种方法的假设和权衡。
+</KeyPoint>
+
+## 最近邻分类器 (k-NN)
+
+### 基本思想
+
+想象你刚搬到一个新街区，想找一家好吃的餐厅。你会怎么做？你可能会问几个邻居，看看他们平时去哪家。这就是最近邻分类器的核心思路：**物以类聚**。
+
+<Definition title="最近邻分类器 (Nearest Neighbor Classifier)">
+对于一个没有标签的新数据点，在训练集中找到与它最相似的几个点（最近邻），然后用这些邻居的标签来推断新点的标签。
+</Definition>
+
+### 三要素
+
+实现 k-NN 需要三样东西：
+
+1.  **一组带标签的记录**：作为参考数据集。
+2.  **一个距离度量**：用来计算记录之间的相似程度。
+3.  **k 的值**：要问多少个邻居。
+
+### 分类流程
+
+对一个未知记录进行分类，遵循三个步骤：
+
+1.  **计算距离**：计算该记录与其他所有已知记录的距离。
+2.  **找出 k 个最近邻**：选择距离最小的 k 个记录。
+3.  **多数投票**：用这 k 个邻居中出现次数最多的类别作为新记录的类别。
+
+<Example title="多数投票示例">
+如果 k=3，三个邻居的类别分别是：猫、猫、狗。新样本应该被分类为**猫**（猫出现 2 次，狗出现 1 次）。
+</Example>
+
+<QuestionRef id="q_quiz_majority_vote_v1" />
+
+### 距离度量与归一化
+
+最常用的距离度量是**欧几里得距离**。
+
+<Formula latex="d(p, q) = \sqrt{\sum_i (p_i - q_i)^2}">
+两点 p 和 q 之间的欧几里得距离等于它们各个属性差值的平方和，再开平方根。
+</Formula>
+
+<Pitfall>
+不同属性的尺度可能差别很大。比如“年龄”是 0-100，“收入”是 0-100000。如果不做处理，收入会主导距离计算，年龄几乎没影响。因此，**所有属性必须先做归一化**。
+</Pitfall>
+
+<Definition title="归一化 (Normalization)">
+将不同尺度的属性值缩放到同一范围，避免某些属性主导距离计算。
+</Definition>
+
+<QuestionRef id="q_quiz_normalization_v1" />
+
+### k 值的选择
+
+k 值的选择非常关键，需要在偏差和方差之间取得平衡。
+
+- **k 太小**：模型只依赖极少数邻居，容易受噪声点影响，导致**过拟合**。
+- **k 太大**：邻域可能包含其他类别的点，导致决策边界模糊，**欠拟合**。
+
+<Figure src="images/f87ba7da3ef9163dddb94a418acc38e0114cfd6fc0f6a06ad183359e7f73d0ff.jpg" alt="k值过小导致对噪声敏感">
+k 值过小，决策边界复杂，容易过拟合。
+</Figure>
+
+<Figure src="images/87131a701f8988c7d947e85eeaf9062f08ab535ec9dbdbb58cef06564d6bf8c3.jpg" alt="k值过大导致边界模糊">
+k 值过大，邻域跨越类别边界，导致欠拟合。
+</Figure>
+
+<QuestionRef id="q_quiz_k_tradeoff_v1" />
+
+### 懒惰学习
+
+<Definition title="懒惰学习器 (Lazy Learner)">
+k-NN 是一种懒惰学习器。它不会预先建立一个模型，而是把所有训练数据都存起来，在预测时才进行计算。
+</Definition>
+
+- **优点**：避免了昂贵的模型训练过程。
+- **缺点**：每次预测都要搜索整个数据集，计算成本高；在高维空间中表现不佳，因此特征选择很重要。
+
+<QuestionRef id="q_quiz_lazy_learner_v1" />
+
+<Checkpoint title="k-NN 核心要点">
+- 核心思想：物以类聚，邻居投票。
+- 三要素：带标签数据、距离度量、k 值。
+- 关键步骤：计算距离 → 找 k 个邻居 → 多数投票。
+- 重要前提：属性必须归一化。
+- 关键权衡：k 值选择（过小→过拟合，过大→欠拟合）。
+- 重要特性：懒惰学习器（不预先建模，预测时计算）。
+</Checkpoint>
+
+## 贝叶斯分类器与朴素贝叶斯
+
+### 贝叶斯定理
+
+贝叶斯分类器基于**贝叶斯定理**，用概率来做分类。
+
+<Definition title="贝叶斯定理 (Bayes' Theorem)">
+<InlineFormula latex="P(H|X) = P(X|H) * P(H) / P(X)" />
+其中：
+- <Term id="prior_probability" en="Prior Probability">P(H)</Term>：先验概率，在观察到数据之前，对假设 H 为真的初始估计。
+- <Term id="likelihood" en="Likelihood">P(X|H)</Term>：似然，在假设 H 为真的条件下，观察到数据 X 的概率。
+- <Term id="posterior_probability" en="Posterior Probability">P(H|X)</Term>：后验概率，在观察到数据 X 之后，对假设 H 为真的概率的更新估计。
+</Definition>
+
+### 贝叶斯分类决策
+
+对于分类问题，我们对每个可能的类别 <InlineFormula latex="C_i" /> 计算后验概率 <InlineFormula latex="P(C_i|X)" />，然后选择最大的那个。
+
+<KeyPoint>
+由于分母 <InlineFormula latex="P(X)" /> 对所有类别都是相同的常数，比较后验概率等价于比较 <InlineFormula latex="P(X|C_i) * P(C_i)" />。因此，贝叶斯分类器的决策规则是：**选择使 <InlineFormula latex="P(X|C_i)P(C_i)" /> 最大的类别**。
+</KeyPoint>
+
+<QuestionRef id="q_quiz_bayes_decision_v1" />
+
+### 朴素贝叶斯假设
+
+直接计算 <InlineFormula latex="P(X|C_i)" /> 非常困难，因为 X 包含多个属性，组合情况太多。于是有了一个大胆的假设：**条件独立**。
+
+<Definition title="朴素贝叶斯 (Naïve Bayes)">
+朴素贝叶斯假设在给定类别的情况下，所有属性之间相互条件独立。即：
+<Formula latex="P(X|C_i) = \prod_{k=1}^{m} P(x_k|C_i)">
+给定类别 C_i 时，观察到 X 的概率等于每个属性值概率的乘积。
+</Formula>
+</Definition>
+
+<QuestionRef id="q_quiz_naive_assumption_v1" />
+
+### 实战：类别型属性
+
+对于**类别型属性**，条件概率 <InlineFormula latex="P(x_k|C_i)" /> 可以通过计数来估计：<InlineFormula latex="n_{ik} / n_i" />，其中 <InlineFormula latex="n_{ik}" /> 是类别为 <InlineFormula latex="C_i" /> 且属性 k 取值为 <InlineFormula latex="x_k" /> 的记录数，<InlineFormula latex="n_i" /> 是类别为 <InlineFormula latex="C_i" /> 的记录总数。
+
+<Example title="朴素贝叶斯分类完整示例">
+**问题**：给定一个新记录 X: (年龄<30, 收入中等, 是学生, 信用差)，判断此人是否拥有电脑。
+
+**步骤 1：计算先验概率**
+- P(拥有电脑=是) = 9/14
+- P(拥有电脑=否) = 5/14
+
+**步骤 2：计算条件概率**
+对于“拥有电脑=是”：
+- P(年龄<30 | 是) = 2/9
+- P(收入中等 | 是) = 4/9
+- P(是学生 | 是) = 6/9
+- P(信用差 | 是) = 6/9
+
+对于“拥有电脑=否”：
+- P(年龄<30 | 否) = 2/5
+- P(收入中等 | 否) = 2/5
+- P(是学生 | 否) = 1/5
+- P(信用差 | 否) = 2/5
+
+**步骤 3：计算似然**
+- P(X | 是) = (2/9) * (4/9) * (6/9) * (6/9) ≈ 0.044
+- P(X | 否) = (2/5) * (2/5) * (1/5) * (2/5) = 0.0128
+
+**步骤 4：比较后验概率（未归一化）**
+- P(是 | X) ∝ 0.044 * (9/14) ≈ 0.028
+- P(否 | X) ∝ 0.0128 * (5/14) ≈ 0.0046
+
+**结论**：因为 0.028 > 0.0046，所以 X 被分类为“拥有电脑=是”。
+</Example>
+
+<QuestionRef id="q_quiz_step4_example_calc_v1" />
+
+### 实战：数值型属性
+
+对于**数值型属性**（如收入 120K），不能简单地数个数。有两种处理方法：
+
+1.  **离散化**：将连续数值范围分成几个区间。缺点：结果对区间划分方式很敏感。
+2.  **概率密度估计**：更推荐的方法。假设数值属性服从**正态分布**，用数据估计均值和方差，然后代入概率密度函数。
+
+<Formula latex="P(x_i|C_j) = \frac{1}{\sqrt{2\pi\sigma_{ij}^2}} e^{-\frac{(x_i - \mu_{ij})^2}{2\sigma_{ij}^2}}">
+给定类别 C_j 时，数值属性 x_i 的概率密度由正态分布给出。
+</Formula>
+
+<QuestionRef id="q_quiz_step4_num_dist_v1" />
+
+<Checkpoint title="朴素贝叶斯核心要点">
+- 理论基础：贝叶斯定理。
+- 核心假设：属性在给定类别时条件独立（“朴素”假设）。
+- 决策规则：选择使 P(X|C_i)P(C_i) 最大的类别。
+- 类别型属性：通过计数 n_ik / n_i 估计概率。
+- 数值型属性：通常假设服从正态分布，用概率密度估计。
+- 优点：基于全局统计，对孤立噪声点鲁棒；计算快速。
+- 缺点：条件独立假设在现实中往往不成立。
+</Checkpoint>
+
+## 支持向量机 (SVM)
+
+### 核心思想：最大化间隔
+
+SVM 的目标很直观：找一条最好的分界线。对于线性可分的数据，有很多条直线可以把它们分开。哪条最好？
+
+<Definition title="支持向量机 (Support Vector Machine)">
+SVM 的答案是：离两类点都尽可能远的那条。这条线就是**超平面**。超平面到最近数据点的距离，叫做**间隔**。SVM 的目标就是**最大化这个间隔**。
+</Definition>
+
+<Figure src="images/29205eebbd43b8d5c01f333335f81b9ec57e5f63e6e9f2052df63c02de71f63b.jpg" alt="SVM 最大化间隔示意图">
+SVM 寻找最大化间隔的超平面。
+</Figure>
+
+那些距离超平面最近的点，决定了间隔的大小。它们被称为**支持向量**。
+
+<QuestionRef id="q_quiz_svm_margin_v1" />
+
+### 处理线性不可分：松弛变量
+
+现实中的数据往往不是线性可分的。这时可以引入**松弛变量**，允许一些点被错误分类，但会为此付出代价（在优化目标中增加惩罚项）。
+
+<Definition title="松弛变量 (Slack Variable)">
+允许一些数据点违反间隔约束的变量，用于处理线性不可分的情况。参数 C 控制对错误分类的惩罚力度。
+</Definition>
+
+<QuestionRef id="q_quiz_svm_slack_v1" />
+
+### 处理线性不可分：核技巧
+
+另一个更巧妙的方法是**核技巧**：把数据映射到更高维的空间，让它们变得线性可分。
+
+<Definition title="核技巧 (Kernel Trick)">
+通过一个核函数，将数据隐式地映射到一个更高维的特征空间，使得在这个新空间中数据变得线性可分。其妙处在于，高维空间的计算实际上在原始低维空间进行，避免了显式映射带来的巨大计算开销。
+</Definition>
+
+<Figure src="images/2fbbb7f05e7ea851734642622647799a1433d76560a13550e0045ca5d9ffbd21.jpg" alt="核技巧将数据映射到高维空间使其线性可分">
+核技巧通过映射到高维空间解决线性不可分问题。
+</Figure>
+
+<QuestionRef id="q_quiz_svm_kernel_v1" />
+
+<Checkpoint title="SVM 核心要点">
+- 核心思想：寻找最大化间隔的超平面。
+- 支持向量：决定间隔的最近数据点。
+- 松弛变量：允许部分误分类，处理线性不可分。
+- 核技巧：隐式映射到高维空间，使数据线性可分。
+- 优点：理论优美，泛化能力强，适合高维数据。
+- 缺点：对参数和核函数的选择敏感，可解释性较差。
+</Checkpoint>
+
+## 逻辑回归
+
+### 基本思想
+
+逻辑回归用回归分析来做分类。它不直接输出类别，而是输出一个**概率**（如：这个邮件是垃圾邮件的概率是 0.8）。
+
+<Definition title="逻辑回归 (Logistic Regression)">
+一种用于二分类的回归模型，输出样本属于正类的概率，范围在 0 到 1 之间。
+</Definition>
+
+<QuestionRef id="q_quiz_lr_output_v1" />
+
+### Sigmoid 函数
+
+逻辑回归用一条 S 形曲线来拟合数据，这条曲线就是 **Sigmoid 函数**。它能把任何实数映射到 0 到 1 之间，非常适合表示概率。
+
+<Definition title="Sigmoid 函数 (Sigmoid Function)">
+一种 S 形函数，能将任意实数映射到 0 到 1 之间，常用于表示概率。
+</Definition>
+
+<QuestionRef id="q_quiz_sigmoid_v1" />
+
+### 对数几率与线性假设
+
+逻辑回归假设**对数几率**与自变量之间存在线性关系。
+
+<Definition title="对数几率 (Log-odds)">
+事件发生概率与不发生概率之比的自然对数，公式为 <InlineFormula latex="\ln(p/(1-p))" />。
+</Definition>
+
+<QuestionRef id="q_quiz_log_odds_v1" />
+
+### 参数估计：极大似然估计
+
+如何找到这条最佳拟合曲线？通过**极大似然估计**。简单说，就是找到一组参数，使得模型预测出正确标签的概率最大。
+
+<Definition title="极大似然估计 (Maximum Likelihood Estimation)">
+一种参数估计方法，寻找使观测数据出现概率最大的模型参数。
+</Definition>
+
+<QuestionRef id="q_quiz_mle_v1" />
+
+<Checkpoint title="逻辑回归核心要点">
+- 输出：概率值（0-1之间），而非类别标签。
+- 核心函数：Sigmoid 函数，将线性输出映射为概率。
+- 核心假设：对数几率与自变量线性相关。
+- 参数估计：极大似然估计。
+- 优点：输出概率，可解释性强。
+- 缺点：假设特征与对数几率线性相关，处理非线性关系需要特征变换。
+</Checkpoint>
+
+## 集成方法：Bagging、Boosting 与随机森林
+
+### 基本思想
+
+一个分类器可能不够可靠。那如果问一群分类器呢？这就是**集成方法**的思想：训练多个分类器，然后让它们一起投票。
+
+<Definition title="集成方法 (Ensemble Methods)">
+通过组合多个分类器的预测结果来提升整体性能的方法。
+</Definition>
+
+<QuestionRef id="q_quiz_ensemble_idea_v1" />
+
+### Bagging
+
+<Definition title="Bagging (Bootstrap Aggregating)">
+通过对训练数据进行有放回抽样（自助采样），训练多个模型，然后投票或平均。
+</Definition>
+
+- **自助采样**：有放回地抽样，每个新训练集都和原始数据集一样大，但内容不同。
+- **并行训练**：所有分类器可以同时训练。
+- **最终决策**：所有分类器投票（分类）或取平均值（回归）。
+- **主要作用**：**减少方差**。
+
+<QuestionRef id="q_quiz_bagging_v1" />
+
+### Boosting
+
+<Definition title="Boosting">
+迭代地训练模型，每次更关注之前被错误分类的样本。
+</Definition>
+
+- **迭代训练**：每一轮训练依赖于上一轮的结果（串行）。
+- **权重调整**：增加被错分样本的权重，减少正确分类样本的权重。
+- **最终决策**：每个分类器根据其准确率被赋予不同权重，进行加权投票。
+- **主要作用**：**减少偏差**。
+
+<QuestionRef id="q_quiz_boosting_v1" />
+
+### 随机森林
+
+<Definition title="随机森林 (Random Forest)">
+一种集成方法，通过构建多棵决策树并随机选择特征来提升准确性和鲁棒性。
+</Definition>
+
+- **Bagging 基础**：每棵树都用自助采样得到的训练集来训练。
+- **随机特征选择**：在每个节点分裂时，只随机选择一部分特征来考虑，而不是全部特征。这增加了树的多样性。
+
+<QuestionRef id="q_quiz_random_forest_v1" />
+
+<Checkpoint title="集成方法核心要点">
+- 核心思想：组合多个弱分类器，构建强分类器。
+- Bagging：并行训练，自助采样，减少方差。
+- Boosting：串行迭代，关注错分样本，减少偏差。
+- 随机森林：Bagging + 随机特征选择，实践中非常有效。
+</Checkpoint>
+
+## 易错点
+
+1.  **混淆 k-NN 的懒惰学习特性**：k-NN 不预先训练模型，这是它的特点，不是缺点。它的缺点在于预测时计算成本高。
+2.  **忽视归一化**：在 k-NN 中，如果不做归一化，尺度大的属性会主导距离计算，导致模型失效。
+3.  **误解朴素贝叶斯的“朴素”**：“朴素”指的是条件独立假设，而不是“简单”或“幼稚”。这个假设虽然强，但在很多场景下效果很好。
+4.  **混淆 Bagging 和 Boosting 的作用**：Bagging 主要减少方差，Boosting 主要减少偏差。在有噪声的数据上，Boosting 可能过拟合。
+5.  **认为存在“最好”的分类器**：没有绝对最好的分类器。选择取决于数据、问题和需求。
+
+## 复习与自测
+
+### 主动回忆
+
+使用以下闪卡族进行主动检索，巩固核心概念：
+
+- <QuestionFamily familyId="qf_flash_nn_idea" />
+- <QuestionFamily familyId="qf_flash_euclidean" />
+- <QuestionFamily familyId="qf_flash_k_tradeoff" />
+- <QuestionFamily familyId="qf_flash_bayes_components" />
+- <QuestionFamily familyId="qf_flash_naive_assumption" />
+- <QuestionFamily familyId="qf_flash_svm_margin" />
+- <QuestionFamily familyId="qf_flash_svm_kernel" />
+- <QuestionFamily familyId="qf_flash_lr_idea" />
+- <QuestionFamily familyId="qf_flash_sigmoid" />
+- <QuestionFamily familyId="qf_flash_ensemble_idea" />
+- <QuestionFamily familyId="qf_flash_classifier_tradeoff" />
+
+### 章节自测
+
+完成以下测验，检验你的理解：
+
+- <QuestionFamily familyId="qf_quiz_nn_process" />
+- <QuestionFamily familyId="qf_quiz_euclidean" />
+- <QuestionFamily familyId="qf_quiz_bayes_formula" />
+- <QuestionFamily familyId="qf_quiz_naive_formula" />
+- <QuestionFamily familyId="qf_quiz_svm_margin" />
+- <QuestionFamily familyId="qf_quiz_lr_output" />
+- <QuestionFamily familyId="qf_quiz_ensemble_idea" />
+- <QuestionFamily familyId="qf_quiz_lazy_learner" />
+
+### 深入思考
+
+尝试回答以下长问题，检验你的综合理解能力：
+
+- <QuestionFamily familyId="qf_long_bayes_classification" />
+- <QuestionFamily familyId="qf_long_nn_process" />
+- <QuestionFamily familyId="qf_long_k_selection" />
+- <QuestionFamily familyId="qf_long_svm_kernel" />
+- <QuestionFamily familyId="qf_long_lr_explain" />
+- <QuestionFamily familyId="qf_long_bagging_vs_boosting" />
+- <QuestionFamily familyId="qf_long_choose_classifier" />

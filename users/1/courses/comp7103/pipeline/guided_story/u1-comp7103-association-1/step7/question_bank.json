@@ -1,0 +1,335 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "high_utility_itemset",
+      "covered_by": [
+        "qf_flash_utility_definition",
+        "qf_quiz_utility_calculation",
+        "qf_long_utility_interpretation"
+      ],
+      "description": "高效用项集的定义、动机和计算方式"
+    },
+    {
+      "coverage_tag": "utility_formula",
+      "covered_by": [
+        "qf_flash_utility_definition",
+        "qf_quiz_utility_calculation"
+      ],
+      "description": "交易内效用 σ(X,T) 和总效用 π(X,D) 的公式"
+    },
+    {
+      "coverage_tag": "utility_vs_support",
+      "covered_by": [
+        "qf_flash_utility_vs_support",
+        "qf_quiz_utility_vs_support"
+      ],
+      "description": "效用与支持度的区别：支持度只关心出现与否，效用考虑数量和利润"
+    },
+    {
+      "coverage_tag": "min_utility_threshold",
+      "covered_by": [
+        "qf_quiz_utility_calculation",
+        "qf_long_utility_interpretation"
+      ],
+      "description": "最小效用阈值 min_u 的概念"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "high_utility_itemset",
+      "coverage_tags": [
+        "high_utility_itemset",
+        "utility_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_utility_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆效用、交易内效用和总效用的定义与公式。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了高效用项集的基本概念和效用计算公式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "效用定义、σ(X,T) 公式、π(X,D) 公式",
+      "term_refs": [
+        {
+          "display": "效用",
+          "en": "Utility"
+        },
+        {
+          "display": "交易内效用",
+          "en": "σ(X, T)"
+        },
+        {
+          "display": "总效用",
+          "en": "π(X, D)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "σ(X, T) = Σ p(a) × q(a, T)，对所有 a ∈ X 求和。",
+          "estimated_seconds": 10,
+          "explanation": "交易内效用是项集中每个商品的单位利润乘以其在该交易中的数量之和。",
+          "front": "高效用项集挖掘中，项集 X 在一笔交易 T 内的效用 σ(X, T) 如何计算？",
+          "question_id": "q_flash_utility_definition_v1"
+        },
+        {
+          "back": "π(X, D) = Σ σ(X, T)，对所有包含 X 的交易 T 求和。",
+          "estimated_seconds": 10,
+          "explanation": "总效用是所有包含 X 的交易中交易内效用之和。",
+          "front": "高效用项集挖掘中，项集 X 在整个数据集 D 中的总效用 π(X, D) 如何计算？",
+          "question_id": "q_flash_utility_definition_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "utility_vs_support",
+      "coverage_tags": [
+        "utility_vs_support"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_utility_vs_support",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能清晰区分支持度和效用的核心差异。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明理解了效用相比支持度增加了数量和利润维度。",
+      "question_type": "core_difference",
+      "retrieval_focus": "支持度 vs 效用的核心区别",
+      "term_refs": [
+        {
+          "display": "支持度",
+          "en": "Support"
+        },
+        {
+          "display": "效用",
+          "en": "Utility"
+        }
+      ],
+      "variants": [
+        {
+          "back": "购买数量 (q) 和单位利润 (p)。",
+          "estimated_seconds": 8,
+          "explanation": "效用 = 利润 × 数量，支持度只计数出现次数。",
+          "front": "支持度只关心商品是否出现在交易中，而效用额外考虑了哪两个因素？",
+          "question_id": "q_flash_utility_vs_support_v1"
+        },
+        {
+          "back": "因为高效用项集直接反映利润贡献，而频繁项集只反映出现频率。",
+          "estimated_seconds": 12,
+          "explanation": "一个商品可能经常被买但利润很低，另一个商品可能不常被买但利润很高。",
+          "front": "为什么超市可能更关心高效用项集而不是频繁项集？",
+          "question_id": "q_flash_utility_vs_support_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-1",
+  "longform_families": [
+    {
+      "concept_key": "high_utility_itemset",
+      "coverage_tags": [
+        "high_utility_itemset",
+        "utility_formula",
+        "min_utility_threshold"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_utility_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用文字解释高效用项集的定义、计算逻辑和商业动机。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了高效用项集的核心概念并能进行完整解释。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "效用",
+          "en": "Utility"
+        },
+        {
+          "display": "交易内效用",
+          "en": "σ(X, T)"
+        },
+        {
+          "display": "总效用",
+          "en": "π(X, D)"
+        },
+        {
+          "display": "最小效用阈值",
+          "en": "min_u"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "区别",
+            "σ(X, T) 定义",
+            "π(X, D) 定义",
+            "商业动机"
+          ],
+          "question_id": "q_long_utility_interpretation_v1",
+          "reference_answer": [
+            "频繁项集挖掘只关心商品是否出现在交易中，而高效用项集挖掘还考虑购买数量和单位利润。",
+            "交易内效用 σ(X, T) = Σ p(a) × q(a, T)，对项集 X 中所有商品求和。",
+            "总效用 π(X, D) = Σ σ(X, T)，对所有包含 X 的交易求和。",
+            "超市更关心利润，高效用项集能直接反映哪些商品组合贡献了最多利润，比单纯看出现频率更有商业价值。"
+          ],
+          "rubric_points": [
+            "明确指出支持度只关心出现与否，效用考虑数量和利润",
+            "正确写出 σ(X, T) = Σ p(a) × q(a, T)",
+            "正确写出 π(X, D) = Σ σ(X, T)",
+            "解释高效用项集能发现利润贡献高的模式"
+          ],
+          "stem": "请解释什么是高效用项集挖掘。你的回答应包括：\n1. 它与频繁项集挖掘的主要区别是什么？\n2. 交易内效用 σ(X, T) 和总效用 π(X, D) 分别如何定义？\n3. 为什么超市可能更倾向于使用高效用项集挖掘？"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "支持度高但效用低的原因",
+            "min_u 过高/过低的后果",
+            "具体例子"
+          ],
+          "question_id": "q_long_utility_interpretation_v2",
+          "reference_answer": [
+            "一个商品组合可能被很多顾客购买（支持度高），但如果每个商品的利润很低或每次购买数量很少，总效用可能仍然很低。",
+            "如果 min_u 太高，可能会遗漏很多利润贡献中等但仍有商业价值的模式；如果太低，会输出大量低利润的模式，增加分析负担。",
+            "例如，{口香糖, 报纸} 可能出现在 80% 的交易中（支持度高），但口香糖利润 0.5 元，报纸利润 1 元，每次各买 1 件，总效用 = 0.5+1 = 1.5 元，远低于 {高端化妆品} 虽然只出现在 5% 的交易中但单次利润 200 元的情况。"
+          ],
+          "rubric_points": [
+            "解释频繁出现但利润低或数量少会导致效用低",
+            "min_u 太高会遗漏有价值的模式，太低会输出太多无用模式",
+            "给出合理的数值例子"
+          ],
+          "stem": "假设你是一家超市的数据分析师，请用高效用项集的思想回答以下问题：\n1. 为什么一个频繁出现的商品组合可能总效用很低？\n2. 如果最小效用阈值 min_u 设置得太高或太低，分别会有什么后果？\n3. 请给出一个具体的例子说明支持度高但效用低的情况。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "high_utility_itemset",
+      "coverage_tags": [
+        "high_utility_itemset",
+        "utility_formula",
+        "min_utility_threshold"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_utility_calculation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在给定利润和数量数据时正确计算交易内效用。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了 σ(X,T) 的计算方法。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "效用",
+          "en": "Utility"
+        },
+        {
+          "display": "交易内效用",
+          "en": "σ(X, T)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "σ({a, b}, T) = 3×2 + 1×5 = 6 + 5 = 11 元。",
+          "options": [
+            "6 元",
+            "5 元",
+            "11 元",
+            "16 元"
+          ],
+          "question_id": "q_quiz_utility_calculation_v1",
+          "stem": "商品 a 的单位利润为 3 元，商品 b 的单位利润为 1 元。一笔交易中购买了 2 个 a 和 5 个 b。项集 {a, b} 在这笔交易中的效用 σ({a, b}, T) 是多少？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "σ({c, d}, T) = 2×3 + 8×1 = 6 + 8 = 14 元。",
+          "options": [
+            "10 元",
+            "14 元",
+            "6 元",
+            "11 元"
+          ],
+          "question_id": "q_quiz_utility_calculation_v2",
+          "stem": "商品 c 的单位利润为 2 元，商品 d 的单位利润为 8 元。一笔交易中购买了 3 个 c 和 1 个 d。项集 {c, d} 在这笔交易中的效用 σ({c, d}, T) 是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "utility_vs_support",
+      "coverage_tags": [
+        "utility_vs_support"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_utility_vs_support",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能辨析支持度和效用在关联分析中的不同角色。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明理解了效用相比支持度的增量价值。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "支持度",
+          "en": "Support"
+        },
+        {
+          "display": "效用",
+          "en": "Utility"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "高效用项集挖掘引入了利润和数量维度，能发现对商业更有价值的模式。",
+          "options": [
+            "计算速度更快",
+            "能发现利润贡献高的模式，而不仅仅是出现频率高的模式",
+            "不需要设置阈值",
+            "能处理非二元数据"
+          ],
+          "question_id": "q_quiz_utility_vs_support_v1",
+          "stem": "以下哪项是高效用项集挖掘相比频繁项集挖掘的主要优势？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "效用 = 利润 × 数量，即使出现次数多，如果利润低或数量少，总效用仍然可能很低。",
+          "options": [
+            "X 中的商品利润很低或购买数量很少",
+            "X 中的商品经常缺货",
+            "X 中的商品只在少数交易中出现",
+            "X 中的商品价格太高"
+          ],
+          "question_id": "q_quiz_utility_vs_support_v2",
+          "stem": "一个项集 X 在数据集中支持度很高，但总效用很低。以下哪项最可能是原因？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-1/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

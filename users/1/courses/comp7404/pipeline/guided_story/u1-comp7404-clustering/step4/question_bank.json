@@ -1,0 +1,624 @@
+{
+  "chapter_id": "lecture-04-clustering",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "hierarchical_clustering_concept",
+      "covered_by": [
+        "qf_flash_hc_def",
+        "qf_quiz_hc_type"
+      ],
+      "description": "层次聚类的基本概念：产生嵌套的簇，可组织为层次树"
+    },
+    {
+      "coverage_tag": "agglomerative_vs_divisive",
+      "covered_by": [
+        "qf_flash_hc_direction",
+        "qf_quiz_hc_direction"
+      ],
+      "description": "凝聚式（自底向上）与分裂式（自顶向下）两种主要类型"
+    },
+    {
+      "coverage_tag": "dendrogram_interpretation",
+      "covered_by": [
+        "qf_flash_dendrogram",
+        "qf_quiz_dendrogram_cut"
+      ],
+      "description": "树状图记录合并/分裂顺序，可在不同高度切割得到不同数量的簇"
+    },
+    {
+      "coverage_tag": "inter_cluster_similarity",
+      "covered_by": [
+        "qf_flash_linkage_def",
+        "qf_quiz_linkage_shape",
+        "qf_long_linkage_compare"
+      ],
+      "description": "簇间相似度的三种定义：单链、全链、平均链"
+    },
+    {
+      "coverage_tag": "single_link_effect",
+      "covered_by": [
+        "qf_flash_single_link",
+        "qf_quiz_linkage_shape"
+      ],
+      "description": "单链使用最近点距离，容易产生链状长簇"
+    },
+    {
+      "coverage_tag": "complete_link_effect",
+      "covered_by": [
+        "qf_flash_complete_link",
+        "qf_quiz_linkage_shape"
+      ],
+      "description": "全链使用最远点距离，倾向于生成紧凑球形簇"
+    },
+    {
+      "coverage_tag": "group_average_definition",
+      "covered_by": [
+        "qf_flash_group_average",
+        "qf_long_linkage_compare"
+      ],
+      "description": "平均链使用所有点对距离的平均值，是单链和全链的折中"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "hierarchical_clustering",
+      "coverage_tags": [
+        "hierarchical_clustering_concept"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_hc_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出层次聚类的核心特征：产生嵌套簇，组织为层次树。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了层次聚类的基本定义和输出形式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "层次聚类输出的数据结构形式",
+      "term_refs": [
+        {
+          "display": "层次聚类",
+          "en": "Hierarchical Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "嵌套关系（nested），即大簇包含小簇，组织成一棵层次树。",
+          "estimated_seconds": 8,
+          "explanation": "层次聚类生成一组嵌套的簇，可以用树状图表示。",
+          "front": "层次聚类产生的簇之间是什么关系？",
+          "question_id": "q_flash_hc_def_v1"
+        },
+        {
+          "back": "树状图（dendrogram）。",
+          "estimated_seconds": 6,
+          "explanation": "树状图记录了簇的合并或分裂顺序。",
+          "front": "层次聚类的输出可以用什么图来可视化？",
+          "question_id": "q_flash_hc_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "agglomerative_clustering",
+      "coverage_tags": [
+        "agglomerative_vs_divisive"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_hc_direction",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分凝聚式和分裂式层次聚类的起始状态和合并/分裂方向。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了两种层次聚类策略的基本方向。",
+      "question_type": "short_answer",
+      "retrieval_focus": "凝聚式与分裂式的起始状态",
+      "term_refs": [
+        {
+          "display": "凝聚式层次聚类",
+          "en": "Agglomerative Clustering"
+        },
+        {
+          "display": "分裂式层次聚类",
+          "en": "Divisive Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "一个独立的簇。",
+          "estimated_seconds": 6,
+          "explanation": "凝聚式从每个点作为一个簇开始，然后逐步合并最近的簇。",
+          "front": "凝聚式层次聚类开始时，每个数据点是什么？",
+          "question_id": "q_flash_hc_direction_v1"
+        },
+        {
+          "back": "一个簇（包含所有点）。",
+          "estimated_seconds": 6,
+          "explanation": "分裂式从所有点作为一个簇开始，然后逐步分裂。",
+          "front": "分裂式层次聚类开始时，所有数据点是什么？",
+          "question_id": "q_flash_hc_direction_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "dendrogram",
+      "coverage_tags": [
+        "dendrogram_interpretation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_dendrogram",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出树状图的核心用途：记录合并/分裂顺序，通过切割得到不同数量的簇。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了树状图的基本功能。",
+      "question_type": "short_answer",
+      "retrieval_focus": "树状图的主要用途",
+      "term_refs": [
+        {
+          "display": "树状图",
+          "en": "Dendrogram"
+        }
+      ],
+      "variants": [
+        {
+          "back": "簇的合并顺序（或分裂顺序）。",
+          "estimated_seconds": 8,
+          "explanation": "树状图是一种树形图，展示了层次聚类中簇的合并或分裂序列。",
+          "front": "在层次聚类中，树状图记录了什么？",
+          "question_id": "q_flash_dendrogram_v1"
+        },
+        {
+          "back": "在树状图的不同高度进行切割。",
+          "estimated_seconds": 8,
+          "explanation": "在树状图的任意高度切割，可以得到该高度对应的簇数量。",
+          "front": "如何从树状图中得到不同数量的簇？",
+          "question_id": "q_flash_dendrogram_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "inter_cluster_similarity",
+      "coverage_tags": [
+        "inter_cluster_similarity"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_linkage_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出三种链接方式各自如何定义两个簇之间的距离。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了三种簇间距离定义的核心区别。",
+      "question_type": "definition_with_example",
+      "retrieval_focus": "每种链接方式使用的距离定义",
+      "term_refs": [
+        {
+          "display": "单链",
+          "en": "Single Link (MIN)"
+        },
+        {
+          "display": "全链",
+          "en": "Complete Link (MAX)"
+        },
+        {
+          "display": "平均链",
+          "en": "Group Average"
+        }
+      ],
+      "variants": [
+        {
+          "back": "用两个簇中最近的两个点之间的距离。",
+          "estimated_seconds": 8,
+          "explanation": "单链也称为 MIN，由两个簇中最相似的一对点决定距离。",
+          "front": "单链（Single Link）如何定义两个簇之间的距离？",
+          "question_id": "q_flash_linkage_def_v1"
+        },
+        {
+          "back": "用两个簇中最远的两个点之间的距离。",
+          "estimated_seconds": 8,
+          "explanation": "全链也称为 MAX，由两个簇中最不相似的一对点决定距离。",
+          "front": "全链（Complete Link）如何定义两个簇之间的距离？",
+          "question_id": "q_flash_linkage_def_v2"
+        },
+        {
+          "back": "计算两个簇之间所有点对距离的平均值。",
+          "estimated_seconds": 10,
+          "explanation": "平均链使用所有点对距离的平均值，是单链和全链的折中。",
+          "front": "平均链（Group Average）如何定义两个簇之间的距离？",
+          "question_id": "q_flash_linkage_def_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "single_link",
+      "coverage_tags": [
+        "single_link_effect"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_single_link",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出单链倾向于产生链状长簇的原因。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了单链的簇形状特性。",
+      "question_type": "cause_effect",
+      "retrieval_focus": "单链产生的簇形状",
+      "term_refs": [
+        {
+          "display": "单链",
+          "en": "Single Link"
+        }
+      ],
+      "variants": [
+        {
+          "back": "链状的长簇。",
+          "estimated_seconds": 8,
+          "explanation": "因为只要两个簇之间有一对点很近，就会合并，容易形成链状结构。",
+          "front": "使用单链（最近点距离）合并簇，容易产生什么形状的簇？",
+          "question_id": "q_flash_single_link_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "complete_link",
+      "coverage_tags": [
+        "complete_link_effect"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_complete_link",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出全链倾向于产生紧凑球形簇的原因。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了全链的簇形状特性。",
+      "question_type": "cause_effect",
+      "retrieval_focus": "全链产生的簇形状",
+      "term_refs": [
+        {
+          "display": "全链",
+          "en": "Complete Link"
+        }
+      ],
+      "variants": [
+        {
+          "back": "紧凑的球形簇。",
+          "estimated_seconds": 8,
+          "explanation": "因为只有当两个簇的所有点都足够近时才会合并，倾向于形成紧凑的簇。",
+          "front": "使用全链（最远点距离）合并簇，容易产生什么形状的簇？",
+          "question_id": "q_flash_complete_link_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "group_average",
+      "coverage_tags": [
+        "group_average_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_group_average",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出平均链是单链和全链的折中方案。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了平均链的定位。",
+      "question_type": "short_answer",
+      "retrieval_focus": "平均链在单链和全链之间的定位",
+      "term_refs": [
+        {
+          "display": "平均链",
+          "en": "Group Average"
+        }
+      ],
+      "variants": [
+        {
+          "back": "一种折中方案。",
+          "estimated_seconds": 8,
+          "explanation": "平均链使用所有点对距离的平均值，既不像单链那样容易产生链状簇，也不像全链那样极端。",
+          "front": "平均链（Group Average）在单链和全链之间扮演什么角色？",
+          "question_id": "q_flash_group_average_v1"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-clustering",
+  "longform_families": [
+    {
+      "concept_key": "inter_cluster_similarity",
+      "coverage_tags": [
+        "inter_cluster_similarity",
+        "single_link_effect",
+        "complete_link_effect",
+        "group_average_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_linkage_compare",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较三种链接方式的定义、产生的簇形状及其适用场景。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能系统性地对比三种簇间距离定义的核心差异。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "单链",
+          "en": "Single Link (MIN)"
+        },
+        {
+          "display": "全链",
+          "en": "Complete Link (MAX)"
+        },
+        {
+          "display": "平均链",
+          "en": "Group Average"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "单链（Single Link）的定义和效果",
+            "全链（Complete Link）的定义和效果",
+            "平均链（Group Average）的定义和效果"
+          ],
+          "question_id": "q_long_linkage_compare_v1",
+          "reference_answer": [
+            "单链（Single Link / MIN）：用两个簇中最近的两个点之间的距离代表簇间距离。容易产生链状的长簇，对噪声和离群点敏感。",
+            "全链（Complete Link / MAX）：用两个簇中最远的两个点之间的距离代表簇间距离。倾向于生成紧凑的球形簇，但可能被离群点拉远距离。",
+            "平均链（Group Average）：计算两个簇之间所有点对距离的平均值。是单链和全链的折中，对噪声不那么敏感，但仍偏向于球形簇。"
+          ],
+          "rubric_points": [
+            "单链：用最近点距离，产生链状长簇，对噪声敏感",
+            "全链：用最远点距离，产生紧凑球形簇，对离群点敏感",
+            "平均链：用所有点对距离平均值，折中方案，偏向球形簇"
+          ],
+          "stem": "请比较层次聚类中三种链接方式（单链、全链、平均链）在以下三个方面的差异：\n1. 如何定义两个簇之间的距离？\n2. 分别倾向于产生什么形状的簇？\n3. 各有什么优缺点？"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "单链的结果和原因",
+            "全链的结果和原因",
+            "推荐方案及理由"
+          ],
+          "question_id": "q_long_linkage_compare_v2",
+          "reference_answer": [
+            "单链：由于细长条状簇内部点之间距离可能较远，但端点之间可能很近，单链可能将其与球形簇通过链状连接合并，或将其识别为多个簇。",
+            "全链：细长条状簇中距离最远的两个点可能很远，导致全链将其视为松散结构，可能将其拆分成多个紧凑的球形簇。",
+            "推荐：如果必须选择一种，平均链是较安全的折中。更好的做法是结合数据特点选择，或使用其他聚类算法。"
+          ],
+          "rubric_points": [
+            "单链可能将细长条状簇识别为多个簇，或与球形簇通过链状连接合并",
+            "全链可能无法正确识别细长条状簇，将其拆分成多个紧凑簇",
+            "推荐平均链作为折中，或根据实际需求选择"
+          ],
+          "stem": "假设你有一组二维数据点，其中包含两个明显的簇：一个呈细长条状，另一个呈紧凑球形。\n1. 如果使用单链（Single Link）进行层次聚类，结果会如何？为什么？\n2. 如果使用全链（Complete Link）进行层次聚类，结果会如何？为什么？\n3. 你会推荐使用哪种链接方式？请说明理由。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "hierarchical_clustering",
+      "coverage_tags": [
+        "hierarchical_clustering_concept"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_hc_type",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下识别层次聚类的核心特征。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能区分层次聚类与划分式聚类的关键差异。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "层次聚类",
+          "en": "Hierarchical Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "层次聚类产生嵌套的簇结构，可以用树状图表示；划分式聚类才要求每个点只属于一个簇且需要指定 K。",
+          "options": [
+            "每个数据点只属于一个簇，簇之间互不重叠",
+            "产生一组嵌套的簇，可以组织为层次树",
+            "需要事先指定簇的数量 K",
+            "使用质心代表每个簇"
+          ],
+          "question_id": "q_quiz_hc_type_v1",
+          "stem": "以下哪一项是层次聚类（Hierarchical Clustering）的核心特征？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "层次聚类不需要事先指定 K，可以通过切割树状图得到任意数量的簇。",
+          "options": [
+            "计算速度更快",
+            "不需要事先指定簇的数量",
+            "总能找到全局最优解",
+            "对初始条件不敏感"
+          ],
+          "question_id": "q_quiz_hc_type_v2",
+          "stem": "与划分式聚类相比，层次聚类的一个主要优势是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "agglomerative_clustering",
+      "coverage_tags": [
+        "agglomerative_vs_divisive"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_hc_direction",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分凝聚式和分裂式层次聚类的方向。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能根据描述判断属于哪种层次聚类策略。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "凝聚式层次聚类",
+          "en": "Agglomerative Clustering"
+        },
+        {
+          "display": "分裂式层次聚类",
+          "en": "Divisive Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "凝聚式层次聚类从每个点一个簇开始，自底向上合并。",
+          "options": [
+            "分裂式层次聚类",
+            "凝聚式层次聚类",
+            "划分式聚类",
+            "K-means 聚类"
+          ],
+          "question_id": "q_quiz_hc_direction_v1",
+          "stem": "一种层次聚类方法从每个数据点作为一个独立的簇开始，然后逐步合并最近的簇。这种方法属于："
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "分裂式层次聚类从所有点一个簇开始，自顶向下分裂。",
+          "options": [
+            "凝聚式层次聚类",
+            "分裂式层次聚类",
+            "划分式聚类",
+            "K-means 聚类"
+          ],
+          "question_id": "q_quiz_hc_direction_v2",
+          "stem": "一种层次聚类方法从所有数据点作为一个簇开始，然后逐步分裂。这种方法属于："
+        }
+      ]
+    },
+    {
+      "concept_key": "dendrogram",
+      "coverage_tags": [
+        "dendrogram_interpretation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_dendrogram_cut",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解树状图切割的含义。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了通过切割树状图获得不同数量簇的方法。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "树状图",
+          "en": "Dendrogram"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "树状图根部代表所有点合并为一个簇，越靠近根部切割，得到的簇数量越少。",
+          "options": [
+            "较少的簇",
+            "较多的簇",
+            "与切割位置无关",
+            "无法确定"
+          ],
+          "question_id": "q_quiz_dendrogram_cut_v1",
+          "stem": "在层次聚类的树状图中，如果在较高的位置（靠近根部）切割，会得到："
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "树状图叶子代表每个点是一个簇，越靠近叶子切割，得到的簇数量越多。",
+          "options": [
+            "较少的簇",
+            "较多的簇",
+            "与切割位置无关",
+            "无法确定"
+          ],
+          "question_id": "q_quiz_dendrogram_cut_v2",
+          "stem": "在层次聚类的树状图中，如果在较低的位置（靠近叶子）切割，会得到："
+        }
+      ]
+    },
+    {
+      "concept_key": "inter_cluster_similarity",
+      "coverage_tags": [
+        "inter_cluster_similarity",
+        "single_link_effect",
+        "complete_link_effect"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_linkage_shape",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据期望的簇形状选择合适的链接方式。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能应用链接方式与簇形状之间的关系。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "单链",
+          "en": "Single Link"
+        },
+        {
+          "display": "全链",
+          "en": "Complete Link"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "全链使用最远点距离，只有当两个簇的所有点都足够近时才会合并，倾向于产生紧凑的球形簇。",
+          "options": [
+            "单链（Single Link）",
+            "全链（Complete Link）",
+            "平均链（Group Average）",
+            "任意一种都可以"
+          ],
+          "question_id": "q_quiz_linkage_shape_v1",
+          "stem": "如果你希望层次聚类产生紧凑的球形簇，应该使用哪种链接方式？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "单链使用最近点距离，只要两个簇之间有一对点很近就会合并，容易产生链状长簇。",
+          "options": [
+            "单链（Single Link）",
+            "全链（Complete Link）",
+            "平均链（Group Average）",
+            "无法判断"
+          ],
+          "question_id": "q_quiz_linkage_shape_v2",
+          "stem": "如果你发现层次聚类的结果呈现链状长簇，最可能使用了哪种链接方式？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-clustering/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

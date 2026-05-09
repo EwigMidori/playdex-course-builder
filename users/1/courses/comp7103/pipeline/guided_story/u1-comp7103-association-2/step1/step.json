@@ -1,0 +1,109 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "Apriori 每次找频繁项集都要扫描数据库，生成大量候选集。",
+        "有没有办法跳过这一步？"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [
+        "fp_growth"
+      ],
+      "lines": [
+        "**<term id=\"fp_growth\">FP-Growth</term>** 给出了答案。",
+        "它不再生成候选集，而是先把数据压缩成一棵树。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "fp_tree"
+      ],
+      "lines": [
+        "这棵树叫 **<term id=\"fp_tree\">FP-tree</term>**。",
+        "它把原始事务记录压缩成一种紧凑的结构，可以直接放在内存里。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "introduced_terms": [
+        "frequent_itemset"
+      ],
+      "lines": [
+        "建好树之后，再用递归策略从树中提取所有 <term id=\"frequent_itemset\">频繁项集</term>。",
+        "整个过程只需要两次数据库扫描。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "FP-Growth 的核心改进就是避免候选集生成，从而大幅提升效率。",
+        "kind": "single_choice",
+        "options": [
+          "需要更多次数据库扫描",
+          "不需要生成候选集",
+          "只能处理少量数据",
+          "必须使用更复杂的数学公式"
+        ],
+        "prompt": "FP-Growth 相比 Apriori 最大的优势是什么？"
+      },
+      "id": "s005",
+      "lines": [
+        "FP-Growth 相比 Apriori 最大的优势是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s006",
+      "lines": [
+        "所以，FP-Growth 的思路是：",
+        "先压缩，再挖掘。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "The FP-growth algorithm is an efficient algorithm for mining frequent itemsets, alternative to Apriori algorithm. It compresses a large database of transactional records into a compact Frequent-Pattern Tree (FP-tree) structure, then runs an efficient algorithm to extract frequent itemsets from the FP-tree.",
+    "related": [
+      "FP-tree Construction",
+      "FP-Growth"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "fp_growth": {
+      "aliases": [
+        "Frequent Pattern Growth"
+      ],
+      "display": "FP-Growth",
+      "gloss": "一种无需生成候选集即可挖掘频繁项集的算法。"
+    },
+    "fp_tree": {
+      "aliases": [
+        "Frequent Pattern Tree"
+      ],
+      "display": "FP-tree",
+      "gloss": "一种压缩表示事务数据库的树结构，用于高效挖掘频繁项集。"
+    },
+    "frequent_itemset": {
+      "aliases": [
+        "Frequent Itemset"
+      ],
+      "display": "频繁项集",
+      "gloss": "在数据集中出现频率不低于最小支持度阈值的项集。"
+    }
+  }
+}

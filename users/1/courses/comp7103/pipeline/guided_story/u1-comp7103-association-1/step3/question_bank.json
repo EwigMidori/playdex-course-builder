@@ -1,0 +1,427 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "two_step_mining_process",
+      "covered_by": [
+        "qf_flash_step3_two_step",
+        "qf_quiz_step3_two_step",
+        "qf_long_step3_rule_generation"
+      ],
+      "description": "关联规则挖掘的两步法：第一步找出所有频繁项集，第二步从频繁项集生成规则"
+    },
+    {
+      "coverage_tag": "frequent_itemset_definition",
+      "covered_by": [
+        "qf_flash_step3_frequent_itemset_def"
+      ],
+      "description": "频繁项集的定义：支持度 ≥ ρₛ × N 的项集"
+    },
+    {
+      "coverage_tag": "rule_generation_from_frequent_itemsets",
+      "covered_by": [
+        "qf_flash_step3_rule_generation",
+        "qf_quiz_step3_two_step",
+        "qf_long_step3_rule_generation"
+      ],
+      "description": "从频繁项集生成规则：将频繁项集 S 划分为两个非空不相交子集 X 和 Y，检查置信度"
+    },
+    {
+      "coverage_tag": "max_candidate_rules_formula",
+      "covered_by": [
+        "qf_flash_step3_max_rules",
+        "qf_quiz_step3_max_rules"
+      ],
+      "description": "一个 k-项集最多生成 2ᵏ - 2 条候选规则"
+    },
+    {
+      "coverage_tag": "confidence_check_example",
+      "covered_by": [
+        "qf_quiz_step3_confidence_example",
+        "qf_long_step3_rule_generation"
+      ],
+      "description": "通过 {c, d, e} 的例子展示如何计算置信度并判断规则是否合格"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "two_step_mining_process",
+      "coverage_tags": [
+        "two_step_mining_process"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step3_two_step",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出关联规则挖掘的两个步骤及其顺序。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了关联规则挖掘的两步法框架：先找频繁项集，再生成规则。",
+      "question_type": "short_answer",
+      "retrieval_focus": "关联规则挖掘的两步法步骤名称与顺序",
+      "term_refs": [
+        {
+          "display": "频繁项集",
+          "en": "frequent itemset"
+        }
+      ],
+      "variants": [
+        {
+          "back": "找出所有频繁项集。",
+          "estimated_seconds": 8,
+          "explanation": "第一步是找出所有支持度 ≥ ρₛ × N 的频繁项集。",
+          "front": "关联规则挖掘的第一步是什么？",
+          "question_id": "q_flash_step3_two_step_v1"
+        },
+        {
+          "back": "从每个频繁项集生成规则。",
+          "estimated_seconds": 8,
+          "explanation": "第二步是将频繁项集 S 分成两个非空不相交子集 X 和 Y，检查置信度是否 ≥ ρ_c。",
+          "front": "关联规则挖掘的第二步是什么？",
+          "question_id": "q_flash_step3_two_step_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "frequent_itemset_definition",
+      "coverage_tags": [
+        "frequent_itemset_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step3_frequent_itemset_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用支持度阈值和总交易数来判定一个项集是否频繁。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了频繁项集的判定条件：sup(S) ≥ ρₛ × N。",
+      "question_type": "short_answer",
+      "retrieval_focus": "频繁项集的判定条件",
+      "term_refs": [
+        {
+          "display": "频繁项集",
+          "en": "frequent itemset"
+        }
+      ],
+      "variants": [
+        {
+          "back": "5。",
+          "estimated_seconds": 10,
+          "explanation": "ρₛ × N = 20% × 25 = 5，所以支持度 ≥ 5 的项集才是频繁的。",
+          "front": "给定 ρₛ = 20%，N = 25，一个项集的支持度至少为多少才算频繁？",
+          "question_id": "q_flash_step3_frequent_itemset_def_v1"
+        },
+        {
+          "back": "sup(S) ≥ ρₛ × N。",
+          "estimated_seconds": 8,
+          "explanation": "频繁项集的支持度必须大于等于最小支持度阈值乘以总交易数。",
+          "front": "频繁项集 S 需要满足什么条件？",
+          "question_id": "q_flash_step3_frequent_itemset_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "rule_generation_from_frequent_itemsets",
+      "coverage_tags": [
+        "rule_generation_from_frequent_itemsets"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step3_rule_generation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出从频繁项集生成规则的基本操作：划分并检查置信度。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了从频繁项集生成规则的核心操作：将 S 划分为 X 和 Y，检查 X ⇒ Y 的置信度。",
+      "question_type": "short_answer",
+      "retrieval_focus": "从频繁项集生成规则的具体操作",
+      "term_refs": [
+        {
+          "display": "关联规则",
+          "en": "association rule"
+        }
+      ],
+      "variants": [
+        {
+          "back": "X ≠ ∅，Y ≠ ∅，X ∩ Y = ∅。",
+          "estimated_seconds": 10,
+          "explanation": "X 和 Y 必须是非空不相交的子集，且 X ∪ Y = S。",
+          "front": "从频繁项集 S 生成规则时，X 和 Y 需要满足哪三个条件？",
+          "question_id": "q_flash_step3_rule_generation_v1"
+        },
+        {
+          "back": "置信度：sup(X ∪ Y) / sup(X) ≥ ρ_c。",
+          "estimated_seconds": 10,
+          "explanation": "需要检查规则 X ⇒ Y 的置信度是否大于等于最小置信度阈值 ρ_c。",
+          "front": "从频繁项集 S 生成规则时，检查规则 X ⇒ Y 是否合格的指标是什么？",
+          "question_id": "q_flash_step3_rule_generation_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "max_candidate_rules_formula",
+      "coverage_tags": [
+        "max_candidate_rules_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step3_max_rules",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能计算一个 k-项集最多能生成多少条候选规则。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了公式：一个 k-项集最多生成 2ᵏ - 2 条候选规则。",
+      "question_type": "micro_calc",
+      "retrieval_focus": "k-项集生成候选规则的最大数量公式",
+      "term_refs": [],
+      "variants": [
+        {
+          "back": "6。",
+          "estimated_seconds": 10,
+          "explanation": "2³ - 2 = 8 - 2 = 6。",
+          "front": "一个 3-项集最多能生成多少条候选规则？",
+          "question_id": "q_flash_step3_max_rules_v1"
+        },
+        {
+          "back": "14。",
+          "estimated_seconds": 10,
+          "explanation": "2⁴ - 2 = 16 - 2 = 14。",
+          "front": "一个 4-项集最多能生成多少条候选规则？",
+          "question_id": "q_flash_step3_max_rules_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-1",
+  "longform_families": [
+    {
+      "concept_key": "rule_generation_from_frequent_itemsets",
+      "coverage_tags": [
+        "two_step_mining_process",
+        "rule_generation_from_frequent_itemsets",
+        "confidence_check_example"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_step3_rule_generation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整描述从频繁项集生成规则并判断规则是否合格的全过程。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能解释从频繁项集生成规则的具体步骤，包括划分、计算置信度和阈值判断。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "频繁项集",
+          "en": "frequent itemset"
+        },
+        {
+          "display": "置信度",
+          "en": "confidence"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "列出从 {c, d, e} 可以生成的所有候选规则",
+            "计算每条规则的置信度",
+            "与 ρ_c = 65% 比较，判断哪些规则合格"
+          ],
+          "question_id": "q_long_step3_rule_generation_v1",
+          "reference_answer": [
+            "从 {c, d, e} 可以生成 6 条候选规则：{c} ⇒ {d, e}（5/11≈45%），{d} ⇒ {c, e}（5/14≈36%），{e} ⇒ {c, d}（5/11≈45%），{d, e} ⇒ {c}（5/7≈71%），{c, e} ⇒ {d}（5/6≈83%），{c, d} ⇒ {e}（5/9≈56%）。",
+            "当 ρ_c = 65% 时，只有 {d, e} ⇒ {c}（71%）和 {c, e} ⇒ {d}（83%）的置信度 ≥ 65%，因此这两条规则被采纳。",
+            "其余 4 条规则的置信度均低于 65%，因此被淘汰。"
+          ],
+          "rubric_points": [
+            "正确列出所有 6 条候选规则",
+            "正确计算每条规则的置信度",
+            "正确判断出 {d, e} ⇒ {c}（71%）和 {c, e} ⇒ {d}（83%）合格",
+            "解释其他规则被淘汰的原因"
+          ],
+          "stem": "假设频繁项集 {c, d, e} 的支持度为 5，sup({c, e}) = 6，sup({c, d}) = 9，sup({d, e}) = 7。请说明从该频繁项集生成规则的过程，并判断当 ρ_c = 65% 时哪些规则会被采纳。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "列出从 {b, d, e} 可以生成的所有候选规则",
+            "计算每条规则的置信度",
+            "与 ρ_c = 70% 比较，判断哪些规则合格"
+          ],
+          "question_id": "q_long_step3_rule_generation_v2",
+          "reference_answer": [
+            "从 {b, d, e} 可以生成 6 条候选规则：{b} ⇒ {d, e}（5/18≈28%），{d} ⇒ {b, e}（5/14≈36%），{e} ⇒ {b, d}（5/11≈45%），{d, e} ⇒ {b}（5/7≈71%），{b, e} ⇒ {d}（5/8≈63%），{b, d} ⇒ {e}（5/10=50%）。",
+            "当 ρ_c = 70% 时，只有 {d, e} ⇒ {b}（71%）的置信度 ≥ 70%，因此这条规则被采纳。",
+            "其余 5 条规则的置信度均低于 70%，因此被淘汰。"
+          ],
+          "rubric_points": [
+            "正确列出所有 6 条候选规则",
+            "正确计算每条规则的置信度",
+            "正确判断出 {d, e} ⇒ {b}（71%）合格",
+            "解释其他规则被淘汰的原因"
+          ],
+          "stem": "假设频繁项集 {b, d, e} 的支持度为 5，sup({b, d}) = 10，sup({b, e}) = 8，sup({d, e}) = 7。请说明从该频繁项集生成规则的过程，并判断当 ρ_c = 70% 时哪些规则会被采纳。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "two_step_mining_process",
+      "coverage_tags": [
+        "two_step_mining_process",
+        "rule_generation_from_frequent_itemsets"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step3_two_step",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确识别关联规则挖掘的步骤顺序和第二步的具体操作。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能区分两步法的顺序，并理解第二步是从频繁项集生成规则。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "频繁项集",
+          "en": "frequent itemset"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "第一步是找出所有频繁项集，第二步是从每个频繁项集生成规则并检查置信度。",
+          "options": [
+            "先找出所有频繁项集，再从频繁项集生成规则",
+            "先生成所有可能的规则，再找出频繁项集",
+            "先计算所有项集的置信度，再找出频繁项集",
+            "先找出所有频繁项集，再计算它们的支持度"
+          ],
+          "question_id": "q_quiz_step3_two_step_v1",
+          "stem": "关联规则挖掘的正确步骤顺序是？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "需要将 S 划分为两个非空不相交子集 X 和 Y（X ∪ Y = S, X ∩ Y = ∅），然后检查规则 X ⇒ Y 的置信度是否 ≥ ρ_c。",
+          "options": [
+            "将 S 分成两个非空不相交子集 X 和 Y，检查 X ⇒ Y 的置信度",
+            "将 S 分成任意两个子集 X 和 Y，检查 X ⇒ Y 的支持度",
+            "将 S 分成两个非空子集 X 和 Y，检查 X ∪ Y 的支持度",
+            "将 S 分成两个不相交子集 X 和 Y，检查 X ∩ Y 的置信度"
+          ],
+          "question_id": "q_quiz_step3_two_step_v2",
+          "stem": "从频繁项集 S 生成规则时，以下哪项操作是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "max_candidate_rules_formula",
+      "coverage_tags": [
+        "max_candidate_rules_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step3_max_rules",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下应用公式计算 k-项集的最大候选规则数。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能应用 2ᵏ - 2 公式计算候选规则数量。",
+      "question_type": "single_choice",
+      "term_refs": [],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "2⁵ - 2 = 32 - 2 = 30。",
+          "options": [
+            "30",
+            "32",
+            "10",
+            "25"
+          ],
+          "question_id": "q_quiz_step3_max_rules_v1",
+          "stem": "一个 5-项集最多能生成多少条候选规则？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "2² - 2 = 4 - 2 = 2。例如 {a, b} 可以生成 {a} ⇒ {b} 和 {b} ⇒ {a}。",
+          "options": [
+            "2",
+            "4",
+            "1",
+            "0"
+          ],
+          "question_id": "q_quiz_step3_max_rules_v2",
+          "stem": "一个 2-项集最多能生成多少条候选规则？"
+        }
+      ]
+    },
+    {
+      "concept_key": "confidence_check_example",
+      "coverage_tags": [
+        "confidence_check_example"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step3_confidence_example",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的支持度数据计算置信度并判断规则是否合格。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能计算置信度并应用置信度阈值判断规则是否被采纳。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "置信度",
+          "en": "confidence"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 30,
+          "explanation": "{c, e} ⇒ {d} 的置信度 = 5/6 ≈ 83% ≥ 65%，所以合格。{c, d} ⇒ {e} 的置信度 = 5/9 ≈ 56% < 65%，所以被淘汰。",
+          "options": [
+            "{c, e} ⇒ {d}，置信度 ≈ 83%",
+            "{c, d} ⇒ {e}，置信度 ≈ 56%",
+            "两条都会被采纳",
+            "两条都不会被采纳"
+          ],
+          "question_id": "q_quiz_step3_confidence_example_v1",
+          "stem": "频繁项集 {c, d, e} 的支持度为 5，sup({c, e}) = 6，sup({c, d}) = 9。若 ρ_c = 65%，以下哪条规则会被采纳？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 30,
+          "explanation": "{d, e} ⇒ {c} 的置信度 = 5/7 ≈ 71% ≥ 70%，所以合格。{c, d} ⇒ {e} 的置信度 = 5/9 ≈ 56% < 70%，所以被淘汰。",
+          "options": [
+            "{d, e} ⇒ {c}，置信度 ≈ 71%",
+            "{c, d} ⇒ {e}，置信度 ≈ 56%",
+            "两条都会被采纳",
+            "两条都不会被采纳"
+          ],
+          "question_id": "q_quiz_step3_confidence_example_v2",
+          "stem": "频繁项集 {c, d, e} 的支持度为 5，sup({d, e}) = 7，sup({c, d}) = 9。若 ρ_c = 70%，以下哪条规则会被采纳？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-1/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,195 @@
+{
+  "chapter_id": "lecture-01-knn",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "curse_of_dimensionality",
+      "covered_by": [
+        "qf_flash_curse_dim",
+        "qf_quiz_curse_dim",
+        "qf_long_curse_dim"
+      ],
+      "description": "维度灾难的概念、成因及其对kNN的影响"
+    },
+    {
+      "coverage_tag": "high_dimensional_distance",
+      "covered_by": [
+        "qf_flash_curse_dim",
+        "qf_quiz_curse_dim",
+        "qf_long_curse_dim"
+      ],
+      "description": "高维空间中距离度量失效的现象：所有点对距离趋于相等"
+    },
+    {
+      "coverage_tag": "knn_high_dim_limitation",
+      "covered_by": [
+        "qf_quiz_curse_dim",
+        "qf_long_curse_dim"
+      ],
+      "description": "kNN在高维数据下的性能急剧下降及其原因"
+    },
+    {
+      "coverage_tag": "mitigation_strategies",
+      "covered_by": [
+        "qf_quiz_curse_dim"
+      ],
+      "description": "应对维度灾难的常见策略：降维（如PCA）或使用其他算法"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "curse_of_dimensionality",
+      "coverage_tags": [
+        "curse_of_dimensionality",
+        "high_dimensional_distance"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_curse_dim",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆维度灾难的定义及其对kNN的影响。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能用自己的话复述维度灾难的核心现象：高维空间中距离度量失效，导致kNN性能下降。",
+      "question_type": "short_answer",
+      "retrieval_focus": "维度灾难的定义和核心表现",
+      "term_refs": [
+        {
+          "display": "维度灾难",
+          "en": "Curse of Dimensionality"
+        }
+      ],
+      "variants": [
+        {
+          "back": "随着特征维度增加，数据变得稀疏，距离度量失效，导致模型性能下降的现象。",
+          "estimated_seconds": 10,
+          "explanation": "维度灾难是机器学习中一个核心概念，尤其影响基于距离的算法如kNN。",
+          "front": "什么是“维度灾难”（Curse of Dimensionality）？",
+          "question_id": "q_flash_curse_dim_v1"
+        },
+        {
+          "back": "所有距离都集中在某个狭窄范围内，最大值和最小值相差很小，没有明显的近邻和远邻之分。",
+          "estimated_seconds": 12,
+          "explanation": "这是维度灾难的直接表现：距离度量失效，最近邻和最远邻的区别消失。",
+          "front": "在高维空间中（如10000维），随机生成的点对之间的欧氏距离会呈现什么分布特征？",
+          "question_id": "q_flash_curse_dim_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-knn",
+  "longform_families": [
+    {
+      "concept_key": "curse_of_dimensionality",
+      "coverage_tags": [
+        "curse_of_dimensionality",
+        "high_dimensional_distance",
+        "knn_high_dim_limitation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_curse_dim",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释维度灾难的成因、表现及其对kNN的具体影响。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能结合高维空间距离分布的特性，解释为什么kNN在高维数据上失效，并给出合理的应对思路。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "维度灾难",
+          "en": "Curse of Dimensionality"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "维度灾难的定义",
+            "高维空间中距离分布的特征",
+            "距离失效对kNN投票机制的影响",
+            "改进方案"
+          ],
+          "question_id": "q_long_curse_dim_v1",
+          "reference_answer": [
+            "维度灾难是指随着特征维度增加，数据在高维空间中变得极其稀疏，导致基于距离的算法失效的现象。",
+            "在高维空间（如10000维）中，随机点对之间的欧氏距离都集中在某个狭窄范围内，最大值和最小值相差很小。这意味着最近邻和最远邻的距离几乎没有区别。",
+            "kNN依赖距离来找到最近的邻居，当所有点都几乎等距时，找到的'最近邻'并不真正相似，投票结果接近随机猜测，分类性能急剧下降。",
+            "一种可行的改进方案是使用PCA等降维技术，将10000维的特征压缩到更低的维度（如100维），保留主要信息的同时缓解稀疏性。另一种方案是使用对高维数据更鲁棒的算法（如SVM或神经网络）。"
+          ],
+          "rubric_points": [
+            "正确解释维度灾难：维度增加导致数据稀疏，距离度量失效",
+            "说明高维空间中所有点对距离趋于相等，最近邻和最远邻区别消失",
+            "解释这导致kNN无法有效找到真正的近邻，投票失去意义",
+            "提出至少一种合理方案，如PCA降维、特征选择或使用其他算法"
+          ],
+          "stem": "假设你有一个包含1000张人脸图像的数据集，每张图像是100x100像素（即10000维）。你使用kNN进行分类，但发现效果很差。请解释：\n1. 什么是维度灾难？\n2. 维度灾难如何导致kNN在高维数据上失效？\n3. 提出至少一种可行的改进方案。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "curse_of_dimensionality",
+      "coverage_tags": [
+        "curse_of_dimensionality",
+        "high_dimensional_distance",
+        "knn_high_dim_limitation",
+        "mitigation_strategies"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_curse_dim",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析维度灾难对kNN的影响及常见应对策略。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能识别维度灾难导致kNN失效的根本原因，并知道常见的缓解方法。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "维度灾难",
+          "en": "Curse of Dimensionality"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "高维空间中，所有点对之间的距离趋于相等，最近邻和最远邻的区别消失，导致kNN性能急剧下降，这就是维度灾难。",
+          "options": [
+            "训练时间过长",
+            "维度灾难导致距离度量失效",
+            "无法计算欧氏距离",
+            "k值无法确定"
+          ],
+          "question_id": "q_quiz_curse_dim_v1",
+          "stem": "对于一张100x100像素的人脸图像（即10000维向量），使用kNN进行分类时，以下哪个问题最严重？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "降维（如PCA）可以减少特征维度，缓解数据稀疏性，是应对维度灾难的常用策略。",
+          "options": [
+            "增加训练样本数量",
+            "使用更大的k值",
+            "先进行降维（如PCA）",
+            "使用曼哈顿距离代替欧氏距离"
+          ],
+          "question_id": "q_quiz_curse_dim_v2",
+          "stem": "以下哪种方法最常用于缓解kNN在高维数据上的维度灾难问题？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-knn/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

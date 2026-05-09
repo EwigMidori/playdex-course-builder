@@ -1,0 +1,127 @@
+{
+  "chapter_id": "lecture-09-ensemble-learning-boosting",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-ensemble-learning-boosting",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "假设你是一名工程师，任务是用机器学习判断一封邮件是否为垃圾邮件。",
+        "你决定使用决策树模型。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "你训练了一个决策树，但在测试集上准确率只有 82%。",
+        "你尝试调整树的最大深度，从 5 调到 10，又从 10 调到 3。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "深度为 10 时，训练准确率 99%，但测试准确率掉到了 75% —— 过拟合了。",
+        "深度为 3 时，训练准确率 78%，测试准确率 79% —— 欠拟合了。",
+        "无论怎么调参，单个决策树似乎都有天花板。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "你开始思考：也许不应该只依赖一个模型。",
+        "如果请 10 位专家来做同一个预测呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "单独看，每个人的预测都可能出错。",
+        "但如果把他们的意见综合起来呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "ensemble_learning"
+      ],
+      "id": "s006",
+      "introduced_terms": [
+        "ensemble_learning"
+      ],
+      "lines": [
+        "这就是 <term id=\"ensemble_learning\">集成学习</term> 的核心思想。",
+        "把多个分类器组合成一个更强的元分类器。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "ensemble_learning"
+      ],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "目标是：这个组合后的模型，比其中任何一个单独的分类器都更准确、更稳定。",
+        "它不会因为某个专家的失误而全盘皆输。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "集成学习的魅力就在于，把多个“一般”的模型组合起来，往往能胜过任何一个“优秀”的个体。",
+        "kind": "single_choice",
+        "options": [
+          "一个非常强大的分类器，单独就能完美预测。",
+          "多个表现一般的分类器，通过组合得到更优结果。",
+          "用更多数据训练同一个模型。"
+        ],
+        "prompt": "下面哪种情况最能体现集成学习的优势？"
+      },
+      "focus_terms": [
+        "ensemble_learning"
+      ],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "下面哪种情况最能体现集成学习的优势？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "A set of classifiers can often have a better predictive performance than any of its individual members. Combine different classifiers into a meta-classifier that has better generalization performance than each individual classifier alone.",
+    "related": [
+      "majority voting",
+      "bagging",
+      "boosting"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "ensemble_learning": {
+      "aliases": [
+        "Ensemble Learning",
+        "Ensemble Methods"
+      ],
+      "display": "集成学习",
+      "gloss": "将多个分类器组合成一个元分类器，以获得比单个分类器更好的泛化性能。"
+    }
+  }
+}

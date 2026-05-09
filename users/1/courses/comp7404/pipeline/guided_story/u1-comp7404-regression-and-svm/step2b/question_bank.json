@@ -1,0 +1,383 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "estimation_criterion",
+      "covered_by": [
+        "qf_flash_squared_loss",
+        "qf_quiz_squared_loss"
+      ],
+      "description": "拟合准则：平方损失的定义与公式"
+    },
+    {
+      "coverage_tag": "empirical_loss",
+      "covered_by": [
+        "qf_flash_empirical_loss",
+        "qf_quiz_empirical_loss"
+      ],
+      "description": "经验损失：所有训练样本损失的总和"
+    },
+    {
+      "coverage_tag": "least_squares_solution",
+      "covered_by": [
+        "qf_flash_least_squares",
+        "qf_quiz_least_squares"
+      ],
+      "description": "最小二乘法：通过最小化平方损失求解参数"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "squared_loss",
+      "coverage_tags": [
+        "estimation_criterion"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_squared_loss",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆平方损失的定义公式及其直观含义。",
+      "linked_steps": [
+        "step2b"
+      ],
+      "practice_target": "学生答对后证明掌握了平方损失的计算公式和“差距越大惩罚越重”的核心思想。",
+      "question_type": "short_answer",
+      "retrieval_focus": "平方损失的定义公式及其对误差的惩罚特性。",
+      "term_refs": [
+        {
+          "display": "平方损失",
+          "en": "Squared Loss"
+        }
+      ],
+      "variants": [
+        {
+          "back": "\\text{Loss}(y, f(x; w)) = \\frac{1}{2} (y - f(x; w))^2",
+          "estimated_seconds": 8,
+          "explanation": "平方损失计算预测值与真实值之差的平方的一半。",
+          "front": "平方损失（Squared Loss）的计算公式是什么？",
+          "question_id": "q_flash_squared_loss_v1"
+        },
+        {
+          "back": "差距越大，惩罚越重（平方放大效应）。",
+          "estimated_seconds": 6,
+          "explanation": "由于误差被平方，较大的误差会受到更重的惩罚。",
+          "front": "平方损失对预测误差有什么样的惩罚特性？",
+          "question_id": "q_flash_squared_loss_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "empirical_loss",
+      "coverage_tags": [
+        "empirical_loss"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_empirical_loss",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆经验损失的定义及其与平方损失的关系。",
+      "linked_steps": [
+        "step2b"
+      ],
+      "practice_target": "学生答对后证明掌握了经验损失是所有训练样本损失的总和这一核心概念。",
+      "question_type": "short_answer",
+      "retrieval_focus": "经验损失的定义和计算公式。",
+      "term_refs": [
+        {
+          "display": "经验损失",
+          "en": "Empirical Loss"
+        }
+      ],
+      "variants": [
+        {
+          "back": "所有训练样本损失的总和：J_n(w) = Σ Loss(y_i, f(x_i; w))",
+          "estimated_seconds": 8,
+          "explanation": "经验损失衡量模型在整个训练集上的总误差。",
+          "front": "经验损失（Empirical Loss）是如何定义的？",
+          "question_id": "q_flash_empirical_loss_v1"
+        },
+        {
+          "back": "找到一组参数 w，使得所有训练样本的平方损失之和最小。",
+          "estimated_seconds": 6,
+          "explanation": "通过最小化 J_n(w) 来找到最佳拟合直线。",
+          "front": "在线性回归中，最小化经验损失的目标是什么？",
+          "question_id": "q_flash_empirical_loss_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "least_squares",
+      "coverage_tags": [
+        "least_squares_solution"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_least_squares",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆最小二乘法的核心思想。",
+      "linked_steps": [
+        "step2b"
+      ],
+      "practice_target": "学生答对后证明掌握了最小二乘法是通过最小化平方损失来求解参数的方法。",
+      "question_type": "short_answer",
+      "retrieval_focus": "最小二乘法的核心思想。",
+      "term_refs": [
+        {
+          "display": "最小二乘法",
+          "en": "Least Squares"
+        }
+      ],
+      "variants": [
+        {
+          "back": "通过最小化所有训练样本的平方损失之和来找到最佳参数。",
+          "estimated_seconds": 6,
+          "explanation": "“二乘”指平方，即最小化平方误差的总和。",
+          "front": "最小二乘法（Least Squares）的核心思想是什么？",
+          "question_id": "q_flash_least_squares_v1"
+        },
+        {
+          "back": "平方（二次方）。",
+          "estimated_seconds": 4,
+          "explanation": "“二乘”是平方的旧称，指将误差平方后再求和。",
+          "front": "最小二乘法中的“二乘”指的是什么？",
+          "question_id": "q_flash_least_squares_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "longform_families": [
+    {
+      "concept_key": "least_squares",
+      "coverage_tags": [
+        "estimation_criterion",
+        "empirical_loss",
+        "least_squares_solution"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_estimation_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整解释从平方损失到经验损失再到最小二乘法的逻辑链条。",
+      "linked_steps": [
+        "step2b"
+      ],
+      "practice_target": "学生答对后证明能连贯地解释线性回归中如何通过最小化平方损失来找到最佳参数。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "平方损失",
+          "en": "Squared Loss"
+        },
+        {
+          "display": "经验损失",
+          "en": "Empirical Loss"
+        },
+        {
+          "display": "最小二乘法",
+          "en": "Least Squares"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "首先，如何衡量单个数据点的预测误差？",
+            "然后，如何衡量整条直线在所有训练数据上的表现？",
+            "最后，如何找到使整体表现最好的直线？"
+          ],
+          "question_id": "q_long_estimation_process_v1",
+          "reference_answer": [
+            "首先，对于单个数据点，我们使用平方损失来衡量预测误差：Loss = (y - f(x))² / 2。它计算预测值与真实值差距的平方，差距越大惩罚越重。",
+            "然后，为了衡量整条直线在所有训练数据上的表现，我们计算所有样本的平方损失之和，称为经验损失：J_n(w) = Σ Loss(y_i, f(x_i; w))。",
+            "最后，最小二乘法就是通过最小化这个经验损失 J_n(w) 来找到最佳参数 w，从而得到最佳拟合直线。"
+          ],
+          "rubric_points": [
+            "正确写出平方损失公式并解释其含义",
+            "正确写出经验损失公式并解释其含义",
+            "说明最小二乘法是通过最小化经验损失来求解参数",
+            "逻辑连贯，术语使用准确"
+          ],
+          "stem": "请解释在线性回归中，如何从“衡量单个点的预测误差”到“找到最佳拟合直线”的完整过程。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "你会用什么标准来衡量一条直线的好坏？",
+            "这个标准如何应用到所有数据点上？",
+            "最终如何确定直线的参数？"
+          ],
+          "question_id": "q_long_estimation_process_v2",
+          "reference_answer": [
+            "我会使用平方损失来衡量每个房子的预测价格与实际价格的误差：Loss = (实际价格 - 预测价格)² / 2。",
+            "然后，将所有房子的平方损失加起来，得到经验损失 J_n(w)，它衡量了这条直线在所有已知数据上的总误差。",
+            "最后，使用最小二乘法，通过数学方法（如求导）找到使 J_n(w) 最小的参数 w₀ 和 w₁，从而得到最佳拟合直线。"
+          ],
+          "rubric_points": [
+            "正确指出使用平方损失衡量单个点的误差",
+            "正确指出使用经验损失（所有点平方损失之和）衡量整条直线",
+            "正确说明最小二乘法通过最小化经验损失来确定参数",
+            "能够结合房价预测的例子进行说明"
+          ],
+          "stem": "假设你有一组房价数据（面积 vs 价格），请描述如何使用最小二乘法找到最佳拟合直线。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "squared_loss",
+      "coverage_tags": [
+        "estimation_criterion"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_squared_loss",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确应用平方损失公式计算单个样本的损失。",
+      "linked_steps": [
+        "step2b"
+      ],
+      "practice_target": "学生答对后证明能正确计算平方损失并理解其惩罚特性。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "平方损失",
+          "en": "Squared Loss"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "Loss = (10 - 7)² / 2 = 9 / 2 = 4.5。",
+          "options": [
+            "9",
+            "4.5",
+            "3",
+            "1.5"
+          ],
+          "question_id": "q_quiz_squared_loss_v1",
+          "stem": "给定一个数据点，真实值 y=10，预测值 f(x)=7。根据平方损失公式 Loss = (y - f(x))²/2，该点的损失是多少？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "误差从 3 变为 6，平方损失从 4.5 变为 18，是原来的 4 倍。这体现了平方损失对较大误差的加重惩罚。",
+          "options": [
+            "变为原来的 2 倍",
+            "变为原来的 4 倍",
+            "变为原来的 1.5 倍",
+            "不变"
+          ],
+          "question_id": "q_quiz_squared_loss_v2",
+          "stem": "对于同一个数据点，如果预测误差从 3 变为 6，平方损失会如何变化？"
+        }
+      ]
+    },
+    {
+      "concept_key": "empirical_loss",
+      "coverage_tags": [
+        "empirical_loss"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_empirical_loss",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确理解经验损失的作用和计算方式。",
+      "linked_steps": [
+        "step2b"
+      ],
+      "practice_target": "学生答对后证明能区分经验损失与单个样本损失，并理解其作为优化目标的意义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "经验损失",
+          "en": "Empirical Loss"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "经验损失是所有训练样本损失的总和，用于衡量模型在整个训练集上的表现。",
+          "options": [
+            "衡量单个数据点的预测误差",
+            "衡量所有训练样本的总预测误差",
+            "计算模型的复杂度",
+            "评估模型在测试集上的表现"
+          ],
+          "question_id": "q_quiz_empirical_loss_v1",
+          "stem": "经验损失函数 J_n(w) 的作用是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "经验损失是各样本损失之和：2 + 3 + 5 = 10。",
+          "options": [
+            "5",
+            "10",
+            "15",
+            "30"
+          ],
+          "question_id": "q_quiz_empirical_loss_v2",
+          "stem": "假设有 3 个训练样本，它们的平方损失分别为 2、3、5。经验损失 J_n(w) 是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "least_squares",
+      "coverage_tags": [
+        "least_squares_solution"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_least_squares",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确理解最小二乘法的目标和方法。",
+      "linked_steps": [
+        "step2b"
+      ],
+      "practice_target": "学生答对后证明能理解最小二乘法通过最小化平方损失来找到最佳拟合直线。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "最小二乘法",
+          "en": "Least Squares"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "最小二乘法通过最小化所有数据点的平方损失（即垂直距离的平方和）来找到最佳拟合直线。",
+          "options": [
+            "使所有数据点都在直线上",
+            "使所有数据点到直线的垂直距离之和最小",
+            "使所有数据点到直线的垂直距离的平方和最小",
+            "使直线的斜率最大"
+          ],
+          "question_id": "q_quiz_least_squares_v1",
+          "stem": "最小二乘法在线性回归中寻找最佳拟合直线的标准是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "最小二乘法最小化的是经验损失 J_n(w) = Σ (y_i - f(x_i))² / 2，即平方和的一半。",
+          "options": [
+            "最小化预测值与真实值之差的绝对值之和",
+            "最小化预测值与真实值之差的平方和的一半",
+            "最大化预测值与真实值之间的相关性",
+            "最小化模型的参数数量"
+          ],
+          "question_id": "q_quiz_least_squares_v2",
+          "stem": "以下哪个选项最准确地描述了最小二乘法的优化目标？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2b",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-regression-and-svm/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,329 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "interestingness_measures",
+      "covered_by": [
+        "qf_flash_lift_def",
+        "qf_flash_lift_interpret",
+        "qf_quiz_confidence_drawback",
+        "qf_quiz_lift_calc",
+        "qf_long_lift_explain"
+      ],
+      "description": "关联规则评估：为什么置信度会骗人，以及提升度作为替代指标"
+    },
+    {
+      "coverage_tag": "drawback_of_confidence",
+      "covered_by": [
+        "qf_flash_lift_def",
+        "qf_quiz_confidence_drawback",
+        "qf_long_lift_explain"
+      ],
+      "description": "置信度的误导性：高置信度不代表规则有意义，可能只是反映了结论项本身的高流行度"
+    },
+    {
+      "coverage_tag": "lift_definition",
+      "covered_by": [
+        "qf_flash_lift_def",
+        "qf_quiz_lift_calc"
+      ],
+      "description": "提升度的定义：置信度与结论项概率的比值"
+    },
+    {
+      "coverage_tag": "lift_interpretation",
+      "covered_by": [
+        "qf_flash_lift_interpret",
+        "qf_quiz_lift_calc",
+        "qf_long_lift_explain"
+      ],
+      "description": "提升度的解释：大于1为正相关，等于1为独立，小于1为负相关"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "lift_definition",
+      "coverage_tags": [
+        "interestingness_measures",
+        "drawback_of_confidence",
+        "lift_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_lift_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆提升度的计算公式及其与置信度的关系。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能写出提升度的计算公式，并理解它如何修正置信度的偏差。",
+      "question_type": "short_answer",
+      "retrieval_focus": "提升度的计算公式及其与置信度的关系。",
+      "term_refs": [
+        {
+          "display": "提升度",
+          "en": "Lift"
+        },
+        {
+          "display": "置信度",
+          "en": "Confidence"
+        }
+      ],
+      "variants": [
+        {
+          "back": "Lift(X→Y) = Confidence(X→Y) / P(Y)",
+          "estimated_seconds": 8,
+          "explanation": "提升度 = 置信度 / 结论项的概率。它衡量了规则 X→Y 中 X 和 Y 的统计依赖程度。",
+          "front": "提升度（Lift）的计算公式是什么？",
+          "question_id": "q_flash_lift_def_v1"
+        },
+        {
+          "back": "0.833",
+          "estimated_seconds": 10,
+          "explanation": "Lift = 0.75 / 0.9 = 0.833。提升度小于1，说明茶和咖啡是负相关的。",
+          "front": "对于规则 茶→咖啡，置信度为0.75，P(咖啡)=0.9，提升度是多少？",
+          "question_id": "q_flash_lift_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "lift_interpretation",
+      "coverage_tags": [
+        "interestingness_measures",
+        "lift_interpretation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_lift_interpret",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确解释提升度不同取值所代表的统计关系。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能根据提升度的值判断两个变量是正相关、独立还是负相关。",
+      "question_type": "short_answer",
+      "retrieval_focus": "提升度不同取值对应的统计关系。",
+      "term_refs": [
+        {
+          "display": "提升度",
+          "en": "Lift"
+        }
+      ],
+      "variants": [
+        {
+          "back": "正相关：买X会增加买Y的概率。",
+          "estimated_seconds": 6,
+          "explanation": "Lift > 1 意味着 X 和 Y 是正相关的，即购买 X 会提高购买 Y 的概率。",
+          "front": "提升度大于1表示什么？",
+          "question_id": "q_flash_lift_interpret_v1"
+        },
+        {
+          "back": "独立：买X对买Y没有影响。",
+          "estimated_seconds": 6,
+          "explanation": "Lift = 1 意味着 X 和 Y 是独立的，即购买 X 不会影响购买 Y 的概率。",
+          "front": "提升度等于1表示什么？",
+          "question_id": "q_flash_lift_interpret_v2"
+        },
+        {
+          "back": "负相关：买X反而会降低买Y的概率。",
+          "estimated_seconds": 6,
+          "explanation": "Lift < 1 意味着 X 和 Y 是负相关的，即购买 X 会降低购买 Y 的概率。",
+          "front": "提升度小于1表示什么？",
+          "question_id": "q_flash_lift_interpret_v3"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-2",
+  "longform_families": [
+    {
+      "concept_key": "lift_vs_confidence",
+      "coverage_tags": [
+        "interestingness_measures",
+        "drawback_of_confidence",
+        "lift_interpretation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_lift_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么置信度可能具有误导性，并说明提升度如何提供更准确的评估。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能结合具体例子，阐述置信度的局限性，并解释提升度的计算和解释方法。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "置信度",
+          "en": "Confidence"
+        },
+        {
+          "display": "提升度",
+          "en": "Lift"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "解释置信度的定义及其局限性",
+            "用具体数值说明为什么高置信度可能具有误导性",
+            "给出提升度的计算公式",
+            "计算并解释该例子的提升度结果"
+          ],
+          "question_id": "q_long_lift_explain_v1",
+          "reference_answer": [
+            "置信度衡量的是在包含X的事务中，也包含Y的比例。但它没有考虑Y本身的普遍性。",
+            "在茶→咖啡的例子中，置信度为0.75，看起来很高。但P(咖啡)=0.9，意味着不喝茶的人喝咖啡的概率（0.9）反而比喝茶的人（0.75）更高。这说明高置信度可能只是反映了咖啡的流行，而不是茶和咖啡之间的真实关联。",
+            "提升度的计算公式为：Lift(X→Y) = Confidence(X→Y) / P(Y)。",
+            "对于茶→咖啡：Lift = 0.75 / 0.9 = 0.833。",
+            "提升度小于1，说明茶和咖啡实际上是负相关的，即喝茶反而会降低喝咖啡的概率。因此，仅看置信度会得出错误结论，而提升度提供了更准确的评估。"
+          ],
+          "rubric_points": [
+            "正确指出置信度只衡量条件概率，忽略了结论项的普遍性",
+            "正确指出P(咖啡)=0.9高于置信度0.75，说明不喝茶的人喝咖啡概率更高",
+            "正确写出Lift = Confidence / P(Y) 公式",
+            "正确计算Lift = 0.75 / 0.9 = 0.833",
+            "正确解释Lift < 1表示负相关，规则具有误导性"
+          ],
+          "stem": "请解释为什么在关联规则评估中，仅靠置信度可能会得出误导性的结论。请以“茶→咖啡”为例（置信度=0.75，P(咖啡)=0.9），说明提升度如何帮助我们更准确地判断规则的价值。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "分析置信度0.7的含义及其局限性",
+            "计算提升度",
+            "解释提升度结果并判断规则是否有价值"
+          ],
+          "question_id": "q_long_lift_explain_v2",
+          "reference_answer": [
+            "置信度0.7表示在购买运动饮料的顾客中，有70%也购买了能量棒。这个数值看起来不错，但我们不知道能量棒本身的流行程度。如果能量棒本身就很流行（比如P=0.9），那么0.7的置信度可能反而是负相关的。",
+            "提升度 = 0.7 / 0.5 = 1.4。",
+            "提升度1.4大于1，说明运动饮料和能量棒是正相关的。购买运动饮料的顾客购买能量棒的概率是普通顾客的1.4倍。因此，这条规则是有价值的，它揭示了两个商品之间的真实关联，而不仅仅是反映了能量棒的普遍性。"
+          ],
+          "rubric_points": [
+            "正确指出置信度0.7表示70%买运动饮料的人也买能量棒",
+            "正确指出P(能量棒)=0.5，说明不买运动饮料的人买能量棒的概率可能不同",
+            "正确计算Lift = 0.7 / 0.5 = 1.4",
+            "正确解释Lift > 1表示正相关，规则有价值",
+            "说明该规则比仅看置信度更有意义，因为运动饮料确实增加了购买能量棒的概率"
+          ],
+          "stem": "假设你发现一条规则“运动饮料→能量棒”，置信度为0.7，而P(能量棒)=0.5。请分析这条规则是否有趣。你需要：1) 解释为什么仅看置信度可能不够；2) 计算提升度；3) 根据提升度解释规则的实际意义。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "drawback_of_confidence",
+      "coverage_tags": [
+        "interestingness_measures",
+        "drawback_of_confidence"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_confidence_drawback",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别置信度的局限性，理解高置信度不一定意味着规则有意义。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能判断一个高置信度的规则是否可能具有误导性，并解释原因。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "置信度",
+          "en": "Confidence"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "置信度高（0.75）但结论项本身就很流行（P(咖啡)=0.9），导致规则可能只是反映了咖啡的普遍性，而不是茶和咖啡之间的真实关联。实际上，不喝茶的人喝咖啡的概率更高，说明两者可能是负相关的。",
+          "options": [
+            "因为置信度低于0.8，所以规则不可靠",
+            "因为不喝茶的人喝咖啡的概率（0.9）反而更高，说明茶和咖啡可能负相关",
+            "因为茶和咖啡是两种完全不同的饮料",
+            "因为置信度计算有误"
+          ],
+          "question_id": "q_quiz_confidence_drawback_v1",
+          "stem": "规则“茶→咖啡”的置信度为0.75，但P(咖啡)=0.9。为什么这个高置信度的规则可能具有误导性？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "置信度0.8虽然高，但P(面包)=0.85更高，说明不买牛奶的人买面包的概率可能更高。高置信度可能只是反映了面包的普遍流行，而不是牛奶和面包之间的强关联。",
+          "options": [
+            "这是一个非常强的规则，因为置信度很高",
+            "这个规则可能没有实际意义，因为面包本身就很流行",
+            "这个规则一定是正相关的",
+            "这个规则的支持度一定很高"
+          ],
+          "question_id": "q_quiz_confidence_drawback_v2",
+          "stem": "假设规则“牛奶→面包”的置信度为0.8，而P(面包)=0.85。以下哪个说法最准确？"
+        }
+      ]
+    },
+    {
+      "concept_key": "lift_calculation_and_interpretation",
+      "coverage_tags": [
+        "interestingness_measures",
+        "lift_definition",
+        "lift_interpretation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_lift_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能计算提升度并根据结果判断变量间的关联性质。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能根据给定的置信度和结论项概率计算提升度，并解释其含义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "提升度",
+          "en": "Lift"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "Lift = 0.6 / 0.4 = 1.5。提升度大于1，说明买薯片会增加买啤酒的概率，两者是正相关的。",
+          "options": [
+            "提升度=1.5，表示正相关",
+            "提升度=0.67，表示负相关",
+            "提升度=0.24，表示负相关",
+            "提升度=1.0，表示独立"
+          ],
+          "question_id": "q_quiz_lift_calc_v1",
+          "stem": "规则“薯片→啤酒”的置信度为0.6，P(啤酒)=0.4。这条规则的提升度是多少？它表示什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "Lift = 0.5 / 0.6 ≈ 0.83。提升度小于1，说明买尿布反而会降低买啤酒的概率，两者是负相关的。",
+          "options": [
+            "提升度=0.83，表示负相关",
+            "提升度=1.2，表示正相关",
+            "提升度=0.3，表示负相关",
+            "提升度=1.0，表示独立"
+          ],
+          "question_id": "q_quiz_lift_calc_v2",
+          "stem": "规则“尿布→啤酒”的置信度为0.5，P(啤酒)=0.6。这条规则的提升度是多少？它表示什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-2/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

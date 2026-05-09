@@ -1,0 +1,445 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "graph_embedding_framework",
+      "covered_by": [
+        "qf_flash_ge_1",
+        "qf_flash_ge_2",
+        "qf_quiz_ge_1",
+        "qf_long_ge_1"
+      ],
+      "description": "图嵌入框架：通过内在图和惩罚图统一降维方法"
+    },
+    {
+      "coverage_tag": "intrinsic_graph_penalty_graph",
+      "covered_by": [
+        "qf_flash_ge_1",
+        "qf_quiz_ge_1"
+      ],
+      "description": "内在图和惩罚图的定义与作用"
+    },
+    {
+      "coverage_tag": "laplacian_matrix",
+      "covered_by": [
+        "qf_flash_ge_2",
+        "qf_quiz_ge_2"
+      ],
+      "description": "拉普拉斯矩阵 L = D - S 的定义"
+    },
+    {
+      "coverage_tag": "graph_embedding_criterion",
+      "covered_by": [
+        "qf_flash_ge_2",
+        "qf_quiz_ge_2",
+        "qf_long_ge_1"
+      ],
+      "description": "图嵌入的优化准则：最小化 y^T L y"
+    },
+    {
+      "coverage_tag": "linearization_kernelization_tensorization",
+      "covered_by": [
+        "qf_flash_ge_3",
+        "qf_quiz_ge_3",
+        "qf_long_ge_1"
+      ],
+      "description": "图嵌入框架的三种扩展：线性化、核化、张量化"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "graph_embedding_framework",
+      "coverage_tags": [
+        "graph_embedding_framework",
+        "intrinsic_graph_penalty_graph"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ge_1",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出图嵌入框架的两个核心图及其作用。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了图嵌入框架中内在图和惩罚图的定义与功能。",
+      "question_type": "short_answer",
+      "retrieval_focus": "图嵌入框架的两个核心图及其各自的作用。",
+      "term_refs": [
+        {
+          "display": "图嵌入",
+          "en": "Graph Embedding"
+        },
+        {
+          "display": "内在图",
+          "en": "Intrinsic Graph"
+        },
+        {
+          "display": "惩罚图",
+          "en": "Penalty Graph"
+        }
+      ],
+      "variants": [
+        {
+          "back": "内在图（Intrinsic Graph）",
+          "estimated_seconds": 8,
+          "explanation": "内在图中的边表示我们希望在高维空间中保持的相似关系。",
+          "front": "在图嵌入框架中，描述希望保持的相似关系的图叫什么？",
+          "question_id": "q_flash_ge_1_v1"
+        },
+        {
+          "back": "惩罚图（Penalty Graph）",
+          "estimated_seconds": 8,
+          "explanation": "惩罚图中的边表示我们希望在高维空间中拉远的关系。",
+          "front": "在图嵌入框架中，描述希望拉远的关系的图叫什么？",
+          "question_id": "q_flash_ge_1_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "laplacian_matrix",
+      "coverage_tags": [
+        "laplacian_matrix",
+        "graph_embedding_criterion"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ge_2",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆拉普拉斯矩阵的定义公式。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了拉普拉斯矩阵 L 与邻接矩阵 S 和度矩阵 D 的关系。",
+      "question_type": "short_answer",
+      "retrieval_focus": "拉普拉斯矩阵的数学定义。",
+      "term_refs": [
+        {
+          "display": "拉普拉斯矩阵",
+          "en": "Laplacian Matrix"
+        },
+        {
+          "display": "度矩阵",
+          "en": "Degree Matrix"
+        }
+      ],
+      "variants": [
+        {
+          "back": "L = D - S，其中 D 是度矩阵，D_ii = Σ_j S_ij",
+          "estimated_seconds": 10,
+          "explanation": "拉普拉斯矩阵由度矩阵减去邻接矩阵得到。",
+          "front": "给定邻接矩阵 S，拉普拉斯矩阵 L 的计算公式是什么？",
+          "question_id": "q_flash_ge_2_v1"
+        },
+        {
+          "back": "y^T L y",
+          "estimated_seconds": 8,
+          "explanation": "最小化 y^T L y 可以在低维空间中保持内在图的相似性。",
+          "front": "图嵌入框架中，降维的优化目标是最小化哪个二次型？",
+          "question_id": "q_flash_ge_2_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "linearization_kernelization_tensorization",
+      "coverage_tags": [
+        "linearization_kernelization_tensorization"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ge_3",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出图嵌入框架的三种扩展方向。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了图嵌入框架的三种主要扩展方向。",
+      "question_type": "short_answer",
+      "retrieval_focus": "图嵌入框架的三种扩展方向。",
+      "term_refs": [
+        {
+          "display": "线性化",
+          "en": "Linearization"
+        },
+        {
+          "display": "核化",
+          "en": "Kernelization"
+        },
+        {
+          "display": "张量化",
+          "en": "Tensorization"
+        }
+      ],
+      "variants": [
+        {
+          "back": "线性化、核化、张量化",
+          "estimated_seconds": 10,
+          "explanation": "线性化假设 y = X^T w，核化通过核函数映射到高维空间，张量化扩展到张量数据。",
+          "front": "图嵌入框架的三种主要扩展方向是什么？",
+          "question_id": "q_flash_ge_3_v1"
+        },
+        {
+          "back": "y = X^T w",
+          "estimated_seconds": 8,
+          "explanation": "线性化假设低维表示是原始数据的线性组合。",
+          "front": "在图嵌入框架的线性化扩展中，低维表示 y 与原始数据 X 的关系是什么？",
+          "question_id": "q_flash_ge_3_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "longform_families": [
+    {
+      "concept_key": "graph_embedding_framework",
+      "coverage_tags": [
+        "graph_embedding_framework",
+        "graph_embedding_criterion",
+        "linearization_kernelization_tensorization"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_ge_1",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的语言解释图嵌入框架的核心思想、优化目标以及三种扩展方向。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能综合理解图嵌入框架的组成、优化准则和扩展能力。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "图嵌入",
+          "en": "Graph Embedding"
+        },
+        {
+          "display": "内在图",
+          "en": "Intrinsic Graph"
+        },
+        {
+          "display": "惩罚图",
+          "en": "Penalty Graph"
+        },
+        {
+          "display": "拉普拉斯矩阵",
+          "en": "Laplacian Matrix"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "内在图和惩罚图的作用",
+            "优化目标的含义",
+            "三种扩展方向"
+          ],
+          "question_id": "q_long_ge_1_v1",
+          "reference_answer": [
+            "内在图（Intrinsic Graph）中的边表示我们希望保持的相似关系，惩罚图（Penalty Graph）中的边表示我们希望拉远的关系。",
+            "优化目标 y* = argmin y^T L y 通过最小化拉普拉斯二次型，在低维空间中保持内在图的相似性。",
+            "线性化假设低维表示是原始数据的线性组合 y = X^T w；核化通过核函数将数据映射到高维空间；张量化将框架扩展到张量数据，在每个维度上分别学习投影方向。"
+          ],
+          "rubric_points": [
+            "正确解释内在图用于保持相似关系，惩罚图用于拉远关系",
+            "正确解释最小化 y^T L y 是在低维空间中保持内在图的相似性",
+            "正确说明线性化假设 y = X^T w，核化通过核函数映射，张量化扩展到张量数据"
+          ],
+          "stem": "请解释图嵌入（Graph Embedding）框架的核心思想，包括：\n1. 内在图和惩罚图的作用是什么？\n2. 优化目标 y* = argmin y^T L y 的含义是什么？\n3. 该框架如何通过线性化、核化和张量化进行扩展？"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "统一不同方法的机制",
+            "内在图和惩罚图的角色",
+            "三种扩展方向如何衍生新算法"
+          ],
+          "question_id": "q_long_ge_1_v2",
+          "reference_answer": [
+            "图嵌入框架通过定义不同的内在图和惩罚图来统一不同的降维方法。例如，PCA 的内在图 S_ij = 1/N，LLE 的内在图由重构权重定义。",
+            "内在图保持希望保留的相似关系，惩罚图拉远不希望保留的关系。",
+            "线性化衍生出 LPP 等线性方法，核化衍生出 KDA 等核方法，张量化衍生出 DATER、TMFA 等张量方法。"
+          ],
+          "rubric_points": [
+            "正确指出不同方法只是内在图和惩罚图的定义不同",
+            "正确举例说明不同方法对应的图定义（如 PCA 的 S_ij = 1/N）",
+            "正确说明线性化、核化、张量化分别衍生出线性、核化和张量版本的算法"
+          ],
+          "stem": "图嵌入框架如何将 PCA、LDA、LLE、Isomap 等不同的降维方法统一起来？请从内在图和惩罚图的角度解释，并说明该框架的三种扩展方向如何衍生出新的算法。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "graph_embedding_framework",
+      "coverage_tags": [
+        "graph_embedding_framework",
+        "intrinsic_graph_penalty_graph"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ge_1",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中辨析图嵌入框架如何统一不同降维方法。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明理解了图嵌入框架通过定义不同的内在图和惩罚图来统一不同降维方法。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "图嵌入",
+          "en": "Graph Embedding"
+        },
+        {
+          "display": "内在图",
+          "en": "Intrinsic Graph"
+        },
+        {
+          "display": "惩罚图",
+          "en": "Penalty Graph"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "不同方法只是内在图和惩罚图的定义不同，优化框架是统一的。",
+          "options": [
+            "使用相同的优化算法",
+            "通过定义不同的内在图和惩罚图",
+            "都使用线性投影",
+            "都使用核技巧"
+          ],
+          "question_id": "q_quiz_ge_1_v1",
+          "stem": "图嵌入框架通过什么方式来统一 PCA、LDA、LLE、Isomap 等不同的降维方法？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "内在图中的边表示我们希望保持的相似关系。",
+          "options": [
+            "描述数据点之间希望拉远的关系",
+            "描述数据点之间希望保持的相似关系",
+            "计算数据的均值",
+            "定义数据的类别标签"
+          ],
+          "question_id": "q_quiz_ge_1_v2",
+          "stem": "在图嵌入框架中，内在图（Intrinsic Graph）的作用是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "laplacian_matrix",
+      "coverage_tags": [
+        "laplacian_matrix",
+        "graph_embedding_criterion"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ge_2",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中应用拉普拉斯矩阵的定义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明掌握了拉普拉斯矩阵 L = D - S 的定义及其在优化目标中的作用。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "拉普拉斯矩阵",
+          "en": "Laplacian Matrix"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "拉普拉斯矩阵 L = D - S，其中 D 是度矩阵。",
+          "options": [
+            "L = S - D",
+            "L = D - S",
+            "L = D + S",
+            "L = S * D"
+          ],
+          "question_id": "q_quiz_ge_2_v1",
+          "stem": "给定邻接矩阵 S，拉普拉斯矩阵 L 的正确计算公式是？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "最小化 y^T L y 可以在低维空间中保持内在图的相似性。",
+          "options": [
+            "最大化低维空间中的方差",
+            "最小化低维空间中数据点之间的相似性损失",
+            "最小化数据点的重构误差",
+            "最大化类别间的距离"
+          ],
+          "question_id": "q_quiz_ge_2_v2",
+          "stem": "在图嵌入框架中，降维的优化目标 y* = argmin y^T L y 的含义是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "linearization_kernelization_tensorization",
+      "coverage_tags": [
+        "linearization_kernelization_tensorization"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ge_3",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中区分图嵌入框架的三种扩展方向。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能区分线性化、核化和张量化三种扩展方向的基本假设。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "线性化",
+          "en": "Linearization"
+        },
+        {
+          "display": "核化",
+          "en": "Kernelization"
+        },
+        {
+          "display": "张量化",
+          "en": "Tensorization"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "线性化假设低维表示是原始数据的线性组合：y = X^T w。",
+          "options": [
+            "y = X^T X",
+            "y = X^T w",
+            "y = w^T X",
+            "y = X w"
+          ],
+          "question_id": "q_quiz_ge_3_v1",
+          "stem": "图嵌入框架的线性化扩展假设低维表示 y 与原始数据 X 的关系是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "核化通过核函数将数据映射到更高维的希尔伯特空间，在高维空间中做线性降维。",
+          "options": [
+            "直接对原始数据进行线性投影",
+            "通过核函数将数据映射到更高维的空间",
+            "将数据表示为张量",
+            "使用局部近邻重构"
+          ],
+          "question_id": "q_quiz_ge_3_v2",
+          "stem": "图嵌入框架的核化扩展通过什么方式处理非线性结构？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-dimension-reduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

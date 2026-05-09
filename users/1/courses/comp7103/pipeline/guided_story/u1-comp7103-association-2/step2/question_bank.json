@@ -1,0 +1,499 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "fp_tree_construction_steps",
+      "covered_by": [
+        "qf_flash_fp_tree_steps",
+        "qf_quiz_fp_tree_steps_order"
+      ],
+      "description": "FP-tree 构建的四个步骤：扫描找频繁1项集、删除不频繁项、按频率降序排列、再次扫描建树"
+    },
+    {
+      "coverage_tag": "fp_tree_compactness_reason",
+      "covered_by": [
+        "qf_flash_compactness_reason",
+        "qf_quiz_compactness_reason"
+      ],
+      "description": "降序排列使高频项靠近根节点，提高前缀共享概率，使树更紧凑"
+    },
+    {
+      "coverage_tag": "header_table_and_linked_list",
+      "covered_by": [
+        "qf_flash_header_table"
+      ],
+      "description": "头表记录频繁项出现次数，相同项节点通过链表连接"
+    },
+    {
+      "coverage_tag": "min_support_definition",
+      "covered_by": [
+        "qf_flash_min_support"
+      ],
+      "description": "最小支持度是用户指定的阈值，用于判断项集是否频繁"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "fp_tree_construction_steps",
+      "coverage_tags": [
+        "fp_tree_construction_steps"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_fp_tree_steps",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 FP-tree 构建的四个步骤及其顺序。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了 FP-tree 构建的完整流程和关键操作。",
+      "question_type": "short_answer",
+      "retrieval_focus": "FP-tree 构建的四个步骤及其顺序。",
+      "term_refs": [
+        {
+          "display": "FP-tree",
+          "en": "Frequent Pattern Tree"
+        },
+        {
+          "display": "频繁1项集",
+          "en": "frequent 1-itemset"
+        }
+      ],
+      "variants": [
+        {
+          "back": "扫描数据库，找出所有频繁的单个项（频繁1项集）。",
+          "estimated_seconds": 8,
+          "explanation": "这是建树的第一步，目的是确定哪些项是频繁的，后续步骤只处理这些频繁项。",
+          "front": "构建 FP-tree 的第一步是什么？",
+          "question_id": "q_flash_fp_tree_steps_v1"
+        },
+        {
+          "back": "删除不频繁的项，然后将剩下的频繁项按频率从高到低排序。",
+          "estimated_seconds": 10,
+          "explanation": "删除不频繁项是为了减少数据量，降序排列是为了让树更紧凑。",
+          "front": "在构建 FP-tree 时，找到频繁1项集之后，接下来要对每条事务做什么？",
+          "question_id": "q_flash_fp_tree_steps_v2"
+        },
+        {
+          "back": "再次扫描处理后的数据库，用这些事务构建 FP-tree。",
+          "estimated_seconds": 8,
+          "explanation": "经过前三步的预处理，第四次扫描才真正开始建树。",
+          "front": "FP-tree 构建的最后一步是什么？",
+          "question_id": "q_flash_fp_tree_steps_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "fp_tree_compactness_reason",
+      "coverage_tags": [
+        "fp_tree_compactness_reason"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_compactness_reason",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么降序排列能使 FP-tree 更紧凑。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明理解了降序排列对树结构紧凑性的作用机制。",
+      "question_type": "short_answer",
+      "retrieval_focus": "降序排列使树紧凑的原因。",
+      "term_refs": [
+        {
+          "display": "FP-tree",
+          "en": "Frequent Pattern Tree"
+        }
+      ],
+      "variants": [
+        {
+          "back": "高频项更靠近根节点，不同事务的高频前缀更容易共享，从而减少节点数量。",
+          "estimated_seconds": 12,
+          "explanation": "如果高频项分散在不同位置，前缀共享的概率会降低，树就会更庞大。",
+          "front": "构建 FP-tree 时，事务中的项按频率降序排列，为什么能让树更紧凑？",
+          "question_id": "q_flash_compactness_reason_v1"
+        },
+        {
+          "back": "高频项可能出现在路径的不同位置，前缀共享的概率降低，树会变得不那么紧凑。",
+          "estimated_seconds": 10,
+          "explanation": "降序排列的核心目的就是最大化前缀共享。",
+          "front": "如果事务中的项不按频率降序排列，FP-tree 会有什么问题？",
+          "question_id": "q_flash_compactness_reason_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "header_table_and_linked_list",
+      "coverage_tags": [
+        "header_table_and_linked_list"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_header_table",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述头表的作用和结构。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了头表在 FP-tree 中的角色。",
+      "question_type": "short_answer",
+      "retrieval_focus": "头表的功能和结构。",
+      "term_refs": [
+        {
+          "display": "头表",
+          "en": "Header Table"
+        }
+      ],
+      "variants": [
+        {
+          "back": "每个频繁项及其出现次数。",
+          "estimated_seconds": 6,
+          "explanation": "头表是 FP-tree 的索引，记录了所有频繁项及其全局频率。",
+          "front": "FP-tree 中的头表（Header Table）记录了什么信息？",
+          "question_id": "q_flash_header_table_v1"
+        },
+        {
+          "back": "链表。",
+          "estimated_seconds": 5,
+          "explanation": "头表通过链表将所有相同项的节点串联起来，方便后续挖掘时快速定位。",
+          "front": "在 FP-tree 中，相同项标签的节点之间通过什么连接？",
+          "question_id": "q_flash_header_table_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "min_support_definition",
+      "coverage_tags": [
+        "min_support_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_min_support",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能定义最小支持度并理解其作用。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了最小支持度的概念及其在频繁项集判定中的角色。",
+      "question_type": "definition_with_example",
+      "retrieval_focus": "最小支持度的定义和用途。",
+      "term_refs": [
+        {
+          "display": "最小支持度",
+          "en": "min_support"
+        }
+      ],
+      "variants": [
+        {
+          "back": "用户指定的阈值，用于判断一个项集是否频繁。只有出现次数不低于该阈值的项集才被认为是频繁的。",
+          "estimated_seconds": 8,
+          "explanation": "例如，min_support=3 意味着只有出现次数 >= 3 的项集才是频繁的。",
+          "front": "在关联分析中，最小支持度（min_support）是什么？",
+          "question_id": "q_flash_min_support_v1"
+        },
+        {
+          "back": "是，因为 4 >= 3。",
+          "estimated_seconds": 5,
+          "explanation": "min_support=3 时，出现次数 >= 3 的项都是频繁的。",
+          "front": "在 FP-tree 构建的例子中，min_support=3，项 f 出现了4次，它是否频繁？",
+          "question_id": "q_flash_min_support_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-2",
+  "longform_families": [
+    {
+      "concept_key": "fp_tree_construction_steps",
+      "coverage_tags": [
+        "fp_tree_construction_steps",
+        "fp_tree_compactness_reason",
+        "header_table_and_linked_list"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_fp_tree_construction_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整描述 FP-tree 的构建过程，并解释每个步骤的目的。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能系统性地阐述 FP-tree 构建的完整流程及其设计原理。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "FP-tree",
+          "en": "Frequent Pattern Tree"
+        },
+        {
+          "display": "头表",
+          "en": "Header Table"
+        },
+        {
+          "display": "最小支持度",
+          "en": "min_support"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "第一步：扫描数据库，找出频繁1项集",
+            "第二步：删除不频繁项",
+            "第三步：按频率降序排列",
+            "第四步：再次扫描，构建 FP-tree",
+            "降序排列的目的",
+            "头表的作用"
+          ],
+          "question_id": "q_long_fp_tree_construction_process_v1",
+          "reference_answer": [
+            "第一步：扫描数据库，找出所有频繁的单个项（频繁1项集）。目的是确定哪些项是频繁的，后续只处理这些项。",
+            "第二步：删除每条事务中的不频繁项。目的是减少数据量，只保留频繁项。",
+            "第三步：将每条事务中的频繁项按频率从高到低排序。目的是让高频项更靠近根节点，不同事务的高频前缀更容易共享，从而使树更紧凑。",
+            "第四步：再次扫描处理后的数据库，用这些事务构建 FP-tree。树的根节点是 null，每条事务变成一条从根出发的路径。",
+            "同时维护一个头表，记录每个频繁项的出现次数，相同项的节点之间用链表连接起来。"
+          ],
+          "rubric_points": [
+            "正确描述第一步：扫描数据库，找出所有频繁1项集（1分）",
+            "正确描述第二步：删除每条事务中的不频繁项（1分）",
+            "正确描述第三步：将频繁项按频率降序排列（1分）",
+            "正确描述第四步：再次扫描数据库，构建 FP-tree（1分）",
+            "正确解释降序排列的目的：让高频项靠近根节点，提高前缀共享概率，使树更紧凑（2分）",
+            "正确解释头表的作用：记录每个频繁项的出现次数，并通过链表连接相同项的节点（2分）"
+          ],
+          "stem": "请详细描述 FP-tree 的构建过程，包括每一步的具体操作和目的。特别要解释为什么事务中的项要按频率降序排列，以及头表的作用。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "找出频繁1项集",
+            "删除不频繁项并排序",
+            "构建 FP-tree",
+            "头表内容"
+          ],
+          "question_id": "q_long_fp_tree_construction_process_v2",
+          "reference_answer": [
+            "频繁1项集：a(3), b(3), c(3)。d(1), e(1), f(1) 不频繁。",
+            "删除不频繁项后，事务变为：\nT1: {a, b, c}（按频率降序排列，a,b,c 频率相同，可保持原序）\nT2: {a, b}\nT3: {a, c}\nT4: {b, c}",
+            "构建 FP-tree：\n根节点 null\n- 处理 T1: 创建路径 null → a:1 → b:1 → c:1\n- 处理 T2: 从根开始，a 已存在，a 计数+1，然后创建 b:1\n- 处理 T3: 从根开始，a 已存在，a 计数+1，然后创建 c:1\n- 处理 T4: 从根开始，b 不存在，创建 b:1，然后创建 c:1",
+            "头表：\na:3 → 指向第一个 a 节点\nb:3 → 指向第一个 b 节点\nc:3 → 指向第一个 c 节点\n相同项节点之间通过链表连接。"
+          ],
+          "rubric_points": [
+            "正确找出频繁1项集：a(3), b(3), c(3)（1分）",
+            "正确删除不频繁项（d, e, f）并排序（1分）",
+            "正确构建 FP-tree 的路径（2分）",
+            "正确描述头表内容（1分）",
+            "正确解释降序排列的作用（1分）"
+          ],
+          "stem": "假设有一个事务数据库，包含以下事务（min_support=2）：\nT1: {a, b, c, d}\nT2: {a, b, e}\nT3: {a, c, f}\nT4: {b, c}\n请逐步说明 FP-tree 的构建过程，并画出最终的 FP-tree 结构（用文字描述节点和路径）。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "fp_tree_construction_steps",
+      "coverage_tags": [
+        "fp_tree_construction_steps"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_fp_tree_steps_order",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确排列 FP-tree 构建的四个步骤。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了 FP-tree 构建步骤的正确顺序。",
+      "question_type": "ordering",
+      "term_refs": [
+        {
+          "display": "FP-tree",
+          "en": "Frequent Pattern Tree"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "正确顺序是：先扫描找频繁1项集，再删除不频繁项，然后降序排列，最后再次扫描建树。",
+          "options": [
+            "B → D → C → A",
+            "B → C → D → A",
+            "A → B → C → D",
+            "D → B → C → A"
+          ],
+          "question_id": "q_quiz_fp_tree_steps_order_v1",
+          "stem": "请将以下 FP-tree 构建步骤按正确顺序排列：\nA. 再次扫描数据库，构建 FP-tree\nB. 扫描数据库，找出频繁1项集\nC. 将每条事务中的频繁项按频率降序排列\nD. 删除每条事务中的不频繁项"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "删除不频繁项之后，下一步是将剩下的频繁项按频率降序排列。",
+          "options": [
+            "扫描数据库，找出频繁1项集",
+            "将频繁项按频率降序排列",
+            "再次扫描数据库，构建 FP-tree",
+            "计算每个项的支持度"
+          ],
+          "question_id": "q_quiz_fp_tree_steps_order_v2",
+          "stem": "在 FP-tree 构建过程中，以下哪一步是在删除不频繁项之后执行的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "fp_tree_compactness_reason",
+      "coverage_tags": [
+        "fp_tree_compactness_reason"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_compactness_reason",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解降序排列对 FP-tree 紧凑性的影响。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能辨析降序排列的根本目的。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "FP-tree",
+          "en": "Frequent Pattern Tree"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "降序排列使高频项更靠近根节点，不同事务的高频前缀更容易共享，从而让树更紧凑。",
+          "options": [
+            "让树更紧凑，提高共享前缀的概率",
+            "让树更美观，便于可视化",
+            "减少内存占用，降低存储需求",
+            "加快排序速度，提高算法效率"
+          ],
+          "question_id": "q_quiz_compactness_reason_v1",
+          "stem": "构建 FP-tree 时，事务中的项按频率降序排列的主要目的是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "升序排列会使高频项出现在路径的末端，不同事务的高频前缀难以共享，树会变得更大。",
+          "options": [
+            "树会更紧凑，因为低频项更靠近根节点",
+            "树会变得不那么紧凑，因为高频项分散在不同位置，前缀共享减少",
+            "树的结构不会发生变化",
+            "树会变成二叉树"
+          ],
+          "question_id": "q_quiz_compactness_reason_v2",
+          "stem": "如果事务中的项按频率升序排列，FP-tree 会怎样？"
+        }
+      ]
+    },
+    {
+      "concept_key": "header_table_and_linked_list",
+      "coverage_tags": [
+        "header_table_and_linked_list"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_header_table",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别头表的作用和结构。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了头表在 FP-tree 中的功能。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "头表",
+          "en": "Header Table"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 12,
+          "explanation": "头表是 FP-tree 的索引，记录频繁项及其出现次数，并通过链表将相同项的节点串联起来。",
+          "options": [
+            "记录每个频繁项的出现次数，并通过链表连接相同项的节点",
+            "存储所有事务的原始数据",
+            "记录树的深度和节点数量",
+            "存储频繁项集挖掘的结果"
+          ],
+          "question_id": "q_quiz_header_table_v1",
+          "stem": "FP-tree 中的头表（Header Table）主要用来做什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 8,
+          "explanation": "头表通过链表将所有相同项的节点串联起来，方便后续挖掘时快速遍历。",
+          "options": [
+            "链表",
+            "数组",
+            "哈希表",
+            "栈"
+          ],
+          "question_id": "q_quiz_header_table_v2",
+          "stem": "在 FP-tree 中，相同项标签的节点之间通过什么结构连接？"
+        }
+      ]
+    },
+    {
+      "concept_key": "min_support_definition",
+      "coverage_tags": [
+        "min_support_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_min_support_apply",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据最小支持度阈值判断哪些项是频繁的。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能应用最小支持度概念进行判断。",
+      "question_type": "micro_case_choice",
+      "term_refs": [
+        {
+          "display": "最小支持度",
+          "en": "min_support"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "min_support=3 时，只有出现次数 >= 3 的项才是频繁的。项 y 出现 3 次，满足条件。",
+          "options": [
+            "项 x，出现次数为 2",
+            "项 y，出现次数为 3",
+            "项 z，出现次数为 1",
+            "项 w，出现次数为 0"
+          ],
+          "question_id": "q_quiz_min_support_apply_v1",
+          "stem": "假设 min_support=3，以下哪个项是频繁的？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "min_support=3 时，出现次数 >= 3 的项都是频繁的。a 和 b 都出现了 3 次，所以都是频繁的。",
+          "options": [
+            "a 和 b 都是频繁的",
+            "只有 a 是频繁的",
+            "只有 b 是频繁的",
+            "a 和 b 都不是频繁的"
+          ],
+          "question_id": "q_quiz_min_support_apply_v2",
+          "stem": "在 FP-tree 构建的例子中，min_support=3，项 a 出现了 3 次，项 b 出现了 3 次。以下说法正确的是？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-2/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

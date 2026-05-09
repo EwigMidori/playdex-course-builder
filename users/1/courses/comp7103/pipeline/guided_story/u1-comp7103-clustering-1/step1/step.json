@@ -1,0 +1,141 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-clustering-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "你有一堆照片，想按内容分组，但照片没有标签。",
+        "你尝试用分类算法，发现不行。为什么？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "分类算法需要预先知道每个类别的标签（即标准答案），而这里没有标签，所以分类算法无法使用。",
+        "kind": "single_choice",
+        "options": [
+          "因为分类算法需要预先知道每个类别的标签，而这里没有标签",
+          "因为照片太多，分类算法处理不了",
+          "因为分类算法只能处理数字数据，不能处理图片"
+        ],
+        "prompt": "为什么分类算法不能直接用于无标签数据？"
+      },
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "为什么分类算法不能直接用于无标签数据？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "你希望把相似的照片放到同一个相册里。",
+        "你不需要告诉计算机“这是猫，那是狗”。",
+        "你只是希望它自己发现哪些照片看起来更像彼此。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "cluster_analysis",
+        "unsupervised_learning"
+      ],
+      "id": "s004",
+      "introduced_terms": [
+        "cluster_analysis",
+        "unsupervised_learning"
+      ],
+      "lines": [
+        "这就是 <term id=\"cluster_analysis\">聚类分析</term> 的核心思想。",
+        "它属于 <term id=\"unsupervised_learning\">无监督学习</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "没有标准答案，没有预先定义的类别。",
+        "算法只靠数据本身的相似性来分组。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "聚类分析用于在没有标签的情况下发现分组。客户分类没有标准答案，适合聚类。",
+        "kind": "single_choice",
+        "options": [
+          "根据邮件标题判断是否为垃圾邮件",
+          "将客户按购买行为自动分成几类",
+          "预测明天股票是涨还是跌"
+        ],
+        "prompt": "下面哪个场景最适合用聚类分析？"
+      },
+      "focus_terms": [],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "下面哪个场景最适合用聚类分析？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "聚类有很多实际用途。",
+        "比如：数据摘要——从每个组里选一个代表，就能大幅缩小数据量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "另一个用途是发现异常点。",
+        "那些不属于任何一组的对象，可能就是异常值。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "What is Cluster Analysis? Finding groups of objects such that the objects in a group are similar to each other and different from objects in other groups. Unsupervised Learning: no pre-defined class labels.",
+    "related": [
+      "cluster_analysis",
+      "unsupervised_learning"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "cluster_analysis": {
+      "aliases": [
+        "Cluster Analysis",
+        "Clustering"
+      ],
+      "display": "聚类分析",
+      "gloss": "将数据对象分组，使得组内对象相似、组间对象不同的技术。"
+    },
+    "unsupervised_learning": {
+      "aliases": [
+        "Unsupervised Learning"
+      ],
+      "display": "无监督学习",
+      "gloss": "没有预先定义的标签或类别，让算法自己发现数据中的结构。"
+    }
+  }
+}

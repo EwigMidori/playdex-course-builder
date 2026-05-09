@@ -1,0 +1,154 @@
+{
+  "chapter_id": "lecture-06-data-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-data-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "假设你有一个算法，它只能处理分类数据（如“高”、“中”、“低”），",
+        "但你的数据是连续的身高值（如1.65米、1.80米）。",
+        "问题：如何把连续的身高值变成算法能处理的形式？",
+        "请先思考。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "discretization"
+      ],
+      "id": "s038",
+      "introduced_terms": [
+        "discretization"
+      ],
+      "lines": [
+        "一种方法是 <term id=\"discretization\">离散化</term>：",
+        "把连续值分成离散的区间，比如 0-60cm, 60-80cm, 80-100cm...",
+        "常见方式：等宽、等频、基于聚类。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "binarization"
+      ],
+      "id": "s039",
+      "introduced_terms": [
+        "binarization"
+      ],
+      "lines": [
+        "如果离散化后只有两个区间，那就是 <term id=\"binarization\">二值化</term>。",
+        "比如，将“年龄>18”映射为1，否则为0。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "normalization"
+      ],
+      "id": "s040",
+      "introduced_terms": [
+        "normalization"
+      ],
+      "lines": [
+        "另一个常见问题是：不同属性的量纲差异很大。",
+        "比如身高（米）和年薪（元），直接计算距离时年薪会主导结果。",
+        "这时需要 <term id=\"normalization\">归一化</term> 来消除量纲影响。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "normalization"
+      ],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "常用归一化方法：",
+        "min-max 归一化：\\(x' = (x - \\min) / (\\max - \\min)\\)，缩放到[0,1]",
+        "z-score 归一化：\\(x' = (x - \\bar{X}) / \\sigma_X\\)，均值为0，标准差为1"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "身高和年薪的量纲和数值范围差异巨大，不归一化会导致数值大的属性（年薪）主导距离计算。",
+        "kind": "single_choice",
+        "options": [
+          "所有属性都是二元属性",
+          "一个属性是“身高（米）”，另一个是“年薪（元）”",
+          "数据集中没有缺失值",
+          "所有属性都是名义属性"
+        ],
+        "prompt": "以下哪种情况最需要归一化？"
+      },
+      "focus_terms": [
+        "normalization"
+      ],
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪种情况最需要归一化？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "年龄是连续值，算法只能处理分类数据，所以需要离散化。",
+        "kind": "single_choice",
+        "options": [
+          "离散化",
+          "二值化",
+          "归一化",
+          "特征选择"
+        ],
+        "prompt": "给定一个包含年龄（连续值）和性别（二元值）的数据集，算法只能处理分类数据，应该使用哪种变换？"
+      },
+      "focus_terms": [
+        "discretization"
+      ],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "给定一个包含年龄（连续值）和性别（二元值）的数据集，算法只能处理分类数据，应该使用哪种变换？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Discretization and Binarization. Normalization.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "binarization": {
+      "aliases": [
+        "binarization"
+      ],
+      "display": "二值化",
+      "gloss": "将属性转换为只有0和1的二元属性。"
+    },
+    "discretization": {
+      "aliases": [
+        "discretization"
+      ],
+      "display": "离散化",
+      "gloss": "将连续数值属性转换为离散的序数属性。"
+    },
+    "normalization": {
+      "aliases": [
+        "normalization",
+        "min-max normalization",
+        "z-score normalization"
+      ],
+      "display": "归一化",
+      "gloss": "将数值缩放到一个共同的范围（如[0,1]），消除量纲影响。"
+    }
+  }
+}

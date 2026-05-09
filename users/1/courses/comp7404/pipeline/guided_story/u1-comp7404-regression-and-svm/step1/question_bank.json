@@ -1,0 +1,361 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "regression_goal",
+      "covered_by": [
+        "qf_flash_step1_goal",
+        "qf_quiz_step1_goal"
+      ],
+      "description": "回归的目标：预测输入对应的输出"
+    },
+    {
+      "coverage_tag": "linear_regression_definition",
+      "covered_by": [
+        "qf_flash_step1_definition",
+        "qf_quiz_step1_definition",
+        "qf_long_step1_definition"
+      ],
+      "description": "线性回归：用一条直线模拟输入输出关系"
+    },
+    {
+      "coverage_tag": "need_for_unified_rule",
+      "covered_by": [
+        "qf_flash_step1_need_rule",
+        "qf_quiz_step1_need_rule"
+      ],
+      "description": "为什么需要统一的数学规则：不同人画线预测不同"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "regression_goal",
+      "coverage_tags": [
+        "regression_goal"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step1_goal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出回归的基本目标。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能准确说出回归要解决的核心问题：根据输入预测输出。",
+      "question_type": "short_answer",
+      "retrieval_focus": "回归的核心目标",
+      "term_refs": [
+        {
+          "display": "回归",
+          "en": "Regression"
+        }
+      ],
+      "variants": [
+        {
+          "back": "根据输入（特征）预测输出（响应/目标值）。",
+          "estimated_seconds": 8,
+          "explanation": "回归的目标是建立一个模型，基于输入变量来预测连续的输出值。",
+          "front": "回归（Regression）要解决的核心问题是什么？",
+          "question_id": "q_flash_step1_goal_v1"
+        },
+        {
+          "back": "根据房屋面积（输入）预测其价格（输出）。",
+          "estimated_seconds": 8,
+          "explanation": "这是回归的一个典型应用：用面积这个特征来预测价格这个连续值。",
+          "front": "在房价预测的例子中，回归模型的目标是什么？",
+          "question_id": "q_flash_step1_goal_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "linear_regression_definition",
+      "coverage_tags": [
+        "linear_regression_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step1_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出线性回归模型的基本形式。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能准确说出线性回归是用一条直线来模拟输入和输出之间的关系。",
+      "question_type": "short_answer",
+      "retrieval_focus": "线性回归的基本思想",
+      "term_refs": [
+        {
+          "display": "线性回归",
+          "en": "Linear Regression"
+        }
+      ],
+      "variants": [
+        {
+          "back": "用一条直线来模拟输入和输出之间的关系。",
+          "estimated_seconds": 8,
+          "explanation": "线性回归假设输入和输出之间存在线性关系，并用一条直线（或高维的超平面）来近似这种关系。",
+          "front": "线性回归（Linear Regression）的基本思想是什么？",
+          "question_id": "q_flash_step1_definition_v1"
+        },
+        {
+          "back": "w0 是截距（bias），w1 是斜率（weight/coefficient）。",
+          "estimated_seconds": 10,
+          "explanation": "w0 决定了直线与y轴的交点，w1 决定了直线的倾斜程度，它们共同定义了这条直线。",
+          "front": "线性回归模型 f(x; w) = w0 + w1*x 中，w0 和 w1 分别代表什么？",
+          "question_id": "q_flash_step1_definition_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "need_for_unified_rule",
+      "coverage_tags": [
+        "need_for_unified_rule"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step1_need_rule",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么需要统一的数学规则来找到最佳直线。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能说出不同人画线会导致不同预测结果，因此需要统一标准。",
+      "question_type": "short_answer",
+      "retrieval_focus": "需要统一规则的原因",
+      "term_refs": [],
+      "variants": [
+        {
+          "back": "不同人会画出不同的线，导致预测结果不一致，且数据量大时人眼无法处理。",
+          "estimated_seconds": 10,
+          "explanation": "人眼判断主观且不精确，对于大量数据或复杂关系，我们需要一个客观、可重复的数学方法。",
+          "front": "为什么不能靠人眼或直觉来为数据点画一条预测线？",
+          "question_id": "q_flash_step1_need_rule_v1"
+        },
+        {
+          "back": "说明没有统一标准时，预测结果会因人而异，误差也会有很大差异。",
+          "estimated_seconds": 10,
+          "explanation": "这个例子直观地展示了主观判断的不可靠性，从而引出了对统一数学规则的需求。",
+          "front": "在房价预测的例子中，甲、乙、丙三人对同一组数据画了不同的线，这说明了什么问题？",
+          "question_id": "q_flash_step1_need_rule_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "longform_families": [
+    {
+      "concept_key": "linear_regression_definition",
+      "coverage_tags": [
+        "linear_regression_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_step1_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自然语言解释线性回归是什么，并联系实际例子。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能用自己的话解释线性回归的基本概念，并给出一个非课程中的例子。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "线性回归",
+          "en": "Linear Regression"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "解释线性回归的核心思想",
+            "说明它的输入和输出是什么",
+            "给出一个你自己的例子"
+          ],
+          "question_id": "q_long_step1_definition_v1",
+          "reference_answer": [
+            "线性回归是一种监督学习模型，它的基本思想是假设输入特征和连续输出值之间存在线性关系，并试图找到一条最佳直线（或超平面）来拟合训练数据。",
+            "例如，我们可以用线性回归来根据一辆汽车的行驶里程（输入）预测其二手价格（输出）。"
+          ],
+          "rubric_points": [
+            "正确指出线性回归是用一条直线（或线性函数）来模拟输入和输出之间的关系。",
+            "正确指出输入是特征，输出是连续的预测值。",
+            "给出的例子合理，例如：根据工作经验预测薪资、根据学习时间预测考试成绩等。"
+          ],
+          "stem": "请用自己的话解释什么是线性回归（Linear Regression），并给出一个课程例子之外的、你认为可以用线性回归解决的实际问题。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "描述线性回归如何应用于这个场景",
+            "指出模型的输入（特征）",
+            "指出模型的输出（预测目标）"
+          ],
+          "question_id": "q_long_step1_definition_v2",
+          "reference_answer": [
+            "我会收集历史数据，包括每天的冰淇淋销量以及可能影响销量的因素，比如当天的最高温度。",
+            "然后，我会使用线性回归模型，将温度作为输入（x），销量作为输出（y），来拟合一条直线。",
+            "之后，对于任何新的一天，我只需要知道预测的最高温度，就可以用这条直线来预测当天的冰淇淋销量。"
+          ],
+          "rubric_points": [
+            "正确理解线性回归是寻找输入和输出之间的线性关系。",
+            "提出的输入特征合理，例如：当天的最高温度、是否是周末等。",
+            "正确指出输出是预测的冰淇淋销量（一个连续值）。"
+          ],
+          "stem": "假设你是一家冰淇淋店的经理，你想预测每天的冰淇淋销量。请解释你将如何使用线性回归的思想来解决这个问题，并指出模型的输入和输出可能是什么。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "regression_goal",
+      "coverage_tags": [
+        "regression_goal"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_step1_goal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在选择题中识别回归的目标。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能区分回归的目标与其他任务（如分类、聚类）的目标。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "回归",
+          "en": "Regression"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "回归的核心是预测连续值，例如房价、温度等。分类是预测离散的类别，聚类是无监督地发现数据分组。",
+          "options": [
+            "将数据点划分到不同的类别中",
+            "根据输入变量预测一个连续的输出值",
+            "将相似的数据点聚集在一起",
+            "降低数据的维度以便于可视化"
+          ],
+          "question_id": "q_quiz_step1_goal_v1",
+          "stem": "以下哪个选项最准确地描述了回归（Regression）的目标？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "在这个问题中，房屋面积是输入特征，而房价是我们想要预测的连续值输出。",
+          "options": [
+            "房屋的卧室数量",
+            "房屋所在的街区",
+            "房屋的价格（万元）",
+            "房屋的建筑年份"
+          ],
+          "question_id": "q_quiz_step1_goal_v2",
+          "stem": "在“根据房屋面积预测房价”的问题中，以下哪一项是回归模型需要预测的“输出”？"
+        }
+      ]
+    },
+    {
+      "concept_key": "linear_regression_definition",
+      "coverage_tags": [
+        "linear_regression_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_step1_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别线性回归的基本思想。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能准确选择线性回归的定义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "线性回归",
+          "en": "Linear Regression"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "线性回归的核心是假设输入和输出之间存在线性关系，并用一条直线来近似这种关系。",
+          "options": [
+            "用一条曲线穿过所有数据点",
+            "用一条直线来模拟输入和输出之间的关系",
+            "计算所有数据点的平均值作为预测",
+            "找到数据点的分布规律并分类"
+          ],
+          "question_id": "q_quiz_step1_definition_v1",
+          "stem": "线性回归（Linear Regression）的基本思想是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "w1 是斜率（权重），它量化了输入x对输出f(x)的影响程度。",
+          "options": [
+            "决定直线与y轴的交点",
+            "决定输入x每变化一个单位时，输出f(x)的变化量",
+            "控制模型的预测误差",
+            "表示模型的复杂度"
+          ],
+          "question_id": "q_quiz_step1_definition_v2",
+          "stem": "线性回归模型 f(x) = w0 + w1*x 中，参数 w1 的作用是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "need_for_unified_rule",
+      "coverage_tags": [
+        "need_for_unified_rule"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_step1_need_rule",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解为什么需要数学规则而非人眼判断。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能识别出人眼判断的局限性。",
+      "question_type": "single_choice",
+      "term_refs": [],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "人眼判断主观且不精确，不同人会得到不同的线，因此需要一个客观的数学标准。",
+          "options": [
+            "因为人眼无法画出直线",
+            "因为不同人会画出不同的线，导致预测结果不一致",
+            "因为房价数据总是非线性的",
+            "因为人眼无法处理超过10个数据点"
+          ],
+          "question_id": "q_quiz_step1_need_rule_v1",
+          "stem": "在课程的例子中，为什么不能仅仅依靠人眼来为房价数据画一条预测线？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "人眼可以大致看出趋势，但无法精确地、可重复地找到一条使整体误差最小的直线，这需要一个数学上的优化准则。",
+          "options": [
+            "人眼无法看到所有数据点",
+            "人眼无法精确地量化“最佳”的标准",
+            "人眼只能识别曲线，不能识别直线",
+            "人眼判断速度太快，容易出错"
+          ],
+          "question_id": "q_quiz_step1_need_rule_v2",
+          "stem": "当数据量很大（例如几百个点）时，依靠人眼来寻找最佳拟合线的主要问题是什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-regression-and-svm/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,375 @@
+{
+  "chapter_id": "lecture-09-ensemble-learning-boosting",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "majority_voting_principle",
+      "covered_by": [
+        "qf_flash_majority_vote_def",
+        "qf_quiz_majority_vote_apply"
+      ],
+      "description": "多数投票原则：选择被大多数分类器预测的类别标签作为最终输出。"
+    },
+    {
+      "coverage_tag": "weighted_majority_vote_formula",
+      "covered_by": [
+        "qf_flash_weighted_vote_formula",
+        "qf_quiz_weighted_vote_calc"
+      ],
+      "description": "加权多数投票公式：ŷ = arg max_i Σ w_j χ_A(C_j(x)=i)。"
+    },
+    {
+      "coverage_tag": "predict_proba_weighted_averaging",
+      "covered_by": [
+        "qf_flash_prob_weighted_vote",
+        "qf_quiz_prob_weighted_calc",
+        "qf_long_prob_weighted_compare"
+      ],
+      "description": "基于预测概率的加权投票：ŷ = arg max_i Σ w_j p_ij。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "majority_voting",
+      "coverage_tags": [
+        "majority_voting_principle"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_majority_vote_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆多数投票的定义和基本规则。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了多数投票的核心定义：选择得票超过50%的类别（二分类）或得票最多的类别（多分类）。",
+      "question_type": "short_answer",
+      "retrieval_focus": "多数投票的定义和适用场景。",
+      "term_refs": [
+        {
+          "display": "多数投票",
+          "en": "Majority Voting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "选择获得超过50%票数的类别标签。",
+          "estimated_seconds": 8,
+          "explanation": "多数投票要求某个类别获得超过一半的票数才能胜出。",
+          "front": "在二分类任务中，多数投票（Majority Voting）的最终预测结果是如何确定的？",
+          "question_id": "q_flash_majority_vote_def_v1"
+        },
+        {
+          "back": "称为复数投票（Plurality Voting），选择得票最多的类别（众数）。",
+          "estimated_seconds": 10,
+          "explanation": "当有多个类别时，没有类别能获得超过50%的票数，因此选择得票最多的类别。",
+          "front": "在多分类任务中，多数投票原则的推广形式叫什么？它是如何决定最终预测的？",
+          "question_id": "q_flash_majority_vote_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "weighted_majority_vote",
+      "coverage_tags": [
+        "weighted_majority_vote_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_weighted_vote_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆加权多数投票公式中各个符号的含义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了加权多数投票公式中 w_j、χ_A、C_j(x) 等符号的含义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "加权投票公式中关键符号的含义。",
+      "term_refs": [
+        {
+          "display": "加权多数投票",
+          "en": "Weighted Majority Vote"
+        },
+        {
+          "display": "分类器权重",
+          "en": "Classifier Weight"
+        }
+      ],
+      "variants": [
+        {
+          "back": "第 j 个基分类器 C_j 的权重。",
+          "estimated_seconds": 8,
+          "explanation": "权重越大，该分类器的投票在最终决策中越重要。",
+          "front": "在加权多数投票公式 ŷ = arg max_i Σ w_j χ_A(C_j(x)=i) 中，w_j 代表什么？",
+          "question_id": "q_flash_weighted_vote_formula_v1"
+        },
+        {
+          "back": "当分类器 C_j 对样本 x 的预测类别等于 i 时，返回 1；否则返回 0。",
+          "estimated_seconds": 10,
+          "explanation": "这个指示函数用于统计每个类别获得的加权票数。",
+          "front": "在加权多数投票公式中，χ_A(C_j(x)=i) 这个函数的作用是什么？",
+          "question_id": "q_flash_weighted_vote_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "predict_proba",
+      "coverage_tags": [
+        "predict_proba_weighted_averaging"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_prob_weighted_vote",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆基于概率的加权投票公式及其优势。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了基于概率的加权投票公式 ŷ = arg max_i Σ w_j p_ij，以及使用概率比硬标签更丰富的优势。",
+      "question_type": "short_answer",
+      "retrieval_focus": "基于概率的加权投票公式和优势。",
+      "term_refs": [
+        {
+          "display": "预测概率",
+          "en": "Predict Proba"
+        }
+      ],
+      "variants": [
+        {
+          "back": "ŷ = arg max_i Σ w_j p_ij，其中 p_ij 是第 j 个分类器对类别 i 的预测概率。",
+          "estimated_seconds": 10,
+          "explanation": "该公式计算每个类别的加权平均概率，选择概率最高的类别。",
+          "front": "基于预测概率的加权投票公式是什么？",
+          "question_id": "q_flash_prob_weighted_vote_v1"
+        },
+        {
+          "back": "如果分类器校准良好，概率信息比硬标签更丰富，能提供更细致的置信度信息。",
+          "estimated_seconds": 10,
+          "explanation": "硬标签只给出类别，而概率给出了模型对每个类别的确信程度。",
+          "front": "与使用硬标签相比，使用预测概率进行加权投票有什么潜在优势？",
+          "question_id": "q_flash_prob_weighted_vote_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-ensemble-learning-boosting",
+  "longform_families": [
+    {
+      "concept_key": "predict_proba",
+      "coverage_tags": [
+        "predict_proba_weighted_averaging"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_prob_weighted_compare",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较和对比使用硬标签与使用预测概率进行加权投票的差异。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能解释为什么在分类器校准良好时，使用预测概率比使用硬标签进行加权投票更优，并能给出具体例子。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "预测概率",
+          "en": "Predict Proba"
+        },
+        {
+          "display": "硬标签",
+          "en": "Hard Label"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "简述两种方法的共同点。",
+            "简述两种方法的不同点。",
+            "说明预测概率方法的优势条件。",
+            "给出一个具体例子说明优势。"
+          ],
+          "question_id": "q_long_prob_weighted_compare_v1",
+          "reference_answer": [
+            "共同点：两者都是集成学习中组合多个分类器预测的方法，都通过加权投票来决定最终输出。",
+            "不同点：硬标签投票使用分类器输出的离散类别（如0或1），而概率投票使用分类器输出的连续概率值（如0.8）。",
+            "优势条件：当分类器校准良好时，概率信息比硬标签更丰富，因为它不仅告诉我们分类器预测的类别，还告诉我们它对这个预测有多确信。",
+            "例子：假设两个分类器C1和C2都预测类别0，但C1的预测概率是[0.51, 0.49]，C2的预测概率是[0.99, 0.01]。在硬标签投票中，两者贡献相同；但在概率投票中，C2的贡献远大于C1，这更合理，因为C2更确信自己的判断。"
+          ],
+          "rubric_points": [
+            "共同点：两者都是集成方法，通过加权组合多个分类器的输出来决定最终预测。",
+            "不同点：硬标签方法使用分类器输出的离散类别标签；概率方法使用分类器输出的连续概率值。",
+            "优势条件：当分类器校准良好时，概率信息比硬标签更丰富，能反映分类器的置信度。",
+            "例子：C1和C2都预测类别0，但C1的置信度是0.51，C2的置信度是0.99。硬标签投票中两者权重相同；概率投票中C2的贡献更大，更合理。"
+          ],
+          "stem": "请比较使用硬标签进行加权投票和使用预测概率进行加权投票的异同。在什么情况下后者更有优势？请结合一个具体例子说明。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "计算硬标签加权投票的结果。",
+            "计算概率加权投票的结果。",
+            "比较两个结果并解释差异。"
+          ],
+          "question_id": "q_long_prob_weighted_compare_v2",
+          "reference_answer": [
+            "硬标签加权投票：类别0的加权票数 = 0.2 + 0.5 = 0.7；类别1的加权票数 = 0.3。最终预测为类别0。",
+            "概率加权投票：类别0的加权概率 = 0.2*0.6 + 0.3*0.4 + 0.5*0.9 = 0.12 + 0.12 + 0.45 = 0.69；类别1的加权概率 = 0.2*0.4 + 0.3*0.6 + 0.5*0.1 = 0.08 + 0.18 + 0.05 = 0.31。最终预测为类别0。",
+            "结果相同，但概率方法提供了更丰富的信息。例如，如果C2的预测概率是[0.49, 0.51]，硬标签投票中它仍然投给类别1，但概率投票中它对类别1的贡献只有0.3*0.51=0.153，远小于硬标签投票中的0.3。概率方法能更精细地反映每个分类器的置信度。"
+          ],
+          "rubric_points": [
+            "硬标签投票：类别0得票 = 0.2 + 0.5 = 0.7；类别1得票 = 0.3。最终预测为类别0。",
+            "概率投票：类别0加权概率 = 0.2*0.6 + 0.3*0.4 + 0.5*0.9 = 0.12 + 0.12 + 0.45 = 0.69；类别1加权概率 = 0.2*0.4 + 0.3*0.6 + 0.5*0.1 = 0.08 + 0.18 + 0.05 = 0.31。最终预测为类别0。",
+            "解释：在这个例子中，两种方法结果一致。但如果C2的预测概率是[0.49, 0.51]（非常接近），硬标签投票中它仍然投给类别1，但概率投票中它的贡献很小，可能导致结果不同。概率方法更能反映分类器的置信度。"
+          ],
+          "stem": "假设你有一个集成，包含三个分类器，权重分别为0.2, 0.3, 0.5。对于某个样本，它们的硬标签预测分别是0, 1, 0；它们的预测概率分别是C1: [0.6, 0.4], C2: [0.4, 0.6], C3: [0.9, 0.1]。请分别计算硬标签加权投票和概率加权投票的结果，并解释为什么结果可能不同。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "majority_voting",
+      "coverage_tags": [
+        "majority_voting_principle"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_majority_vote_apply",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中应用多数投票规则。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能根据多个分类器的硬标签预测，正确应用多数投票规则得出最终预测。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "多数投票",
+          "en": "Majority Voting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "3个分类器预测为“垃圾”，2个预测为“正常”。“垃圾”得票超过50%，因此最终预测为“垃圾”。",
+          "options": [
+            "垃圾",
+            "正常",
+            "无法确定"
+          ],
+          "question_id": "q_quiz_majority_vote_apply_v1",
+          "stem": "一个集成包含5个分类器，它们对某封邮件的预测结果如下：C1: 垃圾, C2: 正常, C3: 垃圾, C4: 垃圾, C5: 正常。使用简单多数投票，最终预测结果是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "类别3和类别7各得2票，没有类别获得超过50%的票数，且票数相同，因此无法通过简单多数投票确定唯一结果。",
+          "options": [
+            "3",
+            "7",
+            "无法确定"
+          ],
+          "question_id": "q_quiz_majority_vote_apply_v2",
+          "stem": "一个集成包含4个分类器，它们对某手写数字的预测结果如下：C1: 3, C2: 7, C3: 3, C4: 7。使用简单多数投票（复数投票），最终预测结果是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "weighted_majority_vote",
+      "coverage_tags": [
+        "weighted_majority_vote_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_weighted_vote_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能计算加权多数投票的结果。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能根据给定的分类器硬标签和权重，正确计算每个类别的加权票数并得出最终预测。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "加权多数投票",
+          "en": "Weighted Majority Vote"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "类别0的加权票数 = 0.3 + 0.2 = 0.5；类别1的加权票数 = 0.5。两者相等，因此无法确定唯一结果。",
+          "options": [
+            "类别0",
+            "类别1",
+            "无法确定"
+          ],
+          "question_id": "q_quiz_weighted_vote_calc_v1",
+          "stem": "三个分类器 C1, C2, C3 对某样本的预测分别为：C1→0, C2→1, C3→0。权重分别为 w1=0.3, w2=0.5, w3=0.2。使用加权多数投票，最终预测结果是什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "类别A的加权票数 = 0.2 + 0.6 = 0.8；类别B的加权票数 = 0.2。类别A的加权票数更高，因此最终预测为类别A。",
+          "options": [
+            "类别A",
+            "类别B",
+            "无法确定"
+          ],
+          "question_id": "q_quiz_weighted_vote_calc_v2",
+          "stem": "三个分类器 C1, C2, C3 对某样本的预测分别为：C1→A, C2→B, C3→A。权重分别为 w1=0.2, w2=0.2, w3=0.6。使用加权多数投票，最终预测结果是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "predict_proba",
+      "coverage_tags": [
+        "predict_proba_weighted_averaging"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_prob_weighted_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能计算基于预测概率的加权投票结果。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能根据给定的分类器预测概率和权重，正确计算每个类别的加权平均概率并得出最终预测。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "预测概率",
+          "en": "Predict Proba"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "类别0的加权概率 = 0.4*0.7 + 0.4*0.6 + 0.2*0.2 = 0.28 + 0.24 + 0.04 = 0.56；类别1的加权概率 = 0.4*0.3 + 0.4*0.4 + 0.2*0.8 = 0.12 + 0.16 + 0.16 = 0.44。类别0的加权概率更高。",
+          "options": [
+            "类别0",
+            "类别1"
+          ],
+          "question_id": "q_quiz_prob_weighted_calc_v1",
+          "stem": "三个分类器对某样本的预测概率分别为：C1: [0.7, 0.3], C2: [0.6, 0.4], C3: [0.2, 0.8]。权重分别为 w1=0.4, w2=0.4, w3=0.2。基于概率加权投票，最终预测结果是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "类别0的加权概率 = 0.5*0.1 + 0.3*0.3 + 0.2*0.8 = 0.05 + 0.09 + 0.16 = 0.30；类别1的加权概率 = 0.5*0.9 + 0.3*0.7 + 0.2*0.2 = 0.45 + 0.21 + 0.04 = 0.70。类别1的加权概率更高。",
+          "options": [
+            "类别0",
+            "类别1"
+          ],
+          "question_id": "q_quiz_prob_weighted_calc_v2",
+          "stem": "三个分类器对某样本的预测概率分别为：C1: [0.1, 0.9], C2: [0.3, 0.7], C3: [0.8, 0.2]。权重分别为 w1=0.5, w2=0.3, w3=0.2。基于概率加权投票，最终预测结果是什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-ensemble-learning-boosting/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

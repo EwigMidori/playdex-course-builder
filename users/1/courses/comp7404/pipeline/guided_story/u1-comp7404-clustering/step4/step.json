@@ -1,0 +1,273 @@
+{
+  "chapter_id": "lecture-04-clustering",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-clustering",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "现在，假设你不想事先指定 K，而是希望算法自动构建一个分组树。",
+        "一个朴素的想法是：从每个点自己作为一个簇开始，然后反复把最近的两个簇合并。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "请你在心里尝试一下：用“最近点距离”来定义两个簇的距离，然后合并。",
+        "你会发现：这样合并出来的簇，往往呈长条状，而不是你期望的紧凑形状。",
+        "请写出你观察到的簇形状。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "用最近点距离合并簇，容易产生链状的长簇，而不是紧凑的球形簇。",
+        "kind": "single_choice",
+        "options": [
+          "产生紧凑的球形簇",
+          "产生链状的长簇",
+          "产生大小均匀的簇",
+          "产生任意形状的簇"
+        ],
+        "prompt": "用“最近点距离”合并簇，你发现会产生什么形状的簇？"
+      },
+      "id": "s031",
+      "lines": [
+        "你刚才的尝试说明了什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "合并的顺序取决于如何定义两个簇之间的距离。",
+        "不同的距离定义，会导致完全不同的簇形状。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s033",
+      "introduced_terms": [
+        "agglomerative_clustering"
+      ],
+      "lines": [
+        "这种自底向上、从每个点一个簇开始逐步合并的方法，叫做 <term id=\"agglomerative_clustering\">凝聚式层次聚类</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s034",
+      "introduced_terms": [
+        "divisive_clustering"
+      ],
+      "lines": [
+        "另一种策略是 <term id=\"divisive_clustering\">分裂式层次聚类</term>：自顶向下，从所有点一个簇开始，逐步分裂。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s035",
+      "introduced_terms": [
+        "dendrogram"
+      ],
+      "lines": [
+        "合并或分裂的过程可以用一个 <term id=\"dendrogram\">树状图</term> 来记录。",
+        "你可以在树的任意高度“切割”，得到你想要的簇数量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "凝聚式层次聚类从每个数据点作为一个独立的簇开始，然后逐步合并。",
+        "kind": "single_choice",
+        "options": [
+          "所有点是一个簇",
+          "每个点是一个独立的簇",
+          "随机选择 K 个簇",
+          "已经有一个预设的树状图"
+        ],
+        "prompt": "凝聚式层次聚类开始时："
+      },
+      "id": "s036",
+      "lines": [
+        "凝聚式层次聚类的起点是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s037",
+      "introduced_terms": [
+        "single_link"
+      ],
+      "lines": [
+        "第一种距离定义：<term id=\"single_link\">单链</term>。",
+        "用两个簇中最近的两个点之间的距离，代表两个簇的距离。",
+        "容易产生链状的长簇。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s038",
+      "introduced_terms": [
+        "complete_link"
+      ],
+      "lines": [
+        "第二种：<term id=\"complete_link\">全链</term>。",
+        "用两个簇中最远的两个点之间的距离，代表两个簇的距离。",
+        "倾向于生成紧凑的球形簇。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s039",
+      "introduced_terms": [
+        "group_average"
+      ],
+      "lines": [
+        "第三种：<term id=\"group_average\">平均链</term>。",
+        "计算两个簇之间所有点对距离的平均值。",
+        "是一种折中方案。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "全链使用最远点距离，倾向于生成紧凑的球形簇。",
+        "kind": "single_choice",
+        "options": [
+          "单链",
+          "全链",
+          "平均链",
+          "任意一种"
+        ],
+        "prompt": "如果希望得到紧凑的球形簇，应该使用哪种链接方式？"
+      },
+      "id": "s040",
+      "lines": [
+        "如果希望得到紧凑的球形簇，应该使用哪种链接方式？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s040b",
+      "introduced_terms": [],
+      "lines": [
+        "请解释单链和全链分别倾向于产生什么形状的簇。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": [
+          0
+        ],
+        "explanation": "单链使用最近点距离，容易产生链状长簇；全链使用最远点距离，倾向于产生紧凑球形簇。",
+        "kind": "multiple_choice",
+        "options": [
+          "单链倾向于产生链状长簇，全链倾向于产生紧凑球形簇",
+          "单链倾向于产生紧凑球形簇，全链倾向于产生链状长簇",
+          "两者都产生链状长簇",
+          "两者都产生紧凑球形簇"
+        ],
+        "prompt": "以下关于单链和全链的描述，哪一项是正确的？"
+      },
+      "id": "s041",
+      "lines": [
+        "单链和全链分别倾向于产生什么形状的簇？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s041b",
+      "introduced_terms": [],
+      "lines": [
+        "请解释如何通过切割树状图得到不同数量的簇。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "树状图展示了簇的合并顺序，在不同高度切割可以得到不同数量的簇。",
+        "kind": "single_choice",
+        "options": [
+          "在树状图的不同高度切割",
+          "在树状图的底部切割",
+          "在树状图的顶部切割",
+          "树状图不能用于选择簇数量"
+        ],
+        "prompt": "如何通过树状图得到不同数量的簇？"
+      },
+      "id": "s041c",
+      "lines": [
+        "如何通过树状图得到不同数量的簇？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Hierarchical Clustering: Produces a set of nested clusters organized as a hierarchical tree. Two main types: Agglomerative and Divisive. Agglomerative Clustering Algorithm: 1. Compute the proximity matrix. 2. Let each data point be a cluster. 3. Repeat. 4. Merge the two closest clusters. 5. Update the proximity matrix. 6. Until only a single cluster remains.",
+    "related": [
+      "How to Define Inter-Cluster Similarity"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "agglomerative_clustering": {
+      "aliases": [
+        "Agglomerative Clustering",
+        "AGNES"
+      ],
+      "display": "凝聚式层次聚类",
+      "gloss": "一种自底向上的层次聚类方法，开始时每个点是一个簇，然后逐步合并最近的簇。"
+    },
+    "complete_link": {
+      "aliases": [
+        "Complete Link",
+        "MAX"
+      ],
+      "display": "全链",
+      "gloss": "定义两个簇之间距离为它们之间最远的两个点的距离。"
+    },
+    "dendrogram": {
+      "aliases": [
+        "Dendrogram"
+      ],
+      "display": "树状图",
+      "gloss": "一种树形图，用于展示层次聚类中簇的合并或分裂顺序。"
+    },
+    "divisive_clustering": {
+      "aliases": [
+        "Divisive Clustering",
+        "DIANA"
+      ],
+      "display": "分裂式层次聚类",
+      "gloss": "一种自顶向下的层次聚类方法，开始时所有点是一个簇，然后逐步分裂。"
+    },
+    "group_average": {
+      "aliases": [
+        "Group Average",
+        "Average Linkage"
+      ],
+      "display": "平均链",
+      "gloss": "定义两个簇之间距离为它们之间所有点对距离的平均值。"
+    },
+    "single_link": {
+      "aliases": [
+        "Single Link",
+        "MIN"
+      ],
+      "display": "单链",
+      "gloss": "定义两个簇之间距离为它们之间最近的两个点的距离。"
+    }
+  }
+}

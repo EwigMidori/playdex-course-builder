@@ -1,0 +1,654 @@
+---
+lessonId: u1-comp7103-classification-1
+title: 分类与决策树（第一部分）
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["classification_definition", "supervised_learning"]
+    linkedSteps: ["step1", "step2"]
+  - sectionId: global-concept-map
+    title: 课程全景与关键问题
+    coverageTags: ["classification_definition", "label_and_feature", "classification_goal", "supervised_learning", "decision_tree_structure", "training_set_test_set"]
+    linkedSteps: ["step1", "step2"]
+  - sectionId: core-concepts-classification
+    title: 核心概念：分类、标签与特征
+    coverageTags: ["classification_definition", "label_and_feature", "classification_goal"]
+    linkedSteps: ["step1"]
+  - sectionId: core-concepts-supervised-learning
+    title: 核心概念：监督学习与决策树结构
+    coverageTags: ["supervised_learning", "decision_tree_structure", "training_set_test_set"]
+    linkedSteps: ["step2"]
+  - sectionId: core-concepts-entropy-information-gain
+    title: 核心概念：熵与信息增益
+    coverageTags: ["entropy_definition", "entropy_formula", "entropy_examples", "information_gain_concept", "entropy_decision_tree_use"]
+    linkedSteps: ["step3"]
+  - sectionId: core-concepts-building-dt
+    title: 构建决策树：递归划分
+    coverageTags: ["recursive_partitioning", "information_gain_based_split", "decision_tree_construction_example", "decision_tree_rules"]
+    linkedSteps: ["step4"]
+  - sectionId: core-concepts-impurity-overfitting
+    title: 其他不纯度度量与过拟合
+    coverageTags: ["gini_index", "overfitting", "underfitting", "pruning"]
+    linkedSteps: ["step5"]
+  - sectionId: core-concepts-evaluation
+    title: 评估分类器
+    coverageTags: ["evaluation_metrics", "confusion_matrix", "accuracy_metric", "precision_recall_f1", "roc_auc", "cross_validation"]
+    linkedSteps: ["step6"]
+  - sectionId: core-concepts-numerical-boundary
+    title: 处理数值特征与决策边界
+    coverageTags: ["numerical_attribute_handling", "decision_boundary_rectilinear", "split_point_selection"]
+    linkedSteps: ["step7"]
+  - sectionId: pitfalls
+    title: 易错点
+    coverageTags: ["overfitting_and_pruning", "accuracy_metric", "dt_advantages_disadvantages"]
+    linkedSteps: ["step5", "step6", "step8"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["classification_definition", "decision_tree_construction", "impurity_measures", "overfitting_and_pruning", "evaluation_metrics", "dt_advantages_disadvantages"]
+    linkedSteps: ["step8"]
+coverageTrace:
+  - coverageTag: classification_definition
+    description: 分类的定义：用已知标签的数据预测新数据的标签。
+    sectionIds: ["why-this-lesson-matters", "global-concept-map", "core-concepts-classification", "review-and-self-test"]
+    linkedSteps: ["step1", "step8"]
+  - coverageTag: label_and_feature
+    description: 标签（要预测的属性）与特征（用于预测的输入属性）的概念。
+    sectionIds: ["global-concept-map", "core-concepts-classification"]
+    linkedSteps: ["step1"]
+  - coverageTag: classification_goal
+    description: 分类的目标：从已知数据学习规律，预测新数据的标签。
+    sectionIds: ["global-concept-map", "core-concepts-classification"]
+    linkedSteps: ["step1"]
+  - coverageTag: supervised_learning
+    description: 监督学习的概念：使用有标签数据训练模型。
+    sectionIds: ["why-this-lesson-matters", "global-concept-map", "core-concepts-supervised-learning"]
+    linkedSteps: ["step2"]
+  - coverageTag: decision_tree_structure
+    description: 决策树的结构：内部节点、分支、叶子节点。
+    sectionIds: ["global-concept-map", "core-concepts-supervised-learning"]
+    linkedSteps: ["step2"]
+  - coverageTag: training_set_test_set
+    description: 训练集与测试集的划分与用途。
+    sectionIds: ["global-concept-map", "core-concepts-supervised-learning"]
+    linkedSteps: ["step2"]
+  - coverageTag: entropy_definition
+    description: 熵是衡量不确定性或随机性的定量指标（Shannon Entropy）。
+    sectionIds: ["core-concepts-entropy-information-gain"]
+    linkedSteps: ["step3"]
+  - coverageTag: entropy_formula
+    description: 熵的数学公式 H(S) = -Σ p_i log₂(p_i)。
+    sectionIds: ["core-concepts-entropy-information-gain"]
+    linkedSteps: ["step3"]
+  - coverageTag: entropy_examples
+    description: 通过具体概率分布计算熵值（如均匀分布熵为1，确定分布熵为0）。
+    sectionIds: ["core-concepts-entropy-information-gain"]
+    linkedSteps: ["step3"]
+  - coverageTag: information_gain_concept
+    description: 信息增益是划分后熵的减少量，决策树优先选择信息增益最大的特征。
+    sectionIds: ["core-concepts-entropy-information-gain"]
+    linkedSteps: ["step3"]
+  - coverageTag: entropy_decision_tree_use
+    description: 熵用于决策树中评估特征划分的效果。
+    sectionIds: ["core-concepts-entropy-information-gain"]
+    linkedSteps: ["step3"]
+  - coverageTag: recursive_partitioning
+    description: 决策树构建的核心思想：递归划分。
+    sectionIds: ["core-concepts-building-dt"]
+    linkedSteps: ["step4"]
+  - coverageTag: information_gain_based_split
+    description: 每次选择信息增益最大的特征进行分裂。
+    sectionIds: ["core-concepts-building-dt"]
+    linkedSteps: ["step4"]
+  - coverageTag: decision_tree_construction_example
+    description: 使用年龄、是否学生、信用评级等特征构建决策树的具体过程。
+    sectionIds: ["core-concepts-building-dt"]
+    linkedSteps: ["step4"]
+  - coverageTag: decision_tree_rules
+    description: 从决策树中提取分类规则。
+    sectionIds: ["core-concepts-building-dt"]
+    linkedSteps: ["step4"]
+  - coverageTag: gini_index
+    description: 基尼指数作为另一种不纯度度量，公式、取值范围及与熵的对比。
+    sectionIds: ["core-concepts-impurity-overfitting"]
+    linkedSteps: ["step5"]
+  - coverageTag: overfitting
+    description: 过拟合的定义、原因（模型过于复杂）、表现（训练误差低但测试误差高）。
+    sectionIds: ["core-concepts-impurity-overfitting", "pitfalls"]
+    linkedSteps: ["step5"]
+  - coverageTag: underfitting
+    description: 欠拟合的定义：模型过于简单，连训练数据都拟合不好。
+    sectionIds: ["core-concepts-impurity-overfitting"]
+    linkedSteps: ["step5"]
+  - coverageTag: pruning
+    description: 剪枝作为防止过拟合的技术：先完全生长再剪掉分支。
+    sectionIds: ["core-concepts-impurity-overfitting"]
+    linkedSteps: ["step5"]
+  - coverageTag: evaluation_metrics
+    description: 评估分类器的各种指标和方法，包括准确率、混淆矩阵、精确率、召回率、F1分数、ROC曲线、AUC和交叉验证。
+    sectionIds: ["core-concepts-evaluation", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step6", "step8"]
+  - coverageTag: confusion_matrix
+    description: 混淆矩阵的四个基本元素：TP, FP, FN, TN。
+    sectionIds: ["core-concepts-evaluation"]
+    linkedSteps: ["step6"]
+  - coverageTag: accuracy_metric
+    description: 准确率的定义及其在类别不平衡时的局限性。
+    sectionIds: ["core-concepts-evaluation", "pitfalls"]
+    linkedSteps: ["step6"]
+  - coverageTag: precision_recall_f1
+    description: 精确率、召回率和F1分数的定义、公式和含义。
+    sectionIds: ["core-concepts-evaluation"]
+    linkedSteps: ["step6"]
+  - coverageTag: roc_auc
+    description: ROC曲线的绘制（TPR vs FPR）和AUC的含义。
+    sectionIds: ["core-concepts-evaluation"]
+    linkedSteps: ["step6"]
+  - coverageTag: cross_validation
+    description: 交叉验证的基本思想（k-fold）。
+    sectionIds: ["core-concepts-evaluation"]
+    linkedSteps: ["step6"]
+  - coverageTag: numerical_attribute_handling
+    description: 处理数值特征的方法：离散化与分裂点。
+    sectionIds: ["core-concepts-numerical-boundary"]
+    linkedSteps: ["step7"]
+  - coverageTag: decision_boundary_rectilinear
+    description: 决策树的决策边界是平行于坐标轴的直线，形成矩形区域。
+    sectionIds: ["core-concepts-numerical-boundary"]
+    linkedSteps: ["step7"]
+  - coverageTag: split_point_selection
+    description: 算法尝试所有可能的分裂点，选择使不纯度降低最多的那个。
+    sectionIds: ["core-concepts-numerical-boundary"]
+    linkedSteps: ["step7"]
+  - coverageTag: overfitting_and_pruning
+    description: 过拟合是决策树的主要风险，剪枝是防止过拟合的有效手段。
+    sectionIds: ["pitfalls", "review-and-self-test"]
+    linkedSteps: ["step5", "step8"]
+  - coverageTag: dt_advantages_disadvantages
+    description: 决策树简单、可解释、速度快，但容易过拟合且决策边界是矩形的。
+    sectionIds: ["pitfalls", "review-and-self-test"]
+    linkedSteps: ["step8"]
+  - coverageTag: decision_tree_construction
+    description: 决策树通过递归划分构建，每次选择信息增益最大的特征。
+    sectionIds: ["review-and-self-test"]
+    linkedSteps: ["step8"]
+  - coverageTag: impurity_measures
+    description: 熵和基尼指数用于量化不纯度。
+    sectionIds: ["review-and-self-test"]
+    linkedSteps: ["step8"]
+---
+
+# 为什么这一课重要
+
+分类是机器学习中最核心的任务之一。从垃圾邮件检测到医疗诊断，从信用风险评估到图像识别，几乎所有需要“根据已知信息判断类别”的场景，都离不开分类模型。
+
+这一课将带你从零开始，理解分类问题的本质，并掌握一种最直观、最可解释的分类模型——**决策树**。你将学到：
+
+- 什么是分类问题，如何用数学语言描述它
+- 什么是监督学习，训练集和测试集如何分工
+- 决策树的结构和工作原理
+- 如何用**熵**和**信息增益**来量化不确定性并选择最佳特征
+- 决策树的递归构建过程
+- 其他不纯度度量（如基尼指数）
+- 过拟合与剪枝
+- 如何评估分类器的性能
+
+<KeyPoint>分类就是用已知标签的数据，预测新数据的标签。决策树通过一连串“是/否”问题来做决定。</KeyPoint>
+
+<QuestionRef id="q_quiz_classification_example_v1" />
+
+---
+
+# 课程全景与关键问题
+
+这一课围绕一个核心问题展开：**如何根据已有的、带标签的数据，自动学习一套规则，用来预测新数据的类别？**
+
+整个课程的知识结构如下：
+
+1. **数据模型**：数据集由记录组成，每条记录包含若干特征和一个标签。
+2. **监督学习流程**：将数据分为训练集和测试集，用训练集训练模型，用测试集评估模型。
+3. **决策树模型**：一种树形结构，内部节点测试特征，叶子节点给出类别。
+4. **构建决策树**：用熵和信息增益选择最佳特征，递归划分数据。
+5. **防止过拟合**：通过剪枝等技术控制模型复杂度。
+6. **评估分类器**：使用准确率、混淆矩阵、精确率、召回率、F1分数、ROC曲线等指标。
+
+<Figure src="images/0abb3409ec805e1416517d2e925ca68d17094db893b1dd5188924780d7acb428.jpg" alt="监督学习流程图：从有标签数据中划分训练集和测试集，训练模型后评估">监督学习的标准流程：准备有标签数据 → 划分训练集和测试集 → 训练分类器 → 在测试集上评估</Figure>
+
+---
+
+# 核心概念：分类、标签与特征
+
+## 什么是分类问题？
+
+假设你有一张表格，记录了14个人的信息，每个人都知道是否拥有电脑。现在来了一个新朋友，你不知道他有没有电脑，但你知道他的年龄、收入、是否学生、信用评级。你能根据已知的14个人，猜出这个新朋友属于哪一类吗？
+
+这就是**分类**要解决的问题。
+
+<Definition title="分类">
+<Term id="classification" en="Classification">分类</Term>是根据已有标签的数据，预测新数据属于哪个类别的任务。
+</Definition>
+
+## 标签与特征
+
+在分类问题中，数据集中的每条记录包含两类属性：
+
+- **标签**：我们想要预测的那个属性。
+- **特征**：用来做判断的其他属性。
+
+<Definition title="标签">
+<Term id="label" en="Label">标签</Term>（也称类或因变量）是数据记录中我们想要预测的那个属性。例如，在“是否拥有电脑”的数据集中，标签就是“Own-computer”。
+</Definition>
+
+<Definition title="特征">
+<Term id="feature" en="Feature">特征</Term>（也称独立属性或输入属性）是用于预测标签的输入属性。例如年龄、收入、是否学生、信用评级。
+</Definition>
+
+<Example title="电脑拥有者数据集">
+| Record id | Age | Income | Student | Credit-rating | Own-computer |
+|-----------|-----|--------|---------|---------------|--------------|
+| 1 | < 30 | High | No | Bad | No |
+| 2 | < 30 | High | No | Good | No |
+| 3 | 30..40 | High | No | Bad | Yes |
+| 4 | > 40 | Medium | No | Bad | Yes |
+| 5 | > 40 | Low | Yes | Bad | Yes |
+| 6 | > 40 | Low | Yes | Good | No |
+| 7 | 30..40 | Low | Yes | Good | Yes |
+| 8 | < 30 | Medium | No | Bad | No |
+| 9 | < 30 | Low | Yes | Bad | Yes |
+| 10 | > 40 | Medium | Yes | Bad | Yes |
+| 11 | < 30 | Medium | Yes | Good | Yes |
+| 12 | 30..40 | Medium | No | Good | Yes |
+| 13 | 30..40 | High | Yes | Bad | Yes |
+| 14 | > 40 | Medium | No | Good | No |
+
+在这个数据集中：
+- **标签**：Own-computer（是否拥有电脑）
+- **特征**：Age（年龄）、Income（收入）、Student（是否学生）、Credit-rating（信用评级）
+</Example>
+
+<KeyPoint>分类的目标是：从已知数据中学习规律，然后用这个规律去预测新数据的标签。</KeyPoint>
+
+<QuestionRef id="q_quiz_label_feature_identify_v1" />
+
+---
+
+# 核心概念：监督学习与决策树结构
+
+## 监督学习
+
+我们手上有14条已知标签的数据，这就像一本“答案书”。我们把大部分数据（比如80%）拿出来教机器学规律，这部分叫**训练集**。剩下的20%先藏起来，等模型学好了再用来考试，这部分叫**测试集**。
+
+因为训练数据已经标好了答案，机器是在“监督”下学习，这种学习方式叫**监督学习**。
+
+<Definition title="监督学习">
+<Term id="supervised_learning" en="Supervised Learning">监督学习</Term>是使用带有标签的训练数据来训练模型的学习方式。
+</Definition>
+
+<Definition title="训练集">
+<Term id="training_set" en="Training Set">训练集</Term>是用于训练模型的有标签数据子集。
+</Definition>
+
+<Definition title="测试集">
+<Term id="test_set" en="Test Set">测试集</Term>是用于评估模型性能的、模型未见过的有标签数据子集。
+</Definition>
+
+<KeyPoint>监督学习的核心流程：准备有标签数据 → 划分训练集和测试集 → 用训练集训练模型 → 用测试集评估模型。</KeyPoint>
+
+<QuestionRef id="q_quiz_training_test_set_v1" />
+
+## 决策树的结构
+
+一种直观的分类模型是**决策树**。它像一连串的“是/否”问题。
+
+<Definition title="决策树">
+<Term id="decision_tree" en="Decision Tree">决策树</Term>是一种树形结构的分类模型，具有以下性质：
+- 每个内部节点表示对一个特征的测试
+- 每个分支代表一个测试结果
+- 每个叶子节点关联一个类别标签
+</Definition>
+
+<Figure src="images/349145f2b65f4dab2adedb1bda3d7f9ba693af1506449bc193a460ac4e7a1fea.jpg" alt="一个决策树示例：根节点测试年龄，分支为<30、30-40、>40，叶子节点给出是否拥有电脑的预测">决策树示例：根节点问“年龄是多少？”，根据答案走向不同分支，最终到达叶子节点得到分类结果</Figure>
+
+<KeyPoint>决策树的预测过程：从根节点开始，依次回答每个内部节点的问题，沿着对应的分支向下，直到到达叶子节点，叶子节点的标签就是预测结果。</KeyPoint>
+
+<QuestionRef id="q_quiz_decision_tree_structure_v1" />
+
+---
+
+# 核心概念：熵与信息增益
+
+决策树在构建时，需要决定先问哪个问题。比如：先问年龄，还是先问收入？一个好的问题，应该能最大程度地降低不确定性。如何量化“不确定性”？用**熵**。
+
+## 熵的定义
+
+<Definition title="熵">
+<Term id="entropy" en="Entropy">熵</Term>（香农熵）是衡量一个系统不确定性或混乱程度的定量指标。熵越大，越不确定。
+</Definition>
+
+<Formula latex="H(S) = -\sum_i p_i \log_2(p_i)">
+熵的公式：H(S) = -Σ p_i log₂(p_i)，其中 p_i 是第 i 个符号出现的概率。
+</Formula>
+
+<Example title="熵的计算例子">
+- 一个信息源以概率 0.5 发送 'a'，以概率 0.5 发送 'b'：H = 1（非常不确定）
+- 一个信息源总是发送 'a'：H = 0（完全确定）
+- 一个信息源以概率 0.9 发送 'a'，以概率 0.1 发送 'b'：H ≈ 0.469（比较确定）
+</Example>
+
+回到我们的14条数据：9个有电脑，5个没有。计算这个数据集的熵：
+
+<Formula latex="H = -\frac{9}{14}\log_2(\frac{9}{14}) - \frac{5}{14}\log_2(\frac{5}{14}) \approx 0.940">
+电脑拥有者数据集的熵约为0.940
+</Formula>
+
+## 信息增益
+
+现在，如果我们用一个特征（比如年龄）来划分数据，划分后每个子集的熵会降低。划分后熵的减少量，就是**信息增益**。
+
+<Definition title="信息增益">
+<Term id="information_gain" en="Information Gain">信息增益</Term>是使用某个特征进行划分后，熵减少的量。增益越大，划分效果越好。
+</Definition>
+
+<KeyPoint>决策树会优先选择信息增益最大的特征作为当前节点的测试。</KeyPoint>
+
+<Example title="用年龄特征划分">
+用年龄特征划分后，三个子集的熵分别为：
+- 年龄<30：熵 ≈ 0.971（5条记录，2有电脑3无电脑）
+- 年龄30-40：熵 = 0（4条记录，全部有电脑）
+- 年龄>40：熵 ≈ 0.971（5条记录，3有电脑2无电脑）
+
+期望熵 = (5/14)*0.971 + (4/14)*0 + (5/14)*0.971 = 0.694
+
+信息增益 = 0.940 - 0.694 = 0.246
+</Example>
+
+<QuestionRef id="q_quiz_entropy_calc_v1" />
+<QuestionRef id="q_quiz_information_gain_meaning_v1" />
+
+---
+
+# 构建决策树：递归划分
+
+## 递归划分算法
+
+构建决策树是一个递归过程，核心思想是：每次选一个最佳特征来划分数据，然后对每个子集重复此过程。
+
+<Definition title="递归划分">
+<Term id="recursive_partitioning" en="Recursive Partitioning">递归划分</Term>是决策树构建的核心思想：不断选择最佳特征将数据分成更纯的子集，并对每个子集重复此过程。
+</Definition>
+
+**算法步骤**：
+
+1. 如果当前数据集中的所有记录都属于同一类别，创建一个叶子节点，标签为该类别。
+2. 如果没有更多特征可用，创建一个叶子节点，标签为数据集中最常见的类别。
+3. 否则，计算每个特征的信息增益，选择信息增益最大的特征作为当前节点的测试。
+4. 根据该特征的不同取值，将数据集分成若干子集。
+5. 对每个子集，递归地重复步骤1-4。
+
+## 电脑拥有者决策树的构建过程
+
+<Example title="构建决策树的具体过程">
+**第一步**：计算每个特征的信息增益
+
+| 特征 | 期望熵 | 信息增益 |
+|------|--------|----------|
+| Age | 0.694 | 0.246 |
+| Income | 0.911 | 0.029 |
+| Student | 0.788 | 0.152 |
+| Credit-rating | 0.892 | 0.048 |
+
+年龄的信息增益最大，所以根节点问：“年龄是多少？”
+
+**第二步**：年龄有三个分支：<30, 30-40, >40
+- 30-40这一组全是“有电脑”，熵为0，直接变成叶子节点。
+- <30和>40这两组数据还不纯，需要继续划分。
+
+**第三步**：在<30的组里，“是否学生”的信息增益最大，所以下一个问题是：“是学生吗？”
+- 是学生 → 有电脑
+- 不是学生 → 没有电脑
+
+**第四步**：在>40的组里，“信用评级”的信息增益最大，所以问题是：“信用评级好吗？”
+- 信用评级好 → 没有电脑
+- 信用评级差 → 有电脑
+</Example>
+
+## 从决策树中提取分类规则
+
+从根节点到每个叶子节点的路径，都是一条分类规则。
+
+<Example title="从决策树中提取的规则">
+- 如果年龄 < 30 且不是学生 → 没有电脑
+- 如果年龄 < 30 且是学生 → 有电脑
+- 如果年龄在30到40之间 → 有电脑
+- 如果年龄 > 40 且信用评级好 → 没有电脑
+- 如果年龄 > 40 且信用评级差 → 有电脑
+</Example>
+
+<KeyPoint>决策树构建的核心：递归划分，每次选择信息增益最大的特征来分裂数据。</KeyPoint>
+
+<QuestionRef id="q_quiz_recursive_partitioning_v1" />
+<QuestionRef id="q_quiz_tree_rules_v1" />
+
+---
+
+# 其他不纯度度量与过拟合
+
+## 基尼指数
+
+除了熵，还有其他衡量不纯度的指标，比如**基尼指数**。
+
+<Definition title="基尼指数">
+<Term id="gini_index" en="Gini Index">基尼指数</Term>是另一种衡量数据集不纯度的指标，值越小越纯。
+</Definition>
+
+<Formula latex="Gini(S) = 1 - \sum_i p_i^2">
+基尼指数公式：Gini(S) = 1 - Σ p_i²
+</Formula>
+
+<Example title="基尼指数计算例子">
+- 所有样本属于同一类：Gini = 0（最纯）
+- 样本均匀分布在两个类别：Gini = 0.5（最不纯）
+- 一个类别占80%，另一个占20%：Gini = 1 - 0.64 - 0.04 = 0.32
+</Example>
+
+## 过拟合与欠拟合
+
+<Definition title="过拟合">
+<Term id="overfitting" en="Overfitting">过拟合</Term>是指模型在训练数据上表现太好，但对新数据表现差，因为它学到了数据中的噪声和细节。
+</Definition>
+
+<Definition title="欠拟合">
+<Term id="underfitting" en="Underfitting">欠拟合</Term>是指模型过于简单，连训练数据都拟合不好。
+</Definition>
+
+<KeyPoint>过拟合时，训练误差很低但测试误差很高。欠拟合时，训练误差和测试误差都很高。</KeyPoint>
+
+## 剪枝
+
+<Definition title="剪枝">
+<Term id="pruning" en="Pruning">剪枝</Term>是通过移除决策树中不必要的分支来防止过拟合的技术。
+</Definition>
+
+剪枝的基本操作：先让树完全生长，然后从底部剪掉一些分支，用叶子节点替代子树。如果剪掉后模型在验证集上表现更好，就保留剪枝。
+
+<KeyPoint>过拟合是决策树的主要风险，剪枝是防止过拟合的有效手段。</KeyPoint>
+
+<QuestionRef id="q_quiz_overfitting_signs_v1" />
+<QuestionRef id="q_quiz_pruning_mechanism_v1" />
+
+---
+
+# 评估分类器
+
+模型建好了，怎么知道它好不好？我们需要在测试集上评估。
+
+## 准确率
+
+<Definition title="准确率">
+<Term id="accuracy" en="Accuracy">准确率</Term> = 预测正确的样本数 / 总样本数
+</Definition>
+
+<Formula latex="Accuracy = \frac{TP + TN}{TP + TN + FP + FN}">
+准确率公式
+</Formula>
+
+但准确率有时会骗人。比如99%的人没有癌症，一个模型只要全判“无癌症”，准确率就是99%，但它完全无法识别出任何病人。
+
+## 混淆矩阵
+
+<Definition title="混淆矩阵">
+<Term id="confusion_matrix" en="Confusion Matrix">混淆矩阵</Term>用于展示分类器预测结果与实际标签对比的表格。
+</Definition>
+
+| 实际 \ 预测 | 正类 | 负类 |
+|-------------|------|------|
+| 正类 | TP（真正例） | FN（假负例） |
+| 负类 | FP（假正例） | TN（真负例） |
+
+## 精确率、召回率与F1分数
+
+<Definition title="精确率">
+<Term id="precision" en="Precision">精确率</Term> = TP / (TP + FP)，回答：你说是癌症的，有多少真的是？
+</Definition>
+
+<Definition title="召回率">
+<Term id="recall" en="Recall">召回率</Term> = TP / (TP + FN)，回答：真的有癌症的，你找出了多少？
+</Definition>
+
+<Definition title="F1分数">
+<Term id="f_measure" en="F1 Score">F1分数</Term>是精确率和召回率的调和平均数，综合衡量两者。
+</Definition>
+
+<Formula latex="F1 = 2 \times \frac{Precision \times Recall}{Precision + Recall}">
+F1分数公式
+</Formula>
+
+## ROC曲线与AUC
+
+<Definition title="ROC曲线">
+<Term id="roc_curve" en="ROC Curve">ROC曲线</Term>以假正率（FPR）为横轴，真正率（TPR，即召回率）为纵轴绘制的曲线。
+</Definition>
+
+<Definition title="AUC">
+<Term id="auc" en="Area Under the Curve">AUC</Term>是ROC曲线下的面积，用于量化分类器的整体性能。AUC越大，模型越好。
+</Definition>
+
+## 交叉验证
+
+为了更可靠地评估，可以使用交叉验证。把数据分成k份，轮流用k-1份训练，1份测试。
+
+<KeyPoint>评估分类器不能只看准确率。混淆矩阵、精确率、召回率、F1分数、ROC曲线都是重要工具。</KeyPoint>
+
+<QuestionRef id="q_quiz_precision_recall_calc_v1" />
+<QuestionRef id="q_quiz_roc_auc_interpret_v1" />
+
+---
+
+# 处理数值特征与决策边界
+
+## 处理连续数值特征
+
+前面的例子中，所有特征都是离散的。但现实中很多特征是连续的，比如收入。有两种处理方法：
+
+<Definition title="离散化">
+<Term id="discretization" en="Discretization">离散化</Term>是将连续数值属性转换为离散类别属性的过程。例如，把收入分成：低（<80K）、中（80K-250K）、高（>250K）。
+</Definition>
+
+<Definition title="分裂点">
+<Term id="split_point" en="Split Point">分裂点</Term>是用于将连续属性划分为两个区间的阈值。例如：收入 < 80K 和 收入 >= 80K。
+</Definition>
+
+算法会尝试所有可能的分裂点，选择使不纯度降低最多的那个。
+
+## 决策边界
+
+<Definition title="决策边界">
+<Term id="decision_boundary" en="Decision Boundary">决策边界</Term>是分类模型中用于区分不同类别的边界。
+</Definition>
+
+决策树的每个测试都对应一条决策边界。这些边界都是与坐标轴平行的直线，组合起来形成矩形区域。
+
+<KeyPoint>决策树的决策边界是“矩形”的。这既是优点（可解释性强），也是局限（对于边界是斜线或曲线的问题，需要很多层才能近似）。</KeyPoint>
+
+<QuestionRef id="q_quiz_split_point_v1" />
+<QuestionRef id="q_quiz_decision_boundary_v1" />
+
+---
+
+# 易错点
+
+## 1. 混淆准确率与模型好坏
+
+**错误理解**：准确率很高，模型就一定很好。
+
+**正确理解**：在类别不平衡时，准确率可能具有误导性。例如，99%无癌症的数据集，模型全判无癌症，准确率99%，但完全无法识别癌症患者。需要结合混淆矩阵、精确率、召回率等指标全面评估。
+
+## 2. 混淆过拟合与欠拟合
+
+**错误理解**：模型在训练集上表现完美，说明模型很好。
+
+**正确理解**：训练集表现完美但测试集表现差，是过拟合的典型表现。模型过于复杂，记住了训练数据的噪声。
+
+## 3. 混淆精确率与召回率
+
+**错误理解**：精确率和召回率是一回事。
+
+**正确理解**：
+- 精确率关注“预测为正类的样本中有多少是真正的正类”
+- 召回率关注“真正的正类中有多少被正确识别”
+
+## 4. 忽视决策树的局限性
+
+**错误理解**：决策树可以处理任何类型的数据。
+
+**正确理解**：决策树的决策边界是矩形的，对于边界是斜线或曲线的问题，需要很多层才能近似。此外，决策树容易过拟合，需要剪枝等策略来控制。
+
+<QuestionRef id="q_quiz_accuracy_limitation_v1" />
+<QuestionRef id="q_quiz_dt_pros_cons_v1" />
+
+---
+
+# 复习与自测
+
+## 核心概念回顾
+
+1. **分类**：用已知标签的数据预测新数据的标签。
+2. **监督学习**：使用有标签数据训练模型。
+3. **决策树**：树形结构，内部节点测试特征，叶子节点给出类别。
+4. **熵**：量化不确定性的指标。
+5. **信息增益**：划分后熵的减少量，用于选择最佳特征。
+6. **递归划分**：不断选择最佳特征划分数据，并对每个子集重复。
+7. **基尼指数**：另一种不纯度度量。
+8. **过拟合**：模型过于复杂，在训练集上表现好但在新数据上表现差。
+9. **剪枝**：防止过拟合的技术。
+10. **评估指标**：准确率、混淆矩阵、精确率、召回率、F1分数、ROC曲线、AUC。
+
+## 主动回忆练习
+
+使用以下闪卡族进行主动检索：
+
+<QuestionFamily familyId="qf_flash_classification_def" />
+<QuestionFamily familyId="qf_flash_dt_recursive_partitioning" />
+<QuestionFamily familyId="qf_flash_entropy_definition" />
+<QuestionFamily familyId="qf_flash_gini_definition" />
+<QuestionFamily familyId="qf_flash_overfitting_definition" />
+<QuestionFamily familyId="qf_flash_precision_recall" />
+
+## 章节自测
+
+<QuestionFamily familyId="qf_quiz_classification_example" />
+<QuestionFamily familyId="qf_quiz_dt_split_criterion" />
+<QuestionFamily familyId="qf_quiz_impurity_comparison" />
+<QuestionFamily familyId="qf_quiz_overfitting_identification" />
+<QuestionFamily familyId="qf_quiz_accuracy_limitation" />
+<QuestionFamily familyId="qf_quiz_dt_pros_cons" />
+
+## 深入理解
+
+<QuestionFamily familyId="qf_long_overfitting_explanation" />
+<QuestionFamily familyId="qf_long_evaluation_metrics_application" />
+
+## 一句话总结
+
+<KeyPoint>分类就是问对问题，然后根据答案做决定。决策树通过递归划分，用一连串“是/否”问题来学习分类规则。</KeyPoint>

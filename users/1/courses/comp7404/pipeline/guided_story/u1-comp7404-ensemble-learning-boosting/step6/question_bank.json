@@ -1,0 +1,583 @@
+{
+  "chapter_id": "lecture-09-ensemble-learning-boosting",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "ensemble_learning_core_idea",
+      "covered_by": [
+        "qf_flash_ensemble_idea",
+        "qf_quiz_ensemble_idea",
+        "qf_long_ensemble_summary"
+      ],
+      "description": "集成学习的核心思想：多个分类器组合优于单个分类器。"
+    },
+    {
+      "coverage_tag": "majority_voting",
+      "covered_by": [
+        "qf_flash_majority_voting",
+        "qf_quiz_majority_voting"
+      ],
+      "description": "多数投票是最简单的组合方式。"
+    },
+    {
+      "coverage_tag": "bagging_variance_reduction",
+      "covered_by": [
+        "qf_flash_bagging_variance",
+        "qf_quiz_bagging_variance"
+      ],
+      "description": "Bagging 通过并行训练和自助采样来降低方差。"
+    },
+    {
+      "coverage_tag": "boosting_bias_reduction",
+      "covered_by": [
+        "qf_flash_boosting_bias",
+        "qf_quiz_boosting_bias"
+      ],
+      "description": "Boosting 通过顺序学习和关注错误来降低偏差。"
+    },
+    {
+      "coverage_tag": "ada_boost_algorithm",
+      "covered_by": [
+        "qf_flash_ada_boost",
+        "qf_quiz_ada_boost"
+      ],
+      "description": "AdaBoost 是 Boosting 最著名的代表。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "ensemble_learning_core_idea",
+      "coverage_tags": [
+        "ensemble_learning_core_idea"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ensemble_idea",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能复述集成学习的核心思想。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出集成学习的基本原理：组合多个分类器以获得更好的性能。",
+      "question_type": "short_answer",
+      "retrieval_focus": "集成学习的核心思想是什么？",
+      "term_refs": [
+        {
+          "display": "集成学习",
+          "en": "Ensemble Learning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将多个分类器组合成一个元分类器，使其比任何单个分类器具有更好的泛化性能。",
+          "estimated_seconds": 8,
+          "explanation": "这是集成学习最根本的出发点，即“三个臭皮匠，顶个诸葛亮”。",
+          "front": "集成学习的核心思想是什么？",
+          "question_id": "q_flash_ensemble_idea_v1"
+        },
+        {
+          "back": "组合不同的分类器，得到一个比任何单个分类器都更准确、更稳定的元分类器。",
+          "estimated_seconds": 8,
+          "explanation": "集成学习不追求单个模型的完美，而是通过组合来弥补各自的不足。",
+          "front": "集成学习的目标是什么？",
+          "question_id": "q_flash_ensemble_idea_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "majority_voting",
+      "coverage_tags": [
+        "majority_voting"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_majority_voting",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆多数投票的基本定义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出多数投票的含义：选择被大多数分类器预测的类别。",
+      "question_type": "short_answer",
+      "retrieval_focus": "多数投票是如何决定最终预测的？",
+      "term_refs": [
+        {
+          "display": "多数投票",
+          "en": "Majority Voting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "选择被超过50%的分类器预测的类别（二分类）或得票最多的类别（多分类）。",
+          "estimated_seconds": 10,
+          "explanation": "多数投票是最简单的组合方式，每个分类器一票，得票多的类别胜出。",
+          "front": "在集成学习中，多数投票是如何决定最终预测类别的？",
+          "question_id": "q_flash_majority_voting_v1"
+        },
+        {
+          "back": "多数投票要求得票超过50%，仅用于二分类；复数投票选择得票最多的类别，用于多分类。",
+          "estimated_seconds": 12,
+          "explanation": "复数投票是多数投票在多分类场景下的推广。",
+          "front": "多数投票与复数投票（Plurality Voting）的主要区别是什么？",
+          "question_id": "q_flash_majority_voting_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "bagging_variance_reduction",
+      "coverage_tags": [
+        "bagging_variance_reduction"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bagging_variance",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆Bagging的主要作用。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出Bagging通过并行训练和自助采样来降低模型方差。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Bagging的主要作用是什么？",
+      "term_refs": [
+        {
+          "display": "Bagging",
+          "en": "Bootstrap Aggregating"
+        }
+      ],
+      "variants": [
+        {
+          "back": "降低模型的方差，减少过拟合。",
+          "estimated_seconds": 8,
+          "explanation": "Bagging通过对不同自助样本训练多个模型并取平均，平滑了单个模型的波动。",
+          "front": "Bagging 的主要作用是什么？",
+          "question_id": "q_flash_bagging_variance_v1"
+        },
+        {
+          "back": "无效。Bagging 主要降低方差，对降低偏差帮助不大。",
+          "estimated_seconds": 8,
+          "explanation": "Bagging适合用于低偏差、高方差的模型（如未剪枝的决策树）。",
+          "front": "Bagging 对降低模型偏差有效吗？",
+          "question_id": "q_flash_bagging_variance_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "boosting_bias_reduction",
+      "coverage_tags": [
+        "boosting_bias_reduction"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_boosting_bias",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆Boosting的主要作用。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出Boosting通过顺序学习和关注错误来降低偏差。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Boosting的主要作用是什么？",
+      "term_refs": [
+        {
+          "display": "Boosting",
+          "en": "Boosting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "降低模型的偏差，将弱学习器组合成强学习器。",
+          "estimated_seconds": 8,
+          "explanation": "Boosting通过顺序训练，让后续模型更关注之前被错分的样本，从而逐步降低整体偏差。",
+          "front": "Boosting 的主要作用是什么？",
+          "question_id": "q_flash_boosting_bias_v1"
+        },
+        {
+          "back": "顺序的。每个新模型都试图纠正前一个模型的错误。",
+          "estimated_seconds": 6,
+          "explanation": "这是Boosting与Bagging的一个关键区别。",
+          "front": "Boosting 的训练方式是并行的还是顺序的？",
+          "question_id": "q_flash_boosting_bias_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "ada_boost_algorithm",
+      "coverage_tags": [
+        "ada_boost_algorithm"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ada_boost",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆AdaBoost的基本特点。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出AdaBoost是Boosting最著名的代表，其全称是Adaptive Boosting。",
+      "question_type": "short_answer",
+      "retrieval_focus": "AdaBoost的全称是什么？",
+      "term_refs": [
+        {
+          "display": "AdaBoost",
+          "en": "Adaptive Boosting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "Adaptive Boosting（自适应增强）。",
+          "estimated_seconds": 6,
+          "explanation": "AdaBoost是Boosting算法中最经典的代表。",
+          "front": "AdaBoost 的全称是什么？",
+          "question_id": "q_flash_ada_boost_v1"
+        },
+        {
+          "back": "被正确分类的样本权重降低，被错误分类的样本权重升高。",
+          "estimated_seconds": 8,
+          "explanation": "这使得后续的弱学习器更关注之前被错分的困难样本。",
+          "front": "AdaBoost 中，样本权重是如何变化的？",
+          "question_id": "q_flash_ada_boost_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-ensemble-learning-boosting",
+  "longform_families": [
+    {
+      "concept_key": "ensemble_learning_core_idea",
+      "coverage_tags": [
+        "ensemble_learning_core_idea",
+        "majority_voting",
+        "bagging_variance_reduction",
+        "boosting_bias_reduction",
+        "ada_boost_algorithm"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_ensemble_summary",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较和对比本课学到的三种集成学习方法。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能用自己的语言解释多数投票、Bagging和Boosting的核心思想、主要作用和关键区别。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "集成学习",
+          "en": "Ensemble Learning"
+        },
+        {
+          "display": "多数投票",
+          "en": "Majority Voting"
+        },
+        {
+          "display": "Bagging",
+          "en": "Bootstrap Aggregating"
+        },
+        {
+          "display": "Boosting",
+          "en": "Boosting"
+        },
+        {
+          "display": "AdaBoost",
+          "en": "Adaptive Boosting"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "多数投票的核心思想、影响方面和训练方式",
+            "Bagging的核心思想、影响方面和训练方式",
+            "Boosting的核心思想、影响方面和训练方式"
+          ],
+          "question_id": "q_long_ensemble_summary_v1",
+          "reference_answer": [
+            "多数投票是最简单的集成方法，每个分类器一票，选择得票最多的类别作为最终预测。它不直接改变模型的偏差或方差，只是将多个模型的预测结果进行组合。",
+            "Bagging（Bootstrap Aggregating）通过有放回抽样生成多个自助样本，在每个样本上并行训练一个模型，最后通过多数投票或平均来组合预测。Bagging主要降低模型的方差，特别适合高方差的模型（如未剪枝的决策树）。",
+            "Boosting顺序地训练模型，每个新模型都更关注之前被错分的样本。它通过动态调整样本权重，让后续模型聚焦于困难样本。Boosting主要降低模型的偏差，可以将弱学习器组合成强学习器。AdaBoost是Boosting最著名的代表。"
+          ],
+          "rubric_points": [
+            "正确描述多数投票：选择得票最多的类别，是最简单的组合方式，不直接改变偏差或方差，是并行组合。",
+            "正确描述Bagging：通过自助采样并行训练多个模型，主要降低方差，训练方式是并行的。",
+            "正确描述Boosting：通过顺序训练模型并关注错误样本，主要降低偏差，训练方式是顺序的。",
+            "能够清晰对比三者的关键区别。"
+          ],
+          "stem": "请比较和对比本课学到的三种集成学习方法：多数投票、Bagging 和 Boosting。请从以下三个方面进行阐述：\n1. 每种方法的核心思想是什么？\n2. 每种方法主要影响模型的哪个方面（偏差或方差）？\n3. 每种方法的训练方式是并行的还是顺序的？"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "识别模型问题",
+            "推荐合适的集成方法并说明理由",
+            "解释推荐方法的工作原理"
+          ],
+          "question_id": "q_long_ensemble_summary_v2",
+          "reference_answer": [
+            "这个模型存在过拟合问题，即高方差。它在训练集上表现很好，但在测试集上表现不佳，说明它对训练数据中的噪声过于敏感。",
+            "我会推荐使用Bagging。因为Bagging的主要作用就是降低模型的方差，特别适合像未剪枝决策树这样的高方差模型。通过在不同数据子集上训练多个模型并组合它们的预测，可以有效平滑单个模型的波动，减少过拟合。",
+            "Bagging的工作流程是：首先，从原始训练集中有放回地随机抽取多个自助样本（每个样本大小与原数据集相同）；然后，在每个自助样本上独立地训练一个决策树模型；最后，通过多数投票的方式将所有决策树的预测结果组合起来，得到最终预测。"
+          ],
+          "rubric_points": [
+            "正确识别出模型存在过拟合问题（高方差）。",
+            "推荐Bagging，并解释Bagging擅长降低方差，适合高方差模型。",
+            "正确解释Bagging的工作原理：自助采样、并行训练、组合预测。"
+          ],
+          "stem": "假设你是一名机器学习工程师，你的团队训练了一个决策树模型，发现它在训练集上表现很好（准确率98%），但在测试集上表现一般（准确率82%）。\n1. 这个模型存在什么问题？\n2. 你会推荐使用哪种集成学习方法来解决这个问题？请解释为什么。\n3. 简要说明你推荐的方法是如何工作的。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "ensemble_learning_core_idea",
+      "coverage_tags": [
+        "ensemble_learning_core_idea"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_ensemble_idea",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析集成学习的优势。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能识别出集成学习最核心的优势：组合多个模型以获得更优性能。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "集成学习",
+          "en": "Ensemble Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "集成学习的核心思想就是组合多个分类器，以获得比任何单个分类器更好的预测性能。",
+          "options": [
+            "单个模型总是比集成模型更简单、更容易解释。",
+            "一组分类器组合后的预测性能通常优于其中任何一个单独的分类器。",
+            "集成学习总是需要更少的训练数据。",
+            "集成学习只适用于决策树模型。"
+          ],
+          "question_id": "q_quiz_ensemble_idea_v1",
+          "stem": "以下哪个说法最能体现集成学习的核心优势？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "集成学习的目标是组合不同的分类器，得到一个比任何单个分类器泛化性能更好的元分类器。",
+          "options": [
+            "减少训练时间",
+            "获得更好的泛化性能",
+            "降低模型复杂度",
+            "减少所需特征数量"
+          ],
+          "question_id": "q_quiz_ensemble_idea_v2",
+          "stem": "在集成学习中，将多个分类器组合成一个元分类器的主要目的是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "majority_voting",
+      "coverage_tags": [
+        "majority_voting"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_majority_voting",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能辨析多数投票的特点。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能识别多数投票是最简单的组合方式。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "多数投票",
+          "en": "Majority Voting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "多数投票是最简单的组合方式，每个分类器一票，得票多的类别胜出。",
+          "options": [
+            "最复杂的组合方式",
+            "最简单的组合方式",
+            "唯一有效的组合方式",
+            "仅适用于深度学习的组合方式"
+          ],
+          "question_id": "q_quiz_majority_voting_v1",
+          "stem": "在集成学习中，多数投票（Majority Voting）是一种什么样的组合方式？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "多数投票（或复数投票）的核心就是选择得票最多的类别。",
+          "options": [
+            "多数投票要求所有分类器都必须输出概率。",
+            "多数投票仅适用于二分类问题。",
+            "多数投票通过选择得票最多的类别来决定最终预测。",
+            "多数投票总是比加权投票效果更好。"
+          ],
+          "question_id": "q_quiz_majority_voting_v2",
+          "stem": "以下关于多数投票的说法，哪一个是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "bagging_variance_reduction",
+      "coverage_tags": [
+        "bagging_variance_reduction"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_bagging_variance",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能辨析Bagging的主要作用。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能识别Bagging通过并行训练和自助采样来降低方差。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Bagging",
+          "en": "Bootstrap Aggregating"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Bagging通过并行训练多个模型并组合它们的预测，平滑了单个模型的波动，从而降低方差。",
+          "options": [
+            "通过顺序训练模型，让后续模型关注错误样本。",
+            "通过并行训练多个模型，并对它们的预测进行平均或投票。",
+            "通过增加模型的复杂度来拟合更多数据。",
+            "通过减少训练样本的数量来简化模型。"
+          ],
+          "question_id": "q_quiz_bagging_variance_v1",
+          "stem": "Bagging 通过什么方式来降低模型的方差？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "Bagging擅长降低方差，因此最适合用于那些容易过拟合、方差较高的模型，如未剪枝的决策树。",
+          "options": [
+            "一个偏差高、方差低的线性模型",
+            "一个偏差低、方差高的未剪枝决策树",
+            "一个偏差和方差都适中的支持向量机",
+            "一个偏差高、方差高的k近邻模型"
+          ],
+          "question_id": "q_quiz_bagging_variance_v2",
+          "stem": "以下哪种模型最适合使用 Bagging 来改进？"
+        }
+      ]
+    },
+    {
+      "concept_key": "boosting_bias_reduction",
+      "coverage_tags": [
+        "boosting_bias_reduction"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_boosting_bias",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能辨析Boosting的主要作用。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能识别Boosting通过顺序学习和关注错误来降低偏差。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Boosting",
+          "en": "Boosting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Boosting顺序地训练模型，并动态调整样本权重，使后续模型更关注困难样本，从而降低整体偏差。",
+          "options": [
+            "通过并行训练多个模型，并对它们的预测进行平均。",
+            "通过顺序训练模型，让后续模型更关注之前被错分的样本。",
+            "通过减少模型的复杂度来避免过拟合。",
+            "通过增加训练数据量来提高模型性能。"
+          ],
+          "question_id": "q_quiz_boosting_bias_v1",
+          "stem": "Boosting 通过什么方式来降低模型的偏差？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Bagging通过平均多个模型的预测来降低方差，而Boosting通过逐步聚焦困难样本来降低偏差。",
+          "options": [
+            "Bagging 主要降低偏差，Boosting 主要降低方差。",
+            "Bagging 主要降低方差，Boosting 主要降低偏差。",
+            "两者都主要降低方差。",
+            "两者都主要降低偏差。"
+          ],
+          "question_id": "q_quiz_boosting_bias_v2",
+          "stem": "以下关于 Bagging 和 Boosting 的说法，哪一个是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "ada_boost_algorithm",
+      "coverage_tags": [
+        "ada_boost_algorithm"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_ada_boost",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能辨析AdaBoost的基本特点。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能识别AdaBoost是Boosting最著名的代表。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "AdaBoost",
+          "en": "Adaptive Boosting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "AdaBoost（Adaptive Boosting）是Boosting算法中最经典、最著名的代表。",
+          "options": [
+            "随机森林",
+            "AdaBoost",
+            "Bagging",
+            "主成分分析"
+          ],
+          "question_id": "q_quiz_ada_boost_v1",
+          "stem": "以下哪个算法是 Boosting 最著名的代表？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "在AdaBoost中，被错误分类的样本权重会增加，以便后续的弱学习器更关注它们。",
+          "options": [
+            "被正确分类",
+            "被错误分类",
+            "未被使用",
+            "被重复采样"
+          ],
+          "question_id": "q_quiz_ada_boost_v2",
+          "stem": "在 AdaBoost 中，如果一个样本的权重增加，说明它在上一次训练中被如何对待？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-ensemble-learning-boosting/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

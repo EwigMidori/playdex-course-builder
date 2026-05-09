@@ -1,0 +1,507 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "precision_definition_and_formula",
+      "covered_by": [
+        "qf_flash_precision_formula",
+        "qf_quiz_precision_meaning"
+      ],
+      "description": "精确率的定义与公式：Precision = TP/(TP+FP)"
+    },
+    {
+      "coverage_tag": "recall_definition_and_formula",
+      "covered_by": [
+        "qf_flash_recall_formula",
+        "qf_quiz_recall_meaning"
+      ],
+      "description": "召回率的定义与公式：Recall = TP/(TP+FN)"
+    },
+    {
+      "coverage_tag": "precision_recall_tradeoff",
+      "covered_by": [
+        "qf_quiz_precision_recall_tradeoff"
+      ],
+      "description": "精确率和召回率之间的权衡关系"
+    },
+    {
+      "coverage_tag": "precision_recall_calculation_from_confusion_matrix",
+      "covered_by": [
+        "qf_flash_calc_precision_recall",
+        "qf_quiz_calc_precision_recall"
+      ],
+      "description": "从混淆矩阵计算精确率和召回率"
+    },
+    {
+      "coverage_tag": "precision_recall_application_scenario",
+      "covered_by": [
+        "qf_quiz_scenario_choice"
+      ],
+      "description": "根据业务场景选择关注精确率还是召回率"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "precision",
+      "coverage_tags": [
+        "precision_definition_and_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_precision_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆精确率的公式及其含义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了精确率的计算公式和它所回答的问题。",
+      "question_type": "short_answer",
+      "retrieval_focus": "精确率的公式及其回答的核心问题。",
+      "term_refs": [
+        {
+          "display": "精确率",
+          "en": "Precision"
+        }
+      ],
+      "variants": [
+        {
+          "back": "Precision = TP/(TP+FP)；回答“模型说这是正类的时候，到底有多靠谱”。",
+          "estimated_seconds": 10,
+          "explanation": "精确率衡量的是所有被预测为正类的样本中，有多少是真正的正类。",
+          "front": "精确率（Precision）的公式是什么？它回答什么问题？",
+          "question_id": "q_flash_precision_formula_v1"
+        },
+        {
+          "back": "TP + FP（所有被预测为正类的样本数）。",
+          "estimated_seconds": 6,
+          "explanation": "分母是模型预测为正类的总数，包括正确预测的（TP）和错误预测的（FP）。",
+          "front": "精确率（Precision）的分母是什么？",
+          "question_id": "q_flash_precision_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "recall",
+      "coverage_tags": [
+        "recall_definition_and_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_recall_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆召回率的公式及其含义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了召回率的计算公式和它所回答的问题。",
+      "question_type": "short_answer",
+      "retrieval_focus": "召回率的公式及其回答的核心问题。",
+      "term_refs": [
+        {
+          "display": "召回率",
+          "en": "Recall"
+        }
+      ],
+      "variants": [
+        {
+          "back": "Recall = TP/(TP+FN)；回答“所有的正类样本，模型找出来了多少”。",
+          "estimated_seconds": 10,
+          "explanation": "召回率衡量的是所有真正的正类样本中，有多少被模型正确找出来了。",
+          "front": "召回率（Recall）的公式是什么？它回答什么问题？",
+          "question_id": "q_flash_recall_formula_v1"
+        },
+        {
+          "back": "TP + FN（所有真正的正类样本数）。",
+          "estimated_seconds": 6,
+          "explanation": "分母是所有实际为正类的样本总数，包括被正确找出的（TP）和被漏掉的（FN）。",
+          "front": "召回率（Recall）的分母是什么？",
+          "question_id": "q_flash_recall_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "precision_recall_calculation",
+      "coverage_tags": [
+        "precision_recall_calculation_from_confusion_matrix"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_calc_precision_recall",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据给定的 TP、FP、FN 快速计算精确率和召回率。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能从混淆矩阵的计数中计算出精确率和召回率。",
+      "question_type": "micro_calc",
+      "retrieval_focus": "从 TP、FP、FN 计算精确率和召回率。",
+      "term_refs": [
+        {
+          "display": "精确率",
+          "en": "Precision"
+        },
+        {
+          "display": "召回率",
+          "en": "Recall"
+        }
+      ],
+      "variants": [
+        {
+          "back": "Precision = 3/5, Recall = 3/4。",
+          "estimated_seconds": 12,
+          "explanation": "Precision = 3/(3+2)=3/5；Recall = 3/(3+1)=3/4。",
+          "front": "混淆矩阵：TP=3, FP=2, FN=1。精确率和召回率分别是多少？（用分数表示）",
+          "question_id": "q_flash_calc_precision_recall_v1"
+        },
+        {
+          "back": "Precision = 4/5, Recall = 4/6 = 2/3。",
+          "estimated_seconds": 12,
+          "explanation": "Precision = 4/(4+1)=4/5；Recall = 4/(4+2)=4/6=2/3。",
+          "front": "混淆矩阵：TP=4, FP=1, FN=2。精确率和召回率分别是多少？（用分数表示）",
+          "question_id": "q_flash_calc_precision_recall_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "longform_families": [
+    {
+      "concept_key": "precision_recall_explanation",
+      "coverage_tags": [
+        "precision_definition_and_formula",
+        "recall_definition_and_formula",
+        "precision_recall_tradeoff"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_explain_precision_recall",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自然语言解释精确率和召回率的含义、公式及其权衡关系。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能清晰解释精确率和召回率的定义、计算公式以及它们之间的权衡关系。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "精确率",
+          "en": "Precision"
+        },
+        {
+          "display": "召回率",
+          "en": "Recall"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "精确率的含义和公式",
+            "召回率的含义和公式",
+            "两者互相牵制的原因"
+          ],
+          "question_id": "q_long_explain_precision_recall_v1",
+          "reference_answer": [
+            "精确率（Precision）= TP/(TP+FP)，它回答的是：模型说‘这是正类’的时候，到底有多靠谱。",
+            "召回率（Recall）= TP/(TP+FN)，它回答的是：所有的正类样本，模型找出来了多少。",
+            "两者往往互相牵制：想要精确率高，就要少误报（减少FP），但可能漏掉更多正类（增加FN），导致召回率下降；想要召回率高，就要尽量找出所有正类（减少FN），但可能把很多负类也误报进来（增加FP），导致精确率下降。"
+          ],
+          "rubric_points": [
+            "精确率 = TP/(TP+FP)，回答模型预测为正类的可靠性",
+            "召回率 = TP/(TP+FN)，回答模型对正类样本的覆盖程度",
+            "提高精确率需要减少FP，可能增加FN导致召回率下降；提高召回率需要减少FN，可能增加FP导致精确率下降"
+          ],
+          "stem": "请解释精确率（Precision）和召回率（Recall）的含义，写出它们的公式，并说明为什么两者往往互相牵制。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "计算精确率",
+            "计算召回率",
+            "解释精确率反映的能力",
+            "解释召回率反映的能力"
+          ],
+          "question_id": "q_long_explain_precision_recall_v2",
+          "reference_answer": [
+            "精确率 = TP/(TP+FP) = 3/(3+2) = 3/5 = 0.6。这意味着模型预测为正类的样本中，只有60%是真正的正类，模型有40%的误报率。",
+            "召回率 = TP/(TP+FN) = 3/(3+1) = 3/4 = 0.75。这意味着模型找出了75%的真正正类样本，但漏掉了25%。",
+            "精确率反映的是模型‘说对’的能力，即预测为正类时的可信度；召回率反映的是模型‘找全’的能力，即对正类样本的覆盖程度。"
+          ],
+          "rubric_points": [
+            "精确率 = 3/(3+2)=3/5=0.6",
+            "召回率 = 3/(3+1)=3/4=0.75",
+            "精确率反映模型预测为正类的可靠性，0.6表示模型预测为正类的样本中只有60%是真正的正类",
+            "召回率反映模型对正类样本的覆盖程度，0.75表示模型找出了75%的真正正类样本"
+          ],
+          "stem": "假设你训练了一个分类模型，混淆矩阵为：TP=3, FP=2, FN=1, TN=4。请计算精确率和召回率，并解释这两个指标分别反映了模型的什么能力。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "precision",
+      "coverage_tags": [
+        "precision_definition_and_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_precision_meaning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下准确理解精确率的含义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能区分精确率与其他指标的含义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "精确率",
+          "en": "Precision"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "精确率 = TP/(TP+FP)，衡量的是模型预测为正类的样本中有多少是真正的正类。",
+          "options": [
+            "所有被预测为正类的样本中，有多少是真正的正类",
+            "所有真正的正类样本中，有多少被模型正确找出来了",
+            "所有样本中，模型预测正确的比例",
+            "所有被预测为负类的样本中，有多少是真正的负类"
+          ],
+          "question_id": "q_quiz_precision_meaning_v1",
+          "stem": "精确率（Precision）衡量的是："
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "精确率回答的是模型预测为正类的可靠性。",
+          "options": [
+            "模型说‘这是正类’的时候，到底有多靠谱？",
+            "所有的正类样本，模型找出来了多少？",
+            "模型整体上猜对了多少？",
+            "模型说‘这是负类’的时候，到底有多靠谱？"
+          ],
+          "question_id": "q_quiz_precision_meaning_v2",
+          "stem": "以下哪个问题是由精确率（Precision）来回答的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "recall",
+      "coverage_tags": [
+        "recall_definition_and_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_recall_meaning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下准确理解召回率的含义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能区分召回率与其他指标的含义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "召回率",
+          "en": "Recall"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "召回率 = TP/(TP+FN)，衡量的是模型找出了多少真正的正类样本。",
+          "options": [
+            "所有真正的正类样本中，有多少被模型正确找出来了",
+            "所有被预测为正类的样本中，有多少是真正的正类",
+            "所有样本中，模型预测正确的比例",
+            "所有被预测为负类的样本中，有多少是真正的负类"
+          ],
+          "question_id": "q_quiz_recall_meaning_v1",
+          "stem": "召回率（Recall）衡量的是："
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "召回率回答的是模型对正类样本的覆盖程度。",
+          "options": [
+            "所有的正类样本，模型找出来了多少？",
+            "模型说‘这是正类’的时候，到底有多靠谱？",
+            "模型整体上猜对了多少？",
+            "模型说‘这是负类’的时候，到底有多靠谱？"
+          ],
+          "question_id": "q_quiz_recall_meaning_v2",
+          "stem": "以下哪个问题是由召回率（Recall）来回答的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "precision_recall_tradeoff",
+      "coverage_tags": [
+        "precision_recall_tradeoff"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_precision_recall_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解精确率和召回率之间的权衡关系。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能理解提高一个指标往往会导致另一个指标下降。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "精确率",
+          "en": "Precision"
+        },
+        {
+          "display": "召回率",
+          "en": "Recall"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "精确率和召回率往往互相牵制。想要精确率高，就要少误报，但可能漏掉更多正类，导致召回率下降。",
+          "options": [
+            "提高精确率通常会导致召回率下降",
+            "提高精确率通常会导致召回率也提高",
+            "精确率和召回率总是相等的",
+            "精确率和召回率之间没有关系"
+          ],
+          "question_id": "q_quiz_precision_recall_tradeoff_v1",
+          "stem": "关于精确率和召回率的关系，以下哪项描述是正确的？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "想要召回率高，就要尽量找出所有正类，但可能把很多负类也误报进来，导致FP增加，精确率下降。",
+          "options": [
+            "误报（FP）增加，导致精确率下降",
+            "漏报（FN）增加，导致精确率下降",
+            "真正例（TP）减少，导致精确率下降",
+            "真负例（TN）增加，导致精确率下降"
+          ],
+          "question_id": "q_quiz_precision_recall_tradeoff_v2",
+          "stem": "如果一个模型想要提高召回率，最可能出现的副作用是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "precision_recall_calculation",
+      "coverage_tags": [
+        "precision_recall_calculation_from_confusion_matrix"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_calc_precision_recall",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据混淆矩阵计算精确率和召回率。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能从混淆矩阵的计数中正确计算出精确率和召回率。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "精确率",
+          "en": "Precision"
+        },
+        {
+          "display": "召回率",
+          "en": "Recall"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "Precision = 3/(3+3)=3/6=1/2；Recall = 3/(3+2)=3/5。",
+          "options": [
+            "Precision=1/2, Recall=3/5",
+            "Precision=3/5, Recall=1/2",
+            "Precision=3/5, Recall=3/5",
+            "Precision=1/2, Recall=1/2"
+          ],
+          "question_id": "q_quiz_calc_precision_recall_v1",
+          "stem": "一个分类模型的混淆矩阵为：TP=3, FP=3, FN=2, TN=2。该模型的精确率和召回率分别是多少？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "Precision = 4/(4+1)=4/5；Recall = 4/(4+2)=4/6=2/3。",
+          "options": [
+            "Precision=4/5, Recall=2/3",
+            "Precision=2/3, Recall=4/5",
+            "Precision=4/5, Recall=4/5",
+            "Precision=2/3, Recall=2/3"
+          ],
+          "question_id": "q_quiz_calc_precision_recall_v2",
+          "stem": "一个分类模型的混淆矩阵为：TP=4, FP=1, FN=2, TN=3。该模型的精确率和召回率分别是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "precision_recall_application",
+      "coverage_tags": [
+        "precision_recall_application_scenario"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_scenario_choice",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据业务场景选择应该关注精确率还是召回率。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能根据业务需求判断哪个指标更重要。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "精确率",
+          "en": "Precision"
+        },
+        {
+          "display": "召回率",
+          "en": "Recall"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "漏掉病人是FN，召回率 = TP/(TP+FN)，关注召回率意味着尽量减少FN。",
+          "options": [
+            "召回率",
+            "精确率",
+            "准确率",
+            "精确率和召回率都不重要"
+          ],
+          "question_id": "q_quiz_scenario_choice_v1",
+          "stem": "在癌症筛查中，漏掉一个病人（FN）比误报一次（FP）严重得多。应该更关注哪个指标？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "误报正常邮件是FP，精确率 = TP/(TP+FP)，关注精确率意味着尽量减少FP。",
+          "options": [
+            "精确率",
+            "召回率",
+            "准确率",
+            "精确率和召回率都不重要"
+          ],
+          "question_id": "q_quiz_scenario_choice_v2",
+          "stem": "在垃圾邮件过滤中，把正常邮件误判为垃圾邮件（FP）比漏掉一封垃圾邮件（FN）更糟糕。应该更关注哪个指标？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-performance-evaluation/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

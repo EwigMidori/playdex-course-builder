@@ -1,0 +1,467 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "isomap_definition",
+      "covered_by": [
+        "qf_flash_isomap_def",
+        "qf_quiz_isomap_mds_diff"
+      ],
+      "description": "Isomap 的定义：MDS 的非线性推广，在测地距离空间中进行多维缩放。"
+    },
+    {
+      "coverage_tag": "geodesic_distance",
+      "covered_by": [
+        "qf_flash_geodesic_def",
+        "qf_quiz_geodesic_vs_euclidean"
+      ],
+      "description": "测地距离：沿着流形表面的最短路径距离，而非直线欧氏距离。"
+    },
+    {
+      "coverage_tag": "isomap_procedure",
+      "covered_by": [
+        "qf_flash_isomap_steps",
+        "qf_quiz_isomap_procedure"
+      ],
+      "description": "Isomap 的步骤：找近邻、计算测地距离矩阵、执行 MDS。"
+    },
+    {
+      "coverage_tag": "mds_limitation",
+      "covered_by": [
+        "qf_quiz_mds_limitation"
+      ],
+      "description": "MDS 使用直线距离，对非线性流形（如瑞士卷）无效。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "isomap_definition",
+      "coverage_tags": [
+        "isomap_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_isomap_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 Isomap 的定义：它是 MDS 的非线性推广，在测地距离空间中进行多维缩放。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了 Isomap 的核心定义及其与 MDS 的关系。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Isomap 相对于经典 MDS 的关键改进：在测地距离空间中进行 MDS。",
+      "term_refs": [
+        {
+          "display": "等距映射",
+          "en": "Isomap"
+        },
+        {
+          "display": "多维缩放",
+          "en": "Multidimensional Scaling (MDS)"
+        },
+        {
+          "display": "测地距离",
+          "en": "geodesic distance"
+        }
+      ],
+      "variants": [
+        {
+          "back": "Isomap 是经典 MDS 的非线性推广，它在测地距离空间中执行 MDS。",
+          "estimated_seconds": 10,
+          "explanation": "Isomap 的核心创新是用测地距离代替欧氏距离，然后对测地距离矩阵应用 MDS。",
+          "front": "Isomap 是哪种降维方法的非线性推广？它在哪里执行 MDS？",
+          "question_id": "q_flash_isomap_def_v1"
+        },
+        {
+          "back": "MDS 使用欧氏距离，Isomap 使用测地距离。",
+          "estimated_seconds": 8,
+          "explanation": "测地距离沿着流形表面，欧氏距离是直线，对非线性流形，欧氏距离会穿透曲面。",
+          "front": "Isomap 与经典 MDS 在距离定义上的关键区别是什么？",
+          "question_id": "q_flash_isomap_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "geodesic_distance",
+      "coverage_tags": [
+        "geodesic_distance"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_geodesic_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出测地距离的定义：沿着流形表面的最短路径距离。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了测地距离的基本概念及其与欧氏距离的区别。",
+      "question_type": "short_answer",
+      "retrieval_focus": "测地距离的准确定义：沿着流形表面，而非直线。",
+      "term_refs": [
+        {
+          "display": "测地距离",
+          "en": "geodesic distance"
+        }
+      ],
+      "variants": [
+        {
+          "back": "沿着流形表面的最短路径距离。",
+          "estimated_seconds": 6,
+          "explanation": "测地距离不是直线距离，而是沿着曲面走的最短路径。",
+          "front": "测地距离的定义是什么？",
+          "question_id": "q_flash_geodesic_def_v1"
+        },
+        {
+          "back": "欧氏距离是直线，会穿透曲面；测地距离沿着流形表面，不会穿透。",
+          "estimated_seconds": 10,
+          "explanation": "这是 Isomap 能展开瑞士卷的关键原因。",
+          "front": "在瑞士卷数据上，测地距离与欧氏距离有什么本质不同？",
+          "question_id": "q_flash_geodesic_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "isomap_procedure",
+      "coverage_tags": [
+        "isomap_procedure"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_isomap_steps",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能按顺序说出 Isomap 的三个主要步骤。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了 Isomap 算法的基本流程。",
+      "question_type": "next_step",
+      "retrieval_focus": "Isomap 算法的三个步骤：找近邻、计算测地距离矩阵、执行 MDS。",
+      "term_refs": [
+        {
+          "display": "等距映射",
+          "en": "Isomap"
+        }
+      ],
+      "variants": [
+        {
+          "back": "找到每个数据点的近邻。",
+          "estimated_seconds": 6,
+          "explanation": "与 LLE 类似，Isomap 首先需要确定每个点的局部邻域。",
+          "front": "Isomap 的第一步是什么？",
+          "question_id": "q_flash_isomap_steps_v1"
+        },
+        {
+          "back": "计算所有点对之间的测地距离（例如最短路径距离）。",
+          "estimated_seconds": 8,
+          "explanation": "这是 Isomap 的核心步骤，用测地距离矩阵代替欧氏距离矩阵。",
+          "front": "Isomap 的第二步是什么？",
+          "question_id": "q_flash_isomap_steps_v2"
+        },
+        {
+          "back": "通过 MDS 对测地距离矩阵进行嵌入。",
+          "estimated_seconds": 8,
+          "explanation": "最后一步是对测地距离矩阵应用经典 MDS 算法。",
+          "front": "Isomap 的第三步是什么？",
+          "question_id": "q_flash_isomap_steps_v3"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "longform_families": [
+    {
+      "concept_key": "isomap_mechanism",
+      "coverage_tags": [
+        "isomap_definition",
+        "geodesic_distance",
+        "isomap_procedure",
+        "mds_limitation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_isomap_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释 Isomap 的工作原理，包括它如何解决 MDS 的局限性。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了 Isomap 的完整机制：从 MDS 的局限性到测地距离的引入，再到算法步骤。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "等距映射",
+          "en": "Isomap"
+        },
+        {
+          "display": "测地距离",
+          "en": "geodesic distance"
+        },
+        {
+          "display": "多维缩放",
+          "en": "MDS"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "MDS 失效的原因",
+            "Isomap 引入的关键概念",
+            "Isomap 的主要步骤"
+          ],
+          "question_id": "q_long_isomap_explain_v1",
+          "reference_answer": [
+            "MDS 失效是因为它保持所有点对之间的欧氏距离，对于瑞士卷这种卷曲的非线性流形，直线距离会穿透不同层，导致结构破坏。",
+            "Isomap 引入了测地距离的概念，即沿着流形表面的最短路径距离，而不是直线距离。",
+            "Isomap 的步骤是：1) 找到每个数据点的近邻；2) 计算所有点对之间的测地距离（例如通过最短路径算法）；3) 对测地距离矩阵执行经典 MDS 进行嵌入。"
+          ],
+          "rubric_points": [
+            "指出 MDS 使用欧氏距离，对非线性流形会穿透曲面",
+            "指出 Isomap 引入测地距离（沿着流形表面的最短路径）",
+            "正确列出 Isomap 的三个步骤：找近邻、计算测地距离矩阵、执行 MDS"
+          ],
+          "stem": "请解释 Isomap 是如何解决 MDS 对非线性流形（如瑞士卷）失效的问题的。你的回答应包括：\n1. MDS 失效的原因\n2. Isomap 引入的关键概念\n3. Isomap 的主要步骤"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "距离度量的区别",
+            "对结果的影响",
+            "算法流程"
+          ],
+          "question_id": "q_long_isomap_explain_v2",
+          "reference_answer": [
+            "MDS 使用欧氏距离（直线），Isomap 使用测地距离（沿着流形表面的最短路径）。",
+            "对卷曲流形，欧氏距离会穿透不同层，导致降维后结构混乱；测地距离沿着曲面走，能正确反映数据的内在几何结构。",
+            "Isomap 的流程：1) 确定每个点的近邻；2) 计算所有点对之间的测地距离；3) 对测地距离矩阵应用 MDS 得到低维嵌入。"
+          ],
+          "rubric_points": [
+            "正确区分 MDS 使用欧氏距离，Isomap 使用测地距离",
+            "解释欧氏距离会穿透曲面，测地距离沿着曲面走",
+            "正确描述 Isomap 的三个步骤"
+          ],
+          "stem": "假设你有一个卷曲的流形数据集（类似瑞士卷），请解释为什么 Isomap 比 MDS 更适合处理这类数据。你的回答应包括：\n1. 两种方法在距离度量上的区别\n2. 这种区别对结果的影响\n3. Isomap 的算法流程"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "isomap_definition",
+      "coverage_tags": [
+        "isomap_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_isomap_mds_diff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析 Isomap 与 MDS 在距离定义上的关键区别。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了 Isomap 相对于 MDS 的核心改进。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "等距映射",
+          "en": "Isomap"
+        },
+        {
+          "display": "多维缩放",
+          "en": "MDS"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "MDS 使用欧氏距离，Isomap 使用测地距离（沿着流形表面的最短路径）。",
+          "options": [
+            "Isomap 使用欧氏距离，MDS 使用测地距离",
+            "Isomap 使用测地距离，MDS 使用欧氏距离",
+            "两者都使用欧氏距离",
+            "两者都使用测地距离"
+          ],
+          "question_id": "q_quiz_isomap_mds_diff_v1",
+          "stem": "Isomap 与经典 MDS 在距离定义上的关键区别是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "瑞士卷是卷曲的，欧氏距离会穿透不同层，测地距离沿着曲面走，能正确反映数据的内在结构。",
+          "options": [
+            "测地距离计算更快",
+            "欧氏距离会穿透卷曲的曲面，测地距离沿着曲面走",
+            "测地距离总是比欧氏距离短",
+            "欧氏距离无法计算"
+          ],
+          "question_id": "q_quiz_isomap_mds_diff_v2",
+          "stem": "为什么 Isomap 用测地距离代替欧氏距离对瑞士卷数据至关重要？"
+        }
+      ]
+    },
+    {
+      "concept_key": "geodesic_distance",
+      "coverage_tags": [
+        "geodesic_distance"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_geodesic_vs_euclidean",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分测地距离与欧氏距离的概念。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了测地距离与欧氏距离的本质区别。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "测地距离",
+          "en": "geodesic distance"
+        },
+        {
+          "display": "欧氏距离",
+          "en": "Euclidean distance"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "测地距离沿着流形表面，欧氏距离是直线。对瑞士卷，欧氏距离会穿透曲面，测地距离沿着曲面走。",
+          "options": [
+            "它们是一样的",
+            "测地距离沿着流形表面，欧氏距离是直线",
+            "测地距离更短",
+            "欧氏距离更准确"
+          ],
+          "question_id": "q_quiz_geodesic_vs_euclidean_v1",
+          "stem": "测地距离与欧氏距离有什么区别？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "测地距离沿着流形表面，欧氏距离是直线，会穿透卷曲的曲面。",
+          "options": [
+            "测地距离和欧氏距离相等",
+            "测地距离沿着曲面，欧氏距离穿透曲面",
+            "欧氏距离沿着曲面，测地距离穿透曲面",
+            "两者都穿透曲面"
+          ],
+          "question_id": "q_quiz_geodesic_vs_euclidean_v2",
+          "stem": "在瑞士卷数据上，以下哪种说法正确？"
+        }
+      ]
+    },
+    {
+      "concept_key": "isomap_procedure",
+      "coverage_tags": [
+        "isomap_procedure"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_isomap_procedure",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能按正确顺序排列 Isomap 的步骤。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了 Isomap 算法的执行流程。",
+      "question_type": "ordering",
+      "term_refs": [
+        {
+          "display": "等距映射",
+          "en": "Isomap"
+        }
+      ],
+      "variants": [
+        {
+          "answer": [
+            2,
+            0,
+            1
+          ],
+          "estimated_seconds": 20,
+          "explanation": "正确的顺序是：先找近邻，再计算测地距离矩阵，最后执行 MDS。",
+          "options": [
+            "A. 计算所有点对之间的测地距离",
+            "B. 通过 MDS 嵌入",
+            "C. 找到每个数据点的近邻"
+          ],
+          "question_id": "q_quiz_isomap_procedure_v1",
+          "stem": "请将 Isomap 的步骤按正确顺序排列："
+        },
+        {
+          "answer": [
+            1,
+            2,
+            0
+          ],
+          "estimated_seconds": 20,
+          "explanation": "正确的顺序是：先找近邻，再计算测地距离矩阵，最后执行 MDS。",
+          "options": [
+            "A. 通过 MDS 嵌入",
+            "B. 找到每个数据点的近邻",
+            "C. 计算所有点对之间的测地距离"
+          ],
+          "question_id": "q_quiz_isomap_procedure_v2",
+          "stem": "Isomap 算法的正确步骤顺序是："
+        }
+      ]
+    },
+    {
+      "concept_key": "mds_limitation",
+      "coverage_tags": [
+        "mds_limitation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_mds_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别 MDS 对非线性流形失效的根本原因。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了 MDS 使用直线距离的局限性。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "多维缩放",
+          "en": "MDS"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "MDS 保持所有点对之间的欧氏距离，但瑞士卷是卷曲的，直线距离会穿透不同层，导致结构破坏。",
+          "options": [
+            "MDS 计算太慢",
+            "MDS 保持的是直线距离，会穿透卷曲的曲面",
+            "MDS 需要太多数据",
+            "MDS 是线性方法"
+          ],
+          "question_id": "q_quiz_mds_limitation_v1",
+          "stem": "MDS 在展开瑞士卷时失败的根本原因是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "Isomap 用测地距离（沿着流形表面）代替欧氏距离（直线），避免了穿透曲面。",
+          "options": [
+            "使用核技巧",
+            "用测地距离代替欧氏距离",
+            "使用线性投影",
+            "增加近邻数"
+          ],
+          "question_id": "q_quiz_mds_limitation_v2",
+          "stem": "Isomap 通过什么方式解决了 MDS 对瑞士卷数据失效的问题？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-dimension-reduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

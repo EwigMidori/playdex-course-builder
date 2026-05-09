@@ -1,0 +1,271 @@
+{
+  "chapter_id": "lecture-01-knn",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "k值大小对分类的影响",
+      "covered_by": [
+        "qf_flash_k_effect",
+        "qf_quiz_k_effect",
+        "qf_long_k_effect"
+      ],
+      "description": "来自 lesson_map step4 概念：k 值大小对分类的影响。包括 k=1 与更大 k 值的对比，决策边界复杂度，过拟合与欠拟合，以及 k 值过大破坏局部性的问题。"
+    },
+    {
+      "coverage_tag": "决策边界与k值的关系",
+      "covered_by": [
+        "qf_flash_k_effect",
+        "qf_quiz_k_effect"
+      ],
+      "description": "来自 guided_story step4 内容：1-NN 决策边界复杂，增大 k 值决策边界变平滑。"
+    },
+    {
+      "coverage_tag": "kNN超参数调优",
+      "covered_by": [
+        "qf_flash_k_effect",
+        "qf_quiz_k_effect",
+        "qf_long_k_effect"
+      ],
+      "description": "来自 guided_story step4 内容：k 是超参数，太小过拟合，太大欠拟合。"
+    },
+    {
+      "coverage_tag": "kNN概率信息",
+      "covered_by": [
+        "qf_quiz_k_effect"
+      ],
+      "description": "来自 guided_story step4 内容：增大 k 值可提供概率信息（如置信度）。"
+    },
+    {
+      "coverage_tag": "kNN局部性",
+      "covered_by": [
+        "qf_flash_k_effect",
+        "qf_long_k_effect"
+      ],
+      "description": "来自 guided_story step4 内容：k 值过大破坏局部性，远处样本参与投票。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "k_effect",
+      "coverage_tags": [
+        "k值大小对分类的影响",
+        "决策边界与k值的关系",
+        "kNN超参数调优",
+        "kNN局部性"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_k_effect",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述 k 值变化对 kNN 分类器决策边界、过拟合/欠拟合和局部性的影响。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了 k 值作为超参数如何影响 kNN 的行为，包括决策边界平滑度、噪声敏感性和局部性。",
+      "question_type": "short_answer",
+      "retrieval_focus": "这组闪卡要求学生主动提取 k 值大小对 kNN 分类器核心特性的影响。",
+      "term_refs": [
+        {
+          "display": "决策边界",
+          "en": "Decision Boundary"
+        },
+        {
+          "display": "K近邻",
+          "en": "k-Nearest Neighbor"
+        }
+      ],
+      "variants": [
+        {
+          "back": "非常复杂，紧贴训练数据。",
+          "estimated_seconds": 8,
+          "explanation": "1-NN 的决策边界完全由最近邻决定，因此会紧贴每个训练样本，形成非常复杂的边界。",
+          "front": "kNN 中，k=1 时的决策边界有什么特点？",
+          "question_id": "q_flash_k_effect_v1"
+        },
+        {
+          "back": "决策边界变得更平滑。",
+          "estimated_seconds": 8,
+          "explanation": "增大 k 值意味着考虑更多邻居进行投票，减少了单个样本的影响，因此决策边界更平滑。",
+          "front": "增大 k 值对 kNN 的决策边界有什么影响？",
+          "question_id": "q_flash_k_effect_v2"
+        },
+        {
+          "back": "过拟合（对噪声敏感）。",
+          "estimated_seconds": 8,
+          "explanation": "k 值太小（如 k=1）时，模型完全依赖最近的一个邻居，如果该邻居是噪声点，分类就会出错，导致过拟合。",
+          "front": "kNN 中，k 值太小容易导致什么问题？",
+          "question_id": "q_flash_k_effect_v3"
+        },
+        {
+          "back": "破坏局部性，所有未知样本都被分到样本最多的类别。",
+          "estimated_seconds": 10,
+          "explanation": "k 值过大时，远处的样本也被拉进来投票，破坏了局部性。如果 k 等于整个训练集的大小，所有未知样本都会被分到样本最多的那个类别，毫无意义。",
+          "front": "kNN 中，k 值太大（如等于训练集大小）会有什么后果？",
+          "question_id": "q_flash_k_effect_v4"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-knn",
+  "longform_families": [
+    {
+      "concept_key": "k_effect",
+      "coverage_tags": [
+        "k值大小对分类的影响",
+        "kNN超参数调优",
+        "kNN局部性"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_k_effect",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能系统地比较 k 值大小对 kNN 分类器的影响，包括决策边界、过拟合/欠拟合、局部性和概率信息，并能解释为什么 k 是一个需要调优的超参数。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能综合分析 k 值作为超参数对 kNN 行为的多方面影响，并理解其作为超参数需要调优的原因。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "决策边界",
+          "en": "Decision Boundary"
+        },
+        {
+          "display": "K近邻",
+          "en": "k-Nearest Neighbor"
+        },
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        },
+        {
+          "display": "欠拟合",
+          "en": "Underfitting"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "决策边界",
+            "对噪声的敏感性",
+            "概率信息获取",
+            "局部性"
+          ],
+          "question_id": "q_long_k_effect_v1",
+          "reference_answer": [
+            "决策边界：k=1 的决策边界非常复杂，紧贴训练数据；k=5 的决策边界更平滑，因为考虑了更多邻居进行投票。",
+            "对噪声的敏感性：k=1 对噪声非常敏感，一个异常点就可能改变分类结果；k=5 对噪声更鲁棒，因为多个邻居投票可以抵消单个噪声点的影响。",
+            "概率信息获取：k=1 只能给出硬分类结果，无法提供置信度；k=5 可以给出概率信息，例如 5 个邻居中有 4 个属于 A 类，置信度为 80%。",
+            "局部性：k=1 完全依赖局部信息（最近的一个点）；k=5 仍然保持局部性，但范围稍大，如果 k 值过大（如等于训练集大小），局部性会被破坏。"
+          ],
+          "rubric_points": [
+            "正确描述 k=1 决策边界复杂，k=5 更平滑",
+            "正确指出 k=1 对噪声敏感，k=5 更鲁棒",
+            "正确指出 k=5 能提供概率信息（如 3/5 置信度），k=1 不能",
+            "正确指出 k=5 仍保持局部性，但比 k=1 更弱"
+          ],
+          "stem": "请比较 k=1 和 k=5 在 kNN 分类器中的区别。从决策边界、对噪声的敏感性、概率信息获取和局部性四个方面进行对比分析。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "过拟合角度",
+            "欠拟合角度",
+            "局部性角度",
+            "具体例子"
+          ],
+          "question_id": "q_long_k_effect_v2",
+          "reference_answer": [
+            "过拟合角度：k 值太小（如 k=1）时，模型完全依赖最近的一个邻居。如果该邻居是噪声点，分类就会出错，导致过拟合。模型在训练数据上表现很好，但在新数据上泛化能力差。",
+            "欠拟合角度：k 值太大（如 k=50，训练集有 100 个样本）时，决策边界过于平滑，丢失了数据的局部结构。模型无法捕捉到类别之间的细微差异，导致欠拟合。",
+            "局部性角度：k 值过大时，远处的样本也被拉进来投票，破坏了 kNN 的核心优势——局部性。如果 k 等于整个训练集的大小，所有未知样本都会被分到样本最多的那个类别，完全失去分类意义。",
+            "具体例子：假设一个二分类问题，类别 A 有 60 个样本，类别 B 有 40 个样本。如果 k=100（等于训练集大小），所有未知样本都会被分到类别 A，无论它实际上离类别 B 有多近。"
+          ],
+          "rubric_points": [
+            "正确解释 k 太小导致过拟合（对噪声敏感）",
+            "正确解释 k 太大导致欠拟合（决策边界过于平滑，丢失细节）",
+            "正确解释 k 太大破坏局部性（远处样本参与投票）",
+            "给出一个合理的具体例子"
+          ],
+          "stem": "解释为什么 k 是 kNN 中需要调优的超参数。请从过拟合、欠拟合和局部性三个角度说明，并给出一个具体的例子说明 k 值选择不当的后果。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "k_effect",
+      "coverage_tags": [
+        "k值大小对分类的影响",
+        "决策边界与k值的关系",
+        "kNN超参数调优",
+        "kNN概率信息"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_k_effect",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析不同 k 值对 kNN 分类结果的影响，并理解 k 作为超参数的意义。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能应用 k 值影响的知识，判断不同 k 值下的分类行为，并识别过拟合与欠拟合。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "K近邻",
+          "en": "k-Nearest Neighbor"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "1-NN 完全依赖最近的一个邻居，如果它是噪声，分类就会出错。这是 k 值太小导致过拟合的典型表现。",
+          "options": [
+            "分类结果不受影响，因为只依赖一个邻居",
+            "分类结果会出错，因为模型完全依赖这个噪声点",
+            "决策边界会变得更平滑",
+            "模型会自动忽略这个噪声点"
+          ],
+          "question_id": "q_quiz_k_effect_v1",
+          "stem": "在 kNN 分类器中，如果 k=1 且最近邻恰好是一个噪声点，以下哪个描述最准确？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "增大 k 值会使决策边界更平滑，同时还能得到概率信息——比如 5 个邻居中有 4 个属于 A 类，置信度就是 80%。",
+          "options": [
+            "训练速度更快",
+            "决策边界更平滑，并能提供概率信息",
+            "存储需求降低",
+            "对高维数据更鲁棒"
+          ],
+          "question_id": "q_quiz_k_effect_v2",
+          "stem": "增大 k 值对 kNN 分类器的主要好处是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "k 值过大时，远处的样本也被拉进来投票，破坏了“局部性”。如果 k 等于整个训练集的大小，所有未知样本都会被分到样本最多的那个类别。",
+          "options": [
+            "训练时间急剧增加",
+            "决策边界变得过于复杂",
+            "破坏了局部性，远处样本也参与投票",
+            "无法处理多分类问题"
+          ],
+          "question_id": "q_quiz_k_effect_v3",
+          "stem": "在 kNN 中，k 值过大（如接近训练集大小）的主要问题是什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-knn/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

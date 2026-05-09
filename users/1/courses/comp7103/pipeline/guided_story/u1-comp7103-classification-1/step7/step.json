@@ -1,0 +1,142 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "前面的例子中，所有特征都是离散的。",
+        "但现实中很多特征是连续的，比如收入。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "discretization"
+      ],
+      "id": "s056",
+      "introduced_terms": [
+        "discretization"
+      ],
+      "lines": [
+        "一种方法是<term id=\"discretization\">离散化</term>。",
+        "比如把收入分成：低、中、高三档。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "split_point"
+      ],
+      "id": "s057",
+      "introduced_terms": [
+        "split_point"
+      ],
+      "lines": [
+        "另一种方法是找一个<term id=\"split_point\">分裂点</term>。",
+        "比如：收入 < 80K 和 收入 >= 80K。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "split_point"
+      ],
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [
+        "算法会尝试所有可能的分裂点，",
+        "选择使不纯度降低最多的那个。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "decision_boundary"
+      ],
+      "id": "s059",
+      "introduced_terms": [
+        "decision_boundary"
+      ],
+      "lines": [
+        "决策树的每个测试都对应一条<term id=\"decision_boundary\">决策边界</term>。",
+        "这些边界都是与坐标轴平行的直线。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "decision_boundary"
+      ],
+      "id": "s060",
+      "introduced_terms": [],
+      "lines": [
+        "比如“年龄 < 30”就是一条垂直于年龄轴的线。",
+        "所以决策树的边界是“矩形”的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "decision_boundary"
+      ],
+      "id": "s061",
+      "introduced_terms": [],
+      "lines": [
+        "这既是优点（可解释性强），也是局限。",
+        "对于边界是斜线或曲线的问题，决策树需要很多层才能近似。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "explanation": "因为每个内部节点的测试只基于一个特征，所以边界总是平行于坐标轴的直线，组合起来形成矩形区域。",
+        "kind": "short_reflection",
+        "prompt": "为什么说决策树的决策边界是“矩形”的？请用一句话解释。"
+      },
+      "focus_terms": [
+        "decision_boundary"
+      ],
+      "id": "s062",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "Continuous attributes can be handled by discretization or by finding split points. Decision trees create rectilinear decision boundaries.",
+    "related": [
+      "decision tree",
+      "overfitting"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "decision_boundary": {
+      "aliases": [
+        "Decision Boundary"
+      ],
+      "display": "决策边界",
+      "gloss": "分类模型中，用于区分不同类别的边界。"
+    },
+    "discretization": {
+      "aliases": [
+        "Discretization"
+      ],
+      "display": "离散化",
+      "gloss": "将连续数值属性转换为离散类别属性的过程。"
+    },
+    "split_point": {
+      "aliases": [
+        "Split Point"
+      ],
+      "display": "分裂点",
+      "gloss": "用于将连续属性划分为两个区间的阈值。"
+    }
+  }
+}

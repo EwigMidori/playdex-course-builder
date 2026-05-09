@@ -1,0 +1,228 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [
+        "LDA 的数学需要两个关键矩阵。",
+        "先通过几何图形来理解它们。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "想象两个类别的点集：",
+        "类别 A 的点集中在 (0,0) 附近，类别 B 的点集中在 (5,0) 附近。",
+        "每个类别内部的点都比较集中（类内散度小），两个类别之间距离较远（类间散度大）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "每个类别内部点集中，所以类内散度小；两个类别均值距离远，所以类间散度大。",
+        "kind": "single_choice",
+        "options": [
+          "类内散度小，类间散度大",
+          "类内散度大，类间散度小",
+          "两者都大",
+          "两者都小"
+        ],
+        "prompt": "在上述场景中，类内散度（每个类别内部的分散程度）和类间散度（两个类别均值之间的距离）分别如何？"
+      },
+      "focus_terms": [],
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "在上述场景中，类内散度（每个类别内部的分散程度）和类间散度（两个类别均值之间的距离）分别如何？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "within_class_scatter"
+      ],
+      "id": "s050",
+      "introduced_terms": [
+        "within_class_scatter"
+      ],
+      "lines": [
+        "第一个关键矩阵：<term id=\"within_class_scatter\">类内散度矩阵</term> \\(S_W\\)。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s051",
+      "introduced_terms": [],
+      "lines": [
+        "\\(S_W\\) 衡量每个类别内部的数据有多分散。",
+        "它等于所有类别的协方差矩阵之和。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "between_class_scatter"
+      ],
+      "id": "s052",
+      "introduced_terms": [
+        "between_class_scatter"
+      ],
+      "lines": [
+        "第二个：<term id=\"between_class_scatter\">类间散度矩阵</term> \\(S_B\\)。",
+        "它衡量不同类别的均值之间有多分散。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "如果两类中心位置不变，但每一类内部都被拉得更散，那么变化最大的是类内散度矩阵 \\(S_W\\)。这会让 Fisher 比值变小，分类更难。",
+        "kind": "single_choice",
+        "options": [
+          "类内散度矩阵 \\(S_W\\)",
+          "类间散度矩阵 \\(S_B\\)",
+          "两者都不变",
+          "两者都会变成 0"
+        ],
+        "prompt": "现在做个诊断：如果两类中心位置不变，但每一类内部的点都被拉得更散，LDA 里哪个量会明显变大？"
+      },
+      "focus_terms": [
+        "within_class_scatter",
+        "between_class_scatter"
+      ],
+      "id": "s052b",
+      "introduced_terms": [],
+      "lines": [
+        "现在做个诊断：如果两类中心位置不变，但每一类内部的点都被拉得更散，LDA 里哪个量会明显变大？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "J(\\mathbf{w}) = \\frac{\\mathbf{w}^T S_B \\mathbf{w}}{\\mathbf{w}^T S_W \\mathbf{w}}",
+        "spoken": "最大化这个比值，就是 LDA 的目标。"
+      },
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "Fisher 准则可以写成矩阵形式："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "generalized_eigenvalue_problem"
+      ],
+      "id": "s054",
+      "introduced_terms": [
+        "generalized_eigenvalue_problem"
+      ],
+      "lines": [
+        "求解这个优化问题，会得到一个<term id=\"generalized_eigenvalue_problem\">广义特征值问题</term>：",
+        "\\(S_B \\mathbf{w} = \\lambda S_W \\mathbf{w}\\)。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "对于二分类问题，解可以简化：",
+        "\\(\\mathbf{w} = S_W^{-1}(\\boldsymbol{\\mu}_2 - \\boldsymbol{\\mu}_1)\\)。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s056",
+      "introduced_terms": [],
+      "lines": [
+        "也就是说，LDA 的投影方向，",
+        "由类内散度的逆矩阵乘以类均值差来决定。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": "类间散度，类内散度",
+        "explanation": "分子是类间散度（\\(S_B\\)），分母是类内散度（\\(S_W\\)）。",
+        "kind": "fill_in_blank",
+        "prompt": "LDA 优化目标 \\(J(\\mathbf{w})\\) 的分子是______散度，分母是______散度。"
+      },
+      "focus_terms": [],
+      "id": "s057",
+      "introduced_terms": [],
+      "lines": [
+        "LDA 的优化目标 \\(J(\\mathbf{w})\\) 的分子和分母分别代表什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "类内散度矩阵 S_W 衡量每个类别内部的分散程度，类间散度矩阵 S_B 衡量不同类别均值之间的分散程度。",
+        "kind": "single_choice",
+        "options": [
+          "S_W 衡量类内分散，S_B 衡量类间分散",
+          "S_W 衡量类间分散，S_B 衡量类内分散",
+          "两者都衡量类内分散",
+          "两者都衡量类间分散"
+        ],
+        "prompt": "在 LDA 中，类内散度矩阵 S_W 和类间散度矩阵 S_B 分别衡量什么？"
+      },
+      "focus_terms": [],
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [
+        "在 LDA 中，类内散度矩阵 S_W 和类间散度矩阵 S_B 分别衡量什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "PCA and LDA lecture material",
+    "related": [
+      "LDA formulation",
+      "scatter matrices"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "between_class_scatter": {
+      "aliases": [
+        "Between-class Scatter Matrix",
+        "S_B"
+      ],
+      "display": "类间散度矩阵",
+      "gloss": "衡量不同类别均值之间分散程度的矩阵。"
+    },
+    "generalized_eigenvalue_problem": {
+      "aliases": [
+        "Generalized Eigenvalue Problem"
+      ],
+      "display": "广义特征值问题",
+      "gloss": "形如 \\(S_B w = \\lambda S_W w\\) 的特征值问题，LDA 的优化解满足此方程。"
+    },
+    "within_class_scatter": {
+      "aliases": [
+        "Within-class Scatter Matrix",
+        "S_W"
+      ],
+      "display": "类内散度矩阵",
+      "gloss": "衡量每个类别内部数据点分散程度的矩阵。"
+    }
+  }
+}

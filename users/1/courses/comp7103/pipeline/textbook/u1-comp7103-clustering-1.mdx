@@ -1,0 +1,576 @@
+---
+lessonId: u1-comp7103-clustering-1
+title: 聚类分析（Clustering 1）
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["cluster_analysis_definition", "unsupervised_learning", "why_clustering_summarization", "why_clustering_outlier_detection"]
+    linkedSteps: ["step1"]
+  - sectionId: global-concept-map
+    title: 全局概念地图
+    coverageTags: ["cluster_analysis_definition", "partitional_clustering_definition", "hierarchical_clustering_definition"]
+    linkedSteps: ["step1", "step2"]
+  - sectionId: partitional-vs-hierarchical
+    title: 两种基本分组风格：划分式与层次式
+    coverageTags: ["partitional_clustering_definition", "hierarchical_clustering_definition", "dendrogram_definition", "partitional_vs_hierarchical_scenario"]
+    linkedSteps: ["step2"]
+  - sectionId: k-means-algorithm
+    title: K-means：用质心实现划分式聚类
+    coverageTags: ["k_means_algorithm", "centroid_definition", "k_means_partitional", "k_means_convergence", "k_means_manual_simulation"]
+    linkedSteps: ["step3"]
+  - sectionId: initial-centroids-and-sse
+    title: 初始质心的影响与误差平方和
+    coverageTags: ["initial_centroid_importance", "sse_definition_and_use", "solutions_initial_centroids", "bisecting_k_means"]
+    linkedSteps: ["step4"]
+  - sectionId: limitations-and-k-medoids
+    title: K-means的局限与K-medoids的改进
+    coverageTags: ["limitations_of_k_means", "k_medoids_definition", "medoid_definition", "k_medoids_robustness"]
+    linkedSteps: ["step5"]
+  - sectionId: inter-cluster-similarity
+    title: 如何定义簇间距离：四种方法及其影响
+    coverageTags: ["inter_cluster_similarity_definition", "single_linkage_min", "complete_linkage_max", "group_average", "centroid_distance", "impact_on_cluster_shape"]
+    linkedSteps: ["step6"]
+  - sectionId: hierarchical-clustering-types
+    title: 层次聚类的两种实现：凝聚式与分裂式
+    coverageTags: ["hierarchical_clustering_types", "agglomerative_clustering_process", "divisive_clustering_process", "proximity_matrix", "dendrogram_cut"]
+    linkedSteps: ["step7"]
+  - sectionId: evaluating-clustering-quality
+    title: 如何评估聚类质量
+    coverageTags: ["evaluating_clustering_quality", "cohesion_and_separation", "silhouette_coefficient", "similarity_matrix_validation"]
+    linkedSteps: ["step8"]
+  - sectionId: pitfalls
+    title: 易错点
+    coverageTags: ["cluster_analysis_definition", "partitional_clustering_definition", "hierarchical_clustering_definition", "k_means_algorithm", "initial_centroid_importance", "limitations_of_k_means", "inter_cluster_similarity_definition", "silhouette_coefficient"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6", "step8"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["cluster_analysis_definition", "unsupervised_learning", "partitional_clustering_definition", "hierarchical_clustering_definition", "k_means_algorithm", "initial_centroid_importance", "sse_definition_and_use", "limitations_of_k_means", "k_medoids_definition", "inter_cluster_similarity_definition", "agglomerative_clustering_process", "silhouette_coefficient"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6", "step7", "step8"]
+coverageTrace:
+  - coverageTag: cluster_analysis_definition
+    description: 聚类分析的定义：将数据对象分组，使得组内对象相似、组间对象不同。
+    sectionIds: ["why-this-lesson-matters", "global-concept-map", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: unsupervised_learning
+    description: 无监督学习：没有预定义的类标签，算法自己发现数据中的结构。
+    sectionIds: ["why-this-lesson-matters", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: why_clustering_summarization
+    description: 聚类的用途之一：数据摘要，通过选取代表点大幅缩小数据量。
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: why_clustering_outlier_detection
+    description: 聚类的用途之二：异常点检测，不属于任何簇的对象可能是异常值。
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: partitional_clustering_definition
+    description: 划分式聚类的定义：将数据分成互不重叠的子集，每个对象只属于一个簇。
+    sectionIds: ["global-concept-map", "partitional-vs-hierarchical", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step2"]
+  - coverageTag: hierarchical_clustering_definition
+    description: 层次聚类的定义：生成一组嵌套的簇，组织成树状结构。
+    sectionIds: ["global-concept-map", "partitional-vs-hierarchical", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step2"]
+  - coverageTag: dendrogram_definition
+    description: 树状图：记录簇的合并或分裂顺序的树形图。
+    sectionIds: ["partitional-vs-hierarchical"]
+    linkedSteps: ["step2"]
+  - coverageTag: partitional_vs_hierarchical_scenario
+    description: 能根据场景判断使用划分式还是层次聚类。
+    sectionIds: ["partitional-vs-hierarchical"]
+    linkedSteps: ["step2"]
+  - coverageTag: k_means_algorithm
+    description: K-means 算法的基本流程：选择初始质心、分配点、更新质心、迭代至收敛。
+    sectionIds: ["k-means-algorithm", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: centroid_definition
+    description: 质心的定义：簇内所有点的平均值，作为簇的代表点。
+    sectionIds: ["k-means-algorithm"]
+    linkedSteps: ["step3"]
+  - coverageTag: k_means_partitional
+    description: K-means 是一种划分式聚类算法，每个对象只属于一个簇。
+    sectionIds: ["k-means-algorithm"]
+    linkedSteps: ["step3"]
+  - coverageTag: k_means_convergence
+    description: K-means 迭代直到质心不再变化时收敛。
+    sectionIds: ["k-means-algorithm"]
+    linkedSteps: ["step3"]
+  - coverageTag: k_means_manual_simulation
+    description: 手动模拟 K-means 一次迭代：分配点与更新质心。
+    sectionIds: ["k-means-algorithm"]
+    linkedSteps: ["step3"]
+  - coverageTag: initial_centroid_importance
+    description: K-means 初始质心的选择对聚类结果有重要影响，选得不好可能导致次优解。
+    sectionIds: ["initial-centroids-and-sse", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: sse_definition_and_use
+    description: 误差平方和 (SSE) 的定义、公式、以及如何用 SSE 比较不同聚类结果的好坏。
+    sectionIds: ["initial-centroids-and-sse", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: solutions_initial_centroids
+    description: 解决初始质心问题的三种方法：多次运行选最小SSE、选择最远点、二分 K-means。
+    sectionIds: ["initial-centroids-and-sse"]
+    linkedSteps: ["step4"]
+  - coverageTag: bisecting_k_means
+    description: 二分 K-means 的基本思路：从所有点作为一个簇开始，反复选择并二分一个簇。
+    sectionIds: ["initial-centroids-and-sse"]
+    linkedSteps: ["step4"]
+  - coverageTag: limitations_of_k_means
+    description: K-means的局限性：不同大小、不同密度、非球形形状、对噪声和异常值敏感。
+    sectionIds: ["limitations-and-k-medoids", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: k_medoids_definition
+    description: K-medoids的定义：使用中心点(medoid)代替均值作为簇代表。
+    sectionIds: ["limitations-and-k-medoids", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: medoid_definition
+    description: 中心点(medoid)的定义：簇中到其他所有点距离之和最小的实际数据点。
+    sectionIds: ["limitations-and-k-medoids"]
+    linkedSteps: ["step5"]
+  - coverageTag: k_medoids_robustness
+    description: K-medoids对噪声和异常值更鲁棒，但计算量更大。
+    sectionIds: ["limitations-and-k-medoids"]
+    linkedSteps: ["step5"]
+  - coverageTag: inter_cluster_similarity_definition
+    description: 如何定义簇间距离（四种方法）。
+    sectionIds: ["inter-cluster-similarity", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step6"]
+  - coverageTag: single_linkage_min
+    description: 单链（MIN）：取最近两点距离。
+    sectionIds: ["inter-cluster-similarity"]
+    linkedSteps: ["step6"]
+  - coverageTag: complete_linkage_max
+    description: 全链（MAX）：取最远两点距离。
+    sectionIds: ["inter-cluster-similarity"]
+    linkedSteps: ["step6"]
+  - coverageTag: group_average
+    description: 组平均：取所有点对平均距离。
+    sectionIds: ["inter-cluster-similarity"]
+    linkedSteps: ["step6"]
+  - coverageTag: centroid_distance
+    description: 质心距离：取质心之间的距离。
+    sectionIds: ["inter-cluster-similarity"]
+    linkedSteps: ["step6"]
+  - coverageTag: impact_on_cluster_shape
+    description: 不同距离定义对聚类形状的影响（单链→长条，全链→球形）。
+    sectionIds: ["inter-cluster-similarity"]
+    linkedSteps: ["step6"]
+  - coverageTag: hierarchical_clustering_types
+    description: 层次聚类的两种主要类型：凝聚式（自底向上）与分裂式（自顶向下）。
+    sectionIds: ["hierarchical-clustering-types"]
+    linkedSteps: ["step7"]
+  - coverageTag: agglomerative_clustering_process
+    description: 凝聚式聚类的基本流程：从每个点作为独立簇开始，逐步合并最近的簇。
+    sectionIds: ["hierarchical-clustering-types", "review-and-self-test"]
+    linkedSteps: ["step7"]
+  - coverageTag: divisive_clustering_process
+    description: 分裂式聚类的基本流程：从所有点作为一个簇开始，逐步分裂。
+    sectionIds: ["hierarchical-clustering-types"]
+    linkedSteps: ["step7"]
+  - coverageTag: proximity_matrix
+    description: 邻近度矩阵：记录所有簇两两之间距离的矩阵，凝聚式聚类中用于查找最近簇。
+    sectionIds: ["hierarchical-clustering-types"]
+    linkedSteps: ["step7"]
+  - coverageTag: dendrogram_cut
+    description: 层次聚类的优势：不需要事先指定簇数，可在树状图任意高度切一刀得到所需簇数。
+    sectionIds: ["hierarchical-clustering-types"]
+    linkedSteps: ["step7"]
+  - coverageTag: evaluating_clustering_quality
+    description: 评估聚类质量：SSE、凝聚度与分离度、轮廓系数。
+    sectionIds: ["evaluating-clustering-quality"]
+    linkedSteps: ["step8"]
+  - coverageTag: cohesion_and_separation
+    description: 凝聚度（簇内紧密）与分离度（簇间疏远）的概念。
+    sectionIds: ["evaluating-clustering-quality"]
+    linkedSteps: ["step8"]
+  - coverageTag: silhouette_coefficient
+    description: 轮廓系数：结合凝聚度与分离度的单一指标，公式 s = 1 - a/b，值域[-1,1]。
+    sectionIds: ["evaluating-clustering-quality", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step8"]
+  - coverageTag: similarity_matrix_validation
+    description: 使用相似度矩阵排序后视觉验证聚类质量。
+    sectionIds: ["evaluating-clustering-quality"]
+    linkedSteps: ["step8"]
+---
+
+# 聚类分析（Clustering 1）
+
+## 为什么这一课重要
+
+在现实世界中，我们经常遇到没有标签的数据。例如，你有一堆照片，想按内容分组，但照片没有标签；或者你是一家电商公司，有100万条客户购买记录，想自动发现客户群体。在这些场景中，分类算法无法使用，因为它需要预先知道每个类别的标签。
+
+<Definition title="聚类分析">
+<Term id="cluster_analysis" en="Cluster Analysis">聚类分析</Term>是一种<Term id="unsupervised_learning" en="Unsupervised Learning">无监督学习</Term>方法，目标是将数据对象分组，使得同一组内的对象彼此相似，不同组之间的对象彼此不同。
+</Definition>
+
+<KeyPoint>
+聚类分析属于无监督学习，这意味着它没有预定义的类标签，算法自己发现数据中的结构。
+</KeyPoint>
+
+聚类分析有两个主要用途：
+
+- **数据摘要**：从每个簇中选取一个代表点，用少量代表点代替大量原始数据，从而大幅缩小数据量。
+- **异常点检测**：不属于任何簇的对象可能是异常值，值得进一步关注。
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_cluster_def_v1" />
+<QuestionRef id="q_quiz_unsupervised_v1" />
+</Checkpoint>
+
+## 全局概念地图
+
+本课的核心是学习如何将数据自动分组。我们首先需要理解两种基本的分组风格，然后深入学习其中最经典的算法。
+
+<Figure src="images/2d4712737ec04296ddb16d8fe458600af9b415648dbb9c224ff4d401640c99eb.jpg" alt="距离度量示意图：展示数据点之间的相似性通过距离来衡量">
+距离度量示意图：对象之间的相似性通过距离来衡量。
+</Figure>
+
+本课覆盖的主要内容：
+
+1. **两种基本分组风格**：划分式聚类 vs 层次聚类
+2. **K-means 算法**：最经典的划分式聚类算法
+3. **初始质心问题**：如何选择初始质心，以及如何用 SSE 评估结果
+4. **K-means 的局限与 K-medoids**：当 K-means 失效时如何改进
+5. **簇间距离定义**：层次聚类中如何定义两个簇之间的距离
+6. **层次聚类的实现**：凝聚式与分裂式
+7. **聚类质量评估**：如何量化评价聚类结果的好坏
+
+## 两种基本分组风格：划分式与层次式
+
+假设你要对生物进行分类：猫、狗、狼、虎。如果只允许不重叠的分组，猫和狗是一类，狼和虎是另一类。但狼和狗其实都属于犬科，虎和猫都属于猫科。不重叠的分组无法表达这种嵌套关系。
+
+<Definition title="划分式聚类">
+<Term id="partitional_clustering" en="Partitional Clustering">划分式聚类</Term>将数据分成互不重叠的子集（簇），每个数据对象只属于一个簇。
+</Definition>
+
+<Definition title="层次聚类">
+<Term id="hierarchical_clustering" en="Hierarchical Clustering">层次聚类</Term>生成一组嵌套的簇，组织成树状结构，小簇可以包含在大簇中。
+</Definition>
+
+<Definition title="树状图">
+层次聚类的结果可以用一棵树来表示，这棵树叫做<Term id="dendrogram" en="Dendrogram">树状图</Term>，它记录了每一步合并或分裂的顺序。
+</Definition>
+
+<Figure src="images/f683c0d9811501ab0e807f2c402b2a366c863d50c7d6eb8205e2c22bd3c17c42.jpg" alt="原始数据点分布图">
+原始数据点
+</Figure>
+
+<Figure src="images/ffd997b76f5e178c6885626a7e4f362f1c7fe204b4a124aef0824d9b5a9cf6c6.jpg" alt="划分式聚类结果示意图">
+划分式聚类结果：每个点只属于一个互不重叠的簇。
+</Figure>
+
+<Figure src="images/99ed4b8d31568b22aa191578d324cf3c46f1e7fb7e5c944659246872e201c5f2.jpg" alt="层次聚类结果示意图">
+层次聚类结果：簇之间可以嵌套。
+</Figure>
+
+<Figure src="images/ec942322ab45fb72d2ab0995d3f257d7dd8862462f0b3abef5ed08a1abd3a7ef.jpg" alt="树状图示例">
+树状图：记录合并或分裂顺序的树形图。
+</Figure>
+
+<Example title="场景判断">
+- **划分式聚类**：将客户按购买行为分成互不重叠的几类，每个客户只属于一个群体。
+- **层次聚类**：对生物进行界门纲目科属种的分类，需要嵌套结构。
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_partitional_v1" />
+<QuestionRef id="q_quiz_scenario_v1" />
+</Checkpoint>
+
+## K-means：用质心实现划分式聚类
+
+<Definition title="K-means">
+<Term id="k_means" en="K-means">K-means</Term>是最经典的划分式聚类算法。它用<Term id="centroid" en="centroid">质心</Term>（簇内所有点的平均值）作为组的代表点。
+</Definition>
+
+K-means 算法的基本流程：
+
+1. 选择 k 个点作为初始质心。
+2. 重复以下两步直到质心不再变化：
+   - **分配**：将每个点分配给离它最近的质心，形成 k 个簇。
+   - **更新**：重新计算每个簇的质心（簇内所有点的平均值）。
+
+<KeyPoint>
+K-means 是划分式聚类，每个数据点只属于一个簇。用户必须指定簇的数量 k。
+</KeyPoint>
+
+<Example title="手动模拟 K-means 一次迭代">
+给定 4 个点：A(0,0), B(1,0), C(5,5), D(6,5)。初始质心选为：C1 = A(0,0), C2 = C(5,5)。
+
+**第一步：分配**
+- A 到 C1 距离 = 0，到 C2 距离 = √50 ≈ 7.07 → 分配给 C1
+- B 到 C1 距离 = 1，到 C2 距离 = √41 ≈ 6.40 → 分配给 C1
+- C 到 C1 距离 = √50 ≈ 7.07，到 C2 距离 = 0 → 分配给 C2
+- D 到 C1 距离 = √61 ≈ 7.81，到 C2 距离 = 1 → 分配给 C2
+
+结果：簇1 = {A, B}，簇2 = {C, D}
+
+**第二步：更新质心**
+- 簇1 新质心 = ((0+1)/2, (0+0)/2) = (0.5, 0)
+- 簇2 新质心 = ((5+6)/2, (5+5)/2) = (5.5, 5)
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_kmeans_steps_v1" />
+<QuestionRef id="q_quiz_centroid_update_v1" />
+</Checkpoint>
+
+## 初始质心的影响与误差平方和
+
+K-means 有一个关键弱点：初始质心的选择很重要。选得不好，结果可能很差。例如，初始质心选得太近，可能导致两个簇被错误地合并成一个。
+
+<Definition title="误差平方和">
+<Term id="sse" en="Sum of Squared Error">误差平方和</Term>（SSE）是衡量聚类质量的常用指标。它计算每个点到其簇质心的距离，然后平方求和。
+
+<Formula latex="\text{SSE} = \sum_{i=1}^{K} \sum_{x \in C_i} \text{dist}(x, m_i)^2">
+SSE 等于所有簇内点到其质心距离的平方和。
+</Formula>
+
+SSE 越小，说明簇内越紧凑，聚类质量通常越好。
+</Definition>
+
+<Example title="比较两个聚类结果的 SSE">
+给定数据集：A(0,0), B(1,0), C(5,5), D(6,5)。
+
+**结果A**：簇1={A,B}, 簇2={C,D}，质心分别为(0.5,0)和(5.5,5)
+- 簇1 SSE = (0-0.5)² + (0-0)² + (1-0.5)² + (0-0)² = 0.25 + 0.25 = 0.5
+- 簇2 SSE = (5-5.5)² + (5-5)² + (6-5.5)² + (5-5)² = 0.25 + 0.25 = 0.5
+- 总 SSE = 1.0
+
+**结果B**：所有点在一个簇，质心为(3, 2.5)
+- 总 SSE = (0-3)² + (0-2.5)² + (1-3)² + (0-2.5)² + (5-3)² + (5-2.5)² + (6-3)² + (5-2.5)² = 9 + 6.25 + 4 + 6.25 + 4 + 6.25 + 9 + 6.25 = 51
+
+结果A 的 SSE 远小于结果B，因此结果A 更好。
+</Example>
+
+解决初始质心问题的三种方法：
+
+1. **多次运行**：多次随机初始化，选 SSE 最小的结果。
+2. **选择最远点**：选择彼此距离最远的点作为初始质心。
+3. **二分 K-means**：从所有点作为一个簇开始，反复选择一个簇并将其一分为二。
+
+<Definition title="二分 K-means">
+<Term id="bisecting_k_means" en="Bisecting K-means">二分 K-means</Term>是 K-means 的变体，通过反复二分一个簇来得到最终结果。它从包含所有点的一个大簇开始，每次选择一个簇，用 K=2 的 K-means 将其分成两个子簇。
+</Definition>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_initial_centroid_effect_v1" />
+<QuestionRef id="q_quiz_sse_interpretation_v1" />
+<QuestionRef id="q_quiz_identify_solution_v1" />
+</Checkpoint>
+
+## K-means的局限与K-medoids的改进
+
+K-means 虽然简单，但有不少局限：
+
+- **非球形形状**：它假设簇是球形的，对于月牙形等非球形数据，会强行分成不合理的球形簇。
+- **不同大小和密度**：如果簇的大小差异很大，K-means 可能把大簇切碎；如果簇的密度不同，它也会出错。
+- **噪声和异常值**：一个异常点就能把质心拉偏。
+
+<Definition title="K-medoids">
+<Term id="k_medoids" en="K-medoids">K-medoids</T erm>是 K-means 的变体，它使用<Term id="medoid" en="medoid">中心点</Term>代替平均值作为簇的代表。中心点是簇中一个实际存在的点，它到簇内其他所有点的距离之和最小。
+</Definition>
+
+<KeyPoint>
+K-medoids 对噪声和异常值更鲁棒，因为中心点是实际数据点，不会被异常值拉偏。但代价是计算量更大，比 K-means 更慢。
+</KeyPoint>
+
+<Example title="K-medoids vs K-means">
+- **K-means**：使用均值作为质心，异常值会显著拉偏均值。
+- **K-medoids**：使用中心点（medoid），即簇中实际存在的点，到其他点的距离之和最小。中心点是实际数据点，不会被异常值拉偏。
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_limitations_kmeans_v1" />
+<QuestionRef id="q_quiz_kmedoids_vs_kmeans_v1" />
+</Checkpoint>
+
+## 如何定义簇间距离：四种方法及其影响
+
+在层次聚类中，合并簇时，怎么定义"两个簇之间的距离"？不同的定义会导致完全不同的聚类形状。
+
+<Definition title="单链">
+<Term id="single_linkage" en="Single-linkage (MIN)">单链</Term>取两个簇中最近的两个点之间的距离。它容易产生长条形的簇，因为只要有一个点靠近，两个簇就会被合并。
+</Definition>
+
+<Definition title="全链">
+<Term id="complete_linkage" en="Complete-linkage (MAX)">全链</Term>取两个簇中最远的两个点之间的距离。它倾向于生成紧凑的球形簇，因为它要求所有点都"够近"才能合并。
+</Definition>
+
+<Definition title="组平均">
+<Term id="group_average" en="Group Average">组平均</Term>取两个簇中所有点对之间的平均距离。它介于单链和全链之间，是一种折中方案。
+</Definition>
+
+<Definition title="质心距离">
+<Term id="centroid_distance" en="Centroid Distance">质心距离</Term>取两个簇的质心之间的距离。它计算效率高，但可能无法反映簇的形状。
+</Definition>
+
+<Example title="手动模拟单链合并过程">
+给定 4 个点：A(0,0), B(1,0), C(5,5), D(6,5)。使用单链（MIN）作为簇间距离。
+
+**第一步**：所有点都是独立簇。最近的两个簇是 A 和 B（距离 1），合并 A 和 B。
+
+**第二步**：现在有 3 个簇：AB, C, D。
+- AB 与 C 的距离 = min(距离(A,C), 距离(B,C)) = min(√50≈7.07, √41≈6.40) = 6.40
+- AB 与 D 的距离 = min(距离(A,D), 距离(B,D)) = min(√61≈7.81, √50≈7.07) = 7.07
+- C 与 D 的距离 = 1
+最近的是 C 和 D（距离 1），合并 C 和 D。
+
+**第三步**：现在有 2 个簇：AB 和 CD。合并 AB 和 CD。
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_step6_effect_v1" />
+</Checkpoint>
+
+## 层次聚类的两种实现：凝聚式与分裂式
+
+<Definition title="凝聚式聚类">
+<Term id="agglomerative_clustering" en="Agglomerative Clustering">凝聚式聚类</Term>是自底向上的：一开始，每个点都是一个独立的簇，然后每一步合并距离最近的两个簇，直到所有点合并为一个簇。
+</Definition>
+
+<Definition title="分裂式聚类">
+<Term id="divisive_clustering" en="Divisive Clustering">分裂式聚类</Term>是自顶向下的：所有点一开始是一个簇，然后逐步分裂，直到每个簇只包含一个点。
+</Definition>
+
+<Definition title="邻近度矩阵">
+凝聚式聚类需要知道哪些簇离得最近。算法维护一个<Term id="proximity_matrix" en="Proximity Matrix">邻近度矩阵</Term>，记录所有簇两两之间的距离。
+</Definition>
+
+<KeyPoint>
+层次聚类的一个关键优势：不需要事先指定簇数。你可以在树状图的任意高度"切一刀"，得到想要的簇数。
+</KeyPoint>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_hierarchical_types_v1" />
+<QuestionRef id="q_quiz_agglomerative_process_v1" />
+<QuestionRef id="q_quiz_dendrogram_cut_v1" />
+</Checkpoint>
+
+## 如何评估聚类质量
+
+聚类结果好不好，需要量化评估。一个好的聚类应该同时满足：簇内紧密，簇间疏远。
+
+<Definition title="凝聚度与分离度">
+- <Term id="cohesion" en="Cohesion">凝聚度</Term>衡量簇内点之间的紧密程度。
+- <Term id="separation" en="Separation">分离度</Term>衡量不同簇之间的疏远程度。
+</Definition>
+
+<Definition title="轮廓系数">
+<Term id="silhouette_coefficient" en="Silhouette Coefficient">轮廓系数</Term>结合了凝聚度和分离度，是一个单一的评估指标。
+
+对于每个点 i：
+- a = 点 i 到同簇其他点的平均距离
+- b = 点 i 到另一个簇的最小平均距离
+
+<Formula latex="s = 1 - \frac{a}{b} \quad (\text{如果 } a < b)">
+轮廓系数 s 等于 1 减去 a 除以 b，前提是 a 小于 b。
+</Formula>
+
+轮廓系数的值在 -1 到 1 之间。越接近 1，说明聚类效果越好。
+</Definition>
+
+<Example title="计算轮廓系数">
+给定数据集：A(0,0), B(1,0), C(5,5), D(6,5)。结果：簇1={A,B}, 簇2={C,D}。
+
+**点 A**：
+- a = 距离(A,B) = 1
+- b = min(距离(A,C), 距离(A,D)) = min(√50≈7.07, √61≈7.81) = 7.07
+- s = 1 - 1/7.07 ≈ 0.86
+
+**点 B**：
+- a = 距离(B,A) = 1
+- b = min(距离(B,C), 距离(B,D)) = min(√41≈6.40, √50≈7.07) = 6.40
+- s = 1 - 1/6.40 ≈ 0.84
+
+**点 C**：
+- a = 距离(C,D) = 1
+- b = min(距离(C,A), 距离(C,B)) = min(√50≈7.07, √41≈6.40) = 6.40
+- s = 1 - 1/6.40 ≈ 0.84
+
+**点 D**：
+- a = 距离(D,C) = 1
+- b = min(距离(D,A), 距离(D,B)) = min(√61≈7.81, √50≈7.07) = 7.07
+- s = 1 - 1/7.07 ≈ 0.86
+
+平均轮廓系数 ≈ (0.86 + 0.84 + 0.84 + 0.86) / 4 ≈ 0.85
+
+平均轮廓系数为 0.85，远大于 0.5，表明聚类结构非常好。
+</Example>
+
+还有一种直观的验证方法：把相似度矩阵按簇标签排序，观察颜色块是否清晰。清晰的块状结构说明聚类效果好。
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_silhouette_interpret_v1" />
+</Checkpoint>
+
+## 易错点
+
+1. **混淆聚类分析与分类算法**：聚类分析是无监督学习，不需要标签；分类算法是有监督学习，需要标签。
+
+2. **混淆划分式与层次聚类**：划分式聚类产生互不重叠的簇；层次聚类产生嵌套的树状结构。
+
+3. **误以为 K-means 能处理任意形状的数据**：K-means 假设簇是球形的，对非球形数据效果不好。
+
+4. **忽略初始质心的重要性**：不同的初始质心选择会导致不同的聚类结果。
+
+5. **误以为 K-medoids 总是比 K-means 好**：K-medoids 对噪声更鲁棒，但计算量更大，不适合大规模数据。
+
+6. **混淆单链和全链**：单链取最近两点距离，易产生长条形簇；全链取最远两点距离，易产生紧凑球形簇。
+
+7. **误以为轮廓系数越接近 0 越好**：轮廓系数越接近 1 越好，接近 0 表示点位于两个簇的边界上。
+
+## 复习与自测
+
+### 主动回忆
+
+<QuestionFamily familyId="qf_flash_cluster_def" />
+<QuestionFamily familyId="qf_flash_unsupervised" />
+<QuestionFamily familyId="qf_flash_clustering_uses" />
+<QuestionFamily familyId="qf_flash_partitional" />
+<QuestionFamily familyId="qf_flash_hierarchical" />
+<QuestionFamily familyId="qf_flash_kmeans_algorithm" />
+<QuestionFamily familyId="qf_flash_centroid_def" />
+<QuestionFamily familyId="qf_flash_initial_centroid" />
+<QuestionFamily familyId="qf_flash_sse_definition" />
+<QuestionFamily familyId="qf_flash_limitations_kmeans" />
+<QuestionFamily familyId="qf_flash_medoid_definition" />
+<QuestionFamily familyId="qf_flash_step6_single" />
+<QuestionFamily familyId="qf_flash_step6_complete" />
+<QuestionFamily familyId="qf_flash_agglomerative" />
+<QuestionFamily familyId="qf_flash_divisive" />
+<QuestionFamily familyId="qf_flash_cohesion_separation" />
+<QuestionFamily familyId="qf_flash_silhouette_def" />
+
+### 章节测验
+
+<QuestionFamily familyId="qf_quiz_cluster_def" />
+<QuestionFamily familyId="qf_quiz_unsupervised" />
+<QuestionFamily familyId="qf_quiz_clustering_uses" />
+<QuestionFamily familyId="qf_quiz_partitional" />
+<QuestionFamily familyId="qf_quiz_hierarchical" />
+<QuestionFamily familyId="qf_quiz_scenario" />
+<QuestionFamily familyId="qf_quiz_kmeans_steps" />
+<QuestionFamily familyId="qf_quiz_centroid_update" />
+<QuestionFamily familyId="qf_quiz_initial_centroid_effect" />
+<QuestionFamily familyId="qf_quiz_sse_interpretation" />
+<QuestionFamily familyId="qf_quiz_identify_solution" />
+<QuestionFamily familyId="qf_quiz_limitations_kmeans" />
+<QuestionFamily familyId="qf_quiz_kmedoids_vs_kmeans" />
+<QuestionFamily familyId="qf_quiz_step6_effect" />
+<QuestionFamily familyId="qf_quiz_hierarchical_types" />
+<QuestionFamily familyId="qf_quiz_agglomerative_process" />
+<QuestionFamily familyId="qf_quiz_silhouette_interpret" />
+
+### 综合练习
+
+<QuestionFamily familyId="qf_long_cluster_explain" />
+<QuestionFamily familyId="qf_long_compare" />
+<QuestionFamily familyId="qf_long_kmeans_iteration" />
+<QuestionFamily familyId="qf_long_sse_comparison" />
+<QuestionFamily familyId="qf_long_kmedoids_tradeoff" />
+<QuestionFamily familyId="qf_long_step6_compare" />
+<QuestionFamily familyId="qf_long_agglomerative_simulation" />
+<QuestionFamily familyId="qf_long_silhouette_calc" />

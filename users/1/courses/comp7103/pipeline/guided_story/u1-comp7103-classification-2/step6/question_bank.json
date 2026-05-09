@@ -1,0 +1,487 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "logistic_regression_idea",
+      "covered_by": [
+        "qf_flash_lr_idea",
+        "qf_quiz_lr_output"
+      ],
+      "description": "逻辑回归的基本思想：用回归分析做分类，输出概率而非类别标签。"
+    },
+    {
+      "coverage_tag": "sigmoid_function",
+      "covered_by": [
+        "qf_flash_sigmoid",
+        "qf_quiz_sigmoid"
+      ],
+      "description": "Sigmoid 函数：将任意实数映射到 0-1 之间，用于表示概率。"
+    },
+    {
+      "coverage_tag": "log_odds_linear_relation",
+      "covered_by": [
+        "qf_flash_log_odds",
+        "qf_quiz_log_odds"
+      ],
+      "description": "对数几率与自变量的线性关系假设。"
+    },
+    {
+      "coverage_tag": "maximum_likelihood_estimation",
+      "covered_by": [
+        "qf_flash_mle",
+        "qf_quiz_mle"
+      ],
+      "description": "极大似然估计：通过最大化正确标签的概率来拟合逻辑回归曲线。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "logistic_regression_idea",
+      "coverage_tags": [
+        "logistic_regression_idea"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_lr_idea",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出逻辑回归的输出类型及其与线性回归的区别。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能准确说出逻辑回归的输出是概率值，而非类别标签或连续数值。",
+      "question_type": "short_answer",
+      "retrieval_focus": "逻辑回归的输出类型",
+      "term_refs": [
+        {
+          "display": "逻辑回归",
+          "en": "Logistic Regression"
+        }
+      ],
+      "variants": [
+        {
+          "back": "一个概率值（样本属于正类的概率）。",
+          "estimated_seconds": 8,
+          "explanation": "逻辑回归不直接输出类别标签，而是输出一个 0 到 1 之间的概率值。",
+          "front": "逻辑回归的输出是什么类型的值？",
+          "question_id": "q_flash_lr_idea_v1"
+        },
+        {
+          "back": "分类问题（二分类）。",
+          "estimated_seconds": 8,
+          "explanation": "逻辑回归虽然名字里有“回归”，但实际用于分类任务，输出概率。",
+          "front": "逻辑回归用回归分析来解决什么问题？",
+          "question_id": "q_flash_lr_idea_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "sigmoid_function",
+      "coverage_tags": [
+        "sigmoid_function"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sigmoid",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出 Sigmoid 函数的形状和映射范围。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能准确说出 Sigmoid 函数将任意实数映射到 0 到 1 之间。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Sigmoid 函数的映射范围",
+      "term_refs": [
+        {
+          "display": "Sigmoid 函数",
+          "en": "Sigmoid Function"
+        }
+      ],
+      "variants": [
+        {
+          "back": "0 到 1 之间。",
+          "estimated_seconds": 6,
+          "explanation": "Sigmoid 函数是 S 形曲线，输出范围是 (0, 1)，非常适合表示概率。",
+          "front": "Sigmoid 函数能把任意实数映射到什么区间？",
+          "question_id": "q_flash_sigmoid_v1"
+        },
+        {
+          "back": "S 形曲线（Sigmoid 函数）。",
+          "estimated_seconds": 6,
+          "explanation": "逻辑回归用一条 S 形曲线（Sigmoid 函数）来拟合数据，将线性输出映射为概率。",
+          "front": "逻辑回归中使用的是什么形状的函数来拟合数据？",
+          "question_id": "q_flash_sigmoid_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "log_odds_linear_relation",
+      "coverage_tags": [
+        "log_odds_linear_relation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_log_odds",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出对数几率的定义及其与自变量的关系假设。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能准确说出对数几率的公式 ln(p/(1-p)) 以及逻辑回归假设它与自变量线性相关。",
+      "question_type": "short_answer",
+      "retrieval_focus": "对数几率的公式和线性假设",
+      "term_refs": [
+        {
+          "display": "对数几率",
+          "en": "Log-odds"
+        }
+      ],
+      "variants": [
+        {
+          "back": "对数几率（log-odds），即 ln(p/(1-p))。",
+          "estimated_seconds": 10,
+          "explanation": "逻辑回归的核心假设是对数几率与自变量呈线性关系。",
+          "front": "逻辑回归假设什么与自变量之间存在线性关系？",
+          "question_id": "q_flash_log_odds_v1"
+        },
+        {
+          "back": "ln(p/(1-p))，其中 p 是事件发生的概率。",
+          "estimated_seconds": 8,
+          "explanation": "对数几率是事件发生概率与不发生概率之比的自然对数。",
+          "front": "对数几率（log-odds）的数学公式是什么？",
+          "question_id": "q_flash_log_odds_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "maximum_likelihood_estimation",
+      "coverage_tags": [
+        "maximum_likelihood_estimation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_mle",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出逻辑回归拟合曲线所用的方法及其核心思想。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能准确说出逻辑回归通过极大似然估计来找到最佳拟合曲线。",
+      "question_type": "short_answer",
+      "retrieval_focus": "逻辑回归的参数估计方法",
+      "term_refs": [
+        {
+          "display": "极大似然估计",
+          "en": "Maximum Likelihood Estimation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "极大似然估计（Maximum Likelihood Estimation）。",
+          "estimated_seconds": 8,
+          "explanation": "极大似然估计寻找一组参数，使得模型预测出正确标签的概率最大。",
+          "front": "逻辑回归用什么方法来找到最佳拟合曲线？",
+          "question_id": "q_flash_mle_v1"
+        },
+        {
+          "back": "找到一组参数，使模型预测出正确标签的概率最大。",
+          "estimated_seconds": 8,
+          "explanation": "简单说，就是让模型对训练数据的预测尽可能准确。",
+          "front": "极大似然估计的目标是什么？",
+          "question_id": "q_flash_mle_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-2",
+  "longform_families": [
+    {
+      "concept_key": "logistic_regression_idea",
+      "coverage_tags": [
+        "logistic_regression_idea",
+        "sigmoid_function",
+        "log_odds_linear_relation",
+        "maximum_likelihood_estimation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_lr_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的语言解释逻辑回归如何用回归分析做分类。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能完整解释逻辑回归的输出类型、Sigmoid 函数的作用、对数几率假设以及参数估计方法。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "逻辑回归",
+          "en": "Logistic Regression"
+        },
+        {
+          "display": "Sigmoid 函数",
+          "en": "Sigmoid Function"
+        },
+        {
+          "display": "对数几率",
+          "en": "Log-odds"
+        },
+        {
+          "display": "极大似然估计",
+          "en": "Maximum Likelihood Estimation"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "输出类型",
+            "Sigmoid 函数的作用",
+            "对数几率假设",
+            "参数估计方法"
+          ],
+          "question_id": "q_long_lr_explain_v1",
+          "reference_answer": [
+            "逻辑回归的输出是一个概率值，表示样本属于正类的概率，范围在 0 到 1 之间。",
+            "Sigmoid 函数是一条 S 形曲线，它能将任意实数映射到 0 到 1 之间，非常适合表示概率。",
+            "逻辑回归假设对数几率（ln(p/(1-p))）与自变量之间存在线性关系。",
+            "逻辑回归通过极大似然估计来找到最佳拟合曲线，即寻找一组参数，使得模型预测出正确标签的概率最大。"
+          ],
+          "rubric_points": [
+            "正确指出逻辑回归输出概率值（0-1之间）。",
+            "正确解释 Sigmoid 函数将任意实数映射到 0-1 之间。",
+            "正确说明逻辑回归假设对数几率与自变量线性相关。",
+            "正确说明使用极大似然估计来拟合曲线。"
+          ],
+          "stem": "请解释逻辑回归是如何用回归分析来做分类的。在你的解释中，请包含以下要点：\n1. 逻辑回归的输出是什么？\n2. Sigmoid 函数的作用是什么？\n3. 逻辑回归对数据做了什么样的假设？\n4. 如何找到最佳拟合曲线？"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "回归与分类的关系",
+            "概率转换机制",
+            "线性假设的体现",
+            "参数评估方法"
+          ],
+          "question_id": "q_long_lr_explain_v2",
+          "reference_answer": [
+            "逻辑回归虽然叫“回归”，但它输出的是概率值，通过设定阈值（如 0.5）可以做出分类决策。",
+            "逻辑回归先计算自变量的线性组合，然后将这个值输入 Sigmoid 函数，得到 0 到 1 之间的概率。",
+            "逻辑回归的“线性”体现在它假设对数几率（ln(p/(1-p))）与自变量是线性关系。",
+            "逻辑回归使用极大似然估计，选择使训练数据出现概率最大的那组参数。"
+          ],
+          "rubric_points": [
+            "正确解释逻辑回归输出概率，因此可用于分类决策。",
+            "正确说明 Sigmoid 函数将线性输出映射为概率。",
+            "正确指出线性关系体现在对数几率与自变量之间。",
+            "正确说明使用极大似然估计评估参数。"
+          ],
+          "stem": "假设你正在向一位同事解释逻辑回归。请用你自己的话说明：\n1. 为什么逻辑回归被称为“回归”却用于分类？\n2. 逻辑回归如何将线性模型的输出转换为概率？\n3. 逻辑回归的“线性”体现在哪里？\n4. 如何评估一组参数的好坏？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "logistic_regression_idea",
+      "coverage_tags": [
+        "logistic_regression_idea"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_lr_output",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下准确识别逻辑回归的输出类型。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能正确区分逻辑回归输出概率值与其他分类器输出类别标签的区别。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "逻辑回归",
+          "en": "Logistic Regression"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "逻辑回归输出样本属于正类的概率，通常用 Sigmoid 函数映射到 0-1 之间。",
+          "options": [
+            "一个类别标签",
+            "一个概率值",
+            "一个距离值",
+            "一个决策边界"
+          ],
+          "question_id": "q_quiz_lr_output_v1",
+          "stem": "逻辑回归的输出是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "逻辑回归通过 Sigmoid 函数将线性输出映射为概率值，范围在 0 到 1 之间。",
+          "options": [
+            "它直接输出类别标签，如“是”或“否”。",
+            "它输出一个介于 0 和 1 之间的概率值。",
+            "它输出一个实数，范围没有限制。",
+            "它输出一个距离值，用于衡量样本到决策边界的距离。"
+          ],
+          "question_id": "q_quiz_lr_output_v2",
+          "stem": "以下哪个说法正确描述了逻辑回归？"
+        }
+      ]
+    },
+    {
+      "concept_key": "sigmoid_function",
+      "coverage_tags": [
+        "sigmoid_function"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_sigmoid",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解 Sigmoid 函数在逻辑回归中的作用。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能正确识别 Sigmoid 函数将线性输出转换为概率值的作用。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Sigmoid 函数",
+          "en": "Sigmoid Function"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Sigmoid 函数将线性回归的输出（任意实数）映射到 0 到 1 之间，使其可以解释为概率。",
+          "options": [
+            "将概率值转换为类别标签",
+            "将任意实数映射到 0 到 1 之间",
+            "计算样本之间的距离",
+            "对特征进行归一化"
+          ],
+          "question_id": "q_quiz_sigmoid_v1",
+          "stem": "在逻辑回归中，Sigmoid 函数的主要作用是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "Sigmoid 函数将较大的正数映射到接近 1 的值。2.5 经过 Sigmoid 函数后约等于 0.92，接近 0.9。",
+          "options": [
+            "0.1",
+            "0.5",
+            "0.9",
+            "2.5"
+          ],
+          "question_id": "q_quiz_sigmoid_v2",
+          "stem": "假设逻辑回归的线性部分输出为 2.5，经过 Sigmoid 函数后，输出值最可能接近以下哪个？"
+        }
+      ]
+    },
+    {
+      "concept_key": "log_odds_linear_relation",
+      "coverage_tags": [
+        "log_odds_linear_relation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_log_odds",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解对数几率与自变量线性关系的假设。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能正确识别逻辑回归的核心假设是对数几率与自变量线性相关。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "对数几率",
+          "en": "Log-odds"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "逻辑回归假设对数几率（ln(p/(1-p))）与自变量之间存在线性关系。",
+          "options": [
+            "自变量之间相互独立",
+            "对数几率与自变量之间存在线性关系",
+            "因变量服从正态分布",
+            "所有特征具有相同的方差"
+          ],
+          "question_id": "q_quiz_log_odds_v1",
+          "stem": "逻辑回归的核心假设是什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "当 p = 0.5 时，p/(1-p) = 1，ln(1) = 0。",
+          "options": [
+            "0",
+            "0.5",
+            "1",
+            "无穷大"
+          ],
+          "question_id": "q_quiz_log_odds_v2",
+          "stem": "如果事件发生的概率 p = 0.5，那么对数几率 ln(p/(1-p)) 的值是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "maximum_likelihood_estimation",
+      "coverage_tags": [
+        "maximum_likelihood_estimation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_mle",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解极大似然估计在逻辑回归中的作用。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能正确识别极大似然估计的目标是最大化模型预测正确标签的概率。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "极大似然估计",
+          "en": "Maximum Likelihood Estimation"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "极大似然估计寻找一组参数，使得模型对训练数据预测正确的概率最大。",
+          "options": [
+            "最小化预测误差的平方和",
+            "最大化模型预测出正确标签的概率",
+            "最小化模型的复杂度",
+            "最大化特征之间的相关性"
+          ],
+          "question_id": "q_quiz_mle_v1",
+          "stem": "逻辑回归使用极大似然估计来做什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "极大似然估计的核心思想是寻找使当前观测数据出现概率最大的参数值。",
+          "options": [
+            "它寻找使模型预测错误的概率最小的参数。",
+            "它寻找使观测数据出现概率最大的模型参数。",
+            "它通过随机采样来估计参数。",
+            "它假设所有参数服从正态分布。"
+          ],
+          "question_id": "q_quiz_mle_v2",
+          "stem": "以下哪个说法正确描述了极大似然估计？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-2/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

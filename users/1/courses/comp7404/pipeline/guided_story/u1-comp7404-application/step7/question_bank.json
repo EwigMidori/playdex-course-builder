@@ -1,0 +1,580 @@
+{
+  "chapter_id": "lecture-05-application",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "video_event_recognition_problem",
+      "covered_by": [
+        "qf_flash_001",
+        "qf_quiz_001"
+      ],
+      "description": "视频事件识别的问题定义：在线视频搜索、视频索引、事件由场景/物体/动作随时间演变刻画"
+    },
+    {
+      "coverage_tag": "bag_of_frame_representation",
+      "covered_by": [
+        "qf_flash_002",
+        "qf_quiz_002"
+      ],
+      "description": "帧的袋子表示：对每一帧提取词袋向量，整个视频变成帧的袋子"
+    },
+    {
+      "coverage_tag": "temporal_shift_problem",
+      "covered_by": [
+        "qf_flash_003",
+        "qf_quiz_003",
+        "qf_long_001"
+      ],
+      "description": "视频节奏不同导致的时间偏移问题：同一事件出现在不同时间位置，直接比较帧会失败"
+    },
+    {
+      "coverage_tag": "earth_movers_distance_emd",
+      "covered_by": [
+        "qf_flash_004",
+        "qf_quiz_004"
+      ],
+      "description": "推土机距离(EMD)用于视频匹配：允许一帧匹配到另一视频中时间位置不同的帧，处理时间偏移和尺度变化"
+    },
+    {
+      "coverage_tag": "temporal_pyramid_matching_tpm",
+      "covered_by": [
+        "qf_flash_005",
+        "qf_quiz_005",
+        "qf_long_001"
+      ],
+      "description": "时间金字塔匹配：将视频分成多个时间段，粗粒度匹配整个视频，细粒度匹配局部片段"
+    },
+    {
+      "coverage_tag": "multi_level_pyramid_matching_algorithm",
+      "covered_by": [
+        "qf_flash_005"
+      ],
+      "description": "多级金字塔匹配算法：时间约束层次凝聚聚类，不同子片段的对齐，多级信息融合"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "video_event_recognition",
+      "coverage_tags": [
+        "video_event_recognition_problem"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_001",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出视频事件识别的基本问题定义和事件的特征。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能准确回忆视频事件识别中事件由什么刻画以及典型应用场景。",
+      "question_type": "short_answer",
+      "retrieval_focus": "视频事件识别中事件的特征和典型应用",
+      "term_refs": [
+        {
+          "display": "视频事件识别",
+          "en": "Video Event Recognition"
+        }
+      ],
+      "variants": [
+        {
+          "back": "一系列随时间演变的场景、物体和动作。",
+          "estimated_seconds": 8,
+          "explanation": "事件不是静态的，而是随时间展开的过程，比如飞机起飞包含滑行、加速、离地等阶段。",
+          "front": "在视频事件识别中，事件通常由什么来刻画？",
+          "question_id": "q_flash_001_v1"
+        },
+        {
+          "back": "在线视频搜索和视频索引。",
+          "estimated_seconds": 6,
+          "explanation": "例如在LSCOM中定义了56种事件，用于对海量视频进行自动标注和检索。",
+          "front": "视频事件识别的一个典型应用场景是什么？",
+          "question_id": "q_flash_001_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "bag_of_frame",
+      "coverage_tags": [
+        "bag_of_frame_representation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_002",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能描述帧的袋子表示的基本思想。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能准确回忆帧的袋子表示是如何构建的。",
+      "question_type": "short_answer",
+      "retrieval_focus": "帧的袋子表示的构建方法",
+      "term_refs": [
+        {
+          "display": "帧的袋子表示",
+          "en": "Bag-of-frame representation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "对每一帧提取词袋向量，整个视频就变成了一个帧的袋子。",
+          "estimated_seconds": 8,
+          "explanation": "每帧用词袋向量表示后，视频就成为一个帧级词袋向量的集合，忽略帧之间的时间顺序。",
+          "front": "帧的袋子表示是如何构建的？",
+          "question_id": "q_flash_002_v1"
+        },
+        {
+          "back": "帧之间的时间顺序。",
+          "estimated_seconds": 6,
+          "explanation": "它只关心每帧有什么视觉单词，不关心这些帧出现的先后顺序。",
+          "front": "帧的袋子表示忽略了视频的什么信息？",
+          "question_id": "q_flash_002_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "temporal_shift",
+      "coverage_tags": [
+        "temporal_shift_problem"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_003",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么帧的袋子表示在视频节奏不同时会失败。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能准确指出时间偏移导致直接帧比较失败的原因。",
+      "question_type": "cause_effect",
+      "retrieval_focus": "帧的袋子表示在时间偏移下的失败原因",
+      "term_refs": [
+        {
+          "display": "时间偏移",
+          "en": "Temporal shift"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为同一事件出现在不同的时间位置，直接比较帧会导致匹配失败。",
+          "estimated_seconds": 10,
+          "explanation": "例如飞机起飞在视频A的第10秒、视频B的第20秒，直接比较帧会认为它们完全不同。",
+          "front": "为什么帧的袋子表示在视频节奏不同时会失败？",
+          "question_id": "q_flash_003_v1"
+        },
+        {
+          "back": "忽略了帧之间的时间顺序。",
+          "estimated_seconds": 8,
+          "explanation": "它把视频当作无序的帧集合，无法区分事件发生的时间位置。",
+          "front": "帧的袋子表示忽略了什么关键信息导致无法处理节奏不同的视频？",
+          "question_id": "q_flash_003_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "earth_movers_distance",
+      "coverage_tags": [
+        "earth_movers_distance_emd"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_004",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出推土机距离在视频匹配中的核心作用。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能准确回忆EMD解决视频匹配中什么具体问题。",
+      "question_type": "term_to_function",
+      "retrieval_focus": "EMD在视频匹配中解决的核心问题",
+      "term_refs": [
+        {
+          "display": "推土机距离",
+          "en": "Earth Mover's Distance (EMD)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "视频的时间偏移和节奏不同。",
+          "estimated_seconds": 8,
+          "explanation": "EMD允许一帧匹配到另一视频中时间位置不同的帧，从而处理时间偏移。",
+          "front": "推土机距离在视频匹配中主要解决什么问题？",
+          "question_id": "q_flash_004_v1"
+        },
+        {
+          "back": "允许一帧匹配到另一视频中时间位置不同的帧。",
+          "estimated_seconds": 8,
+          "explanation": "EMD通过线性规划找到最优的帧间匹配，可以处理时间上的偏移和尺度变化。",
+          "front": "推土机距离允许帧与帧之间怎样匹配？",
+          "question_id": "q_flash_004_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "temporal_pyramid_matching",
+      "coverage_tags": [
+        "temporal_pyramid_matching_tpm",
+        "multi_level_pyramid_matching_algorithm"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_005",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能描述时间金字塔匹配的基本思想和多级结构。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能准确回忆TPM如何将视频分段进行匹配。",
+      "question_type": "short_answer",
+      "retrieval_focus": "时间金字塔匹配的分段匹配策略",
+      "term_refs": [
+        {
+          "display": "时间金字塔匹配",
+          "en": "Temporal Pyramid Matching (TPM)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "分成多个时间段，在粗粒度上匹配整个视频，在细粒度上匹配局部片段。",
+          "estimated_seconds": 10,
+          "explanation": "多级金字塔结构允许同时考虑全局和局部的时间对齐。",
+          "front": "时间金字塔匹配将视频分成什么结构进行匹配？",
+          "question_id": "q_flash_005_v1"
+        },
+        {
+          "back": "通过融合不同级别的信息。",
+          "estimated_seconds": 8,
+          "explanation": "多级信息融合使得即使两个视频包含不同子集的事件阶段，也能计算相似度。",
+          "front": "时间金字塔匹配中，不同级别的匹配结果如何组合？",
+          "question_id": "q_flash_005_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-application",
+  "longform_families": [
+    {
+      "concept_key": "video_matching_pipeline",
+      "coverage_tags": [
+        "temporal_shift_problem",
+        "temporal_pyramid_matching_tpm"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_001",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释从帧的袋子表示到时间金字塔匹配的演进逻辑，以及推土机距离如何解决时间偏移问题。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能分析帧的袋子表示的局限性，并说明推土机距离和时间金字塔匹配如何逐步解决这些问题。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "推土机距离",
+          "en": "Earth Mover's Distance (EMD)"
+        },
+        {
+          "display": "时间金字塔匹配",
+          "en": "Temporal Pyramid Matching (TPM)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "帧的袋子表示的局限性",
+            "推土机距离的解决方案",
+            "时间金字塔匹配的改进"
+          ],
+          "question_id": "q_long_001_v1",
+          "reference_answer": [
+            "帧的袋子表示对每一帧提取词袋向量，把视频变成无序的帧集合，忽略了帧之间的时间顺序。当两个视频节奏不同时，同一事件出现在不同时间位置，直接比较帧会导致匹配失败。",
+            "推土机距离通过线性规划找到帧之间的最优匹配，允许一帧匹配到另一视频中时间位置不同的帧，从而处理时间偏移和尺度变化。",
+            "时间金字塔匹配将视频分成多个时间段，在粗粒度上匹配整个视频，在细粒度上匹配局部片段，并通过多级信息融合，使得即使两个视频包含不同子集的事件阶段，也能计算相似度。"
+          ],
+          "rubric_points": [
+            "指出帧的袋子表示忽略时间顺序，导致时间偏移时匹配失败",
+            "说明推土机距离允许帧与帧之间灵活匹配，处理时间偏移",
+            "说明时间金字塔匹配通过多级分段，在粗粒度和细粒度上同时对齐",
+            "指出多级信息融合可以处理视频包含不同子集事件阶段的情况"
+          ],
+          "stem": "请分析从\"帧的袋子表示\"到\"时间金字塔匹配\"的演进逻辑。具体说明：\n1. 帧的袋子表示存在什么局限性？\n2. 推土机距离如何解决部分问题？\n3. 时间金字塔匹配在此基础上做了哪些改进？"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "帧的袋子表示的匹配结果及原因",
+            "推土机距离的改进",
+            "时间金字塔匹配的额外优势"
+          ],
+          "question_id": "q_long_001_v2",
+          "reference_answer": [
+            "帧的袋子表示会认为两个视频完全不同，因为它忽略了时间顺序，直接比较帧时，第10秒的滑行帧和第20秒的滑行帧无法匹配。",
+            "推土机距离允许视频A的滑行帧匹配视频B的滑行帧，离地帧匹配离地帧，即使它们出现在不同的时间位置，从而正确识别出两个视频描述同一事件。",
+            "时间金字塔匹配在推土机距离的基础上，通过多级分段，在粗粒度上匹配整个视频结构，在细粒度上匹配局部动作阶段，对视频长度不同、包含不同事件阶段子集的情况更加鲁棒。"
+          ],
+          "rubric_points": [
+            "指出帧的袋子表示会认为两个视频完全不同，因为事件出现在不同时间位置",
+            "说明推土机距离允许滑行帧匹配滑行帧、离地帧匹配离地帧，即使时间位置不同",
+            "说明时间金字塔匹配通过多级分段，可以同时匹配整体事件结构和局部动作阶段",
+            "指出多级结构对视频长度不同、事件阶段子集不同的情况更鲁棒"
+          ],
+          "stem": "假设有两个描述\"飞机起飞\"事件的视频：视频A中飞机在第10秒开始滑行、第15秒离地；视频B中飞机在第20秒开始滑行、第30秒离地。\n1. 如果使用帧的袋子表示，这两个视频的匹配结果会怎样？为什么？\n2. 推土机距离如何改进匹配结果？\n3. 时间金字塔匹配相比推土机距离还有哪些额外优势？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "video_event_recognition",
+      "coverage_tags": [
+        "video_event_recognition_problem"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_001",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中识别视频事件识别的基本问题设定。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能正确判断视频事件识别中事件的特征描述。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "视频事件识别",
+          "en": "Video Event Recognition"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "事件不是静态的，而是随时间展开的过程，包含场景、物体和动作的演变。",
+          "options": [
+            "事件是视频中的单个静态画面",
+            "事件由一系列随时间演变的场景、物体和动作刻画",
+            "事件只包含物体的空间位置信息",
+            "事件是视频的元数据标签"
+          ],
+          "question_id": "q_quiz_001_v1",
+          "stem": "以下哪项最准确地描述了视频事件识别中\"事件\"的特征？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "LSCOM定义了56种事件，用于视频事件识别的研究。",
+          "options": [
+            "20个",
+            "56个",
+            "100个",
+            "374个"
+          ],
+          "question_id": "q_quiz_001_v2",
+          "stem": "LSCOM中定义了大约多少个视频事件？"
+        }
+      ]
+    },
+    {
+      "concept_key": "bag_of_frame",
+      "coverage_tags": [
+        "bag_of_frame_representation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_002",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能辨析帧的袋子表示的核心思想和局限性。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能正确判断帧的袋子表示忽略了什么信息。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "帧的袋子表示",
+          "en": "Bag-of-frame representation"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "对每一帧提取词袋向量，整个视频就变成了一个帧的袋子，忽略时间顺序。",
+          "options": [
+            "一个帧序列的向量",
+            "一个帧的袋子（无序的帧级词袋向量集合）",
+            "一个时间轴上的特征轨迹",
+            "一个空间金字塔的直方图"
+          ],
+          "question_id": "q_quiz_002_v1",
+          "stem": "帧的袋子表示将视频表示为什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "帧的袋子表示把视频当作无序的帧集合，忽略了帧之间的时间顺序。",
+          "options": [
+            "帧的颜色信息",
+            "帧之间的时间顺序",
+            "帧的分辨率",
+            "帧的压缩格式"
+          ],
+          "question_id": "q_quiz_002_v2",
+          "stem": "帧的袋子表示在处理视频时忽略了什么关键信息？"
+        }
+      ]
+    },
+    {
+      "concept_key": "temporal_shift",
+      "coverage_tags": [
+        "temporal_shift_problem"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_003",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别时间偏移问题并理解其影响。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能正确判断时间偏移对帧比较的影响。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "时间偏移",
+          "en": "Temporal shift"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "因为同一事件出现在不同的时间位置，直接比较帧会导致匹配失败，认为它们完全不同。",
+          "options": [
+            "认为它们完全相同",
+            "认为它们完全不同",
+            "认为它们部分相似",
+            "无法比较"
+          ],
+          "question_id": "q_quiz_003_v1",
+          "stem": "两个视频描述同一个事件，但事件发生的时间位置不同（如一个在10秒，一个在20秒），直接比较帧会得到什么结果？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "飞机起飞事件出现在不同时间位置，直接比较帧会失败，这是典型的时间偏移问题。",
+          "options": [
+            "两个视频分辨率不同",
+            "两个视频中飞机起飞分别在第10秒和第20秒",
+            "两个视频的帧率不同",
+            "两个视频的编码格式不同"
+          ],
+          "question_id": "q_quiz_003_v2",
+          "stem": "以下哪个场景最能体现帧的袋子表示的时间偏移问题？"
+        }
+      ]
+    },
+    {
+      "concept_key": "earth_movers_distance",
+      "coverage_tags": [
+        "earth_movers_distance_emd"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_004",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解推土机距离在视频匹配中的核心作用和能力。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能正确判断EMD能处理哪些视频匹配问题。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "推土机距离",
+          "en": "Earth Mover's Distance (EMD)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "EMD允许一帧匹配到另一视频中时间位置不同的帧，从而处理时间偏移和节奏不同。",
+          "options": [
+            "光照变化",
+            "视频的时间偏移和节奏不同",
+            "物体的遮挡",
+            "视频的分辨率不同"
+          ],
+          "question_id": "q_quiz_004_v1",
+          "stem": "推土机距离在视频匹配中主要解决什么问题？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "EMD通过线性规划找到最优匹配，允许一帧匹配到另一视频中时间位置不同的帧。",
+          "options": [
+            "只能匹配相同时间位置的帧",
+            "允许一帧匹配到时间位置不同的帧",
+            "只能匹配相邻帧",
+            "不允许跨视频匹配"
+          ],
+          "question_id": "q_quiz_004_v2",
+          "stem": "推土机距离允许帧与帧之间怎样匹配？"
+        }
+      ]
+    },
+    {
+      "concept_key": "temporal_pyramid_matching",
+      "coverage_tags": [
+        "temporal_pyramid_matching_tpm"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_005",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解时间金字塔匹配的多级匹配策略。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生能正确判断TPM的分段匹配方式。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "时间金字塔匹配",
+          "en": "Temporal Pyramid Matching (TPM)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "TPM将视频分成多个时间段，粗粒度匹配整个视频，细粒度匹配局部片段。",
+          "options": [
+            "只匹配整个视频的全局特征",
+            "将视频分成多个时间段，在粗粒度和细粒度上分别匹配",
+            "只匹配视频的第一帧和最后一帧",
+            "随机抽取帧进行匹配"
+          ],
+          "question_id": "q_quiz_005_v1",
+          "stem": "时间金字塔匹配如何对视频进行匹配？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "TPM通过多级金字塔结构在时间维度上对齐，保留了事件的时间结构信息。",
+          "options": [
+            "使用了更复杂的特征描述子",
+            "引入了时间维度的多级对齐信息",
+            "使用了更多的视觉单词",
+            "提高了计算速度"
+          ],
+          "question_id": "q_quiz_005_v2",
+          "stem": "时间金字塔匹配相比帧的袋子表示，主要改进是什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-application/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

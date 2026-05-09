@@ -1,0 +1,514 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "evaluating_classifiers",
+      "covered_by": [
+        "qf_flash_accuracy",
+        "qf_flash_confusion_matrix",
+        "qf_flash_precision_recall_f1",
+        "qf_flash_roc_auc",
+        "qf_quiz_accuracy_limitation",
+        "qf_quiz_precision_recall_calc",
+        "qf_quiz_roc_auc_interpret",
+        "qf_long_evaluation_metrics_compare"
+      ],
+      "description": "评估分类器的各种指标和方法，包括准确率、混淆矩阵、精确率、召回率、F1分数、ROC曲线、AUC和交叉验证。"
+    },
+    {
+      "coverage_tag": "confusion_matrix",
+      "covered_by": [
+        "qf_flash_confusion_matrix",
+        "qf_quiz_precision_recall_calc"
+      ],
+      "description": "混淆矩阵的四个基本元素：TP, FP, FN, TN。"
+    },
+    {
+      "coverage_tag": "accuracy_metric",
+      "covered_by": [
+        "qf_flash_accuracy",
+        "qf_quiz_accuracy_limitation"
+      ],
+      "description": "准确率的定义及其在类别不平衡时的局限性。"
+    },
+    {
+      "coverage_tag": "precision_recall_f1",
+      "covered_by": [
+        "qf_flash_precision_recall_f1",
+        "qf_quiz_precision_recall_calc",
+        "qf_long_evaluation_metrics_compare"
+      ],
+      "description": "精确率、召回率和F1分数的定义、公式和含义。"
+    },
+    {
+      "coverage_tag": "roc_auc",
+      "covered_by": [
+        "qf_flash_roc_auc",
+        "qf_quiz_roc_auc_interpret"
+      ],
+      "description": "ROC曲线的绘制（TPR vs FPR）和AUC的含义。"
+    },
+    {
+      "coverage_tag": "cross_validation",
+      "covered_by": [
+        "qf_long_evaluation_metrics_compare"
+      ],
+      "description": "交叉验证的基本思想（k-fold）。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "accuracy",
+      "coverage_tags": [
+        "evaluating_classifiers",
+        "accuracy_metric"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_accuracy",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆准确率的定义和计算公式。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出准确率的定义和公式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "准确率的定义和计算公式。",
+      "term_refs": [
+        {
+          "display": "准确率",
+          "en": "Accuracy"
+        }
+      ],
+      "variants": [
+        {
+          "back": "准确率 = (TP + TN) / (TP + TN + FP + FN)",
+          "estimated_seconds": 8,
+          "explanation": "准确率衡量所有预测中正确的比例。",
+          "front": "准确率（Accuracy）的计算公式是什么？",
+          "question_id": "q_flash_accuracy_v1"
+        },
+        {
+          "back": "因为一个总是预测多数类的模型也能获得很高的准确率，但实际上对少数类毫无预测能力。",
+          "estimated_seconds": 12,
+          "explanation": "例如，99%无癌症的数据集，模型全判无癌症，准确率99%，但完全无法识别癌症患者。",
+          "front": "在类别不平衡的数据集上，为什么准确率可能是一个误导性的指标？",
+          "question_id": "q_flash_accuracy_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "confusion_matrix",
+      "coverage_tags": [
+        "evaluating_classifiers",
+        "confusion_matrix"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_confusion_matrix",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆混淆矩阵的四个基本元素及其含义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出混淆矩阵中TP, FP, TN, FN分别代表什么。",
+      "question_type": "short_answer",
+      "retrieval_focus": "混淆矩阵的四个单元格的含义。",
+      "term_refs": [
+        {
+          "display": "混淆矩阵",
+          "en": "Confusion Matrix"
+        },
+        {
+          "display": "真正例",
+          "en": "True Positive (TP)"
+        },
+        {
+          "display": "假正例",
+          "en": "False Positive (FP)"
+        },
+        {
+          "display": "真负例",
+          "en": "True Negative (TN)"
+        },
+        {
+          "display": "假负例",
+          "en": "False Negative (FN)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "模型预测为正类，但实际为负类的样本数。",
+          "estimated_seconds": 8,
+          "explanation": "FP是模型犯的“假警报”错误。",
+          "front": "在混淆矩阵中，FP（False Positive）代表什么？",
+          "question_id": "q_flash_confusion_matrix_v1"
+        },
+        {
+          "back": "模型预测为负类，但实际为正类的样本数。",
+          "estimated_seconds": 8,
+          "explanation": "FN是模型犯的“漏报”错误。",
+          "front": "在混淆矩阵中，FN（False Negative）代表什么？",
+          "question_id": "q_flash_confusion_matrix_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "precision_recall_f1",
+      "coverage_tags": [
+        "evaluating_classifiers",
+        "precision_recall_f1"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_precision_recall_f1",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆精确率、召回率和F1分数的定义和公式。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出精确率、召回率和F1分数的公式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "精确率、召回率和F1分数的计算公式。",
+      "term_refs": [
+        {
+          "display": "精确率",
+          "en": "Precision"
+        },
+        {
+          "display": "召回率",
+          "en": "Recall"
+        },
+        {
+          "display": "F1分数",
+          "en": "F1 Score"
+        }
+      ],
+      "variants": [
+        {
+          "back": "精确率 = TP / (TP + FP)",
+          "estimated_seconds": 8,
+          "explanation": "精确率衡量所有被预测为正类的样本中，有多少是真正的正类。",
+          "front": "精确率（Precision）的计算公式是什么？",
+          "question_id": "q_flash_precision_recall_f1_v1"
+        },
+        {
+          "back": "召回率 = TP / (TP + FN)",
+          "estimated_seconds": 8,
+          "explanation": "召回率衡量所有真正的正类样本中，有多少被正确预测出来。",
+          "front": "召回率（Recall）的计算公式是什么？",
+          "question_id": "q_flash_precision_recall_f1_v2"
+        },
+        {
+          "back": "F1 = 2 * (Precision * Recall) / (Precision + Recall)",
+          "estimated_seconds": 10,
+          "explanation": "F1分数是精确率和召回率的调和平均数，综合衡量两者。",
+          "front": "F1分数的计算公式是什么？",
+          "question_id": "q_flash_precision_recall_f1_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "roc_auc",
+      "coverage_tags": [
+        "evaluating_classifiers",
+        "roc_auc"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_roc_auc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆ROC曲线的坐标轴和AUC的含义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出ROC曲线的横纵轴以及AUC的含义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "ROC曲线的坐标轴和AUC的含义。",
+      "term_refs": [
+        {
+          "display": "ROC曲线",
+          "en": "ROC Curve"
+        },
+        {
+          "display": "AUC",
+          "en": "Area Under the Curve"
+        }
+      ],
+      "variants": [
+        {
+          "back": "横轴是假正率（FPR），纵轴是真正率（TPR，即召回率）。",
+          "estimated_seconds": 10,
+          "explanation": "ROC曲线通过改变分类阈值，绘制出不同FPR下的TPR。",
+          "front": "ROC曲线的横轴和纵轴分别是什么？",
+          "question_id": "q_flash_roc_auc_v1"
+        },
+        {
+          "back": "模型性能越好。",
+          "estimated_seconds": 6,
+          "explanation": "AUC越大，说明分类器在任意阈值下都能保持较高的TPR和较低的FPR。",
+          "front": "AUC（Area Under the Curve）的值越大，代表模型性能如何？",
+          "question_id": "q_flash_roc_auc_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-1",
+  "longform_families": [
+    {
+      "concept_key": "evaluation_metrics",
+      "coverage_tags": [
+        "evaluating_classifiers",
+        "precision_recall_f1",
+        "cross_validation"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_evaluation_metrics_compare",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么在评估分类器时不能只看准确率，并能说明精确率、召回率和F1分数各自关注什么，以及交叉验证的作用。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能比较不同评估指标的适用场景，并解释交叉验证如何提供更可靠的评估。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "准确率",
+          "en": "Accuracy"
+        },
+        {
+          "display": "精确率",
+          "en": "Precision"
+        },
+        {
+          "display": "召回率",
+          "en": "Recall"
+        },
+        {
+          "display": "F1分数",
+          "en": "F1 Score"
+        },
+        {
+          "display": "交叉验证",
+          "en": "Cross-validation"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "解释准确率的局限性",
+            "列出并解释至少两个其他指标（如精确率、召回率、F1分数）",
+            "解释交叉验证的优势"
+          ],
+          "question_id": "q_long_evaluation_metrics_compare_v1",
+          "reference_answer": [
+            "准确率在类别不平衡时具有误导性。例如，发病率只有1%，一个模型只要把所有样本都预测为“无病”，就能获得99%的准确率，但它完全无法识别出任何病人，因此不是一个好模型。",
+            "应该使用精确率、召回率和F1分数。精确率 = TP/(TP+FP)，它回答的是“你说是病的，有多少真的是病？”，关注预测的准确性。召回率 = TP/(TP+FN)，它回答的是“真的有病的，你找出了多少？”，关注对正类的覆盖能力。F1分数是两者的调和平均，当需要同时兼顾精确率和召回率时使用。",
+            "交叉验证（如k折交叉验证）将数据分成k份，轮流用k-1份训练，1份测试，重复k次。这样每个样本都有机会被用作测试，评估结果对数据划分方式不那么敏感，因此比单次划分更可靠、更稳定。"
+          ],
+          "rubric_points": [
+            "准确率在类别不平衡时具有误导性，因为一个总是预测多数类的模型也能获得高准确率。",
+            "精确率关注预测为正类的样本中有多少是真正的正类。",
+            "召回率关注真正的正类中有多少被正确识别。",
+            "F1分数是精确率和召回率的调和平均，能综合衡量两者。",
+            "交叉验证通过多次划分数据并取平均结果，能减少评估结果的方差，提供更稳定、更可靠的性能估计。"
+          ],
+          "stem": "假设你为一个罕见病（发病率1%）开发了一个诊断模型。在测试集上，模型的准确率达到了99%。请解释为什么仅凭准确率不足以判断模型的好坏。你应该使用哪些其他指标来更全面地评估模型？请分别说明这些指标的含义和它们各自关注的重点。最后，解释为什么使用交叉验证来评估模型比单次划分训练/测试集更可靠。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "解释精确率和召回率在垃圾邮件检测中的含义",
+            "根据用户场景讨论指标偏好",
+            "计算并比较F1分数",
+            "解释交叉验证的优势"
+          ],
+          "question_id": "q_long_evaluation_metrics_compare_v2",
+          "reference_answer": [
+            "精确率表示模型判为垃圾邮件的邮件中，真正是垃圾邮件的比例。召回率表示所有真正的垃圾邮件中，模型成功找出的比例。",
+            "如果用户非常讨厌误删正常邮件，会更关心精确率（模型A更好）。如果用户更担心漏掉重要垃圾邮件，会更关心召回率（模型B更好）。",
+            "模型A的F1 = 2 * (0.95 * 0.60) / (0.95 + 0.60) = 0.735。模型B的F1 = 2 * (0.70 * 0.90) / (0.70 + 0.90) = 0.788。模型B的F1分数更高，综合性能更好。",
+            "交叉验证通过多次划分数据并取平均结果，能减少评估结果的方差，提供更稳定、更可靠的性能估计，避免单次划分的偶然性。"
+          ],
+          "rubric_points": [
+            "精确率：被模型判为垃圾邮件的邮件中，真正是垃圾邮件的比例。",
+            "召回率：真正的垃圾邮件中，被模型正确识别出来的比例。",
+            "用户可能更关心精确率（避免误删正常邮件）或召回率（不想错过任何垃圾邮件），取决于对错误的容忍度。",
+            "模型A的F1 = 2*(0.95*0.60)/(0.95+0.60) ≈ 0.735；模型B的F1 = 2*(0.70*0.90)/(0.70+0.90) ≈ 0.788。模型B的F1更高。",
+            "交叉验证通过多次随机划分数据并取平均，能减少因单次数据划分带来的偶然性，使比较结果更可信。"
+          ],
+          "stem": "你训练了两个垃圾邮件分类器，模型A和模型B。在测试集上，模型A的精确率是0.95，召回率是0.60；模型B的精确率是0.70，召回率是0.90。请解释这两个指标分别代表什么。如果你是用户，你更关心哪个指标？为什么？请计算两个模型的F1分数，并说明哪个模型在综合性能上更好。最后，讨论一下为什么使用交叉验证来比较这两个模型会比单次测试更可靠。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "accuracy",
+      "coverage_tags": [
+        "evaluating_classifiers",
+        "accuracy_metric"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_accuracy_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别准确率在类别不平衡时的局限性。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能判断在类别不平衡场景下，准确率为何不是好指标。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "准确率",
+          "en": "Accuracy"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "准确率 = (TN + TP) / 总样本数。由于TP=0，TN=99%，准确率为99%。但模型完全没有预测能力，因此准确率在类别不平衡时具有误导性。",
+          "options": [
+            "该分类器的准确率是99%，说明它性能很好。",
+            "该分类器的准确率是99%，但因为它无法识别任何癌症患者，所以这个指标具有误导性。",
+            "该分类器的准确率是1%，性能很差。",
+            "该分类器的准确率是50%，相当于随机猜测。"
+          ],
+          "question_id": "q_quiz_accuracy_limitation_v1",
+          "stem": "在一个癌症检测数据集中，只有1%的样本是癌症患者。一个分类器将所有样本都预测为“无癌症”。以下哪个说法是正确的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "准确率 = 90% (所有正常邮件都被正确分类，但所有垃圾邮件都被错误分类)。由于模型对垃圾邮件的召回率为0，因此准确率不可靠。",
+          "options": [
+            "准确率90%，可靠，因为准确率很高。",
+            "准确率90%，不可靠，因为它无法识别任何垃圾邮件。",
+            "准确率10%，可靠。",
+            "准确率10%，不可靠。"
+          ],
+          "question_id": "q_quiz_accuracy_limitation_v2",
+          "stem": "一个垃圾邮件分类器，数据集中90%是正常邮件，10%是垃圾邮件。该分类器将所有邮件都标记为“正常”。它的准确率是多少？这个指标是否可靠？"
+        }
+      ]
+    },
+    {
+      "concept_key": "precision_recall_f1",
+      "coverage_tags": [
+        "evaluating_classifiers",
+        "confusion_matrix",
+        "precision_recall_f1"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_precision_recall_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据混淆矩阵计算精确率和召回率。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能根据给定的TP, FP, FN, TN值计算出精确率和召回率。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "精确率",
+          "en": "Precision"
+        },
+        {
+          "display": "召回率",
+          "en": "Recall"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 30,
+          "explanation": "精确率 = TP/(TP+FP) = 80/(80+20) = 80%。召回率 = TP/(TP+FN) = 80/(80+10) ≈ 89%。",
+          "options": [
+            "精确率=80%，召回率=89%",
+            "精确率=80%，召回率=80%",
+            "精确率=89%，召回率=80%",
+            "精确率=89%，召回率=89%"
+          ],
+          "question_id": "q_quiz_precision_recall_calc_v1",
+          "stem": "一个分类器的混淆矩阵如下：TP=80, FP=20, FN=10, TN=90。该分类器的精确率（Precision）和召回率（Recall）分别是多少？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 30,
+          "explanation": "TP=90, FN=10 (100-90)。召回率 = TP/(TP+FN) = 90/(90+10) = 90%。",
+          "options": [
+            "90%",
+            "75%",
+            "30%",
+            "约82%"
+          ],
+          "question_id": "q_quiz_precision_recall_calc_v2",
+          "stem": "一个模型在测试集上的表现如下：实际为正类的100个样本中，模型正确预测了90个；实际为负类的200个样本中，模型错误地将30个预测为正类。该模型的召回率是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "roc_auc",
+      "coverage_tags": [
+        "evaluating_classifiers",
+        "roc_auc"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_roc_auc_interpret",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释ROC曲线和AUC的含义，并比较不同模型的AUC。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能根据AUC值判断模型优劣，并理解ROC曲线上的点代表什么。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "ROC曲线",
+          "en": "ROC Curve"
+        },
+        {
+          "display": "AUC",
+          "en": "Area Under the Curve"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "AUC越大，表示分类器的整体性能越好。0.95 > 0.72，所以A优于B。",
+          "options": [
+            "分类器A的性能优于分类器B。",
+            "分类器B的性能优于分类器A。",
+            "两个分类器性能相同。",
+            "AUC值无法用于比较分类器。"
+          ],
+          "question_id": "q_quiz_roc_auc_interpret_v1",
+          "stem": "两个分类器A和B，它们的AUC值分别为0.95和0.72。以下哪个说法是正确的？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "TPR=1表示所有正类都被正确识别，FPR=0表示没有负类被误判为正类，这是最理想的情况。",
+          "options": [
+            "理想分类器，没有错误。",
+            "随机猜测。",
+            "将所有样本预测为正类。",
+            "将所有样本预测为负类。"
+          ],
+          "question_id": "q_quiz_roc_auc_interpret_v2",
+          "stem": "在ROC曲线上，一个点位于左上角（TPR=1, FPR=0）代表什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

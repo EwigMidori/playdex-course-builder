@@ -1,0 +1,110 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "现在，我们转向分类问题。",
+        "假设有两类数据点，我们希望用一条线把它们分开。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "hyperplane"
+      ],
+      "id": "s035",
+      "introduced_terms": [
+        "hyperplane"
+      ],
+      "lines": [
+        "在二维空间里，这条线是一条直线。",
+        "在更高维的空间里，我们称之为 <term id=\"hyperplane\">超平面</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "问题来了：能分开两类的超平面有无数个。",
+        "哪一个是最好的？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s036b",
+      "introduced_terms": [],
+      "lines": [
+        "假设直线 A 虽然分对了，但几乎贴着蓝色样本；直线 C 也分对了，却几乎贴着橙色样本。",
+        "只有直线 B 在两类最近的点之间都留出了最大的空隙。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "判断边界优劣时，要看它到最近训练点的最小距离。直线 B 给两类都留出了最大的安全空隙，因此最稳健。",
+        "kind": "visual_selection",
+        "options": [
+          "直线A",
+          "直线B",
+          "直线C",
+          "都一样"
+        ],
+        "prompt": "考试如果给你三条都能正确分类的边界 A、B、C，要你选“最稳健”的那条，你应该选哪一条？判断标准不是看哪条更居中，而是谁离两类最近训练点都最远。"
+      },
+      "focus_terms": [],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "margin"
+      ],
+      "id": "s038",
+      "introduced_terms": [
+        "margin"
+      ],
+      "lines": [
+        "这个“离所有点都尽可能远”的距离，就是 <term id=\"margin\">间隔</term>。",
+        "我们的目标就是找到具有最大间隔的超平面。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Consider the problem of finding a separating hyperplane for a linearly separable dataset {(x1, y1), (x2, y2), ..., (xN, yN)}, x in R^D, y in {-1, +1}. Which of the infinite hyperplanes should we choose? Intuitively, a hyperplane that passes too close to the training examples will be sensitive to noise and, therefore, less likely to generalize well for data outside the training set. Instead, it seems reasonable to expect that a hyperplane that is farthest from all training examples will have better generalization capabilities. Therefore, the optimal separating hyperplane will be the one with the largest margin, which is defined as the minimum distance of an example to the decision surface. A larger margin necessarily results in lower capacity. We normally think of complexity as being a function of the number of parameters. Instead, Statistical Learning Theory tells us that if the margin is sufficiently large, the complexity of the function will be low even if the dimensionality is very high!",
+    "related": [
+      "Hyperplane",
+      "Margin"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "hyperplane": {
+      "aliases": [
+        "Hyperplane"
+      ],
+      "display": "超平面",
+      "gloss": "在高维空间中，一个比所在空间维度低一维的线性子空间，用于分割数据。"
+    },
+    "margin": {
+      "aliases": [
+        "Margin"
+      ],
+      "display": "间隔",
+      "gloss": "决策边界（超平面）到最近训练样本的距离。"
+    }
+  }
+}

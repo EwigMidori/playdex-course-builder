@@ -1,0 +1,180 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-clustering-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "假设你有一堆点，想分成3组。",
+        "你尝试手动分组：你会先选3个代表点，然后把其他点分配给最近的代表。",
+        "但代表点选在哪里呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "你发现，如果代表点选得不好，分组结果就很差。",
+        "你需要一种方法，让代表点自动调整到最佳位置。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "k_means",
+        "centroid"
+      ],
+      "id": "s019",
+      "introduced_terms": [
+        "k_means",
+        "centroid"
+      ],
+      "lines": [
+        "最经典的划分式聚类算法是 <term id=\"k_means\">K-means</term>。",
+        "它用 <term id=\"centroid\">质心</term> 作为组的代表点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "首先，你需要决定分成几组，这个数字叫 \\(k\\)。",
+        "然后，算法随机选 \\(k\\) 个点作为初始质心。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "算法重复两个步骤：",
+        "第一步：把每个点分配给离它最近的质心，形成 \\(k\\) 个簇。",
+        "第二步：重新计算每个簇的质心——新的质心就是簇内所有点的平均值。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "重复这两步，直到质心不再变化。",
+        "这时算法就收敛了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "K-means 将质心更新为簇内所有点的均值（平均值）。",
+        "kind": "single_choice",
+        "options": [
+          "随机选择一个新的点",
+          "计算簇内所有点的平均值",
+          "选择簇中距离其他点最远的点"
+        ],
+        "prompt": "K-means 算法中，质心是如何更新的？"
+      },
+      "focus_terms": [],
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "K-means 算法中，质心是如何更新的？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "现在，请你手动模拟一次K-means迭代。",
+        "假设有4个点：A(0,0), B(1,0), C(5,5), D(6,5)。",
+        "初始质心选为：C1 = A(0,0), C2 = C(5,5)。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "expected_fields": [
+          "cluster1",
+          "cluster2"
+        ],
+        "explanation": "A和B离C1(0,0)更近，C和D离C2(5,5)更近。所以簇1包含A和B，簇2包含C和D。",
+        "kind": "manual_simulation",
+        "prompt": "第一步分配：每个点分配给最近的质心。结果是什么？",
+        "sample_answer": {
+          "cluster1": "A, B",
+          "cluster2": "C, D"
+        }
+      },
+      "focus_terms": [],
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "第一步分配：每个点分配给最近的质心。结果是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "expected_fields": [
+          "centroid1",
+          "centroid2"
+        ],
+        "explanation": "簇1的新质心 = ((0+1)/2, (0+0)/2) = (0.5, 0)。簇2的新质心 = ((5+6)/2, (5+5)/2) = (5.5, 5)。",
+        "kind": "manual_simulation",
+        "prompt": "第二步更新：重新计算每个簇的质心。新质心是什么？",
+        "sample_answer": {
+          "centroid1": "(0.5, 0)",
+          "centroid2": "(5.5, 5)"
+        }
+      },
+      "focus_terms": [],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "第二步更新：重新计算每个簇的质心。新质心是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "K-means Clustering: Partitional clustering. Each cluster is associated with a centroid. Each point is assigned to the cluster whose centroid is the closest. Number of clusters, k, must be specified. Algorithm: 1. Select k points as initial centroids. 2. Repeat: Form k clusters by assigning all points to their closest centroids. Recompute the centroid of each cluster. Until centroids don't change.",
+    "related": [
+      "k_means",
+      "centroid"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "centroid": {
+      "aliases": [
+        "Centroid",
+        "中心点"
+      ],
+      "display": "质心",
+      "gloss": "簇中所有点的平均值，作为该簇的代表。"
+    },
+    "k_means": {
+      "aliases": [
+        "K-means Clustering",
+        "K均值"
+      ],
+      "display": "K-means",
+      "gloss": "一种划分式聚类算法，通过迭代更新簇中心来最小化簇内距离。"
+    }
+  }
+}

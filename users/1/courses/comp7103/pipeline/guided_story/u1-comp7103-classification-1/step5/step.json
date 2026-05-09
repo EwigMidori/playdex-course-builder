@@ -1,0 +1,177 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "gini_index"
+      ],
+      "id": "s035",
+      "introduced_terms": [
+        "gini_index"
+      ],
+      "lines": [
+        "除了熵，还有其他衡量不纯度的指标。",
+        "比如<term id=\"gini_index\">基尼指数</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "gini_index"
+      ],
+      "formula": {
+        "latex": "Gini(S) = 1 - \\sum_i p_i^2",
+        "spoken": "基尼指数等于1减去每个类别概率的平方和。"
+      },
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "基尼指数的公式是：",
+        "$$ Gini(S) = 1 - \\sum_i p_i^2 $$"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "gini_index"
+      ],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "当所有样本属于同一类时，基尼指数为0。",
+        "当样本均匀分布在各类时，基尼指数最大。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "overfitting"
+      ],
+      "id": "s038",
+      "introduced_terms": [
+        "overfitting"
+      ],
+      "lines": [
+        "决策树可以长得很深，直到每个叶子都纯。",
+        "但这可能导致<term id=\"overfitting\">过拟合</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "overfitting"
+      ],
+      "id": "s039",
+      "introduced_terms": [],
+      "lines": [
+        "过拟合的模型记住了训练数据的细节和噪声。",
+        "它在训练集上表现完美，但在新数据上表现很差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "underfitting"
+      ],
+      "id": "s040",
+      "introduced_terms": [
+        "underfitting"
+      ],
+      "lines": [
+        "相反，如果树太浅，可能连训练数据都学不好。",
+        "这叫<term id=\"underfitting\">欠拟合</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "pruning"
+      ],
+      "id": "s041",
+      "introduced_terms": [
+        "pruning"
+      ],
+      "lines": [
+        "解决过拟合的一种方法是<term id=\"pruning\">剪枝</term>。",
+        "先让树完全生长，然后从底部剪掉一些分支。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "pruning"
+      ],
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "剪枝时，用一个叶子节点替代一个子树。",
+        "如果剪掉后模型在验证集上表现更好，就保留剪枝。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "过拟合时，模型在训练集上表现极好，但在新数据上表现差，导致测试误差高。",
+        "kind": "single_choice",
+        "options": [
+          "训练误差和测试误差都很高",
+          "训练误差很低，但测试误差很高",
+          "训练误差和测试误差都很低"
+        ],
+        "prompt": "以下哪种情况最可能是过拟合的表现？"
+      },
+      "focus_terms": [
+        "overfitting"
+      ],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Gini index, classification error, and gain ratio are alternative impurity measures. Overfitting happens when the model is too complex. Pruning helps prevent overfitting.",
+    "related": [
+      "decision tree",
+      "entropy",
+      "overfitting"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "gini_index": {
+      "aliases": [
+        "Gini Index",
+        "Gini Impurity"
+      ],
+      "display": "基尼指数",
+      "gloss": "另一种衡量数据集不纯度的指标，值越小越纯。"
+    },
+    "overfitting": {
+      "aliases": [
+        "Overfitting"
+      ],
+      "display": "过拟合",
+      "gloss": "模型在训练数据上表现太好，但对新数据表现差，因为它学到了数据中的噪声。"
+    },
+    "pruning": {
+      "aliases": [
+        "Pruning"
+      ],
+      "display": "剪枝",
+      "gloss": "通过移除决策树中不必要的分支来防止过拟合的技术。"
+    },
+    "underfitting": {
+      "aliases": [
+        "Underfitting"
+      ],
+      "display": "欠拟合",
+      "gloss": "模型过于简单，连训练数据都拟合不好。"
+    }
+  }
+}

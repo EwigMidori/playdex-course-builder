@@ -1,0 +1,447 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "gini_index",
+      "covered_by": [
+        "qf_flash_gini_formula",
+        "qf_quiz_gini_interpretation"
+      ],
+      "description": "基尼指数作为另一种不纯度度量，公式、取值范围及与熵的对比"
+    },
+    {
+      "coverage_tag": "overfitting",
+      "covered_by": [
+        "qf_flash_overfitting_definition",
+        "qf_quiz_overfitting_signs"
+      ],
+      "description": "过拟合的定义、原因（模型过于复杂）、表现（训练误差低但测试误差高）"
+    },
+    {
+      "coverage_tag": "underfitting",
+      "covered_by": [
+        "qf_flash_underfitting_definition"
+      ],
+      "description": "欠拟合的定义：模型过于简单，连训练数据都拟合不好"
+    },
+    {
+      "coverage_tag": "pruning",
+      "covered_by": [
+        "qf_flash_pruning_definition",
+        "qf_quiz_pruning_mechanism"
+      ],
+      "description": "剪枝作为防止过拟合的技术：先完全生长再剪掉分支"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "gini_index",
+      "coverage_tags": [
+        "gini_index"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_gini_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆基尼指数的计算公式及其极端值对应的含义。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能写出基尼指数的公式，并说明当所有样本属于同一类时基尼指数的值。",
+      "question_type": "short_answer",
+      "retrieval_focus": "基尼指数的数学定义和纯化条件",
+      "term_refs": [
+        {
+          "display": "基尼指数",
+          "en": "Gini Index"
+        }
+      ],
+      "variants": [
+        {
+          "back": "$$ Gini(S) = 1 - \\sum_i p_i^2 $$",
+          "estimated_seconds": 10,
+          "explanation": "基尼指数 = 1 - 每个类别概率的平方和。",
+          "front": "写出基尼指数 Gini(S) 的计算公式。",
+          "question_id": "q_flash_gini_formula_v1"
+        },
+        {
+          "back": "0",
+          "estimated_seconds": 8,
+          "explanation": "此时 p_i = 1，1 - 1^2 = 0，表示完全不纯。",
+          "front": "当一个数据集的所有样本都属于同一类别时，基尼指数等于多少？",
+          "question_id": "q_flash_gini_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "overfitting",
+      "coverage_tags": [
+        "overfitting"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_overfitting_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述过拟合的核心特征：训练误差低但测试误差高。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能说出过拟合时模型在训练集和测试集上的典型误差对比。",
+      "question_type": "short_answer",
+      "retrieval_focus": "过拟合的误差特征",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "训练误差很低，但新数据（测试集）上的误差很高。",
+          "estimated_seconds": 10,
+          "explanation": "过拟合的模型记住了训练数据的细节和噪声，导致泛化能力差。",
+          "front": "过拟合时，模型在训练集上的误差和在新数据上的误差分别有什么特点？",
+          "question_id": "q_flash_overfitting_definition_v1"
+        },
+        {
+          "back": "树长得太深、太复杂，直到每个叶子都纯，学到了训练数据中的噪声。",
+          "estimated_seconds": 10,
+          "explanation": "模型过于复杂，对训练数据拟合过度。",
+          "front": "决策树过拟合的主要原因是什么？",
+          "question_id": "q_flash_overfitting_definition_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "underfitting",
+      "coverage_tags": [
+        "underfitting"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_underfitting_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述欠拟合的核心特征：模型过于简单，连训练数据都拟合不好。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能说出欠拟合时模型在训练集上的表现。",
+      "question_type": "short_answer",
+      "retrieval_focus": "欠拟合的误差特征",
+      "term_refs": [
+        {
+          "display": "欠拟合",
+          "en": "Underfitting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "训练误差很高，模型连训练数据都学不好。",
+          "estimated_seconds": 8,
+          "explanation": "模型过于简单，无法捕捉数据中的规律。",
+          "front": "欠拟合时，模型在训练集上的表现如何？",
+          "question_id": "q_flash_underfitting_definition_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "pruning",
+      "coverage_tags": [
+        "pruning"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_pruning_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述剪枝的基本操作：先完全生长，再剪掉分支。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能说出剪枝的典型操作步骤。",
+      "question_type": "short_answer",
+      "retrieval_focus": "剪枝的操作流程",
+      "term_refs": [
+        {
+          "display": "剪枝",
+          "en": "Pruning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "先让树完全生长，然后从底部剪掉一些分支，用叶子节点替代子树。",
+          "estimated_seconds": 10,
+          "explanation": "剪枝通过移除不必要的分支来降低模型复杂度，防止过拟合。",
+          "front": "决策树剪枝的基本操作是什么？",
+          "question_id": "q_flash_pruning_definition_v1"
+        },
+        {
+          "back": "如果剪掉该子树后，模型在验证集上的表现更好，就保留剪枝。",
+          "estimated_seconds": 10,
+          "explanation": "剪枝的目标是提升泛化性能。",
+          "front": "剪枝时，如何决定是否保留一个子树？",
+          "question_id": "q_flash_pruning_definition_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-1",
+  "longform_families": [
+    {
+      "concept_key": "overfitting_and_pruning",
+      "coverage_tags": [
+        "overfitting",
+        "pruning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_overfitting_pruning_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释过拟合的原因，并说明剪枝如何缓解过拟合。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能用自己的话解释为什么决策树容易过拟合，以及剪枝为什么能缓解这个问题。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        },
+        {
+          "display": "剪枝",
+          "en": "Pruning"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "过拟合的原因",
+            "剪枝的操作方式",
+            "剪枝如何提升泛化能力"
+          ],
+          "question_id": "q_long_overfitting_pruning_explain_v1",
+          "reference_answer": [
+            "决策树通过递归划分构建，可以一直生长直到每个叶子节点都纯。这会导致树非常深、非常复杂，模型不仅学到了数据中的真实规律，还学到了噪声和异常值，这就是过拟合。",
+            "剪枝是一种防止过拟合的技术。它先让树完全生长，然后从底部开始检查每个子树：如果用一个叶子节点替代该子树后，模型在验证集上的表现没有变差甚至更好，就执行剪枝。",
+            "通过剪枝，我们移除了那些只对训练数据有效但对泛化无益的分支，降低了模型复杂度，从而提升了模型在新数据上的预测能力。"
+          ],
+          "rubric_points": [
+            "指出决策树可以生长到每个叶子都纯，导致模型过于复杂",
+            "指出过于复杂的模型会记住训练数据中的噪声",
+            "说明剪枝是移除不必要的分支，用叶子节点替代子树",
+            "说明剪枝降低了模型复杂度，从而提升在新数据上的表现"
+          ],
+          "stem": "请解释为什么决策树容易过拟合，并说明剪枝（pruning）是如何帮助缓解过拟合问题的。"
+        }
+      ]
+    },
+    {
+      "concept_key": "impurity_measures",
+      "coverage_tags": [
+        "gini_index"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_gini_vs_entropy",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较基尼指数和熵作为不纯度度量的异同。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能说出基尼指数和熵在公式、取值范围和极端值含义上的异同。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "基尼指数",
+          "en": "Gini Index"
+        },
+        {
+          "display": "熵",
+          "en": "Entropy"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "公式对比",
+            "取值范围",
+            "纯数据集（所有样本同一类）时的值",
+            "不纯数据集时的值"
+          ],
+          "question_id": "q_long_gini_vs_entropy_v1",
+          "reference_answer": [
+            "基尼指数公式为 Gini(S) = 1 - Σ p_i^2，熵公式为 H(S) = - Σ p_i log₂(p_i)。",
+            "对于二分类问题，基尼指数的取值范围是 [0, 0.5]，熵的取值范围是 [0, 1]。",
+            "当所有样本属于同一类别时，两者都等于0，表示完全不纯。",
+            "当样本均匀分布在两个类别时，基尼指数 = 0.5，熵 = 1，两者都取最大值，表示不确定性最大。",
+            "两者都用于衡量数据集的不纯度，值越小表示数据集越纯。"
+          ],
+          "rubric_points": [
+            "正确写出基尼指数公式 Gini = 1 - Σ p_i^2",
+            "正确写出熵公式 H = - Σ p_i log₂(p_i)",
+            "指出两者取值范围：Gini ∈ [0, 0.5]（二分类），熵 ∈ [0, 1]（二分类）",
+            "指出纯数据集时两者均为0",
+            "指出均匀分布时两者均取最大值"
+          ],
+          "stem": "比较基尼指数（Gini Index）和熵（Entropy）作为决策树不纯度度量的异同。请从公式、取值范围、以及当数据集纯或不纯时的表现三个方面进行说明。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "gini_index",
+      "coverage_tags": [
+        "gini_index"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_gini_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体数值例子中计算或判断基尼指数的大小，并理解其含义。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能根据给定的类别分布，判断基尼指数的相对大小或计算其值。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "基尼指数",
+          "en": "Gini Index"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 25,
+          "explanation": "Gini = 1 - (8/10)^2 - (2/10)^2 = 1 - 0.64 - 0.04 = 0.32。",
+          "options": [
+            "0.00",
+            "0.16",
+            "0.32",
+            "0.50"
+          ],
+          "question_id": "q_quiz_gini_interpretation_v1",
+          "stem": "一个数据集中有10个样本，其中8个属于类别A，2个属于类别B。该数据集的基尼指数最接近以下哪个值？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "当样本均匀分布时，不确定性最大，基尼指数也最大。对于二分类，均匀分布时 Gini = 1 - 0.5^2 - 0.5^2 = 0.5。",
+          "options": [
+            "所有样本都属于同一类别",
+            "样本均匀分布在两个类别中（各占50%）",
+            "一个类别占90%，另一个占10%",
+            "样本分布在三个类别中，比例分别为50%, 30%, 20%"
+          ],
+          "question_id": "q_quiz_gini_interpretation_v2",
+          "stem": "以下哪种情况下，数据集的基尼指数最大？"
+        }
+      ]
+    },
+    {
+      "concept_key": "overfitting",
+      "coverage_tags": [
+        "overfitting"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_overfitting_signs",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别过拟合的典型表现，并能区分过拟合与欠拟合。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能根据训练误差和测试误差的对比，判断模型是否过拟合。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "训练误差极低而测试误差高，是过拟合的典型表现。模型记住了训练数据的噪声。",
+          "options": [
+            "欠拟合",
+            "过拟合",
+            "数据泄露",
+            "特征不足"
+          ],
+          "question_id": "q_quiz_overfitting_signs_v1",
+          "stem": "一个决策树模型在训练集上的准确率为99%，但在测试集上的准确率只有65%。这种情况最可能是什么问题？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "让树完全生长直到每个叶子都纯，会使模型过于复杂，容易过拟合。",
+          "options": [
+            "限制树的最大深度为3",
+            "设置每个叶子节点的最小样本数为10",
+            "让树完全生长直到每个叶子都纯",
+            "使用剪枝技术"
+          ],
+          "question_id": "q_quiz_overfitting_signs_v2",
+          "stem": "以下哪种做法最可能导致决策树过拟合？"
+        }
+      ]
+    },
+    {
+      "concept_key": "pruning",
+      "coverage_tags": [
+        "pruning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_pruning_mechanism",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解剪枝的目的和基本机制。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能说出剪枝的主要目的，并区分预剪枝和后剪枝。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "剪枝",
+          "en": "Pruning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "剪枝通过移除不必要的分支来降低模型复杂度，从而防止过拟合。",
+          "options": [
+            "增加树的深度",
+            "防止过拟合",
+            "提高训练准确率",
+            "减少特征数量"
+          ],
+          "question_id": "q_quiz_pruning_mechanism_v1",
+          "stem": "决策树剪枝的主要目的是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "后剪枝是先让树完全生长，然后从底部开始剪掉那些对提升泛化性能没有帮助的分支。",
+          "options": [
+            "在树生长之前就停止分裂",
+            "先让树完全生长，再剪掉对泛化无益的分支",
+            "只保留根节点",
+            "在训练过程中动态调整学习率"
+          ],
+          "question_id": "q_quiz_pruning_mechanism_v2",
+          "stem": "以下关于后剪枝的描述，哪一个是正确的？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

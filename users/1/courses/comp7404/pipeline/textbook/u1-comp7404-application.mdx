@@ -1,0 +1,584 @@
+---
+lessonId: u1-comp7404-application
+title: 视觉物体识别：从词袋模型到金字塔匹配
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["visual_object_recognition_challenge", "levels_of_recognition"]
+    linkedSteps: ["step1"]
+  - sectionId: core-challenges
+    title: 物体识别的核心挑战
+    coverageTags: ["visual_object_recognition_challenge", "pixel_comparison_failure"]
+    linkedSteps: ["step1"]
+  - sectionId: bag-of-words-model
+    title: 词袋模型：从文档到图像的类比
+    coverageTags: ["bag_of_words_model", "document_analogy", "visual_word_definition", "image_bow_representation", "histogram_representation"]
+    linkedSteps: ["step2"]
+  - sectionId: bow-construction-flow
+    title: 图像词袋模型的构建流程
+    coverageTags: ["feature_detection_and_representation", "feature_descriptor", "codeword_dictionary_formation", "visual_word_quantization", "bag_of_words_histogram", "bow_construction_flow"]
+    linkedSteps: ["step3"]
+  - sectionId: histogram-distances-and-limitations
+    title: 直方图距离与词袋模型的局限
+    coverageTags: ["histogram_based_distances", "chi_square_distance", "histogram_intersection", "bag_of_words_limitations", "model_properties"]
+    linkedSteps: ["step4"]
+  - sectionId: spatial-pyramid-matching
+    title: 空间金字塔匹配：补上空间信息
+    coverageTags: ["spatial_pyramid_matching_intro", "spatial_pyramid_matching_construction", "spatial_pyramid_matching_vs_bow", "spatial_pyramid_matching_failure_case"]
+    linkedSteps: ["step5"]
+  - sectionId: spatially-aligned-pyramid-matching
+    title: 空间对齐金字塔匹配：处理近重复图像
+    coverageTags: ["near_duplicate_image_definition", "spm_failure_on_near_duplicate", "sapm_definition_and_advantage", "sapm_application"]
+    linkedSteps: ["step6"]
+  - sectionId: temporal-pyramid-matching
+    title: 从图像到视频：时间金字塔匹配
+    coverageTags: ["video_event_recognition_problem", "bag_of_frame_representation", "temporal_shift_problem", "earth_movers_distance_emd", "temporal_pyramid_matching_tpm", "multi_level_pyramid_matching_algorithm"]
+    linkedSteps: ["step7"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["visual_object_recognition_challenge", "bag_of_words_model", "bow_construction_flow", "histogram_based_distances", "spatial_pyramid_matching_intro", "sapm_definition_and_advantage", "temporal_pyramid_matching_tpm"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6", "step7"]
+
+coverageTrace:
+  - coverageTag: visual_object_recognition_challenge
+    description: 物体识别面临的挑战：视角变化、光照变化、遮挡、类内差异等导致像素比较失效
+    sectionIds: ["why-this-lesson-matters", "core-challenges", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: levels_of_recognition
+    description: 物体识别的不同层次：图像分类、检测/定位、前景/背景分割
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: pixel_comparison_failure
+    description: 直接像素比较因光照、视角等变化而失败，需要更鲁棒的方法
+    sectionIds: ["core-challenges"]
+    linkedSteps: ["step1"]
+  - coverageTag: bag_of_words_model
+    description: 词袋模型的核心思想：忽略顺序和语法，只关心单词的种类和出现频率
+    sectionIds: ["bag-of-words-model", "review-and-self-test"]
+    linkedSteps: ["step2"]
+  - coverageTag: document_analogy
+    description: 从文档词袋到图像词袋的类比与迁移
+    sectionIds: ["bag-of-words-model"]
+    linkedSteps: ["step2"]
+  - coverageTag: visual_word_definition
+    description: 视觉单词的定义：对图像局部特征进行量化后得到的代表性模式
+    sectionIds: ["bag-of-words-model"]
+    linkedSteps: ["step2"]
+  - coverageTag: image_bow_representation
+    description: 图像词袋表示：提取局部区域、描述、量化成视觉单词、统计直方图
+    sectionIds: ["bag-of-words-model"]
+    linkedSteps: ["step2"]
+  - coverageTag: histogram_representation
+    description: 直方图：统计每个视觉单词在图像中出现的次数，形成向量表示
+    sectionIds: ["bag-of-words-model"]
+    linkedSteps: ["step2"]
+  - coverageTag: feature_detection_and_representation
+    description: 特征检测与表示：规则网格、兴趣点检测器等方法
+    sectionIds: ["bow-construction-flow"]
+    linkedSteps: ["step3"]
+  - coverageTag: feature_descriptor
+    description: 特征描述子：用数值向量描述局部区域外观，如SIFT
+    sectionIds: ["bow-construction-flow"]
+    linkedSteps: ["step3"]
+  - coverageTag: codeword_dictionary_formation
+    description: 码本构建：K均值聚类生成视觉单词集合
+    sectionIds: ["bow-construction-flow"]
+    linkedSteps: ["step3"]
+  - coverageTag: visual_word_quantization
+    description: 视觉单词量化：将描述子映射到最近的聚类中心
+    sectionIds: ["bow-construction-flow"]
+    linkedSteps: ["step3"]
+  - coverageTag: bag_of_words_histogram
+    description: 词袋直方图：统计每个视觉单词出现次数形成图像表示
+    sectionIds: ["bow-construction-flow"]
+    linkedSteps: ["step3"]
+  - coverageTag: bow_construction_flow
+    description: 词袋模型构建流程：特征检测→描述→聚类→量化→直方图
+    sectionIds: ["bow-construction-flow", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: histogram_based_distances
+    description: 基于直方图的距离度量：L1、L2、卡方距离、直方图交
+    sectionIds: ["histogram-distances-and-limitations", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: chi_square_distance
+    description: 卡方距离公式与含义
+    sectionIds: ["histogram-distances-and-limitations"]
+    linkedSteps: ["step4"]
+  - coverageTag: histogram_intersection
+    description: 直方图交公式与含义
+    sectionIds: ["histogram-distances-and-limitations"]
+    linkedSteps: ["step4"]
+  - coverageTag: bag_of_words_limitations
+    description: 词袋模型忽略空间结构的缺陷
+    sectionIds: ["histogram-distances-and-limitations"]
+    linkedSteps: ["step4"]
+  - coverageTag: model_properties
+    description: 词袋模型的特性：直观、与文档类比、可与生成模型结合、学习与识别速度快
+    sectionIds: ["histogram-distances-and-limitations"]
+    linkedSteps: ["step4"]
+  - coverageTag: spatial_pyramid_matching_intro
+    description: 空间金字塔匹配的基本思想：将图像分成多级网格，在每个格子内分别统计直方图，以保留空间信息
+    sectionIds: ["spatial-pyramid-matching", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: spatial_pyramid_matching_construction
+    description: 空间金字塔匹配的构建过程：多级网格划分（如1x1, 2x2, 4x4）、每格统计直方图、加权组合
+    sectionIds: ["spatial-pyramid-matching"]
+    linkedSteps: ["step5"]
+  - coverageTag: spatial_pyramid_matching_vs_bow
+    description: 空间金字塔匹配相比词袋模型的主要改进：从无序到有序，从全局到局部，引入空间布局信息
+    sectionIds: ["spatial-pyramid-matching"]
+    linkedSteps: ["step5"]
+  - coverageTag: spatial_pyramid_matching_failure_case
+    description: 词袋模型在蓝天草地互换案例中失败的原因，以及SPM如何解决
+    sectionIds: ["spatial-pyramid-matching"]
+    linkedSteps: ["step5"]
+  - coverageTag: near_duplicate_image_definition
+    description: 近重复图像的定义：内容几乎相同，但在拍摄条件、编辑或渲染上略有不同的图像
+    sectionIds: ["spatially-aligned-pyramid-matching"]
+    linkedSteps: ["step6"]
+  - coverageTag: spm_failure_on_near_duplicate
+    description: 标准空间金字塔匹配（SPM）在近重复图像上失败的原因：要求块严格对齐，无法处理平移或缩放
+    sectionIds: ["spatially-aligned-pyramid-matching"]
+    linkedSteps: ["step6"]
+  - coverageTag: sapm_definition_and_advantage
+    description: 空间对齐金字塔匹配（SAPM）的定义：允许图像块在匹配时发生位置和尺度的偏移，使用整数流推土机距离
+    sectionIds: ["spatially-aligned-pyramid-matching", "review-and-self-test"]
+    linkedSteps: ["step6"]
+  - coverageTag: sapm_application
+    description: SAPM的应用：版权检测、过滤搜索引擎结果中的重复图片
+    sectionIds: ["spatially-aligned-pyramid-matching"]
+    linkedSteps: ["step6"]
+  - coverageTag: video_event_recognition_problem
+    description: 视频事件识别的问题定义：在线视频搜索、视频索引、事件由场景/物体/动作随时间演变刻画
+    sectionIds: ["temporal-pyramid-matching"]
+    linkedSteps: ["step7"]
+  - coverageTag: bag_of_frame_representation
+    description: 帧的袋子表示：对每一帧提取词袋向量，整个视频变成帧的袋子
+    sectionIds: ["temporal-pyramid-matching"]
+    linkedSteps: ["step7"]
+  - coverageTag: temporal_shift_problem
+    description: 视频节奏不同导致的时间偏移问题：同一事件出现在不同时间位置，直接比较帧会失败
+    sectionIds: ["temporal-pyramid-matching"]
+    linkedSteps: ["step7"]
+  - coverageTag: earth_movers_distance_emd
+    description: 推土机距离(EMD)用于视频匹配：允许一帧匹配到另一视频中时间位置不同的帧，处理时间偏移和尺度变化
+    sectionIds: ["temporal-pyramid-matching"]
+    linkedSteps: ["step7"]
+  - coverageTag: temporal_pyramid_matching_tpm
+    description: 时间金字塔匹配：将视频分成多个时间段，粗粒度匹配整个视频，细粒度匹配局部片段
+    sectionIds: ["temporal-pyramid-matching", "review-and-self-test"]
+    linkedSteps: ["step7"]
+  - coverageTag: multi_level_pyramid_matching_algorithm
+    description: 多级金字塔匹配算法：时间约束层次凝聚聚类，不同子片段的对齐，多级信息融合
+    sectionIds: ["temporal-pyramid-matching"]
+    linkedSteps: ["step7"]
+---
+
+# 视觉物体识别：从词袋模型到金字塔匹配
+
+## 为什么这一课重要
+
+<Definition title="物体识别 (Object Recognition)">
+让计算机判断图像中有什么物体、在哪里。这是计算机视觉的核心问题之一，也是许多实际应用（如自动驾驶、医学影像分析、图像搜索）的基础。
+</Definition>
+
+物体识别任务可以分为三个层次，从简单到复杂：
+
+- **图像分类 (Image Classification)**：这张图里有没有猫？
+- **检测/定位 (Detection/Localization)**：猫在图片的哪个位置？
+- **前景/背景分割 (F/G Segmentation)**：哪些像素属于这只猫？
+
+<KeyPoint>
+物体识别不仅仅是“认出是什么”，还包括“在哪里”和“哪些像素属于它”。不同层次的任务难度不同，但都面临共同的挑战。
+</KeyPoint>
+
+<Checkpoint title="识别层次辨析">
+<QuestionRef id="q_quiz_levels_v1" />
+<QuestionRef id="q_quiz_levels_v2" />
+</Checkpoint>
+
+## 物体识别的核心挑战
+
+计算机直接比较两张图片的像素值，看似简单，但实际效果很差。原因在于，同一物体在不同条件下，像素值可能天差地别。
+
+<Definition title="视角变化 (Viewpoint Variation)">
+同一物体从不同角度拍摄，外观差异很大。例如，从正面和侧面看一辆汽车，像素排列完全不同。
+</Definition>
+
+<Definition title="光照变化 (Illumination)">
+光线强弱、方向不同，同一物体的图像亮度与阴影不同。阳光下和昏暗灯光下的猫，像素值差异巨大。
+</Definition>
+
+<Definition title="遮挡 (Occlusion)">
+物体部分被其他物体挡住，只能看到一部分。计算机需要从不完整的信息中推断出物体是什么。
+</Definition>
+
+<Definition title="类内差异 (Intra-class Variation)">
+同一类别的物体在外观上可以有很大不同，比如不同品种的猫，或者不同款式的椅子。
+</Definition>
+
+<Figure src="images/f37b3f08b57cda44c7e292f2e47ca8dcba8275687a74f7cd671ddeec23bef6d4.jpg" alt="物体识别挑战示例图：展示视角变化、光照变化、遮挡、类内差异等挑战的图片">
+物体识别面临的主要挑战：视角变化、光照变化、遮挡、类内差异等。
+</Figure>
+
+<KeyPoint>
+这些挑战导致同一物体的像素值在不同条件下差异巨大，因此直接像素比较不可靠。我们需要更鲁棒的表示方法。
+</KeyPoint>
+
+<Example title="像素比较失败案例">
+一张阳光下猫的图片和一张同一只猫在昏暗灯光下的图片。计算机直接比较像素值，会因为光照变化导致对应位置的像素值（亮度）差异巨大，从而认为它们是不同的图片。
+</Example>
+
+<Pitfall>
+不要认为计算机“看”图片的方式和人一样。计算机看到的是一堆数字（像素值），任何微小的变化（光照、视角）都会导致这些数字发生巨大变化。
+</Pitfall>
+
+<Checkpoint title="挑战辨析">
+<QuestionRef id="q_quiz_challenges_v1" />
+<QuestionRef id="q_quiz_challenges_v2" />
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_pixel_failure" />
+
+## 词袋模型：从文档到图像的类比
+
+面对像素比较的失败，一个经典思路是借鉴文档分析中的**词袋模型**。
+
+<Definition title="词袋模型 (Bag-of-words model, BoW)">
+将文本或图像表示为一组无序特征的集合，忽略顺序和语法，只关心单词的种类和出现频率。
+</Definition>
+
+在文档分析中，我们统计关键词出现的次数来判断一本书的主题。例如，“微分方程”出现很多次，那这本书很可能和数学有关。
+
+<Figure src="images/53024fe582b73e08bed1e01763a73b05bc85cc3ff580dbbcfac21a4206c103a9.jpg" alt="图像词袋模型示意图：展示如何将图像中的局部区域类比为文档中的单词">
+图像词袋模型的核心思想：将图像中的局部区域类比为文档中的单词。
+</Figure>
+
+把这个想法搬到图像识别上：
+
+1. **视觉单词 (Visual Word)**：图像中的局部区域（如角点、纹理、斑点）可以充当“单词”。
+2. **量化 (Quantization)**：将图像分成很多小块，每一块用一个特征向量描述，然后聚类，每个聚类中心就是一个视觉单词。
+3. **直方图 (Histogram)**：统计每个视觉单词在图像中出现的次数，形成一张直方图，这就是图像的“词袋”表示。
+
+<Definition title="视觉单词 (Visual Word)">
+对图像局部特征（如角点、纹理）的特征向量进行聚类后得到的聚类中心，代表一种局部模式。它不是图像中的真实物体，而是局部模式的代表。
+</Definition>
+
+<Definition title="直方图 (Histogram)">
+统计每个视觉单词在图像中出现的次数，形成向量表示。这张直方图就是图像的词袋表示，可用于训练分类器。
+</Definition>
+
+<KeyPoint>
+词袋模型的核心假设是：忽略顺序和语法（或空间位置），只关心单词（或视觉单词）的种类和出现频率。
+</KeyPoint>
+
+<Checkpoint title="词袋模型核心概念">
+<QuestionRef id="q_quiz_bow_core_v1" />
+<QuestionRef id="q_quiz_visual_word_v1" />
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_bow_analogy" />
+
+## 图像词袋模型的构建流程
+
+构建图像词袋模型，主要有四个步骤：
+
+### 第一步：特征检测 (Feature Detection)
+
+在图像上找到有代表性的局部区域。
+
+- **规则网格 (Regular grid)**：在图像上均匀采样，不依赖局部变化。
+- **兴趣点检测器 (Interest point detector)**：寻找图像中变化剧烈的区域，如角点、斑点（例如 Harris-Laplace 检测器）。
+
+<Definition title="特征检测 (Feature Detection)">
+在图像中找出有代表性的局部区域，如角点、斑点。
+</Definition>
+
+### 第二步：特征描述 (Feature Description)
+
+对每个检测到的局部区域，使用特征描述子将其外观编码成一个数值向量。
+
+<Definition title="特征描述子 (Feature Descriptor)">
+用一个数值向量来描述一个局部区域的外观。最经典的是 SIFT 描述子，它将局部梯度信息编码成向量，对旋转和尺度有一定不变性。
+</Definition>
+
+### 第三步：码本构建 (Codebook Formation)
+
+将所有训练图像的局部描述子收集起来，用 K 均值聚类算法进行聚类。每个聚类中心就是一个视觉单词，所有聚类中心的集合构成码本。
+
+<Definition title="码本 (Codebook / Codewords Dictionary)">
+由所有视觉单词（聚类中心）组成的集合，相当于视觉词典。
+</Definition>
+
+<Definition title="K均值聚类 (K-means Clustering)">
+一种将数据点分成K个组（簇）的算法，每个组由其中心点代表。
+</Definition>
+
+### 第四步：量化与直方图统计 (Quantization & Histogram)
+
+对于一张新图像，提取其所有局部描述子，将每个描述子分配到码本中距离最近的视觉单词。最后统计每个视觉单词被分配到的次数，形成直方图向量，即图像的词袋表示。
+
+<Figure src="images/e1fa8c0ff09e7f8a6dc6435b6b0b8bf336c3a6ea786a5f4fd021e550104023a3.jpg" alt="词袋模型构建流程图：展示从特征检测、描述、索引到量化的完整流程">
+词袋模型构建流程：检测或采样特征 → 描述特征 → 索引到描述子池 → 量化形成词袋向量。
+</Figure>
+
+<KeyPoint>
+图像词袋模型的构建流程可以概括为：**特征检测 → 特征描述 → K均值聚类生成码本 → 量化并统计直方图**。
+</KeyPoint>
+
+<Example title="词袋模型构建流程示例">
+假设你有一张包含汽车和道路的图片：
+1. **特征检测**：使用兴趣点检测器找到车轮边缘（角点）、车灯（斑点）等关键区域。
+2. **特征描述**：对每个检测到的区域，使用SIFT描述子将其编码成一个128维的向量。
+3. **码本构建**：从大量训练图片中提取所有描述子，通过K均值聚类生成一个包含K个视觉单词的码本。
+4. **量化与直方图**：将这张新图片的每个局部描述子与码本中的视觉单词进行最近邻匹配，统计每个视觉单词出现的次数，得到一个K维的直方图向量。
+</Example>
+
+<Checkpoint title="构建流程排序">
+<QuestionRef id="q_quiz_step3_ordering_v1" />
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_step3_flow" />
+
+## 直方图距离与词袋模型的局限
+
+有了图像的词袋向量（直方图），如何比较两张图是否相似？需要计算两个直方图之间的距离。
+
+### 直方图距离
+
+<Definition title="卡方距离 (Chi-square Distance)">
+一种衡量两个直方图差异的统计距离，对直方图中每个桶的差异进行归一化。
+<Formula latex="D(S_1, S_2) = \frac{1}{2} \sum_{i=1}^{m} \frac{(\mu_i - \nu_i)^2}{(\mu_i + \nu_i)}">卡方距离公式：分子是差值的平方，分母是桶值之和，用于归一化。</Formula>
+</Definition>
+
+<Definition title="直方图交 (Histogram Intersection)">
+一种衡量两个直方图相似度的方法，取每个桶的最小值之和。值越大，表示两张图越相似。
+<Formula latex="\operatorname{Sim}(S_1, S_2) = \sum_{i=1}^{m} \min(\mu_i, \nu_i)">直方图交公式：取两个直方图在每个桶上的最小值，然后求和。</Formula>
+</Definition>
+
+### 词袋模型的优点
+
+- **直观**：与文档分析是类比关系。
+- **可与生成模型结合**：方便进行弱监督或无监督学习。
+- **学习与识别速度快**：相比一些更复杂的模型，计算效率较高。
+
+### 词袋模型的致命缺陷：忽略空间结构
+
+词袋模型完全忽略了图像的空间结构。它只统计视觉单词出现的频率，不关心它们的位置。
+
+<Example title="词袋模型失败案例">
+一张“蓝天在上，草地在下”的图片，和一张“草地在上，蓝天在下”的图片。它们的词袋向量可能完全相同（因为“蓝天”和“草地”这两种视觉单词出现的总次数相同），但内容完全不同！
+</Example>
+
+<KeyPoint>
+词袋模型只统计频率，忽略位置。因此，任何基于直方图距离（如卡方距离、直方图交）的方法都无法区分空间布局不同的图像。
+</KeyPoint>
+
+<Pitfall>
+不要认为更换距离度量（如从L2距离换成卡方距离）就能解决词袋模型的空间信息丢失问题。所有直方图距离都只比较数值，不比较位置。
+</Pitfall>
+
+<Checkpoint title="直方图距离与词袋模型局限">
+<QuestionRef id="q_quiz_hist_dist_v1" />
+<QuestionRef id="q_quiz_bow_limitation_v1" />
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_bow_limitation" />
+
+## 空间金字塔匹配：补上空间信息
+
+为了弥补词袋模型忽略空间结构的缺陷，人们提出了**空间金字塔匹配 (Spatial Pyramid Matching, SPM)**。
+
+<Definition title="空间金字塔匹配 (Spatial Pyramid Matching, SPM)">
+在多个不同分辨率下划分图像，并分别统计每个子区域的直方图，从而保留空间信息。
+</Definition>
+
+### SPM 的构建过程
+
+1. **多级网格划分**：将图像分成越来越细的网格。例如，三级金字塔：
+   - 第一层：整个图像（1×1）
+   - 第二层：2×2 四个格子
+   - 第三层：4×4 十六个格子
+2. **分块统计直方图**：在每个格子内，分别统计视觉单词的直方图。
+3. **加权组合**：将所有层次的直方图加权组合起来，形成一个更丰富的图像表示。
+
+<Figure src="images/a7bceedb57203ac6ca4cb161555fe36d7422db107709873faaf945e48d8afdc2.jpg" alt="空间金字塔匹配示意图：展示三级金字塔的构建过程，包括不同分辨率下的网格划分和直方图统计">
+空间金字塔匹配的三级金字塔构建示例。图像被分成1×1、2×2、4×4的网格，在每个格子内分别统计直方图。
+</Figure>
+
+### SPM 如何解决词袋模型的缺陷？
+
+在“蓝天在上，草地在下”和“草地在上，蓝天在下”的案例中：
+- **词袋模型**：只统计全局频率，两张图的词袋向量相同，误判为相似。
+- **SPM**：将图像分成2×2网格。天空在上的图片中，上半部分的格子有更多“天空”单词；草地在上的图片则相反。因此，即使全局直方图相同，SPM的局部直方图分布完全不同，从而能区分。
+
+<KeyPoint>
+从词袋模型到空间金字塔匹配，核心思路是：**从无序到有序，从全局到局部**。SPM通过引入空间布局信息，显著提升了图像分类的性能。
+</KeyPoint>
+
+<Checkpoint title="SPM 核心改进">
+<QuestionRef id="q_quiz_spm_improvement_v1" />
+<QuestionRef id="q_quiz_spm_construction_v1" />
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_spm_mechanism" />
+
+## 空间对齐金字塔匹配：处理近重复图像
+
+### 近重复图像
+
+<Definition title="近重复图像 (Near Duplicate Image)">
+两张内容几乎相同，但在拍摄条件、编辑或渲染上略有不同的图像。例如，一张照片被裁剪、调色、加了个水印。
+</Definition>
+
+### 标准 SPM 的失败
+
+标准 SPM 要求块与块严格对齐。但在近重复图像中，物体可能发生了平移或缩放。例如，一张猫在左边的图片和一张猫在右边的图片，标准 SPM 会认为它们差异很大，因为每个格子里的内容都变了。
+
+### 空间对齐金字塔匹配 (SAPM)
+
+<Definition title="空间对齐金字塔匹配 (Spatially Aligned Pyramid Matching, SAPM)">
+一种改进的空间金字塔匹配，允许图像块在匹配时发生位置和尺度的偏移，使用整数流推土机距离 (Integer-flow Earth Mover's Distance)。
+</Definition>
+
+SAPM 的核心改进是允许一个图像块匹配到另一个图像中不同位置或不同尺度的块，而不是固定的一一对应。它使用整数流推土机距离来找到块与块之间的最佳匹配关系。
+
+<Figure src="images/096fcd351386e594826678dbc94d365c1b79d41c44e9caa9e3e09568e049cf53.jpg" alt="空间对齐金字塔匹配示意图：展示一对近重复图像及其块匹配关系">
+SAPM 在近重复图像上的匹配示例。允许块与块之间发生位置偏移，从而鲁棒地处理平移和缩放。
+</Figure>
+
+### SAPM 的应用
+
+- **版权侵权检测**：识别被裁剪、调色后的盗版图片。
+- **过滤搜索结果中的重复图片**：清理搜索引擎返回的冗余近重复图片。
+
+<KeyPoint>
+标准SPM要求块严格对齐，无法处理平移或缩放。SAPM通过允许块匹配时发生位置和尺度的偏移，使用整数流EMD，解决了近重复图像识别问题。
+</KeyPoint>
+
+<Checkpoint title="SAPM 核心优势">
+<QuestionRef id="q_quiz_sapm_advantage_v1" />
+<QuestionRef id="q_quiz_sapm_app_v1" />
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_spm_vs_sapm" />
+
+## 从图像到视频：时间金字塔匹配
+
+图像之后，轮到视频。视频不仅有空间信息，还有时间信息。
+
+### 视频事件识别
+
+<Definition title="视频事件识别 (Video Event Recognition)">
+判断视频是否描述了某个特定事件（如“飞机起飞”、“汽车行驶”）。事件由一系列随时间演变的场景、物体和动作刻画。
+</Definition>
+
+### 帧的袋子表示
+
+一个简单的思路：对每一帧提取词袋向量，整个视频就变成了一个“帧的袋子”。
+
+<Definition title="帧的袋子表示 (Bag-of-frame representation)">
+对每一帧提取词袋向量，整个视频就变成了一个帧的袋子，忽略帧之间的时间顺序。
+</Definition>
+
+### 时间偏移问题
+
+帧的袋子表示忽略了帧之间的时间顺序。当两个视频节奏不同时，同一事件出现在不同的时间位置，直接比较帧会导致匹配失败。
+
+<Example title="时间偏移失败案例">
+两个描述“飞机起飞”的视频：视频A中飞机在第10秒开始滑行、第15秒离地；视频B中飞机在第20秒开始滑行、第30秒离地。直接比较帧，会认为它们完全不同。
+</Example>
+
+### 推土机距离 (Earth Mover's Distance, EMD)
+
+<Definition title="推土机距离 (Earth Mover's Distance, EMD)">
+一种衡量两个分布之间差异的距离，可以理解为将一个分布变成另一个所需的最小工作量。在视频匹配中，它允许一帧匹配到另一视频中时间位置不同的帧，从而处理时间偏移和尺度变化。
+</Definition>
+
+### 时间金字塔匹配 (Temporal Pyramid Matching, TPM)
+
+<Definition title="时间金字塔匹配 (Temporal Pyramid Matching, TPM)">
+将金字塔匹配的思想扩展到时间维度，用于比较视频的相似性。将视频分成多个时间段，在粗粒度上匹配整个视频，在细粒度上匹配局部片段。
+</Definition>
+
+<Figure src="images/755072a28cef7c3bae4f95b85ea861faa3e7f7cf9afd1d6d4380a2d8209d0e59.jpg" alt="时间金字塔匹配动机示意图：展示视频被分成多个子片段，不同视频可能包含不同子集的事件阶段">
+时间金字塔匹配的动机：一个视频包含多个事件阶段（子片段），不同视频可能只包含其中一部分。
+</Figure>
+
+<KeyPoint>
+从图像到视频，核心思路是：**从空间金字塔到时间金字塔**。TPM通过多级时间分段，在粗粒度和细粒度上同时对齐，对视频长度不同、包含不同事件阶段子集的情况更加鲁棒。
+</KeyPoint>
+
+<Checkpoint title="视频匹配核心概念">
+<QuestionRef id="q_quiz_004_v1" />
+<QuestionRef id="q_quiz_005_v1" />
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_001" />
+
+## 复习与自测
+
+### 核心概念回顾
+
+1. **物体识别挑战**：视角变化、光照变化、遮挡、类内差异等导致像素比较失效。
+2. **词袋模型**：忽略顺序和语法，只关心单词的种类和出现频率。图像词袋模型通过提取局部区域、描述、量化成视觉单词、统计直方图来构建。
+3. **词袋模型的局限**：完全忽略空间结构，无法区分空间布局不同的图像。
+4. **空间金字塔匹配 (SPM)**：通过多级网格划分和分块统计直方图，引入空间布局信息。
+5. **空间对齐金字塔匹配 (SAPM)**：允许块匹配时发生位置和尺度的偏移，使用整数流EMD，处理近重复图像。
+6. **时间金字塔匹配 (TPM)**：将金字塔匹配扩展到时间维度，处理视频的时间偏移问题。
+
+### 自测题
+
+<QuestionFamily familyId="qf_quiz_bow_core" />
+<QuestionFamily familyId="qf_quiz_visual_word" />
+<QuestionFamily familyId="qf_quiz_bow_pipeline" />
+<QuestionFamily familyId="qf_quiz_histogram" />
+<QuestionFamily familyId="qf_quiz_step3_featdet" />
+<QuestionFamily familyId="qf_quiz_step3_descriptor" />
+<QuestionFamily familyId="qf_quiz_step3_codebook" />
+<QuestionFamily familyId="qf_quiz_step3_quantize" />
+<QuestionFamily familyId="qf_quiz_step3_histogram" />
+<QuestionFamily familyId="qf_quiz_hist_dist" />
+<QuestionFamily familyId="qf_quiz_bow_limitation" />
+<QuestionFamily familyId="qf_quiz_spm_improvement" />
+<QuestionFamily familyId="qf_quiz_spm_construction" />
+<QuestionFamily familyId="qf_quiz_spm_failure_case" />
+<QuestionFamily familyId="qf_quiz_near_dup_recog" />
+<QuestionFamily familyId="qf_quiz_spm_failure" />
+<QuestionFamily familyId="qf_quiz_sapm_advantage" />
+<QuestionFamily familyId="qf_quiz_sapm_app" />
+<QuestionFamily familyId="qf_quiz_001" />
+<QuestionFamily familyId="qf_quiz_002" />
+<QuestionFamily familyId="qf_quiz_003" />
+<QuestionFamily familyId="qf_quiz_004" />
+<QuestionFamily familyId="qf_quiz_005" />
+
+### 主动回忆（闪卡）
+
+<QuestionFamily familyId="qf_flash_bow_core" />
+<QuestionFamily familyId="qf_flash_visual_word" />
+<QuestionFamily familyId="qf_flash_bow_pipeline" />
+<QuestionFamily familyId="qf_flash_histogram" />
+<QuestionFamily familyId="qf_flash_step3_featdet" />
+<QuestionFamily familyId="qf_flash_step3_descriptor" />
+<QuestionFamily familyId="qf_flash_step3_codebook" />
+<QuestionFamily familyId="qf_flash_step3_quantize" />
+<QuestionFamily familyId="qf_flash_step3_histogram" />
+<QuestionFamily familyId="qf_flash_chi_sq" />
+<QuestionFamily familyId="qf_flash_hist_inter" />
+<QuestionFamily familyId="qf_flash_bow_limitation" />
+<QuestionFamily familyId="qf_flash_bow_properties" />
+<QuestionFamily familyId="qf_flash_spm_idea" />
+<QuestionFamily familyId="qf_flash_spm_levels" />
+<QuestionFamily familyId="qf_flash_spm_vs_bow" />
+<QuestionFamily familyId="qf_flash_near_dup_def" />
+<QuestionFamily familyId="qf_flash_spm_failure" />
+<QuestionFamily familyId="qf_flash_sapm_def" />
+<QuestionFamily familyId="qf_flash_sapm_app" />
+<QuestionFamily familyId="qf_flash_001" />
+<QuestionFamily familyId="qf_flash_002" />
+<QuestionFamily familyId="qf_flash_003" />
+<QuestionFamily familyId="qf_flash_004" />
+<QuestionFamily familyId="qf_flash_005" />

@@ -1,0 +1,211 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-decision-trees",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "gini_impurity"
+      ],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "现在我们有了衡量节点纯度的工具：Gini 不纯度。",
+        "下一步是：如何比较不同问题带来的“纯度提升”？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "一个自然的想法：直接比较分裂后子节点的纯度。",
+        "比如，问题 A 分裂后，左子节点 Gini=0.2，右子节点 Gini=0.3。",
+        "问题 B 分裂后，左子节点 Gini=0.1，右子节点 Gini=0.4。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "问题 A 的子节点平均纯度看起来更低（0.2 和 0.3 都比 0.1 和 0.4 更接近），但直接比较忽略了子节点大小。",
+        "kind": "single_choice",
+        "options": [
+          "问题 A",
+          "问题 B",
+          "无法判断"
+        ],
+        "prompt": "只看子节点纯度，你觉得哪个问题更好？"
+      },
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "试试看：直接比较子节点纯度，你能判断吗？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "但这里有个陷阱：子节点的大小不同。",
+        "如果问题 A 的左子节点只有 1 个样本，右子节点有 99 个，那么右子节点的纯度更重要。",
+        "直接比较子节点纯度，忽略了样本数量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "information_gain"
+      ],
+      "id": "s005",
+      "introduced_terms": [
+        "information_gain"
+      ],
+      "lines": [
+        "我们需要一个考虑样本数量的指标：<term id=\"information_gain\">信息增益</term>。",
+        "信息增益越大，说明这个问题越能有效地把数据分开。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "information_gain"
+      ],
+      "formula": {
+        "latex": "IG(D_{p}, f) = I(D_{p}) - \\frac{N_{\\text{left}}}{N_{p}} I(D_{\\text{left}}) - \\frac{N_{\\text{right}}}{N_{p}} I(D_{\\text{right}})",
+        "spoken": "父节点的纯度减去左右子节点纯度的加权平均。"
+      },
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "信息增益的计算公式是："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "information_gain"
+      ],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "其中，\\(I\\) 是纯度度量（比如 Gini 不纯度），\\(N\\) 是样本数量。",
+        "简单说，就是用父节点的混乱程度，减去分裂后子节点的平均混乱程度。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "回到水果的例子。",
+        "父节点有 5 个样本：2 个苹果，2 个葡萄，1 个柠檬。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "它的 Gini 不纯度是 0.64。",
+        "现在考虑第一个问题：“颜色是绿色吗？”"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "如果“是”，得到 1 个苹果（纯的，Gini=0）。",
+        "如果“否”，得到 1 个苹果、2 个葡萄、1 个柠檬（Gini=0.625）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "information_gain"
+      ],
+      "formula": {
+        "latex": "IG = 0.64 - \\frac{1}{5} \\times 0 - \\frac{4}{5} \\times 0.625 = 0.64 - 0.5 = 0.14",
+        "spoken": "0.64 减去 0 再减去 0.5，等于 0.14。"
+      },
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "计算这个问题的信息增益："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "information_gain"
+      ],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "信息增益是 0.14。",
+        "你可以用同样的方法计算其他问题（比如“直径是 3 吗？”）的增益。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "information_gain"
+      ],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "哪个问题的信息增益最大，我们就先问哪个。",
+        "这就是决策树学习算法的核心：每一步都选择能带来最大信息增益的特征进行分裂。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.34"
+        ],
+        "explanation": "IG = 0.64 - 0.3 = 0.34。",
+        "kind": "fill_in_blank",
+        "prompt": "信息增益 = ?"
+      },
+      "focus_terms": [
+        "information_gain"
+      ],
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "假设另一个问题分裂后，子节点的加权平均 Gini 是 0.3。",
+        "父节点 Gini 是 0.64，那么信息增益是多少？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "2. How much does a question reduce the uncertainty. We aim to maximize Information Gain.",
+    "related": [
+      "2. Information Gain",
+      "Maximizing Information Gain"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "information_gain": {
+      "aliases": [
+        "Information Gain",
+        "IG"
+      ],
+      "display": "信息增益",
+      "gloss": "衡量一个特征分裂后，不纯度降低的程度。增益越大，分裂效果越好。"
+    }
+  }
+}

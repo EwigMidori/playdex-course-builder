@@ -1,0 +1,427 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "svm_max_margin",
+      "covered_by": [
+        "qf_flash_svm_margin",
+        "qf_quiz_svm_margin"
+      ],
+      "description": "SVM 的核心思想：寻找最大化间隔的超平面"
+    },
+    {
+      "coverage_tag": "svm_support_vectors",
+      "covered_by": [
+        "qf_flash_svm_support_vectors"
+      ],
+      "description": "支持向量的定义与作用：决定间隔的最近数据点"
+    },
+    {
+      "coverage_tag": "svm_slack_variable",
+      "covered_by": [
+        "qf_flash_svm_slack",
+        "qf_quiz_svm_slack"
+      ],
+      "description": "松弛变量：处理线性不可分问题，允许部分误分类并惩罚"
+    },
+    {
+      "coverage_tag": "svm_kernel_trick",
+      "covered_by": [
+        "qf_flash_svm_kernel",
+        "qf_quiz_svm_kernel",
+        "qf_long_svm_kernel"
+      ],
+      "description": "核技巧：将数据映射到高维空间使其线性可分，计算仍在原空间"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "svm_max_margin",
+      "coverage_tags": [
+        "svm_max_margin"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_svm_margin",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 SVM 优化目标的核心概念：最大化间隔。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能回忆 SVM 寻找最优超平面的核心准则。",
+      "question_type": "short_answer",
+      "retrieval_focus": "SVM 优化目标的名称",
+      "term_refs": [
+        {
+          "display": "间隔",
+          "en": "Margin"
+        },
+        {
+          "display": "超平面",
+          "en": "Hyperplane"
+        }
+      ],
+      "variants": [
+        {
+          "back": "间隔（Margin）",
+          "estimated_seconds": 8,
+          "explanation": "SVM 的目标是找到离两类数据点都尽可能远的超平面，即最大化间隔。",
+          "front": "SVM 寻找最优超平面时，要最大化什么？",
+          "question_id": "q_flash_svm_margin_v1"
+        },
+        {
+          "back": "间隔（Margin）",
+          "estimated_seconds": 8,
+          "explanation": "间隔是决策边界到最近数据点的距离，SVM 通过最大化它来获得更好的泛化能力。",
+          "front": "在 SVM 中，超平面到最近数据点的距离叫什么？",
+          "question_id": "q_flash_svm_margin_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "svm_support_vectors",
+      "coverage_tags": [
+        "svm_support_vectors"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_svm_support_vectors",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别支持向量的定义及其在 SVM 中的作用。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能回忆哪些数据点决定了 SVM 的间隔大小。",
+      "question_type": "short_answer",
+      "retrieval_focus": "决定 SVM 间隔的数据点",
+      "term_refs": [
+        {
+          "display": "支持向量",
+          "en": "Support Vectors"
+        }
+      ],
+      "variants": [
+        {
+          "back": "距离超平面最近的那些点，称为支持向量（Support Vectors）",
+          "estimated_seconds": 10,
+          "explanation": "支持向量是距离决策边界最近的数据点，它们唯一地决定了超平面的位置和方向。",
+          "front": "在 SVM 中，哪些数据点决定了间隔的大小？",
+          "question_id": "q_flash_svm_support_vectors_v1"
+        },
+        {
+          "back": "不会",
+          "estimated_seconds": 8,
+          "explanation": "只有支持向量决定了间隔，移除其他点不影响超平面的位置。",
+          "front": "SVM 中，如果移除一个非支持向量的数据点，间隔会改变吗？",
+          "question_id": "q_flash_svm_support_vectors_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "svm_slack_variable",
+      "coverage_tags": [
+        "svm_slack_variable"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_svm_slack",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解松弛变量在 SVM 处理线性不可分问题时的作用。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能回忆 SVM 处理线性不可分问题的一种方法及其核心思想。",
+      "question_type": "short_answer",
+      "retrieval_focus": "松弛变量的目的",
+      "term_refs": [
+        {
+          "display": "松弛变量",
+          "en": "Slack Variable"
+        }
+      ],
+      "variants": [
+        {
+          "back": "松弛变量（Slack Variable）",
+          "estimated_seconds": 8,
+          "explanation": "松弛变量允许一些数据点违反间隔约束，但会在优化目标中增加惩罚项。",
+          "front": "当数据线性不可分时，SVM 引入什么变量来允许部分点被错误分类？",
+          "question_id": "q_flash_svm_slack_v1"
+        },
+        {
+          "back": "所有松弛变量的总和（或加权和）",
+          "estimated_seconds": 12,
+          "explanation": "目标函数变为最小化 ||w||² + C * Σξᵢ，其中 ξᵢ 是松弛变量，C 是惩罚参数。",
+          "front": "引入松弛变量后，SVM 的优化目标除了最小化 ||w||²，还要最小化什么？",
+          "question_id": "q_flash_svm_slack_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "svm_kernel_trick",
+      "coverage_tags": [
+        "svm_kernel_trick"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_svm_kernel",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解核技巧的基本思想：通过映射到高维空间解决线性不可分问题。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能回忆核技巧的核心思想及其计算优势。",
+      "question_type": "short_answer",
+      "retrieval_focus": "核技巧的核心思想",
+      "term_refs": [
+        {
+          "display": "核技巧",
+          "en": "Kernel Trick"
+        }
+      ],
+      "variants": [
+        {
+          "back": "更高维的空间",
+          "estimated_seconds": 8,
+          "explanation": "将数据从低维空间映射到高维空间，使得原本线性不可分的数据变得线性可分。",
+          "front": "核技巧通过将数据映射到什么空间来解决线性不可分问题？",
+          "question_id": "q_flash_svm_kernel_v1"
+        },
+        {
+          "back": "原始低维空间",
+          "estimated_seconds": 10,
+          "explanation": "核函数 K(x, y) 可以直接在原始空间计算高维空间的内积，避免了显式映射的计算开销。",
+          "front": "核技巧的妙处在于，高维空间的计算实际上在哪个空间进行？",
+          "question_id": "q_flash_svm_kernel_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-2",
+  "longform_families": [
+    {
+      "concept_key": "svm_kernel_trick",
+      "coverage_tags": [
+        "svm_kernel_trick"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_svm_kernel",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用清晰的语言解释核技巧的原理、动机和计算优势。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能解释为什么核技巧能处理非线性问题，以及它如何保持计算效率。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "核技巧",
+          "en": "Kernel Trick"
+        },
+        {
+          "display": "支持向量机",
+          "en": "Support Vector Machine"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "要解决的问题",
+            "核心思想",
+            "计算效率的原因"
+          ],
+          "question_id": "q_long_svm_kernel_v1",
+          "reference_answer": [
+            "核技巧用于解决数据在原始空间中线性不可分的问题。",
+            "其核心思想是通过一个核函数 K(x, y)，将数据隐式地映射到一个更高维的特征空间，使得在这个新空间中数据变得线性可分。",
+            "核技巧保持计算效率的原因是：它不需要显式地计算出高维空间中的坐标 φ(x)，而是直接在原始低维空间中通过核函数计算高维空间中的内积 φ(x)·φ(y)。例如，对于映射 φ(x) = (x₁², x₂², √2 x₁x₂)，核函数 K(x, y) = (x·y)² 可以在 O(d) 时间内完成计算，而显式映射需要 O(d²) 时间。"
+          ],
+          "rubric_points": [
+            "明确指出核技巧用于处理原始空间中线性不可分的数据",
+            "解释通过核函数将数据隐式映射到高维空间，使其变得线性可分",
+            "说明核函数 K(x, y) 直接在原始空间计算高维空间的内积，避免了显式映射的计算开销",
+            "可以举例说明，如多项式核或 RBF 核"
+          ],
+          "stem": "请解释 SVM 中的核技巧（Kernel Trick）。你的解释应包括：\n1. 核技巧要解决什么问题？\n2. 它的核心思想是什么？\n3. 为什么它能保持计算效率？"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "线性不可分的原因",
+            "核函数设计",
+            "效率优势"
+          ],
+          "question_id": "q_long_svm_kernel_v2",
+          "reference_answer": [
+            "在一维空间中，正类分布在两个分离的区域（x < 0 和 x > 1），负类在中间（0 ≤ x ≤ 1）。任何单个阈值都无法同时将这两个正类区域与负类区域分开。",
+            "可以设计映射 φ(x) = (x, x²)。映射后，正类点分布在抛物线 y = x² 上 x < 0 和 x > 1 的两端，负类点在中间。在二维空间中，可以用一条水平线（如 y = 0.5）将它们分开。对应的核函数为 K(x, y) = x·y + x²·y²。",
+            "核技巧的优势在于：计算 K(x, y) 只需要 O(1) 时间（计算 x·y + x²·y²），而如果先显式计算 φ(x) 和 φ(y) 再计算内积，需要 O(1) 时间存储和计算，但更重要的是，对于更复杂的映射，核技巧可以避免维度灾难。"
+          ],
+          "rubric_points": [
+            "正确指出一维空间中无法用单个点（阈值）将三个区域正确分开",
+            "设计合理的映射，如 φ(x) = (x, x²) 或 φ(x) = (x, (x-0.5)²)",
+            "解释映射后的数据在二维空间中如何变得线性可分",
+            "说明核函数如何避免显式计算高维坐标"
+          ],
+          "stem": "假设你有一个一维数据集，其中正类样本在 x < 0 和 x > 1 的区域，负类样本在 0 ≤ x ≤ 1 的区域。\n1. 为什么这个数据集在一维空间中不是线性可分的？\n2. 请设计一个简单的核函数，将数据映射到二维空间使其线性可分，并解释你的映射。\n3. 说明为什么核技巧比显式映射更高效。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "svm_max_margin",
+      "coverage_tags": [
+        "svm_max_margin"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_svm_margin",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在多个选项中识别 SVM 的核心优化目标。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能区分 SVM 与其他分类器的核心区别。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "间隔",
+          "en": "Margin"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "SVM 的目标是最大化间隔（margin），即超平面到最近数据点的距离，这有助于提高模型的泛化能力。",
+          "options": [
+            "训练集上的准确率",
+            "超平面到最近数据点的距离（间隔）",
+            "支持向量的数量",
+            "模型的复杂度"
+          ],
+          "question_id": "q_quiz_svm_margin_v1",
+          "stem": "SVM（支持向量机）的核心思想是寻找一个超平面，使得什么最大化？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "最大间隔超平面对训练数据中的噪声和微小变化更鲁棒，因此通常具有更好的泛化能力。",
+          "options": [
+            "因为间隔越大，训练误差越小",
+            "因为间隔越大，模型对数据点的微小扰动越不敏感",
+            "因为间隔越大，支持向量越多",
+            "因为间隔越大，模型越复杂"
+          ],
+          "question_id": "q_quiz_svm_margin_v2",
+          "stem": "在 SVM 中，为什么最大化间隔通常能带来更好的泛化性能？"
+        }
+      ]
+    },
+    {
+      "concept_key": "svm_slack_variable",
+      "coverage_tags": [
+        "svm_slack_variable"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_svm_slack",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解松弛变量在软间隔 SVM 中的作用。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能判断松弛变量如何帮助 SVM 处理线性不可分数据。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "松弛变量",
+          "en": "Slack Variable"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "松弛变量允许部分数据点违反间隔约束（即被错误分类或落在间隔内），但会在优化目标中增加惩罚项 C * Σξᵢ。",
+          "options": [
+            "增加模型的复杂度",
+            "允许一些数据点被错误分类，同时进行惩罚",
+            "将所有数据点映射到更高维空间",
+            "减少支持向量的数量"
+          ],
+          "question_id": "q_quiz_svm_slack_v1",
+          "stem": "当数据不是完全线性可分时，SVM 引入松弛变量（slack variables）的目的是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "C 是惩罚参数，C 越大，对错误分类的惩罚越重，模型越倾向于减少训练误差；C 越小，允许更多的错误分类，间隔可以更大。",
+          "options": [
+            "控制核函数的形状",
+            "控制对错误分类的惩罚力度",
+            "控制支持向量的数量",
+            "控制数据映射的维度"
+          ],
+          "question_id": "q_quiz_svm_slack_v2",
+          "stem": "在软间隔 SVM 中，参数 C 的作用是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "svm_kernel_trick",
+      "coverage_tags": [
+        "svm_kernel_trick"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_svm_kernel",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解核技巧的基本原理和优势。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能识别核技巧如何在不增加计算成本的情况下处理非线性问题。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "核技巧",
+          "en": "Kernel Trick"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "核技巧通过核函数 K(x, y) 在原始低维空间中计算高维空间的内积，避免了显式映射带来的巨大计算开销。",
+          "options": [
+            "它可以直接计算高维空间中的内积，而无需显式进行数据映射",
+            "它可以减少训练数据量",
+            "它可以保证模型永远不会过拟合",
+            "它只能用于线性可分的数据"
+          ],
+          "question_id": "q_quiz_svm_kernel_v1",
+          "stem": "核技巧（Kernel Trick）在 SVM 中的主要优势是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "核技巧通过将数据隐式映射到高维空间，使原本线性不可分的问题变得线性可分。",
+          "options": [
+            "数据量太大无法训练",
+            "原始空间中线性不可分的数据",
+            "模型训练速度太慢",
+            "特征数量太少"
+          ],
+          "question_id": "q_quiz_svm_kernel_v2",
+          "stem": "以下哪个是核技巧解决的核心问题？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-2/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

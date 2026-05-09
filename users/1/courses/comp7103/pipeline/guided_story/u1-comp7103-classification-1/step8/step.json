@@ -1,0 +1,111 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "classification"
+      ],
+      "id": "s063",
+      "introduced_terms": [],
+      "lines": [
+        "我们来回顾一下。",
+        "分类就是用已知标签的数据，预测新数据的标签。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "decision_tree",
+        "information_gain"
+      ],
+      "id": "s064",
+      "introduced_terms": [],
+      "lines": [
+        "决策树通过递归划分来学习分类规则。",
+        "每次选择信息增益最大的特征来分裂。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "entropy",
+        "gini_index",
+        "information_gain"
+      ],
+      "id": "s065",
+      "introduced_terms": [],
+      "lines": [
+        "熵和基尼指数帮助我们量化不纯度。",
+        "信息增益衡量分裂带来的“纯度提升”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "overfitting",
+        "pruning"
+      ],
+      "id": "s066",
+      "introduced_terms": [],
+      "lines": [
+        "过拟合是决策树的主要风险。",
+        "剪枝是防止过拟合的有效手段。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "accuracy",
+        "precision",
+        "recall",
+        "f_measure",
+        "roc_curve"
+      ],
+      "id": "s067",
+      "introduced_terms": [],
+      "lines": [
+        "评估分类器不能只看准确率。",
+        "混淆矩阵、精确率、召回率、F1分数、ROC曲线都是重要工具。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "decision_tree"
+      ],
+      "id": "s068",
+      "introduced_terms": [],
+      "lines": [
+        "决策树简单、可解释、速度快。",
+        "它是理解更复杂分类模型的起点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "classification"
+      ],
+      "id": "s069",
+      "introduced_terms": [],
+      "lines": [
+        "记住一句话：",
+        "分类就是问对问题，然后根据答案做决定。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "plain_text": "Summary of classification and decision trees.",
+    "related": [
+      "classification",
+      "decision tree",
+      "overfitting"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {}
+}

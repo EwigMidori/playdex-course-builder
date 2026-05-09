@@ -1,0 +1,410 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "overfitting_definition_and_symptom",
+      "covered_by": [
+        "qf_flash_overfitting_def",
+        "qf_quiz_overfitting_symptom"
+      ],
+      "description": "过拟合的定义：模型在训练数据上表现太好，以至于失去了对未知数据的泛化能力。症状：训练集准确率远高于测试集准确率。"
+    },
+    {
+      "coverage_tag": "pruning_techniques",
+      "covered_by": [
+        "qf_flash_pruning_methods",
+        "qf_quiz_pruning_choice",
+        "qf_long_pruning_effect"
+      ],
+      "description": "剪枝技术：通过限制树的最大深度或限制叶节点最小样本数来防止过拟合。"
+    },
+    {
+      "coverage_tag": "overfitting_vs_generalization_tradeoff",
+      "covered_by": [
+        "qf_quiz_pruning_tradeoff",
+        "qf_long_pruning_effect"
+      ],
+      "description": "过拟合与泛化能力的权衡：剪枝通常导致训练集准确率下降，但测试集准确率上升。"
+    },
+    {
+      "coverage_tag": "pruning_parameter_tuning",
+      "covered_by": [
+        "qf_quiz_pruning_tuning_direction"
+      ],
+      "description": "根据过拟合症状（训练集准确率高、测试集准确率低、叶节点样本少）选择合理的调参方向（减小最大深度或增大叶节点最小样本数）。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "overfitting",
+      "coverage_tags": [
+        "overfitting_definition_and_symptom"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_overfitting_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出过拟合的定义。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生答对后证明掌握了过拟合的核心定义：模型在训练数据上表现太好，以至于失去了对未知数据的泛化能力。",
+      "question_type": "short_answer",
+      "retrieval_focus": "过拟合的定义",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "模型在训练数据上表现太好，以至于失去了对未知数据的泛化能力。",
+          "estimated_seconds": 8,
+          "explanation": "过拟合的典型表现是训练集准确率远高于测试集准确率。",
+          "front": "什么是决策树中的“过拟合”？",
+          "question_id": "q_flash_overfitting_def_v1"
+        },
+        {
+          "back": "训练集准确率远高于测试集准确率。",
+          "estimated_seconds": 6,
+          "explanation": "过拟合的模型记住了训练数据中的细节和噪声，导致在新数据上表现不佳。",
+          "front": "过拟合的决策树在训练集和测试集上的准确率通常呈现什么关系？",
+          "question_id": "q_flash_overfitting_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "pruning",
+      "coverage_tags": [
+        "pruning_techniques"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_pruning_methods",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能列举出两种常见的剪枝方法。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生答对后证明掌握了剪枝的两种常见具体方法：限制树的最大深度和限制叶节点的最小样本数。",
+      "question_type": "short_answer",
+      "retrieval_focus": "剪枝的两种常见方法",
+      "term_refs": [
+        {
+          "display": "剪枝",
+          "en": "Pruning"
+        }
+      ],
+      "variants": [
+        {
+          "back": "限制树的最大深度，以及限制叶节点的最小样本数。",
+          "estimated_seconds": 8,
+          "explanation": "这两种方法都能控制树的复杂度，防止树过度生长。",
+          "front": "为了防止决策树过拟合，常用的两种剪枝方法是什么？",
+          "question_id": "q_flash_pruning_methods_v1"
+        },
+        {
+          "back": "剪枝。",
+          "estimated_seconds": 5,
+          "explanation": "剪枝通过限制树的深度或节点数量来防止过拟合。",
+          "front": "在决策树中，“限制树的最大深度”属于哪种防止过拟合的技术？",
+          "question_id": "q_flash_pruning_methods_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-decision-trees",
+  "longform_families": [
+    {
+      "concept_key": "overfitting_vs_generalization_tradeoff",
+      "coverage_tags": [
+        "overfitting_vs_generalization_tradeoff",
+        "pruning_techniques"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_pruning_effect",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么剪枝会降低训练集准确率但提升测试集准确率。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生答对后证明能解释剪枝如何通过降低模型复杂度来缓解过拟合，从而在牺牲部分训练集拟合的情况下提升泛化能力。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        },
+        {
+          "display": "剪枝",
+          "en": "Pruning"
+        },
+        {
+          "display": "泛化",
+          "en": "Generalization"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "过拟合的决策树有什么特点？",
+            "剪枝如何改变模型？",
+            "为什么训练集准确率会下降？",
+            "为什么测试集准确率会上升？"
+          ],
+          "question_id": "q_long_pruning_effect_v1",
+          "reference_answer": [
+            "过拟合的决策树深度很大，节点很多，它记住了训练数据中的每一个细节，包括噪声，导致在训练集上准确率极高。",
+            "剪枝通过限制树的最大深度或叶节点最小样本数，降低了模型的复杂度。",
+            "剪枝后，模型不再能完美拟合训练数据中的噪声和个别特例，因此训练集准确率会下降。",
+            "但正因为模型不再过度关注噪声，它学习到的模式更通用，更适用于新数据，因此测试集准确率会上升。这就是过拟合与泛化能力的权衡。"
+          ],
+          "rubric_points": [
+            "指出过拟合的树过于复杂，记住了训练数据中的噪声和细节。",
+            "指出剪枝通过限制深度等方式降低了模型复杂度。",
+            "解释训练集准确率下降是因为模型不再能完美拟合训练数据中的噪声。",
+            "解释测试集准确率上升是因为模型更关注数据的整体模式，泛化能力增强。"
+          ],
+          "stem": "解释为什么对一棵过拟合的决策树进行剪枝（例如限制最大深度）通常会导致训练集准确率下降，但测试集准确率上升。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "哪棵树存在过拟合？依据是什么？",
+            "树 B 的测试准确率为什么更高？",
+            "树 B 的训练准确率为什么低于树 A？"
+          ],
+          "question_id": "q_long_pruning_effect_v2",
+          "reference_answer": [
+            "树 A 存在过拟合，因为它的训练准确率（99%）远高于测试准确率（65%），说明模型记住了训练数据中的细节，但无法泛化到新数据。",
+            "树 B 的测试准确率更高，是因为它的深度较小（4），模型复杂度低，没有过度拟合训练数据中的噪声。这种剪枝策略提升了模型的泛化能力。",
+            "树 B 的训练准确率（88%）低于树 A（99%），是因为它没有去拟合训练数据中的每一个细节和噪声，这是为了获得更好泛化能力而付出的代价。"
+          ],
+          "rubric_points": [
+            "正确识别树 A 存在过拟合（训练集和测试集准确率差距过大）。",
+            "解释树 B 通过限制深度（剪枝）降低了复杂度，从而提升了泛化能力。",
+            "解释树 B 训练准确率较低是因为它没有过度拟合训练数据中的噪声。"
+          ],
+          "stem": "假设你训练了两棵决策树：树 A 深度为 15，树 B 深度为 4。树 A 的训练准确率为 99%，测试准确率为 65%；树 B 的训练准确率为 88%，测试准确率为 82%。请分析哪棵树存在过拟合，并解释为什么树 B 的测试准确率更高。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "overfitting",
+      "coverage_tags": [
+        "overfitting_definition_and_symptom"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_overfitting_symptom",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据训练集和测试集的表现识别过拟合现象。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生答对后证明能根据训练集准确率远高于测试集准确率这一典型症状，判断出模型存在过拟合问题。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "训练集表现远好于测试集，是典型的过拟合现象。",
+          "options": [
+            "欠拟合",
+            "过拟合",
+            "数据错误",
+            "特征不足"
+          ],
+          "question_id": "q_quiz_overfitting_symptom_v1",
+          "stem": "一棵决策树在训练集上准确率为 100%，在测试集上准确率只有 70%。这最可能是什么问题？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "训练集和测试集准确率差距过大，是过拟合的典型症状，应通过剪枝来缓解。",
+          "options": [
+            "模型欠拟合，需要增加树的深度",
+            "模型过拟合，需要剪枝",
+            "模型表现正常，无需调整",
+            "测试集数据有误"
+          ],
+          "question_id": "q_quiz_overfitting_symptom_v2",
+          "stem": "一棵决策树的训练准确率为 99%，但测试准确率仅为 65%。以下哪项描述最准确？"
+        }
+      ]
+    },
+    {
+      "concept_key": "pruning",
+      "coverage_tags": [
+        "pruning_techniques"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_pruning_choice",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能从选项中识别出防止过拟合的方法。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生答对后证明能识别出限制树的最大深度是防止过拟合的剪枝方法之一。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "剪枝",
+          "en": "Pruning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "限制最大深度可以防止树过度生长，是剪枝的一种形式。",
+          "options": [
+            "限制树的最大深度",
+            "增加训练数据",
+            "使用更多特征",
+            "增加树的深度"
+          ],
+          "question_id": "q_quiz_pruning_choice_v1",
+          "stem": "以下哪一项是防止决策树过拟合的方法？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "限制叶节点最小样本数可以防止树过度细化，是常见的剪枝策略。",
+          "options": [
+            "限制叶节点的最小样本数",
+            "增加树的层数",
+            "使用所有特征进行分裂",
+            "增大训练集"
+          ],
+          "question_id": "q_quiz_pruning_choice_v2",
+          "stem": "以下哪一项属于决策树的剪枝策略？"
+        }
+      ]
+    },
+    {
+      "concept_key": "overfitting_vs_generalization",
+      "coverage_tags": [
+        "overfitting_vs_generalization_tradeoff"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_pruning_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解剪枝对训练集和测试集准确率的不同影响。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生答对后证明掌握了剪枝的典型效果：训练集准确率下降，测试集准确率上升。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        },
+        {
+          "display": "剪枝",
+          "en": "Pruning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "限制深度会降低训练集准确率，但能提升测试集准确率，这是过拟合与泛化能力的权衡。",
+          "options": [
+            "训练集准确率上升，测试集准确率下降",
+            "训练集准确率下降，测试集准确率上升",
+            "两者都上升",
+            "两者都下降"
+          ],
+          "question_id": "q_quiz_pruning_tradeoff_v1",
+          "stem": "如果一棵深度为 10 的过拟合树被剪枝到深度为 5，通常会发生什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "训练准确率下降但测试准确率上升，正是典型的“牺牲一点训练拟合，换来更好的泛化”。这说明剪枝方向是对的。",
+          "options": [
+            "改善了泛化",
+            "恶化了泛化",
+            "无法判断",
+            "对泛化没有影响"
+          ],
+          "question_id": "q_quiz_pruning_tradeoff_v2",
+          "stem": "某棵树从深度 10 剪到深度 5 后，训练准确率从 100% 降到 92%，测试准确率从 70% 升到 83%。根据这个结果判断：剪枝是改善了泛化，还是恶化了泛化？"
+        }
+      ]
+    },
+    {
+      "concept_key": "pruning_parameter_tuning",
+      "coverage_tags": [
+        "pruning_parameter_tuning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_pruning_tuning_direction",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据过拟合症状选择合理的调参方向。",
+      "linked_steps": [
+        "step4b"
+      ],
+      "practice_target": "学生答对后证明能根据训练集准确率高、测试集准确率低、叶节点样本少等过拟合症状，判断出应减小最大深度或增大叶节点最小样本数。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        },
+        {
+          "display": "剪枝",
+          "en": "Pruning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "训练集几乎满分、测试集很差，而且叶子里样本极少，说明树太复杂了。此时应优先通过限制深度或增大叶节点最小样本数来收缩模型。",
+          "options": [
+            "减小最大深度，或增大叶节点最小样本数",
+            "继续增加树的深度，让训练集更接近 100%",
+            "删除测试集里分错的样本",
+            "不做任何限制，保持原树结构"
+          ],
+          "question_id": "q_quiz_pruning_tuning_direction_v1",
+          "stem": "如果你发现一棵树在训练集上 99% 准确、测试集上只有 68%，而且许多叶节点只含 1 个样本，下一步更合理的调参方向是什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "过拟合的树通常深度过大、叶节点样本过少。减小最大深度可以降低模型复杂度，提升泛化能力。",
+          "options": [
+            "将最大深度从 20 减小到 5",
+            "将最大深度从 5 增加到 20",
+            "将叶节点最小样本数从 1 减小到 0",
+            "增加训练数据中的特征数量"
+          ],
+          "question_id": "q_quiz_pruning_tuning_direction_v2",
+          "stem": "一棵决策树在训练集上准确率为 98%，测试集上为 60%，且许多叶节点只包含 1 个样本。以下哪个调整最可能提升测试集表现？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4b",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-decision-trees/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

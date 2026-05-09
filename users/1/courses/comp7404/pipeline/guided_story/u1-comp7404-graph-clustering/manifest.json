@@ -1,0 +1,35 @@
+{
+  "chapter_id": "lecture-06-graph-clustering",
+  "chapter_title": "Graph Clustering",
+  "course_id": "user-1-comp7404",
+  "course_title": "COMP7404",
+  "lesson_id": "u1-comp7404-graph-clustering",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "为什么最小割不够好",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "归一化割如何修正最小割",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "从离散优化到连续特征分解",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "为什么用第二小特征向量做二分",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "算法完整流程与多类扩展",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    }
+  ]
+}

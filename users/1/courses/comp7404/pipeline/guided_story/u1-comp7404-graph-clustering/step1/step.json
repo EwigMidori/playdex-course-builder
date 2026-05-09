@@ -1,0 +1,215 @@
+{
+  "chapter_id": "lecture-06-graph-clustering",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-graph-clustering",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "想象你有一堆散落的点，它们有的靠得很近，有的离得很远。",
+        "你的任务：把它们分成有意义的组。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "先试试手动分组：下面这个图里，哪些点应该属于同一组？",
+        "（在脑中圈出你认为的组）"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "离群点与任何其他点的连接都很弱，所以最小割会优先切掉它，而不是把密集区域分开。",
+        "kind": "single_choice",
+        "options": [
+          "把密集区域分成两半",
+          "把离群点单独切出来",
+          "均匀地切掉每个区域的一部分",
+          "不切割任何边"
+        ],
+        "prompt": "假设图中有一个离群点（只有一条很细的边连到主团），如果只找权重最小的边来切，最可能的结果是什么？"
+      },
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "现在，假设我们想用‘切边’的方式分组。",
+        "你会切掉哪些边？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "你很可能切掉了那些连接稀疏区域的细边。",
+        "但如果有一个点只靠一条细边连着大部队，你会怎么做？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "只切掉那一条细边，就能把这个点孤立出来。",
+        "这样切出来的‘组’合理吗？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "这个离群点单独成组，但组内只有一个点，没有实际意义。我们希望切出来的组内部是紧密的。",
+        "kind": "single_choice",
+        "options": [
+          "不合理，因为离群点单独成组没有意义",
+          "合理，因为离群点本来就不属于任何组",
+          "合理，因为切掉的边权重最小",
+          "不合理，因为应该切掉所有边"
+        ],
+        "prompt": "只切掉离群点那一条细边，得到的结果合理吗？"
+      },
+      "focus_terms": [],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "检查一下你的判断："
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "cut",
+        "minimum_cut"
+      ],
+      "id": "s007",
+      "introduced_terms": [
+        "cut",
+        "minimum_cut"
+      ],
+      "lines": [
+        "这种‘切掉权重最小的边’的方法，在数学上叫做 <term id=\"cut\">割</term>。",
+        "找到总权重最小的切割，就是 <term id=\"minimum_cut\">最小割</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "\\text{Cut}(A, B) = \\sum_{u \\in A, v \\in B} w(u, v)",
+        "spoken": "割的权重等于所有连接A和B的边的权重之和。"
+      },
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "它的数学定义："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [],
+      "id": "s009",
+      "introduced_terms": [],
+      "lines": [
+        "但正如你刚才看到的，最小割有一个致命缺陷：",
+        "它倾向于切掉那些只有少数边连接的孤立点，而不是把图分成有意义的团块。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "最小割只看总权重，离群点只有一条细边，切掉它的代价最小，所以会被优先切掉。",
+        "kind": "single_choice",
+        "options": [
+          "离群点只有一条细边，切掉它的代价最小",
+          "离群点与其他点相似度最高",
+          "最小割会优先保留离群点",
+          "离群点权重最大"
+        ],
+        "prompt": "为什么最小割会优先切出离群点？"
+      },
+      "focus_terms": [],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "总结一下："
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "最小割只看总权重，离群点只有一条细边，切掉它的代价最小，所以会被优先切掉。",
+        "kind": "judgment",
+        "options": [
+          "错误",
+          "正确"
+        ],
+        "prompt": "判断以下说法是否正确：最小割总是能产生合理的分组。"
+      },
+      "focus_terms": [],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "再判断一个说法："
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "离群点只有一条细边，切掉它的代价最小，所以最小割会优先切出离群点。",
+        "kind": "single_choice",
+        "options": [
+          "切掉主团内部的多条边",
+          "切掉离群点那条细边",
+          "不切割",
+          "切掉所有边"
+        ],
+        "prompt": "给定一个图：主团有10个点，彼此权重为1；离群点只有一条权重0.1的边连到主团。最小割会怎么切？"
+      },
+      "focus_terms": [],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "实际判断一下："
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Graph based clustering: Associate each data item with a vertex in a weighted graph, where the weights on the edges between elements are large if the elements are similar and small if they are not. Cut the graph into connected components with relatively large interior weights by cutting edges with relatively low weights. Clustering becomes a graph cut problem.",
+    "related": [
+      "lecture-06-graph-clustering"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "cut": {
+      "aliases": [
+        "Cut"
+      ],
+      "display": "割",
+      "gloss": "将图分成两部分时，所有连接这两部分的边的权重之和。"
+    },
+    "minimum_cut": {
+      "aliases": [
+        "Min-cut"
+      ],
+      "display": "最小割",
+      "gloss": "使得割的权重之和最小的划分方式。"
+    }
+  }
+}

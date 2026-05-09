@@ -1,0 +1,304 @@
+{
+  "chapter_id": "lecture-09-ensemble-learning-boosting",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "ensemble_learning_goal",
+      "covered_by": [
+        "qf_flash_ensemble_goal",
+        "qf_quiz_ensemble_advantage",
+        "qf_long_ensemble_motivation"
+      ],
+      "description": "集成学习的目标：将多个分类器组合成元分类器，获得比单个分类器更好的泛化性能。"
+    },
+    {
+      "coverage_tag": "ensemble_learning_definition",
+      "covered_by": [
+        "qf_flash_ensemble_goal",
+        "qf_quiz_ensemble_advantage"
+      ],
+      "description": "集成学习的定义：把多个分类器组合成一个更强的元分类器。"
+    },
+    {
+      "coverage_tag": "single_model_limitation",
+      "covered_by": [
+        "qf_flash_single_model_limitation",
+        "qf_quiz_single_model_limitation"
+      ],
+      "description": "单个模型（如决策树）存在过拟合/欠拟合的天花板，调参难以突破。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "ensemble_learning_goal",
+      "coverage_tags": [
+        "ensemble_learning_goal",
+        "ensemble_learning_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ensemble_goal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出集成学习的核心目标。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了集成学习的定义和目标：组合多个分类器以获得更好的泛化性能。",
+      "question_type": "short_answer",
+      "retrieval_focus": "集成学习的目标是什么？",
+      "term_refs": [
+        {
+          "display": "集成学习",
+          "en": "Ensemble Learning"
+        },
+        {
+          "display": "元分类器",
+          "en": "Meta-classifier"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将多个分类器组合成一个元分类器，获得比单个分类器更好的泛化性能。",
+          "estimated_seconds": 8,
+          "explanation": "集成学习不依赖单个完美模型，而是通过组合多个模型来提升整体准确性和稳定性。",
+          "front": "集成学习的核心目标是什么？",
+          "question_id": "q_flash_ensemble_goal_v1"
+        },
+        {
+          "back": "比其中任何一个单独的分类器都更准确、更稳定。",
+          "estimated_seconds": 6,
+          "explanation": "组合模型不会因为某个专家的失误而全盘皆输，整体表现更稳健。",
+          "front": "集成学习希望组合后的模型在性能上达到什么效果？",
+          "question_id": "q_flash_ensemble_goal_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "single_model_limitation",
+      "coverage_tags": [
+        "single_model_limitation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_single_model_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别单个模型（如决策树）调参时遇到的典型困境。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明理解了单个模型存在过拟合和欠拟合的权衡，难以通过调参突破性能天花板。",
+      "question_type": "short_answer",
+      "retrieval_focus": "单个决策树调参时遇到的典型问题是什么？",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        },
+        {
+          "display": "欠拟合",
+          "en": "Underfitting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "过拟合。",
+          "estimated_seconds": 5,
+          "explanation": "深度过大时模型记住了训练数据的噪声，导致泛化能力下降。",
+          "front": "决策树深度调大时（如从5调到10），训练准确率很高但测试准确率下降，这叫什么问题？",
+          "question_id": "q_flash_single_model_limitation_v1"
+        },
+        {
+          "back": "欠拟合。",
+          "estimated_seconds": 5,
+          "explanation": "深度过小时模型过于简单，无法捕捉数据中的真实模式。",
+          "front": "决策树深度调小时（如从5调到3），训练准确率和测试准确率都不高，这叫什么问题？",
+          "question_id": "q_flash_single_model_limitation_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-ensemble-learning-boosting",
+  "longform_families": [
+    {
+      "concept_key": "ensemble_learning_goal",
+      "coverage_tags": [
+        "ensemble_learning_goal",
+        "single_model_limitation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_ensemble_motivation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用具体例子解释为什么需要集成学习。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能结合单个模型的局限性，解释集成学习的动机和优势。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "集成学习",
+          "en": "Ensemble Learning"
+        },
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        },
+        {
+          "display": "欠拟合",
+          "en": "Underfitting"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "单个决策树的局限性",
+            "集成学习的核心思想",
+            "集成学习如何克服单个模型的局限"
+          ],
+          "question_id": "q_long_ensemble_motivation_v1",
+          "reference_answer": [
+            "单个决策树存在偏差-方差权衡：深度过大时模型过拟合，记住了训练数据的噪声；深度过小时模型欠拟合，无法捕捉数据模式。无论怎么调参，都难以同时达到高训练准确率和高测试准确率。",
+            "集成学习的核心思想是把多个分类器组合成一个更强的元分类器。",
+            "通过组合多个表现一般的分类器，集成学习可以平滑单个模型的波动，获得比任何单个分类器都更准确、更稳定的预测结果。"
+          ],
+          "rubric_points": [
+            "指出深度过大导致过拟合（训练准确率高但测试准确率低），深度过小导致欠拟合（两者都低）。",
+            "说明集成学习将多个分类器组合成一个元分类器。",
+            "说明组合后的模型比单个分类器更准确、更稳定，不会因为某个模型的失误而全盘皆输。"
+          ],
+          "stem": "假设你是一名工程师，用决策树判断邮件是否为垃圾邮件。你发现无论怎么调整树的最大深度，测试准确率都卡在82%左右。请解释为什么会出现这种情况，以及集成学习如何帮助解决这个问题。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "单个专家的局限性",
+            "组合专家的优势",
+            "集成学习的类比对应"
+          ],
+          "question_id": "q_long_ensemble_motivation_v2",
+          "reference_answer": [
+            "单个专家可能因为知识盲区或偶然失误而做出错误预测，就像单个分类器可能过拟合或欠拟合。",
+            "如果请10位专家来做同一个预测，虽然每个人单独看都可能出错，但把他们的意见综合起来，错误的预测会被多数正确的预测“淹没”，最终结果更可靠。",
+            "在集成学习中，每个分类器就像一位专家，集成方法（如多数投票）就像综合专家意见的过程，最终得到的元分类器比任何单个分类器都更准确、更稳定。"
+          ],
+          "rubric_points": [
+            "指出单个专家可能犯错，预测不稳定。",
+            "说明组合多位专家的意见可以抵消个别错误，得到更稳健的结论。",
+            "将专家类比为分类器，组合类比为集成学习中的元分类器。"
+          ],
+          "stem": "请用“10位专家做预测”的类比，解释集成学习为什么能比单个专家表现更好。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "ensemble_learning_goal",
+      "coverage_tags": [
+        "ensemble_learning_goal",
+        "ensemble_learning_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ensemble_advantage",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中识别集成学习的优势。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能区分集成学习与单个模型优化、数据增强等策略的不同。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "集成学习",
+          "en": "Ensemble Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "集成学习的魅力就在于，把多个“一般”的模型组合起来，往往能胜过任何一个“优秀”的个体。",
+          "options": [
+            "一个非常强大的分类器，单独就能完美预测。",
+            "多个表现一般的分类器，通过组合得到更优结果。",
+            "用更多数据训练同一个模型。"
+          ],
+          "question_id": "q_quiz_ensemble_advantage_v1",
+          "stem": "下面哪种情况最能体现集成学习的优势？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "通过组合多个表现一般的分类器获得更好的性能，这正是集成学习的核心思想。",
+          "options": [
+            "对单个决策树进行更精细的剪枝",
+            "集成学习，将多个分类器组合",
+            "收集更多训练数据"
+          ],
+          "question_id": "q_quiz_ensemble_advantage_v2",
+          "stem": "你训练了10个决策树，每个在测试集上的准确率都在75%-82%之间。将它们组合后，准确率提升到了88%。这最可能使用了什么方法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "single_model_limitation",
+      "coverage_tags": [
+        "single_model_limitation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_single_model_limitation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别单个模型调参时的典型困境。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明理解了单个模型存在过拟合/欠拟合的权衡，以及调参的局限性。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        },
+        {
+          "display": "欠拟合",
+          "en": "Underfitting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "深度过大过拟合，深度过小欠拟合，无论怎么调参，单个决策树似乎都有天花板。这正是集成学习要解决的问题。",
+          "options": [
+            "深度为10的模型欠拟合了",
+            "单个决策树存在过拟合和欠拟合的权衡，调参难以突破性能天花板",
+            "深度为3的模型过拟合了"
+          ],
+          "question_id": "q_quiz_single_model_limitation_v1",
+          "stem": "你训练了一个决策树，深度为10时训练准确率99%但测试准确率75%；深度为3时训练准确率78%测试准确率79%。这说明了什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "单个模型在偏差和方差之间存在权衡，调参只能在这两者之间移动，难以突破性能上限。",
+          "options": [
+            "因为决策树算法本身有bug",
+            "因为调参只能在过拟合和欠拟合之间权衡，难以同时达到高训练准确率和高测试准确率",
+            "因为决策树不能处理分类问题"
+          ],
+          "question_id": "q_quiz_single_model_limitation_v2",
+          "stem": "为什么说单个决策树存在“天花板”？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/user-1-comp7404/lecture-09-ensemble-learning-boosting/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

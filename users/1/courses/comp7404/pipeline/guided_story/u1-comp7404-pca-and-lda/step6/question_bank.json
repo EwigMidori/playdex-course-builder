@@ -1,0 +1,412 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "lda_scatter_matrices",
+      "covered_by": [
+        "qf_flash_sw_sb",
+        "qf_quiz_sw_sb_role",
+        "qf_long_sw_sb_interpret"
+      ],
+      "description": "LDA 的两个关键矩阵：类内散度矩阵 S_W 和类间散度矩阵 S_B 的定义与含义"
+    },
+    {
+      "coverage_tag": "fisher_criterion_formula",
+      "covered_by": [
+        "qf_flash_fisher_ratio",
+        "qf_quiz_fisher_ratio_components"
+      ],
+      "description": "Fisher 准则的矩阵形式：J(w) = (w^T S_B w) / (w^T S_W w)"
+    },
+    {
+      "coverage_tag": "generalized_eigenvalue_problem",
+      "covered_by": [
+        "qf_flash_generalized_eigenvalue",
+        "qf_quiz_generalized_eigenvalue_form"
+      ],
+      "description": "LDA 优化问题转化为广义特征值问题 S_B w = λ S_W w"
+    },
+    {
+      "coverage_tag": "lda_two_class_solution",
+      "covered_by": [
+        "qf_flash_two_class_solution",
+        "qf_quiz_two_class_solution_meaning"
+      ],
+      "description": "二分类 LDA 的闭式解 w = S_W^{-1}(μ₂ - μ₁)"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "lda_scatter_matrices",
+      "coverage_tags": [
+        "lda_scatter_matrices"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sw_sb",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 S_W 和 S_B 各自衡量的内容。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能区分 LDA 中两个散度矩阵的角色：S_W 衡量类内分散程度，S_B 衡量类间均值分散程度。",
+      "question_type": "short_answer",
+      "retrieval_focus": "LDA 两个散度矩阵各自衡量的对象",
+      "term_refs": [
+        {
+          "display": "类内散度矩阵",
+          "en": "Within-class Scatter Matrix (S_W)"
+        },
+        {
+          "display": "类间散度矩阵",
+          "en": "Between-class Scatter Matrix (S_B)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "每个类别内部数据点的分散程度。",
+          "estimated_seconds": 8,
+          "explanation": "S_W 等于所有类别的协方差矩阵之和，值越大说明同类点越分散。",
+          "front": "在 LDA 中，类内散度矩阵 S_W 衡量的是什么？",
+          "question_id": "q_flash_sw_sb_v1"
+        },
+        {
+          "back": "不同类别均值之间的分散程度。",
+          "estimated_seconds": 8,
+          "explanation": "S_B 由各类均值与全局均值的差构造，值越大说明各类中心相距越远。",
+          "front": "在 LDA 中，类间散度矩阵 S_B 衡量的是什么？",
+          "question_id": "q_flash_sw_sb_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "fisher_criterion_formula",
+      "coverage_tags": [
+        "fisher_criterion_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_fisher_ratio",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能写出 Fisher 准则的矩阵形式并解释分子分母的含义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能回忆 Fisher 准则 J(w) 的公式，并指出分子是类间散度、分母是类内散度。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Fisher 准则的矩阵形式及其分子分母",
+      "term_refs": [
+        {
+          "display": "Fisher 准则",
+          "en": "Fisher's Criterion"
+        }
+      ],
+      "variants": [
+        {
+          "back": "J(w) = (w^T S_B w) / (w^T S_W w)",
+          "estimated_seconds": 10,
+          "explanation": "分子是投影后的类间散度，分母是投影后的类内散度。",
+          "front": "写出 LDA 中 Fisher 准则 J(w) 的矩阵形式。",
+          "question_id": "q_flash_fisher_ratio_v1"
+        },
+        {
+          "back": "分子：类间散度；分母：类内散度。",
+          "estimated_seconds": 8,
+          "explanation": "最大化这个比值意味着让不同类别的投影点尽量分开、同类尽量集中。",
+          "front": "Fisher 准则 J(w) 的分子对应什么散度？分母对应什么散度？",
+          "question_id": "q_flash_fisher_ratio_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "generalized_eigenvalue_problem",
+      "coverage_tags": [
+        "generalized_eigenvalue_problem"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_generalized_eigenvalue",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能写出 LDA 优化问题转化后的广义特征值方程。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能回忆 LDA 的广义特征值问题形式：S_B w = λ S_W w。",
+      "question_type": "short_answer",
+      "retrieval_focus": "LDA 广义特征值问题的方程形式",
+      "term_refs": [
+        {
+          "display": "广义特征值问题",
+          "en": "Generalized Eigenvalue Problem"
+        }
+      ],
+      "variants": [
+        {
+          "back": "S_B w = λ S_W w",
+          "estimated_seconds": 8,
+          "explanation": "求解这个方程得到的特征向量 w 就是 LDA 的最优投影方向。",
+          "front": "LDA 的优化问题最终转化为哪个广义特征值问题？",
+          "question_id": "q_flash_generalized_eigenvalue_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "lda_two_class_solution",
+      "coverage_tags": [
+        "lda_two_class_solution"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_two_class_solution",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能写出二分类 LDA 的闭式解公式。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能回忆二分类 LDA 的最优投影方向公式 w = S_W^{-1}(μ₂ - μ₁)。",
+      "question_type": "short_answer",
+      "retrieval_focus": "二分类 LDA 的闭式解公式",
+      "term_refs": [
+        {
+          "display": "二分类 LDA 闭式解",
+          "en": "Two-class LDA closed-form solution"
+        }
+      ],
+      "variants": [
+        {
+          "back": "w = S_W^{-1}(μ₂ - μ₁)",
+          "estimated_seconds": 10,
+          "explanation": "其中 μ₁ 和 μ₂ 是两个类别的均值向量，S_W 是类内散度矩阵。",
+          "front": "对于二分类问题，LDA 的最优投影方向 w 的闭式解是什么？",
+          "question_id": "q_flash_two_class_solution_v1"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "longform_families": [
+    {
+      "concept_key": "lda_scatter_matrices",
+      "coverage_tags": [
+        "lda_scatter_matrices",
+        "fisher_criterion_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_sw_sb_interpret",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用文字解释 S_W 和 S_B 的定义，并说明它们如何组合成 Fisher 准则。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能用自己的语言解释类内散度矩阵和类间散度矩阵的含义，并说明 Fisher 准则如何通过它们的比值来找到最优投影方向。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "类内散度矩阵",
+          "en": "Within-class Scatter Matrix (S_W)"
+        },
+        {
+          "display": "类间散度矩阵",
+          "en": "Between-class Scatter Matrix (S_B)"
+        },
+        {
+          "display": "Fisher 准则",
+          "en": "Fisher's Criterion"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "S_W 的定义和含义",
+            "S_B 的定义和含义",
+            "Fisher 准则 J(w) 的公式",
+            "为什么最大化该比值能实现好的分类投影"
+          ],
+          "question_id": "q_long_sw_sb_interpret_v1",
+          "reference_answer": [
+            "S_W = Σ_{i=1}^{c} Σ_{x∈χ_i} (x - μ_i)(x - μ_i)^T，衡量每个类别内部数据点的分散程度，值越大说明同类点越分散。",
+            "S_B = Σ_{i=1}^{c} N_i (μ_i - μ)(μ_i - μ)^T，衡量不同类别均值之间的分散程度，值越大说明各类中心相距越远。",
+            "Fisher 准则 J(w) = (w^T S_B w) / (w^T S_W w)，分子是投影后的类间散度，分母是投影后的类内散度。",
+            "最大化 J(w) 意味着找到一个投影方向 w，使得不同类别的投影点尽量分开（分子大），同时同类投影点尽量集中（分母小），从而获得最佳分类效果。"
+          ],
+          "rubric_points": [
+            "正确说明 S_W 是每个类别协方差矩阵之和，衡量类内分散程度",
+            "正确说明 S_B 由各类均值与全局均值的差构造，衡量类间均值分散程度",
+            "正确写出 J(w) = (w^T S_B w) / (w^T S_W w)",
+            "解释最大化该比值使投影后类间距离大、类内距离小，从而利于分类"
+          ],
+          "stem": "请解释 LDA 中类内散度矩阵 S_W 和类间散度矩阵 S_B 的定义，并说明它们如何组合成 Fisher 准则 J(w)。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "lda_scatter_matrices",
+      "coverage_tags": [
+        "lda_scatter_matrices"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_sw_sb_role",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在选择题中正确区分 S_W 和 S_B 的角色。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能根据描述判断哪个散度矩阵会发生变化，理解 S_W 和 S_B 的物理含义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "类内散度矩阵",
+          "en": "Within-class Scatter Matrix (S_W)"
+        },
+        {
+          "display": "类间散度矩阵",
+          "en": "Between-class Scatter Matrix (S_B)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "类内散度矩阵 S_W 衡量每个类别内部的分散程度。当类内点更分散时，S_W 增大，Fisher 比值变小，分类更难。",
+          "options": [
+            "类内散度矩阵 S_W",
+            "类间散度矩阵 S_B",
+            "两者都不变",
+            "两者都会变成 0"
+          ],
+          "question_id": "q_quiz_sw_sb_role_v1",
+          "stem": "在 LDA 中，如果两类中心位置不变，但每一类内部的点都被拉得更散，哪个矩阵的值会明显变大？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "S_W 是每个类别协方差矩阵之和，衡量类内分散程度；S_B 由各类均值与全局均值的差构造，衡量类间均值分散程度。",
+          "options": [
+            "S_W 衡量类内分散，S_B 衡量类间分散",
+            "S_W 衡量类间分散，S_B 衡量类内分散",
+            "两者都衡量类内分散",
+            "两者都衡量类间分散"
+          ],
+          "question_id": "q_quiz_sw_sb_role_v2",
+          "stem": "在 LDA 中，类内散度矩阵 S_W 和类间散度矩阵 S_B 分别衡量什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "fisher_criterion_formula",
+      "coverage_tags": [
+        "fisher_criterion_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_fisher_ratio_components",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确填写 Fisher 准则 J(w) 的分子和分母对应的散度类型。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能回忆并正确填写 Fisher 准则中分子和分母分别代表类间散度和类内散度。",
+      "question_type": "fill_in_blank",
+      "term_refs": [
+        {
+          "display": "Fisher 准则",
+          "en": "Fisher's Criterion"
+        }
+      ],
+      "variants": [
+        {
+          "answer": "类间，类内",
+          "estimated_seconds": 15,
+          "explanation": "分子 w^T S_B w 是投影后的类间散度，分母 w^T S_W w 是投影后的类内散度。最大化该比值可使类间距离大、类内距离小。",
+          "options": [
+            "类间",
+            "类内"
+          ],
+          "question_id": "q_quiz_fisher_ratio_components_v1",
+          "stem": "LDA 的优化目标 J(w) = (w^T S_B w) / (w^T S_W w) 中，分子对应______散度，分母对应______散度。"
+        }
+      ]
+    },
+    {
+      "concept_key": "generalized_eigenvalue_problem",
+      "coverage_tags": [
+        "generalized_eigenvalue_problem"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_generalized_eigenvalue_form",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别 LDA 广义特征值问题的正确形式。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能从多个选项中选出 LDA 对应的广义特征值方程 S_B w = λ S_W w。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "广义特征值问题",
+          "en": "Generalized Eigenvalue Problem"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "通过拉格朗日乘子法求解 Fisher 准则的最大化问题，得到 S_B w = λ S_W w。",
+          "options": [
+            "S_W w = λ S_B w",
+            "S_B w = λ S_W w",
+            "S_B w = λ w",
+            "S_W w = λ w"
+          ],
+          "question_id": "q_quiz_generalized_eigenvalue_form_v1",
+          "stem": "LDA 的优化问题最终转化为以下哪个广义特征值问题？"
+        }
+      ]
+    },
+    {
+      "concept_key": "lda_two_class_solution",
+      "coverage_tags": [
+        "lda_two_class_solution"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_two_class_solution_meaning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解二分类 LDA 闭式解 w = S_W^{-1}(μ₂ - μ₁) 中各部分的含义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能解释二分类 LDA 最优投影方向由类内散度逆矩阵和类均值差共同决定。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "二分类 LDA 闭式解",
+          "en": "Two-class LDA closed-form solution"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "公式 w = S_W^{-1}(μ₂ - μ₁) 表明，投影方向先计算类均值差，再用类内散度逆矩阵进行缩放调整，以同时考虑类间分离和类内紧凑。",
+          "options": [
+            "投影方向由类间散度矩阵和类内散度矩阵共同决定",
+            "投影方向由类内散度的逆矩阵乘以类均值差决定",
+            "投影方向等于两个类别均值的差",
+            "投影方向由类内散度矩阵乘以类均值差决定"
+          ],
+          "question_id": "q_quiz_two_class_solution_meaning_v1",
+          "stem": "对于二分类 LDA，最优投影方向 w = S_W^{-1}(μ₂ - μ₁)。以下哪个说法正确描述了该公式的含义？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-pca-and-lda/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

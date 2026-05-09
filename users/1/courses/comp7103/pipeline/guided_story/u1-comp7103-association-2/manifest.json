@@ -1,0 +1,45 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "chapter_title": "Association 2",
+  "course_id": "user-1-comp7103",
+  "course_title": "COMP7103",
+  "lesson_id": "u1-comp7103-association-2",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "FP-Growth 的核心思想：用树结构代替候选集生成",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "FP-tree 的构建过程",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "从 FP-tree 中挖掘频繁项集",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "关联规则的评估：为什么置信度会骗人",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "处理数值型属性：定量关联规则",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "序列模式挖掘：发现时间上的规律",
+      "file": "step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "总结：关联分析的全景图",
+      "file": "step7/step.json",
+      "sequence_id": "step7"
+    }
+  ]
+}

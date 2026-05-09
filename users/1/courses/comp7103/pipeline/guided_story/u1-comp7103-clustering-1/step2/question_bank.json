@@ -1,0 +1,438 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "partitional_clustering_definition",
+      "covered_by": [
+        "qf_flash_partitional",
+        "qf_quiz_partitional"
+      ],
+      "description": "划分式聚类的定义：将数据分成互不重叠的子集，每个对象只属于一个簇"
+    },
+    {
+      "coverage_tag": "hierarchical_clustering_definition",
+      "covered_by": [
+        "qf_flash_hierarchical",
+        "qf_quiz_hierarchical"
+      ],
+      "description": "层次聚类的定义：生成一组嵌套的簇，组织成树状结构"
+    },
+    {
+      "coverage_tag": "dendrogram_definition",
+      "covered_by": [
+        "qf_flash_dendrogram",
+        "qf_quiz_dendrogram"
+      ],
+      "description": "树状图：记录簇的合并或分裂顺序的树形图"
+    },
+    {
+      "coverage_tag": "partitional_vs_hierarchical_scenario",
+      "covered_by": [
+        "qf_quiz_scenario"
+      ],
+      "description": "能根据场景判断使用划分式还是层次聚类"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "partitional_clustering",
+      "coverage_tags": [
+        "partitional_clustering_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_partitional",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆划分式聚类的核心特征：互不重叠的子集。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能准确提取划分式聚类的定义性特征。",
+      "question_type": "short_answer",
+      "retrieval_focus": "划分式聚类中，每个数据对象与簇之间的归属关系。",
+      "term_refs": [
+        {
+          "display": "划分式聚类",
+          "en": "Partitional Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "不可以。每个对象只属于一个簇，簇之间不重叠。",
+          "estimated_seconds": 8,
+          "explanation": "划分式聚类的核心是每个对象被分配到唯一一个互不重叠的子集中。",
+          "front": "在划分式聚类中，一个数据对象可以同时属于多个不同的簇吗？",
+          "question_id": "q_flash_partitional_v1"
+        },
+        {
+          "back": "互不重叠（non-overlapping）。",
+          "estimated_seconds": 6,
+          "explanation": "划分式聚类将数据对象划分为互不相交的子集。",
+          "front": "划分式聚类产生的簇之间是什么关系？",
+          "question_id": "q_flash_partitional_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "hierarchical_clustering",
+      "coverage_tags": [
+        "hierarchical_clustering_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_hierarchical",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆层次聚类的核心特征：嵌套的树状结构。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能准确提取层次聚类的定义性特征。",
+      "question_type": "short_answer",
+      "retrieval_focus": "层次聚类中簇与簇之间的结构关系。",
+      "term_refs": [
+        {
+          "display": "层次聚类",
+          "en": "Hierarchical Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "嵌套关系（nested）。小簇可以包含在大簇中。",
+          "estimated_seconds": 8,
+          "explanation": "层次聚类生成一组嵌套的簇，组织成树状结构。",
+          "front": "层次聚类中，簇与簇之间可以是什么关系？",
+          "question_id": "q_flash_hierarchical_v1"
+        },
+        {
+          "back": "树状图（dendrogram）。",
+          "estimated_seconds": 6,
+          "explanation": "树状图记录了每一步合并或分裂的顺序，是层次聚类的标准可视化方式。",
+          "front": "层次聚类的结果通常用什么图形来表示？",
+          "question_id": "q_flash_hierarchical_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "dendrogram",
+      "coverage_tags": [
+        "dendrogram_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_dendrogram",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆树状图的定义和用途。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能准确提取树状图的核心功能。",
+      "question_type": "short_answer",
+      "retrieval_focus": "树状图记录的内容。",
+      "term_refs": [
+        {
+          "display": "树状图",
+          "en": "Dendrogram"
+        }
+      ],
+      "variants": [
+        {
+          "back": "记录每一步合并或分裂的顺序。",
+          "estimated_seconds": 8,
+          "explanation": "树状图是层次聚类的可视化工具，展示了簇的合并或分裂过程。",
+          "front": "树状图（dendrogram）记录了什么信息？",
+          "question_id": "q_flash_dendrogram_v1"
+        },
+        {
+          "back": "层次聚类（hierarchical clustering）。",
+          "estimated_seconds": 6,
+          "explanation": "树状图专门用于展示层次聚类中簇的嵌套关系。",
+          "front": "树状图是哪种聚类方法的结果可视化工具？",
+          "question_id": "q_flash_dendrogram_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-clustering-1",
+  "longform_families": [
+    {
+      "concept_key": "partitional_vs_hierarchical",
+      "coverage_tags": [
+        "partitional_clustering_definition",
+        "hierarchical_clustering_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_compare",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能清晰比较划分式聚类和层次聚类的核心区别，并举例说明各自适用场景。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能理解两种聚类类型的本质差异及其应用场景。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "划分式聚类",
+          "en": "Partitional Clustering"
+        },
+        {
+          "display": "层次聚类",
+          "en": "Hierarchical Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "划分式聚类的定义和核心特征",
+            "层次聚类的定义和核心特征",
+            "两者的关键区别",
+            "划分式聚类的适用场景及原因",
+            "层次聚类的适用场景及原因"
+          ],
+          "question_id": "q_long_compare_v1",
+          "reference_answer": [
+            "划分式聚类将数据分成互不重叠的子集，每个对象只属于一个簇。例如，将电商客户按购买行为分成几个互不重叠的群体，每个客户只属于一个群体。",
+            "层次聚类生成嵌套的簇，小簇可以包含在大簇中，形成树状结构。例如，生物分类中的界门纲目科属种，猫和狗都属于哺乳动物，但分属不同科。",
+            "关键区别在于：划分式聚类不允许嵌套，而层次聚类允许嵌套。划分式聚类适合需要明确、互斥分组的场景；层次聚类适合需要表达层级关系的场景。"
+          ],
+          "rubric_points": [
+            "正确描述划分式聚类：互不重叠的子集，每个对象只属于一个簇",
+            "正确描述层次聚类：嵌套的簇，组织成树状结构",
+            "明确指出关键区别：是否允许嵌套/重叠",
+            "划分式聚类场景合理（如客户分群、图像分割）",
+            "层次聚类场景合理（如生物分类、文档主题层次）"
+          ],
+          "stem": "请比较划分式聚类和层次聚类的核心区别，并各举一个适合使用该聚类类型的实际场景。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "划分式聚类的结果描述",
+            "层次聚类的结果描述",
+            "为什么层次聚类更适合",
+            "划分式聚类的局限性"
+          ],
+          "question_id": "q_long_compare_v2",
+          "reference_answer": [
+            "划分式聚类会将数据分成互不重叠的组，例如猫和狗一组，狼和虎一组。但这样无法表达狼和狗都属于犬科，虎和猫都属于猫科。",
+            "层次聚类可以生成嵌套结构：最底层是猫、狗、狼、虎各自独立；上一层猫和虎合并为猫科，狗和狼合并为犬科；再上一层猫科和犬科合并为哺乳动物。",
+            "层次聚类更适合，因为生物分类天然具有层级关系，需要嵌套结构来表达。划分式聚类无法表达这种嵌套关系，是其局限性。"
+          ],
+          "rubric_points": [
+            "正确描述划分式聚类的结果：猫和狗可能在一组，狼和虎在另一组",
+            "正确描述层次聚类的结果：猫和虎同属猫科，狗和狼同属犬科，且都属于哺乳动物",
+            "解释层次聚类能表达嵌套关系",
+            "指出划分式聚类无法表达猫和狗都属于哺乳动物"
+          ],
+          "stem": "假设你有一个包含猫、狗、狼、虎的数据集，请分别说明使用划分式聚类和层次聚类会得到什么样的分组结果，并解释为什么层次聚类更适合这个场景。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "partitional_clustering",
+      "coverage_tags": [
+        "partitional_clustering_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_partitional",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下准确识别划分式聚类的特征。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能区分划分式聚类的核心特征与其他聚类类型。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "划分式聚类",
+          "en": "Partitional Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "划分式聚类中，每个数据对象只被分配到一个簇，簇之间没有重叠。",
+          "options": [
+            "一个对象可以同时属于多个簇",
+            "每个对象只属于一个簇，簇之间不重叠",
+            "簇之间形成嵌套的树状结构",
+            "簇的大小必须相等"
+          ],
+          "question_id": "q_quiz_partitional_v1",
+          "stem": "下面哪个描述符合划分式聚类？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "K-means 是一种典型的划分式聚类算法，它将数据分成互不重叠的 k 个簇。",
+          "options": [
+            "凝聚式聚类",
+            "分裂式聚类",
+            "K-means",
+            "层次聚类"
+          ],
+          "question_id": "q_quiz_partitional_v2",
+          "stem": "以下哪种聚类方法属于划分式聚类？"
+        }
+      ]
+    },
+    {
+      "concept_key": "hierarchical_clustering",
+      "coverage_tags": [
+        "hierarchical_clustering_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_hierarchical",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下准确识别层次聚类的特征。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能区分层次聚类的核心特征与其他聚类类型。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "层次聚类",
+          "en": "Hierarchical Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "层次聚类生成一组嵌套的簇，组织成树状结构，小簇可以包含在大簇中。",
+          "options": [
+            "每个对象只属于一个互不重叠的簇",
+            "簇之间形成嵌套的树状结构",
+            "所有簇的大小必须相同",
+            "簇的数量必须事先指定"
+          ],
+          "question_id": "q_quiz_hierarchical_v1",
+          "stem": "下面哪个描述符合层次聚类？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 10,
+          "explanation": "树状图是层次聚类的标准可视化工具，记录了簇的合并或分裂顺序。",
+          "options": [
+            "散点图",
+            "直方图",
+            "树状图（dendrogram）",
+            "饼图"
+          ],
+          "question_id": "q_quiz_hierarchical_v2",
+          "stem": "层次聚类的结果通常用什么来可视化？"
+        }
+      ]
+    },
+    {
+      "concept_key": "dendrogram",
+      "coverage_tags": [
+        "dendrogram_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_dendrogram",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确理解树状图的功能和用途。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能理解树状图在层次聚类中的作用。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "树状图",
+          "en": "Dendrogram"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "树状图记录了层次聚类中每一步合并或分裂的顺序，是理解聚类过程的关键工具。",
+          "options": [
+            "显示数据点的原始分布",
+            "记录簇的合并或分裂顺序",
+            "计算簇内点的平均距离",
+            "确定 K-means 的初始质心"
+          ],
+          "question_id": "q_quiz_dendrogram_v1",
+          "stem": "树状图（dendrogram）的主要作用是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 10,
+          "explanation": "树状图是层次聚类的标准可视化方式，展示了簇的嵌套关系。",
+          "options": [
+            "K-means",
+            "K-medoids",
+            "层次聚类",
+            "DBSCAN"
+          ],
+          "question_id": "q_quiz_dendrogram_v2",
+          "stem": "以下哪种聚类方法会使用树状图来展示结果？"
+        }
+      ]
+    },
+    {
+      "concept_key": "partitional_vs_hierarchical",
+      "coverage_tags": [
+        "partitional_vs_hierarchical_scenario"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_scenario",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据实际场景判断应该使用划分式聚类还是层次聚类。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能根据数据需求选择合适的聚类类型。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "划分式聚类 vs 层次聚类",
+          "en": "Partitional vs Hierarchical Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "生物分类需要嵌套结构（如科、属、种），层次聚类可以表达这种嵌套关系。",
+          "options": [
+            "将客户按购买行为分成互不重叠的几类",
+            "对生物进行界门纲目科属种的分类",
+            "将新闻文章按主题分成几个独立类别",
+            "将图像像素按颜色分成几个区域"
+          ],
+          "question_id": "q_quiz_scenario_v1",
+          "stem": "以下哪个场景更适合使用层次聚类而不是划分式聚类？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "如果只能不重叠分组，猫和狗被分到不同组，就无法表达它们都属于哺乳动物这一事实。这说明了划分式聚类的局限性。",
+          "options": [
+            "不能，因为猫和狗被分到不同组，无法表达它们都属于哺乳动物",
+            "能，因为可以把猫和狗分到同一个组",
+            "能，因为可以创建多个不重叠的组来表达嵌套关系",
+            "不能，因为哺乳动物不是一个有效的类别"
+          ],
+          "question_id": "q_quiz_scenario_v2",
+          "stem": "如果只能把每个动物分到一个不重叠的组，你能表达猫和狗都属于哺乳动物吗？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "Chapter 7 Cluster Analysis: Types of Clusterings - Partitional Clustering, Hierarchical clustering",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "step2: 两种基本分组风格：划分式与层次式",
+    "plain_text": "pipeline/1-plain/u1-comp7103-clustering-1/plain.txt",
+    "related": [],
+    "source_outline": "Chapter 7 Cluster Analysis: Types of Clusterings - Partitional Clustering, Hierarchical clustering"
+  },
+  "target_language": "zh-CN"
+}

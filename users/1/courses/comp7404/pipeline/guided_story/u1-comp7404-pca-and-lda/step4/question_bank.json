@@ -1,0 +1,432 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "eigenface_definition",
+      "covered_by": [
+        "qf_flash_eigenface_def",
+        "qf_quiz_eigenface_nature"
+      ],
+      "description": "特征脸的定义：对人脸图像做 PCA 得到的主成分"
+    },
+    {
+      "coverage_tag": "eigenface_representation",
+      "covered_by": [
+        "qf_flash_eigenface_rep",
+        "qf_quiz_eigenface_coeff"
+      ],
+      "description": "人脸图像表示为特征脸的线性组合，组合系数是 PCA 空间新坐标"
+    },
+    {
+      "coverage_tag": "reconstruction_error",
+      "covered_by": [
+        "qf_flash_reconstruction_error",
+        "qf_quiz_reconstruction_error"
+      ],
+      "description": "重构误差的概念：用降维后数据还原回原始空间时与原数据的差异"
+    },
+    {
+      "coverage_tag": "eigenvalue_curve_k_selection",
+      "covered_by": [
+        "qf_quiz_k_selection",
+        "qf_long_k_selection"
+      ],
+      "description": "利用特征值下降曲线选择主成分数量 k"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "eigenface",
+      "coverage_tags": [
+        "eigenface_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_eigenface_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出特征脸的定义。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了特征脸的本质：对人脸图像做 PCA 得到的主成分。",
+      "question_type": "short_answer",
+      "retrieval_focus": "特征脸的定义",
+      "term_refs": [
+        {
+          "display": "特征脸",
+          "en": "Eigenface"
+        }
+      ],
+      "variants": [
+        {
+          "back": "特征脸（Eigenfaces）",
+          "estimated_seconds": 8,
+          "explanation": "特征脸是对人脸图像做 PCA 得到的主成分，它们构成了人脸子空间的一组基。",
+          "front": "对人脸图像做 PCA 得到的主成分，可视化后看起来像一张脸，这种主成分叫什么？",
+          "question_id": "q_flash_eigenface_def_v1"
+        },
+        {
+          "back": "人脸图像数据",
+          "estimated_seconds": 6,
+          "explanation": "Eigenfaces（特征脸）是对人脸图像数据集做 PCA 得到的主成分。",
+          "front": "Eigenfaces 是通过对什么数据做 PCA 得到的？",
+          "question_id": "q_flash_eigenface_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "eigenface_representation",
+      "coverage_tags": [
+        "eigenface_representation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_eigenface_rep",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出人脸图像在 PCA 空间中的表示方式。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了原始人脸图像如何用特征脸表示。",
+      "question_type": "short_answer",
+      "retrieval_focus": "人脸图像在 PCA 空间中的表示",
+      "term_refs": [
+        {
+          "display": "特征脸",
+          "en": "Eigenface"
+        }
+      ],
+      "variants": [
+        {
+          "back": "该人脸图像表示为特征脸线性组合时的组合系数",
+          "estimated_seconds": 10,
+          "explanation": "每张原始人脸都可以表示为特征脸的线性组合，组合系数就是它在 PCA 空间里的新坐标。",
+          "front": "在特征脸方法中，一张原始人脸图像在 PCA 空间里的新坐标是什么？",
+          "question_id": "q_flash_eigenface_rep_v1"
+        },
+        {
+          "back": "该图像在特征脸张成的子空间中的坐标（组合系数）",
+          "estimated_seconds": 8,
+          "explanation": "投影后得到的数值是每个特征脸对应的权重，即组合系数。",
+          "front": "一张人脸图像投影到特征脸空间后，得到的一组数值代表什么？",
+          "question_id": "q_flash_eigenface_rep_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "reconstruction_error",
+      "coverage_tags": [
+        "reconstruction_error"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_reconstruction_error",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出重构误差的定义及其与特征值的关系。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了重构误差的概念以及特征值大小与重构误差的关系。",
+      "question_type": "short_answer",
+      "retrieval_focus": "重构误差的定义和特征值的关系",
+      "term_refs": [
+        {
+          "display": "重构误差",
+          "en": "Reconstruction Error"
+        }
+      ],
+      "variants": [
+        {
+          "back": "重构误差（Reconstruction Error）",
+          "estimated_seconds": 6,
+          "explanation": "重构误差衡量了降维后丢失的信息量。",
+          "front": "用降维后的数据还原回原始空间时，与原数据的差异叫什么？",
+          "question_id": "q_flash_reconstruction_error_v1"
+        },
+        {
+          "back": "重构误差很小",
+          "estimated_seconds": 8,
+          "explanation": "特征值越小，丢掉那个方向造成的重构误差也越小。",
+          "front": "在 PCA 中，丢掉一个特征值很小的方向，重构误差会怎样？",
+          "question_id": "q_flash_reconstruction_error_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "longform_families": [
+    {
+      "concept_key": "eigenvalue_curve_k_selection",
+      "coverage_tags": [
+        "eigenvalue_curve_k_selection"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_k_selection",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释如何利用特征值下降曲线和重构误差来选择主成分数量 k。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能综合运用特征值下降曲线和重构误差的概念，解释选择 k 的决策过程。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "特征值下降曲线",
+          "en": "Eigenvalue Decay Curve"
+        },
+        {
+          "display": "重构误差",
+          "en": "Reconstruction Error"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "特征值下降曲线是什么？",
+            "重构误差与特征值的关系是什么？",
+            "如何根据这两个概念选择 k？"
+          ],
+          "question_id": "q_long_k_selection_v1",
+          "reference_answer": [
+            "特征值下降曲线是将协方差矩阵的特征值从大到小排列后绘制的曲线，它显示了每个主成分方向上的方差大小。",
+            "重构误差是用降维后的数据还原回原始空间时与原数据的差异。特征值越小，丢掉那个方向造成的重构误差也越小，因为该方向上的数据方差很小。",
+            "选择 k 的常见方法有两种：一是设定一个保留方差的比例（如 95%），选择前 k 个主成分使得累计方差占比达到该阈值；二是观察特征值下降曲线的拐点（肘部），选择拐点处的 k 值，因为拐点之后特征值下降变缓，增加主成分带来的收益很小。"
+          ],
+          "rubric_points": [
+            "正确描述特征值下降曲线：特征值按从大到小排列，曲线下降趋势",
+            "正确描述重构误差与特征值的关系：特征值越小，丢掉该方向造成的重构误差越小",
+            "正确描述选择 k 的方法：根据保留方差比例（如 95%）或特征值下降曲线的拐点来选择 k"
+          ],
+          "stem": "请解释在 PCA 中，如何利用特征值下降曲线和重构误差来决定保留多少个主成分（即选择 k 值）。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "分析给定的特征值下降曲线数据",
+            "说明选择 k 的决策标准",
+            "给出具体的 k 值并解释理由"
+          ],
+          "question_id": "q_long_k_selection_v2",
+          "reference_answer": [
+            "从数据可以看出，特征值下降比较平缓，没有明显的拐点。前 5 个主成分只保留 50% 方差，前 30 个保留 90%，前 50 个保留 95%。",
+            "选择 k 取决于具体需求。如果要求至少保留 95% 的方差，那么需要选择 k=50，因为前 30 个只保留 90%，不满足要求。",
+            "如果对压缩率要求更高，可以接受 90% 的方差，那么选择 k=30 会更节省存储和计算。在实际应用中，通常根据任务需求（如识别准确率 vs 计算效率）来权衡。"
+          ],
+          "rubric_points": [
+            "正确分析数据：前 50 个主成分才能保留 95% 方差",
+            "正确说明决策标准：根据保留方差比例或拐点",
+            "给出合理选择并解释：如果要求保留 95% 方差，则选 k=50；如果接受 90% 方差以换取更低维度，则选 k=30"
+          ],
+          "stem": "假设你做人脸压缩，计算得到特征值下降曲线如下：前 5 个特征值占总方差的 50%，前 10 个占 70%，前 20 个占 85%，前 30 个占 90%，前 50 个占 95%。请解释你会如何选择 k，并说明理由。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "eigenface",
+      "coverage_tags": [
+        "eigenface_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_eigenface_nature",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下准确识别特征脸的本质。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能区分特征脸与其他概念（如平均脸、随机模板）。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征脸",
+          "en": "Eigenface"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "特征脸是对人脸图像做 PCA 得到的主成分，它们构成了人脸子空间的一组基。",
+          "options": [
+            "随机生成的人脸模板",
+            "人脸图像 PCA 的主成分",
+            "所有人脸的平均脸",
+            "人脸图像中像素的均值"
+          ],
+          "question_id": "q_quiz_eigenface_nature_v1",
+          "stem": "特征脸的本质是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "特征脸是通过 PCA 计算得到的主成分，不是随机挑选或简单平均。",
+          "options": [
+            "特征脸是随机挑选的一些人脸图像",
+            "特征脸是 PCA 对人脸图像计算得到的主成分",
+            "特征脸是所有人脸图像的平均",
+            "特征脸的数量必须等于训练图像的数量"
+          ],
+          "question_id": "q_quiz_eigenface_nature_v2",
+          "stem": "以下关于特征脸的说法，哪一项是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "eigenface_representation",
+      "coverage_tags": [
+        "eigenface_representation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_eigenface_coeff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解人脸图像在特征脸空间中的表示方式。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了原始人脸图像如何用特征脸线性组合表示。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征脸",
+          "en": "Eigenface"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "每张原始人脸都可以表示为特征脸的线性组合，组合系数就是它在 PCA 空间里的新坐标。",
+          "options": [
+            "该图像与平均脸的像素差异",
+            "该图像表示为特征脸线性组合时的系数",
+            "该图像中每个像素的灰度值",
+            "该图像在原始空间中的位置"
+          ],
+          "question_id": "q_quiz_eigenface_coeff_v1",
+          "stem": "在特征脸方法中，一张人脸图像在 PCA 空间中的新坐标代表什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "人脸图像 x 可以表示为特征脸的线性组合加上平均脸：x = μ + w1*u1 + w2*u2 + w3*u3。",
+          "options": [
+            "x = w1*u1 + w2*u2 + w3*u3 + 平均脸",
+            "x = w1*u1 + w2*u2 + w3*u3",
+            "x 的像素值等于 w1, w2, w3",
+            "x 与 u1, u2, u3 的欧氏距离分别为 w1, w2, w3"
+          ],
+          "question_id": "q_quiz_eigenface_coeff_v2",
+          "stem": "假设有 3 个特征脸 u1, u2, u3，一张人脸图像 x 在 PCA 空间中的坐标为 (w1, w2, w3)。这意味着什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "reconstruction_error",
+      "coverage_tags": [
+        "reconstruction_error"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_reconstruction_error",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解重构误差的概念及其与特征值的关系。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能判断特征值大小与重构误差的关系。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "重构误差",
+          "en": "Reconstruction Error"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "特征值越小，丢掉那个方向造成的重构误差也越小。",
+          "options": [
+            "重构误差会变得很大",
+            "重构误差会变得很小",
+            "重构误差不变",
+            "重构误差变为 0"
+          ],
+          "question_id": "q_quiz_reconstruction_error_v1",
+          "stem": "在 PCA 中，如果丢掉一个特征值很小的主成分方向，重构误差会如何变化？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "特征值越小，丢掉那个方向造成的重构误差也越小。保留更多主成分会减少重构误差。",
+          "options": [
+            "保留的主成分越多，重构误差越大",
+            "重构误差与特征值大小无关",
+            "特征值越小，丢掉该方向造成的重构误差越小",
+            "重构误差总是为 0"
+          ],
+          "question_id": "q_quiz_reconstruction_error_v2",
+          "stem": "以下关于重构误差的说法，哪一项是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "eigenvalue_curve_k_selection",
+      "coverage_tags": [
+        "eigenvalue_curve_k_selection"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_k_selection",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据特征值下降曲线选择合适的主成分数量 k。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能利用特征值下降曲线进行主成分数量选择的决策。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征值下降曲线",
+          "en": "Eigenvalue Decay Curve"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "题目要求是“至少 95% 方差，同时维度尽量低”。10 个不够，50 个虽然也行但不是最省维度，因此应选 20 个。",
+          "options": [
+            "10",
+            "20",
+            "50",
+            "无法判断"
+          ],
+          "question_id": "q_quiz_k_selection_v1",
+          "stem": "你要做人脸压缩，要求“至少保留 95% 的方差，同时维度尽量低”。已知前 10 个主成分保留 90%，前 20 个保留 95%，前 50 个保留 99%。你会选哪个 k？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 25,
+          "explanation": "前 15 个主成分保留 90% 的方差，满足要求且维度最低。",
+          "options": [
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "question_id": "q_quiz_k_selection_v2",
+          "stem": "已知 PCA 的特征值下降曲线显示：前 5 个特征值占总方差的 60%，前 10 个占 80%，前 15 个占 90%，前 20 个占 95%。如果希望保留 90% 的方差，最少需要多少个主成分？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-pca-and-lda/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

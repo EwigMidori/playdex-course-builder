@@ -1,0 +1,383 @@
+{
+  "chapter_id": "lecture-06-data-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "typical_structured_data",
+      "covered_by": [
+        "qf_flash_object_attribute",
+        "qf_flash_schema_domain",
+        "qf_quiz_row_col_meaning",
+        "qf_quiz_identify_attribute"
+      ],
+      "description": "典型结构化数据的定义：具有明确定义属性集合的表格数据"
+    },
+    {
+      "coverage_tag": "object_and_attribute",
+      "covered_by": [
+        "qf_flash_object_attribute",
+        "qf_quiz_row_col_meaning",
+        "qf_quiz_identify_attribute"
+      ],
+      "description": "对象（行）与属性（列）的概念及其别名"
+    },
+    {
+      "coverage_tag": "schema",
+      "covered_by": [
+        "qf_flash_schema_domain",
+        "qf_quiz_schema_definition"
+      ],
+      "description": "模式：所有属性的集合，定义数据结构"
+    },
+    {
+      "coverage_tag": "attribute_domain",
+      "covered_by": [
+        "qf_flash_schema_domain",
+        "qf_quiz_domain_example"
+      ],
+      "description": "值域：一个属性所有可能取值的集合"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "object_and_attribute",
+      "coverage_tags": [
+        "typical_structured_data",
+        "object_and_attribute"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_object_attribute",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆表格数据中行和列分别代表什么，以及它们的常用别名。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了对象和属性的基本定义及其同义术语。",
+      "question_type": "short_answer",
+      "retrieval_focus": "表格中行与列的核心概念及其别名",
+      "term_refs": [
+        {
+          "display": "对象",
+          "en": "object"
+        },
+        {
+          "display": "属性",
+          "en": "attribute"
+        }
+      ],
+      "variants": [
+        {
+          "back": "对象（record, entity, tuple）",
+          "estimated_seconds": 8,
+          "explanation": "每一行代表一个具体的事物，称为对象，也常被称为记录、实体或元组。",
+          "front": "在表格数据中，每一行代表一个什么？请说出它的两个别名。",
+          "question_id": "q_flash_object_attribute_v1"
+        },
+        {
+          "back": "属性（variable, field, characteristic, feature）",
+          "estimated_seconds": 8,
+          "explanation": "每一列描述对象的一个侧面，称为属性，也常被称为变量、字段、特征。",
+          "front": "在表格数据中，每一列代表一个什么？请说出它的三个别名。",
+          "question_id": "q_flash_object_attribute_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "schema_and_domain",
+      "coverage_tags": [
+        "schema",
+        "attribute_domain"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_schema_domain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆模式和值域的定义。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了模式和值域的基本概念。",
+      "question_type": "short_answer",
+      "retrieval_focus": "模式与值域的定义",
+      "term_refs": [
+        {
+          "display": "模式",
+          "en": "schema"
+        },
+        {
+          "display": "值域",
+          "en": "domain"
+        }
+      ],
+      "variants": [
+        {
+          "back": "所有属性的集合，定义了数据的结构。",
+          "estimated_seconds": 6,
+          "explanation": "模式就是表格中所有列（属性）的集合，它描述了数据的组织方式。",
+          "front": "什么是表格的“模式”（schema）？",
+          "question_id": "q_flash_schema_domain_v1"
+        },
+        {
+          "back": "一个属性所有可能取值的集合。",
+          "estimated_seconds": 6,
+          "explanation": "例如，“年龄”属性的值域是整数，“是否已婚”的值域是{是, 否}。",
+          "front": "什么是属性的“值域”（domain）？",
+          "question_id": "q_flash_schema_domain_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-data-1",
+  "longform_families": [
+    {
+      "concept_key": "typical_structured_data",
+      "coverage_tags": [
+        "typical_structured_data",
+        "object_and_attribute",
+        "schema",
+        "attribute_domain"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_structured_data_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用完整的语言解释典型结构化数据的组成要素。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能综合运用对象、属性、模式、值域等概念描述一个表格。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "对象",
+          "en": "object"
+        },
+        {
+          "display": "属性",
+          "en": "attribute"
+        },
+        {
+          "display": "模式",
+          "en": "schema"
+        },
+        {
+          "display": "值域",
+          "en": "domain"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "结构化数据的组织形式",
+            "行和列分别代表什么",
+            "模式的定义",
+            "值域的定义"
+          ],
+          "question_id": "q_long_structured_data_explain_v1",
+          "reference_answer": [
+            "典型的结构化数据以表格形式组织。",
+            "每一行代表一个对象（如一个人、一笔交易），每一列代表一个属性（如年龄、身高）。",
+            "所有属性的集合称为模式，它定义了数据的结构。",
+            "每个属性都有自己的值域，即该属性所有可能取值的集合（如“年龄”的值域是整数）。",
+            "例如，一个学生信息表，每一行是一个学生（对象），列如姓名、年龄是属性，模式是{姓名, 年龄, 学号}，年龄的值域是正整数。"
+          ],
+          "rubric_points": [
+            "正确指出表格是典型的结构化数据形式",
+            "正确说明每一行是一个对象（记录/实体/元组）",
+            "正确说明每一列是一个属性（变量/字段/特征）",
+            "正确说明模式是所有属性的集合",
+            "正确说明值域是属性所有可能取值的集合",
+            "能给出一个具体例子辅助说明"
+          ],
+          "stem": "请用你自己的话解释：什么是典型的结构化数据？请至少包含“对象”、“属性”、“模式”和“值域”这四个概念。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "object_and_attribute",
+      "coverage_tags": [
+        "typical_structured_data",
+        "object_and_attribute"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_row_col_meaning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确区分表格中的行和列分别代表什么。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能正确识别表格数据中行和列的含义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "对象",
+          "en": "object"
+        },
+        {
+          "display": "属性",
+          "en": "attribute"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "每一行代表一个具体的事物，即一个对象。",
+          "options": [
+            "一个对象",
+            "一个属性",
+            "一个模式",
+            "一个值域"
+          ],
+          "question_id": "q_quiz_row_col_meaning_v1",
+          "stem": "在表格数据中，每一行代表什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "每一列描述对象的一个侧面，即一个属性。",
+          "options": [
+            "一个对象",
+            "一个属性",
+            "一个记录",
+            "一个元组"
+          ],
+          "question_id": "q_quiz_row_col_meaning_v2",
+          "stem": "在表格数据中，每一列代表什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "object_and_attribute",
+      "coverage_tags": [
+        "object_and_attribute"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_identify_attribute",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体例子中正确识别出哪些是属性。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能区分对象和属性。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "属性",
+          "en": "attribute"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "属性是描述对象的侧面，如年龄、身高。",
+          "options": [
+            "张三",
+            "年龄",
+            "25",
+            "表格"
+          ],
+          "question_id": "q_quiz_identify_attribute_v1",
+          "stem": "给定表格：姓名、年龄、身高(cm)、是否已婚。以下哪个是属性？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "对象是具体的事物，如一个具体的商品。",
+          "options": [
+            "价格",
+            "库存量",
+            "产品ID为A001的商品",
+            "类别"
+          ],
+          "question_id": "q_quiz_identify_attribute_v2",
+          "stem": "给定表格：产品ID、价格、库存量、类别。以下哪个是对象？"
+        }
+      ]
+    },
+    {
+      "concept_key": "schema",
+      "coverage_tags": [
+        "schema"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_schema_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确理解模式的定义。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了模式的概念。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "模式",
+          "en": "schema"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "模式是所有属性的集合，它定义了数据的结构。",
+          "options": [
+            "所有行的集合",
+            "所有属性的集合",
+            "所有值的集合",
+            "所有对象的集合"
+          ],
+          "question_id": "q_quiz_schema_definition_v1",
+          "stem": "在表格数据中，“模式”（schema）指的是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "attribute_domain",
+      "coverage_tags": [
+        "attribute_domain"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_domain_example",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据具体属性判断其值域。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能理解值域的概念。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "值域",
+          "en": "domain"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "“是否已婚”的值域是{是, 否}，即该属性所有可能取值的集合。",
+          "options": [
+            "整数",
+            "字符串",
+            "{是, 否}",
+            "所有可能的婚姻状态"
+          ],
+          "question_id": "q_quiz_domain_example_v1",
+          "stem": "属性“是否已婚”的值域是什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "Chapter 2 Data: Typical Structured Data, Schema, Attribute Domains",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "step1: 表格数据的基本结构：对象与属性",
+    "plain_text": "pipeline/1-plain/u1-comp7103-data-1/plain.txt",
+    "related": [],
+    "source_outline": "Chapter 2 Data: Typical Structured Data, Schema, Attribute Domains"
+  },
+  "target_language": "zh-CN"
+}

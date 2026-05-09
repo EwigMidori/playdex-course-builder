@@ -1,0 +1,198 @@
+{
+  "chapter_id": "lecture-06-graph-clustering",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-graph-clustering",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "归一化割的目标是找到一个向量 y，",
+        "它的每个元素表示一个节点属于哪一组。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "直接求解这个离散问题，需要枚举所有可能的二分方案。",
+        "试试看：如果有10个节点，有多少种二分方式？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "2^10 = 1024 种，但这是对称的，实际有 2^(10-1) - 1 = 511 种。随着节点数增加，组合数爆炸式增长。",
+        "kind": "single_choice",
+        "options": [
+          "10种",
+          "100种",
+          "超过500种",
+          "1种"
+        ],
+        "prompt": "10个节点，每个节点可以属于A或B，有多少种二分方案？"
+      },
+      "focus_terms": [],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "先估算一下："
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "对于100个节点，方案数超过 2^99，这是一个天文数字。",
+        "直接枚举是不可能的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "有没有更高效的方法？",
+        "一个关键想法：允许 y 取连续值，而不是只能取 1 或 -b。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "generalized_eigenvalue_system"
+      ],
+      "id": "s030",
+      "introduced_terms": [
+        "generalized_eigenvalue_system"
+      ],
+      "lines": [
+        "这个放松后的优化问题，变成了求解一个 <term id=\"generalized_eigenvalue_system\">广义特征值系统</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "(D - W)y = \\lambda D y",
+        "spoken": "拉普拉斯矩阵乘以向量 y 等于特征值 lambda 乘以度矩阵乘以 y。"
+      },
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "核心方程是："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "laplacian_matrix"
+      ],
+      "id": "s032",
+      "introduced_terms": [
+        "laplacian_matrix"
+      ],
+      "lines": [
+        "这里的 D 是度矩阵，W 是相似度矩阵。",
+        "它们的差，就是著名的 <term id=\"laplacian_matrix\">拉普拉斯矩阵</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "广义特征值"
+        ],
+        "explanation": "通过求解 (D-W)y = λDy 这个广义特征值问题，我们可以得到近似最优解的连续向量。",
+        "kind": "fill_in_blank",
+        "prompt": "为了高效求解归一化割，我们把离散问题放松为求解一个______系统。"
+      },
+      "focus_terms": [],
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "总结一下这个思路："
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "直接枚举所有二分方案是指数级的，对于大规模图不可行，因此不是高效方法。",
+        "kind": "judgment",
+        "options": [
+          "错误",
+          "正确"
+        ],
+        "prompt": "判断以下说法是否正确：直接枚举所有二分方案是求解归一化割的高效方法。"
+      },
+      "focus_terms": [],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "再判断一个说法："
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "B",
+          "D",
+          "A",
+          "C",
+          "E"
+        ],
+        "explanation": "正确的流程是：先定义相似度函数，然后计算亲和矩阵和度矩阵，接着求解广义特征值系统，取出第二小特征向量，最后根据特征向量正负号二分。",
+        "items": [
+          "A. 求解广义特征值系统",
+          "B. 定义相似度函数",
+          "C. 取出第二小特征向量",
+          "D. 计算亲和矩阵和度矩阵",
+          "E. 根据特征向量正负号二分"
+        ],
+        "kind": "ordering",
+        "prompt": "请将以下步骤按正确顺序排列："
+      },
+      "focus_terms": [],
+      "id": "s035",
+      "introduced_terms": [],
+      "lines": [
+        "现在，把步骤排个序："
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Simplification of the criterion: Write a vector y whose elements are 1 if the item is in A, -b if it's in B. Write the matrix of the graph as W, and the matrix which has the row sums of W on its diagonal as D, 1 is the vector with all ones. Criterion becomes min_y (y^T (D-W) y) / (y^T D y). Laplacian Matrix: L=D-W. Constraint y^T D 1 = 0. NP-complete. Instead, relax into the continuous domain by solving generalized eigenvalue system: (D-W)y = λDy. Note that (D-W)1 = 0, so the first eigenvector is y0 = 1 with eigenvalue 0. The second smallest eigenvector is the real valued solution to this problem!!",
+    "related": [
+      "lecture-06-graph-clustering"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "generalized_eigenvalue_system": {
+      "aliases": [
+        "Generalized Eigenvalue System"
+      ],
+      "display": "广义特征值系统",
+      "gloss": "形如 (D-W)y = λDy 的方程，求解它可以得到图的谱分解。"
+    },
+    "laplacian_matrix": {
+      "aliases": [
+        "Laplacian Matrix",
+        "L"
+      ],
+      "display": "拉普拉斯矩阵",
+      "gloss": "图的度矩阵减去邻接矩阵，即 L = D - W，是谱聚类中的核心工具。"
+    }
+  }
+}

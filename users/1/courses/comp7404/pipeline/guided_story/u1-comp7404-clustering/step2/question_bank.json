@@ -1,0 +1,483 @@
+{
+  "chapter_id": "lecture-04-clustering",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "partitional_clustering_definition",
+      "covered_by": [
+        "qf_flash_partitional_def",
+        "qf_quiz_partitional_property",
+        "qf_quiz_partitional_vs_hierarchical"
+      ],
+      "description": "划分式聚类的定义：将数据划分为互不重叠的子集，每个数据点只属于一个簇。"
+    },
+    {
+      "coverage_tag": "hierarchical_clustering_definition",
+      "covered_by": [
+        "qf_flash_hierarchical_def",
+        "qf_quiz_hierarchical_property",
+        "qf_quiz_partitional_vs_hierarchical"
+      ],
+      "description": "层次聚类的定义：生成一组嵌套的簇，组织成层次树。"
+    },
+    {
+      "coverage_tag": "partitional_vs_hierarchical",
+      "covered_by": [
+        "qf_flash_core_difference",
+        "qf_quiz_partitional_vs_hierarchical",
+        "qf_long_compare_strategies"
+      ],
+      "description": "划分式聚类与层次聚类的核心区别：互不重叠 vs 嵌套结构。"
+    },
+    {
+      "coverage_tag": "hierarchical_tree_cutting",
+      "covered_by": [
+        "qf_flash_dendrogram_cut",
+        "qf_quiz_dendrogram_cut"
+      ],
+      "description": "层次聚类可以通过切割树状图在不同高度得到不同粒度的簇。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "partitional_clustering",
+      "coverage_tags": [
+        "partitional_clustering_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_partitional_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆划分式聚类的核心定义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能说出划分式聚类中数据点与簇的归属关系。",
+      "question_type": "short_answer",
+      "retrieval_focus": "划分式聚类中每个数据点与簇的归属关系。",
+      "term_refs": [
+        {
+          "display": "划分式聚类",
+          "en": "Partitional Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "恰好一个簇。",
+          "estimated_seconds": 5,
+          "explanation": "划分式聚类将数据划分为互不重叠的子集，每个数据点只属于一个簇。",
+          "front": "在划分式聚类中，一个数据点可以属于几个簇？",
+          "question_id": "q_flash_partitional_def_v1"
+        },
+        {
+          "back": "互不重叠。",
+          "estimated_seconds": 5,
+          "explanation": "划分式聚类中，簇之间没有重叠，每个数据点只属于一个簇。",
+          "front": "划分式聚类产生的簇之间是什么关系？",
+          "question_id": "q_flash_partitional_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "hierarchical_clustering",
+      "coverage_tags": [
+        "hierarchical_clustering_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_hierarchical_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆层次聚类的核心定义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能说出层次聚类中簇的组织形式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "层次聚类中簇的组织形式。",
+      "term_refs": [
+        {
+          "display": "层次聚类",
+          "en": "Hierarchical Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "嵌套关系。",
+          "estimated_seconds": 5,
+          "explanation": "层次聚类生成一组嵌套的簇，组织成层次树。",
+          "front": "层次聚类产生的簇之间是什么关系？",
+          "question_id": "q_flash_hierarchical_def_v1"
+        },
+        {
+          "back": "树状图。",
+          "estimated_seconds": 5,
+          "explanation": "层次聚类的结果可以用树状图来记录合并或分裂的顺序。",
+          "front": "层次聚类的结果可以用什么图来可视化？",
+          "question_id": "q_flash_hierarchical_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "partitional_vs_hierarchical",
+      "coverage_tags": [
+        "partitional_vs_hierarchical"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_core_difference",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分划分式聚类和层次聚类在簇结构上的根本差异。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能指出划分式聚类和层次聚类在簇的组织方式上的核心区别。",
+      "question_type": "core_difference",
+      "retrieval_focus": "划分式聚类和层次聚类在簇结构上的根本差异。",
+      "term_refs": [
+        {
+          "display": "划分式聚类",
+          "en": "Partitional Clustering"
+        },
+        {
+          "display": "层次聚类",
+          "en": "Hierarchical Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "划分式聚类的簇互不重叠；层次聚类的簇是嵌套的。",
+          "estimated_seconds": 8,
+          "explanation": "划分式聚类每个数据点只属于一个簇，簇之间没有重叠；层次聚类构建层次树，簇之间是嵌套关系。",
+          "front": "划分式聚类和层次聚类在簇的组织方式上的核心区别是什么？",
+          "question_id": "q_flash_core_difference_v1"
+        },
+        {
+          "back": "层次聚类。",
+          "estimated_seconds": 6,
+          "explanation": "层次聚类中，一个数据点可以同时属于不同层次的嵌套簇。",
+          "front": "哪种聚类方式允许一个数据点同时属于多个不同粒度的簇？",
+          "question_id": "q_flash_core_difference_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "hierarchical_clustering",
+      "coverage_tags": [
+        "hierarchical_tree_cutting"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_dendrogram_cut",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆如何从层次聚类结果中获得不同数量的簇。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能说出通过切割树状图来获得不同粒度簇的方法。",
+      "question_type": "short_answer",
+      "retrieval_focus": "从层次聚类结果中获得不同数量簇的方法。",
+      "term_refs": [
+        {
+          "display": "树状图",
+          "en": "Dendrogram"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在树状图的不同高度切割。",
+          "estimated_seconds": 6,
+          "explanation": "树状图展示了簇的合并顺序，在不同高度切割可以得到不同数量的簇。",
+          "front": "如何从层次聚类的结果中得到不同数量的簇？",
+          "question_id": "q_flash_dendrogram_cut_v1"
+        },
+        {
+          "back": "越少。",
+          "estimated_seconds": 6,
+          "explanation": "切割位置越高，合并的簇越多，因此得到的簇数量越少。",
+          "front": "在层次聚类中，切割树状图的位置越高，得到的簇数量是越多还是越少？",
+          "question_id": "q_flash_dendrogram_cut_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-clustering",
+  "longform_families": [
+    {
+      "concept_key": "partitional_vs_hierarchical",
+      "coverage_tags": [
+        "partitional_vs_hierarchical",
+        "partitional_clustering_definition",
+        "hierarchical_clustering_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_compare_strategies",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的语言比较划分式聚类和层次聚类的核心区别、优缺点和适用场景。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能解释划分式聚类和层次聚类在簇结构、灵活性和适用场景上的差异。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "划分式聚类",
+          "en": "Partitional Clustering"
+        },
+        {
+          "display": "层次聚类",
+          "en": "Hierarchical Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "簇的组织结构",
+            "不同粒度下的分组",
+            "适合的数据场景"
+          ],
+          "question_id": "q_long_compare_strategies_v1",
+          "reference_answer": [
+            "划分式聚类的簇互不重叠，每个数据点只属于一个簇；层次聚类的簇是嵌套的，形成层次树。",
+            "划分式聚类只能得到一种粒度的分组；层次聚类可以通过切割树状图在不同高度得到不同粒度的簇。",
+            "划分式聚类适合数据没有明显层次结构、只需要一种分组的情况；层次聚类适合数据具有层次结构（如生物分类）或需要探索不同粒度分组的情况。"
+          ],
+          "rubric_points": [
+            "划分式聚类：簇互不重叠，每个数据点只属于一个簇。",
+            "层次聚类：簇是嵌套的，形成层次树。",
+            "划分式聚类：只能得到一种粒度的分组。",
+            "层次聚类：可以通过切割树状图在不同高度得到不同粒度的簇。",
+            "划分式聚类：适合数据没有明显层次结构、只需要一种分组的情况。",
+            "层次聚类：适合数据具有层次结构（如生物分类）或需要探索不同粒度分组的情况。"
+          ],
+          "stem": "请比较划分式聚类和层次聚类，从以下三个方面说明它们的区别：\n1. 簇的组织结构\n2. 能否在不同粒度下查看分组\n3. 分别适合什么样的数据场景"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "划分式聚类的分组方案",
+            "划分式聚类丢失的信息",
+            "层次聚类的分组方案",
+            "更适合的方式及原因"
+          ],
+          "question_id": "q_long_compare_strategies_v2",
+          "reference_answer": [
+            "划分式聚类可以按食性分为食肉动物（猫、狗、狼、狮子、老虎）和食草动物（大象、长颈鹿）。",
+            "划分式聚类丢失了食肉动物内部（如猫科与犬科）的层次信息。",
+            "层次聚类可以构建层次树：先分食肉/食草，再在食肉下分猫科/犬科。",
+            "层次聚类更适合，因为动物分类本身具有层次结构，层次聚类可以展示不同粒度下的分组。"
+          ],
+          "rubric_points": [
+            "划分式聚类可以按食性分为食肉动物和食草动物。",
+            "划分式聚类丢失了食肉动物内部（如猫科与犬科）的层次信息。",
+            "层次聚类可以构建层次树：先分食肉/食草，再在食肉下分猫科/犬科。",
+            "层次聚类更适合，因为动物分类本身具有层次结构，层次聚类可以展示不同粒度下的分组。"
+          ],
+          "stem": "假设你有一组动物数据，包括猫、狗、狼、狮子、老虎、大象、长颈鹿。\n1. 如果使用划分式聚类，你会如何分组？这种分组方式会丢失什么信息？\n2. 如果使用层次聚类，分组结果会有什么不同？\n3. 哪种方式更适合这类数据？为什么？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "partitional_clustering",
+      "coverage_tags": [
+        "partitional_clustering_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_partitional_property",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断关于划分式聚类性质的陈述是否正确。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能正确判断划分式聚类中簇的互不重叠性质。",
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "划分式聚类",
+          "en": "Partitional Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "划分式聚类将数据划分为互不重叠的子集，每个数据点只属于一个簇。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_partitional_property_v1",
+          "stem": "划分式聚类产生的簇是互不重叠的。"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "划分式聚类中每个数据点只属于一个簇，簇之间互不重叠。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_partitional_property_v2",
+          "stem": "在划分式聚类中，一个数据点可以同时属于多个簇。"
+        }
+      ]
+    },
+    {
+      "concept_key": "hierarchical_clustering",
+      "coverage_tags": [
+        "hierarchical_clustering_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_hierarchical_property",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断关于层次聚类性质的陈述是否正确。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能正确判断层次聚类中簇的嵌套性质。",
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "层次聚类",
+          "en": "Hierarchical Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "层次聚类生成嵌套的簇结构，可以在不同粒度下查看。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_hierarchical_property_v1",
+          "stem": "层次聚类产生的簇是嵌套的。"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 10,
+          "explanation": "树状图是记录层次聚类中簇合并或分裂顺序的常用工具。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_hierarchical_property_v2",
+          "stem": "层次聚类的结果可以用树状图来可视化。"
+        }
+      ]
+    },
+    {
+      "concept_key": "partitional_vs_hierarchical",
+      "coverage_tags": [
+        "partitional_vs_hierarchical",
+        "partitional_clustering_definition",
+        "hierarchical_clustering_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_partitional_vs_hierarchical",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据应用场景选择合适的聚类策略。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能根据数据是否具有层次结构，选择划分式聚类或层次聚类。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "划分式聚类",
+          "en": "Partitional Clustering"
+        },
+        {
+          "display": "层次聚类",
+          "en": "Hierarchical Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "层次聚类可以构建层次树，在不同高度切割得到不同粒度的簇，适合处理层次数据。",
+          "options": [
+            "划分式聚类",
+            "层次聚类",
+            "两种都可以",
+            "两种都不行"
+          ],
+          "question_id": "q_quiz_partitional_vs_hierarchical_v1",
+          "stem": "如果数据具有明显的层次结构（如生物分类），以下哪种聚类方式更合适？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "划分式聚类将数据划分为互不重叠的子集，每个数据点只属于一个簇。",
+          "options": [
+            "划分式聚类",
+            "层次聚类",
+            "两种都可以",
+            "两种都不行"
+          ],
+          "question_id": "q_quiz_partitional_vs_hierarchical_v2",
+          "stem": "如果希望每个数据点只属于一个簇，应该用哪种聚类？"
+        }
+      ]
+    },
+    {
+      "concept_key": "hierarchical_clustering",
+      "coverage_tags": [
+        "hierarchical_tree_cutting"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_dendrogram_cut",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解如何通过树状图获得不同数量的簇。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能说出通过切割树状图来获得不同粒度簇的方法。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "树状图",
+          "en": "Dendrogram"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "树状图展示了簇的合并顺序，在不同高度切割可以得到不同数量的簇。",
+          "options": [
+            "在树状图的不同高度切割",
+            "在树状图的底部切割",
+            "在树状图的顶部切割",
+            "树状图不能用于选择簇数量"
+          ],
+          "question_id": "q_quiz_dendrogram_cut_v1",
+          "stem": "如何通过树状图得到不同数量的簇？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "切割位置越高，合并的簇越多，因此得到的簇数量越少。",
+          "options": [
+            "越多",
+            "越少",
+            "不变",
+            "无法确定"
+          ],
+          "question_id": "q_quiz_dendrogram_cut_v2",
+          "stem": "在层次聚类的树状图中，切割位置越高，得到的簇数量会如何变化？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-clustering/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

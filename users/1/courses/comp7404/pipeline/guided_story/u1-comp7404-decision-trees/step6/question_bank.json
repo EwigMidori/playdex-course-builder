@@ -1,0 +1,239 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "bootstrap_sample_size_impact",
+      "covered_by": [
+        "qf_flash_step6_bootstrap_impact",
+        "qf_quiz_step6_bootstrap_tradeoff",
+        "qf_long_step6_bootstrap_explain"
+      ],
+      "description": "Bootstrap 样本大小对随机森林多样性和性能的影响"
+    },
+    {
+      "coverage_tag": "diversity_vs_performance_tradeoff",
+      "covered_by": [
+        "qf_flash_step6_bootstrap_impact",
+        "qf_quiz_step6_bootstrap_tradeoff",
+        "qf_long_step6_bootstrap_explain"
+      ],
+      "description": "随机森林中多样性与整体性能之间的权衡"
+    },
+    {
+      "coverage_tag": "overfitting_mitigation_via_bootstrap",
+      "covered_by": [
+        "qf_flash_step6_bootstrap_impact",
+        "qf_quiz_step6_bootstrap_tradeoff"
+      ],
+      "description": "通过调整 Bootstrap 样本大小来缓解过拟合"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "bootstrap_sample_size_impact",
+      "coverage_tags": [
+        "bootstrap_sample_size_impact",
+        "diversity_vs_performance_tradeoff",
+        "overfitting_mitigation_via_bootstrap"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step6_bootstrap_impact",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述 Bootstrap 样本大小变化对随机森林多样性和性能的影响方向。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能准确说出减小 Bootstrap 样本大小对随机森林多样性和整体性能的直接影响。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Bootstrap 样本大小与多样性、性能之间的因果关系",
+      "term_refs": [
+        {
+          "display": "Bootstrap 样本大小",
+          "en": "Bootstrap Sample Size"
+        },
+        {
+          "display": "多样性",
+          "en": "Diversity"
+        }
+      ],
+      "variants": [
+        {
+          "back": "增加多样性。",
+          "estimated_seconds": 8,
+          "explanation": "样本越小，每棵树看到的数据差异越大，树之间的多样性就越高。",
+          "front": "在随机森林中，减小 Bootstrap 样本大小（即每棵树使用的样本数）会如何影响树之间的多样性？",
+          "question_id": "q_flash_step6_bootstrap_impact_v1"
+        },
+        {
+          "back": "整体性能下降。",
+          "estimated_seconds": 8,
+          "explanation": "每棵树学到的信息有限，虽然多样性增加，但整体预测能力会降低。",
+          "front": "在随机森林中，减小 Bootstrap 样本大小通常会对模型的整体性能产生什么影响？",
+          "question_id": "q_flash_step6_bootstrap_impact_v2"
+        },
+        {
+          "back": "相似度增加，过拟合风险上升。",
+          "estimated_seconds": 10,
+          "explanation": "样本越大，每棵树越接近原始数据，树之间越相似，多样性降低，过拟合风险增加。",
+          "front": "在随机森林中，增大 Bootstrap 样本大小会如何影响树之间的相似度和过拟合风险？",
+          "question_id": "q_flash_step6_bootstrap_impact_v3"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-decision-trees",
+  "longform_families": [
+    {
+      "concept_key": "bootstrap_sample_size_impact",
+      "coverage_tags": [
+        "bootstrap_sample_size_impact",
+        "diversity_vs_performance_tradeoff"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_step6_bootstrap_explain",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释 Bootstrap 样本大小如何影响随机森林的多样性、过拟合和整体性能，并说明其中的权衡。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能用连贯的语言解释减小和增大 Bootstrap 样本大小分别对随机森林的多样性、过拟合风险和整体性能产生什么影响，并说明为什么存在权衡。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "Bootstrap 样本大小",
+          "en": "Bootstrap Sample Size"
+        },
+        {
+          "display": "多样性",
+          "en": "Diversity"
+        },
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        },
+        {
+          "display": "泛化性能",
+          "en": "Generalization Performance"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "减小 Bootstrap 样本大小的影响",
+            "增大 Bootstrap 样本大小的影响",
+            "多样性与性能之间的权衡"
+          ],
+          "question_id": "q_long_step6_bootstrap_explain_v1",
+          "reference_answer": [
+            "减小 Bootstrap 样本大小：每棵树使用的数据更少，树之间的差异更大，多样性增加。这有助于减少过拟合，因为每棵树不会完全记住原始数据。但代价是每棵树学到的信息有限，整体性能通常会下降。",
+            "增大 Bootstrap 样本大小：每棵树使用的数据更接近原始数据集，树之间的相似度增加，多样性降低。这可能导致过拟合风险上升，因为树更容易记住训练数据中的噪声。",
+            "权衡：Bootstrap 样本大小控制着偏差和方差之间的平衡。较小的样本增加多样性（降低方差），但可能增加偏差（降低性能）。较大的样本减少多样性（增加方差），但可能降低偏差（提高训练性能）。需要在两者之间找到一个“甜点”来获得最佳的泛化性能。"
+          ],
+          "rubric_points": [
+            "正确指出减小样本大小会增加多样性，有助于减少过拟合",
+            "正确指出减小样本大小会降低整体性能",
+            "正确指出增大样本大小会降低多样性，增加过拟合风险",
+            "正确指出增大样本大小可能使树更相似，更接近原始数据",
+            "能解释为什么存在权衡：多样性提升以牺牲每棵树的学习能力为代价"
+          ],
+          "stem": "请解释在随机森林中，Bootstrap 样本大小如何影响树之间的多样性、过拟合风险和模型的整体性能。请分别说明减小样本大小和增大样本大小的影响。"
+        },
+        {
+          "estimated_seconds": 100,
+          "prompt_blocks": [
+            "当前问题分析",
+            "调整 Bootstrap 样本大小的理由",
+            "调整时需要注意的权衡"
+          ],
+          "question_id": "q_long_step6_bootstrap_explain_v2",
+          "reference_answer": [
+            "当前问题分析：训练集准确率（99%）远高于测试集准确率（72%），这是典型的过拟合现象。模型记住了训练数据的细节，包括噪声，导致在新数据上表现不佳。",
+            "调整 Bootstrap 样本大小的理由：减小 Bootstrap 样本大小可以增加树之间的多样性。每棵树只看到原始数据的一个子集，不太可能完全记住训练数据，从而降低过拟合风险。这有助于缩小训练集和测试集之间的性能差距。",
+            "需要注意的权衡：虽然减小样本大小可以减少过拟合，但每棵树学到的信息有限，整体性能可能会下降。如果样本太小，测试集准确率可能不仅不会提升，反而会下降。因此，需要在减少过拟合和保持整体性能之间找到一个平衡点，通常通过交叉验证来选择合适的 Bootstrap 样本大小。"
+          ],
+          "rubric_points": [
+            "正确识别当前问题是过拟合（训练集远好于测试集）",
+            "正确指出减小 Bootstrap 样本大小可以增加多样性，减少过拟合",
+            "正确指出减小样本大小可能降低整体性能",
+            "能解释为什么不能无限制减小样本大小",
+            "能说明需要在减少过拟合和保持性能之间找到平衡"
+          ],
+          "stem": "假设你训练了一个随机森林模型，发现训练集准确率很高（99%），但测试集准确率较低（72%）。你怀疑存在过拟合。请解释为什么调整 Bootstrap 样本大小可能有助于缓解这个问题，并说明调整时需要注意的权衡。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "diversity_vs_performance_tradeoff",
+      "coverage_tags": [
+        "bootstrap_sample_size_impact",
+        "diversity_vs_performance_tradeoff",
+        "overfitting_mitigation_via_bootstrap"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step6_bootstrap_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析 Bootstrap 样本大小对随机森林多样性和性能的权衡关系。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能正确判断 Bootstrap 样本大小变化带来的多样性、性能和过拟合风险的综合影响。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Bootstrap 样本大小",
+          "en": "Bootstrap Sample Size"
+        },
+        {
+          "display": "多样性",
+          "en": "Diversity"
+        },
+        {
+          "display": "过拟合",
+          "en": "Overfitting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "减小 Bootstrap 样本大小会增加树之间的多样性，有助于减少过拟合，但每棵树学到的信息有限，整体性能通常会下降。",
+          "options": [
+            "样本越小，多样性越高，整体性能也越高",
+            "样本越大，多样性越低，过拟合风险越低",
+            "样本越小，多样性越高，但整体性能可能下降",
+            "样本大小对多样性和性能没有影响"
+          ],
+          "question_id": "q_quiz_step6_bootstrap_tradeoff_v1",
+          "stem": "关于随机森林中 Bootstrap 样本大小的影响，以下哪项描述最准确？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "减小 Bootstrap 样本大小可以增加树之间的多样性，降低过拟合风险，从而可能缩小训练集和测试集之间的性能差距。",
+          "options": [
+            "增大 Bootstrap 样本大小",
+            "减小 Bootstrap 样本大小",
+            "增加树的数量",
+            "增加特征总数"
+          ],
+          "question_id": "q_quiz_step6_bootstrap_tradeoff_v2",
+          "stem": "一位数据科学家发现他的随机森林在训练集上表现很好，但在测试集上表现较差。他怀疑存在过拟合。以下哪种调整最可能缓解这个问题？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-decision-trees/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

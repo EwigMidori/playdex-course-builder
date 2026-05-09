@@ -1,0 +1,439 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "dimensionality_reduction_definition",
+      "covered_by": [
+        "qf_flash_step2_dr_def",
+        "qf_quiz_step2_dr_definition"
+      ],
+      "description": "降维的定义：将高维数据压缩到低维，同时保留关键结构。"
+    },
+    {
+      "coverage_tag": "feature_selection_vs_feature_extraction",
+      "covered_by": [
+        "qf_flash_step2_fs_fe",
+        "qf_quiz_step2_fs_fe_identify",
+        "qf_quiz_step2_fs_fe_scenario",
+        "qf_long_step2_fs_fe_compare"
+      ],
+      "description": "降维的两种思路：特征选择（挑选子集）与特征提取（组合新特征）的区别。"
+    },
+    {
+      "coverage_tag": "feature_extraction_linear_transform",
+      "covered_by": [
+        "qf_flash_step2_linear_form",
+        "qf_quiz_step2_linear_form"
+      ],
+      "description": "特征提取中线性变换的形式 y = Wx，以及本课程聚焦于线性特征提取。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "dimensionality_reduction",
+      "coverage_tags": [
+        "dimensionality_reduction_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step2_dr_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出降维的核心目标。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了降维的基本定义：将高维数据压缩到低维，同时保留关键结构。",
+      "question_type": "short_answer",
+      "retrieval_focus": "降维的核心目标",
+      "term_refs": [
+        {
+          "display": "降维",
+          "en": "Dimensionality Reduction"
+        }
+      ],
+      "variants": [
+        {
+          "back": "把数据从高维压缩到低维，同时保留关键结构。",
+          "estimated_seconds": 8,
+          "explanation": "降维不是为了丢弃信息，而是在降低维度的同时尽量保留数据的关键结构或信息。",
+          "front": "降维的核心目标是什么？",
+          "question_id": "q_flash_step2_dr_def_v1"
+        },
+        {
+          "back": "因为高维数据计算慢、存储大、容易过拟合，且很多高维空间中的点并非有效数据。",
+          "estimated_seconds": 10,
+          "explanation": "高维数据带来的问题包括计算效率低、存储需求大、数据稀疏和过拟合风险。",
+          "front": "为什么需要对高维数据进行降维？",
+          "question_id": "q_flash_step2_dr_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_selection_vs_feature_extraction",
+      "coverage_tags": [
+        "feature_selection_vs_feature_extraction"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step2_fs_fe",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分特征选择和特征提取的核心操作。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了特征选择是挑选原始特征子集，特征提取是组合原始特征生成新特征。",
+      "question_type": "short_answer",
+      "retrieval_focus": "特征选择与特征提取的操作区别",
+      "term_refs": [
+        {
+          "display": "特征选择",
+          "en": "Feature Selection"
+        },
+        {
+          "display": "特征提取",
+          "en": "Feature Extraction"
+        }
+      ],
+      "variants": [
+        {
+          "back": "直接从原始特征里挑出最有用的几个，丢掉剩下的。",
+          "estimated_seconds": 8,
+          "explanation": "特征选择不改变原始特征的含义，只是从中选出一个子集。",
+          "front": "特征选择是如何实现降维的？",
+          "question_id": "q_flash_step2_fs_fe_v1"
+        },
+        {
+          "back": "把原始特征组合成全新的、维度更少的特征。",
+          "estimated_seconds": 8,
+          "explanation": "特征提取通过组合（如线性组合）生成新特征，新特征通常不再具有原始特征的物理意义。",
+          "front": "特征提取是如何实现降维的？",
+          "question_id": "q_flash_step2_fs_fe_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "linear_feature_extraction",
+      "coverage_tags": [
+        "feature_extraction_linear_transform"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_step2_linear_form",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能写出线性特征提取的数学形式。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了线性特征提取的数学表达式 y = Wx。",
+      "question_type": "short_answer",
+      "retrieval_focus": "线性特征提取的数学形式",
+      "term_refs": [
+        {
+          "display": "线性特征提取",
+          "en": "Linear Feature Extraction"
+        }
+      ],
+      "variants": [
+        {
+          "back": "y = W x",
+          "estimated_seconds": 6,
+          "explanation": "其中 x 是原始高维向量，W 是变换矩阵，y 是降维后的低维向量。",
+          "front": "线性特征提取的数学表达式是什么？",
+          "question_id": "q_flash_step2_linear_form_v1"
+        },
+        {
+          "back": "M × N，其中 N 是原始维度，M 是降维后的维度（M < N）。",
+          "estimated_seconds": 10,
+          "explanation": "W 是一个 M 行 N 列的矩阵，将 N 维向量映射到 M 维空间。",
+          "front": "在线性特征提取 y = Wx 中，W 的维度是多少？",
+          "question_id": "q_flash_step2_linear_form_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "longform_families": [
+    {
+      "concept_key": "feature_selection_vs_feature_extraction",
+      "coverage_tags": [
+        "feature_selection_vs_feature_extraction"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_step2_fs_fe_compare",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能系统比较特征选择和特征提取的异同，并给出各自的适用场景。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能清晰阐述特征选择和特征提取的定义、操作方式、优缺点及适用场景。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "特征选择",
+          "en": "Feature Selection"
+        },
+        {
+          "display": "特征提取",
+          "en": "Feature Extraction"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "分别说明两者的定义和操作方式",
+            "各举一个适合使用该思路的场景",
+            "说明为什么本课程后续会聚焦于特征提取中的线性变换"
+          ],
+          "question_id": "q_long_step2_fs_fe_compare_v1",
+          "reference_answer": [
+            "特征选择是从原始特征中直接挑选出最有用的子集，丢掉其余特征。它保留了原始特征的物理意义，适合需要可解释性的场景，比如医疗诊断中保留关键生理指标。",
+            "特征提取是通过组合原始特征来创造全新的、维度更少的特征。它可能失去原始特征的物理意义，但能捕捉特征间的交互关系，适合图像识别、语音识别等场景。",
+            "本课程聚焦于特征提取中的线性变换，因为非线性变换没有系统化的生成方法，选择特定子集的变换是问题依赖的，而线性变换形式简单、有成熟的数学工具（如 PCA、LDA）。"
+          ],
+          "rubric_points": [
+            "特征选择：从原始特征中直接挑选子集，保留原始特征的物理意义",
+            "特征提取：通过组合原始特征生成新特征，可能失去原始物理意义但能捕捉交互关系",
+            "特征选择适合需要保留特征可解释性的场景（如医疗诊断中保留关键指标）",
+            "特征提取适合需要捕捉特征间关系的场景（如图像识别中组合像素）",
+            "非线性变换缺乏系统化方法且问题依赖性强，因此实践中常用线性变换"
+          ],
+          "stem": "请比较特征选择和特征提取这两种降维思路。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "情况A：你需要保留原始特征的物理意义，以便向非技术人员解释模型",
+            "情况B：你怀疑原始特征之间存在复杂的交互关系，且分类任务需要捕捉这些关系"
+          ],
+          "question_id": "q_long_step2_fs_fe_compare_v2",
+          "reference_answer": [
+            "情况A应选择特征选择。因为特征选择直接从原始特征中挑选子集，不改变特征的含义，保留了每个特征的物理意义，便于向非技术人员解释哪些原始特征对模型最重要。",
+            "情况B应选择特征提取。因为特征提取通过组合原始特征生成新特征，能够捕捉特征之间的交互关系，可能发现比任何单个原始特征都更有判别力的新特征，从而提升分类性能。"
+          ],
+          "rubric_points": [
+            "情况A应选特征选择：直接挑选子集，保留原始特征含义",
+            "情况B应选特征提取：通过组合生成新特征，能捕捉特征间交互",
+            "特征选择不改变特征含义，适合可解释性要求高的场景",
+            "特征提取可能失去原始物理意义，但能发现更有判别力的新特征"
+          ],
+          "stem": "假设你有一个高维数据集，需要降维。请分析在以下两种情况下应选择特征选择还是特征提取，并说明理由。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "dimensionality_reduction",
+      "coverage_tags": [
+        "dimensionality_reduction_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_step2_dr_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中判断降维的必要性。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能识别出需要降维的场景。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "降维",
+          "en": "Dimensionality Reduction"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "当特征数量远大于样本数量时，高维数据会导致计算慢、存储大、过拟合等问题，最需要降维。",
+          "options": [
+            "有 10 个样本，每个样本 5 个特征",
+            "有 100 个样本，每个样本 10000 个特征",
+            "有 10000 个样本，每个样本 2 个特征",
+            "有 1000 个样本，每个样本 10 个特征"
+          ],
+          "question_id": "q_quiz_step2_dr_definition_v1",
+          "stem": "以下哪种情况最需要降维？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 12,
+          "explanation": "降维的核心是在降低维度的同时尽量保留数据的关键结构或信息。",
+          "options": [
+            "增加数据维度以包含更多信息",
+            "将高维数据压缩到低维，同时保留关键结构",
+            "将所有数据变成一维",
+            "删除所有不重要的样本"
+          ],
+          "question_id": "q_quiz_step2_dr_definition_v2",
+          "stem": "降维的主要目的是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_selection_vs_feature_extraction",
+      "coverage_tags": [
+        "feature_selection_vs_feature_extraction"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step2_fs_fe_identify",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据具体操作判断属于特征选择还是特征提取。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能区分特征选择和特征提取的具体操作。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征选择",
+          "en": "Feature Selection"
+        },
+        {
+          "display": "特征提取",
+          "en": "Feature Extraction"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "特征提取是通过组合原始特征来创造新特征。线性组合生成新特征是典型的特征提取。",
+          "options": [
+            "从 100 个里挑出方差最大的 10 个",
+            "用 100 个特征的线性组合生成 10 个新特征",
+            "随机扔掉 90 个特征",
+            "把所有特征取平均值作为一个新特征"
+          ],
+          "question_id": "q_quiz_step2_fs_fe_identify_v1",
+          "stem": "假设你有 100 个原始特征，想压缩到 10 个。以下哪种做法属于特征提取？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "特征选择是直接从原始特征中挑选子集，不改变特征本身。选出相关性最高的特征是特征选择。",
+          "options": [
+            "用 PCA 将 100 维数据降到 10 维",
+            "从 100 个特征中选出与目标变量相关性最高的 10 个",
+            "用神经网络编码器将 100 维数据压缩到 10 维",
+            "用 100 个特征的加权和生成 1 个新特征"
+          ],
+          "question_id": "q_quiz_step2_fs_fe_identify_v2",
+          "stem": "以下哪种做法属于特征选择？"
+        }
+      ]
+    },
+    {
+      "concept_key": "feature_selection_vs_feature_extraction",
+      "coverage_tags": [
+        "feature_selection_vs_feature_extraction"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step2_fs_fe_scenario",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据场景需求选择合适的降维思路。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能根据任务需求（保留原始特征物理意义 vs 捕捉特征间组合关系）选择特征选择或特征提取。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "特征选择",
+          "en": "Feature Selection"
+        },
+        {
+          "display": "特征提取",
+          "en": "Feature Extraction"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "特征选择是直接挑选原始特征，适合需要保留原始特征物理意义的场景。",
+          "options": [
+            "特征选择",
+            "特征提取",
+            "两者都可以",
+            "都不行"
+          ],
+          "question_id": "q_quiz_step2_fs_fe_scenario_v1",
+          "stem": "在人脸识别场景中，如果希望保留原始像素中最重要的那些像素，应该用哪种思路？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "特征提取通过组合生成新特征，适合需要捕捉特征间交互的场景。",
+          "options": [
+            "特征选择",
+            "特征提取",
+            "两者都可以",
+            "都不行"
+          ],
+          "question_id": "q_quiz_step2_fs_fe_scenario_v2",
+          "stem": "在语音识别场景中，如果希望捕捉不同频率之间的组合关系，应该用哪种思路？"
+        }
+      ]
+    },
+    {
+      "concept_key": "linear_feature_extraction",
+      "coverage_tags": [
+        "feature_extraction_linear_transform"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step2_linear_form",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解线性特征提取的基本形式和适用性。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了线性特征提取的数学形式及其在实践中的普遍性。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "线性特征提取",
+          "en": "Linear Feature Extraction"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "非线性变换没有系统化的生成方法，选择特定子集的变换是问题依赖的，因此特征提取通常限于线性变换。",
+          "options": [
+            "线性变换总是最优的",
+            "非线性变换没有系统化的生成方法，且问题依赖性强",
+            "线性变换可以保留所有信息",
+            "非线性变换计算太慢"
+          ],
+          "question_id": "q_quiz_step2_linear_form_v1",
+          "stem": "在特征提取中，为什么通常优先使用线性变换？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "W 是 M × N 的矩阵，其中 M 是目标维度（20），N 是原始维度（100），所以是 20 × 100。",
+          "options": [
+            "100 × 20",
+            "20 × 100",
+            "100 × 100",
+            "20 × 20"
+          ],
+          "question_id": "q_quiz_step2_linear_form_v2",
+          "stem": "在线性特征提取 y = Wx 中，如果原始数据是 100 维，想降到 20 维，W 的维度是多少？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-pca-and-lda/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

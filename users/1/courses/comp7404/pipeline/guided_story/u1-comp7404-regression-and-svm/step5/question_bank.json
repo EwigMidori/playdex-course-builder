@@ -1,0 +1,229 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "maximum_margin_hyperplane",
+      "covered_by": [
+        "qf_flash_margin_definition",
+        "qf_quiz_margin_choice",
+        "qf_long_margin_justification"
+      ],
+      "description": "最大间隔超平面的概念：选择离所有训练样本最远的超平面以获得更好的泛化能力。"
+    },
+    {
+      "coverage_tag": "margin_definition",
+      "covered_by": [
+        "qf_flash_margin_definition",
+        "qf_quiz_margin_choice"
+      ],
+      "description": "间隔的定义：决策面到最近训练样本的最小距离。"
+    },
+    {
+      "coverage_tag": "margin_and_generalization",
+      "covered_by": [
+        "qf_long_margin_justification"
+      ],
+      "description": "间隔与泛化的关系：大间隔导致低容量，即使维度很高，复杂度也可能很低。"
+    },
+    {
+      "coverage_tag": "hyperplane_separating",
+      "covered_by": [
+        "qf_flash_hyperplane_definition"
+      ],
+      "description": "超平面用于分割数据，在二维空间中是一条直线。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "hyperplane",
+      "coverage_tags": [
+        "hyperplane_separating"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_hyperplane_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆超平面的定义及其在分类中的作用。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了超平面的核心定义：在分类问题中，超平面是用于分割不同类别数据的决策边界。",
+      "question_type": "short_answer",
+      "retrieval_focus": "超平面的定义及其在分类中的角色。",
+      "term_refs": [
+        {
+          "display": "超平面",
+          "en": "Hyperplane"
+        }
+      ],
+      "variants": [
+        {
+          "back": "超平面 (Hyperplane)",
+          "estimated_seconds": 8,
+          "explanation": "在二维空间中，超平面是一条直线；在更高维空间中，它是一个比所在空间维度低一维的线性子空间。",
+          "front": "在SVM分类问题中，用于分割不同类别数据的决策边界，在高维空间中通常被称为什么？",
+          "question_id": "q_flash_hyperplane_v1"
+        },
+        {
+          "back": "一条直线",
+          "estimated_seconds": 5,
+          "explanation": "在二维空间中，超平面就是一条直线。",
+          "front": "在二维空间中，SVM用于分割两类数据的超平面具体是什么形状？",
+          "question_id": "q_flash_hyperplane_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "margin",
+      "coverage_tags": [
+        "maximum_margin_hyperplane",
+        "margin_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_margin_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆间隔的定义及其在SVM中的重要性。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了间隔的核心定义：决策边界到最近训练样本的距离。",
+      "question_type": "short_answer",
+      "retrieval_focus": "间隔的数学定义。",
+      "term_refs": [
+        {
+          "display": "间隔",
+          "en": "Margin"
+        }
+      ],
+      "variants": [
+        {
+          "back": "决策面（超平面）到最近训练样本的最小距离。",
+          "estimated_seconds": 10,
+          "explanation": "间隔衡量了分类边界的“安全”程度，间隔越大，边界对噪声的容忍度越高。",
+          "front": "在SVM中，间隔（margin）的严格定义是什么？",
+          "question_id": "q_flash_margin_v1"
+        },
+        {
+          "back": "最大间隔 (largest margin)",
+          "estimated_seconds": 6,
+          "explanation": "SVM的目标是找到一个超平面，使其到最近训练样本的距离（即间隔）最大化。",
+          "front": "SVM的目标是找到具有什么性质的超平面？",
+          "question_id": "q_flash_margin_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "longform_families": [
+    {
+      "concept_key": "margin_and_generalization",
+      "coverage_tags": [
+        "maximum_margin_hyperplane",
+        "margin_and_generalization"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_margin_justification",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么最大间隔超平面能带来更好的泛化能力。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能理解并解释间隔大小与模型泛化能力之间的因果关系。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "间隔",
+          "en": "Margin"
+        },
+        {
+          "display": "泛化",
+          "en": "Generalization"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "解释“间隔”的定义。",
+            "解释为什么靠近训练样本的超平面不好。",
+            "解释大间隔如何带来更好的泛化能力。"
+          ],
+          "question_id": "q_long_margin_v1",
+          "reference_answer": [
+            "间隔定义为决策超平面到最近训练样本的最小距离。",
+            "如果一个超平面离某些训练样本非常近，那么这些样本的微小扰动（例如测量误差）就可能导致它们被错误分类，说明该模型对噪声敏感，泛化能力差。",
+            "相反，具有最大间隔的超平面在各类数据之间留下了最大的“安全地带”。这使得决策边界对训练样本的微小变化不敏感，从而更有可能在未见过的数据上做出正确预测，即具有更好的泛化能力。"
+          ],
+          "rubric_points": [
+            "正确指出间隔是决策面到最近训练样本的距离。",
+            "正确指出靠近训练样本的超平面对噪声敏感，泛化能力差。",
+            "正确指出大间隔的超平面更鲁棒，对训练数据的微小变化不敏感，因此泛化能力更强。"
+          ],
+          "stem": "请解释为什么SVM选择具有最大间隔的超平面，而不是任意一个能正确分类的超平面。请从泛化能力的角度进行说明。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "margin",
+      "coverage_tags": [
+        "maximum_margin_hyperplane",
+        "margin_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_margin_choice",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析间隔的概念及其与泛化能力的关系。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能正确理解间隔的定义，并能判断大间隔对模型泛化能力的影响。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "间隔",
+          "en": "Margin"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "一个离所有训练样本都尽可能远的超平面，对训练数据中的噪声和微小扰动更不敏感，因此更有可能在未见过的数据上表现良好，即泛化能力更强。",
+          "options": [
+            "因为它能保证训练误差为零",
+            "因为它对噪声更不敏感，通常具有更好的泛化能力",
+            "因为它计算起来最简单",
+            "因为它能处理非线性数据"
+          ],
+          "question_id": "q_quiz_margin_v1",
+          "stem": "在SVM中，为什么选择具有最大间隔的超平面被认为是最优的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "更大的间隔意味着决策边界对训练数据的扰动更不敏感，因此通常具有更好的泛化能力。SVM的目标就是找到具有最大间隔的超平面。",
+          "options": [
+            "超平面A的泛化能力一定比B好",
+            "超平面B的泛化能力通常比A好",
+            "两个超平面的泛化能力相同",
+            "无法判断，因为间隔大小与泛化能力无关"
+          ],
+          "question_id": "q_quiz_margin_v2",
+          "stem": "假设有两个超平面A和B都能正确分开两类数据。A的间隔为2，B的间隔为5。根据SVM的原理，以下哪个说法最可能正确？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-regression-and-svm/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

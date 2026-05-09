@@ -1,0 +1,199 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "support_vector_machine"
+      ],
+      "id": "s044",
+      "introduced_terms": [
+        "support_vector_machine"
+      ],
+      "lines": [
+        "现在来看另一种强大的分类器：<term id=\"support_vector_machine\">支持向量机</term>。",
+        "它的目标很直观：找一条最好的分界线。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "想象有两类点，红色和蓝色。",
+        "有很多条直线可以把它们分开。哪条最好？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "hyperplane"
+      ],
+      "id": "s046",
+      "introduced_terms": [
+        "hyperplane"
+      ],
+      "lines": [
+        "SVM 的答案是：离两类点都尽可能远的那条。",
+        "这条线就是 <term id=\"hyperplane\">超平面</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "margin"
+      ],
+      "id": "s047",
+      "introduced_terms": [
+        "margin"
+      ],
+      "lines": [
+        "超平面到最近数据点的距离，叫做 <term id=\"margin\">间隔</term>。",
+        "SVM 的目标就是最大化这个间隔。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "support_vectors"
+      ],
+      "id": "s048",
+      "introduced_terms": [
+        "support_vectors"
+      ],
+      "lines": [
+        "那些距离超平面最近的点，决定了间隔的大小。",
+        "它们被称为 <term id=\"support_vectors\">支持向量</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "但现实中的数据往往不是线性可分的。",
+        "比如，红点和蓝点混在一起，没有一条直线能分开。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "slack_variable"
+      ],
+      "id": "s050",
+      "introduced_terms": [
+        "slack_variable"
+      ],
+      "lines": [
+        "这时可以引入 <term id=\"slack_variable\">松弛变量</term>。",
+        "允许一些点被错误分类，但会为此付出代价。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "kernel_trick"
+      ],
+      "id": "s051",
+      "introduced_terms": [
+        "kernel_trick"
+      ],
+      "lines": [
+        "另一个更巧妙的方法是 <term id=\"kernel_trick\">核技巧</term>。",
+        "把数据映射到更高维的空间，让它们变得线性可分。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s052",
+      "introduced_terms": [],
+      "lines": [
+        "比如，一维数据无法用点分开，但映射到二维后就可以。",
+        "核技巧的妙处在于，计算仍然在低维空间进行。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "SVM 通过最大化决策边界到最近数据点的间隔来寻找最优超平面。",
+        "kind": "single_choice",
+        "options": [
+          "训练集准确率",
+          "间隔",
+          "模型复杂度",
+          "核函数的数量"
+        ],
+        "prompt": "SVM 的核心思想是最大化什么？"
+      },
+      "focus_terms": [],
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "SVM 的核心思想是最大化什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Support Vector Machines (SVM). Find a linear hyperplane (decision boundary) that separates the data into their respective classes. Find hyperplane that maximizes the margin. What if the problem is not linearly separable? Introduce slack variables. The Kernel Trick: Transform the data from a low-dimensional space to a higher-dimensional space.",
+    "related": [
+      "SVM",
+      "margin",
+      "kernel trick"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "hyperplane": {
+      "aliases": [
+        "Hyperplane",
+        "Decision Boundary"
+      ],
+      "display": "超平面",
+      "gloss": "在高维空间中用于分隔不同类别数据的平面或线性边界。"
+    },
+    "kernel_trick": {
+      "aliases": [
+        "Kernel Trick"
+      ],
+      "display": "核技巧",
+      "gloss": "通过将数据映射到高维空间，使原本线性不可分的问题变得线性可分，且计算仍在原空间进行。"
+    },
+    "margin": {
+      "aliases": [
+        "Margin"
+      ],
+      "display": "间隔",
+      "gloss": "决策边界到最近数据点的距离，SVM 的目标是最大化这个间隔。"
+    },
+    "slack_variable": {
+      "aliases": [
+        "Slack Variable"
+      ],
+      "display": "松弛变量",
+      "gloss": "允许一些数据点被错误分类的变量，用于处理线性不可分的情况。"
+    },
+    "support_vector_machine": {
+      "aliases": [
+        "SVM",
+        "Support Vector Machine"
+      ],
+      "display": "支持向量机",
+      "gloss": "通过寻找最大间隔超平面来分类数据的监督学习模型。"
+    },
+    "support_vectors": {
+      "aliases": [
+        "Support Vectors"
+      ],
+      "display": "支持向量",
+      "gloss": "距离决策边界最近的那些数据点，它们决定了边界的位置。"
+    }
+  }
+}

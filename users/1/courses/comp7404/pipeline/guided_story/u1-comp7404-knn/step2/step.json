@@ -1,0 +1,157 @@
+{
+  "chapter_id": "lecture-01-knn",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-knn",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "假设我们把每张人脸图像拉直成一个向量（比如 100x100 像素变成 10000 维的向量）。",
+        "那么，如何衡量两个向量之间的“像不像”呢？"
+      ],
+      "type": "question"
+    },
+    {
+      "focus_terms": [],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "一个自然的想法是：计算它们之间的直线距离。",
+        "距离越小，说明越像。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "euclidean_distance"
+      ],
+      "id": "s008",
+      "introduced_terms": [
+        "euclidean_distance"
+      ],
+      "lines": [
+        "这个距离就是 <term id=\"euclidean_distance\">欧氏距离</term>。",
+        "公式很简单：\\(d = \\sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2 + \\dots}\\)"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "training_data"
+      ],
+      "id": "s009",
+      "introduced_terms": [
+        "training_data"
+      ],
+      "lines": [
+        "现在，假设我们有 5 个已知身份的人脸向量（称为 <term id=\"training_data\">训练数据</term>），每个都带有标签（比如“张三”、“李四”）。",
+        "来了一个未知身份的人脸向量 \\(x_u\\)，我们想判断它是谁。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "请你手动计算一下：",
+        "训练样本：A(1,2) 标签“张三”，B(3,4) 标签“李四”，C(5,1) 标签“张三”，D(7,6) 标签“王五”，E(2,3) 标签“李四”。",
+        "未知样本 \\(x_u\\) 的坐标是 (4,3)。",
+        "计算 \\(x_u\\) 到每个训练样本的欧氏距离，找出最近的 3 个邻居，然后投票决定 \\(x_u\\) 的类别。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "expected_fields": [
+          "distances",
+          "nearest_neighbors",
+          "voting_result",
+          "predicted_label"
+        ],
+        "explanation": "通过计算欧氏距离，找到最近的3个邻居，然后根据邻居标签投票，得票最多的类别即为预测结果。",
+        "kind": "scenario_derivation",
+        "prompt": "给定训练样本：A(1,2) 标签“张三”，B(3,4) 标签“李四”，C(5,1) 标签“张三”，D(7,6) 标签“王五”，E(2,3) 标签“李四”。未知样本 xu 的坐标是 (4,3)。请计算 xu 到每个训练样本的欧氏距离，找出最近的 3 个邻居，并投票决定 xu 的类别。",
+        "sample_answer": {
+          "distances": "到A: sqrt((4-1)^2+(3-2)^2)=sqrt(9+1)=sqrt(10)≈3.16; 到B: sqrt((4-3)^2+(3-4)^2)=sqrt(1+1)=sqrt(2)≈1.41; 到C: sqrt((4-5)^2+(3-1)^2)=sqrt(1+4)=sqrt(5)≈2.24; 到D: sqrt((4-7)^2+(3-6)^2)=sqrt(9+9)=sqrt(18)≈4.24; 到E: sqrt((4-2)^2+(3-3)^2)=sqrt(4+0)=2",
+          "nearest_neighbors": "B(1.41), E(2.00), C(2.24)",
+          "predicted_label": "李四（2票对1票）",
+          "voting_result": "B:李四(1票), E:李四(1票), C:张三(1票)"
+        }
+      },
+      "focus_terms": [
+        "k_nearest_neighbor"
+      ],
+      "id": "s011",
+      "lines": [
+        "请你手动计算一下："
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "k_nearest_neighbor"
+      ],
+      "id": "s012",
+      "introduced_terms": [
+        "k_nearest_neighbor"
+      ],
+      "lines": [
+        "恭喜你！你刚刚手动执行了 <term id=\"k_nearest_neighbor\">K近邻</term>（kNN）算法。",
+        "它的核心思想就是：对于一个未知样本，找到训练集中最像它的 k 个样本（邻居），然后让这 k 个邻居投票决定它的类别。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "k_nearest_neighbor"
+      ],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "kNN 只需要三样东西：",
+        "1. 一个整数 k（选几个邻居）",
+        "2. 一组带标签的训练数据",
+        "3. 一个距离度量（比如欧氏距离）"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Classification: k Nearest Neighbor",
+    "related": [
+      "lecture-01-knn"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "euclidean_distance": {
+      "aliases": [
+        "Euclidean Distance",
+        "L2 distance"
+      ],
+      "display": "欧氏距离",
+      "gloss": "两点之间的直线距离，是最常用的距离度量之一。"
+    },
+    "k_nearest_neighbor": {
+      "aliases": [
+        "kNN",
+        "K-Nearest Neighbor"
+      ],
+      "display": "K近邻",
+      "gloss": "一种基于样本相似度进行分类的算法，通过找到最近的k个邻居来投票决定类别。"
+    },
+    "training_data": {
+      "aliases": [
+        "Training Data",
+        "Training Set"
+      ],
+      "display": "训练数据",
+      "gloss": "带有标签的样本集合，用于指导模型学习。"
+    }
+  }
+}

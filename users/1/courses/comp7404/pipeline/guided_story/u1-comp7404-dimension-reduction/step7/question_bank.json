@@ -1,0 +1,418 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "mfa_intrinsic_graph_definition",
+      "covered_by": [
+        "qf_flash_mfa_intrinsic",
+        "qf_quiz_mfa_intrinsic"
+      ],
+      "description": "MFA 内在图的定义：同类中互为 k1 近邻的点相连"
+    },
+    {
+      "coverage_tag": "mfa_penalty_graph_definition",
+      "covered_by": [
+        "qf_flash_mfa_penalty",
+        "qf_quiz_mfa_penalty"
+      ],
+      "description": "MFA 惩罚图的定义：不同类之间选择 k2 个最近的边际点对"
+    },
+    {
+      "coverage_tag": "mfa_vs_lda_gaussian_assumption",
+      "covered_by": [
+        "qf_flash_mfa_vs_lda",
+        "qf_quiz_mfa_vs_lda"
+      ],
+      "description": "MFA 不需要高斯分布假设，比 LDA 更灵活"
+    },
+    {
+      "coverage_tag": "mfa_design_using_graph_embedding",
+      "covered_by": [
+        "qf_long_mfa_design"
+      ],
+      "description": "MFA 是利用图嵌入框架设计新算法的例子"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "mfa_intrinsic_graph",
+      "coverage_tags": [
+        "mfa_intrinsic_graph_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_mfa_intrinsic",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 MFA 内在图的连接规则。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了 MFA 内在图的具体定义：同类中互为 k1 近邻的点相连。",
+      "question_type": "short_answer",
+      "retrieval_focus": "MFA 内在图的边连接条件",
+      "term_refs": [
+        {
+          "display": "边际费舍尔分析",
+          "en": "Marginal Fisher Analysis"
+        },
+        {
+          "display": "内在图",
+          "en": "intrinsic graph"
+        }
+      ],
+      "variants": [
+        {
+          "back": "同类中互为 k1 近邻的点。",
+          "estimated_seconds": 8,
+          "explanation": "MFA 的内在图连接同一类别中互为 k1 近邻的点，以保持局部同类结构。",
+          "front": "在 MFA 中，内在图的边连接哪些点？",
+          "question_id": "q_flash_mfa_intrinsic_v1"
+        },
+        {
+          "back": "当 x_i 是 x_j 在同类中的 k1 近邻之一时。",
+          "estimated_seconds": 10,
+          "explanation": "S_ij = 1 表示 x_i 和 x_j 在内在图中相连，条件是它们属于同一类且互为 k1 近邻。",
+          "front": "MFA 内在图的相似度矩阵 S_ij 在什么条件下等于 1？",
+          "question_id": "q_flash_mfa_intrinsic_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "mfa_penalty_graph",
+      "coverage_tags": [
+        "mfa_penalty_graph_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_mfa_penalty",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 MFA 惩罚图的连接规则。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了 MFA 惩罚图的具体定义：不同类之间选择 k2 个最近的边际点对。",
+      "question_type": "short_answer",
+      "retrieval_focus": "MFA 惩罚图的边连接条件",
+      "term_refs": [
+        {
+          "display": "边际费舍尔分析",
+          "en": "Marginal Fisher Analysis"
+        },
+        {
+          "display": "惩罚图",
+          "en": "penalty graph"
+        }
+      ],
+      "variants": [
+        {
+          "back": "不同类之间距离最近的 k2 个点对。",
+          "estimated_seconds": 8,
+          "explanation": "MFA 的惩罚图连接不同类别中距离最近的 k2 个点对，以拉远不同类的边际点。",
+          "front": "在 MFA 中，惩罚图的边连接哪些点？",
+          "question_id": "q_flash_mfa_penalty_v1"
+        },
+        {
+          "back": "当点对 (i, j) 是数据集中距离最近的 k2 个点对之一时。",
+          "estimated_seconds": 10,
+          "explanation": "S^P_ij = 1 表示 x_i 和 x_j 在惩罚图中相连，条件是它们属于不同类且是全局最近的 k2 个点对之一。",
+          "front": "MFA 惩罚图的相似度矩阵 S^P_ij 在什么条件下等于 1？",
+          "question_id": "q_flash_mfa_penalty_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "mfa_vs_lda",
+      "coverage_tags": [
+        "mfa_vs_lda_gaussian_assumption"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_mfa_vs_lda",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出 MFA 相对于 LDA 的一个关键优势。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了 MFA 不需要高斯分布假设这一关键区别。",
+      "question_type": "core_difference",
+      "retrieval_focus": "MFA 相对于 LDA 在假设上的区别",
+      "term_refs": [
+        {
+          "display": "边际费舍尔分析",
+          "en": "Marginal Fisher Analysis"
+        },
+        {
+          "display": "线性判别分析",
+          "en": "Linear Discriminant Analysis"
+        }
+      ],
+      "variants": [
+        {
+          "back": "不需要高斯分布假设。",
+          "estimated_seconds": 8,
+          "explanation": "LDA 假设每类数据服从高斯分布，MFA 通过局部近邻定义图结构，无需此假设。",
+          "front": "MFA 相对于 LDA 的一个关键优势是什么？",
+          "question_id": "q_flash_mfa_vs_lda_v1"
+        },
+        {
+          "back": "LDA 假设数据服从高斯分布。",
+          "estimated_seconds": 8,
+          "explanation": "LDA 的推导基于类内和类间散度矩阵，隐含了高斯分布假设；MFA 基于图嵌入框架，不依赖此假设。",
+          "front": "LDA 对数据分布有什么假设，而 MFA 没有？",
+          "question_id": "q_flash_mfa_vs_lda_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "longform_families": [
+    {
+      "concept_key": "mfa_design",
+      "coverage_tags": [
+        "mfa_design_using_graph_embedding"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_mfa_design",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用图嵌入框架的语言解释 MFA 的设计过程。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能清晰阐述 MFA 如何通过定义内在图和惩罚图来利用图嵌入框架设计监督降维算法。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "边际费舍尔分析",
+          "en": "Marginal Fisher Analysis"
+        },
+        {
+          "display": "图嵌入",
+          "en": "graph embedding"
+        },
+        {
+          "display": "内在图",
+          "en": "intrinsic graph"
+        },
+        {
+          "display": "惩罚图",
+          "en": "penalty graph"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "MFA 要解决什么问题？",
+            "内在图如何定义？",
+            "惩罚图如何定义？",
+            "MFA 相比 LDA 有什么优势？"
+          ],
+          "question_id": "q_long_mfa_design_v1",
+          "reference_answer": [
+            "MFA 利用图嵌入框架设计监督降维算法，通过定义内在图和惩罚图来同时利用标签信息和局部流形结构。",
+            "内在图连接同类中互为 k1 近邻的点，保持同类数据的局部结构。",
+            "惩罚图连接不同类之间距离最近的 k2 个点对，拉远不同类边际点的距离，增强类间可分性。",
+            "相比 LDA，MFA 不需要高斯分布假设，因此对非高斯分布数据更鲁棒。"
+          ],
+          "rubric_points": [
+            "明确指出 MFA 是图嵌入框架的一个实例，用于监督降维",
+            "正确描述内在图：连接同类中互为 k1 近邻的点，保持局部同类结构",
+            "正确描述惩罚图：连接不同类之间距离最近的 k2 个点对，拉远边际点",
+            "指出 MFA 不需要高斯分布假设，比 LDA 更灵活"
+          ],
+          "stem": "请用图嵌入框架的语言，解释 MFA（边际费舍尔分析）是如何设计出来的。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "你会如何定义内在图？",
+            "你会如何定义惩罚图？",
+            "你的算法相比 LDA 有什么优势？"
+          ],
+          "question_id": "q_long_mfa_design_v2",
+          "reference_answer": [
+            "内在图：对于每个点，连接其同类中距离最近的 k1 个近邻，保持同类局部结构。",
+            "惩罚图：对于每个点，连接其不同类中距离最近的 k2 个点，拉远类间边际。",
+            "相比 LDA，该算法不需要高斯分布假设，通过局部近邻定义图结构，更适合非高斯分布的人脸数据。"
+          ],
+          "rubric_points": [
+            "内在图应连接同类中互为近邻的点，保持局部同类结构",
+            "惩罚图应连接不同类之间距离最近的边际点对，拉远类间距离",
+            "算法不依赖高斯分布假设，适合非高斯分布数据",
+            "能利用标签信息和局部流形结构"
+          ],
+          "stem": "假设你有一个二分类人脸识别数据集，数据不服从高斯分布。请用图嵌入框架设计一个类似 MFA 的降维算法，并说明你的设计思路。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "mfa_intrinsic_graph",
+      "coverage_tags": [
+        "mfa_intrinsic_graph_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_mfa_intrinsic",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在选择题中正确识别 MFA 内在图的定义。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能在多个选项中准确选出 MFA 内在图的连接规则。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "边际费舍尔分析",
+          "en": "Marginal Fisher Analysis"
+        },
+        {
+          "display": "内在图",
+          "en": "intrinsic graph"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "MFA 的内在图只连接同类中互为 k1 近邻的点，以保持局部同类结构，而不是连接所有同类点。",
+          "options": [
+            "所有同类点",
+            "同类中互为 k1 近邻的点",
+            "所有不同类的点",
+            "所有互为 k1 近邻的点，不论类别"
+          ],
+          "question_id": "q_quiz_mfa_intrinsic_v1",
+          "stem": "根据图嵌入框架，MFA 的内在图应该连接哪些点？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "MFA 的内在图只连接同类中互为 k1 近邻的点，距离远的同类点不会相连。",
+          "options": [
+            "会，因为属于同一类",
+            "不会，因为只有互为 k1 近邻的同类点才相连",
+            "会，因为 MFA 连接所有同类点",
+            "不一定，取决于 k2 的值"
+          ],
+          "question_id": "q_quiz_mfa_intrinsic_v2",
+          "stem": "在 MFA 中，如果两个点属于同一类但距离很远，它们在内在图中会相连吗？"
+        }
+      ]
+    },
+    {
+      "concept_key": "mfa_penalty_graph",
+      "coverage_tags": [
+        "mfa_penalty_graph_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_mfa_penalty",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在选择题中正确识别 MFA 惩罚图的定义。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能在多个选项中准确选出 MFA 惩罚图的连接规则。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "边际费舍尔分析",
+          "en": "Marginal Fisher Analysis"
+        },
+        {
+          "display": "惩罚图",
+          "en": "penalty graph"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "MFA 的惩罚图连接不同类之间距离最近的 k2 个点对，以拉远边际点，而不是连接所有不同类点。",
+          "options": [
+            "所有不同类的点",
+            "不同类之间距离最近的 k2 个点对",
+            "同类中距离最远的 k2 个点对",
+            "所有互为 k2 近邻的点，不论类别"
+          ],
+          "question_id": "q_quiz_mfa_penalty_v1",
+          "stem": "根据图嵌入框架，MFA 的惩罚图应该连接哪些点？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "惩罚图通过连接不同类之间最近的边际点对，在优化中拉远这些点的距离，增强类间可分性。",
+          "options": [
+            "保持同类点的局部结构",
+            "拉远不同类边际点之间的距离",
+            "保持所有点的全局结构",
+            "减少计算复杂度"
+          ],
+          "question_id": "q_quiz_mfa_penalty_v2",
+          "stem": "在 MFA 中，惩罚图的作用是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "mfa_vs_lda",
+      "coverage_tags": [
+        "mfa_vs_lda_gaussian_assumption"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_mfa_vs_lda",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确辨析 MFA 和 LDA 的主要区别。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了 MFA 不需要高斯分布假设这一关键区别。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "边际费舍尔分析",
+          "en": "Marginal Fisher Analysis"
+        },
+        {
+          "display": "线性判别分析",
+          "en": "Linear Discriminant Analysis"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "LDA 假设每类数据服从高斯分布，MFA 通过局部近邻定义图结构，无需此假设，因此更灵活。",
+          "options": [
+            "它们是一样的",
+            "MFA 不需要高斯分布假设",
+            "LDA 不需要高斯分布假设",
+            "MFA 使用全局距离"
+          ],
+          "question_id": "q_quiz_mfa_vs_lda_v1",
+          "stem": "MFA 和 LDA 的主要区别是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "MFA 不依赖高斯分布假设，通过局部近邻定义图结构，对非高斯分布数据更鲁棒。",
+          "options": [
+            "LDA，因为它有严格的数学基础",
+            "MFA，因为它不需要高斯分布假设",
+            "两者效果相同",
+            "两者都无效"
+          ],
+          "question_id": "q_quiz_mfa_vs_lda_v2",
+          "stem": "当数据明显不服从高斯分布时，以下哪种方法更可能有效？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-dimension-reduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

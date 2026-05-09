@@ -1,0 +1,220 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s059",
+      "introduced_terms": [],
+      "lines": [
+        "当类别数大于 2 时，LDA 的公式需要推广。",
+        "类间散度矩阵变成所有类均值与全局均值的加权和。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s060",
+      "introduced_terms": [],
+      "lines": [
+        "此时 LDA 可以找到多个投影方向，",
+        "最多 \\(c-1\\) 个（\\(c\\) 是类别数）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s061",
+      "introduced_terms": [],
+      "lines": [
+        "但 LDA 有一个实际问题：",
+        "当数据维度远大于样本数时，\\(S_W\\) 不可逆。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s062",
+      "introduced_terms": [],
+      "lines": [
+        "现在请你想象一个场景：",
+        "你有 100 张人脸图像（每张 10000 维），分属 10 个人。",
+        "直接计算 LDA 时，\\(S_W\\) 是 10000×10000 的矩阵，但只有 100 个样本，所以 \\(S_W\\) 不可逆。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": "算不出 \\(S_W^{-1}\\)",
+        "explanation": "此时真正卡住的不是“算得慢”，而是你需要的 \\(S_W^{-1}\\) 根本算不出来，因为 \\(S_W\\) 是奇异矩阵，不可逆。",
+        "kind": "condition_judgment",
+        "options": [
+          "算不出类均值",
+          "算不出 \\(S_W^{-1}\\)",
+          "类别数必须先变成 2",
+          "PCA 也会一起失效"
+        ],
+        "prompt": "你现在真的开始做 LDA 推导，写到 \\(S_W^{-1}(\\mu_2-\\mu_1)\\) 这一步。已知每张脸 10000 维，但样本只有 100 张。你最可能卡死在哪一步？"
+      },
+      "focus_terms": [
+        "within_class_scatter"
+      ],
+      "id": "s062b",
+      "introduced_terms": [],
+      "lines": [
+        "你现在真的开始做 LDA 推导，写到 \\(S_W^{-1}(\\mu_2-\\mu_1)\\) 这一步。已知每张脸 10000 维，但样本只有 100 张。你最可能卡死在哪一步？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "当维度（10000）远大于样本数（100）时，S_W 矩阵是奇异的，不可逆。",
+        "kind": "single_choice",
+        "options": [
+          "计算速度太快",
+          "S_W 矩阵不可逆",
+          "类别数太多",
+          "数据量太大"
+        ],
+        "prompt": "在上述场景中，直接计算 LDA 会遇到什么问题？"
+      },
+      "focus_terms": [],
+      "id": "s063",
+      "introduced_terms": [],
+      "lines": [
+        "在上述场景中，直接计算 LDA 会遇到什么问题？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s064",
+      "introduced_terms": [],
+      "lines": [
+        "解决办法：先用 PCA 把维度降到 \\(N-c\\)，",
+        "再在这个低维空间里做 LDA。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "fisherface"
+      ],
+      "id": "s065",
+      "introduced_terms": [
+        "fisherface"
+      ],
+      "lines": [
+        "这个组合方法被称为<term id=\"fisherface\">Fisherface</term>。",
+        "它比单纯用 Eigenface（PCA）识别率更高。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "pseudoinverse"
+      ],
+      "id": "s066",
+      "introduced_terms": [
+        "pseudoinverse"
+      ],
+      "lines": [
+        "另一种处理 \\(S_W\\) 不可逆的方法是使用<term id=\"pseudoinverse\">伪逆</term>。",
+        "把零特征值对应的维度直接忽略掉。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "当维度远高于样本数时，S_W 不可逆。先用 PCA 降维到 N-c，可以解决这个问题。",
+        "kind": "single_choice",
+        "options": [
+          "为了可视化数据",
+          "为了降低维度，使 S_W 可逆",
+          "为了增加数据量",
+          "为了消除噪声"
+        ],
+        "prompt": "Fisherface 为什么先做 PCA？"
+      },
+      "focus_terms": [],
+      "id": "s067",
+      "introduced_terms": [],
+      "lines": [
+        "Fisherface 方法为什么先做 PCA 再做 LDA？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "当 S_W 不可逆时，Fisherface 通过先 PCA 降维使 S_W 可逆，从而解决该问题。",
+        "kind": "single_choice",
+        "options": [
+          "当 S_W 不可逆时",
+          "当数据量很大时",
+          "当类别数很少时",
+          "当数据维度很低时"
+        ],
+        "prompt": "什么时候应该使用 Fisherface 而不是直接使用 LDA？"
+      },
+      "focus_terms": [],
+      "id": "s068",
+      "introduced_terms": [],
+      "lines": [
+        "什么时候应该使用 Fisherface 而不是直接使用 LDA？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "当维度远大于样本数时，S_W 不可逆，因此需要先用 PCA 降维。",
+        "kind": "single_choice",
+        "options": [
+          "维度小于样本数",
+          "维度远大于样本数",
+          "类别数等于 2",
+          "数据已经归一化"
+        ],
+        "prompt": "以下哪种情况下，直接使用 LDA 会遇到 S_W 不可逆的问题？"
+      },
+      "focus_terms": [],
+      "id": "s069",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪种情况下，直接使用 LDA 会遇到 S_W 不可逆的问题？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "PCA and LDA lecture material",
+    "related": [
+      "multi-class LDA",
+      "Fisherface"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "fisherface": {
+      "aliases": [
+        "Fisher Faces"
+      ],
+      "display": "Fisherface",
+      "gloss": "先用 PCA 降维，再用 LDA 做分类的人脸识别方法。"
+    },
+    "pseudoinverse": {
+      "aliases": [
+        "Pseudoinverse",
+        "Moore-Penrose Pseudoinverse"
+      ],
+      "display": "伪逆",
+      "gloss": "当矩阵不可逆时，用来近似求逆的一种方法。"
+    }
+  }
+}

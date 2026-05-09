@@ -1,0 +1,355 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "graph_embedding_framework",
+      "covered_by": [
+        "qf_flash_ge_core",
+        "qf_quiz_ge_unify",
+        "qf_long_ge_summary"
+      ],
+      "description": "图嵌入框架：统一降维算法的优化框架，通过内在图和惩罚图定义目标函数。"
+    },
+    {
+      "coverage_tag": "unified_framework_special_cases",
+      "covered_by": [
+        "qf_quiz_ge_unify"
+      ],
+      "description": "统一框架的特例：PCA、LDA、LLE、Isomap等算法均可纳入该框架。"
+    },
+    {
+      "coverage_tag": "framework_extensions",
+      "covered_by": [
+        "qf_flash_ge_extensions",
+        "qf_quiz_ge_extensions"
+      ],
+      "description": "框架扩展：线性化、核化、张量化三种扩展方向。"
+    },
+    {
+      "coverage_tag": "essence_of_dimension_reduction",
+      "covered_by": [
+        "qf_flash_ge_essence",
+        "qf_long_ge_summary"
+      ],
+      "description": "降维本质：在低维空间中保持高维空间中的某种关系。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "graph_embedding_framework",
+      "coverage_tags": [
+        "graph_embedding_framework"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ge_core",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆图嵌入框架的核心构成要素：内在图、惩罚图及其作用。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了图嵌入框架中内在图和惩罚图的定义与功能。",
+      "question_type": "short_answer",
+      "retrieval_focus": "图嵌入框架的两个核心图及其各自的作用。",
+      "term_refs": [
+        {
+          "display": "图嵌入",
+          "en": "Graph Embedding"
+        },
+        {
+          "display": "内在图",
+          "en": "Intrinsic Graph"
+        },
+        {
+          "display": "惩罚图",
+          "en": "Penalty Graph"
+        }
+      ],
+      "variants": [
+        {
+          "back": "内在图（Intrinsic Graph）。",
+          "estimated_seconds": 8,
+          "explanation": "内在图通过边连接相似的点，表示在低维空间中我们希望保持的相似关系。",
+          "front": "在图嵌入框架中，描述数据点之间希望保持的相似关系的图叫什么？",
+          "question_id": "q_flash_ge_core_v1"
+        },
+        {
+          "back": "惩罚图（Penalty Graph）。",
+          "estimated_seconds": 8,
+          "explanation": "惩罚图通过边连接我们希望分开的点，在优化目标中起到约束作用。",
+          "front": "在图嵌入框架中，描述数据点之间希望拉远的关系的图叫什么？",
+          "question_id": "q_flash_ge_core_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "framework_extensions",
+      "coverage_tags": [
+        "framework_extensions"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ge_extensions",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆图嵌入框架的三种扩展方向及其基本思想。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了图嵌入框架的线性化、核化、张量化三种扩展方向。",
+      "question_type": "short_answer",
+      "retrieval_focus": "图嵌入框架的三种扩展方向。",
+      "term_refs": [
+        {
+          "display": "线性化",
+          "en": "Linearization"
+        },
+        {
+          "display": "核化",
+          "en": "Kernelization"
+        },
+        {
+          "display": "张量化",
+          "en": "Tensorization"
+        }
+      ],
+      "variants": [
+        {
+          "back": "线性化、核化、张量化。",
+          "estimated_seconds": 10,
+          "explanation": "线性化假设低维表示是原始数据的线性组合；核化通过核函数映射到高维空间；张量化将框架扩展到张量数据。",
+          "front": "图嵌入框架的三种扩展方向是哪三个？",
+          "question_id": "q_flash_ge_extensions_v1"
+        },
+        {
+          "back": "y = X^T w，即低维表示是原始数据的线性组合。",
+          "estimated_seconds": 10,
+          "explanation": "线性化假设存在一个线性映射函数，使得新样本可以通过该映射直接得到低维表示。",
+          "front": "在图嵌入框架的线性化扩展中，低维表示 y 与原始数据 X 之间是什么关系？",
+          "question_id": "q_flash_ge_extensions_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "essence_of_dimension_reduction",
+      "coverage_tags": [
+        "essence_of_dimension_reduction"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ge_essence",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆降维的本质目标。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了降维的核心思想：在低维空间中保持高维空间中的某种关系。",
+      "question_type": "short_answer",
+      "retrieval_focus": "降维的本质目标。",
+      "term_refs": [],
+      "variants": [
+        {
+          "back": "在低维空间中保持高维空间中的某种关系。",
+          "estimated_seconds": 8,
+          "explanation": "不同的降维方法区别在于它们选择保持的关系不同，例如LLE保持局部线性重构关系，Isomap保持测地距离。",
+          "front": "根据课程总结，降维的本质是什么？",
+          "question_id": "q_flash_ge_essence_v1"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "longform_families": [
+    {
+      "concept_key": "essence_of_dimension_reduction",
+      "coverage_tags": [
+        "graph_embedding_framework",
+        "essence_of_dimension_reduction"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_ge_summary",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用连贯的语言解释图嵌入框架的核心思想及其统一降维算法的方式。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能够综合阐述图嵌入框架的核心思想、统一能力以及降维的本质。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "图嵌入",
+          "en": "Graph Embedding"
+        },
+        {
+          "display": "内在图",
+          "en": "Intrinsic Graph"
+        },
+        {
+          "display": "惩罚图",
+          "en": "Penalty Graph"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "图嵌入框架的核心思想是什么？",
+            "它通过哪两个图来定义目标函数？",
+            "不同的降维算法在这个框架中如何体现？"
+          ],
+          "question_id": "q_long_ge_summary_v1",
+          "reference_answer": [
+            "图嵌入框架的核心思想是通过构建内在图和惩罚图来定义降维的目标函数。内在图连接我们希望保持相似关系的点对，惩罚图连接我们希望拉远的点对。",
+            "不同的降维算法在这个框架中只是内在图和惩罚图的定义不同：例如PCA的内在图连接所有点对（权重相等），LLE的内在图连接近邻点（权重为重构系数），Isomap的内在图连接所有点对（权重为测地距离）。",
+            "这个框架统一了多种降维算法，并可以通过线性化、核化、张量化三种方式扩展，衍生出新的算法。降维的本质就是在低维空间中保持高维空间中的某种关系。"
+          ],
+          "rubric_points": [
+            "正确指出图嵌入框架的核心思想：通过构建内在图和惩罚图，在低维空间中保持高维空间中的相似关系。",
+            "正确解释内在图（保持相似关系）和惩罚图（拉远关系）的作用。",
+            "正确说明不同算法通过定义不同的内在图和惩罚图来纳入统一框架。",
+            "提及降维的本质是在低维空间中保持高维空间中的某种关系。"
+          ],
+          "stem": "请用你自己的话解释图嵌入框架的核心思想，并说明它如何统一PCA、LDA、LLE等不同的降维算法。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "线性化扩展解决了什么问题？",
+            "核化扩展解决了什么问题？",
+            "张量化扩展解决了什么问题？",
+            "每种扩展各举一个算法例子。"
+          ],
+          "question_id": "q_long_ge_summary_v2",
+          "reference_answer": [
+            "线性化扩展解决了直接图嵌入无法处理新样本的问题，通过假设低维表示是原始数据的线性组合 y = X^T w，使得新样本可以通过线性映射得到低维表示。例子：LDA（线性判别分析）是线性化后的图嵌入。",
+            "核化扩展通过核函数将数据映射到更高维的空间，在高维空间中做线性降维，从而处理原始空间中的非线性结构。例子：KDA（核判别分析）是核化后的图嵌入。",
+            "张量化扩展将框架扩展到张量数据，保持数据的多维结构，避免拉直成向量带来的维度灾难。例子：DATER（张量化LDA）是张量化后的图嵌入。"
+          ],
+          "rubric_points": [
+            "正确解释线性化：解决新样本的泛化问题，假设低维表示是原始数据的线性组合。",
+            "正确解释核化：通过核函数处理非线性结构，将数据映射到高维空间。",
+            "正确解释张量化：保持数据的张量结构，避免拉直带来的维度灾难。",
+            "每种扩展至少举出一个正确的算法例子。"
+          ],
+          "stem": "请解释图嵌入框架的三种扩展方向（线性化、核化、张量化）各自解决了什么问题，并各举一个对应的算法例子。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "graph_embedding_framework",
+      "coverage_tags": [
+        "graph_embedding_framework",
+        "unified_framework_special_cases"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ge_unify",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析图嵌入框架的统一能力及其特例。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了图嵌入框架能够统一哪些降维算法，以及统一的方式。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "图嵌入",
+          "en": "Graph Embedding"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "图嵌入框架通过定义不同的内在图和惩罚图，可以将PCA、LDA、LLE、Isomap等多种降维算法统一在一个优化框架下。",
+          "options": [
+            "仅PCA和LDA",
+            "仅LLE和Isomap",
+            "PCA、LDA、LLE、Isomap等",
+            "仅线性降维算法"
+          ],
+          "question_id": "q_quiz_ge_unify_v1",
+          "stem": "图嵌入框架能够将以下哪些算法作为特例统一起来？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "不同降维算法的区别在于它们定义的内在图（希望保持的关系）和惩罚图（希望拉远的关系）不同，但优化框架是统一的。",
+          "options": [
+            "使用相同的优化求解器",
+            "通过定义不同的内在图和惩罚图",
+            "要求所有算法都使用线性投影",
+            "要求所有算法都使用核技巧"
+          ],
+          "question_id": "q_quiz_ge_unify_v2",
+          "stem": "图嵌入框架通过什么方式来统一不同的降维算法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "framework_extensions",
+      "coverage_tags": [
+        "framework_extensions"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ge_extensions",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析图嵌入框架三种扩展方向的核心区别。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了线性化、核化、张量化三种扩展的基本思想。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "线性化",
+          "en": "Linearization"
+        },
+        {
+          "display": "核化",
+          "en": "Kernelization"
+        },
+        {
+          "display": "张量化",
+          "en": "Tensorization"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "线性化假设存在一个线性映射函数 y = X^T w，使得新样本可以通过该映射直接得到低维表示。",
+          "options": [
+            "数据服从高斯分布",
+            "低维表示是原始数据的线性组合",
+            "数据位于一个低维流形上",
+            "需要使用核函数"
+          ],
+          "question_id": "q_quiz_ge_extensions_v1",
+          "stem": "图嵌入框架的线性化扩展的核心假设是什么？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 15,
+          "explanation": "图嵌入框架的三种扩展方向是线性化、核化和张量化。正则化不是该框架定义的扩展方向。",
+          "options": [
+            "线性化",
+            "核化",
+            "张量化",
+            "正则化"
+          ],
+          "question_id": "q_quiz_ge_extensions_v2",
+          "stem": "以下哪个不是图嵌入框架的扩展方向？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-dimension-reduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,196 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "apriori_property",
+      "covered_by": [
+        "qf_flash_apriori_property",
+        "qf_quiz_apriori_property",
+        "qf_long_apriori_property"
+      ],
+      "description": "Apriori 性质：频繁项集的所有非空子集也频繁；不频繁项集的超集一定不频繁。"
+    },
+    {
+      "coverage_tag": "pruning",
+      "covered_by": [
+        "qf_flash_apriori_property",
+        "qf_quiz_apriori_property",
+        "qf_long_apriori_property"
+      ],
+      "description": "利用 Apriori 性质剪枝，避免检查所有超集。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "apriori_property",
+      "coverage_tags": [
+        "apriori_property",
+        "pruning"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_apriori_property",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确复述 Apriori 性质的正向和反向表述。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能准确回忆 Apriori 性质的核心内容：频繁项集的子集必频繁，不频繁项集的超集必不频繁。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Apriori 性质的正向和反向表述。",
+      "term_refs": [
+        {
+          "display": "Apriori 性质",
+          "en": "Apriori Property"
+        }
+      ],
+      "variants": [
+        {
+          "back": "也是频繁的。",
+          "estimated_seconds": 8,
+          "explanation": "这是 Apriori 性质的正向表述。",
+          "front": "如果一个项集是频繁的，那么它的所有非空子集是什么？",
+          "question_id": "q_flash_apriori_property_v1"
+        },
+        {
+          "back": "也一定不频繁。",
+          "estimated_seconds": 8,
+          "explanation": "这是 Apriori 性质的反向表述，用于剪枝。",
+          "front": "如果一个项集不频繁，那么它的所有超集是什么？",
+          "question_id": "q_flash_apriori_property_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-1",
+  "longform_families": [
+    {
+      "concept_key": "apriori_property",
+      "coverage_tags": [
+        "apriori_property",
+        "pruning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_apriori_property",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释 Apriori 性质如何帮助减少候选项集数量。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能用自己的语言说明 Apriori 性质为什么能用于剪枝，并给出一个具体例子。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "Apriori 性质",
+          "en": "Apriori Property"
+        },
+        {
+          "display": "剪枝",
+          "en": "Pruning"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "Apriori 性质的内容",
+            "如何利用它剪枝",
+            "具体例子"
+          ],
+          "question_id": "q_long_apriori_property_v1",
+          "reference_answer": [
+            "Apriori 性质：如果一个项集是频繁的，那么它的所有非空子集也是频繁的。反过来，如果一个项集不频繁，它的所有超集也一定不频繁。",
+            "利用反向性质剪枝：当我们发现某个项集（如 {f}）不频繁时，所有包含它的超集（如 {f, a}、{f, b} 等）都不可能是频繁的，因此无需生成和检查这些超集。",
+            "例如，在示例数据集中，{f} 的支持度计数为 3，小于阈值 5，因此 {f} 不频繁。根据 Apriori 性质，{f, a}、{f, b} 等所有包含 f 的项集都不需要再检查，从而减少了大量候选。"
+          ],
+          "rubric_points": [
+            "正确表述 Apriori 性质（正向和反向）",
+            "说明反向性质用于剪枝：不频繁项集的超集无需检查",
+            "给出一个具体例子，如 {f} 不频繁，则 {f, a} 等无需检查"
+          ],
+          "stem": "请解释 Apriori 性质如何帮助减少候选项集的数量。请结合一个具体例子说明。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "判断 {A} 是否频繁",
+            "应用 Apriori 性质",
+            "列出可剪枝的项集"
+          ],
+          "question_id": "q_long_apriori_property_v2",
+          "reference_answer": [
+            "因为 {A} 的支持度计数 2 小于最小支持度阈值 5，所以 {A} 是不频繁的。",
+            "根据 Apriori 性质的反向表述：如果一个项集不频繁，它的所有超集也一定不频繁。",
+            "因此，所有包含 A 的项集，例如 {A, B}、{A, C}、{A, B, C} 等，都可以直接剪枝，无需生成和扫描数据集。"
+          ],
+          "rubric_points": [
+            "正确判断 {A} 不频繁（2 < 5）",
+            "应用反向性质：不频繁项集的超集一定不频繁",
+            "指出所有包含 A 的项集（如 {A, B}、{A, C}、{A, B, C} 等）都可以不用检查"
+          ],
+          "stem": "假设在一个数据集中，{A} 的支持度计数为 2，最小支持度阈值为 5。请利用 Apriori 性质说明哪些项集可以不用检查，并解释原因。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "apriori_property",
+      "coverage_tags": [
+        "apriori_property",
+        "pruning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_apriori_property",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体例子中应用 Apriori 性质判断哪些项集一定不频繁。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生能根据已知的不频繁项集，利用 Apriori 性质推断其超集一定不频繁。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Apriori 性质",
+          "en": "Apriori Property"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "{f, a} 是 {f} 的超集，根据 Apriori 性质，不频繁项集的超集一定不频繁。",
+          "options": [
+            "{f, a}",
+            "{a, b}",
+            "{c, d, e}"
+          ],
+          "question_id": "q_quiz_apriori_property_v1",
+          "stem": "已知项集 {f} 不频繁，根据 Apriori 性质，以下哪个项集一定也不频繁？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "{a} 是 {a, b} 的子集，根据 Apriori 性质，频繁项集的所有非空子集也频繁。",
+          "options": [
+            "{a, b, c} 一定是频繁的",
+            "{a} 一定是频繁的",
+            "{a, b} 的所有超集都是频繁的"
+          ],
+          "question_id": "q_quiz_apriori_property_v2",
+          "stem": "已知项集 {a, b} 是频繁的，根据 Apriori 性质，以下哪个结论一定正确？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

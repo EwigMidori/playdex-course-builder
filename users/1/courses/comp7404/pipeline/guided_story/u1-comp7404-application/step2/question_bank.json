@@ -1,0 +1,508 @@
+{
+  "chapter_id": "lecture-05-application",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "bag_of_words_model",
+      "covered_by": [
+        "qf_flash_bow_core",
+        "qf_quiz_bow_core",
+        "qf_long_bow_analogy"
+      ],
+      "description": "词袋模型的核心思想：忽略顺序和语法，只关心单词的种类和出现频率"
+    },
+    {
+      "coverage_tag": "visual_word_definition",
+      "covered_by": [
+        "qf_flash_visual_word",
+        "qf_quiz_visual_word"
+      ],
+      "description": "视觉单词的定义：对图像局部特征进行量化后得到的代表性模式"
+    },
+    {
+      "coverage_tag": "image_bow_representation",
+      "covered_by": [
+        "qf_flash_bow_pipeline",
+        "qf_quiz_bow_pipeline",
+        "qf_long_bow_analogy"
+      ],
+      "description": "图像词袋表示：提取局部区域、描述、量化成视觉单词、统计直方图"
+    },
+    {
+      "coverage_tag": "histogram_representation",
+      "covered_by": [
+        "qf_flash_histogram",
+        "qf_quiz_histogram"
+      ],
+      "description": "直方图：统计每个视觉单词在图像中出现的次数，形成向量表示"
+    },
+    {
+      "coverage_tag": "document_analogy",
+      "covered_by": [
+        "qf_long_bow_analogy"
+      ],
+      "description": "从文档词袋到图像词袋的类比与迁移"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "bag_of_words",
+      "coverage_tags": [
+        "bag_of_words_model"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_bow_core",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆词袋模型的核心假设：忽略顺序和语法，只关心单词的种类和出现频率。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能准确提取词袋模型最核心的假设，即忽略顺序和语法，只关心单词的种类和出现频率。",
+      "question_type": "short_answer",
+      "retrieval_focus": "词袋模型在文档分析中忽略什么、关心什么",
+      "term_refs": [
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-words model (BoW)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "忽略单词的顺序和语法，只关心单词的种类和出现次数（频率）。",
+          "estimated_seconds": 8,
+          "explanation": "词袋模型将文本表示为一组无序特征的集合，不考虑语法和词序。",
+          "front": "在文档分析中，词袋模型忽略单词的什么信息，只关心什么？",
+          "question_id": "q_flash_bow_core_v1"
+        },
+        {
+          "back": "关键词（单词）出现的次数（频率）。",
+          "estimated_seconds": 6,
+          "explanation": "例如“微分方程”出现很多次，则书很可能与数学相关。",
+          "front": "词袋模型判断一本书主题时，主要依据什么统计量？",
+          "question_id": "q_flash_bow_core_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "visual_word",
+      "coverage_tags": [
+        "visual_word_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_visual_word",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆视觉单词的定义：对图像局部特征进行量化后得到的代表性模式。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能准确提取视觉单词的定义，即对图像局部特征进行量化后得到的代表性模式。",
+      "question_type": "definition_with_example",
+      "retrieval_focus": "视觉单词是什么、如何得到",
+      "term_refs": [
+        {
+          "display": "视觉单词",
+          "en": "Visual Word"
+        }
+      ],
+      "variants": [
+        {
+          "back": "对图像局部特征（如角点、纹理）的特征向量进行聚类后得到的聚类中心，代表一种局部模式。",
+          "estimated_seconds": 10,
+          "explanation": "视觉单词不是图像中的真实物体，而是局部模式的代表。",
+          "front": "在图像词袋模型中，什么是“视觉单词”？",
+          "question_id": "q_flash_visual_word_v1"
+        },
+        {
+          "back": "对图像局部区域的特征向量进行聚类。",
+          "estimated_seconds": 6,
+          "explanation": "每个聚类中心就是一个视觉单词。",
+          "front": "视觉单词是通过对什么进行聚类得到的？",
+          "question_id": "q_flash_visual_word_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "bag_of_words",
+      "coverage_tags": [
+        "image_bow_representation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_bow_pipeline",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能按顺序回忆图像词袋表示的关键步骤。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能准确回忆图像词袋表示的关键步骤顺序。",
+      "question_type": "next_step",
+      "retrieval_focus": "图像词袋表示的关键步骤",
+      "term_refs": [
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-words model (BoW)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "提取图像的局部区域（特征检测）。",
+          "estimated_seconds": 6,
+          "explanation": "将图像分成很多小块，每一块用一个特征向量描述。",
+          "front": "构建图像词袋表示的第一步是什么？",
+          "question_id": "q_flash_bow_pipeline_v1"
+        },
+        {
+          "back": "用特征描述子（如SIFT）描述每个局部区域的外观。",
+          "estimated_seconds": 8,
+          "explanation": "每个局部区域被转换成一个数值向量。",
+          "front": "在提取局部区域后，构建图像词袋表示的下一步是什么？",
+          "question_id": "q_flash_bow_pipeline_v2"
+        },
+        {
+          "back": "将特征向量聚类，每个聚类中心成为一个视觉单词（量化）。",
+          "estimated_seconds": 8,
+          "explanation": "所有视觉单词的集合构成码本。",
+          "front": "在特征描述之后，构建图像词袋表示的下一步是什么？",
+          "question_id": "q_flash_bow_pipeline_v3"
+        },
+        {
+          "back": "统计每个视觉单词在图像中出现的次数，形成直方图。",
+          "estimated_seconds": 8,
+          "explanation": "这张直方图就是图像的词袋表示。",
+          "front": "在量化成视觉单词之后，构建图像词袋表示的最后一步是什么？",
+          "question_id": "q_flash_bow_pipeline_v4"
+        }
+      ]
+    },
+    {
+      "concept_key": "histogram",
+      "coverage_tags": [
+        "histogram_representation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_histogram",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆直方图在图像词袋模型中的含义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能准确提取直方图在图像词袋模型中的含义：统计每个视觉单词出现的次数。",
+      "question_type": "short_answer",
+      "retrieval_focus": "直方图在图像词袋模型中的含义",
+      "term_refs": [
+        {
+          "display": "直方图",
+          "en": "Histogram"
+        }
+      ],
+      "variants": [
+        {
+          "back": "每个视觉单词在图像中出现的次数。",
+          "estimated_seconds": 6,
+          "explanation": "直方图是图像的词袋表示，用于后续分类。",
+          "front": "在图像词袋模型中，直方图统计的是什么？",
+          "question_id": "q_flash_histogram_v1"
+        },
+        {
+          "back": "一张直方图（统计每个视觉单词出现的次数）。",
+          "estimated_seconds": 6,
+          "explanation": "这张直方图就是图像的数字指纹。",
+          "front": "图像的词袋表示最终以什么形式呈现？",
+          "question_id": "q_flash_histogram_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-application",
+  "longform_families": [
+    {
+      "concept_key": "bag_of_words",
+      "coverage_tags": [
+        "bag_of_words_model",
+        "visual_word_definition",
+        "image_bow_representation",
+        "document_analogy"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_bow_analogy",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释文档词袋模型与图像词袋模型之间的类比关系，并说明图像词袋表示的关键步骤。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能解释文档词袋模型与图像词袋模型之间的类比关系，并说明图像词袋表示的关键步骤。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-words model (BoW)"
+        },
+        {
+          "display": "视觉单词",
+          "en": "Visual Word"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "文档单词与图像视觉单词的类比",
+            "词频统计与直方图的类比",
+            "图像词袋表示的关键步骤"
+          ],
+          "question_id": "q_long_bow_analogy_v1",
+          "reference_answer": [
+            "文档中的“单词”对应图像中的“视觉单词”。视觉单词是通过对图像局部区域的特征向量进行聚类得到的代表性模式，类似于文档中的文字单词。",
+            "文档中的“词频统计”对应图像中统计每个视觉单词出现次数的操作，形成直方图。",
+            "图像词袋表示的关键步骤：1) 提取图像的局部区域；2) 用特征描述子描述每个区域的外观；3) 将特征向量聚类，每个聚类中心成为一个视觉单词；4) 统计每个视觉单词在图像中出现的次数，形成直方图。"
+          ],
+          "rubric_points": [
+            "正确指出文档中的单词对应图像中的视觉单词",
+            "正确指出文档中的词频统计对应图像中的直方图统计",
+            "正确列出图像词袋表示的关键步骤：提取局部区域、特征描述、聚类生成视觉单词、统计直方图"
+          ],
+          "stem": "请解释文档词袋模型与图像词袋模型之间的类比关系。具体说明：\n1. 文档中的“单词”对应图像中的什么？\n2. 文档中的“词频统计”对应图像中的什么操作？\n3. 图像词袋表示的关键步骤有哪些？"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "像素值比较失败的原因",
+            "词袋模型如何类比文档分析",
+            "图像词袋表示的具体过程"
+          ],
+          "question_id": "q_long_bow_analogy_v2",
+          "reference_answer": [
+            "直接使用像素值比较会失败，因为像素值对光照、视角、遮挡等变化非常敏感，导致内容相似的图片在像素空间距离很远，无法有效区分。",
+            "词袋模型通过类比文档分析来解决这个问题：在文档分析中，我们忽略单词的顺序和语法，只统计关键词出现的次数来判断主题。类似地，在图像分析中，我们将图像局部区域视为“视觉单词”，统计它们出现的频率，忽略空间位置，从而获得更鲁棒的表示。",
+            "图像词袋表示的过程：1) 提取图像的局部区域（如角点、纹理）；2) 用特征描述子（如SIFT）描述每个区域的外观，得到特征向量；3) 将所有特征向量进行聚类，每个聚类中心成为一个视觉单词；4) 统计每个视觉单词在图像中出现的次数，形成直方图，作为图像的词袋表示。"
+          ],
+          "rubric_points": [
+            "正确指出像素值对光照、视角等变化敏感，导致内容相似的图片在像素空间距离很远",
+            "正确指出词袋模型通过类比文档分析，将图像表示为视觉单词的直方图，忽略位置和顺序",
+            "正确描述图像词袋表示的过程：提取局部区域、特征描述、聚类生成视觉单词、统计直方图"
+          ],
+          "stem": "请分析为什么直接使用像素值比较两张图片会失败？词袋模型如何通过类比文档分析来解决这个问题？请详细说明图像词袋表示的过程。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "bag_of_words",
+      "coverage_tags": [
+        "bag_of_words_model"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_bow_core",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析词袋模型的核心假设。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能准确辨析词袋模型的核心假设：忽略顺序和语法，只关心单词的种类和出现频率。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-words model (BoW)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "词袋模型忽略顺序和语法，只关心单词的种类和出现次数。",
+          "options": [
+            "单词的顺序很重要",
+            "单词的语法结构很重要",
+            "单词的出现频率和种类很重要",
+            "句子的长度很重要"
+          ],
+          "question_id": "q_quiz_bow_core_v1",
+          "stem": "词袋模型最核心的假设是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "词袋模型只统计关键词出现的次数，忽略顺序和语法。",
+          "options": [
+            "分析句子的语法结构来判断主题",
+            "统计每个单词出现的顺序模式",
+            "统计关键词出现的次数，忽略顺序和语法",
+            "分析单词之间的依赖关系"
+          ],
+          "question_id": "q_quiz_bow_core_v2",
+          "stem": "以下哪个说法最准确地描述了词袋模型在文档分析中的做法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "visual_word",
+      "coverage_tags": [
+        "visual_word_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_visual_word",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析视觉单词的本质。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能准确辨析视觉单词的本质：是局部模式的代表，而不是图像中的真实物体。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "视觉单词",
+          "en": "Visual Word"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "视觉单词是通过对局部图像块的特征向量进行聚类得到的聚类中心，代表一种局部模式。",
+          "options": [
+            "视觉单词是图像中真实物体的名称",
+            "视觉单词是通过对局部特征向量进行聚类得到的代表性模式",
+            "视觉单词是图像中每个像素的灰度值",
+            "视觉单词是图像的文件名"
+          ],
+          "question_id": "q_quiz_visual_word_v1",
+          "stem": "关于视觉单词，以下哪个说法是正确的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "视觉单词代表局部模式，如角点、纹理、斑点等。",
+          "options": [
+            "像素值",
+            "视觉单词",
+            "图像标签",
+            "直方图"
+          ],
+          "question_id": "q_quiz_visual_word_v2",
+          "stem": "图像中的“角点”、“纹理”等局部模式在词袋模型中对应什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "bag_of_words",
+      "coverage_tags": [
+        "image_bow_representation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_bow_pipeline",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能按正确顺序排列图像词袋表示的构建步骤。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能准确排列图像词袋表示的构建步骤顺序。",
+      "question_type": "ordering",
+      "term_refs": [
+        {
+          "display": "词袋模型",
+          "en": "Bag-of-words model (BoW)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "estimated_seconds": 25,
+          "explanation": "正确的流程是：先提取局部区域，然后用描述子描述，接着聚类生成视觉单词，最后统计直方图。",
+          "options": [
+            "A. 提取图像的局部区域",
+            "B. 用特征描述子描述每个区域",
+            "C. 将特征向量聚类成视觉单词",
+            "D. 统计直方图得到词袋向量"
+          ],
+          "question_id": "q_quiz_bow_pipeline_v1",
+          "stem": "请将图像词袋表示构建流程的步骤按正确顺序排列。"
+        },
+        {
+          "answer": [
+            3,
+            1,
+            2,
+            0
+          ],
+          "estimated_seconds": 25,
+          "explanation": "正确的流程是：先检测局部区域，然后描述，接着聚类生成码本，最后统计直方图。",
+          "options": [
+            "A. 统计每个视觉单词出现的次数",
+            "B. 对局部区域进行特征描述",
+            "C. 将描述子聚类生成码本",
+            "D. 检测图像中的局部区域"
+          ],
+          "question_id": "q_quiz_bow_pipeline_v2",
+          "stem": "请将图像词袋表示构建流程的步骤按正确顺序排列。"
+        }
+      ]
+    },
+    {
+      "concept_key": "histogram",
+      "coverage_tags": [
+        "histogram_representation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_histogram",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下理解直方图在图像词袋模型中的作用。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能准确理解直方图在图像词袋模型中的作用：作为图像的表示用于分类。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "直方图",
+          "en": "Histogram"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "直方图统计每个视觉单词出现的次数，形成图像的词袋表示，用于训练分类器。",
+          "options": [
+            "显示图像的颜色分布",
+            "作为图像的表示，用于训练分类器",
+            "显示图像的边缘信息",
+            "压缩图像文件大小"
+          ],
+          "question_id": "q_quiz_histogram_v1",
+          "stem": "在图像词袋模型中，直方图的主要作用是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "图像的词袋表示是一张直方图，统计每个视觉单词出现的次数。",
+          "options": [
+            "一组局部特征向量",
+            "一张直方图",
+            "一组视觉单词的集合",
+            "一张缩略图"
+          ],
+          "question_id": "q_quiz_histogram_v2",
+          "stem": "图像的词袋表示最终以什么形式用于分类？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-application/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,428 @@
+---
+lessonId: u1-comp7404-pca-and-lda
+title: PCA 与 LDA：线性降维与分类
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["high_dimensional_face_images", "curse_of_dimensionality", "face_subspace"]
+    linkedSteps: ["step1"]
+  - sectionId: global-concept-map
+    title: 全局概念地图
+    coverageTags: ["dimensionality_reduction_definition", "feature_selection_vs_feature_extraction", "feature_extraction_linear_transform"]
+    linkedSteps: ["step2"]
+  - sectionId: pca-core-idea
+    title: PCA 的核心思想：最大化方差
+    coverageTags: ["pca_core_idea", "pca_variance_maximization", "pca_covariance_matrix", "pca_eigen_decomposition", "pca_procedure"]
+    linkedSteps: ["step3"]
+  - sectionId: pca-in-practice-eigenfaces
+    title: PCA 的实战：特征脸与重构
+    coverageTags: ["eigenface_definition", "eigenface_representation", "reconstruction_error", "eigenvalue_curve_k_selection"]
+    linkedSteps: ["step4"]
+  - sectionId: pca-limitation-and-lda-motivation
+    title: PCA 的局限与 LDA 的动机
+    coverageTags: ["pca_limitation_ignores_class", "lda_motivation_class_separation", "fisher_criterion_ratio", "pca_vs_lda_supervised_unsupervised"]
+    linkedSteps: ["step5"]
+  - sectionId: lda-mathematics
+    title: LDA 的数学：散度矩阵与广义特征值
+    coverageTags: ["lda_scatter_matrices", "fisher_criterion_formula", "generalized_eigenvalue_problem", "lda_two_class_solution"]
+    linkedSteps: ["step6"]
+  - sectionId: multi-class-lda-and-fisherface
+    title: 多类 LDA 与 Fisherface
+    coverageTags: ["multi_class_lda_extension", "sw_singularity_problem", "fisherface_method", "pseudoinverse_alternative"]
+    linkedSteps: ["step7"]
+  - sectionId: pca-vs-lda-comparison
+    title: PCA vs LDA：何时用哪个
+    coverageTags: ["pca_vs_lda_comparison", "pca_use_case", "lda_use_case", "lda_weakness", "fisherface_vs_eigenface", "method_selection"]
+    linkedSteps: ["step8"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["pca_core_idea", "pca_variance_maximization", "pca_covariance_matrix", "pca_eigen_decomposition", "pca_procedure", "eigenface_definition", "eigenface_representation", "reconstruction_error", "eigenvalue_curve_k_selection", "pca_limitation_ignores_class", "lda_motivation_class_separation", "fisher_criterion_ratio", "pca_vs_lda_supervised_unsupervised", "lda_scatter_matrices", "fisher_criterion_formula", "generalized_eigenvalue_problem", "lda_two_class_solution", "multi_class_lda_extension", "sw_singularity_problem", "fisherface_method", "pseudoinverse_alternative", "pca_vs_lda_comparison", "pca_use_case", "lda_use_case", "lda_weakness", "fisherface_vs_eigenface", "method_selection"]
+    linkedSteps: ["step1", "step2", "step3", "step4", "step5", "step6", "step7", "step8"]
+coverageTrace:
+  - coverageTag: high_dimensional_face_images
+    description: 人脸图像作为像素向量是高维的（100x100=10000维）
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: curse_of_dimensionality
+    description: 高维数据带来的问题：计算慢、存储大、过拟合、数据稀疏
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: face_subspace
+    description: 真正的人脸只占高维空间的一个小子空间
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: dimensionality_reduction_definition
+    description: 降维的定义：将高维数据压缩到低维，同时保留关键结构
+    sectionIds: ["global-concept-map"]
+    linkedSteps: ["step2"]
+  - coverageTag: feature_selection_vs_feature_extraction
+    description: 降维的两种思路：特征选择（挑选子集）与特征提取（组合新特征）的区别
+    sectionIds: ["global-concept-map"]
+    linkedSteps: ["step2"]
+  - coverageTag: feature_extraction_linear_transform
+    description: 特征提取中线性变换的形式 y = Wx，以及本课程聚焦于线性特征提取
+    sectionIds: ["global-concept-map"]
+    linkedSteps: ["step2"]
+  - coverageTag: pca_core_idea
+    description: PCA 的核心思想：找到使投影后方差最大的方向
+    sectionIds: ["pca-core-idea", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: pca_variance_maximization
+    description: PCA 的优化目标：最大化投影方差 u^T Σ u
+    sectionIds: ["pca-core-idea", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: pca_covariance_matrix
+    description: 协方差矩阵 Σ 的定义与在 PCA 中的作用
+    sectionIds: ["pca-core-idea", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: pca_eigen_decomposition
+    description: PCA 的解是协方差矩阵的特征向量与特征值
+    sectionIds: ["pca-core-idea", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: pca_procedure
+    description: PCA 的步骤：计算协方差矩阵 → 求特征向量 → 按特征值排序 → 取前 k 个
+    sectionIds: ["pca-core-idea", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: eigenface_definition
+    description: 特征脸的定义：对人脸图像做 PCA 得到的主成分
+    sectionIds: ["pca-in-practice-eigenfaces", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: eigenface_representation
+    description: 人脸图像表示为特征脸的线性组合，组合系数是 PCA 空间新坐标
+    sectionIds: ["pca-in-practice-eigenfaces", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: reconstruction_error
+    description: 重构误差的概念：用降维后数据还原回原始空间时与原数据的差异
+    sectionIds: ["pca-in-practice-eigenfaces", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: eigenvalue_curve_k_selection
+    description: 利用特征值下降曲线选择主成分数量 k
+    sectionIds: ["pca-in-practice-eigenfaces", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: pca_limitation_ignores_class
+    description: PCA 只管方差最大，不管类别信息，因此当方差最大方向与分类方向不一致时，PCA 降维会损害分类性能
+    sectionIds: ["pca-limitation-and-lda-motivation", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: lda_motivation_class_separation
+    description: LDA 的动机是找到一个投影方向，使得不同类别的点尽量分开，同类点尽量集中，从而弥补 PCA 的不足
+    sectionIds: ["pca-limitation-and-lda-motivation", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: fisher_criterion_ratio
+    description: Fisher 准则用类间距离平方与类内散度之和的比值来量化投影方向的可分性
+    sectionIds: ["pca-limitation-and-lda-motivation", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: pca_vs_lda_supervised_unsupervised
+    description: PCA 是无监督的，LDA 是有监督的，这是两者的核心区别
+    sectionIds: ["pca-limitation-and-lda-motivation", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: lda_scatter_matrices
+    description: LDA 的两个关键矩阵：类内散度矩阵 S_W 和类间散度矩阵 S_B 的定义与含义
+    sectionIds: ["lda-mathematics", "review-and-self-test"]
+    linkedSteps: ["step6"]
+  - coverageTag: fisher_criterion_formula
+    description: Fisher 准则的矩阵形式：J(w) = (w^T S_B w) / (w^T S_W w)
+    sectionIds: ["lda-mathematics", "review-and-self-test"]
+    linkedSteps: ["step6"]
+  - coverageTag: generalized_eigenvalue_problem
+    description: LDA 优化问题转化为广义特征值问题 S_B w = λ S_W w
+    sectionIds: ["lda-mathematics", "review-and-self-test"]
+    linkedSteps: ["step6"]
+  - coverageTag: lda_two_class_solution
+    description: 二分类 LDA 的闭式解 w = S_W^{-1}(μ₂ - μ₁)
+    sectionIds: ["lda-mathematics", "review-and-self-test"]
+    linkedSteps: ["step6"]
+  - coverageTag: multi_class_lda_extension
+    description: 多类 LDA 的推广：类间散度矩阵变为所有类均值与全局均值的加权和，最多可找到 c-1 个投影方向
+    sectionIds: ["multi-class-lda-and-fisherface", "review-and-self-test"]
+    linkedSteps: ["step7"]
+  - coverageTag: sw_singularity_problem
+    description: 当数据维度远大于样本数时，S_W 不可逆，直接计算 LDA 会失败
+    sectionIds: ["multi-class-lda-and-fisherface", "review-and-self-test"]
+    linkedSteps: ["step7"]
+  - coverageTag: fisherface_method
+    description: Fisherface：先用 PCA 降维到 N-c，再在低维空间做 LDA，解决 S_W 不可逆问题
+    sectionIds: ["multi-class-lda-and-fisherface", "review-and-self-test"]
+    linkedSteps: ["step7"]
+  - coverageTag: pseudoinverse_alternative
+    description: 处理 S_W 不可逆的另一种方法：使用 Moore-Penrose 伪逆，忽略零特征值对应的维度
+    sectionIds: ["multi-class-lda-and-fisherface", "review-and-self-test"]
+    linkedSteps: ["step7"]
+  - coverageTag: pca_vs_lda_comparison
+    description: PCA 与 LDA 的核心区别：无监督 vs 有监督，方差最大化 vs 类别可分性最大化
+    sectionIds: ["pca-vs-lda-comparison", "review-and-self-test"]
+    linkedSteps: ["step8"]
+  - coverageTag: pca_use_case
+    description: PCA 的适用场景：无标签数据、探索性分析、可视化、去噪
+    sectionIds: ["pca-vs-lda-comparison", "review-and-self-test"]
+    linkedSteps: ["step8"]
+  - coverageTag: lda_use_case
+    description: LDA 的适用场景：有标签的分类任务，均值差异比方差更重要
+    sectionIds: ["pca-vs-lda-comparison", "review-and-self-test"]
+    linkedSteps: ["step8"]
+  - coverageTag: lda_weakness
+    description: LDA 的弱点：每类需要足够多样本，否则 S_W 估计不准
+    sectionIds: ["pca-vs-lda-comparison", "review-and-self-test"]
+    linkedSteps: ["step8"]
+  - coverageTag: fisherface_vs_eigenface
+    description: Fisherface（PCA+LDA）比 Eigenface（仅 PCA）在人脸识别中对光照更鲁棒
+    sectionIds: ["pca-vs-lda-comparison", "review-and-self-test"]
+    linkedSteps: ["step8"]
+  - coverageTag: method_selection
+    description: 根据任务特点选择 PCA、LDA 或 Fisherface
+    sectionIds: ["pca-vs-lda-comparison", "review-and-self-test"]
+    linkedSteps: ["step8"]
+---
+
+# PCA 与 LDA：线性降维与分类
+
+## 为什么这一课重要
+
+想象一张 <InlineFormula latex="100 \times 100" /> 像素的人脸照片。如果把它看作一个由像素值组成的向量，它的维度是 10,000。这意味着，要处理这样一张图片，计算机需要在一个 10,000 维的空间中进行运算。
+
+<KeyPoint>高维数据带来的问题：计算速度慢、存储需求大、数据稀疏、容易过拟合。</KeyPoint>
+
+更关键的是，在这 10,000 维的空间中，绝大多数点根本不是人脸。真正的人脸图像只蜷缩在一个很小的子空间里。因此，我们需要一种方法，将数据从高维压缩到低维，同时保留其关键结构——这就是**降维**。
+
+<Figure src="images/2adc5dee2dbafdfb664774e18e2e047e55a8b42526c91b995e84625294870508.jpg" alt="人脸图像在表情变化下的示例，说明高维数据中有效信息集中在低维流形上">人脸图像在表情变化下的示例，说明高维数据中有效信息集中在低维流形上</Figure>
+
+<Figure src="images/1d4b3d372e4d6eccd17e9cc8182f18e6018c7bdc500a04b5fe88de3d8045f7e5.jpg" alt="人脸图像在姿态变化下的示例，进一步说明高维数据中有效信息集中在低维流形上">人脸图像在姿态变化下的示例，进一步说明高维数据中有效信息集中在低维流形上</Figure>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_high_dim_problem_v1" />
+<QuestionRef id="q_quiz_high_dim_judgment_v1" />
+</Checkpoint>
+
+## 全局概念地图
+
+降维主要有两种思路：
+
+1.  **<Term id="feature_selection" en="Feature Selection">特征选择</Term>**：直接从原始特征中挑选出最有用的子集，丢掉其余的。它保留了原始特征的物理意义。
+2.  **<Term id="feature_extraction" en="Feature Extraction">特征提取</Term>**：通过组合原始特征来创造全新的、维度更少的特征。它可能失去原始特征的物理意义，但能捕捉特征间的交互关系。
+
+<Formula latex="\left[ \begin{array}{c} x _ {1} \\ x _ {2} \\ \vdots \\ x _ {N} \end{array} \right] \xrightarrow {\text {feature selection}} \left[ \begin{array}{c} x _ {i _ {1}} \\ x _ {i _ {2}} \\ \vdots \\ x _ {i _ {M}} \end{array} \right]">特征选择：从 N 个原始特征中挑选 M 个</Formula>
+
+<Formula latex="\left[ \begin{array}{c} x _ {1} \\ x _ {2} \\ \vdots \\ x _ {N} \end{array} \right] \xrightarrow {\text {feature extraction}} \left[ \begin{array}{c} y _ {1} \\ y _ {2} \\ \vdots \\ y _ {M} \end{array} \right] = f \left(\left[ \begin{array}{c} x _ {1} \\ x _ {2} \\ \vdots \\ x _ {N} \end{array} \right]\right)">特征提取：通过函数 f 将 N 维数据映射到 M 维</Formula>
+
+本课程聚焦于**线性特征提取**，即映射函数 <InlineFormula latex="f" /> 是一个线性变换：
+
+<Formula latex="y = W x">线性特征提取的数学形式</Formula>
+
+其中，<InlineFormula latex="W" /> 是一个 <InlineFormula latex="M \times N" /> 的矩阵。
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_step2_fs_fe_identify_v1" />
+<QuestionRef id="q_quiz_step2_fs_fe_scenario_v1" />
+</Checkpoint>
+
+## PCA 的核心思想：最大化方差
+
+<Term id="principal_component_analysis" en="Principal Component Analysis (PCA)">主成分分析</Term>（PCA）是一种最常用的线性特征提取方法。它的核心思想非常直观：**找到一个方向，使得数据投影到这个方向后的方差最大**。
+
+<Definition title="PCA 的优化目标">
+给定一组数据中心化后的向量 <InlineFormula latex="\mathbf{x}_i" />，PCA 的目标是找到一个单位向量 <InlineFormula latex="\mathbf{u}" />，使得投影后的方差 <InlineFormula latex="\mathbf{u}^T \Sigma \mathbf{u}" /> 最大。其中 <InlineFormula latex="\Sigma" /> 是数据的<Term id="covariance_matrix" en="Covariance Matrix">协方差矩阵</Term>。
+</Definition>
+
+<Formula latex="\Sigma = \frac{1}{N} \sum_{i=1}^{N} (\mathbf{x}_i - \boldsymbol{\mu})(\mathbf{x}_i - \boldsymbol{\mu})^T">协方差矩阵的定义</Formula>
+
+这个优化问题的解非常优雅：**使方差最大的方向，就是协方差矩阵 <InlineFormula latex="\Sigma" /> 的<Term id="eigenvector" en="Eigenvector">特征向量</Term>**。对应的<Term id="eigenvalue" en="Eigenvalue">特征值</Term>越大，该方向上的方差就越大。
+
+<KeyPoint>PCA 的步骤：计算协方差矩阵 → 求特征向量和特征值 → 按特征值从大到小排序 → 取前 k 个特征向量作为主成分。</KeyPoint>
+
+<Example title="PCA 手算示例">
+假设有一组二维数据点，其协方差矩阵为：
+<Formula latex="\Sigma_x = \left[ \begin{array}{c c} 6.25 & 4.25 \\ 4.25 & 3.5 \end{array} \right]">示例数据的协方差矩阵</Formula>
+
+通过求解特征方程 <InlineFormula latex="|\Sigma_x - \lambda I| = 0" />，得到特征值：
+<InlineFormula latex="\lambda_1 = 9.34, \lambda_2 = 0.41" />
+
+对应的特征向量为：
+<InlineFormula latex="v_1 = [0.81, 0.59]^T, v_2 = [-0.59, 0.81]^T" />
+
+第一主成分是 <InlineFormula latex="v_1" />，因为它对应的特征值 9.34 最大，表示该方向上的方差最大。
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_pca_goal_v1" />
+<QuestionRef id="q_quiz_eigen_role_v1" />
+</Checkpoint>
+
+## PCA 的实战：特征脸与重构
+
+将 PCA 应用于人脸图像，得到的主成分可视化后看起来也像一张张脸，被称为<Term id="eigenface" en="Eigenface">特征脸</Term>。
+
+<Definition title="特征脸">
+特征脸是对人脸图像数据集做 PCA 得到的主成分。它们构成了人脸子空间的一组基。
+</Definition>
+
+每张原始人脸图像都可以表示为这些特征脸的线性组合，组合系数就是它在 PCA 空间里的新坐标。
+
+<Formula latex="\mathbf{x} \rightarrow [\mathbf{u}_1^T(\mathbf{x} - \boldsymbol{\mu}), \ldots, \mathbf{u}_k^T(\mathbf{x} - \boldsymbol{\mu})] = [w_1, \ldots, w_k]">人脸图像在 PCA 空间中的表示</Formula>
+
+如果只用前 k 个特征脸来重建图像，会丢失一些细节，丢失的程度用<Term id="reconstruction_error" en="Reconstruction Error">重构误差</Term>来衡量。
+
+<KeyPoint>特征值越小，丢掉那个方向造成的重构误差也越小。</KeyPoint>
+
+因此，我们可以通过观察**特征值下降曲线**来决定保留多少个主成分（即选择 k 值）。常见的方法有：
+1.  **方差比例法**：选择 k 使得前 k 个主成分的累计方差占比达到一个阈值（如 95%）。
+2.  **肘部法则**：观察特征值下降曲线的拐点，选择拐点处的 k 值。
+
+<Figure src="images/6b4568d04e6b5c4ef52905cb01f12c058bd8f351d46988999197f0fe280d0f0f.jpg" alt="特征值下降曲线示例，横轴为主成分序号，纵轴为特征值大小">特征值下降曲线示例</Figure>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_eigenface_nature_v1" />
+<QuestionRef id="q_quiz_k_selection_v1" />
+</Checkpoint>
+
+## PCA 的局限与 LDA 的动机
+
+PCA 只管方差最大，**不管类别信息**。如果两类数据沿着方差最大的方向投影后严重重叠，PCA 仍然会选择这个方向，因为它只看方差大小。
+
+<Figure src="images/b9ad7f52994e82b9ad66d6124c9de612268ee87bcaf1810f6aade2c7cdd4fbb4.jpg" alt="PCA 投影示例：方差最大的方向导致两类数据重叠">PCA 投影示例：方差最大的方向导致两类数据重叠</Figure>
+
+这时就需要<Term id="linear_discriminant_analysis" en="Linear Discriminant Analysis (LDA)">线性判别分析</Term>（LDA）出场了。
+
+<Definition title="LDA 的目标">
+LDA 的目标是找到一个投影方向，使得不同类别的点尽量分开（类间距离大），同类点尽量集中（类内分散小）。
+</Definition>
+
+它用<Term id="fisher_criterion" en="Fisher's Criterion">Fisher 准则</Term>来量化这个目标：
+
+<Formula latex="J(\mathbf{w}) = \frac{(m_2 - m_1)^2}{s_1^2 + s_2^2}">Fisher 准则：最大化类间距离平方与类内散度之和的比值</Formula>
+
+<KeyPoint>PCA 是无监督的，LDA 是有监督的。这是两者的核心区别。</KeyPoint>
+
+<Figure src="images/52748ba97337400caa57f247587ee0b281407698afcb4730e86a5a35b5a95350.jpg" alt="LDA 投影示例：最大化类间可分性的方向">LDA 投影示例：最大化类间可分性的方向</Figure>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_pca_limitation_v1" />
+<QuestionRef id="q_quiz_lda_goal_v1" />
+</Checkpoint>
+
+## LDA 的数学：散度矩阵与广义特征值
+
+LDA 的数学需要两个关键矩阵：
+
+1.  **<Term id="within_class_scatter" en="Within-class Scatter Matrix (S_W)">类内散度矩阵</Term> <InlineFormula latex="S_W" />**：衡量每个类别内部数据点的分散程度。
+2.  **<Term id="between_class_scatter" en="Between-class Scatter Matrix (S_B)">类间散度矩阵</Term> <InlineFormula latex="S_B" />**：衡量不同类别均值之间的分散程度。
+
+<Formula latex="S_W = S_1 + S_2 = \sum_{y_i=1} (x_i - \mu_1)(x_i - \mu_1)^T + \sum_{y_i=2} (x_i - \mu_2)(x_i - \mu_2)^T">类内散度矩阵</Formula>
+
+<Formula latex="S_B = (\mu_2 - \mu_1)(\mu_2 - \mu_1)^T">类间散度矩阵</Formula>
+
+Fisher 准则可以写成矩阵形式：
+
+<Formula latex="J(\mathbf{w}) = \frac{\mathbf{w}^T S_B \mathbf{w}}{\mathbf{w}^T S_W \mathbf{w}}">Fisher 准则的矩阵形式</Formula>
+
+求解这个优化问题，会得到一个<Term id="generalized_eigenvalue_problem" en="Generalized Eigenvalue Problem">广义特征值问题</Term>：
+
+<Formula latex="S_B \mathbf{w} = \lambda S_W \mathbf{w}">LDA 的广义特征值问题</Formula>
+
+对于二分类问题，解可以简化为：
+
+<Formula latex="\mathbf{w} = S_W^{-1}(\mu_2 - \mu_1)">二分类 LDA 的闭式解</Formula>
+
+<KeyPoint>LDA 的投影方向由类内散度的逆矩阵乘以类均值差来决定。</KeyPoint>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_sw_sb_role_v2" />
+<QuestionRef id="q_quiz_fisher_ratio_components_v1" />
+</Checkpoint>
+
+## 多类 LDA 与 Fisherface
+
+当类别数大于 2 时，LDA 的公式需要推广。类间散度矩阵变为所有类均值与全局均值的加权和。此时 LDA 可以找到多个投影方向，最多 <InlineFormula latex="c-1" /> 个（<InlineFormula latex="c" /> 是类别数）。
+
+<Formula latex="S_B = \sum_{i=1}^{c} N_i (\mu_i - \mu)(\mu_i - \mu)^T">多类 LDA 的类间散度矩阵</Formula>
+
+但 LDA 有一个实际问题：当数据维度远大于样本数时，<InlineFormula latex="S_W" /> 不可逆。
+
+<Definition title="Fisherface">
+Fisherface 是一种解决 <InlineFormula latex="S_W" /> 不可逆问题的方法。它先用 PCA 将数据降到 <InlineFormula latex="N-c" /> 维，使 <InlineFormula latex="S_W" /> 可逆，再在这个低维空间里做 LDA。
+</Definition>
+
+另一种处理 <InlineFormula latex="S_W" /> 不可逆的方法是使用<Term id="pseudoinverse" en="Pseudoinverse">伪逆</Term>，把零特征值对应的维度直接忽略掉。
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_multi_lda_directions_v1" />
+<QuestionRef id="q_quiz_sw_singularity_v1" />
+<QuestionRef id="q_quiz_fisherface_purpose_v1" />
+</Checkpoint>
+
+## PCA vs LDA：何时用哪个
+
+| 特性 | PCA | LDA |
+| :--- | :--- | :--- |
+| **监督性** | 无监督 | 有监督 |
+| **优化目标** | 最大化方差 | 最大化类别可分性 |
+| **适用场景** | 无标签数据、探索性分析、可视化、去噪 | 有标签的分类任务 |
+| **弱点** | 忽略类别信息 | 每类需要足够多样本，否则 <InlineFormula latex="S_W" /> 估计不准 |
+
+<KeyPoint>一句话带走：PCA 找“最散”的方向，LDA 找“最可分”的方向。</KeyPoint>
+
+在人脸识别中，Eigenface（PCA）对光照敏感，而 Fisherface（PCA+LDA）更鲁棒。
+
+<Figure src="images/de6acf8979176c4632e758e55c93084a86b57db866f5276e8b42e5514c3e41b3.jpg" alt="Eigenface 与 Fisherface 在人脸识别中的错误率对比，Fisherface 表现更优">Eigenface 与 Fisherface 在人脸识别中的错误率对比</Figure>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_pca_vs_lda_v1" />
+<QuestionRef id="q_quiz_method_selection_v1" />
+</Checkpoint>
+
+## 复习与自测
+
+### 主动回忆
+
+<QuestionFamily familyId="qf_flash_high_dim_problems" />
+<QuestionFamily familyId="qf_flash_step2_dr_def" />
+<QuestionFamily familyId="qf_flash_step2_fs_fe" />
+<QuestionFamily familyId="qf_flash_pca_idea" />
+<QuestionFamily familyId="qf_flash_eigen_role" />
+<QuestionFamily familyId="qf_flash_eigenface_def" />
+<QuestionFamily familyId="qf_flash_reconstruction_error" />
+<QuestionFamily familyId="qf_flash_pca_limitation" />
+<QuestionFamily familyId="qf_flash_lda_goal" />
+<QuestionFamily familyId="qf_flash_sw_sb" />
+<QuestionFamily familyId="qf_flash_fisher_ratio" />
+<QuestionFamily familyId="qf_flash_generalized_eigenvalue" />
+<QuestionFamily familyId="qf_flash_two_class_solution" />
+<QuestionFamily familyId="qf_flash_multi_lda_directions" />
+<QuestionFamily familyId="qf_flash_sw_singularity" />
+<QuestionFamily familyId="qf_flash_fisherface_purpose" />
+<QuestionFamily familyId="qf_flash_pca_vs_lda" />
+<QuestionFamily familyId="qf_flash_lda_weakness" />
+
+### 章节测验
+
+<QuestionFamily familyId="qf_quiz_step2_dr_definition" />
+<QuestionFamily familyId="qf_quiz_step2_fs_fe_identify" />
+<QuestionFamily familyId="qf_quiz_pca_goal" />
+<QuestionFamily familyId="qf_quiz_covariance" />
+<QuestionFamily familyId="qf_quiz_eigen_role" />
+<QuestionFamily familyId="qf_quiz_eigenface_nature" />
+<QuestionFamily familyId="qf_quiz_reconstruction_error" />
+<QuestionFamily familyId="qf_quiz_k_selection" />
+<QuestionFamily familyId="qf_quiz_pca_limitation" />
+<QuestionFamily familyId="qf_quiz_lda_goal" />
+<QuestionFamily familyId="qf_quiz_fisher_criterion" />
+<QuestionFamily familyId="qf_quiz_sw_sb_role" />
+<QuestionFamily familyId="qf_quiz_fisher_ratio_components" />
+<QuestionFamily familyId="qf_quiz_generalized_eigenvalue_form" />
+<QuestionFamily familyId="qf_quiz_two_class_solution_meaning" />
+<QuestionFamily familyId="qf_quiz_multi_lda_directions" />
+<QuestionFamily familyId="qf_quiz_sw_singularity" />
+<QuestionFamily familyId="qf_quiz_fisherface_purpose" />
+<QuestionFamily familyId="qf_quiz_pca_vs_lda" />
+<QuestionFamily familyId="qf_quiz_method_selection" />
+
+### 深入思考
+
+<QuestionFamily familyId="qf_long_step2_fs_fe_compare" />
+<QuestionFamily familyId="qf_long_pca_derivation" />
+<QuestionFamily familyId="qf_long_k_selection" />
+<QuestionFamily familyId="qf_long_pca_limitation" />
+<QuestionFamily familyId="qf_long_sw_sb_interpret" />
+<QuestionFamily familyId="qf_long_fisherface_workflow" />
+<QuestionFamily familyId="qf_long_pca_vs_lda" />
+<QuestionFamily familyId="qf_long_method_selection" />

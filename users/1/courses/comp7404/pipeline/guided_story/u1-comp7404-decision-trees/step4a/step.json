@@ -1,0 +1,257 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-decision-trees",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "除了 Gini 不纯度，还有其他衡量纯度的方法。",
+        "比如 <term id=\"entropy\">熵</term>，它来自信息论。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "entropy"
+      ],
+      "id": "s002",
+      "introduced_terms": [
+        "entropy"
+      ],
+      "lines": [
+        "熵的计算公式是："
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "entropy"
+      ],
+      "formula": {
+        "latex": "I_{H}(t) = -\\sum_{i=1}^{c} p(i|t) \\log_{2} p(i|t)",
+        "spoken": "负的，所有类别概率乘以以2为底的对数概率之和。"
+      },
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "entropy"
+      ],
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "当节点里的样本全部属于同一类时，熵为 0。",
+        "当类别均匀分布时，熵最大。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "entropy"
+      ],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "计算一个节点的熵：假设有 9 个苹果和 1 个橘子。",
+        "p(苹果)=0.9，p(橘子)=0.1。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "entropy"
+      ],
+      "formula": {
+        "latex": "I_H = - (0.9 \\log_2 0.9 + 0.1 \\log_2 0.1) \\approx 0.469",
+        "spoken": "负的 0.9 乘以 log2(0.9) 加上 0.1 乘以 log2(0.1)，约等于 0.469。"
+      },
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.469"
+        ],
+        "explanation": "熵 ≈ 0.469，Gini = 0.18。两者都小，但数值不同。",
+        "kind": "fill_in_blank",
+        "prompt": "这个节点的熵是多少？（保留三位小数）"
+      },
+      "focus_terms": [
+        "entropy"
+      ],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "计算这个节点的熵。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "entropy",
+        "gini_impurity"
+      ],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "比较一下：这个节点的 Gini 是 0.18，熵是 0.469。",
+        "虽然数值不同，但趋势一致：节点越纯，两个指标都越小。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "在大多数情况下，Gini 和熵的选择对最终树的结构影响不大，它们都倾向于选择相同的分裂。但在某些极端分布下，熵对纯度的变化更敏感。",
+        "kind": "multiple_choice",
+        "options": [
+          "在大多数情况下，Gini 和熵选择的分裂非常相似",
+          "Gini 总是比熵更敏感",
+          "熵总是比 Gini 更敏感",
+          "Gini 和熵的计算结果完全相同"
+        ],
+        "prompt": "关于 Gini 和熵，以下哪项描述最准确？"
+      },
+      "focus_terms": [
+        "gini_impurity",
+        "entropy"
+      ],
+      "id": "s008b",
+      "introduced_terms": [],
+      "lines": [
+        "Gini 和熵在大多数情况下表现相似，但你知道它们有什么不同吗？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "classification_error"
+      ],
+      "id": "s009",
+      "introduced_terms": [
+        "classification_error"
+      ],
+      "lines": [
+        "还有一种更简单的度量叫 <term id=\"classification_error\">分类误差</term>：",
+        "\\(I_E = 1 - \\max\\{p(i|t)\\}\\)"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "classification_error"
+      ],
+      "id": "s010",
+      "introduced_terms": [],
+      "lines": [
+        "它直接看节点里最多的那个类别占比多少。",
+        "不过，分类误差对纯度变化不太敏感，通常只用于剪枝，而不是构建树。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.1"
+        ],
+        "explanation": "最多的是苹果，占比 0.9，所以分类误差 = 1 - 0.9 = 0.1。",
+        "kind": "fill_in_blank",
+        "prompt": "分类误差 = ?"
+      },
+      "focus_terms": [
+        "classification_error"
+      ],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "对于 9 个苹果和 1 个橘子的节点，分类误差是多少？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.18",
+          "0.469",
+          "0.1"
+        ],
+        "explanation": "Gini=0.18，熵≈0.469，分类误差=0.1。三者都小，但数值不同。",
+        "kind": "fill_in_blank",
+        "prompt": "Gini = ?, 熵 = ?, 分类误差 = ? (用逗号分隔)"
+      },
+      "focus_terms": [
+        "gini_impurity",
+        "entropy",
+        "classification_error"
+      ],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "现在，比较三种度量在同一个节点上的值。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "当节点从 50%-50% 变成 90%-10% 时，三种度量都会下降，但分类误差区分纯度变化最粗糙，因此通常不拿它来建树。",
+        "kind": "single_choice",
+        "options": [
+          "Gini 不纯度",
+          "熵",
+          "分类误差",
+          "三者完全一样敏感"
+        ],
+        "prompt": "如果一个节点从“50% 苹果 + 50% 橘子”变成“90% 苹果 + 10% 橘子”，哪一种度量对这种纯度改善最不敏感？"
+      },
+      "focus_terms": [
+        "gini_impurity",
+        "entropy",
+        "classification_error"
+      ],
+      "id": "s012b",
+      "introduced_terms": [],
+      "lines": [
+        "如果一个节点从“50% 苹果 + 50% 橘子”变成“90% 苹果 + 10% 橘子”，哪一种度量对这种纯度改善最不敏感？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4a",
+  "source": {
+    "plain_text": "The following impurity measures or splitting criteria are commonly used in binary decision trees: Gini impurity, Entropy, and Classification error.",
+    "related": [
+      "Entropy",
+      "Gini",
+      "Classification Error"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "classification_error": {
+      "aliases": [
+        "Classification Error"
+      ],
+      "display": "分类误差",
+      "gloss": "一种简单的纯度度量，等于 1 减去节点中最常见类别的比例。"
+    },
+    "entropy": {
+      "aliases": [
+        "Entropy",
+        "Shannon Entropy"
+      ],
+      "display": "熵",
+      "gloss": "另一种衡量节点不纯度的指标，源于信息论。"
+    }
+  }
+}

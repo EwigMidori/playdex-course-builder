@@ -1,0 +1,356 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "nonlinear_svm_kernel_methods",
+      "covered_by": [
+        "qf_flash_kernel_trick",
+        "qf_flash_kernel_function",
+        "qf_quiz_kernel_usage",
+        "qf_long_kernel_mechanism"
+      ],
+      "description": "非线性SVM与核方法：当数据线性不可分时，通过核函数将数据映射到高维空间使其线性可分"
+    },
+    {
+      "coverage_tag": "kernel_trick",
+      "covered_by": [
+        "qf_flash_kernel_trick",
+        "qf_quiz_kernel_usage",
+        "qf_long_kernel_mechanism"
+      ],
+      "description": "核技巧：在不显式计算高维映射的情况下，通过核函数在低维空间计算高维空间内积"
+    },
+    {
+      "coverage_tag": "kernel_function",
+      "covered_by": [
+        "qf_flash_kernel_function",
+        "qf_quiz_kernel_usage",
+        "qf_long_kernel_mechanism"
+      ],
+      "description": "核函数：接收两个低维向量，返回它们在某个高维空间中的内积"
+    },
+    {
+      "coverage_tag": "linear_inseparability",
+      "covered_by": [
+        "qf_flash_linear_inseparable",
+        "qf_quiz_linear_inseparable"
+      ],
+      "description": "线性不可分：原空间中不存在一个超平面能完美分开两类数据"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "kernel_trick",
+      "coverage_tags": [
+        "nonlinear_svm_kernel_methods",
+        "kernel_trick"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_kernel_trick",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆核技巧的核心思想：在不显式计算高维映射的情况下，通过核函数在低维空间计算高维空间内积。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了核技巧的定义和核心优势。",
+      "question_type": "short_answer",
+      "retrieval_focus": "核技巧的核心思想：在低维空间计算高维空间内积，避免显式映射。",
+      "term_refs": [
+        {
+          "display": "核技巧",
+          "en": "Kernel Trick"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在不显式计算高维映射 φ(x) 的情况下，通过核函数 K(x_i, x_j) 在低维空间直接计算高维空间中的内积 φ(x_i)^T φ(x_j)。",
+          "estimated_seconds": 10,
+          "explanation": "核技巧避免了显式映射的计算开销，使得SVM可以高效处理高维甚至无限维空间。",
+          "front": "核技巧的核心思想是什么？",
+          "question_id": "q_flash_kernel_trick_v1"
+        },
+        {
+          "back": "避免显式计算高维映射 φ(x)，从而大幅降低计算复杂度，使SVM能处理高维特征空间。",
+          "estimated_seconds": 8,
+          "explanation": "显式映射在高维时计算量巨大，核技巧通过核函数直接计算内积，使问题可解。",
+          "front": "使用核技巧的主要好处是什么？",
+          "question_id": "q_flash_kernel_trick_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "kernel_function",
+      "coverage_tags": [
+        "nonlinear_svm_kernel_methods",
+        "kernel_function"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_kernel_function",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆核函数的定义：接收两个低维向量，返回它们在某个高维空间中的内积。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了核函数的数学定义和作用。",
+      "question_type": "short_answer",
+      "retrieval_focus": "核函数的输入输出：两个低维向量 → 高维空间内积。",
+      "term_refs": [
+        {
+          "display": "核函数",
+          "en": "Kernel Function"
+        }
+      ],
+      "variants": [
+        {
+          "back": "输入：两个低维空间中的向量 x_i 和 x_j；输出：它们在某个高维空间中的内积 φ(x_i)^T φ(x_j)。",
+          "estimated_seconds": 10,
+          "explanation": "核函数直接输出高维内积，无需知道 φ 的具体形式。",
+          "front": "核函数 K(x_i, x_j) 的输入和输出分别是什么？",
+          "question_id": "q_flash_kernel_function_v1"
+        },
+        {
+          "back": "替换了原对偶问题中的内积 x_i^T x_j（或 φ(x_i)^T φ(x_j)）。",
+          "estimated_seconds": 8,
+          "explanation": "对偶问题 L_D(a) = Σa_i - ½ ΣΣ a_i a_j y_i y_j K(x_i, x_j)，核函数直接替换内积。",
+          "front": "在非线性SVM中，核函数 K(x_i, x_j) 替换了原对偶问题中的哪个部分？",
+          "question_id": "q_flash_kernel_function_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "linear_inseparability",
+      "coverage_tags": [
+        "linear_inseparability"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_linear_inseparable",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别线性不可分数据的特征：不存在一个超平面能完美分开两类。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能判断数据是否线性可分，并理解线性不可分时不能通过调整线性分类器解决。",
+      "question_type": "short_answer",
+      "retrieval_focus": "线性不可分的定义：不存在一个超平面能完美分开两类数据。",
+      "term_refs": [
+        {
+          "display": "线性不可分",
+          "en": "Linearly Inseparable"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在原特征空间中，不存在一个超平面（直线/平面）能够将两类数据完美分开。",
+          "estimated_seconds": 8,
+          "explanation": "例如同心圆数据，任何直线都会切到内圈或漏掉外圈。",
+          "front": "什么是线性不可分？",
+          "question_id": "q_flash_linear_inseparable_v1"
+        },
+        {
+          "back": "不能。问题出在表示方式上，而不是参数上。需要改变数据表示空间（如使用核函数）。",
+          "estimated_seconds": 10,
+          "explanation": "线性不可分是数据本身的几何性质决定的，不是参数能解决的。",
+          "front": "对于线性不可分的数据，仅仅调整线性SVM的参数（如C）能否解决？",
+          "question_id": "q_flash_linear_inseparable_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "longform_families": [
+    {
+      "concept_key": "kernel_trick",
+      "coverage_tags": [
+        "nonlinear_svm_kernel_methods",
+        "kernel_trick",
+        "kernel_function"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_kernel_mechanism",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释核技巧如何解决线性不可分问题，并说明核函数的作用。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能完整解释核技巧的原理、核函数的作用以及如何应用于SVM。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "核技巧",
+          "en": "Kernel Trick"
+        },
+        {
+          "display": "核函数",
+          "en": "Kernel Function"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "线性不可分的问题描述",
+            "核技巧的核心思想",
+            "核函数的定义和作用",
+            "具体例子说明"
+          ],
+          "question_id": "q_long_kernel_mechanism_v1",
+          "reference_answer": [
+            "当数据在原空间线性不可分时，不存在一个超平面能完美分开两类数据。",
+            "核技巧的核心思想是：通过一个非线性映射 φ 将数据从低维空间映射到高维空间，使得在高维空间中数据变得线性可分。",
+            "核函数 K(x_i, x_j) 的作用是：在低维空间中直接计算高维空间的内积 φ(x_i)^T φ(x_j)，而无需显式计算 φ(x)。",
+            "例如，对于多项式核 K(x_i, x_j) = (x_i^T x_j)^2，在二维空间中，x_i = [x_i1, x_i2]^T，x_j = [x_j1, x_j2]^T，则 K(x_i, x_j) = (x_i1 x_j1 + x_i2 x_j2)^2 = x_i1^2 x_j1^2 + 2 x_i1 x_j1 x_i2 x_j2 + x_i2^2 x_j2^2，这等价于在三维空间中的内积 [x_i1^2, √2 x_i1 x_i2, x_i2^2]^T · [x_j1^2, √2 x_j1 x_j2, x_j2^2]^T。",
+            "因此，我们可以在不显式映射到高维的情况下，利用核函数在低维空间完成高维空间的计算。"
+          ],
+          "rubric_points": [
+            "明确指出线性不可分时不存在一个超平面能完美分开两类数据",
+            "解释核技巧通过核函数将数据隐式映射到高维空间，使其变得线性可分",
+            "说明核函数 K(x_i, x_j) 直接计算高维空间内积，避免显式映射",
+            "以多项式核为例，展示如何在低维空间计算高维内积"
+          ],
+          "stem": "请解释：当数据在原空间线性不可分时，SVM如何通过核技巧来解决？请说明核函数的作用，并给出一个具体例子（如多项式核 K(x_i, x_j) = (x_i^T x_j)^2）。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "原始对偶问题回顾",
+            "核函数替换内积",
+            "使用核函数后的对偶目标函数",
+            "分类决策函数的变化"
+          ],
+          "question_id": "q_long_kernel_mechanism_v2",
+          "reference_answer": [
+            "原始线性SVM的对偶问题为：最大化 L_D(a) = Σ_{i=1}^N a_i - ½ Σ_{i=1}^N Σ_{j=1}^N a_i a_j y_i y_j x_i^T x_j，约束条件为 Σ a_i y_i = 0 且 a_i ≥ 0。",
+            "在非线性SVM中，我们将数据映射到高维空间 φ(x)，因此内积变为 φ(x_i)^T φ(x_j)。",
+            "利用核技巧，我们用核函数 K(x_i, x_j) 替换内积 φ(x_i)^T φ(x_j)，得到非线性SVM的对偶目标函数：L_D(a) = Σ_{i=1}^N a_i - ½ Σ_{i=1}^N Σ_{j=1}^N a_i a_j y_i y_j K(x_i, x_j)。",
+            "分类决策函数也相应变为：f(x_test) = Σ_{i=1}^N a_i y_i K(x_i, x_test) + b。",
+            "这样，我们无需知道 φ 的具体形式，只需定义核函数 K，即可在高维空间中构建最优超平面。"
+          ],
+          "rubric_points": [
+            "回忆原始线性SVM的对偶目标函数 L_D(a) = Σa_i - ½ ΣΣ a_i a_j y_i y_j x_i^T x_j",
+            "说明将内积 x_i^T x_j 替换为核函数 K(x_i, x_j)",
+            "写出非线性SVM的对偶目标函数 L_D(a) = Σa_i - ½ ΣΣ a_i a_j y_i y_j K(x_i, x_j)",
+            "说明分类决策函数变为 f(x_test) = Σ a_i y_i K(x_i, x_test) + b"
+          ],
+          "stem": "请解释：在非线性SVM中，如何将核函数集成到对偶问题中？写出使用核函数后的对偶目标函数，并说明核函数如何影响分类决策。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "kernel_trick",
+      "coverage_tags": [
+        "nonlinear_svm_kernel_methods",
+        "kernel_trick",
+        "kernel_function"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_kernel_usage",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体场景中判断何时使用核函数，并理解核函数的作用。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能应用核技巧解决线性不可分问题，并理解核函数的作用。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "核技巧",
+          "en": "Kernel Trick"
+        },
+        {
+          "display": "核函数",
+          "en": "Kernel Function"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "同心圆数据是典型的线性不可分情况。使用核函数（如RBF核）将数据映射到高维空间，使其变得线性可分，是标准做法。增加数据或调整C都无法改变数据的线性不可分性质。",
+          "options": [
+            "增加训练数据量",
+            "使用核函数将数据映射到高维空间",
+            "增大C参数的值",
+            "减小C参数的值"
+          ],
+          "question_id": "q_quiz_kernel_usage_v1",
+          "stem": "给定一个数据集，在原始二维空间中两类数据呈同心圆分布，线性SVM无法正确分类。以下哪种方法最可能解决这个问题？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "核函数的核心作用是避免显式计算高维映射 φ(x)，而是直接在低维空间通过核函数计算出高维空间中的内积 φ(x_i)^T φ(x_j)。",
+          "options": [
+            "直接计算高维映射 φ(x)",
+            "在低维空间中计算高维空间的内积",
+            "增加模型的参数数量",
+            "减少训练数据的维度"
+          ],
+          "question_id": "q_quiz_kernel_usage_v2",
+          "stem": "在非线性SVM中，核函数 K(x_i, x_j) 的主要作用是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "linear_inseparability",
+      "coverage_tags": [
+        "linear_inseparability"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_linear_inseparable",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别线性不可分数据，并理解线性分类器无法处理的原因。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能判断数据是否线性可分，并理解线性不可分时线性分类器的局限性。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "线性不可分",
+          "en": "Linearly Inseparable"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "同心圆数据无法用一条直线分开，是典型的线性不可分情况。",
+          "options": [
+            "两类数据被一条直线清晰分开",
+            "两类数据呈同心圆嵌套分布",
+            "两类数据点完全重合",
+            "两类数据点数量相等"
+          ],
+          "question_id": "q_quiz_linear_inseparable_v1",
+          "stem": "以下哪种数据集最可能是线性不可分的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "线性不可分是数据表示的问题，通过核函数将数据映射到高维空间可以使其变得线性可分，SVM本身仍然适用。",
+          "options": [
+            "线性SVM通过调整C参数可以完美分类",
+            "问题出在表示方式上，需要改变数据表示空间",
+            "增加训练数据量可以解决线性不可分问题",
+            "线性SVM无法处理任何线性不可分数据，必须换模型"
+          ],
+          "question_id": "q_quiz_linear_inseparable_v2",
+          "stem": "当数据在原空间线性不可分时，以下哪种说法是正确的？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-regression-and-svm/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

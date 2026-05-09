@@ -1,0 +1,45 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "chapter_title": "Association 1",
+  "course_id": "user-1-comp7103",
+  "course_title": "COMP7103",
+  "lesson_id": "u1-comp7103-association-1",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "从购物篮到关联规则：直觉与定义",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "规则的质量：支持度与置信度",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "挖掘规则的两步法",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "Apriori 原理：剪枝的核心思想",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "Apriori 算法：逐层生成与计数",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "紧凑表示：最大频繁项集与闭项集",
+      "file": "step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "从支持度到效用：高效用项集",
+      "file": "step7/step.json",
+      "sequence_id": "step7"
+    }
+  ]
+}

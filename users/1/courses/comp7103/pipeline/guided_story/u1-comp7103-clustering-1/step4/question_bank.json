@@ -1,0 +1,504 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "initial_centroid_importance",
+      "covered_by": [
+        "qf_flash_initial_centroid",
+        "qf_quiz_initial_centroid_effect",
+        "qf_long_sse_comparison"
+      ],
+      "description": "K-means 初始质心的选择对聚类结果有重要影响，选得不好可能导致次优解。"
+    },
+    {
+      "coverage_tag": "sse_definition_and_use",
+      "covered_by": [
+        "qf_flash_sse_definition",
+        "qf_quiz_sse_interpretation",
+        "qf_long_sse_comparison"
+      ],
+      "description": "误差平方和 (SSE) 的定义、公式、以及如何用 SSE 比较不同聚类结果的好坏。"
+    },
+    {
+      "coverage_tag": "solutions_initial_centroids",
+      "covered_by": [
+        "qf_flash_solutions_initial_centroids",
+        "qf_quiz_identify_solution"
+      ],
+      "description": "解决初始质心问题的三种方法：多次运行选最小SSE、选择最远点、二分 K-means。"
+    },
+    {
+      "coverage_tag": "bisecting_k_means",
+      "covered_by": [
+        "qf_flash_bisecting_k_means",
+        "qf_quiz_bisecting_k_means_concept"
+      ],
+      "description": "二分 K-means 的基本思路：从所有点作为一个簇开始，反复选择并二分一个簇。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "initial_centroid_importance",
+      "coverage_tags": [
+        "initial_centroid_importance"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_initial_centroid",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 K-means 初始质心选择的重要性及其后果。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了初始质心选择对 K-means 结果有决定性影响这一关键事实。",
+      "question_type": "short_answer",
+      "retrieval_focus": "K-means 初始质心选择不当的一个具体后果。",
+      "term_refs": [
+        {
+          "display": "初始质心",
+          "en": "initial centroid"
+        }
+      ],
+      "variants": [
+        {
+          "back": "两个簇被错误地合并成一个。",
+          "estimated_seconds": 8,
+          "explanation": "初始质心过近会使算法在迭代过程中无法正确区分两个本应分离的簇，最终将它们合并。",
+          "front": "K-means 中，如果初始质心选得太近，可能导致什么后果？",
+          "question_id": "q_flash_initial_centroid_v1"
+        },
+        {
+          "back": "初始质心的选择。",
+          "estimated_seconds": 6,
+          "explanation": "不同的初始质心选择会导致算法收敛到不同的局部最优解，从而产生不同的聚类结果。",
+          "front": "K-means 的聚类结果对什么因素非常敏感？",
+          "question_id": "q_flash_initial_centroid_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "sse_definition_and_use",
+      "coverage_tags": [
+        "sse_definition_and_use"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sse_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 SSE 的定义和计算公式。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了 SSE 是衡量簇内紧凑度的指标，其值越小越好。",
+      "question_type": "short_answer",
+      "retrieval_focus": "SSE 公式中的求和对象。",
+      "term_refs": [
+        {
+          "display": "误差平方和",
+          "en": "Sum of Squared Error (SSE)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "误差平方和 (Sum of Squared Error)。",
+          "estimated_seconds": 5,
+          "explanation": "SSE 是 Sum of Squared Error 的缩写，中文为误差平方和。",
+          "front": "SSE 的全称是什么？",
+          "question_id": "q_flash_sse_definition_v1"
+        },
+        {
+          "back": "其所在簇的质心。",
+          "estimated_seconds": 8,
+          "explanation": "SSE 公式为 Σ Σ dist(x, m_i)^2，其中 m_i 是簇 C_i 的质心。",
+          "front": "SSE 计算的是每个点到什么的距离的平方和？",
+          "question_id": "q_flash_sse_definition_v2"
+        },
+        {
+          "back": "较小的。",
+          "estimated_seconds": 6,
+          "explanation": "SSE 越小，说明簇内点越紧凑，聚类质量通常越好。",
+          "front": "在比较两个不同初始质心产生的 K-means 结果时，应该选择 SSE 较大还是较小的那个？",
+          "question_id": "q_flash_sse_definition_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "solutions_initial_centroids",
+      "coverage_tags": [
+        "solutions_initial_centroids"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_solutions_initial_centroids",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆解决初始质心问题的三种标准方法。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了至少一种解决 K-means 初始质心问题的方法。",
+      "question_type": "short_answer",
+      "retrieval_focus": "解决初始质心问题的一种具体方法。",
+      "term_refs": [
+        {
+          "display": "多次运行",
+          "en": "multiple runs"
+        },
+        {
+          "display": "最远点",
+          "en": "most widely separated points"
+        }
+      ],
+      "variants": [
+        {
+          "back": "SSE 最小的结果。",
+          "estimated_seconds": 8,
+          "explanation": "通过多次随机初始化并运行 K-means，选择 SSE 最小的聚类结果，可以降低陷入糟糕局部最优的风险。",
+          "front": "解决 K-means 初始质心问题的一种方法是多次运行，然后选择哪个结果？",
+          "question_id": "q_flash_solutions_initial_centroids_v1"
+        },
+        {
+          "back": "彼此距离最远的点。",
+          "estimated_seconds": 8,
+          "explanation": "选择彼此距离最远的点作为初始质心，可以增加质心分散在整个数据空间的可能性，有助于发现不同的簇。",
+          "front": "解决 K-means 初始质心问题的一种方法是选择什么样的点作为初始质心？",
+          "question_id": "q_flash_solutions_initial_centroids_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "bisecting_k_means",
+      "coverage_tags": [
+        "bisecting_k_means"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_bisecting_k_means",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆二分 K-means 的基本思路。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了二分 K-means 的核心思想：从一个大簇开始反复二分。",
+      "question_type": "short_answer",
+      "retrieval_focus": "二分 K-means 的起始状态。",
+      "term_refs": [
+        {
+          "display": "二分 K-means",
+          "en": "Bisecting K-means"
+        }
+      ],
+      "variants": [
+        {
+          "back": "一个簇。",
+          "estimated_seconds": 6,
+          "explanation": "二分 K-means 从包含所有数据点的一个大簇开始。",
+          "front": "二分 K-means 算法开始时，所有点被看作几个簇？",
+          "question_id": "q_flash_bisecting_k_means_v1"
+        },
+        {
+          "back": "反复选择一个簇并将其一分为二。",
+          "estimated_seconds": 8,
+          "explanation": "算法通过反复二分一个簇，直到达到指定的簇数 K。",
+          "front": "二分 K-means 的核心操作是什么？",
+          "question_id": "q_flash_bisecting_k_means_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-clustering-1",
+  "longform_families": [
+    {
+      "concept_key": "sse_definition_and_use",
+      "coverage_tags": [
+        "initial_centroid_importance",
+        "sse_definition_and_use"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_sse_comparison",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能应用 SSE 公式计算并比较不同聚类结果的质量，从而理解初始质心的重要性。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能独立计算 SSE 并基于 SSE 值判断聚类结果的优劣。",
+      "question_type": "worked_example",
+      "term_refs": [
+        {
+          "display": "误差平方和",
+          "en": "Sum of Squared Error (SSE)"
+        },
+        {
+          "display": "质心",
+          "en": "centroid"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "计算每个点到其簇质心的距离平方。",
+            "将每个簇内的距离平方求和。",
+            "将所有簇的平方和相加得到总 SSE。",
+            "比较两个结果的 SSE 并给出结论。"
+          ],
+          "question_id": "q_long_sse_comparison_v1",
+          "reference_answer": [
+            "**结果 1 计算**:",
+            "簇1: A到(1,0)距离平方 = (0-1)^2 + (0-0)^2 = 1; B到(1,0)距离平方 = (2-1)^2 + (0-0)^2 = 1; 簇1 SSE = 1+1 = 2",
+            "簇2: C到(7,6)距离平方 = (6-7)^2 + (6-6)^2 = 1; D到(7,6)距离平方 = (8-7)^2 + (6-6)^2 = 1; 簇2 SSE = 1+1 = 2",
+            "结果1 总 SSE = 2 + 2 = 4",
+            "**结果 2 计算**:",
+            "A到(4,3)距离平方 = (0-4)^2 + (0-3)^2 = 16 + 9 = 25",
+            "B到(4,3)距离平方 = (2-4)^2 + (0-3)^2 = 4 + 9 = 13",
+            "C到(4,3)距离平方 = (6-4)^2 + (6-3)^2 = 4 + 9 = 13",
+            "D到(4,3)距离平方 = (8-4)^2 + (6-3)^2 = 16 + 9 = 25",
+            "结果2 总 SSE = 25 + 13 + 13 + 25 = 76",
+            "**结论**: 结果1的SSE (4) 远小于结果2的SSE (76)，因此结果1更好。这说明不同的初始质心选择（导致结果2将所有点归为一类）会产生质量更差的聚类。"
+          ],
+          "rubric_points": [
+            "正确计算每个点到其质心的距离平方 (4分)",
+            "正确计算每个簇的 SSE (2分)",
+            "正确计算总 SSE (2分)",
+            "基于 SSE 给出正确结论 (2分)"
+          ],
+          "stem": "给定数据集包含四个点：A(0,0), B(2,0), C(6,6), D(8,6)。运行 K-means (k=2) 得到两个结果。\n\n**结果 1**: 簇1 = {A, B}, 质心为 (1, 0)；簇2 = {C, D}, 质心为 (7, 6)。\n**结果 2**: 簇1 = {A, B, C, D}, 质心为 (4, 3)。\n\n请计算每个结果的 SSE，并据此判断哪个结果更好。请写出详细的计算步骤。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "计算每个点到其簇质心的距离平方。",
+            "将每个簇内的距离平方求和。",
+            "将所有簇的平方和相加得到总 SSE。",
+            "比较两个结果的 SSE 并给出结论。"
+          ],
+          "question_id": "q_long_sse_comparison_v2",
+          "reference_answer": [
+            "**结果 A 计算**:",
+            "簇1: P到(1,2)距离平方 = (1-1)^2 + (1-2)^2 = 1; Q到(1,2)距离平方 = (1-1)^2 + (3-2)^2 = 1; 簇1 SSE = 1+1 = 2",
+            "簇2: R到(8,2)距离平方 = (7-8)^2 + (2-2)^2 = 1; S到(8,2)距离平方 = (9-8)^2 + (2-2)^2 = 1; 簇2 SSE = 1+1 = 2",
+            "结果A 总 SSE = 2 + 2 = 4",
+            "**结果 B 计算**:",
+            "P到(4.5,2)距离平方 = (1-4.5)^2 + (1-2)^2 = 12.25 + 1 = 13.25",
+            "Q到(4.5,2)距离平方 = (1-4.5)^2 + (3-2)^2 = 12.25 + 1 = 13.25",
+            "R到(4.5,2)距离平方 = (7-4.5)^2 + (2-2)^2 = 6.25 + 0 = 6.25",
+            "S到(4.5,2)距离平方 = (9-4.5)^2 + (2-2)^2 = 20.25 + 0 = 20.25",
+            "结果B 总 SSE = 13.25 + 13.25 + 6.25 + 20.25 = 53",
+            "**结论**: 结果A的SSE (4) 远小于结果B的SSE (53)，因此结果A更好。这再次说明初始质心选择不当（导致结果B将所有点归为一类）会得到更差的聚类结果。"
+          ],
+          "rubric_points": [
+            "正确计算每个点到其质心的距离平方 (4分)",
+            "正确计算每个簇的 SSE (2分)",
+            "正确计算总 SSE (2分)",
+            "基于 SSE 给出正确结论 (2分)"
+          ],
+          "stem": "给定数据集包含四个点：P(1,1), Q(1,3), R(7,2), S(9,2)。运行 K-means (k=2) 得到两个结果。\n\n**结果 A**: 簇1 = {P, Q}, 质心为 (1, 2)；簇2 = {R, S}, 质心为 (8, 2)。\n**结果 B**: 簇1 = {P, Q, R, S}, 质心为 (4.5, 2)。\n\n请计算每个结果的 SSE，并据此判断哪个结果更好。请写出详细的计算步骤。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "initial_centroid_importance",
+      "coverage_tags": [
+        "initial_centroid_importance"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_initial_centroid_effect",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析初始质心选择对 K-means 结果的具体影响。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能识别出初始质心选择不当可能导致的具体问题。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "初始质心",
+          "en": "initial centroid"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "初始质心过近会导致算法在迭代中无法正确区分两个簇，最终将它们合并为一个簇，得到一个次优解。",
+          "options": [
+            "算法会更快收敛",
+            "两个本应分离的簇可能被错误地合并成一个",
+            "最终的 SSE 一定会更小",
+            "算法会陷入死循环"
+          ],
+          "question_id": "q_quiz_initial_centroid_effect_v1",
+          "stem": "在 K-means 聚类中，如果两个初始质心被选得非常接近，最可能发生以下哪种情况？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "K-means 对初始质心敏感，不同的初始选择会导致算法收敛到不同的局部最优解，从而产生不同的聚类结果。",
+          "options": [
+            "只要迭代次数足够多，不同的初始质心总会收敛到相同的结果",
+            "初始质心的选择对最终的聚类结果没有影响",
+            "K-means 的结果依赖于初始质心的选择，不同的选择可能导致不同的聚类结果",
+            "初始质心必须选择数据集中实际存在的点"
+          ],
+          "question_id": "q_quiz_initial_centroid_effect_v2",
+          "stem": "关于 K-means 算法，以下哪个说法是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "sse_definition_and_use",
+      "coverage_tags": [
+        "sse_definition_and_use"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_sse_interpretation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确解释 SSE 的含义并应用其比较聚类结果。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能理解 SSE 值大小与聚类质量的关系。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "误差平方和",
+          "en": "Sum of Squared Error (SSE)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "SSE 越小，表示簇内点越紧凑，聚类质量通常越好。因此 SSE 为 10 的结果 A 更好。",
+          "options": [
+            "结果 A 更好",
+            "结果 B 更好",
+            "两者一样好",
+            "无法判断"
+          ],
+          "question_id": "q_quiz_sse_interpretation_v1",
+          "stem": "对于同一个数据集，你运行了两次 K-means，得到两个不同的聚类结果。结果 A 的 SSE 为 10，结果 B 的 SSE 为 20。仅从 SSE 的角度看，哪个结果更好？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "SSE 计算每个点到其簇质心的距离平方和，值越小说明簇内点越紧凑，即凝聚度越高。",
+          "options": [
+            "簇与簇之间的分离程度",
+            "簇内点的紧凑程度",
+            "算法的运行时间",
+            "数据点的数量"
+          ],
+          "question_id": "q_quiz_sse_interpretation_v2",
+          "stem": "SSE 衡量的是聚类的哪个方面？"
+        }
+      ]
+    },
+    {
+      "concept_key": "solutions_initial_centroids",
+      "coverage_tags": [
+        "solutions_initial_centroids"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_identify_solution",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下识别出解决 K-means 初始质心问题的标准方法。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能区分材料中提到的标准方法和非标准方法。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "二分 K-means",
+          "en": "Bisecting K-means"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "材料中明确提到了三种方法：多次运行选最小 SSE、选择彼此距离最远的点作为初始质心、以及二分 K-means。",
+          "options": [
+            "使用层次聚类的结果作为初始质心",
+            "选择彼此距离最远的点作为初始质心",
+            "随机选择一个点作为所有簇的初始质心",
+            "使用 DBSCAN 的结果初始化"
+          ],
+          "question_id": "q_quiz_identify_solution_v1",
+          "stem": "以下哪个是材料中提到的解决 K-means 初始质心问题的方法？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 20,
+          "explanation": "将数据点随机分配到 K 个簇后计算质心是一种初始化方法，但材料中并未将其列为解决初始质心问题的标准方法。标准方法是多次运行、选最远点、二分 K-means。",
+          "options": [
+            "多次运行，选 SSE 最小的结果",
+            "选择彼此距离最远的点作为初始质心",
+            "使用二分 K-means",
+            "将数据点随机分配到 K 个簇后计算质心"
+          ],
+          "question_id": "q_quiz_identify_solution_v2",
+          "stem": "以下哪个不是材料中提到的解决 K-means 初始质心问题的方法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "bisecting_k_means",
+      "coverage_tags": [
+        "bisecting_k_means"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_bisecting_k_means_concept",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确理解二分 K-means 的基本概念和流程。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了二分 K-means 的核心操作和目的。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "二分 K-means",
+          "en": "Bisecting K-means"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "二分 K-means 的核心是反复选择一个簇，然后使用 K=2 的 K-means 将其分成两个子簇。",
+          "options": [
+            "合并两个最近的簇",
+            "选择一个簇并将其一分为二",
+            "随机重新分配所有数据点到 K 个簇",
+            "计算所有数据点的全局质心"
+          ],
+          "question_id": "q_quiz_bisecting_k_means_concept_v1",
+          "stem": "二分 K-means 算法在每次迭代中，主要执行什么操作？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "二分 K-means 是 K-means 的一种变体，旨在通过一种确定性的分裂过程来减轻对初始质心选择的敏感性。",
+          "options": [
+            "层次聚类计算量过大的问题",
+            "K-means 对初始质心敏感的问题",
+            "DBSCAN 参数难以确定的问题",
+            "K-medoids 无法处理分类数据的问题"
+          ],
+          "question_id": "q_quiz_bisecting_k_means_concept_v2",
+          "stem": "二分 K-means 是解决什么问题的变体？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-clustering-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

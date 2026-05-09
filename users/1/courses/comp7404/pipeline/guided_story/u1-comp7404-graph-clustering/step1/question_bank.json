@@ -1,0 +1,288 @@
+{
+  "chapter_id": "lecture-06-graph-clustering",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "graph_based_clustering_idea",
+      "covered_by": [
+        "qf_flash_cut_def",
+        "qf_quiz_cut_behavior"
+      ],
+      "description": "基于图的聚类基本思想：将数据项关联到加权图的顶点，通过切割低权重边得到内部权重大的连通分量。"
+    },
+    {
+      "coverage_tag": "cut_definition",
+      "covered_by": [
+        "qf_flash_cut_def",
+        "qf_quiz_cut_behavior"
+      ],
+      "description": "割(Cut)的数学定义：Cut(A,B) = Σ w(u,v)，表示两个子集之间所有连接边的权重之和。"
+    },
+    {
+      "coverage_tag": "minimum_cut_definition",
+      "covered_by": [
+        "qf_flash_cut_def",
+        "qf_quiz_cut_behavior"
+      ],
+      "description": "最小割(Minimum Cut)的定义：使得割的权重之和最小的划分方式。"
+    },
+    {
+      "coverage_tag": "minimum_cut_drawback",
+      "covered_by": [
+        "qf_flash_drawback",
+        "qf_quiz_drawback",
+        "qf_long_drawback"
+      ],
+      "description": "最小割的缺陷：倾向于切出孤立点（离群点），而不是产生有意义的团块划分。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "cut_definition",
+      "coverage_tags": [
+        "graph_based_clustering_idea",
+        "cut_definition",
+        "minimum_cut_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_cut_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆割和最小割的数学定义及核心思想。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能写出割的公式，并能解释最小割的含义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "割的数学定义和最小割的直观含义。",
+      "term_refs": [
+        {
+          "display": "割",
+          "en": "Cut"
+        },
+        {
+          "display": "最小割",
+          "en": "Minimum Cut"
+        }
+      ],
+      "variants": [
+        {
+          "back": "称为割 (Cut)。公式为 Cut(A, B) = Σ_{u∈A, v∈B} w(u, v)。",
+          "estimated_seconds": 10,
+          "explanation": "割的权重等于所有连接 A 和 B 的边的权重之和。",
+          "front": "在基于图的聚类中，将图分成两个不相交集合 A 和 B 时，衡量它们之间不相似度的量叫什么？它的数学公式是什么？",
+          "question_id": "q_flash_cut_def_v1"
+        },
+        {
+          "back": "最小割是使得割的权重之和最小的划分方式。",
+          "estimated_seconds": 8,
+          "explanation": "即找到一种将图分成两部分的方法，使得被切断的边的总权重最小。",
+          "front": "什么是最小割 (Minimum Cut)？",
+          "question_id": "q_flash_cut_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "minimum_cut_drawback",
+      "coverage_tags": [
+        "minimum_cut_drawback"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_drawback",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆最小割的主要缺陷及其原因。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能指出最小割倾向于切出孤立点，并解释原因。",
+      "question_type": "short_answer",
+      "retrieval_focus": "最小割的缺陷及其根本原因。",
+      "term_refs": [
+        {
+          "display": "最小割",
+          "en": "Minimum Cut"
+        }
+      ],
+      "variants": [
+        {
+          "back": "它倾向于切出孤立点（离群点），而不是将图分成有意义的团块。",
+          "estimated_seconds": 8,
+          "explanation": "因为切掉离群点那条细边的代价最小。",
+          "front": "最小割 (Minimum Cut) 在聚类中的一个主要缺陷是什么？",
+          "question_id": "q_flash_drawback_v1"
+        },
+        {
+          "back": "因为离群点只有一条细边连接到主团，切掉它的代价（权重）最小。",
+          "estimated_seconds": 8,
+          "explanation": "最小割只考虑被切断边的总权重最小化。",
+          "front": "为什么最小割会优先切出离群点，而不是分开密集区域？",
+          "question_id": "q_flash_drawback_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-graph-clustering",
+  "longform_families": [
+    {
+      "concept_key": "minimum_cut_drawback",
+      "coverage_tags": [
+        "minimum_cut_drawback"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_drawback",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能清晰解释最小割的缺陷，并用具体例子说明。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能用自己的语言解释为什么最小割不适合聚类，并给出一个反例。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "最小割",
+          "en": "Minimum Cut"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "最小割的目标是什么？",
+            "它在什么情况下会失败？",
+            "请用一个包含离群点的图作为例子进行说明。"
+          ],
+          "question_id": "q_long_drawback_v1",
+          "reference_answer": [
+            "最小割的目标是找到一种划分，使得被切断的边的总权重最小。",
+            "它的缺陷在于，它只考虑被切断边的总权重，而忽略了划分后子图内部的紧密程度。",
+            "例如，考虑一个图：一个由10个点组成的主团，内部边权重均为1；还有一个离群点，只有一条权重为0.1的边连接到主团。",
+            "最小割会选择切掉那条权重为0.1的边，将离群点单独分为一组。",
+            "这个结果不合理，因为离群点单独成组没有实际意义，我们期望的聚类结果是内部紧密、外部稀疏的团块。"
+          ],
+          "rubric_points": [
+            "正确描述最小割的目标：找到总权重最小的切割。",
+            "指出其缺陷：倾向于切出孤立点或小区域，而不是产生有意义的簇。",
+            "给出具体例子：如一个主团加一个离群点，最小割会切掉离群点。",
+            "解释为什么这个结果不合理：离群点单独成组没有意义，组内不紧密。"
+          ],
+          "stem": "请解释为什么最小割 (Minimum Cut) 不适合直接用于图聚类任务。请至少包含一个具体的例子来说明其缺陷。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "cut_definition",
+      "coverage_tags": [
+        "graph_based_clustering_idea",
+        "cut_definition",
+        "minimum_cut_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_cut_behavior",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体情境中应用割和最小割的概念，预测其行为。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能根据给定的图结构，判断最小割会如何划分。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "割",
+          "en": "Cut"
+        },
+        {
+          "display": "最小割",
+          "en": "Minimum Cut"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "切掉离群点那条边，割的权重为0.1；如果从主团中间切，至少会切掉多条权重为1的边，总权重大于0.1。所以最小割会选择切掉离群点。",
+          "options": [
+            "切掉离群点那条边，将离群点单独分为一组",
+            "从主团中间切开，将主团分成两个大小相近的组",
+            "不切割任何边",
+            "切掉所有边"
+          ],
+          "question_id": "q_quiz_cut_behavior_v1",
+          "stem": "给定一个加权图：主团有10个点，彼此之间边的权重为1；离群点只有一条权重为0.1的边连接到主团。如果使用最小割进行划分，最可能的结果是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "离群点与任何其他点的连接都很弱，所以最小割会优先切掉它，而不是把密集区域分开。",
+          "options": [
+            "把密集区域分成两半",
+            "把离群点单独切出来",
+            "均匀地切掉每个区域的一部分",
+            "不切割任何边"
+          ],
+          "question_id": "q_quiz_cut_behavior_v2",
+          "stem": "假设图中有一个离群点（只有一条很细的边连到主团），如果只找权重最小的边来切，最可能的结果是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "minimum_cut_drawback",
+      "coverage_tags": [
+        "minimum_cut_drawback"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_drawback",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别最小割的缺陷，并理解其不合理之处。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生能判断最小割产生的结果是否合理，并解释原因。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "最小割",
+          "en": "Minimum Cut"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "这个离群点单独成组，但组内只有一个点，没有实际意义。我们希望切出来的组内部是紧密的。",
+          "options": [
+            "不合理，因为离群点单独成组没有意义",
+            "合理，因为离群点本来就不属于任何组",
+            "合理，因为切掉的边权重最小",
+            "不合理，因为应该切掉所有边"
+          ],
+          "question_id": "q_quiz_drawback_v1",
+          "stem": "只切掉离群点那一条细边，得到的结果合理吗？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "最小割只看总权重，离群点只有一条细边，切掉它的代价最小，所以会被优先切掉，导致产生无意义的孤立点组。",
+          "options": [
+            "错误",
+            "正确"
+          ],
+          "question_id": "q_quiz_drawback_v2",
+          "stem": "判断以下说法是否正确：最小割总是能产生合理的分组。"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-graph-clustering/plain.txt",
+    "related": [
+      "pipeline/2-related_important/course_desc.md"
+    ],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

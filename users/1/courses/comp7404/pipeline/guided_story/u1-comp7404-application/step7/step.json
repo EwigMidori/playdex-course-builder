@@ -1,0 +1,197 @@
+{
+  "chapter_id": "lecture-05-application",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-application",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s070",
+      "introduced_terms": [],
+      "lines": [
+        "图像之后，轮到视频了。",
+        "视频不仅有空间信息，还有时间信息。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s071",
+      "introduced_terms": [],
+      "lines": [
+        "一个事件，比如“飞机起飞”，",
+        "包含一系列随时间变化的场景和动作。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s072",
+      "introduced_terms": [],
+      "lines": [
+        "如何比较两个视频是否描述了同一个事件？",
+        "一个思路是把视频看作一帧一帧的图像序列。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s073",
+      "introduced_terms": [],
+      "lines": [
+        "对每一帧提取词袋向量，",
+        "整个视频就变成了一个“帧的袋子”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s074",
+      "introduced_terms": [],
+      "lines": [
+        "但问题来了：两个视频的节奏可能不同。",
+        "看一个失败案例：一个视频中飞机在10秒时起飞，另一个在20秒时起飞。",
+        "直接比较帧，会认为它们完全不同。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": "帧的袋子表示忽略了帧之间的时间顺序，当视频节奏不同时，直接比较帧会导致匹配失败，因为同一事件出现在不同的时间位置。",
+        "kind": "short_answer",
+        "prompt": "为什么帧的袋子表示在视频节奏不同时会失败？"
+      },
+      "focus_terms": [
+        "bag_of_words"
+      ],
+      "id": "s075",
+      "introduced_terms": [],
+      "lines": [
+        "为什么帧的袋子表示在视频节奏不同时会失败？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "earth_movers_distance"
+      ],
+      "id": "s076",
+      "introduced_terms": [
+        "earth_movers_distance"
+      ],
+      "lines": [
+        "这就需要用到 <term id=\"earth_movers_distance\">推土机距离</term>。",
+        "它可以灵活地将一帧匹配到另一帧，允许时间上的偏移。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "temporal_pyramid_matching"
+      ],
+      "id": "s077",
+      "introduced_terms": [
+        "temporal_pyramid_matching"
+      ],
+      "lines": [
+        "更进一步，<term id=\"temporal_pyramid_matching\">时间金字塔匹配</term> 将视频分成多个时间段。",
+        "在粗粒度上匹配整个视频，在细粒度上匹配局部片段。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "推土机距离允许一帧匹配到另一视频中时间位置不同的帧，从而处理时间偏移。",
+        "kind": "single_choice",
+        "options": [
+          "光照变化",
+          "视频的时间偏移和节奏不同",
+          "物体的遮挡",
+          "视频的分辨率不同"
+        ],
+        "prompt": "推土机距离在视频匹配中主要解决什么问题？"
+      },
+      "focus_terms": [
+        "earth_movers_distance"
+      ],
+      "id": "s078",
+      "introduced_terms": [],
+      "lines": [
+        "推土机距离在视频匹配中主要解决什么问题？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "temporal_pyramid_matching",
+        "earth_movers_distance"
+      ],
+      "id": "s079",
+      "introduced_terms": [],
+      "lines": [
+        "这样，即使两个视频长度不同、节奏不同，",
+        "也能计算出它们之间的相似度。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words",
+        "visual_word"
+      ],
+      "id": "s080",
+      "introduced_terms": [],
+      "lines": [
+        "一句话总结：",
+        "把图像或视频变成一组可统计的“单词”，再想办法保留它们的结构信息。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": "帧的袋子表示忽略了帧之间的时间顺序，当视频节奏不同时，直接比较帧会导致匹配失败。推土机距离允许帧与帧之间灵活匹配，处理时间偏移，从而解决这个问题。",
+        "kind": "short_answer",
+        "prompt": "请分析帧的袋子表示在视频节奏不同时为什么会失败？推土机距离如何解决？"
+      },
+      "focus_terms": [
+        "bag_of_words",
+        "earth_movers_distance"
+      ],
+      "id": "s081",
+      "introduced_terms": [],
+      "lines": [
+        "请分析帧的袋子表示在视频节奏不同时为什么会失败？推土机距离如何解决？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "Temporally aligned pyramid match kernel for Video Event Recognition. Bag-of-frame representation. Earth Mover's Distance (EMD). Temporal Pyramid Matching: Motivations. Multi-level Pyramid Matching: Algorithm. Similarity between Videos.",
+    "related": [
+      "lecture-05-application"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "earth_movers_distance": {
+      "aliases": [
+        "Earth Mover's Distance",
+        "EMD"
+      ],
+      "display": "推土机距离",
+      "gloss": "一种衡量两个分布之间差异的距离，可以理解为将一个分布变成另一个所需的最小工作量。"
+    },
+    "temporal_pyramid_matching": {
+      "aliases": [
+        "Temporal Pyramid Matching",
+        "TPM"
+      ],
+      "display": "时间金字塔匹配",
+      "gloss": "将金字塔匹配的思想扩展到时间维度，用于比较视频的相似性。"
+    }
+  }
+}

@@ -1,0 +1,445 @@
+---
+lessonId: u1-comp7404-performance-evaluation
+title: Performance Evaluation
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["core_theme", "accuracy_limitation"]
+    linkedSteps: ["step1"]
+  - sectionId: global-concept-map
+    title: 课程全景与关键问题
+    coverageTags: ["core_theme"]
+    linkedSteps: ["step1", "step2", "step3", "step4a", "step4b", "step5"]
+  - sectionId: confusion-matrix-basics
+    title: 混淆矩阵：一切评价的基础
+    coverageTags: ["confusion_matrix_basics", "error_types"]
+    linkedSteps: ["step1"]
+  - sectionId: precision-and-recall
+    title: 精确率与召回率：两个核心视角
+    coverageTags: ["precision_definition_and_formula", "recall_definition_and_formula", "precision_recall_calculation_from_confusion_matrix", "precision_recall_tradeoff", "precision_recall_application_scenario"]
+    linkedSteps: ["step2"]
+  - sectionId: f1-score
+    title: F1 分数：平衡的艺术
+    coverageTags: ["f1_definition_and_formula", "f1_calculation_from_confusion_matrix", "f1_vs_arithmetic_mean", "f1_interpretation"]
+    linkedSteps: ["step3"]
+  - sectionId: average-precision
+    title: 平均精确率（AP）：排序质量的综合评估
+    coverageTags: ["average_precision_definition", "average_precision_computation", "average_precision_interpretation", "threshold_dependence"]
+    linkedSteps: ["step4a"]
+  - sectionId: roc-curve-and-auc
+    title: ROC 曲线与 AUC：跨阈值整体视角
+    coverageTags: ["roc_curve_construction", "fpr_definition", "tpr_definition", "auc_definition", "auc_interpretation", "roc_curve_interpretation"]
+    linkedSteps: ["step4b"]
+  - sectionId: equal-error-rate
+    title: EER：对称误差参考点
+    coverageTags: ["equal_error_rate_definition", "eer_computation_from_roc", "eer_interpretation", "fnr_definition", "eer_vs_auc"]
+    linkedSteps: ["step5"]
+  - sectionId: pitfalls
+    title: 易错点
+    coverageTags: ["accuracy_limitation", "precision_recall_tradeoff", "threshold_dependence"]
+    linkedSteps: ["step1", "step2", "step4a"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["core_theme"]
+    linkedSteps: ["step1", "step2", "step3", "step4a", "step4b", "step5"]
+coverageTrace:
+  - coverageTag: core_theme
+    description: 本课核心主题：为什么需要超越准确率，以及如何系统评价分类模型性能
+    sectionIds: ["why-this-lesson-matters", "global-concept-map", "review-and-self-test"]
+    linkedSteps: ["step1", "step2", "step3", "step4a", "step4b", "step5"]
+  - coverageTag: accuracy_limitation
+    description: 为什么只看准确率不够：在类别不平衡场景下，高准确率可能掩盖模型完全失效的问题
+    sectionIds: ["why-this-lesson-matters", "pitfalls"]
+    linkedSteps: ["step1"]
+  - coverageTag: error_types
+    description: 误报（FP）和漏报（FN）的定义与区分
+    sectionIds: ["confusion-matrix-basics"]
+    linkedSteps: ["step1"]
+  - coverageTag: confusion_matrix_basics
+    description: TP、FP、TN、FN 四个基本计数的定义与计算
+    sectionIds: ["confusion-matrix-basics"]
+    linkedSteps: ["step1"]
+  - coverageTag: precision_definition_and_formula
+    description: 精确率的定义与公式：Precision = TP/(TP+FP)
+    sectionIds: ["precision-and-recall"]
+    linkedSteps: ["step2"]
+  - coverageTag: recall_definition_and_formula
+    description: 召回率的定义与公式：Recall = TP/(TP+FN)
+    sectionIds: ["precision-and-recall"]
+    linkedSteps: ["step2"]
+  - coverageTag: precision_recall_calculation_from_confusion_matrix
+    description: 从混淆矩阵计算精确率和召回率
+    sectionIds: ["precision-and-recall"]
+    linkedSteps: ["step2"]
+  - coverageTag: precision_recall_tradeoff
+    description: 精确率和召回率之间的权衡关系
+    sectionIds: ["precision-and-recall", "pitfalls"]
+    linkedSteps: ["step2"]
+  - coverageTag: precision_recall_application_scenario
+    description: 根据业务场景选择关注精确率还是召回率
+    sectionIds: ["precision-and-recall"]
+    linkedSteps: ["step2"]
+  - coverageTag: f1_definition_and_formula
+    description: F1 分数的定义：精确率和召回率的调和平均数，以及其数学公式
+    sectionIds: ["f1-score"]
+    linkedSteps: ["step3"]
+  - coverageTag: f1_calculation_from_confusion_matrix
+    description: 从混淆矩阵或给定的精确率和召回率计算 F1 分数
+    sectionIds: ["f1-score"]
+    linkedSteps: ["step3"]
+  - coverageTag: f1_vs_arithmetic_mean
+    description: F1 使用调和平均而非算术平均的原因：对低值更敏感
+    sectionIds: ["f1-score"]
+    linkedSteps: ["step3"]
+  - coverageTag: f1_interpretation
+    description: F1 分数越高表示精确率和召回率之间平衡越好
+    sectionIds: ["f1-score"]
+    linkedSteps: ["step3"]
+  - coverageTag: average_precision_definition
+    description: 平均精确率（AP）的定义：在所有召回率水平上对精确率取平均，综合反映模型的排序质量
+    sectionIds: ["average-precision"]
+    linkedSteps: ["step4a"]
+  - coverageTag: average_precision_computation
+    description: AP 的计算方法：对每个正类样本被正确召回的时刻记录当前精确率，求和后除以正类样本总数
+    sectionIds: ["average-precision"]
+    linkedSteps: ["step4a"]
+  - coverageTag: average_precision_interpretation
+    description: AP 的意义：AP 越高，模型越能把正类排在前面；不依赖特定阈值，更客观
+    sectionIds: ["average-precision"]
+    linkedSteps: ["step4a"]
+  - coverageTag: threshold_dependence
+    description: 不同阈值下精确率和召回率会变化，因此需要 AP 这种跨阈值的综合指标
+    sectionIds: ["average-precision", "pitfalls"]
+    linkedSteps: ["step4a"]
+  - coverageTag: roc_curve_construction
+    description: ROC 曲线的构建方法：按后验概率排序，在每个唯一阈值处计算 TPR 和 FPR 并连线
+    sectionIds: ["roc-curve-and-auc"]
+    linkedSteps: ["step4b"]
+  - coverageTag: fpr_definition
+    description: 假正率（FPR）的定义与公式：FP/(FP+TN)
+    sectionIds: ["roc-curve-and-auc"]
+    linkedSteps: ["step4b"]
+  - coverageTag: tpr_definition
+    description: 真正率（TPR）的定义与公式：TP/(TP+FN)，即召回率
+    sectionIds: ["roc-curve-and-auc"]
+    linkedSteps: ["step4b"]
+  - coverageTag: auc_definition
+    description: AUC 是 ROC 曲线下的面积，衡量模型整体排序能力，取值范围 0~1
+    sectionIds: ["roc-curve-and-auc"]
+    linkedSteps: ["step4b"]
+  - coverageTag: auc_interpretation
+    description: AUC=1 完美分类器，AUC=0.5 随机猜测，AUC 不依赖具体阈值
+    sectionIds: ["roc-curve-and-auc"]
+    linkedSteps: ["step4b"]
+  - coverageTag: roc_curve_interpretation
+    description: ROC 曲线越靠近左上角模型性能越好，横轴 FPR 纵轴 TPR
+    sectionIds: ["roc-curve-and-auc"]
+    linkedSteps: ["step4b"]
+  - coverageTag: equal_error_rate_definition
+    description: 等错误率（EER）的定义：FPR = FNR 时的错误率
+    sectionIds: ["equal-error-rate"]
+    linkedSteps: ["step5"]
+  - coverageTag: eer_computation_from_roc
+    description: 从 ROC 曲线数据点计算 EER 的方法
+    sectionIds: ["equal-error-rate"]
+    linkedSteps: ["step5"]
+  - coverageTag: eer_interpretation
+    description: EER 越低越好，用于对称评估场景
+    sectionIds: ["equal-error-rate"]
+    linkedSteps: ["step5"]
+  - coverageTag: fnr_definition
+    description: 假负率（FNR）= 1 - TPR
+    sectionIds: ["equal-error-rate"]
+    linkedSteps: ["step5"]
+  - coverageTag: eer_vs_auc
+    description: EER 与 AUC 的区别：单点 vs 整体面积
+    sectionIds: ["equal-error-rate"]
+    linkedSteps: ["step5"]
+---
+
+# Performance Evaluation
+
+## 为什么这一课重要
+
+训练好一个分类模型后，怎么知道它到底好不好？最朴素的想法是看它猜对了多少，也就是准确率。但准确率真的可靠吗？
+
+<Example title="准确率的陷阱">
+假设有 100 个癌症筛查样本，其中 5 个是病人（正类），95 个是健康人（负类）。模型为了省事，把所有样本都判为健康人。此时准确率高达 95%，但模型实际上漏掉了所有 5 个病人！在癌症筛查中，漏掉一个病人比误报一次严重得多。所以只看准确率远远不够。
+</Example>
+
+<KeyPoint>
+准确率在类别不平衡时具有欺骗性。我们需要更精细的指标来区分两种不同的错误：误报（把健康人判为病人）和漏报（把病人判为健康人）。
+</KeyPoint>
+
+<QuestionRef id="q_quiz_accuracy_limitation_v1" />
+
+## 课程全景与关键问题
+
+本课将系统学习分类模型的性能评价体系。你将掌握从基础计数到综合指标的全套工具，并理解每个指标的适用场景。
+
+<Figure src="images/356f8c422c2708b9762af2330c27309da13be8722619f5bfa24a96530dc44a8a.jpg" alt="Performance Evaluation 课程标题幻灯片">Performance Evaluation 课程标题</Figure>
+
+**核心问题链：**
+1. 模型说“这是正类”的时候，到底有多靠谱？ → 精确率
+2. 所有的正类样本，模型找出来了多少？ → 召回率
+3. 如何用一个指标平衡精确率和召回率？ → F1 分数
+4. 如何评估模型在所有阈值下的整体表现？ → AP、ROC 曲线与 AUC
+5. 两类错误相等时，错误率是多少？ → EER
+
+## 混淆矩阵：一切评价的基础
+
+为了精确描述模型的行为，我们引入四个基本计数，它们构成混淆矩阵。
+
+<Definition title="混淆矩阵的四个基本计数">
+- <Term id="true_positive" en="True Positive">真正例</Term>（TP）：模型预测为正类，实际也是正类。
+- <Term id="false_positive" en="False Positive">假正例</Term>（FP）：模型预测为正类，实际是负类（误报）。
+- <Term id="true_negative" en="True Negative">真负例</Term>（TN）：模型预测为负类，实际也是负类。
+- <Term id="false_negative" en="False Negative">假负例</Term>（FN）：模型预测为负类，实际是正类（漏报）。
+</Definition>
+
+<Example title="混淆矩阵示例">
+回到癌症筛查的例子：模型把所有样本都判为健康人。
+- TP = 0（没有正确识别任何病人）
+- FP = 0（没有误报）
+- TN = 95（正确识别了所有健康人）
+- FN = 5（漏掉了所有病人）
+</Example>
+
+<Checkpoint title="混淆矩阵练习">
+一个模型的混淆矩阵为：TP=0, FP=0, TN=95, FN=5。以下哪个说法正确？
+- A. 模型把所有样本都判为正类
+- B. 模型把所有样本都判为负类
+- C. 模型完美分类了所有样本
+- D. 模型把所有正类都正确识别了
+</Checkpoint>
+
+<QuestionFamily familyId="qf_flash_confusion_matrix" />
+<QuestionFamily familyId="qf_quiz_confusion_matrix" />
+
+## 精确率与召回率：两个核心视角
+
+有了四个基本计数，我们可以回答两个关键问题。
+
+<Definition title="精确率（Precision）">
+<InlineFormula latex="\\text{Precision} = \\frac{TP}{TP + FP}" />
+它回答的是：模型说“这是正类”的时候，到底有多靠谱？在所有被预测为正类的样本中，有多少是真正的正类。
+</Definition>
+
+<Definition title="召回率（Recall）">
+<InlineFormula latex="\\text{Recall} = \\frac{TP}{TP + FN}" />
+它回答的是：所有的正类样本，模型找出来了多少？在所有真正的正类样本中，有多少被模型正确找出来了。
+</Definition>
+
+<Example title="从混淆矩阵计算精确率和召回率">
+给定混淆矩阵：TP=3, FP=3, FN=2, TN=2。
+- <InlineFormula latex="\\text{Precision} = \\frac{3}{3+3} = \\frac{1}{2}" />
+- <InlineFormula latex="\\text{Recall} = \\frac{3}{3+2} = \\frac{3}{5}" />
+</Example>
+
+<KeyPoint>
+精确率和召回率往往互相牵制。想要精确率高，就要少误报，但可能漏掉更多正类；想要召回率高，就要尽量找出所有正类，但可能把很多负类也误报进来。
+</KeyPoint>
+
+<Example title="业务场景选择">
+- 癌症筛查：漏掉病人（FN）比误报（FP）严重得多 → 更关注召回率
+- 垃圾邮件过滤：把正常邮件误判为垃圾（FP）比漏掉垃圾邮件（FN）更糟糕 → 更关注精确率
+</Example>
+
+<QuestionFamily familyId="qf_flash_precision_formula" />
+<QuestionFamily familyId="qf_flash_recall_formula" />
+<QuestionFamily familyId="qf_flash_calc_precision_recall" />
+<QuestionFamily familyId="qf_quiz_precision_meaning" />
+<QuestionFamily familyId="qf_quiz_recall_meaning" />
+<QuestionFamily familyId="qf_quiz_precision_recall_tradeoff" />
+<QuestionFamily familyId="qf_quiz_calc_precision_recall" />
+<QuestionFamily familyId="qf_quiz_scenario_choice" />
+
+## F1 分数：平衡的艺术
+
+有没有一个指标能同时兼顾精确率和召回率？F1 分数就是答案。
+
+<Definition title="F1 分数（F1 Score）">
+<Formula latex="F_1 = 2 \\times \\frac{\\text{Precision} \\times \\text{Recall}}{\\text{Precision} + \\text{Recall}}">F1 是精确率和召回率的调和平均数</Formula>
+</Definition>
+
+<KeyPoint>
+F1 使用调和平均而不是算术平均，因为调和平均对低值更敏感。只有当精确率和召回率都高时，F1 才会高。例如，当 Precision=0.9、Recall=0.1 时，算术平均为 0.5，而调和平均约为 0.18，更能反映 Recall 很低的事实。
+</KeyPoint>
+
+<Example title="F1 分数计算">
+给定 Precision=3/5, Recall=3/4：
+<InlineFormula latex="F_1 = 2 \\times \\frac{(3/5) \\times (3/4)}{(3/5) + (3/4)} = \\frac{6}{11} \\approx 0.545" />
+</Example>
+
+<QuestionFamily familyId="qf_flash_f1_formula" />
+<QuestionFamily familyId="qf_flash_f1_calc" />
+<QuestionFamily familyId="qf_flash_f1_harmonic_mean" />
+<QuestionFamily familyId="qf_flash_f1_interpretation" />
+<QuestionFamily familyId="qf_quiz_f1_definition" />
+<QuestionFamily familyId="qf_quiz_f1_calc" />
+<QuestionFamily familyId="qf_quiz_f1_harmonic_mean" />
+<QuestionFamily familyId="qf_quiz_f1_interpretation" />
+
+## 平均精确率（AP）：排序质量的综合评估
+
+前面我们只在一个固定的阈值下计算了精确率和召回率。但如果阈值变了，结果也会变。同一个模型，不同阈值下精确率和召回率完全不同。
+
+<Definition title="平均精确率（Average Precision, AP）">
+AP 在所有召回率水平上对精确率取平均，综合反映模型的排序质量。AP 越高，说明模型越能把正类排在负类前面。
+</Definition>
+
+<Example title="AP 计算示例">
+给定 10 个样本（按后验概率从高到低排序）：
+| 实例 | P(+|A) | 真实类别 |
+|------|--------|----------|
+| 1    | 0.95   | +        |
+| 2    | 0.93   | +        |
+| 3    | 0.87   | -        |
+| 4    | 0.852  | -        |
+| 5    | 0.851  | -        |
+| 6    | 0.850  | +        |
+| 7    | 0.76   | -        |
+| 8    | 0.53   | +        |
+| 9    | 0.43   | -        |
+| 10   | 0.25   | +        |
+
+AP 计算过程：
+<InlineFormula latex="\\frac{1}{5} \\left(1 + \\frac{2}{2} + \\frac{3}{6} + \\frac{4}{8} + \\frac{5}{10}\\right) = 0.7" />
+</Example>
+
+<Figure src="images/46f09cc56605d7557f841d38adef9c95b891f54c49e398a79836f963cc99e848.jpg" alt="Average Precision 示意图">Average Precision 示意图</Figure>
+
+<KeyPoint>
+AP 不依赖某个特定的阈值，能综合评估模型在所有阈值下的表现，因此更客观。
+</KeyPoint>
+
+<QuestionFamily familyId="qf_flash_ap_definition" />
+<QuestionFamily familyId="qf_flash_ap_computation" />
+<QuestionFamily familyId="qf_flash_ap_interpretation" />
+<QuestionFamily familyId="qf_quiz_ap_definition" />
+<QuestionFamily familyId="qf_quiz_ap_computation" />
+<QuestionFamily familyId="qf_quiz_ap_interpretation" />
+<QuestionFamily familyId="qf_quiz_threshold_dependence" />
+
+## ROC 曲线与 AUC：跨阈值整体视角
+
+AP 关注的是精确率-召回率的关系。但有时我们需要关注另一种关系：假正率（FPR）和真正率（TPR）。
+
+<Definition title="假正率（False Positive Rate, FPR）与真正率（True Positive Rate, TPR）">
+<Formula latex="\\text{FPR} = \\frac{FP}{FP + TN}">假正率：负类样本中被误判的比例</Formula>
+<Formula latex="\\text{TPR} = \\frac{TP}{TP + FN}">真正率：正类样本中被正确找出的比例（即召回率）</Formula>
+</Definition>
+
+<Definition title="ROC 曲线">
+以假正率（FPR）为横轴、真正率（TPR）为纵轴绘制的曲线，展示模型在不同阈值下的表现。曲线越靠近左上角，模型性能越好。
+</Definition>
+
+<Example title="构建 ROC 曲线">
+使用上面的 10 个样本，计算不同阈值下的 FPR 和 TPR：
+
+| 阈值 | TP | FP | TN | FN | TPR | FPR |
+|------|----|----|----|----|-----|-----|
+| 0.95 | 1  | 0  | 5  | 4  | 0.2 | 0.0 |
+| 0.87 | 2  | 1  | 4  | 3  | 0.4 | 0.2 |
+| 0.85 | 3  | 1  | 4  | 2  | 0.6 | 0.2 |
+| 0.76 | 3  | 4  | 1  | 2  | 0.6 | 0.8 |
+| 0.53 | 4  | 4  | 1  | 1  | 0.8 | 0.8 |
+| 0.25 | 5  | 5  | 0  | 0  | 1.0 | 1.0 |
+
+将这些点 (FPR, TPR) 连线即得 ROC 曲线。
+</Example>
+
+<Figure src="images/e42e51b7e24de83a4a0da0f61b1eb978254a5699baa7329345f7afe92653dcc3.jpg" alt="ROC 曲线示例">ROC 曲线示例</Figure>
+
+<Definition title="AUC（Area Under the Curve）">
+AUC 是 ROC 曲线下的面积，衡量模型对正负样本的整体排序能力。
+- AUC = 1：完美分类器
+- AUC = 0.5：随机猜测，毫无预测能力
+- AUC 不依赖具体阈值
+</Definition>
+
+<QuestionFamily familyId="qf_flash_roc_definition" />
+<QuestionFamily familyId="qf_flash_fpr_tpr_formula" />
+<QuestionFamily familyId="qf_flash_auc_meaning" />
+<QuestionFamily familyId="qf_quiz_fpr_calculation" />
+<QuestionFamily familyId="qf_quiz_roc_interpretation" />
+<QuestionFamily familyId="qf_quiz_auc_interpretation" />
+
+## EER：对称误差参考点
+
+除了 AUC，还有一个常用的单点指标——等错误率（EER）。
+
+<Definition title="假负率（False Negative Rate, FNR）">
+<InlineFormula latex="\\text{FNR} = 1 - \\text{TPR} = \\frac{FN}{TP + FN}" />
+</Definition>
+
+<Definition title="等错误率（Equal Error Rate, EER）">
+EER 是 ROC 曲线上假正率（FPR）等于假负率（FNR）时的错误率。EER 越低，说明模型在平衡两类错误方面做得越好。
+</Definition>
+
+<Example title="从 ROC 数据点计算 EER">
+给定 ROC 数据点：(FPR=0.0, TPR=0.0), (FPR=0.2, TPR=0.6), (FPR=0.4, TPR=0.8), (FPR=0.6, TPR=1.0), (FPR=1.0, TPR=1.0)。
+
+计算每个点的 FNR：
+- FPR=0.0 时 FNR=1.0
+- FPR=0.2 时 FNR=0.4
+- FPR=0.4 时 FNR=0.2
+- FPR=0.6 时 FNR=0.0
+- FPR=1.0 时 FNR=0.0
+
+FPR=0.3 时 FNR=0.3（通过插值），所以 EER=0.3。
+</Example>
+
+<Figure src="images/93dfc42485d76f8926473959365a050c6bb629eabe4681300f073f5496ad0052.jpg" alt="EER 和 AUC 示意图">EER 和 AUC 示意图</Figure>
+
+<KeyPoint>
+EER 常用于生物识别等需要对称评估的场景。EER 是一个单点指标，而 AUC 是整体指标，两者从不同角度评估模型性能。
+</KeyPoint>
+
+<QuestionFamily familyId="qf_flash_eer_def" />
+<QuestionFamily familyId="qf_flash_eer_calc" />
+<QuestionFamily familyId="qf_flash_eer_interp" />
+<QuestionFamily familyId="qf_flash_fnr" />
+<QuestionFamily familyId="qf_quiz_eer_def" />
+<QuestionFamily familyId="qf_quiz_eer_calc" />
+<QuestionFamily familyId="qf_quiz_eer_interp" />
+
+## 易错点
+
+<Pitfall title="准确率的欺骗性">
+在类别不平衡场景下，高准确率可能完全掩盖模型失效。例如，100 个样本中只有 1 个正类，模型全判为负类也能得到 99% 的准确率，但完全没找出正类。
+</Pitfall>
+
+<Pitfall title="精确率与召回率的权衡">
+不要期望精确率和召回率同时很高。提高一个指标通常会导致另一个指标下降。选择哪个指标取决于业务场景。
+</Pitfall>
+
+<Pitfall title="阈值依赖">
+同一个模型在不同阈值下精确率和召回率可能完全不同。不要只报告一个阈值下的指标，应使用 AP 或 AUC 等跨阈值指标。
+</Pitfall>
+
+## 复习与自测
+
+<Checkpoint title="核心概念回顾">
+1. 混淆矩阵的四个基本计数是什么？它们分别代表什么含义？
+2. 精确率和召回率的公式分别是什么？它们回答什么问题？
+3. F1 分数为什么使用调和平均而不是算术平均？
+4. AP 和 AUC 分别衡量模型的什么能力？
+5. EER 是在什么条件下定义的？
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_accuracy_limitation" />
+<QuestionFamily familyId="qf_long_explain_precision_recall" />
+<QuestionFamily familyId="qf_long_f1_meaning" />
+<QuestionFamily familyId="qf_long_ap_computation" />
+<QuestionFamily familyId="qf_long_roc_construction" />
+<QuestionFamily familyId="qf_long_eer_roc" />
+<QuestionFamily familyId="qf_long_eer_auc_compare" />
+
+**复习路线：**
+1. 先用闪卡（flashcard families）巩固基本概念和公式
+2. 再用 quiz families 检验理解
+3. 最后用 longform families 练习完整解释和计算
+4. 回到本课本的各个 section，对照易错点查漏补缺

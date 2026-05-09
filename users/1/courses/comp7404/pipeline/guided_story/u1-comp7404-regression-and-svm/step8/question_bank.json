@@ -1,0 +1,296 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "non_separable_case_slack_variable",
+      "covered_by": [
+        "qf_flash_slack_var",
+        "qf_quiz_slack_var_interpret",
+        "qf_long_c_tradeoff"
+      ],
+      "description": "SVM处理线性不可分情况：引入松弛变量ξ_i，允许数据点落在间隔内或被错误分类"
+    },
+    {
+      "coverage_tag": "c_parameter_tradeoff",
+      "covered_by": [
+        "qf_flash_c_meaning",
+        "qf_quiz_c_effect",
+        "qf_long_c_tradeoff"
+      ],
+      "description": "C参数控制对分类错误的惩罚力度，权衡间隔大小与训练误差"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "slack_variable",
+      "coverage_tags": [
+        "non_separable_case_slack_variable"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_slack_var",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆松弛变量的定义及其在SVM中的作用。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了松弛变量允许数据点落在间隔内或被错误分类这一核心功能。",
+      "question_type": "short_answer",
+      "retrieval_focus": "松弛变量在SVM中允许什么情况发生？",
+      "term_refs": [
+        {
+          "display": "松弛变量",
+          "en": "Slack Variable"
+        }
+      ],
+      "variants": [
+        {
+          "back": "允许一些数据点被错误分类或落在最大间隔之内，以处理线性不可分的情况。",
+          "estimated_seconds": 10,
+          "explanation": "松弛变量放松了约束条件 y_i(w^T x_i + b) >= 1，允许部分样本不满足严格间隔要求。",
+          "front": "在SVM中，引入松弛变量（ξ）的主要目的是什么？",
+          "question_id": "q_flash_slack_var_v1"
+        },
+        {
+          "back": "该数据点位于正确的一侧，但落在最大间隔区域之内。",
+          "estimated_seconds": 10,
+          "explanation": "点虽然分类正确，但位于间隔边界内，对间隔有约束作用。",
+          "front": "当松弛变量 ξ_i 满足 0 < ξ_i ≤ 1 时，该数据点位于什么位置？",
+          "question_id": "q_flash_slack_var_v2"
+        },
+        {
+          "back": "该数据点位于超平面的错误一侧，即被错误分类。",
+          "estimated_seconds": 10,
+          "explanation": "ξ_i > 1 意味着该点不仅落在间隔内，而且越过了决策边界，被分错。",
+          "front": "当松弛变量 ξ_i > 1 时，该数据点位于什么位置？",
+          "question_id": "q_flash_slack_var_v3"
+        }
+      ]
+    },
+    {
+      "concept_key": "c_parameter",
+      "coverage_tags": [
+        "c_parameter_tradeoff"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_c_meaning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆C参数对惩罚力度和间隔大小的影响方向。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明掌握了C参数增大或减小时对间隔和训练错误的影响。",
+      "question_type": "short_answer",
+      "retrieval_focus": "C参数增大时，间隔和训练错误如何变化？",
+      "term_refs": [
+        {
+          "display": "C参数",
+          "en": "C Parameter"
+        }
+      ],
+      "variants": [
+        {
+          "back": "重；小",
+          "estimated_seconds": 8,
+          "explanation": "C越大，模型越不允许犯错，因此会牺牲间隔大小来减少训练错误。",
+          "front": "在SVM中，C参数的值越大，对分类错误的惩罚越____，间隔越____。",
+          "question_id": "q_flash_c_meaning_v1"
+        },
+        {
+          "back": "轻；大",
+          "estimated_seconds": 8,
+          "explanation": "C越小，模型允许更多错误，因此可以追求更大的间隔。",
+          "front": "在SVM中，C参数的值越小，对分类错误的惩罚越____，间隔越____。",
+          "question_id": "q_flash_c_meaning_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "longform_families": [
+    {
+      "concept_key": "c_parameter_tradeoff",
+      "coverage_tags": [
+        "non_separable_case_slack_variable",
+        "c_parameter_tradeoff"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_c_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释C参数如何通过松弛变量在间隔大小和训练错误之间进行权衡。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能完整阐述C参数、松弛变量、间隔大小和泛化能力之间的关系。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "C参数",
+          "en": "C Parameter"
+        },
+        {
+          "display": "松弛变量",
+          "en": "Slack Variable"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "C参数控制什么？",
+            "C很大时，松弛变量会受到什么影响？间隔会如何变化？",
+            "C很小时，松弛变量会受到什么影响？间隔会如何变化？",
+            "这两种情况分别对泛化能力有什么影响？"
+          ],
+          "question_id": "q_long_c_tradeoff_v1",
+          "reference_answer": [
+            "C参数控制SVM对分类错误的惩罚力度。",
+            "当C很大时，模型严格惩罚每个错误，松弛变量ξ_i被迫接近0，间隔变小，训练错误少，但容易过拟合噪声，泛化能力下降。",
+            "当C很小时，模型允许较大的松弛变量，间隔变大，泛化能力更好，但训练错误可能增多。",
+            "实际应用中，需要根据数据噪声水平通过交叉验证选择合适的C值，在间隔大小和训练错误之间取得平衡。"
+          ],
+          "rubric_points": [
+            "C控制对分类错误的惩罚力度",
+            "C很大：惩罚重，松弛变量被迫变小，间隔缩小，训练错误少但可能过拟合",
+            "C很小：惩罚轻，松弛变量可以较大，间隔扩大，泛化能力更好但训练错误可能增多",
+            "能结合噪声数据场景说明权衡的必要性"
+          ],
+          "stem": "请解释软间隔SVM中参数C的作用。具体说明：当C很大和C很小时，分别对松弛变量、间隔大小和模型泛化能力有什么影响？"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "C=0.01的模型会有什么特点？",
+            "C=1的模型会有什么特点？",
+            "C=100的模型会有什么特点？",
+            "哪个模型最可能在测试集上表现最好？为什么？"
+          ],
+          "question_id": "q_long_c_tradeoff_v2",
+          "reference_answer": [
+            "C=0.01：惩罚很轻，模型允许较多训练错误，间隔很大，泛化能力较强，测试误差可能较低。",
+            "C=1：中等惩罚，模型在间隔和训练错误之间取得平衡，通常表现稳健。",
+            "C=100：惩罚很重，模型几乎不允许训练错误，间隔很小，可能过拟合那5%的噪声，导致测试误差较高。",
+            "对于含5%噪声的数据，C=0.01或C=1更可能在测试集上表现最好，因为它们能容忍噪声，获得更大的间隔和更好的泛化能力。"
+          ],
+          "rubric_points": [
+            "C=0.01：惩罚轻，间隔大，训练错误较多但泛化好",
+            "C=1：中等惩罚，平衡间隔和训练错误",
+            "C=100：惩罚重，间隔小，训练错误极少但可能过拟合噪声",
+            "C=0.01或C=1更可能在测试集上表现好，因为噪声存在时过拟合风险高"
+          ],
+          "stem": "假设你有一个二分类数据集，其中约5%的样本是噪声（离群点）。你分别用C=0.01, C=1, C=100训练了三个软间隔SVM模型。请预测并解释这三个模型在训练集和测试集上的表现差异。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "slack_variable",
+      "coverage_tags": [
+        "non_separable_case_slack_variable"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_slack_var_interpret",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据松弛变量的值判断数据点的位置状态。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能区分松弛变量在不同取值区间所对应的数据点位置（正确侧间隔内 vs 错误侧）。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "松弛变量",
+          "en": "Slack Variable"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "当 0 < ξ_i ≤ 1 时，样本位于正确一侧但落在间隔区域内。",
+          "options": [
+            "该样本被错误分类",
+            "该样本分类正确，但落在最大间隔之内",
+            "该样本分类正确，且位于最大间隔之外",
+            "该样本是支持向量，且位于间隔边界上"
+          ],
+          "question_id": "q_quiz_slack_var_interpret_v1",
+          "stem": "在软间隔SVM中，某个训练样本的松弛变量 ξ_i = 0.5。以下哪个描述是正确的？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "当 ξ_i > 1 时，样本位于超平面的错误一侧，即被错误分类。",
+          "options": [
+            "该样本分类正确，但落在最大间隔之内",
+            "该样本分类正确，且位于最大间隔之外",
+            "该样本被错误分类",
+            "该样本是支持向量，且位于间隔边界上"
+          ],
+          "question_id": "q_quiz_slack_var_interpret_v2",
+          "stem": "在软间隔SVM中，某个训练样本的松弛变量 ξ_i = 2。以下哪个描述是正确的？"
+        }
+      ]
+    },
+    {
+      "concept_key": "c_parameter",
+      "coverage_tags": [
+        "c_parameter_tradeoff"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_c_effect",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据数据噪声情况选择合理的C参数设置。",
+      "linked_steps": [
+        "step8"
+      ],
+      "practice_target": "学生答对后证明能应用C参数与噪声水平的关系进行参数选择。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "C参数",
+          "en": "C Parameter"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "噪声多时，严格分类所有点会导致过拟合；较小的C允许一些错误，获得更大间隔，泛化能力更好。",
+          "options": [
+            "较大的C，因为要严格惩罚所有错误",
+            "较小的C，因为要允许一些错误以换取更大的间隔",
+            "C=0，因为不需要惩罚",
+            "C的值不影响泛化能力"
+          ],
+          "question_id": "q_quiz_c_effect_v1",
+          "stem": "如果一个数据集包含大量噪声和离群点，为了获得更好的泛化能力，应该选择怎样的C参数？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "C增大意味着对错误的惩罚加重，模型会缩小间隔以减少训练错误。",
+          "options": [
+            "间隔变大，训练错误增加",
+            "间隔变小，训练错误减少",
+            "间隔不变，训练错误不变",
+            "间隔变小，训练错误增加"
+          ],
+          "question_id": "q_quiz_c_effect_v2",
+          "stem": "当C从1增加到100时，软间隔SVM的决策边界最可能发生什么变化？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-regression-and-svm/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,494 @@
+---
+lessonId: u1-comp7404-introduction
+title: Introduction to Machine Learning
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["why_ml_needed", "ml_definition", "ml_applications"]
+    linkedSteps: ["step1"]
+  - sectionId: course-overview
+    title: 课程全景与关键问题
+    coverageTags: ["course_details"]
+    linkedSteps: ["step1"]
+  - sectionId: data-representation
+    title: 数据表示：特征、特征向量与特征空间
+    coverageTags: ["data_representation_feature", "data_representation_feature_vector", "data_representation_feature_space", "image_representation_grayscale", "image_representation_color"]
+    linkedSteps: ["step2"]
+  - sectionId: learning-problems
+    title: 学习问题的类型
+    coverageTags: ["supervised_learning_definition", "unsupervised_learning_definition", "supervised_vs_unsupervised", "semi_supervised_learning", "transfer_learning"]
+    linkedSteps: ["step3a", "step3d"]
+  - sectionId: supervised-tasks
+    title: 监督学习的两种任务：分类与回归
+    coverageTags: ["supervised_learning_tasks", "classification_definition", "regression_definition", "classification_vs_regression_distinction"]
+    linkedSteps: ["step3b"]
+  - sectionId: unsupervised-clustering
+    title: 无监督学习的典型任务：聚类
+    coverageTags: ["unsupervised_learning_clustering"]
+    linkedSteps: ["step3c"]
+  - sectionId: classification-workflow
+    title: 分类的具体流程：训练集、测试集与分类器
+    coverageTags: ["classification_workflow", "training_set_definition", "test_set_definition", "classifier_definition", "classification_example_tax"]
+    linkedSteps: ["step4"]
+  - sectionId: overfitting-underfitting
+    title: 模型复杂度：过拟合与欠拟合
+    coverageTags: ["overfitting_vs_underfitting", "model_complexity_tradeoff"]
+    linkedSteps: ["step5"]
+  - sectionId: deep-learning-rise
+    title: 深度学习的崛起
+    coverageTags: ["deep_learning_rise", "backpropagation", "deep_learning_definition", "neural_network_history", "imagenet_2012"]
+    linkedSteps: ["step6"]
+  - sectionId: pitfalls
+    title: 易错点
+    coverageTags: ["overfitting_vs_underfitting", "model_complexity_tradeoff", "supervised_vs_unsupervised", "classification_vs_regression_distinction"]
+    linkedSteps: ["step3a", "step3b", "step5"]
+  - sectionId: review
+    title: 复习与自测
+    coverageTags: ["why_ml_needed", "ml_definition", "data_representation_feature", "data_representation_feature_vector", "data_representation_feature_space", "supervised_learning_definition", "unsupervised_learning_definition", "supervised_vs_unsupervised", "classification_definition", "regression_definition", "unsupervised_learning_clustering", "semi_supervised_learning", "transfer_learning", "classification_workflow", "training_set_definition", "test_set_definition", "classifier_definition", "overfitting_vs_underfitting", "model_complexity_tradeoff", "deep_learning_rise", "backpropagation", "deep_learning_definition", "neural_network_history", "imagenet_2012"]
+    linkedSteps: ["step1", "step2", "step3a", "step3b", "step3c", "step3d", "step4", "step5", "step6"]
+coverageTrace:
+  - coverageTag: why_ml_needed
+    description: 为什么需要机器学习：规则方法的局限性，机器学习的核心思想
+    sectionIds: ["why-this-lesson-matters", "review"]
+    linkedSteps: ["step1"]
+  - coverageTag: ml_definition
+    description: 机器学习的定义：从经验中学习规律并做出预测
+    sectionIds: ["why-this-lesson-matters", "review"]
+    linkedSteps: ["step1"]
+  - coverageTag: ml_applications
+    description: 机器学习的应用：语音识别、人脸识别、垃圾邮件过滤等
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: course_details
+    description: 课程基本信息、评估方式、项目要求、学术诚信等
+    sectionIds: ["course-overview"]
+    linkedSteps: ["step1"]
+  - coverageTag: data_representation_feature
+    description: 数据如何变成计算机能理解的形式：特征（feature）的概念
+    sectionIds: ["data-representation", "review"]
+    linkedSteps: ["step2"]
+  - coverageTag: data_representation_feature_vector
+    description: 特征向量（feature vector）的概念与构造
+    sectionIds: ["data-representation", "review"]
+    linkedSteps: ["step2"]
+  - coverageTag: data_representation_feature_space
+    description: 特征空间（feature space）的概念
+    sectionIds: ["data-representation", "review"]
+    linkedSteps: ["step2"]
+  - coverageTag: image_representation_grayscale
+    description: 灰度图像表示为特征向量：每个像素是一个特征
+    sectionIds: ["data-representation"]
+    linkedSteps: ["step2"]
+  - coverageTag: image_representation_color
+    description: 彩色图像表示为特征向量：每个像素有RGB三个特征
+    sectionIds: ["data-representation"]
+    linkedSteps: ["step2"]
+  - coverageTag: supervised_learning_definition
+    description: 监督学习的定义：使用有标签的训练数据学习输入到输出的映射
+    sectionIds: ["learning-problems", "review"]
+    linkedSteps: ["step3a"]
+  - coverageTag: unsupervised_learning_definition
+    description: 无监督学习的定义：从没有标签的数据中发现隐藏的结构或模式
+    sectionIds: ["learning-problems", "review"]
+    linkedSteps: ["step3a"]
+  - coverageTag: supervised_vs_unsupervised
+    description: 有标签 vs 无标签：学习问题的根本区别
+    sectionIds: ["learning-problems", "pitfalls", "review"]
+    linkedSteps: ["step3a"]
+  - coverageTag: semi_supervised_learning
+    description: 半监督学习：结合少量有标签数据和大量无标签数据进行学习
+    sectionIds: ["learning-problems", "review"]
+    linkedSteps: ["step3d"]
+  - coverageTag: transfer_learning
+    description: 迁移学习：将一个领域学到的知识应用到另一个相关但不同的领域
+    sectionIds: ["learning-problems", "review"]
+    linkedSteps: ["step3d"]
+  - coverageTag: supervised_learning_tasks
+    description: 监督学习的两种基本任务：分类和回归
+    sectionIds: ["supervised-tasks"]
+    linkedSteps: ["step3b"]
+  - coverageTag: classification_definition
+    description: 分类：预测离散类别
+    sectionIds: ["supervised-tasks", "review"]
+    linkedSteps: ["step3b"]
+  - coverageTag: regression_definition
+    description: 回归：预测连续数值
+    sectionIds: ["supervised-tasks", "review"]
+    linkedSteps: ["step3b"]
+  - coverageTag: classification_vs_regression_distinction
+    description: 分类与回归的核心区别：离散类别 vs 连续数值
+    sectionIds: ["supervised-tasks", "pitfalls", "review"]
+    linkedSteps: ["step3b"]
+  - coverageTag: unsupervised_learning_clustering
+    description: 无监督学习的典型任务：聚类（Clustering）
+    sectionIds: ["unsupervised-clustering", "review"]
+    linkedSteps: ["step3c"]
+  - coverageTag: classification_workflow
+    description: 分类的具体流程：训练集、测试集、分类器
+    sectionIds: ["classification-workflow", "review"]
+    linkedSteps: ["step4"]
+  - coverageTag: training_set_definition
+    description: 训练集的定义与用途
+    sectionIds: ["classification-workflow", "review"]
+    linkedSteps: ["step4"]
+  - coverageTag: test_set_definition
+    description: 测试集的定义与用途
+    sectionIds: ["classification-workflow", "review"]
+    linkedSteps: ["step4"]
+  - coverageTag: classifier_definition
+    description: 分类器的定义：从特征到类别的映射函数
+    sectionIds: ["classification-workflow", "review"]
+    linkedSteps: ["step4"]
+  - coverageTag: classification_example_tax
+    description: 分类示例：基于退税、婚姻状况、收入预测逃税
+    sectionIds: ["classification-workflow"]
+    linkedSteps: ["step4"]
+  - coverageTag: overfitting_vs_underfitting
+    description: 过拟合与欠拟合的概念、原因和典型表现
+    sectionIds: ["overfitting-underfitting", "pitfalls", "review"]
+    linkedSteps: ["step5"]
+  - coverageTag: model_complexity_tradeoff
+    description: 模型复杂度与训练/测试性能之间的权衡关系
+    sectionIds: ["overfitting-underfitting", "pitfalls", "review"]
+    linkedSteps: ["step5"]
+  - coverageTag: deep_learning_rise
+    description: 深度学习重新崛起的关键因素：大数据、GPU、更好的训练策略
+    sectionIds: ["deep-learning-rise", "review"]
+    linkedSteps: ["step6"]
+  - coverageTag: backpropagation
+    description: 反向传播算法及其在神经网络训练中的作用
+    sectionIds: ["deep-learning-rise", "review"]
+    linkedSteps: ["step6"]
+  - coverageTag: deep_learning_definition
+    description: 深度学习的定义：使用多层神经网络进行学习
+    sectionIds: ["deep-learning-rise", "review"]
+    linkedSteps: ["step6"]
+  - coverageTag: neural_network_history
+    description: 神经网络的历史：1980年代出现，经历低谷，2006年重新崛起
+    sectionIds: ["deep-learning-rise", "review"]
+    linkedSteps: ["step6"]
+  - coverageTag: imagenet_2012
+    description: 2012年ImageNet竞赛中深度卷积神经网络将错误率几乎减半
+    sectionIds: ["deep-learning-rise", "review"]
+    linkedSteps: ["step6"]
+---
+
+# Introduction to Machine Learning
+
+## 为什么这一课重要
+
+想象一下，你想写一个程序，让它识别照片里有没有猫。你可能会想：写几条规则就行了，比如“如果有尖耳朵，就是猫”。但很快你会发现，规则永远写不完——猫的姿势千变万化，光线、遮挡、角度……你不可能提前想到所有情况。
+
+<KeyPoint>
+机器学习的核心思想是：不给程序写死规则，而是让它自己从数据中学习规律并做出预测。
+</KeyPoint>
+
+这就是 <Term id="machine_learning" en="Machine Learning">机器学习</Term> 的出发点。它已经无处不在：语音识别、人脸识别、垃圾邮件过滤、推荐系统……这门课将带你系统学习计算智能与机器学习的基本原理、方法和算法。
+
+<Definition title="机器学习">
+让计算机从经验中学习规律并做出预测的方法，而不是靠人写死规则。
+</Definition>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_ml_def_v1" />
+</Checkpoint>
+
+## 课程全景与关键问题
+
+本课程（COMP7404）由徐东教授主讲，涵盖以下核心主题：
+
+- **KNN** (第1讲)
+- **回归与支持向量机** (第2-3讲)
+- **性能评估** (第3讲)
+- **聚类与应用** (第4讲)
+- **降维** (第5讲)
+- **Boosting 及其他机器学习主题** (第6-7讲)
+
+**评估方式：**
+- 2次作业 (15%)
+- 小组项目 (35%)：阅读并实现机器学习研究论文，进行8分钟课堂展示
+- 期末考试 (50%)：闭卷笔试，2小时
+
+**先修要求：**
+- Python 编程
+- 基础线性代数、微积分与统计学
+
+<KeyPoint>
+课程项目需要阅读并实现一篇机器学习论文，建议尽早组队并熟悉 Python 及相关工具（NumPy, scikit-learn, TensorFlow 等）。
+</KeyPoint>
+
+## 数据表示：特征、特征向量与特征空间
+
+要让计算机学习，首先得把数据变成它能理解的形式。比如，一本书的标题怎么变成数字？
+
+<Definition title="特征" en="Feature">
+描述数据某个方面的可测量属性。例如，一本书的标题中是否包含"微分方程"这个词，就是一个特征。
+</Definition>
+
+<Definition title="特征向量" en="Feature Vector">
+将一个样本的所有特征值排列成的向量。每个数据点都被转化为一个特征向量。
+</Definition>
+
+<Definition title="特征空间" en="Feature Space">
+所有可能的特征向量构成的数学空间。每个数据点都是这个空间里的一个点。
+</Definition>
+
+<Example title="文档分类中的特征表示">
+假设我们用3个关键词（"算法"、"微分方程"、"积分"）作为特征来分类书籍。一本书的标题包含"算法"和"积分"，但不包含"微分方程"，它的特征向量就是 <InlineFormula latex="[1, 0, 1]" />。
+</Example>
+
+<Example title="图像的特征表示">
+一张灰度图片，每个像素的亮度就是一个特征。一张 <InlineFormula latex="N \times M" /> 的灰度图片，就变成了一个 <InlineFormula latex="N \times M" /> 维的特征向量。彩色图片每个像素有红、绿、蓝三个值，所以特征空间是三维的。
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_feature_identification_v1" />
+<QuestionRef id="q_quiz_feature_vector_construction_v1" />
+<QuestionRef id="q_quiz_grayscale_dimension_calc_v1" />
+</Checkpoint>
+
+## 学习问题的类型
+
+学习问题有很多种，主要区别在于：我们有没有告诉计算机正确答案？
+
+<Definition title="监督学习" en="Supervised Learning">
+使用有标签的训练数据来学习输入到输出的映射。例如，根据已标记的猫狗图片训练分类器。
+</Definition>
+
+<Definition title="无监督学习" en="Unsupervised Learning">
+从没有标签的数据中发现隐藏的结构或模式。例如，将新闻文章按主题自动分组。
+</Definition>
+
+<Definition title="半监督学习" en="Semi-supervised Learning">
+结合少量有标签数据和大量无标签数据进行学习。例如，有1000张照片，只有100张标记了类别。
+</Definition>
+
+<Definition title="迁移学习" en="Transfer Learning">
+将一个领域学到的知识应用到另一个相关但不同的领域。例如，学会了识别猫，用这个知识来帮助识别老虎。
+</Definition>
+
+<KeyPoint>
+监督学习与无监督学习的根本区别在于训练数据是否包含标签。有标签 → 监督学习；无标签 → 无监督学习。
+</KeyPoint>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_sl_usl_scenario_v1" />
+<QuestionRef id="q_quiz_semi_supervised_learning_v1" />
+<QuestionRef id="q_quiz_transfer_learning_v1" />
+</Checkpoint>
+
+## 监督学习的两种任务：分类与回归
+
+在监督学习中，预测的结果可以是两种形式。
+
+<Definition title="分类" en="Classification">
+预测离散类别的任务。例如，判断一封邮件是"垃圾邮件"还是"正常邮件"。
+</Definition>
+
+<Definition title="回归" en="Regression">
+预测连续数值的任务。例如，预测明天的气温是25.3度。
+</Definition>
+
+<KeyPoint>
+分类输出离散类别，回归输出连续数值——这是两者的根本区别。
+</KeyPoint>
+
+<Example title="分类 vs 回归">
+- **分类**：识别图片中的动物（猫、狗、鸟……）
+- **回归**：预测房屋售价（如 350 万元）
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_classification_vs_regression_v1" />
+<QuestionRef id="q_quiz_task_identification_v1" />
+</Checkpoint>
+
+## 无监督学习的典型任务：聚类
+
+<Definition title="聚类" en="Clustering">
+将数据点自动分组，使得同一组内的数据点彼此相似，不同组之间的数据点差异较大。
+</Definition>
+
+<Example title="聚类的应用">
+有一堆新闻文章但没有分类标签，可以用聚类算法将它们按主题自动分组，如体育、科技、财经等。
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_clustering_app_v1" />
+</Checkpoint>
+
+## 分类的具体流程：训练集、测试集与分类器
+
+假设我们有一份税务数据，想预测一个人是否会逃税。每条记录都有几个属性：退税情况、婚姻状况、收入。
+
+<Definition title="训练集" en="Training Set">
+用于训练模型的数据集，包含输入和对应的标签。
+</Definition>
+
+<Definition title="测试集" en="Test Set">
+用于评估模型性能的未见过的数据，在训练过程中从未被模型看到。
+</Definition>
+
+<Definition title="分类器" en="Classifier">
+一个将输入数据映射到类别标签的模型，本质上是一个从特征到类别的映射函数。
+</Definition>
+
+<Example title="税务数据分类示例">
+给定一个税务数据集，包含1000条已标记记录（每条记录有退税情况、婚姻状况、收入以及是否逃税的标签）：
+1. 将数据分成训练集（如800条）和测试集（如200条）
+2. 使用训练集训练分类器，学习特征与标签之间的映射关系
+3. 使用测试集评估分类器的性能
+4. 如果分类器在测试集上表现良好，说明它学到了真正的规律
+</Example>
+
+<KeyPoint>
+测试集在训练过程中绝对不能使用，否则评估结果会过于乐观。训练集和测试集都需要有标签。
+</KeyPoint>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_step4_train_test_distinction_v1" />
+<QuestionRef id="q_quiz_step4_test_set_requirement_v1" />
+</Checkpoint>
+
+## 模型复杂度：过拟合与欠拟合
+
+<Definition title="过拟合" en="Overfitting">
+模型过于复杂，不仅学到了数据中的真实模式，还记住了噪声和异常。表现是训练集准确率很高，但测试集准确率低。
+</Definition>
+
+<Definition title="欠拟合" en="Underfitting">
+模型过于简单，无法捕捉数据中的基本模式。表现是训练集和测试集准确率都低。
+</Definition>
+
+<KeyPoint>
+- 模型太简单 → 欠拟合（训练集和测试集都差）
+- 模型太复杂 → 过拟合（训练集好，测试集差）
+- 需要在两者之间找到合适的平衡点
+</KeyPoint>
+
+<Example title="过拟合 vs 欠拟合">
+- **过拟合**：训练集准确率 99%，测试集准确率 60%
+- **欠拟合**：训练集准确率 60%，测试集准确率 55%
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_overfit_underfit_v1" />
+<QuestionRef id="q_quiz_complexity_tradeoff_v1" />
+</Checkpoint>
+
+## 深度学习的崛起
+
+<Definition title="神经网络" en="Neural Network">
+受生物神经元启发，由多层节点组成的计算模型。
+</Definition>
+
+<Definition title="反向传播" en="Backpropagation">
+一种通过计算梯度来训练神经网络的算法。1986年由Hinton等人提出，让神经网络能够自己学习数据的内部表示。
+</Definition>
+
+<Definition title="深度学习" en="Deep Learning">
+使用多层神经网络进行学习的方法。
+</Definition>
+
+**深度学习的发展历程：**
+- **1980年代**：神经网络出现
+- **1986年**：Hinton等人提出反向传播算法
+- **随后**：神经网络进入低谷期（训练困难、计算资源不足、数据太少）
+- **2006年**：Hinton提出深度信念网络和无监督逐层预训练方法，深度学习重新崛起
+- **2012年**：Hinton的学生在ImageNet竞赛中用深度卷积神经网络将错误率几乎减半
+
+<KeyPoint>
+深度学习重新崛起的三个关键因素：大数据、强大的计算能力（如GPU）、更好的训练策略（如无监督逐层预训练）。
+</KeyPoint>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_deep_learning_rise_v1" />
+<QuestionRef id="q_quiz_backpropagation_v1" />
+<QuestionRef id="q_quiz_imagenet_2012_v1" />
+</Checkpoint>
+
+## 易错点
+
+<Pitfall title="混淆监督学习与无监督学习">
+**错误**：认为只要有数据就是监督学习。  
+**正确**：关键区别在于数据是否有标签。有标签 → 监督学习；无标签 → 无监督学习。
+</Pitfall>
+
+<Pitfall title="混淆分类与回归">
+**错误**：认为所有预测问题都是分类。  
+**正确**：分类预测离散类别（如猫/狗），回归预测连续数值（如温度、价格）。
+</Pitfall>
+
+<Pitfall title="混淆过拟合与欠拟合">
+**错误**：认为训练集表现差就是过拟合。  
+**正确**：过拟合是训练集好、测试集差；欠拟合是训练集和测试集都差。
+</Pitfall>
+
+<Pitfall title="混淆半监督学习与迁移学习">
+**错误**：认为两者都是"数据不够"时的解决方法。  
+**正确**：半监督学习关注数据本身的标签缺失（少量有标签+大量无标签）；迁移学习关注任务/领域之间的知识转移（从一个任务学到知识应用到另一个相关任务）。
+</Pitfall>
+
+## 复习与自测
+
+### 主动回忆（闪卡）
+
+使用以下闪卡族进行主动检索，巩固核心概念：
+
+- <QuestionFamily familyId="qf_flash_ml_definition" /> — 机器学习的定义
+- <QuestionFamily familyId="qf_flash_feature_def" /> — 特征的定义
+- <QuestionFamily familyId="qf_flash_feature_vector_def" /> — 特征向量的定义
+- <QuestionFamily familyId="qf_flash_feature_space_def" /> — 特征空间的定义
+- <QuestionFamily familyId="qf_flash_sl_def" /> — 监督学习的定义
+- <QuestionFamily familyId="qf_flash_usl_def" /> — 无监督学习的定义
+- <QuestionFamily familyId="qf_flash_sl_usl_diff" /> — 监督学习 vs 无监督学习
+- <QuestionFamily familyId="qf_flash_classification_vs_regression" /> — 分类 vs 回归
+- <QuestionFamily familyId="qf_flash_clustering_definition" /> — 聚类的定义
+- <QuestionFamily familyId="qf_flash_semi_supervised_learning" /> — 半监督学习
+- <QuestionFamily familyId="qf_flash_transfer_learning" /> — 迁移学习
+- <QuestionFamily familyId="qf_flash_step4_training_set" /> — 训练集
+- <QuestionFamily familyId="qf_flash_step4_test_set" /> — 测试集
+- <QuestionFamily familyId="qf_flash_step4_classifier" /> — 分类器
+- <QuestionFamily familyId="qf_flash_overfit_underfit" /> — 过拟合与欠拟合
+- <QuestionFamily familyId="qf_flash_complexity_tradeoff" /> — 模型复杂度权衡
+- <QuestionFamily familyId="qf_flash_deep_learning_rise" /> — 深度学习崛起
+- <QuestionFamily familyId="qf_flash_backpropagation" /> — 反向传播
+- <QuestionFamily familyId="qf_flash_deep_learning_definition" /> — 深度学习定义
+- <QuestionFamily familyId="qf_flash_neural_network_history" /> — 神经网络历史
+- <QuestionFamily familyId="qf_flash_imagenet_2012" /> — ImageNet 2012
+
+### 章节自测（选择题）
+
+- <QuestionFamily familyId="qf_quiz_ml_definition" /> — 机器学习定义
+- <QuestionFamily familyId="qf_quiz_feature_identification" /> — 特征识别
+- <QuestionFamily familyId="qf_quiz_feature_vector_construction" /> — 特征向量构造
+- <QuestionFamily familyId="qf_quiz_sl_identify" /> — 监督学习识别
+- <QuestionFamily familyId="qf_quiz_usl_identify" /> — 无监督学习识别
+- <QuestionFamily familyId="qf_quiz_sl_usl_scenario" /> — 场景判断
+- <QuestionFamily familyId="qf_quiz_classification_vs_regression" /> — 分类 vs 回归
+- <QuestionFamily familyId="qf_quiz_task_identification" /> — 任务识别
+- <QuestionFamily familyId="qf_quiz_clustering_application" /> — 聚类应用
+- <QuestionFamily familyId="qf_quiz_semi_supervised_learning" /> — 半监督学习
+- <QuestionFamily familyId="qf_quiz_transfer_learning" /> — 迁移学习
+- <QuestionFamily familyId="qf_quiz_step4_train_test_distinction" /> — 训练集 vs 测试集
+- <QuestionFamily familyId="qf_quiz_step4_test_set_requirement" /> — 测试集要求
+- <QuestionFamily familyId="qf_quiz_overfit_underfit" /> — 过拟合 vs 欠拟合
+- <QuestionFamily familyId="qf_quiz_complexity_tradeoff" /> — 复杂度权衡
+- <QuestionFamily familyId="qf_quiz_deep_learning_rise" /> — 深度学习崛起
+- <QuestionFamily familyId="qf_quiz_backpropagation" /> — 反向传播
+- <QuestionFamily familyId="qf_quiz_neural_network_history" /> — 神经网络历史
+- <QuestionFamily familyId="qf_quiz_imagenet_2012" /> — ImageNet 2012
+
+### 解释与应用（长问题）
+
+- <QuestionFamily familyId="qf_long_why_ml" /> — 为什么需要机器学习
+- <QuestionFamily familyId="qf_long_data_representation_explain" /> — 数据表示解释
+- <QuestionFamily familyId="qf_long_sl_usl_compare" /> — 监督学习 vs 无监督学习
+- <QuestionFamily familyId="qf_long_compare_classification_regression" /> — 分类 vs 回归
+- <QuestionFamily familyId="qf_long_clustering_explain" /> — 聚类解释
+- <QuestionFamily familyId="qf_long_semi_supervised_vs_transfer" /> — 半监督学习 vs 迁移学习
+- <QuestionFamily familyId="qf_long_step4_classification_pipeline" /> — 分类流程
+- <QuestionFamily familyId="qf_long_overfit_underfit" /> — 过拟合与欠拟合
+- <QuestionFamily familyId="qf_long_deep_learning_rise" /> — 深度学习崛起

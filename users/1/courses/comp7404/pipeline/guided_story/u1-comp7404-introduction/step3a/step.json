@@ -1,0 +1,140 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-introduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [
+        "学习问题有很多种，主要区别在于：",
+        "我们有没有告诉计算机正确答案？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "想象一下，你有一堆照片，每张都标记了“猫”或“狗”。",
+        "计算机可以从这些标记中学习。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "但如果你只有一堆照片，没有任何标记呢？",
+        "计算机还能学吗？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "supervised_learning"
+      ],
+      "id": "s024",
+      "introduced_terms": [
+        "supervised_learning"
+      ],
+      "lines": [
+        "如果有大量带标签的数据，这就是 <term id=\"supervised_learning\">监督学习</term>。",
+        "计算机从输入和输出的对应关系中学习。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "unsupervised_learning"
+      ],
+      "id": "s025",
+      "introduced_terms": [
+        "unsupervised_learning"
+      ],
+      "lines": [
+        "如果没有标签，只能靠数据本身的结构来学习，",
+        "这就是 <term id=\"unsupervised_learning\">无监督学习</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "有标签（是否垃圾邮件）所以是监督学习。",
+        "kind": "single_choice",
+        "options": [
+          "监督学习",
+          "无监督学习",
+          "两者都不是",
+          "无法判断"
+        ],
+        "prompt": "以下哪个场景属于监督学习？"
+      },
+      "focus_terms": [],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个场景属于监督学习？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "有标签（是否垃圾邮件）所以是监督学习。",
+        "kind": "single_choice",
+        "options": [
+          "监督学习",
+          "无监督学习",
+          "两者都不是",
+          "无法判断"
+        ],
+        "prompt": "以下哪个场景属于监督学习？"
+      },
+      "focus_terms": [],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个场景属于监督学习？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s028",
+      "introduced_terms": [],
+      "lines": [
+        "所以，有没有标签，决定了用哪种学习方法。",
+        "接下来，我们看看监督学习里有哪些具体任务。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step3a",
+  "source": {
+    "plain_text": "Types of Learning Problems: supervised, unsupervised.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "supervised_learning": {
+      "aliases": [
+        "supervised learning"
+      ],
+      "display": "监督学习",
+      "gloss": "使用有标签的训练数据来学习输入到输出的映射。"
+    },
+    "unsupervised_learning": {
+      "aliases": [
+        "unsupervised learning"
+      ],
+      "display": "无监督学习",
+      "gloss": "从没有标签的数据中发现隐藏的结构或模式。"
+    }
+  }
+}

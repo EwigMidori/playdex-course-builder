@@ -1,0 +1,531 @@
+---
+lessonId: u1-comp7404-ensemble-learning-boosting
+title: Ensemble Learning and Boosting
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["ensemble_learning_core_idea", "single_model_limitation"]
+    linkedSteps: ["step1"]
+  - sectionId: global-concept-map
+    title: 课程全景与关键问题
+    coverageTags: ["ensemble_learning_core_idea", "ensemble_learning_goal", "ensemble_learning_definition"]
+    linkedSteps: ["step1", "step6"]
+  - sectionId: majority-voting
+    title: 多数投票与加权投票
+    coverageTags: ["majority_voting_principle", "weighted_majority_vote_formula", "predict_proba_weighted_averaging"]
+    linkedSteps: ["step2"]
+  - sectionId: bagging
+    title: Bagging：通过自助采样降低方差
+    coverageTags: ["bagging_definition_and_purpose", "bootstrap_sampling_mechanism", "bagging_variance_reduction", "bagging_combination_method"]
+    linkedSteps: ["step3"]
+  - sectionId: boosting
+    title: Boosting：从错误中学习
+    coverageTags: ["boosting_definition_and_goal", "weak_learner_concept", "strong_learner_concept", "sequential_training_process", "sample_weight_adaptation", "weak_to_strong_theory"]
+    linkedSteps: ["step4"]
+  - sectionId: adaboost
+    title: AdaBoost：Boosting的具体实现
+    coverageTags: ["ada_boost_algorithm_steps", "alpha_formula_and_interpretation", "weight_update_mechanism", "final_strong_classifier_decision", "cascade_classifier_application"]
+    linkedSteps: ["step5"]
+  - sectionId: pitfalls
+    title: 易错点
+    coverageTags: ["bagging_variance_reduction", "boosting_bias_reduction", "ada_boost_algorithm_steps"]
+    linkedSteps: ["step3", "step4", "step5"]
+  - sectionId: review
+    title: 复习与自测
+    coverageTags: ["ensemble_learning_core_idea", "majority_voting", "bagging_variance_reduction", "boosting_bias_reduction", "ada_boost_algorithm"]
+    linkedSteps: ["step6"]
+coverageTrace:
+  - coverageTag: ensemble_learning_core_idea
+    description: 集成学习的核心思想：多个分类器组合优于单个分类器。
+    sectionIds: ["why-this-lesson-matters", "global-concept-map", "review"]
+    linkedSteps: ["step1", "step6"]
+  - coverageTag: single_model_limitation
+    description: 单个模型（如决策树）存在过拟合/欠拟合的天花板，调参难以突破。
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: ensemble_learning_goal
+    description: 集成学习的目标：将多个分类器组合成元分类器，获得比单个分类器更好的泛化性能。
+    sectionIds: ["global-concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: ensemble_learning_definition
+    description: 集成学习的定义：把多个分类器组合成一个更强的元分类器。
+    sectionIds: ["global-concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: majority_voting_principle
+    description: 多数投票原则：选择被大多数分类器预测的类别标签作为最终输出。
+    sectionIds: ["majority-voting"]
+    linkedSteps: ["step2"]
+  - coverageTag: weighted_majority_vote_formula
+    description: 加权多数投票公式：ŷ = arg max_i Σ w_j χ_A(C_j(x)=i)。
+    sectionIds: ["majority-voting"]
+    linkedSteps: ["step2"]
+  - coverageTag: predict_proba_weighted_averaging
+    description: 基于预测概率的加权投票：ŷ = arg max_i Σ w_j p_ij。
+    sectionIds: ["majority-voting"]
+    linkedSteps: ["step2"]
+  - coverageTag: bagging_definition_and_purpose
+    description: Bagging的定义：Bootstrap Aggregating，一种集成学习技术，通过对训练集进行有放回抽样来训练多个模型，然后组合它们的预测。
+    sectionIds: ["bagging"]
+    linkedSteps: ["step3"]
+  - coverageTag: bootstrap_sampling_mechanism
+    description: 自助采样（bootstrap sampling）的机制：有放回地随机抽取样本，每个自助样本包含重复和缺失。
+    sectionIds: ["bagging"]
+    linkedSteps: ["step3"]
+  - coverageTag: bagging_variance_reduction
+    description: Bagging的主要作用是降低模型的方差，对降低偏差帮助不大。
+    sectionIds: ["bagging", "pitfalls", "review"]
+    linkedSteps: ["step3", "step6"]
+  - coverageTag: bagging_combination_method
+    description: Bagging使用多数投票的方式组合各个分类器的预测结果。
+    sectionIds: ["bagging"]
+    linkedSteps: ["step3"]
+  - coverageTag: boosting_definition_and_goal
+    description: Boosting 的定义：通过顺序训练弱学习器，并让后续学习器更关注之前被错分的样本，从而构建强学习器。
+    sectionIds: ["boosting"]
+    linkedSteps: ["step4"]
+  - coverageTag: weak_learner_concept
+    description: 弱学习器的概念：性能仅比随机猜测略好一点的分类器。
+    sectionIds: ["boosting"]
+    linkedSteps: ["step4"]
+  - coverageTag: strong_learner_concept
+    description: 强学习器的概念：通过组合多个弱学习器而得到的性能强大的最终分类器。
+    sectionIds: ["boosting"]
+    linkedSteps: ["step4"]
+  - coverageTag: sequential_training_process
+    description: Boosting 的顺序训练过程：先训练一个弱学习器，然后根据其错误调整样本权重，使后续学习器更关注困难样本。
+    sectionIds: ["boosting"]
+    linkedSteps: ["step4"]
+  - coverageTag: sample_weight_adaptation
+    description: 样本权重的动态调整：被错分的样本在下一轮训练中被赋予更高的权重。
+    sectionIds: ["boosting"]
+    linkedSteps: ["step4"]
+  - coverageTag: weak_to_strong_theory
+    description: 弱学习器可被提升为强学习器的理论基础。
+    sectionIds: ["boosting"]
+    linkedSteps: ["step4"]
+  - coverageTag: ada_boost_algorithm_steps
+    description: AdaBoost算法的完整流程：初始化权重、归一化、训练弱分类器、计算错误率、更新权重、最终强分类器。
+    sectionIds: ["adaboost", "pitfalls"]
+    linkedSteps: ["step5"]
+  - coverageTag: alpha_formula_and_interpretation
+    description: 分类器权重α的计算公式 α = ln((1-ε)/ε) 及其与错误率的关系。
+    sectionIds: ["adaboost"]
+    linkedSteps: ["step5"]
+  - coverageTag: weight_update_mechanism
+    description: 样本权重更新规则：正确分类权重降低，错误分类权重升高。
+    sectionIds: ["adaboost"]
+    linkedSteps: ["step5"]
+  - coverageTag: final_strong_classifier_decision
+    description: 最终强分类器的加权投票决策规则。
+    sectionIds: ["adaboost"]
+    linkedSteps: ["step5"]
+  - coverageTag: cascade_classifier_application
+    description: AdaBoost在人脸检测中的应用：级联分类器与Haar-like特征。
+    sectionIds: ["adaboost"]
+    linkedSteps: ["step5"]
+  - coverageTag: majority_voting
+    description: 多数投票是最简单的组合方式。
+    sectionIds: ["review"]
+    linkedSteps: ["step6"]
+  - coverageTag: boosting_bias_reduction
+    description: Boosting 通过顺序学习和关注错误来降低偏差。
+    sectionIds: ["pitfalls", "review"]
+    linkedSteps: ["step4", "step6"]
+  - coverageTag: ada_boost_algorithm
+    description: AdaBoost 是 Boosting 最著名的代表。
+    sectionIds: ["review"]
+    linkedSteps: ["step6"]
+---
+
+# Ensemble Learning and Boosting
+
+## 为什么这一课重要
+
+假设你是一名工程师，任务是用机器学习判断一封邮件是否为垃圾邮件。你决定使用决策树模型。你训练了一个决策树，但在测试集上准确率只有 82%。你尝试调整树的最大深度，从 5 调到 10，又从 10 调到 3。
+
+<KeyPoint>
+深度为 10 时，训练准确率 99%，但测试准确率掉到了 75% —— 过拟合了。深度为 3 时，训练准确率 78%，测试准确率 79% —— 欠拟合了。无论怎么调参，单个决策树似乎都有天花板。
+</KeyPoint>
+
+你开始思考：也许不应该只依赖一个模型。如果请 10 位专家来做同一个预测呢？单独看，每个人的预测都可能出错。但如果把他们的意见综合起来呢？
+
+这就是集成学习的核心思想：把多个分类器组合成一个更强的元分类器。目标是：这个组合后的模型，比其中任何一个单独的分类器都更准确、更稳定。它不会因为某个专家的失误而全盘皆输。
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_ensemble_advantage_v1" />
+</Checkpoint>
+
+## 课程全景与关键问题
+
+本课将系统学习三种集成学习方法，它们构成了从简单到复杂的完整图景：
+
+1. **多数投票**：最简单的组合方式，每个分类器一票，得票多的类别胜出。
+2. **Bagging**：通过有放回抽样生成多个不同的训练子集，并行训练多个模型，然后组合它们的预测。
+3. **Boosting**：顺序地训练模型，让后续的模型更关注之前被错分的样本，从而将弱学习器组合成强学习器。
+
+<Definition title="集成学习" en="Ensemble Learning">
+将多个分类器组合成一个元分类器，以获得比单个分类器更好的泛化性能。
+</Definition>
+
+这三种方法的核心共同点是：一组分类器组合后的预测性能通常优于其中任何一个单独的分类器。
+
+<QuestionRef id="q_quiz_ensemble_idea_v1" />
+
+## 多数投票与加权投票
+
+### 多数投票
+
+假设现在有三个分类器：C1、C2、C3。它们对一封邮件的预测分别是：C1 预测“垃圾”，C2 预测“垃圾”，C3 预测“正常”。
+
+<Definition title="多数投票" en="Majority Voting">
+选择被大多数分类器预测的类别标签作为最终输出。在二分类中，要求得票超过50%；在多分类中，推广为复数投票（Plurality Voting），选择得票最多的类别（众数）。
+</Definition>
+
+在这个例子中，两票“垃圾”对一票“正常”，最终预测为“垃圾”。
+
+多数投票的数学表达为：
+
+<Formula latex="\hat{y} = \operatorname{mode} \{C_1(\boldsymbol{x}), C_2(\boldsymbol{x}), \dots, C_m(\boldsymbol{x})\}">
+最终预测是所有分类器预测结果的众数。
+</Formula>
+
+在二分类任务中（类别为 -1 和 +1），可以写为：
+
+<Formula latex="C(\boldsymbol{x}) = \operatorname{sign} \left[ \sum_{j}^{m} C_j(\boldsymbol{x}) \right] = \left\{ \begin{array}{ll} 1 & \text{if } \sum_i C_j(\boldsymbol{x}) \geq 0 \\ -1 & \text{otherwise} \end{array} \right.">
+二分类中的多数投票等价于对分类器输出求和后取符号。
+</Formula>
+
+### 加权多数投票
+
+假设 C1 和 C2 的准确率只有 60%，而 C3 的准确率高达 95%。如果简单多数投票，C3 的优质判断被 C1 和 C2 的平庸意见淹没了。也许应该给更可靠的分类器更大的发言权。
+
+<Definition title="加权多数投票" en="Weighted Majority Vote">
+给每个分类器分配一个权重，权重越大，它的投票越重要。最终预测由加权后的投票结果决定。
+</Definition>
+
+加权投票的公式如下：
+
+<Formula latex="\hat{y} = \arg \max_i \sum_{j=1}^{m} w_j \chi_A(C_j(\boldsymbol{x}) = i)">
+最终预测的类别标签，是使得所有分类器加权投票总和最大的那个类别。
+</Formula>
+
+其中：
+- <InlineFormula latex="w_j" /> 是第 j 个基分类器 <InlineFormula latex="C_j" /> 的权重
+- <InlineFormula latex="\hat{y}" /> 是集成模型的最终预测类别
+- <InlineFormula latex="\chi_A" /> 是指示函数，当 <InlineFormula latex="C_j(\boldsymbol{x}) = i" /> 时返回 1，否则返回 0
+- A 是唯一类别标签的集合
+
+<Example title="加权投票示例">
+考虑三个基分类器 C1、C2、C3。两个分类器预测类别 0，C3 预测类别 1。
+
+**等权重时**：多数投票预测为类别 0。
+<Formula latex="\hat{y} = \text{mode} \{0, 0, 1\} = 0">
+
+**加权时**：给 C3 权重 0.6，C1 和 C2 各 0.2。
+<Formula latex="\hat{y} = \arg \max_i [0.2 \times i_0 + 0.2 \times i_0 + 0.6 \times i_1] = 1">
+加权后，最终预测变为类别 1。
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_weighted_vote_calc_v2" />
+</Checkpoint>
+
+### 基于预测概率的加权投票
+
+除了用硬标签投票，我们还可以利用分类器输出的预测概率。如果分类器校准得很好，概率信息比硬标签更丰富。
+
+<Definition title="预测概率" en="Predict Proba">
+分类器输出样本属于每个类别的概率，而非仅输出一个硬标签。
+</Definition>
+
+基于概率的加权投票公式变为：
+
+<Formula latex="\hat{y} = \arg \max_i \sum_{j=1}^{m} w_j p_{ij}">
+对每个类别，计算所有分类器预测概率的加权平均，选择加权概率最高的类别。
+</Formula>
+
+其中 <InlineFormula latex="p_{ij}" /> 是第 j 个分类器对类别 i 的预测概率。
+
+<Example title="概率加权投票示例">
+三个分类器对某样本的预测概率分别为：
+- C1: [0.9, 0.1]
+- C2: [0.8, 0.2]
+- C3: [0.4, 0.6]
+
+使用权重 0.2, 0.2, 0.6：
+
+<Formula latex="p(i_0 | x) = 0.2 \times 0.9 + 0.2 \times 0.8 + 0.6 \times 0.4 = 0.58">
+类别0的加权概率
+</Formula>
+
+<Formula latex="p(i_1 | x) = 0.2 \times 0.1 + 0.2 \times 0.2 + 0.6 \times 0.6 = 0.42">
+类别1的加权概率
+</Formula>
+
+最终预测为类别 0，因为它的加权概率更高。
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_prob_weighted_calc_v1" />
+</Checkpoint>
+
+## Bagging：通过自助采样降低方差
+
+多数投票和加权投票都假设我们已经有了一组分类器。但如何生成这些分类器呢？如果直接用同一份训练数据训练多个模型，它们会高度相似，效果提升有限。你需要让每个模型看到不同的数据。
+
+<Definition title="Bagging" en="Bootstrap Aggregating">
+一种集成学习技术，通过对训练集进行有放回抽样（bootstrap sampling）来训练多个模型，然后组合它们的预测。
+</Definition>
+
+### 自助采样
+
+<Definition title="自助样本" en="Bootstrap Sample">
+从原始数据集中有放回地随机抽取样本，形成一个新的、大小与原数据集相同的训练子集。
+</Definition>
+
+想象一下，原始数据有 7 个样本。每次抽取一个，记录后放回，再抽下一个，直到抽满 7 个。因为有放回抽样，同一个样本可能被抽中多次，而有些样本可能一次都没被抽到。
+
+<KeyPoint>
+对于有放回抽样，一个样本在 n 次抽取中至少被抽中一次的概率为 1 - (1 - 1/n)^n。当 n=7 时，概率约为 63%。
+</KeyPoint>
+
+### Bagging的完整流程
+
+1. 从原始训练集中有放回地随机抽取多个自助样本
+2. 在每个自助样本上独立训练一个分类器
+3. 使用多数投票的方式将所有分类器的预测结果组合起来
+
+<Figure src="images/931b96b1f8a9081d48a2c0ad6c78e6909ea51380bc1b80b9c530bd2205045a73.jpg" alt="Bagging示意图：从原始数据集中有放回抽样生成多个自助样本，每个样本训练一个分类器">
+Bagging通过自助采样生成多个训练子集，每个子集包含重复和缺失。
+</Figure>
+
+### Bagging的作用
+
+<Definition title="方差" en="Variance">
+模型预测结果的波动程度。高方差意味着模型对训练数据的细微变化非常敏感，容易过拟合。
+</Definition>
+
+<Definition title="偏差" en="Bias">
+模型预测值与真实值之间的系统性差异。高偏差意味着模型过于简单，无法捕捉数据的真实模式。
+</Definition>
+
+<KeyPoint>
+Bagging 的主要作用是降低模型的方差。通过在不同数据子集上训练多个模型并取平均，能有效平滑这些波动。但它对降低偏差帮助不大。
+</KeyPoint>
+
+因此，Bagging 最适合用于那些容易过拟合、方差较高的模型，如未剪枝的决策树。
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_bagging_purpose_v1" />
+</Checkpoint>
+
+## Boosting：从错误中学习
+
+Bagging 是并行地训练多个模型，每个模型平等对待所有样本。但有些样本比其他样本更难分类。
+
+想象一个分类器，它在测试集上的准确率只有 55%。这仅仅比随机猜测（50%）好一点点。这样的分类器几乎没什么用。
+
+<Definition title="弱学习器" en="Weak Learner">
+一个性能仅比随机猜测略好一点的分类器，例如在二分类任务中准确率略高于50%。
+</Definition>
+
+<Definition title="强学习器" en="Strong Learner">
+通过组合多个弱学习器而得到的、性能强大的最终分类器。
+</Definition>
+
+<Definition title="Boosting" en="Boosting">
+一种集成学习技术，通过顺序地训练弱分类器，并让后续的分类器更关注之前被错分的样本，从而构建一个强分类器。
+</Definition>
+
+### Boosting的核心机制
+
+<Definition title="样本权重" en="Sample Weight">
+在Boosting中，每个训练样本都被赋予一个权重，用于控制其在训练过程中的重要性。被错分的样本权重会增加。
+</Definition>
+
+Boosting 的训练过程是顺序的：
+1. 用初始权重训练第一个弱学习器
+2. 检查这个学习器在哪些样本上犯了错
+3. 被错分的样本在下一轮训练中会被赋予更高的样本权重
+4. 后续的弱学习器会"重点关注"之前被搞错的困难样本
+5. 重复这个过程很多轮
+
+<KeyPoint>
+Boosting 通过动态调整训练数据的分布（样本权重），使后续模型聚焦于困难样本。理论证明，通过 Boosting，可以将弱学习器组合成一个强学习器。
+</KeyPoint>
+
+最终，所有弱学习器会按照它们各自的性能（错误率）被赋予权重，组合成一个强分类器。性能越好的弱学习器，在最终决策中的话语权越大。
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_sequential_vs_parallel_v1" />
+</Checkpoint>
+
+## AdaBoost：Boosting的具体实现
+
+<Definition title="AdaBoost" en="Adaptive Boosting">
+一种最流行的Boosting算法，它自适应地调整样本权重，使后续分类器专注于难分类的样本。
+</Definition>
+
+### AdaBoost算法流程
+
+**第一步：初始化**
+所有训练样本的权重都相等。
+
+**第二步：循环（t = 1, ..., T）**
+
+1. **归一化权重**，使其总和为1，形成一个概率分布。
+
+<Formula latex="w_{t,i} \leftarrow \frac{w_{t,i}}{\sum_{j=1}^{n} w_{t,j}}">
+将第t轮的第i个样本的权重，除以该轮所有样本权重的总和。
+</Formula>
+
+2. **训练弱分类器**，基于当前权重分布，尽力最小化加权错误率。
+
+3. **计算加权错误率** ε。
+
+4. **计算分类器权重 α**。
+
+<Definition title="分类器权重" en="Alpha">
+在AdaBoost中，每个弱分类器都被赋予一个权重α，该权重基于其错误率计算，用于在最终强分类器中进行加权投票。
+</Definition>
+
+<Formula latex="\alpha_t = \log \frac{1 - \epsilon_t}{\epsilon_t}">
+第t个分类器的权重α，等于以e为底，(1减去其错误率)除以错误率的对数。α与错误率ε成反比。
+</Formula>
+
+5. **更新样本权重**。
+
+<Formula latex="w_{t+1,i} = w_{t,i} \beta_t^{1 - e_i}">
+下一轮的第i个样本权重，等于当前权重乘以β的(1-e_i)次方。其中e_i为0表示分类正确，为1表示分类错误。
+</Formula>
+
+<KeyPoint>
+被正确分类的样本权重降低，被错误分类的样本权重升高。这使得后续的弱学习器更关注之前被错分的困难样本。
+</KeyPoint>
+
+**第三步：构建最终强分类器**
+
+<Formula latex="h(x) = \begin{cases} 1 & \sum_{t=1}^{T} \alpha_t h_t(x) \geq \frac{1}{2} \sum_{t=1}^{T} \alpha_t \\ 0 & \text{otherwise} \end{cases}">
+如果所有弱分类器的加权和大于或等于总权重的一半，则预测为正类，否则为负类。
+</Formula>
+
+<Example title="AdaBoost权重计算示例">
+假设 AdaBoost 第 t 轮训练得到一个弱分类器，其加权错误率 ε=0.3。
+
+<Formula latex="\alpha = \ln((1-0.3)/0.3) = \ln(0.7/0.3) \approx 0.847">
+
+如果 ε=0.1：
+<Formula latex="\alpha = \ln((1-0.1)/0.1) = \ln(0.9/0.1) \approx 2.197">
+
+错误率越低，α 越大，分类器在最终投票中的权重越高。
+</Example>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_ada_flow_v1" />
+</Checkpoint>
+
+### AdaBoost的应用：人脸检测
+
+AdaBoost 在实际应用中取得了巨大成功，比如人脸检测。经典的 Viola-Jones 人脸检测器就使用了 AdaBoost 来训练一个级联分类器。
+
+<Definition title="级联分类器" en="Cascade Classifier">
+一种分层结构，将多个分类器串联起来，早期的快速分类器可以快速排除大量负样本，只有通过所有层的样本才会被最终判定为正类。
+</Definition>
+
+<Definition title="Haar-like特征" en="Haar-like Features">
+一种用于图像识别的特征，通过计算图像中相邻矩形区域的像素和之差来捕捉纹理和边缘信息。
+</Definition>
+
+级联结构的思想是：先用一个非常快速、简单的分类器扫描图像，快速排除掉大部分明显不是人脸的区域。只有通过了第一关的区域，才会被送到下一个更复杂的分类器。这样层层筛选，既保证了速度，又保证了准确性。
+
+<Figure src="images/bee68738f41be9257327d8869aaf5a563edcee6bee7efa7d0fae53e42f307ecf.jpg" alt="级联分类器结构图：多个分类器串联，早期分类器快速排除负样本">
+级联分类器通过分层筛选实现高效检测。
+</Figure>
+
+<Checkpoint title="理解检查">
+<QuestionRef id="q_quiz_cascade_v1" />
+</Checkpoint>
+
+## 易错点
+
+### 1. Bagging vs Boosting 的作用混淆
+
+<KeyPoint>
+Bagging 主要降低**方差**，Boosting 主要降低**偏差**。
+</KeyPoint>
+
+- Bagging 适合高方差模型（如未剪枝的决策树）
+- Boosting 适合高偏差模型（如弱学习器）
+
+### 2. 训练方式混淆
+
+<KeyPoint>
+Bagging 是**并行**训练，Boosting 是**顺序**训练。
+</KeyPoint>
+
+- Bagging 可以同时训练所有模型
+- Boosting 必须依次训练，后一个模型依赖于前一个模型产生的样本权重分布
+
+### 3. AdaBoost权重更新方向
+
+<KeyPoint>
+在 AdaBoost 中，被正确分类的样本权重**降低**，被错误分类的样本权重**升高**。
+</KeyPoint>
+
+<Pitfall>
+常见错误：认为被正确分类的样本权重升高。实际上，正确分类的样本权重会降低，这样模型可以更专注于那些被错分的困难样本。
+</Pitfall>
+
+### 4. 加权投票 vs 简单投票
+
+<Pitfall>
+加权投票中，权重是分配给**分类器**的，而不是分配给样本的。分类器权重 α 基于其错误率计算，错误率越低，α 越大。
+</Pitfall>
+
+## 复习与自测
+
+### 核心概念回顾
+
+<Definition title="集成学习" en="Ensemble Learning">
+将多个分类器组合成一个元分类器，以获得比单个分类器更好的泛化性能。
+</Definition>
+
+本课学习了三种集成方法：
+
+| 方法 | 核心思想 | 主要作用 | 训练方式 |
+|------|---------|---------|---------|
+| 多数投票 | 选择得票最多的类别 | 最简单的组合方式 | 并行组合 |
+| Bagging | 自助采样生成多样模型 | 降低方差 | 并行 |
+| Boosting | 从错误中学习 | 降低偏差 | 顺序 |
+
+### 主动回忆
+
+<QuestionFamily familyId="qf_flash_ensemble_idea" />
+<QuestionFamily familyId="qf_flash_majority_voting" />
+<QuestionFamily familyId="qf_flash_bagging_variance" />
+<QuestionFamily familyId="qf_flash_boosting_bias" />
+<QuestionFamily familyId="qf_flash_ada_boost" />
+
+### 章节自测
+
+<QuestionFamily familyId="qf_quiz_ensemble_idea" />
+<QuestionFamily familyId="qf_quiz_majority_voting" />
+<QuestionFamily familyId="qf_quiz_bagging_variance" />
+<QuestionFamily familyId="qf_quiz_boosting_bias" />
+<QuestionFamily familyId="qf_quiz_ada_boost" />
+
+### 深入理解
+
+<QuestionFamily familyId="qf_long_ensemble_summary" />
+<QuestionFamily familyId="qf_long_boosting_process" />
+
+### 复习路线
+
+1. **理解为什么需要集成学习**：单个模型存在过拟合/欠拟合的天花板
+2. **掌握多数投票**：最简单的组合方式，理解加权投票的公式
+3. **理解Bagging**：自助采样机制、降低方差的原理
+4. **理解Boosting**：顺序训练、样本权重调整、弱学习器到强学习器
+5. **掌握AdaBoost**：完整的算法流程、α公式、权重更新、最终决策规则
+6. **区分三种方法**：核心思想、主要作用、训练方式

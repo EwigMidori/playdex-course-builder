@@ -1,0 +1,102 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "第一步——找频繁项集——其实是最难的。",
+        "如果有 m 种商品，可能的项集数量是 2ᵐ - 1。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "超市有 10000 种商品，可能的项集数量比宇宙中的原子还多。",
+        "暴力枚举是不可能的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s031",
+      "introduced_terms": [
+        "apriori_property"
+      ],
+      "lines": [
+        "Apriori 算法用一个关键性质来剪枝。",
+        "这就是<term id=\"apriori_property\">Apriori 性质</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "性质：如果一个项集是频繁的，那么它的所有子集也是频繁的。",
+        "反过来：如果一个项集不频繁，它的所有超集也一定不频繁。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "比如 {c, d, e} 是频繁的，那么 {c}、{d}、{e}、{c, d} 等子集也一定是频繁的。",
+        "这很直观：包含更多商品的交易一定更少。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "反过来，如果 {f} 不频繁，那么 {f, a}、{f, b} 等所有包含 f 的项集都不用检查了。",
+        "这能剪掉大量候选。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "根据 Apriori 性质，不频繁项集的超集一定不频繁。{A, B} 是 {A} 的超集。",
+        "kind": "single_choice",
+        "options": [
+          "{A, B}",
+          "{B, C}",
+          "{C}"
+        ],
+        "prompt": "哪个项集一定不频繁？"
+      },
+      "id": "s035",
+      "lines": [
+        "假设 {A} 不频繁，以下哪个项集一定也不频繁？",
+        "A. {A, B}  B. {B, C}  C. {C}"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Finding Frequent Itemsets and Counting Their Supports, The Apriori Algorithm, The Apriori Property",
+    "related": [
+      "Apriori property",
+      "pruning"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "apriori_property": {
+      "aliases": [
+        "Apriori Property",
+        "反单调性"
+      ],
+      "display": "Apriori 性质",
+      "gloss": "如果一个项集是频繁的，那么它的所有非空子集也是频繁的。"
+    }
+  }
+}

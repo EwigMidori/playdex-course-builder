@@ -1,0 +1,198 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "来看一个具体的例子。",
+        "我们有一个数据集，记录了一些人的信息以及他们是否拥有电脑。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "现在来了一个新记录 X：",
+        "年龄<30，收入中等，是学生，信用评级差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s033",
+      "introduced_terms": [],
+      "lines": [
+        "这个记录在数据集中不存在。",
+        "所以无法直接知道它是否拥有电脑。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "我们用朴素贝叶斯来算。",
+        "先算 P(拥有电脑) = 9/14，P(没有电脑) = 5/14。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "categorical_attribute"
+      ],
+      "id": "s035",
+      "introduced_terms": [
+        "categorical_attribute"
+      ],
+      "lines": [
+        "然后，对于 <term id=\"categorical_attribute\">类别型属性</term>，比如年龄，",
+        "我们直接数：在拥有电脑的人中，年龄<30 的有 2 个，所以概率是 2/9。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "类似地，收入中等：4/9；是学生：6/9；信用差：6/9。",
+        "把它们乘起来：P(X|拥有电脑) = (2/9)*(4/9)*(6/9)*(6/9) ≈ 0.044"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "再算 P(X|没有电脑) ≈ 0.019。",
+        "然后比较：P(X|拥有电脑)*P(拥有电脑) 和 P(X|没有电脑)*P(没有电脑)。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "结果是 0.028 > 0.007。",
+        "所以，X 被分类为“拥有电脑”。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "numerical_attribute"
+      ],
+      "id": "s039",
+      "introduced_terms": [
+        "numerical_attribute"
+      ],
+      "lines": [
+        "那如果属性是数值型的呢？比如“收入”是 120K。",
+        "我们不能简单地数个数了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s040",
+      "introduced_terms": [],
+      "lines": [
+        "一种方法是离散化：把收入分成几个区间。",
+        "但结果对区间的划分方式很敏感。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "probability_density_estimation"
+      ],
+      "id": "s041",
+      "introduced_terms": [
+        "probability_density_estimation"
+      ],
+      "lines": [
+        "更好的方法是 <term id=\"probability_density_estimation\">概率密度估计</term>。",
+        "假设数值属性服从正态分布，用数据估计均值和方差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "P(x_i|C_j) = \\frac{1}{\\sqrt{2\\pi\\sigma_{ij}^2}} e^{-\\frac{(x_i - \\mu_{ij})^2}{2\\sigma_{ij}^2}}",
+        "spoken": "给定类别 Cⱼ 时，属性 xᵢ 的概率由均值和方差决定的正态分布给出。"
+      },
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "然后代入正态分布的概率密度函数："
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "朴素贝叶斯通常假设数值型属性服从正态分布（高斯分布）。",
+        "kind": "single_choice",
+        "options": [
+          "均匀分布",
+          "正态分布",
+          "泊松分布",
+          "指数分布"
+        ],
+        "prompt": "数值型属性通常假设服从什么分布？"
+      },
+      "focus_terms": [],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "对于数值型属性，朴素贝叶斯通常假设它服从什么分布？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Example: Given a record X: Age<30, Income=medium, Student=yes, Credit-rating=bad. Is X a computer-owner or not? For numerical attributes: How to estimate P(x_k|C_i)? Discretize the range into bins. Probability density estimation: Assume the numerical attribute values follow a normal distribution.",
+    "related": [
+      "Naïve Bayes example",
+      "numerical attributes"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "categorical_attribute": {
+      "aliases": [
+        "Categorical Attribute",
+        "Nominal Attribute"
+      ],
+      "display": "类别型属性",
+      "gloss": "取值是离散类别而非数值的属性，如颜色、性别。"
+    },
+    "numerical_attribute": {
+      "aliases": [
+        "Numerical Attribute",
+        "Continuous Attribute"
+      ],
+      "display": "数值型属性",
+      "gloss": "取值是连续数值的属性，如身高、收入。"
+    },
+    "probability_density_estimation": {
+      "aliases": [
+        "Probability Density Estimation"
+      ],
+      "display": "概率密度估计",
+      "gloss": "用已知的概率分布（如正态分布）来估计连续数值的概率。"
+    }
+  }
+}

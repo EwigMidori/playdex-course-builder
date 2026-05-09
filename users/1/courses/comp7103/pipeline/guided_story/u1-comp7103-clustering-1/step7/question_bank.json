@@ -1,0 +1,489 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "hierarchical_clustering_types",
+      "covered_by": [
+        "qf_flash_agglomerative",
+        "qf_flash_divisive",
+        "qf_quiz_hierarchical_types"
+      ],
+      "description": "层次聚类的两种主要类型：凝聚式（自底向上）与分裂式（自顶向下）"
+    },
+    {
+      "coverage_tag": "agglomerative_clustering_process",
+      "covered_by": [
+        "qf_flash_agglomerative",
+        "qf_quiz_agglomerative_process",
+        "qf_long_agglomerative_simulation"
+      ],
+      "description": "凝聚式聚类的基本流程：从每个点作为独立簇开始，逐步合并最近的簇"
+    },
+    {
+      "coverage_tag": "divisive_clustering_process",
+      "covered_by": [
+        "qf_flash_divisive",
+        "qf_quiz_hierarchical_types"
+      ],
+      "description": "分裂式聚类的基本流程：从所有点作为一个簇开始，逐步分裂"
+    },
+    {
+      "coverage_tag": "proximity_matrix",
+      "covered_by": [
+        "qf_flash_proximity_matrix",
+        "qf_quiz_proximity_matrix"
+      ],
+      "description": "邻近度矩阵：记录所有簇两两之间距离的矩阵，凝聚式聚类中用于查找最近簇"
+    },
+    {
+      "coverage_tag": "dendrogram_cut",
+      "covered_by": [
+        "qf_flash_dendrogram_cut",
+        "qf_quiz_dendrogram_cut"
+      ],
+      "description": "层次聚类的优势：不需要事先指定簇数，可在树状图任意高度切一刀得到所需簇数"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "agglomerative_clustering",
+      "coverage_tags": [
+        "hierarchical_clustering_types",
+        "agglomerative_clustering_process"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_agglomerative",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述凝聚式聚类的起点和核心操作。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了凝聚式聚类的定义：从每个点作为独立簇开始，逐步合并最近的簇。",
+      "question_type": "short_answer",
+      "retrieval_focus": "凝聚式聚类的起点和每一步的核心操作。",
+      "term_refs": [
+        {
+          "display": "凝聚式聚类",
+          "en": "Agglomerative Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "每个数据点作为一个独立的簇。",
+          "estimated_seconds": 6,
+          "explanation": "凝聚式聚类从最细粒度开始，每个点自成一簇。",
+          "front": "凝聚式聚类的起点是什么？",
+          "question_id": "q_flash_agglomerative_v1"
+        },
+        {
+          "back": "合并距离最近的两个簇。",
+          "estimated_seconds": 6,
+          "explanation": "每一步都寻找并合并当前最相似的两个簇。",
+          "front": "凝聚式聚类在每一步中执行什么核心操作？",
+          "question_id": "q_flash_agglomerative_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "divisive_clustering",
+      "coverage_tags": [
+        "hierarchical_clustering_types",
+        "divisive_clustering_process"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_divisive",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述分裂式聚类的起点和核心操作。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了分裂式聚类的定义：从所有点作为一个簇开始，逐步分裂。",
+      "question_type": "short_answer",
+      "retrieval_focus": "分裂式聚类的起点和每一步的核心操作。",
+      "term_refs": [
+        {
+          "display": "分裂式聚类",
+          "en": "Divisive Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "所有数据点作为一个簇。",
+          "estimated_seconds": 6,
+          "explanation": "分裂式聚类从最粗粒度开始，所有点属于同一个簇。",
+          "front": "分裂式聚类的起点是什么？",
+          "question_id": "q_flash_divisive_v1"
+        },
+        {
+          "back": "将一个簇分裂成两个。",
+          "estimated_seconds": 6,
+          "explanation": "每一步选择一个簇并将其一分为二。",
+          "front": "分裂式聚类在每一步中执行什么核心操作？",
+          "question_id": "q_flash_divisive_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "proximity_matrix",
+      "coverage_tags": [
+        "proximity_matrix"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_proximity_matrix",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出邻近度矩阵在凝聚式聚类中的作用。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了邻近度矩阵的定义：记录所有簇两两之间距离的矩阵，用于查找最近簇。",
+      "question_type": "short_answer",
+      "retrieval_focus": "邻近度矩阵在凝聚式聚类中的用途。",
+      "term_refs": [
+        {
+          "display": "邻近度矩阵",
+          "en": "Proximity Matrix"
+        }
+      ],
+      "variants": [
+        {
+          "back": "记录所有簇两两之间的距离，用于查找最近的两个簇。",
+          "estimated_seconds": 8,
+          "explanation": "算法通过邻近度矩阵快速找到当前最相似的两个簇进行合并。",
+          "front": "在凝聚式聚类中，邻近度矩阵用来做什么？",
+          "question_id": "q_flash_proximity_matrix_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "dendrogram_cut",
+      "coverage_tags": [
+        "dendrogram_cut"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_dendrogram_cut",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出层次聚类的一个关键优势。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了层次聚类不需要事先指定簇数，可在树状图任意高度切一刀得到所需簇数。",
+      "question_type": "short_answer",
+      "retrieval_focus": "层次聚类相对于划分式聚类的一个关键优势。",
+      "term_refs": [
+        {
+          "display": "树状图",
+          "en": "Dendrogram"
+        }
+      ],
+      "variants": [
+        {
+          "back": "不需要事先指定簇数，可以在树状图的任意高度切一刀得到想要的簇数。",
+          "estimated_seconds": 8,
+          "explanation": "这是层次聚类相对于K-means等划分式聚类的重要优势。",
+          "front": "层次聚类的一个关键优势是什么？",
+          "question_id": "q_flash_dendrogram_cut_v1"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-clustering-1",
+  "longform_families": [
+    {
+      "concept_key": "agglomerative_clustering_process",
+      "coverage_tags": [
+        "agglomerative_clustering_process",
+        "proximity_matrix"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_agglomerative_simulation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能手动模拟凝聚式聚类过程，并解释每一步的决策依据。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能应用凝聚式聚类算法，使用单链距离定义，手动模拟合并过程并更新邻近度矩阵。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "凝聚式聚类",
+          "en": "Agglomerative Clustering"
+        },
+        {
+          "display": "邻近度矩阵",
+          "en": "Proximity Matrix"
+        },
+        {
+          "display": "单链",
+          "en": "Single-linkage (MIN)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "第一步：初始状态（4个独立簇）",
+            "第二步：第一次合并",
+            "第三步：第二次合并",
+            "第四步：第三次合并"
+          ],
+          "question_id": "q_long_agglomerative_simulation_v1",
+          "reference_answer": [
+            "初始状态：4个独立簇 {A}, {B}, {C}, {D}。",
+            "点对距离：d(A,B)=1, d(A,C)=√50≈7.07, d(A,D)=√61≈7.81, d(B,C)=√41≈6.40, d(B,D)=√50≈7.07, d(C,D)=1。",
+            "第一步：合并A和B（距离1，最近）。新簇AB。",
+            "第二步：计算AB与C的距离 = min(d(A,C), d(B,C)) = min(7.07, 6.40) = 6.40。AB与D的距离 = min(d(A,D), d(B,D)) = min(7.81, 7.07) = 7.07。C与D的距离 = 1。最近的是C和D（距离1），合并C和D。新簇CD。",
+            "第三步：计算AB与CD的距离 = min(d(A,C), d(A,D), d(B,C), d(B,D)) = min(7.07, 7.81, 6.40, 7.07) = 6.40。合并AB和CD。所有点合并为一个簇。"
+          ],
+          "rubric_points": [
+            "正确计算所有点对之间的欧氏距离",
+            "第一步正确识别最近的两个簇（A和B，距离1）并合并",
+            "第二步正确计算新簇AB与C、D的距离（使用MIN），并识别最近的两个簇（C和D，距离1）",
+            "第三步正确计算新簇AB与CD的距离（使用MIN），并完成最终合并",
+            "每一步都明确写出合并依据（最近距离）"
+          ],
+          "stem": "给定4个点：A(0,0), B(1,0), C(5,5), D(6,5)。使用单链（MIN）作为簇间距离，手动模拟凝聚式聚类的完整过程，直到所有点合并为一个簇。请写出每一步合并的两个簇、合并的依据，以及合并后新簇与其他簇的距离。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "第一步：初始状态（4个独立簇）",
+            "第二步：第一次合并",
+            "第三步：第二次合并",
+            "第四步：第三次合并"
+          ],
+          "question_id": "q_long_agglomerative_simulation_v2",
+          "reference_answer": [
+            "初始状态：4个独立簇 {P}, {Q}, {R}, {S}。",
+            "点对距离：d(P,Q)=√((0-1)²+(2-1)²)=√2≈1.41, d(P,R)=√((0-4)²+(2-4)²)=√20≈4.47, d(P,S)=√((0-5)²+(2-3)²)=√26≈5.10, d(Q,R)=√((1-4)²+(1-4)²)=√18≈4.24, d(Q,S)=√((1-5)²+(1-3)²)=√20≈4.47, d(R,S)=√((4-5)²+(4-3)²)=√2≈1.41。",
+            "第一步：最近距离为1.41，有两对：P-Q和R-S。选择P和Q合并（或R和S，结果对称）。新簇PQ。",
+            "第二步：计算PQ与R的距离 = min(d(P,R), d(Q,R)) = min(4.47, 4.24) = 4.24。PQ与S的距离 = min(d(P,S), d(Q,S)) = min(5.10, 4.47) = 4.47。R与S的距离 = 1.41。最近的是R和S（距离1.41），合并R和S。新簇RS。",
+            "第三步：计算PQ与RS的距离 = min(d(P,R), d(P,S), d(Q,R), d(Q,S)) = min(4.47, 5.10, 4.24, 4.47) = 4.24。合并PQ和RS。所有点合并为一个簇。"
+          ],
+          "rubric_points": [
+            "正确计算所有点对之间的欧氏距离",
+            "第一步正确识别最近的两个簇并合并",
+            "第二步正确计算新簇与其他簇的距离（使用MIN），并识别最近的两个簇",
+            "第三步正确计算最终合并",
+            "每一步都明确写出合并依据（最近距离）"
+          ],
+          "stem": "给定4个点：P(0,2), Q(1,1), R(4,4), S(5,3)。使用单链（MIN）作为簇间距离，手动模拟凝聚式聚类的完整过程，直到所有点合并为一个簇。请写出每一步合并的两个簇、合并的依据，以及合并后新簇与其他簇的距离。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "hierarchical_clustering_types",
+      "coverage_tags": [
+        "hierarchical_clustering_types",
+        "agglomerative_clustering_process",
+        "divisive_clustering_process"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_hierarchical_types",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下区分凝聚式与分裂式聚类。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明能根据起点和操作方向区分凝聚式与分裂式聚类。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "凝聚式聚类",
+          "en": "Agglomerative Clustering"
+        },
+        {
+          "display": "分裂式聚类",
+          "en": "Divisive Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "凝聚式聚类是自底向上的：每个点自成一簇，然后逐步合并最近的簇。",
+          "options": [
+            "从所有点作为一个簇开始，逐步分裂",
+            "从每个点作为独立簇开始，逐步合并最近的簇",
+            "随机选择初始质心，然后迭代更新",
+            "使用中心点代替平均值作为簇代表"
+          ],
+          "question_id": "q_quiz_hierarchical_types_v1",
+          "stem": "以下哪个描述符合凝聚式聚类？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "分裂式聚类是自顶向下（所有点一个簇→逐步分裂），凝聚式是自底向上（每个点一个簇→逐步合并）。",
+          "options": [
+            "分裂式聚类需要指定簇数，凝聚式不需要",
+            "分裂式聚类从所有点作为一个簇开始，凝聚式从每个点作为独立簇开始",
+            "分裂式聚类使用质心，凝聚式使用中心点",
+            "分裂式聚类只能用于数值数据，凝聚式只能用于分类数据"
+          ],
+          "question_id": "q_quiz_hierarchical_types_v2",
+          "stem": "分裂式聚类与凝聚式聚类的主要区别是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "agglomerative_clustering_process",
+      "coverage_tags": [
+        "agglomerative_clustering_process"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_agglomerative_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解凝聚式聚类的基本流程。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了凝聚式聚类的基本流程：从独立簇开始，重复合并最近簇，更新邻近度矩阵，直到只剩一个簇。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "凝聚式聚类",
+          "en": "Agglomerative Clustering"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "合并两个簇后，需要更新邻近度矩阵，计算新簇与所有其他簇之间的距离，以便在下一步中找到最近的两个簇。",
+          "options": [
+            "重新计算所有数据点的质心",
+            "更新邻近度矩阵，反映新簇与其他簇的距离",
+            "随机选择一个新的初始簇",
+            "检查是否所有点都已分配到簇"
+          ],
+          "question_id": "q_quiz_agglomerative_process_v1",
+          "stem": "在凝聚式聚类中，合并两个簇之后，下一步应该做什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "凝聚式聚类通常持续合并直到所有点都属于同一个簇（或达到指定的簇数）。",
+          "options": [
+            "当所有簇的质心不再变化时",
+            "当所有点都被分配到同一个簇时",
+            "当邻近度矩阵变为空时",
+            "当每个簇的大小相等时"
+          ],
+          "question_id": "q_quiz_agglomerative_process_v2",
+          "stem": "凝聚式聚类何时停止？"
+        }
+      ]
+    },
+    {
+      "concept_key": "proximity_matrix",
+      "coverage_tags": [
+        "proximity_matrix"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_proximity_matrix",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解邻近度矩阵在凝聚式聚类中的作用。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了邻近度矩阵的定义及其在凝聚式聚类中的用途。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "邻近度矩阵",
+          "en": "Proximity Matrix"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "初始时每个数据点都是一个簇，所以邻近度矩阵记录所有数据点两两之间的距离。",
+          "options": [
+            "一个空矩阵，在合并过程中逐步填充",
+            "一个记录所有数据点两两之间距离的矩阵",
+            "一个记录所有簇质心的矩阵",
+            "一个记录每个点所属簇标签的向量"
+          ],
+          "question_id": "q_quiz_proximity_matrix_v1",
+          "stem": "在凝聚式聚类中，邻近度矩阵的初始状态是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "合并两个簇后，簇的数量减少1，因此邻近度矩阵的大小也减少一行一列，新簇与其他簇的距离需要重新计算。",
+          "options": [
+            "矩阵大小不变，只更新被合并簇对应的行和列",
+            "矩阵大小减少一行一列，并更新新簇与其他簇的距离",
+            "矩阵大小增加一行一列，记录新簇的信息",
+            "矩阵保持不变，只在外部记录合并信息"
+          ],
+          "question_id": "q_quiz_proximity_matrix_v2",
+          "stem": "凝聚式聚类中，合并两个簇后，邻近度矩阵如何变化？"
+        }
+      ]
+    },
+    {
+      "concept_key": "dendrogram_cut",
+      "coverage_tags": [
+        "dendrogram_cut"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_dendrogram_cut",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解树状图切分与簇数的关系。",
+      "linked_steps": [
+        "step7"
+      ],
+      "practice_target": "学生答对后证明掌握了在树状图上切一刀可以得到任意数量的簇。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "树状图",
+          "en": "Dendrogram"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "在树状图的某个高度切一刀，会得到该高度对应的簇数，这是层次聚类不需要事先指定簇数的优势。",
+          "options": [
+            "所有簇的质心",
+            "该高度以下的所有合并操作",
+            "该高度对应的簇数",
+            "每个簇的轮廓系数"
+          ],
+          "question_id": "q_quiz_dendrogram_cut_v1",
+          "stem": "在层次聚类的树状图中，如果在某个高度切一刀，会得到什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "层次聚类不需要事先指定簇数，可以在树状图的任意高度切一刀得到想要的簇数。",
+          "options": [
+            "计算速度更快",
+            "不需要事先指定簇数",
+            "对异常值更鲁棒",
+            "只能用于数值数据"
+          ],
+          "question_id": "q_quiz_dendrogram_cut_v2",
+          "stem": "层次聚类相比K-means的一个优势是什么？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-clustering-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

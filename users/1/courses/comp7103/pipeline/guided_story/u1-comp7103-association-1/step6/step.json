@@ -1,0 +1,110 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s046",
+      "introduced_terms": [],
+      "lines": [
+        "频繁项集的数量可能仍然很大。",
+        "我们需要更紧凑的表示方式。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s047",
+      "introduced_terms": [
+        "maximal_frequent_itemset"
+      ],
+      "lines": [
+        "第一种：<term id=\"maximal_frequent_itemset\">最大频繁项集</term>。",
+        "它是一个频繁项集，并且它的所有直接超集都不频繁。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "所有频繁项集都是某个最大频繁项集的子集。",
+        "所以只要存最大频繁项集，就能推导出所有频繁项集。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s049",
+      "introduced_terms": [
+        "closed_frequent_itemset"
+      ],
+      "lines": [
+        "第二种：<term id=\"closed_frequent_itemset\">闭频繁项集</term>。",
+        "它是一个频繁项集，并且它的所有直接超集的支持度都严格小于它。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s050",
+      "introduced_terms": [],
+      "lines": [
+        "闭频繁项集不仅能推导出所有频繁项集，还能推导出它们的支持度。",
+        "比最大频繁项集保留了更多信息。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s051",
+      "introduced_terms": [],
+      "lines": [
+        "最大频繁项集和闭频繁项集是两种重要的压缩工具。",
+        "它们让海量项集的管理变得可行。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "最大频繁项集只能推导出哪些项集是频繁的，但无法知道它们的支持度。闭频繁项集可以同时推导出项集和支持度。",
+        "kind": "single_choice",
+        "options": [
+          "最大频繁项集",
+          "闭频繁项集",
+          "两者都可以"
+        ],
+        "prompt": "哪种表示可以推导出支持度？"
+      },
+      "id": "s052",
+      "lines": [
+        "以下哪种表示可以推导出所有频繁项集及其支持度？",
+        "A. 最大频繁项集  B. 闭频繁项集  C. 两者都可以"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Compact representation, Maximal Frequent Itemset, Closed Itemset, Maximal/Closed Frequent Itemsets",
+    "related": [
+      "maximal frequent itemset",
+      "closed frequent itemset"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "closed_frequent_itemset": {
+      "aliases": [
+        "Closed Frequent Itemset"
+      ],
+      "display": "闭频繁项集",
+      "gloss": "一个频繁项集，它的所有直接超集的支持度都严格小于它。"
+    },
+    "maximal_frequent_itemset": {
+      "aliases": [
+        "Maximal Frequent Itemset"
+      ],
+      "display": "最大频繁项集",
+      "gloss": "一个频繁项集，它的所有直接超集都不频繁。"
+    }
+  }
+}

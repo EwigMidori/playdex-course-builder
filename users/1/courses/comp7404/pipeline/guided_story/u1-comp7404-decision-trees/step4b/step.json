@@ -1,0 +1,215 @@
+{
+  "chapter_id": "lecture-10-decision-trees",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-decision-trees",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "如果我们不加限制地让树一直生长，直到每个叶节点都“纯”，会发生什么？",
+        "树会变得非常深，非常复杂。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "比如，一棵深度为 10 的决策树，在训练集上准确率 100%，在测试集上准确率只有 70%。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "训练集表现远好于测试集，是典型的过拟合现象。",
+        "kind": "single_choice",
+        "options": [
+          "欠拟合",
+          "过拟合",
+          "数据错误"
+        ],
+        "prompt": "这最可能是什么问题？"
+      },
+      "focus_terms": [],
+      "id": "s003",
+      "introduced_terms": [],
+      "lines": [
+        "你觉得这是什么问题？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "overfitting"
+      ],
+      "id": "s004",
+      "introduced_terms": [
+        "overfitting"
+      ],
+      "lines": [
+        "这就是 <term id=\"overfitting\">过拟合</term>。",
+        "模型记住了训练数据中的每一个细节，包括噪声，但在新数据上表现很差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "pruning"
+      ],
+      "id": "s005",
+      "introduced_terms": [
+        "pruning"
+      ],
+      "lines": [
+        "为了防止过拟合，我们需要对树进行 <term id=\"pruning\">剪枝</term>。",
+        "常见的方法包括限制树的最大深度，或者限制叶节点的最小样本数。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "限制最大深度可以防止树过度生长，是剪枝的一种形式。",
+        "kind": "single_choice",
+        "options": [
+          "限制树的最大深度",
+          "增加训练数据",
+          "使用更多特征"
+        ],
+        "prompt": "以下哪一项是防止过拟合的方法？"
+      },
+      "focus_terms": [
+        "pruning"
+      ],
+      "id": "s006",
+      "introduced_terms": [],
+      "lines": [
+        "哪种方法可以防止过拟合？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": "改善了泛化",
+        "explanation": "训练准确率下降但测试准确率上升，正是典型的“牺牲一点训练拟合，换来更好的泛化”。这说明剪枝方向是对的。",
+        "kind": "condition_judgment",
+        "options": [
+          "改善了泛化",
+          "恶化了泛化"
+        ],
+        "prompt": "某棵树从深度 10 剪到深度 5 后，训练准确率从 100% 降到 92%，测试准确率从 70% 升到 83%。根据这个结果判断：剪枝是改善了泛化，还是恶化了泛化？"
+      },
+      "focus_terms": [
+        "overfitting",
+        "pruning"
+      ],
+      "id": "s006b",
+      "introduced_terms": [],
+      "lines": [
+        "某棵树从深度 10 剪到深度 5 后，训练准确率从 100% 降到 92%，测试准确率从 70% 升到 83%。根据这个结果判断：剪枝是改善了泛化，还是恶化了泛化？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "限制深度会降低训练集准确率，但能提升测试集准确率，这是过拟合与泛化能力的权衡。",
+        "kind": "single_choice",
+        "options": [
+          "训练集准确率上升，测试集准确率下降",
+          "训练集准确率下降，测试集准确率上升",
+          "两者都上升",
+          "两者都下降"
+        ],
+        "prompt": "如果一棵深度为 10 的过拟合树被剪枝到深度为 5，通常会发生什么？"
+      },
+      "focus_terms": [
+        "overfitting",
+        "pruning"
+      ],
+      "id": "s007",
+      "introduced_terms": [],
+      "lines": [
+        "思考一下：限制深度对训练集和测试集的表现分别有什么影响？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "限制深度直接控制树的复杂度，而限制叶节点样本数则间接控制。两者都是有效的剪枝策略，但限制深度更直接。",
+        "kind": "single_choice",
+        "options": [
+          "限制深度更直接地控制树的复杂度，而限制叶节点样本数更灵活",
+          "限制深度总是比限制叶节点样本数效果好",
+          "限制叶节点样本数总是比限制深度效果好",
+          "两者效果完全相同"
+        ],
+        "prompt": "关于限制树的最大深度和限制叶节点最小样本数，以下哪项描述最准确？"
+      },
+      "focus_terms": [
+        "pruning"
+      ],
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "两种剪枝策略各有特点，你如何权衡？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "训练集几乎满分、测试集很差，而且叶子里样本极少，说明树太复杂了。此时应优先通过限制深度或增大叶节点最小样本数来收缩模型。",
+        "kind": "single_choice",
+        "options": [
+          "减小最大深度，或增大叶节点最小样本数",
+          "继续增加树的深度，让训练集更接近 100%",
+          "删除测试集里分错的样本",
+          "不做任何限制，保持原树结构"
+        ],
+        "prompt": "如果你发现一棵树在训练集上 99% 准确、测试集上只有 68%，而且许多叶节点只含 1 个样本，下一步更合理的调参方向是什么？"
+      },
+      "focus_terms": [
+        "overfitting",
+        "pruning"
+      ],
+      "id": "s008b",
+      "introduced_terms": [],
+      "lines": [
+        "如果你发现一棵树在训练集上 99% 准确、测试集上只有 68%，而且许多叶节点只含 1 个样本，下一步更合理的调参方向是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4b",
+  "source": {
+    "plain_text": "This can result in a very deep tree with many nodes, which can easily lead to overfitting. Thus, we typically want to prune the tree.",
+    "related": [
+      "Overfitting",
+      "Pruning"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "overfitting": {
+      "aliases": [
+        "Overfitting"
+      ],
+      "display": "过拟合",
+      "gloss": "模型在训练数据上表现太好，以至于失去了对未知数据的泛化能力。"
+    },
+    "pruning": {
+      "aliases": [
+        "Pruning"
+      ],
+      "display": "剪枝",
+      "gloss": "通过限制树的深度或节点数量来防止过拟合的技术。"
+    }
+  }
+}

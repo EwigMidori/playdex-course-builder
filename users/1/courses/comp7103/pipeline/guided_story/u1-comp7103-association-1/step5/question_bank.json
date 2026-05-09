@@ -1,0 +1,321 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "apriori_algorithm_iterative_process",
+      "covered_by": [
+        "qf_flash_apriori_iteration",
+        "qf_quiz_apriori_process",
+        "qf_long_apriori_trace"
+      ],
+      "description": "Apriori 算法的逐层迭代过程：C_k 生成、扫描计数、L_k 提取"
+    },
+    {
+      "coverage_tag": "apriori_gen_function",
+      "covered_by": [
+        "qf_flash_apriori_gen_merge",
+        "qf_quiz_apriori_gen_prune"
+      ],
+      "description": "Apriori-Gen 函数：从 L_{k-1} 生成 C_k 的合并与剪枝规则"
+    },
+    {
+      "coverage_tag": "candidate_generation_and_pruning",
+      "covered_by": [
+        "qf_flash_apriori_gen_merge",
+        "qf_quiz_apriori_gen_prune",
+        "qf_long_apriori_trace"
+      ],
+      "description": "候选集生成中的合并条件（共享 k-2 个商品）与剪枝条件（所有子集在 L_{k-1} 中）"
+    },
+    {
+      "coverage_tag": "example_illustration",
+      "covered_by": [
+        "qf_quiz_apriori_process",
+        "qf_long_apriori_trace"
+      ],
+      "description": "使用示例数据集展示 Apriori 的逐层执行过程"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "apriori_iterative_process",
+      "coverage_tags": [
+        "apriori_algorithm_iterative_process"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_apriori_iteration",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 Apriori 算法每一轮迭代的核心操作顺序。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能说出 Apriori 算法第 k 轮的两个主要步骤：生成 C_k 和扫描得到 L_k。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Apriori 算法每轮迭代的两个核心步骤",
+      "term_refs": [
+        {
+          "display": "候选集",
+          "en": "Candidate Itemset (C_k)"
+        },
+        {
+          "display": "频繁项集",
+          "en": "Frequent Itemset (L_k)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "先生成候选集 C_k，再扫描数据集得到频繁项集 L_k。",
+          "estimated_seconds": 8,
+          "explanation": "这是 Apriori 逐层迭代的基本模式：生成候选 → 扫描计数 → 提取频繁。",
+          "front": "Apriori 算法第 k 轮迭代中，先生成什么，再扫描数据集得到什么？",
+          "question_id": "q_flash_apriori_iteration_v1"
+        },
+        {
+          "back": "C_k 是第 k 轮候选 k-项集集合；L_k 是第 k 轮频繁 k-项集集合。",
+          "estimated_seconds": 8,
+          "explanation": "C_k 是可能频繁的候选，L_k 是经过扫描确认频繁的项集。",
+          "front": "Apriori 算法中，C_k 和 L_k 分别代表什么？",
+          "question_id": "q_flash_apriori_iteration_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "apriori_gen_merge_condition",
+      "coverage_tags": [
+        "apriori_gen_function",
+        "candidate_generation_and_pruning"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_apriori_gen_merge",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 Apriori-Gen 合并两个 L_{k-1} 项集的条件。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能说出从 L_{k-1} 生成 C_k 时，两个项集必须共享多少个共同商品。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Apriori-Gen 合并条件：共享 k-2 个商品",
+      "term_refs": [
+        {
+          "display": "Apriori-Gen 函数",
+          "en": "apriori-gen"
+        }
+      ],
+      "variants": [
+        {
+          "back": "k-2 个。",
+          "estimated_seconds": 6,
+          "explanation": "例如从 L₂ 生成 C₃ 时，两个 2-项集必须共享 1 个商品（即 k-2 = 1）。",
+          "front": "从 L_{k-1} 生成 C_k 时，两个 (k-1)-项集必须共享多少个共同商品才能合并？",
+          "question_id": "q_flash_apriori_gen_merge_v1"
+        },
+        {
+          "back": "1 个。",
+          "estimated_seconds": 6,
+          "explanation": "因为 k=3，k-2=1，所以两个 2-项集必须共享 1 个商品才能合并。",
+          "front": "从 L₂ 生成 C₃ 时，两个 2-项集必须共享几个共同商品？",
+          "question_id": "q_flash_apriori_gen_merge_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-1",
+  "longform_families": [
+    {
+      "concept_key": "apriori_algorithm_execution",
+      "coverage_tags": [
+        "apriori_algorithm_iterative_process",
+        "candidate_generation_and_pruning",
+        "example_illustration"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_apriori_trace",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整描述 Apriori 算法从 L₂ 到 C₃ 的生成过程，包括合并条件和剪枝检查。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能根据给定的 L₂，手动执行 Apriori-Gen 生成 C₃，并解释每个候选被保留或剪枝的原因。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "Apriori-Gen 函数",
+          "en": "apriori-gen"
+        },
+        {
+          "display": "候选集",
+          "en": "Candidate Itemset (C_k)"
+        },
+        {
+          "display": "频繁项集",
+          "en": "Frequent Itemset (L_k)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "列出 L₂ 中所有可以合并的项集对（共享 1 个商品）",
+            "写出每个合并得到的候选 3-项集",
+            "对每个候选，检查其所有 2-项子集是否都在 L₂ 中",
+            "给出最终的 C₃"
+          ],
+          "question_id": "q_long_apriori_trace_v1",
+          "reference_answer": [
+            "可合并的项集对：{b, d} 与 {c, d} → {b, c, d}；{b, d} 与 {b, c} → {b, c, d}（重复）；{b, d} 与 {b, e} → {b, d, e}；{b, d} 与 {d, e} → {b, d, e}（重复）；{c, d} 与 {b, c} → {b, c, d}（重复）；{c, d} 与 {d, e} → {c, d, e}；{b, c} 与 {b, e} → {b, c, e}；{b, c} 与 {d, e} 不共享商品；{b, e} 与 {d, e} → {b, d, e}（重复）",
+            "唯一候选：{b, c, d}, {b, d, e}, {c, d, e}, {b, c, e}",
+            "检查 {b, c, d}：子集 {b, c}, {b, d}, {c, d} 都在 L₂ 中 → 保留。{b, d, e}：子集 {b, d}, {b, e}, {d, e} 都在 L₂ 中 → 保留。{c, d, e}：子集 {c, d}, {c, e}, {d, e}，但 {c, e} 不在 L₂ 中 → 剪枝。{b, c, e}：子集 {b, c}, {b, e}, {c, e}，但 {c, e} 不在 L₂ 中 → 剪枝。",
+            "最终 C₃ = {{b, c, d}, {b, d, e}}"
+          ],
+          "rubric_points": [
+            "正确识别所有共享 1 个商品的项集对",
+            "正确写出合并后的候选 3-项集",
+            "正确检查每个候选的所有 2-项子集是否在 L₂ 中",
+            "正确给出最终的 C₃"
+          ],
+          "stem": "假设 L₂ = {{b, d}, {c, d}, {b, c}, {b, e}, {d, e}}。请手动执行 Apriori-Gen 从 L₂ 生成 C₃，并说明每个候选 3-项集是否被保留以及原因。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "列出 L₂ 中所有可以合并的项集对（共享 1 个商品）",
+            "写出每个合并得到的候选 3-项集",
+            "对每个候选，检查其所有 2-项子集是否都在 L₂ 中",
+            "给出最终的 C₃"
+          ],
+          "question_id": "q_long_apriori_trace_v2",
+          "reference_answer": [
+            "可合并的项集对：{a, b} 与 {a, c} → {a, b, c}；{a, b} 与 {b, c} → {a, b, c}（重复）；{a, b} 与 {a, d} → {a, b, d}；{a, b} 与 {b, d} → {a, b, d}（重复）；{a, c} 与 {b, c} → {a, b, c}（重复）；{a, c} 与 {a, d} → {a, c, d}；{a, c} 与 {b, d} 不共享商品；{b, c} 与 {a, d} 不共享商品；{b, c} 与 {b, d} → {b, c, d}；{a, d} 与 {b, d} → {a, b, d}（重复）",
+            "唯一候选：{a, b, c}, {a, b, d}, {a, c, d}, {b, c, d}",
+            "检查 {a, b, c}：子集 {a, b}, {a, c}, {b, c} 都在 L₂ 中 → 保留。{a, b, d}：子集 {a, b}, {a, d}, {b, d} 都在 L₂ 中 → 保留。{a, c, d}：子集 {a, c}, {a, d}, {c, d}，但 {c, d} 不在 L₂ 中 → 剪枝。{b, c, d}：子集 {b, c}, {b, d}, {c, d}，但 {c, d} 不在 L₂ 中 → 剪枝。",
+            "最终 C₃ = {{a, b, c}, {a, b, d}}"
+          ],
+          "rubric_points": [
+            "正确识别所有共享 1 个商品的项集对",
+            "正确写出合并后的候选 3-项集",
+            "正确检查每个候选的所有 2-项子集是否在 L₂ 中",
+            "正确给出最终的 C₃"
+          ],
+          "stem": "假设 L₂ = {{a, b}, {a, c}, {b, c}, {a, d}, {b, d}}。请手动执行 Apriori-Gen 从 L₂ 生成 C₃，并说明每个候选 3-项集是否被保留以及原因。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "apriori_iterative_process",
+      "coverage_tags": [
+        "apriori_algorithm_iterative_process",
+        "example_illustration"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_apriori_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体情境中判断 Apriori 算法的正确迭代步骤。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能根据 Apriori 算法流程，判断关于 C₁、L₁、C₂ 生成顺序的描述是否正确。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "候选集",
+          "en": "Candidate Itemset (C_k)"
+        },
+        {
+          "display": "频繁项集",
+          "en": "Frequent Itemset (L_k)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "第一轮 C₁ 包含所有单个商品，扫描数据集统计支持度后，满足阈值的放入 L₁。",
+          "options": [
+            "C₁ 包含所有单个商品，扫描数据集后得到 L₁",
+            "L₁ 包含所有单个商品，扫描数据集后得到 C₁",
+            "C₁ 由 L₁ 通过 Apriori-Gen 生成",
+            "第一轮不需要扫描数据集"
+          ],
+          "question_id": "q_quiz_apriori_process_v1",
+          "stem": "关于 Apriori 算法的第一轮迭代，以下哪个描述是正确的？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "Apriori 算法逐层迭代，当某轮生成的 C_k 为空时，算法终止。",
+          "options": [
+            "当生成的 C_k 为空时",
+            "当 L_k 为空时",
+            "当所有项集都被扫描过时",
+            "当 k 等于商品总数时"
+          ],
+          "question_id": "q_quiz_apriori_process_v2",
+          "stem": "Apriori 算法在什么条件下终止？"
+        }
+      ]
+    },
+    {
+      "concept_key": "apriori_gen_pruning",
+      "coverage_tags": [
+        "apriori_gen_function",
+        "candidate_generation_and_pruning"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_apriori_gen_prune",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能应用 Apriori-Gen 的剪枝规则判断候选是否应被保留。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能根据给定的 L₂，判断某个 3-项集候选是否应被加入 C₃。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Apriori-Gen 函数",
+          "en": "apriori-gen"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "合并后需要检查 {a, b, c} 的所有 2-项子集是否都在 L₂ 中。{b, c} 在 L₂ 中，所以可以加入。注意这里 {b, c} 在 L₂ 中，所以实际上可以加入。但原题中 {b, c} 在 L₂ 中，所以答案是能。让我修正：{a, b, c} 的子集是 {a, b}, {a, c}, {b, c}，三者都在 L₂ 中，所以能加入。",
+          "options": [
+            "能，因为 {a, b} 和 {a, c} 共享 a",
+            "不能，因为 {b, c} 不在 L₂ 中",
+            "能，因为 {a, b} 和 {a, c} 都在 L₂ 中",
+            "不能，因为 {a, b} 和 {a, c} 共享的商品不够"
+          ],
+          "question_id": "q_quiz_apriori_gen_prune_v1",
+          "stem": "假设 L₂ = {{a, b}, {a, c}, {b, c}}。从 {a, b} 和 {a, c} 合并得到候选 {a, b, c}。{a, b, c} 能否加入 C₃？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "合并后需要检查 {a, b, c} 的所有 2-项子集：{a, b}, {a, c}, {b, c}。三者都在 L₂ 中，所以 {a, b, c} 可以加入 C₃。",
+          "options": [
+            "能，因为 {a, b} 和 {b, c} 共享 b",
+            "不能，因为 {a, c} 不在 L₂ 中",
+            "能，因为 {a, b} 和 {b, c} 都在 L₂ 中",
+            "不能，因为 {a, b} 和 {b, c} 共享的商品不够"
+          ],
+          "question_id": "q_quiz_apriori_gen_prune_v2",
+          "stem": "假设 L₂ = {{a, b}, {b, c}, {a, c}}。从 {a, b} 和 {b, c} 合并得到候选 {a, b, c}。{a, b, c} 能否加入 C₃？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

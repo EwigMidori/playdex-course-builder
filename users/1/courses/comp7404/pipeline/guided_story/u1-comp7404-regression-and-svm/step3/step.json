@@ -1,0 +1,155 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "线性回归用一条直线来拟合数据，简单有效。",
+        "但现实中的数据关系可能更复杂，比如不是直线，而是曲线。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "polynomial_regression"
+      ],
+      "id": "s021",
+      "introduced_terms": [
+        "polynomial_regression"
+      ],
+      "lines": [
+        "我们可以用多项式来拟合曲线，这就是 <term id=\"polynomial_regression\">多项式回归</term>。",
+        "阶数越高，模型越灵活，能拟合更复杂的形状。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "formula": {
+        "latex": "f(x; w) = w_0 + w_1 x + \\dots + w_m x^m",
+        "spoken": "输出是输入 x 的从 0 次到 m 次幂的线性组合。"
+      },
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "一个 \\(m\\) 阶多项式回归模型："
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [],
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "但是，模型越复杂，就越好吗？",
+        "让我们看一个例子。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "overfitting"
+      ],
+      "id": "s024",
+      "introduced_terms": [
+        "overfitting"
+      ],
+      "lines": [
+        "一个高阶多项式模型可以完美穿过所有训练点，训练误差几乎为零。",
+        "但是，如果加入一个新的数据点，它的预测可能完全错误。",
+        "这就是 <term id=\"overfitting\">过拟合</term>：模型记住了噪声，而不是真正的规律。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "generalization"
+      ],
+      "id": "s025",
+      "introduced_terms": [
+        "generalization"
+      ],
+      "lines": [
+        "我们真正关心的是模型在未知数据上的表现，这种能力称为 <term id=\"generalization\">泛化</term>。",
+        "过拟合的模型泛化能力很差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "过拟合的典型特征是模型在训练数据上表现极好（训练误差低），但在新数据上表现很差（测试误差高）。",
+        "kind": "single_choice",
+        "options": [
+          "训练误差和测试误差都很高",
+          "训练误差很低，但测试误差很高",
+          "训练误差和测试误差都很低",
+          "训练误差很高，但测试误差很低"
+        ],
+        "prompt": "过拟合的典型表现是什么？"
+      },
+      "focus_terms": [],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "过拟合的判断依据是训练误差和测试误差之间的巨大差距。",
+        "kind": "single_choice",
+        "options": [
+          "看训练误差是否为零",
+          "比较训练误差和测试误差，如果训练误差远低于测试误差，则可能过拟合",
+          "看模型的参数数量",
+          "看训练数据是否足够多"
+        ],
+        "prompt": "如何判断一个模型是否过拟合？"
+      },
+      "focus_terms": [],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "We'd like to understand how our linear predictions 'improve' as a function of the number of training examples. We assume that there is a systematic relation between x and y: each training example (x; y) is an independent sample from a fixed but unknown distribution P. Training examples {(x1; y1); ...; (xn; yn)}. Test examples {(x_{n+1}; y_{n+1}); ...; (x_{n+N}; y_{n+N})}. w_hat is the parameter estimated from the training examples. Types of errors: Mean training error, Mean test error, 'Generalization' error. With too few training examples our linear regression model may achieve zero training error but it has a large generalization error. When the training error no longer bears any relation to the generalization error the model overfits the data. Generalize to multiple explanatory variables y = w0 x0 + w1 x1 + ... + wm xm = w^T x. Our previous results generalize to models that are linear in the parameters w. m^{th} order polynomial prediction f: R→R f(x; w) = w0 + w1 x + ... + w_{m-1} x^{m-1} + w_m x^m. Linear regression cost is linear to the deviation from the underlying line. For (xi, yi) that is an outlier, the optimization takes too much effort to minimize their cost. Robust estimator: reduce the cost of outliers. Example: Huber loss L_delta(y, f(x)) = { 1/2 (y - f(x))^2 if |y - f(x)| <= delta; delta |y - f(x)| - 1/2 delta^2 otherwise }.",
+    "related": [
+      "Generalization",
+      "Overfitting",
+      "Polynomial Regression"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "generalization": {
+      "aliases": [
+        "Generalization"
+      ],
+      "display": "泛化",
+      "gloss": "模型对未见过的数据做出正确预测的能力。"
+    },
+    "overfitting": {
+      "aliases": [
+        "Overfitting"
+      ],
+      "display": "过拟合",
+      "gloss": "模型过度学习了训练数据中的噪声和细节，导致在新数据上表现很差。"
+    },
+    "polynomial_regression": {
+      "aliases": [
+        "Polynomial Regression"
+      ],
+      "display": "多项式回归",
+      "gloss": "线性回归的扩展，使用多项式函数来拟合数据，可以捕捉更复杂的关系。"
+    }
+  }
+}

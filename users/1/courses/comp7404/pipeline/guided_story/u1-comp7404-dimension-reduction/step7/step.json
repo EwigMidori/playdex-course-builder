@@ -1,0 +1,145 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s064",
+      "introduced_terms": [],
+      "lines": [
+        "有了图嵌入框架，能不能设计新算法？",
+        "比如，如何利用类别标签来降维？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s065",
+      "introduced_terms": [],
+      "lines": [
+        "LDA 利用标签，但它假设数据服从高斯分布。",
+        "如果数据不服从高斯分布呢？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s066",
+      "introduced_terms": [],
+      "lines": [
+        "用框架的思想：定义内在图和惩罚图。",
+        "内在图：同一类中，每个点与它的 k1 个近邻相连。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s067",
+      "introduced_terms": [],
+      "lines": [
+        "惩罚图：不同类之间，选择 k2 个最近的\"边际\"点对。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "内在图连接同类中互为 k1 近邻的点，保持局部同类结构。",
+        "kind": "single_choice",
+        "options": [
+          "所有同类点",
+          "同类中互为 k1 近邻的点",
+          "所有不同类的点",
+          "所有点"
+        ],
+        "prompt": "根据框架思想，MFA 的内在图应该连接哪些点？"
+      },
+      "focus_terms": [],
+      "id": "s068",
+      "introduced_terms": [],
+      "lines": [
+        "MFA 的内在图如何定义？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "marginal_fisher_analysis"
+      ],
+      "id": "s069",
+      "introduced_terms": [
+        "marginal_fisher_analysis"
+      ],
+      "lines": [
+        "这就是 <term id=\"marginal_fisher_analysis\">边际费舍尔分析</term>。",
+        "它不需要高斯分布假设，比 LDA 更灵活。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s070",
+      "introduced_terms": [],
+      "lines": [
+        "在人脸识别实验中，MFA 的表现优于 PCA+LDA。",
+        "张量化版本 TMFA 的效果更好。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "MFA 不需要高斯分布假设，通过局部近邻定义内在图和惩罚图。",
+        "kind": "single_choice",
+        "options": [
+          "它们是一样的",
+          "MFA 不需要高斯分布假设",
+          "LDA 不需要高斯分布假设",
+          "MFA 使用全局距离"
+        ],
+        "prompt": "MFA 和 LDA 的主要区别是什么？"
+      },
+      "focus_terms": [],
+      "id": "s071",
+      "introduced_terms": [],
+      "lines": [
+        "MFA 和 LDA 有什么不同？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "explanation": "MFA 通过定义内在图（同类 k1 近邻）和惩罚图（不同类 k2 最近边际点对），利用图嵌入框架的优化目标来降维。",
+        "kind": "short_reflection",
+        "prompt": "请用一句话总结 MFA 是如何利用图嵌入框架设计出来的。"
+      },
+      "focus_terms": [],
+      "id": "s072",
+      "introduced_terms": [],
+      "lines": [
+        "MFA 的设计思想是什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step7",
+  "source": {
+    "plain_text": "Marginal Fisher Analysis: S_ij = 1 if x_i is among the k1-nearest neighbors of x_j in the same class. S_ij^P = 1 if the pair (i,j) is among the k2 shortest pairs. No Gaussian distribution assumption.",
+    "related": [
+      "Yan, Xu et al. CVPR 2005"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "marginal_fisher_analysis": {
+      "aliases": [
+        "MFA",
+        "Marginal Fisher Analysis"
+      ],
+      "display": "边际费舍尔分析",
+      "gloss": "一种基于图嵌入框架的监督降维方法，同时利用标签信息和局部流形结构。"
+    }
+  }
+}

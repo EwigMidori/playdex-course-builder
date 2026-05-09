@@ -1,0 +1,174 @@
+{
+  "chapter_id": "lecture-05-application",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-application",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "near_duplicate_image"
+      ],
+      "id": "s061",
+      "introduced_terms": [
+        "near_duplicate_image"
+      ],
+      "lines": [
+        "还有一种特殊情况：<term id=\"near_duplicate_image\">近重复图像</term>。",
+        "比如一张照片被裁剪、调色、加了个水印。",
+        "内容几乎一样，但像素级别上又不同。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "spatial_pyramid_matching"
+      ],
+      "id": "s062",
+      "introduced_terms": [],
+      "lines": [
+        "标准空间金字塔匹配要求块与块严格对齐。",
+        "但近重复图像中，物体可能发生了平移或缩放。",
+        "看一个失败案例：一张猫的图片，猫在左边；另一张猫在右边。",
+        "标准SPM会认为它们差异很大，因为每个格子里的内容都变了。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": "标准SPM要求块严格对齐，当物体发生平移或缩放时，每个格子里的内容变化很大，导致匹配失败。SAPM允许块在匹配时发生位置和尺度的偏移，更鲁棒。",
+        "kind": "short_answer",
+        "prompt": "标准空间金字塔匹配在近重复图像上为什么会失败？空间对齐金字塔匹配如何解决？"
+      },
+      "focus_terms": [
+        "spatial_pyramid_matching",
+        "spatially_aligned_pyramid_matching"
+      ],
+      "id": "s063",
+      "introduced_terms": [],
+      "lines": [
+        "标准空间金字塔匹配在近重复图像上为什么会失败？空间对齐金字塔匹配如何解决？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "spatially_aligned_pyramid_matching"
+      ],
+      "id": "s064",
+      "introduced_terms": [
+        "spatially_aligned_pyramid_matching"
+      ],
+      "lines": [
+        "<term id=\"spatially_aligned_pyramid_matching\">空间对齐金字塔匹配</term> 解决了这个问题。",
+        "它允许一个图像块匹配到另一个图像中不同位置的块。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "spatially_aligned_pyramid_matching",
+        "earth_movers_distance"
+      ],
+      "id": "s065",
+      "introduced_terms": [],
+      "lines": [
+        "它使用整数流推土机距离，",
+        "来找到块与块之间的最佳匹配关系。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "标准SPM要求块严格对齐，而SAPM允许块在匹配时发生位置和尺度的变化，更鲁棒。",
+        "kind": "single_choice",
+        "options": [
+          "计算速度更快",
+          "可以处理图像块的位置偏移和尺度变化",
+          "不需要特征描述子",
+          "可以处理彩色图像"
+        ],
+        "prompt": "空间对齐金字塔匹配相比标准空间金字塔匹配，主要优势是什么？"
+      },
+      "focus_terms": [
+        "spatially_aligned_pyramid_matching",
+        "spatial_pyramid_matching"
+      ],
+      "id": "s066",
+      "introduced_terms": [],
+      "lines": [
+        "空间对齐金字塔匹配相比标准空间金字塔匹配，主要优势是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "near_duplicate_image",
+        "spatially_aligned_pyramid_matching"
+      ],
+      "id": "s067",
+      "introduced_terms": [],
+      "lines": [
+        "这项技术可以用于版权检测，",
+        "或者过滤搜索引擎结果中的重复图片。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "bag_of_words",
+        "spatial_pyramid_matching",
+        "spatially_aligned_pyramid_matching"
+      ],
+      "id": "s068",
+      "introduced_terms": [],
+      "lines": [
+        "从词袋模型到各种金字塔匹配，",
+        "核心都是如何更好地表示和比较视觉内容。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": "标准SPM要求块严格对齐，当物体发生平移或缩放时，每个格子里的内容变化很大，导致匹配失败。SAPM允许块在匹配时发生位置和尺度的偏移，从而解决了这个问题。",
+        "kind": "short_answer",
+        "prompt": "请分析标准SPM在近重复图像上为什么会失败？SAPM如何解决？"
+      },
+      "focus_terms": [
+        "spatial_pyramid_matching",
+        "spatially_aligned_pyramid_matching"
+      ],
+      "id": "s069",
+      "introduced_terms": [],
+      "lines": [
+        "请分析标准SPM在近重复图像上为什么会失败？SAPM如何解决？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Spatially Aligned Pyramid Matching for Near Duplicate Image Identification. Near duplicate images. Applications: Copyright infringement detection, Filter out redundant near duplicate images. Illustration of Spatially Aligned Pyramid Matching at level-2. First Stage Matching, Second Stage Matching, Third Stage Matching.",
+    "related": [
+      "lecture-05-application"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "near_duplicate_image": {
+      "aliases": [
+        "Near Duplicate Image"
+      ],
+      "display": "近重复图像",
+      "gloss": "两张内容几乎相同，但在拍摄条件、编辑或渲染上略有不同的图像。"
+    },
+    "spatially_aligned_pyramid_matching": {
+      "aliases": [
+        "Spatially Aligned Pyramid Matching",
+        "SAPM"
+      ],
+      "display": "空间对齐金字塔匹配",
+      "gloss": "一种改进的空间金字塔匹配，允许图像块在匹配时发生位置和尺度的偏移。"
+    }
+  }
+}

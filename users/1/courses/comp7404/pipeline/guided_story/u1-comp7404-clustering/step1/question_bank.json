@@ -1,0 +1,322 @@
+{
+  "chapter_id": "lecture-04-clustering",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "what_is_cluster_analysis",
+      "covered_by": [
+        "qf_flash_cluster_def",
+        "qf_quiz_cluster_def",
+        "qf_long_cluster_analysis"
+      ],
+      "description": "聚类分析的定义：将对象分组，使得组内对象相似、组间对象不同。"
+    },
+    {
+      "coverage_tag": "cluster_definition",
+      "covered_by": [
+        "qf_flash_cluster_def"
+      ],
+      "description": "簇的定义：聚类分析中形成的一个数据对象组。"
+    },
+    {
+      "coverage_tag": "clustering_vs_classification",
+      "covered_by": [
+        "qf_quiz_cluster_vs_classification"
+      ],
+      "description": "聚类分析与分类分析的根本区别：无标签 vs 有标签。"
+    },
+    {
+      "coverage_tag": "clustering_as_unsupervised_learning",
+      "covered_by": [
+        "qf_quiz_unsupervised"
+      ],
+      "description": "聚类分析属于无监督学习。"
+    },
+    {
+      "coverage_tag": "motivation_for_automatic_clustering",
+      "covered_by": [
+        "qf_long_cluster_analysis"
+      ],
+      "description": "为什么需要自动聚类：数据量大、特征多、人眼无法直接分组。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "cluster_analysis",
+      "coverage_tags": [
+        "what_is_cluster_analysis",
+        "cluster_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_cluster_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出聚类分析和簇的定义。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了聚类分析和簇的核心定义。",
+      "question_type": "short_answer",
+      "retrieval_focus": "聚类分析的定义和簇的定义。",
+      "term_refs": [
+        {
+          "display": "聚类分析",
+          "en": "Cluster Analysis"
+        },
+        {
+          "display": "簇",
+          "en": "Cluster"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将数据对象分组，使得组内对象相似、组间对象不同。",
+          "estimated_seconds": 8,
+          "explanation": "这是聚类分析的核心目标：自动发现数据中的自然分组。",
+          "front": "聚类分析的目标是什么？",
+          "question_id": "q_flash_cluster_def_v1"
+        },
+        {
+          "back": "聚类分析中形成的一个数据对象组，组内对象彼此相似，组间对象差异较大。",
+          "estimated_seconds": 8,
+          "explanation": "簇是聚类分析的基本输出单元。",
+          "front": "在聚类分析中，一个“簇”是什么？",
+          "question_id": "q_flash_cluster_def_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-clustering",
+  "longform_families": [
+    {
+      "concept_key": "cluster_analysis",
+      "coverage_tags": [
+        "what_is_cluster_analysis",
+        "motivation_for_automatic_clustering"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_cluster_analysis",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么需要自动聚类分析，并用自己的话描述其定义。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明理解了手动分组的局限性以及聚类分析的核心思想。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "聚类分析",
+          "en": "Cluster Analysis"
+        },
+        {
+          "display": "簇",
+          "en": "Cluster"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "手动分组的困难",
+            "聚类分析的定义",
+            "聚类分析如何解决手动分组的困难"
+          ],
+          "question_id": "q_long_cluster_analysis_v1",
+          "reference_answer": [
+            "手动分组100张照片时，人眼无法同时处理颜色、亮度、纹理等多个特征，非常耗时；而且不同人的分组标准不同，结果不一致。",
+            "聚类分析是一种自动发现数据中自然分组的方法，目标是将对象分组，使得组内对象彼此相似，组间对象差异较大。",
+            "聚类分析通过算法自动处理多特征数据，不需要人工逐张比较，并且能提供一致、可重复的分组结果。"
+          ],
+          "rubric_points": [
+            "指出手动分组耗时且结果因人而异",
+            "准确定义聚类分析：自动发现数据中的自然分组，使得组内对象相似、组间对象不同",
+            "说明聚类分析通过算法自动处理多特征数据，提供一致的分组结果"
+          ],
+          "stem": "假设你有一组包含颜色、亮度、纹理等多个特征的100张照片，需要将它们分成几组。请解释为什么手动分组会遇到困难，并说明聚类分析如何解决这些问题。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "聚类分析的定义",
+            "分类分析的定义",
+            "两者的根本区别"
+          ],
+          "question_id": "q_long_cluster_analysis_v2",
+          "reference_answer": [
+            "聚类分析是在没有标签的情况下，自动发现数据中的自然分组，使得组内对象相似、组间对象不同。",
+            "分类分析是根据已有标签的数据训练模型，然后对新的数据进行类别预测。",
+            "两者的根本区别在于：聚类分析不需要标签（无监督学习），而分类分析需要标签（有监督学习）。"
+          ],
+          "rubric_points": [
+            "准确定义聚类分析：在没有标签的情况下发现数据中的自然分组",
+            "准确定义分类分析：根据已有标签对数据进行预测",
+            "指出根本区别在于是否需要标签（无监督 vs 有监督）"
+          ],
+          "stem": "请用自己的话解释聚类分析的定义，并说明它与分类分析的根本区别。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "cluster_analysis",
+      "coverage_tags": [
+        "what_is_cluster_analysis"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_cluster_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下识别聚类分析的正确描述。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能区分聚类分析的正确与错误描述。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "聚类分析",
+          "en": "Cluster Analysis"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "聚类分析是无监督学习，目标是在没有标签的情况下发现数据中的自然分组。",
+          "options": [
+            "根据已有标签对数据进行分类",
+            "在没有标签的情况下发现数据中的自然分组",
+            "对数据进行排序",
+            "计算数据的平均值"
+          ],
+          "question_id": "q_quiz_cluster_def_v1",
+          "stem": "以下哪一项最准确地描述了聚类分析？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "聚类分析的目标是让同一个簇内的对象彼此相似，不同簇的对象差异较大。",
+          "options": [
+            "彼此差异很大",
+            "彼此相似",
+            "与所有其他对象都不同",
+            "随机分布"
+          ],
+          "question_id": "q_quiz_cluster_def_v2",
+          "stem": "聚类分析中，同一个簇内的对象应该具有什么特点？"
+        }
+      ]
+    },
+    {
+      "concept_key": "clustering_vs_classification",
+      "coverage_tags": [
+        "clustering_vs_classification"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_cluster_vs_classification",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分聚类分析和分类分析的根本区别。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明掌握了聚类分析（无监督）与分类分析（有监督）的核心差异。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "聚类分析",
+          "en": "Cluster Analysis"
+        },
+        {
+          "display": "分类分析",
+          "en": "Classification"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "聚类分析是无监督学习，不需要标签；分类分析是有监督学习，需要标签。",
+          "options": [
+            "聚类分析需要事先知道每个数据的类别",
+            "聚类分析是在没有标签的情况下发现自然分组",
+            "聚类分析和分类分析是一回事",
+            "聚类分析只能用于图像数据"
+          ],
+          "question_id": "q_quiz_cluster_vs_classification_v1",
+          "stem": "聚类分析和分类分析的根本区别是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "将新闻文章自动分组且事先不知道主题，这是典型的无监督聚类场景。",
+          "options": [
+            "根据已知的垃圾邮件标签训练一个分类器",
+            "将一组新闻文章自动分成几个主题组，事先不知道主题",
+            "预测明天的股票价格",
+            "根据用户历史购买记录推荐商品"
+          ],
+          "question_id": "q_quiz_cluster_vs_classification_v2",
+          "stem": "以下哪个场景最适合使用聚类分析？"
+        }
+      ]
+    },
+    {
+      "concept_key": "unsupervised_learning",
+      "coverage_tags": [
+        "clustering_as_unsupervised_learning"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_unsupervised",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断聚类分析属于无监督学习。",
+      "linked_steps": [
+        "step1"
+      ],
+      "practice_target": "学生答对后证明能识别聚类分析是无监督学习的一种。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "无监督学习",
+          "en": "Unsupervised Learning"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "没有标签，要求自动发现分组，这是无监督学习。",
+          "options": [
+            "有监督学习",
+            "无监督学习",
+            "半监督学习",
+            "强化学习"
+          ],
+          "question_id": "q_quiz_unsupervised_v1",
+          "stem": "给定一组图片，没有标签，要求自动分组。这是哪种学习方式？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "聚类分析不需要标签，因此属于无监督学习。",
+          "options": [
+            "有监督学习",
+            "无监督学习",
+            "半监督学习",
+            "强化学习"
+          ],
+          "question_id": "q_quiz_unsupervised_v2",
+          "stem": "聚类分析属于机器学习的哪个分支？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-clustering/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

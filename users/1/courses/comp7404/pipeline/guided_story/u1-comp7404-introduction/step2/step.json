@@ -1,0 +1,160 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-introduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s011",
+      "introduced_terms": [],
+      "lines": [
+        "要让计算机学习，首先得把数据变成它能理解的形式。",
+        "比如，一本书的标题怎么变成数字？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s012",
+      "introduced_terms": [],
+      "lines": [
+        "你可能会想：直接用文字长度？",
+        "但“微分方程”和“算法导论”长度差不多，内容却完全不同。",
+        "文字长度无法区分内容。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "那用第一个字的笔画数？",
+        "“微”和“算”笔画不同，但“微积分”和“微观经济学”第一个字相同。",
+        "也不行。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "feature"
+      ],
+      "id": "s014",
+      "introduced_terms": [
+        "feature"
+      ],
+      "lines": [
+        "更好的办法是：提取一些关键词作为 <term id=\"feature\">特征</term>。",
+        "比如“微分方程”、“算法”、“积分”这些词。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "feature_vector"
+      ],
+      "id": "s015",
+      "introduced_terms": [
+        "feature_vector"
+      ],
+      "lines": [
+        "对于每一本书，我们统计这些词是否出现。",
+        "这就构成了一个 <term id=\"feature_vector\">特征向量</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "feature_space"
+      ],
+      "id": "s016",
+      "introduced_terms": [
+        "feature_space"
+      ],
+      "lines": [
+        "所有可能的特征向量放在一起，就形成了一个 <term id=\"feature_space\">特征空间</term>。",
+        "每个数据点都是这个空间里的一个点。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "比如一张灰度图片，每个像素的亮度就是一个特征。",
+        "一张 \\(N \\times M\\) 的图片，就变成了一个 \\(N \\times M\\) 维的特征向量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s018",
+      "introduced_terms": [],
+      "lines": [
+        "彩色图片呢？每个像素有红、绿、蓝三个值。",
+        "所以一张彩色图片的特征空间是三维的。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "10000"
+        ],
+        "explanation": "100 行 × 100 列 = 10000 个像素，每个像素是一个特征，所以是 10000 维。",
+        "kind": "fill_in_blank",
+        "prompt": "一张 100x100 的灰度图片，它的特征向量有多少维？"
+      },
+      "focus_terms": [],
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "一张 100x100 的灰度图片，它的特征向量有多少维？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "把数据变成特征向量，是机器学习的第一步。",
+        "接下来，我们看看学习问题有哪些不同类型。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Preprocessing: Feature extraction for document classification, term-document matrix, intensity image representation.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "feature": {
+      "aliases": [
+        "feature",
+        "attribute"
+      ],
+      "display": "特征",
+      "gloss": "描述数据某个方面的可测量属性。"
+    },
+    "feature_space": {
+      "aliases": [
+        "feature space"
+      ],
+      "display": "特征空间",
+      "gloss": "所有可能的特征向量构成的数学空间。"
+    },
+    "feature_vector": {
+      "aliases": [
+        "feature vector",
+        "data point"
+      ],
+      "display": "特征向量",
+      "gloss": "将一个样本的所有特征值排列成的向量。"
+    }
+  }
+}

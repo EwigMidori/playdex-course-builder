@@ -1,0 +1,198 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "前面讨论的都是向量数据。",
+        "但很多数据天然是多维结构。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s039",
+      "introduced_terms": [],
+      "lines": [
+        "一张灰度图像是二维矩阵。",
+        "一段视频是三维数组。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "tensor"
+      ],
+      "id": "s040",
+      "introduced_terms": [
+        "tensor"
+      ],
+      "lines": [
+        "这种多维数组被称为 <term id=\"tensor\">张量</term>。",
+        "向量是1阶张量，矩阵是2阶，更高维的是n阶张量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "传统做法是把张量拉直成向量。",
+        "比如一张 100×100 的图像变成 10000 维的向量。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "curse_of_dimensionality"
+      ],
+      "id": "s042",
+      "introduced_terms": [
+        "curse_of_dimensionality"
+      ],
+      "lines": [
+        "但这样做会带来 <term id=\"curse_of_dimensionality\">维度灾难</term>。",
+        "比如 100×100×40 的 Gabor 特征，拉直后是 40 万维。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "样本数量通常只有几千。",
+        "用 40 万维特征去学习，效果会很差。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "拉直会大幅增加特征维度，在样本有限时导致维度灾难。",
+        "kind": "single_choice",
+        "options": [
+          "计算速度变慢",
+          "特征维度急剧增加，导致维度灾难",
+          "丢失了类别标签",
+          "无法使用机器学习算法"
+        ],
+        "prompt": "将张量拉直成向量的主要问题是什么？"
+      },
+      "focus_terms": [],
+      "id": "s044",
+      "introduced_terms": [],
+      "lines": [
+        "为什么拉直成向量有问题？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s045",
+      "introduced_terms": [],
+      "lines": [
+        "更好的做法是：保持数据的张量结构。",
+        "直接在张量上进行降维。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "mode_k_product"
+      ],
+      "id": "s046",
+      "introduced_terms": [
+        "mode_k_product"
+      ],
+      "lines": [
+        "这需要一种新的运算：<term id=\"mode_k_product\">模-k 乘积</term>。",
+        "它允许我们在张量的某个维度上进行投影。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "保持张量结构可以避免拉直带来的维度灾难，同时保留数据的多维结构信息。",
+        "kind": "single_choice",
+        "options": [
+          "提高计算速度",
+          "避免维度灾难，保留多维结构",
+          "减少模型参数",
+          "增加数据量"
+        ],
+        "prompt": "为什么保持张量结构比拉直成向量更好？"
+      },
+      "focus_terms": [],
+      "id": "s047",
+      "introduced_terms": [],
+      "lines": [
+        "保持张量结构有什么好处？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "LLE 保持局部线性重构关系，Isomap 保持测地距离。共同点是都保持某种相似关系，不同点是 LLE 是局部的，Isomap 是全局的。",
+        "kind": "comparison_synthesis",
+        "options": [
+          "它们没有共同点",
+          "它们都在保持某种相似关系，但 LLE 是局部的，Isomap 是全局的",
+          "它们都使用线性投影",
+          "它们都使用核技巧"
+        ],
+        "prompt": "LLE 和 Isomap 都在保持某种关系，它们保持的关系有什么共同点和不同点？"
+      },
+      "focus_terms": [],
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "LLE 和 Isomap 的异同？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "Tensors are arrays of numbers. Gray-level images (2D structure), videos (3D structure), Gabor-filtered images (3D structure). Curse of Dimensionality: Gabor-filtered image: 100*100*40 -> Vector: 400,000.",
+    "related": [
+      "Tensor representation",
+      "CSA",
+      "Xu et al. 2005"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "curse_of_dimensionality": {
+      "aliases": [
+        "curse of dimensionality"
+      ],
+      "display": "维度灾难",
+      "gloss": "当特征维度很高时，数据变得稀疏，需要指数级数量的样本才能有效学习。"
+    },
+    "mode_k_product": {
+      "aliases": [
+        "mode-k product",
+        "n-mode product"
+      ],
+      "display": "模-k 乘积",
+      "gloss": "张量与矩阵在特定维度上的乘积运算。"
+    },
+    "tensor": {
+      "aliases": [
+        "Tensor",
+        "multi-dimensional array"
+      ],
+      "display": "张量",
+      "gloss": "多维数组的泛化：标量是0阶张量，向量是1阶，矩阵是2阶，更高维的数组是n阶张量。"
+    }
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "chapter_id": "lecture-03-classification-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-classification-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s044",
+      "introduced_terms": [],
+      "lines": [
+        "模型建好了，怎么知道它好不好？",
+        "我们需要在测试集上评估。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "accuracy"
+      ],
+      "id": "s045",
+      "introduced_terms": [
+        "accuracy"
+      ],
+      "lines": [
+        "最直观的指标是<term id=\"accuracy\">准确率</term>。",
+        "准确率 = 预测正确的样本数 / 总样本数。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "accuracy"
+      ],
+      "id": "s046",
+      "introduced_terms": [],
+      "lines": [
+        "但准确率有时会骗人。",
+        "比如99%的人没有癌症，一个模型只要全判“无癌症”，准确率就是99%。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "confusion_matrix"
+      ],
+      "id": "s047",
+      "introduced_terms": [
+        "confusion_matrix"
+      ],
+      "lines": [
+        "这时需要更细致的指标。",
+        "用<term id=\"confusion_matrix\">混淆矩阵</term>可以看清细节。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "confusion_matrix"
+      ],
+      "id": "s048",
+      "introduced_terms": [],
+      "lines": [
+        "混淆矩阵有四类：真正例(TP)、假正例(FP)、",
+        "真负例(TN)、假负例(FN)。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "precision"
+      ],
+      "id": "s049",
+      "introduced_terms": [
+        "precision"
+      ],
+      "lines": [
+        "<term id=\"precision\">精确率</term> = TP / (TP + FP)。",
+        "它回答：你说是癌症的，有多少真的是？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "recall"
+      ],
+      "id": "s050",
+      "introduced_terms": [
+        "recall"
+      ],
+      "lines": [
+        "<term id=\"recall\">召回率</term> = TP / (TP + FN)。",
+        "它回答：真的有癌症的，你找出了多少？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "f_measure"
+      ],
+      "id": "s051",
+      "introduced_terms": [
+        "f_measure"
+      ],
+      "lines": [
+        "<term id=\"f_measure\">F1分数</term>是精确率和召回率的调和平均。",
+        "它综合了两者的表现。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "roc_curve",
+        "auc"
+      ],
+      "id": "s052",
+      "introduced_terms": [
+        "roc_curve",
+        "auc"
+      ],
+      "lines": [
+        "<term id=\"roc_curve\">ROC曲线</term>以假正率为横轴，真正率为纵轴。",
+        "曲线下的面积<term id=\"auc\">AUC</term>越大，模型越好。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "为了更可靠地评估，可以使用交叉验证。",
+        "把数据分成k份，轮流用k-1份训练，1份测试。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "召回率 = TP / (TP + FN) = 9 / (9 + 1) = 90%。",
+        "kind": "single_choice",
+        "options": [
+          "90%",
+          "10%",
+          "约47%"
+        ],
+        "prompt": "一个癌症检测模型，把10个真正有癌症的人中的9个判对了，但把100个健康人中的10个误判为癌症。它的召回率是多少？"
+      },
+      "focus_terms": [
+        "precision",
+        "recall"
+      ],
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "Classifiers are evaluated using metrics like accuracy, precision, recall, F-measure, and ROC curves. Cross-validation is a robust evaluation method.",
+    "related": [
+      "classification",
+      "test set",
+      "overfitting"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "accuracy": {
+      "aliases": [
+        "Accuracy"
+      ],
+      "display": "准确率",
+      "gloss": "预测正确的样本数占总样本数的比例。"
+    },
+    "auc": {
+      "aliases": [
+        "Area Under the Curve",
+        "AUC"
+      ],
+      "display": "AUC",
+      "gloss": "ROC曲线下的面积，用于量化分类器的整体性能。"
+    },
+    "confusion_matrix": {
+      "aliases": [
+        "Confusion Matrix"
+      ],
+      "display": "混淆矩阵",
+      "gloss": "用于展示分类器预测结果与实际标签对比的表格。"
+    },
+    "f_measure": {
+      "aliases": [
+        "F-measure",
+        "F1 Score"
+      ],
+      "display": "F1分数",
+      "gloss": "精确率和召回率的调和平均数，综合衡量模型性能。"
+    },
+    "precision": {
+      "aliases": [
+        "Precision"
+      ],
+      "display": "精确率",
+      "gloss": "在所有被预测为正类的样本中，真正为正类的比例。"
+    },
+    "recall": {
+      "aliases": [
+        "Recall",
+        "Sensitivity",
+        "True Positive Rate"
+      ],
+      "display": "召回率",
+      "gloss": "在所有真正的正类样本中，被正确预测为正类的比例。"
+    },
+    "roc_curve": {
+      "aliases": [
+        "ROC Curve",
+        "Receiver Operating Characteristic Curve"
+      ],
+      "display": "ROC曲线",
+      "gloss": "以假正率为横轴、真正率为纵轴绘制的曲线，用于评估分类器性能。"
+    }
+  }
+}

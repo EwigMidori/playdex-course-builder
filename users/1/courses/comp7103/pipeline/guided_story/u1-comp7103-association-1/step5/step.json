@@ -1,0 +1,138 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s036",
+      "introduced_terms": [
+        "candidate_itemset"
+      ],
+      "lines": [
+        "Apriori 算法是逐层迭代的。",
+        "第 k 轮，我们先生成候选集 C_k，再扫描数据集找出频繁项集 L_k。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "第一轮：C₁ 包含所有单个商品。",
+        "扫描数据集，统计每个商品的支持度，得到 L₁。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "第二轮：用 L₁ 生成 C₂。",
+        "C₂ 中的每个 2-项集，它的所有 1-项子集都必须在 L₁ 中。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s039",
+      "introduced_terms": [],
+      "lines": [
+        "扫描数据集，统计 C₂ 中每个项集的支持度，得到 L₂。",
+        "如此反复，直到 C_k 为空。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s040",
+      "introduced_terms": [
+        "apriori_gen"
+      ],
+      "lines": [
+        "生成 C_k 的函数叫做<term id=\"apriori_gen\">Apriori-Gen</term>。",
+        "它把 L_{k-1} 中共享 k-2 个商品的两个项集合并。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "比如从 L₂ 生成 C₃：",
+        "{b, d} 和 {c, d} 共享一个商品 d，合并得到 {b, c, d}。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s042",
+      "introduced_terms": [],
+      "lines": [
+        "然后检查 {b, c, d} 的所有 2-项子集是否都在 L₂ 中。",
+        "{b, c}、{b, d}、{c, d} 都在，所以 {b, c, d} 加入 C₃。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s043",
+      "introduced_terms": [],
+      "lines": [
+        "而 {a, b} 和 {b, c} 合并得到 {a, b, c}。",
+        "但 {a, c} 不在 L₂ 中，所以 {a, b, c} 被剪掉。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s044",
+      "introduced_terms": [],
+      "lines": [
+        "在我们的例子中，最终只扫描了 20 个项集。",
+        "而全部可能的项集有 63 个。剪枝效果显著。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "合并需要两个项集共享 k-2=1 个商品，{a, b} 和 {a, c} 共享 a，可以合并。但还需要检查 {b, c} 是否在 L₂ 中，如果不在，则 {a, b, c} 被剪掉。",
+        "kind": "single_choice",
+        "options": [
+          "能",
+          "不能"
+        ],
+        "prompt": "能合并吗？"
+      },
+      "id": "s045",
+      "lines": [
+        "L₂ 包含 {a, b} 和 {a, c}，它们能合并成 {a, b, c} 吗？",
+        "提示：需要检查 {b, c} 是否在 L₂ 中。"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "plain_text": "The Apriori Algorithm, Illustrating Apriori Principle, From L_{i-1} to C_i, Example",
+    "related": [
+      "C_k",
+      "L_k",
+      "apriori-gen"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "apriori_gen": {
+      "aliases": [
+        "apriori-gen"
+      ],
+      "display": "Apriori-Gen 函数",
+      "gloss": "从 L_{k-1} 生成 C_k 的函数，利用 Apriori 性质进行剪枝。"
+    },
+    "candidate_itemset": {
+      "aliases": [
+        "Candidate Itemset",
+        "C_k"
+      ],
+      "display": "候选集",
+      "gloss": "可能成为频繁项集的项集，需要扫描数据集来验证。"
+    }
+  }
+}

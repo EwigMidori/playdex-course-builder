@@ -1,0 +1,466 @@
+{
+  "chapter_id": "lecture-04-classification-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "euclidean_distance_formula",
+      "covered_by": [
+        "qf_flash_euclidean",
+        "qf_quiz_euclidean"
+      ],
+      "description": "欧几里得距离公式及其在k-NN中的应用"
+    },
+    {
+      "coverage_tag": "normalization_importance",
+      "covered_by": [
+        "qf_flash_normalization",
+        "qf_quiz_normalization"
+      ],
+      "description": "属性归一化的必要性：避免尺度大的属性主导距离计算"
+    },
+    {
+      "coverage_tag": "k_selection_tradeoff",
+      "covered_by": [
+        "qf_flash_k_tradeoff",
+        "qf_quiz_k_tradeoff"
+      ],
+      "description": "k值选择的权衡：k太小导致过拟合/对噪声敏感，k太大导致边界模糊"
+    },
+    {
+      "coverage_tag": "lazy_learner_characteristics",
+      "covered_by": [
+        "qf_flash_lazy_learner",
+        "qf_quiz_lazy_learner"
+      ],
+      "description": "k-NN作为懒惰学习器的特点：不预先建模，预测时计算成本高"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "euclidean_distance",
+      "coverage_tags": [
+        "euclidean_distance_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_euclidean",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能回忆并写出欧几里得距离公式，理解其计算过程。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能准确写出两点间欧几里得距离的数学表达式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "欧几里得距离公式的数学形式",
+      "term_refs": [
+        {
+          "display": "欧几里得距离",
+          "en": "Euclidean Distance"
+        }
+      ],
+      "variants": [
+        {
+          "back": "$d(p, q) = \\sqrt{\\sum_i (p_i - q_i)^2}$",
+          "estimated_seconds": 10,
+          "explanation": "欧几里得距离是各属性差值的平方和再开平方根。",
+          "front": "写出两点 p 和 q 之间的欧几里得距离公式。",
+          "question_id": "q_flash_euclidean_v1"
+        },
+        {
+          "back": "第 i 个属性（特征维度）。",
+          "estimated_seconds": 8,
+          "explanation": "求和是对所有属性进行的，每个属性对应一个维度。",
+          "front": "在欧几里得距离公式 $d(p, q) = \\sqrt{\\sum_i (p_i - q_i)^2}$ 中，$i$ 代表什么？",
+          "question_id": "q_flash_euclidean_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "normalization",
+      "coverage_tags": [
+        "normalization_importance"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_normalization",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释为什么k-NN中需要对属性进行归一化。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能说出归一化的核心原因：防止尺度大的属性主导距离计算。",
+      "question_type": "short_answer",
+      "retrieval_focus": "归一化的必要性",
+      "term_refs": [
+        {
+          "display": "归一化",
+          "en": "Normalization"
+        }
+      ],
+      "variants": [
+        {
+          "back": "防止尺度大的属性（如收入0-100000）主导距离计算，使尺度小的属性（如年龄0-100）几乎不起作用。",
+          "estimated_seconds": 12,
+          "explanation": "如果不归一化，收入差几万对距离的影响远大于年龄差几十，导致年龄属性被忽略。",
+          "front": "在k-NN中，为什么所有属性必须先做归一化？",
+          "question_id": "q_flash_normalization_v1"
+        },
+        {
+          "back": "尺度大的属性会主导距离计算，其他属性几乎失效。",
+          "estimated_seconds": 8,
+          "explanation": "例如，收入（0-100000）的差值会淹没年龄（0-100）的差值。",
+          "front": "k-NN中，如果不对属性做归一化，最可能的结果是什么？",
+          "question_id": "q_flash_normalization_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "k_selection",
+      "coverage_tags": [
+        "k_selection_tradeoff"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_k_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出k值过小和过大的各自问题。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能准确回忆k值过小导致过拟合/对噪声敏感，k值过大导致边界模糊。",
+      "question_type": "short_answer",
+      "retrieval_focus": "k值选择的两端风险",
+      "term_refs": [
+        {
+          "display": "k 值选择",
+          "en": "k selection"
+        }
+      ],
+      "variants": [
+        {
+          "back": "对噪声点敏感；过拟合。",
+          "estimated_seconds": 10,
+          "explanation": "k太小，模型只依赖极少数邻居，容易受个别噪声点影响，且过度拟合训练数据。",
+          "front": "k-NN中，如果k值选得太小，会导致什么问题？（说出两点）",
+          "question_id": "q_flash_k_tradeoff_v1"
+        },
+        {
+          "back": "邻居可能包含其他类别的点，导致决策边界模糊。",
+          "estimated_seconds": 8,
+          "explanation": "k太大，邻域会跨越类别边界，把不同类的点也纳入投票，降低分类准确性。",
+          "front": "k-NN中，如果k值选得太大，会导致什么问题？",
+          "question_id": "q_flash_k_tradeoff_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "lazy_learner",
+      "coverage_tags": [
+        "lazy_learner_characteristics"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_lazy_learner",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释k-NN为什么被称为懒惰学习器及其优缺点。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能说出懒惰学习器的核心特征：不预先建模，预测时计算。",
+      "question_type": "short_answer",
+      "retrieval_focus": "懒惰学习器的定义与特点",
+      "term_refs": [
+        {
+          "display": "懒惰学习器",
+          "en": "Lazy Learner"
+        }
+      ],
+      "variants": [
+        {
+          "back": "因为它不会预先建立模型，而是把所有训练数据存起来，在预测时才进行计算。",
+          "estimated_seconds": 10,
+          "explanation": "与决策树等急切学习器不同，k-NN没有显式的模型训练阶段。",
+          "front": "为什么k-NN被称为懒惰学习器？",
+          "question_id": "q_flash_lazy_learner_v1"
+        },
+        {
+          "back": "每次预测都要搜索整个数据集，计算成本高。",
+          "estimated_seconds": 8,
+          "explanation": "因为没有模型，预测时需要计算新样本与所有训练样本的距离，在大数据集上很慢。",
+          "front": "k-NN作为懒惰学习器的一个主要缺点是什么？",
+          "question_id": "q_flash_lazy_learner_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-classification-2",
+  "longform_families": [
+    {
+      "concept_key": "k_selection",
+      "coverage_tags": [
+        "k_selection_tradeoff"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_k_selection",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释k值选择对k-NN模型的影响，并给出合理的权衡建议。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能阐述k值过小和过大的问题，并说明如何选择合适的k值。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "k 值选择",
+          "en": "k selection"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "k值过小的影响",
+            "k值过大的影响",
+            "选择k值的建议"
+          ],
+          "question_id": "q_long_k_selection_v1",
+          "reference_answer": [
+            "k值过小：模型只依赖极少数最近邻，容易受噪声点影响，导致过拟合，泛化能力差。",
+            "k值过大：邻域范围太大，可能包含其他类别的数据点，导致决策边界过于平滑，分类准确率下降。",
+            "选择建议：通常使用交叉验证来尝试不同的k值，选择一个在验证集上表现最好的k值，在偏差和方差之间取得平衡。"
+          ],
+          "rubric_points": [
+            "指出k值过小会导致对噪声敏感和过拟合",
+            "指出k值过大会导致邻域包含其他类别的点，边界模糊",
+            "建议通过交叉验证等方法选择平衡的k值"
+          ],
+          "stem": "解释在k-NN分类器中，k值的选择如何影响模型的性能。分别说明k值过小和过大可能导致的问题，并给出选择合适k值的一般建议。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "k=1时的现象解释",
+            "k=100时的现象解释",
+            "调整策略"
+          ],
+          "question_id": "q_long_k_selection_v2",
+          "reference_answer": [
+            "k=1时：模型过拟合。它完全依赖最近的一个邻居，如果这个邻居是噪声点，分类就会出错。模型记住了训练数据中的噪声，导致测试集上表现差。",
+            "k=100时：模型欠拟合。由于k值太大，邻域覆盖了大部分数据，包含了许多不同类别的点，导致决策边界过于平滑，无法捕捉数据的真实分布。",
+            "调整策略：在1到100之间尝试多个k值（如使用交叉验证），选择在验证集上准确率最高的k值，通常是一个适中的值。"
+          ],
+          "rubric_points": [
+            "k=1时过拟合，对训练数据中的噪声敏感",
+            "k=100时欠拟合，邻域包含太多其他类别的点",
+            "建议在1到100之间通过交叉验证寻找最优k值"
+          ],
+          "stem": "假设你正在使用k-NN对一个二分类问题进行建模。你发现当k=1时，训练准确率很高但测试准确率很低；当k=100时，训练和测试准确率都不高。请解释这两种现象的原因，并说明你会如何调整k值。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "euclidean_distance",
+      "coverage_tags": [
+        "euclidean_distance_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_euclidean",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体数值例子中正确计算欧几里得距离。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能根据两点坐标，正确计算欧几里得距离。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "欧几里得距离",
+          "en": "Euclidean Distance"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "$d = \\sqrt{(4-1)^2 + (6-2)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "7"
+          ],
+          "question_id": "q_quiz_euclidean_v1",
+          "stem": "点 p = (1, 2) 和点 q = (4, 6) 之间的欧几里得距离是多少？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "$d = \\sqrt{(3-0)^2 + (4-0)^2 + (0-0)^2} = \\sqrt{9 + 16 + 0} = \\sqrt{25} = 5$",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "7"
+          ],
+          "question_id": "q_quiz_euclidean_v2",
+          "stem": "点 p = (0, 0, 0) 和点 q = (3, 4, 0) 之间的欧几里得距离是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "normalization",
+      "coverage_tags": [
+        "normalization_importance"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_normalization",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别出需要归一化的场景，并理解不归一化的后果。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能判断在给定属性尺度差异大的情况下，不归一化会导致什么问题。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "归一化",
+          "en": "Normalization"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "收入的尺度（0-100000）远大于年龄（0-100），收入差几万对距离的影响远大于年龄差几十，因此收入会主导距离计算。",
+          "options": [
+            "年龄和收入对距离计算贡献相同",
+            "年龄会主导距离计算",
+            "收入会主导距离计算",
+            "距离计算会失败"
+          ],
+          "question_id": "q_quiz_normalization_v1",
+          "stem": "在k-NN中，如果数据集包含两个属性：年龄（0-100）和年收入（0-100000），且没有做归一化，最可能的结果是什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "年龄和月消费的尺度差异很大（100 vs 10000），不归一化会导致月消费主导距离计算。",
+          "options": [
+            "所有属性都是二值属性（0或1）",
+            "属性包括身高（cm）和体重（kg）",
+            "属性包括年龄（0-100）和月消费（0-10000）",
+            "所有属性都是类别型属性"
+          ],
+          "question_id": "q_quiz_normalization_v2",
+          "stem": "以下哪种情况最需要在使用k-NN前对属性进行归一化？"
+        }
+      ]
+    },
+    {
+      "concept_key": "k_selection",
+      "coverage_tags": [
+        "k_selection_tradeoff"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_k_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能辨析k值过小和过大带来的不同问题。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能根据描述判断是k太小还是k太大导致的问题。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "k 值选择",
+          "en": "k selection"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "k太小，模型只依赖极少数邻居，个别噪声点就能改变分类结果，导致对噪声敏感。",
+          "options": [
+            "k 值太大",
+            "k 值太小",
+            "距离度量选择错误",
+            "属性没有归一化"
+          ],
+          "question_id": "q_quiz_k_tradeoff_v1",
+          "stem": "在k-NN中，如果模型对训练数据中的个别噪声点非常敏感，最可能的原因是？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "k太大，邻域会跨越类别边界，把不同类的点也纳入投票，导致边界模糊。",
+          "options": [
+            "k 值太大",
+            "k 值太小",
+            "训练数据太少",
+            "使用了加权投票"
+          ],
+          "question_id": "q_quiz_k_tradeoff_v2",
+          "stem": "在k-NN中，如果决策边界变得非常模糊，邻域经常包含其他类别的点，最可能的原因是？"
+        }
+      ]
+    },
+    {
+      "concept_key": "lazy_learner",
+      "coverage_tags": [
+        "lazy_learner_characteristics"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_lazy_learner",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别k-NN作为懒惰学习器的特点，并区分其优缺点。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生能判断哪个选项不是k-NN的缺点。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "懒惰学习器",
+          "en": "Lazy Learner"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "k-NN是懒惰学习器，不需要预先训练模型，这是它的特点，不是缺点。",
+          "options": [
+            "对噪声敏感（k很小时）",
+            "需要预先训练模型",
+            "在高维空间表现不佳",
+            "预测时计算量大"
+          ],
+          "question_id": "q_quiz_lazy_learner_v1",
+          "stem": "以下哪个不是k-NN的缺点？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "懒惰学习器不预先建立模型，因此避免了模型训练的计算开销。",
+          "options": [
+            "预测速度快",
+            "避免了昂贵的模型训练过程",
+            "对高维数据表现好",
+            "不需要存储训练数据"
+          ],
+          "question_id": "q_quiz_lazy_learner_v2",
+          "stem": "以下哪个是k-NN作为懒惰学习器的优点？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-classification-2/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,371 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "inter_cluster_similarity_definition",
+      "covered_by": [
+        "qf_flash_step6_single",
+        "qf_flash_step6_complete",
+        "qf_flash_step6_groupavg",
+        "qf_flash_step6_centroid",
+        "qf_quiz_step6_effect",
+        "qf_long_step6_compare"
+      ],
+      "description": "如何定义簇间距离（四种方法）"
+    },
+    {
+      "coverage_tag": "single_linkage_min",
+      "covered_by": [
+        "qf_flash_step6_single",
+        "qf_quiz_step6_effect",
+        "qf_long_step6_compare"
+      ],
+      "description": "单链（MIN）：取最近两点距离"
+    },
+    {
+      "coverage_tag": "complete_linkage_max",
+      "covered_by": [
+        "qf_flash_step6_complete",
+        "qf_quiz_step6_effect",
+        "qf_long_step6_compare"
+      ],
+      "description": "全链（MAX）：取最远两点距离"
+    },
+    {
+      "coverage_tag": "group_average",
+      "covered_by": [
+        "qf_flash_step6_groupavg",
+        "qf_long_step6_compare"
+      ],
+      "description": "组平均：取所有点对平均距离"
+    },
+    {
+      "coverage_tag": "centroid_distance",
+      "covered_by": [
+        "qf_flash_step6_centroid",
+        "qf_long_step6_compare"
+      ],
+      "description": "质心距离：取质心之间的距离"
+    },
+    {
+      "coverage_tag": "impact_on_cluster_shape",
+      "covered_by": [
+        "qf_quiz_step6_effect",
+        "qf_long_step6_compare"
+      ],
+      "description": "不同距离定义对聚类形状的影响（单链→长条，全链→球形）"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "single_linkage",
+      "coverage_tags": [
+        "inter_cluster_similarity_definition",
+        "single_linkage_min"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step6_single",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆单链的定义及其计算方式。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出单链使用两个簇中最近的两个点之间的距离作为簇间距离。",
+      "question_type": "short_answer",
+      "retrieval_focus": "单链（MIN）如何计算两个簇之间的距离。",
+      "term_refs": [
+        {
+          "display": "单链",
+          "en": "Single-linkage (MIN)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "取两个簇中最近的两个点之间的距离。",
+          "estimated_seconds": 8,
+          "explanation": "单链只考虑最近的一对点，因此容易产生长条形的簇。",
+          "front": "单链（MIN）如何定义两个簇之间的距离？",
+          "question_id": "q_flash_step6_single_v1"
+        },
+        {
+          "back": "只要两个簇中各有一个点之间的距离是所有候选簇对中最小的，就合并它们。",
+          "estimated_seconds": 10,
+          "explanation": "单链对邻近度要求最宽松，一个点足够近就会触发合并。",
+          "front": "在层次聚类中，如果使用单链（MIN），合并两个簇的条件是什么？",
+          "question_id": "q_flash_step6_single_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "complete_linkage",
+      "coverage_tags": [
+        "inter_cluster_similarity_definition",
+        "complete_linkage_max"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step6_complete",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆全链的定义及其计算方式。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出全链使用两个簇中最远的两个点之间的距离作为簇间距离。",
+      "question_type": "short_answer",
+      "retrieval_focus": "全链（MAX）如何计算两个簇之间的距离。",
+      "term_refs": [
+        {
+          "display": "全链",
+          "en": "Complete-linkage (MAX)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "取两个簇中最远的两个点之间的距离。",
+          "estimated_seconds": 8,
+          "explanation": "全链要求所有点都够近才能合并，因此倾向于生成紧凑的球形簇。",
+          "front": "全链（MAX）如何定义两个簇之间的距离？",
+          "question_id": "q_flash_step6_complete_v1"
+        },
+        {
+          "back": "严格。它要求两个簇中最远的点也要足够近才能合并。",
+          "estimated_seconds": 8,
+          "explanation": "全链的邻近度要求最严格，因此生成的簇通常更紧凑。",
+          "front": "在层次聚类中，全链（MAX）对邻近度的要求是宽松还是严格？",
+          "question_id": "q_flash_step6_complete_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "group_average",
+      "coverage_tags": [
+        "inter_cluster_similarity_definition",
+        "group_average"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step6_groupavg",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆组平均的定义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出组平均使用两个簇中所有点对之间的平均距离作为簇间距离。",
+      "question_type": "short_answer",
+      "retrieval_focus": "组平均如何计算两个簇之间的距离。",
+      "term_refs": [
+        {
+          "display": "组平均",
+          "en": "Group Average"
+        }
+      ],
+      "variants": [
+        {
+          "back": "取两个簇中所有点对之间的平均距离。",
+          "estimated_seconds": 8,
+          "explanation": "组平均介于单链和全链之间，是一种折中方案。",
+          "front": "组平均如何定义两个簇之间的距离？",
+          "question_id": "q_flash_step6_groupavg_v1"
+        },
+        {
+          "back": "组平均考虑所有点对，而不是只考虑最近或最远的一对。",
+          "estimated_seconds": 10,
+          "explanation": "组平均利用了簇内所有点的信息，因此对噪声不那么敏感。",
+          "front": "组平均与单链、全链的主要区别是什么？",
+          "question_id": "q_flash_step6_groupavg_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "centroid_distance",
+      "coverage_tags": [
+        "inter_cluster_similarity_definition",
+        "centroid_distance"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_step6_centroid",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆质心距离的定义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能说出质心距离使用两个簇的质心之间的距离作为簇间距离。",
+      "question_type": "short_answer",
+      "retrieval_focus": "质心距离如何计算两个簇之间的距离。",
+      "term_refs": [
+        {
+          "display": "质心距离",
+          "en": "Centroid Distance"
+        }
+      ],
+      "variants": [
+        {
+          "back": "取两个簇的质心之间的距离。",
+          "estimated_seconds": 8,
+          "explanation": "质心距离计算效率高，但可能无法反映簇的形状。",
+          "front": "质心距离如何定义两个簇之间的距离？",
+          "question_id": "q_flash_step6_centroid_v1"
+        },
+        {
+          "back": "K-means中计算点到质心的距离，质心距离是计算两个质心之间的距离。",
+          "estimated_seconds": 10,
+          "explanation": "两者都依赖于质心的概念。",
+          "front": "质心距离与K-means中的哪个概念类似？",
+          "question_id": "q_flash_step6_centroid_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-clustering-1",
+  "longform_families": [
+    {
+      "concept_key": "inter_cluster_similarity_comparison",
+      "coverage_tags": [
+        "inter_cluster_similarity_definition",
+        "single_linkage_min",
+        "complete_linkage_max",
+        "group_average",
+        "centroid_distance",
+        "impact_on_cluster_shape"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_step6_compare",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较四种簇间距离定义的异同，并解释它们对聚类形状的影响。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能清晰阐述每种方法的计算方式、对邻近度的要求以及产生的典型聚类形状。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "单链",
+          "en": "Single-linkage (MIN)"
+        },
+        {
+          "display": "全链",
+          "en": "Complete-linkage (MAX)"
+        },
+        {
+          "display": "组平均",
+          "en": "Group Average"
+        },
+        {
+          "display": "质心距离",
+          "en": "Centroid Distance"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "分别说明每种方法的计算方式",
+            "比较它们对邻近度的要求（宽松/严格）",
+            "解释每种方法倾向于产生什么形状的簇"
+          ],
+          "question_id": "q_long_step6_compare_v1",
+          "reference_answer": [
+            "单链（MIN）使用两个簇中最近的两个点之间的距离，邻近度要求最宽松，只要有一个点靠近就会合并，因此容易产生长条形的链状簇。",
+            "全链（MAX）使用两个簇中最远的两个点之间的距离，邻近度要求最严格，要求所有点都足够近才能合并，因此倾向于生成紧凑的球形簇。",
+            "组平均使用两个簇中所有点对之间的平均距离，邻近度要求介于单链和全链之间，是一种折中方案，产生的簇形状也介于两者之间。",
+            "质心距离使用两个簇的质心之间的距离，计算效率高，但质心可能不在实际数据点上，且无法反映簇的形状信息。"
+          ],
+          "rubric_points": [
+            "单链：取最近两点距离，要求最宽松，易产生长条形簇",
+            "全链：取最远两点距离，要求最严格，易产生紧凑球形簇",
+            "组平均：取所有点对平均距离，要求适中，介于两者之间",
+            "质心距离：取质心间距离，计算简单，但可能忽略簇形状"
+          ],
+          "stem": "请比较层次聚类中四种簇间距离定义（单链、全链、组平均、质心距离）的异同，并分别说明它们对最终聚类形状的影响。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "分析单链对长条形簇和球形簇的处理方式",
+            "分析全链对长条形簇和球形簇的处理方式",
+            "判断哪种方法更可能成功区分两种形状，并解释原因"
+          ],
+          "question_id": "q_long_step6_compare_v2",
+          "reference_answer": [
+            "单链由于只考虑最近的点，能够很好地捕捉长条形簇的链状结构，但可能会将两个距离较近的球形簇错误地连接起来，形成一条长链。",
+            "全链由于要求所有点都够近，能够保持球形簇的紧凑性，不会将它们错误连接，但可能会将长条形簇中距离较远的两端视为不满足条件，从而将长条形簇切分成多个小簇。",
+            "对于这个混合数据集，没有一种方法能完美处理所有形状。单链更擅长发现长条形结构，但可能过度连接；全链更擅长保持紧凑性，但可能破坏长条形结构。实际中可能需要结合领域知识或尝试多种方法。"
+          ],
+          "rubric_points": [
+            "单链能捕捉长条形簇，但可能错误地将球形簇连接成链",
+            "全链能保持球形簇的紧凑性，但可能将长条形簇切碎",
+            "没有绝对正确的方法，取决于具体数据；但单链更擅长发现长条形结构"
+          ],
+          "stem": "假设你有一个数据集，包含两个明显的长条形簇和三个紧凑的球形簇。你希望层次聚类能正确区分这两种形状。请分析单链和全链分别会如何处理这个数据集，并说明哪种方法更可能成功。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "impact_on_cluster_shape",
+      "coverage_tags": [
+        "inter_cluster_similarity_definition",
+        "single_linkage_min",
+        "complete_linkage_max",
+        "impact_on_cluster_shape"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_step6_effect",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能辨析不同簇间距离定义对聚类形状的影响。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生能根据聚类形状需求选择最合适的簇间距离定义。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "单链",
+          "en": "Single-linkage"
+        },
+        {
+          "display": "全链",
+          "en": "Complete-linkage"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "单链只考虑最近的点，容易把点串成长条形，适合捕捉非球形、长条形的簇结构。",
+          "options": [
+            "单链（MIN）",
+            "全链（MAX）",
+            "组平均",
+            "质心距离"
+          ],
+          "question_id": "q_quiz_step6_effect_v1",
+          "stem": "在层次聚类中，如果数据点呈长条形分布，你希望聚类结果能捕捉这种形状，应该使用哪种簇间距离定义？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "单链容易产生长条形簇，可能会错误地将两个紧凑的球形簇连接起来，因此不适合。全链更适合保持紧凑性。",
+          "options": [
+            "单链（MIN）",
+            "全链（MAX）",
+            "组平均",
+            "质心距离"
+          ],
+          "question_id": "q_quiz_step6_effect_v2",
+          "stem": "你有一组紧凑的球形簇数据，希望层次聚类能保持每个簇的紧凑性，应该避免使用哪种簇间距离定义？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-clustering-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

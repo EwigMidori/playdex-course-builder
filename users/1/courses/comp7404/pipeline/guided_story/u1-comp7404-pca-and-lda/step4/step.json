@@ -1,0 +1,142 @@
+{
+  "chapter_id": "lecture-07-pca-and-lda",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-pca-and-lda",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "把 PCA 用在一堆人脸图像上，",
+        "得到的主成分看起来也像一张张脸。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "eigenface"
+      ],
+      "id": "s030",
+      "introduced_terms": [
+        "eigenface"
+      ],
+      "lines": [
+        "这些“脸”被称为<term id=\"eigenface\">特征脸</term>（Eigenfaces）。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "每张原始人脸，都可以表示为这些特征脸的线性组合。",
+        "组合系数就是它在 PCA 空间里的新坐标。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "如果只用前 k 个特征脸来重建图像，",
+        "会丢失一些细节，但整体轮廓还在。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "reconstruction_error"
+      ],
+      "id": "s033",
+      "introduced_terms": [
+        "reconstruction_error"
+      ],
+      "lines": [
+        "丢失的程度用<term id=\"reconstruction_error\">重构误差</term>来衡量。",
+        "特征值越小，丢掉那个方向造成的误差也越小。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s034",
+      "introduced_terms": [],
+      "lines": [
+        "所以我们可以画一条“特征值下降曲线”，",
+        "来决定到底保留多少个主成分。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "特征脸是对人脸图像做 PCA 得到的主成分，它们构成了人脸子空间的一组基。",
+        "kind": "single_choice",
+        "options": [
+          "随机生成的人脸模板",
+          "人脸图像 PCA 的主成分",
+          "所有人脸的平均脸",
+          "人脸图像中像素的均值"
+        ],
+        "prompt": "特征脸的本质是什么？"
+      },
+      "focus_terms": [],
+      "id": "s035",
+      "introduced_terms": [],
+      "lines": [
+        "特征脸的本质是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "题目要求是“至少 95% 方差，同时维度尽量低”。10 个不够，50 个虽然也行但不是最省维度，因此应选 20 个。",
+        "kind": "single_choice",
+        "options": [
+          "10",
+          "20",
+          "50",
+          "无法判断"
+        ],
+        "prompt": "你要做人脸压缩，要求“至少保留 95% 的方差，同时维度尽量低”。已知前 10 个主成分保留 90%，前 20 个保留 95%，前 50 个保留 99%。你会选哪个 k？"
+      },
+      "focus_terms": [],
+      "id": "s036",
+      "introduced_terms": [],
+      "lines": [
+        "给定一个特征值下降曲线：前 10 个特征值占总方差的 90%，前 20 个占 95%，前 50 个占 99%。如果希望保留 95% 的方差，同时尽量少保留维度，你会怎么选？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "PCA and LDA lecture material",
+    "related": [
+      "eigenfaces",
+      "reconstruction"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "eigenface": {
+      "aliases": [
+        "Eigenface"
+      ],
+      "display": "特征脸",
+      "gloss": "对人脸图像做 PCA 得到的主成分，可视化后看起来像一张脸。"
+    },
+    "reconstruction_error": {
+      "aliases": [
+        "Reconstruction Error"
+      ],
+      "display": "重构误差",
+      "gloss": "用降维后的数据还原回原始空间时，与原数据的差异。"
+    }
+  }
+}

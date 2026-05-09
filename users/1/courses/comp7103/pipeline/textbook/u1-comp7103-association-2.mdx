@@ -1,0 +1,626 @@
+---
+lessonId: u1-comp7103-association-2
+title: 关联分析进阶：FP-Growth、规则评估与序列模式
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["core_theme"]
+    linkedSteps: ["step7"]
+  - sectionId: global-concept-map
+    title: 课程全景与关键问题
+    coverageTags: ["core_theme", "summary_association_analysis"]
+    linkedSteps: ["step1", "step7"]
+  - sectionId: fp-growth-core-idea
+    title: FP-Growth 核心思想：先压缩，再挖掘
+    coverageTags: ["fp_growth_algorithm_intro", "two_scan_efficiency", "divide_and_conquer_mining"]
+    linkedSteps: ["step1"]
+  - sectionId: fp-tree-construction
+    title: FP-tree 的构建过程
+    coverageTags: ["fp_tree_construction_steps", "fp_tree_compactness_reason", "header_table_and_linked_list", "min_support_definition"]
+    linkedSteps: ["step2"]
+  - sectionId: mining-frequent-patterns
+    title: 从 FP-tree 中挖掘频繁项集
+    coverageTags: ["fp_growth_mining_divide_conquer", "conditional_pattern_base", "conditional_fp_tree", "mining_process_example_p"]
+    linkedSteps: ["step3"]
+  - sectionId: rule-evaluation-lift
+    title: 关联规则评估：为什么置信度会骗人
+    coverageTags: ["interestingness_measures", "drawback_of_confidence", "lift_definition", "lift_interpretation"]
+    linkedSteps: ["step4"]
+  - sectionId: quantitative-association-rules
+    title: 处理数值型属性：定量关联规则
+    coverageTags: ["quantitative_association_rule", "discretization", "partitioning_problem", "maxsup_merging"]
+    linkedSteps: ["step5"]
+  - sectionId: sequential-pattern-mining
+    title: 序列模式挖掘：发现时间上的规律
+    coverageTags: ["sequential_pattern_mining", "sequence_definition", "sequence_containment", "gsp_algorithm"]
+    linkedSteps: ["step6"]
+  - sectionId: pitfalls
+    title: 易错点
+    coverageTags: ["core_theme"]
+    linkedSteps: ["step4", "step5"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["summary_association_analysis"]
+    linkedSteps: ["step7"]
+
+coverageTrace:
+  - coverageTag: core_theme
+    description: 本课的核心主题：从 Apriori 到 FP-Growth，从置信度到提升度，以及定量关联规则与序列模式
+    sectionIds: ["why-this-lesson-matters", "global-concept-map", "pitfalls"]
+    linkedSteps: ["step1", "step7"]
+  - coverageTag: fp_growth_algorithm_intro
+    description: FP-Growth 作为 Apriori 的替代算法，核心思想是避免候选集生成
+    sectionIds: ["fp-growth-core-idea"]
+    linkedSteps: ["step1"]
+  - coverageTag: two_scan_efficiency
+    description: FP-Growth 只需两次数据库扫描，I/O 高效
+    sectionIds: ["fp-growth-core-idea"]
+    linkedSteps: ["step1"]
+  - coverageTag: divide_and_conquer_mining
+    description: 建树后用递归分治策略从 FP-tree 提取频繁项集
+    sectionIds: ["fp-growth-core-idea"]
+    linkedSteps: ["step1"]
+  - coverageTag: fp_tree_construction_steps
+    description: FP-tree 构建的四个步骤：扫描找频繁1项集、删除不频繁项、按频率降序排列、再次扫描建树
+    sectionIds: ["fp-tree-construction"]
+    linkedSteps: ["step2"]
+  - coverageTag: fp_tree_compactness_reason
+    description: 降序排列使高频项靠近根节点，提高前缀共享概率，使树更紧凑
+    sectionIds: ["fp-tree-construction"]
+    linkedSteps: ["step2"]
+  - coverageTag: header_table_and_linked_list
+    description: 头表记录频繁项出现次数，相同项节点通过链表连接
+    sectionIds: ["fp-tree-construction"]
+    linkedSteps: ["step2"]
+  - coverageTag: min_support_definition
+    description: 最小支持度是用户指定的阈值，用于判断项集是否频繁
+    sectionIds: ["fp-tree-construction"]
+    linkedSteps: ["step2"]
+  - coverageTag: fp_growth_mining_divide_conquer
+    description: FP-Growth 使用分治策略从 FP-tree 中挖掘频繁项集
+    sectionIds: ["mining-frequent-patterns"]
+    linkedSteps: ["step3"]
+  - coverageTag: conditional_pattern_base
+    description: 条件模式基的定义与构建
+    sectionIds: ["mining-frequent-patterns"]
+    linkedSteps: ["step3"]
+  - coverageTag: conditional_fp_tree
+    description: 条件 FP-tree 的构建与作用
+    sectionIds: ["mining-frequent-patterns"]
+    linkedSteps: ["step3"]
+  - coverageTag: mining_process_example_p
+    description: 以项 p 为例的完整挖掘过程
+    sectionIds: ["mining-frequent-patterns"]
+    linkedSteps: ["step3"]
+  - coverageTag: interestingness_measures
+    description: 关联规则评估：为什么置信度会骗人，以及提升度作为替代指标
+    sectionIds: ["rule-evaluation-lift"]
+    linkedSteps: ["step4"]
+  - coverageTag: drawback_of_confidence
+    description: 置信度的误导性：高置信度不代表规则有意义，可能只是反映了结论项本身的高流行度
+    sectionIds: ["rule-evaluation-lift"]
+    linkedSteps: ["step4"]
+  - coverageTag: lift_definition
+    description: 提升度的定义：置信度与结论项概率的比值
+    sectionIds: ["rule-evaluation-lift"]
+    linkedSteps: ["step4"]
+  - coverageTag: lift_interpretation
+    description: 提升度的解释：大于1为正相关，等于1为独立，小于1为负相关
+    sectionIds: ["rule-evaluation-lift"]
+    linkedSteps: ["step4"]
+  - coverageTag: quantitative_association_rule
+    description: 定量关联规则的定义与示例
+    sectionIds: ["quantitative-association-rules"]
+    linkedSteps: ["step5"]
+  - coverageTag: discretization
+    description: 离散化：将数值属性转换为二元属性的方法
+    sectionIds: ["quantitative-association-rules"]
+    linkedSteps: ["step5"]
+  - coverageTag: partitioning_problem
+    description: 区间划分过细或过粗导致的问题
+    sectionIds: ["quantitative-association-rules"]
+    linkedSteps: ["step5"]
+  - coverageTag: maxsup_merging
+    description: 通过最大支持度控制区间合并的解决方案
+    sectionIds: ["quantitative-association-rules"]
+    linkedSteps: ["step5"]
+  - coverageTag: sequential_pattern_mining
+    description: 序列模式挖掘的定义与目标：发现时间顺序上的频繁模式
+    sectionIds: ["sequential-pattern-mining"]
+    linkedSteps: ["step6"]
+  - coverageTag: sequence_definition
+    description: 序列的定义：有序的事务列表，以及序列长度的概念
+    sectionIds: ["sequential-pattern-mining"]
+    linkedSteps: ["step6"]
+  - coverageTag: sequence_containment
+    description: 序列包含关系的定义：子序列的事务按顺序在超序列中找到
+    sectionIds: ["sequential-pattern-mining"]
+    linkedSteps: ["step6"]
+  - coverageTag: gsp_algorithm
+    description: GSP算法：基于Apriori思想的序列模式挖掘算法，包括候选生成、剪枝、支持度计数
+    sectionIds: ["sequential-pattern-mining"]
+    linkedSteps: ["step6"]
+  - coverageTag: summary_association_analysis
+    description: 关联分析总结：从 Apriori 到 FP-Growth，从置信度到提升度，定量关联规则与序列模式
+    sectionIds: ["global-concept-map", "review-and-self-test"]
+    linkedSteps: ["step7"]
+
+---
+
+# 为什么这一课重要
+
+<KeyPoint>
+关联分析不只是找规则，更是找洞察。从数据中发现那些出人意料的、有价值的联系。
+</KeyPoint>
+
+在上一课中，我们学习了 Apriori 算法，它通过逐层生成候选集来挖掘频繁项集。但 Apriori 有一个显著的瓶颈：当数据量很大或事务很长时，候选集的数量会爆炸式增长，导致算法效率急剧下降。
+
+本课将介绍一系列更高级的关联分析技术，它们解决了 Apriori 的局限性，并扩展了关联分析的适用范围：
+
+- **FP-Growth**：一种无需生成候选集即可挖掘频繁项集的高效算法
+- **提升度 (Lift)**：一个比置信度更可靠的规则评估指标
+- **定量关联规则**：让数值型属性也能参与关联分析
+- **序列模式**：发现时间顺序上的规律
+
+这些技术共同构成了现代关联分析的核心工具箱。
+
+<Checkpoint title="课前思考">
+- Apriori 算法的最大瓶颈是什么？
+- 如果数据中包含年龄、收入等数值型属性，Apriori 能直接处理吗？
+- 关联规则只考虑“同时购买”，如果考虑“先买 A 再买 B”，会有什么不同？
+</Checkpoint>
+
+---
+
+# 课程全景与关键问题
+
+本课围绕关联分析的几个关键扩展展开，它们共同回答了一个核心问题：**如何在巨大的搜索空间中高效地找到真正有价值的模式？**
+
+<Figure src="images/afaf0fed6a2c60807eaddd3f3b34a64db44ac014ccf2fdd6887bf7ac0e5bb3c8.jpg" alt="FP-tree 构建过程示意图，展示了从事务数据库到 FP-tree 的压缩过程">
+FP-tree 将事务数据库压缩成紧凑的树结构，是 FP-Growth 算法的核心。
+</Figure>
+
+<Definition title="关联分析 (Association Analysis)">
+从大规模数据集中发现变量之间有趣关系（如关联规则、频繁项集、序列模式）的数据挖掘任务。
+</Definition>
+
+本课将依次探讨以下关键技术：
+
+1. **FP-Growth**：用树结构代替候选集生成，解决 Apriori 的效率问题
+2. **提升度**：修正置信度的误导性，发现真正有趣的规则
+3. **定量关联规则**：通过离散化处理数值型属性
+4. **序列模式**：引入时间维度，发现顺序规律
+
+<QuestionRef id="q_long_step7_v1_1" />
+
+---
+
+# FP-Growth 核心思想：先压缩，再挖掘
+
+<Definition title="FP-Growth (Frequent Pattern Growth)">
+一种无需生成候选集即可挖掘频繁项集的高效算法。它先将事务数据库压缩成一棵 FP-tree，然后使用递归分治策略从树中提取所有频繁项集。
+</Definition>
+
+## 为什么需要 FP-Growth？
+
+Apriori 算法的主要瓶颈在于：
+- **候选集爆炸**：当事务很长或支持度阈值较低时，候选集数量呈指数级增长
+- **多次数据库扫描**：每次迭代都需要扫描数据库来计数
+
+FP-Growth 通过两个关键设计解决了这些问题：
+1. **I/O 高效**：只需两次数据库扫描
+2. **CPU 高效**：避免候选集生成和子集测试
+
+<KeyPoint>
+FP-Growth 的策略是“先压缩，再挖掘”。它把原始事务记录压缩成紧凑的 FP-tree 结构，然后直接在树上递归挖掘，跳过了 Apriori 中逐层生成候选集的步骤。
+</KeyPoint>
+
+## 两次数据库扫描
+
+| 扫描次数 | 目的 |
+|---------|------|
+| 第一次 | 找出所有频繁 1-项集（单个项的模式） |
+| 第二次 | 构建 FP-tree |
+
+<Example title="FP-Growth 的效率优势">
+假设有一个包含 100 万条事务的数据库，每条事务平均包含 20 个商品。使用 Apriori 可能需要扫描数据库数十次，而 FP-Growth 只需要两次扫描，后续挖掘在内存中的 FP-tree 上进行。
+</Example>
+
+<QuestionFamily familyId="qf_flash_fp_growth_idea" />
+<QuestionFamily familyId="qf_quiz_fp_growth_advantage" />
+
+---
+
+# FP-tree 的构建过程
+
+## 构建步骤
+
+FP-tree 的构建分为四个步骤：
+
+1. **扫描数据库**，找出所有频繁 1-项集
+2. **删除不频繁项**：从每条事务中移除不频繁的项
+3. **按频率降序排列**：将每条事务中的频繁项按频率从高到低排序
+4. **再次扫描数据库**，用处理好的事务构建 FP-tree
+
+<Definition title="最小支持度 (min_support)">
+用户指定的阈值，用于判断一个项集是否频繁。只有出现次数不低于该阈值的项集才被认为是频繁的。
+</Definition>
+
+## 示例数据
+
+假设最小支持度 `min_support = 3`，原始事务数据如下：
+
+| TID | Items bought | (ordered) frequent items |
+|-----|-------------|--------------------------|
+| 100 | {f, a, c, d, g, i, m, p} | {f, c, a, m, p} |
+| 200 | {a, b, c, f, l, m, o} | {f, c, a, b, m} |
+| 300 | {b, f, h, j, o} | {f, b} |
+| 400 | {b, c, k, s, p} | {c, b, p} |
+| 500 | {a, f, c, e, l, p, m, n} | {f, c, a, m, p} |
+
+频繁 1-项集及其频率：
+
+| Item | Frequency |
+|------|-----------|
+| f | 4 |
+| c | 4 |
+| a | 3 |
+| b | 3 |
+| m | 3 |
+| p | 3 |
+
+## 为什么按频率降序排列？
+
+<KeyPoint>
+降序排列使高频项更靠近根节点，不同事务的高频前缀更容易共享，从而让树更紧凑。
+</KeyPoint>
+
+如果事务中的项不按频率降序排列，高频项可能出现在路径的不同位置，前缀共享的概率降低，树会变得不那么紧凑。
+
+## 头表 (Header Table)
+
+<Definition title="头表 (Header Table)">
+FP-tree 中用于记录每个频繁项及其出现次数的索引表。相同项的节点之间通过链表连接起来。
+</Definition>
+
+<Figure src="images/ff06c9687367da867dab45a174993993e60b5e713910cf93d17bc5cd7defd6b5.jpg" alt="FP-tree 构建完成后的结构图，展示了根节点、路径和头表">
+FP-tree 的结构：根节点为 null，每条事务变成一条从根出发的路径，相同项的节点通过链表连接。
+</Figure>
+
+<QuestionFamily familyId="qf_flash_fp_tree_steps" />
+<QuestionFamily familyId="qf_quiz_fp_tree_steps_order" />
+<QuestionFamily familyId="qf_quiz_compactness_reason" />
+
+---
+
+# 从 FP-tree 中挖掘频繁项集
+
+## 分治策略
+
+FP-Growth 使用递归分治策略从 FP-tree 中提取频繁项集：
+
+1. 从最后一个频繁项开始，逐个击破
+2. 对于每个项，构建其**条件模式基**
+3. 基于条件模式基构建**条件 FP-tree**
+4. 递归处理，直到条件 FP-tree 为空或只含单一路径
+
+<Definition title="条件模式基 (Conditional Pattern Base)">
+对于某个项，所有包含该项的前缀路径的集合。沿着头表中该项的链表，收集所有包含该项的前缀路径。
+</Definition>
+
+<Definition title="条件 FP-tree (Conditional FP-tree)">
+基于条件模式基构建的、用于挖掘特定项相关频繁项集的 FP-tree。只保留出现次数 ≥ 最小支持度阈值的项。
+</Definition>
+
+## 以项 p 为例的完整挖掘过程
+
+### 第一步：构建条件模式基
+
+沿着头表中 p 的链表，收集所有包含 p 的前缀路径：
+- 路径 1: f-c-a-m-p → 前缀路径 f-c-a-m，计数 2
+- 路径 2: c-b-p → 前缀路径 c-b，计数 1
+
+p 的条件模式基：`{(fcam:2), (cb:1)}`
+
+### 第二步：构建条件 FP-tree
+
+统计条件模式基中每个项的出现次数：
+- f: 2, c: 3, a: 2, m: 2, b: 1
+
+由于最小支持度为 3，只保留 c。条件 FP-tree 只有一条路径：`{c:3}`。
+
+### 第三步：提取频繁项集
+
+由于条件 FP-tree 只有一条路径，枚举该路径的所有子集（包括空集），并与 p 拼接：
+- 空集 + p → {p}，支持度 3
+- {c} + p → {c, p}，支持度 3
+
+<KeyPoint>
+以 p 结尾的频繁项集：{p} 支持度 3，{c, p} 支持度 3。
+</KeyPoint>
+
+<Example title="以项 m 为例的挖掘过程">
+m 的条件模式基：{(fca:2), (fcab:1)}
+条件 FP-tree：{f:3, c:3, a:3}
+所有包含 m 的频繁项集：{m}, {f,m}, {c,m}, {a,m}, {f,c,m}, {f,a,m}, {c,a,m}, {f,c,a,m}，支持度均为 3。
+</Example>
+
+## 所有项的条件模式基与条件 FP-tree
+
+| Item | Conditional pattern-base | Conditional FP-tree |
+|------|------------------------|---------------------|
+| p | {(fcam:2), (cb:1)} | {(c:3)}|p |
+| m | {(fca:2), (fcab:1)} | {(f:3, c:3, a:3)}|m |
+| b | {(fca:1), (f:1), (c:1)} | Empty |
+| a | {(fc:3)} | {(f:3, c:3)}|a |
+| c | {(f:3)} | {(f:3)}|c |
+| f | Empty | Empty |
+
+<QuestionFamily familyId="qf_flash_conditional_pattern_base" />
+<QuestionFamily familyId="qf_flash_conditional_fp_tree" />
+<QuestionFamily familyId="qf_flash_mining_process_p" />
+<QuestionFamily familyId="qf_quiz_conditional_fp_tree_construction" />
+<QuestionFamily familyId="qf_long_mining_process_trace" />
+
+---
+
+# 关联规则评估：为什么置信度会骗人
+
+## 置信度的局限性
+
+<Definition title="置信度 (Confidence)">
+规则 X → Y 的置信度是包含 X 和 Y 的事务数与包含 X 的事务数之比，即 P(Y|X)。
+</Definition>
+
+看这个例子：
+
+| | Coffee | ¬Coffee | Total |
+|---|--------|---------|-------|
+| Tea | 15 | 5 | 20 |
+| ¬Tea | 75 | 5 | 80 |
+| Total | 90 | 10 | 100 |
+
+规则：茶 → 咖啡
+- 置信度 = P(咖啡|茶) = 15/20 = 0.75
+- P(咖啡) = 90/100 = 0.9
+
+<KeyPoint>
+置信度高（0.75），但 P(咖啡) = 0.9 更高。不喝茶的人喝咖啡的概率（0.9）反而比喝茶的人（0.75）更高。这说明茶和咖啡实际上是负相关的！
+</KeyPoint>
+
+## 提升度 (Lift)
+
+<Definition title="提升度 (Lift)">
+衡量规则 X → Y 中 X 和 Y 的统计依赖程度，即置信度与 Y 的普遍概率之比。
+</Definition>
+
+<Formula latex="\text{Lift}(X \rightarrow Y) = \frac{\text{Confidence}(X \rightarrow Y)}{P(Y)} = \frac{P(X \cap Y)}{P(X) \times P(Y)}">
+提升度计算公式
+</Formula>
+
+对于茶 → 咖啡：
+- Lift = 0.75 / 0.9 = 0.833
+
+## 提升度的解释
+
+| Lift 值 | 含义 |
+|---------|------|
+| Lift > 1 | **正相关**：买 X 会增加买 Y 的概率 |
+| Lift = 1 | **独立**：买 X 对买 Y 没影响 |
+| Lift < 1 | **负相关**：买 X 反而会降低买 Y 的概率 |
+
+<KeyPoint>
+提升度 < 1 说明茶和咖啡是负相关的。仅看置信度会得出错误结论，而提升度提供了更准确的评估。
+</KeyPoint>
+
+<Example title="提升度计算示例">
+一条规则的置信度是 0.8，而结论项的概率是 0.5。
+提升度 = 0.8 / 0.5 = 1.6
+提升度 > 1，说明是正相关，规则有价值。
+</Example>
+
+<QuestionFamily familyId="qf_flash_lift_def" />
+<QuestionFamily familyId="qf_flash_lift_interpret" />
+<QuestionFamily familyId="qf_quiz_confidence_drawback" />
+<QuestionFamily familyId="qf_quiz_lift_calc" />
+<QuestionFamily familyId="qf_long_lift_explain" />
+
+---
+
+# 处理数值型属性：定量关联规则
+
+## 为什么需要定量关联规则？
+
+到目前为止，我们处理的都是二元属性（买/没买）。但现实中的数据往往是数值型的，比如年龄、收入。
+
+<Definition title="定量关联规则 (Quantitative Association Rule, QAR)">
+处理数值型属性的关联规则，如年龄、收入等。例如：年龄在 30-35 之间 → 收入在 500K-1M 之间。
+</Definition>
+
+## 离散化
+
+<Definition title="离散化 (Discretization)">
+将连续的数值属性划分为若干个区间，每个区间变成一个二元属性（属于该区间为 1，否则为 0）。
+</Definition>
+
+处理思路很简单：把数值属性转成二元属性。方法就是离散化。
+
+例如，把年龄分成 [20-24], [25-29], [30-34] 等区间。每个区间变成一个二元属性：属于这个区间就是 1，否则是 0。
+
+转换之后，就可以直接用 Apriori 来挖掘了。
+
+## 区间划分的权衡
+
+<KeyPoint>
+区间太细，每个区间支持度太低，找不到规则。区间太粗，规则太泛，没有信息量。
+</KeyPoint>
+
+| 问题 | 后果 |
+|------|------|
+| 区间太细（如每个年龄值单独一个区间） | 每个区间的支持度可能太低，无法形成频繁项集 |
+| 区间太粗（如收入只分一个区间） | 每个区间的支持度可能太高，产生大量无信息量的规则 |
+
+## 最大支持度 (maxsup)
+
+一种解决办法是设置**最大支持度**参数，允许相邻区间合并。这样既能保证支持度，又能避免区间过细。
+
+<Definition title="最大支持度 (Maximum Support, maxsup)">
+允许相邻区间合并，使合并后的区间支持度不超过 maxsup，从而避免区间过细导致支持度不足。
+</Definition>
+
+<Example title="maxsup 合并示例">
+假设年龄按 2 岁一个区间划分，支持度如下：
+- [20-21]: 2, [22-23]: 2, [24-25]: 2, [26-27]: 2, [28-29]: 2
+- [30-31]: 2, [32-33]: 2, [34-35]: 4, [36-37]: 4, [38-39]: 3
+
+设置 maxsup = 10，合并后：
+- [20-27]: 8, [28-35]: 10, [36-39]: 7
+</Example>
+
+<QuestionFamily familyId="qf_flash_qar_definition" />
+<QuestionFamily familyId="qf_flash_discretization" />
+<QuestionFamily familyId="qf_flash_maxsup" />
+<QuestionFamily familyId="qf_quiz_qar_identification" />
+<QuestionFamily familyId="qf_quiz_discretization_fine" />
+<QuestionFamily familyId="qf_long_partitioning_tradeoff" />
+
+---
+
+# 序列模式挖掘：发现时间上的规律
+
+## 为什么需要序列模式？
+
+关联规则不考虑顺序，但很多场景下顺序很重要。
+
+<Definition title="序列模式 (Sequential Pattern)">
+在序列数据库中频繁出现的子序列。例如：用户先买了手机，过了一段时间又买了手机壳。
+</Definition>
+
+## 序列的定义
+
+<Definition title="序列 (Sequence)">
+一个按时间排序的事务列表。例如 <{手机}, {手机壳}> 就是一个长度为 2 的序列。
+</Definition>
+
+序列的长度是事务的数量，而不是项的数量。例如：
+- <{a, b}, {a}>：长度为 2，包含 3 个项
+- <{a, b, c}>：长度为 1，包含 3 个项
+
+## 序列包含关系
+
+序列 A 包含在序列 B 中，当且仅当 A 的每个事务都能按顺序在 B 中找到。
+
+| 数据序列 (B) | 子序列 (A) | 包含？ |
+|-------------|-----------|--------|
+| <{2,4} {3,5,6} {8}> | <{2} {3,5}> | 是 |
+| <{1,2} {3,4}> | <{1} {2}> | 否 |
+| <{2,4} {2,4} {2,5}> | <{2} {4}> | 是 |
+
+<KeyPoint>
+序列包含要求子序列的每个事务都能按顺序在超序列中找到，且事务中的项是子集关系（不要求完全匹配）。
+</KeyPoint>
+
+## GSP 算法
+
+<Definition title="GSP (Generalized Sequential Pattern)">
+一种基于 Apriori 思想的序列模式挖掘算法。它利用 Apriori 性质（频繁序列的所有子序列也必须是频繁的）来剪枝。
+</Definition>
+
+GSP 算法的步骤：
+1. 扫描数据库，找出所有频繁 1-项序列
+2. 通过合并频繁 (k-1)-序列生成候选 k-序列
+3. 剪枝：删除包含非频繁 (k-1)-子序列的候选
+4. 扫描数据库，计算支持度，保留频繁的
+5. 重复直到没有新的频繁序列生成
+
+<Example title="候选生成示例">
+合并两个频繁 3-序列：
+- w1 = <{1}{23}{4}>
+- w2 = <{23}{45}>
+
+移除 w1 的第一个项 {1} → <{23}{4}>
+移除 w2 的最后一个项 5 → <{23}{4}>
+两者相等，可以合并。
+
+由于 w2 的最后两个项 4 和 5 属于同一事务，所以 5 加入 w1 的最后一个事务。
+合并结果：<{1}{23}{45}>
+</Example>
+
+<QuestionFamily familyId="qf_flash_seq_def" />
+<QuestionFamily familyId="qf_flash_seq_contain" />
+<QuestionFamily familyId="qf_flash_gsp_candidate" />
+<QuestionFamily familyId="qf_quiz_seq_contain" />
+<QuestionFamily familyId="qf_long_gsp_process" />
+
+---
+
+# 易错点
+
+<Pitfall title="混淆置信度与提升度">
+**错误理解**：置信度高（如 0.75）就说明规则有意义。
+
+**正确理解**：置信度只衡量条件概率 P(Y|X)，如果 Y 本身就很流行（高概率），即使 X 和 Y 无关，置信度也可能很高。提升度通过比较置信度与结论项的独立概率，能识别真正的正/负相关。
+</Pitfall>
+
+<Pitfall title="区间划分的粒度选择">
+**错误理解**：区间划分越细越好，能发现更精确的规则。
+
+**正确理解**：区间太细会导致每个区间的支持度太低，无法形成频繁项集。区间太粗又会导致规则太泛，没有信息量。需要通过设置最大支持度 (maxsup) 来平衡粒度与支持度。
+</Pitfall>
+
+<Pitfall title="混淆序列长度与项数">
+**错误理解**：序列 <{a, b}, {a}> 的长度是 3（因为包含 3 个项）。
+
+**正确理解**：序列的长度是事务的数量，而不是项的数量。<{a, b}, {a}> 包含 2 个事务，所以长度为 2。
+</Pitfall>
+
+<Pitfall title="FP-Growth 的内存需求">
+**错误理解**：FP-Growth 总是比 Apriori 好，没有缺点。
+
+**正确理解**：FP-Growth 需要将整个 FP-tree 存储在内存中，当数据量极大时，内存需求可能成为瓶颈。
+</Pitfall>
+
+---
+
+# 复习与自测
+
+## 核心概念回顾
+
+<KeyPoint>
+关联分析不只是找规则，更是找洞察。从数据中发现那些出人意料的、有价值的联系。
+</KeyPoint>
+
+本课覆盖了关联分析的四个关键扩展：
+
+| 技术 | 解决的问题 | 核心思想 |
+|------|-----------|---------|
+| **FP-Growth** | Apriori 候选集爆炸和多次数据库扫描 | 先压缩为 FP-tree，再递归挖掘 |
+| **提升度 (Lift)** | 置信度可能因结论项高概率而产生误导 | 比较置信度与结论项的独立概率 |
+| **定量关联规则** | 基本关联分析只能处理二元属性 | 通过离散化将数值属性转换为二元属性 |
+| **序列模式** | 关联分析不考虑顺序 | 引入时间顺序，发现序列中的频繁模式 |
+
+这些方法都利用了**支持度剪枝**这一核心思想：只保留满足最小支持度阈值的项集，从而在巨大的搜索空间中高效地找到有价值的模式。
+
+## 主动回忆
+
+<QuestionFamily familyId="qf_flash_step7_v1" />
+<QuestionFamily familyId="qf_flash_step7_v2" />
+
+## 章节自测
+
+<QuestionFamily familyId="qf_quiz_step7_v1" />
+<QuestionFamily familyId="qf_quiz_step7_v2" />
+
+## 综合应用
+
+<QuestionFamily familyId="qf_long_step7_v1" />
+
+## 复习路线
+
+1. **回顾 FP-Growth 的完整流程**：从数据压缩到频繁项集挖掘，确保理解每个步骤的目的
+2. **练习提升度计算**：给定置信度和结论项概率，计算提升度并解释结果
+3. **理解离散化的权衡**：分析区间粒度对挖掘结果的影响
+4. **练习序列包含判断**：给定两个序列，判断包含关系
+5. **综合思考**：这些技术如何共同扩展了关联分析的能力？

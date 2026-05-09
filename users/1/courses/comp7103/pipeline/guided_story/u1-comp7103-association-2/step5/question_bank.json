@@ -1,0 +1,336 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "quantitative_association_rule",
+      "covered_by": [
+        "qf_flash_qar_definition",
+        "qf_quiz_qar_identification"
+      ],
+      "description": "定量关联规则的定义与示例"
+    },
+    {
+      "coverage_tag": "discretization",
+      "covered_by": [
+        "qf_flash_discretization",
+        "qf_quiz_discretization_fine"
+      ],
+      "description": "离散化：将数值属性转换为二元属性的方法"
+    },
+    {
+      "coverage_tag": "partitioning_problem",
+      "covered_by": [
+        "qf_quiz_discretization_fine",
+        "qf_long_partitioning_tradeoff"
+      ],
+      "description": "区间划分过细或过粗导致的问题"
+    },
+    {
+      "coverage_tag": "maxsup_merging",
+      "covered_by": [
+        "qf_flash_maxsup",
+        "qf_long_partitioning_tradeoff"
+      ],
+      "description": "通过最大支持度控制区间合并的解决方案"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "quantitative_association_rule",
+      "coverage_tags": [
+        "quantitative_association_rule"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_qar_definition",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出定量关联规则的定义和典型形式。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了定量关联规则的定义及其与二元关联规则的区别。",
+      "question_type": "short_answer",
+      "retrieval_focus": "定量关联规则的核心定义：处理数值型属性的关联规则。",
+      "term_refs": [
+        {
+          "display": "定量关联规则",
+          "en": "Quantitative Association Rule (QAR)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "定量关联规则是处理数值型属性（如年龄、收入）的关联规则。例如：年龄在30-35之间 → 收入在500K-1M之间。",
+          "estimated_seconds": 10,
+          "explanation": "定量关联规则将数值属性离散化为区间，然后像二元属性一样挖掘规则。",
+          "front": "什么是定量关联规则？请给出一个例子。",
+          "question_id": "q_flash_qar_definition_v1"
+        },
+        {
+          "back": "二元关联规则处理的是买/没买这样的二元属性；定量关联规则处理的是年龄、收入等数值型属性。",
+          "estimated_seconds": 8,
+          "explanation": "定量关联规则通过离散化将数值属性转换为二元属性后再挖掘。",
+          "front": "定量关联规则与二元关联规则的主要区别是什么？",
+          "question_id": "q_flash_qar_definition_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "discretization",
+      "coverage_tags": [
+        "discretization"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_discretization",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释离散化的目的和基本做法。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了离散化的定义及其在定量关联规则中的作用。",
+      "question_type": "short_answer",
+      "retrieval_focus": "离散化的目的：将数值属性转换为二元属性。",
+      "term_refs": [
+        {
+          "display": "离散化",
+          "en": "Discretization"
+        }
+      ],
+      "variants": [
+        {
+          "back": "将连续的数值属性（如年龄）划分为若干个区间，每个区间变成一个二元属性（属于该区间为1，否则为0）。",
+          "estimated_seconds": 8,
+          "explanation": "离散化后，就可以用Apriori等算法处理原本是数值型的属性。",
+          "front": "在定量关联规则挖掘中，离散化的作用是什么？",
+          "question_id": "q_flash_discretization_v1"
+        },
+        {
+          "back": "每个区间变成一个二元属性：属于这个区间就是1，否则是0（即独热编码）。",
+          "estimated_seconds": 6,
+          "explanation": "例如，年龄区间[20-24]变成一个二元属性，记录属于该区间则为1。",
+          "front": "离散化后，每个区间如何表示？",
+          "question_id": "q_flash_discretization_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "maxsup_merging",
+      "coverage_tags": [
+        "maxsup_merging"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_maxsup",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出最大支持度参数的作用。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了通过最大支持度控制区间合并以解决过细划分问题的方法。",
+      "question_type": "short_answer",
+      "retrieval_focus": "最大支持度参数用于控制区间合并。",
+      "term_refs": [
+        {
+          "display": "最大支持度",
+          "en": "Maximum Support (maxsup)"
+        }
+      ],
+      "variants": [
+        {
+          "back": "允许相邻区间合并，使合并后的区间支持度不超过maxsup，从而避免区间过细导致支持度不足。",
+          "estimated_seconds": 10,
+          "explanation": "这类似于等深离散化，通过控制每个区间的最大深度来平衡粒度与支持度。",
+          "front": "离散化时，设置最大支持度（maxsup）参数的目的是什么？",
+          "question_id": "q_flash_maxsup_v1"
+        },
+        {
+          "back": "它们会被合并为[20-23]，支持度为4，仍不超过maxsup=10。",
+          "estimated_seconds": 12,
+          "explanation": "只要合并后的支持度不超过maxsup，相邻区间就可以继续合并。",
+          "front": "如果年龄区间[20-21]的支持度为2，[22-23]的支持度也为2，maxsup设为10，这两个区间会怎样？",
+          "question_id": "q_flash_maxsup_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-association-2",
+  "longform_families": [
+    {
+      "concept_key": "partitioning_problem",
+      "coverage_tags": [
+        "partitioning_problem",
+        "maxsup_merging"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_partitioning_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能解释离散化中区间划分的权衡，并说明最大支持度如何帮助解决过细问题。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能分析区间粒度对挖掘结果的影响，并描述maxsup合并策略的原理。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "离散化",
+          "en": "Discretization"
+        },
+        {
+          "display": "最大支持度",
+          "en": "Maximum Support (maxsup)"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "区间过细的后果",
+            "区间过粗的后果",
+            "解决方法"
+          ],
+          "question_id": "q_long_partitioning_tradeoff_v1",
+          "reference_answer": [
+            "区间过细时，每个区间包含的记录太少，支持度低于最小支持度阈值，导致无法发现频繁项集，也就无法生成规则。",
+            "区间过粗时，规则过于泛化，例如将收入整个范围作为一个区间，会导致大量平凡规则（如年龄20-24 → 收入250-1000），这些规则虽然支持度高但毫无信息量。",
+            "一种解决区间过细问题的方法是设置最大支持度（maxsup）参数。允许相邻区间合并，只要合并后的区间支持度不超过maxsup。这类似于等深离散化，通过控制每个区间的最大深度来避免过细，同时保留足够的信息量。"
+          ],
+          "rubric_points": [
+            "区间过细：每个区间支持度太低，无法形成频繁项集，找不到规则。",
+            "区间过粗：规则太泛，没有信息量，例如总是成立的平凡规则。",
+            "解决方法：设置最大支持度（maxsup）参数，允许相邻区间合并，使合并后的支持度不超过maxsup，从而平衡粒度与支持度。"
+          ],
+          "stem": "在定量关联规则挖掘中，离散化时区间划分的粗细会带来什么问题？请分别说明区间过细和过粗的后果，并介绍一种解决区间过细问题的方法。"
+        },
+        {
+          "estimated_seconds": 100,
+          "prompt_blocks": [
+            "过细划分的问题",
+            "过粗划分的问题",
+            "折中方案"
+          ],
+          "question_id": "q_long_partitioning_tradeoff_v2",
+          "reference_answer": [
+            "如果每个年龄值单独作为一个区间，每个区间可能只包含1-2条记录，支持度极低，很可能低于最小支持度阈值，导致无法挖掘出任何与年龄相关的频繁项集和规则。",
+            "如果将所有年龄合并为一个区间[20,39]，则几乎所有记录都落在这个区间内，导致规则如<age:20..39> → <某商品>的支持度接近100%，但这样的规则没有实际信息量，因为它总是成立。",
+            "折中方案：设置一个最大支持度参数（如maxsup=10）。从细粒度区间（如每2岁一个区间）开始，计算每个区间的支持度。如果相邻区间的支持度之和不超过maxsup，就合并它们。这样既能保证每个区间有足够的支持度，又能避免区间过粗导致信息丢失。"
+          ],
+          "rubric_points": [
+            "过细：每个区间支持度低，可能低于最小支持度，无法形成频繁项集。",
+            "过粗：规则太泛，例如年龄20-39 → 某商品，可能总是成立，没有信息量。",
+            "折中：使用最大支持度参数，从细粒度区间开始，逐步合并相邻区间，直到支持度接近但不超过maxsup。"
+          ],
+          "stem": "假设你有一个包含年龄（20-39岁）的数据集，你决定将年龄离散化为区间。请解释：如果每个年龄值单独作为一个区间（如[20,20], [21,21], ...）会有什么问题？如果将所有年龄合并为一个区间[20,39]又会有什么问题？提出一种折中方案。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "quantitative_association_rule",
+      "coverage_tags": [
+        "quantitative_association_rule"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_qar_identification",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在给定选项中识别出定量关联规则的例子。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能区分定量关联规则与二元关联规则。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "定量关联规则",
+          "en": "Quantitative Association Rule (QAR)"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "定量关联规则处理数值型属性，如年龄和收入。选项B包含数值区间，是定量关联规则。其他选项都是二元属性。",
+          "options": [
+            "买牛奶 → 买面包",
+            "年龄在30-35之间 → 收入在500K-1M之间",
+            "性别=男 → 买啤酒",
+            "有车 → 有房"
+          ],
+          "question_id": "q_quiz_qar_identification_v1",
+          "stem": "以下哪一项是定量关联规则的例子？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "年龄和消费金额都是数值型属性，需要离散化后才能挖掘关联规则，这正是定量关联规则的适用场景。",
+          "options": [
+            "分析用户是否购买了某个商品",
+            "分析用户的年龄与消费金额之间的关系",
+            "分析用户是否点击了广告",
+            "分析用户是否订阅了邮件"
+          ],
+          "question_id": "q_quiz_qar_identification_v2",
+          "stem": "以下哪个场景最适合使用定量关联规则？"
+        }
+      ]
+    },
+    {
+      "concept_key": "partitioning_problem",
+      "coverage_tags": [
+        "discretization",
+        "partitioning_problem"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_discretization_fine",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解区间划分过细或过粗带来的问题。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了离散化中区间粒度对挖掘结果的影响。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "离散化",
+          "en": "Discretization"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "区间太细，落在每个区间内的记录太少，支持度不足，就找不到频繁项集。",
+          "options": [
+            "规则会变得不准确",
+            "每个区间的支持度可能太低，无法形成频繁项集",
+            "计算速度会变快",
+            "规则会变得过于通用"
+          ],
+          "question_id": "q_quiz_discretization_fine_v1",
+          "stem": "离散化时，如果区间划分得太细（例如每个年龄值单独一个区间），会导致什么问题？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "区间太粗，规则太泛，没有信息量。例如<age:20..24> → <income:250..1000>总是成立，但毫无意义。",
+          "options": [
+            "规则会变得不准确",
+            "每个区间的支持度可能太高，产生大量无信息量的规则",
+            "计算速度会变慢",
+            "无法应用Apriori算法"
+          ],
+          "question_id": "q_quiz_discretization_fine_v2",
+          "stem": "离散化时，如果区间划分得太粗（例如收入只分一个区间[250-1000]），会导致什么问题？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-association-2/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

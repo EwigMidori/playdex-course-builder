@@ -1,0 +1,147 @@
+{
+  "chapter_id": "lecture-01-knn",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-knn",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "k 的选择对 kNN 影响巨大。",
+        "先看 k=1 的情况：只找最近的一个邻居。"
+      ],
+      "type": "question"
+    },
+    {
+      "focus_terms": [
+        "decision_boundary"
+      ],
+      "id": "s021",
+      "introduced_terms": [
+        "decision_boundary"
+      ],
+      "lines": [
+        "1-NN 的 <term id=\"decision_boundary\">决策边界</term>非常复杂，紧贴训练数据。",
+        "它容易受噪声影响，一个异常点就可能改变分类结果。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "现在，给你一个具体的数据分布图（见下图）。",
+        "图中包含两类样本：红色圆圈和蓝色三角形。",
+        "有一个未知样本（绿色问号）位于 (5,5)。",
+        "请你分别用 k=1, k=3, k=5 判断它的类别，并解释为什么结果不同。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "expected_fields": [
+          "k1_result",
+          "k3_result",
+          "k5_result",
+          "explanation"
+        ],
+        "explanation": "k值越小，决策边界越复杂，越容易过拟合；k值越大，决策边界越平滑，但可能欠拟合。",
+        "kind": "scenario_derivation",
+        "prompt": "给定一个二维数据分布图：红色圆圈类（样本点：(2,3), (3,2), (4,4), (5,3)），蓝色三角形类（样本点：(6,5), (7,6), (8,4), (9,5)）。未知样本位于 (5,5)。请分别用 k=1, k=3, k=5 判断分类结果，并解释差异。",
+        "sample_answer": {
+          "explanation": "k=1时只依赖最近的一个邻居，容易受噪声影响；k=3和k=5时考虑了更多邻居，决策更稳定，但k太大可能引入远处样本，破坏局部性。",
+          "k1_result": "蓝色三角形（最近邻是 (6,5)）",
+          "k3_result": "红色圆圈（最近3个邻居： (4,4)红色, (5,3)红色, (6,5)蓝色 → 2红1蓝）",
+          "k5_result": "红色圆圈（最近5个邻居： (4,4)红色, (5,3)红色, (6,5)蓝色, (3,2)红色, (7,6)蓝色 → 3红2蓝）"
+        }
+      },
+      "focus_terms": [
+        "k_nearest_neighbor"
+      ],
+      "id": "s023",
+      "lines": [
+        "请你分别用 k=1, k=3, k=5 判断分类结果，并解释差异。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "k_nearest_neighbor"
+      ],
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "增大 k 值，决策边界会变得更平滑。",
+        "同时还能得到概率信息——比如 5 个邻居中有 4 个属于 A 类，置信度就是 80%。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "k_nearest_neighbor"
+      ],
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "但 k 太大也不行。",
+        "远处的样本也被拉进来投票，破坏了“局部性”。",
+        "如果 k 等于整个训练集的大小，所有未知样本都会被分到样本最多的那个类别，毫无意义。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "k_nearest_neighbor"
+      ],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "所以 k 是一个需要调的超参数。",
+        "太小容易过拟合，太大容易欠拟合。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "1-NN 完全依赖最近的一个邻居，如果它是噪声，分类就会出错。",
+        "kind": "single_choice",
+        "options": [
+          "分类结果不受影响",
+          "分类结果会出错",
+          "决策边界变得更平滑"
+        ],
+        "prompt": "k=1 时，如果最近邻恰好是噪声点，会发生什么？"
+      },
+      "focus_terms": [
+        "k_nearest_neighbor"
+      ],
+      "id": "s027",
+      "lines": [
+        "k=1 时，如果最近邻恰好是噪声点，会发生什么？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "kNN versus 1NN",
+    "related": [
+      "lecture-01-knn"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "decision_boundary": {
+      "aliases": [
+        "Decision Boundary",
+        "Decision Surface"
+      ],
+      "display": "决策边界",
+      "gloss": "分类模型中，不同类别之间的分界线或分界面。"
+    }
+  }
+}

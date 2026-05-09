@@ -1,0 +1,154 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [
+        "precision",
+        "recall"
+      ],
+      "id": "s025",
+      "introduced_terms": [],
+      "lines": [
+        "精确率和召回率往往互相牵制。",
+        "有没有一个指标能同时兼顾两者？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.5",
+          "0.5"
+        ],
+        "explanation": "算术平均 = (0.9+0.1)/2 = 0.5，调和平均 = 2/(1/0.9+1/0.1) ≈ 0.18。",
+        "kind": "fill_in_blank",
+        "prompt": "假设精确率=0.9，召回率=0.1，计算算术平均和调和平均。"
+      },
+      "focus_terms": [],
+      "id": "s026",
+      "introduced_terms": [],
+      "lines": [
+        "一个简单的想法是取算术平均。",
+        "但算术平均会让一个很高的值掩盖另一个很低的值。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s027",
+      "introduced_terms": [],
+      "lines": [
+        "调和平均对低值更敏感。",
+        "只有当两者都高时，调和平均才会高。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "f1_score"
+      ],
+      "id": "s028",
+      "introduced_terms": [
+        "f1_score"
+      ],
+      "lines": [
+        "这个调和平均就是 <term id=\"f1_score\">F1 分数</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "f1_score"
+      ],
+      "formula": {
+        "latex": "F_1 = 2 \\times \\frac{\\text{Precision} \\times \\text{Recall}}{\\text{Precision} + \\text{Recall}}",
+        "spoken": "F1 等于 2 乘以精确率乘召回率，除以精确率加召回率。"
+      },
+      "id": "s029",
+      "introduced_terms": [],
+      "lines": [
+        "F1 是精确率和召回率的调和平均数。"
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "6/11"
+        ],
+        "explanation": "F1 = 2 × (3/5 × 3/4) / (3/5 + 3/4) = 6/11。",
+        "kind": "fill_in_blank",
+        "prompt": "F1 分数是多少？（用分数表示）"
+      },
+      "focus_terms": [
+        "precision",
+        "recall",
+        "f1_score"
+      ],
+      "id": "s030",
+      "introduced_terms": [],
+      "lines": [
+        "假设一个模型得到：Precision=3/5, Recall=3/4。",
+        "计算 F1。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "f1_score"
+      ],
+      "id": "s031",
+      "introduced_terms": [],
+      "lines": [
+        "F1 分数越高，说明模型在精确率和召回率之间取得了更好的平衡。",
+        "它是很多分类任务的首选综合指标。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.545"
+        ],
+        "explanation": "F1 = 2 × (0.6 × 0.75) / (0.6 + 0.75) = 0.9 / 1.35 ≈ 0.545。",
+        "kind": "fill_in_blank",
+        "prompt": "手动计算 F1 分数（用小数表示，保留三位小数）。"
+      },
+      "focus_terms": [
+        "precision",
+        "recall",
+        "f1_score"
+      ],
+      "id": "s032",
+      "introduced_terms": [],
+      "lines": [
+        "现在，给你精确率=0.6，召回率=0.75。",
+        "请手动计算 F1 分数。"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "Precision, Recall, and F-measure (1), (2), (3) from lecture material.",
+    "related": [
+      "Precision, Recall, and F-measure (1)",
+      "Precision, Recall, and F-measure (2)",
+      "Precision, Recall, and F-measure (3)"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "f1_score": {
+      "aliases": [
+        "F-measure",
+        "F1"
+      ],
+      "display": "F1 分数",
+      "gloss": "精确率和召回率的调和平均数，综合衡量模型性能。"
+    }
+  }
+}

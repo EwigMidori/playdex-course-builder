@@ -1,0 +1,162 @@
+{
+  "chapter_id": "lecture-01-association-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "走进一家超市，收银台的小票上记录着你买的所有东西。",
+        "如果把几千张小票放在一起看，会发现什么？"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "买面包的人，常常也买了牛奶。",
+        "买尿布的人，居然也买了啤酒。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "association_rule"
+      ],
+      "lines": [
+        "这种“买 A 的人也倾向于买 B”的关系，就是**<term id=\"association_rule\">关联规则</term>**。",
+        "它帮我们发现商品之间隐藏的联系。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "introduced_terms": [],
+      "lines": [
+        "一条规则写成 X ⇒ Y。",
+        "X 是前提，Y 是结论。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "比如 {面包} ⇒ {牛奶}。",
+        "意思是：如果买了面包，很可能也会买牛奶。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "introduced_terms": [
+        "transaction",
+        "itemset"
+      ],
+      "lines": [
+        "每条小票就是一条<term id=\"transaction\">交易记录</term>。",
+        "交易记录里所有商品的集合，叫做一个<term id=\"itemset\">项集</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s007",
+      "introduced_terms": [
+        "k_itemset"
+      ],
+      "lines": [
+        "比如 {牛奶, 面包, 洗衣粉} 就是一个 3-项集。",
+        "包含 k 个商品的项集，就叫<term id=\"k_itemset\">k-项集</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s008",
+      "introduced_terms": [],
+      "lines": [
+        "怎么知道一个项集受欢迎？",
+        "数一数有多少条交易记录包含了它。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s009",
+      "introduced_terms": [
+        "support_count"
+      ],
+      "lines": [
+        "这个数字叫做<term id=\"support_count\">支持度计数</term>，记作 sup(X)。",
+        "sup({面包, 牛奶}) = 3，表示有 3 笔交易同时买了面包和牛奶。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "4"
+        ],
+        "explanation": "支持度计数就是包含该项集的交易数量，这里是 4。",
+        "kind": "fill_in_blank",
+        "prompt": "sup({啤酒, 尿布}) = ?"
+      },
+      "id": "s010",
+      "lines": [
+        "假设有 10 笔交易，其中 4 笔包含了 {啤酒, 尿布}。",
+        "sup({啤酒, 尿布}) 是多少？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Market Basket Analysis, Data Model, Notation, Definition, Example",
+    "related": [
+      "Association rule definition",
+      "support count",
+      "itemset"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "association_rule": {
+      "aliases": [
+        "Association Rule"
+      ],
+      "display": "关联规则",
+      "gloss": "描述物品之间同时出现的关系，形式为 X ⇒ Y。"
+    },
+    "itemset": {
+      "aliases": [
+        "Itemset"
+      ],
+      "display": "项集",
+      "gloss": "一个或多个物品的集合，例如 {牛奶, 面包}。"
+    },
+    "k_itemset": {
+      "aliases": [
+        "k-itemset"
+      ],
+      "display": "k-项集",
+      "gloss": "包含 k 个物品的项集。"
+    },
+    "support_count": {
+      "aliases": [
+        "Support Count",
+        "sup(X)"
+      ],
+      "display": "支持度计数",
+      "gloss": "包含某个项集的交易记录数量。"
+    },
+    "transaction": {
+      "aliases": [
+        "Transaction"
+      ],
+      "display": "交易记录",
+      "gloss": "一次购物篮中的全部物品集合。"
+    }
+  }
+}

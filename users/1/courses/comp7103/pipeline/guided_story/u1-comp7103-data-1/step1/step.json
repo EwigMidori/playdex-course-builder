@@ -1,0 +1,145 @@
+{
+  "chapter_id": "lecture-06-data-1",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-data-1",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s001",
+      "introduced_terms": [],
+      "lines": [
+        "请看下面这张表格：",
+        "| 姓名 | 年龄 | 身高(cm) | 是否已婚 |",
+        "|------|------|----------|----------|",
+        "| 张三 | 25   | 175      | 否       |",
+        "| 李四 | 30   | 180      | 是       |",
+        "| 王五 | 22   | 168      | 否       |",
+        "问题：每一行代表什么？每一列代表什么？",
+        "请先自己想一想，再往下看。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "每一行代表一个具体的事物，即一个对象。",
+        "kind": "single_choice",
+        "options": [
+          "一个对象",
+          "一个属性",
+          "一个模式",
+          "一个值域"
+        ],
+        "prompt": "在表格数据中，每一行代表什么？"
+      },
+      "focus_terms": [],
+      "id": "s002",
+      "introduced_terms": [],
+      "lines": [
+        "在表格数据中，每一行代表什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "object",
+        "attribute"
+      ],
+      "id": "s003",
+      "introduced_terms": [
+        "object",
+        "attribute"
+      ],
+      "lines": [
+        "每一行代表一个具体的事物——一个人、一笔交易、一个事件。",
+        "这个事物，我们称之为 <term id=\"object\">对象</term>。",
+        "每一列描述了这个事物的一个侧面——比如年龄、身高。",
+        "这个侧面，我们称之为 <term id=\"attribute\">属性</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "schema",
+        "domain"
+      ],
+      "id": "s004",
+      "introduced_terms": [
+        "schema",
+        "domain"
+      ],
+      "lines": [
+        "所有属性的集合，构成了这个表格的 <term id=\"schema\">模式</term>。",
+        "每个属性都有自己的 <term id=\"domain\">值域</term>——即该属性所有可能取值的集合。",
+        "比如“年龄”的值域是整数，“是否已婚”的值域是{是, 否}。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "属性是描述对象的侧面，如年龄、身高。",
+        "kind": "single_choice",
+        "options": [
+          "张三",
+          "年龄",
+          "25",
+          "表格"
+        ],
+        "prompt": "以下哪个是属性？"
+      },
+      "focus_terms": [
+        "attribute"
+      ],
+      "id": "s005",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个是属性？"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step1",
+  "source": {
+    "plain_text": "Data. Typical Structured Data. Schema. Attribute Domains.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "attribute": {
+      "aliases": [
+        "attribute",
+        "variable",
+        "field",
+        "feature"
+      ],
+      "display": "属性",
+      "gloss": "描述一个对象的某个特征或性质。"
+    },
+    "domain": {
+      "aliases": [
+        "domain"
+      ],
+      "display": "值域",
+      "gloss": "一个属性所有可能取值的集合。"
+    },
+    "object": {
+      "aliases": [
+        "object",
+        "record",
+        "entity",
+        "tuple"
+      ],
+      "display": "对象",
+      "gloss": "被描述的事物，由一组属性值构成。"
+    },
+    "schema": {
+      "aliases": [
+        "schema"
+      ],
+      "display": "模式",
+      "gloss": "一组属性的集合，定义了数据的结构。"
+    }
+  }
+}

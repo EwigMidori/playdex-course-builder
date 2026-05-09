@@ -1,0 +1,335 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "supervised_learning_tasks",
+      "covered_by": [
+        "qf_flash_classification_vs_regression",
+        "qf_flash_task_type_identification",
+        "qf_quiz_classification_vs_regression",
+        "qf_quiz_task_identification",
+        "qf_long_compare_classification_regression"
+      ],
+      "description": "监督学习的两种基本任务：分类和回归"
+    },
+    {
+      "coverage_tag": "classification_definition",
+      "covered_by": [
+        "qf_flash_classification_vs_regression",
+        "qf_flash_task_type_identification",
+        "qf_quiz_classification_vs_regression",
+        "qf_quiz_task_identification"
+      ],
+      "description": "分类：预测离散类别"
+    },
+    {
+      "coverage_tag": "regression_definition",
+      "covered_by": [
+        "qf_flash_classification_vs_regression",
+        "qf_flash_task_type_identification",
+        "qf_quiz_classification_vs_regression",
+        "qf_quiz_task_identification"
+      ],
+      "description": "回归：预测连续数值"
+    },
+    {
+      "coverage_tag": "classification_vs_regression_distinction",
+      "covered_by": [
+        "qf_flash_classification_vs_regression",
+        "qf_quiz_classification_vs_regression",
+        "qf_long_compare_classification_regression"
+      ],
+      "description": "分类与回归的核心区别：离散类别 vs 连续数值"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "classification_vs_regression",
+      "coverage_tags": [
+        "supervised_learning_tasks",
+        "classification_definition",
+        "regression_definition",
+        "classification_vs_regression_distinction"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_classification_vs_regression",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确区分分类和回归任务，并说出各自预测结果的类型。",
+      "linked_steps": [
+        "step3b"
+      ],
+      "practice_target": "学生答对后证明掌握了分类和回归的核心区别：分类预测离散类别，回归预测连续数值。",
+      "question_type": "core_difference",
+      "retrieval_focus": "分类与回归在预测结果类型上的根本区别",
+      "term_refs": [
+        {
+          "display": "分类",
+          "en": "classification"
+        },
+        {
+          "display": "回归",
+          "en": "regression"
+        }
+      ],
+      "variants": [
+        {
+          "back": "离散的类别（discrete categories）",
+          "estimated_seconds": 8,
+          "explanation": "分类任务将输入数据分配到预定义的离散类别中，例如判断邮件是'垃圾邮件'还是'正常邮件'。",
+          "front": "在监督学习中，分类（classification）任务预测的结果是什么类型？",
+          "question_id": "q_flash_classification_vs_regression_v1"
+        },
+        {
+          "back": "连续的数值（continuous values）",
+          "estimated_seconds": 8,
+          "explanation": "回归任务预测一个连续的数值输出，例如预测明天的气温是25.3度。",
+          "front": "在监督学习中，回归（regression）任务预测的结果是什么类型？",
+          "question_id": "q_flash_classification_vs_regression_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "task_type_identification",
+      "coverage_tags": [
+        "supervised_learning_tasks",
+        "classification_definition",
+        "regression_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_task_type_identification",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据任务描述快速判断属于分类还是回归。",
+      "linked_steps": [
+        "step3b"
+      ],
+      "practice_target": "学生答对后证明能根据预测结果的类型（离散类别或连续数值）正确识别监督学习任务。",
+      "question_type": "short_answer",
+      "retrieval_focus": "根据任务描述判断是分类还是回归",
+      "term_refs": [
+        {
+          "display": "分类",
+          "en": "classification"
+        },
+        {
+          "display": "回归",
+          "en": "regression"
+        }
+      ],
+      "variants": [
+        {
+          "back": "分类任务",
+          "estimated_seconds": 6,
+          "explanation": "预测结果是离散的类别（垃圾邮件/正常邮件），所以是分类。",
+          "front": "判断一封邮件是'垃圾邮件'还是'正常邮件'，这是分类任务还是回归任务？",
+          "question_id": "q_flash_task_type_identification_v1"
+        },
+        {
+          "back": "回归任务",
+          "estimated_seconds": 6,
+          "explanation": "预测结果是连续的数值（温度），所以是回归。",
+          "front": "预测明天的气温是25.3度还是26.1度，这是分类任务还是回归任务？",
+          "question_id": "q_flash_task_type_identification_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-introduction",
+  "longform_families": [
+    {
+      "concept_key": "classification_vs_regression",
+      "coverage_tags": [
+        "supervised_learning_tasks",
+        "classification_definition",
+        "regression_definition",
+        "classification_vs_regression_distinction"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_compare_classification_regression",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用清晰的语言解释分类和回归的区别，并各举一个例子。",
+      "linked_steps": [
+        "step3b"
+      ],
+      "practice_target": "学生答对后证明能系统性地比较分类和回归，包括定义、预测结果类型和典型应用场景。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "分类",
+          "en": "classification"
+        },
+        {
+          "display": "回归",
+          "en": "regression"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "分别说明分类和回归的定义",
+            "指出它们预测结果类型的根本区别",
+            "各举一个具体的例子"
+          ],
+          "question_id": "q_long_compare_classification_regression_v1",
+          "reference_answer": [
+            "分类是预测离散类别的任务，例如判断一封邮件是'垃圾邮件'还是'正常邮件'，结果是类别。",
+            "回归是预测连续数值的任务，例如预测明天的气温是25.3度，结果是数值。",
+            "它们的根本区别在于预测结果的类型：分类输出离散的类别，回归输出连续的数值。"
+          ],
+          "rubric_points": [
+            "正确给出分类的定义：预测离散类别",
+            "正确给出回归的定义：预测连续数值",
+            "明确指出根本区别：离散 vs 连续",
+            "分类例子合理（如垃圾邮件检测、动物识别）",
+            "回归例子合理（如气温预测、房价预测）"
+          ],
+          "stem": "请比较分类（classification）和回归（regression）这两种监督学习任务。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "判断任务（1）的类型并说明理由",
+            "判断任务（2）的类型并说明理由",
+            "总结分类和回归的核心区别"
+          ],
+          "question_id": "q_long_compare_classification_regression_v2",
+          "reference_answer": [
+            "任务（1）是分类，因为预测结果是离散的类别（患病/不患病）。",
+            "任务（2）是回归，因为预测结果是连续的数值（住院天数，可以是 5.3 天）。",
+            "分类和回归的核心区别在于预测结果的类型：分类输出离散类别，回归输出连续数值。"
+          ],
+          "rubric_points": [
+            "任务（1）判断为分类，理由正确（预测离散类别：是/否）",
+            "任务（2）判断为回归，理由正确（预测连续数值：住院天数）",
+            "总结时明确指出离散 vs 连续的区别"
+          ],
+          "stem": "一家医院有两个机器学习任务：（1）根据患者的检查结果判断是否患有某种疾病（是/否）；（2）根据患者的检查结果预测住院天数（如 5.3 天）。请分析这两个任务分别属于分类还是回归，并说明理由。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "classification_vs_regression",
+      "coverage_tags": [
+        "supervised_learning_tasks",
+        "classification_definition",
+        "regression_definition",
+        "classification_vs_regression_distinction"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_classification_vs_regression",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下准确区分分类和回归任务。",
+      "linked_steps": [
+        "step3b"
+      ],
+      "practice_target": "学生答对后证明能根据预测结果的类型正确选择分类或回归。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "分类",
+          "en": "classification"
+        },
+        {
+          "display": "回归",
+          "en": "regression"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "气温是一个连续的数值，所以是回归问题。",
+          "options": [
+            "分类",
+            "回归",
+            "聚类",
+            "无监督学习"
+          ],
+          "question_id": "q_quiz_classification_vs_regression_v1",
+          "stem": "预测明天的气温是多少度，属于哪种学习问题？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "识别图片中的动物是预测离散类别（如猫、狗、鸟），属于分类。",
+          "options": [
+            "分类",
+            "回归",
+            "聚类",
+            "无监督学习"
+          ],
+          "question_id": "q_quiz_classification_vs_regression_v2",
+          "stem": "判断以下任务属于分类还是回归：识别图片中的动物。"
+        }
+      ]
+    },
+    {
+      "concept_key": "task_type_identification",
+      "coverage_tags": [
+        "supervised_learning_tasks",
+        "classification_definition",
+        "regression_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_task_identification",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据新场景正确判断监督学习任务类型。",
+      "linked_steps": [
+        "step3b"
+      ],
+      "practice_target": "学生答对后证明能将分类和回归的概念应用到新的具体任务中。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "分类",
+          "en": "classification"
+        },
+        {
+          "display": "回归",
+          "en": "regression"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "预测结果是离散类别（违约/不违约），所以是分类任务。",
+          "options": [
+            "分类",
+            "回归",
+            "聚类",
+            "无监督学习"
+          ],
+          "question_id": "q_quiz_task_identification_v1",
+          "stem": "一家银行想根据客户的年龄、收入和信用记录，预测客户是否会违约（违约/不违约）。这属于什么任务？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "预测结果是连续的数值（售价），所以是回归任务。",
+          "options": [
+            "分类",
+            "回归",
+            "聚类",
+            "无监督学习"
+          ],
+          "question_id": "q_quiz_task_identification_v2",
+          "stem": "一家房地产公司想根据房屋的面积、卧室数量和位置，预测房屋的售价（如 350 万元）。这属于什么任务？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3b",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-introduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

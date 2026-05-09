@@ -1,0 +1,225 @@
+{
+  "chapter_id": "lecture-03-performance-evaluation",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-performance-evaluation",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s013",
+      "introduced_terms": [],
+      "lines": [
+        "有了四个基本计数，我们可以回答两个关键问题。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s014",
+      "introduced_terms": [],
+      "lines": [
+        "问题一：模型说“这是正类”的时候，到底有多靠谱？",
+        "问题二：所有的正类样本，模型找出来了多少？"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "TP/(TP+FP)",
+          "TP/(TP+FN)"
+        ],
+        "explanation": "问题一对应 TP/(TP+FP)，问题二对应 TP/(TP+FN)。",
+        "kind": "fill_in_blank",
+        "prompt": "请用 TP、FP、FN 构造两个比例，分别回答这两个问题。"
+      },
+      "focus_terms": [],
+      "id": "s015",
+      "introduced_terms": [],
+      "lines": [
+        "假设一个模型得到：TP=3, FP=2, FN=1。",
+        "试试看，你能构造出这两个比例吗？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "precision"
+      ],
+      "id": "s016",
+      "introduced_terms": [
+        "precision"
+      ],
+      "lines": [
+        "第一个比例，我们称为 <term id=\"precision\">精确率</term>。",
+        "它回答的是：模型说“这是正类”的时候，到底有多靠谱？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "precision"
+      ],
+      "formula": {
+        "latex": "\\text{Precision} = \\frac{TP}{TP + FP}",
+        "spoken": "精确率等于 TP 除以 TP 加 FP。"
+      },
+      "id": "s017",
+      "introduced_terms": [],
+      "lines": [
+        "精确率的公式很直观：",
+        "TP 除以所有被预测为正类的样本数。"
+      ],
+      "type": "formula"
+    },
+    {
+      "focus_terms": [
+        "recall"
+      ],
+      "id": "s018",
+      "introduced_terms": [
+        "recall"
+      ],
+      "lines": [
+        "第二个比例，我们称为 <term id=\"recall\">召回率</term>。",
+        "它回答的是：所有的正类样本，模型找出来了多少？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "recall"
+      ],
+      "formula": {
+        "latex": "\\text{Recall} = \\frac{TP}{TP + FN}",
+        "spoken": "召回率等于 TP 除以 TP 加 FN。"
+      },
+      "id": "s019",
+      "introduced_terms": [],
+      "lines": [
+        "召回率的公式：",
+        "TP 除以所有真正的正类样本数。"
+      ],
+      "type": "formula"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "3/5",
+          "3/4"
+        ],
+        "explanation": "Precision = 3/(3+2)=3/5, Recall = 3/(3+1)=3/4。",
+        "kind": "fill_in_blank",
+        "prompt": "计算精确率和召回率（用分数表示）。"
+      },
+      "focus_terms": [
+        "precision",
+        "recall"
+      ],
+      "id": "s020",
+      "introduced_terms": [],
+      "lines": [
+        "回到刚才的例子：TP=3, FP=2, FN=1。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "精确率低说明误报多，所以应该关注精确率。",
+        "kind": "single_choice",
+        "options": [
+          "精确率",
+          "召回率"
+        ],
+        "prompt": "如果业务要求‘尽量别误报’，应该关注哪个指标？"
+      },
+      "focus_terms": [
+        "precision",
+        "recall"
+      ],
+      "id": "s021",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "precision",
+        "recall"
+      ],
+      "id": "s022",
+      "introduced_terms": [],
+      "lines": [
+        "精确率和召回率往往互相牵制。",
+        "想要精确率高，就要少误报，但可能漏掉更多正类。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "precision",
+        "recall"
+      ],
+      "id": "s023",
+      "introduced_terms": [],
+      "lines": [
+        "想要召回率高，就要尽量找出所有正类，",
+        "但可能把很多负类也误报进来。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answers": [
+          "0.6",
+          "0.75"
+        ],
+        "explanation": "Precision = 3/(3+2)=0.6, Recall = 3/(3+1)=0.75。",
+        "kind": "fill_in_blank",
+        "prompt": "手动计算精确率和召回率（用小数表示）。"
+      },
+      "focus_terms": [
+        "precision",
+        "recall"
+      ],
+      "id": "s024",
+      "introduced_terms": [],
+      "lines": [
+        "现在，给你一个混淆矩阵：TP=3, FP=2, FN=1, TN=4。",
+        "请手动计算精确率和召回率。"
+      ],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "plain_text": "Precision, Recall, and F-measure (1), (2), (3) from lecture material.",
+    "related": [
+      "Precision, Recall, and F-measure (1)",
+      "Precision, Recall, and F-measure (2)",
+      "Precision, Recall, and F-measure (3)"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "precision": {
+      "aliases": [
+        "Precision",
+        "P"
+      ],
+      "display": "精确率",
+      "gloss": "在所有被预测为正类的样本中，有多少是真正的正类。"
+    },
+    "recall": {
+      "aliases": [
+        "Recall",
+        "R",
+        "True Positive Rate",
+        "TPR"
+      ],
+      "display": "召回率",
+      "gloss": "在所有真正的正类样本中，有多少被模型正确找出来了。"
+    }
+  }
+}

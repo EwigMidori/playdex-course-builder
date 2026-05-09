@@ -1,0 +1,351 @@
+{
+  "chapter_id": "lecture-06-graph-clustering",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "normalized_cuts_formula",
+      "covered_by": [
+        "qf_flash_ncuts_formula",
+        "qf_quiz_ncuts_mechanism",
+        "qf_long_ncuts_compare"
+      ],
+      "description": "归一化割的数学定义：Ncuts(A,B) = cut(A,B)/assoc(A,V) + cut(A,B)/assoc(B,V)"
+    },
+    {
+      "coverage_tag": "assoc_definition",
+      "covered_by": [
+        "qf_flash_assoc_meaning",
+        "qf_quiz_ncuts_mechanism"
+      ],
+      "description": "assoc(A,V) 的定义：子图A中所有节点与全图所有节点的连接权重之和"
+    },
+    {
+      "coverage_tag": "normalized_cuts_motivation",
+      "covered_by": [
+        "qf_flash_ncuts_motivation",
+        "qf_quiz_ncuts_mechanism",
+        "qf_long_ncuts_compare"
+      ],
+      "description": "归一化割的设计动机：通过除以子图总连接度来避免切出孤立小点集"
+    },
+    {
+      "coverage_tag": "min_cut_vs_ncut_behavior",
+      "covered_by": [
+        "qf_quiz_ncuts_mechanism",
+        "qf_long_ncuts_compare"
+      ],
+      "description": "最小割与归一化割在离群点场景下的不同切割行为"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "normalized_cuts_formula",
+      "coverage_tags": [
+        "normalized_cuts_formula"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ncuts_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆并写出归一化割的数学公式。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明掌握了 Ncuts 公式的结构：两项之和，每项都是 cut 除以 assoc。",
+      "question_type": "short_answer",
+      "retrieval_focus": "归一化割公式中两项的分母分别是什么？",
+      "term_refs": [
+        {
+          "display": "归一化割",
+          "en": "Normalized Cuts (Ncuts)"
+        },
+        {
+          "display": "割",
+          "en": "cut"
+        },
+        {
+          "display": "总连接度",
+          "en": "assoc"
+        }
+      ],
+      "variants": [
+        {
+          "back": "Ncuts(A, B) = cut(A,B)/assoc(A,V) + cut(A,B)/assoc(B,V)",
+          "estimated_seconds": 10,
+          "explanation": "公式由两项组成，每项都是 cut(A,B) 除以对应子图与全图的总连接度 assoc。",
+          "front": "写出归一化割 Ncuts(A, B) 的公式。",
+          "question_id": "q_flash_ncuts_formula_v1"
+        },
+        {
+          "back": "子图 A 中所有节点与全图 V 中所有节点的连接权重之和。",
+          "estimated_seconds": 8,
+          "explanation": "assoc(A, V) = Σ_{u∈A, t∈V} w(u, t)，衡量子图 A 的总连接度。",
+          "front": "在 Ncuts(A, B) = cut(A,B)/assoc(A,V) + cut(A,B)/assoc(B,V) 中，assoc(A, V) 代表什么？",
+          "question_id": "q_flash_ncuts_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "assoc_definition",
+      "coverage_tags": [
+        "assoc_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_assoc_meaning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确解释 assoc(A, V) 的含义。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明理解了 assoc 是子图与全图的总连接权重，而非节点个数。",
+      "question_type": "short_answer",
+      "retrieval_focus": "assoc(A, V) 的求和范围是什么？",
+      "term_refs": [
+        {
+          "display": "总连接度",
+          "en": "assoc"
+        }
+      ],
+      "variants": [
+        {
+          "back": "对 A 中每个节点 u 和 V 中每个节点 t 的权重 w(u, t) 求和。",
+          "estimated_seconds": 8,
+          "explanation": "assoc(A, V) = Σ_{u∈A, t∈V} w(u, t)，它衡量的是子图 A 与整个图 V 的连接紧密程度。",
+          "front": "assoc(A, V) 的求和范围是什么？",
+          "question_id": "q_flash_assoc_meaning_v1"
+        },
+        {
+          "back": "子图 A 与全图 V 的总连接度（总连接权重）。",
+          "estimated_seconds": 6,
+          "explanation": "它反映了子图 A 在整个图中的嵌入程度，连接度越高说明子图越紧密地嵌入在全图中。",
+          "front": "assoc(A, V) 是衡量子图 A 的什么属性？",
+          "question_id": "q_flash_assoc_meaning_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "normalized_cuts_motivation",
+      "coverage_tags": [
+        "normalized_cuts_motivation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_ncuts_motivation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出归一化割要解决的最小割的缺陷。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明理解了归一化割的设计动机：避免切出孤立小点集。",
+      "question_type": "short_answer",
+      "retrieval_focus": "最小割的什么缺陷促使了归一化割的提出？",
+      "term_refs": [
+        {
+          "display": "归一化割",
+          "en": "Normalized Cuts"
+        },
+        {
+          "display": "最小割",
+          "en": "Minimum Cut"
+        }
+      ],
+      "variants": [
+        {
+          "back": "当图中存在离群点（只有一条细边连接主团）时，最小割会优先切掉离群点，而不是把图分成有意义的团块。",
+          "estimated_seconds": 10,
+          "explanation": "因为离群点只有一条细边，切掉它的代价最小，但这样切出来的子图只有一个点，没有实际意义。",
+          "front": "最小割在什么场景下会产生不合理的分割结果？",
+          "question_id": "q_flash_ncuts_motivation_v1"
+        },
+        {
+          "back": "将切割代价除以子图的总连接度 assoc，使切出小孤立块的代价变大。",
+          "estimated_seconds": 8,
+          "explanation": "如果切出的子图很小，它的 assoc 也很小，导致 Ncuts 值变大，从而避免这种不合理的切割。",
+          "front": "归一化割通过什么方式避免切出孤立的小点集？",
+          "question_id": "q_flash_ncuts_motivation_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-graph-clustering",
+  "longform_families": [
+    {
+      "concept_key": "min_cut_vs_normalized_cut",
+      "coverage_tags": [
+        "normalized_cuts_motivation",
+        "min_cut_vs_ncut_behavior",
+        "normalized_cuts_formula"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_ncuts_compare",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较最小割和归一化割的异同，并用具体例子说明归一化割如何改进最小割。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能解释两种方法的定义、缺陷与改进，并能用公式和场景分析说明。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "最小割",
+          "en": "Minimum Cut"
+        },
+        {
+          "display": "归一化割",
+          "en": "Normalized Cuts"
+        },
+        {
+          "display": "割",
+          "en": "cut"
+        },
+        {
+          "display": "总连接度",
+          "en": "assoc"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "最小割和归一化割的数学定义",
+            "最小割的缺陷及原因",
+            "归一化割的改进机制",
+            "具体例子对比"
+          ],
+          "question_id": "q_long_ncuts_compare_v1",
+          "reference_answer": [
+            "最小割：Cut(A,B) = Σ_{u∈A, v∈B} w(u,v)，目标是找到使该值最小的划分。",
+            "归一化割：Ncuts(A,B) = cut(A,B)/assoc(A,V) + cut(A,B)/assoc(B,V)，其中 assoc(A,V) = Σ_{u∈A, t∈V} w(u,t)。",
+            "最小割的缺陷：它只考虑切割边的总权重，因此会优先切掉只有一条细边连接的离群点，因为这样代价最小，但结果不合理。",
+            "归一化割的改进：通过除以 assoc，如果切出的子图很小（如离群点单独成组），它的 assoc 也很小，导致 Ncuts 值变大，从而避免这种切割。",
+            "例子：主团10个点权重1，离群点1个权重0.1。最小割切离群点（代价0.1）；归一化割可能选择从主团内部切，因为离群点单独成组时 assoc 很小，Ncuts 值大。"
+          ],
+          "rubric_points": [
+            "正确写出 Cut(A,B) = Σ w(u,v) 和 Ncuts(A,B) = cut(A,B)/assoc(A,V) + cut(A,B)/assoc(B,V)",
+            "指出最小割倾向于切出孤立小点集，因为只考虑切割边的总权重",
+            "解释归一化割通过除以 assoc 来惩罚小孤立块，使切出小块的代价变大",
+            "用主团+离群点例子说明：最小割切离群点（代价0.1），归一化割可能切主团内部（因为离群点单独成组导致 Ncuts 值大）"
+          ],
+          "stem": "请比较最小割（Minimum Cut）和归一化割（Normalized Cuts）两种图分割方法。要求：\n1. 分别写出它们的数学定义。\n2. 说明最小割的主要缺陷，并解释为什么会出现这个缺陷。\n3. 解释归一化割如何通过修改公式来克服这个缺陷。\n4. 用一个具体例子（如主团+离群点）说明两种方法的不同切割结果。"
+        },
+        {
+          "estimated_seconds": 150,
+          "prompt_blocks": [
+            "最小割的切割方案与代价计算",
+            "归一化割的两种方案比较",
+            "结果合理性分析"
+          ],
+          "question_id": "q_long_ncuts_compare_v2",
+          "reference_answer": [
+            "最小割：切掉离群点 O 与 A 之间的边，代价为 0.05。这是全局最小的切割代价。",
+            "归一化割方案一（切 O）：分子 cut=0.05，但 assoc(O,V) 只有 0.05（只连到 A 的一个点），assoc(A,V) 很大，导致 Ncuts 值很大。",
+            "归一化割方案二（切 A、B 之间）：分子 cut=0.6（3条边×0.2），但 assoc(A,V) 和 assoc(B,V) 都很大（包含内部密集连接），Ncuts 值相对较小。",
+            "归一化割会选择方案二，因为它更平衡：切出的两个子图都有较高的内部连接度。",
+            "方案二更合理，因为它把图分成了两个有意义的密集区域，而不是切出一个孤立的单点。"
+          ],
+          "rubric_points": [
+            "正确识别最小割会切掉离群点 O，代价为 0.05",
+            "定性分析切掉 O 的 Ncuts 值：分子小但分母 assoc(O,V) 也极小，导致 Ncuts 值很大",
+            "定性分析从 A、B 之间切割的 Ncuts 值：分子较大但分母 assoc(A,V) 和 assoc(B,V) 也大，Ncuts 值可能更小",
+            "得出结论：归一化割会选择从 A、B 之间切割，结果更合理，因为切出了两个有意义的密集区域"
+          ],
+          "stem": "假设你有一个图，包含两个密集区域 A 和 B，以及一个通过一条权重为 0.05 的边连接到 A 的离群点 O。A 内部有 8 个点，彼此权重为 1；B 内部有 8 个点，彼此权重为 1；A 和 B 之间有 3 条权重为 0.2 的边连接。\n\n请分析：\n1. 最小割会如何分割这个图？计算最小割的代价。\n2. 归一化割会如何分割这个图？分别计算切掉离群点和从 A、B 之间切割的 Ncuts 值（只需定性比较，不需要精确数值）。\n3. 解释为什么两种方法给出不同的结果，并说明哪种结果更合理。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "normalized_cuts_mechanism",
+      "coverage_tags": [
+        "normalized_cuts_formula",
+        "assoc_definition",
+        "normalized_cuts_motivation",
+        "min_cut_vs_ncut_behavior"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_ncuts_mechanism",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下辨析归一化割的机制、动机及其与最小割的区别。",
+      "linked_steps": [
+        "step2"
+      ],
+      "practice_target": "学生答对后证明能应用归一化割的原理分析具体场景，并区分其与最小割的行为差异。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "归一化割",
+          "en": "Normalized Cuts"
+        },
+        {
+          "display": "最小割",
+          "en": "Minimum Cut"
+        },
+        {
+          "display": "总连接度",
+          "en": "assoc"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 30,
+          "explanation": "最小割会切掉离群点那条边，因为代价最小（0.1）；归一化割会考虑子图连接度，离群点单独成组会导致分母 assoc 很小，Ncuts 值变大，因此可能选择从主团内部切。",
+          "options": [
+            "最小割和归一化割都会切掉离群点",
+            "最小割切离群点，归一化割可能切主团内部",
+            "最小割切主团内部，归一化割切离群点",
+            "两者都不切"
+          ],
+          "question_id": "q_quiz_ncuts_mechanism_v1",
+          "stem": "给定一个图：主团有10个点，彼此之间权重为1；离群点只有一条权重0.1的边连到主团。最小割和归一化割分别会怎么切？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "通过除以 assoc(A, V) 和 assoc(B, V)，如果切出的子图A很小，它的总连接度 assoc(A, V) 也会很小，导致 Ncuts 值变大，从而避免这种不合理的切割。",
+          "options": [
+            "只考虑切割边的数量",
+            "将切割代价除以子图的总连接度",
+            "强制两个子图大小完全相等",
+            "只允许切割权重最大的边"
+          ],
+          "question_id": "q_quiz_ncuts_mechanism_v2",
+          "stem": "归一化割通过什么方式来避免切出孤立的小点？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "归一化割的分母 assoc 衡量的是连接度，不是节点个数。平衡连接度不等于平衡大小。",
+          "options": [
+            "平衡连接度",
+            "平衡节点个数",
+            "平衡边的数量",
+            "平衡特征值"
+          ],
+          "question_id": "q_quiz_ncuts_mechanism_v3",
+          "stem": "归一化割的分母 assoc 是在平衡什么？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "归一化割的分母 assoc 衡量的是连接度，不是节点个数。平衡连接度不等于强制大小相等。",
+          "options": [
+            "错误",
+            "正确"
+          ],
+          "question_id": "q_quiz_ncuts_mechanism_v4",
+          "stem": "判断以下说法是否正确：归一化割的分母 assoc 强制两个子图大小相等。"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step2",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-graph-clustering/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

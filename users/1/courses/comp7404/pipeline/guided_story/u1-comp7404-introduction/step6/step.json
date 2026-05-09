@@ -1,0 +1,185 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-introduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s067",
+      "introduced_terms": [],
+      "lines": [
+        "传统方法在面对复杂任务时遇到了瓶颈。",
+        "比如，人脸识别中表情、光照、遮挡的变化，让简单模型难以应对。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "neural_network"
+      ],
+      "id": "s068",
+      "introduced_terms": [
+        "neural_network"
+      ],
+      "lines": [
+        "其实，<term id=\"neural_network\">神经网络</term> 早在1980年代就出现了。",
+        "但为什么直到最近才火起来？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "backpropagation"
+      ],
+      "id": "s069",
+      "introduced_terms": [
+        "backpropagation"
+      ],
+      "lines": [
+        "1986年，Hinton等人提出了 <term id=\"backpropagation\">反向传播</term> 算法，",
+        "让神经网络能够自己学习数据的内部表示。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s070",
+      "introduced_terms": [],
+      "lines": [
+        "但随后神经网络进入了低谷期。",
+        "训练困难、计算资源不足、数据太少……"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "deep_learning"
+      ],
+      "id": "s071",
+      "introduced_terms": [
+        "deep_learning"
+      ],
+      "lines": [
+        "直到2006年，Hinton提出了深度信念网络，",
+        "以及无监督逐层预训练的方法，<term id=\"deep_learning\">深度学习</term> 才重新崛起。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s072",
+      "introduced_terms": [],
+      "lines": [
+        "2012年，Hinton的学生在ImageNet竞赛中，",
+        "用深度卷积神经网络将错误率几乎减半。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s073",
+      "introduced_terms": [],
+      "lines": [
+        "为什么深度学习在2012年之前没有成功？",
+        "因为以前数据少、计算弱、训练难。",
+        "大数据和GPU的出现，让深度学习真正爆发。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "大数据、GPU等强大计算资源，以及更好的训练策略，共同推动了深度学习的复兴。",
+        "kind": "single_choice",
+        "options": [
+          "更简单的算法",
+          "更大的数据和更强的计算能力",
+          "更少的模型参数",
+          "放弃了反向传播"
+        ],
+        "prompt": "以下哪个是深度学习重新崛起的关键因素？"
+      },
+      "focus_terms": [],
+      "id": "s074",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个是深度学习重新崛起的关键因素？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "深度学习在2012年之前失败的原因包括数据少、计算弱、训练难，算法太复杂不是主要原因。",
+        "kind": "single_choice",
+        "options": [
+          "数据太少",
+          "计算能力弱",
+          "算法太复杂",
+          "训练困难"
+        ],
+        "prompt": "以下哪个条件不是深度学习在2012年之前失败的原因？"
+      },
+      "focus_terms": [],
+      "id": "s075",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个条件不是深度学习在2012年之前失败的原因？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s076",
+      "introduced_terms": [],
+      "lines": [
+        "如今，AI在围棋、游戏、医疗诊断等领域已经超越人类。",
+        "但挑战依然存在，比如偏见、安全、就业影响。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s077",
+      "introduced_terms": [],
+      "lines": [
+        "一句话总结：",
+        "机器学习让计算机从数据中学习，而深度学习让它变得更强大。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "plain_text": "History of AI, Turing Award winners, Hinton, LeCun, Bengio, backpropagation, deep learning, ImageNet competition results.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "backpropagation": {
+      "aliases": [
+        "backpropagation",
+        "backprop"
+      ],
+      "display": "反向传播",
+      "gloss": "一种通过计算梯度来训练神经网络的算法。"
+    },
+    "deep_learning": {
+      "aliases": [
+        "deep learning",
+        "deep neural network"
+      ],
+      "display": "深度学习",
+      "gloss": "使用多层神经网络进行学习的方法。"
+    },
+    "neural_network": {
+      "aliases": [
+        "neural network",
+        "artificial neural network"
+      ],
+      "display": "神经网络",
+      "gloss": "受生物神经元启发，由多层节点组成的计算模型。"
+    }
+  }
+}

@@ -1,0 +1,426 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "tensor_definition",
+      "covered_by": [
+        "qf_flash_tensor_def",
+        "qf_quiz_tensor_def"
+      ],
+      "description": "张量的定义：多维数组，向量是1阶，矩阵是2阶，更高维的是n阶张量。"
+    },
+    {
+      "coverage_tag": "vectorization_problem",
+      "covered_by": [
+        "qf_flash_vectorization_problem",
+        "qf_quiz_vectorization_problem"
+      ],
+      "description": "将张量拉直成向量会导致维度灾难，例如100×100×40的Gabor特征拉直成40万维向量。"
+    },
+    {
+      "coverage_tag": "tensor_advantage",
+      "covered_by": [
+        "qf_flash_tensor_advantage",
+        "qf_quiz_tensor_advantage"
+      ],
+      "description": "保持张量结构可以避免维度灾难，保留多维结构信息，降低计算成本。"
+    },
+    {
+      "coverage_tag": "mode_k_product",
+      "covered_by": [
+        "qf_flash_mode_k_product"
+      ],
+      "description": "模-k乘积：张量与矩阵在特定维度上的乘积运算，用于在张量的某个维度上进行投影。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "tensor_definition",
+      "coverage_tags": [
+        "tensor_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_tensor_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出张量的定义及其与向量、矩阵的关系。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了张量的基本定义和阶数概念。",
+      "question_type": "short_answer",
+      "retrieval_focus": "张量的定义及其与向量、矩阵的阶数关系。",
+      "term_refs": [
+        {
+          "display": "张量",
+          "en": "Tensor"
+        }
+      ],
+      "variants": [
+        {
+          "back": "张量是多维数组的泛称。向量是1阶张量，矩阵是2阶张量。",
+          "estimated_seconds": 10,
+          "explanation": "张量是标量、向量、矩阵的高维推广。标量是0阶，向量是1阶，矩阵是2阶，更高维的数组是n阶张量。",
+          "front": "什么是张量？向量和矩阵分别是几阶张量？",
+          "question_id": "q_flash_tensor_def_v1"
+        },
+        {
+          "back": "2阶张量（矩阵）。",
+          "estimated_seconds": 8,
+          "explanation": "灰度图像是二维数组，每个元素是像素值，因此是2阶张量。",
+          "front": "一张灰度图像（如100×100像素）在张量视角下是几阶张量？",
+          "question_id": "q_flash_tensor_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "vectorization_problem",
+      "coverage_tags": [
+        "vectorization_problem"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_vectorization_problem",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出将张量拉直成向量带来的主要问题。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了拉直操作导致维度灾难这一关键问题。",
+      "question_type": "short_answer",
+      "retrieval_focus": "将张量拉直成向量导致维度灾难的具体表现。",
+      "term_refs": [
+        {
+          "display": "维度灾难",
+          "en": "Curse of Dimensionality"
+        }
+      ],
+      "variants": [
+        {
+          "back": "400,000维（100×100×40）。",
+          "estimated_seconds": 8,
+          "explanation": "拉直操作将多维结构展平为一维向量，维度是各维度大小的乘积。",
+          "front": "将一张100×100×40的Gabor特征图像拉直成向量后，特征维度是多少？",
+          "question_id": "q_flash_vectorization_problem_v1"
+        },
+        {
+          "back": "维度灾难：特征维度远大于样本数量，导致学习效果差。",
+          "estimated_seconds": 10,
+          "explanation": "高维特征空间需要指数级数量的样本才能有效学习，样本不足时模型容易过拟合。",
+          "front": "将张量拉直成向量后，在样本数量有限（如几千）时，主要面临什么问题？",
+          "question_id": "q_flash_vectorization_problem_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "tensor_advantage",
+      "coverage_tags": [
+        "tensor_advantage"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_tensor_advantage",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出保持张量结构进行降维的主要优势。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了张量表示相比向量化的核心优势。",
+      "question_type": "short_answer",
+      "retrieval_focus": "保持张量结构进行降维的两个主要优势。",
+      "term_refs": [
+        {
+          "display": "张量表示",
+          "en": "Tensor Representation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "避免维度灾难。",
+          "estimated_seconds": 8,
+          "explanation": "保持张量结构时，特征维度是各维度大小而非乘积，大幅降低了维度。",
+          "front": "保持张量结构进行降维，相比拉直成向量，能避免什么主要问题？",
+          "question_id": "q_flash_tensor_advantage_v1"
+        },
+        {
+          "back": "数据的多维结构信息（如空间结构、时间结构）。",
+          "estimated_seconds": 10,
+          "explanation": "张量表示保留了数据在多个维度上的结构信息，如图像的二维空间结构、视频的三维时空结构。",
+          "front": "保持张量结构进行降维，除了避免维度灾难，还能保留什么？",
+          "question_id": "q_flash_tensor_advantage_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "mode_k_product",
+      "coverage_tags": [
+        "mode_k_product"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_mode_k_product",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说出模-k乘积的作用。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明掌握了模-k乘积的基本概念及其在张量降维中的作用。",
+      "question_type": "short_answer",
+      "retrieval_focus": "模-k乘积的定义及其在张量降维中的用途。",
+      "term_refs": [
+        {
+          "display": "模-k 乘积",
+          "en": "Mode-k Product"
+        }
+      ],
+      "variants": [
+        {
+          "back": "在张量的某个特定维度（模）上进行投影。",
+          "estimated_seconds": 10,
+          "explanation": "模-k乘积是张量与矩阵在指定维度上的乘积，用于在该维度上进行线性变换或投影。",
+          "front": "模-k乘积允许我们在张量的什么上进行操作？",
+          "question_id": "q_flash_mode_k_product_v1"
+        },
+        {
+          "back": "在张量的某个维度上进行投影，实现该维度的降维。",
+          "estimated_seconds": 10,
+          "explanation": "通过在张量的每个维度上分别应用模-k乘积，可以独立地对每个维度进行降维，从而保持张量结构。",
+          "front": "在张量降维中，模-k乘积的主要用途是什么？",
+          "question_id": "q_flash_mode_k_product_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "longform_families": [
+    {
+      "concept_key": "tensor_advantage",
+      "coverage_tags": [
+        "tensor_definition",
+        "vectorization_problem",
+        "tensor_advantage"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_tensor_vs_vector",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较张量表示和向量化表示在降维中的优缺点。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能理解并解释张量表示相比向量化表示的优势及其原因。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "张量表示",
+          "en": "Tensor Representation"
+        },
+        {
+          "display": "维度灾难",
+          "en": "Curse of Dimensionality"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "特征维度比较",
+            "维度灾难影响",
+            "结构信息保留"
+          ],
+          "question_id": "q_long_tensor_vs_vector_v1",
+          "reference_answer": [
+            "特征维度：张量表示的特征维度是各维度大小之和（如100+100+40=240），而向量化是各维度大小之积（如100×100×40=400,000）。",
+            "维度灾难：向量化后特征维度远大于样本数量，导致数据稀疏、需要指数级样本才能有效学习；张量表示的特征维度较小，可以有效避免维度灾难。",
+            "结构信息保留：张量表示保留了数据的多维结构（如图像的二维空间结构、视频的三维时空结构），而向量化会丢失这些结构信息，破坏了数据的内在组织。"
+          ],
+          "rubric_points": [
+            "指出张量表示的特征维度是各维度大小之和，向量化是乘积",
+            "解释向量化导致维度灾难，张量表示可以避免",
+            "说明张量表示保留了数据的多维结构信息，向量化会丢失",
+            "举例说明（如Gabor特征100×100×40）"
+          ],
+          "stem": "请比较将数据表示为张量（保持多维结构）和将数据拉直成向量这两种方式，在降维场景下的优缺点。请至少从以下三个方面进行讨论：\n1. 特征维度\n2. 维度灾难\n3. 结构信息保留"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "向量化后的维度与问题",
+            "张量表示的维度与优势",
+            "学习能力提升的原因"
+          ],
+          "question_id": "q_long_tensor_vs_vector_v2",
+          "reference_answer": [
+            "向量化后特征维度为100×100×40=400,000，远大于样本数量5000，导致维度灾难：数据在高维空间中稀疏，模型容易过拟合，学习效果差。",
+            "保持张量结构时，特征维度为100+100+40=240，远小于向量化后的维度，可以有效避免维度灾难。",
+            "保持张量结构能提高学习能力，因为：1) 特征维度大幅降低，减少了所需样本数量；2) 保留了数据的多维结构信息（如空间邻域关系），这些结构信息对学习任务（如人脸识别）是有用的先验知识。"
+          ],
+          "rubric_points": [
+            "正确计算向量化后的维度（400,000）",
+            "指出维度灾难问题",
+            "正确计算张量表示的维度（240）",
+            "解释张量表示避免维度灾难",
+            "解释张量表示保留结构信息",
+            "说明结构信息有助于学习"
+          ],
+          "stem": "假设你有一个包含5000张人脸图像的数据集，每张图像经过Gabor滤波后得到100×100×40的张量。请分析：\n1. 如果将这些张量拉直成向量，特征维度是多少？会带来什么问题？\n2. 如果保持张量结构进行降维，特征维度是多少？有什么优势？\n3. 为什么保持张量结构能提高学习能力（learnability）？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "tensor_definition",
+      "coverage_tags": [
+        "tensor_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_tensor_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验中正确识别张量的定义和阶数。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能区分张量、向量和矩阵的阶数关系。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "张量",
+          "en": "Tensor"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "向量是1阶张量，矩阵是2阶张量，更高维的数组是n阶张量。",
+          "options": [
+            "向量是0阶张量，矩阵是1阶张量",
+            "向量是1阶张量，矩阵是2阶张量",
+            "向量是2阶张量，矩阵是1阶张量",
+            "向量和矩阵都是1阶张量"
+          ],
+          "question_id": "q_quiz_tensor_def_v1",
+          "stem": "以下关于张量的描述，哪一项是正确的？"
+        },
+        {
+          "answer": 3,
+          "estimated_seconds": 15,
+          "explanation": "视频有四个维度：时间、高度、宽度、颜色通道，因此是4阶张量。",
+          "options": [
+            "1阶",
+            "2阶",
+            "3阶",
+            "4阶"
+          ],
+          "question_id": "q_quiz_tensor_def_v2",
+          "stem": "一段视频数据（时间×高度×宽度×颜色通道）在张量视角下是几阶张量？"
+        }
+      ]
+    },
+    {
+      "concept_key": "vectorization_problem",
+      "coverage_tags": [
+        "vectorization_problem"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_vectorization_problem",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别将张量拉直成向量带来的主要问题。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能理解拉直操作导致维度灾难的原因和后果。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "维度灾难",
+          "en": "Curse of Dimensionality"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "特征维度（40万）远大于样本数量（几千），数据在高维空间中极度稀疏，需要指数级样本才能有效学习，导致过拟合。",
+          "options": [
+            "计算速度变慢",
+            "特征维度远大于样本数量，导致维度灾难，学习效果差",
+            "丢失了类别标签信息",
+            "无法使用任何机器学习算法"
+          ],
+          "question_id": "q_quiz_vectorization_problem_v1",
+          "stem": "将一张100×100×40的Gabor特征图像拉直成向量后，特征维度是40万。在只有几千个训练样本的情况下，主要问题是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "拉直成向量会丢失数据的多维结构信息，而不是保留它。",
+          "options": [
+            "特征维度急剧增加",
+            "保留了数据的多维结构信息",
+            "导致维度灾难",
+            "需要更多样本才能有效学习"
+          ],
+          "question_id": "q_quiz_vectorization_problem_v2",
+          "stem": "以下哪一项不是将张量拉直成向量带来的问题？"
+        }
+      ]
+    },
+    {
+      "concept_key": "tensor_advantage",
+      "coverage_tags": [
+        "tensor_advantage"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_tensor_advantage",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别保持张量结构进行降维的优势。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生答对后证明能理解张量表示相比向量化的优势。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "张量表示",
+          "en": "Tensor Representation"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "保持张量结构可以避免拉直带来的维度灾难，同时保留数据的多维结构信息，如空间或时间结构。",
+          "options": [
+            "计算速度一定更快",
+            "避免维度灾难，保留多维结构信息",
+            "不需要任何数学运算",
+            "可以处理任意数量的样本"
+          ],
+          "question_id": "q_quiz_tensor_advantage_v1",
+          "stem": "保持张量结构进行降维，相比拉直成向量，以下哪一项是其主要优势？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "在张量表示中，特征维度是各维度大小的和（如m1+m2+...+mn），而不是乘积，因此远小于向量化后的维度。",
+          "options": [
+            "各维度大小的乘积",
+            "各维度大小的和",
+            "各维度大小的最大值",
+            "各维度大小的最小值"
+          ],
+          "question_id": "q_quiz_tensor_advantage_v2",
+          "stem": "在张量表示中，特征维度通常如何计算？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-dimension-reduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

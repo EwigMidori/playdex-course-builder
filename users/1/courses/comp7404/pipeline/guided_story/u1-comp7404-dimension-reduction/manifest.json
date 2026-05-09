@@ -1,0 +1,50 @@
+{
+  "chapter_id": "lecture-08-dimension-reduction",
+  "chapter_title": "Dimension Reduction",
+  "course_id": "user-1-comp7404",
+  "course_title": "COMP7404",
+  "lesson_id": "u1-comp7404-dimension-reduction",
+  "mode": "guided_story",
+  "steps": [
+    {
+      "concept": "为什么投影不够用",
+      "file": "step1/step.json",
+      "sequence_id": "step1"
+    },
+    {
+      "concept": "流形学习的基本假设",
+      "file": "step2/step.json",
+      "sequence_id": "step2"
+    },
+    {
+      "concept": "LLE：如何保持局部关系来展开曲面",
+      "file": "step3/step.json",
+      "sequence_id": "step3"
+    },
+    {
+      "concept": "Isomap：当直线距离穿透曲面时",
+      "file": "step4/step.json",
+      "sequence_id": "step4"
+    },
+    {
+      "concept": "张量表示：避免维度灾难",
+      "file": "step5/step.json",
+      "sequence_id": "step5"
+    },
+    {
+      "concept": "图嵌入框架：统一视角",
+      "file": "step6/step.json",
+      "sequence_id": "step6"
+    },
+    {
+      "concept": "MFA：用框架设计新算法",
+      "file": "step7/step.json",
+      "sequence_id": "step7"
+    },
+    {
+      "concept": "Summary: one framework, many algorithms",
+      "file": "step8/step.json",
+      "sequence_id": "step8"
+    }
+  ]
+}

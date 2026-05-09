@@ -1,0 +1,504 @@
+---
+lessonId: u1-comp7404-regression-and-svm
+title: 回归与支持向量机
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["regression_goal", "linear_regression_definition", "need_for_unified_rule"]
+    linkedSteps: ["step1", "step2a"]
+  - sectionId: global-concept-map
+    title: 课程全景与关键问题
+    coverageTags: ["regression_goal", "linear_regression_definition", "maximum_margin_hyperplane", "margin_definition", "support_vectors_definition", "svm_name_origin", "linear_inseparability", "kernel_trick", "non_separable_case_slack_variable", "c_parameter_tradeoff", "cross_validation"]
+    linkedSteps: ["step1", "step2a", "step2b", "step3", "step4", "step5", "step6", "step7", "step8"]
+  - sectionId: linear-regression-foundation
+    title: 线性回归：从直觉到数学
+    coverageTags: ["regression_goal", "linear_regression_definition", "need_for_unified_rule", "linear_regression_many_lines", "linear_regression_need_for_criterion", "estimation_criterion", "empirical_loss", "least_squares_solution"]
+    linkedSteps: ["step1", "step2a", "step2b"]
+  - sectionId: generalization-overfitting
+    title: 泛化、过拟合与模型评估
+    coverageTags: ["polynomial_regression", "overfitting", "generalization", "cross_validation", "k_fold_cross_validation", "model_selection_and_validation"]
+    linkedSteps: ["step3", "step4"]
+  - sectionId: svm-maximum-margin
+    title: 支持向量机：最大间隔分类器
+    coverageTags: ["hyperplane_separating", "maximum_margin_hyperplane", "margin_definition", "margin_and_generalization", "support_vectors_definition", "support_vectors_role_in_margin", "svm_name_origin", "support_vectors_impact_on_boundary"]
+    linkedSteps: ["step5", "step6"]
+  - sectionId: svm-nonlinear-kernel
+    title: 非线性SVM与核方法
+    coverageTags: ["linear_inseparability", "nonlinear_svm_kernel_methods", "kernel_trick", "kernel_function"]
+    linkedSteps: ["step7"]
+  - sectionId: svm-soft-margin
+    title: 软间隔SVM：处理不可分与噪声
+    coverageTags: ["non_separable_case_slack_variable", "c_parameter_tradeoff"]
+    linkedSteps: ["step8"]
+  - sectionId: pitfalls
+    title: 易错点与常见误解
+    coverageTags: ["overfitting", "c_parameter_tradeoff", "support_vectors_role_in_margin", "kernel_trick"]
+    linkedSteps: ["step3", "step6", "step7", "step8"]
+  - sectionId: review-and-self-test
+    title: 复习与自测
+    coverageTags: ["regression_goal", "linear_regression_definition", "estimation_criterion", "empirical_loss", "least_squares_solution", "overfitting", "generalization", "cross_validation", "k_fold_cross_validation", "maximum_margin_hyperplane", "margin_definition", "support_vectors_definition", "support_vectors_role_in_margin", "linear_inseparability", "kernel_trick", "kernel_function", "non_separable_case_slack_variable", "c_parameter_tradeoff"]
+    linkedSteps: ["step1", "step2a", "step2b", "step3", "step4", "step5", "step6", "step7", "step8"]
+coverageTrace:
+  - coverageTag: regression_goal
+    description: 回归的目标：预测输入对应的输出
+    sectionIds: ["why-this-lesson-matters", "global-concept-map", "linear-regression-foundation", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: linear_regression_definition
+    description: 线性回归：用一条直线模拟输入输出关系
+    sectionIds: ["why-this-lesson-matters", "global-concept-map", "linear-regression-foundation", "review-and-self-test"]
+    linkedSteps: ["step1"]
+  - coverageTag: need_for_unified_rule
+    description: 为什么需要统一的数学规则：不同人画线预测不同
+    sectionIds: ["why-this-lesson-matters", "linear-regression-foundation"]
+    linkedSteps: ["step1", "step2a"]
+  - coverageTag: linear_regression_many_lines
+    description: 同一组数据点可以画出无数条不同的直线
+    sectionIds: ["linear-regression-foundation"]
+    linkedSteps: ["step2a"]
+  - coverageTag: linear_regression_need_for_criterion
+    description: 线性回归需要统一标准来比较不同直线的好坏
+    sectionIds: ["linear-regression-foundation"]
+    linkedSteps: ["step2a"]
+  - coverageTag: estimation_criterion
+    description: 拟合准则：平方损失的定义与公式
+    sectionIds: ["linear-regression-foundation", "review-and-self-test"]
+    linkedSteps: ["step2b"]
+  - coverageTag: empirical_loss
+    description: 经验损失：所有训练样本损失的总和
+    sectionIds: ["linear-regression-foundation", "review-and-self-test"]
+    linkedSteps: ["step2b"]
+  - coverageTag: least_squares_solution
+    description: 最小二乘法：通过最小化平方损失求解参数
+    sectionIds: ["linear-regression-foundation", "review-and-self-test"]
+    linkedSteps: ["step2b"]
+  - coverageTag: polynomial_regression
+    description: 多项式回归：线性回归的扩展，使用多项式函数拟合数据
+    sectionIds: ["generalization-overfitting"]
+    linkedSteps: ["step3"]
+  - coverageTag: overfitting
+    description: 过拟合：模型过度学习训练数据中的噪声和细节
+    sectionIds: ["generalization-overfitting", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: generalization
+    description: 泛化：模型对未见过的数据做出正确预测的能力
+    sectionIds: ["generalization-overfitting", "review-and-self-test"]
+    linkedSteps: ["step3"]
+  - coverageTag: cross_validation
+    description: 交叉验证的概念与目的：解决过拟合问题，评估模型泛化能力
+    sectionIds: ["generalization-overfitting", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: k_fold_cross_validation
+    description: K折交叉验证的具体流程
+    sectionIds: ["generalization-overfitting", "review-and-self-test"]
+    linkedSteps: ["step4"]
+  - coverageTag: model_selection_and_validation
+    description: 模型选择与验证：如何选择最优参数并估计真实错误率
+    sectionIds: ["generalization-overfitting"]
+    linkedSteps: ["step4"]
+  - coverageTag: hyperplane_separating
+    description: 超平面用于分割数据，在二维空间中是一条直线
+    sectionIds: ["svm-maximum-margin"]
+    linkedSteps: ["step5"]
+  - coverageTag: maximum_margin_hyperplane
+    description: 最大间隔超平面的概念
+    sectionIds: ["global-concept-map", "svm-maximum-margin", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: margin_definition
+    description: 间隔的定义：决策面到最近训练样本的最小距离
+    sectionIds: ["global-concept-map", "svm-maximum-margin", "review-and-self-test"]
+    linkedSteps: ["step5"]
+  - coverageTag: margin_and_generalization
+    description: 间隔与泛化的关系：大间隔导致低容量
+    sectionIds: ["svm-maximum-margin"]
+    linkedSteps: ["step5"]
+  - coverageTag: support_vectors_definition
+    description: 支持向量的定义：距离决策边界最近的点
+    sectionIds: ["global-concept-map", "svm-maximum-margin", "review-and-self-test"]
+    linkedSteps: ["step6"]
+  - coverageTag: support_vectors_role_in_margin
+    description: 支持向量在决定最大间隔中的作用
+    sectionIds: ["svm-maximum-margin", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step6"]
+  - coverageTag: svm_name_origin
+    description: 支持向量机名字的由来
+    sectionIds: ["global-concept-map", "svm-maximum-margin"]
+    linkedSteps: ["step6"]
+  - coverageTag: support_vectors_impact_on_boundary
+    description: 移除远离边界的点不会改变决策边界
+    sectionIds: ["svm-maximum-margin"]
+    linkedSteps: ["step6"]
+  - coverageTag: linear_inseparability
+    description: 线性不可分：原空间中不存在一个超平面能完美分开两类数据
+    sectionIds: ["global-concept-map", "svm-nonlinear-kernel", "review-and-self-test"]
+    linkedSteps: ["step7"]
+  - coverageTag: nonlinear_svm_kernel_methods
+    description: 非线性SVM与核方法
+    sectionIds: ["svm-nonlinear-kernel"]
+    linkedSteps: ["step7"]
+  - coverageTag: kernel_trick
+    description: 核技巧：在不显式计算高维映射的情况下计算高维空间内积
+    sectionIds: ["global-concept-map", "svm-nonlinear-kernel", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step7"]
+  - coverageTag: kernel_function
+    description: 核函数：接收两个低维向量，返回它们在某个高维空间中的内积
+    sectionIds: ["svm-nonlinear-kernel", "review-and-self-test"]
+    linkedSteps: ["step7"]
+  - coverageTag: non_separable_case_slack_variable
+    description: SVM处理线性不可分情况：引入松弛变量
+    sectionIds: ["global-concept-map", "svm-soft-margin", "review-and-self-test"]
+    linkedSteps: ["step8"]
+  - coverageTag: c_parameter_tradeoff
+    description: C参数控制对分类错误的惩罚力度
+    sectionIds: ["global-concept-map", "svm-soft-margin", "pitfalls", "review-and-self-test"]
+    linkedSteps: ["step8"]
+---
+
+# 回归与支持向量机
+
+## 为什么这一课重要
+
+这一课将介绍机器学习中两个最基础也最强大的模型家族：**回归**与**支持向量机**。
+
+- **回归**解决的是“预测一个连续数值”的问题。无论是预测房价、股票价格，还是根据天气预测能源消耗，回归都是第一选择。
+- **支持向量机**则是分类任务中的经典算法，它的核心思想——**最大间隔**——不仅直观，而且有深厚的统计学习理论支撑，使其在众多场景下都具有出色的泛化能力。
+
+理解这两个模型，你将掌握机器学习中“如何量化好坏”、“如何避免过拟合”、“如何用数学优化求解”以及“如何通过核技巧处理复杂数据”等一系列核心思想。
+
+<KeyPoint>本课的核心线索是：从“如何找到一条最佳直线”出发，逐步深入到“如何找到一个最佳分类边界”，并最终理解如何通过核技巧和松弛变量处理现实世界中的复杂数据。</KeyPoint>
+
+## 课程全景与关键问题
+
+本课围绕两个核心模型展开，它们共享一个核心思想：**定义一个“好坏”的标准，然后通过数学优化找到最好的那个**。
+
+- **线性回归**：目标是找到一条直线，使得所有数据点到该直线的**垂直距离的平方和**最小。这个标准就是**最小二乘法**。
+- **支持向量机**：目标是找到一个分类超平面，使得它到两类数据点的**最小距离（间隔）最大**。这个标准就是**最大间隔**。
+
+本课将依次回答以下关键问题：
+
+1.  **为什么需要数学标准？** 因为人眼无法精确、客观地找到“最佳”直线或边界。
+2.  **如何定义“最佳”？** 回归用平方损失，SVM用最大间隔。
+3.  **模型太复杂会怎样？** 会过拟合，记住噪声而非规律。
+4.  **如何评估模型？** 用交叉验证模拟未知数据。
+5.  **线性分不开怎么办？** SVM通过核技巧将数据映射到高维空间。
+6.  **有噪声怎么办？** SVM通过松弛变量和C参数允许一些错误，换取更大的间隔。
+
+<Figure src="images/241f8570d842ed36ad35b624796f1cde021b266ef2fc445b6a4daa8ebdff70aa.jpg" alt="课程大纲幻灯片，列出了线性回归和SVM的主要子主题">课程大纲：本课将覆盖线性回归（估计准则、最小二乘解、泛化与过拟合、扩展）和支持向量机（最大间隔、对偶问题、不可分情况、核方法、优化技术）以及交叉验证。</Figure>
+
+## 线性回归：从直觉到数学
+
+### 为什么需要一条线来预测？
+
+假设你有一组数据点，每个点代表一个房子的面积和它的价格。你的朋友新买了一个120平方米的房子，想知道大概值多少钱。你看着散点图，可能会在脑海中画一条线，然后给出一个预测。
+
+<Figure src="images/d129079d0e450d0290473166fb985b9bd048963da29ff131fe4fdbdfcc75d329.jpg" alt="散点图，横轴为面积，纵轴为价格，数据点大致呈线性分布">回归的目标：根据输入（面积）预测输出（价格）。我们需要定义函数类和拟合准则。</Figure>
+
+但是，不同的人会画出不同的线，导致预测结果不一致。甲同学预测100万，乙同学预测120万，丙同学预测140万，而真实成交价是108万。谁的预测更好？没有标准，我们无法判断。
+
+<KeyPoint>线性回归的核心思想就是**用一个统一的数学规则**，来自动找到那条“整体误差尽量小”的线。</KeyPoint>
+
+<Definition title="线性回归 (Linear Regression)">
+一种用直线来模拟输入与输出之间关系的模型。其基本形式为：
+<InlineFormula latex="f(x; w) = w_0 + w_1 x" />
+其中，<InlineFormula latex="w_0" /> 是截距，<InlineFormula latex="w_1" /> 是斜率（权重）。
+</Definition>
+
+<QuestionRef id="q_quiz_step1_definition_v1" />
+
+### 如何判断哪条直线最好？——平方损失与最小二乘法
+
+我们需要一个标准来衡量“预测误差”。对于单个数据点，一个常用的标准是**平方损失**。
+
+<Definition title="平方损失 (Squared Loss)">
+衡量预测值与真实值之间差距的一种方式，差距越大惩罚越重。
+<Formula latex="\text{Loss}(y, f(x; w)) = \frac{1}{2} (y - f(x; w))^2">
+单个数据点的平方损失公式。
+</Formula>
+</Definition>
+
+现在，我们把所有训练数据上的损失加起来，得到**经验损失**。
+
+<Definition title="经验损失 (Empirical Loss)">
+模型在已有训练数据上的平均损失，是所有训练样本损失的总和。
+<Formula latex="J_n(w) = \sum_{i=1}^n \text{Loss}(y_i, f(x_i; w))">
+经验损失是所有训练样本损失的总和。
+</Formula>
+</Definition>
+
+我们的目标就是找到一组参数 <InlineFormula latex="w" />，让这个总损失最小。这种通过最小化平方损失来求解的方法，就是**最小二乘法**。
+
+<Definition title="最小二乘法 (Least Squares)">
+通过最小化所有训练样本的平方损失之和来找到最佳参数的方法。
+</Definition>
+
+<Example title="计算平方损失">
+给定一个数据点，真实值 y=10，预测值 f(x)=7。根据平方损失公式：
+<InlineFormula latex="\text{Loss} = (10 - 7)^2 / 2 = 9 / 2 = 4.5" />
+</Example>
+
+<QuestionRef id="q_quiz_squared_loss_v1" />
+<QuestionRef id="q_quiz_empirical_loss_v1" />
+
+### 最小二乘法的求解
+
+最小化经验损失可以通过求导并令导数为零来实现。这给出了一个解析解，即**正规方程**。
+
+<Formula latex="\hat{w} = (X^T X)^{-1} X^T y">
+最小二乘法的矩阵形式解，其中 X 是设计矩阵，y 是输出向量。
+</Formula>
+
+<KeyPoint>这个解是全局最优的，因为经验损失函数是凸函数。但计算矩阵逆的代价可能很高，尤其当数据量很大或矩阵奇异时。</KeyPoint>
+
+<Figure src="images/41cb571913b42c235b6310dd5ff7a24ebf91c1a413baf34c33c4f967740f8d4c.jpg" alt="线性回归示意图，显示数据点、拟合的回归线以及表示误差的垂直残差线">线性回归可以理解为找到一条最佳拟合直线，数据点到直线的垂直距离称为残差或误差。</Figure>
+
+<Checkpoint title="线性回归核心概念检查">
+1. 线性回归的目标是什么？
+2. 平方损失的作用是什么？
+3. 最小二乘法是如何找到最佳直线的？
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_estimation_process" />
+
+## 泛化、过拟合与模型评估
+
+### 模型太复杂会出什么问题？
+
+现实中的数据关系可能不是简单的直线，而是曲线。我们可以用**多项式回归**来拟合曲线。
+
+<Definition title="多项式回归 (Polynomial Regression)">
+线性回归的扩展，使用多项式函数来拟合数据，可以捕捉更复杂的关系。
+<Formula latex="f(x; w) = w_0 + w_1 x + \dots + w_m x^m">
+一个 m 阶多项式回归模型。
+</Formula>
+</Definition>
+
+阶数越高，模型越灵活。但是，模型越复杂，就越好吗？**不是**。一个高阶多项式模型可以完美穿过所有训练点，训练误差几乎为零。但是，如果加入一个新的数据点，它的预测可能完全错误。这就是**过拟合**。
+
+<Definition title="过拟合 (Overfitting)">
+模型过度学习了训练数据中的噪声和细节，导致在新数据上表现很差。典型表现是训练误差很低，但测试误差很高。
+</Definition>
+
+<Definition title="泛化 (Generalization)">
+模型对未见过的数据做出正确预测的能力。我们真正关心的是泛化能力，而不是训练集上的表现。
+</Definition>
+
+<Figure src="images/f54bb0ed1b0a3f0e5500a3a466e1b5d0b9f6b9a56d1f4e58ae0c846b2ebe42cb.jpg" alt="过拟合示意图，显示一个高阶多项式完美穿过所有训练点，但曲线形状非常扭曲">当训练误差与泛化误差不再相关时，模型就过拟合了。</Figure>
+
+<QuestionRef id="q_quiz_overfitting_v1" />
+
+### 如何评估模型好不好？——交叉验证
+
+过拟合的问题在于，我们无法用训练数据来评估模型的泛化能力。我们需要模拟“未知数据”。一个简单的方法是把数据分成训练集和测试集。但这样只做一次测试，结果可能不稳定。更可靠的方法是**交叉验证**。
+
+<Definition title="交叉验证 (Cross-validation)">
+一种评估模型泛化性能的统计方法，通过将数据集分成多份，轮流用其中一份做测试，其余做训练。
+</Definition>
+
+<Definition title="K折交叉验证 (K-Fold Cross-validation)">
+将数据分成K份，进行K次训练和测试，每次用不同的K-1份训练，1份测试。最终性能是K次测试误差的平均值。
+</Definition>
+
+<KeyPoint>K折交叉验证的优势在于：所有数据点都被用于训练和测试，评估结果更可靠、更稳定。K通常取5或10。</KeyPoint>
+
+<QuestionRef id="q_quiz_cv_01_v1" />
+<QuestionRef id="q_quiz_cv_01_v2" />
+
+<Checkpoint title="泛化与评估检查">
+1. 什么是过拟合？它的典型表现是什么？
+2. 为什么不能只用训练误差来评估模型？
+3. K折交叉验证是如何工作的？它的优势是什么？
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_overfitting" />
+<QuestionFamily familyId="qf_long_cv_01" />
+
+## 支持向量机：最大间隔分类器
+
+### 为什么“能分开”还不够？
+
+现在，我们转向分类问题。假设有两类数据点，我们希望用一条线（在更高维空间称为**超平面**）把它们分开。能分开两类的超平面有无数个。哪一个是最好的？
+
+<Definition title="超平面 (Hyperplane)">
+在高维空间中，一个比所在空间维度低一维的线性子空间，用于分割数据。在二维空间中，超平面就是一条直线。
+</Definition>
+
+直觉上，一个离所有训练样本都尽可能远的超平面，对噪声更不敏感，更有可能在未见过的数据上表现良好。这个“离所有点都尽可能远”的距离，就是**间隔**。
+
+<Definition title="间隔 (Margin)">
+决策边界（超平面）到最近训练样本的最小距离。
+</Definition>
+
+<KeyPoint>SVM的目标就是找到具有**最大间隔**的超平面。大间隔意味着低容量，即使维度很高，模型的复杂度也可能很低，从而带来更好的泛化能力。</KeyPoint>
+
+<Figure src="images/f680731f09d73c3a1714918ebd657ccea52ccb8f8d2a27d15c3baf0425807236.jpg" alt="最大间隔超平面示意图，显示多个候选超平面，其中具有最大间隔的那个被选中">最优超平面是离所有训练样本都最远的那个，即具有最大间隔。</Figure>
+
+<QuestionRef id="q_quiz_margin_v1" />
+
+### 谁在真正决定边界？——支持向量
+
+直觉上，远离边界的点，即使移动它们，边界也不会改变。只有那些靠近边界的点，才是关键。这些真正决定边界的点，被称为**支持向量**。
+
+<Definition title="支持向量 (Support Vectors)">
+那些距离决策边界最近的点，它们决定了最大间隔超平面的位置。
+</Definition>
+
+<Definition title="支持向量机 (Support Vector Machine, SVM)">
+一种强大的分类算法，核心思想是找到一个能将不同类别数据分开且间隔最大的超平面。其名称来源于“支持向量”是撑起最大间隔的支柱。
+</Definition>
+
+<KeyPoint>只有支持向量才决定最大间隔超平面。移除一个远离边界的点，决策边界不会改变。移除一个支持向量，边界可能会改变。</KeyPoint>
+
+<QuestionRef id="q_quiz_support_vectors_role_v1" />
+<QuestionRef id="q_quiz_support_vectors_impact_v1" />
+
+<Checkpoint title="SVM核心概念检查">
+1. SVM选择超平面的标准是什么？
+2. 什么是间隔？为什么大间隔更好？
+3. 什么是支持向量？它们为什么重要？
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_margin_justification" />
+<QuestionFamily familyId="qf_long_support_vectors_explain" />
+
+## 非线性SVM与核方法
+
+### 线性分不开时怎么办？
+
+现实世界中的数据往往不是线性可分的。比如，两类数据点可能像同心圆一样嵌套在一起。线性分类器会失败。但问题出在表示方式上，而不是模型本身。
+
+一个巧妙的思路是：把数据映射到更高维的空间。在高维空间里，原本非线性可分的数据可能变得线性可分。SVM通过**核技巧**和**核函数**巧妙地实现了这一点。
+
+<Definition title="线性不可分 (Linearly Inseparable)">
+在原特征空间中，不存在一个超平面（直线/平面）能够将两类数据完美分开。
+</Definition>
+
+<Definition title="核函数 (Kernel Function)">
+一个函数，它接收两个低维空间的向量，返回的结果等于它们在某个高维空间中的内积。
+</Definition>
+
+<Definition title="核技巧 (Kernel Trick)">
+一种在不显式计算高维映射的情况下，通过核函数在低维空间计算高维空间内积的技术。
+</Definition>
+
+<KeyPoint>核技巧的核心是：我们只需要把SVM对偶问题中的内积替换成核函数，就可以在低维空间完成高维空间的计算，而无需知道映射 <InlineFormula latex="\phi" /> 的具体形式。</KeyPoint>
+
+<Example title="多项式核的例子">
+考虑一个二维空间中的多项式核 <InlineFormula latex="K(x_i, x_j) = (x_i^T x_j)^2" />。展开后，它等价于在三维空间中的内积。这意味着我们可以在二维空间直接计算三维空间的内积，避免了昂贵的显式映射。
+</Example>
+
+<Figure src="images/64b987b04a11e5049eefd3970d45586937837f9c95bb59c8fe1f7433dfbe316c.jpg" alt="非线性映射示意图，显示低维空间中线性不可分的数据通过映射到高维空间后变得线性可分">SVM通过非线性映射将数据投影到高维空间，然后在高维空间中构建最优超平面。</Figure>
+
+<QuestionRef id="q_quiz_kernel_usage_v1" />
+<QuestionRef id="q_quiz_kernel_usage_v2" />
+
+<Checkpoint title="核方法检查">
+1. 什么是线性不可分？
+2. 核技巧的核心思想是什么？
+3. 核函数的作用是什么？
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_kernel_mechanism" />
+
+## 软间隔SVM：处理不可分与噪声
+
+### 参数C在权衡什么？
+
+即使使用了核技巧，数据也可能不是完全可分的，比如存在噪声或重叠。SVM通过引入**松弛变量**来处理这种情况。
+
+<Definition title="松弛变量 (Slack Variable)">
+在SVM中引入的变量，允许一些数据点被错误分类或落在间隔之内，以处理线性不可分的情况。
+- 当 <InlineFormula latex="0 \le \xi_i \le 1" /> 时，数据点分类正确，但落在间隔区域内。
+- 当 <InlineFormula latex="\xi_i > 1" /> 时，数据点被错误分类。
+</Definition>
+
+同时，我们引入一个参数 **C** 来控制对错误的惩罚力度。
+
+<Definition title="C参数 (C Parameter)">
+控制SVM对分类错误的惩罚力度。
+- **C 越大**：对错误惩罚越重，模型倾向于更小的间隔以减少训练错误，但可能过拟合。
+- **C 越小**：对错误惩罚越轻，模型允许更多错误，倾向于更大的间隔，泛化能力可能更好。
+</Definition>
+
+<KeyPoint>C参数在“间隔大小”和“训练错误”之间进行权衡。选择C的过程就是模型选择，通常通过交叉验证来完成。</KeyPoint>
+
+<Figure src="images/1da053b6285d2d09b93388e344aac66ce770dd520257561678726c8c4d4689e2.jpg" alt="软间隔SVM示意图，显示松弛变量如何允许一些点落在间隔内或被错误分类">松弛变量 <InlineFormula latex="\xi_i" /> 衡量了数据点对理想条件的偏离程度。</Figure>
+
+<QuestionRef id="q_quiz_c_effect_v1" />
+<QuestionRef id="q_quiz_c_effect_v2" />
+
+<Checkpoint title="软间隔检查">
+1. 松弛变量的作用是什么？
+2. C参数控制什么？C很大和C很小时分别有什么影响？
+3. 如果数据中有大量噪声，应该选择较大的C还是较小的C？
+</Checkpoint>
+
+<QuestionFamily familyId="qf_long_c_tradeoff" />
+
+## 易错点与常见误解
+
+1.  **混淆过拟合与欠拟合**：过拟合是训练误差低、测试误差高；欠拟合是训练误差和测试误差都高。
+2.  **认为C越大越好**：C越大，模型越严格，但可能过拟合噪声。C的选择需要根据数据情况通过交叉验证确定。
+3.  **认为所有点都同等重要**：在SVM中，只有支持向量决定边界。远离边界的点不影响决策边界。
+4.  **认为核技巧是万能的**：核函数的选择（如多项式核的阶数、RBF核的宽度）是一个超参数，需要调整。不合适的核函数可能导致性能不佳。
+5.  **混淆核函数与映射**：核函数直接计算高维空间的内积，而不是显式地进行映射。这是核技巧高效的关键。
+
+<Pitfall>一个常见的误解是：线性不可分时，SVM就失效了。实际上，通过核技巧，SVM可以处理非常复杂的非线性边界。关键在于选择合适的核函数和参数。</Pitfall>
+
+## 复习与自测
+
+### 核心概念速查
+
+- **线性回归**：用直线拟合数据，最小化平方损失。
+- **最小二乘法**：通过最小化平方损失求解参数的方法。
+- **过拟合**：模型记住噪声，泛化能力差。
+- **泛化**：模型在未知数据上的表现。
+- **交叉验证**：评估模型泛化能力的可靠方法。
+- **支持向量机**：寻找最大间隔超平面的分类器。
+- **间隔**：决策边界到最近样本的距离。
+- **支持向量**：决定间隔的边界样本。
+- **核技巧**：在低维空间计算高维内积，避免显式映射。
+- **松弛变量**：允许SVM容忍一些错误。
+- **C参数**：控制对错误的惩罚力度。
+
+### 自测题
+
+<QuestionFamily familyId="qf_flash_step1_goal" />
+<QuestionFamily familyId="qf_flash_step1_definition" />
+<QuestionFamily familyId="qf_flash_squared_loss" />
+<QuestionFamily familyId="qf_flash_empirical_loss" />
+<QuestionFamily familyId="qf_flash_least_squares" />
+<QuestionFamily familyId="qf_flash_overfitting" />
+<QuestionFamily familyId="qf_flash_generalization" />
+<QuestionFamily familyId="qf_flash_cv_01" />
+<QuestionFamily familyId="qf_flash_hyperplane_definition" />
+<QuestionFamily familyId="qf_flash_margin_definition" />
+<QuestionFamily familyId="qf_flash_support_vectors_def" />
+<QuestionFamily familyId="qf_flash_support_vectors_role" />
+<QuestionFamily familyId="qf_flash_svm_name_origin" />
+<QuestionFamily familyId="qf_flash_linear_inseparable" />
+<QuestionFamily familyId="qf_flash_kernel_trick" />
+<QuestionFamily familyId="qf_flash_kernel_function" />
+<QuestionFamily familyId="qf_flash_slack_var" />
+<QuestionFamily familyId="qf_flash_c_meaning" />
+
+### 深入理解
+
+<QuestionFamily familyId="qf_quiz_step1_goal" />
+<QuestionFamily familyId="qf_quiz_step1_definition" />
+<QuestionFamily familyId="qf_quiz_need_criterion" />
+<QuestionFamily familyId="qf_quiz_many_lines" />
+<QuestionFamily familyId="qf_quiz_squared_loss" />
+<QuestionFamily familyId="qf_quiz_empirical_loss" />
+<QuestionFamily familyId="qf_quiz_least_squares" />
+<QuestionFamily familyId="qf_quiz_poly_reg" />
+<QuestionFamily familyId="qf_quiz_overfitting" />
+<QuestionFamily familyId="qf_quiz_generalization" />
+<QuestionFamily familyId="qf_quiz_cv_01" />
+<QuestionFamily familyId="qf_quiz_margin_choice" />
+<QuestionFamily familyId="qf_quiz_support_vectors_role" />
+<QuestionFamily familyId="qf_quiz_support_vectors_impact" />
+<QuestionFamily familyId="qf_quiz_linear_inseparable" />
+<QuestionFamily familyId="qf_quiz_kernel_usage" />
+<QuestionFamily familyId="qf_quiz_slack_var_interpret" />
+<QuestionFamily familyId="qf_quiz_c_effect" />

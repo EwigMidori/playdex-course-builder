@@ -1,0 +1,555 @@
+{
+  "chapter_id": "lecture-06-graph-clustering",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "discrete_optimization_np_complete",
+      "covered_by": [
+        "qf_flash_np_complete",
+        "qf_quiz_np_complete"
+      ],
+      "description": "归一化割的离散优化问题是NP完全的，无法直接枚举求解。"
+    },
+    {
+      "coverage_tag": "relaxation_to_continuous",
+      "covered_by": [
+        "qf_flash_relaxation",
+        "qf_quiz_relaxation"
+      ],
+      "description": "将离散的二分向量y放松为连续值，从而将问题转化为广义特征值系统。"
+    },
+    {
+      "coverage_tag": "generalized_eigenvalue_system",
+      "covered_by": [
+        "qf_flash_generalized_eigenvalue",
+        "qf_quiz_generalized_eigenvalue"
+      ],
+      "description": "放松后的优化问题转化为求解广义特征值系统 (D-W)y = λDy。"
+    },
+    {
+      "coverage_tag": "laplacian_matrix",
+      "covered_by": [
+        "qf_flash_laplacian",
+        "qf_quiz_laplacian"
+      ],
+      "description": "拉普拉斯矩阵 L = D - W 的定义及其在广义特征值系统中的作用。"
+    },
+    {
+      "coverage_tag": "algorithm_flow",
+      "covered_by": [
+        "qf_quiz_algorithm_flow",
+        "qf_long_algorithm_flow"
+      ],
+      "description": "归一化割算法的完整流程：定义相似度、计算矩阵、求解特征系统、取第二小特征向量二分。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "discrete_optimization_np_complete",
+      "coverage_tags": [
+        "discrete_optimization_np_complete"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_np_complete",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能记住归一化割的离散优化问题是NP完全的，不能直接枚举求解。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能准确说出归一化割离散优化问题的计算复杂度类别。",
+      "question_type": "short_answer",
+      "retrieval_focus": "归一化割离散优化问题的计算复杂度类别。",
+      "term_refs": [
+        {
+          "display": "NP完全",
+          "en": "NP-complete"
+        }
+      ],
+      "variants": [
+        {
+          "back": "NP完全（NP-complete）",
+          "estimated_seconds": 8,
+          "explanation": "直接枚举所有二分方案是指数级的，因此该问题是NP完全的。",
+          "front": "归一化割的离散优化问题属于哪个计算复杂度类别？",
+          "question_id": "q_flash_np_complete_v1"
+        },
+        {
+          "back": "因为该问题是NP完全的，枚举方案数随节点数指数增长，不可行。",
+          "estimated_seconds": 10,
+          "explanation": "对于n个节点，二分方案数约为2^(n-1)-1，当n较大时是天文数字。",
+          "front": "为什么归一化割的离散优化问题不能通过枚举所有二分方案来求解？",
+          "question_id": "q_flash_np_complete_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "relaxation_to_continuous",
+      "coverage_tags": [
+        "relaxation_to_continuous"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_relaxation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能记住求解归一化割的关键技巧是将离散向量y放松为连续值。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能准确说出将离散优化问题转化为可解连续问题的核心方法。",
+      "question_type": "short_answer",
+      "retrieval_focus": "将离散优化问题转化为连续问题的核心技巧。",
+      "term_refs": [
+        {
+          "display": "放松",
+          "en": "relaxation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "连续值向量",
+          "estimated_seconds": 8,
+          "explanation": "允许y取连续值，而不是只能取1或-b，从而将问题转化为可解的广义特征值系统。",
+          "front": "为了高效求解归一化割，我们将离散的二分向量y放松为什么？",
+          "question_id": "q_flash_relaxation_v1"
+        },
+        {
+          "back": "广义特征值系统 (D-W)y = λDy",
+          "estimated_seconds": 10,
+          "explanation": "放松后的优化问题转化为求解广义特征值系统，从而得到近似最优解的连续向量。",
+          "front": "将离散的二分向量y放松为连续值后，归一化割的优化问题变成了求解什么？",
+          "question_id": "q_flash_relaxation_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "generalized_eigenvalue_system",
+      "coverage_tags": [
+        "generalized_eigenvalue_system"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_generalized_eigenvalue",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能记住归一化割放松后对应的广义特征值系统方程。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能准确写出归一化割放松后对应的广义特征值系统方程。",
+      "question_type": "short_answer",
+      "retrieval_focus": "归一化割放松后对应的广义特征值系统方程。",
+      "term_refs": [
+        {
+          "display": "广义特征值系统",
+          "en": "Generalized Eigenvalue System"
+        }
+      ],
+      "variants": [
+        {
+          "back": "(D - W)y = λDy",
+          "estimated_seconds": 12,
+          "explanation": "其中D是度矩阵，W是相似度矩阵，y是特征向量，λ是特征值。",
+          "front": "写出归一化割放松后对应的广义特征值系统方程。",
+          "question_id": "q_flash_generalized_eigenvalue_v1"
+        },
+        {
+          "back": "D是度矩阵，W是相似度（亲和）矩阵",
+          "estimated_seconds": 10,
+          "explanation": "D是对角矩阵，对角线元素是W的行和；W记录了所有点对之间的相似度。",
+          "front": "在广义特征值系统 (D-W)y = λDy 中，D和W分别代表什么？",
+          "question_id": "q_flash_generalized_eigenvalue_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "laplacian_matrix",
+      "coverage_tags": [
+        "laplacian_matrix"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_laplacian",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能记住拉普拉斯矩阵的定义及其在归一化割中的作用。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能准确写出拉普拉斯矩阵的定义公式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "拉普拉斯矩阵的定义。",
+      "term_refs": [
+        {
+          "display": "拉普拉斯矩阵",
+          "en": "Laplacian Matrix"
+        }
+      ],
+      "variants": [
+        {
+          "back": "L = D - W",
+          "estimated_seconds": 8,
+          "explanation": "拉普拉斯矩阵等于度矩阵减去相似度矩阵，是谱聚类中的核心工具。",
+          "front": "拉普拉斯矩阵L的定义是什么？",
+          "question_id": "q_flash_laplacian_v1"
+        },
+        {
+          "back": "拉普拉斯矩阵（Laplacian Matrix）",
+          "estimated_seconds": 8,
+          "explanation": "拉普拉斯矩阵 L = D - W 出现在广义特征值系统的左侧。",
+          "front": "在广义特征值系统 (D-W)y = λDy 中，(D-W)是什么矩阵？",
+          "question_id": "q_flash_laplacian_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-graph-clustering",
+  "longform_families": [
+    {
+      "concept_key": "algorithm_flow",
+      "coverage_tags": [
+        "algorithm_flow",
+        "discrete_optimization_np_complete",
+        "relaxation_to_continuous",
+        "generalized_eigenvalue_system",
+        "laplacian_matrix"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_algorithm_flow",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整解释归一化割算法从离散优化到连续特征分解的推导过程。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能解释为什么归一化割的离散优化问题是NP完全的，以及如何通过放松为连续问题并求解广义特征值系统来近似求解。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "归一化割算法",
+          "en": "Normalized Cuts Algorithm"
+        },
+        {
+          "display": "广义特征值系统",
+          "en": "Generalized Eigenvalue System"
+        },
+        {
+          "display": "拉普拉斯矩阵",
+          "en": "Laplacian Matrix"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "离散优化的NP完全性",
+            "放松为连续值",
+            "导出广义特征值系统",
+            "拉普拉斯矩阵的作用"
+          ],
+          "question_id": "q_long_algorithm_flow_v1",
+          "reference_answer": [
+            "直接枚举所有二分方案是指数级的，对于n个节点，方案数约为2^(n-1)-1，因此该离散优化问题是NP完全的，不可行。",
+            "关键技巧是将离散的二分向量y（元素只能取1或-b）放松为连续值向量，从而将问题转化为连续优化问题。",
+            "放松后的优化问题为 min_y (y^T (D-W) y) / (y^T D y)，该问题等价于求解广义特征值系统 (D-W)y = λDy。",
+            "拉普拉斯矩阵 L = D - W 出现在广义特征值系统的左侧，是谱聚类中的核心工具。"
+          ],
+          "rubric_points": [
+            "指出直接枚举是指数级的，NP完全",
+            "说明将y从离散值放松为连续值",
+            "写出放松后的优化问题 min_y (y^T (D-W) y) / (y^T D y)",
+            "说明该优化问题等价于求解广义特征值系统 (D-W)y = λDy",
+            "指出拉普拉斯矩阵 L = D - W 出现在方程左侧"
+          ],
+          "stem": "请解释归一化割算法中，如何将离散的二分优化问题转化为求解广义特征值系统 (D-W)y = λDy。请说明：\n1. 为什么直接枚举所有二分方案不可行？\n2. 如何通过放松将问题转化为连续优化？\n3. 放松后的优化问题如何导出广义特征值系统？\n4. 拉普拉斯矩阵 L = D - W 在这个系统中扮演什么角色？"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "定义相似度函数",
+            "计算矩阵",
+            "求解特征系统",
+            "取第二小特征向量",
+            "二分"
+          ],
+          "question_id": "q_long_algorithm_flow_v2",
+          "reference_answer": [
+            "第一步：定义相似度函数，用于衡量两个节点之间的相似程度。",
+            "第二步：计算亲和矩阵W（记录所有点对之间的相似度）和度矩阵D（对角线元素是W的行和）。",
+            "第三步：求解广义特征值系统 (D-W)y = λDy，得到特征向量和特征值。",
+            "第四步：取出第二小的特征值对应的特征向量，因为第一个特征向量是常数，没有分割信息。",
+            "第五步：根据第二小特征向量元素的正负号，将节点分为两组：正号一组，负号一组。"
+          ],
+          "rubric_points": [
+            "说明相似度函数衡量节点间的相似程度",
+            "说明亲和矩阵W记录所有点对相似度，度矩阵D记录行和",
+            "说明求解广义特征值系统得到特征向量和特征值",
+            "说明第一个特征向量是常数，没有分割信息，第二小特征向量包含最优二分信息",
+            "说明根据第二小特征向量元素的正负号将节点分为两组"
+          ],
+          "stem": "请描述归一化割算法的完整流程，并解释每个步骤的目的。具体包括：\n1. 定义相似度函数\n2. 计算亲和矩阵W和度矩阵D\n3. 求解广义特征值系统 (D-W)y = λDy\n4. 取出第二小特征向量\n5. 根据特征向量正负号二分"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "discrete_optimization_np_complete",
+      "coverage_tags": [
+        "discrete_optimization_np_complete"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_np_complete",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下判断归一化割离散优化问题的计算复杂度。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能正确判断关于归一化割离散优化问题计算复杂度的陈述。",
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "NP完全",
+          "en": "NP-complete"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "直接枚举所有二分方案是指数级的，对于大规模图不可行，因此不是高效方法。",
+          "options": [
+            "错误",
+            "正确"
+          ],
+          "question_id": "q_quiz_np_complete_v1",
+          "stem": "判断以下说法是否正确：直接枚举所有二分方案是求解归一化割的高效方法。"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "归一化割的离散优化问题是NP完全的，无法直接枚举求解，因此需要放松为连续问题来近似求解。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_np_complete_v2",
+          "stem": "判断以下说法是否正确：归一化割的离散优化问题是NP完全的，因此需要寻找近似求解方法。"
+        }
+      ]
+    },
+    {
+      "concept_key": "relaxation_to_continuous",
+      "coverage_tags": [
+        "relaxation_to_continuous"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_relaxation",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解并选择将离散优化问题转化为连续问题的正确方法。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能正确选择将归一化割离散问题转化为可解问题的核心技巧。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "放松",
+          "en": "relaxation"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "允许y取连续值，而不是只能取1或-b，从而将问题转化为可解的广义特征值系统。",
+          "options": [
+            "连续值向量",
+            "整数向量",
+            "稀疏向量",
+            "零向量"
+          ],
+          "question_id": "q_quiz_relaxation_v1",
+          "stem": "为了高效求解归一化割，我们将离散的二分向量y放松为什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "放松后的优化问题转化为求解广义特征值系统 (D-W)y = λDy。",
+          "options": [
+            "线性方程组",
+            "广义特征值系统",
+            "最小二乘问题",
+            "凸优化问题"
+          ],
+          "question_id": "q_quiz_relaxation_v2",
+          "stem": "将离散的二分向量y放松为连续值后，归一化割的优化问题变成了求解什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "generalized_eigenvalue_system",
+      "coverage_tags": [
+        "generalized_eigenvalue_system"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_generalized_eigenvalue",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别归一化割放松后对应的广义特征值系统方程。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能正确识别归一化割放松后对应的广义特征值系统方程。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "广义特征值系统",
+          "en": "Generalized Eigenvalue System"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "放松后的优化问题转化为求解广义特征值系统 (D-W)y = λDy。",
+          "options": [
+            "Wy = λDy",
+            "(D - W)y = λDy",
+            "(D + W)y = λy",
+            "Dy = λWy"
+          ],
+          "question_id": "q_quiz_generalized_eigenvalue_v1",
+          "stem": "归一化割放松后对应的广义特征值系统方程是以下哪一个？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "由于 (D-W)1 = 0，所以第一个特征向量是y0 = 1，对应的特征值为0。",
+          "options": [
+            "零向量",
+            "常数向量1",
+            "随机向量",
+            "单位向量"
+          ],
+          "question_id": "q_quiz_generalized_eigenvalue_v2",
+          "stem": "在广义特征值系统 (D-W)y = λDy 中，第一个特征向量y0是什么？"
+        }
+      ]
+    },
+    {
+      "concept_key": "laplacian_matrix",
+      "coverage_tags": [
+        "laplacian_matrix"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_laplacian",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别拉普拉斯矩阵的定义及其在广义特征值系统中的作用。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能正确识别拉普拉斯矩阵的定义公式。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "拉普拉斯矩阵",
+          "en": "Laplacian Matrix"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "拉普拉斯矩阵等于度矩阵减去相似度矩阵，即 L = D - W。",
+          "options": [
+            "L = D + W",
+            "L = D - W",
+            "L = W - D",
+            "L = D * W"
+          ],
+          "question_id": "q_quiz_laplacian_v1",
+          "stem": "拉普拉斯矩阵L的定义是以下哪一个？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "拉普拉斯矩阵 L = D - W 出现在广义特征值系统的左侧。",
+          "options": [
+            "度矩阵",
+            "相似度矩阵",
+            "拉普拉斯矩阵",
+            "协方差矩阵"
+          ],
+          "question_id": "q_quiz_laplacian_v2",
+          "stem": "在广义特征值系统 (D-W)y = λDy 中，(D-W)是什么矩阵？"
+        }
+      ]
+    },
+    {
+      "concept_key": "algorithm_flow",
+      "coverage_tags": [
+        "algorithm_flow"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_algorithm_flow",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能正确排列归一化割算法的步骤顺序。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生能正确排列归一化割算法的核心步骤。",
+      "question_type": "ordering",
+      "term_refs": [
+        {
+          "display": "算法流程",
+          "en": "Algorithm Flow"
+        }
+      ],
+      "variants": [
+        {
+          "answer": [
+            "B",
+            "D",
+            "A",
+            "C",
+            "E"
+          ],
+          "estimated_seconds": 30,
+          "explanation": "正确的流程是：先定义相似度函数，然后计算亲和矩阵和度矩阵，接着求解广义特征值系统，取出第二小特征向量，最后根据特征向量正负号二分。",
+          "items": [
+            "A. 求解广义特征值系统 (D-W)y = λDy",
+            "B. 定义相似度函数",
+            "C. 取出第二小特征向量",
+            "D. 计算亲和矩阵W和度矩阵D",
+            "E. 根据特征向量正负号二分"
+          ],
+          "question_id": "q_quiz_algorithm_flow_v1",
+          "stem": "请将以下归一化割算法的步骤按正确顺序排列："
+        },
+        {
+          "answer": [
+            "D",
+            "B",
+            "E",
+            "C",
+            "A"
+          ],
+          "estimated_seconds": 30,
+          "explanation": "正确的流程是：先定义相似度函数，然后计算亲和矩阵和度矩阵，接着求解广义特征值系统，取出第二小特征向量，最后根据特征向量正负号二分。",
+          "items": [
+            "A. 根据特征向量正负号二分",
+            "B. 计算亲和矩阵W和度矩阵D",
+            "C. 取出第二小特征向量",
+            "D. 定义相似度函数",
+            "E. 求解广义特征值系统 (D-W)y = λDy"
+          ],
+          "question_id": "q_quiz_algorithm_flow_v2",
+          "stem": "请将以下归一化割算法的步骤按正确顺序排列："
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-graph-clustering/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

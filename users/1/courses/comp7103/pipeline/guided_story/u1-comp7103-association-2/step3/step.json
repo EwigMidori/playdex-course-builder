@@ -1,0 +1,122 @@
+{
+  "chapter_id": "lecture-02-association-2",
+  "course_id": "user-1-comp7103",
+  "lesson_id": "u1-comp7103-association-2",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "id": "s001",
+      "lines": [
+        "树建好了，怎么挖出所有频繁项集？",
+        "核心策略是分治：从最后一个频繁项开始，逐个击破。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s002",
+      "lines": [
+        "以项 p 为例。",
+        "我们要找出所有以 p 结尾的频繁项集。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s003",
+      "introduced_terms": [
+        "conditional_pattern_base"
+      ],
+      "lines": [
+        "沿着头表中 p 的链表，收集所有包含 p 的前缀路径。",
+        "这些路径构成了 p 的 <term id=\"conditional_pattern_base\">条件模式基</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s004",
+      "lines": [
+        "p 的条件模式基是：{(fcam:2), (cb:1)}。",
+        "意思是，有两条路径以 fcam 结尾并包含 p，一条路径以 cb 结尾并包含 p。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s005",
+      "introduced_terms": [
+        "conditional_fp_tree"
+      ],
+      "lines": [
+        "基于这个条件模式基，构建一棵新的 FP-tree，叫做 <term id=\"conditional_fp_tree\">条件 FP-tree</term>。",
+        "只有出现次数 >= 3 的项才会被保留。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s006",
+      "lines": [
+        "p 的条件 FP-tree 只有一条路径：{c:3}。",
+        "这意味着，所有包含 p 的频繁项集，只能由 c 和 p 组成。"
+      ],
+      "type": "narration"
+    },
+    {
+      "id": "s007",
+      "lines": [
+        "所以，以 p 结尾的频繁项集是：{p} 和 {c, p}。",
+        "支持度都是 3。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "因为 f, c, a 都出现了 3 次，满足最小支持度，所以它们会形成一条路径 {f:3, c:3, a:3}。",
+        "kind": "single_choice",
+        "options": [
+          "一条路径 {f:3, c:3, a:3}",
+          "两条路径 {f:3} 和 {c:3}",
+          "空树",
+          "一条路径 {f:2, c:2, a:2}"
+        ],
+        "prompt": "对于项 m，它的条件模式基是 {(fca:2), (fcab:1)}。构建条件 FP-tree 后，会得到什么结果？"
+      },
+      "id": "s008",
+      "lines": [
+        "对于项 m，它的条件模式基是 {(fca:2), (fcab:1)}。",
+        "构建条件 FP-tree 后，会得到什么结果？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "id": "s009",
+      "lines": [
+        "对每个频繁项都重复这个过程，就能得到所有频繁项集。",
+        "这就是 FP-Growth 的分治魔法。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "plain_text": "General idea (divide-and-conquer). Recursively grow frequent pattern (itemsets) path using the FP-tree. For each item, construct its conditional pattern-base, and then its conditional FP-tree. Repeat the process on each newly created conditional FP-tree until the resulting FP-tree is empty, or it contains only one path.",
+    "related": [
+      "Mining Frequent Patterns Using FP-tree"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "conditional_fp_tree": {
+      "aliases": [
+        "Conditional FP-tree"
+      ],
+      "display": "条件 FP-tree",
+      "gloss": "基于条件模式基构建的、用于挖掘特定项相关频繁项集的 FP-tree。"
+    },
+    "conditional_pattern_base": {
+      "aliases": [
+        "Conditional Pattern Base"
+      ],
+      "display": "条件模式基",
+      "gloss": "对于某个项，所有包含该项的前缀路径的集合。"
+    }
+  }
+}

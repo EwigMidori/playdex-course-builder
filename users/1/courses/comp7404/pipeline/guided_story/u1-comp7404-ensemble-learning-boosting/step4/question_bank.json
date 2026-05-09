@@ -1,0 +1,590 @@
+{
+  "chapter_id": "lecture-09-ensemble-learning-boosting",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "boosting_definition_and_goal",
+      "covered_by": [
+        "qf_flash_boosting_def",
+        "qf_quiz_boosting_goal"
+      ],
+      "description": "Boosting 的定义：通过顺序训练弱学习器，并让后续学习器更关注之前被错分的样本，从而构建强学习器。"
+    },
+    {
+      "coverage_tag": "weak_learner_concept",
+      "covered_by": [
+        "qf_flash_weak_learner_def",
+        "qf_quiz_weak_learner_example"
+      ],
+      "description": "弱学习器的概念：性能仅比随机猜测略好一点的分类器。"
+    },
+    {
+      "coverage_tag": "strong_learner_concept",
+      "covered_by": [
+        "qf_flash_strong_learner_def"
+      ],
+      "description": "强学习器的概念：通过组合多个弱学习器而得到的性能强大的最终分类器。"
+    },
+    {
+      "coverage_tag": "sequential_training_process",
+      "covered_by": [
+        "qf_flash_sequential_training",
+        "qf_quiz_sequential_vs_parallel",
+        "qf_long_boosting_process"
+      ],
+      "description": "Boosting 的顺序训练过程：先训练一个弱学习器，然后根据其错误调整样本权重，使后续学习器更关注困难样本。"
+    },
+    {
+      "coverage_tag": "sample_weight_adaptation",
+      "covered_by": [
+        "qf_flash_sample_weight_effect",
+        "qf_quiz_weight_change_meaning"
+      ],
+      "description": "样本权重的动态调整：被错分的样本在下一轮训练中被赋予更高的权重。"
+    },
+    {
+      "coverage_tag": "weak_to_strong_theory",
+      "covered_by": [
+        "qf_quiz_weak_to_strong"
+      ],
+      "description": "弱学习器可被提升为强学习器的理论基础。"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "boosting",
+      "coverage_tags": [
+        "boosting_definition_and_goal"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_boosting_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的话准确复述 Boosting 的核心思想。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了 Boosting 的核心定义：一种通过顺序训练弱学习器并关注错误来构建强学习器的集成方法。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Boosting 的核心思想是什么？",
+      "term_refs": [
+        {
+          "display": "Boosting",
+          "en": "Boosting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "从错误中学习：顺序地训练弱学习器，让后续的学习器更关注之前被错分的样本。",
+          "estimated_seconds": 10,
+          "explanation": "Boosting 通过动态调整训练数据的分布（样本权重），使后续模型聚焦于困难样本。",
+          "front": "Boosting 的核心思想是什么？",
+          "question_id": "q_flash_boosting_def_v1"
+        },
+        {
+          "back": "动态调整训练数据的分布，即提高被错分样本的权重。",
+          "estimated_seconds": 8,
+          "explanation": "被错分的样本在下一轮训练中会被赋予更高的样本权重，从而迫使新模型更关注它们。",
+          "front": "Boosting 通过什么机制让后续模型更关注困难样本？",
+          "question_id": "q_flash_boosting_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "weak_learner",
+      "coverage_tags": [
+        "weak_learner_concept"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_weak_learner_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能定义弱学习器并给出一个量化例子。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了弱学习器的定义：性能仅比随机猜测略好一点的分类器。",
+      "question_type": "short_answer",
+      "retrieval_focus": "什么是弱学习器？",
+      "term_refs": [
+        {
+          "display": "弱学习器",
+          "en": "Weak Learner"
+        }
+      ],
+      "variants": [
+        {
+          "back": "性能仅比随机猜测略好一点的分类器，例如在二分类任务中准确率略高于 50%。",
+          "estimated_seconds": 10,
+          "explanation": "弱学习器单独看价值不大，但 Boosting 可以将它们组合成强学习器。",
+          "front": "什么是弱学习器？请给出一个量化例子。",
+          "question_id": "q_flash_weak_learner_def_v1"
+        },
+        {
+          "back": "略高于 50%（例如 55%）。",
+          "estimated_seconds": 6,
+          "explanation": "弱学习器只比随机猜测（50%）好一点点。",
+          "front": "在二分类任务中，一个弱学习器的准确率大约是多少？",
+          "question_id": "q_flash_weak_learner_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "strong_learner",
+      "coverage_tags": [
+        "strong_learner_concept"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_strong_learner_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能定义强学习器并说明其与弱学习器的关系。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了强学习器的定义：通过组合多个弱学习器而得到的性能强大的最终分类器。",
+      "question_type": "short_answer",
+      "retrieval_focus": "什么是强学习器？",
+      "term_refs": [
+        {
+          "display": "强学习器",
+          "en": "Strong Learner"
+        }
+      ],
+      "variants": [
+        {
+          "back": "通过组合多个弱学习器而得到的、性能强大的最终分类器。",
+          "estimated_seconds": 8,
+          "explanation": "Boosting 的目标就是将弱学习器提升为强学习器。",
+          "front": "什么是强学习器？",
+          "question_id": "q_flash_strong_learner_def_v1"
+        },
+        {
+          "back": "通过 Boosting 顺序训练多个弱学习器，并根据它们的性能加权组合而成。",
+          "estimated_seconds": 10,
+          "explanation": "性能越好的弱学习器，在最终决策中的话语权越大。",
+          "front": "强学习器是如何从弱学习器构建而来的？",
+          "question_id": "q_flash_strong_learner_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "boosting",
+      "coverage_tags": [
+        "sequential_training_process"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sequential_training",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分 Boosting 和 Bagging 在训练方式上的核心差异。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了 Boosting 是顺序训练这一关键特征。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Boosting 的训练方式是顺序的还是并行的？",
+      "term_refs": [
+        {
+          "display": "Boosting",
+          "en": "Boosting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "顺序的。",
+          "estimated_seconds": 5,
+          "explanation": "每个新模型都依赖于前一个模型的训练结果（即样本权重分布）。",
+          "front": "Boosting 的训练方式是顺序的还是并行的？",
+          "question_id": "q_flash_sequential_training_v1"
+        },
+        {
+          "back": "Boosting 是顺序训练，Bagging 是并行训练。",
+          "estimated_seconds": 8,
+          "explanation": "Bagging 可以同时训练所有模型，而 Boosting 必须依次训练。",
+          "front": "与 Bagging 相比，Boosting 在训练方式上的主要区别是什么？",
+          "question_id": "q_flash_sequential_training_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "sample_weight",
+      "coverage_tags": [
+        "sample_weight_adaptation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sample_weight_effect",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能说明样本权重在 Boosting 中的作用。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了样本权重的核心作用：控制样本在训练中的重要性，被错分的样本权重会增加。",
+      "question_type": "short_answer",
+      "retrieval_focus": "在 Boosting 中，被错分的样本权重会如何变化？",
+      "term_refs": [
+        {
+          "display": "样本权重",
+          "en": "Sample Weight"
+        }
+      ],
+      "variants": [
+        {
+          "back": "增加。",
+          "estimated_seconds": 5,
+          "explanation": "后续的弱学习器会因此更关注这些困难样本。",
+          "front": "在 Boosting 中，被错分的样本权重会如何变化？",
+          "question_id": "q_flash_sample_weight_effect_v1"
+        },
+        {
+          "back": "降低。",
+          "estimated_seconds": 5,
+          "explanation": "这样后续模型可以更专注于之前被错分的样本。",
+          "front": "在 Boosting 中，正确分类的样本权重会如何变化？",
+          "question_id": "q_flash_sample_weight_effect_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-ensemble-learning-boosting",
+  "longform_families": [
+    {
+      "concept_key": "boosting",
+      "coverage_tags": [
+        "sequential_training_process",
+        "sample_weight_adaptation",
+        "weak_learner_concept",
+        "strong_learner_concept"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_boosting_process",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能完整描述 Boosting 的顺序训练过程，包括样本权重的调整和最终强学习器的形成。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能解释 Boosting 如何通过顺序训练和样本权重调整将弱学习器组合成强学习器。",
+      "question_type": "mechanism_trace",
+      "term_refs": [
+        {
+          "display": "Boosting",
+          "en": "Boosting"
+        },
+        {
+          "display": "弱学习器",
+          "en": "Weak Learner"
+        },
+        {
+          "display": "强学习器",
+          "en": "Strong Learner"
+        },
+        {
+          "display": "样本权重",
+          "en": "Sample Weight"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "训练方式",
+            "弱学习器定义",
+            "样本权重调整机制",
+            "最终强学习器的形成"
+          ],
+          "question_id": "q_long_boosting_process_v1",
+          "reference_answer": [
+            "Boosting 的训练过程是顺序的，即后一个模型的训练依赖于前一个模型的结果。",
+            "弱学习器是指一个性能仅比随机猜测略好一点的分类器，例如在二分类任务中准确率略高于 50%。",
+            "在每一轮训练后，会根据当前弱学习器的表现调整样本权重：被错误分类的样本权重会增加，被正确分类的样本权重会降低。这样，后续的弱学习器就会更关注那些之前被搞错的困难样本。",
+            "经过多轮训练后，所有弱学习器会按照它们各自的性能（通常基于错误率）被赋予权重，然后组合成一个最终的强分类器。性能越好的弱学习器，在最终决策中的话语权越大。"
+          ],
+          "rubric_points": [
+            "明确指出 Boosting 是顺序训练。",
+            "正确定义弱学习器（性能仅比随机猜测略好）。",
+            "说明被错分的样本权重会增加，正确分类的样本权重会降低。",
+            "解释最终强学习器是所有弱学习器的加权组合。"
+          ],
+          "stem": "请描述 Boosting 的训练过程。在你的解释中，需要包含以下要点：\n1. 训练是顺序的还是并行的？\n2. 什么是弱学习器？\n3. 样本权重在训练过程中如何变化？为什么？\n4. 最终如何得到一个强学习器？"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "初始化",
+            "权重调整",
+            "最终预测"
+          ],
+          "question_id": "q_long_boosting_process_v2",
+          "reference_answer": [
+            "第一步，我会初始化所有 100 个训练样本的权重，让它们都相等（例如每个样本权重为 1/100）。然后基于这个初始权重分布训练第一个弱学习器。",
+            "在训练完第一个弱学习器后，我会检查它在哪些样本上犯了错。这 30 个被错分的样本，在下一轮训练中会被赋予更高的样本权重；而正确分类的 70 个样本的权重会降低。这样，下一个弱学习器就会更关注这些困难样本。",
+            "这个过程会重复很多轮（例如 T 轮）。最终，我会得到 T 个弱学习器。在预测新样本时，我会让这 T 个弱学习器进行加权投票，每个弱学习器的权重由其自身的性能（错误率）决定，性能越好权重越大。投票结果就是最终的预测。"
+          ],
+          "rubric_points": [
+            "说明初始时所有样本权重相等。",
+            "说明被错分的 30 个样本的权重会增加，其余 70 个样本的权重会降低。",
+            "解释最终预测是所有弱学习器的加权投票结果。"
+          ],
+          "stem": "假设你有一个二分类任务，初始训练集有 100 个样本。你决定使用 Boosting 来训练一个强分类器。\n1. 请解释你第一步会做什么？\n2. 在训练完第一个弱学习器后，你发现它在 30 个样本上犯了错。接下来你会如何调整训练数据？为什么？\n3. 这个过程会重复多轮。最终，你如何利用这些弱学习器做出预测？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "boosting",
+      "coverage_tags": [
+        "boosting_definition_and_goal"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_boosting_goal",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在不同表述中识别出 Boosting 的核心目标。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能准确识别 Boosting 的目标：将弱学习器组合成强学习器。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Boosting",
+          "en": "Boosting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Boosting 的核心目标是将多个弱学习器（性能仅比随机猜测略好）组合成一个强大的强学习器。",
+          "options": [
+            "通过并行训练多个模型来降低方差。",
+            "通过顺序训练弱学习器，将它们组合成一个强学习器。",
+            "通过有放回抽样生成多个不同的训练集。",
+            "通过调整模型复杂度来避免过拟合。"
+          ],
+          "question_id": "q_quiz_boosting_goal_v1",
+          "stem": "Boosting 的主要目标是什么？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Boosting 的最终产出是一个强分类器，它是所有弱学习器的加权组合。",
+          "options": [
+            "一组并行训练的、独立的分类器。",
+            "一个由多个弱学习器加权组合而成的强分类器。",
+            "一个通过自助采样得到的、用于训练单个模型的数据集。",
+            "一个通过多数投票决定最终结果的分类器集合。"
+          ],
+          "question_id": "q_quiz_boosting_goal_v2",
+          "stem": "以下哪个说法最准确地描述了 Boosting 的最终产出？"
+        }
+      ]
+    },
+    {
+      "concept_key": "weak_learner",
+      "coverage_tags": [
+        "weak_learner_concept"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_weak_learner_example",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据准确率判断一个分类器是否属于弱学习器。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能应用弱学习器的定义进行判断。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "弱学习器",
+          "en": "Weak Learner"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "弱学习器是指性能仅比随机猜测（50%）略好一点的分类器，55% 的准确率符合这个定义。",
+          "options": [
+            "强学习器",
+            "弱学习器",
+            "完美分类器",
+            "过拟合模型"
+          ],
+          "question_id": "q_quiz_weak_learner_example_v1",
+          "stem": "一个二分类器在测试集上的准确率为 55%。根据 Boosting 的理论，这个分类器可以被称为什么？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 15,
+          "explanation": "弱学习器仅比随机猜测略好，51% 的准确率最符合这个描述。30% 比随机猜测还差，99% 和 85% 都太强了。",
+          "options": [
+            "99%",
+            "85%",
+            "51%",
+            "30%"
+          ],
+          "question_id": "q_quiz_weak_learner_example_v2",
+          "stem": "以下哪个准确率最符合一个“弱学习器”的定义？"
+        }
+      ]
+    },
+    {
+      "concept_key": "boosting",
+      "coverage_tags": [
+        "sequential_training_process"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_sequential_vs_parallel",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能区分 Boosting 和 Bagging 在训练方式上的不同。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能准确区分 Boosting（顺序）和 Bagging（并行）的训练方式。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Boosting",
+          "en": "Boosting"
+        },
+        {
+          "display": "Bagging",
+          "en": "Bagging"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Boosting 顺序地训练模型，每个新模型都试图纠正前一个模型的错误；Bagging 则并行地训练多个独立模型。",
+          "options": [
+            "Boosting 是并行的，Bagging 是顺序的。",
+            "Boosting 是顺序的，Bagging 是并行的。",
+            "两者都是并行的。",
+            "两者都是顺序的。"
+          ],
+          "question_id": "q_quiz_sequential_vs_parallel_v1",
+          "stem": "关于 Boosting 和 Bagging 的训练方式，以下哪个说法是正确的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Boosting 的顺序训练特性意味着后一个模型依赖于前一个模型产生的样本权重分布。",
+          "options": [
+            "Bagging",
+            "Boosting",
+            "多数投票",
+            "自助采样"
+          ],
+          "question_id": "q_quiz_sequential_vs_parallel_v2",
+          "stem": "如果一个集成方法要求后一个模型的训练依赖于前一个模型的结果，这最可能是哪种方法？"
+        }
+      ]
+    },
+    {
+      "concept_key": "sample_weight",
+      "coverage_tags": [
+        "sample_weight_adaptation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_weight_change_meaning",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据样本权重的变化推断该样本在前一轮的分类结果。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能应用样本权重调整规则：权重增加意味着被错分。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "样本权重",
+          "en": "Sample Weight"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "Boosting 会提高被错分样本的权重，以便后续模型更关注它们。",
+          "options": [
+            "被正确分类",
+            "被错误分类",
+            "没有被使用",
+            "权重保持不变"
+          ],
+          "question_id": "q_quiz_weight_change_meaning_v1",
+          "stem": "在 Boosting 的一轮训练后，某个样本的权重显著增加了。这说明该样本在前一轮训练中："
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "正确分类的样本权重会降低，这样模型可以更专注于那些被错分的困难样本。",
+          "options": [
+            "该样本是异常值",
+            "该样本在前一轮被正确分类",
+            "该样本在前一轮被错误分类",
+            "该样本被从训练集中移除"
+          ],
+          "question_id": "q_quiz_weight_change_meaning_v2",
+          "stem": "在 Boosting 中，如果某个样本的权重降低，最可能的原因是："
+        }
+      ]
+    },
+    {
+      "concept_key": "boosting",
+      "coverage_tags": [
+        "weak_to_strong_theory"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_weak_to_strong",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断关于弱学习器可被提升为强学习器的理论陈述是否正确。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了 Boosting 的理论基础：弱学习器可以被提升为强学习器。",
+      "question_type": "true_false",
+      "term_refs": [
+        {
+          "display": "弱学习器",
+          "en": "Weak Learner"
+        },
+        {
+          "display": "强学习器",
+          "en": "Strong Learner"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "这是 Boosting 的理论基础。通过改变训练样本的分布，可以将弱学习器提升为强学习器。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_weak_to_strong_v1",
+          "stem": "判断：Boosting 理论证明，一个弱学习器（仅比随机猜测略好）可以被转换为一个强学习器。"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "虽然 Boosting 也可以用于强分类器，但收益会非常小。它主要设计用于提升弱学习器。",
+          "options": [
+            "正确",
+            "错误"
+          ],
+          "question_id": "q_quiz_weak_to_strong_v2",
+          "stem": "判断：Boosting 只能用于弱学习器，不能用于已经很强的分类器。"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-ensemble-learning-boosting/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

@@ -1,0 +1,298 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "overfitting_vs_underfitting",
+      "covered_by": [
+        "qf_flash_overfit_underfit",
+        "qf_quiz_overfit_underfit",
+        "qf_long_overfit_underfit"
+      ],
+      "description": "过拟合与欠拟合的概念、原因和典型表现"
+    },
+    {
+      "coverage_tag": "model_complexity_tradeoff",
+      "covered_by": [
+        "qf_flash_complexity_tradeoff",
+        "qf_quiz_complexity_tradeoff"
+      ],
+      "description": "模型复杂度与训练/测试性能之间的权衡关系"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "overfitting_vs_underfitting",
+      "coverage_tags": [
+        "overfitting_vs_underfitting"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_overfit_underfit",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确区分过拟合和欠拟合的定义与典型表现。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能根据训练集和测试集的表现，判断模型是过拟合还是欠拟合。",
+      "question_type": "short_answer",
+      "retrieval_focus": "过拟合和欠拟合的核心定义与症状",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "overfitting"
+        },
+        {
+          "display": "欠拟合",
+          "en": "underfitting"
+        }
+      ],
+      "variants": [
+        {
+          "back": "过拟合",
+          "estimated_seconds": 8,
+          "explanation": "过拟合是指模型过于复杂，记住了训练数据中的噪声，导致在训练集上表现极好，但在新数据（测试集）上表现差。",
+          "front": "模型在训练集上准确率 99%，但在测试集上只有 60%，这属于什么现象？",
+          "question_id": "q_flash_overfit_underfit_v1"
+        },
+        {
+          "back": "欠拟合",
+          "estimated_seconds": 8,
+          "explanation": "欠拟合是指模型过于简单，无法捕捉数据中的基本模式，导致在训练集和测试集上表现都不好。",
+          "front": "模型在训练集上准确率 60%，测试集上 55%，两者都差，这属于什么现象？",
+          "question_id": "q_flash_overfit_underfit_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "model_complexity_tradeoff",
+      "coverage_tags": [
+        "model_complexity_tradeoff"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_complexity_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解模型复杂度与训练/测试性能之间的定性关系。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能说出模型太简单或太复杂时，训练集和测试集分别会出现什么表现。",
+      "question_type": "short_answer",
+      "retrieval_focus": "模型复杂度与性能的定性关系",
+      "term_refs": [
+        {
+          "display": "模型复杂度",
+          "en": "model complexity"
+        }
+      ],
+      "variants": [
+        {
+          "back": "两者都差",
+          "estimated_seconds": 6,
+          "explanation": "模型太简单（欠拟合）时，无法学到数据中的基本模式，因此在训练集和测试集上表现都不好。",
+          "front": "模型太简单时，训练集和测试集的表现分别如何？",
+          "question_id": "q_flash_complexity_tradeoff_v1"
+        },
+        {
+          "back": "训练集好，测试集差",
+          "estimated_seconds": 6,
+          "explanation": "模型太复杂（过拟合）时，记住了训练数据中的噪声，导致训练集表现极好，但测试集表现差。",
+          "front": "模型太复杂时，训练集和测试集的表现分别如何？",
+          "question_id": "q_flash_complexity_tradeoff_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-introduction",
+  "longform_families": [
+    {
+      "concept_key": "overfitting_vs_underfitting",
+      "coverage_tags": [
+        "overfitting_vs_underfitting",
+        "model_complexity_tradeoff"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_overfit_underfit",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较过拟合和欠拟合的原因、表现和解决方法。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能用自己的语言解释过拟合和欠拟合的区别，包括各自的原因、在训练/测试集上的表现，以及如何调整模型复杂度来应对。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "overfitting"
+        },
+        {
+          "display": "欠拟合",
+          "en": "underfitting"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "过拟合的原因和表现",
+            "欠拟合的原因和表现",
+            "模型复杂度的调整策略"
+          ],
+          "question_id": "q_long_overfit_underfit_v1",
+          "reference_answer": [
+            "过拟合：模型过于复杂，不仅学到了数据中的真实模式，还记住了噪声和异常。表现是训练集准确率很高，但测试集准确率低。",
+            "欠拟合：模型过于简单，无法捕捉数据中的基本模式。表现是训练集和测试集准确率都低。",
+            "调整策略：过拟合时降低模型复杂度（如减少层数、减少特征）或增加正则化；欠拟合时增加模型复杂度（如增加层数、增加特征）。"
+          ],
+          "rubric_points": [
+            "正确指出过拟合的原因是模型太复杂，记住了噪声",
+            "正确指出欠拟合的原因是模型太简单，学不到模式",
+            "正确描述过拟合时训练集好、测试集差",
+            "正确描述欠拟合时训练集和测试集都差",
+            "提出降低复杂度或增加正则化来缓解过拟合",
+            "提出增加复杂度来缓解欠拟合"
+          ],
+          "stem": "请比较过拟合和欠拟合，从以下三个方面进行说明：\n1. 各自的原因是什么？\n2. 在训练集和测试集上的表现有何不同？\n3. 如何调整模型复杂度来改善？"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "判断第一个场景的问题类型",
+            "提出第一个场景的解决方案",
+            "判断第二个场景的问题类型",
+            "提出第二个场景的解决方案"
+          ],
+          "question_id": "q_long_overfit_underfit_v2",
+          "reference_answer": [
+            "第一个场景是过拟合。模型过于复杂，记住了训练数据中的噪声和细节，导致在训练集上表现完美，但在新数据上泛化能力差。",
+            "解决方案：降低模型复杂度（如减少网络层数、减少参数），增加正则化（如L1/L2正则化、dropout），或增加训练数据量。",
+            "第二个场景是欠拟合。模型过于简单，无法捕捉数据中的基本模式，导致在训练集和测试集上表现都不好。",
+            "解决方案：增加模型复杂度（如增加网络层数、增加神经元数量），增加特征，或减少正则化强度。"
+          ],
+          "rubric_points": [
+            "正确判断第一个场景是过拟合",
+            "解释过拟合的原因（模型太复杂，记住了噪声）",
+            "提出至少一种缓解过拟合的方法（降低复杂度、正则化、增加数据等）",
+            "正确判断第二个场景是欠拟合",
+            "解释欠拟合的原因（模型太简单，学不到模式）",
+            "提出至少一种缓解欠拟合的方法（增加复杂度、增加特征等）"
+          ],
+          "stem": "假设你正在训练一个图像分类模型。训练完成后，你发现训练集准确率为 99%，但测试集准确率只有 65%。\n1. 这是什么问题？请解释原因。\n2. 你会采取什么措施来解决这个问题？\n3. 如果训练集准确率只有 60%，测试集准确率 55%，又是什么问题？你会怎么做？"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "overfitting_vs_underfitting",
+      "coverage_tags": [
+        "overfitting_vs_underfitting"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_overfit_underfit",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下根据训练/测试表现判断过拟合或欠拟合。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能根据给定的训练集和测试集准确率，正确判断模型是过拟合还是欠拟合。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "过拟合",
+          "en": "overfitting"
+        },
+        {
+          "display": "欠拟合",
+          "en": "underfitting"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "训练集表现极好（98%）但测试集表现差（62%），是过拟合的典型症状。模型过于复杂，记住了训练数据中的噪声。",
+          "options": [
+            "模型欠拟合，需要增加模型复杂度",
+            "模型过拟合，需要降低模型复杂度或增加正则化",
+            "模型表现正常，训练集和测试集差异是正常的",
+            "数据量太大，需要减少训练数据"
+          ],
+          "question_id": "q_quiz_overfit_underfit_v1",
+          "stem": "一个分类模型在训练集上的准确率为 98%，但在测试集上的准确率仅为 62%。以下哪个说法最可能正确？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "训练集和测试集表现都差（55%和52%），是欠拟合的典型症状。模型过于简单，无法捕捉数据中的基本模式。",
+          "options": [
+            "模型过拟合，需要降低模型复杂度",
+            "模型欠拟合，需要增加模型复杂度",
+            "模型表现完美，不需要调整",
+            "测试集数据有问题，需要重新收集"
+          ],
+          "question_id": "q_quiz_overfit_underfit_v2",
+          "stem": "一个模型在训练集上的准确率为 55%，在测试集上的准确率为 52%。以下哪个说法最可能正确？"
+        }
+      ]
+    },
+    {
+      "concept_key": "model_complexity_tradeoff",
+      "coverage_tags": [
+        "model_complexity_tradeoff"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_complexity_tradeoff",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解模型复杂度与训练/测试性能之间的权衡关系。",
+      "linked_steps": [
+        "step5"
+      ],
+      "practice_target": "学生能根据模型复杂度的变化，预测训练集和测试集性能的变化趋势。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "模型复杂度",
+          "en": "model complexity"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 25,
+          "explanation": "随着模型复杂度增加，训练集性能通常会持续提升（模型能更好地拟合训练数据）。但测试集性能会先提升（从欠拟合到合适），然后下降（进入过拟合）。",
+          "options": [
+            "训练集和测试集性能同时持续提升",
+            "训练集性能持续提升，但测试集性能先提升后下降",
+            "训练集性能先提升后下降，测试集性能持续下降",
+            "训练集和测试集性能同时先提升后下降"
+          ],
+          "question_id": "q_quiz_complexity_tradeoff_v1",
+          "stem": "当你逐渐增加一个模型的复杂度（例如增加神经网络的层数）时，以下哪个趋势最可能发生？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 25,
+          "explanation": "训练集好、测试集差是过拟合的表现。降低模型复杂度或增加正则化可以减少过拟合，从而改善测试集性能。",
+          "options": [
+            "增加模型的层数",
+            "增加训练迭代次数",
+            "降低模型复杂度或增加正则化",
+            "增加训练数据中的噪声"
+          ],
+          "question_id": "q_quiz_complexity_tradeoff_v2",
+          "stem": "一个模型在训练集上表现很好，但在测试集上表现很差。以下哪种调整最可能改善测试集性能？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step5",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-introduction/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

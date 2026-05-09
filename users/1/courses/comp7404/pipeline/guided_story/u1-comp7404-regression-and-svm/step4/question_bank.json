@@ -1,0 +1,233 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "coverage_map": [
+    {
+      "coverage_tag": "cross_validation",
+      "covered_by": [
+        "qf_flash_cv_01",
+        "qf_quiz_cv_01",
+        "qf_long_cv_01"
+      ],
+      "description": "交叉验证的概念与目的：解决过拟合问题，评估模型泛化能力"
+    },
+    {
+      "coverage_tag": "k_fold_cross_validation",
+      "covered_by": [
+        "qf_flash_cv_01",
+        "qf_quiz_cv_01",
+        "qf_long_cv_01"
+      ],
+      "description": "K折交叉验证的具体流程：将数据分成K份，轮流用K-1份训练、1份测试"
+    },
+    {
+      "coverage_tag": "model_selection_and_validation",
+      "covered_by": [
+        "qf_quiz_cv_01",
+        "qf_long_cv_01"
+      ],
+      "description": "模型选择与验证：如何选择最优参数并估计真实错误率"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "cross_validation",
+      "coverage_tags": [
+        "cross_validation",
+        "k_fold_cross_validation"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_cv_01",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆交叉验证的核心概念和K折交叉验证的基本流程。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明掌握了交叉验证的定义、目的以及K折交叉验证中每一轮的数据划分方式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "交叉验证的定义与K折交叉验证的流程细节",
+      "term_refs": [
+        {
+          "display": "交叉验证",
+          "en": "Cross-validation"
+        },
+        {
+          "display": "K折交叉验证",
+          "en": "K-Fold Cross-validation"
+        }
+      ],
+      "variants": [
+        {
+          "back": "无法用训练数据评估模型的泛化能力（因为模型已记住训练数据）。",
+          "estimated_seconds": 8,
+          "explanation": "过拟合导致训练误差不能反映真实表现，因此需要模拟未知数据来评估。",
+          "front": "交叉验证要解决的核心问题是什么？",
+          "question_id": "q_flash_cv_01_v1"
+        },
+        {
+          "back": "用K-1份训练，1份测试。",
+          "estimated_seconds": 6,
+          "explanation": "例如5折交叉验证，每轮用4份训练、1份测试，重复5次。",
+          "front": "在K折交叉验证中，每一轮实验用多少数据训练？多少数据测试？",
+          "question_id": "q_flash_cv_01_v2"
+        },
+        {
+          "back": "所有数据点都被用于训练和测试，评估结果更可靠、更稳定。",
+          "estimated_seconds": 8,
+          "explanation": "单次划分结果可能不稳定，K折交叉验证通过多次平均降低了随机性。",
+          "front": "K折交叉验证相比单次训练-测试划分的主要优势是什么？",
+          "question_id": "q_flash_cv_01_v3"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "longform_families": [
+    {
+      "concept_key": "cross_validation",
+      "coverage_tags": [
+        "cross_validation",
+        "k_fold_cross_validation",
+        "model_selection_and_validation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_cv_01",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能用自己的语言解释为什么需要交叉验证，并描述K折交叉验证的具体步骤及其优势。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能理解交叉验证的必要性，并能清晰阐述K折交叉验证的流程、原理和优点。",
+      "question_type": "short_explain",
+      "term_refs": [
+        {
+          "display": "交叉验证",
+          "en": "Cross-validation"
+        },
+        {
+          "display": "K折交叉验证",
+          "en": "K-Fold Cross-validation"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "为什么训练误差不可靠？",
+            "K折交叉验证的基本步骤是什么？",
+            "K折交叉验证相比单次划分有什么优势？"
+          ],
+          "question_id": "q_long_cv_01_v1",
+          "reference_answer": [
+            "训练误差不可靠是因为模型可能过拟合，即记住了训练数据中的噪声，导致训练误差很低但在新数据上表现很差。",
+            "K折交叉验证将数据集随机分成K个大小相似的子集（折）。然后进行K轮实验：每轮选择其中K-1折作为训练集，剩下的1折作为测试集。",
+            "K折交叉验证的优势在于：每个数据点都被用于训练（K-1次）和测试（1次），评估结果更稳定，不易受单次随机划分的影响。最终通过平均K次测试误差得到更可靠的泛化性能估计。"
+          ],
+          "rubric_points": [
+            "指出过拟合导致训练误差不能反映泛化能力",
+            "描述K折交叉验证将数据分成K份，轮流用K-1份训练、1份测试",
+            "说明所有数据都被用于训练和测试，评估结果更稳定可靠",
+            "提到最终性能是K次测试误差的平均值"
+          ],
+          "stem": "请解释为什么在机器学习中不能仅用训练误差来评估模型的好坏，并说明K折交叉验证是如何解决这个问题的。"
+        },
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "为什么直接用训练误差选择阶数会有问题？",
+            "如何用K折交叉验证比较不同阶数的模型？",
+            "最终如何确定最优阶数？"
+          ],
+          "question_id": "q_long_cv_01_v2",
+          "reference_answer": [
+            "直接用训练误差选择阶数会导致选择过拟合的高阶模型，因为阶数越高，模型越灵活，训练误差越低，但泛化能力可能很差。",
+            "对于每个候选阶数（如1阶、3阶、5阶），分别执行K折交叉验证：将数据分成K份，每轮用K-1份训练该阶数的模型，用剩下的1份测试，记录测试误差。重复K轮后计算平均测试误差。",
+            "比较所有候选阶数的平均测试误差，选择平均测试误差最低的那个阶数作为最优模型。这样选择的模型更有可能在新数据上表现良好。"
+          ],
+          "rubric_points": [
+            "指出高阶多项式容易过拟合，训练误差会随阶数增加而单调下降",
+            "描述对每个候选阶数执行K折交叉验证，得到平均测试误差",
+            "说明选择平均测试误差最低的阶数作为最优模型",
+            "强调交叉验证提供了对泛化能力的无偏估计"
+          ],
+          "stem": "假设你正在训练一个多项式回归模型，需要选择多项式的阶数（degree）。请解释为什么不能直接用训练误差来选择阶数，并说明如何使用K折交叉验证来辅助这个模型选择过程。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "k_fold_cross_validation",
+      "coverage_tags": [
+        "k_fold_cross_validation",
+        "model_selection_and_validation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_cv_01",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确应用K折交叉验证的流程，并理解其与模型选择、验证的关系。",
+      "linked_steps": [
+        "step4"
+      ],
+      "practice_target": "学生答对后证明能正确识别K折交叉验证的数据划分方式，并能理解其用于模型选择和性能估计的目的。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "K折交叉验证",
+          "en": "K-Fold Cross-validation"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "5折交叉验证将数据分成5份，每轮用4份（80个）训练，1份（20个）测试，共进行5轮。",
+          "options": [
+            "每轮用80个样本训练，20个样本测试，共进行5轮",
+            "每轮用20个样本训练，80个样本测试，共进行5轮",
+            "每轮用99个样本训练，1个样本测试，共进行100轮",
+            "每轮用50个样本训练，50个样本测试，共进行2轮"
+          ],
+          "question_id": "q_quiz_cv_01_v1",
+          "stem": "假设你有一个包含100个样本的数据集，你决定使用5折交叉验证来评估一个线性回归模型。以下哪项描述是正确的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "K折交叉验证的最终性能估计是所有K轮测试误差的平均值，这样更稳定可靠。",
+          "options": [
+            "报告所有轮次中训练误差最低的那一轮的测试误差",
+            "报告所有轮次测试误差的平均值",
+            "报告所有轮次训练误差的平均值",
+            "报告最后一轮的测试误差"
+          ],
+          "question_id": "q_quiz_cv_01_v2",
+          "stem": "在K折交叉验证中，最终模型的性能如何报告？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "交叉验证的核心目的是评估模型的泛化能力，即在新数据上的表现，从而避免过拟合带来的乐观估计。",
+          "options": [
+            "减少训练数据量以加快训练速度",
+            "更可靠地估计模型在未知数据上的表现",
+            "确保模型在训练数据上达到零误差",
+            "自动选择最优的模型复杂度"
+          ],
+          "question_id": "q_quiz_cv_01_v3",
+          "stem": "以下哪个是使用K折交叉验证的主要目的？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7404-regression-and-svm/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

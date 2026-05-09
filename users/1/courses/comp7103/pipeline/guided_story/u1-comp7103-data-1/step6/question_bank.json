@@ -1,0 +1,730 @@
+{
+  "chapter_id": "lecture-06-data-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "similarity_and_dissimilarity",
+      "covered_by": [
+        "qf_flash_sim_def",
+        "qf_quiz_sim_interpret"
+      ],
+      "description": "相似性与相异性的基本概念：定义、取值范围、与距离的关系"
+    },
+    {
+      "coverage_tag": "euclidean_distance",
+      "covered_by": [
+        "qf_flash_euclid_formula",
+        "qf_quiz_euclid_calc"
+      ],
+      "description": "欧氏距离的定义、公式与计算"
+    },
+    {
+      "coverage_tag": "manhattan_distance",
+      "covered_by": [
+        "qf_flash_manhattan_formula",
+        "qf_quiz_manhattan_calc"
+      ],
+      "description": "曼哈顿距离的定义、公式与计算"
+    },
+    {
+      "coverage_tag": "minkowski_distance",
+      "covered_by": [
+        "qf_flash_minkowski_general",
+        "qf_quiz_minkowski_param"
+      ],
+      "description": "闵可夫斯基距离作为欧氏距离和曼哈顿距离的推广"
+    },
+    {
+      "coverage_tag": "cosine_similarity",
+      "covered_by": [
+        "qf_flash_cosine_def",
+        "qf_quiz_cosine_apply",
+        "qf_long_cosine_compare"
+      ],
+      "description": "余弦相似度的定义、公式、适用场景（文档向量）"
+    },
+    {
+      "coverage_tag": "jaccard_coefficient",
+      "covered_by": [
+        "qf_flash_jaccard_def",
+        "qf_quiz_jaccard_apply",
+        "qf_long_cosine_compare"
+      ],
+      "description": "Jaccard 系数的定义、公式、适用场景（非对称二元数据）"
+    },
+    {
+      "coverage_tag": "high_dimensional_distance",
+      "covered_by": [
+        "qf_quiz_highdim_stable"
+      ],
+      "description": "高维数据中欧氏距离与曼哈顿距离的稳定性比较"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "similarity_and_dissimilarity",
+      "coverage_tags": [
+        "similarity_and_dissimilarity"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_sim_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆相似性和相异性的基本定义与取值范围。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能区分相似性与相异性的概念，并知道其典型数值范围。",
+      "question_type": "short_answer",
+      "retrieval_focus": "相似性与相异性的核心定义对比",
+      "term_refs": [
+        {
+          "display": "相似性",
+          "en": "similarity"
+        },
+        {
+          "display": "相异性",
+          "en": "dissimilarity"
+        }
+      ],
+      "variants": [
+        {
+          "back": "越像；[0, 1]",
+          "estimated_seconds": 8,
+          "explanation": "相似性衡量两个对象有多像，值越大越相似，通常归一化到0到1之间。",
+          "front": "两个数据对象的相似性越高，说明它们越像还是越不像？相似性的典型取值范围是什么？",
+          "question_id": "q_flash_sim_def_v1"
+        },
+        {
+          "back": "越不像；0",
+          "estimated_seconds": 8,
+          "explanation": "相异性衡量两个对象有多不同，值越大差异越大，最小值0表示完全相同。",
+          "front": "两个数据对象的相异性（距离）越高，说明它们越像还是越不像？相异性的最小值通常是多少？",
+          "question_id": "q_flash_sim_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "euclidean_distance",
+      "coverage_tags": [
+        "euclidean_distance"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_euclid_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆欧氏距离的公式。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能写出欧氏距离的数学表达式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "欧氏距离的公式形式",
+      "term_refs": [
+        {
+          "display": "欧氏距离",
+          "en": "Euclidean distance"
+        }
+      ],
+      "variants": [
+        {
+          "back": "\\sqrt{\\sum_{k=1}^{m} (p_k - q_k)^2}",
+          "estimated_seconds": 10,
+          "explanation": "欧氏距离是各维度差平方和的平方根，即直线距离。",
+          "front": "写出两个m维向量 p 和 q 之间的欧氏距离公式。",
+          "question_id": "q_flash_euclid_formula_v1"
+        },
+        {
+          "back": "r = 2",
+          "estimated_seconds": 6,
+          "explanation": "闵可夫斯基距离 dist = (∑|p_k - q_k|^r)^{1/r}，当 r=2 时即为欧氏距离。",
+          "front": "欧氏距离对应闵可夫斯基距离中的 r 取何值？",
+          "question_id": "q_flash_euclid_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "manhattan_distance",
+      "coverage_tags": [
+        "manhattan_distance"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_manhattan_formula",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆曼哈顿距离的公式。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能写出曼哈顿距离的数学表达式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "曼哈顿距离的公式形式",
+      "term_refs": [
+        {
+          "display": "曼哈顿距离",
+          "en": "Manhattan distance"
+        }
+      ],
+      "variants": [
+        {
+          "back": "\\sum_{k=1}^{m} |p_k - q_k|",
+          "estimated_seconds": 8,
+          "explanation": "曼哈顿距离是各维度绝对差之和，即网格距离。",
+          "front": "写出两个m维向量 p 和 q 之间的曼哈顿距离公式。",
+          "question_id": "q_flash_manhattan_formula_v1"
+        },
+        {
+          "back": "r = 1",
+          "estimated_seconds": 6,
+          "explanation": "闵可夫斯基距离 dist = (∑|p_k - q_k|^r)^{1/r}，当 r=1 时即为曼哈顿距离。",
+          "front": "曼哈顿距离对应闵可夫斯基距离中的 r 取何值？",
+          "question_id": "q_flash_manhattan_formula_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "minkowski_distance",
+      "coverage_tags": [
+        "minkowski_distance"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_minkowski_general",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解闵可夫斯基距离是欧氏距离和曼哈顿距离的推广。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能说出闵可夫斯基距离中参数 r 的含义及特例。",
+      "question_type": "short_answer",
+      "retrieval_focus": "闵可夫斯基距离的参数与特例",
+      "term_refs": [
+        {
+          "display": "闵可夫斯基距离",
+          "en": "Minkowski distance"
+        }
+      ],
+      "variants": [
+        {
+          "back": "r=1 曼哈顿距离；r=2 欧氏距离",
+          "estimated_seconds": 10,
+          "explanation": "闵可夫斯基距离是 Lp 范数，r=1 为 L1 范数（曼哈顿），r=2 为 L2 范数（欧氏）。",
+          "front": "闵可夫斯基距离公式中，参数 r 取何值时退化为曼哈顿距离？取何值时退化为欧氏距离？",
+          "question_id": "q_flash_minkowski_general_v1"
+        },
+        {
+          "back": "(\\sum_{k=1}^{m} |p_k - q_k|^r)^{1/r}",
+          "estimated_seconds": 8,
+          "explanation": "这是 Lp 范数的定义，通过改变 r 可以得到不同的距离度量。",
+          "front": "闵可夫斯基距离的通用公式是什么？",
+          "question_id": "q_flash_minkowski_general_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "cosine_similarity",
+      "coverage_tags": [
+        "cosine_similarity"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_cosine_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆余弦相似度的定义和适用场景。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能说出余弦相似度的核心思想（关注方向而非长度）及其典型应用。",
+      "question_type": "short_answer",
+      "retrieval_focus": "余弦相似度的核心思想与适用场景",
+      "term_refs": [
+        {
+          "display": "余弦相似度",
+          "en": "cosine similarity"
+        }
+      ],
+      "variants": [
+        {
+          "back": "关注方向是否一致，而不是长度",
+          "estimated_seconds": 8,
+          "explanation": "余弦相似度通过夹角余弦衡量方向相似性，适合文档长度差异大的场景。",
+          "front": "余弦相似度关注两个向量的什么特征，而不是什么特征？",
+          "question_id": "q_flash_cosine_def_v1"
+        },
+        {
+          "back": "文档数据（词袋向量）",
+          "estimated_seconds": 6,
+          "explanation": "文档向量长度差异大但内容可能相似，余弦相似度只关心方向，因此非常适合。",
+          "front": "余弦相似度最常用于哪种类型的数据？",
+          "question_id": "q_flash_cosine_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "jaccard_coefficient",
+      "coverage_tags": [
+        "jaccard_coefficient"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_flash_jaccard_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 Jaccard 系数的定义和适用场景。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能说出 Jaccard 系数的计算公式及其对非对称二元数据的处理方式。",
+      "question_type": "short_answer",
+      "retrieval_focus": "Jaccard 系数的定义与适用场景",
+      "term_refs": [
+        {
+          "display": "Jaccard 系数",
+          "en": "Jaccard coefficient"
+        }
+      ],
+      "variants": [
+        {
+          "back": "双方都为0的匹配（0-0匹配）",
+          "estimated_seconds": 8,
+          "explanation": "对于非对称二元数据（如购物篮），0-0匹配数量巨大且无意义，Jaccard 系数忽略它们。",
+          "front": "Jaccard 系数在计算两个二元向量相似度时，忽略了哪种匹配情况？",
+          "question_id": "q_flash_jaccard_def_v1"
+        },
+        {
+          "back": "非对称二元数据（如购物篮数据）",
+          "estimated_seconds": 6,
+          "explanation": "购物篮中只有购买（1）重要，未购买（0）不重要，Jaccard 系数只考虑1-1匹配。",
+          "front": "Jaccard 系数最常用于哪种类型的数据？",
+          "question_id": "q_flash_jaccard_def_v2"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-data-1",
+  "longform_families": [
+    {
+      "concept_key": "cosine_similarity_vs_jaccard",
+      "coverage_tags": [
+        "cosine_similarity",
+        "jaccard_coefficient"
+      ],
+      "difficulty": "hard",
+      "family_id": "qf_long_cosine_compare",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能比较余弦相似度和 Jaccard 系数的异同，并说明各自的适用场景。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能区分两种相似度度量的核心差异，并能根据数据类型做出正确选择。",
+      "question_type": "compare_and_contrast",
+      "term_refs": [
+        {
+          "display": "余弦相似度",
+          "en": "cosine similarity"
+        },
+        {
+          "display": "Jaccard 系数",
+          "en": "Jaccard coefficient"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 120,
+          "prompt_blocks": [
+            "余弦相似度的计算方式与核心思想",
+            "Jaccard 系数的计算方式与核心思想",
+            "余弦相似度最适合的数据类型及原因",
+            "Jaccard 系数最适合的数据类型及原因"
+          ],
+          "question_id": "q_long_cosine_compare_v1",
+          "reference_answer": [
+            "余弦相似度通过计算两个向量夹角的余弦值来衡量相似度，公式为 cos(θ) = (d1·d2) / (||d1|| ||d2||)。它只关心向量的方向是否一致，不关心向量的长度。",
+            "Jaccard 系数计算两个集合交集大小除以并集大小，对于二元向量，J = M11 / (M10 + M01 + M11)。它只考虑双方都为1的匹配，忽略双方都为0的匹配。",
+            "余弦相似度最适合文档数据（词袋向量）。因为文档长度差异很大（一篇长文和一篇短文），但内容可能相似。余弦相似度只关注方向，不受长度影响。",
+            "Jaccard 系数最适合非对称二元数据（如购物篮）。因为购物篮中只有购买（1）重要，未购买（0）不重要。双方都没买的商品数量巨大且无意义，Jaccard 系数忽略这些0-0匹配。"
+          ],
+          "rubric_points": [
+            "余弦相似度：cos(θ) = (d1·d2) / (||d1|| ||d2||)，关注方向而非长度",
+            "Jaccard 系数：J = M11 / (M10 + M01 + M11)，只考虑1-1匹配，忽略0-0匹配",
+            "余弦相似度适合文档数据（词袋向量），因为文档长度差异大但内容可能相似",
+            "Jaccard 系数适合非对称二元数据（如购物篮），因为0-0匹配数量巨大且无意义"
+          ],
+          "stem": "比较余弦相似度和 Jaccard 系数。请从以下三个方面进行说明：\n1. 各自的计算方式（公式或核心思想）\n2. 各自最适合的数据类型\n3. 为什么在各自的数据类型上比另一种更合适"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "场景1：购物篮数据的选择与理由",
+            "场景2：文档数据的选择与理由",
+            "场景3：数值向量的选择与理由"
+          ],
+          "question_id": "q_long_cosine_compare_v2",
+          "reference_answer": [
+            "场景1（购物篮）：选择 Jaccard 系数。购物篮数据是非对称的，只有购买（1）重要，未购买（0）不重要。Jaccard 系数忽略0-0匹配，适合这种情况。",
+            "场景2（文档）：选择余弦相似度。文档向量长度差异大但内容可能相似，余弦相似度只关心方向是否一致，不受长度影响。",
+            "场景3（数值向量）：选择欧氏距离。连续数值数据关注的是绝对距离差异，欧氏距离能直接反映这种差异。"
+          ],
+          "rubric_points": [
+            "购物篮：Jaccard 系数，因为非对称二元数据中0-0匹配无意义",
+            "文档：余弦相似度，因为文档长度差异大，关注方向而非长度",
+            "数值向量：欧氏距离，因为连续数值关注绝对距离差异"
+          ],
+          "stem": "给定以下三个场景，分别选择最合适的距离或相似度度量，并简要说明理由：\n1. 比较两个购物篮（非对称二元）\n2. 比较两篇文档（词袋向量）\n3. 比较两个数值向量（连续值）"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "similarity_and_dissimilarity",
+      "coverage_tags": [
+        "similarity_and_dissimilarity"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_quiz_sim_interpret",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在具体情境中正确解释相似性和相异性的含义。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能根据相似性或相异性的数值判断对象间的接近程度。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "相似性",
+          "en": "similarity"
+        },
+        {
+          "display": "相异性",
+          "en": "dissimilarity"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "相似度接近1说明非常相似，相异性接近0也说明差异很小。",
+          "options": [
+            "它们非常不同",
+            "它们非常相似",
+            "相异性 0.1 说明差异很大",
+            "无法判断"
+          ],
+          "question_id": "q_quiz_sim_interpret_v1",
+          "stem": "两个数据对象的相似度为 0.9，相异性为 0.1。以下哪个说法正确？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "距离为0表示两个对象完全相同，因此相似度应为最大值1。",
+          "options": [
+            "0",
+            "1",
+            "无法确定",
+            "无穷大"
+          ],
+          "question_id": "q_quiz_sim_interpret_v2",
+          "stem": "两个数据对象的欧氏距离为 0，这说明它们的相似度是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "euclidean_distance",
+      "coverage_tags": [
+        "euclidean_distance"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_euclid_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能计算两个简单向量的欧氏距离。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能应用欧氏距离公式进行数值计算。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "欧氏距离",
+          "en": "Euclidean distance"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 2,
+          "estimated_seconds": 20,
+          "explanation": "√((4-1)² + (6-2)²) = √(9 + 16) = √25 = 5",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "7"
+          ],
+          "question_id": "q_quiz_euclid_calc_v1",
+          "stem": "点 p = (1, 2) 和点 q = (4, 6) 之间的欧氏距离是多少？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "√((3-0)² + (4-0)² + (0-0)²) = √(9 + 16 + 0) = √25 = 5",
+          "options": [
+            "5",
+            "7",
+            "12",
+            "25"
+          ],
+          "question_id": "q_quiz_euclid_calc_v2",
+          "stem": "点 p = (0, 0, 0) 和点 q = (3, 4, 0) 之间的欧氏距离是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "manhattan_distance",
+      "coverage_tags": [
+        "manhattan_distance"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_manhattan_calc",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能计算两个简单向量的曼哈顿距离。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能应用曼哈顿距离公式进行数值计算。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "曼哈顿距离",
+          "en": "Manhattan distance"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "|4-1| + |6-2| = 3 + 4 = 7",
+          "options": [
+            "5",
+            "7",
+            "9",
+            "3"
+          ],
+          "question_id": "q_quiz_manhattan_calc_v1",
+          "stem": "点 p = (1, 2) 和点 q = (4, 6) 之间的曼哈顿距离是多少？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "|3-0| + |4-0| = 3 + 4 = 7",
+          "options": [
+            "5",
+            "7",
+            "12",
+            "1"
+          ],
+          "question_id": "q_quiz_manhattan_calc_v2",
+          "stem": "点 p = (0, 0) 和点 q = (3, 4) 之间的曼哈顿距离是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "minkowski_distance",
+      "coverage_tags": [
+        "minkowski_distance"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_minkowski_param",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能根据闵可夫斯基距离的参数 r 判断对应的距离类型。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能识别闵可夫斯基距离中不同 r 值对应的具体距离度量。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "闵可夫斯基距离",
+          "en": "Minkowski distance"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 10,
+          "explanation": "r=1 时，闵可夫斯基距离退化为曼哈顿距离（L1 范数）。",
+          "options": [
+            "欧氏距离",
+            "曼哈顿距离",
+            "切比雪夫距离",
+            "余弦距离"
+          ],
+          "question_id": "q_quiz_minkowski_param_v1",
+          "stem": "闵可夫斯基距离中，参数 r = 1 对应哪种距离？"
+        },
+        {
+          "answer": 2,
+          "estimated_seconds": 10,
+          "explanation": "r=2 时，闵可夫斯基距离退化为欧氏距离（L2 范数）。",
+          "options": [
+            "曼哈顿距离",
+            "切比雪夫距离",
+            "欧氏距离",
+            "马氏距离"
+          ],
+          "question_id": "q_quiz_minkowski_param_v2",
+          "stem": "闵可夫斯基距离中，参数 r = 2 对应哪种距离？"
+        }
+      ]
+    },
+    {
+      "concept_key": "cosine_similarity",
+      "coverage_tags": [
+        "cosine_similarity"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_cosine_apply",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断余弦相似度的适用场景。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能根据数据类型选择合适的相似度度量。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "余弦相似度",
+          "en": "cosine similarity"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "文档向量长度差异大但内容可能相似，余弦相似度关注方向，适合文档比较。",
+          "options": [
+            "比较两个购物篮（非对称二元）",
+            "比较两篇文档（词袋向量）",
+            "比较两个学生的身高和体重（连续数值）",
+            "比较两个邮政编码（名义属性）"
+          ],
+          "question_id": "q_quiz_cosine_apply_v1",
+          "stem": "以下哪种情况最适合使用余弦相似度？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "点积 = 3*1 + 2*0 + 0*0 + 5*0 = 3",
+          "options": [
+            "3",
+            "5",
+            "8",
+            "11"
+          ],
+          "question_id": "q_quiz_cosine_apply_v2",
+          "stem": "两个文档向量 d1 = [3, 2, 0, 5] 和 d2 = [1, 0, 0, 0] 的点积是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "jaccard_coefficient",
+      "coverage_tags": [
+        "jaccard_coefficient"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_jaccard_apply",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能判断 Jaccard 系数的适用场景。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能根据数据类型选择合适的相似度度量。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "Jaccard 系数",
+          "en": "Jaccard coefficient"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 0,
+          "estimated_seconds": 15,
+          "explanation": "购物篮数据是非对称的，只有购买（1）重要，Jaccard 系数忽略0-0匹配，适合这种情况。",
+          "options": [
+            "比较两个购物篮（非对称二元）",
+            "比较两篇文档（词袋向量）",
+            "比较两个学生的身高和体重（连续数值）",
+            "比较两个学生的成绩等级（有序属性）"
+          ],
+          "question_id": "q_quiz_jaccard_apply_v1",
+          "stem": "以下哪种情况最适合使用 Jaccard 系数？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 20,
+          "explanation": "M11 = 0（没有同时为1的维度），M10 = 1，M01 = 1，J = 0 / (1+1+0) = 0",
+          "options": [
+            "0",
+            "0.5",
+            "1",
+            "0.25"
+          ],
+          "question_id": "q_quiz_jaccard_apply_v2",
+          "stem": "两个二元向量 p = [1, 0, 0, 0, 0] 和 q = [0, 0, 0, 1, 0] 的 Jaccard 系数是多少？"
+        }
+      ]
+    },
+    {
+      "concept_key": "high_dimensional_distance",
+      "coverage_tags": [
+        "high_dimensional_distance"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_highdim_stable",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能理解高维数据中不同距离度量的稳定性差异。",
+      "linked_steps": [
+        "step6"
+      ],
+      "practice_target": "学生答对后证明能判断在高维场景下欧氏距离与曼哈顿距离哪个更稳定。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "维度灾难",
+          "en": "curse of dimensionality"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "在高维空间中，欧氏距离容易受维度灾难影响，曼哈顿距离相对更稳定。",
+          "options": [
+            "欧氏距离",
+            "曼哈顿距离",
+            "余弦相似度",
+            "Jaccard 系数"
+          ],
+          "question_id": "q_quiz_highdim_stable_v1",
+          "stem": "当数据维度很高时，以下哪种距离度量通常更稳定？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "欧氏距离平方差异，使得大差异被放大，在高维稀疏空间中更不稳定。",
+          "options": [
+            "曼哈顿距离计算更简单",
+            "欧氏距离对每个维度的差异取平方，放大了大差异的影响",
+            "曼哈顿距离只适用于二元数据",
+            "欧氏距离不能用于高维数据"
+          ],
+          "question_id": "q_quiz_highdim_stable_v2",
+          "stem": "高维数据中，为什么曼哈顿距离比欧氏距离更稳定？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step6",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-data-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

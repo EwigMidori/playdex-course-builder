@@ -1,0 +1,535 @@
+---
+lessonId: u1-comp7404-decision-trees
+title: Decision Trees
+targetLanguage: zh-CN
+mode: textbook
+sectionMap:
+  - sectionId: why-this-lesson-matters
+    title: 为什么这一课重要
+    coverageTags: ["decision_tree_intuition", "decision_tree_interpretability"]
+    linkedSteps: ["step1"]
+  - sectionId: global-concept-map
+    title: 课程全景与关键问题
+    coverageTags: ["decision_tree_intuition", "decision_tree_workflow", "feature_leaf_node"]
+    linkedSteps: ["step1"]
+  - sectionId: gini-impurity
+    title: Gini 不纯度：量化节点纯度
+    coverageTags: ["gini_impurity_definition", "gini_impurity_formula", "gini_impurity_interpretation", "gini_impurity_calculation_example", "purity_vs_impurity"]
+    linkedSteps: ["step2"]
+  - sectionId: information-gain
+    title: 信息增益：衡量分裂质量
+    coverageTags: ["information_gain_definition", "information_gain_formula", "information_gain_weighted_average", "maximize_information_gain", "information_gain_example_calculation"]
+    linkedSteps: ["step3"]
+  - sectionId: other-impurity-measures
+    title: 其他纯度度量：熵与分类误差
+    coverageTags: ["entropy_definition_and_formula", "entropy_calculation", "classification_error_definition_and_formula", "classification_error_calculation", "comparison_of_impurity_measures"]
+    linkedSteps: ["step4a"]
+  - sectionId: overfitting-and-pruning
+    title: 过拟合与剪枝
+    coverageTags: ["overfitting_definition_and_symptom", "pruning_techniques", "overfitting_vs_generalization_tradeoff", "pruning_parameter_tuning"]
+    linkedSteps: ["step4b"]
+  - sectionId: random-forest
+    title: 从单棵树到随机森林
+    coverageTags: ["random_forest_definition", "ensemble_voting", "bootstrap_sampling", "feature_random_selection", "max_features_parameter", "variance_reduction", "random_forest_creation_process"]
+    linkedSteps: ["step5"]
+  - sectionId: bootstrap-tradeoff
+    title: 随机森林中多样性的来源与权衡
+    coverageTags: ["bootstrap_sample_size_impact", "diversity_vs_performance_tradeoff", "overfitting_mitigation_via_bootstrap"]
+    linkedSteps: ["step6"]
+  - sectionId: pitfalls
+    title: 易错点
+    coverageTags: ["gini_impurity_interpretation", "information_gain_weighted_average", "comparison_of_impurity_measures", "overfitting_vs_generalization_tradeoff"]
+    linkedSteps: ["step2", "step3", "step4a", "step4b"]
+  - sectionId: review
+    title: 复习与自测
+    coverageTags: ["decision_tree_intuition", "gini_impurity_definition", "information_gain_definition", "entropy_definition_and_formula", "classification_error_definition_and_formula", "overfitting_definition_and_symptom", "random_forest_definition", "bootstrap_sample_size_impact"]
+    linkedSteps: ["step1", "step2", "step3", "step4a", "step4b", "step5", "step6"]
+
+coverageTrace:
+  - coverageTag: decision_tree_intuition
+    description: 决策树通过一系列提问进行分类的核心思想
+    sectionIds: ["why-this-lesson-matters", "global-concept-map", "review"]
+    linkedSteps: ["step1"]
+  - coverageTag: decision_tree_interpretability
+    description: 决策树的可解释性
+    sectionIds: ["why-this-lesson-matters"]
+    linkedSteps: ["step1"]
+  - coverageTag: decision_tree_workflow
+    description: 决策树的工作方式：顺序提问 vs 一次性公式
+    sectionIds: ["global-concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: feature_leaf_node
+    description: 特征与叶节点的基本概念
+    sectionIds: ["global-concept-map"]
+    linkedSteps: ["step1"]
+  - coverageTag: gini_impurity_definition
+    description: Gini 不纯度的定义：从一个节点随机抽一个样本并随机猜类别，猜错的概率。
+    sectionIds: ["gini-impurity", "review"]
+    linkedSteps: ["step2"]
+  - coverageTag: gini_impurity_formula
+    description: Gini 不纯度的计算公式：I_G(t) = 1 - Σ p(i|t)²
+    sectionIds: ["gini-impurity"]
+    linkedSteps: ["step2"]
+  - coverageTag: gini_impurity_interpretation
+    description: Gini 不纯度值越小节点越纯，值为0时节点完全纯。
+    sectionIds: ["gini-impurity", "pitfalls"]
+    linkedSteps: ["step2"]
+  - coverageTag: gini_impurity_calculation_example
+    description: 能根据节点中各类别样本比例计算 Gini 不纯度。
+    sectionIds: ["gini-impurity"]
+    linkedSteps: ["step2"]
+  - coverageTag: purity_vs_impurity
+    description: 好问题使分裂后子节点更纯，Gini 不纯度是量化纯度的工具。
+    sectionIds: ["gini-impurity"]
+    linkedSteps: ["step2"]
+  - coverageTag: information_gain_definition
+    description: 信息增益的定义：衡量一个特征分裂后不纯度降低的程度。
+    sectionIds: ["information-gain", "review"]
+    linkedSteps: ["step3"]
+  - coverageTag: information_gain_formula
+    description: 信息增益的计算公式：IG = I(parent) - (N_left/N_p)*I(left) - (N_right/N_p)*I(right)。
+    sectionIds: ["information-gain"]
+    linkedSteps: ["step3"]
+  - coverageTag: information_gain_weighted_average
+    description: 信息增益使用子节点样本数的加权平均，而非直接比较子节点纯度。
+    sectionIds: ["information-gain", "pitfalls"]
+    linkedSteps: ["step3"]
+  - coverageTag: maximize_information_gain
+    description: 决策树学习算法的核心：每一步选择能带来最大信息增益的特征进行分裂。
+    sectionIds: ["information-gain"]
+    linkedSteps: ["step3"]
+  - coverageTag: information_gain_example_calculation
+    description: 使用水果数据集计算信息增益的具体例子。
+    sectionIds: ["information-gain"]
+    linkedSteps: ["step3"]
+  - coverageTag: entropy_definition_and_formula
+    description: 熵的定义、计算公式及其在决策树中作为纯度度量的角色
+    sectionIds: ["other-impurity-measures", "review"]
+    linkedSteps: ["step4a"]
+  - coverageTag: entropy_calculation
+    description: 给定节点类别分布，计算熵的值
+    sectionIds: ["other-impurity-measures"]
+    linkedSteps: ["step4a"]
+  - coverageTag: classification_error_definition_and_formula
+    description: 分类误差的定义、计算公式及其在决策树中的用途
+    sectionIds: ["other-impurity-measures", "review"]
+    linkedSteps: ["step4a"]
+  - coverageTag: classification_error_calculation
+    description: 给定节点类别分布，计算分类误差的值
+    sectionIds: ["other-impurity-measures"]
+    linkedSteps: ["step4a"]
+  - coverageTag: comparison_of_impurity_measures
+    description: 比较 Gini 不纯度、熵和分类误差三种纯度度量的特点、敏感度和适用场景
+    sectionIds: ["other-impurity-measures", "pitfalls"]
+    linkedSteps: ["step4a"]
+  - coverageTag: overfitting_definition_and_symptom
+    description: 过拟合的定义：模型在训练数据上表现太好，以至于失去了对未知数据的泛化能力。症状：训练集准确率远高于测试集准确率。
+    sectionIds: ["overfitting-and-pruning", "review"]
+    linkedSteps: ["step4b"]
+  - coverageTag: pruning_techniques
+    description: 剪枝技术：通过限制树的最大深度或限制叶节点最小样本数来防止过拟合。
+    sectionIds: ["overfitting-and-pruning"]
+    linkedSteps: ["step4b"]
+  - coverageTag: overfitting_vs_generalization_tradeoff
+    description: 过拟合与泛化能力的权衡：剪枝通常导致训练集准确率下降，但测试集准确率上升。
+    sectionIds: ["overfitting-and-pruning", "pitfalls"]
+    linkedSteps: ["step4b"]
+  - coverageTag: pruning_parameter_tuning
+    description: 根据过拟合症状（训练集准确率高、测试集准确率低、叶节点样本少）选择合理的调参方向（减小最大深度或增大叶节点最小样本数）。
+    sectionIds: ["overfitting-and-pruning"]
+    linkedSteps: ["step4b"]
+  - coverageTag: random_forest_definition
+    description: 随机森林的定义：决策树的集成
+    sectionIds: ["random-forest", "review"]
+    linkedSteps: ["step5"]
+  - coverageTag: ensemble_voting
+    description: 集成与投票机制：每棵树单独预测，多数投票决定最终类别
+    sectionIds: ["random-forest"]
+    linkedSteps: ["step5"]
+  - coverageTag: bootstrap_sampling
+    description: 自助采样：有放回地随机抽取样本，增加树间多样性
+    sectionIds: ["random-forest"]
+    linkedSteps: ["step5"]
+  - coverageTag: feature_random_selection
+    description: 特征随机选择：每个节点分裂时随机选择部分特征
+    sectionIds: ["random-forest"]
+    linkedSteps: ["step5"]
+  - coverageTag: max_features_parameter
+    description: max_features 参数：控制每个节点分裂时随机抽取的特征数
+    sectionIds: ["random-forest"]
+    linkedSteps: ["step5"]
+  - coverageTag: variance_reduction
+    description: 方差降低：集成多棵树的结果降低整体方差，提高稳健性
+    sectionIds: ["random-forest"]
+    linkedSteps: ["step5"]
+  - coverageTag: random_forest_creation_process
+    description: 随机森林创建过程：自助采样、生长决策树、重复、投票
+    sectionIds: ["random-forest"]
+    linkedSteps: ["step5"]
+  - coverageTag: bootstrap_sample_size_impact
+    description: Bootstrap 样本大小对随机森林多样性和性能的影响
+    sectionIds: ["bootstrap-tradeoff", "review"]
+    linkedSteps: ["step6"]
+  - coverageTag: diversity_vs_performance_tradeoff
+    description: 随机森林中多样性与整体性能之间的权衡
+    sectionIds: ["bootstrap-tradeoff"]
+    linkedSteps: ["step6"]
+  - coverageTag: overfitting_mitigation_via_bootstrap
+    description: 通过调整 Bootstrap 样本大小来缓解过拟合
+    sectionIds: ["bootstrap-tradeoff"]
+    linkedSteps: ["step6"]
+---
+
+# Decision Trees
+
+## 为什么这一课重要
+
+想象你面前有 6 个水果：3 个苹果（红色，直径 7 cm），2 个葡萄（红色，直径 1 cm），1 个柠檬（黄色，直径 3 cm）。你想让电脑学会区分它们。
+
+最朴素的想法是直接看特征。比如“如果是红色就是苹果”——但葡萄也是红色。或者“直径大于 5 cm 就是苹果”——但柠檬直径 3 cm，葡萄 1 cm，苹果 7 cm，这个规则能区分吗？
+
+你发现了：只靠一个特征不够。需要多个特征组合，而且顺序很重要——先问颜色，再问大小，还是先问大小再问颜色？
+
+如果先问“直径大于 5 cm？”，是→苹果，否→再问“是红色吗？”，是→葡萄，否→柠檬。这样就能区分所有水果了。
+
+这种通过一系列“是/否”问题来做出判断的方式，比一次性看所有特征更灵活、更可解释。这就是决策树的核心思想。
+
+<KeyPoint>决策树通过一系列可解释的提问来分类，每一步都可以解释为什么走这个分支。这是它被称为“可解释”模型的原因。</KeyPoint>
+
+<QuestionRef id="q_quiz_002_v1" />
+
+## 课程全景与关键问题
+
+### 核心概念
+
+我们把这种模型叫做 <Term id="decision_tree" en="Decision Tree">决策树</Term>。每个问题都基于数据的某个 <Term id="feature" en="Feature">特征</Term>（比如颜色、直径）。最终的答案，就在树的 <Term id="leaf_node" en="Leaf Node">叶节点</Term> 上。
+
+<Definition title="决策树">
+通过一系列是/否提问来对数据进行分类的模型。每个内部节点代表一个基于特征的问题，每个分支代表一个答案，每个叶节点代表最终的分类结果。
+</Definition>
+
+### 关键问题
+
+但问题来了：这么多特征，先问哪个最好？凭直觉，你觉得哪个问题更好？先问“是红色吗？”还是先问“直径大于 5 cm？”
+
+<QuestionRef id="q_quiz_001_v1" />
+
+你可能选对了，但直觉不一定总是可靠。我们需要一个标准，来衡量一个问题的“好坏”。好问题的标准是：它能最大程度地把不同类别的数据分开。也就是让每个分支里的数据“更纯”。
+
+<QuestionFamily familyId="qf_flash_001" />
+<QuestionFamily familyId="qf_flash_002" />
+
+## Gini 不纯度：量化节点纯度
+
+### 定义与直觉
+
+怎么量化“纯度”呢？一个常用的指标是 <Term id="gini_impurity" en="Gini Impurity">Gini 不纯度</Term>。
+
+它的直觉是：从一个节点里随机抽一个样本，再随机猜它的类别，猜错的概率有多大。猜错的概率越高，这个节点就越“不纯”。
+
+<Definition title="Gini 不纯度">
+从一个节点中随机抽一个样本，再随机猜它的类别，猜错的概率。值越小，节点越纯；值为 0 时，节点完全纯（所有样本属于同一类）。
+</Definition>
+
+### 公式
+
+<Formula latex="I_{G}(t) = \sum_{i=1}^{c} p(i|t) (1 - p(i|t)) = 1 - \sum_{i=1}^{c} p(i|t)^{2}">
+Gini 不纯度公式
+</Formula>
+
+其中，<InlineFormula latex="p(i|t)" /> 表示在节点 <InlineFormula latex="t" /> 中，属于类别 <InlineFormula latex="i" /> 的样本比例。
+
+### 计算示例
+
+<Example title="计算 Gini 不纯度">
+一个节点里有 9 个苹果和 1 个橘子。
+
+- <InlineFormula latex="p(\text{苹果}|t) = 0.9" />，<InlineFormula latex="p(\text{橘子}|t) = 0.1" />
+- <InlineFormula latex="I_{G}(t) = 1 - (0.9^{2} + 0.1^{2}) = 1 - 0.82 = 0.18" />
+
+Gini 不纯度为 0.18，说明节点比较纯（接近 0），但还不是完全纯。
+</Example>
+
+<QuestionFamily familyId="qf_flash_gini_def" />
+<QuestionFamily familyId="qf_flash_gini_formula" />
+<QuestionFamily familyId="qf_flash_gini_interpret" />
+<QuestionFamily familyId="qf_quiz_gini_calc" />
+
+## 信息增益：衡量分裂质量
+
+### 从纯度到增益
+
+现在我们有了衡量节点纯度的工具：Gini 不纯度。下一步是：如何比较不同问题带来的“纯度提升”？
+
+一个自然的想法：直接比较分裂后子节点的纯度。比如，问题 A 分裂后，左子节点 Gini=0.2，右子节点 Gini=0.3。问题 B 分裂后，左子节点 Gini=0.1，右子节点 Gini=0.4。
+
+但这里有个陷阱：子节点的大小不同。如果问题 A 的左子节点只有 1 个样本，右子节点有 99 个，那么右子节点的纯度更重要。直接比较子节点纯度，忽略了样本数量。
+
+我们需要一个考虑样本数量的指标：<Term id="information_gain" en="Information Gain">信息增益</Term>。信息增益越大，说明这个问题越能有效地把数据分开。
+
+<Definition title="信息增益">
+衡量一个特征分裂后，不纯度降低的程度。增益越大，分裂效果越好。
+</Definition>
+
+### 公式
+
+<Formula latex="IG(D_{p}, f) = I(D_{p}) - \frac{N_{\text{left}}}{N_{p}} I(D_{\text{left}}) - \frac{N_{\text{right}}}{N_{p}} I(D_{\text{right}})">
+信息增益公式
+</Formula>
+
+其中，<InlineFormula latex="I" /> 是纯度度量（比如 Gini 不纯度），<InlineFormula latex="N" /> 是样本数量。简单说，就是用父节点的混乱程度，减去分裂后子节点的平均混乱程度（按样本数加权）。
+
+### 计算示例
+
+<Example title="计算信息增益">
+回到水果的例子。父节点有 5 个样本：2 个苹果，2 个葡萄，1 个柠檬。它的 Gini 不纯度是 0.64。
+
+现在考虑第一个问题：“颜色是绿色吗？”
+
+- 如果“是”，得到 1 个苹果（纯的，Gini=0）。
+- 如果“否”，得到 1 个苹果、2 个葡萄、1 个柠檬（Gini=0.625）。
+
+<InlineFormula latex="IG = 0.64 - \frac{1}{5} \times 0 - \frac{4}{5} \times 0.625 = 0.64 - 0.5 = 0.14" />
+
+信息增益是 0.14。
+</Example>
+
+### 核心原则
+
+哪个问题的信息增益最大，我们就先问哪个。这就是决策树学习算法的核心：每一步都选择能带来最大信息增益的特征进行分裂。
+
+<KeyPoint>决策树学习算法的核心：每一步都选择能带来最大信息增益的特征进行分裂。</KeyPoint>
+
+<QuestionFamily familyId="qf_flash_ig_definition" />
+<QuestionFamily familyId="qf_flash_ig_formula" />
+<QuestionFamily familyId="qf_flash_ig_weighted" />
+<QuestionFamily familyId="qf_flash_ig_maximize" />
+<QuestionFamily familyId="qf_quiz_ig_formula_interpret" />
+<QuestionFamily familyId="qf_quiz_ig_weighted" />
+<QuestionFamily familyId="qf_long_ig_calculation" />
+
+## 其他纯度度量：熵与分类误差
+
+### 熵
+
+除了 Gini 不纯度，还有其他衡量纯度的方法。比如 <Term id="entropy" en="Entropy">熵</Term>，它来自信息论。
+
+<Formula latex="I_{H}(t) = -\sum_{i=1}^{c} p(i|t) \log_{2} p(i|t)">
+熵的公式
+</Formula>
+
+当节点里的样本全部属于同一类时，熵为 0。当类别均匀分布时，熵最大。
+
+<Example title="计算熵">
+一个节点有 9 个苹果和 1 个橘子。
+
+<InlineFormula latex="I_H = - (0.9 \log_2 0.9 + 0.1 \log_2 0.1) \approx 0.469" />
+
+比较一下：这个节点的 Gini 是 0.18，熵是 0.469。虽然数值不同，但趋势一致：节点越纯，两个指标都越小。
+</Example>
+
+### 分类误差
+
+还有一种更简单的度量叫 <Term id="classification_error" en="Classification Error">分类误差</Term>：
+
+<Formula latex="I_{E} = 1 - \max\{p(i|t)\}">
+分类误差公式
+</Formula>
+
+它直接看节点里最多的那个类别占比多少。不过，分类误差对纯度变化不太敏感，通常只用于剪枝，而不是构建树。
+
+<Example title="计算分类误差">
+对于 9 个苹果和 1 个橘子的节点，最多的是苹果，占比 0.9，所以分类误差 = 1 - 0.9 = 0.1。
+</Example>
+
+### 三种度量的比较
+
+<KeyPoint>在大多数情况下，Gini 和熵选择的分裂非常相似。分类误差对纯度变化最不敏感，因此不推荐用于构建树，但常用于剪枝。</KeyPoint>
+
+<QuestionFamily familyId="qf_flash_entropy_formula" />
+<QuestionFamily familyId="qf_flash_entropy_calc" />
+<QuestionFamily familyId="qf_flash_class_error_def" />
+<QuestionFamily familyId="qf_flash_class_error_calc" />
+<QuestionFamily familyId="qf_quiz_compare_sensitivity" />
+<QuestionFamily familyId="qf_long_compare_measures" />
+
+## 过拟合与剪枝
+
+### 过拟合
+
+如果我们不加限制地让树一直生长，直到每个叶节点都“纯”，会发生什么？树会变得非常深，非常复杂。
+
+比如，一棵深度为 10 的决策树，在训练集上准确率 100%，在测试集上准确率只有 70%。
+
+<Definition title="过拟合">
+模型在训练数据上表现太好，以至于失去了对未知数据的泛化能力。典型症状：训练集准确率远高于测试集准确率。
+</Definition>
+
+### 剪枝
+
+为了防止过拟合，我们需要对树进行 <Term id="pruning" en="Pruning">剪枝</Term>。常见的方法包括限制树的最大深度，或者限制叶节点的最小样本数。
+
+<Definition title="剪枝">
+通过限制树的深度或节点数量来防止过拟合的技术。
+</Definition>
+
+### 过拟合与泛化的权衡
+
+<KeyPoint>剪枝通常导致训练集准确率下降，但测试集准确率上升。这是过拟合与泛化能力的权衡：牺牲一点训练拟合，换来更好的泛化。</KeyPoint>
+
+<Example title="剪枝的效果">
+某棵树从深度 10 剪到深度 5 后，训练准确率从 100% 降到 92%，测试准确率从 70% 升到 83%。这说明剪枝改善了泛化。
+</Example>
+
+<QuestionFamily familyId="qf_flash_overfitting_def" />
+<QuestionFamily familyId="qf_flash_pruning_methods" />
+<QuestionFamily familyId="qf_quiz_pruning_tradeoff" />
+<QuestionFamily familyId="qf_quiz_pruning_tuning_direction" />
+<QuestionFamily familyId="qf_long_pruning_effect" />
+
+## 从单棵树到随机森林
+
+### 核心思想
+
+单棵决策树容易过拟合，不够稳定。那如果我们种一片森林呢？
+
+这就是 <Term id="random_forest" en="Random Forest">随机森林</Term> 的核心思想。它不是一个模型，而是一群决策树的 <Term id="ensemble" en="Ensemble">集成</Term>。
+
+<Definition title="随机森林">
+一种集成学习方法，通过构建多棵决策树并综合它们的预测结果来提高准确性和稳定性。
+</Definition>
+
+### 投票机制
+
+每棵树都单独进行预测，然后大家投票。得票最多的类别，就是最终结果。
+
+### 多样性来源
+
+但如何保证每棵树都不一样呢？随机森林用了两个技巧：
+
+1. **<Term id="bootstrap_sampling" en="Bootstrap Sampling">自助采样</Term>**：从原始数据中随机抽取样本（有放回），每棵树用的数据都略有不同。
+2. **特征随机选择**：在每个节点分裂时，不是考虑所有特征，而是随机选择一部分特征。然后从这些特征中挑出最好的那个进行分裂。
+
+<KeyPoint>随机森林通过自助采样和特征随机选择来增加树之间的多样性，从而降低整体方差，提高泛化能力。</KeyPoint>
+
+### 创建过程
+
+<Example title="随机森林的创建过程">
+1. 使用自助采样，从原始数据中有放回地随机抽取 n 个样本，每棵树使用不同的数据子集。
+2. 在每个节点，先随机选择 d 个特征（不重复），然后从这些特征中选出信息增益最大的特征进行分裂。
+3. 重复步骤 1 和 2 k 次，生成 k 棵决策树。
+4. 每棵树单独预测，通过多数投票得到最终结果。
+</Example>
+
+<QuestionFamily familyId="qf_flash_rf_def" />
+<QuestionFamily familyId="qf_flash_voting" />
+<QuestionFamily familyId="qf_flash_bootstrap" />
+<QuestionFamily familyId="qf_flash_feature_sel" />
+<QuestionFamily familyId="qf_flash_max_features" />
+<QuestionFamily familyId="qf_flash_variance" />
+<QuestionFamily familyId="qf_quiz_rf_def" />
+<QuestionFamily familyId="qf_quiz_voting" />
+<QuestionFamily familyId="qf_quiz_bootstrap" />
+<QuestionFamily familyId="qf_quiz_feature_sel" />
+<QuestionFamily familyId="qf_quiz_max_features" />
+<QuestionFamily familyId="qf_quiz_variance" />
+<QuestionFamily familyId="qf_long_rf_process" />
+
+## 随机森林中多样性的来源与权衡
+
+### Bootstrap 样本大小的影响
+
+在随机森林中，有两个重要的多样性来源：自助采样和特征随机选择。但还有一个参数会影响多样性：Bootstrap 样本的大小。
+
+如果 Bootstrap 样本太小，每棵树使用的数据就更少。这会增加树之间的多样性，有助于减少过拟合。但代价是，每棵树学到的信息有限，整体性能可能会下降。
+
+反之，如果 Bootstrap 样本太大，每棵树都更接近原始数据。树之间的相似度增加，多样性降低，过拟合的风险又会上升。
+
+<KeyPoint>Bootstrap 样本大小控制着偏差和方差之间的平衡。较小的样本增加多样性（降低方差），但可能增加偏差（降低性能）。较大的样本减少多样性（增加方差），但可能降低偏差（提高训练性能）。</KeyPoint>
+
+<QuestionFamily familyId="qf_flash_step6_bootstrap_impact" />
+<QuestionFamily familyId="qf_quiz_step6_bootstrap_tradeoff" />
+<QuestionFamily familyId="qf_long_step6_bootstrap_explain" />
+
+## 易错点
+
+### Gini 不纯度的方向
+
+<Pitfall>Gini 不纯度越大，说明节点越不纯（越混乱），而不是越纯。值为 0 时节点完全纯。</Pitfall>
+
+### 信息增益的加权平均
+
+<Pitfall>直接比较子节点纯度来评价分裂好坏是不充分的，因为子节点的大小（样本数）可能不同，大子节点的纯度更重要。信息增益通过加权平均解决了这个问题。</Pitfall>
+
+### 分类误差的敏感度
+
+<Pitfall>分类误差对纯度变化最不敏感，因为它只关注最大类别的比例变化，忽略了其他类别的分布变化。因此不推荐用于构建树，但常用于剪枝。</Pitfall>
+
+### 过拟合与泛化的权衡
+
+<Pitfall>剪枝通常导致训练集准确率下降，但测试集准确率上升。不要因为训练集准确率下降就认为模型变差了——这恰恰说明泛化能力提升了。</Pitfall>
+
+## 复习与自测
+
+### 核心概念回顾
+
+1. **决策树**：通过一系列是/否提问来对数据进行分类的模型。
+2. **Gini 不纯度**：从一个节点随机抽一个样本并随机猜类别，猜错的概率。值越小节点越纯。
+3. **信息增益**：衡量一个特征分裂后不纯度降低的程度。增益越大，分裂效果越好。
+4. **熵**：另一种衡量节点不纯度的指标，源于信息论。
+5. **分类误差**：1 减去节点中最常见类别的比例，通常用于剪枝。
+6. **过拟合**：模型在训练数据上表现太好，以至于失去了对未知数据的泛化能力。
+7. **剪枝**：通过限制树的深度或节点数量来防止过拟合的技术。
+8. **随机森林**：决策树的集成，通过自助采样和特征随机选择增加多样性，降低方差。
+9. **Bootstrap 样本大小**：控制每棵树使用的样本数，影响多样性和性能的权衡。
+
+### 自测题
+
+<QuestionFamily familyId="qf_quiz_001" />
+<QuestionFamily familyId="qf_quiz_002" />
+<QuestionFamily familyId="qf_quiz_003" />
+<QuestionFamily familyId="qf_quiz_gini_def" />
+<QuestionFamily familyId="qf_quiz_gini_interpret" />
+<QuestionFamily familyId="qf_quiz_ig_definition" />
+<QuestionFamily familyId="qf_quiz_ig_maximize" />
+<QuestionFamily familyId="qf_quiz_entropy_interpretation" />
+<QuestionFamily familyId="qf_quiz_entropy_calc" />
+<QuestionFamily familyId="qf_quiz_class_error_usage" />
+<QuestionFamily familyId="qf_quiz_class_error_calc" />
+<QuestionFamily familyId="qf_quiz_overfitting_symptom" />
+<QuestionFamily familyId="qf_quiz_pruning_choice" />
+
+### 主动回忆
+
+<QuestionFamily familyId="qf_flash_001" />
+<QuestionFamily familyId="qf_flash_002" />
+<QuestionFamily familyId="qf_flash_gini_def" />
+<QuestionFamily familyId="qf_flash_gini_formula" />
+<QuestionFamily familyId="qf_flash_gini_interpret" />
+<QuestionFamily familyId="qf_flash_ig_definition" />
+<QuestionFamily familyId="qf_flash_ig_formula" />
+<QuestionFamily familyId="qf_flash_ig_weighted" />
+<QuestionFamily familyId="qf_flash_ig_maximize" />
+<QuestionFamily familyId="qf_flash_entropy_formula" />
+<QuestionFamily familyId="qf_flash_entropy_calc" />
+<QuestionFamily familyId="qf_flash_class_error_def" />
+<QuestionFamily familyId="qf_flash_class_error_calc" />
+<QuestionFamily familyId="qf_flash_overfitting_def" />
+<QuestionFamily familyId="qf_flash_pruning_methods" />
+<QuestionFamily familyId="qf_flash_rf_def" />
+<QuestionFamily familyId="qf_flash_voting" />
+<QuestionFamily familyId="qf_flash_bootstrap" />
+<QuestionFamily familyId="qf_flash_feature_sel" />
+<QuestionFamily familyId="qf_flash_max_features" />
+<QuestionFamily familyId="qf_flash_variance" />
+<QuestionFamily familyId="qf_flash_step6_bootstrap_impact" />
+
+### 深入理解
+
+<QuestionFamily familyId="qf_long_001" />
+<QuestionFamily familyId="qf_long_gini_calc" />
+<QuestionFamily familyId="qf_long_ig_calculation" />
+<QuestionFamily familyId="qf_long_compare_measures" />
+<QuestionFamily familyId="qf_long_pruning_effect" />
+<QuestionFamily familyId="qf_long_rf_process" />
+<QuestionFamily familyId="qf_long_step6_bootstrap_explain" />

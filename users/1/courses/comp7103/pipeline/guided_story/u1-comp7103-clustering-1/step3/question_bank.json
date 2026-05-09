@@ -1,0 +1,367 @@
+{
+  "chapter_id": "lecture-05-clustering-1",
+  "course_id": "user-1-comp7103",
+  "coverage_map": [
+    {
+      "coverage_tag": "k_means_algorithm",
+      "covered_by": [
+        "qf_flash_kmeans_algorithm",
+        "qf_quiz_kmeans_steps",
+        "qf_long_kmeans_iteration"
+      ],
+      "description": "K-means 算法的基本流程：选择初始质心、分配点、更新质心、迭代至收敛"
+    },
+    {
+      "coverage_tag": "centroid_definition",
+      "covered_by": [
+        "qf_flash_centroid_def",
+        "qf_quiz_centroid_update"
+      ],
+      "description": "质心的定义：簇内所有点的平均值，作为簇的代表点"
+    },
+    {
+      "coverage_tag": "k_means_partitional",
+      "covered_by": [
+        "qf_flash_kmeans_partitional"
+      ],
+      "description": "K-means 是一种划分式聚类算法，每个对象只属于一个簇"
+    },
+    {
+      "coverage_tag": "k_means_convergence",
+      "covered_by": [
+        "qf_flash_kmeans_convergence"
+      ],
+      "description": "K-means 迭代直到质心不再变化时收敛"
+    },
+    {
+      "coverage_tag": "k_means_manual_simulation",
+      "covered_by": [
+        "qf_long_kmeans_iteration"
+      ],
+      "description": "手动模拟 K-means 一次迭代：分配点与更新质心"
+    }
+  ],
+  "flashcard_families": [
+    {
+      "concept_key": "k_means_algorithm",
+      "coverage_tags": [
+        "k_means_algorithm"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_kmeans_algorithm",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确回忆 K-means 算法的核心步骤及其顺序。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了 K-means 算法的迭代流程：分配点与更新质心交替进行直到收敛。",
+      "question_type": "short_answer",
+      "retrieval_focus": "K-means 算法中两个核心步骤的名称及其执行顺序。",
+      "term_refs": [
+        {
+          "display": "K-means",
+          "en": "K-means"
+        },
+        {
+          "display": "质心",
+          "en": "centroid"
+        }
+      ],
+      "variants": [
+        {
+          "back": "第一步：将每个点分配给最近的质心；第二步：重新计算每个簇的质心（簇内所有点的平均值）。",
+          "estimated_seconds": 10,
+          "explanation": "这两个步骤交替执行：先根据当前质心分配点，再根据分配结果更新质心。",
+          "front": "K-means 算法在每次迭代中重复哪两个核心步骤？",
+          "question_id": "q_flash_kmeans_algorithm_v1"
+        },
+        {
+          "back": "当质心不再发生变化（即收敛）时停止。",
+          "estimated_seconds": 8,
+          "explanation": "质心稳定意味着分配不再改变，算法达到局部最优。",
+          "front": "K-means 算法何时停止迭代？",
+          "question_id": "q_flash_kmeans_algorithm_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "centroid_definition",
+      "coverage_tags": [
+        "centroid_definition"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_centroid_def",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确说出质心的定义及其计算方法。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了质心是簇内所有点的平均值这一核心概念。",
+      "question_type": "short_answer",
+      "retrieval_focus": "质心的数学定义：簇内所有点的平均值。",
+      "term_refs": [
+        {
+          "display": "质心",
+          "en": "centroid"
+        }
+      ],
+      "variants": [
+        {
+          "back": "计算该簇内所有数据点的平均值（均值）。",
+          "estimated_seconds": 6,
+          "explanation": "质心是簇内所有点在每个维度上的平均值，作为该簇的代表点。",
+          "front": "在 K-means 中，一个簇的质心是如何计算的？",
+          "question_id": "q_flash_centroid_def_v1"
+        },
+        {
+          "back": "质心（centroid），即簇内所有点的平均值。",
+          "estimated_seconds": 5,
+          "explanation": "质心是簇的几何中心，用于衡量点到簇的距离。",
+          "front": "K-means 使用什么作为每个簇的代表点？",
+          "question_id": "q_flash_centroid_def_v2"
+        }
+      ]
+    },
+    {
+      "concept_key": "k_means_partitional",
+      "coverage_tags": [
+        "k_means_partitional"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_kmeans_partitional",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能识别 K-means 属于划分式聚类，并理解其含义。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了 K-means 是划分式聚类，每个点只属于一个簇。",
+      "question_type": "short_answer",
+      "retrieval_focus": "K-means 的聚类风格：划分式（非重叠）。",
+      "term_refs": [
+        {
+          "display": "划分式聚类",
+          "en": "partitional clustering"
+        }
+      ],
+      "variants": [
+        {
+          "back": "划分式聚类（partitional clustering），每个数据点只属于一个簇，簇之间不重叠。",
+          "estimated_seconds": 8,
+          "explanation": "划分式聚类将数据分成互不重叠的子集，K-means 是其中最经典的算法。",
+          "front": "K-means 属于哪种聚类风格？",
+          "question_id": "q_flash_kmeans_partitional_v1"
+        }
+      ]
+    },
+    {
+      "concept_key": "k_means_convergence",
+      "coverage_tags": [
+        "k_means_convergence"
+      ],
+      "difficulty": "easy",
+      "family_id": "qf_flash_kmeans_convergence",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能准确描述 K-means 收敛的条件。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了 K-means 收敛的判断标准：质心不再变化。",
+      "question_type": "short_answer",
+      "retrieval_focus": "K-means 收敛的判定条件。",
+      "term_refs": [
+        {
+          "display": "收敛",
+          "en": "convergence"
+        }
+      ],
+      "variants": [
+        {
+          "back": "质心不再发生变化。",
+          "estimated_seconds": 6,
+          "explanation": "当质心稳定后，点的分配也不再改变，算法达到局部最优解。",
+          "front": "K-means 算法收敛的标志是什么？",
+          "question_id": "q_flash_kmeans_convergence_v1"
+        }
+      ]
+    }
+  ],
+  "lesson_id": "u1-comp7103-clustering-1",
+  "longform_families": [
+    {
+      "concept_key": "k_means_algorithm",
+      "coverage_tags": [
+        "k_means_algorithm",
+        "k_means_manual_simulation"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_long_kmeans_iteration",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能手动模拟 K-means 的一次完整迭代，包括分配点和更新质心。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能独立执行 K-means 的一次迭代：计算点到质心的距离进行分配，再计算新质心的坐标。",
+      "question_type": "worked_example",
+      "term_refs": [
+        {
+          "display": "K-means",
+          "en": "K-means"
+        },
+        {
+          "display": "质心",
+          "en": "centroid"
+        }
+      ],
+      "variants": [
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "分配结果：",
+            "新质心坐标："
+          ],
+          "question_id": "q_long_kmeans_iteration_v1",
+          "reference_answer": [
+            "分配结果：簇1（C1）包含 A(0,0) 和 B(2,0)；簇2（C2）包含 C(4,4) 和 D(5,4)。",
+            "新质心：簇1 的质心 = ((0+2)/2, (0+0)/2) = (1, 0)；簇2 的质心 = ((4+5)/2, (4+4)/2) = (4.5, 4)。"
+          ],
+          "rubric_points": [
+            "正确计算每个点到两个质心的距离并做出分配",
+            "正确计算每个簇内所有点的平均值作为新质心"
+          ],
+          "stem": "给定以下 4 个数据点：A(0,0), B(2,0), C(4,4), D(5,4)。初始质心选为：C1 = A(0,0), C2 = C(4,4)。请手动执行 K-means 的一次完整迭代，并回答：\n\n(1) 第一步分配：每个点应分配给哪个质心？写出每个点所属的簇。\n(2) 第二步更新：重新计算每个簇的新质心坐标。"
+        },
+        {
+          "estimated_seconds": 90,
+          "prompt_blocks": [
+            "分配结果：",
+            "新质心坐标："
+          ],
+          "question_id": "q_long_kmeans_iteration_v2",
+          "reference_answer": [
+            "分配结果：簇1（C1）包含 A(0,1) 和 B(1,0)；簇2（C2）包含 C(5,6) 和 D(6,5)。",
+            "新质心：簇1 的质心 = ((0+1)/2, (1+0)/2) = (0.5, 0.5)；簇2 的质心 = ((5+6)/2, (6+5)/2) = (5.5, 5.5)。"
+          ],
+          "rubric_points": [
+            "正确计算每个点到两个质心的距离并做出分配",
+            "正确计算每个簇内所有点的平均值作为新质心"
+          ],
+          "stem": "给定以下 4 个数据点：A(0,1), B(1,0), C(5,6), D(6,5)。初始质心选为：C1 = A(0,1), C2 = D(6,5)。请手动执行 K-means 的一次完整迭代，并回答：\n\n(1) 第一步分配：每个点应分配给哪个质心？写出每个点所属的簇。\n(2) 第二步更新：重新计算每个簇的新质心坐标。"
+        }
+      ]
+    }
+  ],
+  "quiz_families": [
+    {
+      "concept_key": "k_means_algorithm",
+      "coverage_tags": [
+        "k_means_algorithm"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_kmeans_steps",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确识别 K-means 算法的步骤顺序和关键操作。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明能区分 K-means 中分配点与更新质心的正确操作，并能识别算法前提条件。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "K-means",
+          "en": "K-means"
+        },
+        {
+          "display": "质心",
+          "en": "centroid"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 20,
+          "explanation": "K-means 的正确顺序是：先根据当前质心分配点，再根据分配结果更新质心。选项 A 顺序颠倒，选项 C 是层次聚类的操作，选项 D 不是 K-means 的步骤。",
+          "options": [
+            "先随机更新质心，再将点分配给最近的质心",
+            "先将每个点分配给最近的质心，再重新计算每个簇的质心",
+            "先合并最近的簇，再重新计算质心",
+            "先计算所有点的全局平均值，再分配点"
+          ],
+          "question_id": "q_quiz_kmeans_steps_v1",
+          "stem": "在 K-means 算法中，以下哪个操作是正确的？"
+        },
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "K-means 要求用户预先指定簇的数量 k。初始质心可以随机选择，距离度量和迭代次数通常有默认值，但 k 是必须由用户提供的。",
+          "options": [
+            "距离度量方式",
+            "簇的数量 k",
+            "最大迭代次数",
+            "初始质心的位置"
+          ],
+          "question_id": "q_quiz_kmeans_steps_v2",
+          "stem": "使用 K-means 算法之前，用户必须指定哪个参数？"
+        }
+      ]
+    },
+    {
+      "concept_key": "centroid_definition",
+      "coverage_tags": [
+        "centroid_definition"
+      ],
+      "difficulty": "medium",
+      "family_id": "qf_quiz_centroid_update",
+      "is_meta_about_course_or_material": false,
+      "learning_goal": "学生能在测验情境下正确识别质心的更新方式。",
+      "linked_steps": [
+        "step3"
+      ],
+      "practice_target": "学生答对后证明掌握了质心是簇内所有点的平均值这一核心概念，并能区分其他可能的代表点选择方式。",
+      "question_type": "single_choice",
+      "term_refs": [
+        {
+          "display": "质心",
+          "en": "centroid"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "estimated_seconds": 15,
+          "explanation": "K-means 将质心更新为簇内所有点的均值（平均值）。选项 A 是随机选择，选项 C 是 K-medoids 的思路，选项 D 不是 K-means 的标准做法。",
+          "options": [
+            "随机选择簇中的一个点作为新质心",
+            "计算簇内所有点的平均值作为新质心",
+            "选择簇中距离其他点最远的点作为新质心",
+            "计算簇内所有点的中位数作为新质心"
+          ],
+          "question_id": "q_quiz_centroid_update_v1",
+          "stem": "K-means 算法中，质心是如何更新的？"
+        },
+        {
+          "answer": 0,
+          "estimated_seconds": 25,
+          "explanation": "质心 = ((0+2+1)/3, (0+0+3)/3) = (3/3, 3/3) = (1, 1)。",
+          "options": [
+            "(1, 1)",
+            "(1, 1.5)",
+            "(1.5, 1)",
+            "(3, 3)"
+          ],
+          "question_id": "q_quiz_centroid_update_v2",
+          "stem": "假设一个簇包含三个点：A(0,0), B(2,0), C(1,3)。该簇的质心坐标是多少？"
+        }
+      ]
+    }
+  ],
+  "sequence_id": "step3",
+  "source": {
+    "coverage_checklist": "input coverage checklist",
+    "guided_story_manifest": "pipeline/3-guided_story/manifest.json",
+    "lesson_map": "input lesson map",
+    "plain_text": "pipeline/1-plain/u1-comp7103-clustering-1/plain.txt",
+    "related": [],
+    "source_outline": "input source outline"
+  },
+  "target_language": "zh-CN"
+}

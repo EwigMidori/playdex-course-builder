@@ -1,0 +1,88 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-introduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s037",
+      "introduced_terms": [],
+      "lines": [
+        "没有标签，计算机能学到什么？",
+        "它可以发现数据中的结构。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s038",
+      "introduced_terms": [],
+      "lines": [
+        "比如，你有一堆新闻文章，但没有分类标签。",
+        "计算机可以把相似的文章自动归为一组。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "clustering"
+      ],
+      "id": "s039",
+      "introduced_terms": [
+        "clustering"
+      ],
+      "lines": [
+        "这个任务叫 <term id=\"clustering\">聚类</term>。",
+        "它把相似的数据点自动归为一组。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "聚类是将相似数据点自动归为一组，适合没有标签的情况。",
+        "kind": "single_choice",
+        "options": [
+          "预测明天的气温",
+          "判断邮件是否垃圾",
+          "将新闻文章按主题自动分组",
+          "识别图片中的猫"
+        ],
+        "prompt": "以下哪个任务最适合用聚类解决？"
+      },
+      "focus_terms": [],
+      "id": "s040",
+      "introduced_terms": [],
+      "lines": [
+        "以下哪个任务最适合用聚类解决？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s041",
+      "introduced_terms": [],
+      "lines": [
+        "聚类是无监督学习的典型代表。",
+        "但现实中的情况往往更复杂。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step3c",
+  "source": {
+    "plain_text": "Clustering.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "clustering": {
+      "aliases": [
+        "clustering"
+      ],
+      "display": "聚类",
+      "gloss": "将数据点分组，使得组内点相似，组间点不同。"
+    }
+  }
+}

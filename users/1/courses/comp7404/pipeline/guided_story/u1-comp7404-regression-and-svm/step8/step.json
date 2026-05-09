@@ -1,0 +1,166 @@
+{
+  "chapter_id": "lecture-02-regression-and-svm",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-regression-and-svm",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s053",
+      "introduced_terms": [],
+      "lines": [
+        "即使使用了核技巧，数据也可能不是完全可分的。",
+        "比如，数据中可能存在噪声或重叠。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "想象一个场景：你的数据集中有一些噪声点。",
+        "你是选择严格分类所有点（包括噪声），还是允许一些点被分错，以获得更宽的间隔？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s054b",
+      "introduced_terms": [],
+      "lines": [
+        "更具体一点：20 个蓝点和 20 个橙点本来几乎线性可分，但有 2 个离群点跑到了对方那一侧。",
+        "如果你坚持把这 2 个异常点也分对，边界就会被它们拽得很近，正常样本反而更容易被新噪声干扰。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "这 2 个离群点很可能只是噪声。为了它们牺牲整条边界的间隔，通常得不偿失；允许少量错误反而更容易得到泛化更好的模型。",
+        "kind": "decision_making_scenario",
+        "options": [
+          "严格分类所有点，即使间隔很小",
+          "允许一些点被分错，以获得更宽的间隔",
+          "不确定"
+        ],
+        "prompt": "给定这个“38 个正常点 + 2 个离群点”的数据集，如果你选择“严格分类所有点（包括离群点）”，边界会被迫贴近大量正常样本；如果允许少量点被分错，就能得到更宽的间隔。你会怎么选？"
+      },
+      "focus_terms": [],
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [
+        "slack_variable",
+        "c_parameter"
+      ],
+      "id": "s056",
+      "introduced_terms": [
+        "slack_variable",
+        "c_parameter"
+      ],
+      "lines": [
+        "SVM通过引入 <term id=\"slack_variable\">松弛变量</term> 来处理这种情况。",
+        "它允许一些数据点被错误分类或落在间隔之内。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s057",
+      "introduced_terms": [],
+      "lines": [
+        "同时，我们引入一个参数 \\(C\\) 来控制对错误的惩罚力度。",
+        "C越大，越严格惩罚分类错误，倾向于更小的间隔；C越小，越允许错误，倾向于更宽的间隔。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "C越大，对分类错误的惩罚越重，模型会尽量把所有训练样本分对。",
+        "kind": "single_choice",
+        "options": [
+          "变大",
+          "变小",
+          "不变",
+          "不确定"
+        ],
+        "prompt": "如果题目说“尽量别把训练样本分错”，你会想到C应该变大还是变小？"
+      },
+      "focus_terms": [],
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 0,
+        "explanation": "C值增大意味着对分类错误的惩罚更重，因此模型会倾向于更小的间隔以减少训练错误。",
+        "kind": "single_choice",
+        "options": [
+          "间隔变小，训练错误减少",
+          "间隔变大，训练错误增加",
+          "间隔不变，训练错误不变",
+          "间隔变小，训练错误增加"
+        ],
+        "prompt": "当 C 值从 1 增加到 100 时，以下哪个变化最可能发生？"
+      },
+      "focus_terms": [],
+      "id": "s059",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "当数据中存在大量噪声时，为了获得更好的泛化能力，我们通常希望允许一些错误，因此C应该设置得较小。",
+        "kind": "single_choice",
+        "options": [
+          "较大",
+          "较小",
+          "不变",
+          "不确定"
+        ],
+        "prompt": "如果数据中存在大量噪声，C参数应该设置较大还是较小？"
+      },
+      "focus_terms": [],
+      "id": "s060",
+      "introduced_terms": [],
+      "lines": [],
+      "type": "exercise"
+    }
+  ],
+  "sequence_id": "step8",
+  "source": {
+    "plain_text": "The previous part focused on problems that were linearly separable. In this lecture we will see how SVMs can be modified to handle datasets that are not linearly separable. The solution for the non-separable case is to introduce slack variables xi_i that relax the constraints of the canonical hyperplane equation y_i (w^T x_i + b) >= 1 - xi_i, for all i = 1, ..., N. The slack variables measure deviation from the ideal condition. For 0 <= xi_i <= 1, the data point falls on the right side of the separating hyperplane but within the region of maximum margin. For xi_i > 1, the data point falls on the wrong side of the separating hyperplane.",
+    "related": [
+      "Slack Variable",
+      "C Parameter"
+    ]
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "c_parameter": {
+      "aliases": [
+        "C",
+        "Penalty Parameter"
+      ],
+      "display": "C参数",
+      "gloss": "控制SVM对分类错误的惩罚力度。C越大，惩罚越重，间隔越小；C越小，惩罚越轻，间隔越大。"
+    },
+    "slack_variable": {
+      "aliases": [
+        "Slack Variable",
+        "xi"
+      ],
+      "display": "松弛变量",
+      "gloss": "在SVM中引入的变量，允许一些数据点被错误分类或落在间隔之内，以处理线性不可分的情况。"
+    }
+  }
+}

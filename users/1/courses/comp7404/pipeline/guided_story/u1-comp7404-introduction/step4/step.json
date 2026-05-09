@@ -1,0 +1,188 @@
+{
+  "chapter_id": "lecture-00-introduction",
+  "course_id": "user-1-comp7404",
+  "lesson_id": "u1-comp7404-introduction",
+  "mode": "guided_story",
+  "screens": [
+    {
+      "focus_terms": [],
+      "id": "s049",
+      "introduced_terms": [],
+      "lines": [
+        "假设我们有一份税务数据，想预测一个人是否会逃税。",
+        "每条记录都有几个属性：退税情况、婚姻状况、收入。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s050",
+      "introduced_terms": [],
+      "lines": [
+        "我们有了数据和标签，直接训练模型就行了吗？",
+        "等等，怎么知道模型学得好不好？"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "training_set"
+      ],
+      "id": "s051",
+      "introduced_terms": [
+        "training_set"
+      ],
+      "lines": [
+        "我们需要一部分数据用来训练模型，",
+        "这部分数据叫 <term id=\"training_set\">训练集</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "test_set"
+      ],
+      "id": "s052",
+      "introduced_terms": [
+        "test_set"
+      ],
+      "lines": [
+        "还需要另一部分数据用来检验模型，",
+        "这部分数据叫 <term id=\"test_set\">测试集</term>。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [
+        "classifier"
+      ],
+      "id": "s053",
+      "introduced_terms": [
+        "classifier"
+      ],
+      "lines": [
+        "训练完成后，我们就得到了一个 <term id=\"classifier\">分类器</term>。",
+        "它就是一个从特征到类别的映射函数。"
+      ],
+      "type": "narration"
+    },
+    {
+      "focus_terms": [],
+      "id": "s054",
+      "introduced_terms": [],
+      "lines": [
+        "如果分类器在测试集上表现很好，",
+        "就说明它学到了真正的规律，而不是死记硬背。"
+      ],
+      "type": "narration"
+    },
+    {
+      "exercise": {
+        "answer": 1,
+        "explanation": "测试集用于模拟模型在真实世界中的表现，所以模型在训练时不能接触它。",
+        "kind": "single_choice",
+        "options": [
+          "训练集更大",
+          "测试集在训练过程中从未被模型看到",
+          "测试集包含更多特征",
+          "训练集没有标签"
+        ],
+        "prompt": "训练集和测试集的主要区别是什么？"
+      },
+      "focus_terms": [],
+      "id": "s055",
+      "introduced_terms": [],
+      "lines": [
+        "训练集和测试集的主要区别是什么？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "expected_fields": [
+          "training_set",
+          "test_set",
+          "reasoning"
+        ],
+        "explanation": "已标记的1000条记录可以作为训练集，因为需要标签来训练模型。已标记的记录也可以作为测试集（但通常需要分开，比如800条训练，200条测试），未标记的记录不能作为测试集，因为测试集需要知道真实标签才能评估模型。",
+        "kind": "scenario_derivation",
+        "prompt": "给定一个数据集，其中包含1000条已标记的税务记录和500条未标记的记录。请判断：哪部分可以作为训练集？哪部分可以作为测试集？并说明理由。",
+        "sample_answer": {
+          "reasoning": "训练集需要标签来学习规律，所以已标记的记录可以作为训练集。测试集也需要标签来评估模型，所以已标记的记录也可以作为测试集（但必须与训练集分开）。未标记的记录无法评估模型，所以不能作为测试集。",
+          "test_set": "已标记记录中的一部分（如200条）",
+          "training_set": "已标记记录中的一部分（如800条）"
+        }
+      },
+      "focus_terms": [],
+      "id": "s056",
+      "introduced_terms": [],
+      "lines": [
+        "给定一个数据集，其中包含1000条已标记的税务记录和500条未标记的记录。请判断：哪部分可以作为训练集？哪部分可以作为测试集？并说明理由。"
+      ],
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": 2,
+        "explanation": "测试集必须包含真实标签才能评估模型，未标记的记录无法用作测试集。",
+        "kind": "single_choice",
+        "options": [
+          "所有记录都可以作为测试集",
+          "未标记记录可以作为测试集",
+          "已标记记录的一部分可以作为测试集",
+          "训练集和测试集可以重叠"
+        ],
+        "prompt": "给定1000条已标记记录和500条未标记记录，以下哪个说法正确？"
+      },
+      "focus_terms": [],
+      "id": "s057",
+      "introduced_terms": [],
+      "lines": [
+        "给定1000条已标记记录和500条未标记记录，以下哪个说法正确？"
+      ],
+      "type": "exercise"
+    },
+    {
+      "focus_terms": [],
+      "id": "s058",
+      "introduced_terms": [],
+      "lines": [
+        "分类是监督学习的核心任务之一。",
+        "从人脸识别到垃圾邮件过滤，它无处不在。"
+      ],
+      "type": "narration"
+    }
+  ],
+  "sequence_id": "step4",
+  "source": {
+    "plain_text": "Classification example: predicting 'Cheat' based on 'Refund', 'Marital Status', 'Taxable Income'.",
+    "related": []
+  },
+  "target_language": "zh-CN",
+  "term_catalog": {
+    "classifier": {
+      "aliases": [
+        "classifier",
+        "classification model"
+      ],
+      "display": "分类器",
+      "gloss": "一个将输入数据映射到类别标签的模型。"
+    },
+    "test_set": {
+      "aliases": [
+        "test set",
+        "test data"
+      ],
+      "display": "测试集",
+      "gloss": "用于评估模型性能的未见过的数据。"
+    },
+    "training_set": {
+      "aliases": [
+        "training set",
+        "training data"
+      ],
+      "display": "训练集",
+      "gloss": "用于训练模型的数据集，包含输入和对应的标签。"
+    }
+  }
+}

@@ -2,5 +2,8 @@
 /space-elevator/
 /target/
 mineru_token.txt
+research/pipeline/meta/
+research/pipeline/3-guided_story/**/candidate_question_bank.json
+research/pipeline/3-guided_story/**/question_bank.rejected.json
 users/*/courses/*/pipeline/meta/
 users/*/courses/*/pipeline/plain/

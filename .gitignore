@@ -1,3 +1,6 @@
 /.tmp/
 /space-elevator/
 /target/
+mineru_token.txt
+users/*/courses/*/pipeline/meta/
+users/*/courses/*/pipeline/plain/

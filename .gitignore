@@ -1,9 +1,17 @@
 /.tmp/
 /space-elevator/
 /target/
+docs/.DS_Store
 mineru_token.txt
+research/abtests/
+research/docs/
 research/pipeline/meta/
 research/pipeline/3-guided_story/**/candidate_question_bank.json
 research/pipeline/3-guided_story/**/question_bank.rejected.json
+research/scripts/__pycache__/
 users/*/courses/*/pipeline/meta/
 users/*/courses/*/pipeline/plain/
+users/*/courses/*/pipeline/guided_story/**
+!users/*/courses/*/pipeline/guided_story/.gitkeep
+users/*/courses/*/pipeline/textbook/**
+!users/*/courses/*/pipeline/textbook/.gitkeep

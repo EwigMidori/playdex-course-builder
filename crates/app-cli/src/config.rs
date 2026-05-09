@@ -230,7 +230,7 @@ impl LlmConfig {
                 max_tokens: ConfigEnvResolver::resolve_u64_with_default_from_keys(
                     env,
                     &[DEEPSEEK_MAX_TOKENS, COURSEGEN_LLM_MAX_TOKENS],
-                    8192,
+                    393_216,
                 )?,
                 timeout_seconds: ConfigEnvResolver::resolve_u64_with_default_from_keys(
                     env,

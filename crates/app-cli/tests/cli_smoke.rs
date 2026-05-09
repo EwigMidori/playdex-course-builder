@@ -839,6 +839,35 @@ fn score_relevance_uses_deepseek_provider_defaults_and_api_keys_file() {
 }
 
 #[test]
+fn shipped_guided_story_contract_prompts_do_not_require_outline_only_fields_in_final_output() {
+    let repo_root = TestSupport::repo_root();
+    let reviewer = TestSupport::read_text(
+        repo_root.join("research/prompts/guided_story_contract_reviewer_user.md"),
+    );
+    let validator =
+        TestSupport::read_text(repo_root.join("research/prompts/guided_story_validator_user.md"));
+
+    assert!(
+        reviewer.contains(
+            "`execution_contract` 只能约束最终 `guided_story` step schema 能承载的正文行为"
+        ),
+        "reviewer prompt should forbid contract rules that require outline-only fields"
+    );
+    assert!(
+        reviewer.contains("不要要求最终正文显式输出 outline 辅助字段名"),
+        "reviewer prompt should explicitly ban outline-only field requirements"
+    );
+    assert!(
+        validator.contains("不要要求最终正文显式输出 outline / contract 的辅助字段名"),
+        "validator prompt should explicitly ban outline-only field checks"
+    );
+    assert!(
+        validator.contains("不要因为正文没有显式出现“考试提示”标签或 `exam_hooks` 字段名就判失败"),
+        "validator prompt should judge exam support by behavior, not field names"
+    );
+}
+
+#[test]
 fn run_writes_prompt_audit_outputs_and_validates_with_local_llm_stub() {
     let repo = TempRepo::new();
     repo.seed_prompts();

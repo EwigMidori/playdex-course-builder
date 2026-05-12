@@ -160,7 +160,7 @@
       "exercise": {
         "answer": 1,
         "explanation": "Gini 不纯度越大，说明节点越混乱；越接近 0，节点才越纯。",
-        "kind": "true_false",
+        "kind": "single_choice",
         "options": [
           "正确",
           "错误"

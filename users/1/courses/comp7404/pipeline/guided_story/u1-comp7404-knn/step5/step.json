@@ -27,19 +27,9 @@
     },
     {
       "exercise": {
-        "expected_fields": [
-          "distance_range",
-          "observation",
-          "conclusion"
-        ],
         "explanation": "在高维空间中，所有点之间的距离趋于相等，导致最近邻和最远邻的区别消失，kNN失效。",
-        "kind": "scenario_derivation",
-        "prompt": "假设你随机生成了100个10000维的向量，并计算了它们两两之间的欧氏距离。请回答：这些距离的最大值和最小值大约相差多少？这个现象说明了什么？",
-        "sample_answer": {
-          "conclusion": "高维空间中距离度量失效，kNN无法有效区分近邻和远邻。",
-          "distance_range": "最大值和最小值相差很小，例如最大值约200，最小值约180，相对差异不到10%。",
-          "observation": "所有距离都集中在某个范围内，没有明显的近邻和远邻之分。"
-        }
+        "kind": "short_reflection",
+        "prompt": "假设你随机生成了100个10000维的向量，并计算了它们两两之间的欧氏距离。请回答：这些距离的最大值和最小值大约相差多少？这个现象说明了什么？"
       },
       "focus_terms": [],
       "id": "s030",

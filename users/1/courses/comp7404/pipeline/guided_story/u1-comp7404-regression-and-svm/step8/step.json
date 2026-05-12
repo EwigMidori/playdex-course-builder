@@ -38,7 +38,7 @@
       "exercise": {
         "answer": 1,
         "explanation": "这 2 个离群点很可能只是噪声。为了它们牺牲整条边界的间隔，通常得不偿失；允许少量错误反而更容易得到泛化更好的模型。",
-        "kind": "decision_making_scenario",
+        "kind": "single_choice",
         "options": [
           "严格分类所有点，即使间隔很小",
           "允许一些点被分错，以获得更宽的间隔",

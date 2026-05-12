@@ -28,7 +28,7 @@
       "exercise": {
         "answer": 3,
         "explanation": "没有衡量标准时，我们无法判断哪条线更好。我们需要一个标准来量化“好坏”。",
-        "kind": "visual_selection",
+        "kind": "single_choice",
         "options": [
           "直线A",
           "直线B",

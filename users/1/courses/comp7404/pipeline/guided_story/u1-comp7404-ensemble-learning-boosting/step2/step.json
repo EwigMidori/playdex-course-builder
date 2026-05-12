@@ -212,20 +212,9 @@
     },
     {
       "exercise": {
-        "answer": "类别2",
-        "expected_fields": [
-          "category_1_weighted_vote",
-          "category_2_weighted_vote",
-          "final_prediction"
-        ],
         "explanation": "类别1的加权票数 = 0.1*0.5 + 0.8*0.3 + 0.3*0.2 = 0.05 + 0.24 + 0.06 = 0.35；类别2的加权票数 = 0.9*0.5 + 0.2*0.3 + 0.7*0.2 = 0.45 + 0.06 + 0.14 = 0.65。类别2的加权票数更高，所以最终预测为类别2。",
-        "kind": "scenario_derivation",
-        "prompt": "三个分类器对某样本的预测概率分别为：C1: [0.1, 0.9], C2: [0.8, 0.2], C3: [0.3, 0.7]。权重分别为 w1=0.5, w2=0.3, w3=0.2。请计算每个类别的加权概率，并给出最终预测结果。",
-        "sample_answer": {
-          "category_1_weighted_vote": 0.35,
-          "category_2_weighted_vote": 0.65,
-          "final_prediction": "类别2"
-        }
+        "kind": "short_reflection",
+        "prompt": "三个分类器对某样本的预测概率分别为：C1: [0.1, 0.9], C2: [0.8, 0.2], C3: [0.3, 0.7]。权重分别为 w1=0.5, w2=0.3, w3=0.2。请计算每个类别的加权概率，并给出最终预测结果。"
       },
       "focus_terms": [
         "predict_proba"
@@ -239,20 +228,9 @@
     },
     {
       "exercise": {
-        "answer": 0.29,
-        "expected_fields": [
-          "category_0_weighted",
-          "category_1_weighted",
-          "final_prediction"
-        ],
         "explanation": "类别0的加权概率 = 0.2*0.4 + 0.6*0.3 + 0.1*0.3 = 0.08 + 0.18 + 0.03 = 0.29；类别1的加权概率 = 0.8*0.4 + 0.4*0.3 + 0.9*0.3 = 0.32 + 0.12 + 0.27 = 0.71。类别1的加权概率更高，所以最终预测为类别1。",
-        "kind": "calculation",
-        "prompt": "三个分类器对某样本的预测概率分别为：C1: [0.2, 0.8], C2: [0.6, 0.4], C3: [0.1, 0.9]。权重分别为 w1=0.4, w2=0.3, w3=0.3。请计算每个类别的加权概率，并给出最终预测结果。",
-        "sample_answer": {
-          "category_0_weighted": 0.29,
-          "category_1_weighted": 0.71,
-          "final_prediction": "类别1"
-        }
+        "kind": "short_reflection",
+        "prompt": "三个分类器对某样本的预测概率分别为：C1: [0.2, 0.8], C2: [0.6, 0.4], C3: [0.1, 0.9]。权重分别为 w1=0.4, w2=0.3, w3=0.3。请计算每个类别的加权概率，并给出最终预测结果。"
       },
       "focus_terms": [
         "predict_proba"

@@ -202,6 +202,26 @@ export function StoryOverlay({
     applyRuntimeAction({ type: "submit-exercise", nodeId: currentNode.id });
   }, [applyRuntimeAction, currentNode]);
 
+  const handleToggleChoice = React.useCallback(
+    (choiceIndex: number) => {
+      if (currentNode?.kind !== "exercise") {
+        return;
+      }
+      applyRuntimeAction({ type: "toggle-choice", nodeId: currentNode.id, choiceIndex });
+    },
+    [applyRuntimeAction, currentNode]
+  );
+
+  const handleSetOrder = React.useCallback(
+    (order: number[]) => {
+      if (currentNode?.kind !== "exercise") {
+        return;
+      }
+      applyRuntimeAction({ type: "set-order", nodeId: currentNode.id, order });
+    },
+    [applyRuntimeAction, currentNode]
+  );
+
   const handleNext = React.useCallback(() => {
     if (!currentNode) {
       return;
@@ -407,9 +427,12 @@ export function StoryOverlay({
                   <ExerciseRenderer
                     acceptedAnswers={exercise.acceptedAnswers}
                     answerIndex={exercise.answerIndex ?? Number.NaN}
+                    answerIndices={exercise.answerIndices}
+                    answerOrder={exercise.answerOrder}
                     answered={currentExerciseState.answered}
                     exercise={exercise}
                     exerciseContext={exerciseContext}
+                    onSetOrder={handleSetOrder}
                     onSelectAnswer={(index) => {
                       if (currentExerciseState.answered || currentNode.kind !== "exercise") {
                         return;
@@ -418,9 +441,12 @@ export function StoryOverlay({
                     }}
                     onSubmitTextAnswer={handleTextExerciseSubmit}
                     onTextAnswerChange={(value) => applyRuntimeAction({ type: "set-text-answer", nodeId: currentNode.id, value })}
+                    onToggleChoice={handleToggleChoice}
+                    orderedChoiceIndices={currentExerciseState.orderedChoiceIndices}
                     selectedAnswer={currentExerciseState.selectedAnswer}
+                    selectedAnswers={currentExerciseState.selectedAnswers}
                     textAnswer={currentExerciseState.textAnswer}
-                    textAnswerCorrect={currentExerciseState.textAnswerCorrect}
+                    answerCorrect={currentExerciseState.answerCorrect}
                     textSubmitted={currentExerciseState.textSubmitted}
                     unsupportedReason={unsupportedReason}
                   />

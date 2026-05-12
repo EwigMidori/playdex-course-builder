@@ -113,7 +113,7 @@
       "exercise": {
         "answer": 0,
         "explanation": "在大多数情况下，Gini 和熵的选择对最终树的结构影响不大，它们都倾向于选择相同的分裂。但在某些极端分布下，熵对纯度的变化更敏感。",
-        "kind": "multiple_choice",
+        "kind": "single_choice",
         "options": [
           "在大多数情况下，Gini 和熵选择的分裂非常相似",
           "Gini 总是比熵更敏感",

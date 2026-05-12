@@ -168,7 +168,7 @@
           1
         ],
         "explanation": "K-means 假设簇是球形的，对于长条形或大小差异很大的簇，效果可能很差。",
-        "kind": "multiple_choice",
+        "kind": "multi_select",
         "options": [
           "簇是球形的且大小相近",
           "簇是长条形的且大小差异很大",

@@ -66,21 +66,9 @@
     },
     {
       "exercise": {
-        "expected_fields": [
-          "distances",
-          "nearest_neighbors",
-          "voting_result",
-          "predicted_label"
-        ],
         "explanation": "通过计算欧氏距离，找到最近的3个邻居，然后根据邻居标签投票，得票最多的类别即为预测结果。",
-        "kind": "scenario_derivation",
-        "prompt": "给定训练样本：A(1,2) 标签“张三”，B(3,4) 标签“李四”，C(5,1) 标签“张三”，D(7,6) 标签“王五”，E(2,3) 标签“李四”。未知样本 xu 的坐标是 (4,3)。请计算 xu 到每个训练样本的欧氏距离，找出最近的 3 个邻居，并投票决定 xu 的类别。",
-        "sample_answer": {
-          "distances": "到A: sqrt((4-1)^2+(3-2)^2)=sqrt(9+1)=sqrt(10)≈3.16; 到B: sqrt((4-3)^2+(3-4)^2)=sqrt(1+1)=sqrt(2)≈1.41; 到C: sqrt((4-5)^2+(3-1)^2)=sqrt(1+4)=sqrt(5)≈2.24; 到D: sqrt((4-7)^2+(3-6)^2)=sqrt(9+9)=sqrt(18)≈4.24; 到E: sqrt((4-2)^2+(3-3)^2)=sqrt(4+0)=2",
-          "nearest_neighbors": "B(1.41), E(2.00), C(2.24)",
-          "predicted_label": "李四（2票对1票）",
-          "voting_result": "B:李四(1票), E:李四(1票), C:张三(1票)"
-        }
+        "kind": "short_reflection",
+        "prompt": "给定训练样本：A(1,2) 标签“张三”，B(3,4) 标签“李四”，C(5,1) 标签“张三”，D(7,6) 标签“王五”，E(2,3) 标签“李四”。未知样本 xu 的坐标是 (4,3)。请计算 xu 到每个训练样本的欧氏距离，找出最近的 3 个邻居，并投票决定 xu 的类别。"
       },
       "focus_terms": [
         "k_nearest_neighbor"

@@ -4,7 +4,7 @@ export function FillInBlank({
   answered,
   textAnswer,
   textSubmitted,
-  textAnswerCorrect,
+  answerCorrect,
   acceptedAnswers,
   onTextAnswerChange,
   onSubmitTextAnswer
@@ -33,8 +33,8 @@ export function FillInBlank({
         </div>
       </form>
       {answered ? (
-        <div className={`exercise-answer-status ${textAnswerCorrect === false ? "wrong" : "correct"}`}>
-          <strong>{textAnswerCorrect ? "Answer accepted." : "Answer submitted."}</strong>
+        <div className={`exercise-answer-status ${answerCorrect === false ? "wrong" : "correct"}`}>
+          <strong>{answerCorrect ? "Answer accepted." : "Answer submitted."}</strong>
           <p>Your answer: {textSubmitted ?? textAnswer}</p>
           {acceptedAnswers.length ? <p>Reference answer: {acceptedAnswers.join(" / ")}</p> : null}
         </div>

@@ -162,7 +162,7 @@
           1
         ],
         "explanation": "熵和纯度都是外部指标，需要真实标签才能计算。",
-        "kind": "multiple_choice",
+        "kind": "multi_select",
         "options": [
           "熵",
           "纯度",

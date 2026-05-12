@@ -28,7 +28,7 @@
       "exercise": {
         "answer": 1,
         "explanation": "远离边界的点不影响间隔，因此移除它们不会改变决策边界。只有支持向量（靠近边界的点）才决定边界。",
-        "kind": "boundary_impact_analysis",
+        "kind": "single_choice",
         "options": [
           "会改变",
           "不会改变",

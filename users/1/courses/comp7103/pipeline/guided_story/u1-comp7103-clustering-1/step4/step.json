@@ -72,20 +72,14 @@
     },
     {
       "exercise": {
-        "answer": 0,
-        "expected_fields": [
-          "sse_A",
-          "sse_B",
-          "better_result"
-        ],
+        "answer": 1,
         "explanation": "结果A的SSE = (0^2+0^2)+(1^2+0^2)+(0^2+0^2)+(1^2+0^2) = 2。结果B的SSE = (0^2+0^2)+(0^2+0^2)+(0^2+0^2)+(0^2+0^2) = 0。结果B的SSE更小，所以结果B更好。",
-        "kind": "calculation",
-        "prompt": "给定数据集：A(0,0), B(1,0), C(5,5), D(6,5)。结果A：簇1={A,B}, 簇2={C,D}，质心分别为(0.5,0)和(5.5,5)。结果B：簇1={A,B,C,D}，质心为(3,2.5)。哪个结果更好？",
-        "sample_answer": {
-          "better_result": "结果B",
-          "sse_A": 2,
-          "sse_B": 0
-        }
+        "kind": "single_choice",
+        "options": [
+          "结果A更好",
+          "结果B更好"
+        ],
+        "prompt": "给定数据集：A(0,0), B(1,0), C(5,5), D(6,5)。结果A：簇1={A,B}, 簇2={C,D}，质心分别为(0.5,0)和(5.5,5)。结果B：簇1={A,B,C,D}，质心为(3,2.5)。哪个结果更好？"
       },
       "focus_terms": [],
       "id": "s033",

@@ -26,13 +26,38 @@ function collectTermRefs(lines: string[], explicitRefs: string[] = []) {
   return [...refs];
 }
 
+function deriveAnswerOrder(rawExercise: Exercise | undefined) {
+  const answerOrder = rawExercise?.answer_order;
+  if (Array.isArray(answerOrder) && answerOrder.every((value) => Number.isInteger(value))) {
+    return answerOrder;
+  }
+
+  const items = rawExercise?.items ?? [];
+  const answers = rawExercise?.answers ?? [];
+  if (!items.length || !answers.length) {
+    return [];
+  }
+
+  return answers
+    .map((answer) => {
+      const trimmed = answer.trim();
+      const index = items.findIndex((item) => item === trimmed || item.startsWith(`${trimmed}.`) || item.startsWith(`${trimmed} `));
+      return index >= 0 ? index : null;
+    })
+    .filter((value): value is number => value !== null);
+}
+
 function normalizeExercise(rawExercise: Exercise | undefined, lines: string[]): NormalizedExercise {
+  const rawAnswer = rawExercise?.answer;
   return {
     kind: rawExercise?.kind ?? null,
     prompt: rawExercise?.prompt ?? lines[0] ?? null,
     options: rawExercise?.options ?? [],
+    items: rawExercise?.items ?? [],
     acceptedAnswers: rawExercise?.answers ?? [],
-    answerIndex: typeof rawExercise?.answer === "number" ? rawExercise.answer : null,
+    answerIndex: typeof rawAnswer === "number" ? rawAnswer : null,
+    answerIndices: Array.isArray(rawAnswer) ? rawAnswer.filter((value): value is number => Number.isInteger(value)) : [],
+    answerOrder: deriveAnswerOrder(rawExercise),
     explanation: rawExercise?.explanation ?? null,
     raw: rawExercise ?? {}
   };

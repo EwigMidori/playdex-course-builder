@@ -256,6 +256,37 @@ class GuidedStoryPlayCli:
             GuidedStoryPlayCli.print_exercise_feedback(exercise, is_correct, plain)
             return ExerciseResult(prompt=prompt, user_answer=raw or None, is_correct=is_correct)
 
+        if kind == "multi_select":
+            options = exercise.get("options") or []
+            labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            for idx, option in enumerate(options):
+                label = labels[idx] if idx < len(labels) else str(idx + 1)
+                print(f"  {label}. {option}")
+            raw = input("answer (comma-separated)> ").strip()
+            picked = GuidedStoryPlayCli.parse_multi_select_answer(raw, len(options))
+            answer = exercise.get("answer")
+            expected = answer if isinstance(answer, list) else []
+            normalized_picked = sorted(picked) if picked else []
+            normalized_expected = sorted(v for v in expected if isinstance(v, int))
+            is_correct = normalized_picked == normalized_expected if normalized_expected else None
+            GuidedStoryPlayCli.print_exercise_feedback(exercise, is_correct, plain)
+            return ExerciseResult(prompt=prompt, user_answer=raw or None, is_correct=is_correct)
+
+        if kind == "ordering":
+            items = exercise.get("items") or []
+            labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            for idx, item in enumerate(items):
+                label = labels[idx] if idx < len(labels) else str(idx + 1)
+                print(f"  {label}. {item}")
+            raw = input("order (comma-separated)> ").strip()
+            picked = GuidedStoryPlayCli.parse_multi_select_answer(raw, len(items))
+            answer_order = exercise.get("answer_order")
+            expected = answer_order if isinstance(answer_order, list) else []
+            normalized_expected = [v for v in expected if isinstance(v, int)]
+            is_correct = picked == normalized_expected if normalized_expected and picked else None
+            GuidedStoryPlayCli.print_exercise_feedback(exercise, is_correct, plain)
+            return ExerciseResult(prompt=prompt, user_answer=raw or None, is_correct=is_correct)
+
         if kind == "fill_in_blank":
             raw = input("answer> ").strip()
             answers = [GuidedStoryPlayCli.normalize_text(v) for v in exercise.get("answers") or []]
@@ -286,6 +317,22 @@ class GuidedStoryPlayCli:
             if 0 <= idx < option_count:
                 return idx
         return None
+
+
+    def parse_multi_select_answer(raw: str, option_count: int) -> list[int] | None:
+        if not raw:
+            return None
+
+        picks: list[int] = []
+        for token in raw.split(","):
+            token = token.strip()
+            if not token:
+                continue
+            idx = GuidedStoryPlayCli.parse_single_choice_answer(token, option_count)
+            if idx is None or idx in picks:
+                return None
+            picks.append(idx)
+        return picks if picks else None
 
 
     def normalize_text(value: str) -> str:

@@ -88,7 +88,7 @@
     },
     {
       "exercise": {
-        "answer": 0.63,
+        "answer": 0,
         "explanation": "对于有放回抽样，一个样本在 n 次抽取中至少被抽中一次的概率为 1 - (1 - 1/n)^n。当 n=7 时，概率约为 0.63。",
         "kind": "single_choice",
         "options": [
@@ -110,16 +110,12 @@
     },
     {
       "exercise": {
-        "answer": "约0.4096",
-        "expected_fields": [
-          "probability_exactly_once"
-        ],
         "explanation": "一个特定样本在bootstrap样本中恰好出现一次的概率为 C(5,1) * (1/5) * (4/5)^4 = 5 * 0.2 * 0.4096 = 0.4096。",
-        "kind": "scenario_derivation",
+        "kind": "fill_in_blank",
         "prompt": "假设原始数据集有 5 个样本。请计算一个特定样本在 bootstrap 样本中恰好出现一次的概率。",
-        "sample_answer": {
-          "probability_exactly_once": 0.4096
-        }
+        "answers": [
+          "约0.4096"
+        ]
       },
       "focus_terms": [
         "bootstrap_sample"
@@ -133,16 +129,12 @@
     },
     {
       "exercise": {
-        "answer": 0.651,
-        "expected_fields": [
-          "probability_at_least_once"
-        ],
         "explanation": "概率 = 1 - (1 - 1/10)^10 ≈ 1 - 0.9^10 ≈ 1 - 0.349 = 0.651。",
-        "kind": "calculation",
+        "kind": "fill_in_blank",
         "prompt": "假设原始数据集有 10 个样本。请计算一个特定样本在 bootstrap 样本中至少出现一次的概率。",
-        "sample_answer": {
-          "probability_at_least_once": 0.651
-        }
+        "answers": [
+          "0.651"
+        ]
       },
       "focus_terms": [
         "bootstrap_sample"

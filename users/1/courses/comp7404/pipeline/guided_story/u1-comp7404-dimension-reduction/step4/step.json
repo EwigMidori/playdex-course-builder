@@ -70,7 +70,7 @@
       "exercise": {
         "answer": 1,
         "explanation": "Isomap 用测地距离代替欧氏距离，避免了直线距离穿透曲面。",
-        "kind": "method_comparison",
+        "kind": "single_choice",
         "options": [
           "使用了核技巧",
           "用测地距离代替欧氏距离",

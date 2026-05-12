@@ -535,6 +535,7 @@ fn validate_reports_unsupported_guided_story_exercise_kind() {
         "research/pipeline/3-guided_story/L2/step1/question_bank.json",
         r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","flashcard_families":[],"quiz_families":[],"longform_families":[]}"#,
     );
+    repo.write("research/pipeline/5-textbook/L2.mdx", "# L2\n");
 
     let output = TestSupport::coursegen_command()
         .current_dir(repo.root())
@@ -554,6 +555,72 @@ fn validate_reports_unsupported_guided_story_exercise_kind() {
         "stderr: {stderr}"
     );
     assert!(stderr.contains("s1"), "stderr: {stderr}");
+}
+
+#[test]
+fn validate_reports_invalid_guided_story_exercise_shape() {
+    let repo = TempRepo::new();
+    repo.write(
+        "research/pipeline/3-guided_story/L2/manifest.json",
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","mode":"guided_story","steps":[{"sequence_id":"step1","file":"research/pipeline/3-guided_story/L2/step1/step.json","concept":"Clustering"}]}"#,
+    );
+    repo.write(
+        "research/pipeline/3-guided_story/L2/step1/step.json",
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","mode":"guided_story","screens":[{"id":"s1","type":"exercise","lines":["Try this."],"exercise":{"kind":"single_choice","prompt":"Pick the right move.","options":["A","B"],"answer":"A"}}],"term_catalog":{}}"#,
+    );
+    repo.write(
+        "research/pipeline/3-guided_story/L2/step1/question_bank.json",
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","flashcard_families":[],"quiz_families":[],"longform_families":[]}"#,
+    );
+    repo.write("research/pipeline/5-textbook/L2.mdx", "# L2\n");
+
+    let output = TestSupport::coursegen_command()
+        .current_dir(repo.root())
+        .args(["validate", "L2"])
+        .output()
+        .expect("coursegen should validate");
+
+    assert!(
+        !output.status.success(),
+        "stdout: {}",
+        String::from_utf8_lossy(&output.stdout)
+    );
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    assert!(
+        stderr.contains("single_choice.answer must be an integer option index"),
+        "stderr: {stderr}"
+    );
+    assert!(stderr.contains("s1"), "stderr: {stderr}");
+}
+
+#[test]
+fn validate_accepts_supported_guided_story_exercise_kinds() {
+    let repo = TempRepo::new();
+    repo.write(
+        "research/pipeline/3-guided_story/L2/manifest.json",
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","mode":"guided_story","steps":[{"sequence_id":"step1","file":"research/pipeline/3-guided_story/L2/step1/step.json","concept":"Clustering"}]}"#,
+    );
+    repo.write(
+        "research/pipeline/3-guided_story/L2/step1/step.json",
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","mode":"guided_story","screens":[{"id":"s1","type":"exercise","lines":["Pick one."],"exercise":{"kind":"single_choice","prompt":"Pick one.","options":["A","B"],"answer":0}},{"id":"s2","type":"exercise","lines":["Pick many."],"exercise":{"kind":"multi_select","prompt":"Pick many.","options":["A","B","C"],"answer":[0,2]}},{"id":"s3","type":"exercise","lines":["Order these."],"exercise":{"kind":"ordering","prompt":"Order these.","items":["First","Second","Third"],"answer_order":[0,1,2]}},{"id":"s4","type":"exercise","lines":["Fill this blank."],"exercise":{"kind":"fill_in_blank","prompt":"Fill this blank.","answers":["Correct answer"]}},{"id":"s5","type":"exercise","lines":["Reflect."],"exercise":{"kind":"short_reflection","prompt":"Reflect.","explanation":"Any concise response is acceptable."}}],"term_catalog":{}}"#,
+    );
+    repo.write(
+        "research/pipeline/3-guided_story/L2/step1/question_bank.json",
+        r#"{"lesson_id":"L2","course_id":"comp7415a","chapter_id":"lecture-2","sequence_id":"step1","flashcard_families":[],"quiz_families":[],"longform_families":[]}"#,
+    );
+    repo.write("research/pipeline/5-textbook/L2.mdx", "# L2\n");
+
+    let output = TestSupport::coursegen_command()
+        .current_dir(repo.root())
+        .args(["validate", "L2"])
+        .output()
+        .expect("coursegen should validate");
+
+    assert!(
+        output.status.success(),
+        "stderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
 }
 
 #[test]

@@ -16,15 +16,9 @@
     },
     {
       "exercise": {
-        "expected_fields": [
-          "model_description"
-        ],
         "explanation": "kNN 在训练阶段只存储数据，不构建任何模型，因此无法给出一个压缩的模型表示。",
-        "kind": "scenario_derivation",
-        "prompt": "假设你有1000张带标签的人脸图像。你使用kNN算法进行训练。训练完成后，请描述这个“模型”是什么？你能像神经网络那样得到一个参数文件吗？",
-        "sample_answer": {
-          "model_description": "kNN的“模型”就是这1000张图像本身，没有额外的参数文件。训练阶段只是把数据存储起来。"
-        }
+        "kind": "short_reflection",
+        "prompt": "假设你有1000张带标签的人脸图像。你使用kNN算法进行训练。训练完成后，请描述这个“模型”是什么？你能像神经网络那样得到一个参数文件吗？"
       },
       "focus_terms": [],
       "id": "s015",

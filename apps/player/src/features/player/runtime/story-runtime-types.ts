@@ -14,8 +14,11 @@ export type NormalizedExercise = {
   kind: string | null;
   prompt: string | null;
   options: string[];
+  items: string[];
   acceptedAnswers: string[];
   answerIndex: number | null;
+  answerIndices: number[];
+  answerOrder: number[];
   explanation: string | null;
   raw: Exercise;
 };
@@ -61,9 +64,11 @@ export type NodeVisit = {
 export type RuntimeExerciseState = {
   answered: boolean;
   selectedAnswer: number | null;
+  selectedAnswers: number[];
+  orderedChoiceIndices: number[];
   textAnswer: string;
   textSubmitted: string | null;
-  textAnswerCorrect: boolean | null;
+  answerCorrect: boolean | null;
 };
 
 export type StoryRuntimeState = {
@@ -79,6 +84,8 @@ export type StoryRuntimeAction =
   | { type: "advance" }
   | { type: "back" }
   | { type: "select-choice"; nodeId: string; choiceIndex: number }
+  | { type: "toggle-choice"; nodeId: string; choiceIndex: number }
+  | { type: "set-order"; nodeId: string; order: number[] }
   | { type: "set-text-answer"; nodeId: string; value: string }
   | { type: "submit-exercise"; nodeId: string };
 

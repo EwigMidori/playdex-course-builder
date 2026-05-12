@@ -120,19 +120,13 @@
     {
       "exercise": {
         "answer": 0,
-        "expected_fields": [
-          "avg_silhouette_A",
-          "avg_silhouette_B",
-          "better_result"
-        ],
         "explanation": "结果A：点A的a=1, b=√50≈7.07, s=1-1/7.07≈0.86。点B的a=1, b=√41≈6.4, s≈0.84。点C的a=1, b=√41≈6.4, s≈0.84。点D的a=1, b=√50≈7.07, s≈0.86。平均轮廓系数≈0.85。结果B：所有点在一个簇，a=平均距离≈3.54, b不存在，轮廓系数为0。结果A的轮廓系数更大，所以结果A更好。",
-        "kind": "calculation",
-        "prompt": "给定数据集：A(0,0), B(1,0), C(5,5), D(6,5)。结果A：簇1={A,B}, 簇2={C,D}。结果B：所有点在一个簇。哪个结果更好？",
-        "sample_answer": {
-          "avg_silhouette_A": 0.85,
-          "avg_silhouette_B": 0,
-          "better_result": "结果A"
-        }
+        "kind": "single_choice",
+        "options": [
+          "结果A更好",
+          "结果B更好"
+        ],
+        "prompt": "给定数据集：A(0,0), B(1,0), C(5,5), D(6,5)。结果A：簇1={A,B}, 簇2={C,D}。结果B：所有点在一个簇。哪个结果更好？"
       },
       "focus_terms": [],
       "id": "s080",

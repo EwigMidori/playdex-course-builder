@@ -2,8 +2,10 @@ import {
   createRuntimeExerciseState,
   getExerciseBlockedReason,
   getRuntimeExerciseState,
+  setExerciseOrder,
   submitExerciseChoice,
-  submitExerciseText
+  submitExercise,
+  toggleExerciseChoice
 } from "./exercise-engine";
 import type {
   ExerciseNode,
@@ -236,6 +238,70 @@ export function evaluateStoryRuntimeAction(
         didCompleteScene: false
       };
     }
+    case "toggle-choice": {
+      const node = getExerciseNode(scene, action.nodeId);
+      if (!node) {
+        return {
+          state,
+          blockedReason: null,
+          feedback: null,
+          didAdvance: false,
+          didCompleteScene: false
+        };
+      }
+
+      const currentExerciseState = getRuntimeExerciseState(state.exerciseStateByNode, action.nodeId);
+      if (currentExerciseState.answered) {
+        return {
+          state,
+          blockedReason: null,
+          feedback: null,
+          didAdvance: false,
+          didCompleteScene: false
+        };
+      }
+
+      const result = toggleExerciseChoice(scene, node, currentExerciseState, action.choiceIndex);
+      return {
+        state: patchExerciseState(state, action.nodeId, result.nextState),
+        blockedReason: null,
+        feedback: result.feedback,
+        didAdvance: false,
+        didCompleteScene: false
+      };
+    }
+    case "set-order": {
+      const node = getExerciseNode(scene, action.nodeId);
+      if (!node) {
+        return {
+          state,
+          blockedReason: null,
+          feedback: null,
+          didAdvance: false,
+          didCompleteScene: false
+        };
+      }
+
+      const currentExerciseState = getRuntimeExerciseState(state.exerciseStateByNode, action.nodeId);
+      if (currentExerciseState.answered) {
+        return {
+          state,
+          blockedReason: null,
+          feedback: null,
+          didAdvance: false,
+          didCompleteScene: false
+        };
+      }
+
+      const result = setExerciseOrder(scene, node, currentExerciseState, action.order);
+      return {
+        state: patchExerciseState(state, action.nodeId, result.nextState),
+        blockedReason: null,
+        feedback: result.feedback,
+        didAdvance: false,
+        didCompleteScene: false
+      };
+    }
     case "submit-exercise": {
       const node = getExerciseNode(scene, action.nodeId);
       if (!node) {
@@ -259,7 +325,7 @@ export function evaluateStoryRuntimeAction(
         };
       }
 
-      const result = submitExerciseText(scene, node, currentExerciseState);
+      const result = submitExercise(scene, node, currentExerciseState);
       return {
         state: patchExerciseState(state, action.nodeId, result.nextState),
         blockedReason: null,

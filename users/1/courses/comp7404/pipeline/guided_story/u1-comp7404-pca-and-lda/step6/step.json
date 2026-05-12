@@ -156,7 +156,9 @@
     },
     {
       "exercise": {
-        "answer": "类间散度，类内散度",
+        "answers": [
+          "类间散度，类内散度"
+        ],
         "explanation": "分子是类间散度（\\(S_B\\)），分母是类内散度（\\(S_W\\)）。",
         "kind": "fill_in_blank",
         "prompt": "LDA 优化目标 \\(J(\\mathbf{w})\\) 的分子是______散度，分母是______散度。"

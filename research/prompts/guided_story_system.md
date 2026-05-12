@@ -75,9 +75,11 @@
 18. 如果图片对理解真的重要，可以在 screen 里加 `media` 字段引用；否则不要滥用图片。
 19. `exercise` 必须足够小，适合单屏作答。优先：
    - `single_choice`
+   - `multi_select`
+   - `ordering`
    - `fill_in_blank`
    - `short_reflection`
-   - 只允许这三种 `kind`，不要生成 `manual_simulation` 或其他新值
+   - 只允许这五种 `kind`，不要生成 `manual_simulation`、`scenario_derivation` 或其他新值
 20. 解释要短。练习解析一般 1 到 2 句即可。
 21. `fill_in_blank` 的答案格式必须和题面语言一致。
     - 不要把不同语言版本混在同一个 `answers` 列表里
@@ -161,10 +163,12 @@
         "spoken": "plain-language reading"
       },
       "exercise": {
-        "kind": "single_choice | fill_in_blank | short_reflection",
+        "kind": "single_choice | multi_select | ordering | fill_in_blank | short_reflection",
         "prompt": "...",
         "options": ["..."],
+        "items": ["..."],
         "answer": 0,
+        "answer_order": [0, 1],
         "answers": ["..."],
         "explanation": "..."
       }

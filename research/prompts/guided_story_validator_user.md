@@ -67,7 +67,18 @@
   "explanation": "..."
 }
 
-2. `ordering`
+2. `multi_select`
+{
+  "kind": "multi_select",
+  "prompt": "...",
+  "options": ["...", "...", "..."],
+  "answer": [0, 2],
+  "explanation": "..."
+}
+- `multi_select` 必须使用 `options` + `answer`
+- `answer` 必须是正确选项下标数组
+
+3. `ordering`
 {
   "kind": "ordering",
   "prompt": "请将以下项目按正确顺序排列。",
@@ -78,21 +89,22 @@
 - `ordering` 题型必须使用 `items` + `answer_order`
 - 若使用 `options` 来让学生“选一个顺序”，按 `contract_violation` 处理
 
-3. `scenario_derivation`
+4. `fill_in_blank`
 {
-  "kind": "scenario_derivation",
-  "prompt": "...给定场景，请推导/填写...",
-  "expected_fields": ["field_a", "field_b", "reasoning"],
-  "sample_answer": {
-    "field_a": "...",
-    "field_b": "...",
-    "reasoning": "..."
-  },
+  "kind": "fill_in_blank",
+  "prompt": "...",
+  "answers": ["..."],
   "explanation": "..."
 }
-- `scenario_derivation` 题型不能使用 `options`
-- 若正文把推导题写成选择题，按 `contract_violation` 和 `exam_gap` 处理
-- 若正文出现未列入支持清单的 `exercise.kind`，例如 `manual_simulation`，按 `contract_violation` 处理，不要猜测兼容或自动归类
+
+5. `short_reflection`
+{
+  "kind": "short_reflection",
+  "prompt": "...",
+  "explanation": "..."
+}
+
+- 若正文出现未列入支持清单的 `exercise.kind`，例如 `manual_simulation`、`scenario_derivation`，按 `contract_violation` 处理，不要猜测兼容或自动归类
 
 ====================
 通过规则
@@ -159,8 +171,8 @@
 - 如果正文缺少合同要求的题型，`contract_compliance` 和 `exam_coverage` 至少有一项 <= 3
 - 如果正文把参数写成定义表而非决策问题，`definition_drift <= 3`
 - 如果正文主要依靠“考试提示”而不是练习兑现，`exercise_quality <= 3`
+- 如果 `multi_select` 没有 `options` + `answer` 数组，`contract_compliance <= 3`
 - 如果 `ordering` 使用了 `options` 而没有 `items` + `answer_order`，`contract_compliance <= 3`
-- 如果 `scenario_derivation` 使用了 `options` 而没有 `expected_fields` + `sample_answer`，`contract_compliance <= 3`
 - `failed_checks` 不能为空，除非 `pass = true`
 - `retry_feedback.priority_repairs` 至少包含 1 条高优先修复，除非 `pass = true`
 - 如果 `pass = false`，必须输出非空的 `must_preserve`、`must_change`、`do_not_regress`

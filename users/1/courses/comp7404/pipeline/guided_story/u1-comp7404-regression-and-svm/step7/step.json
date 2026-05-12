@@ -38,7 +38,7 @@
       "exercise": {
         "answer": 1,
         "explanation": "同心圆是典型的线性不可分数据。你可以尝试很多条直线，但每一种都会留下系统性错误，不是调一调位置就能解决的。",
-        "kind": "visual_selection",
+        "kind": "single_choice",
         "options": [
           "完美分开",
           "无法分开，会有很多错误",

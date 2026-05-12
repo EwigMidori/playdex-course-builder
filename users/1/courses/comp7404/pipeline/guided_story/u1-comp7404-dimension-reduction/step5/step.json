@@ -142,7 +142,7 @@
       "exercise": {
         "answer": 1,
         "explanation": "LLE 保持局部线性重构关系，Isomap 保持测地距离。共同点是都保持某种相似关系，不同点是 LLE 是局部的，Isomap 是全局的。",
-        "kind": "comparison_synthesis",
+        "kind": "single_choice",
         "options": [
           "它们没有共同点",
           "它们都在保持某种相似关系，但 LLE 是局部的，Isomap 是全局的",

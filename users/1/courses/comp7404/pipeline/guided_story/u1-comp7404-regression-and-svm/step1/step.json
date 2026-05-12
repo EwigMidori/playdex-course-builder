@@ -27,7 +27,7 @@
       "exercise": {
         "answer": 1,
         "explanation": "不同的人会画出不同的线，导致预测结果不一致。这说明我们需要一个统一的、精确的数学规则。",
-        "kind": "visual_selection",
+        "kind": "single_choice",
         "options": [
           "约80万",
           "约100万",

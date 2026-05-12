@@ -110,7 +110,7 @@
       "exercise": {
         "answer": 0,
         "explanation": "第一个特征向量是常数，没有分割信息；第二小的特征向量才包含二分信息。",
-        "kind": "judgment",
+        "kind": "single_choice",
         "options": [
           "错误",
           "正确"
@@ -130,15 +130,9 @@
         "answers": [
           "根据特征向量的正负号，将节点分为两组：正号一组，负号一组"
         ],
-        "expected_fields": [
-          "二分规则"
-        ],
         "explanation": "第二小特征向量的元素有正有负，正号表示节点属于一组，负号表示属于另一组。",
-        "kind": "scenario_derivation",
-        "prompt": "请描述如何使用第二小特征向量对图进行二分。",
-        "sample_answer": {
-          "二分规则": "根据特征向量的正负号，将节点分为两组：正号一组，负号一组"
-        }
+        "kind": "fill_in_blank",
+        "prompt": "请描述如何使用第二小特征向量对图进行二分。"
       },
       "focus_terms": [],
       "id": "s044",

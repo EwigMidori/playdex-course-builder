@@ -95,9 +95,9 @@
     },
     {
       "exercise": {
-        "answer": "改善了泛化",
+        "answer": 0,
         "explanation": "训练准确率下降但测试准确率上升，正是典型的“牺牲一点训练拟合，换来更好的泛化”。这说明剪枝方向是对的。",
-        "kind": "condition_judgment",
+        "kind": "single_choice",
         "options": [
           "改善了泛化",
           "恶化了泛化"

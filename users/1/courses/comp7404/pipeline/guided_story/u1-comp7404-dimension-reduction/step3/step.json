@@ -174,7 +174,7 @@
       "exercise": {
         "answer": 1,
         "explanation": "LLE 保持局部线性重构关系，MDS 保持全局直线距离。LLE 适合非线性流形，MDS 适合线性结构。",
-        "kind": "comparison_synthesis",
+        "kind": "single_choice",
         "options": [
           "它们都保持全局距离",
           "LLE 保持局部关系，MDS 保持全局距离",

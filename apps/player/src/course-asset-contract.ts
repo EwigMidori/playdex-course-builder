@@ -53,7 +53,9 @@ export type Exercise = {
   kind?: string;
   prompt?: string;
   options?: string[];
-  answer?: number | string;
+  items?: string[];
+  answer?: number | string | number[];
+  answer_order?: number[];
   answers?: string[];
   explanation?: string;
 };

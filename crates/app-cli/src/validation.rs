@@ -9,8 +9,13 @@ use serde_json::Value;
 
 use crate::paths::LessonPaths;
 
-const SUPPORTED_GUIDED_STORY_EXERCISE_KINDS: &[&str] =
-    &["single_choice", "fill_in_blank", "short_reflection"];
+const SUPPORTED_GUIDED_STORY_EXERCISE_KINDS: &[&str] = &[
+    "single_choice",
+    "fill_in_blank",
+    "short_reflection",
+    "ordering",
+    "multi_select",
+];
 
 pub struct OutputValidator<'a> {
     lesson: &'a LessonPaths,
@@ -95,23 +100,213 @@ impl<'a> OutputValidator<'a> {
             let Some(exercise) = screen.get("exercise") else {
                 continue;
             };
+            let screen_id = Self::screen_id(screen, index);
             let Some(kind) = exercise.get("kind").and_then(Value::as_str) else {
                 return Err(ValidationError::UnsupportedGuidedStoryExerciseKind {
                     path: step_path.to_path_buf(),
-                    screen_id: Self::screen_id(screen, index),
+                    screen_id,
                     kind: "<missing>".to_owned(),
                 });
             };
             if !SUPPORTED_GUIDED_STORY_EXERCISE_KINDS.contains(&kind) {
                 return Err(ValidationError::UnsupportedGuidedStoryExerciseKind {
                     path: step_path.to_path_buf(),
-                    screen_id: Self::screen_id(screen, index),
+                    screen_id,
                     kind: kind.to_owned(),
                 });
             }
+            Self::validate_guided_story_exercise_shape(step_path, &screen_id, kind, exercise)?;
         }
 
         Ok(())
+    }
+
+    fn validate_guided_story_exercise_shape(
+        step_path: &Path,
+        screen_id: &str,
+        kind: &str,
+        exercise: &Value,
+    ) -> Result<(), ValidationError> {
+        match kind {
+            "single_choice" => {
+                let Some(options) = exercise.get("options").and_then(Value::as_array) else {
+                    return Err(Self::invalid_guided_story_exercise_shape(
+                        step_path,
+                        screen_id,
+                        kind,
+                        "single_choice must define a non-empty options array",
+                    ));
+                };
+                if options.is_empty() {
+                    return Err(Self::invalid_guided_story_exercise_shape(
+                        step_path,
+                        screen_id,
+                        kind,
+                        "single_choice must define a non-empty options array",
+                    ));
+                }
+                let answer = exercise.get("answer").and_then(Value::as_u64);
+                if !answer
+                    .map(|value| (value as usize) < options.len())
+                    .unwrap_or(false)
+                {
+                    return Err(Self::invalid_guided_story_exercise_shape(
+                        step_path,
+                        screen_id,
+                        kind,
+                        "single_choice.answer must be an integer option index",
+                    ));
+                }
+            }
+            "multi_select" => {
+                let Some(options) = exercise.get("options").and_then(Value::as_array) else {
+                    return Err(Self::invalid_guided_story_exercise_shape(
+                        step_path,
+                        screen_id,
+                        kind,
+                        "multi_select must define a non-empty options array",
+                    ));
+                };
+                if options.is_empty() {
+                    return Err(Self::invalid_guided_story_exercise_shape(
+                        step_path,
+                        screen_id,
+                        kind,
+                        "multi_select must define a non-empty options array",
+                    ));
+                }
+                let Some(answer) = exercise
+                    .get("answer")
+                    .and_then(Value::as_array)
+                    .filter(|values| !values.is_empty())
+                else {
+                    return Err(Self::invalid_guided_story_exercise_shape(
+                        step_path,
+                        screen_id,
+                        kind,
+                        "multi_select.answer must be a non-empty array of unique option indices",
+                    ));
+                };
+
+                let mut seen = BTreeSet::new();
+                for value in answer {
+                    let Some(index) = value.as_u64() else {
+                        return Err(Self::invalid_guided_story_exercise_shape(
+                            step_path,
+                            screen_id,
+                            kind,
+                            "multi_select.answer must be a non-empty array of unique option indices",
+                        ));
+                    };
+                    let index = index as usize;
+                    if index >= options.len() || !seen.insert(index) {
+                        return Err(Self::invalid_guided_story_exercise_shape(
+                            step_path,
+                            screen_id,
+                            kind,
+                            "multi_select.answer must be a non-empty array of unique option indices",
+                        ));
+                    }
+                }
+            }
+            "fill_in_blank" => {
+                let Some(answers) = exercise
+                    .get("answers")
+                    .and_then(Value::as_array)
+                    .filter(|values| !values.is_empty())
+                else {
+                    return Err(Self::invalid_guided_story_exercise_shape(
+                        step_path,
+                        screen_id,
+                        kind,
+                        "fill_in_blank must define a non-empty answers array",
+                    ));
+                };
+
+                if answers.iter().any(|value| {
+                    value
+                        .as_str()
+                        .map(|answer| answer.trim().is_empty())
+                        .unwrap_or(true)
+                }) {
+                    return Err(Self::invalid_guided_story_exercise_shape(
+                        step_path,
+                        screen_id,
+                        kind,
+                        "fill_in_blank answers must all be non-empty strings",
+                    ));
+                }
+            }
+            "ordering" => {
+                let Some(items) = exercise.get("items").and_then(Value::as_array) else {
+                    return Err(Self::invalid_guided_story_exercise_shape(
+                        step_path,
+                        screen_id,
+                        kind,
+                        "ordering must define a non-empty items array",
+                    ));
+                };
+                if items.is_empty() {
+                    return Err(Self::invalid_guided_story_exercise_shape(
+                        step_path,
+                        screen_id,
+                        kind,
+                        "ordering must define a non-empty items array",
+                    ));
+                }
+                let Some(answer_order) = exercise
+                    .get("answer_order")
+                    .and_then(Value::as_array)
+                    .filter(|values| values.len() == items.len())
+                else {
+                    return Err(Self::invalid_guided_story_exercise_shape(
+                        step_path,
+                        screen_id,
+                        kind,
+                        "ordering.answer_order must be a complete permutation of item indices",
+                    ));
+                };
+
+                let mut seen = BTreeSet::new();
+                for value in answer_order {
+                    let Some(index) = value.as_u64() else {
+                        return Err(Self::invalid_guided_story_exercise_shape(
+                            step_path,
+                            screen_id,
+                            kind,
+                            "ordering.answer_order must be a complete permutation of item indices",
+                        ));
+                    };
+                    let index = index as usize;
+                    if index >= items.len() || !seen.insert(index) {
+                        return Err(Self::invalid_guided_story_exercise_shape(
+                            step_path,
+                            screen_id,
+                            kind,
+                            "ordering.answer_order must be a complete permutation of item indices",
+                        ));
+                    }
+                }
+            }
+            "short_reflection" => {}
+            _ => {}
+        }
+
+        Ok(())
+    }
+
+    fn invalid_guided_story_exercise_shape(
+        step_path: &Path,
+        screen_id: &str,
+        kind: &str,
+        reason: &'static str,
+    ) -> ValidationError {
+        ValidationError::InvalidGuidedStoryExerciseShape {
+            path: step_path.to_path_buf(),
+            screen_id: screen_id.to_owned(),
+            kind: kind.to_owned(),
+            reason,
+        }
     }
 
     fn validate_step_local_question_banks(
@@ -511,6 +706,12 @@ pub enum ValidationError {
         screen_id: String,
         kind: String,
     },
+    InvalidGuidedStoryExerciseShape {
+        path: PathBuf,
+        screen_id: String,
+        kind: String,
+        reason: &'static str,
+    },
 }
 
 impl fmt::Display for ValidationError {
@@ -578,10 +779,23 @@ impl fmt::Display for ValidationError {
                 kind,
             } => write!(
                 f,
-                "guided story step {} screen '{}' uses unsupported exercise kind '{}'; expected single_choice, fill_in_blank, or short_reflection",
+                "guided story step {} screen '{}' uses unsupported exercise kind '{}'; expected single_choice, fill_in_blank, short_reflection, ordering, or multi_select",
                 path.display(),
                 screen_id,
                 kind
+            ),
+            Self::InvalidGuidedStoryExerciseShape {
+                path,
+                screen_id,
+                kind,
+                reason,
+            } => write!(
+                f,
+                "guided story step {} screen '{}' has invalid {} payload: {}",
+                path.display(),
+                screen_id,
+                kind,
+                reason
             ),
         }
     }
@@ -600,7 +814,8 @@ impl Error for ValidationError {
             | Self::BrokenQuestionRef { .. }
             | Self::BrokenQuestionFamilyRef { .. }
             | Self::UnsupportedTextbookHeadingAnchor { .. }
-            | Self::UnsupportedGuidedStoryExerciseKind { .. } => None,
+            | Self::UnsupportedGuidedStoryExerciseKind { .. }
+            | Self::InvalidGuidedStoryExerciseShape { .. } => None,
         }
     }
 }

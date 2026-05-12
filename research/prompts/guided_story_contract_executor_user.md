@@ -49,7 +49,18 @@
   "explanation": "..."
 }
 
-2. `ordering`
+2. `multi_select`
+- 用于有一个或多个正确选项、必须显式多选提交的题
+- 合法结构：
+{
+  "kind": "multi_select",
+  "prompt": "...",
+  "options": ["...", "...", "..."],
+  "answer": [0, 2],
+  "explanation": "..."
+}
+
+3. `ordering`
 - 用于流程排序、步骤先后关系
 - 这不是单选题的变体
 - 不要用“从四个顺序选项中选一个”的方式冒充
@@ -64,28 +75,30 @@
 - 其中 `items` 是待排序项目列表
 - `answer_order` 是按 `items` 下标给出的正确顺序
 
-3. `scenario_derivation`
-- 用于场景推导、综合应用、根据给定条件推出若干字段
-- 这不是单选题，也不应该提供固定选项
+4. `fill_in_blank`
+- 用于有唯一目标答案、可以用极少数等价写法判定的题
 - 合法结构：
 {
-  "kind": "scenario_derivation",
-  "prompt": "...给定场景，请推导/填写...",
-  "expected_fields": ["field_a", "field_b", "reasoning"],
-  "sample_answer": {
-    "field_a": "...",
-    "field_b": "...",
-    "reasoning": "..."
-  },
+  "kind": "fill_in_blank",
+  "prompt": "...",
+  "answers": ["..."],
   "explanation": "..."
 }
-- `expected_fields` 描述学生答案应包含哪些字段
-- `sample_answer` 只作为参考答案结构，不是给学生看的选项
 
-4. 任何题型都必须匹配其语义
+5. `short_reflection`
+- 用于解释、比较、总结、推导思路等开放式短答
+- 合法结构：
+{
+  "kind": "short_reflection",
+  "prompt": "...",
+  "explanation": "..."
+}
+
+6. 任何题型都必须匹配其语义
+- `multi_select` 必须使用 `options` + `answer` 数组
 - `ordering` 不能出现 `options`
-- `scenario_derivation` 不能出现 `options`
-- 如果题目要求“排序”或“推导”，就不能偷换成 `single_choice`
+- `fill_in_blank` 必须使用 `answers`
+- 如果题目要求“排序”，就不能偷换成 `single_choice`
 - 若合同要求某题型，必须按该题型的合法结构输出
 
 ====================

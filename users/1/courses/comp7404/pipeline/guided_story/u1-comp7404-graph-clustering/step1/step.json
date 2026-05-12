@@ -151,7 +151,7 @@
       "exercise": {
         "answer": 0,
         "explanation": "最小割只看总权重，离群点只有一条细边，切掉它的代价最小，所以会被优先切掉。",
-        "kind": "judgment",
+        "kind": "single_choice",
         "options": [
           "错误",
           "正确"

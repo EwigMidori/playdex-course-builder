@@ -100,19 +100,9 @@
     },
     {
       "exercise": {
-        "expected_fields": [
-          "edited_knn_advantage",
-          "prototype_advantage",
-          "tradeoff"
-        ],
         "explanation": "编辑式kNN通过移除冗余样本减少存储，原型方法通过生成代表性样本压缩数据，两者都降低了存储和计算开销，但可能损失一些细节信息。",
-        "kind": "scenario_derivation",
-        "prompt": "请比较编辑式K近邻和原型方法这两种优化策略。分别说明它们的主要优点和可能的缺点（tradeoff）。",
-        "sample_answer": {
-          "edited_knn_advantage": "自动移除冗余和噪声样本，减少存储和计算开销，同时可能提高准确率。",
-          "prototype_advantage": "用少量代表性样本代替大量数据，大幅压缩存储，预测速度更快。",
-          "tradeoff": "编辑式kNN可能误删有用样本，原型方法可能丢失边界附近的细节信息，导致分类精度下降。"
-        }
+        "kind": "short_reflection",
+        "prompt": "请比较编辑式K近邻和原型方法这两种优化策略。分别说明它们的主要优点和可能的缺点（tradeoff）。"
       },
       "focus_terms": [
         "edited_knn",

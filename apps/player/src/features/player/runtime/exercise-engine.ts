@@ -6,9 +6,11 @@ export function createRuntimeExerciseState(): RuntimeExerciseState {
   return {
     answered: false,
     selectedAnswer: null,
+    selectedAnswers: [],
+    orderedChoiceIndices: [],
     textAnswer: "",
     textSubmitted: null,
-    textAnswerCorrect: null
+    answerCorrect: null
   };
 }
 
@@ -26,10 +28,12 @@ function applySubmissionResult(
   return {
     answered: typeof result?.answered === "boolean" ? result.answered : baseState.answered,
     selectedAnswer: typeof result?.selectedAnswer !== "undefined" ? result.selectedAnswer : baseState.selectedAnswer,
+    selectedAnswers: typeof result?.selectedAnswers !== "undefined" ? result.selectedAnswers : baseState.selectedAnswers,
+    orderedChoiceIndices:
+      typeof result?.orderedChoiceIndices !== "undefined" ? result.orderedChoiceIndices : baseState.orderedChoiceIndices,
     textAnswer: baseState.textAnswer,
     textSubmitted: typeof result?.textSubmitted !== "undefined" ? result.textSubmitted : baseState.textSubmitted,
-    textAnswerCorrect:
-      typeof result?.textAnswerCorrect !== "undefined" ? result.textAnswerCorrect : baseState.textAnswerCorrect
+    answerCorrect: typeof result?.answerCorrect !== "undefined" ? result.answerCorrect : baseState.answerCorrect
   };
 }
 
@@ -72,9 +76,90 @@ export function submitExerciseChoice(
   };
 }
 
-export function submitExerciseText(scene: SceneModel, node: ExerciseNode, exerciseState: RuntimeExerciseState) {
+export function toggleExerciseChoice(scene: SceneModel, node: ExerciseNode, exerciseState: RuntimeExerciseState, choiceIndex: number) {
   const { definition, unsupportedReason } = resolveExercise(node.exercise);
-  if (!definition?.submitText || unsupportedReason) {
+  if (unsupportedReason || node.exercise.kind !== "multi_select") {
+    return {
+      nextState: exerciseState,
+      feedback: null
+    };
+  }
+
+  const selected = new Set(exerciseState.selectedAnswers);
+  if (selected.has(choiceIndex)) {
+    selected.delete(choiceIndex);
+  } else {
+    selected.add(choiceIndex);
+  }
+
+  return {
+    nextState: {
+      ...exerciseState,
+      selectedAnswers: [...selected].sort((left, right) => left - right)
+    },
+    feedback: null,
+    exerciseContext: buildExerciseContext(scene, node)
+  };
+}
+
+export function setExerciseOrder(scene: SceneModel, node: ExerciseNode, exerciseState: RuntimeExerciseState, order: number[]) {
+  const { unsupportedReason } = resolveExercise(node.exercise);
+  if (unsupportedReason || node.exercise.kind !== "ordering") {
+    return {
+      nextState: exerciseState,
+      feedback: null
+    };
+  }
+
+  return {
+    nextState: {
+      ...exerciseState,
+      orderedChoiceIndices: order
+    },
+    feedback: null,
+    exerciseContext: buildExerciseContext(scene, node)
+  };
+}
+
+export function submitExercise(scene: SceneModel, node: ExerciseNode, exerciseState: RuntimeExerciseState) {
+  const { definition, unsupportedReason } = resolveExercise(node.exercise);
+  if (unsupportedReason) {
+    return {
+      nextState: exerciseState,
+      feedback: null
+    };
+  }
+
+  if (definition?.submitSelection) {
+    const result = definition.submitSelection({
+      exercise: node.exercise,
+      selectedAnswers: exerciseState.selectedAnswers,
+      answerIndices: node.exercise.answerIndices,
+      exerciseContext: buildExerciseContext(scene, node)
+    });
+    return {
+      nextState: applySubmissionResult(exerciseState, result),
+      feedback: result.feedback ?? null,
+      exerciseContext: buildExerciseContext(scene, node)
+    };
+  }
+
+  if (definition?.submitOrder) {
+    const fallbackOrder = node.exercise.items.map((_, index) => index);
+    const result = definition.submitOrder({
+      exercise: node.exercise,
+      orderedChoiceIndices: exerciseState.orderedChoiceIndices.length ? exerciseState.orderedChoiceIndices : fallbackOrder,
+      answerOrder: node.exercise.answerOrder,
+      exerciseContext: buildExerciseContext(scene, node)
+    });
+    return {
+      nextState: applySubmissionResult(exerciseState, result),
+      feedback: result.feedback ?? null,
+      exerciseContext: buildExerciseContext(scene, node)
+    };
+  }
+
+  if (!definition?.submitText) {
     return {
       nextState: exerciseState,
       feedback: null

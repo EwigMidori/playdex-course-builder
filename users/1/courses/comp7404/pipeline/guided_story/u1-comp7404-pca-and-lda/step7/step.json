@@ -47,9 +47,9 @@
     },
     {
       "exercise": {
-        "answer": "算不出 \\(S_W^{-1}\\)",
+        "answer": 1,
         "explanation": "此时真正卡住的不是“算得慢”，而是你需要的 \\(S_W^{-1}\\) 根本算不出来，因为 \\(S_W\\) 是奇异矩阵，不可逆。",
-        "kind": "condition_judgment",
+        "kind": "single_choice",
         "options": [
           "算不出类均值",
           "算不出 \\(S_W^{-1}\\)",

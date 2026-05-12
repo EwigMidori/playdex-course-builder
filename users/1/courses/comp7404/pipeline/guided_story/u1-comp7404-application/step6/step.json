@@ -35,9 +35,9 @@
     },
     {
       "exercise": {
-        "answer": "标准SPM要求块严格对齐，当物体发生平移或缩放时，每个格子里的内容变化很大，导致匹配失败。SAPM允许块在匹配时发生位置和尺度的偏移，更鲁棒。",
-        "kind": "short_answer",
-        "prompt": "标准空间金字塔匹配在近重复图像上为什么会失败？空间对齐金字塔匹配如何解决？"
+        "kind": "short_reflection",
+        "prompt": "标准空间金字塔匹配在近重复图像上为什么会失败？空间对齐金字塔匹配如何解决？",
+        "explanation": "标准SPM要求块严格对齐，当物体发生平移或缩放时，每个格子里的内容变化很大，导致匹配失败。SAPM允许块在匹配时发生位置和尺度的偏移，更鲁棒。"
       },
       "focus_terms": [
         "spatial_pyramid_matching",
@@ -130,9 +130,9 @@
     },
     {
       "exercise": {
-        "answer": "标准SPM要求块严格对齐，当物体发生平移或缩放时，每个格子里的内容变化很大，导致匹配失败。SAPM允许块在匹配时发生位置和尺度的偏移，从而解决了这个问题。",
-        "kind": "short_answer",
-        "prompt": "请分析标准SPM在近重复图像上为什么会失败？SAPM如何解决？"
+        "kind": "short_reflection",
+        "prompt": "请分析标准SPM在近重复图像上为什么会失败？SAPM如何解决？",
+        "explanation": "标准SPM要求块严格对齐，当物体发生平移或缩放时，每个格子里的内容变化很大，导致匹配失败。SAPM允许块在匹配时发生位置和尺度的偏移，从而解决了这个问题。"
       },
       "focus_terms": [
         "spatial_pyramid_matching",

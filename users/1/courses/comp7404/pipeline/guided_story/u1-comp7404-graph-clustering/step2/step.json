@@ -159,7 +159,7 @@
       "exercise": {
         "answer": 0,
         "explanation": "归一化割的分母 assoc 衡量的是连接度，不是节点个数。平衡连接度不等于强制大小相等。",
-        "kind": "judgment",
+        "kind": "single_choice",
         "options": [
           "错误",
           "正确"

@@ -124,18 +124,9 @@
     },
     {
       "exercise": {
-        "answer": "ε=0.3 时 α=ln(0.7/0.3)≈0.847；ε=0.1 时 α=ln(0.9/0.1)≈2.197",
-        "expected_fields": [
-          "alpha_0.3",
-          "alpha_0.1"
-        ],
         "explanation": "α = ln((1-ε)/ε)。当 ε=0.3 时，α = ln(0.7/0.3) ≈ 0.847；当 ε=0.1 时，α = ln(0.9/0.1) ≈ 2.197。错误率越低，α 越大。",
-        "kind": "calculation",
-        "prompt": "假设 AdaBoost 第 t 轮训练得到一个弱分类器，其加权错误率 ε=0.3。计算该分类器的权重 α。如果 ε=0.1，α 是多少？",
-        "sample_answer": {
-          "alpha_0.1": 2.197,
-          "alpha_0.3": 0.847
-        }
+        "kind": "short_reflection",
+        "prompt": "假设 AdaBoost 第 t 轮训练得到一个弱分类器，其加权错误率 ε=0.3。计算该分类器的权重 α。如果 ε=0.1，α 是多少？"
       },
       "focus_terms": [
         "alpha"
@@ -200,7 +191,7 @@
       "exercise": {
         "answer": 0,
         "explanation": "如果样本权重增加，说明它被错误分类了。因为权重更新公式中，错误分类的样本权重会乘以一个大于1的因子，导致权重增加。",
-        "kind": "true_false",
+        "kind": "single_choice",
         "options": [
           "正确",
           "错误"
@@ -219,9 +210,9 @@
     },
     {
       "exercise": {
-        "answer": "错误分类",
+        "answer": 1,
         "explanation": "在 AdaBoost 的权重更新中，如果样本被正确分类，其权重会降低（乘以小于1的因子）；如果被错误分类，其权重会增加（乘以大于1的因子）。因此，如果某样本的权重从 0.2 增加到 0.5，说明它被错误分类了。",
-        "kind": "condition_judgment",
+        "kind": "single_choice",
         "options": [
           "正确分类",
           "错误分类"

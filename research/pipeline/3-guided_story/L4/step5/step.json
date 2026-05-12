@@ -66,19 +66,9 @@
     },
     {
       "exercise": {
-        "expected_fields": [
-          "hurst_exponent",
-          "market_type",
-          "reasoning"
-        ],
         "explanation": "H=0.5表示随机游走，H<0.5均值回归，H>0.5趋势。",
-        "kind": "scenario_derivation",
-        "prompt": "给定一组价格数据，计算其Hurst指数为0.32，请判断市场类型并说明理由。",
-        "sample_answer": {
-          "hurst_exponent": 0.32,
-          "market_type": "均值回归",
-          "reasoning": "H=0.32 < 0.5，属于均值回归市场，越接近0回归越强。"
-        }
+        "kind": "short_reflection",
+        "prompt": "给定一组价格数据，计算其Hurst指数为0.32，请判断市场类型并说明理由。"
       },
       "focus_terms": [
         "hurst_exponent"
